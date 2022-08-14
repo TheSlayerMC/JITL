@@ -1,0 +1,482 @@
+{
+  "block.mud.break": {
+    "sounds": [
+      "jitl:blocks/break/mud_1",
+      "jitl:blocks/break/mud_2",
+      "jitl:blocks/break/mud_3",
+      "jitl:blocks/break/mud_4",
+      "jitl:blocks/break/mud_5"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.mud.dig": {
+    "sounds": [
+      "jitl:blocks/dig/mud_1",
+      "jitl:blocks/dig/mud_2",
+      "jitl:blocks/dig/mud_3",
+      "jitl:blocks/dig/mud_4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "misc.epic_sound_0": {
+    "sounds": [
+      "jitl:misc/epic_sound_0"
+    ]
+  },
+  "misc.dialog_basic": {
+    "sounds": [
+      "jitl:misc/dialog_basic"
+    ]
+  },
+  "block.icicle.break": {
+    "sounds": [
+      "jitl:blocks/break/icicle_1",
+      "jitl:blocks/break/icicle_2",
+      "jitl:blocks/break/icicle_3"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.icicle.dig": {
+    "sounds": [
+      "jitl:blocks/dig/icicle_1",
+      "jitl:blocks/dig/icicle_2",
+      "jitl:blocks/dig/icicle_3"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.pottery.break": {
+    "sounds": [
+      "jitl:blocks/break/pottery_1",
+      "jitl:blocks/break/pottery_2",
+      "jitl:blocks/break/pottery_3"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.pottery.dig": {
+    "sounds": [
+      "jitl:blocks/dig/pottery_1",
+      "jitl:blocks/dig/pottery_2",
+      "jitl:blocks/dig/pottery_3"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "items.bottle_plug": {
+    "sounds": [
+      "jitl:items/bottle_plug"
+    ]
+  },
+  "music.toast": {
+    "sounds": [
+      "jitl:music/toast"
+    ]
+  },
+  "music.toast_special": {
+    "sounds": [
+      "jitl:music/toast_special"
+    ]
+  },
+  "block.grassy_permafrost.break": {
+    "sounds": [
+      "jitl:blocks/break/grassy_permafrost_1",
+      "jitl:blocks/break/grassy_permafrost_2",
+      "jitl:blocks/break/grassy_permafrost_3",
+      "jitl:blocks/break/grassy_permafrost_4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.grassy_permafrost.dig": {
+    "sounds": [
+      "jitl:blocks/dig/grassy_permafrost_1",
+      "jitl:blocks/dig/grassy_permafrost_2",
+      "jitl:blocks/dig/grassy_permafrost_3",
+      "jitl:blocks/dig/grassy_permafrost_4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.crumbled_permafrost.break": {
+    "sounds": [
+      "jitl:blocks/break/crumbled_permafrost_1",
+      "jitl:blocks/break/crumbled_permafrost_2",
+      "jitl:blocks/break/crumbled_permafrost_3",
+      "jitl:blocks/break/crumbled_permafrost_4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.crumbled_permafrost.dig": {
+    "sounds": [
+      "jitl:blocks/dig/crumbled_permafrost_1",
+      "jitl:blocks/dig/crumbled_permafrost_2",
+      "jitl:blocks/dig/crumbled_permafrost_3",
+      "jitl:blocks/dig/crumbled_permafrost_4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.permafrost.break": {
+    "sounds": [
+      "jitl:blocks/break/permafrost_1",
+      "jitl:blocks/break/permafrost_2",
+      "jitl:blocks/break/permafrost_3",
+      "jitl:blocks/break/permafrost_4",
+      "jitl:blocks/break/permafrost_5"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.permafrost.dig": {
+    "sounds": [
+      "jitl:blocks/dig/permafrost_1",
+      "jitl:blocks/dig/permafrost_2",
+      "jitl:blocks/dig/permafrost_3",
+      "jitl:blocks/dig/permafrost_4",
+      "jitl:blocks/dig/permafrost_5",
+      "jitl:blocks/dig/permafrost_6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.brick.break": {
+    "sounds": [
+      "jitl:blocks/break/brick_1",
+      "jitl:blocks/break/brick_2",
+      "jitl:blocks/break/brick_3",
+      "jitl:blocks/break/brick_4",
+      "jitl:blocks/break/brick_5",
+      "jitl:blocks/break/brick_6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.brick.dig": {
+    "sounds": [
+      "jitl:blocks/dig/brick_1",
+      "jitl:blocks/dig/brick_2",
+      "jitl:blocks/dig/brick_3",
+      "jitl:blocks/dig/brick_4",
+      "jitl:blocks/dig/brick_5",
+      "jitl:blocks/dig/brick_6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.fumice.break": {
+    "sounds": [
+      "jitl:blocks/break/fumice_1",
+      "jitl:blocks/break/fumice_2",
+      "jitl:blocks/break/fumice_3",
+      "jitl:blocks/break/fumice_4",
+      "jitl:blocks/break/fumice_5",
+      "jitl:blocks/break/fumice_6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.fumice.dig": {
+    "sounds": [
+      "jitl:blocks/dig/fumice_1",
+      "jitl:blocks/dig/fumice_2",
+      "jitl:blocks/dig/fumice_3",
+      "jitl:blocks/dig/fumice_4",
+      "jitl:blocks/dig/fumice_5",
+      "jitl:blocks/dig/fumice_6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.lunium_ore.break": {
+    "sounds": [
+      "jitl:blocks/break/lunium_ore_1",
+      "jitl:blocks/break/lunium_ore_2",
+      "jitl:blocks/break/lunium_ore_3",
+      "jitl:blocks/break/lunium_ore_4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.lunium_block.break": {
+    "sounds": [
+      "jitl:blocks/break/lunium_block_1",
+      "jitl:blocks/break/lunium_block_2",
+      "jitl:blocks/break/lunium_block_3",
+      "jitl:blocks/break/lunium_block_4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.lunium_block.dig": {
+    "sounds": [
+      "jitl:blocks/dig/lunium_block_1",
+      "jitl:blocks/dig/lunium_block_2",
+      "jitl:blocks/dig/lunium_block_3",
+      "jitl:blocks/dig/lunium_block_4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.shadium_ore.break": {
+    "sounds": [
+      "jitl:blocks/break/shadium_ore_1",
+      "jitl:blocks/break/shadium_ore_2",
+      "jitl:blocks/break/shadium_ore_3",
+      "jitl:blocks/break/shadium_ore_4",
+      "jitl:blocks/break/shadium_ore_5",
+      "jitl:blocks/break/shadium_ore_6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.shadium_block.break": {
+    "sounds": [
+      "jitl:blocks/break/shadium_block_1",
+      "jitl:blocks/break/shadium_block_2",
+      "jitl:blocks/break/shadium_block_3",
+      "jitl:blocks/break/shadium_block_4",
+      "jitl:blocks/break/shadium_block_5",
+      "jitl:blocks/break/shadium_block_6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.shadium_block.dig": {
+    "sounds": [
+      "jitl:blocks/dig/shadium_block_1",
+      "jitl:blocks/dig/shadium_block_2",
+      "jitl:blocks/dig/shadium_block_3",
+      "jitl:blocks/dig/shadium_block_4",
+      "jitl:blocks/dig/shadium_block_5",
+      "jitl:blocks/dig/shadium_block_6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.ice_crystal.break": {
+    "sounds": [
+      "jitl:blocks/break/ice_crystal_1",
+      "jitl:blocks/break/ice_crystal_2",
+      "jitl:blocks/break/ice_crystal_3",
+      "jitl:blocks/break/ice_crystal_4",
+      "jitl:blocks/break/ice_crystal_5",
+      "jitl:blocks/break/ice_crystal_6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.rune.activate": {
+    "sounds": [
+      "jitl:blocks/activate/rune_activate"
+    ]
+  },
+  "block.essencia_altar.activate": {
+    "sounds": [
+      "jitl:blocks/activate/essencia_altar_activate"
+    ]
+  },
+  "items.staff.staff_0": {
+    "sounds": [
+      "jitl:items/staff/staff_0"
+    ]
+  },
+  "items.crystal_apple.freeze": {
+    "sounds": [
+      "jitl:items/crystal_apple_freeze"
+    ]
+  },
+  "items.crystal_apple.unfreeze": {
+    "sounds": [
+      "jitl:items/crystal_apple_unfreeze"
+    ]
+  },
+  "items.loot": {
+    "sounds": [
+      "jitl:items/loot"
+    ]
+  },
+  "items.miners_pearl": {
+    "sounds": [
+      "jitl:items/miners_pearl"
+    ]
+  },
+  "entities.hongo_ambient": {
+    "sounds": [
+      "jitl:entities/hongo_ambient"
+    ]
+  },
+  "entities.hongo_hurt": {
+    "sounds": [
+      "jitl:entities/hongo_hurt"
+    ]
+  },
+  "entities.hongo_death": {
+    "sounds": [
+      "jitl:entities/hongo_death"
+    ]
+  },
+  "entities.hongo_spore_release": {
+    "sounds": [
+      "jitl:entities/hongo_spore_release"
+    ]
+  },
+  "entities.glump_ambient": {
+    "sounds": [
+      "jitl:entities/glump_ambient_0",
+      "jitl:entities/glump_ambient_1"
+    ]
+  },
+  "entities.glump_hurt": {
+    "sounds": [
+      "jitl:entities/glump_hurt"
+    ]
+  },
+  "entities.glump_death": {
+    "sounds": [
+      "jitl:entities/glump_death"
+    ]
+  },
+  "entities.frozen_guardian_death": {
+    "sounds": [
+      "jitl:entities/frozen_guardian_death"
+    ]
+  },
+  "entities.frozen_troll_ambient": {
+    "sounds": [
+      "jitl:entities/frozen_troll_ambient_0",
+      "jitl:entities/frozen_troll_ambient_1",
+      "jitl:entities/frozen_troll_ambient_2"
+    ]
+  },
+  "entities.frozen_troll_hurt": {
+    "sounds": [
+      "jitl:entities/frozen_troll_hurt_0",
+      "jitl:entities/frozen_troll_hurt_1"
+    ]
+  },
+  "entities.frozen_troll_death": {
+    "sounds": [
+      "jitl:entities/frozen_troll_death_0"
+    ]
+  },
+  "entities.frozen_troll_intrigued": {
+    "sounds": [
+      "jitl:entities/frozen_troll_intrigued_0",
+      "jitl:entities/frozen_troll_intrigued_1",
+      "jitl:entities/frozen_troll_intrigued_2"
+    ]
+  },
+  "entities.rockite_smasher_hurt": {
+    "sounds": [
+      "jitl:entities/rockite_smasher_hurt_0",
+      "jitl:entities/rockite_smasher_hurt_1",
+	   "jitl:entities/rockite_smasher_hurt_2"
+    ]
+  },
+    "entities.rockite_smasher_death": {
+    "sounds": [
+      "jitl:entities/rockite_smasher_death"
+    ]
+  },
+  "entities.illager_mech_step": {
+    "sounds": [
+      "jitl:entities/illager_mech_step_1",
+      "jitl:entities/illager_mech_step_2",
+      "jitl:entities/illager_mech_step_3",
+      "jitl:entities/illager_mech_step_4"
+    ]
+  },
+  "entities.illager_mech_hurt": {
+    "sounds": [
+      "jitl:entities/illager_mech_hurt_1",
+      "jitl:entities/illager_mech_hurt_2",
+      "jitl:entities/illager_mech_hurt_3",
+      "jitl:entities/illager_mech_hurt_4"
+    ]
+  },
+  "entities.illager_mech_death": {
+    "sounds": [
+      "jitl:entities/illager_mech_death"
+    ]
+  },
+  "entities.illager_mech_throw": {
+    "sounds": [
+      "jitl:entities/illager_mech_throw"
+    ]
+  },
+  "entities.piercer": {
+    "sounds": [
+      "jitl:entities/piercer_0",
+      "jitl:entities/piercer_1",
+      "jitl:entities/piercer_2",
+      "jitl:entities/piercer_3",
+      "jitl:entities/piercer_4",
+      "jitl:entities/piercer_5",
+      "jitl:entities/piercer_6"
+    ]
+  },
+  "entities.piercer_return": {
+    "sounds": [
+      "jitl:entities/piercer_return"
+    ]
+  },
+  "entities.knife": {
+    "sounds": [
+      "jitl:entities/knife"
+    ]
+  },
+  "music.menu": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "jitl:music/menu",
+        "stream": true
+      }
+    ]
+  },
+  "music.haunt_muskie_2": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "jitl:music/haunt_muskie_2",
+        "stream": true
+      }
+    ]
+  },
+  "music.snowflakesss": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "jitl:music/snowflakesss",
+        "stream": true
+      }
+    ]
+  },
+  "music.guardian_tower": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "jitl:music/guardian_tower",
+        "stream": true
+      }
+    ]
+  },
+  "music.temple_guardian": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "jitl:music/temple_guardian",
+        "stream": true
+      }
+    ]
+  },
+  "music.euca.ambience": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "jitl:music/ambience/euca",
+        "stream": true
+      }
+    ]
+  },
+  "music.frozen.ambience": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "jitl:music/ambience/frozen",
+        "stream": true
+      }
+    ]
+  },
+  "music.biome.gold_plains": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "jitl:music/biome/gold_plains",
+        "stream": true
+      }
+    ]
+  }
+}

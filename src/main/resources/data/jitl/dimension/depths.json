@@ -1,0 +1,68 @@
+{
+  "type": "jitl:depths",
+  "forge:use_server_seed": true,
+  "generator": {
+    "type": "minecraft:noise",
+    "seed": 0,
+    "settings": {
+      "sea_level": 0,
+      "disable_mob_generation": false,
+      "noise_caves_enabled": true,
+      "noodle_caves_enabled": false,
+      "aquifers_enabled": true,
+      "ore_veins_enabled": false,
+      "legacy_random_source": false,
+      "default_block": {
+        "Name": "jitl:depths_stone"
+      },
+      "default_fluid": {
+        "Name": "jitl:depths_lamp",
+        "Properties": {
+          "level": "0"
+        }
+      },
+      "noise": {
+        "min_y": 0,
+        "height": 128,
+        "size_horizontal": 1,
+        "size_vertical": 2,
+        "island_noise_override": false,
+        "amplified": false,
+        "sampling": {
+          "xz_scale": 1,
+          "y_scale": 1,
+          "xz_factor": 80,
+          "y_factor": 60
+        },
+        "bottom_slide": {
+          "target": 320,
+          "size": 4,
+          "offset": -1
+        },
+        "top_slide": {
+          "target": 120,
+          "size": 3,
+          "offset": 0
+        },
+        "terrain_shaper": {
+          "offset": 0,
+          "factor": 0,
+          "jaggedness": 0
+        }
+      },
+      "surface_rule": {
+        "type": "minecraft:block",
+        "result_state": {
+          "Name": "minecraft:stone"
+        }
+      },
+      "structures": {
+        "structures": {}
+      }
+    },
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "jitl:depths/depths"
+    }
+  }
+}
