@@ -1,5 +1,6 @@
 package net.jitl.core.init;
 
+import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -22,6 +23,7 @@ public class JITL {
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
 
         JItems.ITEMS.register(modEventBus);
+        JBlocks.BLOCKS.register(modEventBus);
 
         modEventBus.addListener(this::preInit);
         modEventBus.addListener(this::clientSetup);
