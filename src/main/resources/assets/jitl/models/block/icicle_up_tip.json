@@ -1,6 +1,0 @@
-{
-  "parent": "jitl:block/icicle",
-  "textures": {
-    "cross": "jitl:block/icicle_up_tip"
-  }
-}
