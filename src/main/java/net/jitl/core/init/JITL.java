@@ -1,5 +1,6 @@
 package net.jitl.core.init;
 
+import net.jitl.core.init.internal.JItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -19,6 +20,8 @@ public class JITL {
     public JITL() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
+
+        JItems.ITEMS.register(modEventBus);
 
         modEventBus.addListener(this::preInit);
         modEventBus.addListener(this::clientSetup);
