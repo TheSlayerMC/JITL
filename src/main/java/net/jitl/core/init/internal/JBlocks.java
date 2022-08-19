@@ -19,24 +19,31 @@ public class JBlocks {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, JITL.MODID);
 
-    public static final ArrayList<String> blockName = new ArrayList<String>();
-    public static final ArrayList<String> langName = new ArrayList<String>();
+    public static final ArrayList<String> blockName = new ArrayList<>();
+    public static final ArrayList<String> langName = new ArrayList<>();
 
     public static final RegistryObject<Block> SAPPHIRE_ORE = register("sapphire_ore", "Sapphire Ore", JBlockProperties.STONE);
+    public static final RegistryObject<Block> SAPPHIRE_BLOCK = register("sapphire_block", "Sapphire Block", JBlockProperties.STONE);
+    public static final RegistryObject<Block> DEEPSLATE_SAPPHIRE_ORE = register("deepslate_sapphire_ore", "Deepslate Sapphire Ore", JBlockProperties.STONE);
+
+    public static final RegistryObject<Block> SHADIUM_ORE = register("shadium_ore", "Shadium Ore", JBlockProperties.STONE);
+    public static final RegistryObject<Block> SHADIUM_BLOCK = register("shadium_block", "Shadium Block", JBlockProperties.STONE);
+    public static final RegistryObject<Block> DEEPSLATE_SHADIUM_ORE = register("deepslate_shadium_ore", "Deepslate Shadium Ore", JBlockProperties.STONE);
+
 
     public static RegistryObject<Block> register(String name, String translatedName, BlockBehaviour.Properties props, CreativeModeTab tab) {
         return register(name, translatedName, () -> new Block(props), tab);
     }
 
     public static RegistryObject<Block> register(String name, String translatedName, BlockBehaviour.Properties props) {
+        blockName.add(name);
         return register(name, translatedName, () -> new Block(props), JTabs.BLOCKS);
     }
 
     public static <T extends Block>RegistryObject<T> register(String name, String translatedName, Supplier<T> block, CreativeModeTab tab) {
-        blockName.add(name);
         langName.add(translatedName);
         RegistryObject<T> block1 = BLOCKS.register(name, block);
-        JItems.register(name, translatedName, () -> new BlockItem(block1.get(), new Item.Properties().tab(tab)));
+        JItems.ITEMS.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(tab)));
         return block1;
     }
 

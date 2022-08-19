@@ -1,5 +1,8 @@
 package net.jitl.core.init;
 
+import net.jitl.core.data.JBlockGenerator;
+import net.jitl.core.data.JItemGenerator;
+import net.jitl.core.data.LangRegistry;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
 import net.minecraftforge.common.MinecraftForge;
@@ -17,6 +20,7 @@ public class JITL {
     public static final String MODID = "jitl";
     public static final String NAME = "Journey Into the Light";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
+    public static final boolean DEV_MODE = true;
 
     public JITL() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -24,6 +28,12 @@ public class JITL {
 
         JItems.ITEMS.register(modEventBus);
         JBlocks.BLOCKS.register(modEventBus);
+
+        if(DEV_MODE) {
+            new JItemGenerator().generate();
+            new JBlockGenerator().generate();
+            new LangRegistry().generate();
+        }
 
         modEventBus.addListener(this::preInit);
         modEventBus.addListener(this::clientSetup);

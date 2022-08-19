@@ -14,12 +14,25 @@ public class JItems {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, JITL.MODID);
     public static final ArrayList<String> itemName = new ArrayList<>();
+    public static final ArrayList<String> toolName = new ArrayList<>();
+
     public static final ArrayList<String> langName = new ArrayList<>();
 
-    public static final RegistryObject<Item> SAPPHIRE = register("sapphire", "Sapphire", JTabs.MATERIALS);
+    public static final RegistryObject<Item> SAPPHIRE = registerNormalItem("sapphire", "Sapphire", JTabs.MATERIALS);
+    public static final RegistryObject<Item> SAPPHIRE_SHOVEL = registerToolItem("sapphire_shovel", "Sapphire Shovel");
+    public static final RegistryObject<Item> SAPPHIRE_SWORD = registerToolItem("sapphire_sword", "Sapphire Sword");
 
-    public static RegistryObject<Item> register(String name, String translatedName, CreativeModeTab tab) {
+    public static final RegistryObject<Item> SHADIUM_INGOT = registerNormalItem("shadium_ingot", "Shadium Ingot", JTabs.MATERIALS);
+
+
+    public static RegistryObject<Item> registerNormalItem(String name, String translatedName, CreativeModeTab tab) {
+        itemName.add(name);
         return register(name, translatedName, () -> new Item(new Item.Properties().tab(tab)));
+    }
+
+    public static RegistryObject<Item> registerToolItem(String name, String translatedName) {
+        toolName.add(name);
+        return register(name, translatedName, () -> new Item(new Item.Properties().tab(JTabs.TOOLS)));
     }
 
     public static RegistryObject<Item> register(String name, String translatedName) {
@@ -27,7 +40,6 @@ public class JItems {
     }
 
     public static RegistryObject<Item> register(String name, String translatedName, Supplier<Item> item) {
-        itemName.add(name);
         langName.add(translatedName);
         return ITEMS.register(name, item);
     }

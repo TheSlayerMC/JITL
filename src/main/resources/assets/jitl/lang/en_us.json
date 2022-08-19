@@ -1,0 +1,16 @@
+{
+"itemgroup.jitl.blocks" : "JITL Blocks",
+"itemgroup.jitl.materials" : "JITL Materials",
+"itemgroup.jitl.tools" : "JITL Tools",
+"itemgroup.jitl.weapons" : "JITL Weapons",
+"block.jitl.sapphire_ore": "Sapphire Ore",
+"block.jitl.sapphire_block": "Sapphire Block",
+"block.jitl.deepslate_sapphire_ore": "Deepslate Sapphire Ore",
+"block.jitl.shadium_ore": "Shadium Ore",
+"block.jitl.shadium_block": "Shadium Block",
+"block.jitl.deepslate_shadium_ore": "Deepslate Shadium Ore",
+"item.jitl.sapphire_shovel": "Sapphire",
+"item.jitl.sapphire_sword": "Sapphire Shovel",
+"item.jitl.sapphire": "Sapphire Sword",
+"item.jitl.shadium_ingot": "Shadium Ingot"
+}

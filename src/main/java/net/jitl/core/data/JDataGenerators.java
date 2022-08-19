@@ -15,7 +15,7 @@ public class JDataGenerators {
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
-        generator.addProvider(true, new JItemModelProvider(generator, existingFileHelper));
+        //generator.addProvider(true, new JItemModelProvider(generator, existingFileHelper));
     }
 
 }
