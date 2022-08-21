@@ -11,12 +11,18 @@ import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.gui.overlay.ForgeGui;
+import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 
-public class EssenceBar {
+@OnlyIn(Dist.CLIENT)
+public class EssenceBar implements IGuiOverlay {
 
     private static final ResourceLocation OVER_EXP_TEXTURE = new ResourceLocation(JITL.MODID, "gui/essence_over_exp.png");
 
-    public static void render(PoseStack matrixStack, int height, int width) {
+    @Override
+    public void render(ForgeGui gui, PoseStack poseStack, float partialTick, int screenWidth, int screenHeight) {
         System.out.println("RENDERING");
 
         Minecraft minecraft = Minecraft.getInstance();
@@ -33,13 +39,13 @@ public class EssenceBar {
 
                 if (!minecraft.options.hideGui && !player.isSpectator()) {
                     if(instanceOfEssenceItem(player.getMainHandItem().getItem())) {
-                        int y = height - yPos;
-                        int x = width / 2 - xPos;
+                        int y = screenHeight - yPos;
+                        int x = screenWidth / 2 - xPos;
                         for (int i = 0; i < currentEssence; i++) {
-                            RenderUtils.blit(matrixStack, x, y, 0, 0, 81, 5, 81, 11);
+                            RenderUtils.blit(poseStack, x, y, 0, 0, 81, 5, 81, 11);
                             xPos += 10;
                         }
-                        RenderUtils.blit(matrixStack, x, y, 0, 0, 81, 11, 81, 11);
+                        RenderUtils.blit(poseStack, x, y, 0, 0, 81, 11, 81, 11);
 
                     }
                 }
