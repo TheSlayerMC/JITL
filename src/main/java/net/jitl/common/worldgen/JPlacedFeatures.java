@@ -33,6 +33,20 @@ public class JPlacedFeatures {
                     commonOrePlacement(7,
                             HeightRangePlacement.uniform(VerticalAnchor.absolute(-80), VerticalAnchor.absolute(48)))));
 
+    public static final RegistryObject<PlacedFeature> WARPED_QUARTZ_ORE = PLACED_FEATURES.register("warped_ore_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.WARPED_QUARTZ_ORE.getHolder().get(),
+                    commonOrePlacement(7,
+                            HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+
+    public static final RegistryObject<PlacedFeature> BLOODCRUST_ORE = PLACED_FEATURES.register("blood_ore_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.BLOODCRUST_ORE.getHolder().get(),
+                    commonOrePlacement(4,
+                            HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+
+    public static final RegistryObject<PlacedFeature> ENDERILLIUM_ORE = PLACED_FEATURES.register("enderillium_ore_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.ENDERILLIUM_ORE.getHolder().get(),
+                    commonOrePlacement(7,
+                            HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(100)))));
 
     private static List<PlacementModifier> commonOrePlacement(int count, PlacementModifier height) {
         return orePlacement(CountPlacement.of(count), height);

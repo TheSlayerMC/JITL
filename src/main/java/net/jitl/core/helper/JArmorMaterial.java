@@ -11,11 +11,11 @@ import java.util.function.Supplier;
 
 public record JArmorMaterial(String name, int dur, int[] prot, int enchantability, SoundEvent equpSound, float toughness, float knowbackRes, Supplier<Ingredient> repairItem) implements ArmorMaterial {
 
-    private static final int[] DUR_PER_SLOT = new int[] {13, 15, 16, 11};
+    private static final int[] HEALTH_PER_SLOT = new int[] {13, 15, 16, 11};
 
     @Override
     public int getDurabilityForSlot(EquipmentSlot pSlot) {
-        return DUR_PER_SLOT[pSlot.getIndex()] * this.dur();
+        return HEALTH_PER_SLOT[pSlot.getIndex()] * this.dur;
     }
 
     @Override
