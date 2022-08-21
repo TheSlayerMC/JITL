@@ -36,6 +36,7 @@ public class LangRegistry {
         writeToFile("\"itemGroup.jitl.materials\" : \"JITL Materials\",");
         writeToFile("\"itemGroup.jitl.tools\" : \"JITL Tools\",");
         writeToFile("\"itemGroup.jitl.weapons\" : \"JITL Weapons\",");
+        writeToFile("\"itemGroup.jitl.armor\" : \"JITL Armor\",");
 
         /* --------------------- Finish manual lines --------------------- */
 

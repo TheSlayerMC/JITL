@@ -21,6 +21,13 @@ public class JTabs {
         }
     };
 
+    public static final CreativeModeTab ARMOR = new CreativeModeTab(JITL.MODID + ".armor") {
+        @Override
+        public @NotNull ItemStack makeIcon() {
+            return new ItemStack(JItems.SAPPHIRE_HELMET.get());
+        }
+    };
+
     public static final CreativeModeTab TOOLS = new CreativeModeTab(JITL.MODID + ".tools") {
         @Override
         public @NotNull ItemStack makeIcon() {

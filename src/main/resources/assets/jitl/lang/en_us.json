@@ -3,6 +3,7 @@
 "itemGroup.jitl.materials" : "JITL Materials",
 "itemGroup.jitl.tools" : "JITL Tools",
 "itemGroup.jitl.weapons" : "JITL Weapons",
+"itemGroup.jitl.armor" : "JITL Armor",
 "block.jitl.sapphire_ore": "Sapphire Ore",
 "block.jitl.sapphire_block": "Sapphire Block",
 "block.jitl.deepslate_sapphire_ore": "Deepslate Sapphire Ore",
@@ -28,6 +29,19 @@
 "item.jitl.shadium_hoe": "Shadium Hoe",
 "item.jitl.shadium_sword": "Shadium Sword",
 "item.jitl.sapphire": "Sapphire",
+"item.jitl.sapphire_helmet": "Sapphire Helmet",
+"item.jitl.sapphire_chestplate": "Sapphire Chestplate",
+"item.jitl.sapphire_leggings": "Sapphire Leggings",
+"item.jitl.sapphire_boots": "Sapphire Boots",
 "item.jitl.lunium_powder": "Lunium Powder",
-"item.jitl.shadium_ingot": "Shadium Ingot"
+"item.jitl.lunium_ingot": "Lunium Ingot",
+"item.jitl.lunium_helmet": "Lunium Helmet",
+"item.jitl.lunium_chestplate": "Lunium Chestplate",
+"item.jitl.lunium_leggings": "Lunium Leggings",
+"item.jitl.lunium_boots": "Lunium Boots",
+"item.jitl.shadium_ingot": "Shadium Ingot",
+"item.jitl.shadium_helmet": "Shadium Helmet",
+"item.jitl.shadium_chestplate": "Shadium Chestplate",
+"item.jitl.shadium_leggings": "Shadium Leggings",
+"item.jitl.shadium_boots": "Shadium Boots"
 }

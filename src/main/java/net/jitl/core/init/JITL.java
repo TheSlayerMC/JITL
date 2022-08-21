@@ -17,7 +17,7 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(JITL.MODID)
 public class JITL {
-    public static final String MODID = "jitl";
+    public static final String MODID = "jitl", PREFIX = MODID + ":";
     public static final String NAME = "Journey Into the Light";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
     public static final boolean DEV_MODE = true;
