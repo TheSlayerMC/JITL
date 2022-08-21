@@ -14,45 +14,38 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.gui.overlay.ForgeGui;
-import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 
 @OnlyIn(Dist.CLIENT)
-public class EssenceBar implements IGuiOverlay {
+public class EssenceBar {
 
-    private static final ResourceLocation OVER_EXP_TEXTURE = new ResourceLocation(JITL.MODID, "gui/essence_over_exp.png");
+    private static final ResourceLocation OVER_EXP_TEXTURE = new ResourceLocation(JITL.MODID, "textures/gui/essence_over_exp.png");
 
-    @Override
-    public void render(ForgeGui gui, PoseStack poseStack, float partialTick, int screenWidth, int screenHeight) {
-        System.out.println("RENDERING");
-
+    public static void render(ForgeGui gui, PoseStack poseStack, float partialTick, int screenWidth, int screenHeight) {
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.disableBlend();
+        RenderSystem.setShaderTexture(0, OVER_EXP_TEXTURE);
         if(player != null && !player.isCreative() && !player.isSpectator()) {
             player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
                 float currentEssence = essence.getEssence();
-                RenderSystem.setShaderTexture(0, OVER_EXP_TEXTURE);
 
                 int yPos = 29;
                 int xPos = 91;
 
-                if (!minecraft.options.hideGui && !player.isSpectator()) {
-                    if(instanceOfEssenceItem(player.getMainHandItem().getItem())) {
+                //if (!minecraft.options.hideGui && !player.isSpectator()) {
+                    //if(instanceOfEssenceItem(player.getMainHandItem().getItem())) {
                         int y = screenHeight - yPos;
-                        int x = screenWidth / 2 - xPos;
+                        int x = screenWidth - xPos;
+                        int texYPos = 0;
                         for (int i = 0; i < currentEssence; i++) {
-                            RenderUtils.blit(poseStack, x, y, 0, 0, 81, 5, 81, 11);
-                            xPos += 10;
+                            minecraft.gui.blit(poseStack, x, y, 0, 0, texYPos, 5);
+                            texYPos += 10;
                         }
-                        RenderUtils.blit(poseStack, x, y, 0, 0, 81, 11, 81, 11);
-
-                    }
-                }
+                        minecraft.gui.blit(poseStack, x, y, 0, 5, 81, 5);
+                    //}
+                //}
             });
         }
-        RenderSystem.enableBlend();
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
     }
 
     private static boolean instanceOfEssenceItem(Item isEssence) {
