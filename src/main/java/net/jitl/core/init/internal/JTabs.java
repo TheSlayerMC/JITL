@@ -42,4 +42,11 @@ public class JTabs {
         }
     };
 
+    public static final CreativeModeTab RANGED_WEAPONS = new CreativeModeTab(JITL.MODID + ".ranged") {
+        @Override
+        public @NotNull ItemStack makeIcon() {
+            return new ItemStack(JItems.STAFF_OF_CONJURING.get());
+        }
+    };
+
 }

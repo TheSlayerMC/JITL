@@ -1,5 +1,6 @@
 package net.jitl.core.init.internal;
 
+import net.jitl.common.items.StaffItem;
 import net.jitl.common.items.base.*;
 import net.jitl.core.helper.EnumJTier;
 import net.jitl.core.helper.JArmorMaterial;
@@ -75,6 +76,9 @@ public class JItems {
     public static final RegistryObject<Item> BLOODCRUST_LEGS = registerNormalItem("bloodcrust_leggings", "Bloodcrust Leggings", () -> new JArmorItem(EnumJTier.JArmorTier.BLOODCRUST, EquipmentSlot.LEGS, null));
     public static final RegistryObject<Item> BLOODCRUST_BOOTS = registerNormalItem("bloodcrust_boots", "Bloodcrust Boots", () -> new JArmorItem(EnumJTier.JArmorTier.BLOODCRUST, EquipmentSlot.FEET, null));
 
+    public static final RegistryObject<Item> STAFF_OF_CONJURING = registerToolItem("staff_of_conjuring", "Staff of Conjuring", () -> new StaffItem(rangedProps()));
+
+
     public static RegistryObject<Item> registerNormalItem(String name, String translatedName, CreativeModeTab tab) {
         return register(name, translatedName, () -> new Item(new Item.Properties().tab(tab)), ItemType.ITEM);
     }
@@ -123,6 +127,10 @@ public class JItems {
 
     public static Item.Properties weaponProps() {
         return new Item.Properties().tab(JTabs.WEAPONS);
+    }
+
+    public static Item.Properties rangedProps() {
+        return new Item.Properties().tab(JTabs.RANGED_WEAPONS);
     }
 
     public static Item.Properties toolProps() {

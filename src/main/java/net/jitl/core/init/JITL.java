@@ -1,7 +1,7 @@
 package net.jitl.core.init;
 
-import net.jitl.common.worldgen.JConfiguredFeatures;
-import net.jitl.common.worldgen.JPlacedFeatures;
+import net.jitl.common.world.gen.JConfiguredFeatures;
+import net.jitl.common.world.gen.JPlacedFeatures;
 import net.jitl.core.data.JBlockGenerator;
 import net.jitl.core.data.JItemGenerator;
 import net.jitl.core.data.LangRegistry;

@@ -1,4 +1,4 @@
-package net.jitl.common.worldgen;
+package net.jitl.common.world.gen;
 
 import net.jitl.core.init.JITL;
 import net.minecraft.core.Registry;
