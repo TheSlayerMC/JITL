@@ -3,7 +3,6 @@ package net.jitl.client.gui.overlay;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.jitl.client.essence.PlayerEssenceProvider;
-import net.jitl.client.utils.RenderUtils;
 import net.jitl.core.helper.IEssenceItem;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.Minecraft;
@@ -27,23 +26,19 @@ public class EssenceBar {
         RenderSystem.setShaderTexture(0, OVER_EXP_TEXTURE);
         if(player != null && !player.isCreative() && !player.isSpectator()) {
             player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
-                float currentEssence = essence.getEssence();
-
+                int currentEssence = essence.getEssence();
+                int maxEssence = 11;
                 int yPos = 29;
                 int xPos = 91;
-
-                //if (!minecraft.options.hideGui && !player.isSpectator()) {
-                    //if(instanceOfEssenceItem(player.getMainHandItem().getItem())) {
+                if (!minecraft.options.hideGui && !player.isSpectator()) {
+                    if(instanceOfEssenceItem(player.getMainHandItem().getItem())) {
                         int y = screenHeight - yPos;
                         int x = screenWidth - xPos;
-                        int texYPos = 0;
-                        for (int i = 0; i < currentEssence; i++) {
-                            minecraft.gui.blit(poseStack, x, y, 0, 0, texYPos, 5);
-                            texYPos += 10;
-                        }
-                        minecraft.gui.blit(poseStack, x, y, 0, 5, 81, 5);
-                    //}
-                //}
+                        int i = (currentEssence / maxEssence) * 81;
+                        GuiComponent.blit(poseStack, x, y, 0, 5, 81, 5, 81, 15);
+                        GuiComponent.blit(poseStack, x, y, 0, 0, i, 5, 81, 15);
+                    }
+                }
             });
         }
     }
