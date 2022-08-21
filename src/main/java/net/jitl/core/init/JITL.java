@@ -1,14 +1,13 @@
 package net.jitl.core.init;
 
-import net.jitl.client.gui.OverlayRegistry;
 import net.jitl.common.world.gen.JConfiguredFeatures;
 import net.jitl.common.world.gen.JPlacedFeatures;
 import net.jitl.core.data.JBlockGenerator;
 import net.jitl.core.data.JItemGenerator;
 import net.jitl.core.data.LangRegistry;
+import net.jitl.core.data.JNetworkRegistry;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
-import net.minecraft.client.gui.screens.Overlay;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -48,7 +47,9 @@ public class JITL {
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    private void preInit(final FMLCommonSetupEvent event) { }
+    private void preInit(final FMLCommonSetupEvent event) {
+        event.enqueueWork(JNetworkRegistry::init);
+    }
 
     private void clientSetup(final FMLClientSetupEvent event) { }
 
