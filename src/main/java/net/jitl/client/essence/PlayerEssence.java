@@ -22,7 +22,7 @@ public class PlayerEssence {
     }
 
     public void addEssence(int add) {
-        setEssence(Math.min(getEssence() + add, 10));
+        setEssence(Math.min(getEssence() + add, 11));
     }
 
     public boolean consumeEssence(Player player, int price) {
