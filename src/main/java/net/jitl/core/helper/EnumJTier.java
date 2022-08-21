@@ -60,7 +60,7 @@ public enum EnumJTier {
     public static class JToolTier {
 
         public static final Tier SAPPHIRE = new ForgeTier(2, 855, 6F, 1F, 15, null, () -> Ingredient.of(JItems.SAPPHIRE.get()));
-        public static final Tier LUNIUM = new ForgeTier(2, 855, 6F, 2F, 15, null, () -> Ingredient.of(JItems.LUNIUM_INGOT.get()));
+        public static final Tier LUNIUM = new ForgeTier(2, 875, 6F, 2F, 15, null, () -> Ingredient.of(JItems.LUNIUM_INGOT.get()));
         public static final Tier SHADIUM = new ForgeTier(3, 1561, 8F, 3F, 15, null, () -> Ingredient.of(JItems.SHADIUM_INGOT.get()));
         public static final Tier BLOODCRUST = new ForgeTier(3, 1883, 8F, 3F, 15, null, () -> Ingredient.of(JItems.BLOODCRUST_INGOT.get()));
 
