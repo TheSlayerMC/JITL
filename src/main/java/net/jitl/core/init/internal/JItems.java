@@ -63,6 +63,10 @@ public class JItems {
             itemName.add(name);
             langName.add(translatedName);
         }
+        return register(name, item);
+    }
+
+    public static RegistryObject<Item> register(String name, Supplier<Item> item) {
         return ITEMS.register(name, item);
     }
 

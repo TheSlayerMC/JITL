@@ -46,7 +46,7 @@ public class JBlocks {
     public static <T extends Block>RegistryObject<T> register(String name, String translatedName, Supplier<T> block, CreativeModeTab tab) {
         langName.add(translatedName);
         RegistryObject<T> block1 = BLOCKS.register(name, block);
-        JItems.ITEMS.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(tab)));
+        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(tab)));
         return block1;
     }
 
