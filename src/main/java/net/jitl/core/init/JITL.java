@@ -1,5 +1,7 @@
 package net.jitl.core.init;
 
+import net.jitl.common.worldgen.JConfiguredFeatures;
+import net.jitl.common.worldgen.JPlacedFeatures;
 import net.jitl.core.data.JBlockGenerator;
 import net.jitl.core.data.JItemGenerator;
 import net.jitl.core.data.LangRegistry;
@@ -28,6 +30,8 @@ public class JITL {
 
         JItems.ITEMS.register(modEventBus);
         JBlocks.BLOCKS.register(modEventBus);
+        JConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
+        JPlacedFeatures.PLACED_FEATURES.register(modEventBus);
 
         if(DEV_MODE) {
             new JItemGenerator().generate();
