@@ -47,7 +47,7 @@ public class ModEvents {
         if(event.side == LogicalSide.SERVER) {
             event.player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
                 if(essence.getEssence() >= 0 && event.player.getRandom().nextFloat() < 0.010F) {
-                    essence.addEssence(1);
+                    essence.addEssence(event.player,1);
                 }
             });
         }

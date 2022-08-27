@@ -27,7 +27,6 @@ public class StaffItem extends Item implements IEssenceItem {
                 }
             });
         }
-
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
     }
 }

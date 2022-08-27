@@ -1,7 +1,11 @@
 package net.jitl.client.essence;
 
+import net.jitl.core.data.JNetworkRegistry;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.network.NetworkDirection;
 
 public class PlayerEssence {
 
@@ -15,20 +19,21 @@ public class PlayerEssence {
         return essence;
     }
 
-    public void setEssence(int value) {
+    public void setEssence(Player player, int value) {
         if(getEssence() != value) {
             essence = value;
+            sendPacket(player);
         }
     }
 
-    public void addEssence(int add) {
-        setEssence(Math.min(getEssence() + add, 11));
+    public void addEssence(Player player, int add) {
+        setEssence(player, Math.min(getEssence() + add, 11));
     }
 
     public boolean consumeEssence(Player player, int price) {
         if(!player.isCreative()) {
             if(hasEssence(price)) {
-                setEssence(getEssence() - price);
+                setEssence(player, getEssence() - price);
                 return true;
             }
             return false;
@@ -46,5 +51,11 @@ public class PlayerEssence {
 
     public void readNBT(CompoundTag nbt) {
         essence = nbt.getInt("essence");
+    }
+
+    public void sendPacket(Player player) {
+        if(!(player instanceof FakePlayer) && player instanceof ServerPlayer && player != null) {
+            JNetworkRegistry.INSTANCE.sendTo(new PacketEssenceBar(this),((ServerPlayer) player).connection.connection, NetworkDirection.PLAY_TO_CLIENT);
+        }
     }
 }
