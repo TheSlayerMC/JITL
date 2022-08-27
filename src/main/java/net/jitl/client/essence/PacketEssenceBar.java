@@ -1,6 +1,7 @@
 package net.jitl.client.essence;
 
 import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -25,8 +26,8 @@ public class PacketEssenceBar {
 
     public void handle(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            PlayerEssence essence = ctx.get().getSender().getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).orElseThrow(null);
-            essence.setEssence(ctx.get().getSender(), this.essence);
+            PlayerEssence essence = Minecraft.getInstance().player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).orElseThrow(null);
+            essence.setEssence(Minecraft.getInstance().player, this.essence);
         });
     }
 }
