@@ -1,14 +1,18 @@
 package net.jitl.common.world;
 
+import net.jitl.client.essence.PacketEssenceBar;
 import net.jitl.client.essence.PlayerEssence;
 import net.jitl.client.essence.PlayerEssenceProvider;
+import net.jitl.core.data.JNetworkRegistry;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
@@ -53,11 +57,22 @@ public class ModEvents {
                 if(event.phase == TickEvent.Phase.END) {
                     if(regenTicks-- <= 0) {
                         essence.regen(event.player);
-                        essence.update(event.player);
+                        JNetworkRegistry.sendToPlayer(new PacketEssenceBar(essence.getEssence()), ((ServerPlayer) event.player));
                         regenTicks = 75;
                     }
                 }
             });
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerJoin(EntityJoinLevelEvent event) {
+        if(!event.getLevel().isClientSide()) {
+            if(event.getEntity() instanceof ServerPlayer player) {
+                player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
+                    JNetworkRegistry.sendToPlayer(new PacketEssenceBar(essence.getEssence()), player);
+                });
+            }
         }
     }
 }
