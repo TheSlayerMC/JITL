@@ -27,7 +27,7 @@ public class EssenceBar {
         if(player != null && !player.isCreative() && !player.isSpectator()) {
             player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
                 int currentEssence = essence.getEssence();
-                int maxEssence = 11;
+                int maxEssence = essence.getMaxEssence();
                 int yPos = 29;
                 int xPos = 91;
                 if (!minecraft.options.hideGui) {
@@ -37,7 +37,6 @@ public class EssenceBar {
                         int i = (currentEssence / maxEssence) * 81;
                         GuiComponent.blit(poseStack, x, y, 0, 5, 81, 5, 81, 15);
                         GuiComponent.blit(poseStack, x, y, 0, 0, i, 5, 81, 15);
-                        System.out.println(currentEssence);
                     }
                 }
             });
