@@ -23,9 +23,8 @@ public class StaffItem extends Item implements IEssenceItem {
         if(!level.isClientSide()) {
             player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
                 if(essence.consumeEssence(player, 1)) {
-
+                    System.out.println(essence.getEssence());
                 }
-                System.out.println(essence.getEssence());
             });
         }
 
