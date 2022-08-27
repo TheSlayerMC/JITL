@@ -1,11 +1,13 @@
 package net.jitl.client.essence;
 
 import net.jitl.core.data.JNetworkRegistry;
+import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.network.NetworkDirection;
+import net.minecraftforge.network.PacketDistributor;
 
 public class PlayerEssence {
 
@@ -27,6 +29,10 @@ public class PlayerEssence {
     public void setEssence(Player player, int value) {
         essence = value;
         sendPacket(player);
+    }
+
+    public static void setClientEssence(int value) {
+        Minecraft.getInstance().player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).orElseThrow(null).setEssence(Minecraft.getInstance().player, value);
     }
 
     public void addEssence(Player player, int add) {
@@ -65,7 +71,7 @@ public class PlayerEssence {
 
     public void sendPacket(Player player) {
         if(!(player instanceof FakePlayer) && player instanceof ServerPlayer && player != null) {
-            JNetworkRegistry.INSTANCE.sendTo(new PacketEssenceBar(this),((ServerPlayer) player).connection.connection, NetworkDirection.PLAY_TO_CLIENT);
+            JNetworkRegistry.INSTANCE.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer)player), new PacketEssenceBar(this));
         }
     }
 }

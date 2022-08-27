@@ -25,9 +25,8 @@ public class PacketEssenceBar {
 
     public void handle(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            PlayerEssence essence = ctx.get().getSender().getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).orElseThrow(null);
-            essence.setEssence(ctx.get().getSender(), this.essence);
+            PlayerEssence.setClientEssence(this.essence);
+            ctx.get().setPacketHandled(true);
         });
-        ctx.get().setPacketHandled(true);
     }
 }
