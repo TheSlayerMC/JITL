@@ -5,10 +5,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.util.FakePlayer;
-import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.PacketDistributor;
-
-import java.util.Optional;
 
 public class PlayerEssence {
 
@@ -26,20 +23,21 @@ public class PlayerEssence {
         return 8;
     }
 
-    public void setEssence(Player player, int value) {
+    public void setEssence(int value) {
         essence = value;
     }
 
     public void addEssence(Player player, int add) {
-        setEssence(player, getEssence() + add);
-        if(getEssence() > getMaxEssence()) setEssence(player, getMaxEssence());
+        setEssence(getEssence() + add);
+        if(getEssence() > getMaxEssence()) setEssence(getMaxEssence());
+        sendPacket(player);
     }
 
     public boolean consumeEssence(Player player, int price) {
         if(!player.isCreative()) {
             if(getEssence() < price)
                 return false;
-            setEssence(player, getEssence() - price);
+            setEssence(getEssence() - price);
             sendPacket(player);
             return true;
         }
@@ -47,12 +45,12 @@ public class PlayerEssence {
     }
 
     public void update(Player player) {
-        if(getEssence() >= getMaxEssence()) setEssence(player, getMaxEssence());
+        if(getEssence() >= getMaxEssence()) setEssence(getMaxEssence());
         sendPacket(player);
     }
 
-    public void regen(Player player) {
-        setEssence(player, getEssence() + 1);
+    public void regen() {
+        setEssence(getEssence() + 1);
     }
 
     public void saveNBT(CompoundTag nbt) {
@@ -64,7 +62,7 @@ public class PlayerEssence {
     }
 
     public void sendPacket(Player player) {
-        if(!(player instanceof FakePlayer) && player instanceof ServerPlayer && player != null) {
+        if(!(player instanceof FakePlayer) && player instanceof ServerPlayer) {
             JNetworkRegistry.INSTANCE.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer)player), new PacketEssenceBar(this));
         }
     }

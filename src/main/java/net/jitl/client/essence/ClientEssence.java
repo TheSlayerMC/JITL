@@ -5,7 +5,7 @@ import net.minecraft.client.Minecraft;
 public class ClientEssence {
 
     public static void setClientEssence(int value) {
-        Minecraft.getInstance().player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).orElseThrow(null).setEssence(Minecraft.getInstance().player, value);
+        Minecraft.getInstance().player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).orElseThrow(null).setEssence(value);
     }
 
     public static int getClientEssence() {

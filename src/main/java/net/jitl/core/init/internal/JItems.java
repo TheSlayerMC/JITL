@@ -1,5 +1,6 @@
 package net.jitl.core.init.internal;
 
+import net.jitl.common.items.BottleEssenciaItem;
 import net.jitl.common.items.StaffItem;
 import net.jitl.common.items.base.*;
 import net.jitl.core.helper.EnumJTier;
@@ -28,6 +29,9 @@ public class JItems {
     public static final RegistryObject<Item> IRIDIUM_NUGGET = registerFuelItem("iridium_nugget", "Iridium Nugget", 1600);
     public static final RegistryObject<Item> ENDERILLIUM_SHARD = registerNormalItem("enderillium_shard", "Enderillium Shard");
     public static final RegistryObject<Item> WARPED_QUARTZ = registerNormalItem("warped_quartz", "Warped Quartz");
+
+    public static final RegistryObject<Item> BOTTLE_OF_ESSENCIA = registerNormalItem("bottle_of_essencia", "Bottle 'o' Essencia", () -> new BottleEssenciaItem(false));
+    public static final RegistryObject<Item> STRONG_BOTTLE_OF_ESSENCIA = registerNormalItem("strong_bottle_of_essencia", "Bottle 'o' Essencia", () -> new BottleEssenciaItem(true));
 
     public static final RegistryObject<Item> SAPPHIRE = registerNormalItem("sapphire", "Sapphire", JTabs.MATERIALS);
     public static final RegistryObject<Item> SAPPHIRE_SHOVEL = registerToolItem("sapphire_shovel", "Sapphire Shovel", () -> new JShovelItem(EnumJTier.SAPPHIRE_SHOVEL));
@@ -76,7 +80,7 @@ public class JItems {
     public static final RegistryObject<Item> BLOODCRUST_LEGS = registerNormalItem("bloodcrust_leggings", "Bloodcrust Leggings", () -> new JArmorItem(EnumJTier.JArmorTier.BLOODCRUST, EquipmentSlot.LEGS, null));
     public static final RegistryObject<Item> BLOODCRUST_BOOTS = registerNormalItem("bloodcrust_boots", "Bloodcrust Boots", () -> new JArmorItem(EnumJTier.JArmorTier.BLOODCRUST, EquipmentSlot.FEET, null));
 
-    public static final RegistryObject<Item> STAFF_OF_CONJURING = registerToolItem("staff_of_conjuring", "Staff of Conjuring", () -> new StaffItem(rangedProps()));
+    public static final RegistryObject<Item> STAFF_OF_CONJURING = registerToolItem("staff_of_conjuring", "Staff of Conjuring", () -> new StaffItem());
 
 
     public static RegistryObject<Item> registerNormalItem(String name, String translatedName, CreativeModeTab tab) {
@@ -135,6 +139,10 @@ public class JItems {
 
     public static Item.Properties toolProps() {
         return new Item.Properties().tab(JTabs.TOOLS);
+    }
+
+    public static Item.Properties miscProps() {
+        return new Item.Properties().tab(JTabs.MISC);
     }
 
     enum ItemType {

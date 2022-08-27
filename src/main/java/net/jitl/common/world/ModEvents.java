@@ -47,7 +47,7 @@ public class ModEvents {
             event.player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
                 if(event.phase == TickEvent.Phase.END) {
                     if(regenTicks-- <= 0) {
-                        essence.regen(event.player);
+                        essence.regen();
                         essence.update(event.player);
                         regenTicks = 75;
                     }

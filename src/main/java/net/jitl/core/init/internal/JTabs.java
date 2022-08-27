@@ -49,4 +49,11 @@ public class JTabs {
         }
     };
 
+    public static final CreativeModeTab MISC = new CreativeModeTab(JITL.MODID + ".misc") {
+        @Override
+        public @NotNull ItemStack makeIcon() {
+            return new ItemStack(JItems.STRONG_BOTTLE_OF_ESSENCIA.get());
+        }
+    };
+
 }
