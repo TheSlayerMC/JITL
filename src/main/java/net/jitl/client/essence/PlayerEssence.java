@@ -35,9 +35,13 @@ public class PlayerEssence {
         Minecraft.getInstance().player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).orElseThrow(null).setEssence(Minecraft.getInstance().player, value);
     }
 
+    public int getClientEssence() {
+        return Minecraft.getInstance().player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).orElseThrow(null).getEssence();
+    }
+
     public void addEssence(Player player, int add) {
-        essence += add;
-        if(essence > maxEssence) essence = maxEssence;
+        setEssence(player, getEssence() + add);
+        if(getEssence() > getMaxEssence()) setEssence(player, getMaxEssence());
         sendPacket(player);
     }
 
@@ -45,7 +49,7 @@ public class PlayerEssence {
         if(!player.isCreative()) {
             if(getEssence() < price)
                 return false;
-            essence -= price;
+            setEssence(player, getEssence() - price);
             sendPacket(player);
             return true;
         }
@@ -53,12 +57,12 @@ public class PlayerEssence {
     }
 
     public void update(Player player) {
-        if(essence > maxEssence) essence = maxEssence;
+        if(getEssence() > getMaxEssence()) setEssence(player, getMaxEssence());
         sendPacket(player);
     }
 
-    public void regen() {
-        essence += 1;
+    public void regen(Player player) {
+        setEssence(player, getEssence() + 1);
     }
 
     public void saveNBT(CompoundTag nbt) {

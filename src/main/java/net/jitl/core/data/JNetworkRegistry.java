@@ -3,8 +3,11 @@ package net.jitl.core.data;
 import net.jitl.client.essence.PacketEssenceBar;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
+
+import java.util.Optional;
 
 public class JNetworkRegistry {
 
@@ -16,6 +19,6 @@ public class JNetworkRegistry {
     }
 
     public static void init() {
-        INSTANCE.registerMessage(nextID(), PacketEssenceBar.class, PacketEssenceBar::toBytes, PacketEssenceBar::new, PacketEssenceBar::handle);
+        INSTANCE.registerMessage(nextID(), PacketEssenceBar.class, PacketEssenceBar::toBytes, PacketEssenceBar::new, PacketEssenceBar::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
     }
 }

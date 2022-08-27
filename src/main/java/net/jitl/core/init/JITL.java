@@ -40,15 +40,17 @@ public class JITL {
             new LangRegistry().generate();
         }
 
-        modEventBus.addListener(this::preInit);
+        modEventBus.addListener(this::postInit);
         modEventBus.addListener(this::clientSetup);
         modEventBus.addListener(this::enqueue);
+
+        JNetworkRegistry.init();
 
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    private void preInit(final FMLCommonSetupEvent event) {
-        event.enqueueWork(JNetworkRegistry::init);
+    private void postInit(final FMLCommonSetupEvent event) {
+
     }
 
     private void clientSetup(final FMLClientSetupEvent event) { }
