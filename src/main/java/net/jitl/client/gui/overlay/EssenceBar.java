@@ -37,7 +37,6 @@ public class EssenceBar {
                         int i = (currentEssence / maxEssence) * 81;
                         GuiComponent.blit(poseStack, x, y, 0, 5, 81, 5, 81, 15);
                         GuiComponent.blit(poseStack, x, y, 0, 0, i, 5, 81, 15);
-                        System.out.println(currentEssence);
                     }
                 }
             });

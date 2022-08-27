@@ -13,7 +13,6 @@ public class PlayerEssence {
 
     public void copyFrom(PlayerEssence source) {
         this.essence = source.essence;
-        this.maxEssence = source.maxEssence;
     }
 
     public int getEssence() {
@@ -25,38 +24,42 @@ public class PlayerEssence {
     }
 
     public void setEssence(Player player, int value) {
-        if(getEssence() != value) {
-            essence = value;
-            sendPacket(player);
-        }
+        essence = value;
+        sendPacket(player);
     }
 
     public void addEssence(Player player, int add) {
-        setEssence(player, Math.min(getEssence() + add, getMaxEssence()));
+        essence += add;
+        if(essence > maxEssence) essence = maxEssence;
+        sendPacket(player);
     }
 
     public boolean consumeEssence(Player player, int price) {
         if(!player.isCreative()) {
-            if(hasEssence(price)) {
-                setEssence(player, getEssence() - price);
-                return true;
-            }
-            return false;
+            if(getEssence() < price)
+                return false;
+            essence -= price;
+            sendPacket(player);
+            return true;
         }
         return true;
     }
 
-    public boolean hasEssence(float price) {
-        return getEssence() >= price;
+    public void update(Player player) {
+        if(essence > maxEssence) essence = maxEssence;
+        sendPacket(player);
+    }
+
+    public void regen() {
+        System.out.println("REGEN");
+        essence += 1;
     }
 
     public void saveNBT(CompoundTag nbt) {
         nbt.putInt("essence", this.essence);
-        nbt.putInt("maxEssence", this.maxEssence);
     }
 
     public void readNBT(CompoundTag nbt) {
-        maxEssence = nbt.getInt("maxEssence");
         essence = nbt.getInt("essence");
     }
 

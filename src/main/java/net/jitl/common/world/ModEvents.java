@@ -14,8 +14,12 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 @Mod.EventBusSubscriber(modid = JITL.MODID)
 public class ModEvents {
+
+    private static int regenTicks = 75;
 
     @SubscribeEvent
     public static void onPlayerAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
@@ -46,8 +50,12 @@ public class ModEvents {
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if(event.side == LogicalSide.SERVER) {
             event.player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
-                if(essence.getEssence() >= 0 && event.player.getRandom().nextFloat() < 0.09F) {
-                    essence.addEssence(event.player,1);
+                if(event.phase == TickEvent.Phase.END) {
+                    if(regenTicks-- <= 0) {
+                        essence.regen();
+                        essence.update(event.player);
+                        regenTicks = 75;
+                    }
                 }
             });
         }

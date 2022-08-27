@@ -7,23 +7,20 @@ import java.util.function.Supplier;
 
 public class PacketEssenceBar {
 
-    private int essence, maxEssence;
+    private int essence;
 
     public PacketEssenceBar(ByteBuf buf) {
         essence = buf.readInt();
-        maxEssence = buf.readInt();
     }
 
     public void toBytes(ByteBuf buf) {
         buf.writeInt(essence);
-        buf.writeInt(maxEssence);
     }
 
     public PacketEssenceBar(PlayerEssence essence) {
         if(essence == null)
             return;
         this.essence = essence.getEssence();
-        this.maxEssence = essence.getEssence();
     }
 
     public void handle(Supplier<NetworkEvent.Context> ctx) {
