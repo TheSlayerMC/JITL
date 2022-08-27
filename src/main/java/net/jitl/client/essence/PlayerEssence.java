@@ -33,7 +33,6 @@ public class PlayerEssence {
     public void addEssence(Player player, int add) {
         setEssence(player, getEssence() + add);
         if(getEssence() > getMaxEssence()) setEssence(player, getMaxEssence());
-        sendPacket(player);
     }
 
     public boolean consumeEssence(Player player, int price) {

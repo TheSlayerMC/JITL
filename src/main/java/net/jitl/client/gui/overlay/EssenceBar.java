@@ -27,17 +27,17 @@ public class EssenceBar {
         if(player != null && !player.isCreative() && !player.isSpectator()) {
             player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
                 int currentEssence = ClientEssence.getClientEssence();
-                int yPos = 29;
-                int xPos = 91;
+                int yPos = 20;
+                int xPos = 100;
                 if (!minecraft.options.hideGui) {
                     if(instanceOfEssenceItem(player.getMainHandItem().getItem())) {
                         int y = screenHeight - yPos;
                         int x = screenWidth - xPos;
-                        GuiComponent.blit(poseStack, x, y, 0, 5, 81, 5, 81, 15);
+                        GuiComponent.blit(poseStack, x, y, 0, 5, 92, 11, 92, 16);
                         for(int i = 0; i < currentEssence; i++) {
                             if(!(i >= essence.getMaxEssence())) {
-                                x += 10;
-                                GuiComponent.blit(poseStack,  x - 10, y, 0, 0, 11, 5, 81, 15);
+                                x += 11;
+                                GuiComponent.blit(poseStack,  x - 8, y + 3, 0, 0, 10, 5, 92, 16);
                             }
                         }
                     }
