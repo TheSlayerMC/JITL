@@ -2,7 +2,6 @@ package net.jitl.client.gui.overlay;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.jitl.client.essence.ClientEssence;
 import net.jitl.client.essence.PlayerEssenceProvider;
 import net.jitl.core.helper.IEssenceItem;
 import net.jitl.core.init.JITL;
@@ -27,7 +26,7 @@ public class EssenceBar {
         RenderSystem.setShaderTexture(0, OVER_EXP_TEXTURE);
         if(player != null && !player.isCreative() && !player.isSpectator()) {
             player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
-                int currentEssence = ClientEssence.getClientEssence();
+                int currentEssence = essence.getEssence();
                 int maxEssence = essence.getMaxEssence();
                 int yPos = 29;
                 int xPos = 91;

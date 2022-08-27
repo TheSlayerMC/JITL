@@ -26,8 +26,8 @@ public class PacketEssenceBar {
 
     public void handle(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            PlayerEssence essence = Minecraft.getInstance().player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).orElseThrow(null);
-            essence.setEssence(Minecraft.getInstance().player, this.essence);
+            ctx.get().enqueueWork(() -> ClientEssence.setClientEssence(this.essence));
         });
+        ctx.get().setPacketHandled(true);
     }
 }
