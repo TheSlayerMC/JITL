@@ -39,7 +39,6 @@ public class PlayerEssence {
         if(!player.isCreative()) {
             if(hasEssence(price)) {
                 setEssence(player, getEssence() - price);
-                sendPacket(player);
                 return true;
             }
             return false;
