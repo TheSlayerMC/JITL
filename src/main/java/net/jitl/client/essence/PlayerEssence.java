@@ -51,7 +51,6 @@ public class PlayerEssence {
     }
 
     public void regen() {
-        System.out.println("REGEN");
         essence += 1;
     }
 
