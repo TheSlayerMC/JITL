@@ -46,13 +46,8 @@ public class ModEvents {
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if(event.side == LogicalSide.SERVER) {
             event.player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
-<<<<<<< HEAD
                 if(essence.getEssence() >= 0 && event.player.getRandom().nextFloat() < 0.15F) {
                     essence.addEssence(event.player,1);
-=======
-                if(essence.getEssence() >= 0 && event.player.getRandom().nextFloat() < 0.010F) {
-                    essence.addEssence(1);
->>>>>>> parent of f289f8f (hmmmm)
                 }
             });
         }
