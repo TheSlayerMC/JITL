@@ -5,12 +5,14 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.PacketDistributor;
+
+import java.util.Optional;
 
 public class PlayerEssence {
 
     private int essence;
-    private final int maxEssence = 10;
 
     public void copyFrom(PlayerEssence source) {
         this.essence = source.essence;
@@ -21,12 +23,11 @@ public class PlayerEssence {
     }
 
     public int getMaxEssence() {
-        return maxEssence;
+        return 8;
     }
 
     public void setEssence(Player player, int value) {
         essence = value;
-        sendPacket(player);
     }
 
     public void addEssence(Player player, int add) {
@@ -47,7 +48,7 @@ public class PlayerEssence {
     }
 
     public void update(Player player) {
-        if(getEssence() > getMaxEssence()) setEssence(player, getMaxEssence());
+        if(getEssence() >= getMaxEssence()) setEssence(player, getMaxEssence());
         sendPacket(player);
     }
 

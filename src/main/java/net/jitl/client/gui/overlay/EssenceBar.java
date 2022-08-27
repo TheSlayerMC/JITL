@@ -15,7 +15,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.gui.overlay.ForgeGui;
 
-@OnlyIn(Dist.CLIENT)
 public class EssenceBar {
 
     private static final ResourceLocation OVER_EXP_TEXTURE = new ResourceLocation(JITL.MODID, "textures/gui/essence_over_exp.png");
@@ -28,16 +27,19 @@ public class EssenceBar {
         if(player != null && !player.isCreative() && !player.isSpectator()) {
             player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
                 int currentEssence = ClientEssence.getClientEssence();
-                int maxEssence = essence.getMaxEssence();
                 int yPos = 29;
                 int xPos = 91;
                 if (!minecraft.options.hideGui) {
                     if(instanceOfEssenceItem(player.getMainHandItem().getItem())) {
                         int y = screenHeight - yPos;
                         int x = screenWidth - xPos;
-                        int i = (currentEssence / maxEssence) * 81;
                         GuiComponent.blit(poseStack, x, y, 0, 5, 81, 5, 81, 15);
-                        GuiComponent.blit(poseStack, x, y, 0, 0, i, 5, 81, 15);
+                        for(int i = 0; i < currentEssence; i++) {
+                            if(!(i >= essence.getMaxEssence())) {
+                                x += 10;
+                                GuiComponent.blit(poseStack,  x - 10, y, 0, 0, 11, 5, 81, 15);
+                            }
+                        }
                     }
                 }
             });
