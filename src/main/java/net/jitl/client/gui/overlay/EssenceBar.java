@@ -27,7 +27,7 @@ public class EssenceBar {
         if(player != null && !player.isCreative() && !player.isSpectator()) {
             player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
                 int currentEssence = essence.getEssence();
-                int maxEssence = 11;
+                int maxEssence = essence.getMaxEssence();
                 int yPos = 29;
                 int xPos = 91;
                 if (!minecraft.options.hideGui) {
