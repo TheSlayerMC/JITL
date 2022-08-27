@@ -8,6 +8,7 @@ import net.jitl.core.data.LangRegistry;
 import net.jitl.core.data.JNetworkRegistry;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -56,4 +57,9 @@ public class JITL {
     private void clientSetup(final FMLClientSetupEvent event) { }
 
     private void enqueue(InterModEnqueueEvent event) { }
+
+    public static ResourceLocation rl(String r) {
+        return new ResourceLocation(MODID, r);
+    }
+
 }

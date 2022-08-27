@@ -81,6 +81,7 @@ public class JItems {
     public static final RegistryObject<Item> BLOODCRUST_BOOTS = registerNormalItem("bloodcrust_boots", "Bloodcrust Boots", () -> new JArmorItem(EnumJTier.JArmorTier.BLOODCRUST, EquipmentSlot.FEET, null));
 
     public static final RegistryObject<Item> STAFF_OF_CONJURING = registerToolItem("staff_of_conjuring", "Staff of Conjuring", () -> new StaffItem());
+    public static final RegistryObject<Item> STAFF_OF_ESSENCIA = registerToolItem("staff_of_essencia", "Staff of Essencia", () -> new StaffItem());
 
 
     public static RegistryObject<Item> registerNormalItem(String name, String translatedName, CreativeModeTab tab) {
