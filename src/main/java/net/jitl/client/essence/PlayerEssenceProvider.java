@@ -18,7 +18,7 @@ public class PlayerEssenceProvider implements ICapabilityProvider, INBTSerializa
     private PlayerEssence essence = null;
     private final LazyOptional<PlayerEssence> optional = LazyOptional.of(this::createPlayerEssence);
 
-    private @NotNull PlayerEssence createPlayerEssence() {
+    private PlayerEssence createPlayerEssence() {
         if(this.essence == null) {
             this.essence = new PlayerEssence();
         }

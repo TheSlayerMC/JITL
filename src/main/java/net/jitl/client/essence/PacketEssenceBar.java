@@ -20,7 +20,7 @@ public class PacketEssenceBar {
     }
 
     public PacketEssenceBar(PlayerEssence essence) {
-        if(essence == null)
+        if (essence == null)
             return;
         this.essence = essence.getEssence();
         this.maxEssence = essence.getEssence();
@@ -29,7 +29,7 @@ public class PacketEssenceBar {
     public void handle(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
             PlayerEssence essence = ctx.get().getSender().getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).orElseThrow(null);
-            essence.setEssence(ctx.get().getSender(), this.essence);
+            essence.setEssence(this.essence);
         });
         ctx.get().setPacketHandled(true);
     }

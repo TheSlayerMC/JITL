@@ -28,6 +28,7 @@ public class StaffItem extends Item implements IEssenceItem {
                 System.out.println(essence.getEssence());
             });
         }
+
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
     }
 }

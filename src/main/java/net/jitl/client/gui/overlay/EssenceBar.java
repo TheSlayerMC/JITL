@@ -30,14 +30,13 @@ public class EssenceBar {
                 int maxEssence = essence.getMaxEssence();
                 int yPos = 29;
                 int xPos = 91;
-                if (!minecraft.options.hideGui) {
+                if (!minecraft.options.hideGui && !player.isSpectator()) {
                     if(instanceOfEssenceItem(player.getMainHandItem().getItem())) {
                         int y = screenHeight - yPos;
                         int x = screenWidth - xPos;
                         int i = (currentEssence / maxEssence) * 81;
                         GuiComponent.blit(poseStack, x, y, 0, 5, 81, 5, 81, 15);
                         GuiComponent.blit(poseStack, x, y, 0, 0, i, 5, 81, 15);
-                        System.out.println(currentEssence);
                     }
                 }
             });
