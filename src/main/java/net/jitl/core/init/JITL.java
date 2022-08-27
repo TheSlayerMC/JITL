@@ -40,7 +40,7 @@ public class JITL {
             new LangRegistry().generate();
         }
 
-        modEventBus.addListener(this::commonInit);
+        modEventBus.addListener(this::postInit);
         modEventBus.addListener(this::clientSetup);
         modEventBus.addListener(this::enqueue);
 
@@ -49,7 +49,8 @@ public class JITL {
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    private void commonInit(final FMLCommonSetupEvent event) {
+    private void postInit(final FMLCommonSetupEvent event) {
+
     }
 
     private void clientSetup(final FMLClientSetupEvent event) { }

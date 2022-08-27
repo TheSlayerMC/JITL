@@ -1,15 +1,15 @@
 package net.jitl.client.essence;
 
+import net.minecraft.client.Minecraft;
+
 public class ClientEssence {
 
-    private static int essence;
-
     public static void setClientEssence(int value) {
-        ClientEssence.essence = value;
+        Minecraft.getInstance().player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).orElseThrow(null).setEssence(Minecraft.getInstance().player, value);
     }
 
-    public static int getEssence() {
-        return essence;
+    public static int getClientEssence() {
+        return Minecraft.getInstance().player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).orElseThrow(null).getEssence();
     }
 
 }

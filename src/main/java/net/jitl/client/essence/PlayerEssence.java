@@ -26,13 +26,13 @@ public class PlayerEssence {
 
     public void setEssence(Player player, int value) {
         essence = value;
-        //sendPacket(player);
+        sendPacket(player);
     }
 
     public void addEssence(Player player, int add) {
         setEssence(player, getEssence() + add);
         if(getEssence() > getMaxEssence()) setEssence(player, getMaxEssence());
-        //sendPacket(player);
+        sendPacket(player);
     }
 
     public boolean consumeEssence(Player player, int price) {
@@ -40,7 +40,7 @@ public class PlayerEssence {
             if(getEssence() < price)
                 return false;
             setEssence(player, getEssence() - price);
-            //sendPacket(player);
+            sendPacket(player);
             return true;
         }
         return true;
@@ -48,7 +48,7 @@ public class PlayerEssence {
 
     public void update(Player player) {
         if(getEssence() > getMaxEssence()) setEssence(player, getMaxEssence());
-       // sendPacket(player);
+        sendPacket(player);
     }
 
     public void regen(Player player) {
@@ -61,5 +61,11 @@ public class PlayerEssence {
 
     public void readNBT(CompoundTag nbt) {
         essence = nbt.getInt("essence");
+    }
+
+    public void sendPacket(Player player) {
+        if(!(player instanceof FakePlayer) && player instanceof ServerPlayer && player != null) {
+            JNetworkRegistry.INSTANCE.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer)player), new PacketEssenceBar(this));
+        }
     }
 }

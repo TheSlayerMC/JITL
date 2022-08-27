@@ -1,6 +1,5 @@
 package net.jitl.common.items;
 
-import net.jitl.client.essence.ClientEssence;
 import net.jitl.client.essence.PlayerEssenceProvider;
 import net.jitl.core.helper.IEssenceItem;
 import net.minecraft.world.InteractionHand;
@@ -24,7 +23,7 @@ public class StaffItem extends Item implements IEssenceItem {
         if(!level.isClientSide()) {
             player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
                 if(essence.consumeEssence(player, 1)) {
-                    System.out.println(ClientEssence.getEssence());
+                    System.out.println(essence.getEssence());
                 }
             });
         }

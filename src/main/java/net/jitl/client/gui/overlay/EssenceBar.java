@@ -2,7 +2,6 @@ package net.jitl.client.gui.overlay;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.jitl.client.essence.ClientEssence;
 import net.jitl.client.essence.PlayerEssenceProvider;
 import net.jitl.core.helper.IEssenceItem;
 import net.jitl.core.init.JITL;
