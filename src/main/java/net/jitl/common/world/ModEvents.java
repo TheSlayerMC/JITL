@@ -46,7 +46,7 @@ public class ModEvents {
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if(event.side == LogicalSide.SERVER) {
             event.player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
-                if(essence.getEssence() >= 0 && event.player.getRandom().nextFloat() < 0.09F) {
+                if(essence.getEssence() >= 0 && event.player.getRandom().nextFloat() < 0.15F) {
                     essence.addEssence(event.player,1);
                 }
             });
