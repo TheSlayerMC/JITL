@@ -9,7 +9,8 @@ import net.minecraftforge.network.NetworkDirection;
 
 public class PlayerEssence {
 
-    private int essence, maxEssence = 10;
+    private int essence;
+    private final int maxEssence = 10;
 
     public void copyFrom(PlayerEssence source) {
         this.essence = source.essence;
