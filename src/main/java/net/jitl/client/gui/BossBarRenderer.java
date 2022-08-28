@@ -14,14 +14,14 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.client.event.CustomizeGuiOverlayEvent;
 
 public class BossBarRenderer {
-    protected static LivingEntity boss;
-    protected static ResourceLocation texture;
-    protected static long startTime;
+    protected LivingEntity boss;
+    protected ResourceLocation texture;
+    protected long startTime;
 
     public BossBarRenderer(LivingEntity entity, ResourceLocation tex) {
-        boss = entity;
-        texture = tex;
-        startTime = Util.getNanos();
+        this.boss = entity;
+        this.texture = tex;
+        this.startTime = Util.getNanos();
     }
 
     public void render(CustomizeGuiOverlayEvent.BossEventProgress event) {
