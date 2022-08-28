@@ -2,12 +2,14 @@ package net.jitl.common.entity.overworld;
 
 import net.jitl.client.gui.BossBarRenderer;
 import net.jitl.common.entity.IJourneyBoss;
+import net.jitl.common.entity.base.JBossInfo;
 import net.jitl.core.init.JITL;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
@@ -49,7 +51,7 @@ public class Floro extends Monster implements RangedAttackMob, IAnimatable, IJou
     private final AnimationFactory factory = new AnimationFactory(this);
 
     private final ServerBossEvent BOSS_INFO = new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
-    private final BossBarRenderer BOSS_BAR = new BossBarRenderer(this, JITL.rl("gui/bossbars/rockite_smasher.png"));
+    private final BossBarRenderer BOSS_BAR = new BossBarRenderer(this, JITL.rl("textures/gui/bossbars/rockite_smasher.png"));
 
     private boolean isHiding = false;
 
@@ -61,6 +63,24 @@ public class Floro extends Monster implements RangedAttackMob, IAnimatable, IJou
     public void tick() {
         BOSS_INFO.setVisible(this.isAlive());
         super.tick();
+    }
+
+    @Override
+    public void startSeenByPlayer(ServerPlayer player) {
+        super.startSeenByPlayer(player);
+        JBossInfo.addInfo(player, BOSS_INFO, this);
+    }
+
+    @Override
+    public void stopSeenByPlayer(ServerPlayer player) {
+        super.stopSeenByPlayer(player);
+        JBossInfo.removeInfo(player, BOSS_INFO, this);
+    }
+
+
+    @Override
+    public BossBarRenderer getBossBar() {
+        return BOSS_BAR;
     }
 
     @Override
@@ -244,11 +264,6 @@ public class Floro extends Monster implements RangedAttackMob, IAnimatable, IJou
         snowball.shoot(d1, d2 + d4, d3, 1.6F, 12.0F);
         this.playSound(SoundEvents.SNOW_GOLEM_SHOOT, 1.0F, 0.4F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
         this.level.addFreshEntity(snowball);
-    }
-
-    @Override
-    public BossBarRenderer getBossBar() {
-        return null;
     }
 
     private class FloroRevealingGoal extends Goal {

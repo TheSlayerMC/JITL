@@ -14,14 +14,14 @@ public class PacketEssenceBar {
         essence = buf.readInt();
     }
 
-    public void toBytes(ByteBuf buf) {
-        buf.writeInt(essence);
-    }
-
     public PacketEssenceBar(PlayerEssence essence) {
         if(essence == null)
             return;
         this.essence = essence.getEssence();
+    }
+
+    public void toBytes(ByteBuf buf) {
+        buf.writeInt(essence);
     }
 
     public void handle(Supplier<NetworkEvent.Context> ctx) {

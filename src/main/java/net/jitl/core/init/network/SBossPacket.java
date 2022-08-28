@@ -1,15 +1,19 @@
 package net.jitl.core.init.network;
 
+import io.netty.buffer.ByteBuf;
+import net.jitl.client.essence.PlayerEssence;
 import net.jitl.common.entity.IJourneyBoss;
 
 import net.jitl.common.entity.base.JBossInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.protocol.game.ClientboundBossEventPacket;
 import net.minecraft.world.entity.Entity;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.io.IOException;
 import java.util.UUID;
+import java.util.function.Supplier;
 
 public class SBossPacket {
 
@@ -17,24 +21,26 @@ public class SBossPacket {
     private final UUID barUUID;
     private final int bossNum;
 
-    private SBossPacket(Operation operation, UUID barUUID, int bossNum) {
-        this.addOrRemove = operation;
-        this.barUUID = barUUID;
-        this.bossNum = bossNum;
+    public SBossPacket(FriendlyByteBuf buf) {
+        this.addOrRemove = buf.readEnum(Operation.class);
+        this.barUUID = buf.readUUID();
+        this.bossNum = buf.readInt();
     }
 
-    public SBossPacket(Operation operation, UUID barUUID, Entity boss) {
-        this(operation, barUUID, boss.getId());
+    public SBossPacket(Operation aor, UUID uuid, Entity boss) {
+        this.addOrRemove = aor;
+        this.barUUID = uuid;
+        this.bossNum = boss.getId();
     }
 
-    public void toBytes(FriendlyByteBuf buffer) throws IOException {
+    public void toBytes(FriendlyByteBuf buffer) {
         buffer.writeEnum(addOrRemove);
         buffer.writeUUID(barUUID);
         buffer.writeInt(bossNum);
     }
 
-    public boolean handle(NetworkEvent.Context ctx) {
-        ctx.enqueueWork(() -> {
+    public boolean handle(Supplier<NetworkEvent.Context> ctx) {
+        ctx.get().enqueueWork(() -> {
             switch(this.addOrRemove) {
                 case ADD -> {
                     Entity boss = Minecraft.getInstance().level.getEntity(this.bossNum);
