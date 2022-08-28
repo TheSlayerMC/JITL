@@ -55,12 +55,4 @@ public class JTabs {
             return new ItemStack(JItems.STRONG_BOTTLE_OF_ESSENCIA.get());
         }
     };
-
-    public static final CreativeModeTab SPAWN_EGGS = new CreativeModeTab(JITL.MODID + ".eggs") {
-        @Override
-        public @NotNull ItemStack makeIcon() {
-            return new ItemStack(JItems.MAGE_EGG.get());
-        }
-    };
-
 }

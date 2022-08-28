@@ -88,6 +88,9 @@ public class JItems {
     public static final RegistryObject<Item> MAGE_EGG = registerNormalItem("mage_spawn_egg", "Mage Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.MAGE_TYPE,
             0x948e8d, 0x3b3653, eggProps()));
 
+    public static final RegistryObject<Item> FLORO_EGG = registerNormalItem("floro_spawn_egg", "Floro Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.FLORO_TYPE,
+            0x948e8d, 0x3b3653, eggProps()));
+
     public static RegistryObject<Item> registerNormalItem(String name, String translatedName, CreativeModeTab tab) {
         return register(name, translatedName, () -> new Item(new Item.Properties().tab(tab)), ItemType.ITEM);
     }
@@ -151,7 +154,7 @@ public class JItems {
     }
 
     public static Item.Properties eggProps() {
-        return new Item.Properties().tab(JTabs.SPAWN_EGGS);
+        return new Item.Properties().tab(JTabs.MISC);
     }
 
     enum ItemType {

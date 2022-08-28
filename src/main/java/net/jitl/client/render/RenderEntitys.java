@@ -1,5 +1,6 @@
 package net.jitl.client.render;
 
+import net.jitl.client.render.overworld.FloroRenderer;
 import net.jitl.client.render.overworld.MageRenderer;
 import net.jitl.client.render.projectile.EssenciaBoltRenderer;
 import net.jitl.client.render.projectile.RenderProjectile;
@@ -29,5 +30,7 @@ public class RenderEntitys {
 
     public static void registerAnimationRenderers() {
         EntityRenderers.register(JEntities.MAGE_TYPE.get(), MageRenderer::new);
+        EntityRenderers.register(JEntities.FLORO_TYPE.get(), FloroRenderer::new);
+
     }
 }

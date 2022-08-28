@@ -35,6 +35,7 @@ public class JITL {
         JItems.ITEMS.register(modEventBus);
         JBlocks.BLOCKS.register(modEventBus);
         JEntities.REGISTRY.register(modEventBus);
+        JEntities.EGG_REGISTRY.register(modEventBus);
         JConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
         JPlacedFeatures.PLACED_FEATURES.register(modEventBus);
 

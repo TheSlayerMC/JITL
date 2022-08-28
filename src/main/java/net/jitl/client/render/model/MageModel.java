@@ -9,7 +9,7 @@ public class MageModel extends AnimatedGeoModel<Mage> {
 
     @Override
     public ResourceLocation getModelResource(Mage object) {
-        return JITL.rl("geo/mage.geo.json");
+        return JITL.rl("geo/mage.json");
     }
 
     @Override
