@@ -7,6 +7,7 @@ import net.jitl.core.data.JItemGenerator;
 import net.jitl.core.data.LangRegistry;
 import net.jitl.core.data.JNetworkRegistry;
 import net.jitl.core.init.internal.JBlocks;
+import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -32,8 +33,10 @@ public class JITL {
 
         JItems.ITEMS.register(modEventBus);
         JBlocks.BLOCKS.register(modEventBus);
+        JEntities.register(modEventBus);
         JConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
         JPlacedFeatures.PLACED_FEATURES.register(modEventBus);
+
 
         if(DEV_MODE) {
             new JItemGenerator().generate();

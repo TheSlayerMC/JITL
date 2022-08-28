@@ -21,21 +21,14 @@ import org.jetbrains.annotations.NotNull;
 
 public class ConjuringProjectileEntity extends ThrowableProjectile {
 
-    private float damage = 0;
 
     public ConjuringProjectileEntity(EntityType<ConjuringProjectileEntity> type, Level world) {
         super(type, world);
     }
 
-    public ConjuringProjectileEntity(EntityType<ConjuringProjectileEntity> type, Level world, LivingEntity thrower, float damage) {
-        super(type, thrower, world);
-        this.damage = damage;
+    public ConjuringProjectileEntity(Level world, LivingEntity thrower) {
+        super(JEntities.CONJURING_PROJECTILE_TYPE.get(), thrower, world);
     }
-
-    /*public ConjuringProjectileEntity(Level world, LivingEntity thrower, float damage) {
-        super(JEntities.CONJURING_PROJECTILE_TYPE, thrower, world);
-        this.damage = damage;
-    }*/
 
     @Override
     @OnlyIn(Dist.CLIENT)
@@ -61,7 +54,7 @@ public class ConjuringProjectileEntity extends ThrowableProjectile {
     }
 
     private float getDamage() {
-        return damage;
+        return 10;
     }
 
     @Override

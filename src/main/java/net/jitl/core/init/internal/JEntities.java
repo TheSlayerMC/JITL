@@ -1,9 +1,12 @@
 package net.jitl.core.init.internal;
 
 import net.jitl.common.entity.ConjuringProjectileEntity;
+import net.jitl.common.entity.EssenciaBoltEntity;
+import net.jitl.common.entity.EssenciaProjectileEntity;
 import net.jitl.core.init.JITL;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -31,16 +34,20 @@ public class JEntities {
 
     private static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, JITL.MODID);
 
-    /*public static final RegistryObject<EntityType<ConjuringProjectileEntity>> CONJURING_PROJECTILE_TYPE = REGISTRY.register("conjuring_projectile", () ->
-            EntityType.Builder.<ConjuringProjectileEntity>of(ConjuringProjectileEntity::new, MobCategory.MISC).sized(0.25F, 0.25F)
-                    .clientTrackingRange(4).updateInterval(4));
+    public static final RegistryObject<EntityType<ConjuringProjectileEntity>> CONJURING_PROJECTILE_TYPE = REGISTRY.register("conjuring_projectile", () ->
+            EntityType.Builder.<ConjuringProjectileEntity>of(ConjuringProjectileEntity::new, MobCategory.MISC)
+                    .sized(0.25F, 0.25F).build("conjuring_projectile"));
 
-    public static final EntityType<EssenciaProjectileEntity> ESSENCIA_PROJECTILE_TYPE = REGISTRY.register("essencia_projectile",
-                    EntityType.Builder.<EssenciaProjectileEntity>of(EssenciaProjectileEntity::new, MobCategory.MISC)
-                            .setTrackingRange(80)
-                            .setShouldReceiveVelocityUpdates(true)
-                            .sized(0.5F, 0.5F))
-            .retrieve();
-*/
+    public static final RegistryObject<EntityType<EssenciaProjectileEntity>> ESSENCIA_PROJECTILE_TYPE = REGISTRY.register("essencia_projectile", () ->
+            EntityType.Builder.<EssenciaProjectileEntity>of(EssenciaProjectileEntity::new, MobCategory.MISC)
+                    .sized(0.25F, 0.25F).build("essencia_projectile"));
 
+    public static final RegistryObject<EntityType<EssenciaBoltEntity>> ESSENCIA_BOLT_TYPE = REGISTRY.register("essencia_bolt", () ->
+            EntityType.Builder.<EssenciaBoltEntity>of(EssenciaBoltEntity::new, MobCategory.MISC)
+                    .sized(0.25F, 0.25F).build("essencia_bolt"));
+
+
+    public static void register(IEventBus bus) {
+        REGISTRY.register(bus);
+    }
 }

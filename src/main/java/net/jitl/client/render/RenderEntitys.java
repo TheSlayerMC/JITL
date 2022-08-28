@@ -1,6 +1,7 @@
 package net.jitl.client.render;
 
-import net.jitl.client.render.projectile.RenderEntity2D;
+import net.jitl.client.render.projectile.EssenciaBoltRenderer;
+import net.jitl.client.render.projectile.RenderProjectile;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JEntities;
 import net.minecraftforge.api.distmarker.Dist;
@@ -13,14 +14,10 @@ public class RenderEntitys {
 
     @SubscribeEvent
     public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(JEntities.CONJURING_PROJECTILE_TYPE, manager -> new RenderEntity2D<>(manager, JITL.rl("textures/entity/projectile/conjuring.png"))
-                .fullbright(true)
-                .projectile(true)
-                .scale(0.5F));
-        event.registerEntityRenderer(JEntities.ESSENCIA_PROJECTILE_TYPE, manager -> new RenderEntity2D<>(manager, JITL.rl("textures/entity/projectile/essencia.png"))
-                .fullbright(true)
-                .projectile(true)
-                .scale(0.5F));
+        event.registerEntityRenderer(JEntities.CONJURING_PROJECTILE_TYPE.get(), manager -> new RenderProjectile(manager, JITL.rl("textures/entity/projectile/conjuring.png")));
+        event.registerEntityRenderer(JEntities.ESSENCIA_PROJECTILE_TYPE.get(), manager -> new RenderProjectile(manager, JITL.rl("textures/entity/projectile/essencia.png")));
+
+        event.registerEntityRenderer(JEntities.ESSENCIA_BOLT_TYPE.get(), EssenciaBoltRenderer::new);
     }
 
     @SubscribeEvent
