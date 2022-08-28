@@ -2,6 +2,8 @@ package net.jitl.client.gui;
 
 import net.jitl.client.essence.PlayerEssence;
 import net.jitl.client.gui.overlay.EssenceBar;
+import net.jitl.common.entity.IJourneyBoss;
+import net.jitl.common.entity.base.JBossInfo;
 import net.jitl.core.init.JITL;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
@@ -15,6 +17,7 @@ public class OverlayRegistry {
     @SubscribeEvent
     public static void registerOverlays(RegisterGuiOverlaysEvent event) {
         event.registerAboveAll("essence_bar", EssenceBar::render);
+        event.registerAboveAll("boss_bar", BossBarRenderer::render);
     }
 
     @SubscribeEvent

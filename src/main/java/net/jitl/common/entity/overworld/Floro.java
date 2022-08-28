@@ -1,10 +1,15 @@
 package net.jitl.common.entity.overworld;
 
+import net.jitl.client.gui.BossBarRenderer;
+import net.jitl.common.entity.IJourneyBoss;
+import net.jitl.core.init.JITL;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
@@ -35,7 +40,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.EnumSet;
 
-public class Floro extends Monster implements RangedAttackMob, IAnimatable {
+public class Floro extends Monster implements RangedAttackMob, IAnimatable, IJourneyBoss {
 
     private static final EntityDataAccessor<Boolean> HIDDEN = SynchedEntityData.defineId(Floro.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> IS_SHOOTING = SynchedEntityData.defineId(Floro.class, EntityDataSerializers.BOOLEAN);
@@ -43,10 +48,19 @@ public class Floro extends Monster implements RangedAttackMob, IAnimatable {
 
     private final AnimationFactory factory = new AnimationFactory(this);
 
+    private final ServerBossEvent BOSS_INFO = new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
+    private final BossBarRenderer BOSS_BAR = new BossBarRenderer(this, JITL.rl("gui/bossbars/rockite_smasher.png"));
+
     private boolean isHiding = false;
 
     public Floro(EntityType<? extends Monster> type, Level world) {
         super(type, world);
+    }
+
+    @Override
+    public void tick() {
+        BOSS_INFO.setVisible(this.isAlive());
+        super.tick();
     }
 
     @Override
@@ -230,6 +244,11 @@ public class Floro extends Monster implements RangedAttackMob, IAnimatable {
         snowball.shoot(d1, d2 + d4, d3, 1.6F, 12.0F);
         this.playSound(SoundEvents.SNOW_GOLEM_SHOOT, 1.0F, 0.4F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
         this.level.addFreshEntity(snowball);
+    }
+
+    @Override
+    public BossBarRenderer getBossBar() {
+        return null;
     }
 
     private class FloroRevealingGoal extends Goal {

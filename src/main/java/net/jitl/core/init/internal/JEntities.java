@@ -57,24 +57,25 @@ public class JEntities {
     public static final ArrayList<String> entityLangName = new ArrayList<>();
 
     public static final RegistryObject<EntityType<ConjuringProjectileEntity>> CONJURING_PROJECTILE_TYPE = REGISTRY.register("conjuring_projectile", () ->
-            EntityType.Builder.<ConjuringProjectileEntity>of(ConjuringProjectileEntity::new, MobCategory.MISC)
+            EntityType.Builder.of(ConjuringProjectileEntity::new, MobCategory.MISC)
                     .sized(0.25F, 0.25F).build("conjuring_projectile"));
 
     public static final RegistryObject<EntityType<EssenciaProjectileEntity>> ESSENCIA_PROJECTILE_TYPE = REGISTRY.register("essencia_projectile", () ->
-            EntityType.Builder.<EssenciaProjectileEntity>of(EssenciaProjectileEntity::new, MobCategory.MISC)
+            EntityType.Builder.of(EssenciaProjectileEntity::new, MobCategory.MISC)
                     .sized(0.25F, 0.25F).build("essencia_projectile"));
 
     public static final RegistryObject<EntityType<EssenciaBoltEntity>> ESSENCIA_BOLT_TYPE = REGISTRY.register("essencia_bolt", () ->
-            EntityType.Builder.<EssenciaBoltEntity>of(EssenciaBoltEntity::new, MobCategory.MISC)
+            EntityType.Builder.of(EssenciaBoltEntity::new, MobCategory.MISC)
                     .sized(0.25F, 0.25F).build("essencia_bolt"));
 
     public static final RegistryObject<EntityType<Mage>> MAGE_TYPE = REGISTRY.register("mage", () ->
-            EntityType.Builder.<Mage>of(Mage::new, MobCategory.MONSTER)
+            EntityType.Builder.of(Mage::new, MobCategory.MONSTER)
                     .sized(1F, 1.75F).build("mage"));
 
     public static final RegistryObject<EntityType<Floro>> FLORO_TYPE = REGISTRY.register("floro", () ->
-            EntityType.Builder.<Floro>of(Floro::new, MobCategory.MONSTER)
+            EntityType.Builder.of(Floro::new, MobCategory.MONSTER)
                     .setTrackingRange(15)
+                    .setShouldReceiveVelocityUpdates(true)
                     .sized(1F, 1.75F).build("floro"));
 
     @SubscribeEvent
