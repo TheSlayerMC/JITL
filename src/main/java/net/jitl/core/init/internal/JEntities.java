@@ -1,5 +1,6 @@
 package net.jitl.core.init.internal;
 
+import net.jitl.common.entity.boss.TowerGuardian;
 import net.jitl.common.entity.overworld.Floro;
 import net.jitl.common.entity.overworld.npc.Mage;
 import net.jitl.common.entity.projectile.ConjuringProjectileEntity;
@@ -78,9 +79,17 @@ public class JEntities {
                     .setShouldReceiveVelocityUpdates(true)
                     .sized(1F, 1.75F).build("floro"));
 
+    public static final RegistryObject<EntityType<TowerGuardian>> TOWER_GUARDIAN_TYPE = REGISTRY.register("tower_guardian", () ->
+            EntityType.Builder.of(TowerGuardian::new, MobCategory.MONSTER)
+                    .setTrackingRange(15)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .sized(1F, 1.75F).build("tower_guardian"));
+
     @SubscribeEvent
     public static void registerAttributes(final EntityAttributeCreationEvent event) {
         event.put(MAGE_TYPE.get(), Mage.createAttributes());
         event.put(FLORO_TYPE.get(), Floro.createAttributes());
+        event.put(TOWER_GUARDIAN_TYPE.get(), TowerGuardian.createAttributes());
+
     }
 }

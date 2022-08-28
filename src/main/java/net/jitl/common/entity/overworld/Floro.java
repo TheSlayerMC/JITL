@@ -1,17 +1,10 @@
 package net.jitl.common.entity.overworld;
 
-import net.jitl.client.gui.BossBarRenderer;
-import net.jitl.common.entity.IJourneyBoss;
-import net.jitl.common.entity.base.JBossInfo;
-import net.jitl.core.init.JITL;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerBossEvent;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
@@ -27,10 +20,7 @@ import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.entity.projectile.Snowball;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -42,46 +32,19 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.EnumSet;
 
-public class Floro extends Monster implements RangedAttackMob, IAnimatable, IJourneyBoss {
+public class Floro extends Monster implements RangedAttackMob, IAnimatable {
 
     private static final EntityDataAccessor<Boolean> HIDDEN = SynchedEntityData.defineId(Floro.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> IS_SHOOTING = SynchedEntityData.defineId(Floro.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> IS_SHOWING = SynchedEntityData.defineId(Floro.class, EntityDataSerializers.BOOLEAN);
 
-    private final AnimationFactory factory = new AnimationFactory(this);
-
-    private final ServerBossEvent BOSS_INFO = new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
-    private final BossBarRenderer BOSS_BAR = new BossBarRenderer(this, JITL.rl("textures/gui/bossbars/rockite_smasher.png"));
-
     private boolean isHiding = false;
+    private final AnimationFactory factory = new AnimationFactory(this);
 
     public Floro(EntityType<? extends Monster> type, Level world) {
         super(type, world);
     }
 
-    @Override
-    public void tick() {
-        BOSS_INFO.setVisible(this.isAlive());
-        super.tick();
-    }
-
-    @Override
-    public void startSeenByPlayer(ServerPlayer player) {
-        super.startSeenByPlayer(player);
-        JBossInfo.addInfo(player, BOSS_INFO, this);
-    }
-
-    @Override
-    public void stopSeenByPlayer(ServerPlayer player) {
-        super.stopSeenByPlayer(player);
-        JBossInfo.removeInfo(player, BOSS_INFO, this);
-    }
-
-
-    @Override
-    public BossBarRenderer getBossBar() {
-        return BOSS_BAR;
-    }
 
     @Override
     public void registerControllers(AnimationData data) {
@@ -183,7 +146,7 @@ public class Floro extends Monster implements RangedAttackMob, IAnimatable, IJou
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, 25)
-                .add(Attributes.FOLLOW_RANGE, 25)
+                .add(Attributes.FOLLOW_RANGE, 10)
                 .add(Attributes.MOVEMENT_SPEED, 0.26).build();
     }
 
