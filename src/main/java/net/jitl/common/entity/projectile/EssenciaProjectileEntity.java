@@ -1,4 +1,4 @@
-package net.jitl.common.entity;
+package net.jitl.common.entity.projectile;
 
 import net.jitl.core.init.internal.JEntities;
 import net.minecraft.core.particles.ParticleOptions;

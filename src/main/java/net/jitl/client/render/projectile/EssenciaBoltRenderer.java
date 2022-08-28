@@ -3,7 +3,7 @@ package net.jitl.client.render.projectile;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Matrix4f;
-import net.jitl.common.entity.EssenciaBoltEntity;
+import net.jitl.common.entity.projectile.EssenciaBoltEntity;
 import net.jitl.core.helper.DrawHelper;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;

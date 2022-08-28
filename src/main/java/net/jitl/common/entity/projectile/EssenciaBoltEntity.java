@@ -1,4 +1,4 @@
-package net.jitl.common.entity;
+package net.jitl.common.entity.projectile;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;

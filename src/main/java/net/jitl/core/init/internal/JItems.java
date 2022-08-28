@@ -1,16 +1,16 @@
 package net.jitl.core.init.internal;
 
-import net.jitl.common.entity.ConjuringProjectileEntity;
-import net.jitl.common.entity.EssenciaProjectileEntity;
+import net.jitl.common.entity.projectile.ConjuringProjectileEntity;
+import net.jitl.common.entity.projectile.EssenciaProjectileEntity;
 import net.jitl.common.items.BottleEssenciaItem;
 import net.jitl.common.items.StaffItem;
 import net.jitl.common.items.base.*;
 import net.jitl.core.helper.EnumJTier;
-import net.jitl.core.helper.JArmorMaterial;
 import net.jitl.core.init.JITL;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -82,9 +82,11 @@ public class JItems {
     public static final RegistryObject<Item> BLOODCRUST_LEGS = registerNormalItem("bloodcrust_leggings", "Bloodcrust Leggings", () -> new JArmorItem(EnumJTier.JArmorTier.BLOODCRUST, EquipmentSlot.LEGS, null));
     public static final RegistryObject<Item> BLOODCRUST_BOOTS = registerNormalItem("bloodcrust_boots", "Bloodcrust Boots", () -> new JArmorItem(EnumJTier.JArmorTier.BLOODCRUST, EquipmentSlot.FEET, null));
 
-    public static final RegistryObject<Item> STAFF_OF_CONJURING = registerToolItem("staff_of_conjuring", "Staff of Conjuring", () -> new StaffItem(ConjuringProjectileEntity::new));
-    public static final RegistryObject<Item> STAFF_OF_ESSENCIA = registerToolItem("staff_of_essencia", "Staff of Essencia", () -> new StaffItem(EssenciaProjectileEntity::new));
+    public static final RegistryObject<Item> STAFF_OF_CONJURING = registerToolItem("staff_of_conjuring", "Staff of Conjuring", () -> new StaffItem(1, ConjuringProjectileEntity::new));
+    public static final RegistryObject<Item> STAFF_OF_ESSENCIA = registerToolItem("staff_of_essencia", "Staff of Essencia", () -> new StaffItem(4, EssenciaProjectileEntity::new));
 
+    public static final RegistryObject<Item> MAGE_EGG = registerNormalItem("mage_spawn_egg", "Mage Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.MAGE_TYPE,
+            0x948e8d, 0x3b3653, eggProps()));
 
     public static RegistryObject<Item> registerNormalItem(String name, String translatedName, CreativeModeTab tab) {
         return register(name, translatedName, () -> new Item(new Item.Properties().tab(tab)), ItemType.ITEM);
@@ -146,6 +148,10 @@ public class JItems {
 
     public static Item.Properties miscProps() {
         return new Item.Properties().tab(JTabs.MISC);
+    }
+
+    public static Item.Properties eggProps() {
+        return new Item.Properties().tab(JTabs.SPAWN_EGGS);
     }
 
     enum ItemType {

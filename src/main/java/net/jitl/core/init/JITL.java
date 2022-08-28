@@ -1,5 +1,6 @@
 package net.jitl.core.init;
 
+import net.jitl.client.render.RenderEntitys;
 import net.jitl.common.world.gen.JConfiguredFeatures;
 import net.jitl.common.world.gen.JPlacedFeatures;
 import net.jitl.core.data.JBlockGenerator;
@@ -33,7 +34,7 @@ public class JITL {
 
         JItems.ITEMS.register(modEventBus);
         JBlocks.BLOCKS.register(modEventBus);
-        JEntities.register(modEventBus);
+        JEntities.REGISTRY.register(modEventBus);
         JConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
         JPlacedFeatures.PLACED_FEATURES.register(modEventBus);
 
@@ -57,7 +58,9 @@ public class JITL {
 
     }
 
-    private void clientSetup(final FMLClientSetupEvent event) { }
+    private void clientSetup(final FMLClientSetupEvent event) {
+        RenderEntitys.registerAnimationRenderers();
+    }
 
     private void enqueue(InterModEnqueueEvent event) { }
 

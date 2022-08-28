@@ -1,9 +1,11 @@
 package net.jitl.client.render;
 
+import net.jitl.client.render.overworld.MageRenderer;
 import net.jitl.client.render.projectile.EssenciaBoltRenderer;
 import net.jitl.client.render.projectile.RenderProjectile;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JEntities;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,5 +25,9 @@ public class RenderEntitys {
     @SubscribeEvent
     public static void registerEntityLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
 
+    }
+
+    public static void registerAnimationRenderers() {
+        EntityRenderers.register(JEntities.MAGE_TYPE.get(), MageRenderer::new);
     }
 }
