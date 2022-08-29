@@ -40,7 +40,7 @@ public class TowerGuardian extends Monster implements RangedAttackMob, IAnimatab
 
     private final AnimationFactory factory = new AnimationFactory(this);
     private final ServerBossEvent BOSS_INFO = new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
-    private final BossBarRenderer BOSS_BAR = new BossBarRenderer(this, JITL.rl("textures/gui/bossbars/rockite_smasher.png"));
+    private final BossBarRenderer BOSS_BAR = new BossBarRenderer(this, JITL.rl("textures/gui/bossbars/tower_guardian.png"));
 
     private static final EntityDataAccessor<Boolean> ATTACK = SynchedEntityData.defineId(TowerGuardian.class, EntityDataSerializers.BOOLEAN);
 
