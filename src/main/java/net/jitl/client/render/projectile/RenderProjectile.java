@@ -19,8 +19,8 @@ public class RenderProjectile<T extends Entity> extends EntityRenderer<T> {
 
     private final RenderType renderType;
     private float scale;
-    private boolean fullBright = true;
-    private boolean projectile = true;
+    private final boolean fullBright = true;
+    private final boolean projectile = true;
 
     public RenderProjectile(EntityRendererProvider.Context context, ResourceLocation texture) {
         super(context);

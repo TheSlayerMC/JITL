@@ -97,6 +97,5 @@ public class JEntities {
         event.put(TOWER_GUARDIAN_TYPE.get(), TowerGuardian.createAttributes());
         event.put(ROCKITE_SMASHER_TYPE.get(), RockiteSmasher.createAttributes());
         event.put(WITHERSPINE_TYPE.get(), Witherspine.createAttributes());
-
     }
 }

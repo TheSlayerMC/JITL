@@ -1,5 +1,6 @@
 package net.jitl.common.entity.nether;
 
+import net.jitl.common.entity.base.AnimatableMonster;
 import net.jitl.common.entity.goal.IdleHealGoal;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -23,11 +24,7 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class Witherspine extends Monster implements IAnimatable {
-
-    private final AnimationFactory factory = new AnimationFactory(this);
-
-    private static final EntityDataAccessor<Boolean> ATTACK = SynchedEntityData.defineId(Witherspine.class, EntityDataSerializers.BOOLEAN);
+public class Witherspine extends AnimatableMonster implements IAnimatable {
 
     public Witherspine(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -36,7 +33,7 @@ public class Witherspine extends Monster implements IAnimatable {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(0, new Witherspine.AttackingGoal(this, 1.0D, false));
+        this.goalSelector.addGoal(0, new AnimatedAttackGoal(this, 1.0D, false));
         this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(1, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
         this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
@@ -53,16 +50,7 @@ public class Witherspine extends Monster implements IAnimatable {
     }
 
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
-    }
-
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+    public <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if(event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.witherspine.walk", false));
             return PlayState.CONTINUE;
@@ -76,70 +64,5 @@ public class Witherspine extends Monster implements IAnimatable {
         if(!isAttacking() && !event.isMoving())
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.witherspine.idle", true));
         return PlayState.CONTINUE;
-    }
-
-    @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(ATTACK, false);
-    }
-
-    @Override
-    public void addAdditionalSaveData(CompoundTag compound) {
-        super.addAdditionalSaveData(compound);
-        compound.putBoolean("attack", isAttacking());
-    }
-
-    @Override
-    public void readAdditionalSaveData(CompoundTag compound) {
-        super.readAdditionalSaveData(compound);
-        if(compound.contains("attack")) {
-            setAttacking(compound.getBoolean("attack"));
-        }
-    }
-
-    public boolean isAttacking() {
-        return getEntityData().get(ATTACK);
-    }
-
-    public void setAttacking(boolean value) {
-        getEntityData().set(ATTACK, value);
-    }
-
-    private class AttackingGoal extends MeleeAttackGoal {
-        private final Witherspine entity;
-
-        private AttackingGoal(Witherspine entity, double speed, boolean useLongMemory) {
-            super(entity, speed, useLongMemory);
-            this.entity = entity;
-        }
-
-        @Override
-        public void start() {
-            super.start();
-        }
-
-        @Override
-        public void stop() {
-            super.stop();
-            this.entity.setAggressive(false);
-            setAttacking(false);
-        }
-
-        @Override
-        public boolean canUse() {
-            LivingEntity livingEntity = getTarget();
-            return livingEntity != null && livingEntity.isAlive();
-        }
-
-        @Override
-        protected void checkAndPerformAttack(LivingEntity enemy, double distToEnemySqr) {
-            double d0 = this.getAttackReachSqr(enemy);
-            if (distToEnemySqr <= d0) {
-                this.resetAttackCooldown();
-                setAttacking(true);
-                this.mob.doHurtTarget(enemy);
-            }
-        }
     }
 }

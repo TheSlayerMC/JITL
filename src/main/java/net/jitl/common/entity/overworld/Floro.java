@@ -1,5 +1,6 @@
 package net.jitl.common.entity.overworld;
 
+import net.jitl.common.entity.base.AnimatableMonster;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -25,33 +26,24 @@ import net.minecraft.world.level.Level;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.EnumSet;
 
-public class Floro extends Monster implements RangedAttackMob, IAnimatable {
+public class Floro extends AnimatableMonster implements RangedAttackMob {
 
     private static final EntityDataAccessor<Boolean> HIDDEN = SynchedEntityData.defineId(Floro.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> IS_SHOOTING = SynchedEntityData.defineId(Floro.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> IS_SHOWING = SynchedEntityData.defineId(Floro.class, EntityDataSerializers.BOOLEAN);
 
     private boolean isHiding = false;
-    private final AnimationFactory factory = new AnimationFactory(this);
 
     public Floro(EntityType<? extends Monster> type, Level world) {
         super(type, world);
     }
 
-
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
-    }
-
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+    protected <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if(event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.floro.walk", true));
             return PlayState.CONTINUE;
@@ -83,17 +75,11 @@ public class Floro extends Monster implements RangedAttackMob, IAnimatable {
     }
 
     @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
-    }
-
-    @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(HIDDEN, true);
         this.entityData.define(IS_SHOOTING, false);
         this.entityData.define(IS_SHOWING, false);
-
     }
 
     @Override
@@ -102,7 +88,6 @@ public class Floro extends Monster implements RangedAttackMob, IAnimatable {
         compound.putBoolean("hidden", isHidden());
         compound.putBoolean("shooting", isShooting());
         compound.putBoolean("showing", isShowing());
-
     }
 
     @Override
