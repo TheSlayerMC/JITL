@@ -2,7 +2,7 @@ package net.jitl.client.render.overworld;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.jitl.client.render.model.MageModel;
+import net.jitl.client.model.overworld.MageModel;
 import net.jitl.common.entity.overworld.npc.Mage;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;

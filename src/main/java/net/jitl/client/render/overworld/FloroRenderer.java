@@ -2,7 +2,7 @@ package net.jitl.client.render.overworld;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.jitl.client.render.model.FloroModel;
+import net.jitl.client.model.overworld.FloroModel;
 import net.jitl.common.entity.overworld.Floro;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;

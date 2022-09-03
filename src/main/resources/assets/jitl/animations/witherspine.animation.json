@@ -1,0 +1,64 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.witherspine.idle": {
+			"loop": true,
+			"animation_length": 2.28,
+			"bones": {
+				"topHalf": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"1.0333": [2.5, 0, 0],
+						"2.2333": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.witherspine.walk": {
+			"loop": true,
+			"animation_length": 2.96667,
+			"bones": {
+				"leg1": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5167": [-25, 0, 0],
+						"1.0333": [0, 0, 0],
+						"1.5667": [25, 0, 0],
+						"2.0833": [0, 0, 0]
+					}
+				},
+				"leg2": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5167": [25, 0, 0],
+						"1.0333": [0, 0, 0],
+						"1.5667": [-25, 0, 0],
+						"2.0833": [0, 0, 0]
+					}
+				},
+				"topHalf": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.7": [0, 0, 2.5],
+						"1.95": [0, 0, -2.5],
+						"2.8167": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.witherspine.headbutt": {
+			"animation_length": 0.52,
+			"bones": {
+				"topHalf": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.08": [-7.5, 0, 0],
+						"0.24": [65, 0, 0],
+						"0.48": [0, 0, 0]
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

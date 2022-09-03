@@ -1,6 +1,6 @@
 package net.jitl.client.render.overworld;
 
-import net.jitl.client.render.model.TowerGuardianModel;
+import net.jitl.client.model.boss.TowerGuardianModel;
 import net.jitl.common.entity.boss.TowerGuardian;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;

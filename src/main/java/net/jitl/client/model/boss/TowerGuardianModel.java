@@ -1,4 +1,4 @@
-package net.jitl.client.render.model;
+package net.jitl.client.model.boss;
 
 import net.jitl.common.entity.boss.TowerGuardian;
 import net.jitl.common.entity.overworld.Floro;

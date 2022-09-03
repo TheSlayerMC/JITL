@@ -1,4 +1,4 @@
-package net.jitl.client.render.model;
+package net.jitl.client.model.overworld;
 
 import net.jitl.common.entity.overworld.npc.Mage;
 import net.jitl.core.init.JITL;
