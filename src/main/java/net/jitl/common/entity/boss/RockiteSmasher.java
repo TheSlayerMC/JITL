@@ -193,5 +193,5 @@ public class RockiteSmasher extends Monster implements RangedAttackMob, IAnimata
                 this.mob.doHurtTarget(enemy);
             }
         }
-    }5
+    }
 }
