@@ -1,10 +1,7 @@
 package net.jitl.client.render;
 
-import net.jitl.client.render.overworld.FloroRenderer;
-import net.jitl.client.render.overworld.MageRenderer;
-import net.jitl.client.render.overworld.TowerGuardianRenderer;
-import net.jitl.client.render.projectile.EssenciaBoltRenderer;
-import net.jitl.client.render.projectile.RenderProjectile;
+import net.jitl.client.render.overworld.*;
+import net.jitl.client.render.projectile.*;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JEntities;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -20,19 +17,16 @@ public class RenderEntitys {
     public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(JEntities.CONJURING_PROJECTILE_TYPE.get(), manager -> new RenderProjectile(manager, JITL.rl("textures/entity/projectile/conjuring.png")));
         event.registerEntityRenderer(JEntities.ESSENCIA_PROJECTILE_TYPE.get(), manager -> new RenderProjectile(manager, JITL.rl("textures/entity/projectile/essencia.png")));
-
         event.registerEntityRenderer(JEntities.ESSENCIA_BOLT_TYPE.get(), EssenciaBoltRenderer::new);
     }
 
     @SubscribeEvent
-    public static void registerEntityLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-
-    }
+    public static void registerEntityLayers(EntityRenderersEvent.RegisterLayerDefinitions event) { }
 
     public static void registerAnimationRenderers() {
         EntityRenderers.register(JEntities.MAGE_TYPE.get(), MageRenderer::new);
         EntityRenderers.register(JEntities.FLORO_TYPE.get(), FloroRenderer::new);
         EntityRenderers.register(JEntities.TOWER_GUARDIAN_TYPE.get(), TowerGuardianRenderer::new);
-
+        EntityRenderers.register(JEntities.ROCKITE_SMASHER_TYPE.get(), RockiteSmasherRenderer::new);
     }
 }

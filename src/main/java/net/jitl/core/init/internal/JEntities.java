@@ -1,5 +1,6 @@
 package net.jitl.core.init.internal;
 
+import net.jitl.common.entity.boss.RockiteSmasher;
 import net.jitl.common.entity.boss.TowerGuardian;
 import net.jitl.common.entity.overworld.Floro;
 import net.jitl.common.entity.overworld.npc.Mage;
@@ -83,13 +84,20 @@ public class JEntities {
             EntityType.Builder.of(TowerGuardian::new, MobCategory.MONSTER)
                     .setTrackingRange(15)
                     .setShouldReceiveVelocityUpdates(true)
-                    .sized(1F, 1.75F).build("tower_guardian"));
+                    .sized(2.0F, 3.5F).build("tower_guardian"));
+
+    public static final RegistryObject<EntityType<RockiteSmasher>> ROCKITE_SMASHER_TYPE = REGISTRY.register("rockite_smasher", () ->
+            EntityType.Builder.of(RockiteSmasher::new, MobCategory.MONSTER)
+                    .setTrackingRange(15)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .sized(2.0F, 3.75F).build("rockite_shamsher"));
 
     @SubscribeEvent
     public static void registerAttributes(final EntityAttributeCreationEvent event) {
         event.put(MAGE_TYPE.get(), Mage.createAttributes());
         event.put(FLORO_TYPE.get(), Floro.createAttributes());
         event.put(TOWER_GUARDIAN_TYPE.get(), TowerGuardian.createAttributes());
+        event.put(ROCKITE_SMASHER_TYPE.get(), RockiteSmasher.createAttributes());
 
     }
 }

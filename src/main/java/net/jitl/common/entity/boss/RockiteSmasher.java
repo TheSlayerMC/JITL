@@ -34,27 +34,27 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class TowerGuardian extends Monster implements RangedAttackMob, IAnimatable, IJourneyBoss, IDontAttackWhenPeaceful {
+public class RockiteSmasher extends Monster implements RangedAttackMob, IAnimatable, IJourneyBoss, IDontAttackWhenPeaceful {
 
     private final AnimationFactory factory = new AnimationFactory(this);
     private final ServerBossEvent BOSS_INFO = new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
-    private final BossBarRenderer BOSS_BAR = new BossBarRenderer(this, JITL.rl("textures/gui/bossbars/tower_guardian.png"));
+    private final BossBarRenderer BOSS_BAR = new BossBarRenderer(this, JITL.rl("textures/gui/bossbars/rockite_smasher.png"));
 
-    private static final EntityDataAccessor<Boolean> ATTACK = SynchedEntityData.defineId(TowerGuardian.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> ATTACK = SynchedEntityData.defineId(RockiteSmasher.class, EntityDataSerializers.BOOLEAN);
 
-    public TowerGuardian(EntityType<? extends Monster> pEntityType, Level pLevel) {
+    public RockiteSmasher(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new SmashingGoal(this, 1.0D, false));
         this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(0, new RockiteSmasher.SmashingGoal(this, 1.0D, false));
         this.goalSelector.addGoal(1, new IdleHealGoal(this, 1200));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-        this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)));
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
         this.targetSelector.addGoal(1, new AttackWhenDifficultGoal(this, this));
         this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, null));
@@ -106,17 +106,17 @@ public class TowerGuardian extends Monster implements RangedAttackMob, IAnimatab
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if(event.isMoving() && !isAttacking()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.tower_guardian.walk", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rockite_smasher.walk", true));
             return PlayState.CONTINUE;
         }
 
         if(isAttacking()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.tower_guardian.smash", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rockite_smasher.swing", true));
             return PlayState.CONTINUE;
         }
 
         if(!isAttacking())
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.tower_guardian.idle", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rockite_smasher.idle", true));
         return PlayState.CONTINUE;
     }
 
@@ -159,9 +159,9 @@ public class TowerGuardian extends Monster implements RangedAttackMob, IAnimatab
     }
 
     private class SmashingGoal extends MeleeAttackGoal {
-        private final TowerGuardian entity;
+        private final RockiteSmasher entity;
 
-        private SmashingGoal(TowerGuardian entity, double speed, boolean useLongMemory) {
+        private SmashingGoal(RockiteSmasher entity, double speed, boolean useLongMemory) {
             super(entity, speed, useLongMemory);
             this.entity = entity;
         }
@@ -193,5 +193,5 @@ public class TowerGuardian extends Monster implements RangedAttackMob, IAnimatab
                 this.mob.doHurtTarget(enemy);
             }
         }
-    }
+    }5
 }
