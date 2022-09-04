@@ -7,6 +7,7 @@ import net.jitl.core.data.JBlockGenerator;
 import net.jitl.core.data.JItemGenerator;
 import net.jitl.core.data.LangRegistry;
 import net.jitl.core.data.JNetworkRegistry;
+import net.jitl.core.helper.JContainers;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
@@ -38,7 +39,7 @@ public class JITL {
         JEntities.EGG_REGISTRY.register(modEventBus);
         JConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
         JPlacedFeatures.PLACED_FEATURES.register(modEventBus);
-
+        JContainers.REGISTRY.register(modEventBus);
 
         if(DEV_MODE) {
             new JItemGenerator().generate();
@@ -46,7 +47,7 @@ public class JITL {
             new LangRegistry().generate();
         }
 
-        modEventBus.addListener(this::postInit);
+        modEventBus.addListener(this::commonInit);
         modEventBus.addListener(this::clientSetup);
         modEventBus.addListener(this::enqueue);
 
@@ -55,7 +56,7 @@ public class JITL {
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    private void postInit(final FMLCommonSetupEvent event) {
+    private void commonInit(final FMLCommonSetupEvent event) {
 
     }
 

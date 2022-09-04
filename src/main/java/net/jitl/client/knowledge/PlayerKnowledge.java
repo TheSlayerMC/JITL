@@ -1,17 +1,19 @@
 package net.jitl.client.knowledge;
 
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.player.Player;
+
 import java.util.EnumMap;
 
 public class PlayerKnowledge {
 
-    private final EnumMap<EnumKnowledge, KnowledgeStorage> knowledgeMap;
+    private EnumMap<EnumKnowledge, KnowledgeStorage> knowledgeMap;
 
     public PlayerKnowledge() {
         this.knowledgeMap = new EnumMap<>(EnumKnowledge.class);
 
         for(EnumKnowledge type : EnumKnowledge.values()) {
-            KnowledgeStorage container = knowledgeMap.put(type, new KnowledgeStorage());
-            this.knowledgeMap.put(type, container);
+            this.knowledgeMap.put(type, new KnowledgeStorage());
         }
     }
 
@@ -19,8 +21,9 @@ public class PlayerKnowledge {
         return knowledgeMap.get(knowledge).getLevelCount();
     }
 
-    public void addLevel(EnumKnowledge knowledge, int level) {
+    public void addLevel(Player player, EnumKnowledge knowledge, int level) {
         knowledgeMap.get(knowledge).addLevel(level, knowledge);
+        update(player);
     }
 
     public KnowledgeStorage getKnowledge(EnumKnowledge knowledgeType) {
@@ -41,7 +44,28 @@ public class PlayerKnowledge {
            // Minecraft.getInstance().getToasts().addToast(new KnowledgeToast(type, true));
     }
 
-    public void addXP(EnumKnowledge type, float xp) {
+    public void addXP(Player p, EnumKnowledge type, float xp) {
         this.addXP(type, xp, false);
+    }
+
+    public void copyFrom(PlayerKnowledge oldStore) {
+        this.knowledgeMap = oldStore.knowledgeMap;
+    }
+
+    public void update(Player p) {
+        for(EnumKnowledge k : EnumKnowledge.values())
+            knowledgeMap.get(k).sendPacket(k, p);
+    }
+
+    public void saveNBT(CompoundTag nbt) {
+        for(EnumKnowledge k : EnumKnowledge.values()) {
+            knowledgeMap.get(k).saveNBT(nbt);
+        }
+    }
+
+    public void readNBT(CompoundTag nbt) {
+        for(EnumKnowledge k : EnumKnowledge.values()) {
+            knowledgeMap.get(k).readNBT(nbt);
+        }
     }
 }

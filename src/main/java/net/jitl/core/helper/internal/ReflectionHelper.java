@@ -1,5 +1,6 @@
 package net.jitl.core.helper.internal;
 
+import com.google.common.base.Joiner;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -211,7 +212,6 @@ public class ReflectionHelper {
         try {
             Class.forName(className);
         } catch (ClassNotFoundException e) {
-            TimeCore.LOGGER.error("Can't load class" + className + ", because it isn't found");
             throw new RuntimeException();
         }
     }

@@ -1,8 +1,7 @@
 package net.jitl.client.knowledge;
 
 import io.netty.buffer.ByteBuf;
-import net.jitl.client.essence.ClientEssence;
-import net.jitl.client.gui.overlay.Knowledge;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -13,23 +12,24 @@ public class PacketKnowledge {
     private int level;
     private EnumKnowledge knowledge;
 
-    public PacketKnowledge(ByteBuf buf) {
+    public PacketKnowledge(FriendlyByteBuf buf) {
         knowledgeXP = buf.readFloat();
         level = buf.readInt();
+        knowledge = buf.readEnum(EnumKnowledge.class);
     }
 
-    public PacketKnowledge(EnumKnowledge knowledge, KnowledgeStorage knowledge2) {
-        if(knowledge2 == null)
+    public PacketKnowledge(EnumKnowledge knowledge, KnowledgeStorage storage) {
+        if(storage == null || knowledge == null)
             return;
         this.knowledge = knowledge;
-        this.knowledgeXP = knowledge2.getAmountOnCurrentLevel();
-        this.level = knowledge2.getLevelCount();
+        this.knowledgeXP = storage.getAmountOnCurrentLevel();
+        this.level = storage.getLevelCount();
     }
 
-    public void toBytes(ByteBuf buf) {
+    public void toBytes(FriendlyByteBuf buf) {
         buf.writeInt(level);
         buf.writeFloat(knowledgeXP);
-        
+        buf.writeEnum(knowledge);
     }
 
     public void handle(Supplier<NetworkEvent.Context> ctx) {

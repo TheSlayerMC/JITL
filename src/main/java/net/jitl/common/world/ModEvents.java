@@ -2,6 +2,7 @@ package net.jitl.common.world;
 
 import net.jitl.client.essence.PlayerEssence;
 import net.jitl.client.essence.PlayerEssenceProvider;
+import net.jitl.client.knowledge.PlayerKnowledgeProvider;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -25,7 +26,11 @@ public class ModEvents {
     public static void onPlayerAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if(event.getObject() instanceof Player) {
             if(!event.getObject().getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).isPresent()) {
-                event.addCapability(new ResourceLocation(JITL.MODID, "properties"), new PlayerEssenceProvider());
+                event.addCapability(new ResourceLocation(JITL.MODID, "essence"), new PlayerEssenceProvider());
+            }
+
+            if(!event.getObject().getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).isPresent()) {
+                event.addCapability(new ResourceLocation(JITL.MODID, "knowledge"), new PlayerKnowledgeProvider());
             }
         }
     }
@@ -35,6 +40,12 @@ public class ModEvents {
         if(event.isWasDeath()) {
             event.getOriginal().getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(oldStore -> {
                 event.getOriginal().getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(newStore -> {
+                    newStore.copyFrom(oldStore);
+                });
+            });
+
+            event.getOriginal().getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(oldStore -> {
+                event.getOriginal().getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(newStore -> {
                     newStore.copyFrom(oldStore);
                 });
             });
@@ -52,6 +63,10 @@ public class ModEvents {
                         regenTicks = 75;
                     }
                 }
+            });
+
+            event.player.getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(knowledge -> {
+                knowledge.update(event.player);
             });
         }
     }

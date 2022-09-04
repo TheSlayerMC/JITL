@@ -1,8 +1,6 @@
 package net.jitl.client.knowledge;
 
 import net.jitl.client.gui.overlay.helper.JDisplayInfo;
-import net.jitl.core.helper.internal.EnumLookup;
-import net.minecraft.network.FriendlyByteBuf;
 
 public enum EnumKnowledge {
 
@@ -39,8 +37,6 @@ public enum EnumKnowledge {
     SENTERIAN("senterian", 96, 42, new KnowledgeXPDisplay("senterian", false)
             , new KnowledgeXPDisplay("senterian", true));
 
-    public static final EnumLookup<EnumKnowledge, String> LOOKUP = EnumLookup.make(EnumKnowledge.class, EnumKnowledge::getName);
-
     private final String name;
     private final JDisplayInfo xp;
     private final JDisplayInfo level;
@@ -73,17 +69,5 @@ public enum EnumKnowledge {
 
     public JDisplayInfo getLevelDisplay() {
         return level;
-    }
-
-    public static EnumKnowledge byName(String name) {
-        return LOOKUP.by(name);
-    }
-
-    public static void writeToBuffer(EnumKnowledge type, FriendlyByteBuf buf) {
-        buf.writeUtf(LOOKUP.from(type));
-    }
-
-    public static EnumKnowledge readFromBuffer(FriendlyByteBuf buf) {
-        return LOOKUP.by(buf.readUtf());
     }
 }

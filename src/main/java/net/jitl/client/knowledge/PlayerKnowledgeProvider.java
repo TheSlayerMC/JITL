@@ -1,6 +1,5 @@
 package net.jitl.client.knowledge;
 
-import net.jitl.client.gui.overlay.Knowledge;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.common.capabilities.Capability;
@@ -16,12 +15,12 @@ public class PlayerKnowledgeProvider implements ICapabilityProvider, INBTSeriali
 
     public static Capability<PlayerKnowledge> PLAYER_KNOWLEDGE = CapabilityManager.get(new CapabilityToken<>() { });
 
-    private KnowledgeStorage knowledge = null;
-    private final LazyOptional<KnowledgeStorage> optional = LazyOptional.of(this::createPlayerKnowledge);
+    private PlayerKnowledge knowledge = new PlayerKnowledge();
+    private final LazyOptional<PlayerKnowledge> optional = LazyOptional.of(this::createPlayerKnowledge);
 
-    private @NotNull KnowledgeStorage createPlayerKnowledge() {
+    private @NotNull PlayerKnowledge createPlayerKnowledge() {
         if(this.knowledge == null) {
-            this.knowledge = new KnowledgeStorage();
+            this.knowledge = new PlayerKnowledge();
         }
         return this.knowledge;
     }
