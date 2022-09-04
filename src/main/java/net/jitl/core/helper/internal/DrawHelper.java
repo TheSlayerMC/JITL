@@ -1,4 +1,4 @@
-package net.jitl.core.helper;
+package net.jitl.core.helper.internal;
 
 public class DrawHelper {
 

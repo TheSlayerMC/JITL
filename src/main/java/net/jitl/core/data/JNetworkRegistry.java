@@ -1,6 +1,7 @@
 package net.jitl.core.data;
 
 import net.jitl.client.essence.PacketEssenceBar;
+import net.jitl.client.knowledge.PacketKnowledge;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.network.SBossPacket;
 import net.minecraft.resources.ResourceLocation;
@@ -22,5 +23,6 @@ public class JNetworkRegistry {
     public static void init() {
         INSTANCE.registerMessage(nextID(), PacketEssenceBar.class, PacketEssenceBar::toBytes, PacketEssenceBar::new, PacketEssenceBar::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
         INSTANCE.registerMessage(nextID(), SBossPacket.class, SBossPacket::toBytes, SBossPacket::new, SBossPacket::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+        INSTANCE.registerMessage(nextID(), PacketKnowledge.class, PacketKnowledge::toBytes, PacketKnowledge::new, PacketKnowledge::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
     }
 }

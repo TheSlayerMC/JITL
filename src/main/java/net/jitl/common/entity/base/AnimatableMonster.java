@@ -74,11 +74,6 @@ public abstract class AnimatableMonster extends Monster implements IAnimatable {
         }
 
         @Override
-        public void start() {
-            super.start();
-        }
-
-        @Override
         public void stop() {
             super.stop();
             this.entity.setAggressive(false);
