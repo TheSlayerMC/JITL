@@ -8,13 +8,20 @@ import net.jitl.common.entity.base.JBossInfo;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
 import net.jitl.common.entity.goal.IdleHealGoal;
 import net.jitl.core.init.JITL;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -24,7 +31,12 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.ExplosionDamageCalculator;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -51,6 +63,43 @@ public class TowerGuardian extends AnimatableMonster implements IJourneyBoss, ID
         this.targetSelector.addGoal(1, new AttackWhenDifficultGoal(this, this));
         this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, null));
+    }
+
+    @Override
+    public boolean doHurtTarget(Entity entity) {
+        this.level.broadcastEntityEvent(this, (byte)1);
+        float damage = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
+        float explosionRadius = 3;
+        double particleWidth = 4;
+        Vec3 vec3 = this.getDeltaMovement();
+        float f1 = (int)damage > 0 ? damage / 2.0F + (float)this.random.nextInt((int)damage) : damage;
+        boolean hurt = entity.hurt(DamageSource.mobAttack(this), f1);
+        int x = Mth.floor(entity.getX());
+        int y = Mth.floor(entity.getY() - (double)0.2F);
+        int z = Mth.floor(entity.getZ());
+        BlockPos blockpos = new BlockPos(x, y, z);
+        BlockState blockstate = this.level.getBlockState(blockpos);
+        if(hurt) {
+            if(random.nextInt(15) == 0) {
+                this.level.explode(this, this.getX(), this.getY(), this.getZ(), explosionRadius, Explosion.BlockInteraction.NONE);
+            }
+            if(blockstate.getRenderShape() != RenderShape.INVISIBLE) {
+                for(int i = 0; i < 50; i++) {
+                    this.level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, blockstate).setPos(blockpos), this.getX() + (this.random.nextDouble() - 0.5D) * particleWidth, this.getY() + 0.1D, this.getZ() + (this.random.nextDouble() - 0.5D) * particleWidth, vec3.x * -4.0D, 1.5D, vec3.z * -4.0D);
+                }
+            }
+            this.doEnchantDamageEffects(this, entity);
+        }
+        this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
+        return hurt;
+    }
+
+    @Override
+    public void handleEntityEvent(byte id) {
+        if(id == 1) {
+            this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
+        }
+        super.handleEntityEvent(id);
     }
 
     @Override

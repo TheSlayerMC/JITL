@@ -94,7 +94,7 @@ public abstract class AnimatableMonster extends Monster implements IAnimatable {
         @Override
         protected void checkAndPerformAttack(LivingEntity enemy, double distToEnemySqr) {
             double d0 = this.getAttackReachSqr(enemy);
-            if (distToEnemySqr <= d0) {
+            if (distToEnemySqr <= d0 && getTicksUntilNextAttack() <= 0) {
                 this.resetAttackCooldown();
                 setAttacking(true);
                 this.mob.doHurtTarget(enemy);
