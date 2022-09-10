@@ -145,7 +145,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
             player.getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(knowledge -> {
 
                 float percents = ClientKnowledge.getClientKnowledgeXP(type) / knowledge.getLevelCapacity(knowledge.getLevel(type));
-                int width = (int) (percents * progressBarSize);
+                int width = (int)(percents * progressBarSize);
 
                 int progressBarX = k + x + 35, progressBarY = l + y + 19;
                 blit(matrixStack, progressBarX, progressBarY, 0, 5, progressBarSize, 5);

@@ -66,7 +66,9 @@ public class ModEvents {
             });
 
             event.player.getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(knowledge -> {
-                knowledge.update(event.player);
+                if(event.phase == TickEvent.Phase.END) {
+                    knowledge.update(event.player);
+                }
             });
         }
     }
