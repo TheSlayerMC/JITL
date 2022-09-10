@@ -1,6 +1,8 @@
 package net.jitl.client.knowledge;
 
+import net.jitl.client.gui.overlay.KnowledgeToast;
 import net.jitl.core.data.JNetworkRegistry;
+import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -12,18 +14,20 @@ public class KnowledgeStorage {
     private float amountOnLevel = 0F;
     private int levels = 0;
 
-    public void add(float amount, EnumKnowledge type) {
+    public void add(float amount, Player p, EnumKnowledge type) {
         if (amountOnLevel + amount >= getLevelCapacity(levels)) {
             amountOnLevel = (amountOnLevel + amount - getLevelCapacity(levels));
-            addLevel(1, type);
+            addLevel(1, p, type);
         } else {
             amountOnLevel = amountOnLevel + amount;
         }
+        sendPacket(type, p);
     }
 
-    public void addLevel(int amount, EnumKnowledge type) {
+    public void addLevel(int amount, Player p, EnumKnowledge type) {
         levels = levels + amount;
-        //Minecraft.getInstance().getToasts().addToast(new KnowledgeToast(type, true));
+        Minecraft.getInstance().getToasts().addToast(new KnowledgeToast(type, true));
+        sendPacket(type, p);
     }
 
     public float remove(float amount) {

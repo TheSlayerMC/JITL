@@ -41,7 +41,14 @@ public class LangRegistry {
         writeToFile("\"itemGroup.jitl.misc\" : \"JITL MISC\",");
         writeToFile("\"jitl.key.stats\" : \"Player Stats\",");
         writeToFile("\"jitl.key\" : \"JITL Keys\",");
-
+        writeToFile("\"jitl.knowledge.level\" : \"Level Up!\",");
+        writeToFile("\"jitl.knowledge.experience\" : \"XP Gain!\",");
+        writeToFile("\"jitl.knowledge.overworld\" : \"Overworld Knowledge\",");
+        writeToFile("\"jitl.knowledge.nether\" : \"Nether Knowledge\",");
+        writeToFile("\"jitl.knowledge.end\" : \"End Knowledge\",");
+        writeToFile("\"jitl.knowledge.euca\" : \"Euca Knowledge\",");
+        writeToFile("\"jitl.knowledge.boil\" : \"Boiling Knowledge\",");
+        writeToFile("\"jitl.knowledge.frozen\" : \"Frozen Knowledge\",");
 
         /* --------------------- Finish manual lines --------------------- */
 

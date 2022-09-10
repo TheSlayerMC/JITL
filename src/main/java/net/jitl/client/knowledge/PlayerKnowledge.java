@@ -23,19 +23,16 @@ public class PlayerKnowledge {
         return knowledgeMap.get(knowledge).getLevelCount();
     }
 
-    public void addLevel(Player player, EnumKnowledge knowledge, int level) {
-        knowledgeMap.get(knowledge).addLevel(level, knowledge);
-        //update(player);
+    public void addLevel(Player p, EnumKnowledge knowledge, int level) {
+        knowledgeMap.get(knowledge).addLevel(level, p, knowledge);
     }
 
     public void setLevel(EnumKnowledge knowledge, int level) {
         knowledgeMap.get(knowledge).setLevel(level);
-        //update(player);
     }
 
     public void setXP(EnumKnowledge knowledge, float xp) {
         knowledgeMap.get(knowledge).setXP(xp);
-        //update(player);
     }
 
     public float getLevelCapacity(int level) {
@@ -46,14 +43,14 @@ public class PlayerKnowledge {
         return knowledgeMap.get(type).getAmountOnCurrentLevel();
     }
 
-    public void addXP(EnumKnowledge type, float xp, boolean showXPToast) {
-        knowledgeMap.get(type).add(xp, type);
+    public void addXP(EnumKnowledge type, Player p, float xp, boolean showXPToast) {
+        knowledgeMap.get(type).add(xp, p, type);
         if(showXPToast)
             Minecraft.getInstance().getToasts().addToast(new KnowledgeToast(type, true));
     }
 
     public void addXP(Player p, EnumKnowledge type, float xp) {
-        this.addXP(type, xp, true);
+        this.addXP(type, p, xp, true);
     }
 
     public void copyFrom(PlayerKnowledge oldStore) {

@@ -154,8 +154,9 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
                 int lvX = progressBarX + 29, lvY = progressBarY - 1;
 
                 int getLevelCount = ClientKnowledge.getClientKnowledgeLevel(type);
+                String level = "" + getLevelCount;
 
-                font.drawShadow(matrixStack, "" + getLevelCount, getLevelCount > 10 ? lvX - 2 : getLevelCount > 100 ? lvX - 4 : lvX, lvY, ArgbColor.from(ChatFormatting.WHITE));
+                font.drawShadow(matrixStack, "" + (getLevelCount), lvX - this.font.width(level) / 2 + 4, lvY, ArgbColor.from(ChatFormatting.WHITE));
                 matrixStack.popPose();
             });
         }

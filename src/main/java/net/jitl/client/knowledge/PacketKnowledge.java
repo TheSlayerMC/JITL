@@ -27,8 +27,8 @@ public class PacketKnowledge {
     }
 
     public void toBytes(FriendlyByteBuf buf) {
-        buf.writeInt(level);
         buf.writeFloat(knowledgeXP);
+        buf.writeInt(level);
         buf.writeEnum(knowledge);
     }
 
