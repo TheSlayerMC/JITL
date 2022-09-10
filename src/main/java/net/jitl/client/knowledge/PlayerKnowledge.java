@@ -64,9 +64,9 @@ public class PlayerKnowledge {
             knowledgeMap.get(k).sendPacket(k, p);
     }
 
-    public void saveNBT(CompoundTag nbt) {
+    public void saveNBT(CompoundTag tag) {
         for(EnumKnowledge k : EnumKnowledge.values()) {
-            knowledgeMap.get(k).saveNBT(nbt);
+            knowledgeMap.get(k).saveNBT(tag);
         }
     }
 

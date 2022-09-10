@@ -1,11 +1,14 @@
 package net.jitl.common.world;
 
+import net.jitl.client.essence.PlayerEssence;
 import net.jitl.client.essence.PlayerEssenceProvider;
+import net.jitl.client.knowledge.PlayerKnowledge;
 import net.jitl.client.knowledge.PlayerKnowledgeProvider;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -20,15 +23,20 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onPlayerAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
-        if(event.getObject() instanceof Player) {
-            if(!event.getObject().getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).isPresent()) {
+        if(event.getObject() instanceof Player player) {
+            if(!player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).isPresent()) {
                 event.addCapability(new ResourceLocation(JITL.MODID, "essence"), new PlayerEssenceProvider());
             }
-
-            if(!event.getObject().getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).isPresent()) {
+            if(!player.getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).isPresent()) {
                 event.addCapability(new ResourceLocation(JITL.MODID, "knowledge"), new PlayerKnowledgeProvider());
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
+        event.register(PlayerEssence.class);
+        event.register(PlayerKnowledge.class);
     }
 
     @SubscribeEvent
