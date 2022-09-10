@@ -34,8 +34,8 @@ public class PacketKnowledge {
 
     public void handle(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            ctx.get().enqueueWork(() -> ClientKnowledge.addClientKnowledgeXP(knowledge, this.knowledgeXP));
-            ctx.get().enqueueWork(() -> ClientKnowledge.addClientKnowledgeLevel(knowledge, this.level));
+            ctx.get().enqueueWork(() -> ClientKnowledge.setClientKnowledgeXP(knowledge, this.knowledgeXP));
+            ctx.get().enqueueWork(() -> ClientKnowledge.setClientKnowledgeLevel(knowledge, this.level));
         });
         ctx.get().setPacketHandled(true);
     }

@@ -5,6 +5,6 @@ import org.lwjgl.glfw.GLFW;
 
 public class JKeys {
 
-    public static KeyMapping KEY_STATS = new KeyMapping("jitl.key.stats", GLFW.GLFW_KEY_J, "jitl.key");;
+    public static KeyMapping KEY_STATS = new KeyMapping("jitl.key.stats", GLFW.GLFW_KEY_J, "jitl.key");
 
 }

@@ -6,6 +6,7 @@ import net.jitl.client.essence.PlayerEssenceProvider;
 import net.jitl.client.knowledge.ClientKnowledge;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.client.knowledge.PlayerKnowledgeProvider;
+import net.jitl.core.helper.internal.ArgbColor;
 import net.jitl.core.helper.internal.EmptyContainer;
 import net.jitl.core.init.JITL;
 import net.minecraft.ChatFormatting;
@@ -154,7 +155,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
 
                 int getLevelCount = ClientKnowledge.getClientKnowledgeLevel(type);
 
-                font.drawShadow(matrixStack, "" + getLevelCount, getLevelCount > 10 ? lvX - 2 : getLevelCount > 100 ? lvX - 4 : lvX, lvY, 0xFFFFFF);
+                font.drawShadow(matrixStack, "" + getLevelCount, getLevelCount > 10 ? lvX - 2 : getLevelCount > 100 ? lvX - 4 : lvX, lvY, ArgbColor.from(ChatFormatting.WHITE));
                 matrixStack.popPose();
             });
         }

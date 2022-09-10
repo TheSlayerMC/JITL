@@ -1,5 +1,7 @@
 package net.jitl.client.knowledge;
 
+import net.jitl.client.gui.overlay.KnowledgeToast;
+import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 
@@ -23,11 +25,17 @@ public class PlayerKnowledge {
 
     public void addLevel(Player player, EnumKnowledge knowledge, int level) {
         knowledgeMap.get(knowledge).addLevel(level, knowledge);
-        update(player);
+        //update(player);
     }
 
-    public KnowledgeStorage getKnowledge(EnumKnowledge knowledgeType) {
-        return knowledgeMap.get(knowledgeType);
+    public void setLevel(EnumKnowledge knowledge, int level) {
+        knowledgeMap.get(knowledge).setLevel(level);
+        //update(player);
+    }
+
+    public void setXP(EnumKnowledge knowledge, float xp) {
+        knowledgeMap.get(knowledge).setXP(xp);
+        //update(player);
     }
 
     public float getLevelCapacity(int level) {
@@ -40,12 +48,12 @@ public class PlayerKnowledge {
 
     public void addXP(EnumKnowledge type, float xp, boolean showXPToast) {
         knowledgeMap.get(type).add(xp, type);
-        //if(showXPToast)
-           // Minecraft.getInstance().getToasts().addToast(new KnowledgeToast(type, true));
+        if(showXPToast)
+            Minecraft.getInstance().getToasts().addToast(new KnowledgeToast(type, true));
     }
 
     public void addXP(Player p, EnumKnowledge type, float xp) {
-        this.addXP(type, xp, false);
+        this.addXP(type, xp, true);
     }
 
     public void copyFrom(PlayerKnowledge oldStore) {

@@ -72,6 +72,14 @@ public class KnowledgeStorage {
         return levels;
     }
 
+    public void setLevel(int level) {
+        levels = level;
+    }
+
+    public void setXP(float xp) {
+        amountOnLevel = xp;
+    }
+
     public void saveNBT(CompoundTag nbt) {
         nbt.putFloat("amount_on_level", amountOnLevel);
         nbt.putInt("levels", levels);

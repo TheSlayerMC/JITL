@@ -6,6 +6,8 @@
 "itemGroup.jitl.armor" : "JITL Armor",
 "itemGroup.jitl.ranged" : "JITL Ranged",
 "itemGroup.jitl.misc" : "JITL MISC",
+"jitl.key.stats" : "Player Stats",
+"jitl.key" : "JITL Keys",
 "block.jitl.iridium_ore": "Iridium Ore",
 "block.jitl.iridium_block": "Iridium Block",
 "block.jitl.deepslate_iridium_ore": "Deepslate Iridium Ore",
