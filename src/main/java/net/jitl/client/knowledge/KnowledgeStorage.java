@@ -108,4 +108,9 @@ public class KnowledgeStorage {
             JNetworkRegistry.INSTANCE.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer)player), new PacketKnowledge(k,this));
         }
     }
+
+    public void copyFrom(KnowledgeStorage k) {
+        amountOnLevel = k.amountOnLevel;
+        levels = k.levels;
+    }
 }

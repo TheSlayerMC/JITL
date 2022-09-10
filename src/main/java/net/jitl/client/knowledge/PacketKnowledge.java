@@ -1,6 +1,5 @@
 package net.jitl.client.knowledge;
 
-import io.netty.buffer.ByteBuf;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 

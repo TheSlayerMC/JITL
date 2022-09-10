@@ -67,6 +67,7 @@ public class KnowledgeToast implements JToast {
                 }
                 if (displayinfo.getFrame() == JFrameType.XP) {
                     //toastComponent.getMinecraft().getSoundManager().play(SimpleSoundInstance.forUI(JSounds.TOAST.get(), 1.0F, 1.0F));
+                    toastComponent.getMinecraft().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_TOAST_IN, 1.0F, 1.0F));
                 }
             }
             float scale = 0.8F;

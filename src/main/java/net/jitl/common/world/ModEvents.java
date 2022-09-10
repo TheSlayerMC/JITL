@@ -1,21 +1,17 @@
 package net.jitl.common.world;
 
-import net.jitl.client.essence.PlayerEssence;
 import net.jitl.client.essence.PlayerEssenceProvider;
 import net.jitl.client.knowledge.PlayerKnowledgeProvider;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
-
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Mod.EventBusSubscriber(modid = JITL.MODID)
 public class ModEvents {

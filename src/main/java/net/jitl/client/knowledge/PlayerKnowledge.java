@@ -46,7 +46,7 @@ public class PlayerKnowledge {
     public void addXP(EnumKnowledge type, Player p, float xp, boolean showXPToast) {
         knowledgeMap.get(type).add(xp, p, type);
         if(showXPToast)
-            Minecraft.getInstance().getToasts().addToast(new KnowledgeToast(type, true));
+            Minecraft.getInstance().getToasts().addToast(new KnowledgeToast(type, false));
     }
 
     public void addXP(Player p, EnumKnowledge type, float xp) {
@@ -55,6 +55,8 @@ public class PlayerKnowledge {
 
     public void copyFrom(PlayerKnowledge oldStore) {
         this.knowledgeMap = oldStore.knowledgeMap;
+        for(EnumKnowledge k : EnumKnowledge.values())
+            this.knowledgeMap.get(k).copyFrom(oldStore.knowledgeMap.get(k));
     }
 
     public void update(Player p) {
