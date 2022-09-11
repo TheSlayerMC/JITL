@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left",
+  "textures": {
+    "bottom": "jitl:block/euca_gold_door_bottom",
+    "top": "jitl:block/euca_gold_door_top"
+  }
+}

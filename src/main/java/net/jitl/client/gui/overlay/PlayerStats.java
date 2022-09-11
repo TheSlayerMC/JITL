@@ -45,13 +45,13 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         int h = (this.height - this.imageHeight) / 2;
         int xPos = w + 95;
         int yPos = h + 177;
-        this.nextButton = this.addRenderableWidget(new PageButton(xPos + 32, yPos, true, (button) -> {
-            this.flipPage(true);
-        }, true));
-        this.previousButton = this.addRenderableWidget(new PageButton(xPos, yPos, false, (button) -> {
-            this.flipPage(false);
-        }, true));
-        this.updateButtonVisibility();
+//        this.nextButton = this.addRenderableWidget(new PageButton(xPos + 32, yPos, true, (button) -> {
+//            this.flipPage(true);
+//        }, true));
+//        this.previousButton = this.addRenderableWidget(new PageButton(xPos, yPos, false, (button) -> {
+//            this.flipPage(false);
+//        }, true));
+//        this.updateButtonVisibility();
     }
 
     private void updateButtonVisibility() {
@@ -77,12 +77,14 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         RenderSystem.setShaderTexture(0, this.BACKGROUND);
         blit(poseStack, x, y, 0, 0, this.imageWidth, this.imageHeight);//Draws the main Background
 
-        switch(pageNumber) {
-            case 0 -> page1(poseStack);
-            case 1 -> page2(poseStack);
-            default -> {
-            }
-        }
+//        switch(pageNumber) {
+//            case 0 -> page1(poseStack);
+//            case 1 -> page2(poseStack);
+//            default -> {
+//            }
+//        }
+        page1(poseStack);
+
         poseStack.popPose();
         RenderSystem.enableDepthTest();
     }
@@ -91,21 +93,22 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         int height = 43;
         int x = 9;
         int h = 9;
-        drawSprite(stack, x, h, 0, 74, "Sentacoins:");
-        drawKnowledgeSprite(stack, 126, h, EnumKnowledge.OVERWORLD, "Overworld");
+
+        drawKnowledgeSprite(stack, x, h, EnumKnowledge.OVERWORLD, "Overworld");
+        drawKnowledgeSprite(stack, 126, h, EnumKnowledge.NETHER, "The Nether");
 
         h += height;
 
         drawKnowledgeSprite(stack, x, h, EnumKnowledge.END, "End");
-        drawKnowledgeSprite(stack, 126, h, EnumKnowledge.FROZEN, "Frozen Lands");
-
-        h += height;
-        drawKnowledgeSprite(stack, x, h, EnumKnowledge.NETHER, "The Nether");
         drawKnowledgeSprite(stack, 126, h, EnumKnowledge.BOIL, "Boiling Point");
 
         h += height;
-        drawKnowledgeSprite(stack, x, h, EnumKnowledge.EUCA, "Euca");
-        drawKnowledgeSprite(stack, 126, h, EnumKnowledge.DEPTHS, "The Depths");
+        drawKnowledgeSprite(stack, x, h, EnumKnowledge.FROZEN, "Frozen Lands");
+        drawKnowledgeSprite(stack, 126, h, EnumKnowledge.EUCA, "Euca");
+
+        h += height;
+        //drawKnowledgeSprite(stack, 126, h, EnumKnowledge.DEPTHS, "The Depths");
+        //drawKnowledgeSprite(stack, x, h,  EnumKnowledge.CORBA, "Corba");
     }
 
     public void drawSprite(PoseStack matrixStack, int x, int y, int spriteX, int spriteY, String s) {
@@ -168,26 +171,21 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         int x = 9;
         int h = 9;
 
-        drawKnowledgeSprite(stack, x, h,  EnumKnowledge.CORBA, "Corba");
-        drawKnowledgeSprite(stack, 126, h,  EnumKnowledge.TERRANIA, "Terrania");
+        drawKnowledgeSprite(stack, x, h,  EnumKnowledge.TERRANIA, "Terrania");
+        drawKnowledgeSprite(stack, 126, h,  EnumKnowledge.CLOUDIA, "Cloudia");
 
         h += height;
 
-        drawKnowledgeSprite(stack, x, h,  EnumKnowledge.CLOUDIA, "Cloudia");
-        drawKnowledgeSprite(stack, 126, h,  EnumKnowledge.SENTERIAN, "Senterain");
-        //h += height;
-        //drawKnowledgeSprite(x, h, 128, 10, 0.30F, E"SDHFSDH");
-        //drawKnowledgeSprite(126, h, 160, 10, 0.75F, "Frozen Lands");
-        //h += height - 2;
-        //drawKnowledgeSprite(x, h, 192, 10, 0.10F, "Euca");
-        //drawKnowledgeSprite(126, h, 224, 10, 0.60F, "The Depths");
+        drawKnowledgeSprite(stack, x, h,  EnumKnowledge.SENTERIAN, "Senterain");
+        drawSprite(stack, 126, h, 0, 74, "Sentacoins:");
+
     }
 
     @Override
     protected void containerTick() {
         super.containerTick();
-        this.nextButton.active = pageNumber < 1;
-        this.previousButton.active = pageNumber > 0;
+        //this.nextButton.active = pageNumber < 1;
+        //this.previousButton.active = pageNumber > 0;
     }
 
     @Override

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "jitl:block/euca_brown_planks",
+    "side": "jitl:block/euca_brown_planks",
+    "top": "jitl:block/euca_brown_planks"
+  }
+}

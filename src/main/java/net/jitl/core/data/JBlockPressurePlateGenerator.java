@@ -1,5 +1,6 @@
 package net.jitl.core.data;
 
+import net.jitl.core.init.JBlockProperties;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 
@@ -8,36 +9,42 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class JBlockGenerator {
+public class JBlockPressurePlateGenerator {
 
-    protected BufferedWriter blockModelWriter, blockstateWriter, itemModelWriter;
+    protected BufferedWriter blockModelWriter, blockPressedModelWriter, blockstateWriter, itemModelWriter;
 
     public void generate() {
-        for(String name : JBlocks.normalBlockName) {
+        for(String name : JBlocks.pressurePlateBlockName) {
             String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
             String blockModelDir = "../src/main/resources/assets/jitl/models/block/" + name + ".json";
+            String blockPressedModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_down.json";
             String blockstateDir = "../src/main/resources/assets/jitl/blockstates/" + name + ".json";
 
             File itemModel = new File(itemModelDir);
             File blockModel = new File(blockModelDir);
+            File blockPressedModel = new File(blockPressedModelDir);
             File blockstateModel = new File(blockstateDir);
 
             try {
-                if (itemModel.exists()) itemModel.delete();
+                if(itemModel.exists()) itemModel.delete();
                 itemModel.createNewFile();
                 itemModelWriter = new BufferedWriter(new FileWriter(itemModel));
 
-                if (blockModel.exists()) blockModel.delete();
+                if(blockModel.exists()) blockModel.delete();
                 blockModel.createNewFile();
                 blockModelWriter = new BufferedWriter(new FileWriter(blockModel));
 
-                if (blockstateModel.exists()) blockstateModel.delete();
+                if(blockPressedModel.exists()) blockPressedModel.delete();
+                blockPressedModel.createNewFile();
+                blockPressedModelWriter = new BufferedWriter(new FileWriter(blockPressedModel));
+
+                if(blockstateModel.exists()) blockstateModel.delete();
                 blockstateModel.createNewFile();
                 blockstateWriter = new BufferedWriter(new FileWriter(blockstateModel));
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
             getBlockItem(JITL.MODID, name);
             getBlockModel(JITL.MODID, name);
             getBlockstate(JITL.MODID, name);
@@ -53,19 +60,29 @@ public class JBlockGenerator {
     }
 
     public void getBlockModel(String modID, String name) {
-        writeToBlockModelFile("{");
-        writeToBlockModelFile("  \"parent\": \"minecraft:block/cube_all\",");
-        writeToBlockModelFile("  \"textures\": {");
-        writeToBlockModelFile("    \"all\": \"" + modID + ":" + "block/" + name + "\"");
-        writeToBlockModelFile("  }");
-        writeToBlockModelFile("}");
+        writeToBlockModelFile(blockModelWriter, "{");
+        writeToBlockModelFile(blockModelWriter, "  \"parent\": \"minecraft:block/pressure_plate_up\",");
+        writeToBlockModelFile(blockModelWriter, "  \"textures\": {");
+        writeToBlockModelFile(blockModelWriter, "    \"texture\": \"" + modID + ":" + "block/" + JBlockProperties.getTextureFromName(name) + "\"");
+        writeToBlockModelFile(blockModelWriter, "  }");
+        writeToBlockModelFile(blockModelWriter, "}");
+
+        writeToBlockModelFile(blockPressedModelWriter, "{");
+        writeToBlockModelFile(blockPressedModelWriter, "  \"parent\": \"minecraft:block/pressure_plate_down\",");
+        writeToBlockModelFile(blockPressedModelWriter, "  \"textures\": {");
+        writeToBlockModelFile(blockPressedModelWriter, "    \"texture\": \"" + modID + ":" + "block/" + JBlockProperties.getTextureFromName(name) + "\"");
+        writeToBlockModelFile(blockPressedModelWriter, "  }");
+        writeToBlockModelFile(blockPressedModelWriter, "}");
     }
 
     public void getBlockstate(String modID, String name) {
         writeToBlockstateFile("{");
         writeToBlockstateFile("  \"variants\": {");
-        writeToBlockstateFile("  \"\": {");
-        writeToBlockstateFile("      \"model\": \"" + modID + ":" + "block/" + name + "\"");
+        writeToBlockstateFile("    \"powered=false\": {");
+        writeToBlockstateFile("        \"model\": \"" + modID + ":" + "block/" + name + "\"");
+        writeToBlockstateFile("      },");
+        writeToBlockstateFile("    \"powered=true\": {");
+        writeToBlockstateFile("        \"model\": \"" + modID + ":" + "block/" + name + "_down\"");
         writeToBlockstateFile("      }");
         writeToBlockstateFile("  }");
         writeToBlockstateFile("}");
@@ -75,6 +92,7 @@ public class JBlockGenerator {
         try {
             itemModelWriter.close();
             blockModelWriter.close();
+            blockPressedModelWriter.close();
             blockstateWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -89,9 +107,9 @@ public class JBlockGenerator {
         }
     }
 
-    public void writeToBlockModelFile(String text){
+    public void writeToBlockModelFile(BufferedWriter writer, String text){
         try {
-            blockModelWriter.write(text + "\n");
+            writer.write(text + "\n");
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -3,10 +3,8 @@ package net.jitl.core.data;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
 
-import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class LangRegistry {
 
@@ -17,7 +15,14 @@ public class LangRegistry {
 
         File en_us = new File(langDir);
 
-        ArrayList<String> blockList = new ArrayList<>(JBlocks.blockName);
+        ArrayList<String> blockList = new ArrayList<>(JBlocks.normalBlockName);
+        ArrayList<String> logList = new ArrayList<>(JBlocks.logBlockName);
+        ArrayList<String> doorList = new ArrayList<>(JBlocks.doorBlockName);
+        ArrayList<String> trapDoorList = new ArrayList<>(JBlocks.trapDoorBlockName);
+        ArrayList<String> stairList = new ArrayList<>(JBlocks.stairsBlockName);
+        ArrayList<String> slabList = new ArrayList<>(JBlocks.slabBlockName);
+        ArrayList<String> pressureList = new ArrayList<>(JBlocks.pressurePlateBlockName);
+        ArrayList<String> buttonList = new ArrayList<>(JBlocks.buttonBlockName);
 
         ArrayList<String> toolItemList = new ArrayList<>(JItems.toolName);
         ArrayList<String> itemList = new ArrayList<>(JItems.itemName);
@@ -53,7 +58,35 @@ public class LangRegistry {
         /* --------------------- Finish manual lines --------------------- */
 
         for(int i = 0; i < blockList.size(); i++) {
-            writeToFile("\"block.jitl." + blockList.get(i) + "\": \"" + JBlocks.langName.get(i) + "\"" + ",");
+            writeToFile("\"block.jitl." + blockList.get(i) + "\": \"" + JBlocks.normalLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < logList.size(); i++) {
+            writeToFile("\"block.jitl." + logList.get(i) + "\": \"" + JBlocks.logLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < doorList.size(); i++) {
+            writeToFile("\"block.jitl." + doorList.get(i) + "\": \"" + JBlocks.doorLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < trapDoorList.size(); i++) {
+            writeToFile("\"block.jitl." + trapDoorList.get(i) + "\": \"" + JBlocks.trapDoorLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < stairList.size(); i++) {
+            writeToFile("\"block.jitl." + stairList.get(i) + "\": \"" + JBlocks.stairsLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < slabList.size(); i++) {
+            writeToFile("\"block.jitl." + slabList.get(i) + "\": \"" + JBlocks.slabLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < buttonList.size(); i++) {
+            writeToFile("\"block.jitl." + buttonList.get(i) + "\": \"" + JBlocks.buttonLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < pressureList.size(); i++) {
+            writeToFile("\"block.jitl." + pressureList.get(i) + "\": \"" + JBlocks.pressurePlateLangName.get(i) + "\"" + ",");
         }
 
         for(int i = 0; i < toolItemList.size(); i++) {

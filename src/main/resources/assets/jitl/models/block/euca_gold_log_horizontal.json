@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "jitl:block/euca_gold_log_top",
+    "side": "jitl:block/euca_gold_log_side"
+  }
+}

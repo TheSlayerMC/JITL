@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+        "model": "jitl:block/euca_gold_slab"
+      },
+    "type=double": {
+        "model": "jitl:block/euca_gold_planks"
+      },
+    "type=top": {
+        "model": "jitl:block/euca_gold_slab_top"
+      }
+  }
+}

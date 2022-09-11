@@ -3,10 +3,7 @@ package net.jitl.core.init;
 import net.jitl.client.render.RenderEntitys;
 import net.jitl.common.world.gen.JConfiguredFeatures;
 import net.jitl.common.world.gen.JPlacedFeatures;
-import net.jitl.core.data.JBlockGenerator;
-import net.jitl.core.data.JItemGenerator;
-import net.jitl.core.data.LangRegistry;
-import net.jitl.core.data.JNetworkRegistry;
+import net.jitl.core.data.*;
 import net.jitl.core.helper.JContainers;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JEntities;
@@ -44,6 +41,13 @@ public class JITL {
         if(DEV_MODE) {
             new JItemGenerator().generate();
             new JBlockGenerator().generate();
+            new JBlockLogGenerator().generate();
+            new JBlockDoorGenerator().generate();
+            new JBlockTrapDoorGenerator().generate();
+            new JBlockStairsGenerator().generate();
+            new JBlockSlabGenerator().generate();
+            new JBlockPressurePlateGenerator().generate();
+            new JBlockButtonGenerator().generate();
             new LangRegistry().generate();
         }
 
