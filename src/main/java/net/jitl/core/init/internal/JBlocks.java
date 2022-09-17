@@ -49,6 +49,12 @@ public class JBlocks {
     public static final ArrayList<String> pressurePlateBlockName = new ArrayList<>();
     public static final ArrayList<String> pressurePlateLangName = new ArrayList<>();
 
+    public static final ArrayList<String> gateBlockName = new ArrayList<>();
+    public static final ArrayList<String> gateLangName = new ArrayList<>();
+
+    public static final ArrayList<String> fenceBlockName = new ArrayList<>();
+    public static final ArrayList<String> fenceLangName = new ArrayList<>();
+
     public static final RegistryObject<Block> IRIDIUM_ORE = register("iridium_ore", "Iridium Ore", JBlockProperties.STONE);
     public static final RegistryObject<Block> IRIDIUM_BLOCK = registerFuelBlock("iridium_block", "Iridium Block", () -> new Block(JBlockProperties.STONE), 16000);
     public static final RegistryObject<Block> DEEPSLATE_IRIDIUM_ORE = register("deepslate_iridium_ore", "Deepslate Iridium Ore", JBlockProperties.STONE);
@@ -82,6 +88,7 @@ public class JBlocks {
     public static final RegistryObject<SlabBlock> EUCA_GOLD_SLAB = registerSlab("euca_gold_slab", "Euca Gold Plank Slab");
     public static final RegistryObject<ButtonBlock> EUCA_GOLD_BUTTON = registerButton("euca_gold_button", "Euca Gold Button", false);
     public static final RegistryObject<PressurePlateBlock> EUCA_GOLD_PRESSURE_PLATE = registerPressurePlate("euca_gold_pressure_plate", "Euca Gold Pressure Plate", PressurePlateBlock.Sensitivity.EVERYTHING);
+    public static final RegistryObject<FenceGateBlock> EUCA_GOLD_FENCE_GATE = registerFenceGate("euca_gold_fence_gate", "Euca Gold Fence Gate");
 
     public static final RegistryObject<RotatedPillarBlock> EUCA_BROWN_LOG = registerLog("euca_brown_log", "Euca Brown Log");
     public static final RegistryObject<Block> EUCA_BROWN_PLANKS = register("euca_brown_planks", "Euca Brown Planks", JBlockProperties.WOOD);
@@ -91,6 +98,7 @@ public class JBlocks {
     public static final RegistryObject<SlabBlock> EUCA_BROWN_SLAB = registerSlab("euca_brown_slab", "Euca Brown Plank Slab");
     public static final RegistryObject<ButtonBlock> EUCA_BROWN_BUTTON = registerButton("euca_brown_button", "Euca Brown Button", true);
     public static final RegistryObject<PressurePlateBlock> EUCA_BROWN_PRESSURE_PLATE = registerPressurePlate("euca_brown_pressure_plate", "Euca Brown Pressure Plate", PressurePlateBlock.Sensitivity.EVERYTHING);
+    public static final RegistryObject<FenceGateBlock> EUCA_BROWN_FENCE_GATE = registerFenceGate("euca_brown_fence_gate", "Euca Brown Fence Gate");
 
 
     public static RegistryObject<Block> register(String name, String translatedName, BlockBehaviour.Properties props, CreativeModeTab tab) {
@@ -166,6 +174,22 @@ public class JBlocks {
         pressurePlateBlockName.add(name);
         pressurePlateLangName.add(translatedName);
         RegistryObject<PressurePlateBlock> block1 = BLOCKS.register(name, () -> new PressurePlateBlock(s, JBlockProperties.WOOD));
+        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        return block1;
+    }
+
+    public static RegistryObject<FenceGateBlock> registerFenceGate(String name, String translatedName) {
+        gateBlockName.add(name);
+        gateLangName.add(translatedName);
+        RegistryObject<FenceGateBlock> block1 = BLOCKS.register(name, () -> new FenceGateBlock(JBlockProperties.WOOD));
+        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        return block1;
+    }
+
+    public static RegistryObject<FenceBlock> registerFence(String name, String translatedName) {
+        gateBlockName.add(name);
+        gateLangName.add(translatedName);
+        RegistryObject<FenceBlock> block1 = BLOCKS.register(name, () -> new FenceBlock(JBlockProperties.WOOD));
         JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
         return block1;
     }

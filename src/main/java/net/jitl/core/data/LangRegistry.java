@@ -23,6 +23,8 @@ public class LangRegistry {
         ArrayList<String> slabList = new ArrayList<>(JBlocks.slabBlockName);
         ArrayList<String> pressureList = new ArrayList<>(JBlocks.pressurePlateBlockName);
         ArrayList<String> buttonList = new ArrayList<>(JBlocks.buttonBlockName);
+        ArrayList<String> gateList = new ArrayList<>(JBlocks.gateBlockName);
+        ArrayList<String> fenceList = new ArrayList<>(JBlocks.fenceBlockName);
 
         ArrayList<String> toolItemList = new ArrayList<>(JItems.toolName);
         ArrayList<String> itemList = new ArrayList<>(JItems.itemName);
@@ -87,6 +89,14 @@ public class LangRegistry {
 
         for(int i = 0; i < pressureList.size(); i++) {
             writeToFile("\"block.jitl." + pressureList.get(i) + "\": \"" + JBlocks.pressurePlateLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < fenceList.size(); i++) {
+            writeToFile("\"block.jitl." + fenceList.get(i) + "\": \"" + JBlocks.fenceLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < gateList.size(); i++) {
+            writeToFile("\"block.jitl." + gateList.get(i) + "\": \"" + JBlocks.gateLangName.get(i) + "\"" + ",");
         }
 
         for(int i = 0; i < toolItemList.size(); i++) {
