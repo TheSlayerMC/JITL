@@ -49,6 +49,7 @@ public class JITL {
             new JBlockPressurePlateGenerator().generate();
             new JBlockButtonGenerator().generate();
             new JBlockGateGenerator().generate();
+            new JBlockFenceGenerator().generate();
             new LangRegistry().generate();
         }
 
