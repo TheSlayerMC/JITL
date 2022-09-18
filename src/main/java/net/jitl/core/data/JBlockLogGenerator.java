@@ -1,6 +1,7 @@
 package net.jitl.core.data;
 
 import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.BlockRegistrys;
 import net.jitl.core.init.internal.JBlocks;
 
 import java.io.BufferedWriter;
@@ -13,7 +14,7 @@ public class JBlockLogGenerator {
     protected BufferedWriter blockModelWriter, blockHorModelWriter, blockstateWriter, itemModelWriter;
 
     public void generate() {
-        for(String name : JBlocks.logBlockName) {
+        for(String name : BlockRegistrys.logBlockName) {
             String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
             String blockModelDir = "../src/main/resources/assets/jitl/models/block/" + name + ".json";
             String blockHorModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_horizontal.json";

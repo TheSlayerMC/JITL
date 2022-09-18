@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import net.jitl.common.entity.base.JBoat;
+import net.jitl.core.init.internal.ItemRegistrys;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.stats.Stats;
@@ -28,7 +29,7 @@ public class JBoatItem extends Item {
     private final JBoat.Type type;
 
     public JBoatItem(JBoat.Type type) {
-        super(JItems.miscProps());
+        super(ItemRegistrys.miscProps());
         this.type = type;
     }
 

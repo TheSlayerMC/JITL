@@ -2,12 +2,11 @@ package net.jitl.core.init;
 
 import net.jitl.client.render.RenderEntitys;
 import net.jitl.common.world.gen.JConfiguredFeatures;
+import net.jitl.common.world.gen.JFoliagePlacers;
 import net.jitl.common.world.gen.JPlacedFeatures;
 import net.jitl.core.data.*;
 import net.jitl.core.helper.JContainers;
-import net.jitl.core.init.internal.JBlocks;
-import net.jitl.core.init.internal.JEntities;
-import net.jitl.core.init.internal.JItems;
+import net.jitl.core.init.internal.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -30,17 +29,23 @@ public class JITL {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
 
-        JItems.ITEMS.register(modEventBus);
-        JBlocks.BLOCKS.register(modEventBus);
+        ItemRegistrys.ITEMS.register(modEventBus);
+        BlockRegistrys.BLOCKS.register(modEventBus);
         JEntities.REGISTRY.register(modEventBus);
         JEntities.EGG_REGISTRY.register(modEventBus);
         JConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
         JPlacedFeatures.PLACED_FEATURES.register(modEventBus);
+        JFoliagePlacers.REGISTRY.register(modEventBus);
         JContainers.REGISTRY.register(modEventBus);
+
+        //Used to recognise the classes
+        new JBlocks();
+        new JItems();
 
         if(DEV_MODE) {
             new JItemGenerator().generate();
             new JBlockGenerator().generate();
+            new JBlockCrossGenerator().generate();
             new JBlockLogGenerator().generate();
             new JBlockDoorGenerator().generate();
             new JBlockTrapDoorGenerator().generate();

@@ -1,6 +1,7 @@
 package net.jitl.core.data;
 
 import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.ItemRegistrys;
 import net.jitl.core.init.internal.JItems;
 
 import java.io.BufferedWriter;
@@ -14,7 +15,7 @@ public class JItemGenerator {
     protected BufferedWriter itemModelWriter;
 
     public void generate(){
-        for(String name : JItems.itemName) {
+        for(String name : ItemRegistrys.itemName) {
             String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
             File itemModel = new File(itemModelDir);
             try {
@@ -29,7 +30,7 @@ public class JItemGenerator {
             itemModelInit();
         }
 
-        for(String name : JItems.toolName) {
+        for(String name : ItemRegistrys.toolName) {
             String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
             File itemModel = new File(itemModelDir);
             try {

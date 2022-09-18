@@ -2,6 +2,7 @@ package net.jitl.core.data;
 
 import net.jitl.core.init.JBlockProperties;
 import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.BlockRegistrys;
 import net.jitl.core.init.internal.JBlocks;
 
 import java.io.BufferedWriter;
@@ -14,7 +15,7 @@ public class JBlockFenceGenerator {
     protected BufferedWriter blockModelWriter, blockPostModelWriter, blockSideModelWriter, blockstateWriter, itemModelWriter;
 
     public void generate() {
-        for(String name : JBlocks.fenceBlockName) {
+        for(String name : BlockRegistrys.fenceBlockName) {
             String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
             String blockModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_inventory.json";
             String blockPostModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_post.json";

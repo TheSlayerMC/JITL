@@ -17,6 +17,21 @@ public class JBlockProperties {
             .sound(SoundType.STONE)
             .requiresCorrectToolForDrops();
 
+    public static BlockBehaviour.Properties DIRT = BlockBehaviour.Properties.of(Material.DIRT)
+            .strength(1F)
+            .sound(SoundType.GRAVEL);
+
+    public static BlockBehaviour.Properties LEAVES = BlockBehaviour.Properties.of(Material.LEAVES)
+            .strength(0.5F)
+            .sound(SoundType.GRASS)
+            .noOcclusion()
+            .requiresCorrectToolForDrops();
+
+    public static BlockBehaviour.Properties SAPLING = BlockBehaviour.Properties.of(Material.LEAVES)
+            .instabreak()
+            .sound(SoundType.GRASS)
+            .noOcclusion();
+
     public static BlockBehaviour.Properties WOOD = BlockBehaviour.Properties.of(Material.WOOD)
             .strength(1F)
             .sound(SoundType.WOOD);

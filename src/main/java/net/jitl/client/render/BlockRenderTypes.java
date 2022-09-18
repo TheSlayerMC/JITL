@@ -18,5 +18,9 @@ public class BlockRenderTypes {
         ItemBlockRenderTypes.setRenderLayer(JBlocks.EUCA_GOLD_DOOR.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(JBlocks.EUCA_BROWN_TRAP_DOOR.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(JBlocks.EUCA_GOLD_TRAP_DOOR.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(JBlocks.EUCA_GOLD_LEAVES.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(JBlocks.EUCA_GREEN_LEAVES.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(JBlocks.EUCA_GOLD_SAPLING.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(JBlocks.EUCA_GREEN_SAPLING.get(), RenderType.cutout());
     }
 }

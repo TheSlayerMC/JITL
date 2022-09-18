@@ -2,6 +2,7 @@ package net.jitl.core.data;
 
 import net.jitl.core.init.JBlockProperties;
 import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.BlockRegistrys;
 import net.jitl.core.init.internal.JBlocks;
 
 import java.io.BufferedWriter;
@@ -14,7 +15,7 @@ public class JBlockGateGenerator {
     protected BufferedWriter blockModelWriter, blockGateOpenModelWriter, blockGateWallModelWriter, blockGateWallOpenModelWriter, blockstateWriter, itemModelWriter;
 
     public void generate() {
-        for(String name : JBlocks.gateBlockName) {
+        for(String name : BlockRegistrys.gateBlockName) {
             String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
             String blockModelDir = "../src/main/resources/assets/jitl/models/block/" + name + ".json";
             String blockOpenModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_open.json";

@@ -1,14 +1,21 @@
 package net.jitl.common.world.gen;
 
 import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import net.jitl.common.world.gen.tree_grower.SphericalFoliagePlacer;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.OreFeatures;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -73,5 +80,27 @@ public class JConfiguredFeatures {
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> ENDERILLIUM_ORE = CONFIGURED_FEATURES.register("enderillium_ore",
             () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ENDERILLIUM_TARGET.get(), 7)));
+
+    public static final RegistryObject<ConfiguredFeature<TreeConfiguration, ?>> EUCA_GOLD_TREE = CONFIGURED_FEATURES.register("euca_gold_tree",
+            () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                                    BlockStateProvider.simple(JBlocks.EUCA_GOLD_LOG.get()),
+                                    new ForkingTrunkPlacer(4, 1, 6),
+                                    BlockStateProvider.simple(JBlocks.EUCA_GOLD_LEAVES.get()),
+                                    new SphericalFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), 1),
+                                    new TwoLayersFeatureSize(1, 1, 2))
+                                    .ignoreVines()
+                                    .dirt(BlockStateProvider.simple(JBlocks.GOLDITE_DIRT.get())).build()));
+
+    public static final RegistryObject<ConfiguredFeature<TreeConfiguration, ?>> EUCA_GREEN_TREE = CONFIGURED_FEATURES.register("euca_green_tree",
+            () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                                    BlockStateProvider.simple(JBlocks.EUCA_BROWN_LOG.get()),
+                                    new ForkingTrunkPlacer(4, 1, 6),
+                                    BlockStateProvider.simple(JBlocks.EUCA_GREEN_LEAVES.get()),
+                                    new SphericalFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), 1),
+                                    new TwoLayersFeatureSize(1, 1, 2))
+                                    //.decorators(ImmutableList.of(new GlimmerRootTreeDecorator(4)))
+                                    .ignoreVines()
+                                    .dirt(BlockStateProvider.simple(JBlocks.GOLDITE_DIRT.get()))
+                                    .build()));
 
 }
