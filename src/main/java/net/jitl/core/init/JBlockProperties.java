@@ -26,6 +26,11 @@ public class JBlockProperties {
             .lightLevel((level) -> 7)
             .sound(SoundType.STONE);
 
+    public static BlockBehaviour.Properties BREAKABLE_DUNGEON_LAMP = BlockBehaviour.Properties.of(Material.STONE)
+            .strength(1.5F)
+            .lightLevel((level) -> 7)
+            .sound(SoundType.STONE);
+
     public static BlockBehaviour.Properties DIRT = BlockBehaviour.Properties.of(Material.DIRT)
             .strength(1F)
             .sound(SoundType.GRAVEL);
