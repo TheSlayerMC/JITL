@@ -1,7 +1,11 @@
 package net.jitl.client.render;
 
+import net.jitl.client.JModelLayers;
 import net.jitl.client.model.AnimatedMonsterModel;
+import net.jitl.client.model.JBoatModel;
 import net.jitl.client.render.projectile.*;
+import net.jitl.client.render.vehicle.JBoatRenderer;
+import net.jitl.common.entity.base.JBoat;
 import net.jitl.core.helper.JDimension;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JEntities;
@@ -19,10 +23,16 @@ public class RenderEntitys {
         event.registerEntityRenderer(JEntities.CONJURING_PROJECTILE_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/conjuring.png")));
         event.registerEntityRenderer(JEntities.ESSENCIA_PROJECTILE_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/essencia.png")));
         event.registerEntityRenderer(JEntities.ESSENCIA_BOLT_TYPE.get(), EssenciaBoltRenderer::new);
+
+        event.registerEntityRenderer(JEntities.JBOAT_TYPE.get(), JBoatRenderer::new);
     }
 
     @SubscribeEvent
-    public static void registerEntityLayers(EntityRenderersEvent.RegisterLayerDefinitions event) { }
+    public static void registerEntityLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        for(JBoat.Type type : JBoat.Type.values()) {
+            event.registerLayerDefinition(JModelLayers.createBoatModelName(type), JBoatModel::createBodyModel);
+        }
+    }
 
     public static void registerAnimationRenderers() {
         EntityRenderers.register(JEntities.MAGE_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("mage", JDimension.OVERWORLD), 0.55F, 1.25F));

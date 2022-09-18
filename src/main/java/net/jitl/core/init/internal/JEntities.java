@@ -1,5 +1,6 @@
 package net.jitl.core.init.internal;
 
+import net.jitl.common.entity.base.JBoat;
 import net.jitl.common.entity.boss.RockiteSmasher;
 import net.jitl.common.entity.boss.TowerGuardian;
 import net.jitl.common.entity.nether.IllagerMech;
@@ -103,6 +104,11 @@ public class JEntities {
                     .setTrackingRange(15)
                     .setShouldReceiveVelocityUpdates(true)
                     .sized(1F, 2.0F).build("brown_hongo"));
+
+    public static final RegistryObject<EntityType<JBoat>> JBOAT_TYPE = REGISTRY.register("jboat", () ->
+                    EntityType.Builder.<JBoat>of(JBoat::new, MobCategory.MISC)
+                            .setTrackingRange(10)
+                            .sized(1.375F, 0.5625F).build("jboat"));
 
     @SubscribeEvent
     public static void registerAttributes(final EntityAttributeCreationEvent event) {
