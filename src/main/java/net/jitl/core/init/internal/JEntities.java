@@ -2,6 +2,7 @@ package net.jitl.core.init.internal;
 
 import net.jitl.common.entity.boss.RockiteSmasher;
 import net.jitl.common.entity.boss.TowerGuardian;
+import net.jitl.common.entity.nether.IllagerMech;
 import net.jitl.common.entity.nether.Witherspine;
 import net.jitl.common.entity.overworld.BrownHongo;
 import net.jitl.common.entity.overworld.Floro;
@@ -85,6 +86,12 @@ public class JEntities {
                     .setShouldReceiveVelocityUpdates(true)
                     .sized(2.0F, 3.25F).build("rockite_smasher"));
 
+    public static final RegistryObject<EntityType<IllagerMech>> ILLAGER_MECH_TYPE = REGISTRY.register("illager_mech", () ->
+            EntityType.Builder.of(IllagerMech::new, MobCategory.MONSTER)
+                    .setTrackingRange(15)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .sized(2.0F, 3.25F).build("illager_mech"));
+
     public static final RegistryObject<EntityType<Witherspine>> WITHERSPINE_TYPE = REGISTRY.register("witherspine", () ->
             EntityType.Builder.of(Witherspine::new, MobCategory.MONSTER)
                     .setTrackingRange(15)
@@ -105,5 +112,6 @@ public class JEntities {
         event.put(ROCKITE_SMASHER_TYPE.get(), RockiteSmasher.createAttributes());
         event.put(WITHERSPINE_TYPE.get(), Witherspine.createAttributes());
         event.put(BROWN_HONGO_TYPE.get(), BrownHongo.createAttributes());
+        event.put(ILLAGER_MECH_TYPE.get(), IllagerMech.createAttributes());
     }
 }

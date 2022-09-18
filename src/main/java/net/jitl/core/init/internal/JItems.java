@@ -103,6 +103,10 @@ public class JItems {
     public static final RegistryObject<Item> BROWN_HONGO_EGG = registerNormalItem("brown_hongo_spawn_egg", "Brown Hongo Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.BROWN_HONGO_TYPE,
             0x948e8d, 0x3b3653, eggProps()));
 
+    public static final RegistryObject<Item> ILLAGER_MECH_EGG = registerNormalItem("illager_mech_spawn_egg", "Illager Mech Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ILLAGER_MECH_TYPE,
+            0x948e8d, 0x3b3653, eggProps()));
+
+
     public static RegistryObject<Item> registerNormalItem(String name, String translatedName, CreativeModeTab tab) {
         return register(name, translatedName, () -> new Item(new Item.Properties().tab(tab)), ItemType.ITEM);
     }
