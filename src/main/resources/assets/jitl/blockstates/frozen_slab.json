@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+        "model": "jitl:block/frozen_slab"
+      },
+    "type=double": {
+        "model": "jitl:block/frozen_planks"
+      },
+    "type=top": {
+        "model": "jitl:block/frozen_slab_top"
+      }
+  }
+}

@@ -2,7 +2,6 @@ package net.jitl.core.data;
 
 import net.jitl.core.init.JBlockProperties;
 import net.jitl.core.init.JITL;
-import net.jitl.core.init.internal.BlockRegistrys;
 import net.jitl.core.init.internal.JBlocks;
 
 import java.io.BufferedWriter;
@@ -15,7 +14,7 @@ public class JBlockPressurePlateGenerator {
     protected BufferedWriter blockModelWriter, blockPressedModelWriter, blockstateWriter, itemModelWriter;
 
     public void generate() {
-        for(String name : BlockRegistrys.pressurePlateBlockName) {
+        for(String name : JBlocks.pressurePlateBlockName) {
             String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
             String blockModelDir = "../src/main/resources/assets/jitl/models/block/" + name + ".json";
             String blockPressedModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_down.json";

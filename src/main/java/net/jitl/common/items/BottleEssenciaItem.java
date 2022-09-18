@@ -2,7 +2,6 @@ package net.jitl.common.items;
 
 import net.jitl.client.essence.PlayerEssenceProvider;
 import net.jitl.core.helper.IEssenceItem;
-import net.jitl.core.init.internal.ItemRegistrys;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
@@ -20,7 +19,7 @@ public class BottleEssenciaItem extends Item implements IEssenceItem {
     private boolean strong;
 
     public BottleEssenciaItem(boolean strong) {
-        super(ItemRegistrys.miscProps());
+        super(JItems.miscProps());
         this.strong = strong;
     }
 

@@ -208,6 +208,7 @@ public class JBoat extends Boat {
         return switch (this.getJBoatType()) {
             case GOLD_EUCA -> JItems.GOLDEN_EUCA_BOAT.get();
             case BROWN_EUCA -> JItems.BROWN_EUCA_BOAT.get();
+            case FROZEN -> JItems.FROZEN_BOAT.get();
         };
     }
 
@@ -830,7 +831,9 @@ public class JBoat extends Boat {
 
     public enum Type {
         GOLD_EUCA(JBlocks.EUCA_GOLD_PLANKS.get(), "gold_euca"),
-        BROWN_EUCA(JBlocks.EUCA_BROWN_PLANKS.get(), "brown_euca");
+        BROWN_EUCA(JBlocks.EUCA_BROWN_PLANKS.get(), "brown_euca"),
+        FROZEN(JBlocks.FROZEN_PLANKS.get(), "frozen")
+        ;
 
         private final String name;
         private final Block planks;

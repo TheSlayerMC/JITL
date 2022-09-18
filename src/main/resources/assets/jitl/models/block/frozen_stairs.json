@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "jitl:block/frozen_planks",
+    "side": "jitl:block/frozen_planks",
+    "top": "jitl:block/frozen_planks"
+  }
+}

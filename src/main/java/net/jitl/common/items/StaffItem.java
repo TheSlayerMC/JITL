@@ -4,7 +4,6 @@ import net.jitl.client.essence.PlayerEssenceProvider;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.client.knowledge.PlayerKnowledgeProvider;
 import net.jitl.core.helper.IEssenceItem;
-import net.jitl.core.init.internal.ItemRegistrys;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -24,7 +23,7 @@ public class StaffItem extends Item implements IEssenceItem {
     private final int essenceUsage;
 
     public StaffItem(int essence, BiFunction<Level, LivingEntity, ThrowableProjectile> projectileFactory) {
-        super(ItemRegistrys.rangedProps().stacksTo(1));
+        super(JItems.rangedProps().stacksTo(1));
         this.projectileFactory = projectileFactory;
         this.essenceUsage = essence;
     }

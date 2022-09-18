@@ -1,7 +1,6 @@
 package net.jitl.core.data;
 
 import net.jitl.core.init.JITL;
-import net.jitl.core.init.internal.BlockRegistrys;
 import net.jitl.core.init.internal.JBlocks;
 
 import java.io.BufferedWriter;
@@ -14,7 +13,7 @@ public class JBlockTrapDoorGenerator {
     protected BufferedWriter blockBottomModelWriter, blockTopModelWriter, blockOpenModelWriter, blockstateWriter, itemModelWriter;
 
     public void generate() {
-        for(String name : BlockRegistrys.trapDoorBlockName) {
+        for(String name : JBlocks.trapDoorBlockName) {
             String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
             String blockBottomModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_bottom.json";
             String blockTopModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_top.json";

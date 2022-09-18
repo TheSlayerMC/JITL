@@ -1,7 +1,6 @@
 package net.jitl.core.data;
 
 import net.jitl.core.init.JITL;
-import net.jitl.core.init.internal.BlockRegistrys;
 import net.jitl.core.init.internal.JBlocks;
 
 import java.io.BufferedWriter;
@@ -15,7 +14,7 @@ public class JBlockDoorGenerator {
             blockBLOModelWriter, blockBROModelWriter, blockTLOModelWriter, blockTROModelWriter, blockstateWriter, itemModelWriter;
 
     public void generate() {
-        for(String name : BlockRegistrys.doorBlockName) {
+        for(String name : JBlocks.doorBlockName) {
             String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
             String blockBLModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_bottom_left.json";
             String blockBRModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_bottom_right.json";

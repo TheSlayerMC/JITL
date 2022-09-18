@@ -29,18 +29,14 @@ public class JITL {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
 
-        ItemRegistrys.ITEMS.register(modEventBus);
-        BlockRegistrys.BLOCKS.register(modEventBus);
+        JBlocks.BLOCKS.register(modEventBus);
+        JItems.ITEMS.register(modEventBus);
         JEntities.REGISTRY.register(modEventBus);
         JEntities.EGG_REGISTRY.register(modEventBus);
         JConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
         JPlacedFeatures.PLACED_FEATURES.register(modEventBus);
         JFoliagePlacers.REGISTRY.register(modEventBus);
         JContainers.REGISTRY.register(modEventBus);
-
-        //Used to recognise the classes
-        new JBlocks();
-        new JItems();
 
         if(DEV_MODE) {
             new JItemGenerator().generate();

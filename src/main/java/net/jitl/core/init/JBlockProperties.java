@@ -17,6 +17,15 @@ public class JBlockProperties {
             .sound(SoundType.STONE)
             .requiresCorrectToolForDrops();
 
+    public static BlockBehaviour.Properties DUNGEON_BLOCK = BlockBehaviour.Properties.of(Material.STONE)
+            .strength(1000000000F, -1F)
+            .sound(SoundType.STONE);
+
+    public static BlockBehaviour.Properties DUNGEON_LAMP = BlockBehaviour.Properties.of(Material.STONE)
+            .strength(1000000000F, -1F)
+            .lightLevel((level) -> 7)
+            .sound(SoundType.STONE);
+
     public static BlockBehaviour.Properties DIRT = BlockBehaviour.Properties.of(Material.DIRT)
             .strength(1F)
             .sound(SoundType.GRAVEL);
@@ -27,9 +36,16 @@ public class JBlockProperties {
             .noOcclusion()
             .requiresCorrectToolForDrops();
 
-    public static BlockBehaviour.Properties SAPLING = BlockBehaviour.Properties.of(Material.LEAVES)
+    public static BlockBehaviour.Properties ICE = BlockBehaviour.Properties.of(Material.ICE)
+            .strength(0.5F)
+            .sound(SoundType.GLASS)
+            .noOcclusion()
+            .requiresCorrectToolForDrops();
+
+    public static BlockBehaviour.Properties TALL_GRASS = BlockBehaviour.Properties.of(Material.LEAVES)
             .instabreak()
             .sound(SoundType.GRASS)
+            .noCollission()
             .noOcclusion();
 
     public static BlockBehaviour.Properties WOOD = BlockBehaviour.Properties.of(Material.WOOD)
@@ -52,18 +68,6 @@ public class JBlockProperties {
         return false;
     }
 
-    private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
-        return (state) -> {
-            return state.getValue(BlockStateProperties.LIT) ? lightValue : 0;
-        };
-    }
-
-    private static ToIntFunction<BlockState> hardness(int hardness) {
-        return (state) -> {
-            return state.getValue(BlockStateProperties.LOCKED) ? hardness : 0;
-        };
-    }
-
     public static String getTextureFromName(String name) {
         String plankName = "";
         if(name.contains("euca_brown")) {
@@ -71,6 +75,12 @@ public class JBlockProperties {
         }
         if(name.contains("euca_gold")) {
             plankName = "euca_gold_planks";
+        }
+        if(name.contains("euca_gold")) {
+            plankName = "euca_gold_planks";
+        }
+        if(name.contains("frozen")) {
+            plankName = "frozen_planks";
         }
         return plankName;
     }

@@ -1,8 +1,6 @@
 package net.jitl.core.data;
 
 import net.jitl.core.init.JITL;
-import net.jitl.core.init.internal.BlockRegistrys;
-import net.jitl.core.init.internal.ItemRegistrys;
 import net.jitl.core.init.internal.JBlocks;
 
 import java.io.BufferedWriter;
@@ -15,7 +13,7 @@ public class JBlockCrossGenerator {
     protected BufferedWriter blockModelWriter, blockstateWriter, itemModelWriter;
 
     public void generate() {
-        for(String name : BlockRegistrys.crossBlockName) {
+        for(String name : JBlocks.crossBlockName) {
             String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
             String blockModelDir = "../src/main/resources/assets/jitl/models/block/" + name + ".json";
             String blockstateDir = "../src/main/resources/assets/jitl/blockstates/" + name + ".json";

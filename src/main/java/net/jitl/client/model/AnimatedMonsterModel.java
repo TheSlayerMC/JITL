@@ -1,6 +1,5 @@
 package net.jitl.client.model;
 
-import net.jitl.common.entity.base.AnimatableMonster;
 import net.jitl.core.helper.JDimension;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.ResourceLocation;
