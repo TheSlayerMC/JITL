@@ -129,7 +129,7 @@ public class RockiteSmasher extends AnimatableMonster implements IJourneyBoss, I
         }
 
         if(isAttacking()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rockite_smasher.swing", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rockite_smasher.swing", false));
             return PlayState.CONTINUE;
         }
 

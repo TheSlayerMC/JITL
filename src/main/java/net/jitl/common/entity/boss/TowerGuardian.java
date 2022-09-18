@@ -144,7 +144,7 @@ public class TowerGuardian extends AnimatableMonster implements IJourneyBoss, ID
         }
 
         if(isAttacking()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.tower_guardian.smash", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.tower_guardian.smash", false));
             return PlayState.CONTINUE;
         }
 

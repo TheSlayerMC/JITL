@@ -3,6 +3,7 @@ package net.jitl.core.init.internal;
 import net.jitl.common.entity.boss.RockiteSmasher;
 import net.jitl.common.entity.boss.TowerGuardian;
 import net.jitl.common.entity.nether.Witherspine;
+import net.jitl.common.entity.overworld.BrownHongo;
 import net.jitl.common.entity.overworld.Floro;
 import net.jitl.common.entity.overworld.npc.Mage;
 import net.jitl.common.entity.projectile.ConjuringProjectileEntity;
@@ -90,6 +91,12 @@ public class JEntities {
                     .setShouldReceiveVelocityUpdates(true)
                     .sized(1F, 2.0F).build("witherspine"));
 
+    public static final RegistryObject<EntityType<BrownHongo>> BROWN_HONGO_TYPE = REGISTRY.register("brown_hongo", () ->
+            EntityType.Builder.of(BrownHongo::new, MobCategory.MONSTER)
+                    .setTrackingRange(15)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .sized(1F, 2.0F).build("brown_hongo"));
+
     @SubscribeEvent
     public static void registerAttributes(final EntityAttributeCreationEvent event) {
         event.put(MAGE_TYPE.get(), Mage.createAttributes());
@@ -97,5 +104,6 @@ public class JEntities {
         event.put(TOWER_GUARDIAN_TYPE.get(), TowerGuardian.createAttributes());
         event.put(ROCKITE_SMASHER_TYPE.get(), RockiteSmasher.createAttributes());
         event.put(WITHERSPINE_TYPE.get(), Witherspine.createAttributes());
+        event.put(BROWN_HONGO_TYPE.get(), BrownHongo.createAttributes());
     }
 }

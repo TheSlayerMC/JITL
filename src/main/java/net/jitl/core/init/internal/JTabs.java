@@ -17,28 +17,28 @@ public class JTabs {
     public static final CreativeModeTab MATERIALS = new CreativeModeTab(JITL.MODID + ".materials") {
         @Override
         public @NotNull ItemStack makeIcon() {
-            return new ItemStack(JItems.SAPPHIRE.get());
+            return new ItemStack(JItems.LUNIUM_POWDER.get());
         }
     };
 
     public static final CreativeModeTab ARMOR = new CreativeModeTab(JITL.MODID + ".armor") {
         @Override
         public @NotNull ItemStack makeIcon() {
-            return new ItemStack(JItems.SAPPHIRE_HELMET.get());
+            return new ItemStack(JItems.BLOODCRUST_HELMET.get());
         }
     };
 
     public static final CreativeModeTab TOOLS = new CreativeModeTab(JITL.MODID + ".tools") {
         @Override
         public @NotNull ItemStack makeIcon() {
-            return new ItemStack(JItems.SAPPHIRE_SHOVEL.get());
+            return new ItemStack(JItems.LUNIUM_SHOVEL.get());
         }
     };
 
     public static final CreativeModeTab WEAPONS = new CreativeModeTab(JITL.MODID + ".weapons") {
         @Override
         public @NotNull ItemStack makeIcon() {
-            return new ItemStack(JItems.SAPPHIRE_SWORD.get());
+            return new ItemStack(JItems.SHADIUM_SWORD.get());
         }
     };
 

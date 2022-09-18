@@ -1,0 +1,53 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.brown_hongo",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "body",
+					"pivot": [0, 24.33333, 0.66667],
+					"cubes": [
+						{"origin": [-5, 9, -5], "size": [10, 21, 10], "uv": [47, 29]},
+						{"origin": [-12, 30, -12], "size": [24, 7, 24], "uv": [0, 60]}
+					]
+				},
+				{
+					"name": "blLeg",
+					"pivot": [-5, 9, 5],
+					"cubes": [
+						{"origin": [-7, 0, 1], "size": [6, 9, 6], "uv": [0, 60]}
+					]
+				},
+				{
+					"name": "fLLeg",
+					"pivot": [-5, 9, -4],
+					"cubes": [
+						{"origin": [-7, 0, -7], "size": [6, 9, 6], "uv": [0, 60]}
+					]
+				},
+				{
+					"name": "bRLeg",
+					"pivot": [5, 9, 5],
+					"cubes": [
+						{"origin": [1, 0, 1], "size": [6, 9, 6], "uv": [0, 60]}
+					]
+				},
+				{
+					"name": "fRLeg",
+					"pivot": [5, 9, -4],
+					"cubes": [
+						{"origin": [1, 0, -7], "size": [6, 9, 6], "uv": [0, 60]}
+					]
+				}
+			]
+		}
+	]
+}

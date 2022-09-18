@@ -4,7 +4,9 @@ public enum JDimension {
 
     OVERWORLD("overworld"),
     END("end"),
-    NETHER("nether");
+    NETHER("nether"),
+    FROZEN("frozen"),
+    EUCA("euca");
 
     private String dim;
 
