@@ -27,7 +27,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -129,19 +128,13 @@ public class RockiteSmasher extends AnimatableMonster implements IJourneyBoss, I
             return PlayState.CONTINUE;
         }
 
-        if(!isAttacking())
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rockite_smasher.idle", true));
-        return PlayState.CONTINUE;
-    }
-
-    @Override
-    protected <E extends IAnimatable> PlayState attackPredicate(AnimationEvent<E> event) {
-        if(this.swinging && event.getController().getAnimationState().equals(AnimationState.Stopped)){
-            event.getController().markNeedsReload();
+        if(isAttacking()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rockite_smasher.swing", false));
-            this.swinging = false;
             return PlayState.CONTINUE;
         }
+
+        if(!isAttacking())
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rockite_smasher.idle", true));
         return PlayState.CONTINUE;
     }
 

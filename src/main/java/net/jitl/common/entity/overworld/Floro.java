@@ -69,11 +69,6 @@ public class Floro extends AnimatableMonster implements RangedAttackMob {
     }
 
     @Override
-    protected <E extends IAnimatable> PlayState attackPredicate(AnimationEvent<E> event) {
-        return PlayState.CONTINUE;
-    }
-
-    @Override
     public boolean hurt(DamageSource pSource, float pAmount) {
         setHidden(false);
         return super.hurt(pSource, pAmount);

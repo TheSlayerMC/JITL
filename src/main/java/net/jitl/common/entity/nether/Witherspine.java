@@ -57,19 +57,14 @@ public class Witherspine extends AnimatableMonster implements IAnimatable {
             return PlayState.CONTINUE;
         }
 
-        if(!isAttacking() && !event.isMoving())
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.witherspine.idle", true));
-        return PlayState.CONTINUE;
-    }
-
-    @Override
-    protected <E extends IAnimatable> PlayState attackPredicate(AnimationEvent<E> event) {
-        if(this.swinging && event.getController().getAnimationState().equals(AnimationState.Stopped)){
+        if(isAttacking()){
             event.getController().markNeedsReload();
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.witherspine.headbutt", false));
-            this.swinging = false;
             return PlayState.CONTINUE;
         }
+
+        if(!isAttacking() && !event.isMoving())
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.witherspine.idle", true));
         return PlayState.CONTINUE;
     }
 }

@@ -22,11 +22,6 @@ public class BrownHongo extends AnimatableMonster implements IAnimatable {
     }
 
     @Override
-    protected PlayState attackPredicate(AnimationEvent animationEvent) {
-        return PlayState.CONTINUE;
-    }
-
-    @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, 8.0F));
