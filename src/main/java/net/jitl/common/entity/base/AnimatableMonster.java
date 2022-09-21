@@ -28,6 +28,7 @@ public abstract class AnimatableMonster extends Monster implements IAnimatable {
     @Override
     public void registerControllers(AnimationData data) {
         data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
+        data.addAnimationController(new AnimationController(this, "attack_controller", 0, this::attackPredicate));
     }
 
     @Override
@@ -36,6 +37,7 @@ public abstract class AnimatableMonster extends Monster implements IAnimatable {
     }
 
     protected abstract <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event);
+    protected abstract <E extends IAnimatable> PlayState attackPredicate(AnimationEvent<E> event);
 
     @Override
     protected void defineSynchedData() {

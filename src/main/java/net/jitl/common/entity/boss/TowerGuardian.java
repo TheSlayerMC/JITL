@@ -37,6 +37,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -143,13 +144,19 @@ public class TowerGuardian extends AnimatableMonster implements IJourneyBoss, ID
             return PlayState.CONTINUE;
         }
 
-        if(isAttacking()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.tower_guardian.smash", false));
-            return PlayState.CONTINUE;
-        }
-
         if(!isAttacking())
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.tower_guardian.idle", true));
+        return PlayState.CONTINUE;
+    }
+
+    @Override
+    protected <E extends IAnimatable> PlayState attackPredicate(AnimationEvent<E> event) {
+        if(this.swinging && event.getController().getAnimationState().equals(AnimationState.Stopped)){
+            event.getController().markNeedsReload();
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.tower_guardian.smash", false));
+            this.swinging = false;
+            return PlayState.CONTINUE;
+        }
         return PlayState.CONTINUE;
     }
 
