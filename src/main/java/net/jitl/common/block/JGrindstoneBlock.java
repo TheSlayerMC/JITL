@@ -5,6 +5,8 @@ import net.jitl.core.init.JBlockProperties;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -36,17 +38,27 @@ public class JGrindstoneBlock extends BaseEntityBlock {
     @Override
     public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
         if(!level.isClientSide()) {
-            if(level.hasNeighborSignal(pos)) {
-                setPowered(state, true);
-            } else {
-                setPowered(state, false);
+            boolean powered = state.getValue(POWERED);
+            if(powered != level.hasNeighborSignal(pos)) {
+                if(powered) {
+                    level.scheduleTick(pos, this, 4);
+                } else {
+                    level.setBlock(pos, state.cycle(POWERED), 2);
+                }
             }
+        }
+    }
+
+    @Override
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if(state.getValue(POWERED) && !level.hasNeighborSignal(pos)) {
+            level.setBlock(pos, state.cycle(POWERED), 2);
         }
     }
 
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(POWERED, context.getLevel().hasNeighborSignal(context.getClickedPos()));
+        return this.defaultBlockState().setValue(POWERED, false);
     }
 
     public void setPowered(BlockState s, boolean p) {

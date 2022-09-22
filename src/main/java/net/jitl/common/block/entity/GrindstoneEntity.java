@@ -2,10 +2,12 @@ package net.jitl.common.block.entity;
 
 import net.jitl.common.block.JGrindstoneBlock;
 import net.jitl.core.init.internal.JBlockEntities;
+import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -13,6 +15,8 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+
+import java.util.Objects;
 
 
 public class GrindstoneEntity extends BlockEntity implements IAnimatable {
@@ -31,12 +35,14 @@ public class GrindstoneEntity extends BlockEntity implements IAnimatable {
     private <T extends IAnimatable> PlayState predicate(AnimationEvent<T> event) {
         if(isPowered()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.grindstone.working", true));
+        } else {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.grindstone.working", false));
         }
         return PlayState.CONTINUE;
     }
 
     public boolean isPowered() {
-        return getLevel().getBlockState(this.getBlockPos()).getValue(JGrindstoneBlock.POWERED);
+        return getBlockState().getValue(JGrindstoneBlock.POWERED);
     }
 
     @Override
