@@ -98,12 +98,15 @@ public class JBasePortalBlock extends Block {
             if (entity.isOnPortalCooldown()) {
                 entity.setPortalCooldown();
             } else {
-                teleport(entity, pos);
+                if(!entity.level.isClientSide && !pos.equals(entity.portalEntrancePos)) {
+                    entity.portalEntrancePos = pos.immutable();
+                }
+                teleport(entity);
             }
         }
     }
 
-    public void teleport(Entity entity, BlockPos pos) {
+    public void teleport(Entity entity) {
         Level entityWorld = entity.level;
         MinecraftServer minecraftserver = entityWorld.getServer();
         if(minecraftserver != null) {
@@ -116,8 +119,7 @@ public class JBasePortalBlock extends Block {
 
             if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
                 entity.setPortalCooldown();
-                entity.handleInsidePortal(pos);
-                entity.changeDimension(destinationWorld, new BaseTeleporter(destinationWorld, this, frame.get(), poi, destination, pos));
+                entity.changeDimension(destinationWorld, new BaseTeleporter(destinationWorld, this, frame.get(), poi, destination));
             }
         }
     }

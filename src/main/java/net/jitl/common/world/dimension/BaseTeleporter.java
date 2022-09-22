@@ -26,8 +26,6 @@ import net.minecraft.world.level.portal.PortalInfo;
 import net.minecraft.world.level.portal.PortalShape;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.util.ITeleporter;
-import software.bernie.example.registry.BlockRegistry;
-import software.bernie.shadowed.eliotlash.mclib.utils.MathHelper;
 
 import javax.annotation.Nullable;
 import java.util.Comparator;
@@ -41,15 +39,13 @@ public class BaseTeleporter implements ITeleporter {
     private final Block portal_frame;
     private final ResourceKey<PoiType> poi;
     private final ResourceKey<Level> destination;
-    private final BlockPos entPos;
 
-    public BaseTeleporter(ServerLevel worldIn, JBasePortalBlock portal, Block frame, ResourceKey<PoiType> poi, ResourceKey<Level> destination, BlockPos ent) {
+    public BaseTeleporter(ServerLevel worldIn, JBasePortalBlock portal, Block frame, ResourceKey<PoiType> poi, ResourceKey<Level> destination) {
         this.level = worldIn;
         this.portal_block = portal;
         this.portal_frame = frame;
         this.poi = poi;
         this.destination = destination;
-        this.entPos = ent;
     }
 
     public Optional<BlockUtil.FoundRectangle> getExistingPortal(BlockPos pos) {
@@ -192,12 +188,12 @@ public class BaseTeleporter implements ITeleporter {
             double coordinateDifference = DimensionType.getTeleportationScale(entity.level.dimensionType(), destWorld.dimensionType());
             BlockPos blockpos = new BlockPos(Mth.clamp(entity.getX() * coordinateDifference, minX, maxX), entity.getY(), Mth.clamp(entity.getZ() * coordinateDifference, minZ, maxZ));
             return this.getOrMakePortal(entity, blockpos).map((result) -> {
-                BlockState blockstate = entity.level.getBlockState(entPos);
+                BlockState blockstate = entity.level.getBlockState(entity.portalEntrancePos);
                 Direction.Axis axis;
                 Vec3 vector3d;
                 if (blockstate.hasProperty(BlockStateProperties.HORIZONTAL_AXIS)) {
                     axis = blockstate.getValue(BlockStateProperties.HORIZONTAL_AXIS);
-                    BlockUtil.FoundRectangle rectangle = BlockUtil.getLargestRectangleAround(entPos, axis, 21, Direction.Axis.Y, 21, (pos) -> entity.level.getBlockState(pos) == blockstate);
+                    BlockUtil.FoundRectangle rectangle = BlockUtil.getLargestRectangleAround(entity.portalEntrancePos, axis, 21, Direction.Axis.Y, 21, (pos) -> entity.level.getBlockState(pos) == blockstate);
                     vector3d = getRelativePortalPosition(entity, axis, rectangle);
                 } else {
                     axis = Direction.Axis.X;
@@ -207,55 +203,6 @@ public class BaseTeleporter implements ITeleporter {
                 return PortalShape.createPortalInfo(destWorld, result, axis, vector3d, entity.getDimensions(entity.getPose()), entity.getDeltaMovement(), entity.getYRot(), entity.getXRot());
             }).orElse(null);
         }
-    }
-
-    private BlockPos locatePortalByRadius(Level world, int chunkX, int chunkZ, int radius) {
-        for(int currentChunkX = chunkX - radius; currentChunkX <= chunkX + radius; currentChunkX++) {
-            BlockPos result = locatePortalInChunk(world, currentChunkX, chunkZ - radius);
-            if(result != null) {
-                return result;
-            }
-
-            result = locatePortalInChunk(world, currentChunkX, chunkZ + radius);
-            if(result != null) {
-                return result;
-            }
-        }
-
-        for(int currentChunkZ = chunkZ - radius + 1; currentChunkZ <= chunkZ + radius - 1; currentChunkZ++) {
-            BlockPos result = locatePortalInChunk(world, chunkX - radius, currentChunkZ);
-            if(result != null) {
-                return result;
-            }
-
-            result = locatePortalInChunk(world, chunkX + radius, currentChunkZ);
-            if(result != null) {
-                return result;
-            }
-        }
-
-        return null;
-    }
-
-    @Nullable
-    private BlockPos locatePortalInChunk(Level world, int chunkX, int chunkZ) {
-        BlockPos.MutableBlockPos searchPos = new BlockPos.MutableBlockPos();
-        int baseX = chunkX * 16;
-        int baseZ = chunkZ * 16;
-        for(int y = 0; y < 256; y++) {
-            for(int x = 0; x < 16; x++) {
-                for(int z = 0; z < 16; z++) {
-                    searchPos.set(baseX + x, y, baseZ + z);
-                    if(world.getBlockState(searchPos).getBlock().defaultBlockState() == portal_block.defaultBlockState()) {
-                        return searchPos;
-                    }
-                    if(world.getBlockState(searchPos).getBlock().defaultBlockState() == portal_frame.defaultBlockState()) {
-                        return searchPos;
-                    }
-                }
-            }
-        }
-        return null;
     }
 
     protected Optional<BlockUtil.FoundRectangle> getOrMakePortal(Entity entity, BlockPos pos) {
