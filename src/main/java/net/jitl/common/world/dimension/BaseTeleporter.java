@@ -52,7 +52,7 @@ public class BaseTeleporter implements ITeleporter {
         PoiManager poiManager = this.level.getPoiManager();
         poiManager.ensureLoadedAndValid(this.level, pos, 64);
         Optional<PoiRecord> optional = poiManager.getInSquare((poiType) ->
-                poiType.is(poi), pos, 64, PoiManager.Occupancy.ANY).sorted(Comparator.<PoiRecord>comparingDouble((poi) ->
+                poiType == poi, pos, 64, PoiManager.Occupancy.ANY).sorted(Comparator.<PoiRecord>comparingDouble((poi) ->
                 poi.getPos().distSqr(pos)).thenComparingInt((poi) ->
                 poi.getPos().getY())).filter((poi) ->
                 this.level.getBlockState(poi.getPos()).hasProperty(BlockStateProperties.HORIZONTAL_AXIS)).findFirst();
@@ -210,7 +210,7 @@ public class BaseTeleporter implements ITeleporter {
         if (existingPortal.isPresent()) {
             return existingPortal;
         } else {
-            Direction.Axis portalAxis = this.level.getBlockState(entity.blockPosition()).getOptionalValue(JBasePortalBlock.AXIS).orElse(Direction.Axis.X);
+            Direction.Axis portalAxis = this.level.getBlockState(entity.portalEntrancePos).getOptionalValue(JBasePortalBlock.AXIS).orElse(Direction.Axis.X);
             return this.makePortal(pos, portalAxis);
         }
     }
@@ -218,9 +218,5 @@ public class BaseTeleporter implements ITeleporter {
     @Override
     public boolean playTeleportSound(ServerPlayer player, ServerLevel sourceWorld, ServerLevel destWorld) {
         return true;
-    }
-
-    protected Vec3 getRelativePortalPosition(Entity e, Direction.Axis pAxis, BlockUtil.FoundRectangle pPortal) {
-        return PortalShape.getRelativePosition(pPortal, pAxis, e.position(), e.getDimensions(e.getPose()));
     }
 }
