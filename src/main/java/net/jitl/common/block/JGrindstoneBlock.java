@@ -25,7 +25,6 @@ public class JGrindstoneBlock extends BaseEntityBlock {
 
     public JGrindstoneBlock() {
         super(JBlockProperties.GRINDSTONE);
-
         this.registerDefaultState(this.defaultBlockState().setValue(POWERED, false));
     }
 
@@ -59,14 +58,6 @@ public class JGrindstoneBlock extends BaseEntityBlock {
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         return this.defaultBlockState().setValue(POWERED, false);
-    }
-
-    public void setPowered(BlockState s, boolean p) {
-        s.setValue(POWERED, p);
-    }
-
-    public void isPowered(BlockState s) {
-        s.getValue(POWERED);
     }
 
     @Override

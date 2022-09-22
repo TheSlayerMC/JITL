@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class JBlockLogGenerator {
+public class JBlockPillarGenerator {
 
     protected BufferedWriter blockModelWriter, blockHorModelWriter, blockstateWriter, itemModelWriter;
 

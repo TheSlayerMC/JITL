@@ -1,0 +1,7 @@
+{
+  "variants": {
+  "": {
+      "model": "jitl:block/rare_gem_block"
+     }
+  }
+}

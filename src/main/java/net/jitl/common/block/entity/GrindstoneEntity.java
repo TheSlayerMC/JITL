@@ -36,7 +36,7 @@ public class GrindstoneEntity extends BlockEntity implements IAnimatable {
         if(isPowered()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.grindstone.working", true));
         } else {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.grindstone.working", false));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.grindstone.nothing", false));
         }
         return PlayState.CONTINUE;
     }

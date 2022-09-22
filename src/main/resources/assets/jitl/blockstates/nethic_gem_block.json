@@ -1,0 +1,7 @@
+{
+  "variants": {
+  "": {
+      "model": "jitl:block/nethic_gem_block"
+     }
+  }
+}

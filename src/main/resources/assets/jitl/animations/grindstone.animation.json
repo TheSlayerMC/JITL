@@ -25,6 +25,16 @@
 					}
 				}
 			}
+		},
+		"animation.grindstone.nothing": {
+			"loop": false,
+			"bones": {
+				"blades": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					}
+				}
+			}
 		}
 	},
 	"geckolib_format_version": 2

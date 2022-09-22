@@ -43,6 +43,7 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.FROSTBERRY_THORN.get());
         cutout.add(JBlocks.FROZEN_BLOOM.get());
         cutout.add(JBlocks.FROZEN_FLOWER.get());
+        cutout.add(JBlocks.SULPHUR_CRYSTAL.get());
 
         translucent.add(JBlocks.EUCA_PORTAL.get());
         translucent.add(JBlocks.FROZEN_PORTAL.get());

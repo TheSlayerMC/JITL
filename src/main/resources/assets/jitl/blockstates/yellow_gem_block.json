@@ -1,0 +1,7 @@
+{
+  "variants": {
+  "": {
+      "model": "jitl:block/yellow_gem_block"
+     }
+  }
+}

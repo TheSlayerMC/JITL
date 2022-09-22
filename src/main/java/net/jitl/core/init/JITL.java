@@ -43,7 +43,7 @@ public class JITL {
             new JItemGenerator().generate();
             new JBlockGenerator().generate();
             new JBlockCrossGenerator().generate();
-            new JBlockLogGenerator().generate();
+            new JBlockPillarGenerator().generate();
             new JBlockDoorGenerator().generate();
             new JBlockTrapDoorGenerator().generate();
             new JBlockStairsGenerator().generate();
