@@ -1,0 +1,48 @@
+{
+  "type": "jitl:frozen",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "jitl:frozen_generation",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "jitl:frozen/frozen_wastes",
+          "parameters": {
+            "temperature": 1,
+            "humidity": 0,
+            "continentalness": -0.2,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "jitl:frozen/dying_forest",
+          "parameters": {
+            "temperature": 1,
+            "humidity": -0.5,
+            "continentalness": -0.2,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "jitl:frozen/bitterwood_forest",
+          "parameters": {
+            "temperature": 0.51,
+            "humidity": 1,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        }
+      ]
+    }
+  }
+}

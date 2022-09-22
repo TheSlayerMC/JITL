@@ -1,6 +1,8 @@
 package net.jitl.core.init;
 
 import net.jitl.client.render.RenderEntitys;
+import net.jitl.common.world.dimension.Dimensions;
+import net.jitl.common.world.dimension.JCarver;
 import net.jitl.common.world.gen.JConfiguredFeatures;
 import net.jitl.common.world.gen.JFoliagePlacers;
 import net.jitl.common.world.gen.JPlacedFeatures;
@@ -38,6 +40,8 @@ public class JITL {
         JFoliagePlacers.REGISTRY.register(modEventBus);
         JContainers.REGISTRY.register(modEventBus);
         JBlockEntities.REGISTRY.register(modEventBus);
+        Dimensions.REGISTRY.register(modEventBus);
+        JCarver.REGISTRY.register(modEventBus);
 
         if(DEV_MODE) {
             new JItemGenerator().generate();

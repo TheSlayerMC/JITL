@@ -1,8 +1,10 @@
 package net.jitl.core.init.internal;
 
+import net.jitl.common.block.JBasePortalBlock;
 import net.jitl.common.block.JFenceBlock;
 import net.jitl.common.block.JGrindstoneBlock;
 import net.jitl.common.block.JSaplingBlock;
+import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.common.world.gen.tree_grower.EucaGoldTreeGrower;
 import net.jitl.common.world.gen.tree_grower.EucaGreenTreeGrower;
 import net.jitl.core.init.JBlockProperties;
@@ -53,6 +55,11 @@ public class JBlocks {
     public static final ArrayList<String> fenceLangName = new ArrayList<>();
     public static final ArrayList<String> crossBlockName = new ArrayList<>();
     public static final ArrayList<String> crossLangName = new ArrayList<>();
+    public static final ArrayList<String> grassBlockName = new ArrayList<>();
+    public static final ArrayList<String> grassLangName = new ArrayList<>();
+    public static final ArrayList<String> portalBlockName = new ArrayList<>();
+    public static final ArrayList<String> portalLangName = new ArrayList<>();
+
 
     public static final RegistryObject<Block> IRIDIUM_ORE = register("iridium_ore", "Iridium Ore", JBlockProperties.STONE);
     public static final RegistryObject<Block> IRIDIUM_BLOCK = registerFuelBlock("iridium_block", "Iridium Block", () -> new Block(JBlockProperties.STONE), 16000);
@@ -162,10 +169,13 @@ public class JBlocks {
     public static final RegistryObject<FenceGateBlock> EUCA_BROWN_FENCE_GATE = registerFenceGate("euca_brown_fence_gate", "Euca Brown Fence Gate");
     public static final RegistryObject<JFenceBlock> EUCA_BROWN_FENCE = registerFence("euca_brown_fence", "Euca Brown Fence");
 
-    public static final RegistryObject<Block> FROZEN_PORTAL = register("frozen_portal", "Frozen Portal", JBlockProperties.STONE);
     public static final RegistryObject<Block> FROZEN_PORTAL_FRAME = register("frozen_portal_frame", "Frozen Portal Frame", JBlockProperties.STONE);
+    public static final RegistryObject<Block> FROZEN_PORTAL = registerPortalBlock("frozen_portal", "Frozen Portal", () -> new JBasePortalBlock(Dimensions.FROZEN_LANDS, FROZEN_PORTAL_FRAME));
     public static final RegistryObject<Block> FUMICE = register("fumice", "Fumice", JBlockProperties.DIRT);
+    public static final RegistryObject<Block> GRASSY_PERMAFROST = register("grassy_permafrost", "Grassy Permafrost", JBlockProperties.STONE);
+
     public static final RegistryObject<Block> PERMAFROST = register("permafrost", "Permafrost", JBlockProperties.STONE);
+    public static final RegistryObject<Block> CRUMBLED_PERMAFROST = register("crumbled_permafrost", "Crumbled Permafrost", JBlockProperties.STONE);
     public static final RegistryObject<RotatedPillarBlock> FROZEN_LOG = registerPillar("frozen_log", "Frozen Log", JBlockProperties.WOOD);
     public static final RegistryObject<Block> FROZEN_LEAVES = register("frozen_leaves", "Frozen Leaves", JBlockProperties.LEAVES);
     public static final RegistryObject<Block> FROSTWOOD_SAPLING = registerCrossBlock("frostwood_sapling", "Frostwood Sapling", () -> new JSaplingBlock(new EucaGreenTreeGrower()));
@@ -223,6 +233,22 @@ public class JBlocks {
     public static RegistryObject<Block> registerModeledBlock(String name, String translatedName, Supplier<Block> block) {
         modelBlockName.add(name);
         modelLangName.add(translatedName);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerGrassBlock(String name, String translatedName, Supplier<Block> block) {
+        grassBlockName.add(name);
+        grassLangName.add(translatedName);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerPortalBlock(String name, String translatedName, Supplier<Block> block) {
+        portalBlockName.add(name);
+        portalLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
         JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
         return block1;

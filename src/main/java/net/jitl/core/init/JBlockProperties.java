@@ -74,6 +74,12 @@ public class JBlockProperties {
             .dynamicShape()
             .sound(SoundType.WOOD);
 
+    public static BlockBehaviour.Properties PORTAL = BlockBehaviour.Properties.of(Material.PORTAL)
+            .strength(100F)
+            .sound(SoundType.GLASS)
+            .noOcclusion()
+            .noCollission();
+
     private static boolean never(BlockState state, BlockGetter reader, BlockPos pos) {
         return false;
     }
