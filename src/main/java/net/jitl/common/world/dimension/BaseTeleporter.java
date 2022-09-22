@@ -194,7 +194,7 @@ public class BaseTeleporter implements ITeleporter {
                 if (blockstate.hasProperty(BlockStateProperties.HORIZONTAL_AXIS)) {
                     axis = blockstate.getValue(BlockStateProperties.HORIZONTAL_AXIS);
                     BlockUtil.FoundRectangle rectangle = BlockUtil.getLargestRectangleAround(entity.portalEntrancePos, axis, 21, Direction.Axis.Y, 21, (pos) -> entity.level.getBlockState(pos) == blockstate);
-                    vector3d = getRelativePortalPosition(entity, axis, rectangle);
+                    vector3d = entity.getRelativePortalPosition(axis, rectangle);
                 } else {
                     axis = Direction.Axis.X;
                     vector3d = new Vec3(0.5D, 0.0D, 0.0D);
