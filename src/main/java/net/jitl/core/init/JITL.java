@@ -37,6 +37,7 @@ public class JITL {
         JPlacedFeatures.PLACED_FEATURES.register(modEventBus);
         JFoliagePlacers.REGISTRY.register(modEventBus);
         JContainers.REGISTRY.register(modEventBus);
+        JBlockEntities.REGISTRY.register(modEventBus);
 
         if(DEV_MODE) {
             new JItemGenerator().generate();

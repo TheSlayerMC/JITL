@@ -1,6 +1,7 @@
 package net.jitl.core.init.internal;
 
 import net.jitl.common.block.JFenceBlock;
+import net.jitl.common.block.JGrindstoneBlock;
 import net.jitl.common.block.JSaplingBlock;
 import net.jitl.common.world.gen.tree_grower.EucaGoldTreeGrower;
 import net.jitl.common.world.gen.tree_grower.EucaGreenTreeGrower;
@@ -28,6 +29,8 @@ public class JBlocks {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, JITL.MODID);
 
+    public static final ArrayList<String> modelBlockName = new ArrayList<>();
+    public static final ArrayList<String> modelLangName = new ArrayList<>();
     public static final ArrayList<String> normalBlockName = new ArrayList<>();
     public static final ArrayList<String> normalLangName = new ArrayList<>();
     public static final ArrayList<String> logBlockName = new ArrayList<>();
@@ -146,6 +149,9 @@ public class JBlocks {
     public static final RegistryObject<Block> FROZEN_FLOWER = registerCrossBlock("frozen_flower", "Frozen Flower", () -> new TallGrassBlock(JBlockProperties.TALL_GRASS));
     public static final RegistryObject<Block> FROSTY_ICE = register("frosty_ice", "Frosty Ice", JBlockProperties.ICE);
 
+    public static final RegistryObject<Block> GRINDSTONE = registerModeledBlock("grindstone", "Grindstone", JGrindstoneBlock::new);
+
+
     public static RegistryObject<Block> register(String name, String translatedName, BlockBehaviour.Properties props, CreativeModeTab tab) {
         return register(name, translatedName, () -> new Block(props), tab);
     }
@@ -166,6 +172,14 @@ public class JBlocks {
         normalLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
         JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(tab)));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerModeledBlock(String name, String translatedName, Supplier<Block> block) {
+        modelBlockName.add(name);
+        modelLangName.add(translatedName);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
         return block1;
     }
 

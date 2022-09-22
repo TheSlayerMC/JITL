@@ -17,6 +17,11 @@ public class JBlockProperties {
             .sound(SoundType.STONE)
             .requiresCorrectToolForDrops();
 
+    public static BlockBehaviour.Properties GRINDSTONE = BlockBehaviour.Properties.of(Material.STONE)
+            .strength(1.5F)
+            .sound(SoundType.STONE)
+            .noOcclusion();
+
     public static BlockBehaviour.Properties DUNGEON_BLOCK = BlockBehaviour.Properties.of(Material.STONE)
             .strength(1000000000F, -1F)
             .sound(SoundType.STONE);

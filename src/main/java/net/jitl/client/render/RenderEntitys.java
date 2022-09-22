@@ -3,11 +3,13 @@ package net.jitl.client.render;
 import net.jitl.client.JModelLayers;
 import net.jitl.client.model.AnimatedMonsterModel;
 import net.jitl.client.model.JBoatModel;
+import net.jitl.client.render.block.GrindstoneRenderer;
 import net.jitl.client.render.projectile.*;
 import net.jitl.client.render.vehicle.JBoatRenderer;
 import net.jitl.common.entity.base.JBoat;
 import net.jitl.core.helper.JDimension;
 import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JEntities;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
@@ -25,6 +27,8 @@ public class RenderEntitys {
         event.registerEntityRenderer(JEntities.ESSENCIA_BOLT_TYPE.get(), EssenciaBoltRenderer::new);
 
         event.registerEntityRenderer(JEntities.JBOAT_TYPE.get(), JBoatRenderer::new);
+
+        event.registerBlockEntityRenderer(JBlockEntities.GRINDSTONE.get(), GrindstoneRenderer::new);
     }
 
     @SubscribeEvent

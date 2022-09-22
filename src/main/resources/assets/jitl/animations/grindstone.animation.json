@@ -1,0 +1,31 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.grindstone.working": {
+			"loop": true,
+			"animation_length": 1.16,
+			"bones": {
+				"blades": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.28": {
+							"vector": [0, 0, 90]
+						},
+						"0.56": {
+							"vector": [0, 0, 180]
+						},
+						"0.84": {
+							"vector": [0, 0, 270]
+						},
+						"1.16": {
+							"vector": [0, 0, 360]
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}
