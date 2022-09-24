@@ -56,7 +56,9 @@
   "carvers": {},
   "features": [
     [
-
+      "jitl:euca_boulder_placed",
+      "jitl:euca_gold_tree_placed",
+      "jitl:gold_veg_placed"
     ]
   ]
 }

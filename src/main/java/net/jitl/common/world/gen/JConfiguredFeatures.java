@@ -6,15 +6,21 @@ import net.jitl.common.world.gen.tree_grower.SphericalFoliagePlacer;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.Registry;
+import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.OreFeatures;
+import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraftforge.registries.DeferredRegister;
@@ -110,7 +116,7 @@ public class JConfiguredFeatures {
             () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(CELESTIUM_TARGET.get(), 7)));
 
 
-    public static final RegistryObject<ConfiguredFeature<TreeConfiguration, ?>> EUCA_GOLD_TREE = CONFIGURED_FEATURES.register("euca_gold_tree",
+    public static final RegistryObject<ConfiguredFeature<?, ?>> EUCA_GOLD_TREE = CONFIGURED_FEATURES.register("euca_gold_tree",
             () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                                     BlockStateProvider.simple(JBlocks.EUCA_GOLD_LOG.get()),
                                     new ForkingTrunkPlacer(4, 1, 6),
@@ -120,7 +126,7 @@ public class JConfiguredFeatures {
                                     .ignoreVines()
                                     .dirt(BlockStateProvider.simple(JBlocks.GOLDITE_DIRT.get())).build()));
 
-    public static final RegistryObject<ConfiguredFeature<TreeConfiguration, ?>> EUCA_GREEN_TREE = CONFIGURED_FEATURES.register("euca_green_tree",
+    public static final RegistryObject<ConfiguredFeature<?, ?>> EUCA_GREEN_TREE = CONFIGURED_FEATURES.register("euca_green_tree",
             () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                                     BlockStateProvider.simple(JBlocks.EUCA_BROWN_LOG.get()),
                                     new ForkingTrunkPlacer(4, 1, 6),
@@ -131,5 +137,18 @@ public class JConfiguredFeatures {
                                     .ignoreVines()
                                     .dirt(BlockStateProvider.simple(JBlocks.GOLDITE_DIRT.get()))
                                     .build()));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> EUCA_BOULDER =
+            CONFIGURED_FEATURES.register("euca_boulder",
+                    () -> new ConfiguredFeature<>(JFeatures.BOULDER.get(),
+                            new BlockStateConfiguration(
+                                    JBlocks.GOLDITE_STONE.get().defaultBlockState())));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> GOLD_VEG = CONFIGURED_FEATURES.register("gold_veg",
+            () -> new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+                new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
+                        .add(JBlocks.EUCA_SILVER_FLOWER.get().defaultBlockState(), 2)
+                        .add(JBlocks.EUCA_TALL_FLOWERS.get().defaultBlockState(), 1)
+                        .add(JBlocks.EUCA_TALL_GRASS.get().defaultBlockState(), 5)))));
 
 }

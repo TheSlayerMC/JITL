@@ -4,6 +4,7 @@ import net.jitl.client.render.RenderEntitys;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.common.world.dimension.JCarver;
 import net.jitl.common.world.gen.JConfiguredFeatures;
+import net.jitl.common.world.gen.JFeatures;
 import net.jitl.common.world.gen.JFoliagePlacers;
 import net.jitl.common.world.gen.JPlacedFeatures;
 import net.jitl.core.data.*;
@@ -38,6 +39,7 @@ public class JITL {
         JConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
         JPlacedFeatures.PLACED_FEATURES.register(modEventBus);
         JFoliagePlacers.REGISTRY.register(modEventBus);
+        JFeatures.REGISTRY.register(modEventBus);
         JContainers.REGISTRY.register(modEventBus);
         JBlockEntities.REGISTRY.register(modEventBus);
         Dimensions.REGISTRY.register(modEventBus);
