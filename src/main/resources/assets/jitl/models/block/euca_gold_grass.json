@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "up": "jitl:block/euca_gold_grass_top",
+    "north": "jitl:block/euca_gold_grass_side",
+    "east": "jitl:block/euca_gold_grass_side",
+    "south": "jitl:block/euca_gold_grass_side",
+    "west": "jitl:block/euca_gold_grass_side",
+    "down": "jitl:block/euca_gold_grass_bottom",
+    "particle": "jitl:block/euca_gold_grass_bottom"
+  }
+}

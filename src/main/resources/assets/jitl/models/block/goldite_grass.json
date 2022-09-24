@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "up": "jitl:block/goldite_grass_top",
+    "north": "jitl:block/goldite_grass_side",
+    "east": "jitl:block/goldite_grass_side",
+    "south": "jitl:block/goldite_grass_side",
+    "west": "jitl:block/goldite_grass_side",
+    "down": "jitl:block/goldite_grass_bottom",
+    "particle": "jitl:block/goldite_grass_bottom"
+  }
+}

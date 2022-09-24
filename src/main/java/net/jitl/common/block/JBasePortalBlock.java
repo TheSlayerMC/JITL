@@ -114,6 +114,9 @@ public class JBasePortalBlock extends Block {
             ServerLevel destinationWorld = minecraftserver.getLevel(destination);
             ResourceKey<PoiType> poi = Dimensions.FROZEN_PORTAL.getKey();
 
+            if(this == JBlocks.EUCA_PORTAL.get())
+                poi = Dimensions.EUCA_PORTAL.getKey();
+
             if(this == JBlocks.FROZEN_PORTAL.get())
                 poi = Dimensions.FROZEN_PORTAL.getKey();
 

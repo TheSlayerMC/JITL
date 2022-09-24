@@ -31,6 +31,9 @@ public class JBiomeRegistry {
             helper.register(JITL.rl("frozen_wastes"), FROZEN_WASTES);
             helper.register(JITL.rl("dying_forest"), FROZEN_DYING_FOREST);
             helper.register(JITL.rl("bitterwood_forest"), FROZEN_BITTERWOOD_FOREST);
+
+            helper.register(JITL.rl("euca_plains"), EUCA_PLAINS);
+            helper.register(JITL.rl("euca_goldite_grains"), EUCA_GOLDITE_GRAINS);
         });
     }
 }

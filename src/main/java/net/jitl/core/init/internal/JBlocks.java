@@ -126,8 +126,8 @@ public class JBlocks {
     public static final RegistryObject<Block> GILDEN_DUNGEON_BRICKS = register("gilded_dungeon_bricks", "Gilded Dungeon Bricks", JBlockProperties.DUNGEON_BLOCK);
     public static final RegistryObject<Block> DUNGEON_LAMP = register("dungeon_lamp", "Dungeon Lamp", JBlockProperties.DUNGEON_LAMP);
 
-    public static final RegistryObject<Block> EUCA_PORTAL = register("euca_portal", "Euca Portal", JBlockProperties.STONE);
     public static final RegistryObject<Block> EUCA_PORTAL_FRAME = register("euca_portal_frame", "Euca Portal Frame", JBlockProperties.STONE);
+    public static final RegistryObject<Block> EUCA_PORTAL = registerPortalBlock("euca_portal", "Euca Portal", () -> new JBasePortalBlock(Dimensions.EUCA, EUCA_PORTAL_FRAME));
     public static final RegistryObject<Block> GOLDITE_DIRT = register("goldite_dirt", "Goldite Soil", JBlockProperties.DIRT);
     public static final RegistryObject<Block> GOLDITE_STONE = register("goldite_stone", "Goldite Stone", JBlockProperties.STONE);
     public static final RegistryObject<Block> EUCA_BRICK = register("euca_brick", "Euca Bricks", JBlockProperties.STONE);
@@ -142,6 +142,9 @@ public class JBlocks {
     public static final RegistryObject<Block> EUCA_TALL_FLOWERS = registerCrossBlock("euca_tall_flowers", "Euca Tall Flowers", () -> new TallGrassBlock(JBlockProperties.TALL_GRASS));
     public static final RegistryObject<Block> EUCA_SILVER_FLOWER = registerCrossBlock("euca_silver_gold_flower", "Euca Silver Flower", () -> new TallGrassBlock(JBlockProperties.TALL_GRASS));
     public static final RegistryObject<Block> EUCA_BLUE_FLOWER = registerCrossBlock("euca_blue_flower", "Euca Blue Flower", () -> new TallGrassBlock(JBlockProperties.TALL_GRASS));
+
+    public static final RegistryObject<Block> EUCA_GOLD_GRASS = registerGrassBlock("euca_gold_grass", "Euca Gold Grass", () -> new Block(JBlockProperties.GRASS));
+    public static final RegistryObject<Block> GOLDITE_GRASS = registerGrassBlock("goldite_grass", "Goldite Grass", () -> new Block(JBlockProperties.GRASS));
 
     public static final RegistryObject<RotatedPillarBlock> EUCA_GOLD_LOG = registerPillar("euca_gold_log", "Euca Gold Log", JBlockProperties.WOOD);
     public static final RegistryObject<Block> EUCA_GOLD_LEAVES = register("euca_gold_leaves", "Euca Gold Leaves", JBlockProperties.LEAVES);//JLeavesBlock::new);

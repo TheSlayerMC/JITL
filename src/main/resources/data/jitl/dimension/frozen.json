@@ -1,5 +1,6 @@
 {
   "type": "jitl:frozen",
+  "forge:use_server_seed": true,
   "generator": {
     "type": "minecraft:noise",
     "settings": "jitl:frozen_generation",
