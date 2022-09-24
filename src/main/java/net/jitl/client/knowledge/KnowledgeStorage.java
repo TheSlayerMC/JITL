@@ -15,7 +15,7 @@ public class KnowledgeStorage {
     private int levels = 0;
 
     public void add(float amount, Player p, EnumKnowledge type) {
-        if (amountOnLevel + amount >= getLevelCapacity(levels)) {
+        if(amountOnLevel + amount >= getLevelCapacity(levels)) {
             amountOnLevel = (amountOnLevel + amount - getLevelCapacity(levels));
             addLevel(1, p, type);
         } else {
@@ -26,14 +26,15 @@ public class KnowledgeStorage {
 
     public void addLevel(int amount, Player p, EnumKnowledge type) {
         levels = levels + amount;
-        Minecraft.getInstance().getToasts().addToast(new KnowledgeToast(type, true));
+        if(!isCompleted())
+            Minecraft.getInstance().getToasts().addToast(new KnowledgeToast(type, true));
         sendPacket(type, p);
     }
 
     public float remove(float amount) {
         float total = getTotal();
 
-        if (amount > total) {
+        if(amount > total) {
             float left = amount - total;
 
             levels = 0;
@@ -42,7 +43,7 @@ public class KnowledgeStorage {
             return left;
         }
 
-        if (amountOnLevel - amount < 0) {
+        if(amountOnLevel - amount < 0) {
             amount -= amountOnLevel;
 
             while(amount > 0) {
@@ -116,6 +117,7 @@ public class KnowledgeStorage {
     public void update() {
         if(getLevelCount() >= 100) {
             setLevel(100);
+            setXP(0);
         }
     }
 

@@ -155,7 +155,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
                 blit(matrixStack, progressBarX, progressBarY, 0, 0, width, 5);
 
                 if(completed) {
-                    blit(matrixStack, k + x - 3, l + y - 3, 130, 43, 32, 29);
+                    blit(matrixStack, k + x, l + y + 3, 130, 43, 32, 29);
                 }
 
                 int lvX = progressBarX + 29, lvY = progressBarY - 1;
