@@ -146,13 +146,17 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         Player player = Minecraft.getInstance().player;
         if(player != null) {
             player.getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(knowledge -> {
-
+                boolean completed = knowledge.isCompleted(type);
                 float percents = ClientKnowledge.getClientKnowledgeXP(type) / knowledge.getLevelCapacity(knowledge.getLevel(type));
                 int width = (int) (percents * progressBarSize);
 
                 int progressBarX = k + x + 35, progressBarY = l + y + 19;
                 blit(matrixStack, progressBarX, progressBarY, 0, 5, progressBarSize, 5);
                 blit(matrixStack, progressBarX, progressBarY, 0, 0, width, 5);
+
+                if(completed) {
+                    blit(matrixStack, k + x - 3, l + y - 3, 130, 43, 32, 29);
+                }
 
                 int lvX = progressBarX + 29, lvY = progressBarY - 1;
 

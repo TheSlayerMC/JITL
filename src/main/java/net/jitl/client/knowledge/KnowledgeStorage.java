@@ -89,6 +89,10 @@ public class KnowledgeStorage {
         tag.putInt("levels", levels);
     }
 
+    public boolean isCompleted() {
+        return getLevelCount() >= 100;
+    }
+
     public void readNBT(CompoundTag nbt) {
         amountOnLevel = nbt.getFloat("amount_on_level");
         levels = nbt.getInt("levels");
@@ -106,6 +110,12 @@ public class KnowledgeStorage {
     public void sendPacket(EnumKnowledge k, Player player) {
         if(!(player instanceof FakePlayer) && player instanceof ServerPlayer) {
             JNetworkRegistry.INSTANCE.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer)player), new PacketKnowledge(k,this));
+        }
+    }
+
+    public void update() {
+        if(getLevelCount() >= 100) {
+            setLevel(100);
         }
     }
 

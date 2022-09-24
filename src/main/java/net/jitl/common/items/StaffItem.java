@@ -40,7 +40,7 @@ public class StaffItem extends Item implements IEssenceItem {
                 }
             });
             player.getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(knowledge -> {
-                knowledge.addXP(player, EnumKnowledge.OVERWORLD, 10F);
+                knowledge.addLevel(player, EnumKnowledge.OVERWORLD, 10);
             });
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());

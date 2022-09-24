@@ -27,6 +27,10 @@ public class PlayerKnowledge {
         knowledgeMap.get(knowledge).addLevel(level, p, knowledge);
     }
 
+    public boolean isCompleted(EnumKnowledge k) {
+        return knowledgeMap.get(k).isCompleted();
+    }
+
     public void setLevel(EnumKnowledge knowledge, int level) {
         knowledgeMap.get(knowledge).setLevel(level);
     }
@@ -60,8 +64,10 @@ public class PlayerKnowledge {
     }
 
     public void update(Player p) {
-        for(EnumKnowledge k : EnumKnowledge.values())
+        for(EnumKnowledge k : EnumKnowledge.values()) {
             knowledgeMap.get(k).sendPacket(k, p);
+            knowledgeMap.get(k).update();
+        }
     }
 
     public void saveNBT(CompoundTag tag) {
