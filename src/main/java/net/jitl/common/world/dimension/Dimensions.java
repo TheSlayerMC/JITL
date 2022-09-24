@@ -20,6 +20,7 @@ public class Dimensions {
     public static final ResourceKey<Level> FROZEN_LANDS = ResourceKey.create(Registry.DIMENSION_REGISTRY, JITL.rl("frozen"));
     public static final ResourceKey<DimensionType> FROZEN_LANDS_TYPE = ResourceKey.create(Registry.DIMENSION_TYPE_REGISTRY, JITL.rl("frozen"));
 
+
     public static final RegistryObject<PoiType> FROZEN_PORTAL = REGISTRY.register("frozen_portal",
             () -> new PoiType(ImmutableSet.copyOf(JBlocks.FROZEN_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
 }

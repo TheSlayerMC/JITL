@@ -172,7 +172,7 @@ public class JBlocks {
     public static final RegistryObject<Block> FROZEN_PORTAL_FRAME = register("frozen_portal_frame", "Frozen Portal Frame", JBlockProperties.STONE);
     public static final RegistryObject<Block> FROZEN_PORTAL = registerPortalBlock("frozen_portal", "Frozen Portal", () -> new JBasePortalBlock(Dimensions.FROZEN_LANDS, FROZEN_PORTAL_FRAME));
     public static final RegistryObject<Block> FUMICE = register("fumice", "Fumice", JBlockProperties.DIRT);
-    public static final RegistryObject<Block> GRASSY_PERMAFROST = register("grassy_permafrost", "Grassy Permafrost", JBlockProperties.STONE);
+    public static final RegistryObject<Block> GRASSY_PERMAFROST = registerGrassBlock("grassy_permafrost", "Grassy Permafrost", () -> new Block(JBlockProperties.GRASS));
 
     public static final RegistryObject<Block> PERMAFROST = register("permafrost", "Permafrost", JBlockProperties.STONE);
     public static final RegistryObject<Block> CRUMBLED_PERMAFROST = register("crumbled_permafrost", "Crumbled Permafrost", JBlockProperties.STONE);

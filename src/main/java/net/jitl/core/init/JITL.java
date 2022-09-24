@@ -57,6 +57,7 @@ public class JITL {
             new JBlockButtonGenerator().generate();
             new JBlockGateGenerator().generate();
             new JBlockFenceGenerator().generate();
+            new JBlockGrassGenerator().generate();
             new LangRegistry().generate();
         }
 

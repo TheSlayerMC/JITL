@@ -1,6 +1,12 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube",
   "textures": {
-    "all": "jitl:block/grassy_permafrost"
+    "up": "jitl:block/grassy_permafrost_top",
+    "north": "jitl:block/grassy_permafrost_side",
+    "east": "jitl:block/grassy_permafrost_side",
+    "south": "jitl:block/grassy_permafrost_side",
+    "west": "jitl:block/grassy_permafrost_side",
+    "down": "jitl:block/grassy_permafrost_bottom",
+    "particle": "jitl:block/grassy_permafrost_bottom"
   }
 }
