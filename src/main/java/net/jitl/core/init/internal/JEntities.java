@@ -11,6 +11,7 @@ import net.jitl.common.entity.overworld.npc.Mage;
 import net.jitl.common.entity.projectile.ConjuringProjectileEntity;
 import net.jitl.common.entity.projectile.EssenciaBoltEntity;
 import net.jitl.common.entity.projectile.EssenciaProjectileEntity;
+import net.jitl.common.entity.projectile.PiercerEntity;
 import net.jitl.core.init.JITL;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -60,6 +61,12 @@ public class JEntities {
     public static final RegistryObject<EntityType<EssenciaProjectileEntity>> ESSENCIA_PROJECTILE_TYPE = REGISTRY.register("essencia_projectile", () ->
             EntityType.Builder.<EssenciaProjectileEntity>of(EssenciaProjectileEntity::new, MobCategory.MISC)
                     .sized(0.25F, 0.25F).build("essencia_projectile"));
+
+    public static final RegistryObject<EntityType<PiercerEntity>> PIERCER_TYPE = REGISTRY.register("piercer", () ->
+                    EntityType.Builder.<PiercerEntity>of(PiercerEntity::new, MobCategory.MISC)
+                            .setTrackingRange(80)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .sized(0.5F, 0.5F).build("piercer"));
 
     public static final RegistryObject<EntityType<EssenciaBoltEntity>> ESSENCIA_BOLT_TYPE = REGISTRY.register("essencia_bolt", () ->
             EntityType.Builder.of(EssenciaBoltEntity::new, MobCategory.MISC)

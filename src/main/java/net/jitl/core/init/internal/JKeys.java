@@ -1,4 +1,4 @@
-package net.jitl.core.helper;
+package net.jitl.core.init.internal;
 
 import net.minecraft.client.KeyMapping;
 import org.lwjgl.glfw.GLFW;

@@ -1,4 +1,4 @@
-package net.jitl.core.helper;
+package net.jitl.core.init.internal;
 
 public enum JDimension {
 

@@ -1,4 +1,4 @@
-package net.jitl.core.helper;
+package net.jitl.core.init.internal;
 
 import net.jitl.core.helper.internal.EmptyContainer;
 import net.jitl.core.init.JITL;

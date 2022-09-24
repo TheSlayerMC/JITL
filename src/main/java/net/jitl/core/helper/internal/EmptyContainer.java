@@ -1,6 +1,6 @@
 package net.jitl.core.helper.internal;
 
-import net.jitl.core.helper.JContainers;
+import net.jitl.core.init.internal.JContainers;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;

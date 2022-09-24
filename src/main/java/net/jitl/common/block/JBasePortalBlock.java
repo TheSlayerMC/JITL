@@ -112,10 +112,10 @@ public class JBasePortalBlock extends Block {
         if(minecraftserver != null) {
             ResourceKey<Level> destination = entity.level.dimension() == dimensionID ? Level.OVERWORLD : dimensionID;
             ServerLevel destinationWorld = minecraftserver.getLevel(destination);
-            ResourceKey<PoiType> poi = Dimensions.FROZEN_PORTAL;
+            ResourceKey<PoiType> poi = Dimensions.FROZEN_PORTAL.getKey();
 
             if(this == JBlocks.FROZEN_PORTAL.get())
-                poi = Dimensions.FROZEN_PORTAL;
+                poi = Dimensions.FROZEN_PORTAL.getKey();
 
             if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
                 entity.setPortalCooldown();

@@ -1,6 +1,6 @@
 package net.jitl.client.model;
 
-import net.jitl.core.helper.JDimension;
+import net.jitl.core.init.internal.JDimension;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib3.core.IAnimatable;

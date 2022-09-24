@@ -3,7 +3,9 @@ package net.jitl.core.init.internal;
 import net.jitl.common.entity.base.JBoat;
 import net.jitl.common.entity.projectile.ConjuringProjectileEntity;
 import net.jitl.common.entity.projectile.EssenciaProjectileEntity;
+import net.jitl.common.entity.projectile.PiercerEntity;
 import net.jitl.common.items.BottleEssenciaItem;
+import net.jitl.common.items.PiercerItem;
 import net.jitl.common.items.StaffItem;
 import net.jitl.common.items.base.*;
 import net.jitl.core.helper.EnumJTier;
@@ -89,6 +91,12 @@ public class JItems {
     public static final RegistryObject<Item> GOLDEN_EUCA_BOAT = registerNormalItem("golden_euca_boat", "Gold Euca Boat", () -> new JBoatItem(JBoat.Type.GOLD_EUCA));
     public static final RegistryObject<Item> BROWN_EUCA_BOAT = registerNormalItem("brown_euca_boat", "Brown Euca Boat", () -> new JBoatItem(JBoat.Type.BROWN_EUCA));
     public static final RegistryObject<Item> FROZEN_BOAT = registerNormalItem("frozen_boat", "Frostwood Boat", () -> new JBoatItem(JBoat.Type.FROZEN));
+
+    public static final RegistryObject<Item> EUCA_PIERCER = registerToolItem("euca_piercer", "Euca Piercer", () ->
+            new PiercerItem(rangedProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+
+    public static final RegistryObject<Item> PIERCER = registerToolItem("piercer", "Piercer", () ->
+            new PiercerItem(rangedProps().durability(128), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 3.0F)));
 
     public static final RegistryObject<Item> MAGE_EGG = registerNormalItem("mage_spawn_egg", "Mage Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.MAGE_TYPE,
             0x948e8d, 0x3b3653, eggProps()));

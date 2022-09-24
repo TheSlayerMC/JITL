@@ -1,10 +1,9 @@
 package net.jitl.client.gui;
 
 import net.jitl.client.gui.overlay.PlayerStats;
-import net.jitl.core.helper.JKeys;
+import net.jitl.core.init.internal.JKeys;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.Minecraft;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

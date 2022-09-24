@@ -7,10 +7,11 @@ import net.jitl.client.render.block.GrindstoneRenderer;
 import net.jitl.client.render.projectile.*;
 import net.jitl.client.render.vehicle.JBoatRenderer;
 import net.jitl.common.entity.base.JBoat;
-import net.jitl.core.helper.JDimension;
+import net.jitl.core.init.internal.JDimension;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JEntities;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -25,6 +26,7 @@ public class RenderEntitys {
         event.registerEntityRenderer(JEntities.CONJURING_PROJECTILE_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/conjuring.png")));
         event.registerEntityRenderer(JEntities.ESSENCIA_PROJECTILE_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/essencia.png")));
         event.registerEntityRenderer(JEntities.ESSENCIA_BOLT_TYPE.get(), EssenciaBoltRenderer::new);
+        event.registerEntityRenderer(JEntities.PIERCER_TYPE.get(), manager -> new PiercerRenderer(manager, Minecraft.getInstance().getItemRenderer()));
 
         event.registerEntityRenderer(JEntities.JBOAT_TYPE.get(), JBoatRenderer::new);
 

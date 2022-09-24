@@ -7,7 +7,7 @@ import net.jitl.common.world.gen.JConfiguredFeatures;
 import net.jitl.common.world.gen.JFoliagePlacers;
 import net.jitl.common.world.gen.JPlacedFeatures;
 import net.jitl.core.data.*;
-import net.jitl.core.helper.JContainers;
+import net.jitl.core.init.internal.JContainers;
 import net.jitl.core.init.internal.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -42,6 +42,7 @@ public class JITL {
         JBlockEntities.REGISTRY.register(modEventBus);
         Dimensions.REGISTRY.register(modEventBus);
         JCarver.REGISTRY.register(modEventBus);
+        JEnchantments.REGISTRY.register(modEventBus);
 
         if(DEV_MODE) {
             new JItemGenerator().generate();
