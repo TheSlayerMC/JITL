@@ -48,6 +48,26 @@ public class JPlacedFeatures {
                     commonOrePlacement(7,
                             HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(100)))));
 
+    public static final RegistryObject<PlacedFeature> STORON_ORE = PLACED_FEATURES.register("storon_ore_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.STORON_ORE.getHolder().get(),
+                    commonOrePlacement(7,
+                            HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(128)))));
+
+    public static final RegistryObject<PlacedFeature> MEKYUM_ORE = PLACED_FEATURES.register("mekyum_ore_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.MEKYUM_ORE.getHolder().get(),
+                    commonOrePlacement(7,
+                            HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(128)))));
+
+    public static final RegistryObject<PlacedFeature> KORITE_ORE = PLACED_FEATURES.register("korite_ore_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.KORITE_ORE.getHolder().get(),
+                    commonOrePlacement(7,
+                            HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(128)))));
+
+    public static final RegistryObject<PlacedFeature> CELESTIUM_ORE = PLACED_FEATURES.register("celestium_ore_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.CELESTIUM_ORE.getHolder().get(),
+                    commonOrePlacement(7,
+                            HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(128)))));
+
     private static List<PlacementModifier> commonOrePlacement(int count, PlacementModifier height) {
         return orePlacement(CountPlacement.of(count), height);
     }

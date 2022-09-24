@@ -59,6 +59,22 @@ public class JConfiguredFeatures {
             List.of(OreConfiguration.target(new BlockMatchTest(Blocks.END_STONE), JBlocks.ENDERILLIUM_ORE.get().defaultBlockState()))
     );
 
+    private static final Supplier<List<OreConfiguration.TargetBlockState>> MEKYUM_TARGET = Suppliers.memoize(() ->
+            List.of(OreConfiguration.target(new BlockMatchTest(JBlocks.GOLDITE_STONE.get()), JBlocks.MEKYUM_ORE.get().defaultBlockState()))
+    );
+
+    private static final Supplier<List<OreConfiguration.TargetBlockState>> KORITE_TARGET = Suppliers.memoize(() ->
+            List.of(OreConfiguration.target(new BlockMatchTest(JBlocks.GOLDITE_STONE.get()), JBlocks.KORITE_ORE.get().defaultBlockState()))
+    );
+
+    private static final Supplier<List<OreConfiguration.TargetBlockState>> STORON_TARGET = Suppliers.memoize(() ->
+            List.of(OreConfiguration.target(new BlockMatchTest(JBlocks.GOLDITE_STONE.get()), JBlocks.STORON_ORE.get().defaultBlockState()))
+    );
+
+    private static final Supplier<List<OreConfiguration.TargetBlockState>> CELESTIUM_TARGET = Suppliers.memoize(() ->
+            List.of(OreConfiguration.target(new BlockMatchTest(JBlocks.GOLDITE_STONE.get()), JBlocks.CELESTIUM_ORE.get().defaultBlockState()))
+    );
+
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> IRIDIUM_ORE = CONFIGURED_FEATURES.register("iridium_ore",
             () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(IRIDIUM_TARGET.get(), 7)));
@@ -80,6 +96,19 @@ public class JConfiguredFeatures {
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> ENDERILLIUM_ORE = CONFIGURED_FEATURES.register("enderillium_ore",
             () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ENDERILLIUM_TARGET.get(), 7)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> MEKYUM_ORE = CONFIGURED_FEATURES.register("mekyum_ore",
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(MEKYUM_TARGET.get(), 7)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> KORITE_ORE = CONFIGURED_FEATURES.register("korite_ore",
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(KORITE_TARGET.get(), 7)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> STORON_ORE = CONFIGURED_FEATURES.register("storon_ore",
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(STORON_TARGET.get(), 7)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> CELESTIUM_ORE = CONFIGURED_FEATURES.register("celestium_ore",
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(CELESTIUM_TARGET.get(), 7)));
+
 
     public static final RegistryObject<ConfiguredFeature<TreeConfiguration, ?>> EUCA_GOLD_TREE = CONFIGURED_FEATURES.register("euca_gold_tree",
             () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
