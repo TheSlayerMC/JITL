@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "jitl:deepslate_shadium_ore"
+  },
+  "result": "jitl:shadium_ingot",
+  "experience": 0.7,
+  "cookingtime": 200
+}

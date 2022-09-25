@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "jitl:mekyum_gemstone"
+  },
+  "result": "jitl:mekyum_ingot",
+  "experience": 0.7,
+  "cookingtime": 100
+}

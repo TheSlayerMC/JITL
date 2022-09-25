@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "jitl:iridium_ore"
+  },
+  "result": "jitl:iridium_nugget",
+  "experience": 0.7,
+  "cookingtime": 200
+}
