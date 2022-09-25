@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "#": {
+      "item": "jitl:korite_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "jitl:korite_pickaxe"
+  }
+}

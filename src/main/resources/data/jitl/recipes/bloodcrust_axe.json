@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " ##",
+    " S#",
+    " S "
+  ],
+  "key": {
+    "#": {
+      "item": "jitl:bloodcrust_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "jitl:bloodcrust_axe"
+  }
+}
