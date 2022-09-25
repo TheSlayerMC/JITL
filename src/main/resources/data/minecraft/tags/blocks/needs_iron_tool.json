@@ -1,6 +1,23 @@
 {
   "replace": false,
   "values": [
-    "jitl:sapphire_ore"
+    "jitl:sapphire_ore",
+    "jitl:deepslate_sapphire_ore",
+    "jitl:shadium_ore",
+    "jitl:deepslate_shadium_ore",
+    "jitl:lunium_ore",
+    "jitl:deepslate_lunium_ore",
+    "jitl:warped_quartz_ore",
+    "jitl:bloodcrust_ore",
+    "jitl:firestone_ore",
+    "jitl:enderillium_ore",
+    "jitl:ashual_ore",
+    "jitl:blazium_ore",
+    "jitl:celestium_ore",
+    "jitl:mekyum_ore",
+    "jitl:storon_ore",
+    "jitl:korite_ore",
+    "jitl:rimestone_ore",
+    "jitl:peridot_ore"
   ]
 }

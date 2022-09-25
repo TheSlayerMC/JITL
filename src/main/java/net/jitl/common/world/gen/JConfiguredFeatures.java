@@ -89,7 +89,6 @@ public class JConfiguredFeatures {
             List.of(OreConfiguration.target(EUCA_ORE_REPLACEABLES, JBlocks.CELESTIUM_ORE.get().defaultBlockState()))
     );
 
-
     public static final RegistryObject<ConfiguredFeature<?, ?>> IRIDIUM_ORE = CONFIGURED_FEATURES.register("iridium_ore",
             () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(IRIDIUM_TARGET.get(), 7)));
 

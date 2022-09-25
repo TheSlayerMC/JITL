@@ -10,7 +10,7 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "jitl:sapphire_ore",
+              "name": "jitl:deepslate_sapphire_ore",
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",

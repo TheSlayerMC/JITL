@@ -10,7 +10,7 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "jitl:sapphire_ore",
+              "name": "jitl:deepslate_iridium_ore",
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",
@@ -29,7 +29,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "jitl:sapphire",
+              "name": "jitl:iridium_nugget",
               "functions": [
                 {
                   "function": "minecraft:set_count",
