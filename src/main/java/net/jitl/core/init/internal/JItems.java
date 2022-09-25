@@ -5,6 +5,7 @@ import net.jitl.common.entity.projectile.ConjuringProjectileEntity;
 import net.jitl.common.entity.projectile.EssenciaProjectileEntity;
 import net.jitl.common.entity.projectile.PiercerEntity;
 import net.jitl.common.items.BottleEssenciaItem;
+import net.jitl.common.items.FlameCoinItem;
 import net.jitl.common.items.PiercerItem;
 import net.jitl.common.items.StaffItem;
 import net.jitl.common.items.base.*;
@@ -51,7 +52,7 @@ public class JItems {
 
     public static final RegistryObject<Item> BOTTLE_OF_ESSENCIA = registerNormalItem("bottle_of_essencia", "Bottle 'o' Essencia", () -> new BottleEssenciaItem(false));
     public static final RegistryObject<Item> STRONG_BOTTLE_OF_ESSENCIA = registerNormalItem("strong_bottle_of_essencia", "Bottle 'o' Essencia", () -> new BottleEssenciaItem(true));
-    public static final RegistryObject<Item> FLAME_COIN = registerNormalItem("flame_coin", "Flame Coin");
+    public static final RegistryObject<Item> FLAME_COIN = registerNormalItem("flame_coin", "Flame Coin", FlameCoinItem::new);
 
     public static final RegistryObject<Item> SAPPHIRE = registerNormalItem("sapphire", "Sapphire", JTabs.MATERIALS);
     public static final RegistryObject<Item> SAPPHIRE_SHOVEL = registerToolItem("sapphire_shovel", "Sapphire Shovel", () -> new JShovelItem(EnumJTier.SAPPHIRE_SHOVEL));

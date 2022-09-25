@@ -23,9 +23,15 @@ public class Dimensions {
     public static final ResourceKey<Level> EUCA = ResourceKey.create(Registry.DIMENSION_REGISTRY, JITL.rl("euca"));
     public static final ResourceKey<DimensionType> EUCA_TYPE = ResourceKey.create(Registry.DIMENSION_TYPE_REGISTRY, JITL.rl("euca"));
 
+    public static final ResourceKey<Level> BOIL = ResourceKey.create(Registry.DIMENSION_REGISTRY, JITL.rl("boil"));
+    public static final ResourceKey<DimensionType> BOIL_TYPE = ResourceKey.create(Registry.DIMENSION_TYPE_REGISTRY, JITL.rl("boil"));
+
     public static final RegistryObject<PoiType> FROZEN_PORTAL = REGISTRY.register("frozen_portal",
             () -> new PoiType(ImmutableSet.copyOf(JBlocks.FROZEN_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
 
     public static final RegistryObject<PoiType> EUCA_PORTAL = REGISTRY.register("euca_portal",
             () -> new PoiType(ImmutableSet.copyOf(JBlocks.EUCA_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
+
+    public static final RegistryObject<PoiType> BOIL_PORTAL = REGISTRY.register("boil_portal",
+            () -> new PoiType(ImmutableSet.copyOf(JBlocks.BOIL_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
 }
