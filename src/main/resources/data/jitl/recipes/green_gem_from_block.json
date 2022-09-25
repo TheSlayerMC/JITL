@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "iron_ingot",
+  "ingredients": [
+    {
+      "item": "jitl:green_gem_block"
+    }
+  ],
+  "result": {
+    "item": "jitl:green_gem",
+    "count": 4
+  }
+}

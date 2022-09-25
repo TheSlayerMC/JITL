@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+        "model": "jitl:block/warped_quartz_slab"
+      },
+    "type=double": {
+        "model": "jitl:block/warped_quartz_block"
+      },
+    "type=top": {
+        "model": "jitl:block/warped_quartz_slab_top"
+      }
+  }
+}

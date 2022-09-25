@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "iron_ingot",
+  "ingredients": [
+    {
+      "item": "jitl:warped_quartz_block"
+    }
+  ],
+  "result": {
+    "item": "jitl:warped_quartz",
+    "count": 4
+  }
+}

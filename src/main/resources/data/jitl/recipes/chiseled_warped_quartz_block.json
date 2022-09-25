@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "jitl:warped_quartz_slab"
+    }
+  },
+  "result": {
+    "item": "jitl:chiseled_warped_quartz_block"
+  }
+}

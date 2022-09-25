@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "jitl:block/chiseled_warped_quartz_block_top",
+    "side": "jitl:block/chiseled_warped_quartz_block_side"
+  }
+}

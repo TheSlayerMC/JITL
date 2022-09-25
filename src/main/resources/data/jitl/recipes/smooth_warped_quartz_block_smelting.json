@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "jitl:warped_quartz_block"
+  },
+  "result": "jitl:smooth_warped_quartz_block",
+  "experience": 0.7,
+  "cookingtime": 200
+}

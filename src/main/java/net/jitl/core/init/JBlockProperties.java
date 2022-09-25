@@ -85,28 +85,31 @@ public class JBlockProperties {
             .noCollission();
 
     public static String getTextureFromName(String name) {
-        String plankName = "";
+        String texName = "";
         if(name.contains("euca_brown")) {
-            plankName = "euca_brown_planks";
+            texName = "euca_brown_planks";
         }
         if(name.contains("euca_gold")) {
-            plankName = "euca_gold_planks";
-        }
-        if(name.contains("euca_gold")) {
-            plankName = "euca_gold_planks";
+            texName = "euca_gold_planks";
         }
         if(name.contains("frozen")) {
-            plankName = "frozen_planks";
+            texName = "frozen_planks";
         }
         if(name.contains("dungeon_lamp")) {
-            plankName = "dungeon_lamp";
+            texName = "dungeon_lamp";
         }
         if(name.contains("dungeon_brick")) {
-            plankName = "dungeon_bricks";
+            texName = "dungeon_bricks";
         }
         if(name.contains("gilded_dungeon_brick")) {
-            plankName = "gilded_dungeon_bricks";
+            texName = "gilded_dungeon_bricks";
         }
-        return plankName;
+        if(name.contains("warped_quartz")) {
+            texName = "warped_quartz_block";
+        }
+        if(name.contains("smooth_warped_quartz")) {
+            texName = "smooth_warped_quartz_block";
+        }
+        return texName;
     }
 }

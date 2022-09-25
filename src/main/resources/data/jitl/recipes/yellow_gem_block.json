@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "jitl:yellow_gem"
+    }
+  },
+  "result": {
+    "item": "jitl:yellow_gem_block"
+  }
+}

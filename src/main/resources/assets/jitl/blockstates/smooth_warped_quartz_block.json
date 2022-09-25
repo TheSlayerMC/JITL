@@ -1,0 +1,7 @@
+{
+  "variants": {
+  "": {
+      "model": "jitl:block/smooth_warped_quartz_block"
+     }
+  }
+}
