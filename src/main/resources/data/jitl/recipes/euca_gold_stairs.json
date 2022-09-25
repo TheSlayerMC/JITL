@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_stairs",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "jitl:euca_gold_planks"
+    }
+  },
+  "result": {
+    "item": "jitl:euca_gold_stairs",
+    "count": 4
+  }
+}

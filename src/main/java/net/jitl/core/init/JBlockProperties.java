@@ -84,10 +84,6 @@ public class JBlockProperties {
             .noOcclusion()
             .noCollission();
 
-    private static boolean never(BlockState state, BlockGetter reader, BlockPos pos) {
-        return false;
-    }
-
     public static String getTextureFromName(String name) {
         String plankName = "";
         if(name.contains("euca_brown")) {
@@ -101,6 +97,15 @@ public class JBlockProperties {
         }
         if(name.contains("frozen")) {
             plankName = "frozen_planks";
+        }
+        if(name.contains("dungeon_lamp")) {
+            plankName = "dungeon_lamp";
+        }
+        if(name.contains("dungeon_brick")) {
+            plankName = "dungeon_bricks";
+        }
+        if(name.contains("gilded_dungeon_brick")) {
+            plankName = "gilded_dungeon_bricks";
         }
         return plankName;
     }

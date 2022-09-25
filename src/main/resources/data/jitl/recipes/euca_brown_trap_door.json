@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_trapdoor",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "jitl:euca_brown_planks"
+    }
+  },
+  "result": {
+    "item": "jitl:euca_brown_trap_door",
+    "count": 2
+  }
+}

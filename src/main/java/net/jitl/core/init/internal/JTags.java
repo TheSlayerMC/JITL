@@ -12,6 +12,7 @@ public class JTags {
     public static final TagKey<Block> BOIL_STONE_ORE_REPLACEABLES = tagBlock("boil_stone_ore_replaceables");
     public static final TagKey<Block> FROZEN_STONE_ORE_REPLACEABLES = tagBlock("frozen_stone_ore_replaceables");
     public static final TagKey<Block> JLOGS = tagBlock("jlogs");
+    public static final TagKey<Block> JPLANKS = tagBlock("planks");
 
     private static TagKey<Item> tagItem(String name) {
         return ItemTags.create(JITL.rl(name));

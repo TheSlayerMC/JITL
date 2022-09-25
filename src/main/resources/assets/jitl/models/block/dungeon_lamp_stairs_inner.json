@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "jitl:block/dungeon_lamp",
+    "side": "jitl:block/dungeon_lamp",
+    "top": "jitl:block/dungeon_lamp"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "jitl:euca_brown_log"
+    }
+  ],
+  "result": {
+    "item": "jitl:euca_brown_planks",
+    "count": 4
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_slab",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "jitl:euca_brown_planks"
+    }
+  },
+  "result": {
+    "item": "jitl:euca_brown_slab",
+    "count": 6
+  }
+}

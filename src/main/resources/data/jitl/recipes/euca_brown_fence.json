@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_fence",
+  "pattern": [
+    "W#W",
+    "W#W"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "jitl:euca_brown_planks"
+    }
+  },
+  "result": {
+    "item": "jitl:euca_brown_fence",
+    "count": 3
+  }
+}
