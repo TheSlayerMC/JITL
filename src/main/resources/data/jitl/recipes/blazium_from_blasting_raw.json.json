@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "jitl:raw_blazium"
+  },
+  "result": "jitl:blazium_ingot",
+  "experience": 0.7,
+  "cookingtime": 100
+}

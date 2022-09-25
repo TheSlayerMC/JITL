@@ -32,7 +32,31 @@ public enum EnumJTier {
     BLOODCRUST_PICKAXE(JToolTier.BLOODCRUST, 2, 0),
     BLOODCRUST_AXE(JToolTier.BLOODCRUST, 4, 0),
     BLOODCRUST_SHOVEL(JToolTier.BLOODCRUST, 1, 0),
-    BLOODCRUST_HOE(JToolTier.BLOODCRUST, 0, 0)
+    BLOODCRUST_HOE(JToolTier.BLOODCRUST, 0, 0),
+
+    CELESTIUM_SWORD(JToolTier.CELESTIUM, 4, 0),
+    CELESTIUM_PICKAXE(JToolTier.CELESTIUM, 2, 0),
+    CELESTIUM_AXE(JToolTier.CELESTIUM, 4, 0),
+    CELESTIUM_SHOVEL(JToolTier.CELESTIUM, 1, 0),
+    CELESTIUM_HOE(JToolTier.CELESTIUM, 0, 0),
+
+    KORITE_SWORD(JToolTier.KORITE, 4, 0),
+    KORITE_PICKAXE(JToolTier.KORITE, 2, 0),
+    KORITE_AXE(JToolTier.KORITE, 4, 0),
+    KORITE_SHOVEL(JToolTier.KORITE, 1, 0),
+    KORITE_HOE(JToolTier.KORITE, 0, 0),
+
+    STORON_SWORD(JToolTier.STORON, 4, 0),
+    STORON_PICKAXE(JToolTier.STORON, 2, 0),
+    STORON_AXE(JToolTier.STORON, 4, 0),
+    STORON_SHOVEL(JToolTier.STORON, 1, 0),
+    STORON_HOE(JToolTier.STORON, 0, 0),
+
+    MEKYUM_SWORD(JToolTier.MEKYUM, 4, 0),
+    MEKYUM_PICKAXE(JToolTier.MEKYUM, 2, 0),
+    MEKYUM_AXE(JToolTier.MEKYUM, 4, 0),
+    MEKYUM_SHOVEL(JToolTier.MEKYUM, 1, 0),
+    MEKYUM_HOE(JToolTier.MEKYUM, 0, 0)
     ;
 
     private final Tier tier;
@@ -64,6 +88,11 @@ public enum EnumJTier {
         public static final Tier SHADIUM = new ForgeTier(3, 1561, 8F, 3F, 15, null, () -> Ingredient.of(JItems.SHADIUM_INGOT.get()));
         public static final Tier BLOODCRUST = new ForgeTier(3, 1883, 8F, 3F, 15, null, () -> Ingredient.of(JItems.BLOODCRUST_INGOT.get()));
 
+        public static final Tier CELESTIUM = new ForgeTier(3, 1883, 8F, 3F, 15, null, () -> Ingredient.of(JItems.CELESTIUM_INGOT.get()));
+        public static final Tier KORITE = new ForgeTier(3, 1883, 8F, 3F, 15, null, () -> Ingredient.of(JItems.KORITE_INGOT.get()));
+        public static final Tier STORON = new ForgeTier(3, 1883, 8F, 3F, 15, null, () -> Ingredient.of(JItems.STORON_INGOT.get()));
+        public static final Tier MEKYUM = new ForgeTier(3, 1883, 8F, 3F, 15, null, () -> Ingredient.of(JItems.MEKYUM_INGOT.get()));
+
     }
 
     public static class JArmorTier {
@@ -72,6 +101,5 @@ public enum EnumJTier {
         public static final JArmorMaterial LUNIUM = new JArmorMaterial("lunium", 23, new int[] {2, 5, 6, 2}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(JItems.LUNIUM_INGOT.get()));
         public static final JArmorMaterial SHADIUM = new JArmorMaterial("shadium", 33, new int[] {3, 6, 8, 3}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, () -> Ingredient.of(JItems.SHADIUM_INGOT.get()));
         public static final JArmorMaterial BLOODCRUST = new JArmorMaterial("bloodcrust", 33, new int[] {3, 5, 7, 3}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, () -> Ingredient.of(JItems.BLOODCRUST_INGOT.get()));
-
     }
 }
