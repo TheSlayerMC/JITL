@@ -1,9 +1,6 @@
 package net.jitl.core.init.internal;
 
-import net.jitl.common.block.JBasePortalBlock;
-import net.jitl.common.block.JFenceBlock;
-import net.jitl.common.block.JGrindstoneBlock;
-import net.jitl.common.block.JSaplingBlock;
+import net.jitl.common.block.*;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.common.world.gen.tree_grower.EucaGoldTreeGrower;
 import net.jitl.common.world.gen.tree_grower.EucaGreenTreeGrower;
@@ -143,8 +140,8 @@ public class JBlocks {
     public static final RegistryObject<Block> EUCA_SILVER_FLOWER = registerCrossBlock("euca_silver_gold_flower", "Euca Silver Flower", () -> new TallGrassBlock(JBlockProperties.TALL_GRASS));
     public static final RegistryObject<Block> EUCA_BLUE_FLOWER = registerCrossBlock("euca_blue_flower", "Euca Blue Flower", () -> new TallGrassBlock(JBlockProperties.TALL_GRASS));
 
-    public static final RegistryObject<Block> EUCA_GOLD_GRASS = registerGrassBlock("euca_gold_grass", "Euca Gold Grass", () -> new Block(JBlockProperties.GRASS));
-    public static final RegistryObject<Block> GOLDITE_GRASS = registerGrassBlock("goldite_grass", "Goldite Grass", () -> new Block(JBlockProperties.GRASS));
+    public static final RegistryObject<Block> EUCA_GOLD_GRASS = registerGrassBlock("euca_gold_grass", "Euca Gold Grass", () -> new JGrassBlock(GOLDITE_DIRT));
+    public static final RegistryObject<Block> GOLDITE_GRASS = registerGrassBlock("goldite_grass", "Goldite Grass", () -> new JGrassBlock(GOLDITE_DIRT));
 
     public static final RegistryObject<RotatedPillarBlock> EUCA_GOLD_LOG = registerPillar("euca_gold_log", "Euca Gold Log", JBlockProperties.WOOD);
     public static final RegistryObject<Block> EUCA_GOLD_LEAVES = register("euca_gold_leaves", "Euca Gold Leaves", JBlockProperties.LEAVES);//JLeavesBlock::new);

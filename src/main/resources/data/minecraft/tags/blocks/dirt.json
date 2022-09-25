@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "jitl:crumbled_permafrost",
+    "jitl:grassy_permafrost",
+    "jitl:goldite_grass",
+    "jitl:euca_gold_grass",
+    "jitl:goldite_dirt"
+  ]
+}

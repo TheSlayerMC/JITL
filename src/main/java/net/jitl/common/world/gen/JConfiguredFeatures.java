@@ -5,24 +5,29 @@ import com.google.common.collect.ImmutableList;
 import net.jitl.common.world.gen.tree_grower.SphericalFoliagePlacer;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
+import net.jitl.core.init.internal.JTags;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.OreFeatures;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.RandomPatchFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.NoiseProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
+import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -32,6 +37,9 @@ import java.util.function.Supplier;
 public class JConfiguredFeatures {
 
     public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, JITL.MODID);
+
+    public static final RuleTest EUCA_ORE_REPLACEABLES = new TagMatchTest(JTags.EUCA_STONE_ORE_REPLACEABLES);
+
 
     private static final Supplier<List<OreConfiguration.TargetBlockState>> IRIDIUM_TARGET = Suppliers.memoize(() ->
             List.of(OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, JBlocks.IRIDIUM_ORE.get().defaultBlockState()),
@@ -66,19 +74,19 @@ public class JConfiguredFeatures {
     );
 
     private static final Supplier<List<OreConfiguration.TargetBlockState>> MEKYUM_TARGET = Suppliers.memoize(() ->
-            List.of(OreConfiguration.target(new BlockMatchTest(JBlocks.GOLDITE_STONE.get()), JBlocks.MEKYUM_ORE.get().defaultBlockState()))
+            List.of(OreConfiguration.target(EUCA_ORE_REPLACEABLES, JBlocks.MEKYUM_ORE.get().defaultBlockState()))
     );
 
     private static final Supplier<List<OreConfiguration.TargetBlockState>> KORITE_TARGET = Suppliers.memoize(() ->
-            List.of(OreConfiguration.target(new BlockMatchTest(JBlocks.GOLDITE_STONE.get()), JBlocks.KORITE_ORE.get().defaultBlockState()))
+            List.of(OreConfiguration.target(EUCA_ORE_REPLACEABLES, JBlocks.KORITE_ORE.get().defaultBlockState()))
     );
 
     private static final Supplier<List<OreConfiguration.TargetBlockState>> STORON_TARGET = Suppliers.memoize(() ->
-            List.of(OreConfiguration.target(new BlockMatchTest(JBlocks.GOLDITE_STONE.get()), JBlocks.STORON_ORE.get().defaultBlockState()))
+            List.of(OreConfiguration.target(EUCA_ORE_REPLACEABLES, JBlocks.STORON_ORE.get().defaultBlockState()))
     );
 
     private static final Supplier<List<OreConfiguration.TargetBlockState>> CELESTIUM_TARGET = Suppliers.memoize(() ->
-            List.of(OreConfiguration.target(new BlockMatchTest(JBlocks.GOLDITE_STONE.get()), JBlocks.CELESTIUM_ORE.get().defaultBlockState()))
+            List.of(OreConfiguration.target(EUCA_ORE_REPLACEABLES, JBlocks.CELESTIUM_ORE.get().defaultBlockState()))
     );
 
 
@@ -145,10 +153,11 @@ public class JConfiguredFeatures {
                                     JBlocks.GOLDITE_STONE.get().defaultBlockState())));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> GOLD_VEG = CONFIGURED_FEATURES.register("gold_veg",
-            () -> new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
-                new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
-                        .add(JBlocks.EUCA_SILVER_FLOWER.get().defaultBlockState(), 2)
-                        .add(JBlocks.EUCA_TALL_FLOWERS.get().defaultBlockState(), 1)
-                        .add(JBlocks.EUCA_TALL_GRASS.get().defaultBlockState(), 5)))));
+            () -> new ConfiguredFeature<>(Feature.FLOWER, new RandomPatchConfiguration(96, 6, 2,
+                    PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L,
+                            new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F,
+                                List.of(JBlocks.EUCA_SILVER_FLOWER.get().defaultBlockState(),
+                                JBlocks.EUCA_TALL_FLOWERS.get().defaultBlockState(),
+                                JBlocks.EUCA_TALL_GRASS.get().defaultBlockState())))))));
 
 }
