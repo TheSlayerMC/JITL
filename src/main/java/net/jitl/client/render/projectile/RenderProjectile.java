@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlas;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import org.jetbrains.annotations.NotNull;
@@ -18,9 +19,8 @@ import org.jetbrains.annotations.NotNull;
 public class RenderProjectile<T extends Entity> extends EntityRenderer<T> {
 
     private final RenderType renderType;
-    private float scale;
+    private float scale = 1.0F;
     private final boolean fullBright = true;
-    private final boolean projectile = true;
 
     public RenderProjectile(EntityRendererProvider.Context context, ResourceLocation texture) {
         super(context);
@@ -34,6 +34,10 @@ public class RenderProjectile<T extends Entity> extends EntityRenderer<T> {
         }
         super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
     }
+    @Override
+    protected int getBlockLightLevel(@NotNull T entity, @NotNull BlockPos pos) {
+        return this.fullBright ? 15 : super.getBlockLightLevel(entity, pos);
+    }
 
 
     private void renderProjectile(@NotNull PoseStack matrixStackIn, @NotNull MultiBufferSource bufferIn, int packedLightIn) {
@@ -43,6 +47,7 @@ public class RenderProjectile<T extends Entity> extends EntityRenderer<T> {
         matrixStackIn.mulPose(this.entityRenderDispatcher.cameraOrientation());
         matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(180.0F));
         matrixStackIn.translate(0, 0.5D, 0);
+        matrixStackIn.scale(this.scale, this.scale, this.scale);
 
         PoseStack.Pose lastMatrix = matrixStackIn.last();
         Matrix4f pose = lastMatrix.pose();

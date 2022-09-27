@@ -1,6 +1,7 @@
 package net.jitl.common.entity.overworld;
 
 import net.jitl.common.entity.base.AnimatableMonster;
+import net.jitl.common.entity.projectile.FloroMudEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -203,15 +204,15 @@ public class Floro extends AnimatableMonster implements RangedAttackMob {
 
     @Override
     public void performRangedAttack(LivingEntity pTarget, float pVelocity) {
-        Snowball snowball = new Snowball(this.level, this);
+        FloroMudEntity mud = new FloroMudEntity(this.level, this, 3.5F);
         double d0 = pTarget.getEyeY() - (double)1.1F;
         double d1 = pTarget.getX() - this.getX();
-        double d2 = d0 - snowball.getY();
+        double d2 = d0 - mud.getY();
         double d3 = pTarget.getZ() - this.getZ();
         double d4 = Math.sqrt(d1 * d1 + d3 * d3) * (double)0.2F;
-        snowball.shoot(d1, d2 + d4, d3, 1.6F, 12.0F);
+        mud.shoot(d1, d2 + d4, d3, 1.6F, 12.0F);
         this.playSound(SoundEvents.SNOW_GOLEM_SHOOT, 1.0F, 0.4F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
-        this.level.addFreshEntity(snowball);
+        this.level.addFreshEntity(mud);
     }
 
     private class FloroRevealingGoal extends Goal {

@@ -3,14 +3,13 @@ package net.jitl.core.init.internal;
 import net.jitl.common.entity.base.JBoat;
 import net.jitl.common.entity.projectile.ConjuringProjectileEntity;
 import net.jitl.common.entity.projectile.EssenciaProjectileEntity;
+import net.jitl.common.entity.projectile.FloroMudEntity;
 import net.jitl.common.entity.projectile.PiercerEntity;
-import net.jitl.common.items.BottleEssenciaItem;
-import net.jitl.common.items.FlameCoinItem;
-import net.jitl.common.items.PiercerItem;
-import net.jitl.common.items.StaffItem;
+import net.jitl.common.items.*;
 import net.jitl.common.items.base.*;
 import net.jitl.core.helper.EnumJTier;
 import net.jitl.core.init.JITL;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -32,6 +31,7 @@ public class JItems {
     public static final ArrayList<String> langName = new ArrayList<>();
     public static final ArrayList<String> toolLangName = new ArrayList<>();
 
+    public static final RegistryObject<Item> TEST_BUG = registerNormalItem("test_bug", "Test Bug", TestBugItem::new);
 
     public static final RegistryObject<Item> IRIDIUM_NUGGET = registerFuelItem("iridium_nugget", "Iridium Nugget", 1600);
     public static final RegistryObject<Item> ENDERILLIUM_SHARD = registerNormalItem("enderillium_shard", "Enderillium Shard");
@@ -145,6 +145,9 @@ public class JItems {
 
     public static final RegistryObject<Item> PIERCER = registerToolItem("piercer", "Piercer", () ->
             new PiercerItem(rangedProps().durability(128), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 3.0F)));
+
+    public static final RegistryObject<Item> MUD_BALL = registerNormalItem("mud_ball", "Mud Ball", () -> new ThrowableItem(rangedProps(),
+            (world, thrower) -> new FloroMudEntity(JEntities.FLORO_MUD_TYPE.get(), world, thrower, 0.0F)).setSound(() -> SoundEvents.SNOWBALL_THROW));
 
     public static final RegistryObject<Item> MAGE_EGG = registerNormalItem("mage_spawn_egg", "Mage Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.MAGE_TYPE,
             0x948e8d, 0x3b3653, eggProps()));

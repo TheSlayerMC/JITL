@@ -8,10 +8,7 @@ import net.jitl.common.entity.nether.Witherspine;
 import net.jitl.common.entity.overworld.BrownHongo;
 import net.jitl.common.entity.overworld.Floro;
 import net.jitl.common.entity.overworld.npc.Mage;
-import net.jitl.common.entity.projectile.ConjuringProjectileEntity;
-import net.jitl.common.entity.projectile.EssenciaBoltEntity;
-import net.jitl.common.entity.projectile.EssenciaProjectileEntity;
-import net.jitl.common.entity.projectile.PiercerEntity;
+import net.jitl.common.entity.projectile.*;
 import net.jitl.core.init.JITL;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -56,11 +53,21 @@ public class JEntities {
 
     public static final RegistryObject<EntityType<ConjuringProjectileEntity>> CONJURING_PROJECTILE_TYPE = REGISTRY.register("conjuring_projectile", () ->
             EntityType.Builder.<ConjuringProjectileEntity>of(ConjuringProjectileEntity::new, MobCategory.MISC)
+                    .setTrackingRange(80)
+                    .setShouldReceiveVelocityUpdates(true)
                     .sized(0.25F, 0.25F).build("conjuring_projectile"));
 
     public static final RegistryObject<EntityType<EssenciaProjectileEntity>> ESSENCIA_PROJECTILE_TYPE = REGISTRY.register("essencia_projectile", () ->
             EntityType.Builder.<EssenciaProjectileEntity>of(EssenciaProjectileEntity::new, MobCategory.MISC)
+                    .setTrackingRange(80)
+                    .setShouldReceiveVelocityUpdates(true)
                     .sized(0.25F, 0.25F).build("essencia_projectile"));
+
+    public static final RegistryObject<EntityType<FloroMudEntity>> FLORO_MUD_TYPE = REGISTRY.register("floro_mud", () ->
+            EntityType.Builder.<FloroMudEntity>of(FloroMudEntity::new, MobCategory.MISC)
+                    .setTrackingRange(80)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .sized(0.5F, 0.5F).build("floro_mud"));
 
     public static final RegistryObject<EntityType<PiercerEntity>> PIERCER_TYPE = REGISTRY.register("piercer", () ->
                     EntityType.Builder.<PiercerEntity>of(PiercerEntity::new, MobCategory.MISC)

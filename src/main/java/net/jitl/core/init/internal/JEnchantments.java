@@ -31,6 +31,6 @@ public class JEnchantments {
     public static final RegistryObject<Enchantment> FAITHFUL =
             REGISTRY.register("faithful", () -> new FaithfulEnchantment(Enchantment.Rarity.COMMON, PIERCER, EquipmentSlot.MAINHAND));
 
-    public static final RegistryObject<Enchantment> HOT_TOUCH =
-            REGISTRY.register("hot_touch", () -> new HotTouchEnchantment(Enchantment.Rarity.UNCOMMON, EnchantmentCategory.DIGGER, EquipmentSlot.MAINHAND));
+    //public static final RegistryObject<Enchantment> HOT_TOUCH =
+     //       REGISTRY.register("hot_touch", () -> new HotTouchEnchantment(Enchantment.Rarity.UNCOMMON, EnchantmentCategory.DIGGER, EquipmentSlot.MAINHAND));
 }
