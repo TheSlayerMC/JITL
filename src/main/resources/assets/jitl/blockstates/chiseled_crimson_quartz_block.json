@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+        "model": "jitl:block/chiseled_crimson_quartz_block_horizontal",
+         "x": 90,
+         "y": 90
+      },
+    "axis=y": {
+        "model": "jitl:block/chiseled_crimson_quartz_block"
+      },
+    "axis=z": {
+        "model": "jitl:block/chiseled_crimson_quartz_block_horizontal",
+         "x": 90
+      }
+  }
+}

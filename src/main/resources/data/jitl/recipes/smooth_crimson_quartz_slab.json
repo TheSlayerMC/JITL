@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_slab",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "jitl:smooth_crimson_quartz_block"
+    }
+  },
+  "result": {
+    "item": "jitl:smooth_crimson_quartz_slab",
+    "count": 6
+  }
+}

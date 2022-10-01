@@ -48,6 +48,11 @@ public class JPlacedFeatures {
                     commonOrePlacement(7,
                             HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()))));
 
+    public static final RegistryObject<PlacedFeature> CRIMSON_QUARTZ_ORE = PLACED_FEATURES.register("crimson_ore_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.CRIMSON_QUARTZ_ORE.getHolder().get(),
+                    commonOrePlacement(7,
+                            HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+
     public static final RegistryObject<PlacedFeature> BLOODCRUST_ORE = PLACED_FEATURES.register("blood_ore_placed", () ->
             new PlacedFeature(JConfiguredFeatures.BLOODCRUST_ORE.getHolder().get(),
                     commonOrePlacement(4,

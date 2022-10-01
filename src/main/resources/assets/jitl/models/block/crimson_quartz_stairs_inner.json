@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "jitl:block/crimson_quartz_block",
+    "side": "jitl:block/crimson_quartz_block",
+    "top": "jitl:block/crimson_quartz_block"
+  }
+}

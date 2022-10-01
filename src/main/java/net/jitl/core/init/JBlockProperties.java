@@ -115,6 +115,12 @@ public class JBlockProperties {
         if(name.contains("smooth_warped_quartz")) {
             texName = "smooth_warped_quartz_block";
         }
+        if(name.contains("crimson_quartz")) {
+            texName = "crimson_quartz_block";
+        }
+        if(name.contains("smooth_crimson_quartz")) {
+            texName = "smooth_crimson_quartz_block";
+        }
         return texName;
     }
 }

@@ -31,6 +31,10 @@ public class JBlocks {
 
     public static final ArrayList<String> modelBlockName = new ArrayList<>();
     public static final ArrayList<String> modelLangName = new ArrayList<>();
+    public static final ArrayList<String> rotatableBlockName = new ArrayList<>();
+    public static final ArrayList<String> rotatableLangName = new ArrayList<>();
+    public static final ArrayList<String> furnaceBlockName = new ArrayList<>();
+    public static final ArrayList<String> furnaceLangName = new ArrayList<>();
     public static final ArrayList<String> normalBlockName = new ArrayList<>();
     public static final ArrayList<String> normalLangName = new ArrayList<>();
     public static final ArrayList<String> logBlockName = new ArrayList<>();
@@ -57,7 +61,8 @@ public class JBlocks {
     public static final ArrayList<String> grassLangName = new ArrayList<>();
     public static final ArrayList<String> portalBlockName = new ArrayList<>();
     public static final ArrayList<String> portalLangName = new ArrayList<>();
-
+    public static final ArrayList<String> chestBlockName = new ArrayList<>();
+    public static final ArrayList<String> chestLangName = new ArrayList<>();
 
     public static final RegistryObject<Block> IRIDIUM_ORE = register("iridium_ore", "Iridium Ore", JBlockProperties.STONE);
     public static final RegistryObject<Block> IRIDIUM_BLOCK = registerFuelBlock("iridium_block", "Iridium Block", () -> new Block(JBlockProperties.STONE), 16000);
@@ -117,7 +122,7 @@ public class JBlocks {
 
     public static final RegistryObject<Block> WARPED_QUARTZ_ORE = register("warped_quartz_ore", "Warped Quartz Ore", JBlockProperties.STONE);
     public static final RegistryObject<Block> WARPED_QUARTZ_BLOCK = register("warped_quartz_block", "Warped Quartz Block", JBlockProperties.STONE);
-    public static final RegistryObject<RotatedPillarBlock> CHISELED_QUARTZ_BLOCK = registerPillar("chiseled_warped_quartz_block", "Chiseled Warped Quartz Block", false, JBlockProperties.STONE);
+    public static final RegistryObject<RotatedPillarBlock> CHISELED_WARPED_QUARTZ_BLOCK = registerPillar("chiseled_warped_quartz_block", "Chiseled Warped Quartz Block", false, JBlockProperties.STONE);
     public static final RegistryObject<SlabBlock> WARPED_QUARTZ_SLAB = registerSlab("warped_quartz_slab", "Warped Quartz Slab", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> WARPED_QUARTZ_BRICKS = register("warped_quartz_bricks", "Warped Quartz Bricks", JBlockProperties.STONE);
     public static final RegistryObject<StairBlock> WARPED_QUARTZ_STAIRS = registerStairs("warped_quartz_stairs", "Warped Quartz Stairs", WARPED_QUARTZ_BLOCK, false, JBlockProperties.STONE);
@@ -125,6 +130,17 @@ public class JBlocks {
     public static final RegistryObject<Block> SMOOTH_WARPED_QUARTZ = register("smooth_warped_quartz_block", "Smooth Warped Quartz Block", JBlockProperties.STONE);
     public static final RegistryObject<SlabBlock> SMOOTH_WARPED_QUARTZ_SLAB = registerSlab("smooth_warped_quartz_slab", "Smooth Warped Quartz Slab", false, JBlockProperties.STONE);
     public static final RegistryObject<StairBlock> SMOOTH_WARPED_QUARTZ_STAIRS = registerStairs("smooth_warped_quartz_stairs", "Smooth Warped Quartz Stairs", SMOOTH_WARPED_QUARTZ, false, JBlockProperties.STONE);
+
+    public static final RegistryObject<Block> CRIMSON_QUARTZ_ORE = register("crimson_quartz_ore", "Crimson Quartz Ore", JBlockProperties.STONE);
+    public static final RegistryObject<Block> CRIMSON_QUARTZ_BLOCK = register("crimson_quartz_block", "Crimson Quartz Block", JBlockProperties.STONE);
+    public static final RegistryObject<RotatedPillarBlock> CHISELED_CRIMSON_QUARTZ_BLOCK = registerPillar("chiseled_crimson_quartz_block", "Chiseled Crimson Quartz Block", false, JBlockProperties.STONE);
+    public static final RegistryObject<SlabBlock> CRIMSON_QUARTZ_SLAB = registerSlab("crimson_quartz_slab", "Crimson Quartz Slab", false, JBlockProperties.STONE);
+    public static final RegistryObject<Block> CRIMSON_QUARTZ_BRICKS = register("crimson_quartz_bricks", "Crimson Quartz Bricks", JBlockProperties.STONE);
+    public static final RegistryObject<StairBlock> CRIMSON_QUARTZ_STAIRS = registerStairs("crimson_quartz_stairs", "Crimson Quartz Stairs", CRIMSON_QUARTZ_BLOCK, false, JBlockProperties.STONE);
+    public static final RegistryObject<RotatedPillarBlock> CRIMSON_QUARTZ_PILLAR = registerPillar("crimson_quartz_pillar", "Crimson Quartz Pillar", false, JBlockProperties.STONE);
+    public static final RegistryObject<Block> SMOOTH_CRIMSON_QUARTZ = register("smooth_crimson_quartz_block", "Smooth Crimson Quartz Block", JBlockProperties.STONE);
+    public static final RegistryObject<SlabBlock> SMOOTH_CRIMSON_QUARTZ_SLAB = registerSlab("smooth_crimson_quartz_slab", "Smooth Crimson Quartz Slab", false, JBlockProperties.STONE);
+    public static final RegistryObject<StairBlock> SMOOTH_CRIMSON_QUARTZ_STAIRS = registerStairs("smooth_crimson_quartz_stairs", "Smooth Crimson Quartz Stairs", SMOOTH_CRIMSON_QUARTZ, false, JBlockProperties.STONE);
 
     public static final RegistryObject<Block> NETHIC_GEM_BLOCK = register("nethic_gem_block", "Nethic Gemstone Block", JBlockProperties.STONE);
 
@@ -220,11 +236,13 @@ public class JBlocks {
 
     public static final RegistryObject<Block> GRINDSTONE = registerModeledBlock("grindstone", "Grindstone", JGrindstoneBlock::new);
 
-    public static final RegistryObject<Block> JOURNEY_CHEST = registerModeledBlock("journey_chest", "Journey Chest", JChestBlock::new);
-    public static final RegistryObject<Block> NETHER_CHEST = registerModeledBlock("nether_chest", "Nether Chest", JChestBlock::new);
-    public static final RegistryObject<Block> FROZEN_CHEST = registerModeledBlock("frozen_chest", "Frozen Chest", JChestBlock::new);
-    public static final RegistryObject<Block> EUCA_CHEST = registerModeledBlock("euca_chest", "Euca Chest", JChestBlock::new);
-    public static final RegistryObject<Block> BOIL_CHEST = registerModeledBlock("boil_chest", "Boiling Chest", JChestBlock::new);
+    public static final RegistryObject<Block> JOURNEY_CHEST = registerChestBlock("journey_chest", "Journey Chest", JChestBlock::new);
+    public static final RegistryObject<Block> NETHER_CHEST = registerChestBlock("nether_chest", "Nether Chest", JChestBlock::new);
+    public static final RegistryObject<Block> FROZEN_CHEST = registerChestBlock("frozen_chest", "Frozen Chest", JChestBlock::new);
+    public static final RegistryObject<Block> EUCA_CHEST = registerChestBlock("euca_chest", "Euca Chest", JChestBlock::new);
+    public static final RegistryObject<Block> BOIL_CHEST = registerChestBlock("boil_chest", "Boiling Chest", JChestBlock::new);
+
+    public static final RegistryObject<Block> BOIL_LOCK = registerRotatableBlock("boil_lock", "Boiling Lock", LockBlock::new);
 
     public static final RegistryObject<RotatedPillarBlock> STONE_PLILLAR = registerPillar("stone_pillar", "Stone Pillar", false, JBlockProperties.STONE);
 
@@ -248,6 +266,30 @@ public class JBlocks {
         normalLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
         JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(tab)));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerFurnaceBlock(String name, String translatedName, Supplier<Block> block) {
+        furnaceBlockName.add(name);
+        furnaceLangName.add(translatedName);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerChestBlock(String name, String translatedName, Supplier<Block> block) {
+        chestBlockName.add(name);
+        chestLangName.add(translatedName);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerRotatableBlock(String name, String translatedName, Supplier<Block> block) {
+        rotatableBlockName.add(name);
+        rotatableLangName.add(translatedName);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
         return block1;
     }
 

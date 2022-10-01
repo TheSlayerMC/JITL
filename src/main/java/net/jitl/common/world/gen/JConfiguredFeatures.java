@@ -65,6 +65,10 @@ public class JConfiguredFeatures {
             List.of(OreConfiguration.target(OreFeatures.NETHER_ORE_REPLACEABLES, JBlocks.WARPED_QUARTZ_ORE.get().defaultBlockState()))
     );
 
+    private static final Supplier<List<OreConfiguration.TargetBlockState>> CRIMSON_TARGET = Suppliers.memoize(() ->
+            List.of(OreConfiguration.target(OreFeatures.NETHER_ORE_REPLACEABLES, JBlocks.CRIMSON_QUARTZ_ORE.get().defaultBlockState()))
+    );
+
     private static final Supplier<List<OreConfiguration.TargetBlockState>> BLOODCRUST_TARGET = Suppliers.memoize(() ->
             List.of(OreConfiguration.target(OreFeatures.NETHER_ORE_REPLACEABLES, JBlocks.BLOODCRUST_ORE.get().defaultBlockState()))
     );
@@ -102,7 +106,10 @@ public class JConfiguredFeatures {
             () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(LUNIUM_TARGET.get(), 7)));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> WARPED_QUARTZ_ORE = CONFIGURED_FEATURES.register("warped_ore",
-            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(WARPED_TARGET.get(), 7)));
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(WARPED_TARGET.get(), 12)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> CRIMSON_QUARTZ_ORE = CONFIGURED_FEATURES.register("crimson_ore",
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(CRIMSON_TARGET.get(), 12)));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> BLOODCRUST_ORE = CONFIGURED_FEATURES.register("bloodcrust_ore",
             () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(BLOODCRUST_TARGET.get(), 7)));

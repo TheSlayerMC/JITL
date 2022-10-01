@@ -49,6 +49,9 @@ public class JITL {
         if(DEV_MODE) {
             new JItemGenerator().generate();
             new JBlockGenerator().generate();
+            new JBlockChestGenerator().generate();
+            new JBlockRotatableGenerator().generate();
+            new JBlockFurnaceGenerator().generate();
             new JBlockCrossGenerator().generate();
             new JBlockPillarGenerator().generate();
             new JBlockDoorGenerator().generate();

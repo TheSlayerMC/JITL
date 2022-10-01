@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_slab",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": [
+      {
+        "item": "jitl:crimson_quartz_block"
+      },
+      {
+        "item": "jitl:chiseled_crimson_quartz_block"
+      },
+      {
+        "item": "jitl:crimson_quartz_pillar"
+      }
+    ]
+  },
+  "result": {
+    "item": "jitl:crimson_quartz_slab",
+    "count": 6
+  }
+}

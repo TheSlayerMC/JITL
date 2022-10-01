@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "jitl:crimson_quartz_block"
+    }
+  },
+  "result": {
+    "item": "jitl:crimson_quartz_bricks"
+  }
+}
