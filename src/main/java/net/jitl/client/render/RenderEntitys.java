@@ -4,6 +4,7 @@ import net.jitl.client.JModelLayers;
 import net.jitl.client.model.AnimatedMonsterModel;
 import net.jitl.client.model.JBoatModel;
 import net.jitl.client.render.block.GrindstoneRenderer;
+import net.jitl.client.render.block.JChestRenderer;
 import net.jitl.client.render.projectile.*;
 import net.jitl.client.render.vehicle.JBoatRenderer;
 import net.jitl.common.entity.base.JBoat;
@@ -33,6 +34,7 @@ public class RenderEntitys {
         event.registerEntityRenderer(JEntities.JBOAT_TYPE.get(), JBoatRenderer::new);
 
         event.registerBlockEntityRenderer(JBlockEntities.GRINDSTONE.get(), GrindstoneRenderer::new);
+        event.registerBlockEntityRenderer(JBlockEntities.JCHEST.get(), JChestRenderer::new);
     }
 
     @SubscribeEvent
@@ -40,6 +42,10 @@ public class RenderEntitys {
         for(JBoat.Type type : JBoat.Type.values()) {
             event.registerLayerDefinition(JModelLayers.createBoatModelName(type), JBoatModel::createBodyModel);
         }
+
+        event.registerLayerDefinition(JModelLayers.JCHEST, JChestRenderer::createSingleBodyLayer);
+        event.registerLayerDefinition(JModelLayers.JDOUBLE_CHEST_RIGHT, JChestRenderer::createDoubleBodyRightLayer);
+        event.registerLayerDefinition(JModelLayers.JDOUBLE_CHEST_LEFT, JChestRenderer::createDoubleBodyLeftLayer);
     }
 
     public static void registerAnimationRenderers() {

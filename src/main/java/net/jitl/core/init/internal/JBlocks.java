@@ -220,6 +220,12 @@ public class JBlocks {
 
     public static final RegistryObject<Block> GRINDSTONE = registerModeledBlock("grindstone", "Grindstone", JGrindstoneBlock::new);
 
+    public static final RegistryObject<Block> JOURNEY_CHEST = registerModeledBlock("journey_chest", "Journey Chest", JChestBlock::new);
+    public static final RegistryObject<Block> NETHER_CHEST = registerModeledBlock("nether_chest", "Nether Chest", JChestBlock::new);
+    public static final RegistryObject<Block> FROZEN_CHEST = registerModeledBlock("frozen_chest", "Frozen Chest", JChestBlock::new);
+    public static final RegistryObject<Block> EUCA_CHEST = registerModeledBlock("euca_chest", "Euca Chest", JChestBlock::new);
+    public static final RegistryObject<Block> BOIL_CHEST = registerModeledBlock("boil_chest", "Boiling Chest", JChestBlock::new);
+
     public static final RegistryObject<RotatedPillarBlock> STONE_PLILLAR = registerPillar("stone_pillar", "Stone Pillar", false, JBlockProperties.STONE);
 
     public static RegistryObject<Block> register(String name, String translatedName, BlockBehaviour.Properties props, CreativeModeTab tab) {

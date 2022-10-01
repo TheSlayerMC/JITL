@@ -11,7 +11,9 @@ public class JModelLayers {
 
     private static final Set<ModelLayerLocation> ALL_MODELS = Sets.newHashSet();
 
-
+    public static final ModelLayerLocation JCHEST = register("jchest");
+    public static final ModelLayerLocation JDOUBLE_CHEST_LEFT = register("jdouble_chest_left");
+    public static final ModelLayerLocation JDOUBLE_CHEST_RIGHT = register("jdouble_chest_right");
 
     private static ModelLayerLocation register(String path) {
         return register(path, "main");
