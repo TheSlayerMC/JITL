@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "up": "jitl:block/volcanic_sandstone_top",
+    "north": "jitl:block/volcanic_sandstone_side",
+    "east": "jitl:block/volcanic_sandstone_side",
+    "south": "jitl:block/volcanic_sandstone_side",
+    "west": "jitl:block/volcanic_sandstone_side",
+    "down": "jitl:block/volcanic_sandstone_bottom",
+    "particle": "jitl:block/volcanic_sandstone_bottom"
+  }
+}

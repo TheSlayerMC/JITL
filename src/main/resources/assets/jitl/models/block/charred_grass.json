@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "up": "jitl:block/charred_grass_top",
+    "north": "jitl:block/charred_grass_side",
+    "east": "jitl:block/charred_grass_side",
+    "south": "jitl:block/charred_grass_side",
+    "west": "jitl:block/charred_grass_side",
+    "down": "jitl:block/charred_grass_bottom",
+    "particle": "jitl:block/charred_grass_bottom"
+  }
+}

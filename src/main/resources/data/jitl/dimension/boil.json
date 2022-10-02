@@ -1,0 +1,193 @@
+{
+  "type": "jitl:boil",
+  "forge:use_server_seed": true,
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "jitl:boil_generation",
+    "biome_source": {
+      "biomes": [
+        {
+          "parameters": {
+            "weirdness": [
+              -1,
+              -0.56666666
+            ],
+            "continentalness": [
+              -1.2,
+              1
+            ],
+            "erosion": [
+              -1,
+              1
+            ],
+            "temperature": [
+              -1,
+              1
+            ],
+            "humidity": [
+              -1,
+              1
+            ],
+            "depth": [
+              -0.2,
+              1.2
+            ],
+            "offset": 0
+          },
+          "biome": "jitl:boil/boiling_sands"
+        },
+        {
+          "parameters": {
+            "weirdness": [
+              -0.56666666,
+              -0.05
+            ],
+            "continentalness": [
+              -1.2,
+              1
+            ],
+            "erosion": [
+              -1,
+              1
+            ],
+            "temperature": [
+              -1,
+              1
+            ],
+            "humidity": [
+              -1,
+              1
+            ],
+            "depth": [
+              -0.2,
+              0
+            ],
+            "offset": 0
+          },
+          "biome": "jitl:boil/scorched_wastelands"
+        },
+        {
+          "parameters": {
+            "weirdness": [
+              0.4,
+              1
+            ],
+            "continentalness": [
+              -1.2,
+              1
+            ],
+            "erosion": [
+              -1,
+              1
+            ],
+            "temperature": [
+              -1,
+              1
+            ],
+            "humidity": [
+              -1,
+              1
+            ],
+            "depth": [
+              -0.2,
+              0.8
+            ],
+            "offset": 0
+          },
+          "biome": "jitl:boil/charred_fields"
+        },
+        {
+          "parameters": {
+            "weirdness": [
+              -0.56666666,
+              -0.05
+            ],
+            "continentalness": [
+              -1.2,
+              1
+            ],
+            "erosion": [
+              -1,
+              1
+            ],
+            "temperature": [
+              -1,
+              1
+            ],
+            "humidity": [
+              -1,
+              1
+            ],
+            "depth": [
+              0,
+              1.2
+            ],
+            "offset": 0
+          },
+          "biome": "jitl:boil/boiling_sands"
+        },
+        {
+          "parameters": {
+            "weirdness": [
+              -0.05,
+              0.4
+            ],
+            "continentalness": [
+              -1.2,
+              1
+            ],
+            "erosion": [
+              -1,
+              1
+            ],
+            "temperature": [
+              -1,
+              1
+            ],
+            "humidity": [
+              -1,
+              1
+            ],
+            "depth": [
+              0.2,
+              1.2
+            ],
+            "offset": 0
+          },
+          "biome": "jitl:boil/boiling_sands"
+        },
+        {
+          "parameters": {
+            "weirdness": [
+              0.4,
+              1
+            ],
+            "continentalness": [
+              -1.2,
+              1
+            ],
+            "erosion": [
+              -1,
+              1
+            ],
+            "temperature": [
+              -1,
+              1
+            ],
+            "humidity": [
+              -1,
+              1
+            ],
+            "depth": [
+              0.8,
+              1.2
+            ],
+            "offset": 0
+          },
+          "biome": "jitl:boil/boiling_sands"
+        }
+      ],
+      "type": "minecraft:multi_noise"
+    }
+  }
+}

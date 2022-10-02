@@ -44,9 +44,22 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.FROZEN_BLOOM.get());
         cutout.add(JBlocks.FROZEN_FLOWER.get());
         cutout.add(JBlocks.SULPHUR_CRYSTAL.get());
+        cutout.add(JBlocks.SCORCHED_CACTUS.get());
+        cutout.add(JBlocks.CHARRED_LEAVES.get());
+        cutout.add(JBlocks.BURNED_SAPPLING.get());
+        cutout.add(JBlocks.CHARRED_BRUSH.get());
+        cutout.add(JBlocks.CHARRED_SAPPLING.get());
+        cutout.add(JBlocks.CHARRED_SHORT_GRASS.get());
+        cutout.add(JBlocks.CHARRED_WEEDS.get());
+        cutout.add(JBlocks.CRUMBLING_PINE.get());
+        cutout.add(JBlocks.CRISP_GRASS.get());
+        cutout.add(JBlocks.FLAME_POD.get());
+        cutout.add(JBlocks.LAVA_BLOOM.get());
+
 
         translucent.add(JBlocks.EUCA_PORTAL.get());
         translucent.add(JBlocks.FROZEN_PORTAL.get());
+        translucent.add(JBlocks.BOIL_PORTAL.get());
 
         for(Block b : cutout) {
             ItemBlockRenderTypes.setRenderLayer(b, RenderType.cutout());

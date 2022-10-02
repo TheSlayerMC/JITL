@@ -45,6 +45,14 @@ public class JBlockProperties {
             .strength(1F)
             .sound(SoundType.GRAVEL);
 
+    public static BlockBehaviour.Properties SAND = BlockBehaviour.Properties.of(Material.SAND)
+            .strength(1F)
+            .sound(SoundType.SAND);
+
+    public static BlockBehaviour.Properties CACTUS = BlockBehaviour.Properties.of(Material.CACTUS)
+            .strength(1F)
+            .sound(SoundType.WOOL);
+
     public static BlockBehaviour.Properties LEAVES = BlockBehaviour.Properties.of(Material.LEAVES)
             .strength(0.5F)
             .sound(SoundType.GRASS)
@@ -89,6 +97,12 @@ public class JBlockProperties {
             .noOcclusion()
             .noCollission();
 
+    public static final BlockBehaviour.Properties VOLCANIC_BLOCK = BlockBehaviour.Properties.of(Material.STONE)
+            .sound(SoundType.STONE)
+            .noOcclusion()
+            .lightLevel((state) -> 10)
+            .strength(1.5F, 6.0F);
+
     public static String getTextureFromName(String name) {
         String texName = "";
         if(name.contains("euca_brown")) {
@@ -109,6 +123,12 @@ public class JBlockProperties {
         if(name.contains("gilded_dungeon_brick")) {
             texName = "gilded_dungeon_bricks";
         }
+        if(name.contains("chiseled_dungeon")) {
+            texName = "chiseled_dungeon_bricks";
+        }
+        if(name.contains("carved_dungeon")) {
+            texName = "carved_dungeon_bricks";
+        }
         if(name.contains("warped_quartz")) {
             texName = "warped_quartz_block";
         }
@@ -120,6 +140,9 @@ public class JBlockProperties {
         }
         if(name.contains("smooth_crimson_quartz")) {
             texName = "smooth_crimson_quartz_block";
+        }
+        if(name.contains("burned")) {
+            texName = "burned_bark_plank";
         }
         return texName;
     }
