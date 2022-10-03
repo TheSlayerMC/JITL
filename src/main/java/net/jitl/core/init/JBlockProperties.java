@@ -84,6 +84,11 @@ public class JBlockProperties {
             .noCollission()
             .noOcclusion();
 
+    public static BlockBehaviour.Properties VINE = BlockBehaviour.Properties.of(Material.LEAVES)
+            .sound(SoundType.GRASS)
+            .noCollission()
+            .noOcclusion();
+
     public static BlockBehaviour.Properties GRASS = BlockBehaviour.Properties.of(Material.GRASS)
             .strength(0.75F)
             .sound(SoundType.GRASS);

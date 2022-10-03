@@ -254,7 +254,7 @@ public class JBlocks {
     public static final RegistryObject<Block> SCORCHED_STALAGMITE_MED = registerModeledBlock("scorched_stalagmite_med", "Scorched Stalagmite", JBlockStalagmite::new);
     public static final RegistryObject<Block> SCORCHED_STALAGMITE_LARGE = registerModeledBlock("scorched_stalagmite_large", "Scorched Stalagmite", JBlockStalagmite::new);
 
-    public static final RegistryObject<Block> CHARRED_BRUSH = registerCrossBlock("charred_brush", "Charred Brush", () -> new TallGrassBlock(JBlockProperties.TALL_GRASS));
+    public static final RegistryObject<Block> CHARRED_BRUSH = registerModeledBlock("charred_brush", "Charred Brush", () -> new VineBlock(JBlockProperties.VINE));
     public static final RegistryObject<Block> CHARRED_SAPPLING = registerCrossBlock("charred_sappling", "Charred Sappling", () -> new TallGrassBlock(JBlockProperties.TALL_GRASS));
     public static final RegistryObject<Block> CHARRED_SHORT_GRASS = registerCrossBlock("charred_short_grass", "Charred Short Grass", () -> new TallGrassBlock(JBlockProperties.TALL_GRASS));
     public static final RegistryObject<Block> CHARRED_WEEDS = registerCrossBlock("charred_weeds", "Charred Weeds", () -> new TallGrassBlock(JBlockProperties.TALL_GRASS));
