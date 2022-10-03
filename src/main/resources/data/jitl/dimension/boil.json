@@ -5,6 +5,7 @@
     "type": "minecraft:noise",
     "settings": "jitl:boil_generation",
     "biome_source": {
+      "type": "minecraft:multi_noise",
       "biomes": [
         {
           "biome": "jitl:boil/boiling_sands",
