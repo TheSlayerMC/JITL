@@ -5,6 +5,8 @@ import net.jitl.common.world.gen.boil.SulphurCrystalFeature;
 import net.jitl.common.world.gen.boil.SulphurDepositFeature;
 import net.jitl.common.world.gen.boil.VolcaniocRockFeature;
 import net.jitl.common.world.gen.euca.BoulderFeature;
+import net.jitl.common.world.gen.ruins.RuinsFeature;
+import net.jitl.common.world.gen.ruins.RuinsFeatureConfig;
 import net.jitl.core.init.JITL;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.SpringFeature;
@@ -20,6 +22,9 @@ public class JFeatures {
     public static final DeferredRegister<Feature<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.FEATURES, JITL.MODID);
 
     public static final RegistryObject<Feature<BlockStateConfiguration>> BOULDER = REGISTRY.register("boulder", () -> new BoulderFeature(BlockStateConfiguration.CODEC));
+
+    public static final RegistryObject<Feature<RuinsFeatureConfig>> RUINS = REGISTRY.register("ruins", () -> new RuinsFeature(RuinsFeatureConfig.CODEC));
+
     public static final RegistryObject<Feature<SpringConfiguration>> EUCA_WATER_GEN = REGISTRY.register("euca_water_gen", () -> new SpringFeature(SpringConfiguration.CODEC));
 
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> SCORCHED_STALAGMITE = REGISTRY.register("scorched_stalagmite", () -> new ScorchedStalagmiteFeature(NoneFeatureConfiguration.CODEC));

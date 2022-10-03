@@ -2,14 +2,13 @@ package net.jitl.common.world.gen;
 
 import com.google.common.base.Suppliers;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
+import net.jitl.common.world.gen.ruins.RuinsFeatureConfig;
 import net.jitl.common.world.gen.tree_grower.SphericalFoliagePlacer;
 import net.jitl.common.world.gen.treedecorator.CharredBrushTreeDecorator;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JTags;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.FeatureUtils;
@@ -20,11 +19,9 @@ import net.minecraft.util.valueproviders.BiasedToBottomInt;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.RandomPatchFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
@@ -33,16 +30,15 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.NoiseProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.BlockStateMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
-import org.checkerframework.checker.units.qual.C;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -52,7 +48,10 @@ public class JConfiguredFeatures {
     public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, JITL.MODID);
 
     public static final RuleTest EUCA_ORE_REPLACEABLES = new TagMatchTest(JTags.EUCA_STONE_ORE_REPLACEABLES);
-
+    public static final RuleTest BOIL_ORE_REPLACEABLES = new TagMatchTest(JTags.BOIL_STONE_ORE_REPLACEABLES);
+    public static final RuleTest GRASS = new BlockStateMatchTest(Blocks.GRASS_BLOCK.defaultBlockState());
+    public static final RuleTest SAND = new BlockStateMatchTest(Blocks.SAND.defaultBlockState());
+    public static final RuleTest EUCA_GRASS = new TagMatchTest(JTags.EUCA_GRASS);
 
     private static final Supplier<List<OreConfiguration.TargetBlockState>> IRIDIUM_TARGET = Suppliers.memoize(() ->
             List.of(OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, JBlocks.IRIDIUM_ORE.get().defaultBlockState()),
@@ -106,6 +105,14 @@ public class JConfiguredFeatures {
             List.of(OreConfiguration.target(EUCA_ORE_REPLACEABLES, JBlocks.CELESTIUM_ORE.get().defaultBlockState()))
     );
 
+    private static final Supplier<List<OreConfiguration.TargetBlockState>> BLAZIUM_TARGET = Suppliers.memoize(() ->
+            List.of(OreConfiguration.target(BOIL_ORE_REPLACEABLES, JBlocks.BLAZIUM_ORE.get().defaultBlockState()))
+    );
+
+    private static final Supplier<List<OreConfiguration.TargetBlockState>> ASHUAL_TARGET = Suppliers.memoize(() ->
+            List.of(OreConfiguration.target(BOIL_ORE_REPLACEABLES, JBlocks.ASHUAL_ORE.get().defaultBlockState()))
+    );
+
     public static final RegistryObject<ConfiguredFeature<?, ?>> IRIDIUM_ORE = CONFIGURED_FEATURES.register("iridium_ore",
             () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(IRIDIUM_TARGET.get(), 7)));
 
@@ -142,6 +149,11 @@ public class JConfiguredFeatures {
     public static final RegistryObject<ConfiguredFeature<?, ?>> CELESTIUM_ORE = CONFIGURED_FEATURES.register("celestium_ore",
             () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(CELESTIUM_TARGET.get(), 7)));
 
+    public static final RegistryObject<ConfiguredFeature<?, ?>> BLAZIUM_ORE = CONFIGURED_FEATURES.register("blazium_ore",
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(BLAZIUM_TARGET.get(), 7)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> ASHUAL_ORE = CONFIGURED_FEATURES.register("ashual_ore",
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ASHUAL_TARGET.get(), 7)));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> EUCA_GOLD_TREE = CONFIGURED_FEATURES.register("euca_gold_tree",
             () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -167,7 +179,7 @@ public class JConfiguredFeatures {
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> EUCA_BOULDER = CONFIGURED_FEATURES.register("euca_boulder",
                     () -> new ConfiguredFeature<>(JFeatures.BOULDER.get(),
-                            new BlockStateConfiguration(JBlocks.GOLDITE_STONE.get().defaultBlockState())));
+                            new BlockStateConfiguration(JBlocks.GOLDITE_COBBLESTONE.get().defaultBlockState())));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> EUCA_WATER = CONFIGURED_FEATURES.register("euca_water",
                     () -> new ConfiguredFeature<>(JFeatures.EUCA_WATER_GEN.get(),
@@ -194,6 +206,14 @@ public class JConfiguredFeatures {
                                 JBlocks.EUCA_TALL_FLOWERS.get().defaultBlockState(),
                                 JBlocks.EUCA_TALL_GRASS.get().defaultBlockState())))))));
 
+    public static final RegistryObject<ConfiguredFeature<?, ?>> GOLDITE_VEG = CONFIGURED_FEATURES.register("goldite_veg",
+            () -> new ConfiguredFeature<>(Feature.FLOWER, new RandomPatchConfiguration(40, 6, 2,
+                    PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L,
+                            new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F,
+                            List.of(JBlocks.GOLDITE_STALKS.get().defaultBlockState(),
+                                    JBlocks.GOLDITE_FLOWER.get().defaultBlockState(),
+                                    JBlocks.GOLDITE_BULB.get().defaultBlockState())))))));
+
     public static final RegistryObject<ConfiguredFeature<?, ?>> PATCH_FIRE = CONFIGURED_FEATURES.register("boil_fire",
             () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(50, 6, 2,
                     PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L,
@@ -217,7 +237,7 @@ public class JConfiguredFeatures {
                                     JBlocks.CHARRED_SHORT_GRASS.get().defaultBlockState())))))));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> BOIL_PLAINS_VEG = CONFIGURED_FEATURES.register("boil_plains",
-            () -> new ConfiguredFeature<>(Feature.FLOWER, new RandomPatchConfiguration(96, 6, 2,
+            () -> new ConfiguredFeature<>(Feature.FLOWER, new RandomPatchConfiguration(60, 6, 2,
                     PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L,
                             new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F,
                             List.of(JBlocks.INFERNO_BUSH.get().defaultBlockState(),
@@ -279,4 +299,64 @@ public class JConfiguredFeatures {
                     .forceDirt()
                     .dirt(BlockStateProvider.simple(JBlocks.CHARRED_GRASS.get()))
                     .build()));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> DEFAULT_OVERWORLD_RUINS = CONFIGURED_FEATURES.register("default_overworld_ruins",
+                    () -> new ConfiguredFeature<>(JFeatures.RUINS.get()
+                            , new RuinsFeatureConfig(GRASS,
+                            BlockStateProvider.simple(JBlocks.JOURNEY_CHEST.get()),
+                                    new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
+                                            .add(Blocks.STONE_BRICKS.defaultBlockState(), 6)
+                                            .add(Blocks.CRACKED_STONE_BRICKS.defaultBlockState(), 5)
+                                            .add(Blocks.MOSSY_STONE_BRICKS.defaultBlockState(), 4)
+                                            .add(Blocks.MOSSY_COBBLESTONE.defaultBlockState(), 3)
+                                            .add(Blocks.COBBLESTONE.defaultBlockState(), 4)
+                                            .add(Blocks.CHISELED_STONE_BRICKS.defaultBlockState(), 2)
+                                            .add(Blocks.INFESTED_COBBLESTONE.defaultBlockState(), 1)
+                                            .add(Blocks.INFESTED_STONE_BRICKS.defaultBlockState(), 1)
+                                            .add(Blocks.INFESTED_MOSSY_STONE_BRICKS.defaultBlockState(), 1)
+                                            .add(Blocks.INFESTED_CRACKED_STONE_BRICKS.defaultBlockState(), 1)),
+                                    5,
+                                    5,
+                                    8,
+                                    BuiltInLootTables.ABANDONED_MINESHAFT)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> DESERT_OVERWORLD_RUINS =
+            CONFIGURED_FEATURES.register("desert_overworld_ruins",
+                    () -> new ConfiguredFeature<>(JFeatures.RUINS.get() ,new RuinsFeatureConfig(SAND,
+                            BlockStateProvider.simple(JBlocks.JOURNEY_CHEST.get()),
+                            new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
+                                            .add(Blocks.SANDSTONE.defaultBlockState(), 3)
+                                            .add(Blocks.CHISELED_SANDSTONE.defaultBlockState(), 1)
+                                            .add(Blocks.CUT_SANDSTONE.defaultBlockState(), 2)),
+                                    5,
+                                    5,
+                                    8,
+                                    BuiltInLootTables.DESERT_PYRAMID)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> EUCA_RUINS =
+            CONFIGURED_FEATURES.register("euca_ruins",
+                    () -> new ConfiguredFeature<>(JFeatures.RUINS.get() ,new RuinsFeatureConfig(EUCA_GRASS,
+                            BlockStateProvider.simple(JBlocks.EUCA_CHEST.get()),
+                            new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
+                                    .add(JBlocks.EUCA_SQUARE_BRICKS.get().defaultBlockState(), 3)
+                                    .add(JBlocks.EUCA_SQUARE_RUNIC_BRICKS.get().defaultBlockState(), 1)
+                                    .add(JBlocks.EUCA_RUNIC_BRICKS.get().defaultBlockState(), 2)),
+                            7,
+                            6,
+                            9,
+                            BuiltInLootTables.VILLAGE_WEAPONSMITH)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> EUCA_GOLDITE_RUINS =
+            CONFIGURED_FEATURES.register("euca_goldite_ruins",
+                    () -> new ConfiguredFeature<>(JFeatures.RUINS.get() ,new RuinsFeatureConfig(EUCA_GRASS,
+                            BlockStateProvider.simple(JBlocks.EUCA_CHEST.get()),
+                            new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
+                                    .add(JBlocks.EUCA_SQUARE_BRICKS.get().defaultBlockState(), 3)
+                                    .add(JBlocks.EUCA_SQUARE_RUNIC_BRICKS.get().defaultBlockState(), 1)
+                                    .add(JBlocks.EUCA_RUNIC_BRICKS.get().defaultBlockState(), 2)),
+                            8,
+                            6,
+                            9,
+                            BuiltInLootTables.VILLAGE_WEAPONSMITH)));
+
 }

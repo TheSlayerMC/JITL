@@ -89,6 +89,10 @@ public class JPlacedFeatures {
                     new PlacedFeature(JConfiguredFeatures.GOLD_VEG.getHolder().get()
                             , patch(6, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
 
+    public static final RegistryObject<PlacedFeature> GOLDITE_VEG = PLACED_FEATURES.register("goldite_veg_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.GOLDITE_VEG.getHolder().get()
+                    , patch(4, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
+
     public static final RegistryObject<PlacedFeature> EUCA_GREEN_GOLD_TREE = PLACED_FEATURES.register("euca_gold_tree_placed", () ->
                     new PlacedFeature(JConfiguredFeatures.EUCA_GOLD_TREE.getHolder().get(),
                             treePlacement(PlacementUtils.countExtra(4, 0.1F, 1), JBlocks.EUCA_GREEN_SAPLING.get())));
@@ -152,6 +156,32 @@ public class JPlacedFeatures {
     public static final RegistryObject<PlacedFeature> EUCA_WATER = PLACED_FEATURES.register("euca_water_placed", () ->
             new PlacedFeature(JConfiguredFeatures.EUCA_WATER.getHolder().get()
                     , patch(100, 8, PlacementUtils.FULL_RANGE)));
+
+    public static final RegistryObject<PlacedFeature> BLAZIUM_ORE = PLACED_FEATURES.register("blazium_ore_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.BLAZIUM_ORE.getHolder().get(),
+                    commonOrePlacement(7,
+                            HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(256)))));
+
+    public static final RegistryObject<PlacedFeature> ASHUAL_ORE = PLACED_FEATURES.register("ashual_ore_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.ASHUAL_ORE.getHolder().get(),
+                    commonOrePlacement(7,
+                            HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(256)))));
+
+    public static final RegistryObject<PlacedFeature> DEFAULT_OVERWORLD_RUINS = PLACED_FEATURES.register("default_overworld_ruins_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.DEFAULT_OVERWORLD_RUINS.getHolder().get(),
+                            rarePatch(10, 7)));
+
+    public static final RegistryObject<PlacedFeature> DESERT_OVERWORLD_RUINS = PLACED_FEATURES.register("desert_overworld_ruins_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.DESERT_OVERWORLD_RUINS.getHolder().get(),
+                    rarePatch(10, 7)));
+
+    public static final RegistryObject<PlacedFeature> EUCA_RUINS = PLACED_FEATURES.register("euca_ruins_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.EUCA_RUINS.getHolder().get(),
+                    rarePatch(10, 7)));
+
+    public static final RegistryObject<PlacedFeature> GOLD_EUCA_RUINS = PLACED_FEATURES.register("euca_goldite_ruins_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.EUCA_GOLDITE_RUINS.getHolder().get(),
+                    rarePatch(10, 7)));
 
     /** -----------------------------------------------------------------------------------------------------------------------------------------------------------------  **/
 

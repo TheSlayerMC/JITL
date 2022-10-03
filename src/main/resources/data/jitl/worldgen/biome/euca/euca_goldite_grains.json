@@ -58,8 +58,9 @@
       "jitl:euca_green_tree_placed",
       "jitl:storon_ore_placed",
       "jitl:mekyum_ore_placed",
-      "jitl:euca_water_placed"
-
+      "jitl:euca_water_placed",
+      "jitl:euca_goldite_ruins_placed",
+      "jitl:goldite_veg_placed"
     ]
   ]
 }

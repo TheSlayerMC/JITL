@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": "#minecraft:is_nether",
+  "biomes": "minecraft:warped_forest",
   "features": "jitl:warped_ore_placed",
   "step": "underground_ores"
 }

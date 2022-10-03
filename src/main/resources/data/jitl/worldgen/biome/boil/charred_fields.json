@@ -25,7 +25,9 @@
       "jitl:volcanic_rock_placed",
       "jitl:small_burned_tree_placed",
       "jitl:medium_burned_tree_placed",
-      "jitl:large_burned_tree_placed"
+      "jitl:large_burned_tree_placed",
+      "jitl:ashual_ore_placed",
+      "jitl:blazium_ore_placed"
     ]
   ]
 }

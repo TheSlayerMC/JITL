@@ -56,7 +56,9 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.FLAME_POD.get());
         cutout.add(JBlocks.LAVA_BLOOM.get());
         cutout.add(JBlocks.INFERNO_BUSH.get());
-
+        cutout.add(JBlocks.GOLDITE_FLOWER.get());
+        cutout.add(JBlocks.GOLDITE_STALKS.get());
+        cutout.add(JBlocks.GOLDITE_BULB.get());
 
         translucent.add(JBlocks.EUCA_PORTAL.get());
         translucent.add(JBlocks.FROZEN_PORTAL.get());

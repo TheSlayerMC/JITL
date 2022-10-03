@@ -14,6 +14,9 @@ public class JTags {
     public static final TagKey<Block> JLOGS = tagBlock("jlogs");
     public static final TagKey<Block> JPLANKS = tagBlock("planks");
 
+    public static final TagKey<Block> EUCA_GRASS = tagBlock("euca_grass");
+
+
     private static TagKey<Item> tagItem(String name) {
         return ItemTags.create(JITL.rl(name));
     }

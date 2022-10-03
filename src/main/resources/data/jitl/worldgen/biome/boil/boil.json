@@ -15,7 +15,9 @@
   "features": [
     [
       "jitl:boil_fire_placed",
-      "jitl:boil_veg_placed"
+      "jitl:boil_veg_placed",
+      "jitl:ashual_ore_placed",
+      "jitl:blazium_ore_placed"
     ]
   ]
 }

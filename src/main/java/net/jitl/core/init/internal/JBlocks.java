@@ -165,6 +165,7 @@ public class JBlocks {
     public static final RegistryObject<JBasePortalBlock> EUCA_PORTAL = registerPortalBlock("euca_portal", "Euca Portal", () -> new JBasePortalBlock(Dimensions.EUCA, EUCA_PORTAL_FRAME));
     public static final RegistryObject<Block> GOLDITE_DIRT = register("goldite_dirt", "Goldite Soil", JBlockProperties.DIRT);
     public static final RegistryObject<Block> GOLDITE_STONE = register("goldite_stone", "Goldite Stone", JBlockProperties.STONE);
+    public static final RegistryObject<Block> GOLDITE_COBBLESTONE = register("goldite_cobblestone", "Goldite Cobblestone", JBlockProperties.STONE);
     public static final RegistryObject<Block> EUCA_BRICK = register("euca_brick", "Euca Bricks", JBlockProperties.STONE);
     public static final RegistryObject<Block> EUCA_DUNGEON_BRICKS = register("euca_dungeon_brick", "Euca Dungeon Bricks", JBlockProperties.DUNGEON_BLOCK);
     public static final RegistryObject<Block> EUCA_DUNGEON_TILE = register("euca_dungeon_tile", "Euca Dungeon Tile", JBlockProperties.DUNGEON_BLOCK);
@@ -177,6 +178,9 @@ public class JBlocks {
     public static final RegistryObject<Block> EUCA_TALL_FLOWERS = registerCrossBlock("euca_tall_flowers", "Euca Tall Flowers", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> EUCA_SILVER_FLOWER = registerCrossBlock("euca_silver_gold_flower", "Euca Silver Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> EUCA_BLUE_FLOWER = registerCrossBlock("euca_blue_flower", "Euca Blue Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final RegistryObject<Block> GOLDITE_FLOWER = registerCrossBlock("goldite_flower", "Goldite Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final RegistryObject<Block> GOLDITE_STALKS = registerCrossBlock("goldite_stalks", "Goldite Stalks", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final RegistryObject<Block> GOLDITE_BULB = registerCrossBlock("goldite_bulb", "Goldite Bulb", () -> new TallGrassBlock(JBlockProperties.FLOWER));
 
     public static final RegistryObject<Block> EUCA_GOLD_GRASS = registerGrassBlock("euca_gold_grass", "Euca Gold Grass", () -> new JGrassBlock(GOLDITE_DIRT));
     public static final RegistryObject<Block> GOLDITE_GRASS = registerGrassBlock("goldite_grass", "Goldite Grass", () -> new JGrassBlock(GOLDITE_DIRT));
