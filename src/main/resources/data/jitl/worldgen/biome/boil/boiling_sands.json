@@ -19,6 +19,13 @@
   "carvers": {},
   "spawn_costs": {},
   "features": [
-    []
+    [
+      "jitl:scorched_cactus_placed",
+      "jitl:boil_sands_veg_placed",
+      "jitl:boil_fire_placed",
+      "jitl:volcanic_rock_placed",
+      "jitl:sulphur_deposit_placed",
+      "jitl:sulphur_crystal_placed"
+    ]
   ]
 }

@@ -7,10 +7,15 @@
     "biome_source": {
       "biomes": [
         {
+          "biome": "jitl:boil/boiling_sands",
           "parameters": {
-            "weirdness": [
+            "temperature": [
               -1,
-              -0.56666666
+              1
+            ],
+            "humidity": [
+              -1,
+              1
             ],
             "continentalness": [
               -1.2,
@@ -20,27 +25,27 @@
               -1,
               1
             ],
-            "temperature": [
+            "weirdness": [
               -1,
-              1
-            ],
-            "humidity": [
-              -1,
-              1
+              -0.56666666
             ],
             "depth": [
               -0.2,
               1.2
             ],
             "offset": 0
-          },
-          "biome": "jitl:boil/boiling_sands"
+          }
         },
         {
+          "biome": "jitl:boil/scorched_wastelands",
           "parameters": {
-            "weirdness": [
-              -0.56666666,
-              -0.05
+            "temperature": [
+              -1,
+              1
+            ],
+            "humidity": [
+              -1,
+              1
             ],
             "continentalness": [
               -1.2,
@@ -50,26 +55,26 @@
               -1,
               1
             ],
-            "temperature": [
-              -1,
-              1
-            ],
-            "humidity": [
-              -1,
-              1
+            "weirdness": [
+              -0.2,
+              -0.05
             ],
             "depth": [
               -0.2,
               0
             ],
             "offset": 0
-          },
-          "biome": "jitl:boil/scorched_wastelands"
+          }
         },
         {
+          "biome": "jitl:boil/charred_fields",
           "parameters": {
-            "weirdness": [
-              0.4,
+            "temperature": [
+              -1,
+              1
+            ],
+            "humidity": [
+              -1,
               1
             ],
             "continentalness": [
@@ -80,27 +85,27 @@
               -1,
               1
             ],
-            "temperature": [
-              -1,
-              1
-            ],
-            "humidity": [
-              -1,
+            "weirdness": [
+              0.5,
               1
             ],
             "depth": [
               -0.2,
-              0.8
+              0.6
             ],
             "offset": 0
-          },
-          "biome": "jitl:boil/charred_fields"
+          }
         },
         {
+          "biome": "jitl:boil/boiling_sands",
           "parameters": {
-            "weirdness": [
-              -0.56666666,
-              -0.05
+            "temperature": [
+              -1,
+              1
+            ],
+            "humidity": [
+              -1,
+              1
             ],
             "continentalness": [
               -1.2,
@@ -110,56 +115,56 @@
               -1,
               1
             ],
-            "temperature": [
-              -1,
-              1
-            ],
-            "humidity": [
-              -1,
-              1
+            "weirdness": [
+              -0.56666666,
+              -0.05
             ],
             "depth": [
               0,
               1.2
             ],
             "offset": 0
-          },
-          "biome": "jitl:boil/boiling_sands"
+          }
         },
         {
+          "biome": "jitl:boil/boiling_sands",
           "parameters": {
+            "temperature": [
+              -1,
+              1
+            ],
+            "humidity": [
+              -1,
+              1
+            ],
+            "continentalness": [
+              -1.2,
+              1
+            ],
+            "erosion": [
+              -1,
+              1
+            ],
             "weirdness": [
               -0.05,
               0.4
             ],
-            "continentalness": [
-              -1.2,
-              1
-            ],
-            "erosion": [
-              -1,
-              1
-            ],
-            "temperature": [
-              -1,
-              1
-            ],
-            "humidity": [
-              -1,
-              1
-            ],
             "depth": [
-              0.2,
+              -0.1,
               1.2
             ],
             "offset": 0
-          },
-          "biome": "jitl:boil/boiling_sands"
+          }
         },
         {
+          "biome": "jitl:boil/boiling_sands",
           "parameters": {
-            "weirdness": [
-              0.4,
+            "temperature": [
+              -1,
+              1
+            ],
+            "humidity": [
+              -1,
               1
             ],
             "continentalness": [
@@ -170,12 +175,8 @@
               -1,
               1
             ],
-            "temperature": [
-              -1,
-              1
-            ],
-            "humidity": [
-              -1,
+            "weirdness": [
+              0.4,
               1
             ],
             "depth": [
@@ -183,11 +184,39 @@
               1.2
             ],
             "offset": 0
-          },
-          "biome": "jitl:boil/boiling_sands"
+          }
+        },
+        {
+          "biome": "jitl:boil/boil",
+          "parameters": {
+            "temperature": [
+              -1,
+              1
+            ],
+            "humidity": [
+              -1,
+              1
+            ],
+            "continentalness": [
+              -1.2,
+              1
+            ],
+            "erosion": [
+              -1,
+              1
+            ],
+            "weirdness": [
+              -0.56666666,
+              -0.05
+            ],
+            "depth": [
+              -0.2,
+              0
+            ],
+            "offset": 0
+          }
         }
-      ],
-      "type": "minecraft:multi_noise"
+      ]
     }
   }
 }

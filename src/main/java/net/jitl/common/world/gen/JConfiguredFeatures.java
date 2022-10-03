@@ -2,12 +2,14 @@ package net.jitl.common.world.gen;
 
 import com.google.common.base.Suppliers;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import net.jitl.common.world.gen.tree_grower.SphericalFoliagePlacer;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.OreFeatures;
@@ -28,12 +30,16 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.NoiseProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
+import org.checkerframework.checker.units.qual.C;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -156,11 +162,26 @@ public class JConfiguredFeatures {
                                     .dirt(BlockStateProvider.simple(JBlocks.GOLDITE_DIRT.get()))
                                     .build()));
 
-    public static final RegistryObject<ConfiguredFeature<?, ?>> EUCA_BOULDER =
-            CONFIGURED_FEATURES.register("euca_boulder",
+    public static final RegistryObject<ConfiguredFeature<?, ?>> EUCA_BOULDER = CONFIGURED_FEATURES.register("euca_boulder",
                     () -> new ConfiguredFeature<>(JFeatures.BOULDER.get(),
-                            new BlockStateConfiguration(
-                                    JBlocks.GOLDITE_STONE.get().defaultBlockState())));
+                            new BlockStateConfiguration(JBlocks.GOLDITE_STONE.get().defaultBlockState())));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> EUCA_WATER = CONFIGURED_FEATURES.register("euca_water",
+                    () -> new ConfiguredFeature<>(JFeatures.EUCA_WATER_GEN.get(),
+                            new SpringConfiguration(Fluids.WATER.defaultFluidState(), false, 4, 1,
+                                    HolderSet.direct(JBlocks.GOLDITE_STONE.getHolder().get(), JBlocks.GOLDITE_DIRT.getHolder().get()))));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> VOLCANIC_ROCK = CONFIGURED_FEATURES.register("volcanic_rock",
+           () -> new ConfiguredFeature<>(JFeatures.VOLCANIC_ROCK.get(), new NoneFeatureConfiguration()));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> BOIL_STALAGMITE = CONFIGURED_FEATURES.register("scorched_stalagmite",
+            () -> new ConfiguredFeature<>(JFeatures.SCORCHED_STALAGMITE.get(), new NoneFeatureConfiguration()));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> SULPHUR_DEPOSIT = CONFIGURED_FEATURES.register("sulphur_deposit",
+            () -> new ConfiguredFeature<>(JFeatures.SULPHUR_DEPOSIT.get(), new BlockStateConfiguration(JBlocks.SULPHUR_ROCK.get().defaultBlockState())));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> SULPHUR_CRYSTAL = CONFIGURED_FEATURES.register("sulphur_crystal",
+            () -> new ConfiguredFeature<>(JFeatures.SULPHUR_CRYSTAL.get(), new NoneFeatureConfiguration()));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> GOLD_VEG = CONFIGURED_FEATURES.register("gold_veg",
             () -> new ConfiguredFeature<>(Feature.FLOWER, new RandomPatchConfiguration(96, 6, 2,
@@ -170,9 +191,43 @@ public class JConfiguredFeatures {
                                 JBlocks.EUCA_TALL_FLOWERS.get().defaultBlockState(),
                                 JBlocks.EUCA_TALL_GRASS.get().defaultBlockState())))))));
 
-    public static final RegistryObject<ConfiguredFeature<RandomPatchConfiguration, ?>> PATCH_FIRE = CONFIGURED_FEATURES.register("boil_fire",
+    public static final RegistryObject<ConfiguredFeature<?, ?>> PATCH_FIRE = CONFIGURED_FEATURES.register("boil_fire",
             () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(50, 6, 2,
                     PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L,
                             new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(Blocks.FIRE.defaultBlockState())))))));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> BOIL_SANDS_VEG = CONFIGURED_FEATURES.register("boil_sands_veg",
+            () -> new ConfiguredFeature<>(Feature.FLOWER, new RandomPatchConfiguration(60, 6, 2,
+                    PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L,
+                            new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F,
+                            List.of(JBlocks.LAVA_BLOOM.get().defaultBlockState(),
+                                    JBlocks.CRUMBLING_PINE.get().defaultBlockState(),
+                                    JBlocks.INFERNO_BUSH.get().defaultBlockState())))))));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> CHARRED_FIELDS_VEG = CONFIGURED_FEATURES.register("charred_veg",
+            () -> new ConfiguredFeature<>(Feature.FLOWER, new RandomPatchConfiguration(96, 6, 2,
+                    PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L,
+                            new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F,
+                            List.of(JBlocks.CHARRED_BRUSH.get().defaultBlockState(),
+                                    JBlocks.CHARRED_GRASS.get().defaultBlockState(),
+                                    JBlocks.CHARRED_WEEDS.get().defaultBlockState(),
+                                    JBlocks.CHARRED_SHORT_GRASS.get().defaultBlockState())))))));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> BOIL_PLAINS_VEG = CONFIGURED_FEATURES.register("boil_plains",
+            () -> new ConfiguredFeature<>(Feature.FLOWER, new RandomPatchConfiguration(96, 6, 2,
+                    PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L,
+                            new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F,
+                            List.of(JBlocks.INFERNO_BUSH.get().defaultBlockState(),
+                                    JBlocks.FLAME_POD.get().defaultBlockState(),
+                                    JBlocks.CRISP_GRASS.get().defaultBlockState(),
+                                    JBlocks.LAVA_BLOOM.get().defaultBlockState())))))));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> SCORCHED_CACTUS = CONFIGURED_FEATURES.register("scorched_cactus",
+            () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, FeatureUtils.simpleRandomPatchConfiguration(10,
+                    PlacementUtils.inlinePlaced(Feature.BLOCK_COLUMN,
+                            BlockColumnConfiguration.simple(BiasedToBottomInt.of(1, 3),
+                                    BlockStateProvider.simple(JBlocks.SCORCHED_CACTUS.get())),
+                            BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                                    BlockPredicate.wouldSurvive(JBlocks.SCORCHED_CACTUS.get().defaultBlockState(), BlockPos.ZERO)))))));
 
 }

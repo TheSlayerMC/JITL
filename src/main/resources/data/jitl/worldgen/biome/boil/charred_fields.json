@@ -19,6 +19,10 @@
   "carvers": {},
   "spawn_costs": {},
   "features": [
-    []
+    [
+      "jitl:charred_veg_placed",
+      "jitl:boil_fire_placed",
+      "jitl:volcanic_rock_placed"
+    ]
   ]
 }

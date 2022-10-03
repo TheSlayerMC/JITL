@@ -155,7 +155,7 @@ public class JBlockProperties {
             texName = "smooth_crimson_quartz_block";
         }
         if(name.contains("burned")) {
-            texName = "burned_bark_plank";
+            texName = "burned_bark_planks";
         }
         return texName;
     }

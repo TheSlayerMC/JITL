@@ -13,6 +13,9 @@
   "carvers": {},
   "spawn_costs": {},
   "features": [
-    []
+    [
+      "jitl:boil_fire_placed",
+      "jitl:boil_veg_placed"
+    ]
   ]
 }

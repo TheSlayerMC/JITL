@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/template_fence_gate_open",
   "textures": {
-    "texture": "jitl:block/burned_bark_plank"
+    "texture": "jitl:block/burned_bark_planks"
   }
 }

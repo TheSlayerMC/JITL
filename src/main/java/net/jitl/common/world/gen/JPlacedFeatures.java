@@ -3,10 +3,8 @@ package net.jitl.common.world.gen;
 import com.google.common.collect.ImmutableList;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
-import net.minecraft.core.Vec3i;
+import net.minecraft.core.*;
+import net.minecraft.data.worldgen.features.NetherFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Block;
@@ -98,6 +96,46 @@ public class JPlacedFeatures {
     public static final RegistryObject<PlacedFeature> EUCA_GREEN_TREE = PLACED_FEATURES.register("euca_green_tree_placed", () ->
                     new PlacedFeature(JConfiguredFeatures.EUCA_GREEN_TREE.getHolder().get(),
             treePlacement(PlacementUtils.countExtra(4, 0.1F, 1), JBlocks.EUCA_GOLD_SAPLING.get())));
+
+    public static final RegistryObject<PlacedFeature> BOIL_FIRE = PLACED_FEATURES.register("boil_fire_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.PATCH_FIRE.getHolder().get()
+                    , patch(1, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
+
+    public static final RegistryObject<PlacedFeature> BOIL_PLAINS_VEG = PLACED_FEATURES.register("boil_veg_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.BOIL_PLAINS_VEG.getHolder().get()
+                    , patch(5, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
+
+    public static final RegistryObject<PlacedFeature> BOIL_SANDS_VEG = PLACED_FEATURES.register("boil_sands_veg_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.BOIL_SANDS_VEG.getHolder().get()
+                    , patch(5, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
+
+    public static final RegistryObject<PlacedFeature> CHARRED_VEG = PLACED_FEATURES.register("charred_veg_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.CHARRED_FIELDS_VEG.getHolder().get()
+                    , patch(5, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
+
+    public static final RegistryObject<PlacedFeature> SCORCHED_STALAGMITE = PLACED_FEATURES.register("scorched_stalagmite_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.BOIL_STALAGMITE.getHolder().get()
+                    , patch(15, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
+
+    public static final RegistryObject<PlacedFeature> VOLCANIC_ROCK = PLACED_FEATURES.register("volcanic_rock_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.VOLCANIC_ROCK.getHolder().get()
+                    , patch(1, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
+
+    public static final RegistryObject<PlacedFeature> SULPHUR_DEPOSIT = PLACED_FEATURES.register("sulphur_deposit_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.SULPHUR_DEPOSIT.getHolder().get()
+                    , patch(2, 5, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
+
+    public static final RegistryObject<PlacedFeature> SULPHUR_CRYSTAL = PLACED_FEATURES.register("sulphur_crystal_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.SULPHUR_CRYSTAL.getHolder().get()
+                    , patch(5, 5, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
+
+    public static final RegistryObject<PlacedFeature> SCORCHED_CACTUS = PLACED_FEATURES.register("scorched_cactus_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.SCORCHED_CACTUS.getHolder().get()
+                    , patch(5, 5, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
+
+    public static final RegistryObject<PlacedFeature> EUCA_WATER = PLACED_FEATURES.register("euca_water_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.EUCA_WATER.getHolder().get()
+                    , patch(100, 8, PlacementUtils.FULL_RANGE)));
 
     /** -----------------------------------------------------------------------------------------------------------------------------------------------------------------  **/
 

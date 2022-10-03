@@ -57,7 +57,9 @@
     [
       "jitl:euca_green_tree_placed",
       "jitl:storon_ore_placed",
-      "jitl:mekyum_ore_placed"
+      "jitl:mekyum_ore_placed",
+      "jitl:euca_water_placed"
+
     ]
   ]
 }

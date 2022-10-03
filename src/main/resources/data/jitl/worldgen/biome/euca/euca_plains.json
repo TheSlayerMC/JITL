@@ -61,7 +61,8 @@
       "jitl:euca_green_tree_placed",
       "jitl:gold_veg_placed",
       "jitl:celestium_ore_placed",
-      "jitl:korite_ore_placed"
+      "jitl:korite_ore_placed",
+      "jitl:euca_water_placed"
     ]
   ]
 }

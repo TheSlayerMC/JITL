@@ -4,7 +4,7 @@
         "model": "jitl:block/burned_slab"
       },
     "type=double": {
-        "model": "jitl:block/burned_bark_plank"
+        "model": "jitl:block/burned_bark_planks"
       },
     "type=top": {
         "model": "jitl:block/burned_slab_top"
