@@ -25,7 +25,8 @@
       "jitl:boil_fire_placed",
       "jitl:volcanic_rock_placed",
       "jitl:sulphur_deposit_placed",
-      "jitl:sulphur_crystal_placed"
+      "jitl:sulphur_crystal_placed",
+      "jitl:dying_burned_tree_placed"
     ]
   ]
 }

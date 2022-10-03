@@ -4,6 +4,7 @@ import com.google.common.base.Suppliers;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import net.jitl.common.world.gen.tree_grower.SphericalFoliagePlacer;
+import net.jitl.common.world.gen.treedecorator.CharredBrushTreeDecorator;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JTags;
@@ -19,12 +20,14 @@ import net.minecraft.util.valueproviders.BiasedToBottomInt;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.RandomPatchFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.NoiseProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
@@ -225,9 +228,55 @@ public class JConfiguredFeatures {
     public static final RegistryObject<ConfiguredFeature<?, ?>> SCORCHED_CACTUS = CONFIGURED_FEATURES.register("scorched_cactus",
             () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, FeatureUtils.simpleRandomPatchConfiguration(10,
                     PlacementUtils.inlinePlaced(Feature.BLOCK_COLUMN,
-                            BlockColumnConfiguration.simple(BiasedToBottomInt.of(1, 3),
+                            BlockColumnConfiguration.simple(BiasedToBottomInt.of(1, 5),
                                     BlockStateProvider.simple(JBlocks.SCORCHED_CACTUS.get())),
                             BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
                                     BlockPredicate.wouldSurvive(JBlocks.SCORCHED_CACTUS.get().defaultBlockState(), BlockPos.ZERO)))))));
 
+    public static final RegistryObject<ConfiguredFeature<?, ?>> LARGE_CHARRED_TREE = CONFIGURED_FEATURES.register("large_charred_tree",
+            () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                    BlockStateProvider.simple(JBlocks.BURNED_BARK.get()),
+                    new ForkingTrunkPlacer(5, 5, 5),
+                    BlockStateProvider.simple(JBlocks.CHARRED_LEAVES.get()),
+                    new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 2),
+                    new TwoLayersFeatureSize(1, 1, 2)).ignoreVines()
+                    .forceDirt()
+                    .dirt(BlockStateProvider.simple(JBlocks.CHARRED_GRASS.get()))
+                    .decorators(List.of(CharredBrushTreeDecorator.INSTANCE))
+                    .build()));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> DYING_BURNED_TREE = CONFIGURED_FEATURES.register("dying_burned_tree",
+            () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                    BlockStateProvider.simple(JBlocks.BURNED_BARK.get()),
+                    new ForkingTrunkPlacer(2, 1, 1),
+                    BlockStateProvider.simple(JBlocks.CHARRED_LEAVES.get()),
+                    new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 2),
+                    new TwoLayersFeatureSize(1, 1, 2))
+                    .forceDirt()
+                    .dirt(BlockStateProvider.simple(JBlocks.VOLCANIC_SAND.get()))
+                    .build()));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> MEDIUM_BURNED_TREE = CONFIGURED_FEATURES.register("medium_burned_tree",
+            () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                    BlockStateProvider.simple(JBlocks.BURNED_BARK.get()),
+                    new ForkingTrunkPlacer(4, 4, 4),
+                    BlockStateProvider.simple(JBlocks.CHARRED_LEAVES.get()),
+                    new FancyFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), 2),
+                    new TwoLayersFeatureSize(1, 1, 2)).ignoreVines()
+                    .decorators(ImmutableList.of(CharredBrushTreeDecorator.INSTANCE))
+                    .forceDirt()
+                    .dirt(BlockStateProvider.simple(JBlocks.CHARRED_GRASS.get()))
+                    .build()));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> SMALL_BURNED_TREE = CONFIGURED_FEATURES.register("small_burned_tree",
+            () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                    BlockStateProvider.simple(JBlocks.BURNED_BARK.get()),
+                    new ForkingTrunkPlacer(3, 3, 3),
+                    BlockStateProvider.simple(JBlocks.CHARRED_LEAVES.get()),
+                    new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 2),
+                    new TwoLayersFeatureSize(1, 1, 2)).ignoreVines()
+                    .decorators(ImmutableList.of(CharredBrushTreeDecorator.INSTANCE))
+                    .forceDirt()
+                    .dirt(BlockStateProvider.simple(JBlocks.CHARRED_GRASS.get()))
+                    .build()));
 }

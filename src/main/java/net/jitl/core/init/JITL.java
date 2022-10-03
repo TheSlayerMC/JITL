@@ -3,10 +3,7 @@ package net.jitl.core.init;
 import net.jitl.client.render.RenderEntitys;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.common.world.dimension.JCarver;
-import net.jitl.common.world.gen.JConfiguredFeatures;
-import net.jitl.common.world.gen.JFeatures;
-import net.jitl.common.world.gen.JFoliagePlacers;
-import net.jitl.common.world.gen.JPlacedFeatures;
+import net.jitl.common.world.gen.*;
 import net.jitl.core.data.*;
 import net.jitl.core.init.internal.JContainers;
 import net.jitl.core.init.internal.*;
@@ -45,6 +42,7 @@ public class JITL {
         Dimensions.REGISTRY.register(modEventBus);
         JCarver.REGISTRY.register(modEventBus);
         JEnchantments.REGISTRY.register(modEventBus);
+        JTreeDecorators.REGISTRY.register(modEventBus);
 
         if(DEV_MODE) {
             new JItemGenerator().generate();

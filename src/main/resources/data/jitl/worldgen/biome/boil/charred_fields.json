@@ -22,7 +22,10 @@
     [
       "jitl:charred_veg_placed",
       "jitl:boil_fire_placed",
-      "jitl:volcanic_rock_placed"
+      "jitl:volcanic_rock_placed",
+      "jitl:small_burned_tree_placed",
+      "jitl:medium_burned_tree_placed",
+      "jitl:large_burned_tree_placed"
     ]
   ]
 }

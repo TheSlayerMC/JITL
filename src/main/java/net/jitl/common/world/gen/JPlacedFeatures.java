@@ -97,6 +97,22 @@ public class JPlacedFeatures {
                     new PlacedFeature(JConfiguredFeatures.EUCA_GREEN_TREE.getHolder().get(),
             treePlacement(PlacementUtils.countExtra(4, 0.1F, 1), JBlocks.EUCA_GOLD_SAPLING.get())));
 
+    public static final RegistryObject<PlacedFeature> DYING_BURNED_TREE = PLACED_FEATURES.register("dying_burned_tree_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.DYING_BURNED_TREE.getHolder().get(),
+                    treePlacement(PlacementUtils.countExtra(5, 0.1F, 1), JBlocks.CHARRED_SAPLING.get())));
+
+    public static final RegistryObject<PlacedFeature> LARGE_BURNED_TREE = PLACED_FEATURES.register("large_burned_tree_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.LARGE_CHARRED_TREE.getHolder().get(),
+                    treePlacement(PlacementUtils.countExtra(4, 0.1F, 1), JBlocks.CHARRED_SAPLING.get())));
+
+    public static final RegistryObject<PlacedFeature> MEDIUM_BURNED_TREE = PLACED_FEATURES.register("medium_burned_tree_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.MEDIUM_BURNED_TREE.getHolder().get(),
+                    treePlacement(PlacementUtils.countExtra(24, 0.1F, 1), JBlocks.CHARRED_SAPLING.get())));
+
+    public static final RegistryObject<PlacedFeature> SMALL_BURNED_TREE = PLACED_FEATURES.register("small_burned_tree_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.SMALL_BURNED_TREE.getHolder().get(),
+                    treePlacement(PlacementUtils.countExtra(20, 0.1F, 1), JBlocks.CHARRED_SAPLING.get())));
+
     public static final RegistryObject<PlacedFeature> BOIL_FIRE = PLACED_FEATURES.register("boil_fire_placed", () ->
             new PlacedFeature(JConfiguredFeatures.PATCH_FIRE.getHolder().get()
                     , patch(1, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));

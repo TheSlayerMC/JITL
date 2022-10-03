@@ -267,7 +267,8 @@ public class JBlocks {
 
     public static final RegistryObject<Block> CHARRED_LEAVES = register("charred_leaves", "Charred Leaves4", JBlockProperties.LEAVES);
     public static final RegistryObject<RotatedPillarBlock> BURNED_BARK = registerPillar("burned_bark", "Burned Bark", true, JBlockProperties.WOOD);
-    public static final RegistryObject<Block> BURNED_SAPPLING = registerCrossBlock("burned_sappling", "Burned Sappling", () -> new TallGrassBlock(JBlockProperties.TALL_GRASS));
+    public static final RegistryObject<Block> BURNED_SAPLING = registerCrossBlock("burned_sapling", "Burned Sapling", () -> new TallGrassBlock(JBlockProperties.TALL_GRASS));
+    public static final RegistryObject<Block> CHARRED_SAPLING = registerCrossBlock("charred_sapling", "Charred Sapling", () -> new TallGrassBlock(JBlockProperties.TALL_GRASS));
     public static final RegistryObject<Block> BURNED_PLANKS = registerFuelBlock("burned_bark_planks", "Burned Planks", JBlockProperties.WOOD, 300);
     public static final RegistryObject<DoorBlock> BURNED_DOOR = registerDoor("burned_door", "Burned Door", true, JBlockProperties.DOOR);
     public static final RegistryObject<TrapDoorBlock> BURNED_TRAP_DOOR = registerTrapDoor("burned_trap_door", "Burned Trap Door", true, JBlockProperties.DOOR);
