@@ -170,4 +170,9 @@ public class JConfiguredFeatures {
                                 JBlocks.EUCA_TALL_FLOWERS.get().defaultBlockState(),
                                 JBlocks.EUCA_TALL_GRASS.get().defaultBlockState())))))));
 
+    public static final RegistryObject<ConfiguredFeature<RandomPatchConfiguration, ?>> PATCH_FIRE = CONFIGURED_FEATURES.register("boil_fire",
+            () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(50, 6, 2,
+                    PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L,
+                            new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(Blocks.FIRE.defaultBlockState())))))));
+
 }

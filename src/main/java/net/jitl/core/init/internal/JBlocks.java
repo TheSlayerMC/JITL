@@ -240,12 +240,12 @@ public class JBlocks {
     public static final RegistryObject<Block> SULPHUR_CRYSTAL = registerCrossBlock("sulphur_crystal", "Sulphur Crystal", () -> new AttachedBlock(JBlockProperties.TALL_GRASS));
     public static final RegistryObject<Block> SULPHUR_ROCK = register("sulphur_rock", "Sulphur Rock", JBlockProperties.STONE);
 
-    public static final RegistryObject<Block> RUBBLE = register("rubble", "Rubble", JBlockProperties.DIRT);
-    public static final RegistryObject<Block> ASH_BLOCK = register("ash_block", "Ash", JBlockProperties.STONE);
-    public static final RegistryObject<Block> SCORCHED_RUBBLE = register("scorched_rubble", "Rubble", JBlockProperties.DIRT);
-    public static final RegistryObject<Block> VOLCANIC_SAND = register("volcanic_sand", "Volcanic Sand", JBlockProperties.SAND);
-    public static final RegistryObject<Block> VOLCANIC_SOIL = register("volcanic_soil", "Volcanic Soil", JBlockProperties.DIRT);
-    public static final RegistryObject<Block> HOT_GROUND = register("hot_ground", "Hot Ground", JBlockProperties.STONE);
+    public static final RegistryObject<Block> RUBBLE = register("rubble", "Rubble", JBlockProperties.FIRE_DIRT);
+    public static final RegistryObject<Block> ASH_BLOCK = register("ash_block", "Ash", JBlockProperties.FIRE_STONE);
+    public static final RegistryObject<Block> SCORCHED_RUBBLE = register("scorched_rubble", "Rubble", JBlockProperties.FIRE_DIRT);
+    public static final RegistryObject<Block> VOLCANIC_SAND = register("volcanic_sand", "Volcanic Sand", JBlockProperties.FIRE_SAND);
+    public static final RegistryObject<Block> VOLCANIC_SOIL = register("volcanic_soil", "Volcanic Soil", JBlockProperties.FIRE_DIRT);
+    public static final RegistryObject<Block> HOT_GROUND = register("hot_ground", "Hot Ground", JBlockProperties.FIRE_STONE);
     public static final RegistryObject<Block> CHARRED_GRASS = registerGrassBlock("charred_grass", "Charred Grass", () -> new JGrassBlock(RUBBLE));
     public static final RegistryObject<Block> VOLCANIC_SANDSTONE = registerGrassBlock("volcanic_sandstone", "Volcanic Sandstone", () -> new Block(JBlockProperties.STONE));
 
@@ -296,7 +296,7 @@ public class JBlocks {
 
     public static RegistryObject<Block> register(String name, String translatedName, BlockBehaviour.Properties props) {
         normalBlockName.add(name);
-        return register(name, translatedName, () -> new Block(props), JTabs.BLOCKS);
+        return register(name, translatedName, () -> new JBlock(props), JTabs.BLOCKS);
     }
 
     public static RegistryObject<Block> register(String name, String translatedName, Supplier<Block> block) {

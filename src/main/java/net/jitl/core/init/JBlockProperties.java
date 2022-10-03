@@ -17,6 +17,11 @@ public class JBlockProperties {
             .sound(SoundType.STONE)
             .requiresCorrectToolForDrops();
 
+    public static BlockBehaviour.Properties FIRE_STONE = BlockBehaviour.Properties.of(Material.STONE)
+            .strength(1.5F)
+            .sound(SoundType.STONE)
+            .requiresCorrectToolForDrops();
+
     public static BlockBehaviour.Properties GRINDSTONE = BlockBehaviour.Properties.of(Material.STONE)
             .strength(1.5F)
             .sound(SoundType.STONE)
@@ -45,7 +50,15 @@ public class JBlockProperties {
             .strength(1F)
             .sound(SoundType.GRAVEL);
 
+    public static BlockBehaviour.Properties FIRE_DIRT = BlockBehaviour.Properties.of(Material.DIRT)
+            .strength(1F)
+            .sound(SoundType.GRAVEL);
+
     public static BlockBehaviour.Properties SAND = BlockBehaviour.Properties.of(Material.SAND)
+            .strength(1F)
+            .sound(SoundType.SAND);
+
+    public static BlockBehaviour.Properties FIRE_SAND = BlockBehaviour.Properties.of(Material.SAND)
             .strength(1F)
             .sound(SoundType.SAND);
 
