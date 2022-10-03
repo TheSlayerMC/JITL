@@ -27,7 +27,7 @@ public class JSaplingBlock extends BushBlock implements BonemealableBlock {
     private final AbstractTreeGrower treeGrower;
 
     public JSaplingBlock(AbstractTreeGrower treeIn) {
-        super(JBlockProperties.TALL_GRASS);
+        super(JBlockProperties.FLOWER);
         this.treeGrower = treeIn;
         this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, 0));
     }

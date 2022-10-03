@@ -49,7 +49,6 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.BURNED_SAPLING.get());
         cutout.add(JBlocks.CHARRED_SAPLING.get());
         cutout.add(JBlocks.CHARRED_BRUSH.get());
-        cutout.add(JBlocks.CHARRED_SAPPLING.get());
         cutout.add(JBlocks.CHARRED_SHORT_GRASS.get());
         cutout.add(JBlocks.CHARRED_WEEDS.get());
         cutout.add(JBlocks.CRUMBLING_PINE.get());

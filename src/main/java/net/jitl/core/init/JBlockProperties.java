@@ -78,11 +78,19 @@ public class JBlockProperties {
             .noOcclusion()
             .requiresCorrectToolForDrops();
 
-    public static BlockBehaviour.Properties TALL_GRASS = BlockBehaviour.Properties.of(Material.LEAVES)
+    public static BlockBehaviour.Properties REPLACABLE_PLANT = BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT)
             .instabreak()
             .sound(SoundType.GRASS)
             .noCollission()
-            .noOcclusion();
+            .noOcclusion()
+            .offsetType(BlockBehaviour.OffsetType.XZ);
+
+    public static BlockBehaviour.Properties FLOWER = BlockBehaviour.Properties.of(Material.PLANT)
+            .instabreak()
+            .sound(SoundType.GRASS)
+            .noCollission()
+            .noOcclusion()
+            .offsetType(BlockBehaviour.OffsetType.XZ);
 
     public static BlockBehaviour.Properties VINE = BlockBehaviour.Properties.of(Material.LEAVES)
             .sound(SoundType.GRASS)
