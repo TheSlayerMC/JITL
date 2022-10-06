@@ -5,18 +5,19 @@ import com.google.common.collect.ImmutableList;
 import net.jitl.common.world.gen.ruins.RuinsFeatureConfig;
 import net.jitl.common.world.gen.tree_grower.SphericalFoliagePlacer;
 import net.jitl.common.world.gen.treedecorator.CharredBrushTreeDecorator;
+import net.jitl.common.world.gen.treedecorator.FrozenTreeDecorator;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.OreFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.util.random.SimpleWeightedRandomList;
-import net.minecraft.util.valueproviders.BiasedToBottomInt;
-import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.*;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -25,11 +26,18 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.PineFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.NoiseProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
+import net.minecraft.world.level.levelgen.placement.EnvironmentScanPlacement;
+import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockStateMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
@@ -49,6 +57,7 @@ public class JConfiguredFeatures {
 
     public static final RuleTest EUCA_ORE_REPLACEABLES = new TagMatchTest(JTags.EUCA_STONE_ORE_REPLACEABLES);
     public static final RuleTest BOIL_ORE_REPLACEABLES = new TagMatchTest(JTags.BOIL_STONE_ORE_REPLACEABLES);
+    public static final RuleTest FROZEN_ORE_REPLACEABLES = new TagMatchTest(JTags.FROZEN_STONE_ORE_REPLACEABLES);
     public static final RuleTest GRASS = new BlockStateMatchTest(Blocks.GRASS_BLOCK.defaultBlockState());
     public static final RuleTest SAND = new BlockStateMatchTest(Blocks.SAND.defaultBlockState());
     public static final RuleTest EUCA_GRASS = new TagMatchTest(JTags.EUCA_GRASS);
@@ -113,6 +122,14 @@ public class JConfiguredFeatures {
             List.of(OreConfiguration.target(BOIL_ORE_REPLACEABLES, JBlocks.ASHUAL_ORE.get().defaultBlockState()))
     );
 
+    private static final Supplier<List<OreConfiguration.TargetBlockState>> RIMESTONE_TARGET = Suppliers.memoize(() ->
+            List.of(OreConfiguration.target(FROZEN_ORE_REPLACEABLES, JBlocks.RIMESTONE_ORE.get().defaultBlockState()))
+    );
+
+    private static final Supplier<List<OreConfiguration.TargetBlockState>> PERIDOT_TARGET = Suppliers.memoize(() ->
+            List.of(OreConfiguration.target(FROZEN_ORE_REPLACEABLES, JBlocks.PERIDOT_ORE.get().defaultBlockState()))
+    );
+
     public static final RegistryObject<ConfiguredFeature<?, ?>> IRIDIUM_ORE = CONFIGURED_FEATURES.register("iridium_ore",
             () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(IRIDIUM_TARGET.get(), 7)));
 
@@ -154,6 +171,12 @@ public class JConfiguredFeatures {
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> ASHUAL_ORE = CONFIGURED_FEATURES.register("ashual_ore",
             () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ASHUAL_TARGET.get(), 7)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> RIMESTONE_ORE = CONFIGURED_FEATURES.register("rimestone_ore",
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(RIMESTONE_TARGET.get(), 7)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> PERIDOT_ORE = CONFIGURED_FEATURES.register("peridot_ore",
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(PERIDOT_TARGET.get(), 7)));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> EUCA_GOLD_TREE = CONFIGURED_FEATURES.register("euca_gold_tree",
             () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -358,5 +381,100 @@ public class JConfiguredFeatures {
                             6,
                             9,
                             BuiltInLootTables.VILLAGE_WEAPONSMITH)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> SMALL_FROZEN_TREE = CONFIGURED_FEATURES.register("small_frozen_tree",
+            () -> new ConfiguredFeature<>(Feature.TREE,
+                            new TreeConfiguration.TreeConfigurationBuilder(
+                                    BlockStateProvider.simple(JBlocks.FROZEN_LOG.get().defaultBlockState()),
+                                    new ForkingTrunkPlacer(2, 1, 3),
+                                    BlockStateProvider.simple(JBlocks.FROZEN_LEAVES.get().defaultBlockState()),
+                                    new PineFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), ConstantInt.of(2)),
+                                    new TwoLayersFeatureSize(1, 1, 2)).ignoreVines()
+                                    //.decorators(ImmutableList.of(IcyBrushTreeDecorator.INSTANCE, new IceShroomTreeDecorator(0.2F)))
+                                    .forceDirt()
+                                    .dirt(BlockStateProvider.simple(JBlocks.GRASSY_PERMAFROST.get()))
+                                    .build()));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> MEDIUM_FROZEN_TREE = CONFIGURED_FEATURES.register("medium_frozen_tree",
+            () -> new ConfiguredFeature<>(Feature.TREE,
+                            new TreeConfiguration.TreeConfigurationBuilder(
+                                    BlockStateProvider.simple(JBlocks.FROZEN_LOG.get().defaultBlockState()),
+                                    new FancyTrunkPlacer(10, 5, 5),
+                                    BlockStateProvider.simple(JBlocks.FROZEN_LEAVES.get().defaultBlockState()),
+                                    new PineFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), ConstantInt.of(2)),
+                                    new TwoLayersFeatureSize(1, 1, 2)).ignoreVines()
+                                    //.decorators(ImmutableList.of(IcyBrushTreeDecorator.INSTANCE,new IceShroomTreeDecorator(0.2F), new CrystalFruitTreeDecorator(4)))
+                                    .forceDirt()
+                                    .dirt(BlockStateProvider.simple(JBlocks.GRASSY_PERMAFROST.get()))
+                                    .build()));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> LARGE_FROZEN_TREE = CONFIGURED_FEATURES.register("large_frozen_tree",
+                    () -> new ConfiguredFeature<>(Feature.TREE,
+                            new TreeConfiguration.TreeConfigurationBuilder(
+                                    BlockStateProvider.simple(JBlocks.FROZEN_LOG.get().defaultBlockState()),
+                                    new FancyTrunkPlacer(15, 7, 7),
+                                    BlockStateProvider.simple(JBlocks.FROZEN_LEAVES.get().defaultBlockState()),
+                                    new PineFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), ConstantInt.of(2)),
+                                    new TwoLayersFeatureSize(1, 1, 2)).ignoreVines()
+                                    //.decorators(ImmutableList.of(IcyBrushTreeDecorator.INSTANCE, new IceShroomTreeDecorator(0.2F), new CrystalFruitTreeDecorator(4)))
+                                    .forceDirt()
+                                    .dirt(BlockStateProvider.simple(JBlocks.CRUMBLED_PERMAFROST.get()))
+                                    .build()));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> LARGE_FROZEN_BITTERWOOD_TREE = CONFIGURED_FEATURES.register("large_frozen_bitterwood_tree",
+            () -> new ConfiguredFeature<>(Feature.TREE,
+                            new TreeConfiguration.TreeConfigurationBuilder(
+                                    BlockStateProvider.simple(JBlocks.FROZEN_LOG.get().defaultBlockState()),
+                                    new GiantTrunkPlacer(15, 7, 7),
+                                    BlockStateProvider.simple(JBlocks.FROZEN_LEAVES.get().defaultBlockState()),
+                                    new SpruceFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), ConstantInt.of(2)),
+                                    new TwoLayersFeatureSize(1, 1, 2)).ignoreVines()
+                                    .decorators(ImmutableList.of(new FrozenTreeDecorator(0.01F)))
+                                    .forceDirt()
+                                    .dirt(BlockStateProvider.simple(JBlocks.CRUMBLED_PERMAFROST.get()))
+                                    .build()));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> MEDIUM_FROZEN_BITTERWOOD_TREE = CONFIGURED_FEATURES.register("medium_frozen_bitterwood_tree",
+                    () -> new ConfiguredFeature<>(Feature.TREE,
+                            new TreeConfiguration.TreeConfigurationBuilder(
+                                    BlockStateProvider.simple(JBlocks.FROZEN_LOG.get().defaultBlockState()),
+                                    new GiantTrunkPlacer(10, 7, 7),
+                                    BlockStateProvider.simple(JBlocks.FROZEN_LEAVES.get().defaultBlockState()),
+                                    new SpruceFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), ConstantInt.of(2)),
+                                    new TwoLayersFeatureSize(1, 1, 2)).ignoreVines()
+                                    .decorators(ImmutableList.of(new FrozenTreeDecorator(0.01F)))
+                                    .forceDirt()
+                                    .dirt(BlockStateProvider.simple(JBlocks.CRUMBLED_PERMAFROST.get()))
+                                    .build()));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> SMALL_FROZEN_BITTERWOOD_TREE = CONFIGURED_FEATURES.register("small_frozen_bitterwood_tree",
+                    () -> new ConfiguredFeature<>(Feature.TREE,
+                            new TreeConfiguration.TreeConfigurationBuilder(
+                                    BlockStateProvider.simple(JBlocks.FROZEN_LOG.get().defaultBlockState()),
+                                    new StraightTrunkPlacer(4, 2, 3),
+                                    BlockStateProvider.simple(JBlocks.FROZEN_LEAVES.get().defaultBlockState()),
+                                    new SpruceFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), ConstantInt.of(2)),
+                                    new TwoLayersFeatureSize(1, 1, 2)).ignoreVines()
+                                    .decorators(ImmutableList.of(new FrozenTreeDecorator(0.01F)))
+                                    .forceDirt()
+                                    .dirt(BlockStateProvider.simple(JBlocks.GRASSY_PERMAFROST.get()))
+                                    .build()));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> FROZEN_VEG = CONFIGURED_FEATURES.register("frozen_veg",
+            () -> new ConfiguredFeature<>(Feature.FLOWER, new RandomPatchConfiguration(60, 6, 2,
+                    PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L,
+                            new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F,
+                            List.of(JBlocks.ICE_BUSH.get().defaultBlockState(),
+                                    JBlocks.FROSTBERRY_THORN.get().defaultBlockState())))))));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> FROZEN_FLOWERS = CONFIGURED_FEATURES.register("frozen_flowers",
+            () -> new ConfiguredFeature<>(Feature.FLOWER, new RandomPatchConfiguration(60, 6, 2,
+                    PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L,
+                            new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F,
+                            List.of(JBlocks.FROZEN_BLOOM.get().defaultBlockState(),
+                                    JBlocks.ICE_BUD.get().defaultBlockState())))))));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> ICE_SPIKE = CONFIGURED_FEATURES.register("frozen_ice_spike",
+            () -> new ConfiguredFeature<>(JFeatures.FROZEN_ICE_SPIKE.get(), new NoneFeatureConfiguration()));
 
 }

@@ -229,11 +229,15 @@ public class JBlocks {
     public static final RegistryObject<PressurePlateBlock> FROZEN_PRESSURE_PLATE = registerPressurePlate("frozen_pressure_plate", "Frostwood Pressure Plate", PressurePlateBlock.Sensitivity.EVERYTHING, true, JBlockProperties.WOOD);
     public static final RegistryObject<FenceGateBlock> FROZEN_FENCE_GATE = registerFenceGate("frozen_fence_gate", "Frostwood Fence Gate", true, JBlockProperties.WOOD);
     public static final RegistryObject<JFenceBlock> FROZEN_FENCE = registerFence("frozen_fence", "Frostwood Fence", true, JBlockProperties.WOOD);
-    public static final RegistryObject<Block> FROST_CRYSTAL_LARGE = registerCrossBlock("frost_crystal_large", "Frost Crystal", () -> new TallGrassBlock(JBlockProperties.FLOWER));
-    public static final RegistryObject<Block> FROST_CRYSTAL_MEDIUM = registerCrossBlock("frost_crystal_medium", "Frost Crystal", () -> new TallGrassBlock(JBlockProperties.FLOWER));
-    public static final RegistryObject<Block> FROST_CRYSTAL_SMALL = registerCrossBlock("frost_crystal_small", "Frost Crystal", () -> new TallGrassBlock(JBlockProperties.FLOWER));
-    public static final RegistryObject<Block> FROST_CRYSTAL_TINY = registerCrossBlock("frost_crystal_tiny", "Frost Crystal", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final RegistryObject<Block> FROST_CRYSTAL_LARGE = registerCrossBlock("frost_crystal_large", "Frost Crystal", () -> new AttachedBlock(JBlockProperties.FLOWER));
+    public static final RegistryObject<Block> FROST_CRYSTAL_MEDIUM = registerCrossBlock("frost_crystal_medium", "Frost Crystal", () -> new AttachedBlock(JBlockProperties.FLOWER));
+    public static final RegistryObject<Block> FROST_CRYSTAL_SMALL = registerCrossBlock("frost_crystal_small", "Frost Crystal", () -> new AttachedBlock(JBlockProperties.FLOWER));
+    public static final RegistryObject<Block> FROST_CRYSTAL_TINY = registerCrossBlock("frost_crystal_tiny", "Frost Crystal", () -> new AttachedBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> FROSTBERRY_THORN = registerCrossBlock("frostberry_thorn", "Frostberry Thorn", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final RegistryObject<Block> ICE_BUSH = registerCrossBlock("ice_bush", "Ice Bush", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final RegistryObject<Block> ICE_BUD = registerCrossBlock("ice_bud", "Ice Bud", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final RegistryObject<Block> BITTERWOOD_SAPLING = registerCrossBlock("bitterwood_sapling", "Bitterwood Sapling", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+
     public static final RegistryObject<Block> FROZEN_BLOOM = registerCrossBlock("frozen_bloom", "Frozen Bloom", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> FROZEN_FLOWER = registerCrossBlock("frozen_flower", "Frozen Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> FROSTY_ICE = register("frosty_ice", "Frosty Ice", JBlockProperties.ICE);

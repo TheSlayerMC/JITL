@@ -167,6 +167,16 @@ public class JPlacedFeatures {
                     commonOrePlacement(7,
                             HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(256)))));
 
+    public static final RegistryObject<PlacedFeature> RIMESTONE_ORE = PLACED_FEATURES.register("rimestone_ore_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.RIMESTONE_ORE.getHolder().get(),
+                    commonOrePlacement(12,
+                            HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(256)))));
+
+    public static final RegistryObject<PlacedFeature> PERIDOT_ORE = PLACED_FEATURES.register("peridot_ore_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.PERIDOT_ORE.getHolder().get(),
+                    commonOrePlacement(12,
+                            HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(256)))));
+
     public static final RegistryObject<PlacedFeature> DEFAULT_OVERWORLD_RUINS = PLACED_FEATURES.register("default_overworld_ruins_placed", () ->
             new PlacedFeature(JConfiguredFeatures.DEFAULT_OVERWORLD_RUINS.getHolder().get(),
                             rarePatch(10, 7)));
@@ -182,6 +192,42 @@ public class JPlacedFeatures {
     public static final RegistryObject<PlacedFeature> GOLD_EUCA_RUINS = PLACED_FEATURES.register("euca_goldite_ruins_placed", () ->
             new PlacedFeature(JConfiguredFeatures.EUCA_GOLDITE_RUINS.getHolder().get(),
                     rarePatch(10, 7)));
+
+    public static final RegistryObject<PlacedFeature> LARGE_FROZEN_TREE = PLACED_FEATURES.register("large_frozen_tree_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.LARGE_FROZEN_TREE.getHolder().get(),
+                    treePlacement(PlacementUtils.countExtra(4, 0.1F, 1), JBlocks.FROSTWOOD_SAPLING.get())));
+
+    public static final RegistryObject<PlacedFeature> MEDIUM_FROZEN_TREE = PLACED_FEATURES.register("medium_frozen_tree_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.MEDIUM_FROZEN_TREE.getHolder().get(),
+                    treePlacement(PlacementUtils.countExtra(16, 0.1F, 1), JBlocks.FROSTWOOD_SAPLING.get())));
+
+    public static final RegistryObject<PlacedFeature> SMALL_FROZEN_TREE = PLACED_FEATURES.register("small_frozen_tree_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.SMALL_FROZEN_TREE.getHolder().get(),
+                    treePlacement(PlacementUtils.countExtra(16, 0.1F, 1), JBlocks.FROSTWOOD_SAPLING.get())));
+
+    public static final RegistryObject<PlacedFeature> LARGE_BITTERWOOD_TREE = PLACED_FEATURES.register("large_bitterwood_tree_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.LARGE_FROZEN_BITTERWOOD_TREE.getHolder().get(),
+                    treePlacement(PlacementUtils.countExtra(4, 0.1F, 1), JBlocks.BITTERWOOD_SAPLING.get())));
+
+    public static final RegistryObject<PlacedFeature> MEDIUM_BITTERWOOD_TREE = PLACED_FEATURES.register("medium_bitterwood_tree_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.MEDIUM_FROZEN_BITTERWOOD_TREE.getHolder().get(),
+                    treePlacement(PlacementUtils.countExtra(16, 0.1F, 1), JBlocks.BITTERWOOD_SAPLING.get())));
+
+    public static final RegistryObject<PlacedFeature> SMALL_BITTERWOOD_TREE = PLACED_FEATURES.register("small_bitterwood_tree_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.SMALL_FROZEN_BITTERWOOD_TREE.getHolder().get(),
+                    treePlacement(PlacementUtils.countExtra(16, 0.1F, 1), JBlocks.BITTERWOOD_SAPLING.get())));
+
+    public static final RegistryObject<PlacedFeature> FROZEN_VEG = PLACED_FEATURES.register("frozen_veg_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.FROZEN_VEG.getHolder().get()
+                    , patch(12, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
+
+    public static final RegistryObject<PlacedFeature> FROZEN_FLOWERS = PLACED_FEATURES.register("frozen_flowers_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.FROZEN_FLOWERS.getHolder().get()
+                    , patch(12, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
+
+    public static final RegistryObject<PlacedFeature> ICE_SPIKE = PLACED_FEATURES.register("ice_spike_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.ICE_SPIKE.getHolder().get()
+                    , patch(1, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
 
     /** -----------------------------------------------------------------------------------------------------------------------------------------------------------------  **/
 
