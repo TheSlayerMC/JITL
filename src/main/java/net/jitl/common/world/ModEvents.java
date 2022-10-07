@@ -4,6 +4,8 @@ import net.jitl.client.essence.PlayerEssence;
 import net.jitl.client.essence.PlayerEssenceProvider;
 import net.jitl.client.knowledge.PlayerKnowledge;
 import net.jitl.client.knowledge.PlayerKnowledgeProvider;
+import net.jitl.client.stats.PlayerStats;
+import net.jitl.client.stats.PlayerStatsProvider;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -30,6 +32,9 @@ public class ModEvents {
             if(!player.getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).isPresent()) {
                 event.addCapability(new ResourceLocation(JITL.MODID, "knowledge"), new PlayerKnowledgeProvider());
             }
+            if(!player.getCapability(PlayerStatsProvider.PLAYER_STATS).isPresent()) {
+                event.addCapability(new ResourceLocation(JITL.MODID, "player_stats"), new PlayerStatsProvider());
+            }
         }
     }
 
@@ -37,6 +42,7 @@ public class ModEvents {
     public static void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
         event.register(PlayerEssence.class);
         event.register(PlayerKnowledge.class);
+        event.register(PlayerStats.class);
     }
 
     @SubscribeEvent
@@ -50,6 +56,12 @@ public class ModEvents {
 
             event.getOriginal().getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(oldStore -> {
                 event.getOriginal().getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(newStore -> {
+                    newStore.copyFrom(oldStore);
+                });
+            });
+
+            event.getOriginal().getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(oldStore -> {
+                event.getOriginal().getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(newStore -> {
                     newStore.copyFrom(oldStore);
                 });
             });
@@ -72,6 +84,12 @@ public class ModEvents {
             event.player.getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(knowledge -> {
                 if(event.phase == TickEvent.Phase.END) {
                    // knowledge.update(event.player); ADD BACK LATER
+                }
+            });
+
+            event.player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
+                if(event.phase == TickEvent.Phase.END) {
+                    stats.update(event.player);
                 }
             });
         }
