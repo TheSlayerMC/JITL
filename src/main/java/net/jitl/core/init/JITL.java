@@ -4,13 +4,17 @@ import net.jitl.client.render.RenderEntitys;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.common.world.dimension.JCarver;
 import net.jitl.common.world.gen.*;
+import net.jitl.core.config.JClientConfig;
+import net.jitl.core.config.JCommonConfig;
 import net.jitl.core.data.*;
 import net.jitl.core.init.internal.JContainers;
 import net.jitl.core.init.internal.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
@@ -69,6 +73,9 @@ public class JITL {
         modEventBus.addListener(this::enqueue);
 
         JNetworkRegistry.init();
+
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, JClientConfig.SPEC, "jitl-client.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, JCommonConfig.SPEC, "jitl-common.toml");
 
         MinecraftForge.EVENT_BUS.register(this);
     }
