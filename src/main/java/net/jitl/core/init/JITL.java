@@ -1,5 +1,6 @@
 package net.jitl.core.init;
 
+import net.jitl.client.ClientEventHandler;
 import net.jitl.client.render.RenderEntitys;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.common.world.dimension.JCarver;
@@ -7,6 +8,7 @@ import net.jitl.common.world.gen.*;
 import net.jitl.core.config.JClientConfig;
 import net.jitl.core.config.JCommonConfig;
 import net.jitl.core.data.*;
+import net.jitl.core.data.block_generation.*;
 import net.jitl.core.init.internal.JContainers;
 import net.jitl.core.init.internal.*;
 import net.minecraft.resources.ResourceLocation;
@@ -47,6 +49,8 @@ public class JITL {
         JCarver.REGISTRY.register(modEventBus);
         JEnchantments.REGISTRY.register(modEventBus);
         JTreeDecorators.REGISTRY.register(modEventBus);
+
+        ClientEventHandler.regToBus(forgeEventBus);
 
         if(DEV_MODE) {
             new JItemGenerator().generate();

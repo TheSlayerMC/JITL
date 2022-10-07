@@ -147,7 +147,7 @@ public class JPlacedFeatures {
 
     public static final RegistryObject<PlacedFeature> SULPHUR_CRYSTAL = PLACED_FEATURES.register("sulphur_crystal_placed", () ->
             new PlacedFeature(JConfiguredFeatures.SULPHUR_CRYSTAL.getHolder().get()
-                    , patch(5, 5, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
+                    , patch(15, 5, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
 
     public static final RegistryObject<PlacedFeature> SCORCHED_CACTUS = PLACED_FEATURES.register("scorched_cactus_placed", () ->
             new PlacedFeature(JConfiguredFeatures.SCORCHED_CACTUS.getHolder().get()

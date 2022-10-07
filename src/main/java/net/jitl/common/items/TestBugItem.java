@@ -3,6 +3,8 @@ package net.jitl.common.items;
 import net.jitl.client.essence.PlayerEssenceProvider;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.client.knowledge.PlayerKnowledgeProvider;
+import net.jitl.client.stats.ClientPlayerStats;
+import net.jitl.client.stats.PlayerStatsProvider;
 import net.jitl.core.helper.IEssenceItem;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.world.InteractionHand;
@@ -31,7 +33,10 @@ public class TestBugItem extends Item implements IEssenceItem {
 
             });
             player.getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(knowledge -> {
-                knowledge.addLevel(player, EnumKnowledge.OVERWORLD, 10);
+
+            });
+            player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
+                stats.setBlizzard(!stats.hasBlizzard());
             });
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());

@@ -1,4 +1,4 @@
-package net.jitl.core.data;
+package net.jitl.core.data.block_generation;
 
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
@@ -8,12 +8,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class JBlockCrossGenerator {
+public class JBlockGrassGenerator {
 
     protected BufferedWriter blockModelWriter, blockstateWriter, itemModelWriter;
 
     public void generate() {
-        for(String name : JBlocks.crossBlockName) {
+        for(String name : JBlocks.grassBlockName) {
             String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
             String blockModelDir = "../src/main/resources/assets/jitl/models/block/" + name + ".json";
             String blockstateDir = "../src/main/resources/assets/jitl/blockstates/" + name + ".json";
@@ -31,13 +31,13 @@ public class JBlockCrossGenerator {
                 blockModel.createNewFile();
                 blockModelWriter = new BufferedWriter(new FileWriter(blockModel));
 
+
                 if (blockstateModel.exists()) blockstateModel.delete();
                 blockstateModel.createNewFile();
                 blockstateWriter = new BufferedWriter(new FileWriter(blockstateModel));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
             getBlockItem(JITL.MODID, name);
             getBlockModel(JITL.MODID, name);
             getBlockstate(JITL.MODID, name);
@@ -48,20 +48,24 @@ public class JBlockCrossGenerator {
 
     public void getBlockItem(String modID, String name) {
         writeToItemModelFile("{");
-        writeToItemModelFile("  \"parent\": \"minecraft:item/generated\",");
-        writeToItemModelFile("  \"textures\": {");
-        writeToItemModelFile("    \"layer0\": \"" + modID + ":" + "block/" + name + "\"");
-        writeToItemModelFile("  }");
+        writeToItemModelFile("  \"parent\": \"" + modID + ":block/" + name + "\"");
         writeToItemModelFile("}");
     }
 
     public void getBlockModel(String modID, String name) {
         writeToBlockModelFile("{");
-        writeToBlockModelFile("  \"parent\": \"minecraft:block/cross\",");
+        writeToBlockModelFile("  \"parent\": \"minecraft:block/cube\",");
         writeToBlockModelFile("  \"textures\": {");
-        writeToBlockModelFile("    \"cross\": \"" + modID + ":" + "block/" + name + "\"");
+        writeToBlockModelFile("    \"up\": \"" + modID + ":" + "block/" + name + "_top\",");
+        writeToBlockModelFile("    \"north\": \"" + modID + ":" + "block/" + name + "_side\",");
+        writeToBlockModelFile("    \"east\": \"" + modID + ":" + "block/" + name + "_side\",");
+        writeToBlockModelFile("    \"south\": \"" + modID + ":" + "block/" + name + "_side\",");
+        writeToBlockModelFile("    \"west\": \"" + modID + ":" + "block/" + name + "_side\",");
+        writeToBlockModelFile("    \"down\": \"" + modID + ":" + "block/" + name + "_bottom\",");
+        writeToBlockModelFile("    \"particle\": \"" + modID + ":" + "block/" + name + "_bottom\"");
         writeToBlockModelFile("  }");
         writeToBlockModelFile("}");
+
     }
 
     public void getBlockstate(String modID, String name) {
@@ -69,7 +73,7 @@ public class JBlockCrossGenerator {
         writeToBlockstateFile("  \"variants\": {");
         writeToBlockstateFile("  \"\": {");
         writeToBlockstateFile("      \"model\": \"" + modID + ":" + "block/" + name + "\"");
-        writeToBlockstateFile("      }");
+        writeToBlockstateFile("     }");
         writeToBlockstateFile("  }");
         writeToBlockstateFile("}");
     }

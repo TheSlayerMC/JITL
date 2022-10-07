@@ -1,29 +1,29 @@
 {
   "variants": {
-    "facing=north": {
-       "model": "jitl:block/frost_crystal_small",
-        "x": 90
-     },
-    "facing=south": {
-       "model": "jitl:block/frost_crystal_small",
-        "x": -90
-     },
-    "facing=east": {
-       "model": "jitl:block/frost_crystal_small",
-        "x": 90,
-        "y": 90
-     },
-    "facing=west": {
-       "model": "jitl:block/frost_crystal_small",
-        "x": 270,
-        "y": 90
-     },
-    "facing=up": {
-       "model": "jitl:block/frost_crystal_small"
-     },
-    "facing=down": {
-       "model": "jitl:block/frost_crystal_small",
-        "x": 180
-     }
+   "facing=north": {
+      "model": "jitl:block/frost_crystal_small",
+       "x": 90
+    },
+   "facing=south": {
+      "model": "jitl:block/frost_crystal_small",
+       "x": -90
+    },
+   "facing=east": {
+      "model": "jitl:block/frost_crystal_small",
+       "x": 90,
+       "y": 90
+    },
+   "facing=west": {
+      "model": "jitl:block/frost_crystal_small",
+       "x": 270,
+       "y": 90
+    },
+   "facing=up": {
+      "model": "jitl:block/frost_crystal_small"
+    },
+   "facing=down": {
+      "model": "jitl:block/frost_crystal_small",
+       "x": 180
+    }
   }
 }

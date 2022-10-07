@@ -1,4 +1,4 @@
-package net.jitl.core.data;
+package net.jitl.core.data.block_generation;
 
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
@@ -8,12 +8,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class JBlockRotatableGenerator {
+public class JBlockCrossGenerator {
 
     protected BufferedWriter blockModelWriter, blockstateWriter, itemModelWriter;
 
     public void generate() {
-        for(String name : JBlocks.rotatableBlockName) {
+        for(String name : JBlocks.crossBlockName) {
             String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
             String blockModelDir = "../src/main/resources/assets/jitl/models/block/" + name + ".json";
             String blockstateDir = "../src/main/resources/assets/jitl/blockstates/" + name + ".json";
@@ -48,17 +48,18 @@ public class JBlockRotatableGenerator {
 
     public void getBlockItem(String modID, String name) {
         writeToItemModelFile("{");
-        writeToItemModelFile("  \"parent\": \"" + modID + ":block/" + name + "\"");
+        writeToItemModelFile("  \"parent\": \"minecraft:item/generated\",");
+        writeToItemModelFile("  \"textures\": {");
+        writeToItemModelFile("    \"layer0\": \"" + modID + ":" + "block/" + name + "\"");
+        writeToItemModelFile("  }");
         writeToItemModelFile("}");
     }
 
     public void getBlockModel(String modID, String name) {
         writeToBlockModelFile("{");
-        writeToBlockModelFile("  \"parent\": \"minecraft:block/orientable\",");
+        writeToBlockModelFile("  \"parent\": \"minecraft:block/cross\",");
         writeToBlockModelFile("  \"textures\": {");
-        writeToBlockModelFile("    \"front\": \"" + modID + ":" + "block/" + name + "_front\",");
-        writeToBlockModelFile("    \"side\": \"" + modID + ":" + "block/" + name + "_side\",");
-        writeToBlockModelFile("    \"top\": \"" + modID + ":" + "block/" + name + "_top\"");
+        writeToBlockModelFile("    \"cross\": \"" + modID + ":" + "block/" + name + "\"");
         writeToBlockModelFile("  }");
         writeToBlockModelFile("}");
     }
@@ -66,21 +67,9 @@ public class JBlockRotatableGenerator {
     public void getBlockstate(String modID, String name) {
         writeToBlockstateFile("{");
         writeToBlockstateFile("  \"variants\": {");
-        writeToBlockstateFile("    \"facing=east\": {");
-        writeToBlockstateFile("        \"model\": \"" + modID + ":" + "block/" + name + "\",");
-        writeToBlockstateFile("         \"y\": 90");
-        writeToBlockstateFile("     },");
-        writeToBlockstateFile("    \"facing=north\": {");
-        writeToBlockstateFile("        \"model\": \"" + modID + ":" + "block/" + name + "\"");
-        writeToBlockstateFile("     },");
-        writeToBlockstateFile("    \"facing=south\": {");
-        writeToBlockstateFile("        \"model\": \"" + modID + ":" + "block/" + name + "\",");
-        writeToBlockstateFile("         \"y\": 180");
-        writeToBlockstateFile("     },");
-        writeToBlockstateFile("    \"facing=west\": {");
-        writeToBlockstateFile("        \"model\": \"" + modID + ":" + "block/" + name + "\",");
-        writeToBlockstateFile("         \"y\": 270");
-        writeToBlockstateFile("     }");
+        writeToBlockstateFile("  \"\": {");
+        writeToBlockstateFile("      \"model\": \"" + modID + ":" + "block/" + name + "\"");
+        writeToBlockstateFile("      }");
         writeToBlockstateFile("  }");
         writeToBlockstateFile("}");
     }
