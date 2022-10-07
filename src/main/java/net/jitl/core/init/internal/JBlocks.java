@@ -57,6 +57,8 @@ public class JBlocks {
     public static final ArrayList<String> fenceLangName = new ArrayList<>();
     public static final ArrayList<String> crossBlockName = new ArrayList<>();
     public static final ArrayList<String> crossLangName = new ArrayList<>();
+    public static final ArrayList<String> attachedCrossBlockName = new ArrayList<>();
+    public static final ArrayList<String> attachedCrossLangName = new ArrayList<>();
     public static final ArrayList<String> grassBlockName = new ArrayList<>();
     public static final ArrayList<String> grassLangName = new ArrayList<>();
     public static final ArrayList<String> portalBlockName = new ArrayList<>();
@@ -229,10 +231,10 @@ public class JBlocks {
     public static final RegistryObject<PressurePlateBlock> FROZEN_PRESSURE_PLATE = registerPressurePlate("frozen_pressure_plate", "Frostwood Pressure Plate", PressurePlateBlock.Sensitivity.EVERYTHING, true, JBlockProperties.WOOD);
     public static final RegistryObject<FenceGateBlock> FROZEN_FENCE_GATE = registerFenceGate("frozen_fence_gate", "Frostwood Fence Gate", true, JBlockProperties.WOOD);
     public static final RegistryObject<JFenceBlock> FROZEN_FENCE = registerFence("frozen_fence", "Frostwood Fence", true, JBlockProperties.WOOD);
-    public static final RegistryObject<Block> FROST_CRYSTAL_LARGE = registerCrossBlock("frost_crystal_large", "Frost Crystal", () -> new AttachedBlock(JBlockProperties.FLOWER));
-    public static final RegistryObject<Block> FROST_CRYSTAL_MEDIUM = registerCrossBlock("frost_crystal_medium", "Frost Crystal", () -> new AttachedBlock(JBlockProperties.FLOWER));
-    public static final RegistryObject<Block> FROST_CRYSTAL_SMALL = registerCrossBlock("frost_crystal_small", "Frost Crystal", () -> new AttachedBlock(JBlockProperties.FLOWER));
-    public static final RegistryObject<Block> FROST_CRYSTAL_TINY = registerCrossBlock("frost_crystal_tiny", "Frost Crystal", () -> new AttachedBlock(JBlockProperties.FLOWER));
+    public static final RegistryObject<Block> FROST_CRYSTAL_LARGE = registerAttachedCrossBlock("frost_crystal_large", "Frost Crystal", () -> new AttachedBlock(JBlockProperties.CRYSTAL));
+    public static final RegistryObject<Block> FROST_CRYSTAL_MEDIUM = registerAttachedCrossBlock("frost_crystal_medium", "Frost Crystal", () -> new AttachedBlock(JBlockProperties.CRYSTAL));
+    public static final RegistryObject<Block> FROST_CRYSTAL_SMALL = registerAttachedCrossBlock("frost_crystal_small", "Frost Crystal", () -> new AttachedBlock(JBlockProperties.CRYSTAL));
+    public static final RegistryObject<Block> FROST_CRYSTAL_TINY = registerAttachedCrossBlock("frost_crystal_tiny", "Frost Crystal", () -> new AttachedBlock(JBlockProperties.CRYSTAL));
     public static final RegistryObject<Block> FROSTBERRY_THORN = registerCrossBlock("frostberry_thorn", "Frostberry Thorn", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> ICE_BUSH = registerCrossBlock("ice_bush", "Ice Bush", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> ICE_BUD = registerCrossBlock("ice_bud", "Ice Bud", () -> new TallGrassBlock(JBlockProperties.FLOWER));
@@ -245,7 +247,7 @@ public class JBlocks {
 
     public static final RegistryObject<Block> BOIL_PORTAL_FRAME = register("boil_portal_frame", "Boiling Point Portal Frame", JBlockProperties.STONE);
     public static final RegistryObject<JBasePortalBlock> BOIL_PORTAL = registerPortalBlock("boil_portal", "Boiling Point Portal", () -> new JBasePortalBlock(Dimensions.BOIL, BOIL_PORTAL_FRAME));
-    public static final RegistryObject<Block> SULPHUR_CRYSTAL = registerCrossBlock("sulphur_crystal", "Sulphur Crystal", () -> new AttachedBlock(JBlockProperties.FLOWER));
+    public static final RegistryObject<Block> SULPHUR_CRYSTAL = registerAttachedCrossBlock("sulphur_crystal", "Sulphur Crystal", () -> new AttachedBlock(JBlockProperties.STONE));
     public static final RegistryObject<Block> SULPHUR_ROCK = register("sulphur_rock", "Sulphur Rock", JBlockProperties.STONE);
 
     public static final RegistryObject<Block> RUBBLE = register("rubble", "Rubble", JBlockProperties.FIRE_DIRT);
@@ -495,6 +497,14 @@ public class JBlocks {
     public static RegistryObject<Block> registerCrossBlock(String name, String translatedName, Supplier<Block> block) {
         crossBlockName.add(name);
         crossLangName.add(translatedName);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerAttachedCrossBlock(String name, String translatedName, Supplier<Block> block) {
+        attachedCrossBlockName.add(name);
+        attachedCrossLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
         JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
         return block1;

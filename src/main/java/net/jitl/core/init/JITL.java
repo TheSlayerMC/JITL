@@ -55,6 +55,7 @@ public class JITL {
             new JBlockRotatableGenerator().generate();
             new JBlockFurnaceGenerator().generate();
             new JBlockCrossGenerator().generate();
+            new JBlockAttachedCrossGenerator().generate();
             new JBlockPillarGenerator().generate();
             new JBlockDoorGenerator().generate();
             new JBlockTrapDoorGenerator().generate();

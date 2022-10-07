@@ -18,6 +18,7 @@ public class LangRegistry {
         ArrayList<String> blockList = new ArrayList<>(JBlocks.normalBlockName);
         ArrayList<String> logList = new ArrayList<>(JBlocks.logBlockName);
         ArrayList<String> crossList = new ArrayList<>(JBlocks.crossBlockName);
+        ArrayList<String> attachedCrossList = new ArrayList<>(JBlocks.attachedCrossBlockName);
         ArrayList<String> doorList = new ArrayList<>(JBlocks.doorBlockName);
         ArrayList<String> trapDoorList = new ArrayList<>(JBlocks.trapDoorBlockName);
         ArrayList<String> stairList = new ArrayList<>(JBlocks.stairsBlockName);
@@ -73,6 +74,10 @@ public class LangRegistry {
 
         for(int i = 0; i < crossList.size(); i++) {
             writeToFile("\"block.jitl." + crossList.get(i) + "\": \"" + JBlocks.crossLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < attachedCrossList.size(); i++) {
+            writeToFile("\"block.jitl." + attachedCrossList.get(i) + "\": \"" + JBlocks.attachedCrossLangName.get(i) + "\"" + ",");
         }
 
         for(int i = 0; i < doorList.size(); i++) {

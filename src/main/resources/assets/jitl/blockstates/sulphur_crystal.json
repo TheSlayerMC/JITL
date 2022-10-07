@@ -1,7 +1,29 @@
 {
   "variants": {
-  "": {
-      "model": "jitl:block/sulphur_crystal"
-      }
+    "facing=north": {
+       "model": "jitl:block/sulphur_crystal",
+        "x": 90
+     },
+    "facing=south": {
+       "model": "jitl:block/sulphur_crystal",
+        "x": -90
+     },
+    "facing=east": {
+       "model": "jitl:block/sulphur_crystal",
+        "x": 90,
+        "y": 90
+     },
+    "facing=west": {
+       "model": "jitl:block/sulphur_crystal",
+        "x": 270,
+        "y": 90
+     },
+    "facing=up": {
+       "model": "jitl:block/sulphur_crystal"
+     },
+    "facing=down": {
+       "model": "jitl:block/sulphur_crystal",
+        "x": 180
+     }
   }
 }

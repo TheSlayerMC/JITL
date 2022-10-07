@@ -92,6 +92,12 @@ public class JBlockProperties {
             .noOcclusion()
             .offsetType(BlockBehaviour.OffsetType.XZ);
 
+    public static BlockBehaviour.Properties CRYSTAL = BlockBehaviour.Properties.of(Material.PLANT)
+            .sound(SoundType.GLASS)
+            .noCollission()
+            .noOcclusion()
+            .offsetType(BlockBehaviour.OffsetType.XZ);
+
     public static BlockBehaviour.Properties VINE = BlockBehaviour.Properties.of(Material.LEAVES)
             .sound(SoundType.GRASS)
             .noCollission()
