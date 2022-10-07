@@ -1,7 +1,6 @@
 package net.jitl.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.jitl.client.stats.ClientPlayerStats;
 import net.jitl.client.stats.PlayerStatsProvider;
 import net.jitl.common.world.dimension.Dimensions;
 import net.minecraft.client.Minecraft;
