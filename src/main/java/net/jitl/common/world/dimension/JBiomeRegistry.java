@@ -34,6 +34,11 @@ public class JBiomeRegistry {
 
             helper.register(JITL.rl("euca_plains"), EUCA_PLAINS);
             helper.register(JITL.rl("euca_goldite_grains"), EUCA_GOLDITE_GRAINS);
+
+            helper.register(JITL.rl("boiling_plains"), BOILING_PLAINS);
+            helper.register(JITL.rl("boiling_sands"), BOILING_SANDS);
+            helper.register(JITL.rl("charred_fields"), CHARRED_FIELDS);
+            helper.register(JITL.rl("scorched_wastelands"), SCORCHED_WASTELANDS);
         });
     }
 }

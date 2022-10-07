@@ -271,7 +271,7 @@
         "type": "minecraft:range_choice",
         "input": "minecraft:y",
         "min_inclusive": -60,
-        "max_exclusive": 51,
+        "max_exclusive": 0,
         "when_in_range": {
           "type": "minecraft:noise",
           "noise": "minecraft:ore_veininess",
@@ -294,7 +294,7 @@
               "type": "minecraft:range_choice",
               "input": "minecraft:y",
               "min_inclusive": -60,
-              "max_exclusive": 51,
+              "max_exclusive": 0,
               "when_in_range": {
                 "type": "minecraft:noise",
                 "noise": "minecraft:ore_vein_a",
@@ -313,7 +313,7 @@
               "type": "minecraft:range_choice",
               "input": "minecraft:y",
               "min_inclusive": -60,
-              "max_exclusive": 51,
+              "max_exclusive": 0,
               "when_in_range": {
                 "type": "minecraft:noise",
                 "noise": "minecraft:ore_vein_b",

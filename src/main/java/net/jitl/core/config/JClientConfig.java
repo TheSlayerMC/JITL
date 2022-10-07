@@ -22,7 +22,7 @@ public class JClientConfig{
 	private static final ForgeConfigSpec.IntValue BIG_SCREENSHOT_HEIGHT;
 
 	static {
-		BUILDER.push("Configs for JITL");
+		BUILDER.push("Client configs for JITL");
 
 		ENABLE_ISOMETRIC_CAMERA = BUILDER
 				.comment("If set to 'true', the camera will be locked to the isometric view.")
