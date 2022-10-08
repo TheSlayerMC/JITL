@@ -1,0 +1,44 @@
+{
+  "type": "jitl:frozen_cave",
+  "config": {
+    "probability": 0.1,
+    "y": {
+      "type": "minecraft:uniform",
+      "min_inclusive": {
+        "above_bottom": 8
+      },
+      "max_inclusive": {
+        "absolute": 180
+      }
+    },
+    "yScale": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 0.1,
+        "max_exclusive": 0.9
+      }
+    },
+    "lava_level": {
+      "above_bottom": 0
+    },
+    "replaceable": "jitl:permafrost",
+    "debug_settings": {
+      "debug_mode": false,
+      "air_state": {
+        "Name": "minecraft:air"
+      },
+      "water_state": {
+        "Name": "jitl:frosty_ice"
+      },
+      "lava_state": {
+        "Name": "jitl:frosty_ice"
+      },
+      "barrier_state": {
+        "Name": "minecraft:red_wool"
+      }
+    },
+    "horizontal_radius_multiplier": 0,
+    "vertical_radius_multiplier": 0,
+    "floor_level": 6
+  }
+}

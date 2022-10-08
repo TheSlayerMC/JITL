@@ -39,7 +39,6 @@ public class FrozenCaveCarver extends CaveWorldCarver {
         return 2.0D;
     }
 
-
     @Override
     protected boolean carveBlock(CarvingContext carv, CaveCarverConfiguration config, ChunkAccess chunk, Function<BlockPos, Holder<Biome>> func,
                                  CarvingMask mask, BlockPos.MutableBlockPos pos, BlockPos.MutableBlockPos pos2, Aquifer a, MutableBoolean mut) {
