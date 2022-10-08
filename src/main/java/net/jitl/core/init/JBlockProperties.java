@@ -1,5 +1,6 @@
 package net.jitl.core.init;
 
+import net.jitl.core.init.internal.JSoundTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.SoundType;
@@ -16,6 +17,11 @@ public class JBlockProperties {
             .strength(1.5F)
             .sound(SoundType.STONE)
             .requiresCorrectToolForDrops();
+
+    public static final BlockBehaviour.Properties LUNIUM_ORE_PROPS = BlockBehaviour.Properties.of(Material.STONE)
+            .sound(JSoundTypes.LUNIUM_ORE)
+            .requiresCorrectToolForDrops()
+            .strength(3.0F, 3.0F);
 
     public static BlockBehaviour.Properties FIRE_STONE = BlockBehaviour.Properties.of(Material.STONE)
             .strength(1.5F)

@@ -2,6 +2,10 @@ package net.jitl.common.entity.projectile;
 
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
+import net.jitl.core.init.internal.JParticleManager;
+import net.jitl.core.init.internal.JSounds;
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -42,13 +46,13 @@ public class FloroMudEntity extends DamagingProjectileEntity implements ItemSupp
         double d1 = this.getY() + vector3d.y;
         double d2 = this.getZ() + vector3d.z;
         for(int i = 0; i < count; ++i) {
-            /*this.level.addParticle(JParticleManager.MUD.get(),
+            this.level.addParticle(JParticleManager.MUD.get(),
                     d0 - vector3d.x * 0.25D + this.random.nextDouble() * 0.6D - 0.3D,
                     d1 - vector3d.y + 0.25F,
                     d2 - vector3d.z * 0.25D + this.random.nextDouble() * 0.6D - 0.3D,
                     vector3d.x,
                     vector3d.y,
-                    vector3d.z);*/
+                    vector3d.z);
         }
     }
 
@@ -65,7 +69,7 @@ public class FloroMudEntity extends DamagingProjectileEntity implements ItemSupp
         super.onHit(result);
         if (!level.isClientSide) {
             if(result.getType() != HitResult.Type.MISS) {
-                //level.playSound(null, new BlockPos(result.getLocation()), JSounds.MUD_BLOCK_BREAK.get(), SoundSource.AMBIENT, 1.0F, 1.5F);
+                level.playSound(null, new BlockPos(result.getLocation()), JSounds.MUD_BLOCK_BREAK.get(), SoundSource.AMBIENT, 1.0F, 1.5F);
             }
         } else {
             remove(RemovalReason.DISCARDED);

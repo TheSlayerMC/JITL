@@ -2,6 +2,7 @@ package net.jitl.common.entity.projectile;
 
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
+import net.jitl.core.init.internal.JSounds;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -10,6 +11,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -45,14 +47,14 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
     public PiercerEntity(LivingEntity shooter, Level worldIn, ItemStack stack, int maxBounces, float damage) {
         super(JEntities.PIERCER_TYPE.get(), shooter, worldIn);
         setStack(stack.copy());
-        //this.setSoundEvent(JSounds.PIERCER.get());
+        this.setSoundEvent(JSounds.PIERCER.get());
         this.maxBounces = maxBounces;
         setBaseDamage(damage);
     }
 
     public PiercerEntity(EntityType<PiercerEntity> eucaPiercerEntityEntityType, Level world) {
         super(eucaPiercerEntityEntityType, world);
-        //this.setSoundEvent(JSounds.PIERCER.get());
+        this.setSoundEvent(JSounds.PIERCER.get());
     }
 
     public void setVelocityMultiplier(float velocityMultiplier) {
@@ -87,52 +89,48 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
     public void tick() {
         super.tick();
 
-        //counter some of arrow's hardcoded gravity
         if (!isNoPhysics() && !isInGround() && !isNoGravity()) {
             this.setDeltaMovement(this.getDeltaMovement().add(0, 0.025, 0));
         }
 
-        if (launch) { //this piercer needs a new target and will change its motion before the next tick
+        if (launch) {
             Entity bounceTo = null;
             if (++currentBounces <= maxBounces) {
                 List<LivingEntity> entitiesNear = this.level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(4D + getRangeAddend()));
                 for (LivingEntity e : entitiesNear) {
                     if (e != this.getOwner() && this.pathTo(e) && e.invulnerableTime == 0 && !e.isDeadOrDying() && e.getClassification(false) == MobCategory.MONSTER) { //check whether this entity is a valid target
-                        if (bounceTo == null || this.distanceTo(e) < this.distanceTo(bounceTo)) { //compare new candidate to previous one
+                        if (bounceTo == null || this.distanceTo(e) < this.distanceTo(bounceTo)) {
                             bounceTo = e;
                         }
                     }
                 }
             }
-            if (bounceTo == null) bounceTo = getOwner(); //default to owner if it's out of bounces
+            if(bounceTo == null) bounceTo = getOwner();
 
-            if (bounceTo != null) {
+            if(bounceTo != null) {
                 Vec3 movement = new Vec3(bounceTo.getX(), bounceTo.getY(0.8), bounceTo.getZ()).subtract(this.getX(), this.getY(0.5), this.getZ());
                 this.setDeltaMovement(movement.scale(((0.7 + getVelocityMultiplier() / 6.5) / movement.length()) * this.getDeltaMovement().length()));
             }
-
             launch = false;
         }
-        if (faithfulLevel > 0) {
+        if(faithfulLevel > 0) {
             Entity entity = this.getOwner();
-            if (isInGround() && isAcceptibleReturnOwner() && entity != null) {
+            if(isInGround() && isAcceptibleReturnOwner() && entity != null) {
                 this.setNoPhysics(true);
                 Vec3 vector3d = new Vec3(entity.getX() - this.getX(), entity.getEyeY() - this.getY(), entity.getZ() - this.getZ());
                 this.setPosRaw(this.getX(), this.getY() + vector3d.y * 0.015D * (double) faithfulLevel, this.getZ());
-                if (this.level.isClientSide) {
+                if(this.level.isClientSide)
                     this.yOld = this.getY();
-                }
 
                 double d0 = 0.15D * (double) faithfulLevel;
                 this.setDeltaMovement(this.getDeltaMovement().scale(0.95D).add(vector3d.normalize().scale(d0)));
-                if (this.soundTickCount == 0) {
-                    //this.playSound(JSounds.PIERCER_RETURN.get(), 10.0F, Mth.nextFloat(random, 0.8F, 1.2F));
-                }
+                if(this.soundTickCount == 0)
+                    this.playSound(JSounds.PIERCER_RETURN.get(), 10.0F, Mth.nextFloat(random, 0.8F, 1.2F));
 
-                ++this.soundTickCount;
+                this.soundTickCount++;
             }
         }
-        if (getStack().isEmpty()) {
+        if(getStack().isEmpty()) {
             level.playSound(null, blockPosition(), SoundEvents.ITEM_BREAK, SoundSource.AMBIENT, 1.0F, 1.0F);
             discard();
         }
@@ -140,16 +138,13 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
 
     private boolean isAcceptibleReturnOwner() {
         Entity entity = this.getOwner();
-        if (entity != null && entity.isAlive()) {
+        if(entity != null && entity.isAlive()) {
             return !(entity instanceof ServerPlayer) || !entity.isSpectator();
         } else {
             return false;
         }
     }
 
-    /**
-     * Variant of LivingEntity's canSee modified to line up with the piercer's attempted path
-     */
     private boolean pathTo(Entity entityIn) {
         Vec3 vector3d = new Vec3(this.getX(), this.getY(0.5), this.getZ());
         Vec3 vector3d1 = new Vec3(entityIn.getX(), entityIn.getY(0.8), entityIn.getZ());
@@ -159,34 +154,33 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
     @Override
     protected void onHitEntity(EntityHitResult entityRayTraceResult_) {
         Entity entity = entityRayTraceResult_.getEntity();
-        if (entity instanceof LivingEntity && entity != this.getOwner()) {
-            if (!level.isClientSide()) {
-                if (getOwner() instanceof ServerPlayer player) {
+        if(entity instanceof LivingEntity && entity != this.getOwner()) {
+            if(!level.isClientSide()) {
+                if(getOwner() instanceof ServerPlayer player) {
                     getStack().hurtAndBreak(1, player, (context) -> context.broadcastBreakEvent(player.getUsedItemHand()));
                 }
 
-                if (entity.hurt(DamageSource.thrown(this, this.getOwner()), (float) getBaseDamage())) {
+                if(entity.hurt(DamageSource.thrown(this, this.getOwner()), (float) getBaseDamage())) {
                     if (getFlameAddend() > 0) {
                         entity.setSecondsOnFire(getFlameAddend() * 4);
                     }
                     launch = true; //piercer can clip through nearby targets if movement is different than expected, so it'll wait until its position has been updated
                 }
-                //this.playSound(JSounds.PIERCER.get(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
+                this.playSound(JSounds.PIERCER.get(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
             }
         }
     }
 
     @Override
     public void playerTouch(@NotNull Player entityIn) {
-        if (!this.level.isClientSide) {
+        if(!this.level.isClientSide) {
             boolean isOwner = this.getOwner().getUUID() == entityIn.getUUID();
-            if ((isOwner && currentBounces > 0) || ((this.inGround || this.isNoPhysics()) && this.shakeTime <= 0)) {
+            if((isOwner && currentBounces > 0) || ((this.inGround || this.isNoPhysics()) && this.shakeTime <= 0)) {
                 boolean flag = this.pickup == Pickup.ALLOWED || this.pickup == Pickup.CREATIVE_ONLY && entityIn.canUseGameMasterBlocks() || this.isNoPhysics() && isOwner;
-                if (this.pickup == Pickup.ALLOWED && !entityIn.getInventory().add(this.getPickupItem())) {
+                if(this.pickup == Pickup.ALLOWED && !entityIn.getInventory().add(this.getPickupItem()))
                     flag = false;
-                }
 
-                if (flag) {
+                if(flag) {
                     entityIn.take(this, 1);
                     this.remove(RemovalReason.DISCARDED);
                 }
@@ -253,9 +247,8 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
 
     @Override
     public void onSyncedDataUpdated(@NotNull EntityDataAccessor<?> key) {
-        if (key == STACK) {
+        if(key == STACK)
             getStack().setEntityRepresentation(this);
-        }
         super.onSyncedDataUpdated(key);
     }
 }

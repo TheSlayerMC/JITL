@@ -1,6 +1,7 @@
 package net.jitl.common.entity.projectile;
 
 import net.jitl.core.init.internal.JEntities;
+import net.jitl.core.init.internal.JParticleManager;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
@@ -34,10 +35,8 @@ public class ConjuringProjectileEntity extends ThrowableProjectile {
     @OnlyIn(Dist.CLIENT)
     public void handleEntityEvent(byte pId) {
         if (pId == 3) {
-            ParticleOptions particleoptions = ParticleTypes.ITEM_SNOWBALL;
-
             for(int i = 0; i < 8; ++i) {
-                this.level.addParticle(particleoptions, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+                this.level.addParticle(JParticleManager.CONJURING.get(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
             }
         }
     }

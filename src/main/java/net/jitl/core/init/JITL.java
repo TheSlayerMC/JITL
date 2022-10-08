@@ -50,6 +50,7 @@ public class JITL {
         JEnchantments.REGISTRY.register(modEventBus);
         JTreeDecorators.REGISTRY.register(modEventBus);
         JParticleManager.REGISTRY.register(modEventBus);
+        JSounds.REGISTRY.register(modEventBus);
 
         ClientEventHandler.regToBus(forgeEventBus);
 

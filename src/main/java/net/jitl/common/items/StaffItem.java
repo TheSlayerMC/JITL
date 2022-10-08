@@ -3,6 +3,8 @@ package net.jitl.common.items;
 import net.jitl.client.essence.PlayerEssenceProvider;
 import net.jitl.core.helper.IEssenceItem;
 import net.jitl.core.init.internal.JItems;
+import net.jitl.core.init.internal.JSounds;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
@@ -35,6 +37,7 @@ public class StaffItem extends Item implements IEssenceItem {
                     ThrowableProjectile projectile = projectileFactory.apply(level, player);
                     projectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
                     level.addFreshEntity(projectile);
+                    level.playSound(null, player.getX(), player.getY(), player.getZ(), JSounds.STAFF_0.get(), SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
                 }
             });
         }

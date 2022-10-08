@@ -22,7 +22,6 @@ public class JParticleManager {
     public static final RegistryObject<SimpleParticleType> RED_FLAME = REGISTRY.register("red_flame", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> MUD = REGISTRY.register("mud", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> CONJURING = REGISTRY.register("conjuring", () -> new SimpleParticleType(false));
-    public static final RegistryObject<SimpleParticleType> CAVE_VINE = REGISTRY.register("cave_vine", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> ESSENCIA_LIGHTNING = REGISTRY.register("essencia_lightning", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> MINERS_PEARL = REGISTRY.register("miners_pearl", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> SNOWFLAKE = REGISTRY.register("snowflake", () -> new SimpleParticleType(false));
@@ -36,7 +35,6 @@ public class JParticleManager {
         event.register(RED_FLAME.get(), RedFlameParticle.Factory::new);
         event.register(MUD.get(), MudParticle.Factory::new);
         event.register(CONJURING.get(), ConjuringParticle.Factory::new);
-        event.register(CAVE_VINE.get(), CaveVineParticle.Factory::new);
         event.register(ESSENCIA_LIGHTNING.get(), EssenciaLightningParticle.Factory::new);
         event.register(MINERS_PEARL.get(), MinersPearlParticle.Factory::new);
         event.register(SNOWFLAKE.get(), SnowflakeParticle.Provider::new);
