@@ -408,7 +408,7 @@
     ]
   },
   "music.menu": {
-    "category": "music",
+    "replace": false,
     "sounds": [
       {
         "name": "jitl:music/menu",
@@ -417,7 +417,7 @@
     ]
   },
   "music.haunt_muskie_2": {
-    "category": "music",
+    "replace": false,
     "sounds": [
       {
         "name": "jitl:music/haunt_muskie_2",
@@ -426,7 +426,7 @@
     ]
   },
   "music.snowflakesss": {
-    "category": "music",
+    "replace": false,
     "sounds": [
       {
         "name": "jitl:music/snowflakesss",
@@ -435,7 +435,7 @@
     ]
   },
   "music.guardian_tower": {
-    "category": "music",
+    "replace": false,
     "sounds": [
       {
         "name": "jitl:music/guardian_tower",
@@ -444,7 +444,7 @@
     ]
   },
   "music.temple_guardian": {
-    "category": "music",
+    "replace": false,
     "sounds": [
       {
         "name": "jitl:music/temple_guardian",
@@ -453,7 +453,7 @@
     ]
   },
   "music.euca.ambience": {
-    "category": "music",
+    "replace": false,
     "sounds": [
       {
         "name": "jitl:music/ambience/euca",
@@ -462,7 +462,7 @@
     ]
   },
   "music.frozen.ambience": {
-    "category": "music",
+    "replace": false,
     "sounds": [
       {
         "name": "jitl:music/ambience/frozen",
@@ -471,7 +471,7 @@
     ]
   },
   "music.biome.gold_plains": {
-    "category": "music",
+    "replace": false,
     "sounds": [
       {
         "name": "jitl:music/biome/gold_plains",

@@ -10,16 +10,16 @@ public class JClientConfig{
 	private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 	public static final ForgeConfigSpec SPEC;
 
-	private static final ForgeConfigSpec.BooleanValue ENABLE_ISOMETRIC_CAMERA;
-	private static final ForgeConfigSpec.BooleanValue LOCK_ISOMETRIC_PERSPECTIVE;
-	private static final ForgeConfigSpec.EnumValue<IsometricAngleSnap> ISOMETRIC_ANGLE_SNAP;
+	public static final ForgeConfigSpec.BooleanValue ENABLE_ISOMETRIC_CAMERA;
+	public static final ForgeConfigSpec.BooleanValue LOCK_ISOMETRIC_PERSPECTIVE;
+	public static final ForgeConfigSpec.EnumValue<IsometricAngleSnap> ISOMETRIC_ANGLE_SNAP;
 
-	private static final ForgeConfigSpec.BooleanValue ENABLE_JITL_MENU_TOGGLE_BUTTON;
-	private static final ForgeConfigSpec.BooleanValue ENABLE_JITL_MENU_SCREEN;
-	private static final ForgeConfigSpec.EnumValue<HealthBarRendering> RENDER_ENTITY_HEALTH;
-	private static final ForgeConfigSpec.EnumValue<EssencePosition> ESSENCE_POSITION;
-	private static final ForgeConfigSpec.IntValue BIG_SCREENSHOT_WIDTH;
-	private static final ForgeConfigSpec.IntValue BIG_SCREENSHOT_HEIGHT;
+	public static final ForgeConfigSpec.BooleanValue ENABLE_JITL_MENU_TOGGLE_BUTTON;
+	public static final ForgeConfigSpec.BooleanValue ENABLE_JITL_MENU_SCREEN;
+	public static final ForgeConfigSpec.EnumValue<HealthBarRendering> RENDER_ENTITY_HEALTH;
+	public static final ForgeConfigSpec.EnumValue<EssencePosition> ESSENCE_POSITION;
+	public static final ForgeConfigSpec.IntValue BIG_SCREENSHOT_WIDTH;
+	public static final ForgeConfigSpec.IntValue BIG_SCREENSHOT_HEIGHT;
 
 	static {
 		BUILDER.push("Client configs for JITL");

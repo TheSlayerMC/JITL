@@ -7,7 +7,9 @@ import net.jitl.common.entity.base.IDontAttackWhenPeaceful;
 import net.jitl.common.entity.base.JBossInfo;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
 import net.jitl.common.entity.goal.IdleHealGoal;
+import net.jitl.core.helper.JMusic;
 import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -46,6 +48,7 @@ public class TowerGuardian extends AnimatableMonster implements IJourneyBoss, ID
 
     private final ServerBossEvent BOSS_INFO = new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
     private final BossBarRenderer BOSS_BAR = new BossBarRenderer(this, JITL.rl("textures/gui/bossbars/tower_guardian.png"));
+    private static final JMusic BOSS_TRACK = new JMusic(JSounds.TEMPLE_GUARDIAN_MUSIC.get(), 2, 0, 0);
 
     public TowerGuardian(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -134,6 +137,11 @@ public class TowerGuardian extends AnimatableMonster implements IJourneyBoss, ID
     @Override
     public BossBarRenderer getBossBar() {
         return BOSS_BAR;
+    }
+
+    @Override
+    public JMusic getBossMusic() {
+        return BOSS_TRACK;
     }
 
     @Override

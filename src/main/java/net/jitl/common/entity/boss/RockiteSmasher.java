@@ -7,6 +7,7 @@ import net.jitl.common.entity.base.IDontAttackWhenPeaceful;
 import net.jitl.common.entity.base.JBossInfo;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
 import net.jitl.common.entity.goal.IdleHealGoal;
+import net.jitl.core.helper.JMusic;
 import net.jitl.core.init.JITL;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
@@ -105,13 +106,13 @@ public class RockiteSmasher extends AnimatableMonster implements IJourneyBoss, I
     }
 
     @Override
-    public void startSeenByPlayer(ServerPlayer player) {
+    public void startSeenByPlayer(@NotNull ServerPlayer player) {
         super.startSeenByPlayer(player);
         JBossInfo.addInfo(player, BOSS_INFO, this);
     }
 
     @Override
-    public void stopSeenByPlayer(ServerPlayer player) {
+    public void stopSeenByPlayer(@NotNull ServerPlayer player) {
         super.stopSeenByPlayer(player);
         JBossInfo.removeInfo(player, BOSS_INFO, this);
     }
@@ -119,6 +120,11 @@ public class RockiteSmasher extends AnimatableMonster implements IJourneyBoss, I
     @Override
     public BossBarRenderer getBossBar() {
         return BOSS_BAR;
+    }
+
+    @Override
+    public JMusic getBossMusic() {
+        return null;
     }
 
     @Override

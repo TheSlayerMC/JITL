@@ -13,8 +13,6 @@ public class JBiomeRegistry {
     public static Biome EUCA_PLAINS;
     public static Biome EUCA_GOLDITE_GRAINS;
 
-    public static Biome DEPTHS;
-
     public static Biome FROZEN_WASTES;
     public static Biome FROZEN_DYING_FOREST;
     public static Biome FROZEN_BITTERWOOD_FOREST;
