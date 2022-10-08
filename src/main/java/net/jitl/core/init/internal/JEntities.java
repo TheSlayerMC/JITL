@@ -3,6 +3,8 @@ package net.jitl.core.init.internal;
 import net.jitl.common.entity.base.JBoat;
 import net.jitl.common.entity.boss.RockiteSmasher;
 import net.jitl.common.entity.boss.TowerGuardian;
+import net.jitl.common.entity.euca.Dynaster;
+import net.jitl.common.entity.euca.EucaCharger;
 import net.jitl.common.entity.nether.IllagerMech;
 import net.jitl.common.entity.nether.Witherspine;
 import net.jitl.common.entity.overworld.BrownHongo;
@@ -124,6 +126,18 @@ public class JEntities {
                             .setTrackingRange(10)
                             .sized(1.375F, 0.5625F).build("jboat"));
 
+    public static final RegistryObject<EntityType<EucaCharger>> EUCA_CHARGER_TYPE = REGISTRY.register("euca_charger", () ->
+            EntityType.Builder.of(EucaCharger::new, MobCategory.MONSTER)
+                    .setTrackingRange(15)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .sized(0.5F, 0.75F).build("euca_charger"));
+
+    public static final RegistryObject<EntityType<Dynaster>> DYNASTER_TYPE = REGISTRY.register("dynaster", () ->
+            EntityType.Builder.of(Dynaster::new, MobCategory.MONSTER)
+                    .setTrackingRange(15)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .sized(1F, 1F).build("dynaster"));
+
     @SubscribeEvent
     public static void registerAttributes(final EntityAttributeCreationEvent event) {
         event.put(MAGE_TYPE.get(), Mage.createAttributes());
@@ -133,5 +147,9 @@ public class JEntities {
         event.put(WITHERSPINE_TYPE.get(), Witherspine.createAttributes());
         event.put(BROWN_HONGO_TYPE.get(), BrownHongo.createAttributes());
         event.put(ILLAGER_MECH_TYPE.get(), IllagerMech.createAttributes());
+
+        event.put(EUCA_CHARGER_TYPE.get(), EucaCharger.createAttributes());
+        event.put(DYNASTER_TYPE.get(), Dynaster.createAttributes());
+
     }
 }

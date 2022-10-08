@@ -8,6 +8,7 @@ import net.jitl.client.gui.overlay.helper.JToast;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.core.helper.internal.ArgbColor;
 import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.JSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.components.toasts.ToastComponent;
 import net.minecraft.client.renderer.GameRenderer;
@@ -62,12 +63,10 @@ public class KnowledgeToast implements JToast {
             if (!this.playedSound && timeSinceLastVisible > 0L) {
                 this.playedSound = true;
                 if (displayinfo.getFrame() == JFrameType.LEVEL) {
-                    //toastComponent.getMinecraft().getSoundManager().play(SimpleSoundInstance.forUI(JSounds.TOAST_SPECIAL.get(), 1.0F, 1.0F));
-                    toastComponent.getMinecraft().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F));
+                    toastComponent.getMinecraft().getSoundManager().play(SimpleSoundInstance.forUI(JSounds.TOAST_SPECIAL.get(), 1.0F, 1.0F));
                 }
                 if (displayinfo.getFrame() == JFrameType.XP) {
-                    //toastComponent.getMinecraft().getSoundManager().play(SimpleSoundInstance.forUI(JSounds.TOAST.get(), 1.0F, 1.0F));
-                    toastComponent.getMinecraft().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_TOAST_IN, 1.0F, 1.0F));
+                    toastComponent.getMinecraft().getSoundManager().play(SimpleSoundInstance.forUI(JSounds.TOAST.get(), 1.0F, 1.0F));
                 }
             }
             float scale = 0.8F;

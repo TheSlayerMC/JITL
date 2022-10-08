@@ -12,5 +12,5 @@ public class JCarver {
 
     public static final DeferredRegister<WorldCarver<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.WORLD_CARVERS, JITL.MODID);
 
-    public static final RegistryObject<WorldCarver<CaveCarverConfiguration>> FROZEN_CARVER = REGISTRY.register("frozen_cave", () -> new FrozenCaveCarver(CaveCarverConfiguration.CODEC));
+    //public static final RegistryObject<WorldCarver<CaveCarverConfiguration>> FROZEN_CARVER = REGISTRY.register("frozen_cave", () -> new FrozenCaveCarver(CaveCarverConfiguration.CODEC));
 }

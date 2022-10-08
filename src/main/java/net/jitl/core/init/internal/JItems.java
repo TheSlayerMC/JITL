@@ -181,6 +181,12 @@ public class JItems {
     public static final RegistryObject<Item> ILLAGER_MECH_EGG = registerNormalItem("illager_mech_spawn_egg", "Illager Mech Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ILLAGER_MECH_TYPE,
             0x948e8d, 0x3b3653, eggProps()));
 
+    public static final RegistryObject<Item> EUCA_CHARGER_EGG = registerNormalItem("euca_charger_spawn_egg", "Euca Charger Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.EUCA_CHARGER_TYPE,
+            0x948e8d, 0x3b3653, eggProps()));
+
+    public static final RegistryObject<Item> DYNASTER_EGG = registerNormalItem("dynaster_spawn_egg", "Dynaster Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.DYNASTER_TYPE,
+            0x948e8d, 0x3b3653, eggProps()));
+
     public static RegistryObject<Item> registerNormalItem(String name, String translatedName, CreativeModeTab tab) {
         return register(name, translatedName, () -> new Item(new Item.Properties().tab(tab)), ItemType.ITEM);
     }
