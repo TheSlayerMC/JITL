@@ -5,9 +5,9 @@ import net.jitl.core.config.enums.HealthBarRendering;
 import net.jitl.core.config.enums.IsometricAngleSnap;
 import net.minecraftforge.common.ForgeConfigSpec;
 
-public class JClientConfig{
+public class JClientConfig {
 
-	private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
+	public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 	public static final ForgeConfigSpec SPEC;
 
 	public static final ForgeConfigSpec.BooleanValue ENABLE_ISOMETRIC_CAMERA;
@@ -52,7 +52,7 @@ public class JClientConfig{
 
 		ESSENCE_POSITION = BUILDER
 				.comment("Determines the position of the Essence bar in-game. ")
-				.defineEnum("Essence Bar Position: ", EssencePosition.OVER_EXPERIENCE_BAR);
+				.defineEnum("Essence Bar Position: ", EssencePosition.ABOVE_HUNGER_BAR);
 
 		BIG_SCREENSHOT_WIDTH = BUILDER
 				.comment("The width of any big screenshots you may take. ")
@@ -64,5 +64,73 @@ public class JClientConfig{
 
 		BUILDER.pop();
 		SPEC = BUILDER.build();
+	}
+
+	public boolean isIsometricFOVEnabled() {
+		return ENABLE_ISOMETRIC_CAMERA.get();
+	}
+
+	public void setIsometricFov(boolean enabled) {
+		ENABLE_ISOMETRIC_CAMERA.set(enabled);
+	}
+
+	public boolean isIsometricPerspectiveLocked() {
+		return LOCK_ISOMETRIC_PERSPECTIVE.get();
+	}
+
+	public void lockIsometricPerspective(boolean enabled) {
+		LOCK_ISOMETRIC_PERSPECTIVE.set(enabled);
+	}
+
+	public boolean isJITLMenuEnabled() {
+		return ENABLE_JITL_MENU_SCREEN.get();
+	}
+
+	public void setJITLMenu(boolean enabled) {
+		ENABLE_JITL_MENU_SCREEN.set(enabled);
+	}
+
+	public boolean isToggleMenuButtonEnabled() {
+		return ENABLE_JITL_MENU_TOGGLE_BUTTON.get();
+	}
+
+	public int getEssenceXPos() {
+		return ESSENCE_POSITION.get().getX();
+	}
+
+	public int getEssenceYPos() {
+		return ESSENCE_POSITION.get().getY();
+	}
+
+	public EssencePosition getEssencePosition() {
+		return ESSENCE_POSITION.get();
+	}
+
+	public void setEssencePosition(EssencePosition essencePosition) {
+		ESSENCE_POSITION.set(essencePosition);
+	}
+
+	public HealthBarRendering getHealthBarRendering() {
+		return RENDER_ENTITY_HEALTH.get();
+	}
+
+	public void setHealthBarRendering(HealthBarRendering healthBarRendering) {
+		RENDER_ENTITY_HEALTH.set(healthBarRendering);
+	}
+
+	public IsometricAngleSnap getIsometricAngleSnap() {
+		return ISOMETRIC_ANGLE_SNAP.get();
+	}
+
+	public void setIsometricAngleSnap(IsometricAngleSnap isometricAngleSnap) {
+		this.ISOMETRIC_ANGLE_SNAP.set(isometricAngleSnap);
+	}
+
+	public int getBigScreenshotWidth() {
+		return BIG_SCREENSHOT_WIDTH.get();
+	}
+
+	public int getBigScreenshotHeight() {
+		return BIG_SCREENSHOT_HEIGHT.get();
 	}
 }

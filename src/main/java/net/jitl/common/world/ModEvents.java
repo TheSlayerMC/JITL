@@ -7,6 +7,7 @@ import net.jitl.client.knowledge.PlayerKnowledgeProvider;
 import net.jitl.client.stats.PlayerStats;
 import net.jitl.client.stats.PlayerStatsProvider;
 import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.JAttributes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -17,6 +18,8 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = JITL.MODID)
 public class ModEvents {
@@ -72,12 +75,10 @@ public class ModEvents {
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if(event.side == LogicalSide.SERVER) {
             event.player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
-                if(event.phase == TickEvent.Phase.END) {
-                    if(regenTicks-- <= 0) {
-                        essence.regen();
-                        essence.update(event.player);
-                        regenTicks = 75;
-                    }
+                if (essence.isRegenReady()) {
+                    essence.addEssence(event.player, (float) Objects.requireNonNull(event.player.getAttribute(JAttributes.ESSENCE_REGEN_SPEED.get())).getValue());
+                } else {
+                    essence.setBurnout(essence.getBurnout());
                 }
             });
 

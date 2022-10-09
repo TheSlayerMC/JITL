@@ -39,6 +39,7 @@ public class JITL {
         JItems.ITEMS.register(modEventBus);
         JEntities.REGISTRY.register(modEventBus);
         JEntities.EGG_REGISTRY.register(modEventBus);
+        JAttributes.REGISTRY.register(modEventBus);
         JConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
         JPlacedFeatures.PLACED_FEATURES.register(modEventBus);
         JFoliagePlacers.REGISTRY.register(modEventBus);
@@ -101,4 +102,7 @@ public class JITL {
         return new ResourceLocation(MODID, r);
     }
 
+    public static ResourceLocation tl(String r) {
+        return new ResourceLocation(MODID, "textures/" + r);
+    }
 }

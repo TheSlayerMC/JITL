@@ -1,27 +1,26 @@
 package net.jitl.client.essence;
 
 import io.netty.buffer.ByteBuf;
-import net.minecraft.client.Minecraft;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
 public class PacketEssenceBar {
 
-    private int essence;
+    private float essence;
 
     public PacketEssenceBar(ByteBuf buf) {
-        essence = buf.readInt();
+        essence = buf.readFloat();
     }
 
     public PacketEssenceBar(PlayerEssence essence) {
         if(essence == null)
             return;
-        this.essence = essence.getEssence();
+        this.essence = essence.getCurrentEssence();
     }
 
     public void toBytes(ByteBuf buf) {
-        buf.writeInt(essence);
+        buf.writeFloat(essence);
     }
 
     public void handle(Supplier<NetworkEvent.Context> ctx) {
