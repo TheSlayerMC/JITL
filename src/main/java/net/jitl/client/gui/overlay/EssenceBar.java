@@ -31,12 +31,13 @@ public class EssenceBar {
     private static final ResourceLocation OVER_EXP_TEXTURE = new ResourceLocation(JITL.MODID, "textures/gui/essence_over_exp.png");
     private static final ResourceLocation ABOVE_HUNGER_TEXTURE = new ResourceLocation(JITL.MODID, "textures/gui/essence_over_hunger.png");
 
-    public static void render(ForgeGui gui, PoseStack poseStack, float partialTicks, int height, int width) {
+    public static void render(ForgeGui gui, PoseStack poseStack, float partialTick, int screenWidth, int screenHeight) {
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
-        if (player != null) {
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.setShaderTexture(0, OVER_EXP_TEXTURE);
+        if(player != null && !player.isCreative() && !player.isSpectator()) {
             player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
-                //JITL.LOGGER.info("cap present");
                 float currentEssence = ClientEssence.getCurrentClientEssence();
                 float maxEssence = ClientEssence.getMaxClientEssence();
                 float cooldown = ClientEssence.getClientEssenceBurnout();
@@ -77,14 +78,14 @@ public class EssenceBar {
                     /*
                      * We apply a separate algorithm if the bar is configured to be rendered under the crosshair
                      */
-                    int crosshairY = height / 2;
-                    int crosshairX = width / 2;
+                    int crosshairY = screenHeight / 2;
+                    int crosshairX = screenWidth / 2;
 
                     /*
                      * Default algorithm for all other position types
                      */
-                    int y = belowCrosshair ? crosshairY : height - yPos;
-                    int x = belowCrosshair ? crosshairX : width / 2 - xPos;
+                    int y = belowCrosshair ? crosshairY : screenHeight - yPos;
+                    int x = belowCrosshair ? crosshairX : screenWidth / 2 - xPos;
 
                     boolean aboveHunger = essencePosition == EssencePosition.ABOVE_HUNGER_BAR;
                     boolean isUnderwater = player.isEyeInFluid(FluidTags.WATER) || Math.min(player.getAirSupply(), player.getMaxAirSupply()) < player.getMaxAirSupply();
@@ -114,8 +115,8 @@ public class EssenceBar {
                      */
                     if (belowCrosshair) {
                         float scale = 0.5F;
-                        double widthTranslation = (width / 2F) - 42;
-                        double heightTranslation = (height / 2F) + 42;
+                        double widthTranslation = (screenWidth / 2F) - 42;
+                        double heightTranslation = (screenHeight / 2F) + 42;
                         poseStack.translate(widthTranslation, heightTranslation, 0);
                         poseStack.scale(scale, scale, 0);
                         poseStack.translate(-widthTranslation, -heightTranslation, 0);
