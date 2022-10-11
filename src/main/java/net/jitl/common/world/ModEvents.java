@@ -76,9 +76,6 @@ public class ModEvents {
         if (event.side == LogicalSide.SERVER) {
             event.player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
                 if (event.phase == TickEvent.Phase.END) {
-                    JITL.LOGGER.info("Server Essence: " + essence.getCurrentEssence());
-                    JITL.LOGGER.info("Server Timeout: " + essence.getTimeout());
-                    JITL.LOGGER.info("Server Burnout: " + essence.getBurnout());
                     if (essence.isRegenReady()) {
                         essence.addEssence(event.player, (float) Objects.requireNonNull(event.player.getAttribute(JAttributes.ESSENCE_REGEN_SPEED.get())).getValue());
                     } else {
