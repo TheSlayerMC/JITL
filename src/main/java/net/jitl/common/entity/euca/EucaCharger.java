@@ -14,7 +14,7 @@ import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 
-public class EucaCharger extends AnimatableMonster implements IAnimatable {
+public class EucaCharger extends AnimatableMonster {
 
     public EucaCharger(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);

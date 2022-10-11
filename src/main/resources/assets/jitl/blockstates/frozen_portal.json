@@ -1,7 +1,10 @@
 {
   "variants": {
-  "": {
-      "model": "jitl:block/frozen_portal"
-     }
+    "axis=x": {
+        "model": "jitl:block/frozen_portal_ns"
+      },
+    "axis=z": {
+        "model": "jitl:block/frozen_portal_ew"
+      }
   }
 }

@@ -5,10 +5,12 @@ import net.jitl.common.entity.boss.RockiteSmasher;
 import net.jitl.common.entity.boss.TowerGuardian;
 import net.jitl.common.entity.euca.Dynaster;
 import net.jitl.common.entity.euca.EucaCharger;
-import net.jitl.common.entity.nether.IllagerMech;
+import net.jitl.common.entity.euca.Goldbot;
+import net.jitl.common.entity.euca.Shimmerer;
 import net.jitl.common.entity.nether.Witherspine;
 import net.jitl.common.entity.overworld.BrownHongo;
 import net.jitl.common.entity.overworld.Floro;
+import net.jitl.common.entity.overworld.IllagerMech;
 import net.jitl.common.entity.overworld.npc.Mage;
 import net.jitl.common.entity.projectile.*;
 import net.jitl.core.init.JITL;
@@ -138,6 +140,18 @@ public class JEntities {
                     .setShouldReceiveVelocityUpdates(true)
                     .sized(1F, 1F).build("dynaster"));
 
+    public static final RegistryObject<EntityType<Goldbot>> GOLDBOT_TYPE = REGISTRY.register("goldbot", () ->
+            EntityType.Builder.of(Goldbot::new, MobCategory.MONSTER)
+                    .setTrackingRange(15)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .sized(0.5F, 0.75F).build("goldbot"));
+
+    public static final RegistryObject<EntityType<Shimmerer>> SHIMMERER_TYPE = REGISTRY.register("shimmerer", () ->
+            EntityType.Builder.of(Shimmerer::new, MobCategory.MONSTER)
+                    .setTrackingRange(15)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .sized(0.5F, 0.75F).build("shimmerer"));
+
     @SubscribeEvent
     public static void registerAttributes(final EntityAttributeCreationEvent event) {
         event.put(MAGE_TYPE.get(), Mage.createAttributes());
@@ -150,6 +164,8 @@ public class JEntities {
 
         event.put(EUCA_CHARGER_TYPE.get(), EucaCharger.createAttributes());
         event.put(DYNASTER_TYPE.get(), Dynaster.createAttributes());
+        event.put(GOLDBOT_TYPE.get(), Goldbot.createAttributes());
+        event.put(SHIMMERER_TYPE.get(), Shimmerer.createAttributes());
 
     }
 }

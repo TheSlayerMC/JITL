@@ -1,4 +1,4 @@
-package net.jitl.common.entity.nether;
+package net.jitl.common.entity.overworld;
 
 import net.jitl.common.entity.base.AnimatableMonster;
 import net.jitl.common.entity.goal.IdleHealGoal;
@@ -25,7 +25,7 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class IllagerMech extends AnimatableMonster implements IAnimatable {
+public class IllagerMech extends AnimatableMonster {
 
     public IllagerMech(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);

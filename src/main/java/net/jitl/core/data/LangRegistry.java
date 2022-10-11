@@ -30,9 +30,12 @@ public class LangRegistry {
         ArrayList<String> modelBlockList = new ArrayList<>(JBlocks.modelBlockName);
         ArrayList<String> rotatableBlockList = new ArrayList<>(JBlocks.rotatableBlockName);
         ArrayList<String> furnaceBlockList = new ArrayList<>(JBlocks.furnaceBlockName);
+        ArrayList<String> portalBlockList = new ArrayList<>(JBlocks.portalBlockName);
 
         ArrayList<String> toolItemList = new ArrayList<>(JItems.toolName);
         ArrayList<String> itemList = new ArrayList<>(JItems.itemName);
+        ArrayList<String> recordList = new ArrayList<>(JItems.recordName);
+        ArrayList<String> recordDescList = new ArrayList<>(JItems.recordDescName);
 
         try {
             if(en_us.exists()) en_us.delete();
@@ -63,6 +66,10 @@ public class LangRegistry {
         writeToFile("\"jitl.knowledge.frozen\" : \"Frozen Knowledge\",");
 
         /* --------------------- Finish manual lines --------------------- */
+
+        for(int i = 0; i < recordDescList.size(); i++) {
+            writeToFile("\"" + recordDescList.get(i) + "\": \"" + JItems.recordDescLangName.get(i) + "\",");
+        }
 
         for(int i = 0; i < blockList.size(); i++) {
             writeToFile("\"block.jitl." + blockList.get(i) + "\": \"" + JBlocks.normalLangName.get(i) + "\"" + ",");
@@ -120,12 +127,20 @@ public class LangRegistry {
             writeToFile("\"block.jitl." + rotatableBlockList.get(i) + "\": \"" + JBlocks.rotatableLangName.get(i) + "\"" + ",");
         }
 
+        for(int i = 0; i < portalBlockList.size(); i++) {
+            writeToFile("\"block.jitl." + portalBlockList.get(i) + "\": \"" + JBlocks.portalLangName.get(i) + "\"" + ",");
+        }
+
         for(int i = 0; i < furnaceBlockList.size(); i++) {
             writeToFile("\"block.jitl." + furnaceBlockList.get(i) + "\": \"" + JBlocks.furnaceLangName.get(i) + "\"" + ",");
         }
 
         for(int i = 0; i < toolItemList.size(); i++) {
             writeToFile("\"item.jitl." + toolItemList.get(i) + "\": \"" + JItems.toolLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < recordList.size(); i++) {
+            writeToFile("\"item.jitl." + recordList.get(i) + "\": \"" + JItems.recordLangName.get(i) + "\"" + ",");
         }
 
         int j = 0;

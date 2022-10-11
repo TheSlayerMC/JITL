@@ -25,7 +25,7 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class Witherspine extends AnimatableMonster implements IAnimatable {
+public class Witherspine extends AnimatableMonster {
 
     public Witherspine(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);

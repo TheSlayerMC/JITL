@@ -1,7 +1,10 @@
 {
   "variants": {
-  "": {
-      "model": "jitl:block/boil_portal"
-     }
+    "axis=x": {
+        "model": "jitl:block/boil_portal_ns"
+      },
+    "axis=z": {
+        "model": "jitl:block/boil_portal_ew"
+      }
   }
 }

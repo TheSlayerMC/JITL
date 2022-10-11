@@ -478,5 +478,60 @@
         "stream": true
       }
     ]
+  },
+  "music.record.underwater_world": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "jitl:music/record/underwater_world",
+        "stream": true
+      }
+    ]
+  },
+
+  "music.record.euca_1": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "jitl:music/record/euca_1",
+        "stream": true
+      }
+    ]
+  },
+  "music.record.euca_2": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "jitl:music/record/euca_2",
+        "stream": true
+      }
+    ]
+  },
+  "music.record.euca_3": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "jitl:music/record/euca_3",
+        "stream": true
+      }
+    ]
+  },
+  "music.record.frozen_1": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "jitl:music/record/frozen_1",
+        "stream": true
+      }
+    ]
+  },
+  "music.record.boil_1": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "jitl:music/record/boil_1",
+        "stream": true
+      }
+    ]
   }
 }
