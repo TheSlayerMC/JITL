@@ -9,6 +9,10 @@ public class ClientEssence {
         Minecraft.getInstance().player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).orElseThrow(null).setEssence(value);
     }
 
+    public static void setClientBurnout(float value) {
+        Minecraft.getInstance().player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).orElseThrow(null).setBurnout(value);
+    }
+
     public static float getCurrentClientEssence() {
         return Minecraft.getInstance().player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).orElseThrow(null).getCurrentEssence();
     }

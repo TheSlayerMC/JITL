@@ -24,7 +24,7 @@ public class PlayerEssence {
         return currentEssence;
     }
 
-    public float getMaxEssence(Player player) {
+    public static float getMaxEssence(Player player) {
         return (float) Objects.requireNonNull(player.getAttribute(JAttributes.MAX_ESSENCE.get())).getValue();
     }
 

@@ -73,12 +73,18 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if(event.side == LogicalSide.SERVER) {
+        if (event.side == LogicalSide.SERVER) {
             event.player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
-                if (essence.isRegenReady()) {
-                    essence.addEssence(event.player, (float) Objects.requireNonNull(event.player.getAttribute(JAttributes.ESSENCE_REGEN_SPEED.get())).getValue());
-                } else {
-                    essence.setBurnout(essence.getBurnout());
+                if (event.phase == TickEvent.Phase.END) {
+                    JITL.LOGGER.info("Server Essence: " + essence.getCurrentEssence());
+                    JITL.LOGGER.info("Server Timeout: " + essence.getTimeout());
+                    JITL.LOGGER.info("Server Burnout: " + essence.getBurnout());
+                    if (essence.isRegenReady()) {
+                        essence.addEssence(event.player, (float) Objects.requireNonNull(event.player.getAttribute(JAttributes.ESSENCE_REGEN_SPEED.get())).getValue());
+                    } else {
+                        essence.setBurnout(essence.getBurnout() - 0.1F);
+                    }
+                    essence.sendPacket(event.player);
                 }
             });
 

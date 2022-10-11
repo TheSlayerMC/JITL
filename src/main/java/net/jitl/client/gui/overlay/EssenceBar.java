@@ -42,6 +42,9 @@ public class EssenceBar {
                 float maxEssence = ClientEssence.getMaxClientEssence();
                 float cooldown = ClientEssence.getClientEssenceBurnout();
 
+                JITL.LOGGER.info("Current Client Essence:" + currentEssence);
+                JITL.LOGGER.info("Current Client Cooldown:" + cooldown);
+
                 boolean isEssenceUsed = currentEssence < maxEssence;
 
                 /*
