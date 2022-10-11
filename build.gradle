@@ -134,6 +134,10 @@ repositories {
     }
 
     maven {
+        url = "https://maven.theillusivec4.top/"
+    }
+
+    maven {
         url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
     }
 
@@ -145,6 +149,9 @@ dependencies {
     compileOnly(fg.deobf("mezz.jei:jei-${buildProps["minecraft.version"]}-common-api:${buildProps["jei_version"]}"))
     compileOnly(fg.deobf("mezz.jei:jei-${buildProps["minecraft.version"]}-forge-api:${buildProps["jei_version"]}"))
     runtimeOnly(fg.deobf("mezz.jei:jei-${buildProps["minecraft.version"]}-forge:${buildProps["jei_version"]}"))
+
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.2-5.1.1.0")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.2-5.1.1.0:api")
 
     implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19:3.1.18')
 }
