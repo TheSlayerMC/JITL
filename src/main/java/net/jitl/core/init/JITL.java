@@ -52,7 +52,7 @@ public class JITL {
         JParticleManager.REGISTRY.register(modEventBus);
         JSounds.REGISTRY.register(modEventBus);
 
-        ClientEventHandler.regToBus(forgeEventBus);
+        ClientEventHandler.regToBus(forgeEventBus, modEventBus);
 
         if(DEV_MODE) {
             new JItemGenerator().generate();
