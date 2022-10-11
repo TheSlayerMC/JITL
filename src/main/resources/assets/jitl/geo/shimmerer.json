@@ -1,0 +1,38 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.shimmerer",
+				"texture_width": 64,
+				"texture_height": 32,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "arms",
+					"pivot": [0.5, 11.5, -1.25],
+					"cubes": [
+						{"origin": [-9.5, 14, -0.5], "size": [2, 5, 2], "pivot": [-9.5, 12.5, 0.5], "rotation": [0, 0, 90], "uv": [14, 14]},
+						{"origin": [-15.5, 10.5, -4], "size": [5, 2, 2], "pivot": [-10, -9, 0], "rotation": [0, -90, 0], "uv": [0, 14]},
+						{"origin": [5.5, 11, -0.5], "size": [2, 5, 2], "pivot": [5.5, 12.5, 0.5], "rotation": [0, 0, 90], "uv": [14, 14]},
+						{"origin": [-0.5, 10.5, -4], "size": [5, 2, 2], "pivot": [5, -9, 0], "rotation": [0, -90, 0], "uv": [0, 14]},
+						{"origin": [-0.5, 3, -0.5], "size": [2, 5, 2], "uv": [14, 14]},
+						{"origin": [-5.5, 3, -1.5], "size": [5, 2, 2], "pivot": [0, -16, 0], "rotation": [0, -90, 0], "uv": [0, 14]},
+						{"origin": [-0.5, 15, -0.5], "size": [2, 5, 2], "uv": [14, 14]},
+						{"origin": [-5.5, 18, -1.5], "size": [5, 2, 2], "pivot": [0, 0, 0], "rotation": [0, -90, 0], "uv": [0, 14]}
+					]
+				},
+				{
+					"name": "body",
+					"pivot": [0.5, 11.5, 0.5],
+					"cubes": [
+						{"origin": [-3, 8, -3], "size": [7, 7, 7], "uv": [0, 0]}
+					]
+				}
+			]
+		}
+	]
+}

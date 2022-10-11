@@ -1,11 +1,10 @@
 package net.jitl.common.entity.euca;
 
-import net.jitl.common.entity.base.AnimatableMonster;
+import net.jitl.common.entity.base.JFlyingEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -14,20 +13,22 @@ import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 
-public class Dynaster extends AnimatableMonster {
+public class Shimmerer extends JFlyingEntity {
 
-    public Dynaster(EntityType<? extends Monster> pEntityType, Level pLevel) {
+    public Shimmerer(EntityType<? extends JFlyingEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
     @Override
-    protected void registerGoals() {
+    public void addGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(1, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
         this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+    }
+
+    @Override
+    public boolean despawnInPeaceful() {
+        return true;
     }
 
     public static AttributeSupplier createAttributes() {
@@ -37,11 +38,9 @@ public class Dynaster extends AnimatableMonster {
                 .add(Attributes.MOVEMENT_SPEED, 0.26).build();
     }
 
-
     @Override
     public <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if(!isAttacking() && !event.isMoving())
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.dynaster.idle", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.shimmerer.idle", true));
         return PlayState.CONTINUE;
     }
 }

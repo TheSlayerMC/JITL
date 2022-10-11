@@ -14,15 +14,16 @@ import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 
-public class Dynaster extends AnimatableMonster {
+public class Goldbot extends AnimatableMonster {
 
-    public Dynaster(EntityType<? extends Monster> pEntityType, Level pLevel) {
+    public Goldbot(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(0, new AnimatedAttackGoal(this, 1.0D, false));
         this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(1, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
         this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
@@ -40,8 +41,17 @@ public class Dynaster extends AnimatableMonster {
 
     @Override
     public <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if(!isAttacking() && !event.isMoving())
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.dynaster.idle", true));
+        if(event.isMoving()) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.goldbot.walk", false));
+            return PlayState.CONTINUE;
+        }
+
+        if(isAttacking()) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.goldbot.attack", true));
+            return PlayState.CONTINUE;
+        }
+
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.goldbot.idle", true));
         return PlayState.CONTINUE;
     }
 }

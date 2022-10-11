@@ -187,6 +187,13 @@ public class JItems {
     public static final RegistryObject<Item> DYNASTER_EGG = registerNormalItem("dynaster_spawn_egg", "Dynaster Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.DYNASTER_TYPE,
             0x948e8d, 0x3b3653, eggProps()));
 
+    public static final RegistryObject<Item> GOLDBOT_EGG = registerNormalItem("goldbot_spawn_egg", "Goldbot Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.GOLDBOT_TYPE,
+            0x948e8d, 0x3b3653, eggProps()));
+
+    public static final RegistryObject<Item> SHIMMERER_EGG = registerNormalItem("shimmerer_spawn_egg", "Shimmerer Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.SHIMMERER_TYPE,
+            0x948e8d, 0x3b3653, eggProps()));
+
+
     public static RegistryObject<Item> registerNormalItem(String name, String translatedName, CreativeModeTab tab) {
         return register(name, translatedName, () -> new Item(new Item.Properties().tab(tab)), ItemType.ITEM);
     }
