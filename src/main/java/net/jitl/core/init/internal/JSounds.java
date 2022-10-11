@@ -96,7 +96,14 @@ public class JSounds {
 
     public static final RegistryObject<SoundEvent> HAUNT_MUSKIE_2 = registerSound("music.haunt_muskie_2");
     public static final RegistryObject<SoundEvent> SNOWFLAKESSS = registerSound("music.snowflakesss");
-    
+
+    public static final RegistryObject<SoundEvent> UNDERWATER_WORLD = registerSound("music.record.underwater_world");
+    public static final RegistryObject<SoundEvent> EUCA_DISC_1 = registerSound("music.record.euca_1");
+    public static final RegistryObject<SoundEvent> EUCA_DISC_2 = registerSound("music.record.euca_2");
+    public static final RegistryObject<SoundEvent> EUCA_DISC_3 = registerSound("music.record.euca_3");
+    public static final RegistryObject<SoundEvent> FROZEN_DISC_1 = registerSound("music.record.frozen_1");
+    public static final RegistryObject<SoundEvent> BOIL_DISC_1 = registerSound("music.record.boil_1");
+
     private static RegistryObject<SoundEvent> registerSound(String name) {
         return REGISTRY.register(name, () -> new SoundEvent(JITL.rl(name)));
     }

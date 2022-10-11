@@ -9,6 +9,7 @@ import net.jitl.common.items.*;
 import net.jitl.common.items.base.*;
 import net.jitl.core.helper.EnumJTier;
 import net.jitl.core.init.JITL;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
@@ -27,9 +28,13 @@ public class JItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, JITL.MODID);
     public static final ArrayList<String> itemName = new ArrayList<>();
     public static final ArrayList<String> toolName = new ArrayList<>();
+    public static final ArrayList<String> recordName = new ArrayList<>();
+    public static final ArrayList<String> recordDescName = new ArrayList<>();
 
     public static final ArrayList<String> langName = new ArrayList<>();
     public static final ArrayList<String> toolLangName = new ArrayList<>();
+    public static final ArrayList<String> recordLangName = new ArrayList<>();
+    public static final ArrayList<String> recordDescLangName = new ArrayList<>();
 
     public static final RegistryObject<Item> TEST_BUG = registerNormalItem("test_bug", "Test Bug", TestBugItem::new);
 
@@ -193,6 +198,14 @@ public class JItems {
     public static final RegistryObject<Item> SHIMMERER_EGG = registerNormalItem("shimmerer_spawn_egg", "Shimmerer Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.SHIMMERER_TYPE,
             0x948e8d, 0x3b3653, eggProps()));
 
+    public static final RegistryObject<Item> UNDERWATER_WORLD_RECORD = registerRecord("underwater_world_record", "Blue Water", JSounds.UNDERWATER_WORLD, 2640);
+    public static final RegistryObject<Item> GOLD_PLAINS_RECORD = registerRecord("gold_plains_record", "Gold Plains", JSounds.GOLD_PLAINS_MUSIC, 1120);
+    public static final RegistryObject<Item> EUCA_RECORD_1 = registerRecord("euca_record_1", "Euca", JSounds.EUCA_DISC_1, 1200);
+    public static final RegistryObject<Item> EUCA_RECORD_2 = registerRecord("euca_record_2", "Euca", JSounds.EUCA_DISC_2, 620);
+    public static final RegistryObject<Item> EUCA_RECORD_3 = registerRecord("euca_record_3", "Euca", JSounds.EUCA_DISC_3, 3500);
+    public static final RegistryObject<Item> FROZEN_RECORD_1 = registerRecord("frozen_record_1", "Frozen", JSounds.FROZEN_DISC_1, 3480);
+    public static final RegistryObject<Item> BOIL_RECORD_1 = registerRecord("boil_record_1", "Boiling Point", JSounds.BOIL_DISC_1, 3140);
+
 
     public static RegistryObject<Item> registerNormalItem(String name, String translatedName, CreativeModeTab tab) {
         return register(name, translatedName, () -> new Item(new Item.Properties().tab(tab)), ItemType.ITEM);
@@ -224,6 +237,12 @@ public class JItems {
         return register(name, translatedName, () -> new Item(new Item.Properties()), ItemType.ITEM);
     }
 
+    public static RegistryObject<Item> registerRecord(String name, String descTranslated, Supplier<SoundEvent> sound, int tickLengths) {
+        recordDescName.add("item.jitl." + name + ".desc");
+        recordDescLangName.add(descTranslated);
+        return register(name, "Journey Record", () -> new RecordItem(4, sound, miscProps().stacksTo(1), tickLengths), ItemType.RECORD);
+    }
+
     public static RegistryObject<Item> register(String name, String translatedName, Supplier<Item> item, ItemType type) {
         if(type == ItemType.TOOL) {
             toolName.add(name);
@@ -232,6 +251,10 @@ public class JItems {
         if(type == ItemType.ITEM) {
             itemName.add(name);
             langName.add(translatedName);
+        }
+        if(type == ItemType.RECORD) {
+            recordName.add(name);
+            recordLangName.add(translatedName);
         }
         return register(name, item);
     }
@@ -260,8 +283,9 @@ public class JItems {
         return new Item.Properties().tab(JTabs.MISC);
     }
 
-    enum ItemType {
+    public enum ItemType {
         ITEM,
+        RECORD,
         TOOL;
     }
 }

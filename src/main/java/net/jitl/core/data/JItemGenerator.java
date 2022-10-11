@@ -24,7 +24,7 @@ public class JItemGenerator {
                 e.printStackTrace();
             }
 
-            getNormalItem(JITL.MODID, name, false);
+            getNormalItem(JITL.MODID, name, JItems.ItemType.ITEM);
             itemModelInit();
         }
 
@@ -39,7 +39,22 @@ public class JItemGenerator {
                 e.printStackTrace();
             }
 
-            getNormalItem(JITL.MODID, name, true);
+            getNormalItem(JITL.MODID, name, JItems.ItemType.TOOL);
+            itemModelInit();
+        }
+
+        for(String name : JItems.recordName) {
+            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            File itemModel = new File(itemModelDir);
+            try {
+                if(itemModel.exists()) itemModel.delete();
+                itemModel.createNewFile();
+                itemModelWriter = new BufferedWriter(new FileWriter(itemModel));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            getNormalItem(JITL.MODID, name, JItems.ItemType.RECORD);
             itemModelInit();
         }
     }
@@ -60,17 +75,17 @@ public class JItemGenerator {
         }
     }
 
-    public void getNormalItem(String modID, String name, boolean handheld) {
+    public void getNormalItem(String modID, String name, JItems.ItemType type) {
         writeToItemModelFile("{");
-        if(handheld) {
+        if(type == JItems.ItemType.TOOL) {
             writeToItemModelFile("  \"parent\": \"minecraft:item/handheld\",");
         } else {
             writeToItemModelFile("  \"parent\": \"minecraft:item/generated\",");
         }
+        String texName = type != JItems.ItemType.RECORD ? name : "record";
         writeToItemModelFile("  \"textures\": {");
-        writeToItemModelFile("    \"layer0\": \"" + modID + ":" + "item/" + name + "\"");
+        writeToItemModelFile("    \"layer0\": \"" + modID + ":" + "item/" + texName + "\"");
         writeToItemModelFile("  }");
         writeToItemModelFile("}");
     }
-
 }
