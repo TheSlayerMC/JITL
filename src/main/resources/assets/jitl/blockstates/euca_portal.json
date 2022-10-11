@@ -1,7 +1,10 @@
 {
   "variants": {
-  "": {
-      "model": "jitl:block/euca_portal"
-     }
+    "axis=x": {
+        "model": "jitl:block/euca_portal_ns"
+      },
+    "axis=z": {
+        "model": "jitl:block/euca_portal_ew"
+      }
   }
 }

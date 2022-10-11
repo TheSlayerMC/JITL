@@ -72,6 +72,7 @@ public class JITL {
             new JBlockGateGenerator().generate();
             new JBlockFenceGenerator().generate();
             new JBlockGrassGenerator().generate();
+            new JBlockPortalGenerator().generate();
             new LangRegistry().generate();
         }
 
