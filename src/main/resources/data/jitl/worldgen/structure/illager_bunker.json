@@ -3,9 +3,9 @@
 
   "start_pool": "jitl:overworld/illager_bunker/hallways",
 
-  "size": 2,
+  "size": 7,
 
-  "max_distance_from_center": 80,
+  "max_distance_from_center": 128,
 
   "biomes": "#jitl:has_structure/illager_bunker",
 
@@ -20,10 +20,33 @@
   "use_expansion_hack": false,
 
   "spawn_overrides": {
-    "creature": {
+    "monster": {
       "bounding_box": "piece",
       "spawns": [
-
+        {
+          "type": "minecraft:pillager",
+          "weight": 10,
+          "minCount": 1,
+          "maxCount": 10
+        },
+        {
+          "type": "minecraft:vindicator",
+          "weight": 30,
+          "minCount": 1,
+          "maxCount": 10
+        },
+        {
+          "type": "minecraft:illusioner",
+          "weight": 1,
+          "minCount": 1,
+          "maxCount": 1
+        },
+        {
+          "type": "minecraft:evoker",
+          "weight": 5,
+          "minCount": 1,
+          "maxCount": 1
+        }
       ]
     }
   }
