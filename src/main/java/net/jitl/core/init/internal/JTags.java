@@ -16,12 +16,7 @@ public class JTags {
     public static final TagKey<Block> FROZEN_STONE_ORE_REPLACEABLES = tagBlock("frozen_stone_ore_replaceables");
     public static final TagKey<Block> JLOGS = tagBlock("jlogs");
     public static final TagKey<Block> JPLANKS = tagBlock("planks");
-    public static final TagKey<Biome> MAGE_HOUSE = tagBiome("magehouse");
-    public static final TagKey<Biome> EUCA_GOLD = tagBiome("euca_gold");
-    public static final TagKey<Biome> EUCA_BIOMES = tagBiome("euca_biomes");
-
     public static final TagKey<Block> EUCA_GRASS = tagBlock("euca_grass");
-
 
     private static TagKey<Item> tagItem(String name) {
         return ItemTags.create(JITL.rl(name));
@@ -29,9 +24,5 @@ public class JTags {
 
     private static TagKey<Block> tagBlock(String name) {
         return BlockTags.create(JITL.rl(name));
-    }
-
-    private static TagKey<Biome> tagBiome(String name) {
-        return TagKey.create(Registry.BIOME_REGISTRY, JITL.rl("has_structure/" + name));
     }
 }
