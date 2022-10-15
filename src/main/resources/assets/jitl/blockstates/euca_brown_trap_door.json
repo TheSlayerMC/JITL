@@ -60,7 +60,7 @@
         "model": "jitl:block/euca_brown_trap_door_top",
          "y": 270
       },
-    "facing=west,half=top,open=false": {
+    "facing=west,half=top,open=true": {
         "model": "jitl:block/euca_brown_trap_door_open",
          "x": 180,
          "y": 90

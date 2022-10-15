@@ -18,6 +18,11 @@ public class JBlockProperties {
             .sound(SoundType.STONE)
             .requiresCorrectToolForDrops();
 
+    public static BlockBehaviour.Properties SPAWNER = BlockBehaviour.Properties.of(Material.STONE)
+            .strength(1.5F)
+            .noOcclusion()
+            .sound(SoundType.STONE);
+
     public static final BlockBehaviour.Properties LUNIUM_ORE_PROPS = BlockBehaviour.Properties.of(Material.STONE)
             .sound(JSoundTypes.LUNIUM_ORE)
             .requiresCorrectToolForDrops()
@@ -181,6 +186,9 @@ public class JBlockProperties {
         }
         if(name.contains("burned")) {
             texName = "burned_bark_planks";
+        }
+        if(name.contains("euca_dungeon_stairs")) {
+            texName = "euca_dungeon_brick";
         }
         return texName;
     }

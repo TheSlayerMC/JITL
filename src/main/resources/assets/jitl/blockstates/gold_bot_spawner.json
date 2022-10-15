@@ -1,0 +1,7 @@
+{
+  "variants": {
+  "": {
+      "model": "jitl:block/gold_bot_spawner"
+     }
+  }
+}

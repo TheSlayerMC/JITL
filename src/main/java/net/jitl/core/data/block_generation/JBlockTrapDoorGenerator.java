@@ -150,7 +150,7 @@ public class JBlockTrapDoorGenerator {
         writeToBlockstateFile("        \"model\": \"" + modID + ":" + "block/" + name + "_top\",");
         writeToBlockstateFile("         \"y\": 270");
         writeToBlockstateFile("      },");
-        writeToBlockstateFile("    \"facing=west,half=top,open=false\": {");
+        writeToBlockstateFile("    \"facing=west,half=top,open=true\": {");
         writeToBlockstateFile("        \"model\": \"" + modID + ":" + "block/" + name + "_open\",");
         writeToBlockstateFile("         \"x\": 180,");
         writeToBlockstateFile("         \"y\": 90");
