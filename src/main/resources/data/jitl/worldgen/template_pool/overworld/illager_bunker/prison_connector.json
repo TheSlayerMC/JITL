@@ -1,11 +1,11 @@
 {
-  "name": "jitl:overworld/mage_house/start_pool",
+  "name": "jitl:overworld/illager_bunker/prison_connector",
   "fallback": "minecraft:empty",
   "elements": [
     {
-      "weight": 1,
+      "weight": 25,
       "element": {
-        "location": "jitl:overworld/magehouse",
+        "location": "jitl:overworld/illager_bunker/iron_golem_prison",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"

@@ -150,6 +150,7 @@ public class JBlocks {
     public static final RegistryObject<StairBlock> DUNGEON_BRICK_STAIRS = registerStairs("dungeon_brick_stairs", "Dungeon Brick Stairs", DUNGEON_BRICKS, false, JBlockProperties.DUNGEON_BLOCK);
     public static final RegistryObject<JFenceBlock> DUNGEON_BRICK_FENCE = registerFence("dungeon_brick_fence", "Dungeon Brick Fence", false, JBlockProperties.DUNGEON_BLOCK);
     public static final RegistryObject<Block> CARVED_DUNGEON_BRICKS = register("carved_dungeon_bricks", "Carved Dungeon Bricks", JBlockProperties.DUNGEON_BLOCK);
+    public static final RegistryObject<Block> CRACKED_DUNGEON_BRICKS = register("cracked_dungeon_bricks", "Cracked Dungeon Bricks", JBlockProperties.DUNGEON_BLOCK);
     public static final RegistryObject<StairBlock> CARVED_DUNGEON_BRICK_STAIRS = registerStairs("carved_dungeon_brick_stairs", "Carved Dungeon Brick Stairs", DUNGEON_BRICKS, false, JBlockProperties.DUNGEON_BLOCK);
     public static final RegistryObject<JFenceBlock> CARVED_DUNGEON_BRICK_FENCE = registerFence("carved_dungeon_brick_fence", "Carved Dungeon Brick Fence", false, JBlockProperties.DUNGEON_BLOCK);
     public static final RegistryObject<Block> CHISELED_DUNGEON_BRICKS = register("chiseled_dungeon_bricks", "Chiseled Dungeon Bricks", JBlockProperties.DUNGEON_BLOCK);
@@ -302,6 +303,7 @@ public class JBlocks {
     public static final RegistryObject<Block> BOIL_LOCK = registerRotatableBlock("boil_lock", "Boiling Lock", LockBlock::new);
 
     public static final RegistryObject<RotatedPillarBlock> STONE_PLILLAR = registerPillar("stone_pillar", "Stone Pillar", false, JBlockProperties.STONE);
+    public static final RegistryObject<Block> SMALL_STONE_BRICKS = register("small_stone_bricks", "Small Stone Bricks", JBlockProperties.STONE);
 
     public static RegistryObject<Block> register(String name, String translatedName, BlockBehaviour.Properties props, CreativeModeTab tab) {
         return register(name, translatedName, () -> new Block(props), tab);
