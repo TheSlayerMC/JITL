@@ -17,6 +17,8 @@ public class JTags {
     public static final TagKey<Block> JLOGS = tagBlock("jlogs");
     public static final TagKey<Block> JPLANKS = tagBlock("planks");
     public static final TagKey<Biome> MAGE_HOUSE = tagBiome("magehouse");
+    public static final TagKey<Biome> EUCA_GOLD = tagBiome("euca_gold");
+    public static final TagKey<Biome> EUCA_BIOMES = tagBiome("euca_biomes");
 
     public static final TagKey<Block> EUCA_GRASS = tagBlock("euca_grass");
 
