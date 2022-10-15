@@ -1,5 +1,5 @@
 {
-  "name": "jitl:mage_house/start_pool",
+  "name": "jitl:euca_sphere/start_pool",
 
   "fallback": "minecraft:empty",
 
@@ -9,7 +9,7 @@
       "weight": 1,
       "element": {
 
-        "location": "jitl:overworld/mage_house",
+        "location": "jitl:euca/euca_sphere",
 
         "processors": "minecraft:empty",
 

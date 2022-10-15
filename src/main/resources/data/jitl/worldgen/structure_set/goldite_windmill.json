@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:goldite_windmill",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1642136472,
+
+    "spacing": 20,
+
+    "separation": 6,
+
+    "type": "minecraft:random_spread"
+  }
+}

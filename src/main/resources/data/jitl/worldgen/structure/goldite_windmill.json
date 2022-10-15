@@ -1,13 +1,13 @@
 {
   "type": "minecraft:jigsaw",
 
-  "start_pool": "jitl:overworld/mage_house/start_pool",
+  "start_pool": "jitl:euca/goldite_windmill/start_pool",
 
   "size": 2,
 
   "max_distance_from_center": 80,
 
-  "biomes": "#jitl:has_structure/magehouse",
+  "biomes": "#jitl:has_structure/euca_gold",
 
   "step": "surface_structures",
 

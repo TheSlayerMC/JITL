@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:euca_sphere",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 16421364715478,
+
+    "spacing": 20,
+
+    "separation": 6,
+
+    "type": "minecraft:random_spread"
+  }
+}
