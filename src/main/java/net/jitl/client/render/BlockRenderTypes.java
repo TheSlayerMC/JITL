@@ -63,6 +63,7 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.ICE_BUSH.get());
         cutout.add(JBlocks.ICE_BUD.get());
         cutout.add(JBlocks.GOLD_BOT_SPAWNER.get());
+        cutout.add(JBlocks.BITTERWOOD_CAMPFIRE.get());
 
 
         translucent.add(JBlocks.EUCA_PORTAL.get());

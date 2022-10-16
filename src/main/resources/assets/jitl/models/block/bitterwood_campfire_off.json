@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/campfire_off",
+  "textures": {
+    "particle": "jitl:block/bitterwood_campfire",
+    "log": "jitl:block/bitterwood_campfire_log"
+  }
+}

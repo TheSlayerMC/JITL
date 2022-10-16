@@ -65,6 +65,8 @@ public class JBlocks {
     public static final ArrayList<String> portalLangName = new ArrayList<>();
     public static final ArrayList<String> chestBlockName = new ArrayList<>();
     public static final ArrayList<String> chestLangName = new ArrayList<>();
+    public static final ArrayList<String> campfireBlockName = new ArrayList<>();
+    public static final ArrayList<String> campfireLangName = new ArrayList<>();
 
     public static final RegistryObject<Block> IRIDIUM_ORE = register("iridium_ore", "Iridium Ore", JBlockProperties.STONE);
     public static final RegistryObject<Block> IRIDIUM_BLOCK = registerFuelBlock("iridium_block", "Iridium Block", () -> new Block(JBlockProperties.STONE), 16000);
@@ -242,6 +244,7 @@ public class JBlocks {
     public static final RegistryObject<Block> ICE_BUSH = registerCrossBlock("ice_bush", "Ice Bush", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> ICE_BUD = registerCrossBlock("ice_bud", "Ice Bud", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> BITTERWOOD_SAPLING = registerCrossBlock("bitterwood_sapling", "Bitterwood Sapling", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final RegistryObject<Block> BITTERWOOD_CAMPFIRE = registerCampfire("bitterwood_campfire", "Bitterwood Campfire");
 
     public static final RegistryObject<Block> FROZEN_BLOOM = registerCrossBlock("frozen_bloom", "Frozen Bloom", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> FROZEN_FLOWER = registerCrossBlock("frozen_flower", "Frozen Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
@@ -325,6 +328,14 @@ public class JBlocks {
         normalLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
         JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(tab)));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerCampfire(String name, String translatedName) {
+        campfireBlockName.add(name);
+        campfireLangName.add(translatedName);
+        RegistryObject<Block> block1 = BLOCKS.register(name, () -> new CampfireBlock(true, 1, JBlockProperties.CAMPFIRE));
+        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
         return block1;
     }
 

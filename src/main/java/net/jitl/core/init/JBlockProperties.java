@@ -122,6 +122,12 @@ public class JBlockProperties {
             .strength(1F)
             .sound(SoundType.WOOD);
 
+    public static BlockBehaviour.Properties CAMPFIRE = BlockBehaviour.Properties.of(Material.WOOD)
+            .strength(1F)
+            .noOcclusion()
+            .lightLevel((state) -> 10)
+            .sound(SoundType.WOOD);
+
     public static BlockBehaviour.Properties BUTTON = BlockBehaviour.Properties.of(Material.WOOD)
             .strength(1F)
             .noOcclusion()
@@ -137,6 +143,7 @@ public class JBlockProperties {
     public static BlockBehaviour.Properties PORTAL = BlockBehaviour.Properties.of(Material.PORTAL)
             .strength(100F)
             .sound(SoundType.GLASS)
+            .lightLevel((state) -> 4)
             .noOcclusion()
             .noCollission();
 

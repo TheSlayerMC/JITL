@@ -31,6 +31,7 @@ public class LangRegistry {
         ArrayList<String> rotatableBlockList = new ArrayList<>(JBlocks.rotatableBlockName);
         ArrayList<String> furnaceBlockList = new ArrayList<>(JBlocks.furnaceBlockName);
         ArrayList<String> portalBlockList = new ArrayList<>(JBlocks.portalBlockName);
+        ArrayList<String> campfireBlockList = new ArrayList<>(JBlocks.campfireBlockName);
 
         ArrayList<String> toolItemList = new ArrayList<>(JItems.toolName);
         ArrayList<String> itemList = new ArrayList<>(JItems.itemName);
@@ -129,6 +130,10 @@ public class LangRegistry {
 
         for(int i = 0; i < portalBlockList.size(); i++) {
             writeToFile("\"block.jitl." + portalBlockList.get(i) + "\": \"" + JBlocks.portalLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < campfireBlockList.size(); i++) {
+            writeToFile("\"block.jitl." + campfireBlockList.get(i) + "\": \"" + JBlocks.campfireLangName.get(i) + "\"" + ",");
         }
 
         for(int i = 0; i < furnaceBlockList.size(); i++) {
