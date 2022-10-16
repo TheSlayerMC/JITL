@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "jitl:block/permafrost_furnace_front_on",
+    "side": "jitl:block/permafrost_furnace_side",
+    "top": "jitl:block/permafrost_furnace_top"
+  }
+}

@@ -119,6 +119,7 @@ public class JBlockFurnaceGenerator {
         try {
             itemModelWriter.close();
             blockModelWriter.close();
+            blockOnModelWriter.close();
             blockstateWriter.close();
         } catch (IOException e) {
             e.printStackTrace();

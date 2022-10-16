@@ -2,6 +2,7 @@ package net.jitl.core.init.internal;
 
 import net.jitl.common.block.entity.GrindstoneEntity;
 import net.jitl.common.block.entity.JChestBlockEntity;
+import net.jitl.common.block.entity.JFurnaceTile;
 import net.jitl.core.init.JITL;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.CampfireBlockEntity;
@@ -23,4 +24,6 @@ public class JBlockEntities {
     public static final RegistryObject<BlockEntityType<CampfireBlockEntity>> CAMPFIRE = REGISTRY.register("campfire",
             () -> BlockEntityType.Builder.of(CampfireBlockEntity::new, JBlocks.BITTERWOOD_CAMPFIRE.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<JFurnaceTile>> JFURNACE = REGISTRY.register("furnace",
+            () -> BlockEntityType.Builder.of(JFurnaceTile::new, JBlocks.GOLDITE_FURNACE.get(), JBlocks.PERMAFROST_FURNACE.get()).build(null));
 }

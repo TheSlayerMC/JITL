@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "jitl:block/goldite_furnace_front_on",
+    "side": "jitl:block/goldite_furnace_side",
+    "top": "jitl:block/goldite_furnace_top"
+  }
+}

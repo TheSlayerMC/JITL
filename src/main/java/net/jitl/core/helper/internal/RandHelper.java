@@ -8,6 +8,8 @@ import java.util.Random;
 
 public class RandHelper {
 
+    public static RandomSource RAND = RandomSource.create();
+
     /**
      * Returns {@code a} with 50% chance otherwise return {@code b}
      */

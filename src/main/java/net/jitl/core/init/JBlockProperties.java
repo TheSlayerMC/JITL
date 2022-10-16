@@ -153,6 +153,12 @@ public class JBlockProperties {
             .lightLevel((state) -> 10)
             .strength(1.5F, 6.0F);
 
+    public static final BlockBehaviour.Properties FURNACE = BlockBehaviour.Properties.of(Material.STONE)
+            .sound(SoundType.STONE)
+            .requiresCorrectToolForDrops()
+            .lightLevel(litBlockEmission(13))
+            .strength(1.5F, 6.0F);
+
     public static String getTextureFromName(String name) {
         String texName = "";
         if(name.contains("euca_brown")) {
@@ -198,5 +204,11 @@ public class JBlockProperties {
             texName = "euca_dungeon_brick";
         }
         return texName;
+    }
+
+    private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
+        return (state) -> {
+            return state.getValue(BlockStateProperties.LIT) ? lightValue : 0;
+        };
     }
 }
