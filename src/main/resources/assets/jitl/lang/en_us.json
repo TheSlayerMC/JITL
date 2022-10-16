@@ -16,6 +16,8 @@
 "jitl.knowledge.euca" : "Euca Knowledge",
 "jitl.knowledge.boil" : "Boiling Knowledge",
 "jitl.knowledge.frozen" : "Frozen Knowledge",
+"entity.jitl.eskimo" : "Eskimo",
+"entity.jitl.mage" : "Mage",
 "item.jitl.underwater_world_record.desc": "Blue Water",
 "item.jitl.gold_plains_record.desc": "Gold Plains",
 "item.jitl.euca_record_1.desc": "Euca",
