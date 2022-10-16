@@ -15,9 +15,15 @@ import net.jitl.common.entity.overworld.IllagerMech;
 import net.jitl.common.entity.overworld.npc.Mage;
 import net.jitl.common.entity.projectile.*;
 import net.jitl.core.init.JITL;
+import net.minecraft.SharedConstants;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SpawnEggItem;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -154,10 +160,17 @@ public class JEntities {
                     .sized(0.5F, 0.75F).build("shimmerer"));
 
     public static final RegistryObject<EntityType<Eskimo>> ESKIMO_TYPE = REGISTRY.register("eskimo", () ->
-            EntityType.Builder.of(Eskimo::new, MobCategory.MONSTER)
+            EntityType.Builder.of(Eskimo::new, MobCategory.CREATURE)
                     .setTrackingRange(15)
                     .setShouldReceiveVelocityUpdates(true)
-                    .sized(0.75F, 2F).build("eskimo"));
+                    .sized(0.5F, 0.75F).build("eskimo"));
+
+    //GET TO WORK
+    private static RegistryObject<EntityType<Mob>> registerEntity(EntityType.EntityFactory<Mob> factory, String entityName, String langName, int bg, int fg, float width, float height, MobCategory classification) {
+        EntityType<Mob> entity = EntityType.Builder.of(factory, classification).sized(width, height).setTrackingRange(15).setShouldReceiveVelocityUpdates(true).build(entityName);
+        JItems.register(entityName + "_spawn_egg", langName + " Spawn Egg", () -> new ForgeSpawnEggItem(() -> entity, bg, fg, JItems.eggProps()), JItems.ItemType.SPAWN_EGG);
+        return REGISTRY.register(entityName, () -> entity);
+    }
 
     @SubscribeEvent
     public static void registerAttributes(final EntityAttributeCreationEvent event) {
