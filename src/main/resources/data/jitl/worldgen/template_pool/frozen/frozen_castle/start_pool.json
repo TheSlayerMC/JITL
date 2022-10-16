@@ -1,0 +1,15 @@
+{
+  "name": "jitl:frozen/frozen_castle/start_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "jitl:frozen/frozen_castle/frozen_castle_bl",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

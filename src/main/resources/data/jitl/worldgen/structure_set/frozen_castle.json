@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:frozen_castle",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 156418564864154,
+
+    "spacing": 20,
+
+    "separation": 6,
+
+    "type": "minecraft:random_spread"
+  }
+}

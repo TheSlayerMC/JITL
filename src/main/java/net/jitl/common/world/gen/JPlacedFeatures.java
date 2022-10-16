@@ -227,7 +227,7 @@ public class JPlacedFeatures {
 
     public static final RegistryObject<PlacedFeature> ICE_SPIKE = PLACED_FEATURES.register("ice_spike_placed", () ->
             new PlacedFeature(JConfiguredFeatures.ICE_SPIKE.getHolder().get()
-                    , patch(1, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
+                    , patch(1, 5, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
 
     /** -----------------------------------------------------------------------------------------------------------------------------------------------------------------  **/
 

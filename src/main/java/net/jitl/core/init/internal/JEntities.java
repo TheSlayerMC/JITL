@@ -163,7 +163,7 @@ public class JEntities {
             EntityType.Builder.of(Eskimo::new, MobCategory.CREATURE)
                     .setTrackingRange(15)
                     .setShouldReceiveVelocityUpdates(true)
-                    .sized(0.5F, 0.75F).build("eskimo"));
+                    .sized(0.75F, 2F).build("eskimo"));
 
     //GET TO WORK
     private static RegistryObject<EntityType<Mob>> registerEntity(EntityType.EntityFactory<Mob> factory, String entityName, String langName, int bg, int fg, float width, float height, MobCategory classification) {

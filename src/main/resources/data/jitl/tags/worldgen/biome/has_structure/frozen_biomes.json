@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "jitl:frozen/bitterwood_forest",
+    "jitl:frozen/dying_forest",
+    "jitl:frozen/frozen_wastes"
+  ]
+}
