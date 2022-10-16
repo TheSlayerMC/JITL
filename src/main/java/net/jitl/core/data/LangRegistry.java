@@ -36,6 +36,7 @@ public class LangRegistry {
 
         ArrayList<String> toolItemList = new ArrayList<>(JItems.toolName);
         ArrayList<String> itemList = new ArrayList<>(JItems.itemName);
+        ArrayList<String> spawnEggList = new ArrayList<>(JItems.spawnName);
         ArrayList<String> recordList = new ArrayList<>(JItems.recordName);
         ArrayList<String> recordDescList = new ArrayList<>(JItems.recordDescName);
 
@@ -66,6 +67,8 @@ public class LangRegistry {
         writeToFile("\"jitl.knowledge.euca\" : \"Euca Knowledge\",");
         writeToFile("\"jitl.knowledge.boil\" : \"Boiling Knowledge\",");
         writeToFile("\"jitl.knowledge.frozen\" : \"Frozen Knowledge\",");
+        writeToFile("\"entity.jitl.eskimo\" : \"Eskimo\",");
+        writeToFile("\"entity.jitl.mage\" : \"Mage\",");
 
         /* --------------------- Finish manual lines --------------------- */
 
@@ -151,6 +154,10 @@ public class LangRegistry {
 
         for(int i = 0; i < recordList.size(); i++) {
             writeToFile("\"item.jitl." + recordList.get(i) + "\": \"" + JItems.recordLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < spawnEggList.size(); i++) {
+            writeToFile("\"item.jitl." + spawnEggList.get(i) + "\": \"" + JItems.spawnLangName.get(i) + "\"" + ",");
         }
 
         int j = 0;

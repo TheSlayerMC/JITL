@@ -69,8 +69,8 @@
       "jitl:rimestone_ore_placed",
       "jitl:peridot_ore_placed",
       "jitl:frozen_veg_placed",
-      "jitl:frozen_flowers_placed",
-      "jitl:ice_spike_placed"
+      "jitl:ice_spike_placed",
+      "jitl:frozen_flowers_placed"
     ]
   ]
 }

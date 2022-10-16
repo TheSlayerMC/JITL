@@ -57,6 +57,21 @@ public class JItemGenerator {
             getNormalItem(JITL.MODID, name, JItems.ItemType.RECORD);
             itemModelInit();
         }
+
+        for(String name : JItems.spawnName) {
+            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            File itemModel = new File(itemModelDir);
+            try {
+                if(itemModel.exists()) itemModel.delete();
+                itemModel.createNewFile();
+                itemModelWriter = new BufferedWriter(new FileWriter(itemModel));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            getSpawnEggItem();
+            itemModelInit();
+        }
     }
 
     public void itemModelInit() {
@@ -86,6 +101,12 @@ public class JItemGenerator {
         writeToItemModelFile("  \"textures\": {");
         writeToItemModelFile("    \"layer0\": \"" + modID + ":" + "item/" + texName + "\"");
         writeToItemModelFile("  }");
+        writeToItemModelFile("}");
+    }
+
+    public void getSpawnEggItem() {
+        writeToItemModelFile("{");
+        writeToItemModelFile("  \"parent\": \"minecraft:item/template_spawn_egg\"");
         writeToItemModelFile("}");
     }
 }

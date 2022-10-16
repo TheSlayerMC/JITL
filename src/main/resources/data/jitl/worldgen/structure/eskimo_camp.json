@@ -24,7 +24,7 @@
       "bounding_box": "piece",
       "spawns": [
         {
-          "type": "minecraft:villager",
+          "type": "jitl:eskimo",
           "weight": 10,
           "minCount": 3,
           "maxCount": 10

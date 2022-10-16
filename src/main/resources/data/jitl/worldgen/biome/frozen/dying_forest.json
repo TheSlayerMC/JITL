@@ -66,13 +66,13 @@
   "spawn_costs": {},
   "features": [
     [
+      "jitl:large_frozen_tree_placed",
+      "jitl:medium_frozen_tree_placed",
+      "jitl:small_frozen_tree_placed",
       "jitl:rimestone_ore_placed",
       "jitl:peridot_ore_placed",
       "jitl:frozen_veg_placed",
-      "jitl:frozen_flowers_placed",
-      "jitl:large_frozen_tree_placed",
-      "jitl:medium_frozen_tree_placed",
-      "jitl:small_frozen_tree_placed"
+      "jitl:frozen_flowers_placed"
     ]
   ]
 }

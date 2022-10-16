@@ -7,6 +7,7 @@ import net.jitl.common.entity.euca.Dynaster;
 import net.jitl.common.entity.euca.EucaCharger;
 import net.jitl.common.entity.euca.Goldbot;
 import net.jitl.common.entity.euca.Shimmerer;
+import net.jitl.common.entity.frozen.Eskimo;
 import net.jitl.common.entity.nether.Witherspine;
 import net.jitl.common.entity.overworld.BrownHongo;
 import net.jitl.common.entity.overworld.Floro;
@@ -152,6 +153,12 @@ public class JEntities {
                     .setShouldReceiveVelocityUpdates(true)
                     .sized(0.5F, 0.75F).build("shimmerer"));
 
+    public static final RegistryObject<EntityType<Eskimo>> ESKIMO_TYPE = REGISTRY.register("eskimo", () ->
+            EntityType.Builder.of(Eskimo::new, MobCategory.MONSTER)
+                    .setTrackingRange(15)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .sized(0.75F, 2F).build("eskimo"));
+
     @SubscribeEvent
     public static void registerAttributes(final EntityAttributeCreationEvent event) {
         event.put(MAGE_TYPE.get(), Mage.createAttributes());
@@ -167,5 +174,6 @@ public class JEntities {
         event.put(GOLDBOT_TYPE.get(), Goldbot.createAttributes());
         event.put(SHIMMERER_TYPE.get(), Shimmerer.createAttributes());
 
+        event.put(ESKIMO_TYPE.get(), Eskimo.createAttributes());
     }
 }

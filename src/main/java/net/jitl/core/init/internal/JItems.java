@@ -30,6 +30,8 @@ public class JItems {
     public static final ArrayList<String> toolName = new ArrayList<>();
     public static final ArrayList<String> recordName = new ArrayList<>();
     public static final ArrayList<String> recordDescName = new ArrayList<>();
+    public static final ArrayList<String> spawnName = new ArrayList<>();
+    public static final ArrayList<String> spawnLangName = new ArrayList<>();
 
     public static final ArrayList<String> langName = new ArrayList<>();
     public static final ArrayList<String> toolLangName = new ArrayList<>();
@@ -165,38 +167,41 @@ public class JItems {
     public static final RegistryObject<Item> MUD_BALL = registerNormalItem("mud_ball", "Mud Ball", () -> new ThrowableItem(rangedProps(),
             (world, thrower) -> new FloroMudEntity(JEntities.FLORO_MUD_TYPE.get(), world, thrower, 0.0F)).setSound(() -> SoundEvents.SNOWBALL_THROW));
 
-    public static final RegistryObject<Item> MAGE_EGG = registerNormalItem("mage_spawn_egg", "Mage Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.MAGE_TYPE,
-            0x948e8d, 0x3b3653, eggProps()));
+    public static final RegistryObject<Item> MAGE_EGG = register("mage_spawn_egg", "Mage Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.MAGE_TYPE,
+            0x948e8d, 0x3b3653, eggProps()), ItemType.SPAWN_EGG);
 
-    public static final RegistryObject<Item> FLORO_EGG = registerNormalItem("floro_spawn_egg", "Floro Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.FLORO_TYPE,
-            0x948e8d, 0x3b3653, eggProps()));
+    public static final RegistryObject<Item> FLORO_EGG = register("floro_spawn_egg", "Floro Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.FLORO_TYPE,
+            0x948e8d, 0x3b3653, eggProps()), ItemType.SPAWN_EGG);
 
-    public static final RegistryObject<Item> TOWER_GUARDIAN_EGG = registerNormalItem("tower_guardian_spawn_egg", "Tower Guarduan Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.TOWER_GUARDIAN_TYPE,
-            0x948e8d, 0x3b3653, eggProps()));
+    public static final RegistryObject<Item> TOWER_GUARDIAN_EGG = register("tower_guardian_spawn_egg", "Tower Guarduan Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.TOWER_GUARDIAN_TYPE,
+            0x948e8d, 0x3b3653, eggProps()), ItemType.SPAWN_EGG);
 
-    public static final RegistryObject<Item> ROCKITE_SMASHER_EGG = registerNormalItem("rockite_smasher_spawn_egg", "Rockite Smasher Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ROCKITE_SMASHER_TYPE,
-            0x948e8d, 0x3b3653, eggProps()));
+    public static final RegistryObject<Item> ROCKITE_SMASHER_EGG = register("rockite_smasher_spawn_egg", "Rockite Smasher Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ROCKITE_SMASHER_TYPE,
+            0x948e8d, 0x3b3653, eggProps()), ItemType.SPAWN_EGG);
 
-    public static final RegistryObject<Item> WITHERSPINE_SMASHER_EGG = registerNormalItem("witherspine_spawn_egg", "Witherspine Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.WITHERSPINE_TYPE,
-            0x948e8d, 0x3b3653, eggProps()));
+    public static final RegistryObject<Item> WITHERSPINE_SMASHER_EGG = register("witherspine_spawn_egg", "Witherspine Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.WITHERSPINE_TYPE,
+            0x948e8d, 0x3b3653, eggProps()), ItemType.SPAWN_EGG);
 
-    public static final RegistryObject<Item> BROWN_HONGO_EGG = registerNormalItem("brown_hongo_spawn_egg", "Brown Hongo Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.BROWN_HONGO_TYPE,
-            0x948e8d, 0x3b3653, eggProps()));
+    public static final RegistryObject<Item> BROWN_HONGO_EGG = register("brown_hongo_spawn_egg", "Brown Hongo Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.BROWN_HONGO_TYPE,
+            0x948e8d, 0x3b3653, eggProps()), ItemType.SPAWN_EGG);
 
-    public static final RegistryObject<Item> ILLAGER_MECH_EGG = registerNormalItem("illager_mech_spawn_egg", "Illager Mech Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ILLAGER_MECH_TYPE,
-            0x948e8d, 0x3b3653, eggProps()));
+    public static final RegistryObject<Item> ILLAGER_MECH_EGG = register("illager_mech_spawn_egg", "Illager Mech Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ILLAGER_MECH_TYPE,
+            0x948e8d, 0x3b3653, eggProps()), ItemType.SPAWN_EGG);
 
-    public static final RegistryObject<Item> EUCA_CHARGER_EGG = registerNormalItem("euca_charger_spawn_egg", "Euca Charger Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.EUCA_CHARGER_TYPE,
-            0x948e8d, 0x3b3653, eggProps()));
+    public static final RegistryObject<Item> EUCA_CHARGER_EGG = register("euca_charger_spawn_egg", "Euca Charger Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.EUCA_CHARGER_TYPE,
+            0x948e8d, 0x3b3653, eggProps()), ItemType.SPAWN_EGG);
 
-    public static final RegistryObject<Item> DYNASTER_EGG = registerNormalItem("dynaster_spawn_egg", "Dynaster Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.DYNASTER_TYPE,
-            0x948e8d, 0x3b3653, eggProps()));
+    public static final RegistryObject<Item> DYNASTER_EGG = register("dynaster_spawn_egg", "Dynaster Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.DYNASTER_TYPE,
+            0x948e8d, 0x3b3653, eggProps()), ItemType.SPAWN_EGG);
 
-    public static final RegistryObject<Item> GOLDBOT_EGG = registerNormalItem("goldbot_spawn_egg", "Goldbot Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.GOLDBOT_TYPE,
-            0x948e8d, 0x3b3653, eggProps()));
+    public static final RegistryObject<Item> GOLDBOT_EGG = register("goldbot_spawn_egg", "Goldbot Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.GOLDBOT_TYPE,
+            0x948e8d, 0x3b3653, eggProps()), ItemType.SPAWN_EGG);
 
-    public static final RegistryObject<Item> SHIMMERER_EGG = registerNormalItem("shimmerer_spawn_egg", "Shimmerer Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.SHIMMERER_TYPE,
-            0x948e8d, 0x3b3653, eggProps()));
+    public static final RegistryObject<Item> SHIMMERER_EGG = register("shimmerer_spawn_egg", "Shimmerer Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.SHIMMERER_TYPE,
+            0x948e8d, 0x3b3653, eggProps()), ItemType.SPAWN_EGG);
+
+    public static final RegistryObject<Item> ESKIMO_EGG = register("eskimo_spawn_egg", "Eskimo Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ESKIMO_TYPE,
+            0x948e8d, 0x3b3653, eggProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> UNDERWATER_WORLD_RECORD = registerRecord("underwater_world_record", "Blue Water", JSounds.UNDERWATER_WORLD, 2640);
     public static final RegistryObject<Item> GOLD_PLAINS_RECORD = registerRecord("gold_plains_record", "Gold Plains", JSounds.GOLD_PLAINS_MUSIC, 1120);
@@ -256,6 +261,10 @@ public class JItems {
             recordName.add(name);
             recordLangName.add(translatedName);
         }
+        if(type == ItemType.SPAWN_EGG) {
+            spawnName.add(name);
+            spawnLangName.add(translatedName);
+        }
         return register(name, item);
     }
 
@@ -286,6 +295,7 @@ public class JItems {
     public enum ItemType {
         ITEM,
         RECORD,
+        SPAWN_EGG,
         TOOL;
     }
 }
