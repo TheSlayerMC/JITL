@@ -1,6 +1,6 @@
 package net.jitl.core.data.block_generation;
 
-import net.jitl.core.init.JBlockProperties;
+import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 

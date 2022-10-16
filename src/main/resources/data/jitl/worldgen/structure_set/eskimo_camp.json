@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:eskimo_camp",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 156418564864,
+
+    "spacing": 20,
+
+    "separation": 6,
+
+    "type": "minecraft:random_spread"
+  }
+}

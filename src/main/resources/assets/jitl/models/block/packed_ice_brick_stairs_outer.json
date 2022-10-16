@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "jitl:block/packed_ice_bricks",
+    "side": "jitl:block/packed_ice_bricks",
+    "top": "jitl:block/packed_ice_bricks"
+  }
+}

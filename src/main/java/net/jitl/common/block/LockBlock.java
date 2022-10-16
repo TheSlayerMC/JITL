@@ -1,6 +1,6 @@
 package net.jitl.common.block;
 
-import net.jitl.core.init.JBlockProperties;
+import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;

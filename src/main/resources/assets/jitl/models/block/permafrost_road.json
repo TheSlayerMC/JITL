@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/dirt_path",
+  "textures": {
+    "top": "jitl:block/permafrost_road_top",
+    "side": "jitl:block/permafrost_road_side",
+    "bottom": "jitl:block/permafrost_road_bottom",
+    "particle": "jitl:block/permafrost_road_top"
+  }
+}

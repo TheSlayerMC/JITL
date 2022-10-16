@@ -2,7 +2,7 @@ package net.jitl.common.block;
 
 import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
 import net.jitl.common.block.entity.JChestBlockEntity;
-import net.jitl.core.init.JBlockProperties;
+import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
@@ -30,7 +30,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.LidBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
@@ -46,7 +45,6 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 import java.util.function.BiPredicate;
 
 public class JChestBlock extends AbstractChestBlock<JChestBlockEntity> implements SimpleWaterloggedBlock {

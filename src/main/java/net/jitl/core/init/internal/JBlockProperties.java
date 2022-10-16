@@ -1,8 +1,9 @@
-package net.jitl.core.init;
+package net.jitl.core.init.internal;
 
 import net.jitl.core.init.internal.JSoundTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -159,6 +160,12 @@ public class JBlockProperties {
             .lightLevel(litBlockEmission(13))
             .strength(1.5F, 6.0F);
 
+    public static final BlockBehaviour.Properties PATH = BlockBehaviour.Properties.of(Material.DIRT)
+            .strength(0.65F)
+            .sound(SoundType.GRASS)
+            .isViewBlocking((state, getter, pos) -> true)
+            .isSuffocating((state, getter, pos) -> true);
+
     public static String getTextureFromName(String name) {
         String texName = "";
         if(name.contains("euca_brown")) {
@@ -203,12 +210,16 @@ public class JBlockProperties {
         if(name.contains("euca_dungeon_stairs")) {
             texName = "euca_dungeon_brick";
         }
+        if(name.contains("packed_snow")) {
+            texName = "packed_snow_bricks";
+        }
+        if(name.contains("packed_ice")) {
+            texName = "packed_ice_bricks";
+        }
         return texName;
     }
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
-        return (state) -> {
-            return state.getValue(BlockStateProperties.LIT) ? lightValue : 0;
-        };
+        return (state) -> state.getValue(BlockStateProperties.LIT) ? lightValue : 0;
     }
 }

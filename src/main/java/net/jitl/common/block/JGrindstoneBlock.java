@@ -1,7 +1,6 @@
 package net.jitl.common.block;
 
-import net.jitl.common.block.entity.GrindstoneEntity;
-import net.jitl.core.init.JBlockProperties;
+import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

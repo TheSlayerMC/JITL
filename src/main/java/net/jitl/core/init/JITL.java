@@ -75,6 +75,7 @@ public class JITL {
             new JBlockGrassGenerator().generate();
             new JBlockPortalGenerator().generate();
             new JBlockCampfireGenerator().generate();
+            new JBlockPathGenerator().generate();
 
             new LangRegistry().generate();
         }
