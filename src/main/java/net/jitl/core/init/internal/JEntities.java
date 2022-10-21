@@ -3,10 +3,7 @@ package net.jitl.core.init.internal;
 import net.jitl.common.entity.base.JBoat;
 import net.jitl.common.entity.boss.RockiteSmasher;
 import net.jitl.common.entity.boss.TowerGuardian;
-import net.jitl.common.entity.euca.Dynaster;
-import net.jitl.common.entity.euca.EucaCharger;
-import net.jitl.common.entity.euca.Goldbot;
-import net.jitl.common.entity.euca.Shimmerer;
+import net.jitl.common.entity.euca.*;
 import net.jitl.common.entity.frozen.Eskimo;
 import net.jitl.common.entity.nether.Witherspine;
 import net.jitl.common.entity.overworld.BrownHongo;
@@ -25,6 +22,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
@@ -140,6 +138,12 @@ public class JEntities {
                     .setShouldReceiveVelocityUpdates(true)
                     .sized(0.5F, 0.75F).build("shimmerer"));
 
+    public static final RegistryObject<EntityType<Golder>> GOLDER_TYPE = REGISTRY.register("golder", () ->
+            EntityType.Builder.of(Golder::new, MobCategory.MONSTER)
+                    .setTrackingRange(15)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .sized(1F, 2F).build("golder"));
+
     public static final RegistryObject<EntityType<Eskimo>> ESKIMO_TYPE = REGISTRY.register("eskimo", () ->
             EntityType.Builder.of(Eskimo::new, MobCategory.CREATURE)
                     .setTrackingRange(15)
@@ -167,7 +171,14 @@ public class JEntities {
         event.put(DYNASTER_TYPE.get(), Dynaster.createAttributes());
         event.put(GOLDBOT_TYPE.get(), Goldbot.createAttributes());
         event.put(SHIMMERER_TYPE.get(), Shimmerer.createAttributes());
+        event.put(GOLDER_TYPE.get(), Golder.createAttributes());
 
         event.put(ESKIMO_TYPE.get(), Eskimo.createAttributes());
+    }
+
+
+    @SubscribeEvent
+    public static void registerSpawnPlacement(final SpawnPlacementRegisterEvent event) {
+        event.register(SHIMMERER_TYPE.get(), Shimmerer::checkSpawnRules);
     }
 }

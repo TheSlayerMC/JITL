@@ -61,6 +61,7 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.DYNASTER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("dynaster", JDimension.EUCA), 0.8F));
         EntityRenderers.register(JEntities.GOLDBOT_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("goldbot", JDimension.EUCA), 0.8F));
         EntityRenderers.register(JEntities.SHIMMERER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("shimmerer", JDimension.EUCA), 0.8F));
+        EntityRenderers.register(JEntities.GOLDER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("golder", JDimension.EUCA), 0.8F, 2.0F));
 
         EntityRenderers.register(JEntities.ESKIMO_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("eskimo", JDimension.FROZEN), 0.5F));
     }

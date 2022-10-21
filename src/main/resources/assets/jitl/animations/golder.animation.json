@@ -1,0 +1,181 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.golder.walk": {
+			"loop": true,
+			"animation_length": 1.12,
+			"bones": {
+				"head": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.56": {
+							"vector": [2.5, 0, 0]
+						},
+						"1.12": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"back_left_leg": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.32": {
+							"vector": [10, 0, 0]
+						},
+						"0.8": {
+							"vector": [-12.5, 0, 0]
+						},
+						"1.12": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"body": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.56": {
+							"vector": [-2.5, 0, 0]
+						},
+						"1.12": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"back_right_leg": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.32": {
+							"vector": [-12.5, 0, 0]
+						},
+						"0.8": {
+							"vector": [17.5, 0, 0]
+						},
+						"1.12": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"front_right_leg": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.32": {
+							"vector": [10, 0, 0]
+						},
+						"0.8": {
+							"vector": [-15, 0, 0]
+						},
+						"1.12": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"front_left_leg": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.32": {
+							"vector": [-12.5, 0, 0]
+						},
+						"0.8": {
+							"vector": [10, 0, 0]
+						},
+						"1.12": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.golder.idle": {
+			"loop": true,
+			"animation_length": 1.56,
+			"bones": {
+				"head": {
+					"rotation": {
+						"0.0": {
+							"vector": [2.5, 0, 0]
+						},
+						"0.8": {
+							"vector": [0, 0, 0]
+						},
+						"1.56": {
+							"vector": [2.5, 0, 0]
+						}
+					}
+				},
+				"body": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.8": {
+							"vector": [-2.5, 0, 0]
+						},
+						"1.56": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.golder.attack": {
+			"animation_length": 0.84,
+			"bones": {
+				"head": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.24": {
+							"vector": [-5, 0, 0]
+						},
+						"0.52": {
+							"vector": [5, 0, 0]
+						},
+						"0.8": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"body": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.32": {
+							"vector": [2.5, 0, 0]
+						},
+						"0.64": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"jaw": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.16": {
+							"vector": [-20, 0, 0]
+						},
+						"0.36": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}
