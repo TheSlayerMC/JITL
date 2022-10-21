@@ -36,25 +36,6 @@ import java.util.ArrayList;
 @Mod.EventBusSubscriber(modid = JITL.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class JEntities {
 
-    private static final int OVERWORLD_COLOR = 0x32f53f;
-    private static final int NETHER_COLOR = 0x881a2b;
-    private static final int END_COLOR = 0x000000/*0x931aa3*/;
-    private static final int FROZEN_COLOR = 0x3ea4ff;
-    private static final int BOILING_COLOR = 0xeb8026;
-    private static final int EUCA_COLOR = 0xffff0b;
-    private static final int DEPTHS_COLOR = 0x0705a7;
-    private static final int CORBA_COLOR = 0x106903;
-    private static final int TERRANIA_COLOR = 0x91046d;
-    private static final int CLOUDIA_COLOR = 0xfa45cd;
-    private static final int SENTERIAN_COLOR = 0x2e2d2c;
-
-    //mob type colors
-    private static final int PASSIVE_COLOR = 0x00ff00;
-    private static final int NEUTRAL_COLOR = 0x555555;
-    private static final int HOSTILE_COLOR = 0xff0000;
-    private static final int TRADER_COLOR = 0x7d007d;
-    private static final int BOSS_COLOR = 0xffff7d;
-
     public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, JITL.MODID);
     public static final DeferredRegister<Item> EGG_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, JITL.MODID);
     public static final ArrayList<String> eggName = new ArrayList<>();
