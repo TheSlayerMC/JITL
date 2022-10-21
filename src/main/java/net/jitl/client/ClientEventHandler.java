@@ -18,7 +18,6 @@ public class ClientEventHandler {
 
     public static void regToBus(IEventBus forgeBus, IEventBus modEventBus) {
         forgeBus.addListener(ClientEventHandler::onFogDensityEvent);
-        modEventBus.addListener(ClientEventHandler::onClientSetup);
     }
 
     public static void onFogDensityEvent(ViewportEvent.RenderFog event) {
@@ -29,7 +28,7 @@ public class ClientEventHandler {
             if (player.level.dimension() == Dimensions.FROZEN_LANDS) {
                 float density;
                 if(stats.hasBlizzard()) {
-                    density = 0.6F;
+                    density = 0.55F;
                 } else {
                     density = 0.1F;
                 }
@@ -39,9 +38,7 @@ public class ClientEventHandler {
         });
     }
 
-    private static void onClientSetup(FMLClientSetupEvent event) {
-        event.enqueueWork(() -> {
-            DimensionSpecialEffects.EFFECTS.put(Dimensions.EUCA_TYPE.location(), new EucaRenderInfo());
-        });
+    public static void onClientSetup() {
+        DimensionSpecialEffects.EFFECTS.put(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
     }
 }

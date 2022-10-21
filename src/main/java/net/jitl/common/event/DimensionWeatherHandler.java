@@ -19,9 +19,10 @@ public class DimensionWeatherHandler {
         player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
             if (level.dimension() == Dimensions.FROZEN_LANDS) {
                 if(stats.hasBlizzard()) {
-                    level.setRainLevel(5.0F);
-                } else {
                     level.setRainLevel(0.0F);
+                } else {
+                    level.setRainLevel(5.0F);
+
                 }
             }
         });
