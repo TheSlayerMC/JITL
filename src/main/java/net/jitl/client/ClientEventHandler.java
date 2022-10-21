@@ -29,9 +29,9 @@ public class ClientEventHandler {
             if (player.level.dimension() == Dimensions.FROZEN_LANDS) {
                 float density;
                 if(stats.hasBlizzard()) {
-                    density = 0.1F;
-                } else {
                     density = 0.6F;
+                } else {
+                    density = 0.1F;
                 }
                 RenderSystem.setShaderFogStart(density);
                 RenderSystem.setShaderFogEnd(density * farPlaneDistance);
