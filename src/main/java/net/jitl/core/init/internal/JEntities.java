@@ -14,17 +14,16 @@ import net.jitl.common.entity.projectile.*;
 import net.jitl.core.init.JITL;
 import net.minecraft.SharedConstants;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -178,7 +177,7 @@ public class JEntities {
 
 
     @SubscribeEvent
-    public static void registerSpawnPlacement(final SpawnPlacementRegisterEvent event) {
-        event.register(SHIMMERER_TYPE.get(), Shimmerer::checkSpawnRules);
+    public static void registerSpawnPlacement(SpawnPlacementRegisterEvent event) {
+        event.register(SHIMMERER_TYPE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Shimmerer::checkSpawn, SpawnPlacementRegisterEvent.Operation.AND);
     }
 }

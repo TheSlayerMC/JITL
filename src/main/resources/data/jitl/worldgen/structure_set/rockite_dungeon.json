@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:rockite_dungeon",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1642236464,
+
+    "spacing": 20,
+
+    "separation": 6,
+
+    "type": "minecraft:random_spread"
+  }
+}

@@ -51,8 +51,7 @@ public class Golder extends AnimatableMonster {
             return PlayState.CONTINUE;
         }
 
-        if(!isAttacking() && event.isMoving())
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.golder.idle", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.golder.idle", true));
         return PlayState.CONTINUE;
     }
 }
