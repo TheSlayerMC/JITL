@@ -12,7 +12,7 @@
   "step": "underground_structures",
 
   "start_height": {
-    "absolute": -27
+    "absolute": -32
   },
 
   "project_start_to_heightmap": "WORLD_SURFACE_WG",

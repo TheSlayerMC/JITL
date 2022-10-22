@@ -346,17 +346,11 @@ public class JBoat extends Boat {
 
     @Nullable
     protected SoundEvent getPaddleSound() {
-        switch(this.getStatus()) {
-            case IN_WATER:
-            case UNDERWATER:
-            case UNDER_FLOWING_WATER:
-                return SoundEvents.BOAT_PADDLE_WATER;
-            case ON_LAND:
-                return SoundEvents.BOAT_PADDLE_LAND;
-            case IN_AIR:
-            default:
-                return null;
-        }
+        return switch(this.getStatus()) {
+            case IN_WATER, UNDERWATER, UNDER_FLOWING_WATER -> SoundEvents.BOAT_PADDLE_WATER;
+            case ON_LAND -> SoundEvents.BOAT_PADDLE_LAND;
+            default -> null;
+        };
     }
 
     private void tickLerp() {
@@ -384,7 +378,7 @@ public class JBoat extends Boat {
     }
 
     public float getRowingTime(int side, float limbSwing) {
-        return this.getPaddleState(side) ? (float)Mth.clampedLerp((double)this.paddlePositions[side] - (double)((float)Math.PI / 8F), (double)this.paddlePositions[side], (double)limbSwing) : 0.0F;
+        return this.getPaddleState(side) ? (float)Mth.clampedLerp((double)this.paddlePositions[side] - (double)((float)Math.PI / 8F), this.paddlePositions[side], limbSwing) : 0.0F;
     }
 
     private JBoat.Status getStatus() {
@@ -782,7 +776,7 @@ public class JBoat extends Boat {
 
     @Override
     protected boolean canAddPassenger(@NotNull Entity passenger) {
-        return this.getPassengers().size() < 2 && !this.isEyeInFluid(FluidTags.WATER);
+        return this.getPassengers().size() < this.getMaxPassengers() && !this.canBoatInFluid(this.getEyeInFluidType());
     }
 
     @Override
