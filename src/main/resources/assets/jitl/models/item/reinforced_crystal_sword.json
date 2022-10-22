@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "jitl:item/reinforced_crystal_sword"
+  }
+}

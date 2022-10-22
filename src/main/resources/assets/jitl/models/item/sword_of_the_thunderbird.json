@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "jitl:item/sword_of_the_thunderbird"
+  }
+}

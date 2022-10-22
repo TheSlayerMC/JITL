@@ -70,6 +70,29 @@ public class LangRegistry {
         writeToFile("\"entity.jitl.eskimo\" : \"Eskimo\",");
         writeToFile("\"entity.jitl.mage\" : \"Mage\",");
 
+        writeToFile("\"jitl.tooltip.freeze\" : \"On hit: Freezes the target for 6 seconds\",");
+        writeToFile("\"jitl.tooltip.poison\" : \"On hit: Poisions for 6 seconds\",");
+        writeToFile("\"jitl.tooltip.fire\" : \"On hit: Burns for 10 seconds\",");
+        writeToFile("\"jitl.tooltip.fire_health1\" : \"On hit: Sets enemies ablaze and heals player heart(s)\",");//"On hit: Sets enemies ablaze and heals player \" + health / 2 + \" heart(s)\",");
+        writeToFile("\"jitl.tooltip.fire_health2\" : \"Drawback: slows the user on hit\",");
+        writeToFile("\"jitl.tooltip.fire_health3\" : \"Random chance to steal 5 full hearts from the user on hit\",");
+        writeToFile("\"jitl.tooltip.fire_wither\" : \"On hit: Withers and sets enemies ablaze\",");
+        writeToFile("\"jitl.tooltip.health1\" : \"On hit: Sets enemies ablaze and heals player heart(s)\",");//\"On hit: Heals player \" + health / 2 + \" heart(s)\",");
+        writeToFile("\"jitl.tooltip.health2\" : \"Drawback: Random chance to slow and blind the user on hit\",");
+        writeToFile("\"jitl.tooltip.health3\" : \"Random chance to steal 2 full hearts from the user on hit\",");
+        writeToFile("\"jitl.tooltip.night_health\" : \"On hit: Poisons and Withers enemies\",");
+        writeToFile("\"jitl.tooltip.poison_health1\" : \"On hit: Sets enemies ablaze and heals player heart(s)\",");//"On hit: Poisons enemies and heals player \" + health / 2 + \" heart(s)\",");
+        writeToFile("\"jitl.tooltip.poison_health2\" : \"Drawback: Random chance to poison the user on hit\",");
+        writeToFile("\"jitl.tooltip.regen\" : \"On hit: Grants player regeneration\",");
+        writeToFile("\"jitl.tooltip.stun\" : \"On hit: Harms and stuns enemies\",");
+        writeToFile("\"jitl.tooltip.stun_wither\" : \"On hit: Withers and stuns enemies\",");
+        writeToFile("\"jitl.tooltip.wither\" : \"On hit: Withers enemies\",");
+        writeToFile("\"jitl.tooltip.night\" : \"On hit: Grants the player Night vision\",");
+        writeToFile("\"jitl.tooltip.bubble\" : \"On hit: Poisons enemies and grants player damage boost\",");
+        writeToFile("\"jitl.tooltip.logger\" : \"On hit: Stuns enemies and grants player damage boost\",");
+
+        writeToFile("\"jitl.tooltip.uses_remaining\" : \"Uses Remaining\",");
+
         /* --------------------- Finish manual lines --------------------- */
 
         for(int i = 0; i < recordDescList.size(); i++) {
