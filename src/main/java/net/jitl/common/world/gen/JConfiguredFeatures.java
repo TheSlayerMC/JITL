@@ -58,6 +58,8 @@ public class JConfiguredFeatures {
     public static final RuleTest EUCA_ORE_REPLACEABLES = new TagMatchTest(JTags.EUCA_STONE_ORE_REPLACEABLES);
     public static final RuleTest BOIL_ORE_REPLACEABLES = new TagMatchTest(JTags.BOIL_STONE_ORE_REPLACEABLES);
     public static final RuleTest FROZEN_ORE_REPLACEABLES = new TagMatchTest(JTags.FROZEN_STONE_ORE_REPLACEABLES);
+    public static final RuleTest DEPTHS_ORE_REPLACEABLES = new TagMatchTest(JTags.DEPTHS_STONE_ORE_REPLACEABLES);
+    public static final RuleTest DEPTHS_LAMP_REPLACEABLES = new TagMatchTest(JTags.DEPTHS_LAMP_REPLACEABLES);
     public static final RuleTest GRASS = new BlockStateMatchTest(Blocks.GRASS_BLOCK.defaultBlockState());
     public static final RuleTest SAND = new BlockStateMatchTest(Blocks.SAND.defaultBlockState());
     public static final RuleTest EUCA_GRASS = new TagMatchTest(JTags.EUCA_GRASS);
@@ -130,6 +132,18 @@ public class JConfiguredFeatures {
             List.of(OreConfiguration.target(FROZEN_ORE_REPLACEABLES, JBlocks.PERIDOT_ORE.get().defaultBlockState()))
     );
 
+    private static final Supplier<List<OreConfiguration.TargetBlockState>> FLAIRIUM_TARGET = Suppliers.memoize(() ->
+            List.of(OreConfiguration.target(DEPTHS_ORE_REPLACEABLES, JBlocks.FLAIRIUM_ORE.get().defaultBlockState()))
+    );
+
+    private static final Supplier<List<OreConfiguration.TargetBlockState>> DES_TARGET = Suppliers.memoize(() ->
+            List.of(OreConfiguration.target(DEPTHS_ORE_REPLACEABLES, JBlocks.DES_ORE.get().defaultBlockState()))
+    );
+
+    private static final Supplier<List<OreConfiguration.TargetBlockState>> DEPTHS_LAMP_TARGET = Suppliers.memoize(() ->
+            List.of(OreConfiguration.target(DEPTHS_LAMP_REPLACEABLES, JBlocks.DEPTHS_LAMP.get().defaultBlockState()))
+    );
+
     public static final RegistryObject<ConfiguredFeature<?, ?>> IRIDIUM_ORE = CONFIGURED_FEATURES.register("iridium_ore",
             () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(IRIDIUM_TARGET.get(), 7)));
 
@@ -177,6 +191,18 @@ public class JConfiguredFeatures {
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> PERIDOT_ORE = CONFIGURED_FEATURES.register("peridot_ore",
             () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(PERIDOT_TARGET.get(), 7)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> FLAIRIUM_ORE = CONFIGURED_FEATURES.register("flairium_ore",
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(FLAIRIUM_TARGET.get(), 7)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> DES_ORE = CONFIGURED_FEATURES.register("des_ore",
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DES_TARGET.get(), 7)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> DEPTHS_LAMP_FLOOR = CONFIGURED_FEATURES.register("depths_lamp_floor",
+            () -> new ConfiguredFeature<>(JFeatures.FLOOR_DEPTHS_LAMP.get(), new OreConfiguration(DEPTHS_LAMP_TARGET.get(), 32)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> DEPTHS_LAMP_ROOF = CONFIGURED_FEATURES.register("depths_lamp_roof",
+            () -> new ConfiguredFeature<>(JFeatures.ROOF_DEPTHS_LAMP.get(), new NoneFeatureConfiguration()));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> EUCA_GOLD_TREE = CONFIGURED_FEATURES.register("euca_gold_tree",
             () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(

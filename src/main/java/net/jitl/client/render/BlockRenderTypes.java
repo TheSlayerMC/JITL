@@ -64,11 +64,16 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.ICE_BUD.get());
         cutout.add(JBlocks.GOLD_BOT_SPAWNER.get());
         cutout.add(JBlocks.BITTERWOOD_CAMPFIRE.get());
-
+        cutout.add(JBlocks.DEPTHS_LEAVES.get());
+        cutout.add(JBlocks.DEPTHS_CRYSTAL.get());
+        cutout.add(JBlocks.DEPTHS_SAPLING.get());
+        cutout.add(JBlocks.DEPTHS_DOOR.get());
+        cutout.add(JBlocks.DEPTHS_TRAP_DOOR.get());
 
         translucent.add(JBlocks.EUCA_PORTAL.get());
         translucent.add(JBlocks.FROZEN_PORTAL.get());
         translucent.add(JBlocks.BOIL_PORTAL.get());
+        translucent.add(JBlocks.DEPTHS_PORTAL.get());
 
         for(Block b : cutout) {
             ItemBlockRenderTypes.setRenderLayer(b, RenderType.cutout());

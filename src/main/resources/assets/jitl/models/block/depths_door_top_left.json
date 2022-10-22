@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left",
+  "textures": {
+    "bottom": "jitl:block/depths_door_bottom",
+    "top": "jitl:block/depths_door_top"
+  }
+}

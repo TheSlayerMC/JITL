@@ -81,6 +81,26 @@ public class JPlacedFeatures {
                     commonOrePlacement(7,
                             HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(128)))));
 
+    public static final RegistryObject<PlacedFeature> FLAIURM_ORE = PLACED_FEATURES.register("flairium_ore_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.FLAIRIUM_ORE.getHolder().get(),
+                    commonOrePlacement(7,
+                            HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(128)))));
+
+    public static final RegistryObject<PlacedFeature> DES_ORE = PLACED_FEATURES.register("des_ore_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.DES_ORE.getHolder().get(),
+                    commonOrePlacement(7,
+                            HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(128)))));
+
+
+    public static final RegistryObject<PlacedFeature> DEPTHS_LAMP_FLOOR = PLACED_FEATURES.register("depths_lamp_floor_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.DEPTHS_LAMP_FLOOR.getHolder().get(),
+                    commonOrePlacement(7,
+                            HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(64)))));
+
+    public static final RegistryObject<PlacedFeature> DEPTHS_ROOF_LAMP = PLACED_FEATURES.register("depths_lamp_roof_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.DEPTHS_LAMP_ROOF.getHolder().get()
+                    , patch(10, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(256)))));
+
     public static final RegistryObject<PlacedFeature> EUCA_BOULDER = PLACED_FEATURES.register("euca_boulder_placed", () ->
             new PlacedFeature(JConfiguredFeatures.EUCA_BOULDER.getHolder().get()
                             , patch(2, 5, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));

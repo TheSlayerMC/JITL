@@ -13,5 +13,12 @@
   "spawners": {},
   "spawn_costs": {},
   "carvers": {},
-  "features": []
+  "features": [
+    [
+      "jitl:flairium_ore_placed",
+      "jitl:des_ore_placed",
+      "jitl:depths_lamp_floor_placed",
+      "jitl:depths_lamp_roof_placed"
+    ]
+  ]
 }

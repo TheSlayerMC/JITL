@@ -183,6 +183,9 @@ public class JBlockProperties {
         if(name.contains("frozen")) {
             texName = "frozen_planks";
         }
+        if(name.contains("depths")) {
+            texName = "depths_planks";
+        }
         if(name.contains("dungeon_lamp")) {
             texName = "dungeon_lamp";
         }

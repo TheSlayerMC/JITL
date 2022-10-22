@@ -1,0 +1,7 @@
+{
+  "variants": {
+  "": {
+      "model": "jitl:block/flairium_block"
+     }
+  }
+}

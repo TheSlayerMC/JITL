@@ -117,6 +117,13 @@ public class JBlocks {
     public static final RegistryObject<Block> PERIDOT_ORE = register("peridot_ore", "Peridot Ore", JBlockProperties.STONE);
     public static final RegistryObject<Block> PERIDOT_BLOCK = register("peridot_block", "Peridot Block", JBlockProperties.STONE);
 
+    //NO RECIPES FOR BELOW ORES YET
+    public static final RegistryObject<Block> DES_ORE = register("des_ore", "Des Ore", JBlockProperties.STONE);
+    public static final RegistryObject<Block> DES_BLOCK = register("des_block", "Des Block", JBlockProperties.STONE);
+
+    public static final RegistryObject<Block> FLAIRIUM_ORE = register("flairium_ore", "Flairium Ore", JBlockProperties.STONE);
+    public static final RegistryObject<Block> FLAIRIUM_BLOCK = register("flairium_block", "Flairium Block", JBlockProperties.STONE);
+
     public static final RegistryObject<Block> RARE_GEM_BLOCK = register("rare_gem_block", "Rare Gem Block", JBlockProperties.STONE);
     public static final RegistryObject<Block> COMMON_GEM_BLOCK = register("common_gem_block", "Common Gem Block", JBlockProperties.STONE);
     public static final RegistryObject<Block> YELLOW_GEM_BLOCK = register("yellow_gem_block", "Yellow Gem Block", JBlockProperties.STONE);
@@ -187,7 +194,7 @@ public class JBlocks {
     public static final RegistryObject<Block> GOLDITE_FLOWER = registerCrossBlock("goldite_flower", "Goldite Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> GOLDITE_STALKS = registerCrossBlock("goldite_stalks", "Goldite Stalks", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> GOLDITE_BULB = registerCrossBlock("goldite_bulb", "Goldite Bulb", () -> new TallGrassBlock(JBlockProperties.FLOWER));
-    public static final RegistryObject<Block> GOLD_BOT_SPAWNER = register("gold_bot_spawner", "Gold Bot Spawner", JBlockProperties.STONE);
+    public static final RegistryObject<Block> GOLD_BOT_SPAWNER = register("gold_bot_spawner", "Gold Bot Spawner", JBlockProperties.SPAWNER);
     public static final RegistryObject<Block> GOLDITE_FURNACE = registerFurnaceBlock("goldite_furnace", "Goldite Furnace");
 
     public static final RegistryObject<Block> EUCA_GOLD_GRASS = registerGrassBlock("euca_gold_grass", "Euca Gold Grass", () -> new JGrassBlock(GOLDITE_DIRT));
@@ -309,6 +316,19 @@ public class JBlocks {
     public static final RegistryObject<Block> DEPTHS_DIRT = register("depths_dirt", "Depths Soil", JBlockProperties.DIRT);
     public static final RegistryObject<Block> DEPTHS_STONE = register("depths_stone", "Depths Stone", JBlockProperties.STONE);
     public static final RegistryObject<Block> DEPTHS_LAMP = register("depths_lamp", "Depths Lamp", JBlockProperties.GLOW_LAMP);
+    public static final RegistryObject<RotatedPillarBlock> DEPTHS_LOG = registerPillar("depths_log", "Depths Log", true, JBlockProperties.WOOD);
+    public static final RegistryObject<Block> DEPTHS_LEAVES = register("depths_leaves", "Depths Leaves", JBlockProperties.LEAVES);
+    public static final RegistryObject<Block> DEPTHS_SAPLING = registerCrossBlock("depths_sapling", "Depths Sapling", () -> new JSaplingBlock(new EucaGreenTreeGrower()));
+    public static final RegistryObject<Block> DEPTHS_PLANKS = registerFuelBlock("depths_planks", "Depths Planks", JBlockProperties.WOOD, 300);
+    public static final RegistryObject<DoorBlock> DEPTHS_DOOR = registerDoor("depths_door", "Depths Door", true, JBlockProperties.DOOR);
+    public static final RegistryObject<TrapDoorBlock> DEPTHS_TRAP_DOOR = registerTrapDoor("depths_trap_door", "Depths Trap Door", true, JBlockProperties.DOOR);
+    public static final RegistryObject<StairBlock> DEPTHS_STAIRS = registerStairs("depths_stairs", "Depths Plank Stairs", EUCA_BROWN_PLANKS, true, JBlockProperties.WOOD);
+    public static final RegistryObject<SlabBlock> DEPTHS_SLAB = registerSlab("depths_slab", "Depths Plank Slab", true, JBlockProperties.WOOD);
+    public static final RegistryObject<ButtonBlock> DEPTHS_BUTTON = registerButton("depths_button", "Depths Button", true, true, JBlockProperties.BUTTON);
+    public static final RegistryObject<PressurePlateBlock> DEPTHS_PRESSURE_PLATE = registerPressurePlate("depths_pressure_plate", "Depths Pressure Plate", PressurePlateBlock.Sensitivity.EVERYTHING, true, JBlockProperties.WOOD);
+    public static final RegistryObject<FenceGateBlock> DEPTHS_FENCE_GATE = registerFenceGate("depths_fence_gate", "Depths Fence Gate", true, JBlockProperties.WOOD);
+    public static final RegistryObject<JFenceBlock> DEPTHS_FENCE = registerFence("depths_fence", "Depths Fence", true, JBlockProperties.WOOD);
+    public static final RegistryObject<Block> DEPTHS_CRYSTAL = registerAttachedCrossBlock("depths_crystal", "Depths Crystal", () -> new AttachedBlock(JBlockProperties.GLOW_LAMP.noCollission().noOcclusion()));
 
     public static final RegistryObject<Block> GRINDSTONE = registerModeledBlock("grindstone", "Grindstone", JGrindstoneBlock::new);
 
