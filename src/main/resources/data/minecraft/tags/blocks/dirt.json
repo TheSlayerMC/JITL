@@ -11,6 +11,8 @@
     "jitl:volcanic_sand",
     "jitl:volcanic_soil",
     "jitl:hot_ground",
-    "jitl:charred_grass"
+    "jitl:charred_grass",
+    "jitl:depths_grass",
+    "jitl:depths_dirt"
   ]
 }

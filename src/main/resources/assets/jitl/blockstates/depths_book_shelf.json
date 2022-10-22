@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+        "model": "jitl:block/depths_book_shelf_horizontal",
+         "x": 90,
+         "y": 90
+      },
+    "axis=y": {
+        "model": "jitl:block/depths_book_shelf"
+      },
+    "axis=z": {
+        "model": "jitl:block/depths_book_shelf_horizontal",
+         "x": 90
+      }
+  }
+}

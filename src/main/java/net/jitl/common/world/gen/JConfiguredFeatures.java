@@ -18,6 +18,7 @@ import net.minecraft.data.worldgen.features.OreFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.*;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -25,6 +26,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.PineFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
@@ -141,7 +143,7 @@ public class JConfiguredFeatures {
     );
 
     private static final Supplier<List<OreConfiguration.TargetBlockState>> DEPTHS_LAMP_TARGET = Suppliers.memoize(() ->
-            List.of(OreConfiguration.target(DEPTHS_LAMP_REPLACEABLES, JBlocks.DEPTHS_LAMP.get().defaultBlockState()))
+            List.of(OreConfiguration.target(DEPTHS_LAMP_REPLACEABLES, JBlocks.DEPTHS_LIGHT.get().defaultBlockState()))
     );
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> IRIDIUM_ORE = CONFIGURED_FEATURES.register("iridium_ore",
@@ -204,6 +206,14 @@ public class JConfiguredFeatures {
     public static final RegistryObject<ConfiguredFeature<?, ?>> DEPTHS_LAMP_ROOF = CONFIGURED_FEATURES.register("depths_lamp_roof",
             () -> new ConfiguredFeature<>(JFeatures.ROOF_DEPTHS_LAMP.get(), new NoneFeatureConfiguration()));
 
+    public static final RegistryObject<ConfiguredFeature<?, ?>> DEPTHS_TREE = CONFIGURED_FEATURES.register("depths_tree",
+            () -> new ConfiguredFeature<>(Feature.TREE,
+                    createStraightBlobTree(JBlocks.DEPTHS_LOG.get(), JBlocks.DEPTHS_LEAVES.get(), 7, 3, 0, 2)
+                            .ignoreVines().build()));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> DEPTHS_CRYSTAL = CONFIGURED_FEATURES.register("depths_crystal",
+            () -> new ConfiguredFeature<>(JFeatures.DEPTHS_CRYSTAL.get(), new NoneFeatureConfiguration()));
+
     public static final RegistryObject<ConfiguredFeature<?, ?>> EUCA_GOLD_TREE = CONFIGURED_FEATURES.register("euca_gold_tree",
             () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                                     BlockStateProvider.simple(JBlocks.EUCA_GOLD_LOG.get()),
@@ -262,6 +272,14 @@ public class JConfiguredFeatures {
                             List.of(JBlocks.GOLDITE_STALKS.get().defaultBlockState(),
                                     JBlocks.GOLDITE_FLOWER.get().defaultBlockState(),
                                     JBlocks.GOLDITE_BULB.get().defaultBlockState())))))));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> DEPTHS_VEG = CONFIGURED_FEATURES.register("depths_veg",
+            () -> new ConfiguredFeature<>(Feature.FLOWER, new RandomPatchConfiguration(30, 6, 2,
+                    PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L,
+                            new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F,
+                            List.of(JBlocks.DEPTHS_BLUE_FLOWER.get().defaultBlockState(),
+                                    JBlocks.DEPTHS_CRYSTAL.get().defaultBlockState(),
+                                    JBlocks.DEPTHS_FLOWER.get().defaultBlockState())))))));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> PATCH_FIRE = CONFIGURED_FEATURES.register("boil_fire",
             () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(50, 6, 2,
@@ -503,4 +521,7 @@ public class JConfiguredFeatures {
     public static final RegistryObject<ConfiguredFeature<?, ?>> ICE_SPIKE = CONFIGURED_FEATURES.register("frozen_ice_spike",
             () -> new ConfiguredFeature<>(JFeatures.FROZEN_ICE_SPIKE.get(), new NoneFeatureConfiguration()));
 
+    private static TreeConfiguration.TreeConfigurationBuilder createStraightBlobTree(Block log, Block leaves, int baseHeight, int heightRandA, int heightRandB, int width) {
+        return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(log), new StraightTrunkPlacer(baseHeight, heightRandA, heightRandB), BlockStateProvider.simple(leaves), new BlobFoliagePlacer(ConstantInt.of(width), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1));
+    }
 }

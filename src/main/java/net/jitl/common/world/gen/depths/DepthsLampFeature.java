@@ -29,20 +29,20 @@ public class DepthsLampFeature extends Feature<NoneFeatureConfiguration> {
             if (!blockstate.is(JBlocks.DEPTHS_STONE.get())) {
                 return false;
             } else {
-                level.setBlock(blockpos, JBlocks.DEPTHS_LAMP.get().defaultBlockState(), 2);
+                level.setBlock(blockpos, JBlocks.DEPTHS_LIGHT.get().defaultBlockState(), 2);
                 for(int i = 0; i < 1500; ++i) {
                     BlockPos blockpos1 = blockpos.offset(randomsource.nextInt(8) - randomsource.nextInt(8), -randomsource.nextInt(12), randomsource.nextInt(8) - randomsource.nextInt(8));
                     if (level.getBlockState(blockpos1).isAir()) {
                         int j = 0;
                         for(Direction direction : Direction.values()) {
-                            if(level.getBlockState(blockpos1.relative(direction)).is(JBlocks.DEPTHS_LAMP.get()))
+                            if(level.getBlockState(blockpos1.relative(direction)).is(JBlocks.DEPTHS_LIGHT.get()))
                                 j++;
                             
                             if(j > 1)
                                 break;
                         }
                         if(j == 1)
-                            level.setBlock(blockpos1, JBlocks.DEPTHS_LAMP.get().defaultBlockState(), 2);
+                            level.setBlock(blockpos1, JBlocks.DEPTHS_LIGHT.get().defaultBlockState(), 2);
                     }
                 }
                 return true;

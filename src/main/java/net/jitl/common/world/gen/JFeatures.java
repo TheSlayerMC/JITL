@@ -4,6 +4,7 @@ import net.jitl.common.world.gen.boil.ScorchedStalagmiteFeature;
 import net.jitl.common.world.gen.boil.SulphurCrystalFeature;
 import net.jitl.common.world.gen.boil.SulphurDepositFeature;
 import net.jitl.common.world.gen.boil.VolcaniocRockFeature;
+import net.jitl.common.world.gen.depths.DepthsCrystalFeature;
 import net.jitl.common.world.gen.depths.DepthsLampFeature;
 import net.jitl.common.world.gen.depths.DepthsLampFloorFeature;
 import net.jitl.common.world.gen.euca.BoulderFeature;
@@ -31,6 +32,7 @@ public class JFeatures {
 
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> ROOF_DEPTHS_LAMP = REGISTRY.register("depths_lamp_roof", () -> new DepthsLampFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature<OreConfiguration>> FLOOR_DEPTHS_LAMP = REGISTRY.register("depths_lamp_floor", () -> new DepthsLampFloorFeature(OreConfiguration.CODEC));
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> DEPTHS_CRYSTAL = REGISTRY.register("depths_crystal", () -> new DepthsCrystalFeature(NoneFeatureConfiguration.CODEC));
 
     public static final RegistryObject<Feature<SpringConfiguration>> EUCA_WATER_GEN = REGISTRY.register("euca_water_gen", () -> new SpringFeature(SpringConfiguration.CODEC));
 

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+        "model": "jitl:block/euca_pumpkin",
+         "y": 90
+     },
+    "facing=north": {
+        "model": "jitl:block/euca_pumpkin"
+     },
+    "facing=south": {
+        "model": "jitl:block/euca_pumpkin",
+         "y": 180
+     },
+    "facing=west": {
+        "model": "jitl:block/euca_pumpkin",
+         "y": 270
+     }
+  }
+}

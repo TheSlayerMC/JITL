@@ -91,7 +91,6 @@ public class JPlacedFeatures {
                     commonOrePlacement(7,
                             HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(128)))));
 
-
     public static final RegistryObject<PlacedFeature> DEPTHS_LAMP_FLOOR = PLACED_FEATURES.register("depths_lamp_floor_placed", () ->
             new PlacedFeature(JConfiguredFeatures.DEPTHS_LAMP_FLOOR.getHolder().get(),
                     commonOrePlacement(7,
@@ -99,6 +98,18 @@ public class JPlacedFeatures {
 
     public static final RegistryObject<PlacedFeature> DEPTHS_ROOF_LAMP = PLACED_FEATURES.register("depths_lamp_roof_placed", () ->
             new PlacedFeature(JConfiguredFeatures.DEPTHS_LAMP_ROOF.getHolder().get()
+                    , patch(10, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(256)))));
+
+    public static final RegistryObject<PlacedFeature> DEPTHS_TREE = PLACED_FEATURES.register("depths_tree_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.DEPTHS_TREE.getHolder().get(),
+                    undergroundFloorPatch(4, JBlocks.DEPTHS_GRASS.get())));
+
+    public static final RegistryObject<PlacedFeature> DEPTHS_CRYSTAL = PLACED_FEATURES.register("depths_crystal_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.DEPTHS_CRYSTAL.getHolder().get()
+                    , patch(10, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(256)))));
+
+    public static final RegistryObject<PlacedFeature> DEPTHS_VEG = PLACED_FEATURES.register("depths_veg_placed", () ->
+            new PlacedFeature(JConfiguredFeatures.DEPTHS_VEG.getHolder().get()
                     , patch(10, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(256)))));
 
     public static final RegistryObject<PlacedFeature> EUCA_BOULDER = PLACED_FEATURES.register("euca_boulder_placed", () ->

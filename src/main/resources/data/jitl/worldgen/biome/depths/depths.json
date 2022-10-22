@@ -18,7 +18,10 @@
       "jitl:flairium_ore_placed",
       "jitl:des_ore_placed",
       "jitl:depths_lamp_floor_placed",
-      "jitl:depths_lamp_roof_placed"
+      "jitl:depths_lamp_roof_placed",
+      "jitl:depths_tree_placed",
+      "jitl:depths_crystal_placed",
+      "jitl:depths_veg_placed"
     ]
   ]
 }

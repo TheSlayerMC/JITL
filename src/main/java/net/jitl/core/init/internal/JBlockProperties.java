@@ -19,6 +19,11 @@ public class JBlockProperties {
             .sound(SoundType.STONE)
             .requiresCorrectToolForDrops();
 
+    public static BlockBehaviour.Properties GLASS = BlockBehaviour.Properties.of(Material.GLASS)
+            .strength(1F)
+            .sound(SoundType.GLASS)
+            .requiresCorrectToolForDrops();
+
     public static BlockBehaviour.Properties GLOW_LAMP = BlockBehaviour.Properties.of(Material.GLASS)
             .strength(1.0F)
             .sound(SoundType.GLASS)
@@ -88,6 +93,13 @@ public class JBlockProperties {
             .strength(0.5F)
             .sound(SoundType.GRASS)
             .noOcclusion()
+            .requiresCorrectToolForDrops();
+
+    public static BlockBehaviour.Properties LUMINESCENT_LEAVES = BlockBehaviour.Properties.of(Material.LEAVES)
+            .strength(0.5F)
+            .sound(SoundType.GRASS)
+            .noOcclusion()
+            .lightLevel((state) -> 4)
             .requiresCorrectToolForDrops();
 
     public static BlockBehaviour.Properties ICE = BlockBehaviour.Properties.of(Material.ICE)

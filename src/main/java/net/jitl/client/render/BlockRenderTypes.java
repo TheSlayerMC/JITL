@@ -69,6 +69,9 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.DEPTHS_SAPLING.get());
         cutout.add(JBlocks.DEPTHS_DOOR.get());
         cutout.add(JBlocks.DEPTHS_TRAP_DOOR.get());
+        cutout.add(JBlocks.DEPTHS_GLASS.get());
+        cutout.add(JBlocks.DEPTHS_BLUE_FLOWER.get());
+        cutout.add(JBlocks.DEPTHS_FLOWER.get());
 
         translucent.add(JBlocks.EUCA_PORTAL.get());
         translucent.add(JBlocks.FROZEN_PORTAL.get());

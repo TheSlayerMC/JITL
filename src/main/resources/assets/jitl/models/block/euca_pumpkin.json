@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "jitl:block/euca_pumpkin_front",
+    "side": "jitl:block/euca_pumpkin_side",
+    "top": "jitl:block/euca_pumpkin_top"
+  }
+}
