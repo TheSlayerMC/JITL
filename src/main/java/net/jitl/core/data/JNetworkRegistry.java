@@ -1,6 +1,6 @@
 package net.jitl.core.data;
 
-import net.jitl.client.essence.PacketEssenceBar;
+import net.jitl.core.network.PacketEssenceBar;
 import net.jitl.client.knowledge.PacketKnowledge;
 import net.jitl.client.stats.PacketPlayerStats;
 import net.jitl.core.init.JITL;

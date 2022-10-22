@@ -1,7 +1,7 @@
 package net.jitl.common.world;
 
-import net.jitl.client.essence.PlayerEssence;
-import net.jitl.client.essence.PlayerEssenceProvider;
+import net.jitl.common.capability.essence.PlayerEssence;
+import net.jitl.common.capability.essence.PlayerEssenceProvider;
 import net.jitl.client.knowledge.PlayerKnowledge;
 import net.jitl.client.knowledge.PlayerKnowledgeProvider;
 import net.jitl.client.stats.PlayerStats;

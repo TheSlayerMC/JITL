@@ -1,23 +1,17 @@
 package net.jitl.common.items;
 
-import net.jitl.client.essence.PlayerEssenceProvider;
-import net.jitl.client.knowledge.EnumKnowledge;
+import net.jitl.common.capability.essence.PlayerEssenceProvider;
 import net.jitl.client.knowledge.PlayerKnowledgeProvider;
-import net.jitl.client.stats.ClientPlayerStats;
 import net.jitl.client.stats.PlayerStatsProvider;
 import net.jitl.core.helper.IEssenceItem;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.function.BiFunction;
 
 public class TestBugItem extends Item implements IEssenceItem {
 

@@ -2,7 +2,6 @@ package net.jitl.client.gui.overlay;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.jitl.client.essence.PlayerEssenceProvider;
 import net.jitl.client.knowledge.ClientKnowledge;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.client.knowledge.PlayerKnowledgeProvider;
@@ -11,9 +10,6 @@ import net.jitl.core.helper.internal.EmptyContainer;
 import net.jitl.core.init.JITL;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiComponent;
-import net.minecraft.client.gui.screens.Overlay;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.PageButton;
 import net.minecraft.client.renderer.GameRenderer;
@@ -21,7 +17,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.client.gui.overlay.ForgeGui;
 import org.jetbrains.annotations.NotNull;
 
 public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {

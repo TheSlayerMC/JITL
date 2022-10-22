@@ -1,6 +1,6 @@
 package net.jitl.common.items;
 
-import net.jitl.client.essence.PlayerEssenceProvider;
+import net.jitl.common.capability.essence.PlayerEssenceProvider;
 import net.jitl.core.helper.IEssenceItem;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.advancements.CriteriaTriggers;

@@ -1,6 +1,8 @@
-package net.jitl.client.essence;
+package net.jitl.core.network;
 
 import io.netty.buffer.ByteBuf;
+import net.jitl.client.essence.ClientEssence;
+import net.jitl.common.capability.essence.PlayerEssence;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -28,12 +30,10 @@ public class PacketEssenceBar {
     }
 
     public void handle(Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
-            ctx.get().enqueueWork(() -> {
-                ClientEssence.setClientEssence(this.essence);
-                ClientEssence.setClientBurnout(this.burnout);
-            });
-        });
+        ctx.get().enqueueWork(() -> ctx.get().enqueueWork(() -> {
+            ClientEssence.setClientEssence(this.essence);
+            ClientEssence.setClientBurnout(this.burnout);
+        }));
         ctx.get().setPacketHandled(true);
     }
 }

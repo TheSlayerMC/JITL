@@ -1,7 +1,8 @@
-package net.jitl.client.essence;
+package net.jitl.common.capability.essence;
 
 import net.jitl.core.data.JNetworkRegistry;
 import net.jitl.core.init.internal.JAttributes;
+import net.jitl.core.network.PacketEssenceBar;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;

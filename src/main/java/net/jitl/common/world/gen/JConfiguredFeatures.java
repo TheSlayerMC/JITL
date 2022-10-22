@@ -329,7 +329,7 @@ public class JConfiguredFeatures {
                     new TwoLayersFeatureSize(1, 1, 2)).ignoreVines()
                     .forceDirt()
                     .dirt(BlockStateProvider.simple(JBlocks.CHARRED_GRASS.get()))
-                    .decorators(List.of(CharredBrushTreeDecorator.INSTANCE))
+                    //.decorators(List.of(CharredBrushTreeDecorator.INSTANCE))
                     .build()));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> DYING_BURNED_TREE = CONFIGURED_FEATURES.register("dying_burned_tree",
@@ -350,7 +350,7 @@ public class JConfiguredFeatures {
                     BlockStateProvider.simple(JBlocks.CHARRED_LEAVES.get()),
                     new FancyFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), 2),
                     new TwoLayersFeatureSize(1, 1, 2)).ignoreVines()
-                    .decorators(ImmutableList.of(CharredBrushTreeDecorator.INSTANCE))
+                    //.decorators(ImmutableList.of(CharredBrushTreeDecorator.INSTANCE))
                     .forceDirt()
                     .dirt(BlockStateProvider.simple(JBlocks.CHARRED_GRASS.get()))
                     .build()));
@@ -362,7 +362,7 @@ public class JConfiguredFeatures {
                     BlockStateProvider.simple(JBlocks.CHARRED_LEAVES.get()),
                     new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 2),
                     new TwoLayersFeatureSize(1, 1, 2)).ignoreVines()
-                    .decorators(ImmutableList.of(CharredBrushTreeDecorator.INSTANCE))
+                    //.decorators(ImmutableList.of(CharredBrushTreeDecorator.INSTANCE))
                     .forceDirt()
                     .dirt(BlockStateProvider.simple(JBlocks.CHARRED_GRASS.get()))
                     .build()));
@@ -473,7 +473,7 @@ public class JConfiguredFeatures {
                                     BlockStateProvider.simple(JBlocks.FROZEN_LEAVES.get().defaultBlockState()),
                                     new SpruceFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), ConstantInt.of(2)),
                                     new TwoLayersFeatureSize(1, 1, 2)).ignoreVines()
-                                    .decorators(ImmutableList.of(new FrozenTreeDecorator(0.01F)))
+                                    //.decorators(ImmutableList.of(new FrozenTreeDecorator(0.01F)))
                                     .forceDirt()
                                     .dirt(BlockStateProvider.simple(JBlocks.CRUMBLED_PERMAFROST.get()))
                                     .build()));
@@ -486,7 +486,7 @@ public class JConfiguredFeatures {
                                     BlockStateProvider.simple(JBlocks.FROZEN_LEAVES.get().defaultBlockState()),
                                     new SpruceFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), ConstantInt.of(2)),
                                     new TwoLayersFeatureSize(1, 1, 2)).ignoreVines()
-                                    .decorators(ImmutableList.of(new FrozenTreeDecorator(0.01F)))
+                                    //.decorators(ImmutableList.of(new FrozenTreeDecorator(0.01F)))
                                     .forceDirt()
                                     .dirt(BlockStateProvider.simple(JBlocks.CRUMBLED_PERMAFROST.get()))
                                     .build()));
@@ -499,7 +499,7 @@ public class JConfiguredFeatures {
                                     BlockStateProvider.simple(JBlocks.FROZEN_LEAVES.get().defaultBlockState()),
                                     new SpruceFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), ConstantInt.of(2)),
                                     new TwoLayersFeatureSize(1, 1, 2)).ignoreVines()
-                                    .decorators(ImmutableList.of(new FrozenTreeDecorator(0.01F)))
+                                    //.decorators(ImmutableList.of(new FrozenTreeDecorator(0.01F)))
                                     .forceDirt()
                                     .dirt(BlockStateProvider.simple(JBlocks.GRASSY_PERMAFROST.get()))
                                     .build()));

@@ -1,7 +1,7 @@
 package net.jitl.client.essence;
 
+import net.jitl.common.capability.essence.PlayerEssenceProvider;
 import net.minecraft.client.Minecraft;
-import software.bernie.shadowed.eliotlash.mclib.math.functions.limit.Min;
 
 public class ClientEssence {
 

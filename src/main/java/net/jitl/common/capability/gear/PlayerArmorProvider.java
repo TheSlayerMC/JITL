@@ -1,4 +1,4 @@
-package net.jitl.client.essence;
+package net.jitl.common.capability.gear;
 
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -11,23 +11,23 @@ import net.minecraftforge.common.util.LazyOptional;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class PlayerEssenceProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
+public class PlayerArmorProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
 
-    public static Capability<PlayerEssence> PLAYER_ESSENCE = CapabilityManager.get(new CapabilityToken<>() { });
+    public static Capability<PlayerArmor> PLAYER_ARMOR = CapabilityManager.get(new CapabilityToken<>() { });
 
-    private PlayerEssence essence = null;
-    private final LazyOptional<PlayerEssence> optional = LazyOptional.of(this::createPlayerEssence);
+    private PlayerArmor playerArmor = null;
+    private final LazyOptional<PlayerArmor> optional = LazyOptional.of(this::createPlayerArmor);
 
-    private @NotNull PlayerEssence createPlayerEssence() {
-        if(this.essence == null) {
-            this.essence = new PlayerEssence();
+    private @NotNull PlayerArmor createPlayerArmor() {
+        if(this.playerArmor == null) {
+            this.playerArmor = new PlayerArmor();
         }
-        return this.essence;
+        return this.playerArmor;
     }
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if(cap == PLAYER_ESSENCE) {
+        if(cap == PLAYER_ARMOR) {
             return optional.cast();
         }
         return LazyOptional.empty();
@@ -36,12 +36,12 @@ public class PlayerEssenceProvider implements ICapabilityProvider, INBTSerializa
     @Override
     public CompoundTag serializeNBT() {
         CompoundTag tag = new CompoundTag();
-        createPlayerEssence().saveNBT(tag);
+        createPlayerArmor().saveNBT(tag);
         return tag;
     }
 
     @Override
     public void deserializeNBT(CompoundTag nbt) {
-        createPlayerEssence().readNBT(nbt);
+        createPlayerArmor().readNBT(nbt);
     }
 }

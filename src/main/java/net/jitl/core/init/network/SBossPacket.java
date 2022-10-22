@@ -1,17 +1,13 @@
 package net.jitl.core.init.network;
 
-import io.netty.buffer.ByteBuf;
-import net.jitl.client.essence.PlayerEssence;
 import net.jitl.common.entity.IJourneyBoss;
 
 import net.jitl.common.entity.base.JBossInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.protocol.game.ClientboundBossEventPacket;
 import net.minecraft.world.entity.Entity;
 import net.minecraftforge.network.NetworkEvent;
 
-import java.io.IOException;
 import java.util.UUID;
 import java.util.function.Supplier;
 
