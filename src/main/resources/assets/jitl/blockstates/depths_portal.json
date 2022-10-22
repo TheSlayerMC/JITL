@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x": {
+        "model": "jitl:block/depths_portal_ns"
+      },
+    "axis=z": {
+        "model": "jitl:block/depths_portal_ew"
+      }
+  }
+}

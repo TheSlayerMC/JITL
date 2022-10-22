@@ -123,6 +123,9 @@ public class JBasePortalBlock extends Block {
             if(this == JBlocks.BOIL_PORTAL.get())
                 poi = Dimensions.BOIL_PORTAL.getKey();
 
+            if(this == JBlocks.DEPTHS_PORTAL.get())
+                poi = Dimensions.DEPTHS_PORTAL.getKey();
+
             if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
                 entity.setPortalCooldown();
                 entity.changeDimension(destinationWorld, new BaseTeleporter(destinationWorld, this, frame.get(), poi, destination));

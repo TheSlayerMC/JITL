@@ -19,6 +19,12 @@ public class JBlockProperties {
             .sound(SoundType.STONE)
             .requiresCorrectToolForDrops();
 
+    public static BlockBehaviour.Properties GLOW_LAMP = BlockBehaviour.Properties.of(Material.GLASS)
+            .strength(1.0F)
+            .sound(SoundType.GLASS)
+            .lightLevel((level) -> 15)
+            .requiresCorrectToolForDrops();
+
     public static BlockBehaviour.Properties SPAWNER = BlockBehaviour.Properties.of(Material.STONE)
             .strength(1.5F)
             .noOcclusion()

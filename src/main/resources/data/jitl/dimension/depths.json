@@ -1,0 +1,12 @@
+{
+  "type": "jitl:depths",
+  "forge:use_server_seed": true,
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "jitl:depths_generation",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "jitl:depths/depths"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "up": "jitl:block/depths_grass_top",
+    "north": "jitl:block/depths_grass_side",
+    "east": "jitl:block/depths_grass_side",
+    "south": "jitl:block/depths_grass_side",
+    "west": "jitl:block/depths_grass_side",
+    "down": "jitl:block/depths_grass_bottom",
+    "particle": "jitl:block/depths_grass_bottom"
+  }
+}
