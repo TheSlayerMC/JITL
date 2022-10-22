@@ -24,18 +24,18 @@ public class ClientEventHandler {
         float farPlaneDistance = event.getFarPlaneDistance();
         Player player = Minecraft.getInstance().player;
         assert player != null;
-        player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
-            if (player.level.dimension() == Dimensions.FROZEN_LANDS) {
+        if (player.level.dimension() == Dimensions.FROZEN_LANDS) {
+            player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
                 float density;
-                if(stats.hasBlizzard()) {
+                if (stats.hasBlizzard()) {
                     density = 0.55F;
                 } else {
                     density = 0.1F;
                 }
                 RenderSystem.setShaderFogStart(density);
                 RenderSystem.setShaderFogEnd(density * farPlaneDistance);
-            }
-        });
+            });
+        }
     }
 
     public static void onClientSetup() {

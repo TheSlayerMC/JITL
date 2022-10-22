@@ -102,7 +102,7 @@ public class JPlacedFeatures {
 
     public static final RegistryObject<PlacedFeature> DEPTHS_TREE = PLACED_FEATURES.register("depths_tree_placed", () ->
             new PlacedFeature(JConfiguredFeatures.DEPTHS_TREE.getHolder().get(),
-                    undergroundFloorPatch(4, JBlocks.DEPTHS_GRASS.get())));
+                    undergroundFloorPatch(8, JBlocks.DEPTHS_GRASS.get())));
 
     public static final RegistryObject<PlacedFeature> DEPTHS_CRYSTAL = PLACED_FEATURES.register("depths_crystal_placed", () ->
             new PlacedFeature(JConfiguredFeatures.DEPTHS_CRYSTAL.getHolder().get()
@@ -110,7 +110,7 @@ public class JPlacedFeatures {
 
     public static final RegistryObject<PlacedFeature> DEPTHS_VEG = PLACED_FEATURES.register("depths_veg_placed", () ->
             new PlacedFeature(JConfiguredFeatures.DEPTHS_VEG.getHolder().get()
-                    , patch(10, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(256)))));
+                    , patch(12, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(256)))));
 
     public static final RegistryObject<PlacedFeature> EUCA_BOULDER = PLACED_FEATURES.register("euca_boulder_placed", () ->
             new PlacedFeature(JConfiguredFeatures.EUCA_BOULDER.getHolder().get()
