@@ -23,6 +23,7 @@ public class PlayerArmor {
     private CompoundTag nbt = new CompoundTag();
 
     public void copyFrom(PlayerArmor source) {
+        this.armorPieces = source.armorPieces;
         this.fullSet = source.fullSet;
         this.nbt = source.nbt;
     }

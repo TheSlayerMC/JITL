@@ -1,5 +1,6 @@
 package net.jitl.common.items.gear;
 
+import net.jitl.core.init.JITL;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -23,6 +24,7 @@ public class LuniumAbility implements IAbility.INBTUpdateAbility {
                 }
                 tag.putFloat("cooldown", value);
                 System.out.println(tag.getFloat("cooldown"));
+                JITL.LOGGER.info(value);
             }
         }
     }
