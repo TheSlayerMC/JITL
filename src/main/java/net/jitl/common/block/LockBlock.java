@@ -27,7 +27,9 @@ public class LockBlock extends FaceableBlock {
     public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
         ItemStack heldItem = player.getMainHandItem();
         Random r = new Random();
-        boolean canOpen = this == JBlocks.BOIL_LOCK.get() && heldItem.getItem() == JItems.BOIL_KEY.get();
+        boolean canOpen = this == JBlocks.BOIL_LOCK.get() && heldItem.getItem() == JItems.BOIL_LOCK_KEY.get() ||
+                this == JBlocks.DARKLY_LOCK.get() && heldItem.getItem() == JItems.DARK_KEY.get() ||
+                this == JBlocks.DEPTHS_LOCK.get() && heldItem.getItem() == JItems.DEPTHS_KEY.get();
 
         if(heldItem != null && canOpen) {
             worldIn.playSound(player, pos, SoundEvents.IRON_DOOR_OPEN, SoundSource.BLOCKS, 1.0F, r.nextFloat());
