@@ -38,7 +38,7 @@ public class JTabs {
     public static final CreativeModeTab WEAPONS = new CreativeModeTab(JITL.MODID + ".weapons") {
         @Override
         public @NotNull ItemStack makeIcon() {
-            return new ItemStack(JItems.SHADIUM_SWORD.get());
+            return new ItemStack(JItems.SHADIUM_INGOT.get());
         }
     };
 

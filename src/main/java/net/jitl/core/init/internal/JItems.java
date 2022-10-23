@@ -104,7 +104,7 @@ public class JItems {
     public static final RegistryObject<Item> SAPPHIRE_PICKAXE = registerToolItem("sapphire_pickaxe", "Sapphire Pickaxe", () -> new JPickaxeItem(EnumJTier.SAPPHIRE_PICKAXE));
     public static final RegistryObject<Item> SAPPHIRE_AXE = registerToolItem("sapphire_axe", "Sapphire Axe", () -> new JAxeItem(EnumJTier.SAPPHIRE_AXE));
     public static final RegistryObject<Item> SAPPHIRE_HOE = registerToolItem("sapphire_hoe", "Sapphire Hoe", () -> new JHoeItem(EnumJTier.SAPPHIRE_HOE));
-    public static final RegistryObject<Item> SAPPHIRE_SWORD = registerToolItem("sapphire_sword", "Sapphire Sword", () -> new JSwordItem(JToolTiers.SAPPHIRE, new MekyumSwordAbility()));
+  //  public static final RegistryObject<Item> SAPPHIRE_SWORD = registerToolItem("sapphire_sword", "Sapphire Sword", () -> new JSwordItem(JToolTiers.SAPPHIRE, new MekyumSwordAbility()));
     public static final RegistryObject<Item> SAPPHIRE_HELMET = registerNormalItem("sapphire_helmet", "Sapphire Helmet", () -> new JArmorItem(EnumJTier.JArmorTier.SAPPHIRE, EquipmentSlot.HEAD, null));
     public static final RegistryObject<Item> SAPPHIRE_CHEST = registerNormalItem("sapphire_chestplate", "Sapphire Chestplate", () -> new JArmorItem(EnumJTier.JArmorTier.SAPPHIRE, EquipmentSlot.CHEST, null));
     public static final RegistryObject<Item> SAPPHIRE_LEGS = registerNormalItem("sapphire_leggings", "Sapphire Leggings", () -> new JArmorItem(EnumJTier.JArmorTier.SAPPHIRE, EquipmentSlot.LEGS, null));
@@ -116,7 +116,7 @@ public class JItems {
     public static final RegistryObject<Item> LUNIUM_PICKAXE = registerToolItem("lunium_pickaxe", "Lunium Pickaxe", () -> new JPickaxeItem(EnumJTier.LUNIUM_PICKAXE));
     public static final RegistryObject<Item> LUNIUM_AXE = registerToolItem("lunium_axe", "Lunium Axe", () -> new JAxeItem(EnumJTier.LUNIUM_AXE));
     public static final RegistryObject<Item> LUNIUM_HOE = registerToolItem("lunium_hoe", "Lunium Hoe", () -> new JHoeItem(EnumJTier.LUNIUM_HOE));
-    public static final RegistryObject<Item> LUNIUM_SWORD = registerToolItem("lunium_sword", "Lunium Sword", () -> new JSwordItem(JToolTiers.LUNIUM, LUNIUM));
+  //  public static final RegistryObject<Item> LUNIUM_SWORD = registerToolItem("lunium_sword", "Lunium Sword", () -> new JSwordItem(JToolTiers.LUNIUM, LUNIUM));
     public static final RegistryObject<Item> LUNIUM_HELMET = registerNormalItem("lunium_helmet", "Lunium Helmet", () -> new JArmorItem(EnumJTier.JArmorTier.LUNIUM, EquipmentSlot.HEAD, null));
     public static final RegistryObject<Item> LUNIUM_CHEST = registerNormalItem("lunium_chestplate", "Lunium Chestplate", () -> new JArmorItem(EnumJTier.JArmorTier.LUNIUM, EquipmentSlot.CHEST, null));
     public static final RegistryObject<Item> LUNIUM_LEGS = registerNormalItem("lunium_leggings", "Lunium Leggings", () -> new JArmorItem(EnumJTier.JArmorTier.LUNIUM, EquipmentSlot.LEGS, null));
@@ -128,7 +128,7 @@ public class JItems {
     public static final RegistryObject<Item> SHADIUM_PICKAXE = registerToolItem("shadium_pickaxe", "Shadium Pickaxe", () -> new JPickaxeItem(EnumJTier.SHADIUM_PICKAXE));
     public static final RegistryObject<Item> SHADIUM_AXE = registerToolItem("shadium_axe", "Shadium Axe", () -> new JAxeItem(EnumJTier.SHADIUM_AXE));
     public static final RegistryObject<Item> SHADIUM_HOE = registerToolItem("shadium_hoe", "Shadium Hoe", () -> new JHoeItem(EnumJTier.SHADIUM_HOE));
-    public static final RegistryObject<Item> SHADIUM_SWORD = registerToolItem("shadium_sword", "Shadium Sword", () -> new JSwordItem(JToolTiers.SHADIUM, BASIC));
+//    public static final RegistryObject<Item> SHADIUM_SWORD = registerToolItem("shadium_sword", "Shadium Sword", () -> new JSwordItem(JToolTiers.SHADIUM, BASIC));
     public static final RegistryObject<Item> SHADIUM_HELMET = registerNormalItem("shadium_helmet", "Shadium Helmet", () -> new JArmorItem(EnumJTier.JArmorTier.SHADIUM, EquipmentSlot.HEAD, null));
     public static final RegistryObject<Item> SHADIUM_CHEST = registerNormalItem("shadium_chestplate", "Shadium Chestplate", () -> new JArmorItem(EnumJTier.JArmorTier.SHADIUM, EquipmentSlot.CHEST, null));
     public static final RegistryObject<Item> SHADIUM_LEGS = registerNormalItem("shadium_leggings", "Shadium Leggings", () -> new JArmorItem(EnumJTier.JArmorTier.SHADIUM, EquipmentSlot.LEGS, null));
@@ -140,7 +140,7 @@ public class JItems {
     public static final RegistryObject<Item> BLOODCRUST_PICKAXE = registerToolItem("bloodcrust_pickaxe", "Bloodcrust Pickaxe", () -> new JPickaxeItem(EnumJTier.BLOODCRUST_PICKAXE));
     public static final RegistryObject<Item> BLOODCRUST_AXE = registerToolItem("bloodcrust_axe", "Bloodcrust Axe", () -> new JAxeItem(EnumJTier.BLOODCRUST_AXE));
     public static final RegistryObject<Item> BLOODCRUST_HOE = registerToolItem("bloodcrust_hoe", "Bloodcrust Hoe", () -> new JHoeItem(EnumJTier.BLOODCRUST_HOE));
-    public static final RegistryObject<Item> BLOODCRUST_SWORD = registerToolItem("bloodcrust_sword", "Bloodcrust Sword", () -> new JSwordItem(JToolTiers.BLOODCRUST, BASIC));
+   // public static final RegistryObject<Item> BLOODCRUST_SWORD = registerToolItem("bloodcrust_sword", "Bloodcrust Sword", () -> new JSwordItem(JToolTiers.BLOODCRUST, BASIC));
     public static final RegistryObject<Item> BLOODCRUST_HELMET = registerNormalItem("bloodcrust_helmet", "Bloodcrust Helmet", () -> new JArmorItem(EnumJTier.JArmorTier.BLOODCRUST, EquipmentSlot.HEAD, null));
     public static final RegistryObject<Item> BLOODCRUST_CHEST = registerNormalItem("bloodcrust_chestplate", "Bloodcrust Chestplate", () -> new JArmorItem(EnumJTier.JArmorTier.BLOODCRUST, EquipmentSlot.CHEST, null));
     public static final RegistryObject<Item> BLOODCRUST_LEGS = registerNormalItem("bloodcrust_leggings", "Bloodcrust Leggings", () -> new JArmorItem(EnumJTier.JArmorTier.BLOODCRUST, EquipmentSlot.LEGS, null));
@@ -152,7 +152,7 @@ public class JItems {
     public static final RegistryObject<Item> CELESTIUM_PICKAXE = registerToolItem("celestium_pickaxe", "Celestium Pickaxe", () -> new JPickaxeItem(EnumJTier.CELESTIUM_PICKAXE));
     public static final RegistryObject<Item> CELESTIUM_AXE = registerToolItem("celestium_axe", "Celestium Axe", () -> new JAxeItem(EnumJTier.CELESTIUM_AXE));
     public static final RegistryObject<Item> CELESTIUM_HOE = registerToolItem("celestium_hoe", "Celestium Hoe", () -> new JHoeItem(EnumJTier.CELESTIUM_HOE));
-    public static final RegistryObject<Item> CELESTIUM_SWORD = registerToolItem("celestium_sword", "Celestium Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+   // public static final RegistryObject<Item> CELESTIUM_SWORD = registerToolItem("celestium_sword", "Celestium Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
 
     public static final RegistryObject<Item> MEKYUM_INGOT = registerNormalItem("mekyum_ingot", "Mekyum Ingot");
     public static final RegistryObject<Item> MEKYUM_GEMSTONE = registerNormalItem("mekyum_gemstone", "Mekyum Gemstone");
@@ -160,7 +160,7 @@ public class JItems {
     public static final RegistryObject<Item> MEKYUM_PICKAXE = registerToolItem("mekyum_pickaxe", "Mekyum Pickaxe", () -> new JPickaxeItem(EnumJTier.MEKYUM_PICKAXE));
     public static final RegistryObject<Item> MEKYUM_AXE = registerToolItem("mekyum_axe", "Mekyum Axe", () -> new JAxeItem(EnumJTier.MEKYUM_AXE));
     public static final RegistryObject<Item> MEKYUM_HOE = registerToolItem("mekyum_hoe", "Mekyum Hoe", () -> new JHoeItem(EnumJTier.MEKYUM_HOE));
-    public static final RegistryObject<Item> MEKYUM_SWORD = registerToolItem("mekyum_sword", "Mekyum Sword", () -> new JSwordItem(JToolTiers.KORITE, MEKYUM));
+ //   public static final RegistryObject<Item> MEKYUM_SWORD = registerToolItem("mekyum_sword", "Mekyum Sword", () -> new JSwordItem(JToolTiers.KORITE, MEKYUM));
 
     public static final RegistryObject<Item> STORON_INGOT = registerNormalItem("storon_ingot", "Storon Ingot");
     public static final RegistryObject<Item> STORON_GEMSTONE = registerNormalItem("storon_gemstone", "Storon Gemstone");
@@ -168,7 +168,7 @@ public class JItems {
     public static final RegistryObject<Item> STORON_PICKAXE = registerToolItem("storon_pickaxe", "Storon Pickaxe", () -> new JPickaxeItem(EnumJTier.STORON_PICKAXE));
     public static final RegistryObject<Item> STORON_AXE = registerToolItem("storon_axe", "Storon Axe", () -> new JAxeItem(EnumJTier.STORON_AXE));
     public static final RegistryObject<Item> STORON_HOE = registerToolItem("storon_hoe", "Storon Hoe", () -> new JHoeItem(EnumJTier.STORON_HOE));
-    public static final RegistryObject<Item> STORON_SWORD = registerToolItem("storon_sword", "Storon Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+   // public static final RegistryObject<Item> STORON_SWORD = registerToolItem("storon_sword", "Storon Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
 
     public static final RegistryObject<Item> KORITE_INGOT = registerNormalItem("korite_ingot", "Korite Ingot");
     public static final RegistryObject<Item> KORITE_GEMSTONE = registerNormalItem("korite_gemstone", "Korite Gemstone");
@@ -176,7 +176,7 @@ public class JItems {
     public static final RegistryObject<Item> KORITE_PICKAXE = registerToolItem("korite_pickaxe", "Korite Pickaxe", () -> new JPickaxeItem(EnumJTier.KORITE_PICKAXE));
     public static final RegistryObject<Item> KORITE_AXE = registerToolItem("korite_axe", "korite Axe", () -> new JAxeItem(EnumJTier.KORITE_AXE));
     public static final RegistryObject<Item> KORITE_HOE = registerToolItem("korite_hoe", "Korite Hoe", () -> new JHoeItem(EnumJTier.KORITE_HOE));
-    public static final RegistryObject<Item> KORITE_SWORD = registerToolItem("korite_sword", "korite Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+   // public static final RegistryObject<Item> KORITE_SWORD = registerToolItem("korite_sword", "korite Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
 
     public static final RegistryObject<Item> STAFF_OF_CONJURING = registerToolItem("staff_of_conjuring", "Staff of Conjuring", () -> new StaffItem(1, ConjuringProjectileEntity::new));
     public static final RegistryObject<Item> STAFF_OF_ESSENCIA = registerToolItem("staff_of_essencia", "Staff of Essencia", () -> new StaffItem(4, EssenciaProjectileEntity::new));
@@ -195,54 +195,54 @@ public class JItems {
     public static final RegistryObject<Item> MUD_BALL = registerNormalItem("mud_ball", "Mud Ball", () -> new ThrowableItem(rangedProps(),
             (world, thrower) -> new FloroMudEntity(JEntities.FLORO_MUD_TYPE.get(), world, thrower, 0.0F)).setSound(() -> SoundEvents.SNOWBALL_THROW));
 
-    /* public static final RegistryObject<Item> POISON_SWORD = registerToolItem("poison_sword", "Poison Sword", () -> new JSwordItem(EnumSwordType.POISON, EnumJTier.POISON_SWORD));
-    public static final RegistryObject<Item> CLOUD_SLICER = registerToolItem("cloud_slicer", "Cloud Slicer", () -> new JSwordItem(EnumJTier.CLOUD_SLICER));
-    public static final RegistryObject<Item> DRAGONS_TOOTH = registerToolItem("dragons_tooth", "Dragons Tooth", () -> new JSwordItem(EnumJTier.DRAGONS_TOOTH));
-    public static final RegistryObject<Item> NETHER_BEAST_SWORD = registerToolItem("nether_beast_sword", "Netherbeast Sword", () -> new JSwordItem(EnumSwordType.REGEN, EnumJTier.NETHER_BEAST_SWORD));
-    public static final RegistryObject<Item> WITHERING_BEAST_SWORD = registerToolItem("withering_beast_sword", "Witheringbeast Sword", () -> new JSwordItem(EnumSwordType.WITHER, EnumJTier.WITHERING_BEAST_SWORD));
-    public static final RegistryObject<Item> CALCIA_SWORD = registerToolItem("calcia_sword", "Calcia Sword", () -> new JSwordItem(EnumJTier.CALCIA_SWORD));
-    public static final RegistryObject<Item> CHAMPIONS_SWORD = registerToolItem("champions_sword", "Champions Sword", () -> new JSwordItem(EnumJTier.CHAMPIONS_SWORD));
-    public static final RegistryObject<Item> THE_WRAITH = registerToolItem("the_wraith", "The Wraith", () -> new JSwordItem(EnumJTier.THE_WRAITH));
-    public static final RegistryObject<Item> BUBBLE_SWORD = registerToolItem("bubble_sword", "Bubble Sword", () -> new JSwordItem(EnumSwordType.BUBBLE, EnumJTier.BUBBLE_SWORD));
-    public static final RegistryObject<Item> BOILING_BLADE = registerToolItem("boiling_blade", "Boiling Blade", () -> new JSwordItem(EnumSwordType.FIRE, EnumJTier.BOILING_BLADE));
-    public static final RegistryObject<Item> LOGGERS_SWORD = registerToolItem("loggers_sword", "Loggers Sword", () -> new JSwordItem(EnumSwordType.LOGGER, EnumJTier.LOGGERS_SWORD));
-    public static final RegistryObject<Item> NATURES_BLADE = registerToolItem("natures_blade", "Natures Blade", () -> new JSwordItem(EnumSwordType.STUN_WITHER, EnumJTier.NATURES_BLADE));
-    public static final RegistryObject<Item> DEPTHS_DARKSWORD = registerToolItem("depths_dark_sword", "Depths Darksword", () -> new JSwordItem(EnumSwordType.STUN_WITHER, EnumJTier.DEPTHS_DARKSWORD));
-    public static final RegistryObject<Item> DEPTHS_SLAYER = registerToolItem("depths_slayer", "Depths Slayer", () -> new JSwordItem(EnumSwordType.STUN, EnumJTier.DEPTHS_SLAYER));
-    public static final RegistryObject<Item> SNOW_SHOVELER = registerToolItem("snow_shoveler", "Snow Shoveler", () -> new JSwordItem(EnumSwordType.STUN_WITHER, EnumJTier.SNOW_SHOVELER));
-    public static final RegistryObject<Item> FROSTY_SWORD = registerToolItem("frosty_sword", "Frosty Sword", () -> new JSwordItem(EnumSwordType.STUN, EnumJTier.FROSTY_SWORD));
-    public static final RegistryObject<Item> FROSTBITTEN_SWORD = registerToolItem("frostbitten_sword", "Frostbitten Sword", () -> new JSwordItem(EnumSwordType.STUN, EnumJTier.FROSTBITTEN_SWORD));
-    public static final RegistryObject<Item> TREE_HUGGER = registerToolItem("tree_hugger", "Tree Hugger", () -> new JSwordItem(EnumSwordType.POISON, EnumJTier.TREE_HUGGER));
-    public static final RegistryObject<Item> CORE_MENDER = registerToolItem("core_mender", "Core Mender", () -> new JSwordItem(EnumSwordType.FIRE, EnumJTier.CORE_MENDER));
-    public static final RegistryObject<Item> ROYAL_BLADE = registerToolItem("royal_blade", "Royal Blade", () -> new JSwordItem(EnumSwordType.POISON, EnumJTier.ROYAL_BLADE));
-    public static final RegistryObject<Item> ROYAL_STABBER = registerToolItem("royal_stabber", "Royal Stabber", () -> new JSwordItem(EnumSwordType.POISON, EnumJTier.ROYAL_STABBER));
-    public static final RegistryObject<Item> ROC_SWORD = registerToolItem("roc_sword", "Roc Sword", () -> new JSwordItem(EnumJTier.ROC_SWORD));
-    public static final RegistryObject<Item> SWORD_THUNDERBIRD = registerToolItem("sword_of_the_thunderbird", "Sword of the Thunderbird", () -> new JSwordItem(EnumJTier.SWORD_THUNDERBIRD));
-    public static final RegistryObject<Item> BLOODWIELD_SWORD = registerToolItem("blood_wield_sword", "Blood Wielder", () -> new JSwordItem(EnumSwordType.HEALTH, EnumJTier.BLOODWIELD_SWORD, 1));
-    public static final RegistryObject<Item> CHARRED_BLADE = registerToolItem("charred_blade", "Charred Blade", () -> new JSwordItem(EnumSwordType.WITHER, EnumJTier.CHARRED_BLADE));
-    public static final RegistryObject<Item> SIZZLER_SWORD = registerToolItem("sizzler_sword", "Sizzler Sword", () -> new JSwordItem(EnumSwordType.FIRE_WITHER, EnumJTier.SIZZLER_SWORD));
-    public static final RegistryObject<Item> FLUFFY_BLADE = registerToolItem("fluffy_blade", "Fluffy Blade", () -> new JSwordItem(EnumSwordType.NIGHT_VISION_HEALTH, EnumJTier.FLUFFY_BLADE));
-    public static final RegistryObject<Item> GOLEM_SWORD = registerToolItem("golem_sword", "Golem Sword", () -> new JSwordItem(EnumJTier.GOLEM_SWORD));
-    public static final RegistryObject<Item> THUNDERBLADE = registerToolItem("thunder_blade", "Thunder Blade", () -> new JSwordItem(EnumSwordType.POISON_HEALTH, EnumJTier.THUNDERBLADE, 1.5F));
-    public static final RegistryObject<Item> SENTRY_SWORD = registerToolItem("sentry_sword", "Sentry Sword", () -> new JSwordItem(EnumSwordType.FIRE_HEALTH, EnumJTier.SENTRY_SWORD, 2));
-    public static final RegistryObject<Item> CRYSTAL_BLADE = registerToolItem("crystal_blade", "Crystal Blade", () -> new JSwordItem(EnumJTier.CRYSTAL_BLADE));
-    public static final RegistryObject<Item> STARLIGHT_BLADE = registerToolItem("starlight_blade", "Starlight Blade", () -> new JSwordItem(EnumJTier.STARLIGHT_BLADE));
-    public static final RegistryObject<Item> PEDAL_SWORD = registerToolItem("pedal_sword", "Pedal Sword", () -> new JSwordItem(EnumJTier.PEDAL_SWORD));
-    public static final RegistryObject<Item> WITHIC_BLADE = registerToolItem("withic_blade", "Withic Blade", () -> new JSwordItem(EnumJTier.WITHIC_BLADE));
-    public static final RegistryObject<Item> REINFORCED_CRYSTAL_SWORD = registerToolItem("reinforced_crystal_sword", "Reinforced Crystal Sword", () -> new JSwordItem(EnumJTier.RE_CRYSTAL_SWORD));
-    public static final RegistryObject<Item> REINFORCED_STONE_SWORD = registerToolItem("reinforced_stone_sword", "Reinforced Stone Sword", () -> new JSwordItem(EnumJTier.RE_STONE_SWORD));
-    public static final RegistryObject<Item> TERRALIGHT_BLADE = registerToolItem("terralight_blade", "Terralight Blade", () -> new JSwordItem(EnumJTier.TERRALIGHT_BLADE));
-    public static final RegistryObject<Item> TERRANA_SWORD = registerToolItem("terrana_sword", "Terrana Sword", () -> new JSwordItem(EnumJTier.TERRANA_SWORD));
-    public static final RegistryObject<Item> TERROLICA_SWORD = registerToolItem("terrolica_sword", "Terrolica Sword", () -> new JSwordItem(EnumSwordType.NIGHT_VISION, EnumJTier.TERROLICA_SWORD));
-    public static final RegistryObject<Item> VOLITE_SWORD = registerToolItem("volite_sword", "Volite Sword", () -> new JSwordItem(EnumJTier.VOLITE_SWORD));
-    public static final RegistryObject<Item> KINGS_SWORD = registerToolItem("kings_sword", "Kings Sword", () -> new JSwordItem(EnumSwordType.FIRE_HEALTH, EnumJTier.KINGS_SWORD, 1));
-    public static final RegistryObject<Item> DEMONIC_SWORD = registerToolItem("demonic_sword", "Wither Sword", () -> new JSwordItem(EnumSwordType.WITHER, EnumJTier.DEMONIC_SWORD));
-    public static final RegistryObject<Item> VINESTRAND_BLADE = registerToolItem("vinestrand_blade", "Vinestrand Blade", () -> new JSwordItem(EnumSwordType.POISON, EnumJTier.VINESTRAND_BLADE));
-    public static final RegistryObject<Item> DARK_PINE_SWORD = registerToolItem("dark_pine_sword", "Dark Pine Sword", () -> new JSwordItem(EnumSwordType.WITHER, EnumJTier.DARK_PINE_SWORD));
-    public static final RegistryObject<Item> HEALERS_BLADE = registerToolItem("healers_blade", "Healers Blade", () -> new JSwordItem(EnumSwordType.HEALTH, EnumJTier.HEALERS_BLADE, 1));
-    public static final RegistryObject<Item> TERRONIC_BLADE = registerToolItem("terronic_blade", "Terronic Blade", () -> new JSwordItem(EnumSwordType.HEALTH, EnumJTier.TERRONIC_BLADE, 2));
-    public static final RegistryObject<Item> DARK_KEEPERS_PLADE = registerToolItem("blade_of_dark_keeper", "Dark Keepers Blade", () -> new JSwordItem(EnumSwordType.FIRE_WITHER, EnumJTier.DARK_KEEPER));
-    public static final RegistryObject<Item> DEVELOPER_SWORD = registerToolItem("developer_sword", "Creative Sword", () -> new JSwordItem(EnumJTier.DEVELOPER_SWORD));*/
+   /* public static final RegistryObject<Item> POISON_SWORD = registerToolItem("poison_sword", "Poison Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> CLOUD_SLICER = registerToolItem("cloud_slicer", "Cloud Slicer", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> DRAGONS_TOOTH = registerToolItem("dragons_tooth", "Dragons Tooth", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> NETHER_BEAST_SWORD = registerToolItem("nether_beast_sword", "Netherbeast Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> WITHERING_BEAST_SWORD = registerToolItem("withering_beast_sword", "Witheringbeast Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> CALCIA_SWORD = registerToolItem("calcia_sword", "Calcia Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> CHAMPIONS_SWORD = registerToolItem("champions_sword", "Champions Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> THE_WRAITH = registerToolItem("the_wraith", "The Wraith", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> BUBBLE_SWORD = registerToolItem("bubble_sword", "Bubble Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> BOILING_BLADE = registerToolItem("boiling_blade", "Boiling Blade", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> LOGGERS_SWORD = registerToolItem("loggers_sword", "Loggers Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));;
+    public static final RegistryObject<Item> NATURES_BLADE = registerToolItem("natures_blade", "Natures Blade", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> DEPTHS_DARKSWORD = registerToolItem("depths_dark_sword", "Depths Darksword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> DEPTHS_SLAYER = registerToolItem("depths_slayer", "Depths Slayer", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> SNOW_SHOVELER = registerToolItem("snow_shoveler", "Snow Shoveler", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> FROSTY_SWORD = registerToolItem("frosty_sword", "Frosty Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> FROSTBITTEN_SWORD = registerToolItem("frostbitten_sword", "Frostbitten Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> TREE_HUGGER = registerToolItem("tree_hugger", "Tree Hugger", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> CORE_MENDER = registerToolItem("core_mender", "Core Mender", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> ROYAL_BLADE = registerToolItem("royal_blade", "Royal Blade", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> ROYAL_STABBER = registerToolItem("royal_stabber", "Royal Stabber", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> ROC_SWORD = registerToolItem("roc_sword", "Roc Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> SWORD_THUNDERBIRD = registerToolItem("sword_of_the_thunderbird", "Sword of the Thunderbird", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> BLOODWIELD_SWORD = registerToolItem("blood_wield_sword", "Blood Wielder", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> CHARRED_BLADE = registerToolItem("charred_blade", "Charred Blade", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> SIZZLER_SWORD = registerToolItem("sizzler_sword", "Sizzler Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> FLUFFY_BLADE = registerToolItem("fluffy_blade", "Fluffy Blade", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> GOLEM_SWORD = registerToolItem("golem_sword", "Golem Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> THUNDERBLADE = registerToolItem("thunder_blade", "Thunder Blade", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> SENTRY_SWORD = registerToolItem("sentry_sword", "Sentry Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> CRYSTAL_BLADE = registerToolItem("crystal_blade", "Crystal Blade", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> STARLIGHT_BLADE = registerToolItem("starlight_blade", "Starlight Blade", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> PEDAL_SWORD = registerToolItem("pedal_sword", "Pedal Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> WITHIC_BLADE = registerToolItem("withic_blade", "Withic Blade", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> REINFORCED_CRYSTAL_SWORD = registerToolItem("reinforced_crystal_sword", "Reinforced Crystal Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> REINFORCED_STONE_SWORD = registerToolItem("reinforced_stone_sword", "Reinforced Stone Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> TERRALIGHT_BLADE = registerToolItem("terralight_blade", "Terralight Blade", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> TERRANA_SWORD = registerToolItem("terrana_sword", "Terrana Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> TERROLICA_SWORD = registerToolItem("terrolica_sword", "Terrolica Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> VOLITE_SWORD = registerToolItem("volite_sword", "Volite Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> KINGS_SWORD = registerToolItem("kings_sword", "Kings Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> DEMONIC_SWORD = registerToolItem("demonic_sword", "Wither Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> VINESTRAND_BLADE = registerToolItem("vinestrand_blade", "Vinestrand Blade", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> DARK_PINE_SWORD = registerToolItem("dark_pine_sword", "Dark Pine Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> HEALERS_BLADE = registerToolItem("healers_blade", "Healers Blade", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> TERRONIC_BLADE = registerToolItem("terronic_blade", "Terronic Blade", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> DARK_KEEPERS_PLADE = registerToolItem("blade_of_dark_keeper", "Dark Keepers Blade", () -> new JSwordItem(JToolTiers.KORITE, BASIC));
+    public static final RegistryObject<Item> DEVELOPER_SWORD = registerToolItem("developer_sword", "Creative Sword", () -> new JSwordItem(JToolTiers.KORITE, BASIC));*/
     
     
     public static final RegistryObject<Item> MAGE_EGG = register("mage_spawn_egg", "Mage Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.MAGE_TYPE,

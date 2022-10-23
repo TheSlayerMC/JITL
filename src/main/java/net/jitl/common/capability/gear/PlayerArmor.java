@@ -1,5 +1,6 @@
 package net.jitl.common.capability.gear;
 
+import net.jitl.common.capability.essence.PlayerEssence;
 import net.jitl.common.items.base.JArmorItem;
 import net.jitl.common.items.gear.FullArmorAbility;
 import net.jitl.core.data.JNetworkRegistry;
@@ -20,6 +21,11 @@ public class PlayerArmor {
     private ArrayList<ItemStack> armorPieces;
     private FullArmorAbility fullSet;
     private CompoundTag nbt = new CompoundTag();
+
+    public void copyFrom(PlayerArmor source) {
+        this.fullSet = source.fullSet;
+        this.nbt = source.nbt;
+    }
 
     public void setArmor(Iterator<ItemStack> iterator) {
         ArrayList<ItemStack> stacks = new ArrayList<>();

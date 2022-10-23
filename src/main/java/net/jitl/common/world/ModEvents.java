@@ -6,6 +6,8 @@ import net.jitl.client.knowledge.PlayerKnowledge;
 import net.jitl.client.knowledge.PlayerKnowledgeProvider;
 import net.jitl.client.stats.PlayerStats;
 import net.jitl.client.stats.PlayerStatsProvider;
+import net.jitl.common.capability.gear.PlayerArmor;
+import net.jitl.common.capability.gear.PlayerArmorProvider;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JAttributes;
 import net.minecraft.resources.ResourceLocation;
@@ -24,8 +26,6 @@ import java.util.Objects;
 @Mod.EventBusSubscriber(modid = JITL.MODID)
 public class ModEvents {
 
-    private static int regenTicks = 75;
-
     @SubscribeEvent
     public static void onPlayerAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if(event.getObject() instanceof Player player) {
@@ -38,6 +38,9 @@ public class ModEvents {
             if(!player.getCapability(PlayerStatsProvider.PLAYER_STATS).isPresent()) {
                 event.addCapability(new ResourceLocation(JITL.MODID, "player_stats"), new PlayerStatsProvider());
             }
+            if(!player.getCapability(PlayerArmorProvider.PLAYER_ARMOR).isPresent()) {
+                event.addCapability(new ResourceLocation(JITL.MODID, "player_armor"), new PlayerArmorProvider());
+            }
         }
     }
 
@@ -46,28 +49,27 @@ public class ModEvents {
         event.register(PlayerEssence.class);
         event.register(PlayerKnowledge.class);
         event.register(PlayerStats.class);
+        event.register(PlayerArmor.class);
     }
 
     @SubscribeEvent
     public static void onPlayerCloned(PlayerEvent.Clone event) {
         if(event.isWasDeath()) {
-            event.getOriginal().getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(oldStore -> {
-                event.getOriginal().getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(newStore -> {
-                    newStore.copyFrom(oldStore);
-                });
-            });
+            event.getOriginal().getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(oldStore ->
+                    event.getOriginal().getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(newStore ->
+                            newStore.copyFrom(oldStore)));
 
-            event.getOriginal().getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(oldStore -> {
-                event.getOriginal().getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(newStore -> {
-                    newStore.copyFrom(oldStore);
-                });
-            });
+            event.getOriginal().getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(oldStore ->
+                    event.getOriginal().getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(newStore ->
+                            newStore.copyFrom(oldStore)));
 
-            event.getOriginal().getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(oldStore -> {
-                event.getOriginal().getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(newStore -> {
-                    newStore.copyFrom(oldStore);
-                });
-            });
+            event.getOriginal().getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(oldStore ->
+                    event.getOriginal().getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(newStore ->
+                            newStore.copyFrom(oldStore)));
+
+            event.getOriginal().getCapability(PlayerArmorProvider.PLAYER_ARMOR).ifPresent(oldStore ->
+                    event.getOriginal().getCapability(PlayerArmorProvider.PLAYER_ARMOR).ifPresent(newStore ->
+                            newStore.copyFrom(oldStore)));
         }
     }
 
