@@ -12,7 +12,6 @@ import net.minecraftforge.network.PacketDistributor;
 import java.util.Objects;
 
 public class PlayerEssence {
-
     private float currentEssence;
     private float burnoutTime;
     private int timeout;
