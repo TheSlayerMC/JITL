@@ -2,23 +2,16 @@ package net.jitl.common.items.base;
 
 import net.jitl.common.items.gear.IAbility;
 import net.jitl.common.items.gear.JGear;
-import net.jitl.core.helper.EnumJTier;
 import net.jitl.core.helper.JToolTiers;
-import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JTabs;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -27,7 +20,7 @@ public class JSwordItem extends SwordItem implements JGear {
     IAbility ability;
 
     public JSwordItem(JToolTiers tier, IAbility swordAbility) {
-        super(tier, (int) tier.getSwordDamage(), tier.getAttackSpeed(), new Properties().tab(JTabs.WEAPONS));
+        super(tier.getTier(), tier.getDamage(), tier.getSpeedModifier(), new Properties().tab(JTabs.WEAPONS));
         ability = swordAbility;
     }
 

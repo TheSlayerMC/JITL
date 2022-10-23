@@ -1,6 +1,7 @@
 package net.jitl.common.items.gear.mekyum;
 
 import net.jitl.common.items.gear.IAbility;
+import net.jitl.core.init.JITL;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -16,5 +17,6 @@ public class MekyumSwordAbility implements IAbility {
         entity.invulnerableTime = 0;
         entity.hurt(DamageSource.MAGIC, event.getAmount());
         entity.invulnerableTime = time;
+        JITL.LOGGER.info(time);
     }
 }

@@ -23,8 +23,6 @@ public class LuniumAbility implements IAbility.INBTUpdateAbility {
                     stack.setDamageValue(stack.getDamageValue() - 1);
                 }
                 tag.putFloat("cooldown", value);
-                System.out.println(tag.getFloat("cooldown"));
-                JITL.LOGGER.info(value);
             }
         }
     }
