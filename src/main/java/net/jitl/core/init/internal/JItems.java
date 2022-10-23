@@ -160,6 +160,10 @@ public class JItems {
     public static final RegistryObject<Item> CELESTIUM_AXE = registerToolItem("celestium_axe", "Celestium Axe", () -> new JAxeItem(JToolTiers.CELESTIUM_AXE));
     public static final RegistryObject<Item> CELESTIUM_HOE = registerToolItem("celestium_hoe", "Celestium Hoe", () -> new JHoeItem(JToolTiers.CELESTIUM_HOE));
     public static final RegistryObject<Item> CELESTIUM_SWORD = registerToolItem("celestium_sword", "Celestium Sword", () -> new JSwordItem(JToolTiers.CELESTIUM_SWORD, BASIC));
+    public static final RegistryObject<Item> CELESTIUM_HELMET = registerNormalItem("celestium_helmet", "Celestium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, EquipmentSlot.HEAD, CELESTIUM_ARMOR_ABILITY));
+    public static final RegistryObject<Item> CELESTIUM_CHEST = registerNormalItem("celestium_chestplate", "Celestium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, EquipmentSlot.CHEST, CELESTIUM_ARMOR_ABILITY));
+    public static final RegistryObject<Item> CELESTIUM_LEGS = registerNormalItem("celestium_leggings", "Celestium Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, EquipmentSlot.LEGS, CELESTIUM_ARMOR_ABILITY));
+    public static final RegistryObject<Item> CELESTIUM_BOOTS = registerNormalItem("celestium_boots", "Celestium Boots", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, EquipmentSlot.FEET, CELESTIUM_ARMOR_ABILITY));
 
     public static final RegistryObject<Item> MEKYUM_INGOT = registerNormalItem("mekyum_ingot", "Mekyum Ingot");
     public static final RegistryObject<Item> MEKYUM_GEMSTONE = registerNormalItem("mekyum_gemstone", "Mekyum Gemstone");
