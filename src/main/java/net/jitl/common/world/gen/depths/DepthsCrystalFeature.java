@@ -30,9 +30,6 @@ public class DepthsCrystalFeature extends Feature<NoneFeatureConfiguration> {
         if (reader.getBlockState(pos1.below()) != JBlocks.DEPTHS_STONE.get().defaultBlockState()) {
             return false;
         } else {
-            BlockPos pos2 = new BlockPos(pos1.getX(), reader.getHeight(Heightmap.Types.WORLD_SURFACE_WG, pos1.getX(), pos1.getZ()) - 1, pos1.getZ());
-
-            BlockPos pos = pos2.above(rand.nextInt(4));
 
             int i = rand.nextInt(20) + 5;
             int j = i / 4 + rand.nextInt(2);
@@ -46,11 +43,13 @@ public class DepthsCrystalFeature extends Feature<NoneFeatureConfiguration> {
                     for (int j1 = -l; j1 <= l; ++j1) {
                         float f2 = (float) Mth.abs(j1) - 0.5F;
                         if ((i1 == 0 && j1 == 0 || !(f1 * f1 + f2 * f2 > f * f)) && (i1 != -l && i1 != l && j1 != -l && j1 != l || !(rand.nextFloat() > 0.75F))) {
-                            BlockState blockstate = reader.getBlockState(pos.offset(i1, k - 12, j1));
-                            Block block = blockstate.getBlock();
-                            if (blockstate.isAir()) {
-                                if(rand.nextInt(4) == 0)
-                                    this.setBlock(reader, pos.offset(i1, k - 12, j1), JBlocks.DEPTHS_CRYSTAL.get().defaultBlockState().setValue(AttachedBlock.FACING, Direction.DOWN));
+                            BlockState blockstate = reader.getBlockState(pos1.offset(i1, k, j1));
+                            BlockState above = reader.getBlockState(pos1.offset(i1, k + 1, j1));
+                            if(blockstate.isAir() && above == JBlocks.DEPTHS_STONE.get().defaultBlockState()) {
+                                if(rand.nextInt(4) == 0) {
+                                    this.setBlock(reader, pos1.offset(i1, k, j1), JBlocks.DEPTHS_CRYSTAL.get().defaultBlockState().setValue(AttachedBlock.FACING, Direction.DOWN));
+                                    System.out.println("GEN:" + pos1);
+                                }
                             }
                         }
                     }

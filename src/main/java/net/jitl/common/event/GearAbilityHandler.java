@@ -25,7 +25,7 @@ import java.util.ArrayList;
 @Mod.EventBusSubscriber(modid = JITL.MODID)
 public class GearAbilityHandler {
 
-    @SubscribeEvent()
+    @SubscribeEvent
     public static void handleTick(LivingEvent event) {
         LivingEntity entity = event.getEntity();
         ItemStack hand = entity.getMainHandItem();

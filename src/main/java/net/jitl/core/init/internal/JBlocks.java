@@ -341,7 +341,7 @@ public class JBlocks {
     public static final RegistryObject<Block> DEPTHS_DARK_SHINGLE = register("depths_dark_shingle", "Depths Dark Shingle", JBlockProperties.STONE);
     public static final RegistryObject<Block> DEPTHS_COBBLESTONE = register("depths_cobblestone", "Depths Cobblestone", JBlockProperties.STONE);
     public static final RegistryObject<Block> DEPTHS_TILE = register("depths_tile", "Depths Tile", JBlockProperties.STONE);
-    public static final RegistryObject<Block> DEPTHS_GLASS = register("depths_glass", "Depths Glass", () -> new GlassBlock(JBlockProperties.GLASS));
+    public static final RegistryObject<Block> DEPTHS_GLASS = register("depths_glass", "Depths Glass", JBlockProperties.GLASS);
     public static final RegistryObject<RotatedPillarBlock> DEPTHS_PILLAR = registerPillar("depths_pillar", "Depths Pillar", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> DARKLY_LOCK = registerRotatableBlock("darkly_lock", "Darkly Lock", LockBlock::new);
     public static final RegistryObject<Block> DEPTHS_LOCK = registerRotatableBlock("depths_lock", "Depths Lock", LockBlock::new);

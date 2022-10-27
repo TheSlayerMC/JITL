@@ -24,7 +24,7 @@ public class JArmorItem extends ArmorItem implements JGear {
 
     @Nullable
     public IAbility getAbility() {
-        if (ability == null) {
+        if(ability == null) {
             return new IAbility() {};
         } else {
             return ability;

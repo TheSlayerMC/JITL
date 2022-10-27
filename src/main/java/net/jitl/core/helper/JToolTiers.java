@@ -56,6 +56,19 @@ public enum JToolTiers {
     MEKYUM_SHOVEL(JToolTier.MEKYUM, 1, 0),
     MEKYUM_HOE(JToolTier.MEKYUM, 0, 0),
 
+    FLAIRIUM_SWORD(JToolTier.FLAIRIUM, 4, 0),
+    FLAIRIUM_PICKAXE(JToolTier.FLAIRIUM, 2, 0),
+    FLAIRIUM_AXE(JToolTier.FLAIRIUM, 4, 0),
+    FLAIRIUM_SHOVEL(JToolTier.FLAIRIUM, 1, 0),
+    FLAIRIUM_HOE(JToolTier.FLAIRIUM, 0, 0),
+
+    DES_SWORD(JToolTier.DES, 4, 0),
+    DES_PICKAXE(JToolTier.DES, 2, 0),
+    DES_AXE(JToolTier.DES, 4, 0),
+    DES_SHOVEL(JToolTier.DES, 1, 0),
+    DES_HOE(JToolTier.DES, 0, 0),
+
+
     CHAMPIONS_SWORD(JToolTier.CHAMPIONS_SWORD, 4, 0),
     THE_WRAITH(JToolTier.THE_WRAITH, 4, 0),
 
@@ -160,6 +173,9 @@ public enum JToolTiers {
         public static final Tier STORON = new ForgeTier(3, 1883, 8F, 3F, 15, null, () -> Ingredient.of(JItems.STORON_INGOT.get()));
         public static final Tier MEKYUM = new ForgeTier(3, 1883, 8F, 3F, 15, null, () -> Ingredient.of(JItems.MEKYUM_INGOT.get()));
 
+        public static final Tier FLAIRIUM = new ForgeTier(3, 1883, 8F, 3F, 15, null, () -> Ingredient.of(JItems.MEKYUM_INGOT.get()));
+        public static final Tier DES = new ForgeTier(3, 1883, 8F, 3F, 15, null, () -> Ingredient.of(JItems.DES_INGOT.get()));
+
         public static final Tier CHAMPIONS_SWORD = new ForgeTier(3, 3000, 8F, 3F, 25, null, () -> null);
         public static final Tier THE_WRAITH = new ForgeTier(3, 3000, 8F, 3F, 25, null, () -> null);
         public static final Tier POISON_SWORD = new ForgeTier(3, 3000, 8F, 3F, 25, null, () -> null);
@@ -218,5 +234,9 @@ public enum JToolTiers {
         public static final JArmorMaterial LUNIUM = new JArmorMaterial("lunium", 23, new int[] {2, 5, 6, 2}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(JItems.LUNIUM_INGOT.get()));
         public static final JArmorMaterial SHADIUM = new JArmorMaterial("shadium", 33, new int[] {3, 6, 8, 3}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, () -> Ingredient.of(JItems.SHADIUM_INGOT.get()));
         public static final JArmorMaterial BLOODCRUST = new JArmorMaterial("bloodcrust", 33, new int[] {3, 5, 7, 3}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, () -> Ingredient.of(JItems.BLOODCRUST_INGOT.get()));
+        public static final JArmorMaterial CELESTIUM = new JArmorMaterial("celestium", 33, new int[] {3, 5, 7, 3}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, () -> Ingredient.of(JItems.CELESTIUM_INGOT.get()));
+
+        public static final JArmorMaterial FLAIRIUM = new JArmorMaterial("flairium", 33, new int[] {3, 5, 7, 3}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, () -> Ingredient.of(JItems.FLAIRIUM_INGOT.get()));
+
     }
 }

@@ -88,24 +88,87 @@ public class JItems {
     public static final RegistryObject<Item> WARPED_QUARTZ = registerNormalItem("warped_quartz", "Warped Quartz");
     public static final RegistryObject<Item> CRIMSON_QUARTZ = registerNormalItem("crimson_quartz", "Crimson Quartz");
     public static final RegistryObject<Item> FIRESTONE_CLUMP = registerNormalItem("firestone_clump", "Firestone Clump");
-
     public static final RegistryObject<Item> ASH = registerNormalItem("ash", "Ash");
     public static final RegistryObject<Item> RIMESTONE = registerNormalItem("rimestone", "Rimestone");
     public static final RegistryObject<Item> PERIDOT_GEMSTONE = registerNormalItem("peridot_gemstone", "Peridot Gemstone");
+    public static final RegistryObject<Item> RAW_BLAZIUM = registerNormalItem("raw_blazium", "Raw Blazium");
+    public static final RegistryObject<Item> BLAZIUM_INGOT = registerNormalItem("blazium_ingot", "Blazium Ingot");
+    public static final RegistryObject<Item> REINFORCED_CRYSTAL_INGOT = registerNormalItem("reinforced_crystal_ingot", "Reinforced Crystal Ingot");
+    public static final RegistryObject<Item> REINFORCED_STONE_INGOT = registerNormalItem("reinforced_stone_ingot", "Reinforced Stone Ingot");
+    public static final RegistryObject<Item> VERDITE_INGOT = registerNormalItem("verdite_ingot", "Verdite Ingot");
 
     public static final RegistryObject<Item> YELLOW_GEM = registerNormalItem("yellow_gem", "Yellow Gem");
     public static final RegistryObject<Item> PURPLE_GEM = registerNormalItem("purple_gem", "Purple Gem");
     public static final RegistryObject<Item> GREEN_GEM = registerNormalItem("green_gem", "Green Gem");
     public static final RegistryObject<Item> BLUE_GEM = registerNormalItem("blue_gem", "Blue Gem");
+    public static final RegistryObject<Item> AQUA_STONE = registerNormalItem("aqua_stone", "Aqua Stone");
+    public static final RegistryObject<Item> HEART_STONE = registerNormalItem("heart_stone", "Heart Stone");
+    public static final RegistryObject<Item> HEART_SMALL = registerNormalItem("heart_small", "Small Heart");
+    public static final RegistryObject<Item> HEART_MEDIUM = registerNormalItem("heart_medium", "Medium Heart");
+    public static final RegistryObject<Item> HEART_LARGE = registerNormalItem("heart_large", "Large Heart");
+    public static final RegistryObject<Item> HEART_ULTRA = registerNormalItem("heart_ultra", "Ultra Heart");
+    public static final RegistryObject<Item> HELL_TURTLE_SHELL = registerNormalItem("hell_turtle_shell", "Hell Turtle Shell");
+    public static final RegistryObject<Item> OVER_SEEING_EYE = registerNormalItem("over_seeing_eye", "Over Seeing Eye");
+    public static final RegistryObject<Item> POTTERY_SHARD = registerNormalItem("pottery_shard", "Pottery Shard");
+    public static final RegistryObject<Item> ROCK_SHARD = registerNormalItem("rock_shard", "Rock Shard");
+    public static final RegistryObject<Item> SLIMY_FLESH = registerNormalItem("slimy_flesh", "Slimy Flesh");
+    public static final RegistryObject<Item> SPYCLOPSE_EYE = registerNormalItem("spyclopse_eye", "Spyclopse Eye");
+    public static final RegistryObject<Item> STONE_CLUMP = registerNormalItem("stone_clump", "Stone Clump");
+    public static final RegistryObject<Item> CAVE_CRYSTAL = registerNormalItem("cave_crystal", "Cave Crystal");
+    public static final RegistryObject<Item> COLLECTOR_ROCK = registerNormalItem("collector_rock", "Collector Rock");
+    public static final RegistryObject<Item> CRYSTAL_EYE = registerNormalItem("crystal_eye", "Crystal Eye");
+    public static final RegistryObject<Item> DARK_MATTER_GEMSTONE = registerNormalItem("dark_matter_gemstone", "Dark Matter Gemstone");
+    public static final RegistryObject<Item> FLORO_PEDAL = registerNormalItem("floro_pedal", "Floro Pedal");
 
-    public static final RegistryObject<Item> RAW_BLAZIUM = registerNormalItem("raw_blazium", "Raw Blazium");
-    public static final RegistryObject<Item> BLAZIUM_INGOT = registerNormalItem("blazium_ingot", "Blazium Ingot");
+    public static final RegistryObject<Item> EUCA_PORTAL_PIECE_1 = registerNormalItem("euca_portal_piece_1", "Euca Portal Piece");
+    public static final RegistryObject<Item> EUCA_PORTAL_PIECE_2 = registerNormalItem("euca_portal_piece_2", "Euca Portal Piece");
+    public static final RegistryObject<Item> EUCA_PORTAL_PIECE_3 = registerNormalItem("euca_portal_piece_3", "Euca Portal Piece");
+    public static final RegistryObject<Item> EUCA_PORTAL_GEM = registerNormalItem("euca_portal_gem", "Euca Portal Gem");
+    public static final RegistryObject<Item> EUCA_TABLET = registerNormalItem("euca_tablet", "Euca Tablet");
+    public static final RegistryObject<Item> GOLDER_DUST = registerNormalItem("golder_dust", "Golder Dust");
+    public static final RegistryObject<Item> SHIMMERER_DUST = registerNormalItem("shimmerer_dust", "Shimmerer Dust");
+    public static final RegistryObject<Item> METAL_DISK = registerNormalItem("metal_disk", "Metal Disk");
+    public static final RegistryObject<Item> ROYAL_DISK = registerNormalItem("royal_disk", "Royal Disk");
+    public static final RegistryObject<Item> GATE_KEYS = registerNormalItem("gate_keys", "Gate Keys");
+
+    public static final RegistryObject<Item> DARK_GEM = registerNormalItem("dark_gem", "Dark Gem");
+    public static final RegistryObject<Item> DARK_CRYSTAL = registerNormalItem("dark_crystal", "Dark Crystal");
+    public static final RegistryObject<Item> DARK_ORB = registerNormalItem("dark_orb", "Dark Orb");
+    public static final RegistryObject<Item> GLOSSY_EYE = registerNormalItem("glossy_eye", "Glossy Eye");
+
+    public static final RegistryObject<Item> FROST_GEM = registerNormalItem("frost_gem", "Frost Gem");
+    public static final RegistryObject<Item> FROST_FLAKE = registerNormalItem("frost_flake", "Frost Flake");
+    public static final RegistryObject<Item> FROZEN_ICE_BALL = registerNormalItem("frozen_ice_ball", "Frozen Ice Ball");
+    public static final RegistryObject<Item> ICE_FLAKE = registerNormalItem("ice_flake", "Ice Flake");
+    public static final RegistryObject<Item> COLD_CLUMP = registerNormalItem("cold_clump", "Cold Clump");
+    public static final RegistryObject<Item> CRYSTAL_BALL = registerNormalItem("crystal_ball", "Crystal Ball");
+    public static final RegistryObject<Item> CRYSTAL_FLAKE = registerNormalItem("crystal_flake", "Crystal Flake");
+    public static final RegistryObject<Item> FREEZING_TABLET = registerNormalItem("freezing_tablet", "Freezing Tablet");
+
+    public static final RegistryObject<Item> SIZZLING_EYE = registerNormalItem("sizzling_eye", "Sizzling Eye");
+    public static final RegistryObject<Item> SKULL_OF_DECAY = registerNormalItem("skull_of_decay", "Skull Of Decay");
+    public static final RegistryObject<Item> WITHIC_DUST = registerNormalItem("withic_dust", "Withic Dust");
+    public static final RegistryObject<Item> WITHIC_SOUL = registerNormalItem("withic_soul", "Withic Soul");
+    public static final RegistryObject<Item> BALMY_TEARDROP = registerNormalItem("balmy_teardrop", "Balmy Teardrop");
+    public static final RegistryObject<Item> BEASTLY_STOMACH = registerNormalItem("beastly_stomach", "Beastly Stomach");
+    public static final RegistryObject<Item> BLAZING_FIREBALL = registerNormalItem("blazing_fireball", "Blazing Fireball");
+    public static final RegistryObject<Item> DEMONIC_SKULL = registerNormalItem("demonic_skull", "Demonic Skull");
+    public static final RegistryObject<Item> DEMONIC_EYE = registerNormalItem("demonic_eye", "Demonic Eye");
+    public static final RegistryObject<Item> FLAMING_SPRING = registerNormalItem("flaming_spring", "Flaming Spring");
+    public static final RegistryObject<Item> FLAMING_SPROCKET = registerNormalItem("flaming_sprocket", "Flaming Sprocket");
+    public static final RegistryObject<Item> FLAMING_HIDE = registerNormalItem("flaming_hide", "Flaming Hide");
+    public static final RegistryObject<Item> HELL_SHARDS = registerNormalItem("hell_shards", "Hell Shards");
+
+    public static final RegistryObject<Item> TERRASTAR = registerNormalItem("terrastar", "Terrastar");
+    public static final RegistryObject<Item> TERRASHROOM = registerNormalItem("terrashroom", "Terrashroom");
 
     public static final RegistryObject<Item> BOTTLE_OF_ESSENCIA = registerNormalItem("bottle_of_essencia", "Bottle 'o' Essencia", () -> new BottleEssenciaItem(false));
     public static final RegistryObject<Item> STRONG_BOTTLE_OF_ESSENCIA = registerNormalItem("strong_bottle_of_essencia", "Bottle 'o' Essencia", () -> new BottleEssenciaItem(true));
     public static final RegistryObject<Item> FLAME_COIN = registerNormalItem("flame_coin", "Flame Coin", FlameCoinItem::new);
 
-    public static final RegistryObject<Item> BOIL_KEY = registerNormalItem("boil_key", "Boiling Lock Key", ChestInteractionItem::new);
+    public static final RegistryObject<Item> BOIL_LOCK_KEY = registerNormalItem("boil_lock_key", "Boiling Lock Key");
+    public static final RegistryObject<Item> DEPTHS_KEY = registerNormalItem("depths_lock_key", "Depths Lock Key");
+    public static final RegistryObject<Item> DARK_KEY = registerNormalItem("dark_lock_key", "Darkly Lock Key");
 
     public static final RegistryObject<Item> PADLOCK = registerNormalItem("padlock", "Padlock", ChestInteractionItem::new);
     public static final RegistryObject<Item> CHEST_KEY = registerNormalItem("chest_key", "Master Chest Key", ChestInteractionItem::new);
@@ -128,6 +191,7 @@ public class JItems {
 
     public static final RegistryObject<Item> LUNIUM_POWDER = registerNormalItem("lunium_powder", "Lunium Powder");
     public static final RegistryObject<Item> LUNIUM_INGOT = registerNormalItem("lunium_ingot", "Lunium Ingot");
+    public static final RegistryObject<Item> LUNIUM_CLUMP = registerNormalItem("lunium_clump", "Lunium Clump");
     public static final RegistryObject<Item> LUNIUM_SHOVEL = registerToolItem("lunium_shovel", "Lunium Shovel", () -> new JShovelItem(JToolTiers.LUNIUM_SHOVEL));
     public static final RegistryObject<Item> LUNIUM_PICKAXE = registerToolItem("lunium_pickaxe", "Lunium Pickaxe", () -> new JPickaxeItem(JToolTiers.LUNIUM_PICKAXE));
     public static final RegistryObject<Item> LUNIUM_AXE = registerToolItem("lunium_axe", "Lunium Axe", () -> new JAxeItem(JToolTiers.LUNIUM_AXE));
@@ -152,6 +216,7 @@ public class JItems {
 
     public static final RegistryObject<Item> RAW_BLOODCRUST = registerNormalItem("raw_bloodcrust", "Raw Bloodcrust");
     public static final RegistryObject<Item> BLOODCRUST_INGOT = registerNormalItem("bloodcrust_ingot", "Bloodcrust Ingot");
+    public static final RegistryObject<Item> BLOODCRUST_CLUMP = registerNormalItem("bloodcrust_clump", "Bloodcrust Clump");
     public static final RegistryObject<Item> BLOODCRUST_SHOVEL = registerToolItem("bloodcrust_shovel", "Bloodcrust Shovel", () -> new JShovelItem(JToolTiers.BLOODCRUST_SHOVEL));
     public static final RegistryObject<Item> BLOODCRUST_PICKAXE = registerToolItem("bloodcrust_pickaxe", "Bloodcrust Pickaxe", () -> new JPickaxeItem(JToolTiers.BLOODCRUST_PICKAXE));
     public static final RegistryObject<Item> BLOODCRUST_AXE = registerToolItem("bloodcrust_axe", "Bloodcrust Axe", () -> new JAxeItem(JToolTiers.BLOODCRUST_AXE));
@@ -169,6 +234,10 @@ public class JItems {
     public static final RegistryObject<Item> CELESTIUM_AXE = registerToolItem("celestium_axe", "Celestium Axe", () -> new JAxeItem(JToolTiers.CELESTIUM_AXE));
     public static final RegistryObject<Item> CELESTIUM_HOE = registerToolItem("celestium_hoe", "Celestium Hoe", () -> new JHoeItem(JToolTiers.CELESTIUM_HOE));
     public static final RegistryObject<Item> CELESTIUM_SWORD = registerToolItem("celestium_sword", "Celestium Sword", () -> new JSwordItem(JToolTiers.CELESTIUM_SWORD, BASIC));
+    public static final RegistryObject<Item> CELESTIUM_HELMET = registerNormalItem("celestium_helmet", "Celestium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, EquipmentSlot.HEAD, CELESTIUM_ARMOR_ABILITY));
+    public static final RegistryObject<Item> CELESTIUM_CHEST = registerNormalItem("celestium_chestplate", "Celestium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, EquipmentSlot.CHEST, CELESTIUM_ARMOR_ABILITY));
+    public static final RegistryObject<Item> CELESTIUM_LEGS = registerNormalItem("celestium_leggings", "Celestium Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, EquipmentSlot.LEGS, CELESTIUM_ARMOR_ABILITY));
+    public static final RegistryObject<Item> CELESTIUM_BOOTS = registerNormalItem("celestium_boots", "Celestium Boots", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, EquipmentSlot.FEET, CELESTIUM_ARMOR_ABILITY));
 
     public static final RegistryObject<Item> MEKYUM_INGOT = registerNormalItem("mekyum_ingot", "Mekyum Ingot");
     public static final RegistryObject<Item> MEKYUM_GEMSTONE = registerNormalItem("mekyum_gemstone", "Mekyum Gemstone");
@@ -194,6 +263,24 @@ public class JItems {
     public static final RegistryObject<Item> KORITE_HOE = registerToolItem("korite_hoe", "Korite Hoe", () -> new JHoeItem(JToolTiers.KORITE_HOE));
     public static final RegistryObject<Item> KORITE_SWORD = registerToolItem("korite_sword", "korite Sword", () -> new JSwordItem(JToolTiers.KORITE_SWORD, KORITE_SWORD_ABILITY));
 
+    public static final RegistryObject<Item> FLAIRIUM_INGOT = registerNormalItem("flairium_ingot", "Flairium Ingot");
+    public static final RegistryObject<Item> FLAIRIUM_SHOVEL = registerToolItem("flairium_shovel", "Flairium Shovel", () -> new JShovelItem(JToolTiers.FLAIRIUM_SHOVEL));
+    public static final RegistryObject<Item> FLAIRIUM_PICKAXE = registerToolItem("flairium_pickaxe", "Flairium Pickaxe", () -> new JPickaxeItem(JToolTiers.FLAIRIUM_PICKAXE));
+    public static final RegistryObject<Item> FLAIRIUM_AXE = registerToolItem("flairium_axe", "Flairium Axe", () -> new JAxeItem(JToolTiers.FLAIRIUM_AXE));
+    public static final RegistryObject<Item> FLAIRIUM_HOE = registerToolItem("flairium_hoe", "Flairium Hoe", () -> new JHoeItem(JToolTiers.FLAIRIUM_HOE));
+    public static final RegistryObject<Item> FLAIRIUM_SWORD = registerToolItem("flairium_sword", "Flairium Sword", () -> new JSwordItem(JToolTiers.FLAIRIUM_SWORD, BASIC));
+    public static final RegistryObject<Item> FLAIRIUM_HELMET = registerNormalItem("flairium_helmet", "Flairium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, EquipmentSlot.HEAD, null));
+    public static final RegistryObject<Item> FLAIRIUM_CHEST = registerNormalItem("flairium_chestplate", "Flairium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, EquipmentSlot.CHEST, null));
+    public static final RegistryObject<Item> FLAIRIUM_LEGS = registerNormalItem("flairium_leggings", "Flairium Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, EquipmentSlot.LEGS, null));
+    public static final RegistryObject<Item> FLAIRIUM_BOOTS = registerNormalItem("flairium_boots", "Flairium Boots", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, EquipmentSlot.FEET, null));
+
+    public static final RegistryObject<Item> DES_INGOT = registerNormalItem("des_ingot", "Des Ingot");
+    public static final RegistryObject<Item> DES_SHOVEL = registerToolItem("des_shovel", "Des Shovel", () -> new JShovelItem(JToolTiers.DES_SHOVEL));
+    public static final RegistryObject<Item> DES_PICKAXE = registerToolItem("des_pickaxe", "Des Pickaxe", () -> new JPickaxeItem(JToolTiers.DES_PICKAXE));
+    public static final RegistryObject<Item> DES_AXE = registerToolItem("des_axe", "Des Axe", () -> new JAxeItem(JToolTiers.DES_AXE));
+    public static final RegistryObject<Item> DES_HOE = registerToolItem("des_hoe", "Des Hoe", () -> new JHoeItem(JToolTiers.DES_HOE));
+    public static final RegistryObject<Item> DES_SWORD = registerToolItem("des_sword", "Des Sword", () -> new JSwordItem(JToolTiers.DES_SWORD, BASIC));
+
     public static final RegistryObject<Item> STAFF_OF_CONJURING = registerToolItem("staff_of_conjuring", "Staff of Conjuring", () -> new StaffItem(1, ConjuringProjectileEntity::new));
     public static final RegistryObject<Item> STAFF_OF_ESSENCIA = registerToolItem("staff_of_essencia", "Staff of Essencia", () -> new StaffItem(4, EssenciaProjectileEntity::new));
 
@@ -203,6 +290,21 @@ public class JItems {
     public static final RegistryObject<Item> DEPTHS_BOAT = registerNormalItem("depths_boat", "Depths Boat", () -> new JBoatItem(JBoat.Type.DEPTHS));
 
     public static final RegistryObject<Item> EUCA_PIERCER = registerToolItem("euca_piercer", "Euca Piercer", () ->
+            new PiercerItem(rangedProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+
+    public static final RegistryObject<Item> SUNSET_PIERCER = registerToolItem("sunset_piercer", "Sunset Piercer", () ->
+            new PiercerItem(rangedProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+
+    public static final RegistryObject<Item> NETHIC_PIERCER = registerToolItem("nethic_piercer", "Nethic Piercer", () ->
+            new PiercerItem(rangedProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+
+    public static final RegistryObject<Item> FROSTBITTEN_PIERCER = registerToolItem("frostbitten_piercer", "Frostbitten Piercer", () ->
+            new PiercerItem(rangedProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+
+    public static final RegistryObject<Item> FROZEN_PIERCER = registerToolItem("frozen_piercer", "Frozen Piercer", () ->
+            new PiercerItem(rangedProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+
+    public static final RegistryObject<Item> BOILING_PIERCER = registerToolItem("boiling_piercer", "Boiling Piercer", () ->
             new PiercerItem(rangedProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
 
     public static final RegistryObject<Item> PIERCER = registerToolItem("piercer", "Piercer", () ->
