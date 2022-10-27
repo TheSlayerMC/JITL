@@ -106,7 +106,7 @@ public class JPlacedFeatures {
 
     public static final RegistryObject<PlacedFeature> DEPTHS_CRYSTAL = PLACED_FEATURES.register("depths_crystal_placed", () ->
             new PlacedFeature(JConfiguredFeatures.DEPTHS_CRYSTAL.getHolder().get()
-                    , patch(10, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(256)))));
+                    , patch(20, HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(20), VerticalAnchor.absolute(128)))));
 
     public static final RegistryObject<PlacedFeature> DEPTHS_VEG = PLACED_FEATURES.register("depths_veg_placed", () ->
             new PlacedFeature(JConfiguredFeatures.DEPTHS_VEG.getHolder().get()

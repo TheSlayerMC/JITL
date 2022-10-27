@@ -9,6 +9,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
@@ -91,7 +92,7 @@ public class AttachedBlock extends Block {
         Direction direction = blockState.getValue(FACING);
         BlockPos newPos = blockPos.relative(direction.getOpposite());
         BlockState newState = reader.getBlockState(newPos);
-        return newState.isFaceSturdy(reader, newPos, direction);
+        return newState.isFaceSturdy(reader, newPos, direction) && newState != Blocks.BEDROCK.defaultBlockState();
     }
 
     @Override
