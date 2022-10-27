@@ -1,5 +1,6 @@
-package net.jitl.client.stats;
+package net.jitl.common.capability.stats;
 
+import net.jitl.client.stats.PacketPlayerStats;
 import net.jitl.core.data.JNetworkRegistry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;

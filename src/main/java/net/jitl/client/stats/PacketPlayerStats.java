@@ -1,7 +1,7 @@
 package net.jitl.client.stats;
 
 import io.netty.buffer.ByteBuf;
-import net.jitl.client.essence.ClientEssence;
+import net.jitl.common.capability.stats.PlayerStats;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;

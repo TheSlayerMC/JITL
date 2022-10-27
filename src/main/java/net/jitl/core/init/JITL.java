@@ -12,8 +12,13 @@ import net.jitl.core.data.block_generation.*;
 import net.jitl.core.init.internal.JContainers;
 import net.jitl.core.init.internal.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -21,8 +26,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.SlotTypeMessage;
+import top.theillusivec4.curios.api.SlotTypePreset;
 
 @Mod(JITL.MODID)
 public class JITL {
@@ -102,7 +111,13 @@ public class JITL {
         event.enqueueWork(ClientEventHandler::onClientSetup);
     }
 
-    private void enqueue(InterModEnqueueEvent event) { }
+    private void enqueue(InterModEnqueueEvent event) {
+        InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("heart_container").icon(rl("gui/curios/heart_container")).priority(1).size(2).build());
+        InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("catalyst").icon(rl("gui/curios/catalyst")).priority(1).size(2).build());
+        InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.RING.getMessageBuilder().size(2).build());
+        InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.NECKLACE.getMessageBuilder().build());
+        InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.HEAD.getMessageBuilder().build());
+    }
 
     public static ResourceLocation rl(String r) {
         return new ResourceLocation(MODID, r);
@@ -110,5 +125,17 @@ public class JITL {
 
     public static ResourceLocation tl(String r) {
         return new ResourceLocation(MODID, "textures/" + r);
+    }
+
+    public static ResourceLocation getRegistryName(Item item) {
+        return ForgeRegistries.ITEMS.getKey(item);
+    }
+
+    public static ResourceLocation getRegistryName(Block block) {
+        return ForgeRegistries.BLOCKS.getKey(block);
+    }
+
+    public static ResourceLocation getRegistryName(EntityType<?> entity) {
+        return ForgeRegistries.ENTITY_TYPES.getKey(entity);
     }
 }

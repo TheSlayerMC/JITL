@@ -4,8 +4,10 @@ import net.jitl.common.capability.essence.PlayerEssence;
 import net.jitl.common.capability.essence.PlayerEssenceProvider;
 import net.jitl.client.knowledge.PlayerKnowledge;
 import net.jitl.client.knowledge.PlayerKnowledgeProvider;
-import net.jitl.client.stats.PlayerStats;
-import net.jitl.client.stats.PlayerStatsProvider;
+import net.jitl.common.capability.keypressed.PressedKeyCap;
+import net.jitl.common.capability.keypressed.PressedKeyCapProvider;
+import net.jitl.common.capability.stats.PlayerStats;
+import net.jitl.common.capability.stats.PlayerStatsProvider;
 import net.jitl.common.capability.gear.PlayerArmor;
 import net.jitl.common.capability.gear.PlayerArmorProvider;
 import net.jitl.core.init.JITL;
@@ -38,6 +40,9 @@ public class ModEvents {
             if(!player.getCapability(PlayerStatsProvider.PLAYER_STATS).isPresent()) {
                 event.addCapability(new ResourceLocation(JITL.MODID, "player_stats"), new PlayerStatsProvider());
             }
+            if(!player.getCapability(PressedKeyCapProvider.PRESSED_KEY_CAP).isPresent()) {
+                event.addCapability(new ResourceLocation(JITL.MODID, "pressed_keys"), new PressedKeyCapProvider());
+            }
             if(!player.getCapability(PlayerArmorProvider.PLAYER_ARMOR).isPresent()) {
                 event.addCapability(new ResourceLocation(JITL.MODID, "player_armor"), new PlayerArmorProvider());
             }
@@ -49,6 +54,7 @@ public class ModEvents {
         event.register(PlayerEssence.class);
         event.register(PlayerKnowledge.class);
         event.register(PlayerStats.class);
+        event.register(PressedKeyCap.class);
         event.register(PlayerArmor.class);
     }
 
@@ -65,6 +71,10 @@ public class ModEvents {
 
             event.getOriginal().getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(oldStore ->
                     event.getOriginal().getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(newStore ->
+                            newStore.copyFrom(oldStore)));
+
+            event.getOriginal().getCapability(PressedKeyCapProvider.PRESSED_KEY_CAP).ifPresent(oldStore ->
+                    event.getOriginal().getCapability(PressedKeyCapProvider.PRESSED_KEY_CAP).ifPresent(newStore ->
                             newStore.copyFrom(oldStore)));
 
             event.getOriginal().getCapability(PlayerArmorProvider.PLAYER_ARMOR).ifPresent(oldStore ->

@@ -1,6 +1,6 @@
 package net.jitl.common.event;
 
-import net.jitl.client.stats.PlayerStatsProvider;
+import net.jitl.common.capability.stats.PlayerStatsProvider;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.core.init.JITL;
 import net.minecraft.world.entity.player.Player;

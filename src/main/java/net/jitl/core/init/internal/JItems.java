@@ -7,6 +7,14 @@ import net.jitl.common.entity.projectile.FloroMudEntity;
 import net.jitl.common.entity.projectile.PiercerEntity;
 import net.jitl.common.items.*;
 import net.jitl.common.items.base.*;
+import net.jitl.common.items.curios.HeartContainerItem;
+import net.jitl.common.items.curios.JCurioItem;
+import net.jitl.common.items.curios.amulet.CloudwalkingAmuletItem;
+import net.jitl.common.items.curios.amulet.DynasterAmuletItem;
+import net.jitl.common.items.curios.amulet.IceAmuletItem;
+import net.jitl.common.items.curios.catalyst.EssenceCatalystItem;
+import net.jitl.common.items.curios.catalyst.EssenceRegenCatalystItem;
+import net.jitl.common.items.curios.ring.JRingItem;
 import net.jitl.common.items.gear.IAbility;
 import net.jitl.common.items.gear.LuniumAbility;
 import net.jitl.common.items.gear.bloodcrust.BloodcrustArmorAbility;
@@ -18,6 +26,7 @@ import net.jitl.core.helper.JToolTiers;
 import net.jitl.core.init.JITL;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -250,8 +259,34 @@ public class JItems {
     public static final RegistryObject<Item> TERRONIC_BLADE = registerToolItem("terronic_blade", "Terronic Blade", () -> new JSwordItem(JToolTiers.TERRONIC_BLADE, BASIC));
     public static final RegistryObject<Item> DARK_KEEPERS_PLADE = registerToolItem("blade_of_dark_keeper", "Dark Keepers Blade", () -> new JSwordItem(JToolTiers.DARK_KEEPER, BASIC));
     public static final RegistryObject<Item> DEVELOPER_SWORD = registerToolItem("developer_sword", "Creative Sword", () -> new JSwordItem(JToolTiers.DEVELOPER_SWORD, BASIC));
-    
-    
+
+    public static final RegistryObject<Item> EYE_OF_THE_BLIZZARD = registerNormalItem("eye_of_the_blizzard", "Eye Of The Blizzard", () -> new JCurioItem(toolProps().stacksTo(1)).overview(true));
+    public static final RegistryObject<Item> SKULL_OF_DECAY = registerNormalItem("skull_of_decay", "Skull Of Decay", () -> new JCurioItem(toolProps().stacksTo(1).durability(256)).ability(true));
+
+    public static final RegistryObject<Item> HEART_CONTAINER_SMALL = registerNormalItem("heart_container_small", "Heart Container", () -> new HeartContainerItem(toolProps().stacksTo(1)).health(1));
+    public static final RegistryObject<Item> HEART_CONTAINER_MEDIUM = registerNormalItem("heart_container_medium", "Heart Container", () -> new HeartContainerItem(toolProps().stacksTo(1)).health(4));
+    public static final RegistryObject<Item> HEART_CONTAINER_LARGE = registerNormalItem("heart_container_large", "Heart Container", () -> new HeartContainerItem(toolProps().stacksTo(1)).health(8));
+    public static final RegistryObject<Item> HEART_CONTAINER_ULTIMATE = registerNormalItem("heart_container_ultimate", "Heart Container", () -> new HeartContainerItem(toolProps().stacksTo(1)).health(16));
+
+    public static final RegistryObject<Item> RING_OF_POISON = registerNormalItem("ring_of_poison", "Ring of Poison", () -> new JRingItem(toolProps().stacksTo(1)).effect(() -> MobEffects.POISON));
+    public static final RegistryObject<Item> RING_OF_BLINDNESS = registerNormalItem("ring_of_blindness", "Ring of Blindness", () -> new JRingItem(toolProps().stacksTo(1)).effect(() -> MobEffects.BLINDNESS));
+    public static final RegistryObject<Item> RING_OF_HARMING = registerNormalItem("ring_of_harming", "Ring of Harming", () -> new JRingItem(toolProps().stacksTo(1)).effect(() -> MobEffects.HARM));
+    public static final RegistryObject<Item> RING_OF_MINING_FATIGUE = registerNormalItem("ring_of_mining_fatigue", "Ring of Mining Fatigue", () -> new JRingItem(toolProps().stacksTo(1)).effect(() -> MobEffects.DIG_SLOWDOWN));
+    public static final RegistryObject<Item> RING_OF_NAUSEA = registerNormalItem("ring_of_nausea", "Ring of Nausea", () -> new JRingItem(toolProps().stacksTo(1)).effect(() -> MobEffects.CONFUSION));
+    public static final RegistryObject<Item> RING_OF_SLOWNESS = registerNormalItem("ring_of_slowness", "Ring of Slowness", () -> new JRingItem(toolProps().stacksTo(1)).effect(() -> MobEffects.MOVEMENT_SLOWDOWN));
+    public static final RegistryObject<Item> RING_OF_WITHERING = registerNormalItem("ring_of_withering", "Ring of Withering", () -> new JRingItem(toolProps().stacksTo(1)).effect(() -> MobEffects.WITHER));
+
+    public static final RegistryObject<Item> CLOUDWALKING_AMULET = registerNormalItem("cloudwalker_amulet", "Cloudwalker Amulet", () -> new CloudwalkingAmuletItem(toolProps()));
+    public static final RegistryObject<Item> DYNASTER_AMULET = registerNormalItem("dynaster_amulet", "Amulet of the Dynaster", () -> new DynasterAmuletItem(toolProps().stacksTo(1)));
+    public static final RegistryObject<Item> ICE_AMULET = registerNormalItem("ice_amulet", "Amulet of Glacial Bloodlust", () -> new IceAmuletItem(toolProps().stacksTo(1)));
+
+    public static final RegistryObject<Item> VERY_WEAK_ESSENCE_CRYSTAL = registerNormalItem("very_weak_essence_crystal", "Very Weak Essence Crystal", () -> new EssenceCatalystItem(toolProps().stacksTo(1)).essence(1F));
+    public static final RegistryObject<Item> WEAK_ESSENCE_CRYSTAL = registerNormalItem("weak_essence_crystal", "Weak Essence Crystal", () -> new EssenceCatalystItem(toolProps().stacksTo(1)).essence(2.5F));
+    public static final RegistryObject<Item> STRONG_ESSENCE_CRYSTAL = registerNormalItem("strong_essence_crystal", "Strong Essence Crystal", () -> new EssenceCatalystItem(toolProps().stacksTo(1)).essence(5F));
+    public static final RegistryObject<Item> VERY_STRONG_ESSENCE_CRYSTAL = registerNormalItem("very_strong_essence_crystal", "Very Strong Essence Crystal", () -> new EssenceCatalystItem(toolProps().stacksTo(1)).essence(10F));
+
+    public static final RegistryObject<Item> BREATHING_STONE = registerNormalItem("breathing_stone", "Breathing Stone", () -> new EssenceRegenCatalystItem(toolProps().stacksTo(1)).speed(0.0112F));
+
     public static final RegistryObject<Item> MAGE_EGG = register("mage_spawn_egg", "Mage Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.MAGE_TYPE,
             OVERWORLD_COLOR, TRADER_COLOR, eggProps()), ItemType.SPAWN_EGG);
 

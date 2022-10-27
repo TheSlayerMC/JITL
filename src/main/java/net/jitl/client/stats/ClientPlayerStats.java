@@ -1,5 +1,6 @@
 package net.jitl.client.stats;
 
+import net.jitl.common.capability.stats.PlayerStatsProvider;
 import net.minecraft.client.Minecraft;
 
 public class ClientPlayerStats {

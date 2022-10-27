@@ -1,4 +1,4 @@
-package net.jitl.client.stats;
+package net.jitl.common.capability.keypressed;
 
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -11,23 +11,23 @@ import net.minecraftforge.common.util.LazyOptional;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class PlayerStatsProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
+public class PressedKeyCapProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
 
-    public static Capability<PlayerStats> PLAYER_STATS = CapabilityManager.get(new CapabilityToken<>() { });
+    public static Capability<PressedKeyCap> PRESSED_KEY_CAP = CapabilityManager.get(new CapabilityToken<>() { });
 
-    private PlayerStats stats = null;
-    private final LazyOptional<PlayerStats> optional = LazyOptional.of(this::createPlayerStats);
+    private PressedKeyCap keyCap = null;
+    private final LazyOptional<PressedKeyCap> optional = LazyOptional.of(this::createPressedKeyCap);
 
-    private @NotNull PlayerStats createPlayerStats() {
-        if(this.stats == null) {
-            this.stats = new PlayerStats();
+    private @NotNull PressedKeyCap createPressedKeyCap() {
+        if(this.keyCap == null) {
+            this.keyCap = new PressedKeyCap();
         }
-        return this.stats;
+        return this.keyCap;
     }
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if(cap == PLAYER_STATS) {
+        if(cap == PRESSED_KEY_CAP) {
             return optional.cast();
         }
         return LazyOptional.empty();
@@ -36,12 +36,12 @@ public class PlayerStatsProvider implements ICapabilityProvider, INBTSerializabl
     @Override
     public CompoundTag serializeNBT() {
         CompoundTag tag = new CompoundTag();
-        createPlayerStats().saveNBT(tag);
+        createPressedKeyCap().saveNBT(tag);
         return tag;
     }
 
     @Override
     public void deserializeNBT(CompoundTag nbt) {
-        createPlayerStats().readNBT(nbt);
+        createPressedKeyCap().readNBT(nbt);
     }
 }
