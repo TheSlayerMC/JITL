@@ -1,10 +1,7 @@
 package net.jitl.core.init.internal;
 
 import net.jitl.common.entity.base.JBoat;
-import net.jitl.common.entity.projectile.ConjuringProjectileEntity;
-import net.jitl.common.entity.projectile.EssenciaProjectileEntity;
-import net.jitl.common.entity.projectile.FloroMudEntity;
-import net.jitl.common.entity.projectile.PiercerEntity;
+import net.jitl.common.entity.projectile.*;
 import net.jitl.common.items.*;
 import net.jitl.common.items.base.*;
 import net.jitl.common.items.curios.HeartContainerItem;
@@ -308,6 +305,24 @@ public class JItems {
 
     public static final RegistryObject<Item> PIERCER = registerToolItem("piercer", "Piercer", () ->
             new PiercerItem(rangedProps().durability(128), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 3.0F)));
+
+    public static final RegistryObject<Item> MOLTEN_KNIFE = registerToolItem("molten_knife", "Molten Knife", () ->
+            new KnifeItem(rangedProps(), (worldIn, owner, stack) ->  new KnifeEntity(worldIn, owner, stack, 10.0F)));
+
+    public static final RegistryObject<Item> IRON_THROWING_KNIFE = registerToolItem("iron_throwing_knife", "Iron Throwing Knife", () ->
+            new KnifeItem(rangedProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
+
+    public static final RegistryObject<Item> ROYAL_KNIFE = registerToolItem("royal_knife", "Royal Knife", () ->
+            new KnifeItem(rangedProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
+
+    public static final RegistryObject<Item> AQUATIC_KNIFE = registerToolItem("aquatic_throwing_knife", "Aquatic Knife", () ->
+            new KnifeItem(rangedProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
+
+    public static final RegistryObject<Item> CHARRED_KNIFE = registerToolItem("charred_throwing_knife", "Charred Knife", () ->
+            new KnifeItem(rangedProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
+
+    public static final RegistryObject<Item> BLOOD_KNIFE = registerToolItem("blood_throwing_knife", "Blood Knife", () ->
+            new KnifeItem(rangedProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
 
     public static final RegistryObject<Item> MUD_BALL = registerNormalItem("mud_ball", "Mud Ball", () -> new ThrowableItem(rangedProps(),
             (world, thrower) -> new FloroMudEntity(JEntities.FLORO_MUD_TYPE.get(), world, thrower, 0.0F)).setSound(() -> SoundEvents.SNOWBALL_THROW));

@@ -64,6 +64,12 @@ public class JEntities {
                             .setShouldReceiveVelocityUpdates(true)
                             .sized(0.5F, 0.5F).build("piercer"));
 
+    public static final RegistryObject<EntityType<KnifeEntity>> KNIFE_TYPE = REGISTRY.register("knife", () ->
+            EntityType.Builder.<KnifeEntity>of(KnifeEntity::new, MobCategory.MISC)
+                    .setTrackingRange(80)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .sized(0.5F, 0.5F).build("knife"));
+
     public static final RegistryObject<EntityType<EssenciaBoltEntity>> ESSENCIA_BOLT_TYPE = REGISTRY.register("essencia_bolt", () ->
             EntityType.Builder.of(EssenciaBoltEntity::new, MobCategory.MISC)
                     .sized(0.25F, 0.25F).build("essencia_bolt"));

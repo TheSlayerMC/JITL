@@ -30,6 +30,7 @@ public class RenderEntitys {
 
         event.registerEntityRenderer(JEntities.ESSENCIA_BOLT_TYPE.get(), EssenciaBoltRenderer::new);
         event.registerEntityRenderer(JEntities.PIERCER_TYPE.get(), manager -> new PiercerRenderer(manager, Minecraft.getInstance().getItemRenderer()));
+        event.registerEntityRenderer(JEntities.KNIFE_TYPE.get(), manager -> new KnifeRenderer(manager, Minecraft.getInstance().getItemRenderer()));
 
         event.registerEntityRenderer(JEntities.JBOAT_TYPE.get(), JBoatRenderer::new);
 
