@@ -146,7 +146,6 @@ public class JItems {
     public static final RegistryObject<Item> FREEZING_TABLET = registerNormalItem("freezing_tablet", "Freezing Tablet");
 
     public static final RegistryObject<Item> SIZZLING_EYE = registerNormalItem("sizzling_eye", "Sizzling Eye");
-    public static final RegistryObject<Item> SKULL_OF_DECAY = registerNormalItem("skull_of_decay", "Skull Of Decay");
     public static final RegistryObject<Item> WITHIC_DUST = registerNormalItem("withic_dust", "Withic Dust");
     public static final RegistryObject<Item> WITHIC_SOUL = registerNormalItem("withic_soul", "Withic Soul");
     public static final RegistryObject<Item> BALMY_TEARDROP = registerNormalItem("balmy_teardrop", "Balmy Teardrop");
