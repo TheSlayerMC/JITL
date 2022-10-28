@@ -315,13 +315,13 @@ public class JItems {
     public static final RegistryObject<Item> ROYAL_KNIFE = registerToolItem("royal_knife", "Royal Knife", () ->
             new KnifeItem(rangedProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
 
-    public static final RegistryObject<Item> AQUATIC_KNIFE = registerToolItem("aquatic_throwing_knife", "Aquatic Knife", () ->
+    public static final RegistryObject<Item> AQUATIC_KNIFE = registerToolItem("aquatic_knife", "Aquatic Knife", () ->
             new KnifeItem(rangedProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
 
-    public static final RegistryObject<Item> CHARRED_KNIFE = registerToolItem("charred_throwing_knife", "Charred Knife", () ->
+    public static final RegistryObject<Item> CHARRED_KNIFE = registerToolItem("charred_knife", "Charred Knife", () ->
             new KnifeItem(rangedProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
 
-    public static final RegistryObject<Item> BLOOD_KNIFE = registerToolItem("blood_throwing_knife", "Blood Knife", () ->
+    public static final RegistryObject<Item> BLOOD_KNIFE = registerToolItem("blood_knife", "Blood Knife", () ->
             new KnifeItem(rangedProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
 
     public static final RegistryObject<Item> MUD_BALL = registerNormalItem("mud_ball", "Mud Ball", () -> new ThrowableItem(rangedProps(),
