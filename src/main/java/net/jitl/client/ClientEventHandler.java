@@ -21,7 +21,6 @@ public class ClientEventHandler {
         forgeBus.addListener(ClientEventHandler::onFogDensityEvent);
     }
 
-    //TODO: add compat with eye of the blizzard
     public static void onFogDensityEvent(ViewportEvent.RenderFog event) {
         float farPlaneDistance = event.getFarPlaneDistance();
         Player player = Minecraft.getInstance().player;
@@ -29,10 +28,7 @@ public class ClientEventHandler {
         if (player.level.dimension() == Dimensions.FROZEN_LANDS) {
             player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
                 float density;
-                if(stats.hasBlizzard()) {
-                    density = 0.55F;
-                }
-                if(CuriosApi.getCuriosHelper().findFirstCurio(player, JItems.EYE_OF_THE_BLIZZARD.get()).isPresent()) {
+                if(stats.hasBlizzard() || CuriosApi.getCuriosHelper().findFirstCurio(player, JItems.EYE_OF_THE_BLIZZARD.get()).isPresent()) {
                     density = 0.55F;
                 } else {
                     density = 0.1F;
