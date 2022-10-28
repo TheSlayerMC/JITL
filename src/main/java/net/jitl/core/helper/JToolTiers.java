@@ -136,7 +136,9 @@ public enum JToolTiers {
     FLUFFY_BLADE(JToolTier.FLUFFY_BLADE, 4, 0),
     DARK_KEEPER(JToolTier.DARK_KEEPER, 4, 0),
 
-    DEVELOPER_SWORD(JToolTier.DEVELOPER_SWORD, 1000, 0)
+    DEVELOPER_SWORD(JToolTier.DEVELOPER_SWORD, 1000, 0),
+
+    THROWING_KNIFE(JToolTier.THROWING_KNIFE, 3, 0)
     ;
 
     private final Tier tier;
@@ -226,6 +228,8 @@ public enum JToolTiers {
         public static final Tier DARK_KEEPER = new ForgeTier(3, 3000, 8F, 3F, 25, null, () -> null);
 
         public static final Tier DEVELOPER_SWORD = new ForgeTier(3, 3000, 8F, 1000F, 25, null, () -> null);
+        public static final Tier THROWING_KNIFE = new ForgeTier(2, 100, 3F, 2F, 25, null, () -> null);
+
     }
 
     public static class JArmorTier {

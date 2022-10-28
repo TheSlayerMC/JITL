@@ -2,6 +2,9 @@ package net.jitl.common.items;
 
 import com.mojang.datafixers.util.Function3;
 import net.jitl.common.entity.projectile.KnifeEntity;
+import net.jitl.common.items.base.JSwordItem;
+import net.jitl.core.helper.JToolTiers;
+import net.jitl.core.init.internal.JItems;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -10,16 +13,16 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public class KnifeItem extends Item {
+public class KnifeItem extends JSwordItem {
+
     protected Function3<LivingEntity, Level, ItemStack, KnifeEntity> projectileFactory;
 
     public KnifeItem(Properties properties, Function3<LivingEntity, Level, ItemStack, KnifeEntity> projectileFactory) {
-        super(properties);
+        super(JToolTiers.THROWING_KNIFE, JItems.BASIC, properties);
         this.projectileFactory = projectileFactory;
     }
 

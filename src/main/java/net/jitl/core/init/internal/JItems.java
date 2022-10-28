@@ -40,7 +40,7 @@ public class JItems {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, JITL.MODID);
 
-    private static final IAbility BASIC = new IAbility() {};
+    public static final IAbility BASIC = new IAbility() {};
     private static final IAbility LUNIUM_ABILITY = new LuniumAbility();
     private static final IAbility MEKYUM_SWORD_ABILITY = new MekyumSwordAbility();
     private static final IAbility KORITE_SWORD_ABILITY = new KoriteSwordAbility();

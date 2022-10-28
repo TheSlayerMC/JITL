@@ -24,6 +24,11 @@ public class JSwordItem extends SwordItem implements JGear {
         ability = swordAbility;
     }
 
+    public JSwordItem(JToolTiers tier, IAbility swordAbility, Properties p) {
+        super(tier.getTier(), tier.getDamage(), tier.getSpeedModifier(), p);
+        ability = swordAbility;
+    }
+
     @Override
     public IAbility getAbility() {
         return ability;
