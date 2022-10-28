@@ -24,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class KnifeEntity extends AbstractKnifeEntity implements ItemSupplier {
     private static final EntityDataAccessor<ItemStack> STACK = SynchedEntityData.defineId(KnifeEntity.class, EntityDataSerializers.ITEM_STACK);
-
+    private int durability;
     public KnifeEntity(EntityType<KnifeEntity> type, Level world) {
         super(type, world);
     }
@@ -81,12 +81,14 @@ public class KnifeEntity extends AbstractKnifeEntity implements ItemSupplier {
     @Override
     public void addAdditionalSaveData(@NotNull CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
+        nbt.putInt("dur", getStack().getDamageValue());
         nbt.put("stack", getStack().save(new CompoundTag()));
     }
 
     @Override
     public void readAdditionalSaveData(@NotNull CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
+        durability = nbt.getInt("dur");
         setStack(ItemStack.of(nbt.getCompound("stack")));
         if(getStack().isEmpty()) remove(RemovalReason.DISCARDED);
     }
@@ -101,7 +103,9 @@ public class KnifeEntity extends AbstractKnifeEntity implements ItemSupplier {
 
     @Override
     public @NotNull Item pickupItem() {
-        return getStack().copy().getItem();
+        ItemStack item = getStack().copy();
+        item.setDamageValue(durability);
+        return item.getItem();
     }
 
     @Override

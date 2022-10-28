@@ -30,29 +30,27 @@ public abstract class AbstractKnifeEntity extends AbstractArrow {
     @OnlyIn(Dist.CLIENT)
     public void onClientTick() { }
 
+    @Override
     public void tick() {
-        if (this.inGroundTime > 4) {
+        if(this.inGroundTime > 4) {
             this.dealtDamage = true;
         }
-
         Entity entity = this.getOwner();
         if((this.dealtDamage || this.isNoPhysics()) && entity != null) {
-            if(!this.isAcceptibleReturnOwner()) {
+            if(!this.isAcceptableReturnOwner()) {
                 if(!this.level.isClientSide && this.pickup == Pickup.ALLOWED) {
                     this.spawnAtLocation(this.getPickupItem(), 0.1F);
                 }
                 this.remove(RemovalReason.DISCARDED);
             }
         }
-
         if(level.isClientSide) {
             onClientTick();
         }
-
         super.tick();
     }
 
-    private boolean isAcceptibleReturnOwner() {
+    private boolean isAcceptableReturnOwner() {
         Entity entity = this.getOwner();
         if (entity != null && entity.isAlive()) {
             return !(entity instanceof ServerPlayer) || !entity.isSpectator();
