@@ -20,7 +20,7 @@ public class DimensionWeatherHandler {
         Level level = event.player.level;
         player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
             if (level.dimension() == Dimensions.FROZEN_LANDS) {
-                if(stats.hasBlizzard() || CuriosApi.getCuriosHelper().findFirstCurio(player, JItems.EYE_OF_THE_BLIZZARD.get()).isPresent()) {
+                if(stats.hasBlizzard()) {
                     level.setRainLevel(0.0F);
                 } else {
                     level.setRainLevel(5.0F);
