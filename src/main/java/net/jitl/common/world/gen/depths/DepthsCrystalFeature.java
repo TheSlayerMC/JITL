@@ -48,7 +48,6 @@ public class DepthsCrystalFeature extends Feature<NoneFeatureConfiguration> {
                             if(blockstate.isAir() && above == JBlocks.DEPTHS_STONE.get().defaultBlockState()) {
                                 if(rand.nextInt(4) == 0) {
                                     this.setBlock(reader, pos1.offset(i1, k, j1), JBlocks.DEPTHS_CRYSTAL.get().defaultBlockState().setValue(AttachedBlock.FACING, Direction.DOWN));
-                                    System.out.println("GEN:" + pos1);
                                 }
                             }
                         }
