@@ -3,6 +3,7 @@ package net.jitl.core.init.internal;
 import net.jitl.common.block.entity.GrindstoneEntity;
 import net.jitl.common.block.entity.JChestBlockEntity;
 import net.jitl.common.block.entity.JFurnaceTile;
+import net.jitl.common.block.entity.JSpawnerBlockEntity;
 import net.jitl.core.init.JITL;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.CampfireBlockEntity;
@@ -21,6 +22,10 @@ public class JBlockEntities {
             () -> BlockEntityType.Builder.of(JChestBlockEntity::new,
                     JBlocks.JOURNEY_CHEST.get(), JBlocks.EUCA_CHEST.get(), JBlocks.BOIL_CHEST.get(), JBlocks.FROZEN_CHEST.get(),
                     JBlocks.NETHER_CHEST.get(), JBlocks.DEPTHS_CHEST.get(), JBlocks.CORBA_CHEST.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<JSpawnerBlockEntity>> JSPAWNER = REGISTRY.register("jspawner",
+            () -> BlockEntityType.Builder.of(JSpawnerBlockEntity::new,
+                    JBlocks.GOLD_BOT_SPAWNER.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<CampfireBlockEntity>> CAMPFIRE = REGISTRY.register("campfire",
             () -> BlockEntityType.Builder.of(CampfireBlockEntity::new, JBlocks.BITTERWOOD_CAMPFIRE.get()).build(null));
