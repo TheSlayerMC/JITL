@@ -1,0 +1,50 @@
+package net.jitl.client;
+
+import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.JBlocks;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.color.block.BlockColor;
+import net.minecraft.client.color.block.BlockColors;
+import net.minecraft.client.color.item.ItemColor;
+import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+@Mod.EventBusSubscriber(modid = JITL.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+public class JBlockColours implements BlockColor, ItemColor {
+
+    public static final JBlockColours BLOCK_COLOUR_INSTANCE = new JBlockColours();
+    public static final JBlockColours ITEM_COLOUR_INSTANCE = new JBlockColours();
+    public int CORBA_SWAMP = 0x6daa2c;
+
+    @Override
+    public int getColor(@NotNull BlockState pState, @Nullable BlockAndTintGetter pLevel, @Nullable BlockPos pPos, int pTintIndex) {
+        assert pLevel != null;
+        return BiomeColors.getAverageGrassColor(pLevel, pPos);
+    }
+
+    @Override
+    public int getColor(@NotNull ItemStack pStack, int pTintIndex) {
+        return CORBA_SWAMP;
+    }
+
+    @SubscribeEvent
+    public static void registerBlockColours(RegisterColorHandlersEvent.Block event) {
+        event.register(BLOCK_COLOUR_INSTANCE,
+                JBlocks.CORBA_GRASS.get());
+    }
+
+    @SubscribeEvent
+    public static void registerItemColours(RegisterColorHandlersEvent.Item event) {
+        event.register(ITEM_COLOUR_INSTANCE,
+                JBlocks.CORBA_GRASS.get());
+    }
+}

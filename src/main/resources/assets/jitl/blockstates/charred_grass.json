@@ -1,7 +1,21 @@
 {
   "variants": {
-  "": {
-      "model": "jitl:block/charred_grass"
-     }
+    "": [
+      {
+        "model": "jitl:block/charred_grass"
+      },
+      {
+        "model": "jitl:block/charred_grass",
+         "y": 90
+      },
+      {
+        "model": "jitl:block/charred_grass",
+         "y": 180
+      },
+      {
+        "model": "jitl:block/charred_grass",
+         "y": 270
+      }
+    ]
   }
 }

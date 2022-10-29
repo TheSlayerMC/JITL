@@ -1,7 +1,21 @@
 {
   "variants": {
-  "": {
-      "model": "jitl:block/goldite_grass"
-     }
+    "": [
+      {
+        "model": "jitl:block/goldite_grass"
+      },
+      {
+        "model": "jitl:block/goldite_grass",
+         "y": 90
+      },
+      {
+        "model": "jitl:block/goldite_grass",
+         "y": 180
+      },
+      {
+        "model": "jitl:block/goldite_grass",
+         "y": 270
+      }
+    ]
   }
 }

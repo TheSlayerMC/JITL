@@ -59,6 +59,8 @@ public class JBlocks {
     public static final ArrayList<String> attachedCrossLangName = new ArrayList<>();
     public static final ArrayList<String> grassBlockName = new ArrayList<>();
     public static final ArrayList<String> grassLangName = new ArrayList<>();
+    public static final ArrayList<String> overlayGrassBlockName = new ArrayList<>();
+    public static final ArrayList<String> overlayGrassLangName = new ArrayList<>();
     public static final ArrayList<String> portalBlockName = new ArrayList<>();
     public static final ArrayList<String> portalLangName = new ArrayList<>();
     public static final ArrayList<String> chestBlockName = new ArrayList<>();
@@ -349,6 +351,9 @@ public class JBlocks {
     public static final RegistryObject<Block> DEPTHS_BLUE_FLOWER = registerCrossBlock("depths_blue_flower", "Depths Blue Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> DEPTHS_FLOWER = registerCrossBlock("depths_flower", "Depths Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
 
+    public static final RegistryObject<Block> CORBA_GRASS = registerOverlayGrassBlock("corba_grass", "Corba Grass", () -> new JGrassBlock(RUBBLE));
+
+
     public static final RegistryObject<Block> GRINDSTONE = registerModeledBlock("grindstone", "Grindstone", JGrindstoneBlock::new);
 
     public static final RegistryObject<Block> JOURNEY_CHEST = registerChestBlock("journey_chest", "Journey Chest", JChestBlock::new);
@@ -426,6 +431,14 @@ public class JBlocks {
     public static RegistryObject<Block> registerGrassBlock(String name, String translatedName, Supplier<Block> block) {
         grassBlockName.add(name);
         grassLangName.add(translatedName);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerOverlayGrassBlock(String name, String translatedName, Supplier<Block> block) {
+        overlayGrassBlockName.add(name);
+        overlayGrassLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
         JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
         return block1;

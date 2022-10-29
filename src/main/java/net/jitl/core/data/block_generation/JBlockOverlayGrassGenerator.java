@@ -8,12 +8,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class JBlockGrassGenerator {
+public class JBlockOverlayGrassGenerator {
 
     protected BufferedWriter blockModelWriter, blockstateWriter, itemModelWriter;
 
     public void generate() {
-        for(String name : JBlocks.grassBlockName) {
+        for(String name : JBlocks.overlayGrassBlockName) {
             String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
             String blockModelDir = "../src/main/resources/assets/jitl/models/block/" + name + ".json";
             String blockstateDir = "../src/main/resources/assets/jitl/blockstates/" + name + ".json";
@@ -54,15 +54,13 @@ public class JBlockGrassGenerator {
 
     public void getBlockModel(String modID, String name) {
         writeToBlockModelFile("{");
-        writeToBlockModelFile("  \"parent\": \"minecraft:block/cube\",");
+        writeToBlockModelFile("  \"parent\": \"minecraft:block/grass_block\",");
         writeToBlockModelFile("  \"textures\": {");
-        writeToBlockModelFile("    \"up\": \"" + modID + ":" + "block/" + name + "_top\",");
-        writeToBlockModelFile("    \"north\": \"" + modID + ":" + "block/" + name + "_side\",");
-        writeToBlockModelFile("    \"east\": \"" + modID + ":" + "block/" + name + "_side\",");
-        writeToBlockModelFile("    \"south\": \"" + modID + ":" + "block/" + name + "_side\",");
-        writeToBlockModelFile("    \"west\": \"" + modID + ":" + "block/" + name + "_side\",");
-        writeToBlockModelFile("    \"down\": \"" + modID + ":" + "block/" + name + "_bottom\",");
-        writeToBlockModelFile("    \"particle\": \"" + modID + ":" + "block/" + name + "_bottom\"");
+        writeToBlockModelFile("    \"particle\": \"" + modID + ":" + "block/" + name + "_bottom\",");
+        writeToBlockModelFile("    \"bottom\": \"" + modID + ":" + "block/" + name + "_bottom\",");
+        writeToBlockModelFile("    \"top\": \"" + modID + ":" + "block/" + name + "_top\",");
+        writeToBlockModelFile("    \"side\": \"" + modID + ":" + "block/" + name + "_side\",");
+        writeToBlockModelFile("    \"overlay\": \"" + modID + ":" + "block/" + name + "_side_overlay\"");
         writeToBlockModelFile("  }");
         writeToBlockModelFile("}");
 

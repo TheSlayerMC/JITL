@@ -1,7 +1,21 @@
 {
   "variants": {
-  "": {
-      "model": "jitl:block/volcanic_sandstone"
-     }
+    "": [
+      {
+        "model": "jitl:block/volcanic_sandstone"
+      },
+      {
+        "model": "jitl:block/volcanic_sandstone",
+         "y": 90
+      },
+      {
+        "model": "jitl:block/volcanic_sandstone",
+         "y": 180
+      },
+      {
+        "model": "jitl:block/volcanic_sandstone",
+         "y": 270
+      }
+    ]
   }
 }
