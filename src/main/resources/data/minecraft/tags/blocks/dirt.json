@@ -13,6 +13,10 @@
     "jitl:hot_ground",
     "jitl:charred_grass",
     "jitl:depths_grass",
-    "jitl:depths_dirt"
+    "jitl:depths_dirt",
+    "jitl:corba_grass",
+    "jitl:corba_dirt",
+    "jitl:dried_mud",
+    "jitl:tainted_mud"
   ]
 }

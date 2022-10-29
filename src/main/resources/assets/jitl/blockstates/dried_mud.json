@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "jitl:block/dried_mud"
+      },
+      {
+        "model": "jitl:block/dried_mud",
+         "y": 90
+      },
+      {
+        "model": "jitl:block/dried_mud",
+         "y": 180
+      },
+      {
+        "model": "jitl:block/dried_mud",
+         "y": 270
+      }
+    ]
+  }
+}
