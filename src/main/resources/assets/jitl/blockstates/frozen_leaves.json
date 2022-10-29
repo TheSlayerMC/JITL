@@ -1,7 +1,21 @@
 {
   "variants": {
-  "": {
-      "model": "jitl:block/frozen_leaves"
-     }
+    "": [
+      {
+        "model": "jitl:block/frozen_leaves"
+      },
+      {
+        "model": "jitl:block/frozen_leaves",
+         "y": 90
+      },
+      {
+        "model": "jitl:block/frozen_leaves",
+         "y": 180
+      },
+      {
+        "model": "jitl:block/frozen_leaves",
+         "y": 270
+      }
+    ]
   }
 }

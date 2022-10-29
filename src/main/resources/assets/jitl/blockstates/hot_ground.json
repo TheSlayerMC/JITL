@@ -1,7 +1,21 @@
 {
   "variants": {
-  "": {
-      "model": "jitl:block/hot_ground"
-     }
+    "": [
+      {
+        "model": "jitl:block/hot_ground"
+      },
+      {
+        "model": "jitl:block/hot_ground",
+         "y": 90
+      },
+      {
+        "model": "jitl:block/hot_ground",
+         "y": 180
+      },
+      {
+        "model": "jitl:block/hot_ground",
+         "y": 270
+      }
+    ]
   }
 }

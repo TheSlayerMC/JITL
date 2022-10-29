@@ -1,7 +1,21 @@
 {
   "variants": {
-  "": {
-      "model": "jitl:block/volcanic_soil"
-     }
+    "": [
+      {
+        "model": "jitl:block/volcanic_soil"
+      },
+      {
+        "model": "jitl:block/volcanic_soil",
+         "y": 90
+      },
+      {
+        "model": "jitl:block/volcanic_soil",
+         "y": 180
+      },
+      {
+        "model": "jitl:block/volcanic_soil",
+         "y": 270
+      }
+    ]
   }
 }

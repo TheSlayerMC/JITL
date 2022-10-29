@@ -1,7 +1,21 @@
 {
   "variants": {
-  "": {
-      "model": "jitl:block/scorched_rubble"
-     }
+    "": [
+      {
+        "model": "jitl:block/scorched_rubble"
+      },
+      {
+        "model": "jitl:block/scorched_rubble",
+         "y": 90
+      },
+      {
+        "model": "jitl:block/scorched_rubble",
+         "y": 180
+      },
+      {
+        "model": "jitl:block/scorched_rubble",
+         "y": 270
+      }
+    ]
   }
 }

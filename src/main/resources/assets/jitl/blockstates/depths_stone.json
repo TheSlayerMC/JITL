@@ -1,7 +1,21 @@
 {
   "variants": {
-  "": {
-      "model": "jitl:block/depths_stone"
-     }
+    "": [
+      {
+        "model": "jitl:block/depths_stone"
+      },
+      {
+        "model": "jitl:block/depths_stone",
+         "y": 90
+      },
+      {
+        "model": "jitl:block/depths_stone",
+         "y": 180
+      },
+      {
+        "model": "jitl:block/depths_stone",
+         "y": 270
+      }
+    ]
   }
 }

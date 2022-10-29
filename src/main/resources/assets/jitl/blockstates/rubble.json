@@ -1,7 +1,21 @@
 {
   "variants": {
-  "": {
-      "model": "jitl:block/rubble"
-     }
+    "": [
+      {
+        "model": "jitl:block/rubble"
+      },
+      {
+        "model": "jitl:block/rubble",
+         "y": 90
+      },
+      {
+        "model": "jitl:block/rubble",
+         "y": 180
+      },
+      {
+        "model": "jitl:block/rubble",
+         "y": 270
+      }
+    ]
   }
 }

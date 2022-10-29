@@ -1,7 +1,21 @@
 {
   "variants": {
-  "": {
-      "model": "jitl:block/ash_block"
-     }
+    "": [
+      {
+        "model": "jitl:block/ash_block"
+      },
+      {
+        "model": "jitl:block/ash_block",
+         "y": 90
+      },
+      {
+        "model": "jitl:block/ash_block",
+         "y": 180
+      },
+      {
+        "model": "jitl:block/ash_block",
+         "y": 270
+      }
+    ]
   }
 }

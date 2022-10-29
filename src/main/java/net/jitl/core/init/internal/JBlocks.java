@@ -59,6 +59,8 @@ public class JBlocks {
     public static final ArrayList<String> attachedCrossLangName = new ArrayList<>();
     public static final ArrayList<String> grassBlockName = new ArrayList<>();
     public static final ArrayList<String> grassLangName = new ArrayList<>();
+    public static final ArrayList<String> terrainBlockName = new ArrayList<>();
+    public static final ArrayList<String> terrainLangName = new ArrayList<>();
     public static final ArrayList<String> overlayGrassBlockName = new ArrayList<>();
     public static final ArrayList<String> overlayGrassLangName = new ArrayList<>();
     public static final ArrayList<String> portalBlockName = new ArrayList<>();
@@ -177,8 +179,8 @@ public class JBlocks {
 
     public static final RegistryObject<Block> EUCA_PORTAL_FRAME = register("euca_portal_frame", "Euca Portal Frame", JBlockProperties.STONE);
     public static final RegistryObject<JBasePortalBlock> EUCA_PORTAL = registerPortalBlock("euca_portal", "Euca Portal", () -> new JBasePortalBlock(Dimensions.EUCA, EUCA_PORTAL_FRAME));
-    public static final RegistryObject<Block> GOLDITE_DIRT = register("goldite_dirt", "Goldite Soil", JBlockProperties.DIRT);
-    public static final RegistryObject<Block> GOLDITE_STONE = register("goldite_stone", "Goldite Stone", JBlockProperties.STONE);
+    public static final RegistryObject<Block> GOLDITE_DIRT = registerTerrainBlock("goldite_dirt", "Goldite Soil", JBlockProperties.DIRT);
+    public static final RegistryObject<Block> GOLDITE_STONE = registerTerrainBlock("goldite_stone", "Goldite Stone", JBlockProperties.STONE);
     public static final RegistryObject<Block> GOLDITE_COBBLESTONE = register("goldite_cobblestone", "Goldite Cobblestone", JBlockProperties.STONE);
     public static final RegistryObject<Block> EUCA_BRICK = register("euca_brick", "Euca Bricks", JBlockProperties.STONE);
     public static final RegistryObject<Block> EUCA_DUNGEON_BRICKS = register("euca_dungeon_brick", "Euca Dungeon Bricks", JBlockProperties.DUNGEON_BLOCK);
@@ -203,7 +205,7 @@ public class JBlocks {
     public static final RegistryObject<Block> EUCA_GOLD_GRASS = registerGrassBlock("euca_gold_grass", "Euca Gold Grass", () -> new JGrassBlock(GOLDITE_DIRT));
     public static final RegistryObject<Block> GOLDITE_GRASS = registerGrassBlock("goldite_grass", "Goldite Grass", () -> new JGrassBlock(GOLDITE_DIRT));
     public static final RegistryObject<RotatedPillarBlock> EUCA_GOLD_LOG = registerPillar("euca_gold_log", "Euca Gold Log", true, JBlockProperties.WOOD);
-    public static final RegistryObject<Block> EUCA_GOLD_LEAVES = register("euca_gold_leaves", "Euca Gold Leaves", JBlockProperties.LEAVES);//JLeavesBlock::new);
+    public static final RegistryObject<Block> EUCA_GOLD_LEAVES = registerTerrainBlock("euca_gold_leaves", "Euca Gold Leaves", JBlockProperties.LEAVES);//JLeavesBlock::new);
     public static final RegistryObject<Block> EUCA_GOLD_SAPLING = registerCrossBlock("euca_gold_sapling", "Euca Gold Sapling", () -> new JSaplingBlock(new EucaGoldTreeGrower()));
     public static final RegistryObject<Block> EUCA_GOLD_PLANKS = registerFuelBlock("euca_gold_planks", "Euca Gold Planks", JBlockProperties.WOOD, 300);
     public static final RegistryObject<DoorBlock> EUCA_GOLD_DOOR = registerDoor("euca_gold_door", "Euca Gold Door", true, JBlockProperties.DOOR);
@@ -216,7 +218,7 @@ public class JBlocks {
     public static final RegistryObject<JFenceBlock> EUCA_GOLD_FENCE = registerFence("euca_gold_fence", "Euca Gold Fence", true, JBlockProperties.WOOD);
 
     public static final RegistryObject<RotatedPillarBlock> EUCA_BROWN_LOG = registerPillar("euca_brown_log", "Euca Brown Log", true, JBlockProperties.WOOD);
-    public static final RegistryObject<Block> EUCA_GREEN_LEAVES = register("euca_green_leaves", "Euca Green Leaves", JBlockProperties.LEAVES);// JLeavesBlock::new);
+    public static final RegistryObject<Block> EUCA_GREEN_LEAVES = registerTerrainBlock("euca_green_leaves", "Euca Green Leaves", JBlockProperties.LEAVES);// JLeavesBlock::new);
     public static final RegistryObject<Block> EUCA_GREEN_SAPLING = registerCrossBlock("euca_green_sapling", "Euca Green Sapling", () -> new JSaplingBlock(new EucaGreenTreeGrower()));
     public static final RegistryObject<Block> EUCA_BROWN_PLANKS = registerFuelBlock("euca_brown_planks", "Euca Brown Planks", JBlockProperties.WOOD, 300);
     public static final RegistryObject<DoorBlock> EUCA_BROWN_DOOR = registerDoor("euca_brown_door", "Euca Brown Door", true, JBlockProperties.DOOR);
@@ -233,10 +235,10 @@ public class JBlocks {
     public static final RegistryObject<Block> FUMICE = register("fumice", "Fumice", JBlockProperties.DIRT);
     public static final RegistryObject<Block> GRASSY_PERMAFROST = registerGrassBlock("grassy_permafrost", "Grassy Permafrost", () -> new Block(JBlockProperties.GRASS));
 
-    public static final RegistryObject<Block> PERMAFROST = register("permafrost", "Permafrost", JBlockProperties.STONE);
-    public static final RegistryObject<Block> CRUMBLED_PERMAFROST = register("crumbled_permafrost", "Crumbled Permafrost", JBlockProperties.STONE);
+    public static final RegistryObject<Block> PERMAFROST = registerTerrainBlock("permafrost", "Permafrost", JBlockProperties.STONE);
+    public static final RegistryObject<Block> CRUMBLED_PERMAFROST = registerTerrainBlock("crumbled_permafrost", "Crumbled Permafrost", JBlockProperties.STONE);
     public static final RegistryObject<RotatedPillarBlock> FROZEN_LOG = registerPillar("frozen_log", "Frozen Log", true, JBlockProperties.WOOD);
-    public static final RegistryObject<Block> FROZEN_LEAVES = register("frozen_leaves", "Frozen Leaves", JBlockProperties.LEAVES);
+    public static final RegistryObject<Block> FROZEN_LEAVES = registerTerrainBlock("frozen_leaves", "Frozen Leaves", JBlockProperties.LEAVES);
     public static final RegistryObject<Block> FROSTWOOD_SAPLING = registerCrossBlock("frostwood_sapling", "Frostwood Sapling", () -> new JSaplingBlock(new EucaGreenTreeGrower()));
     public static final RegistryObject<Block> FROZEN_PLANKS = registerFuelBlock("frozen_planks", "Frostwood Planks", JBlockProperties.WOOD, 300);
     public static final RegistryObject<DoorBlock> FROZEN_DOOR = registerDoor("frozen_door", "Frostwood Door", true, JBlockProperties.DOOR);
@@ -275,12 +277,12 @@ public class JBlocks {
     public static final RegistryObject<Block> SULPHUR_CRYSTAL = registerAttachedCrossBlock("sulphur_crystal", "Sulphur Crystal", () -> new AttachedBlock(JBlockProperties.STONE));
     public static final RegistryObject<Block> SULPHUR_ROCK = register("sulphur_rock", "Sulphur Rock", JBlockProperties.STONE);
 
-    public static final RegistryObject<Block> RUBBLE = register("rubble", "Rubble", JBlockProperties.FIRE_DIRT);
-    public static final RegistryObject<Block> ASH_BLOCK = register("ash_block", "Ash", JBlockProperties.FIRE_STONE);
-    public static final RegistryObject<Block> SCORCHED_RUBBLE = register("scorched_rubble", "Scorched Rubble", JBlockProperties.FIRE_DIRT);
-    public static final RegistryObject<Block> VOLCANIC_SAND = register("volcanic_sand", "Volcanic Sand", JBlockProperties.FIRE_SAND);
-    public static final RegistryObject<Block> VOLCANIC_SOIL = register("volcanic_soil", "Volcanic Soil", JBlockProperties.FIRE_DIRT);
-    public static final RegistryObject<Block> HOT_GROUND = register("hot_ground", "Hot Ground", JBlockProperties.FIRE_STONE);
+    public static final RegistryObject<Block> RUBBLE = registerTerrainBlock("rubble", "Rubble", JBlockProperties.FIRE_DIRT);
+    public static final RegistryObject<Block> ASH_BLOCK = registerTerrainBlock("ash_block", "Ash", JBlockProperties.FIRE_STONE);
+    public static final RegistryObject<Block> SCORCHED_RUBBLE = registerTerrainBlock("scorched_rubble", "Scorched Rubble", JBlockProperties.FIRE_DIRT);
+    public static final RegistryObject<Block> VOLCANIC_SAND = registerTerrainBlock("volcanic_sand", "Volcanic Sand", JBlockProperties.FIRE_SAND);
+    public static final RegistryObject<Block> VOLCANIC_SOIL = registerTerrainBlock("volcanic_soil", "Volcanic Soil", JBlockProperties.FIRE_DIRT);
+    public static final RegistryObject<Block> HOT_GROUND = registerTerrainBlock("hot_ground", "Hot Ground", JBlockProperties.FIRE_STONE);
     public static final RegistryObject<Block> CHARRED_GRASS = registerGrassBlock("charred_grass", "Charred Grass", () -> new JGrassBlock(RUBBLE));
     public static final RegistryObject<Block> VOLCANIC_SANDSTONE = registerGrassBlock("volcanic_sandstone", "Volcanic Sandstone", () -> new Block(JBlockProperties.STONE));
 
@@ -299,7 +301,7 @@ public class JBlocks {
     public static final RegistryObject<Block> INFERNO_BUSH = registerCrossBlock("inferno_bush", "Inferno Bush", () -> new TallGrassBlock(JBlockProperties.REPLACABLE_PLANT));
     public static final RegistryObject<Block> SCORCHED_CACTUS = registerModeledBlock("scorched_cactus", "Scorched Cactus", JBlockCactus::new);
 
-    public static final RegistryObject<Block> CHARRED_LEAVES = register("charred_leaves", "Charred Leaves", JBlockProperties.LEAVES);
+    public static final RegistryObject<Block> CHARRED_LEAVES = registerTerrainBlock("charred_leaves", "Charred Leaves", JBlockProperties.LEAVES);
     public static final RegistryObject<RotatedPillarBlock> BURNED_BARK = registerPillar("burned_bark", "Burned Bark", true, JBlockProperties.WOOD);
     public static final RegistryObject<Block> BURNED_SAPLING = registerCrossBlock("burned_sapling", "Burned Sapling", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> CHARRED_SAPLING = registerCrossBlock("charred_sapling", "Charred Sapling", () -> new TallGrassBlock(JBlockProperties.FLOWER));
@@ -318,12 +320,12 @@ public class JBlocks {
     public static final RegistryObject<Block> DEPTHS_PORTAL_FRAME = register("depths_portal_frame", "Depths Portal Frame", JBlockProperties.STONE);
     public static final RegistryObject<JBasePortalBlock> DEPTHS_PORTAL = registerPortalBlock("depths_portal", "Depths Portal", () -> new JBasePortalBlock(Dimensions.DEPTHS, DEPTHS_PORTAL_FRAME));
     public static final RegistryObject<Block> DEPTHS_GRASS = registerGrassBlock("depths_grass", "Depths Grass", () -> new JGrassBlock(RUBBLE));
-    public static final RegistryObject<Block> DEPTHS_DIRT = register("depths_dirt", "Depths Soil", JBlockProperties.DIRT);
-    public static final RegistryObject<Block> DEPTHS_STONE = register("depths_stone", "Depths Stone", JBlockProperties.STONE);
+    public static final RegistryObject<Block> DEPTHS_DIRT = registerTerrainBlock("depths_dirt", "Depths Soil", JBlockProperties.DIRT);
+    public static final RegistryObject<Block> DEPTHS_STONE = registerTerrainBlock("depths_stone", "Depths Stone", JBlockProperties.STONE);
     public static final RegistryObject<Block> DEPTHS_LAMP = register("depths_lamp", "Depths Lamp", JBlockProperties.GLOW_LAMP);
     public static final RegistryObject<Block> DEPTHS_LIGHT = register("depths_light", "Depths Light", JBlockProperties.GLOW_LAMP);
     public static final RegistryObject<RotatedPillarBlock> DEPTHS_LOG = registerPillar("depths_log", "Depths Log", true, JBlockProperties.WOOD);
-    public static final RegistryObject<Block> DEPTHS_LEAVES = register("depths_leaves", "Depths Leaves", JBlockProperties.LUMINESCENT_LEAVES);
+    public static final RegistryObject<Block> DEPTHS_LEAVES = registerTerrainBlock("depths_leaves", "Depths Leaves", JBlockProperties.LUMINESCENT_LEAVES);
     public static final RegistryObject<Block> DEPTHS_SAPLING = registerCrossBlock("depths_sapling", "Depths Sapling", () -> new JSaplingBlock(new EucaGreenTreeGrower()));
     public static final RegistryObject<Block> DEPTHS_PLANKS = registerFuelBlock("depths_planks", "Depths Planks", JBlockProperties.WOOD, 300);
     public static final RegistryObject<DoorBlock> DEPTHS_DOOR = registerDoor("depths_door", "Depths Door", true, JBlockProperties.DOOR);
@@ -351,7 +353,8 @@ public class JBlocks {
     public static final RegistryObject<Block> DEPTHS_BLUE_FLOWER = registerCrossBlock("depths_blue_flower", "Depths Blue Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> DEPTHS_FLOWER = registerCrossBlock("depths_flower", "Depths Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
 
-    public static final RegistryObject<Block> CORBA_GRASS = registerOverlayGrassBlock("corba_grass", "Corba Grass", () -> new JGrassBlock(RUBBLE));
+    public static final RegistryObject<Block> CORBA_DIRT = registerTerrainBlock("corba_dirt", "Depths Dirt", JBlockProperties.DIRT);
+    public static final RegistryObject<Block> CORBA_GRASS = registerOverlayGrassBlock("corba_grass", "Corba Grass", () -> new JGrassBlock(CORBA_DIRT));
 
 
     public static final RegistryObject<Block> GRINDSTONE = registerModeledBlock("grindstone", "Grindstone", JGrindstoneBlock::new);
@@ -410,6 +413,18 @@ public class JBlocks {
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
         JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
         return block1;
+    }
+
+    public static RegistryObject<Block> registerTerrainBlock(String name, String translatedName, Supplier<Block> block) {
+        terrainLangName.add(translatedName);
+        terrainBlockName.add(name);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerTerrainBlock(String name, String translatedName, BlockBehaviour.Properties props) {
+        return registerTerrainBlock(name, translatedName, () -> new Block(props));
     }
 
     public static RegistryObject<Block> registerRotatableBlock(String name, String translatedName, Supplier<Block> block) {

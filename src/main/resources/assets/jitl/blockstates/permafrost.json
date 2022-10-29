@@ -1,7 +1,21 @@
 {
   "variants": {
-  "": {
-      "model": "jitl:block/permafrost"
-     }
+    "": [
+      {
+        "model": "jitl:block/permafrost"
+      },
+      {
+        "model": "jitl:block/permafrost",
+         "y": 90
+      },
+      {
+        "model": "jitl:block/permafrost",
+         "y": 180
+      },
+      {
+        "model": "jitl:block/permafrost",
+         "y": 270
+      }
+    ]
   }
 }

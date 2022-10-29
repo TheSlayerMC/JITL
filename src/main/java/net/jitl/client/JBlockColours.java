@@ -2,9 +2,7 @@ package net.jitl.client;
 
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColor;
-import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
@@ -18,7 +16,7 @@ import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Mod.EventBusSubscriber(modid = JITL.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = JITL.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class JBlockColours implements BlockColor, ItemColor {
 
     public static final JBlockColours BLOCK_COLOUR_INSTANCE = new JBlockColours();
@@ -28,6 +26,7 @@ public class JBlockColours implements BlockColor, ItemColor {
     @Override
     public int getColor(@NotNull BlockState pState, @Nullable BlockAndTintGetter pLevel, @Nullable BlockPos pPos, int pTintIndex) {
         assert pLevel != null;
+        assert pPos != null;
         return BiomeColors.getAverageGrassColor(pLevel, pPos);
     }
 

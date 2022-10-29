@@ -67,6 +67,7 @@ public class JITL {
         if(DEV_MODE) {
             new JItemGenerator().generate();
             new JBlockGenerator().generate();
+            new JTerrainBlockGenerator().generate();
             new JBlockChestGenerator().generate();
             new JBlockRotatableGenerator().generate();
             new JBlockFurnaceGenerator().generate();

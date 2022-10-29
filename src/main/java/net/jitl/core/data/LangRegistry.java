@@ -35,6 +35,7 @@ public class LangRegistry {
         ArrayList<String> pathBlockList = new ArrayList<>(JBlocks.pathBlockName);
         ArrayList<String> grassBlockList = new ArrayList<>(JBlocks.grassBlockName);
         ArrayList<String> overlayGrassBlockList = new ArrayList<>(JBlocks.overlayGrassBlockName);
+        ArrayList<String> terrainBlockList = new ArrayList<>(JBlocks.terrainBlockName);
 
         ArrayList<String> toolItemList = new ArrayList<>(JItems.toolName);
         ArrayList<String> itemList = new ArrayList<>(JItems.itemName);
@@ -119,6 +120,10 @@ public class LangRegistry {
 
         for(int i = 0; i < overlayGrassBlockList.size(); i++) {
             writeToFile("\"block.jitl." + overlayGrassBlockList.get(i) + "\": \"" + JBlocks.overlayGrassLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < terrainBlockList.size(); i++) {
+            writeToFile("\"block.jitl." + terrainBlockList.get(i) + "\": \"" + JBlocks.terrainLangName.get(i) + "\"" + ",");
         }
 
         for(int i = 0; i < attachedCrossList.size(); i++) {
