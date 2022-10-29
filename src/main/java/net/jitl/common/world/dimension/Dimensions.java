@@ -31,6 +31,9 @@ public class Dimensions {
     public static final ResourceKey<Level> DEPTHS = ResourceKey.create(Registry.DIMENSION_REGISTRY, JITL.rl("depths"));
     public static final ResourceKey<DimensionType> DEPTHS_TYPE = ResourceKey.create(Registry.DIMENSION_TYPE_REGISTRY, JITL.rl("depths"));
 
+    public static final ResourceKey<Level> CORBA = ResourceKey.create(Registry.DIMENSION_REGISTRY, JITL.rl("corba"));
+    public static final ResourceKey<DimensionType> CORBA_TYPE = ResourceKey.create(Registry.DIMENSION_TYPE_REGISTRY, JITL.rl("corba"));
+
     public static final RegistryObject<PoiType> FROZEN_PORTAL = REGISTRY.register("frozen_portal",
             () -> new PoiType(ImmutableSet.copyOf(JBlocks.FROZEN_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
 
@@ -42,4 +45,7 @@ public class Dimensions {
 
     public static final RegistryObject<PoiType> BOIL_PORTAL = REGISTRY.register("boil_portal",
             () -> new PoiType(ImmutableSet.copyOf(JBlocks.BOIL_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
+
+    public static final RegistryObject<PoiType> CORBA_PORTAL = REGISTRY.register("corba_portal",
+            () -> new PoiType(ImmutableSet.copyOf(JBlocks.CORBA_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
 }

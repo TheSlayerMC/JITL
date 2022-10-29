@@ -228,7 +228,7 @@ public enum JToolTiers {
         public static final Tier DARK_KEEPER = new ForgeTier(3, 3000, 8F, 3F, 25, null, () -> null);
 
         public static final Tier DEVELOPER_SWORD = new ForgeTier(3, 3000, 8F, 1000F, 25, null, () -> null);
-        public static final Tier THROWING_KNIFE = new ForgeTier(2, 100, 3F, 2F, 25, null, () -> null);
+        public static final Tier THROWING_KNIFE = new ForgeTier(2, -1, 3F, 2F, 25, null, () -> null);
 
     }
 

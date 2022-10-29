@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "jitl:block/tainted_mud"
+      },
+      {
+        "model": "jitl:block/tainted_mud",
+         "y": 90
+      },
+      {
+        "model": "jitl:block/tainted_mud",
+         "y": 180
+      },
+      {
+        "model": "jitl:block/tainted_mud",
+         "y": 270
+      }
+    ]
+  }
+}

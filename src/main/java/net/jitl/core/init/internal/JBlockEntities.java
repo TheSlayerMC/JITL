@@ -19,7 +19,8 @@ public class JBlockEntities {
 
     public static final RegistryObject<BlockEntityType<JChestBlockEntity>> JCHEST = REGISTRY.register("jchest",
             () -> BlockEntityType.Builder.of(JChestBlockEntity::new,
-                    JBlocks.JOURNEY_CHEST.get(), JBlocks.EUCA_CHEST.get(), JBlocks.BOIL_CHEST.get(), JBlocks.FROZEN_CHEST.get(), JBlocks.NETHER_CHEST.get()).build(null));
+                    JBlocks.JOURNEY_CHEST.get(), JBlocks.EUCA_CHEST.get(), JBlocks.BOIL_CHEST.get(), JBlocks.FROZEN_CHEST.get(),
+                    JBlocks.NETHER_CHEST.get(), JBlocks.DEPTHS_CHEST.get(), JBlocks.CORBA_CHEST.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<CampfireBlockEntity>> CAMPFIRE = REGISTRY.register("campfire",
             () -> BlockEntityType.Builder.of(CampfireBlockEntity::new, JBlocks.BITTERWOOD_CAMPFIRE.get()).build(null));

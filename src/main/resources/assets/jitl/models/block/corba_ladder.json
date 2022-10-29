@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/ladder",
+  "textures": {
+    "particle": "jitl:block/corba_ladder",
+    "texture": "jitl:block/corba_ladder"
+  }
+}

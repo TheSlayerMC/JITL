@@ -32,6 +32,8 @@ public class LangRegistry {
         ArrayList<String> furnaceBlockList = new ArrayList<>(JBlocks.furnaceBlockName);
         ArrayList<String> portalBlockList = new ArrayList<>(JBlocks.portalBlockName);
         ArrayList<String> campfireBlockList = new ArrayList<>(JBlocks.campfireBlockName);
+        ArrayList<String> chestBlockList = new ArrayList<>(JBlocks.chestBlockName);
+        ArrayList<String> ladderBlockList = new ArrayList<>(JBlocks.ladderBlockName);
         ArrayList<String> pathBlockList = new ArrayList<>(JBlocks.pathBlockName);
         ArrayList<String> grassBlockList = new ArrayList<>(JBlocks.grassBlockName);
         ArrayList<String> overlayGrassBlockList = new ArrayList<>(JBlocks.overlayGrassBlockName);
@@ -116,6 +118,14 @@ public class LangRegistry {
 
         for(int i = 0; i < grassBlockList.size(); i++) {
             writeToFile("\"block.jitl." + grassBlockList.get(i) + "\": \"" + JBlocks.grassLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < chestBlockList.size(); i++) {
+            writeToFile("\"block.jitl." + chestBlockList.get(i) + "\": \"" + JBlocks.chestLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < ladderBlockList.size(); i++) {
+            writeToFile("\"block.jitl." + ladderBlockList.get(i) + "\": \"" + JBlocks.ladderLangName.get(i) + "\"" + ",");
         }
 
         for(int i = 0; i < overlayGrassBlockList.size(); i++) {

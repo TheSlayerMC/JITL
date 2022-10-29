@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+        "model": "jitl:block/corba_slab"
+      },
+    "type=double": {
+        "model": "jitl:block/corba_planks"
+      },
+    "type=top": {
+        "model": "jitl:block/corba_slab_top"
+      }
+  }
+}

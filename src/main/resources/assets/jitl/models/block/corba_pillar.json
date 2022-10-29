@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "jitl:block/corba_pillar_top",
+    "side": "jitl:block/corba_pillar_side"
+  }
+}

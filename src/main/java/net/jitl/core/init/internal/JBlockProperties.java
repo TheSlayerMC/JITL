@@ -141,6 +141,11 @@ public class JBlockProperties {
             .strength(1F)
             .sound(SoundType.WOOD);
 
+    public static BlockBehaviour.Properties LADDER = BlockBehaviour.Properties.of(Material.WOOD)
+            .strength(1F)
+            .noOcclusion()
+            .sound(SoundType.WOOD);
+
     public static BlockBehaviour.Properties CAMPFIRE = BlockBehaviour.Properties.of(Material.WOOD)
             .strength(1F)
             .noOcclusion()
@@ -197,6 +202,12 @@ public class JBlockProperties {
         }
         if(name.contains("depths")) {
             texName = "depths_planks";
+        }
+        if(name.contains("corba")) {
+            texName = "corba_planks";
+        }
+        if(name.contains("corba_post")) {
+            texName = "corba_post";
         }
         if(name.contains("dungeon_lamp")) {
             texName = "dungeon_lamp";

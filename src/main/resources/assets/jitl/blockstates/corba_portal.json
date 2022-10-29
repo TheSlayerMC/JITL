@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x": {
+        "model": "jitl:block/corba_portal_ns"
+      },
+    "axis=z": {
+        "model": "jitl:block/corba_portal_ew"
+      }
+  }
+}

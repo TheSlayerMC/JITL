@@ -1,0 +1,7 @@
+{
+  "variants": {
+  "": {
+      "model": "jitl:block/gorbite_block"
+     }
+  }
+}

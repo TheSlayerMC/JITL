@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "jitl:block/corba_stone"
+      },
+      {
+        "model": "jitl:block/corba_stone",
+         "y": 90
+      },
+      {
+        "model": "jitl:block/corba_stone",
+         "y": 180
+      },
+      {
+        "model": "jitl:block/corba_stone",
+         "y": 270
+      }
+    ]
+  }
+}

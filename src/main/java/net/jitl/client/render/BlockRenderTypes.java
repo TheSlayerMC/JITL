@@ -73,6 +73,19 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.DEPTHS_BLUE_FLOWER.get());
         cutout.add(JBlocks.DEPTHS_FLOWER.get());
 
+        cutout.add(JBlocks.CORBA_LEAVES.get());
+        cutout.add(JBlocks.CORBA_SAPLING.get());
+        cutout.add(JBlocks.BOGWOOD_LEAVES.get());
+        cutout.add(JBlocks.CORBA_BLUE_FLOWER.get());
+        cutout.add(JBlocks.CORBA_RED_FLOWER.get());
+        cutout.add(JBlocks.CORBA_SPECKLED_FLOWER.get());
+        cutout.add(JBlocks.CORBA_PURPLE_FLOWER.get());
+        cutout.add(JBlocks.CORBA_LIGHT_PURPLE_FLOWER.get());
+        cutout.add(JBlocks.CORBA_DARK_PURPLE_FLOWER.get());
+        cutout.add(JBlocks.CORBA_FLOWER.get());
+        cutout.add(JBlocks.CORBA_LADDER.get());
+
+
         translucent.add(JBlocks.EUCA_PORTAL.get());
         translucent.add(JBlocks.FROZEN_PORTAL.get());
         translucent.add(JBlocks.BOIL_PORTAL.get());

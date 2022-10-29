@@ -87,6 +87,7 @@ public class JITL {
             new JBlockPortalGenerator().generate();
             new JBlockCampfireGenerator().generate();
             new JBlockPathGenerator().generate();
+            new JBlockLadderGenerator().generate();
 
             new LangRegistry().generate();
         }

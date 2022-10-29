@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "jitl:block/corba_lamp"
+      },
+      {
+        "model": "jitl:block/corba_lamp",
+         "y": 90
+      },
+      {
+        "model": "jitl:block/corba_lamp",
+         "y": 180
+      },
+      {
+        "model": "jitl:block/corba_lamp",
+         "y": 270
+      }
+    ]
+  }
+}
