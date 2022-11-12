@@ -3,6 +3,7 @@ package net.jitl.core.init.internal;
 import net.jitl.common.block.entity.GrindstoneEntity;
 import net.jitl.common.block.entity.JChestBlockEntity;
 import net.jitl.common.block.entity.JFurnaceTile;
+import net.jitl.common.block.entity.RockiteSpawnerEntity;
 import net.jitl.core.init.JITL;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.CampfireBlockEntity;
@@ -16,6 +17,9 @@ public class JBlockEntities {
 
     public static final RegistryObject<BlockEntityType<GrindstoneEntity>> GRINDSTONE = REGISTRY.register("grindstone",
             () -> BlockEntityType.Builder.of(GrindstoneEntity::new, JBlocks.GRINDSTONE.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<RockiteSpawnerEntity>> ROCKITE = REGISTRY.register("rockite",
+            () -> BlockEntityType.Builder.of(RockiteSpawnerEntity::new, JBlocks.ROCKITE_SPAWNER.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<JChestBlockEntity>> JCHEST = REGISTRY.register("jchest",
             () -> BlockEntityType.Builder.of(JChestBlockEntity::new,

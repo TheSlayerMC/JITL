@@ -5,6 +5,7 @@ import net.jitl.client.model.AnimatedMonsterModel;
 import net.jitl.client.model.JBoatModel;
 import net.jitl.client.render.block.GrindstoneRenderer;
 import net.jitl.client.render.block.JChestRenderer;
+import net.jitl.client.render.block.RockiteSpawnerRenderer;
 import net.jitl.client.render.projectile.*;
 import net.jitl.client.render.vehicle.JBoatRenderer;
 import net.jitl.common.entity.base.JBoat;
@@ -35,6 +36,7 @@ public class RenderEntitys {
         event.registerEntityRenderer(JEntities.JBOAT_TYPE.get(), JBoatRenderer::new);
 
         event.registerBlockEntityRenderer(JBlockEntities.GRINDSTONE.get(), GrindstoneRenderer::new);
+        event.registerBlockEntityRenderer(JBlockEntities.ROCKITE.get(), RockiteSpawnerRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.JCHEST.get(), JChestRenderer::new);
     }
 

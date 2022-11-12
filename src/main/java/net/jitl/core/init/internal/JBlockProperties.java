@@ -50,6 +50,11 @@ public class JBlockProperties {
             .sound(SoundType.STONE)
             .noOcclusion();
 
+    public static BlockBehaviour.Properties ROCKITE_SPAWNER = BlockBehaviour.Properties.of(Material.STONE)
+            .strength(1.5F)
+            .sound(SoundType.STONE)
+            .noOcclusion();
+
     public static BlockBehaviour.Properties CHEST = BlockBehaviour.Properties.of(Material.STONE)
             .strength(1.5F)
             .sound(SoundType.STONE)
