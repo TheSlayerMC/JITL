@@ -43,6 +43,9 @@ public class JDirtPathBlock extends Block {
         if(this == JBlocks.PERMAFROST_ROAD.getHolder().get()) {
             dirt = JBlocks.CRUMBLED_PERMAFROST.get();
         }
+        if(this == JBlocks.CORBA_PATH.getHolder().get()) {
+            dirt = JBlocks.CORBA_GRASS.get();
+        }
         return dirt;
     }
 
