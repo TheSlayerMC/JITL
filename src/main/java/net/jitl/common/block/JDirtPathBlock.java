@@ -40,10 +40,10 @@ public class JDirtPathBlock extends Block {
 
     private Block getDirt() {
         Block dirt = JBlocks.PERMAFROST_ROAD.get();
-        if(this == JBlocks.PERMAFROST_ROAD.getHolder().get()) {
+        if(this == JBlocks.PERMAFROST_ROAD.get()) {
             dirt = JBlocks.CRUMBLED_PERMAFROST.get();
         }
-        if(this == JBlocks.CORBA_PATH.getHolder().get()) {
+        if(this == JBlocks.CORBA_PATH.get()) {
             dirt = JBlocks.CORBA_GRASS.get();
         }
         return dirt;
