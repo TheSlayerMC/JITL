@@ -17,10 +17,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.FallingBlock;
-import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -73,6 +70,7 @@ public class RockiteBlock extends BaseEntityBlock {
                 RockiteSmasher entity = new RockiteSmasher(JEntities.ROCKITE_SMASHER_TYPE.get(), level);
                 entity.setPos(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F);
                 level.addFreshEntity(entity);
+                level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
             }
         }
         return true;
