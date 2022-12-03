@@ -8,7 +8,7 @@ public enum JDimension {
     FROZEN("frozen"),
     EUCA("euca");
 
-    private String dim;
+    private final String dim;
 
     JDimension(String name) {
         this.dim = name;
