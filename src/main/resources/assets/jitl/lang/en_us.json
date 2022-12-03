@@ -316,6 +316,8 @@
 "block.jitl.euca_gold_fence": "Euca Gold Fence",
 "block.jitl.euca_brown_fence": "Euca Brown Fence",
 "block.jitl.frozen_fence": "Frostwood Fence",
+"block.jitl.packed_snow_fence": "Packed Snow Fence",
+"block.jitl.packed_ice_fence": "Packed Ice Fence",
 "block.jitl.burned_fence": "Burned Fence",
 "block.jitl.depths_fence": "Depths Fence",
 "block.jitl.corba_post": "Corba Post",

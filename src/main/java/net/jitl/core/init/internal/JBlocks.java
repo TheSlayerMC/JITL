@@ -273,6 +273,8 @@ public class JBlocks {
 
     public static final RegistryObject<Block> PACKED_SNOW_BRICKS = register("packed_snow_bricks", "Packed Snow Bricks", JBlockProperties.STONE);
     public static final RegistryObject<Block> PACKED_ICE_BRICKS = register("packed_ice_bricks", "Packed Ice Bricks", JBlockProperties.STONE);
+    public static final RegistryObject<JFenceBlock> PACKED_SNOW_FENCE = registerFence("packed_snow_fence", "Packed Snow Fence", false, JBlockProperties.STONE);
+    public static final RegistryObject<JFenceBlock> PACKED_ICE_FENCE = registerFence("packed_ice_fence", "Packed Ice Fence", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> FROZEN_BRICKS = register("frozen_bricks", "Frozen Bricks", JBlockProperties.STONE);
     public static final RegistryObject<StairBlock> PACKED_SNOW_BRICKS_STAIRS = registerStairs("packed_snow_brick_stairs", "Packed Snow Brick Stairs", PACKED_SNOW_BRICKS, false, JBlockProperties.STONE);
     public static final RegistryObject<StairBlock> PACKED_ICE_BRICKS_STAIRS = registerStairs("packed_ice_brick_stairs", "Packed ice Brick Stairs", PACKED_ICE_BRICKS, false, JBlockProperties.STONE);

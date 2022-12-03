@@ -29,7 +29,7 @@ logoFile = "logo.png" #optional
 # A text field displayed in the mod UI
 #credits="Thanks for this example mod goes to Java" #optional
 # A text field displayed in the mod UI
-authors = "The_SlayerMC, Dizzlepop12, Time_Conqueror" #optional
+authors = "The_SlayerMC, Dizzlepop12" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description = '''
 A full progressional experience that adds Weapons, Mobs, Dimensions, Bosses, and much more to your game.
