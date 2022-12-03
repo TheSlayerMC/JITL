@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:guardian_ruins",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 2642136763891,
+
+    "spacing": 20,
+
+    "separation": 6,
+
+    "type": "minecraft:random_spread"
+  }
+}

@@ -5,6 +5,7 @@ import net.jitl.common.entity.boss.RockiteSmasher;
 import net.jitl.common.entity.boss.TowerGuardian;
 import net.jitl.common.entity.euca.*;
 import net.jitl.common.entity.frozen.Eskimo;
+import net.jitl.common.entity.frozen.FrozenGuardian;
 import net.jitl.common.entity.nether.Witherspine;
 import net.jitl.common.entity.overworld.BrownHongo;
 import net.jitl.common.entity.overworld.Floro;
@@ -12,18 +13,14 @@ import net.jitl.common.entity.overworld.IllagerMech;
 import net.jitl.common.entity.overworld.npc.Mage;
 import net.jitl.common.entity.projectile.*;
 import net.jitl.core.init.JITL;
-import net.minecraft.SharedConstants;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -155,6 +152,12 @@ public class JEntities {
                     .setShouldReceiveVelocityUpdates(true)
                     .sized(0.75F, 2F).build("eskimo"));
 
+    public static final RegistryObject<EntityType<FrozenGuardian>> FROZEN_GUARDIAN_TYPE = REGISTRY.register("frozen_guardian", () ->
+            EntityType.Builder.of(FrozenGuardian::new, MobCategory.CREATURE)
+                    .setTrackingRange(15)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .sized(0.75F, 2F).build("frozen_guardian"));
+
     //GET TO WORK
     private static RegistryObject<EntityType<Mob>> registerEntity(EntityType.EntityFactory<Mob> factory, String entityName, String langName, int bg, int fg, float width, float height, MobCategory classification) {
         EntityType<Mob> entity = EntityType.Builder.of(factory, classification).sized(width, height).setTrackingRange(15).setShouldReceiveVelocityUpdates(true).build(entityName);
@@ -179,6 +182,8 @@ public class JEntities {
         event.put(GOLDER_TYPE.get(), Golder.createAttributes());
 
         event.put(ESKIMO_TYPE.get(), Eskimo.createAttributes());
+        event.put(FROZEN_GUARDIAN_TYPE.get(), Eskimo.createAttributes());
+
     }
 
 

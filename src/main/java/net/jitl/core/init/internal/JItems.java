@@ -378,6 +378,7 @@ public class JItems {
 
     public static final RegistryObject<Item> EYE_OF_THE_BLIZZARD = registerNormalItem("eye_of_the_blizzard", "Eye Of The Blizzard", () -> new JCurioItem(toolProps().stacksTo(1)).overview(true));
     public static final RegistryObject<Item> SKULL_OF_DECAY = registerNormalItem("skull_of_decay", "Skull Of Decay", () -> new JCurioItem(toolProps().stacksTo(1).durability(256)).ability(true));
+    public static final RegistryObject<Item> FROSTBORN_SOUL = registerNormalItem("frostborn_soul", "Frostborn Soul");
 
     public static final RegistryObject<Item> HEART_CONTAINER_SMALL = registerNormalItem("heart_container_small", "Heart Container", () -> new HeartContainerItem(toolProps().stacksTo(1)).health(1));
     public static final RegistryObject<Item> HEART_CONTAINER_MEDIUM = registerNormalItem("heart_container_medium", "Heart Container", () -> new HeartContainerItem(toolProps().stacksTo(1)).health(4));
@@ -441,6 +442,9 @@ public class JItems {
 
     public static final RegistryObject<Item> ESKIMO_EGG = register("eskimo_spawn_egg", "Eskimo Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ESKIMO_TYPE,
             FROZEN_COLOR, TRADER_COLOR, eggProps()), ItemType.SPAWN_EGG);
+
+    public static final RegistryObject<Item> FROZEN_GUARDIAN_EGG = register("frozen_guardian_spawn_egg", "Frozen Guardian Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.FROZEN_GUARDIAN_TYPE,
+            FROZEN_COLOR, PASSIVE_COLOR, eggProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> UNDERWATER_WORLD_RECORD = registerRecord("underwater_world_record", "Blue Water", JSounds.UNDERWATER_WORLD, 2640);
     public static final RegistryObject<Item> GOLD_PLAINS_RECORD = registerRecord("gold_plains_record", "Gold Plains", JSounds.GOLD_PLAINS_MUSIC, 1120);
