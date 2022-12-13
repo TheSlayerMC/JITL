@@ -7,13 +7,17 @@ import net.jitl.common.entity.euca.*;
 import net.jitl.common.entity.frozen.Eskimo;
 import net.jitl.common.entity.frozen.FrozenGuardian;
 import net.jitl.common.entity.nether.Witherspine;
+import net.jitl.common.entity.overworld.BoomBoom;
 import net.jitl.common.entity.overworld.BrownHongo;
 import net.jitl.common.entity.overworld.Floro;
 import net.jitl.common.entity.overworld.IllagerMech;
 import net.jitl.common.entity.overworld.npc.Mage;
 import net.jitl.common.entity.projectile.*;
 import net.jitl.core.init.JITL;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.ForgeSpawnEggItem;
@@ -81,6 +85,12 @@ public class JEntities {
                     .setShouldReceiveVelocityUpdates(true)
                     .sized(1F, 1.75F).build("floro"));
 
+    public static final RegistryObject<EntityType<BoomBoom>> BOOM_TYPE = REGISTRY.register("boomboom", () ->
+            EntityType.Builder.of(BoomBoom::new, MobCategory.MONSTER)
+                    .setTrackingRange(15)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .sized(1F, 1.75F).build("boomboom"));
+
     public static final RegistryObject<EntityType<TowerGuardian>> TOWER_GUARDIAN_TYPE = REGISTRY.register("tower_guardian", () ->
             EntityType.Builder.of(TowerGuardian::new, MobCategory.MONSTER)
                     .setTrackingRange(15)
@@ -146,6 +156,12 @@ public class JEntities {
                     .setShouldReceiveVelocityUpdates(true)
                     .sized(1F, 2F).build("golder"));
 
+    public static final RegistryObject<EntityType<RoyalKing>> ROYAL_KING = REGISTRY.register("royal_king", () ->
+            EntityType.Builder.of(RoyalKing::new, MobCategory.CREATURE)
+                    .setTrackingRange(15)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .sized(0.75F, 2F).build("royal_king"));
+
     public static final RegistryObject<EntityType<Eskimo>> ESKIMO_TYPE = REGISTRY.register("eskimo", () ->
             EntityType.Builder.of(Eskimo::new, MobCategory.CREATURE)
                     .setTrackingRange(15)
@@ -169,6 +185,7 @@ public class JEntities {
     public static void registerAttributes(final EntityAttributeCreationEvent event) {
         event.put(MAGE_TYPE.get(), Mage.createAttributes());
         event.put(FLORO_TYPE.get(), Floro.createAttributes());
+        event.put(BOOM_TYPE.get(), BoomBoom.createAttributes());
         event.put(TOWER_GUARDIAN_TYPE.get(), TowerGuardian.createAttributes());
         event.put(ROCKITE_SMASHER_TYPE.get(), RockiteSmasher.createAttributes());
         event.put(WITHERSPINE_TYPE.get(), Witherspine.createAttributes());
@@ -180,9 +197,10 @@ public class JEntities {
         event.put(GOLDBOT_TYPE.get(), Goldbot.createAttributes());
         event.put(SHIMMERER_TYPE.get(), Shimmerer.createAttributes());
         event.put(GOLDER_TYPE.get(), Golder.createAttributes());
+        event.put(ROYAL_KING.get(), RoyalKing.createAttributes());
 
         event.put(ESKIMO_TYPE.get(), Eskimo.createAttributes());
-        event.put(FROZEN_GUARDIAN_TYPE.get(), Eskimo.createAttributes());
+        event.put(FROZEN_GUARDIAN_TYPE.get(), FrozenGuardian.createAttributes());
 
     }
 

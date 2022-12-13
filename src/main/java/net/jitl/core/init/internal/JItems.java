@@ -404,10 +404,16 @@ public class JItems {
 
     public static final RegistryObject<Item> BREATHING_STONE = registerNormalItem("breathing_stone", "Breathing Stone", () -> new EssenceRegenCatalystItem(toolProps().stacksTo(1)).speed(0.0112F));
 
+    public static final RegistryObject<Item> EUDOR_CROWN = registerNormalItem("eudor_crown", "Eudor's Crown");
+
+
     public static final RegistryObject<Item> MAGE_EGG = register("mage_spawn_egg", "Mage Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.MAGE_TYPE,
             OVERWORLD_COLOR, TRADER_COLOR, eggProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> FLORO_EGG = register("floro_spawn_egg", "Floro Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.FLORO_TYPE,
+            OVERWORLD_COLOR, HOSTILE_COLOR, eggProps()), ItemType.SPAWN_EGG);
+
+    public static final RegistryObject<Item> BOOMBOOM_EGG = register("boomboom_spawn_egg", "BoomBoom Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.BOOM_TYPE,
             OVERWORLD_COLOR, HOSTILE_COLOR, eggProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> TOWER_GUARDIAN_EGG = register("tower_guardian_spawn_egg", "Tower Guarduan Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.TOWER_GUARDIAN_TYPE,
@@ -439,6 +445,9 @@ public class JItems {
 
     public static final RegistryObject<Item> GOLDER_EGG = register("golder_spawn_egg", "Golder Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.GOLDER_TYPE,
             EUCA_COLOR, HOSTILE_COLOR, eggProps()), ItemType.SPAWN_EGG);
+
+    public static final RegistryObject<Item> ROYAL_KING = register("royal_king_spawn_egg", "Royal King Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ROYAL_KING,
+            EUCA_COLOR, PASSIVE_COLOR, eggProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> ESKIMO_EGG = register("eskimo_spawn_egg", "Eskimo Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ESKIMO_TYPE,
             FROZEN_COLOR, TRADER_COLOR, eggProps()), ItemType.SPAWN_EGG);

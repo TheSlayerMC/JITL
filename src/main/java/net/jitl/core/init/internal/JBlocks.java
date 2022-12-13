@@ -195,6 +195,24 @@ public class JBlocks {
     public static final RegistryObject<Block> GOLDITE_COBBLESTONE = register("goldite_cobblestone", "Goldite Cobblestone", JBlockProperties.STONE);
     public static final RegistryObject<Block> EUCA_BRICK = register("euca_brick", "Euca Bricks", JBlockProperties.STONE);
     public static final RegistryObject<Block> EUCA_DUNGEON_BRICKS = register("euca_dungeon_brick", "Euca Dungeon Bricks", JBlockProperties.DUNGEON_BLOCK);
+    public static final RegistryObject<Block> ROYAL_BRICKS = register("royal_bricks", "Royal Bricks", JBlockProperties.STONE);
+    public static final RegistryObject<StairBlock> ROYAL_STAIRS = registerStairs("royal_stairs", "Royal Stairs", ROYAL_BRICKS, false, JBlockProperties.STONE);
+    public static final RegistryObject<JFenceBlock> ROYAL_FENCE = registerFence("royal_fence", "Royal Fence", false, JBlockProperties.STONE);
+
+    public static final RegistryObject<Block> ROYAL_STONE = register("royal_stone", "Royal Stone", JBlockProperties.STONE);
+    public static final RegistryObject<StairBlock> ROYAL_STONE_STAIRS = registerStairs("royal_stone_stairs", "Royal Stone Stairs", ROYAL_STONE, false, JBlockProperties.STONE);
+    public static final RegistryObject<JFenceBlock> ROYAL_STONE_FENCE = registerFence("royal_stone_fence", "Royal Stone Fence",false, JBlockProperties.STONE);
+    public static final RegistryObject<Block> ROYAL_PAVER = register("royal_paver", "Royal Paver", JBlockProperties.STONE);
+    public static final RegistryObject<StairBlock> ROYAL_PAVER_STAIRS = registerStairs("royal_paver_stairs", "Royal Paver Stairs", ROYAL_PAVER, false, JBlockProperties.STONE);
+    public static final RegistryObject<JFenceBlock> ROYAL_PAVER_FENCE = registerFence("royal_paver_fence", "Royal Paver Fence",false, JBlockProperties.STONE);
+    public static final RegistryObject<Block> ROYAL_SHINGLE = register("royal_shingle", "Royal Shingle", JBlockProperties.STONE);
+    public static final RegistryObject<StairBlock> ROYAL_SHINGLE_STAIRS = registerStairs("royal_shingle_stairs", "Royal Shingle Stairs", ROYAL_SHINGLE, false, JBlockProperties.STONE);
+    public static final RegistryObject<JFenceBlock> ROYAL_SHINGLE_FENCE = registerFence("royal_shingle_fence", "Royal Shingle Fence",false, JBlockProperties.STONE);
+    public static final RegistryObject<Block> POLISHED_ROYAL_STONE = register("polished_royal_stone", "Polished Royal Stone", JBlockProperties.STONE);
+    public static final RegistryObject<StairBlock> POLISHED_ROYAL_STAIRS = registerStairs("polished_royal_stairs", "Polsihed Royal Stairs", POLISHED_ROYAL_STONE, false, JBlockProperties.STONE);
+    public static final RegistryObject<JFenceBlock> POLISHED_ROYAL_FENCE = registerFence("polished_royal_shingle_fence", "Polsihed Royal Fence",false, JBlockProperties.STONE);
+    public static final RegistryObject<RotatedPillarBlock> ROYAL_PLILLAR = registerPillar("royal_pillar", "Royal Pillar", false, JBlockProperties.STONE);
+
     public static final RegistryObject<StairBlock> EUCA_DUNGEON_STAIRS = registerStairs("euca_dungeon_stairs", "Euca Dungeon Stairs", EUCA_DUNGEON_BRICKS, false, JBlockProperties.DUNGEON_BLOCK);
     public static final RegistryObject<Block> EUCA_DUNGEON_TILE = register("euca_dungeon_tile", "Euca Dungeon Tile", JBlockProperties.DUNGEON_BLOCK);
     public static final RegistryObject<Block> EUCA_RUNIC_BRICKS = register("euca_runic_bricks", "Euca Runic Bricks", JBlockProperties.STONE);
@@ -420,7 +438,8 @@ public class JBlocks {
 
     public static final RegistryObject<Block> ROCKITE_SPAWNER = registerModeledBlock("rockite_spawner", "Rockite Spawner", RockiteBlock::new);
 
-    public static final RegistryObject<Block> FROZEN_PEDESTAL = registerModeledBlock("frozen_pedestal", "Frozen Pedestal", FrozenPedestal::new);
+    public static final RegistryObject<Block> FROZEN_PEDESTAL = registerModeledBlock("frozen_pedestal", "Frozen Pedestal", PedestalBlock::new);
+    public static final RegistryObject<Block> ROYAL_PEDESTAL = registerModeledBlock("royal_pedestal", "Royal Pedestal", PedestalBlock::new);
 
     public static final RegistryObject<RotatedPillarBlock> STONE_PLILLAR = registerPillar("stone_pillar", "Stone Pillar", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> SMALL_STONE_BRICKS = register("small_stone_bricks", "Small Stone Bricks", JBlockProperties.STONE);

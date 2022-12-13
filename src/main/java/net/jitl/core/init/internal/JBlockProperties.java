@@ -1,9 +1,5 @@
 package net.jitl.core.init.internal;
 
-import net.jitl.core.init.internal.JSoundTypes;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -252,6 +248,21 @@ public class JBlockProperties {
         }
         if(name.contains("packed_ice")) {
             texName = "packed_ice_bricks";
+        }
+        if(name.contains("royal")) {
+            texName = "royal_bricks";
+        }
+        if(name.contains("royal_stone")) {
+            texName = "royal_stone";
+        }
+        if(name.contains("polished_royal")) {
+            texName = "polished_royal_stone";
+        }
+        if(name.contains("royal_paver")) {
+            texName = "royal_paver";
+        }
+        if(name.contains("royal_shingle")) {
+            texName = "royal_shingle";
         }
         return texName;
     }

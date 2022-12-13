@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:guardian_tower",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 156418418412,
+
+    "spacing": 20,
+
+    "separation": 6,
+
+    "type": "minecraft:random_spread"
+  }
+}

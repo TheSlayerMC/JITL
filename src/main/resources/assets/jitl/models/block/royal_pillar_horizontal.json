@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "jitl:block/royal_pillar_top",
+    "side": "jitl:block/royal_pillar_side"
+  }
+}

@@ -73,8 +73,8 @@ public class FrozenGuardian extends PathfinderMob implements IAnimatable {
         return this.factory;
     }
 
-    public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0D);
+    public static AttributeSupplier createAttributes() {
+        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0D).build();
     }
 
     @Override

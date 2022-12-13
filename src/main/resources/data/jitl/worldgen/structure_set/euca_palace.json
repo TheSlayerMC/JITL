@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:euca_palace",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 156418564816841,
+
+    "spacing": 20,
+
+    "separation": 6,
+
+    "type": "minecraft:random_spread"
+  }
+}

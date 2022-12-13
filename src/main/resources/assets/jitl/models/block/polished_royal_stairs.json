@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "jitl:block/polished_royal_stone",
+    "side": "jitl:block/polished_royal_stone",
+    "top": "jitl:block/polished_royal_stone"
+  }
+}

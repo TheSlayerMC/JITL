@@ -1,0 +1,15 @@
+{
+  "name": "jitl:euca/euca_palace/euca_palace_bottom_right",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "jitl:euca/euca_palace/palace_br",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}
