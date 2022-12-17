@@ -10,8 +10,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FarmBlock;
 import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -44,7 +42,10 @@ public class JDirtPathBlock extends Block {
             dirt = JBlocks.CRUMBLED_PERMAFROST.get();
         }
         if(this == JBlocks.CORBA_PATH.get()) {
-            dirt = JBlocks.CORBA_GRASS.get();
+            dirt = JBlocks.CORBA_DIRT.get();
+        }
+        if(this == JBlocks.GOLDITE_PATH.get()) {
+            dirt = JBlocks.GOLDITE_DIRT.get();
         }
         return dirt;
     }

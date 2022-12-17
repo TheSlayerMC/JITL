@@ -1,9 +1,9 @@
 {
   "type": "minecraft:jigsaw",
-  "start_pool": "jitl:euca/goldite_windmill/start_pool",
-  "size": 2,
+  "start_pool": "jitl:euca/euca_village/starting_well",
+  "size": 5,
   "max_distance_from_center": 80,
-  "biomes": "#jitl:has_structure/euca_gold",
+  "biomes": "#jitl:has_structure/goldite_grains",
   "step": "surface_structures",
   "terrain_adaptation": "beard_thin",
   "start_height": {

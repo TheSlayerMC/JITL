@@ -1,0 +1,33 @@
+{
+  "name": "jitl:euca/euca_village/houses",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 75,
+      "element": {
+        "location": "jitl:euca/euca_village/house_1",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 75,
+      "element": {
+        "location": "jitl:euca/euca_village/house_2",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 25,
+      "element": {
+        "location": "jitl:euca/euca_village/goldite_windmill",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

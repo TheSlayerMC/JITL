@@ -245,6 +245,8 @@ public class JBlocks {
     public static final RegistryObject<PressurePlateBlock> EUCA_GOLD_PRESSURE_PLATE = registerPressurePlate("euca_gold_pressure_plate", "Euca Gold Pressure Plate", PressurePlateBlock.Sensitivity.EVERYTHING, true, JBlockProperties.WOOD);
     public static final RegistryObject<FenceGateBlock> EUCA_GOLD_FENCE_GATE = registerFenceGate("euca_gold_fence_gate", "Euca Gold Fence Gate", true, JBlockProperties.WOOD);
     public static final RegistryObject<JFenceBlock> EUCA_GOLD_FENCE = registerFence("euca_gold_fence", "Euca Gold Fence", true, JBlockProperties.WOOD);
+    public static final RegistryObject<Block> GOLDITE_PATH = registerPathBlock("goldite_path", "Goldite Path", () -> new JDirtPathBlock(JBlockProperties.PATH));
+
 
     public static final RegistryObject<RotatedPillarBlock> EUCA_BROWN_LOG = registerPillar("euca_brown_log", "Euca Brown Log", true, JBlockProperties.WOOD);
     public static final RegistryObject<Block> EUCA_GREEN_LEAVES = registerTerrainBlock("euca_green_leaves", "Euca Green Leaves", JBlockProperties.LEAVES);// JLeavesBlock::new);

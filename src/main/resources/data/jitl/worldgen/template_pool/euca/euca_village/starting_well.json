@@ -1,20 +1,13 @@
 {
-  "name": "jitl:goldite_windmill/start_pool",
-
+  "name": "jitl:euca/euca_village/starting_well",
   "fallback": "minecraft:empty",
-
   "elements": [
     {
-
       "weight": 1,
       "element": {
-
-        "location": "jitl:euca/goldite_windmill",
-
+        "location": "jitl:euca/euca_village/starting_well",
         "processors": "minecraft:empty",
-
         "projection": "rigid",
-
         "element_type": "minecraft:single_pool_element"
       }
     }
