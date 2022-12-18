@@ -38,7 +38,6 @@ public class EucaCharger extends AnimatableMonster {
                 .add(Attributes.MOVEMENT_SPEED, 0.26).build();
     }
 
-
     @Override
     public <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if(event.isMoving()) {

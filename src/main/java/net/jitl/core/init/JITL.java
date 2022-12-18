@@ -7,12 +7,13 @@ import net.jitl.common.world.dimension.JCarver;
 import net.jitl.common.world.gen.*;
 import net.jitl.core.config.JClientConfig;
 import net.jitl.core.config.JCommonConfig;
-import net.jitl.core.data.*;
+import net.jitl.core.data.JBlockPathGenerator;
+import net.jitl.core.data.JItemGenerator;
+import net.jitl.core.data.JNetworkRegistry;
+import net.jitl.core.data.LangRegistry;
 import net.jitl.core.data.block_generation.*;
-import net.jitl.core.init.internal.JContainers;
 import net.jitl.core.init.internal.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -88,6 +89,7 @@ public class JITL {
             new JBlockCampfireGenerator().generate();
             new JBlockPathGenerator().generate();
             new JBlockLadderGenerator().generate();
+            new JRandomizedBlockGenerator().generate();
 
             new LangRegistry().generate();
         }

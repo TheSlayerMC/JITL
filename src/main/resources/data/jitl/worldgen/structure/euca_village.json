@@ -17,7 +17,12 @@
     "creature": {
       "bounding_box": "piece",
       "spawns": [
-
+        {
+          "type": "jitl:crypian",
+          "weight": 10,
+          "minCount": 3,
+          "maxCount": 7
+        }
       ]
     }
   }

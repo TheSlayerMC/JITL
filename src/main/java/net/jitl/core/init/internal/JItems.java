@@ -440,13 +440,16 @@ public class JItems {
     public static final RegistryObject<Item> GOLDBOT_EGG = register("goldbot_spawn_egg", "Goldbot Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.GOLDBOT_TYPE,
             EUCA_COLOR, HOSTILE_COLOR, eggProps()), ItemType.SPAWN_EGG);
 
+    public static final RegistryObject<Item> CRYPIAN_EGG = register("crypian_spawn_egg", "Crypian Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.CRYPIAN_TYPE,
+            EUCA_COLOR, TRADER_COLOR, eggProps()), ItemType.SPAWN_EGG);
+
     public static final RegistryObject<Item> SHIMMERER_EGG = register("shimmerer_spawn_egg", "Shimmerer Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.SHIMMERER_TYPE,
             EUCA_COLOR, HOSTILE_COLOR, eggProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> GOLDER_EGG = register("golder_spawn_egg", "Golder Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.GOLDER_TYPE,
             EUCA_COLOR, HOSTILE_COLOR, eggProps()), ItemType.SPAWN_EGG);
 
-    public static final RegistryObject<Item> ROYAL_KING = register("royal_king_spawn_egg", "Royal King Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ROYAL_KING,
+    public static final RegistryObject<Item> ROYAL_KING = register("royal_king_spawn_egg", "Royal King Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ROYAL_KING_TYPE,
             EUCA_COLOR, PASSIVE_COLOR, eggProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> ESKIMO_EGG = register("eskimo_spawn_egg", "Eskimo Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ESKIMO_TYPE,

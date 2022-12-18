@@ -101,7 +101,7 @@ public abstract class JVillagerEntity extends PathfinderMob implements Npc, Merc
 
     @Override
     public @NotNull InteractionResult mobInteract(@NotNull Player playerEntity, @NotNull InteractionHand playerHand) {
-        if(isAlive() && this.playerEntity == null) {
+        if(isAlive() && this.playerEntity == null && canTrade()) {
             trade(playerEntity);
         } else {
             return super.mobInteract(playerEntity, playerHand);
@@ -109,9 +109,12 @@ public abstract class JVillagerEntity extends PathfinderMob implements Npc, Merc
         return super.mobInteract(playerEntity, playerHand);
     }
 
-    @Override
-    public void notifyTradeUpdated(@NotNull ItemStack stack) {
+    public boolean canTrade() {
+        return true;
     }
+
+    @Override
+    public void notifyTradeUpdated(@NotNull ItemStack stack) { }
 
     @Override
     public @NotNull Level getLevel() {

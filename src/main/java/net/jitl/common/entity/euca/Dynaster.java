@@ -37,7 +37,6 @@ public class Dynaster extends AnimatableMonster {
                 .add(Attributes.MOVEMENT_SPEED, 0.26).build();
     }
 
-
     @Override
     public <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if(!isAttacking() && !event.isMoving())

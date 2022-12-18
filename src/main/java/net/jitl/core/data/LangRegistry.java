@@ -38,6 +38,7 @@ public class LangRegistry {
         ArrayList<String> grassBlockList = new ArrayList<>(JBlocks.grassBlockName);
         ArrayList<String> overlayGrassBlockList = new ArrayList<>(JBlocks.overlayGrassBlockName);
         ArrayList<String> terrainBlockList = new ArrayList<>(JBlocks.terrainBlockName);
+        ArrayList<String> randomizedBlockList = new ArrayList<>(JBlocks.randomBlockName);
 
         ArrayList<String> toolItemList = new ArrayList<>(JItems.toolName);
         ArrayList<String> itemList = new ArrayList<>(JItems.itemName);
@@ -178,6 +179,10 @@ public class LangRegistry {
 
         for(int i = 0; i < rotatableBlockList.size(); i++) {
             writeToFile("\"block.jitl." + rotatableBlockList.get(i) + "\": \"" + JBlocks.rotatableLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < randomizedBlockList.size(); i++) {
+            writeToFile("\"block.jitl." + randomizedBlockList.get(i) + "\": \"" + JBlocks.randomLangName.get(i) + "\"" + ",");
         }
 
         for(int i = 0; i < portalBlockList.size(); i++) {

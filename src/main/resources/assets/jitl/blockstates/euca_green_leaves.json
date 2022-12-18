@@ -5,16 +5,7 @@
         "model": "jitl:block/euca_green_leaves"
       },
       {
-        "model": "jitl:block/euca_green_leaves",
-         "y": 90
-      },
-      {
-        "model": "jitl:block/euca_green_leaves",
-         "y": 180
-      },
-      {
-        "model": "jitl:block/euca_green_leaves",
-         "y": 270
+        "model": "jitl:block/euca_green_leaves_alt"
       }
     ]
   }

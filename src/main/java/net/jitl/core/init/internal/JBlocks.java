@@ -61,6 +61,8 @@ public class JBlocks {
     public static final ArrayList<String> grassLangName = new ArrayList<>();
     public static final ArrayList<String> terrainBlockName = new ArrayList<>();
     public static final ArrayList<String> terrainLangName = new ArrayList<>();
+    public static final ArrayList<String> randomBlockName = new ArrayList<>();
+    public static final ArrayList<String> randomLangName = new ArrayList<>();
     public static final ArrayList<String> ladderBlockName = new ArrayList<>();
     public static final ArrayList<String> ladderLangName = new ArrayList<>();
     public static final ArrayList<String> overlayGrassBlockName = new ArrayList<>();
@@ -247,9 +249,8 @@ public class JBlocks {
     public static final RegistryObject<JFenceBlock> EUCA_GOLD_FENCE = registerFence("euca_gold_fence", "Euca Gold Fence", true, JBlockProperties.WOOD);
     public static final RegistryObject<Block> GOLDITE_PATH = registerPathBlock("goldite_path", "Goldite Path", () -> new JDirtPathBlock(JBlockProperties.PATH));
 
-
     public static final RegistryObject<RotatedPillarBlock> EUCA_BROWN_LOG = registerPillar("euca_brown_log", "Euca Brown Log", true, JBlockProperties.WOOD);
-    public static final RegistryObject<Block> EUCA_GREEN_LEAVES = registerTerrainBlock("euca_green_leaves", "Euca Green Leaves", JBlockProperties.LEAVES);// JLeavesBlock::new);
+    public static final RegistryObject<Block> EUCA_GREEN_LEAVES = registerAltTexBlock("euca_green_leaves", "Euca Green Leaves", JBlockProperties.LEAVES);// JLeavesBlock::new);
     public static final RegistryObject<Block> EUCA_GREEN_SAPLING = registerCrossBlock("euca_green_sapling", "Euca Green Sapling", () -> new JSaplingBlock(new EucaGreenTreeGrower()));
     public static final RegistryObject<Block> EUCA_BROWN_PLANKS = registerFuelBlock("euca_brown_planks", "Euca Brown Planks", JBlockProperties.WOOD, 300);
     public static final RegistryObject<DoorBlock> EUCA_BROWN_DOOR = registerDoor("euca_brown_door", "Euca Brown Door", true, JBlockProperties.DOOR);
@@ -497,6 +498,14 @@ public class JBlocks {
         ladderLangName.add(translatedName);
         ladderBlockName.add(name);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerAltTexBlock(String name, String translatedName, BlockBehaviour.Properties props) {
+        randomLangName.add(translatedName);
+        randomBlockName.add(name);
+        RegistryObject<Block> block1 = BLOCKS.register(name, () -> new Block(props));
         JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
         return block1;
     }

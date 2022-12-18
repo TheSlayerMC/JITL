@@ -7,6 +7,7 @@ import net.jitl.client.render.block.GrindstoneRenderer;
 import net.jitl.client.render.block.JChestRenderer;
 import net.jitl.client.render.block.PedestalRenderer;
 import net.jitl.client.render.block.RockiteSpawnerRenderer;
+import net.jitl.client.render.entity.euca.CrypianRenderer;
 import net.jitl.client.render.entity.euca.RoyalKingRenderer;
 import net.jitl.client.render.entity.frozen.FrozenGuardianRenderer;
 import net.jitl.client.render.entity.overworld.BoomBoomRenderer;
@@ -71,7 +72,8 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.GOLDBOT_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("goldbot", JDimension.EUCA), 0.8F));
         EntityRenderers.register(JEntities.SHIMMERER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("shimmerer", JDimension.EUCA), 0.8F));
         EntityRenderers.register(JEntities.GOLDER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("golder", JDimension.EUCA), 0.8F, 2.0F));
-        EntityRenderers.register(JEntities.ROYAL_KING.get(), renderer -> new RoyalKingRenderer<>(renderer, new AnimatedMonsterModel<>("royal_king", JDimension.EUCA)));
+        EntityRenderers.register(JEntities.ROYAL_KING_TYPE.get(), renderer -> new RoyalKingRenderer<>(renderer, new AnimatedMonsterModel<>("royal_king", JDimension.EUCA)));
+        EntityRenderers.register(JEntities.CRYPIAN_TYPE.get(), renderer -> new CrypianRenderer<>(renderer, new AnimatedMonsterModel<>("crypian", JDimension.EUCA)));
 
         EntityRenderers.register(JEntities.ESKIMO_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("eskimo", JDimension.FROZEN), 0.5F));
         EntityRenderers.register(JEntities.FROZEN_GUARDIAN_TYPE.get(), renderer -> new FrozenGuardianRenderer<>(renderer, new AnimatedMonsterModel<>("frozen_guardian", JDimension.FROZEN)));

@@ -144,6 +144,12 @@ public class JEntities {
                     .setShouldReceiveVelocityUpdates(true)
                     .sized(0.5F, 0.75F).build("goldbot"));
 
+    public static final RegistryObject<EntityType<Crypian>> CRYPIAN_TYPE = REGISTRY.register("crypian", () ->
+            EntityType.Builder.of(Crypian::new, MobCategory.CREATURE)
+                    .setTrackingRange(15)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .sized(0.75F, 1.8F).build("crypian"));
+
     public static final RegistryObject<EntityType<Shimmerer>> SHIMMERER_TYPE = REGISTRY.register("shimmerer", () ->
             EntityType.Builder.of(Shimmerer::new, MobCategory.MONSTER)
                     .setTrackingRange(15)
@@ -156,7 +162,7 @@ public class JEntities {
                     .setShouldReceiveVelocityUpdates(true)
                     .sized(1F, 2F).build("golder"));
 
-    public static final RegistryObject<EntityType<RoyalKing>> ROYAL_KING = REGISTRY.register("royal_king", () ->
+    public static final RegistryObject<EntityType<RoyalKing>> ROYAL_KING_TYPE = REGISTRY.register("royal_king", () ->
             EntityType.Builder.of(RoyalKing::new, MobCategory.CREATURE)
                     .setTrackingRange(15)
                     .setShouldReceiveVelocityUpdates(true)
@@ -197,7 +203,8 @@ public class JEntities {
         event.put(GOLDBOT_TYPE.get(), Goldbot.createAttributes());
         event.put(SHIMMERER_TYPE.get(), Shimmerer.createAttributes());
         event.put(GOLDER_TYPE.get(), Golder.createAttributes());
-        event.put(ROYAL_KING.get(), RoyalKing.createAttributes());
+        event.put(ROYAL_KING_TYPE.get(), RoyalKing.createAttributes());
+        event.put(CRYPIAN_TYPE.get(), Crypian.createAttributes());
 
         event.put(ESKIMO_TYPE.get(), Eskimo.createAttributes());
         event.put(FROZEN_GUARDIAN_TYPE.get(), FrozenGuardian.createAttributes());
