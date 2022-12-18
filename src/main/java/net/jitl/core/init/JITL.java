@@ -52,7 +52,6 @@ public class JITL {
         JEntities.REGISTRY.register(modEventBus);
         JEntities.EGG_REGISTRY.register(modEventBus);
         JAttributes.REGISTRY.register(modEventBus);
-        JConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
         JPlacedFeatures.PLACED_FEATURES.register(modEventBus);
         JFoliagePlacers.REGISTRY.register(modEventBus);
         JFeatures.REGISTRY.register(modEventBus);
