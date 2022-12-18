@@ -22,12 +22,8 @@ import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Snowball;
 import net.minecraft.world.level.Level;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib.core.animation.AnimatableManager;
 
 import java.util.EnumSet;
 
@@ -43,7 +39,7 @@ public class Floro extends AnimatableMonster implements RangedAttackMob {
         super(type, world);
     }
 
-    @Override
+    /*@Override
     protected <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if(event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.floro.walk", true));
@@ -67,6 +63,11 @@ public class Floro extends AnimatableMonster implements RangedAttackMob {
 
         event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.floro.idle", true));
         return PlayState.CONTINUE;
+    }*/
+
+    @Override
+    protected void controller(AnimatableManager.ControllerRegistrar controllers) {
+
     }
 
     @Override

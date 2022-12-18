@@ -9,10 +9,7 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib.core.animation.AnimatableManager;
 
 public class Golder extends AnimatableMonster {
 
@@ -39,7 +36,7 @@ public class Golder extends AnimatableMonster {
     }
 
 
-    @Override
+    /*@Override
     public <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if(event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.golder.walk", false));
@@ -53,5 +50,10 @@ public class Golder extends AnimatableMonster {
 
         event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.golder.idle", true));
         return PlayState.CONTINUE;
+    }*/
+
+    @Override
+    protected void controller(AnimatableManager.ControllerRegistrar controllers) {
+
     }
 }

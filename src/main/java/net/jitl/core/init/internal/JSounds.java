@@ -105,6 +105,10 @@ public class JSounds {
     public static final RegistryObject<SoundEvent> BOIL_DISC_1 = registerSound("music.record.boil_1");
 
     private static RegistryObject<SoundEvent> registerSound(String name) {
-        return REGISTRY.register(name, () -> new SoundEvent(JITL.rl(name)));
+        return REGISTRY.register(name, () -> createSoundEvent(name));
+    }
+
+    private static SoundEvent createSoundEvent(String soundPath) {
+        return SoundEvent.createVariableRangeEvent(JITL.rl(soundPath));
     }
 }

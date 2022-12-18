@@ -39,6 +39,7 @@ import java.util.function.Supplier;
 public class JItems {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, JITL.MODID);
+    public static final DeferredRegister<Item> BLOCK_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, JITL.MODID);
 
     public static final IAbility BASIC = new IAbility() {};
     private static final IAbility LUNIUM_ABILITY = new LuniumAbility();
@@ -174,7 +175,7 @@ public class JItems {
     public static final RegistryObject<Item> EUCA_KEY = registerNormalItem("euca_key", "Euca Chest Key", ChestInteractionItem::new);
     public static final RegistryObject<Item> BOILING_KEY = registerNormalItem("boiling_key", "Boiling Chest Key", ChestInteractionItem::new);
 
-    public static final RegistryObject<Item> SAPPHIRE = registerNormalItem("sapphire", "Sapphire", JTabs.MATERIALS);
+    public static final RegistryObject<Item> SAPPHIRE = registerNormalItem("sapphire", "Sapphire");
     public static final RegistryObject<Item> SAPPHIRE_SHOVEL = registerToolItem("sapphire_shovel", "Sapphire Shovel", () -> new JShovelItem(JToolTiers.SAPPHIRE_SHOVEL));
     public static final RegistryObject<Item> SAPPHIRE_PICKAXE = registerToolItem("sapphire_pickaxe", "Sapphire Pickaxe", () -> new JPickaxeItem(JToolTiers.SAPPHIRE_PICKAXE));
     public static final RegistryObject<Item> SAPPHIRE_AXE = registerToolItem("sapphire_axe", "Sapphire Axe", () -> new JAxeItem(JToolTiers.SAPPHIRE_AXE));
@@ -286,45 +287,45 @@ public class JItems {
     public static final RegistryObject<Item> DEPTHS_BOAT = registerNormalItem("depths_boat", "Depths Boat", () -> new JBoatItem(JBoat.Type.DEPTHS));
 
     public static final RegistryObject<Item> EUCA_PIERCER = registerToolItem("euca_piercer", "Euca Piercer", () ->
-            new PiercerItem(rangedProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
 
     public static final RegistryObject<Item> SUNSET_PIERCER = registerToolItem("sunset_piercer", "Sunset Piercer", () ->
-            new PiercerItem(rangedProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
 
     public static final RegistryObject<Item> NETHIC_PIERCER = registerToolItem("nethic_piercer", "Nethic Piercer", () ->
-            new PiercerItem(rangedProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
 
     public static final RegistryObject<Item> FROSTBITTEN_PIERCER = registerToolItem("frostbitten_piercer", "Frostbitten Piercer", () ->
-            new PiercerItem(rangedProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
 
     public static final RegistryObject<Item> FROZEN_PIERCER = registerToolItem("frozen_piercer", "Frozen Piercer", () ->
-            new PiercerItem(rangedProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
 
     public static final RegistryObject<Item> BOILING_PIERCER = registerToolItem("boiling_piercer", "Boiling Piercer", () ->
-            new PiercerItem(rangedProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
 
     public static final RegistryObject<Item> PIERCER = registerToolItem("piercer", "Piercer", () ->
-            new PiercerItem(rangedProps().durability(128), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 3.0F)));
+            new PiercerItem(itemProps().durability(128), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 3.0F)));
 
     public static final RegistryObject<Item> MOLTEN_KNIFE = registerToolItem("molten_knife", "Molten Knife", () ->
-            new KnifeItem(rangedProps(), (worldIn, owner, stack) ->  new KnifeEntity(worldIn, owner, stack, 10.0F)));
+            new KnifeItem(itemProps(), (worldIn, owner, stack) ->  new KnifeEntity(worldIn, owner, stack, 10.0F)));
 
     public static final RegistryObject<Item> IRON_THROWING_KNIFE = registerToolItem("iron_throwing_knife", "Iron Throwing Knife", () ->
-            new KnifeItem(rangedProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
+            new KnifeItem(itemProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
 
     public static final RegistryObject<Item> ROYAL_KNIFE = registerToolItem("royal_knife", "Royal Knife", () ->
-            new KnifeItem(rangedProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
+            new KnifeItem(itemProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
 
     public static final RegistryObject<Item> AQUATIC_KNIFE = registerToolItem("aquatic_knife", "Aquatic Knife", () ->
-            new KnifeItem(rangedProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
+            new KnifeItem(itemProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
 
     public static final RegistryObject<Item> CHARRED_KNIFE = registerToolItem("charred_knife", "Charred Knife", () ->
-            new KnifeItem(rangedProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
+            new KnifeItem(itemProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
 
     public static final RegistryObject<Item> BLOOD_KNIFE = registerToolItem("blood_knife", "Blood Knife", () ->
-            new KnifeItem(rangedProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
+            new KnifeItem(itemProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
 
-    public static final RegistryObject<Item> MUD_BALL = registerNormalItem("mud_ball", "Mud Ball", () -> new ThrowableItem(rangedProps(),
+    public static final RegistryObject<Item> MUD_BALL = registerNormalItem("mud_ball", "Mud Ball", () -> new ThrowableItem(itemProps(),
             (world, thrower) -> new FloroMudEntity(JEntities.FLORO_MUD_TYPE.get(), world, thrower, 0.0F)).setSound(() -> SoundEvents.SNOWBALL_THROW));
     
     public static final RegistryObject<Item> POISON_SWORD = registerToolItem("poison_sword", "Poison Sword", () -> new JSwordItem(JToolTiers.POISON_SWORD, BASIC));
@@ -376,87 +377,87 @@ public class JItems {
     public static final RegistryObject<Item> DARK_KEEPERS_PLADE = registerToolItem("blade_of_dark_keeper", "Dark Keepers Blade", () -> new JSwordItem(JToolTiers.DARK_KEEPER, BASIC));
     public static final RegistryObject<Item> DEVELOPER_SWORD = registerToolItem("developer_sword", "Creative Sword", () -> new JSwordItem(JToolTiers.DEVELOPER_SWORD, BASIC));
 
-    public static final RegistryObject<Item> EYE_OF_THE_BLIZZARD = registerNormalItem("eye_of_the_blizzard", "Eye Of The Blizzard", () -> new JCurioItem(toolProps().stacksTo(1)).overview(true));
-    public static final RegistryObject<Item> SKULL_OF_DECAY = registerNormalItem("skull_of_decay", "Skull Of Decay", () -> new JCurioItem(toolProps().stacksTo(1).durability(256)).ability(true));
+    public static final RegistryObject<Item> EYE_OF_THE_BLIZZARD = registerNormalItem("eye_of_the_blizzard", "Eye Of The Blizzard", () -> new JCurioItem(itemProps().stacksTo(1)).overview(true));
+    public static final RegistryObject<Item> SKULL_OF_DECAY = registerNormalItem("skull_of_decay", "Skull Of Decay", () -> new JCurioItem(itemProps().stacksTo(1).durability(256)).ability(true));
     public static final RegistryObject<Item> FROSTBORN_SOUL = registerNormalItem("frostborn_soul", "Frostborn Soul");
 
-    public static final RegistryObject<Item> HEART_CONTAINER_SMALL = registerNormalItem("heart_container_small", "Heart Container", () -> new HeartContainerItem(toolProps().stacksTo(1)).health(1));
-    public static final RegistryObject<Item> HEART_CONTAINER_MEDIUM = registerNormalItem("heart_container_medium", "Heart Container", () -> new HeartContainerItem(toolProps().stacksTo(1)).health(4));
-    public static final RegistryObject<Item> HEART_CONTAINER_LARGE = registerNormalItem("heart_container_large", "Heart Container", () -> new HeartContainerItem(toolProps().stacksTo(1)).health(8));
-    public static final RegistryObject<Item> HEART_CONTAINER_ULTIMATE = registerNormalItem("heart_container_ultimate", "Heart Container", () -> new HeartContainerItem(toolProps().stacksTo(1)).health(16));
+    public static final RegistryObject<Item> HEART_CONTAINER_SMALL = registerNormalItem("heart_container_small", "Heart Container", () -> new HeartContainerItem(itemProps().stacksTo(1)).health(1));
+    public static final RegistryObject<Item> HEART_CONTAINER_MEDIUM = registerNormalItem("heart_container_medium", "Heart Container", () -> new HeartContainerItem(itemProps().stacksTo(1)).health(4));
+    public static final RegistryObject<Item> HEART_CONTAINER_LARGE = registerNormalItem("heart_container_large", "Heart Container", () -> new HeartContainerItem(itemProps().stacksTo(1)).health(8));
+    public static final RegistryObject<Item> HEART_CONTAINER_ULTIMATE = registerNormalItem("heart_container_ultimate", "Heart Container", () -> new HeartContainerItem(itemProps().stacksTo(1)).health(16));
 
-    public static final RegistryObject<Item> RING_OF_POISON = registerNormalItem("ring_of_poison", "Ring of Poison", () -> new JRingItem(toolProps().stacksTo(1)).effect(() -> MobEffects.POISON));
-    public static final RegistryObject<Item> RING_OF_BLINDNESS = registerNormalItem("ring_of_blindness", "Ring of Blindness", () -> new JRingItem(toolProps().stacksTo(1)).effect(() -> MobEffects.BLINDNESS));
-    public static final RegistryObject<Item> RING_OF_HARMING = registerNormalItem("ring_of_harming", "Ring of Harming", () -> new JRingItem(toolProps().stacksTo(1)).effect(() -> MobEffects.HARM));
-    public static final RegistryObject<Item> RING_OF_MINING_FATIGUE = registerNormalItem("ring_of_mining_fatigue", "Ring of Mining Fatigue", () -> new JRingItem(toolProps().stacksTo(1)).effect(() -> MobEffects.DIG_SLOWDOWN));
-    public static final RegistryObject<Item> RING_OF_NAUSEA = registerNormalItem("ring_of_nausea", "Ring of Nausea", () -> new JRingItem(toolProps().stacksTo(1)).effect(() -> MobEffects.CONFUSION));
-    public static final RegistryObject<Item> RING_OF_SLOWNESS = registerNormalItem("ring_of_slowness", "Ring of Slowness", () -> new JRingItem(toolProps().stacksTo(1)).effect(() -> MobEffects.MOVEMENT_SLOWDOWN));
-    public static final RegistryObject<Item> RING_OF_WITHERING = registerNormalItem("ring_of_withering", "Ring of Withering", () -> new JRingItem(toolProps().stacksTo(1)).effect(() -> MobEffects.WITHER));
+    public static final RegistryObject<Item> RING_OF_POISON = registerNormalItem("ring_of_poison", "Ring of Poison", () -> new JRingItem(itemProps().stacksTo(1)).effect(() -> MobEffects.POISON));
+    public static final RegistryObject<Item> RING_OF_BLINDNESS = registerNormalItem("ring_of_blindness", "Ring of Blindness", () -> new JRingItem(itemProps().stacksTo(1)).effect(() -> MobEffects.BLINDNESS));
+    public static final RegistryObject<Item> RING_OF_HARMING = registerNormalItem("ring_of_harming", "Ring of Harming", () -> new JRingItem(itemProps().stacksTo(1)).effect(() -> MobEffects.HARM));
+    public static final RegistryObject<Item> RING_OF_MINING_FATIGUE = registerNormalItem("ring_of_mining_fatigue", "Ring of Mining Fatigue", () -> new JRingItem(itemProps().stacksTo(1)).effect(() -> MobEffects.DIG_SLOWDOWN));
+    public static final RegistryObject<Item> RING_OF_NAUSEA = registerNormalItem("ring_of_nausea", "Ring of Nausea", () -> new JRingItem(itemProps().stacksTo(1)).effect(() -> MobEffects.CONFUSION));
+    public static final RegistryObject<Item> RING_OF_SLOWNESS = registerNormalItem("ring_of_slowness", "Ring of Slowness", () -> new JRingItem(itemProps().stacksTo(1)).effect(() -> MobEffects.MOVEMENT_SLOWDOWN));
+    public static final RegistryObject<Item> RING_OF_WITHERING = registerNormalItem("ring_of_withering", "Ring of Withering", () -> new JRingItem(itemProps().stacksTo(1)).effect(() -> MobEffects.WITHER));
 
-    public static final RegistryObject<Item> CLOUDWALKING_AMULET = registerNormalItem("cloudwalker_amulet", "Cloudwalker Amulet", () -> new CloudwalkingAmuletItem(toolProps()));
-    public static final RegistryObject<Item> DYNASTER_AMULET = registerNormalItem("dynaster_amulet", "Amulet of the Dynaster", () -> new DynasterAmuletItem(toolProps().stacksTo(1)));
-    public static final RegistryObject<Item> ICE_AMULET = registerNormalItem("ice_amulet", "Amulet of Glacial Bloodlust", () -> new IceAmuletItem(toolProps().stacksTo(1)));
+    public static final RegistryObject<Item> CLOUDWALKING_AMULET = registerNormalItem("cloudwalker_amulet", "Cloudwalker Amulet", () -> new CloudwalkingAmuletItem(itemProps()));
+    public static final RegistryObject<Item> DYNASTER_AMULET = registerNormalItem("dynaster_amulet", "Amulet of the Dynaster", () -> new DynasterAmuletItem(itemProps().stacksTo(1)));
+    public static final RegistryObject<Item> ICE_AMULET = registerNormalItem("ice_amulet", "Amulet of Glacial Bloodlust", () -> new IceAmuletItem(itemProps().stacksTo(1)));
 
-    public static final RegistryObject<Item> VERY_WEAK_ESSENCE_CRYSTAL = registerNormalItem("very_weak_essence_crystal", "Very Weak Essence Crystal", () -> new EssenceCatalystItem(toolProps().stacksTo(1)).essence(1F));
-    public static final RegistryObject<Item> WEAK_ESSENCE_CRYSTAL = registerNormalItem("weak_essence_crystal", "Weak Essence Crystal", () -> new EssenceCatalystItem(toolProps().stacksTo(1)).essence(2.5F));
-    public static final RegistryObject<Item> STRONG_ESSENCE_CRYSTAL = registerNormalItem("strong_essence_crystal", "Strong Essence Crystal", () -> new EssenceCatalystItem(toolProps().stacksTo(1)).essence(5F));
-    public static final RegistryObject<Item> VERY_STRONG_ESSENCE_CRYSTAL = registerNormalItem("very_strong_essence_crystal", "Very Strong Essence Crystal", () -> new EssenceCatalystItem(toolProps().stacksTo(1)).essence(10F));
+    public static final RegistryObject<Item> VERY_WEAK_ESSENCE_CRYSTAL = registerNormalItem("very_weak_essence_crystal", "Very Weak Essence Crystal", () -> new EssenceCatalystItem(itemProps().stacksTo(1)).essence(1F));
+    public static final RegistryObject<Item> WEAK_ESSENCE_CRYSTAL = registerNormalItem("weak_essence_crystal", "Weak Essence Crystal", () -> new EssenceCatalystItem(itemProps().stacksTo(1)).essence(2.5F));
+    public static final RegistryObject<Item> STRONG_ESSENCE_CRYSTAL = registerNormalItem("strong_essence_crystal", "Strong Essence Crystal", () -> new EssenceCatalystItem(itemProps().stacksTo(1)).essence(5F));
+    public static final RegistryObject<Item> VERY_STRONG_ESSENCE_CRYSTAL = registerNormalItem("very_strong_essence_crystal", "Very Strong Essence Crystal", () -> new EssenceCatalystItem(itemProps().stacksTo(1)).essence(10F));
 
-    public static final RegistryObject<Item> BREATHING_STONE = registerNormalItem("breathing_stone", "Breathing Stone", () -> new EssenceRegenCatalystItem(toolProps().stacksTo(1)).speed(0.0112F));
+    public static final RegistryObject<Item> BREATHING_STONE = registerNormalItem("breathing_stone", "Breathing Stone", () -> new EssenceRegenCatalystItem(itemProps().stacksTo(1)).speed(0.0112F));
 
     public static final RegistryObject<Item> EUDOR_CROWN = registerNormalItem("eudor_crown", "Eudor's Crown");
 
 
     public static final RegistryObject<Item> MAGE_EGG = register("mage_spawn_egg", "Mage Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.MAGE_TYPE,
-            OVERWORLD_COLOR, TRADER_COLOR, eggProps()), ItemType.SPAWN_EGG);
+            OVERWORLD_COLOR, TRADER_COLOR, itemProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> FLORO_EGG = register("floro_spawn_egg", "Floro Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.FLORO_TYPE,
-            OVERWORLD_COLOR, HOSTILE_COLOR, eggProps()), ItemType.SPAWN_EGG);
+            OVERWORLD_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> BOOMBOOM_EGG = register("boomboom_spawn_egg", "BoomBoom Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.BOOM_TYPE,
-            OVERWORLD_COLOR, HOSTILE_COLOR, eggProps()), ItemType.SPAWN_EGG);
+            OVERWORLD_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> TOWER_GUARDIAN_EGG = register("tower_guardian_spawn_egg", "Tower Guarduan Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.TOWER_GUARDIAN_TYPE,
-            OVERWORLD_COLOR, BOSS_COLOR, eggProps()), ItemType.SPAWN_EGG);
+            OVERWORLD_COLOR, BOSS_COLOR, itemProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> ROCKITE_SMASHER_EGG = register("rockite_smasher_spawn_egg", "Rockite Smasher Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ROCKITE_SMASHER_TYPE,
-            OVERWORLD_COLOR, BOSS_COLOR, eggProps()), ItemType.SPAWN_EGG);
+            OVERWORLD_COLOR, BOSS_COLOR, itemProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> WITHERSPINE_SMASHER_EGG = register("witherspine_spawn_egg", "Witherspine Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.WITHERSPINE_TYPE,
-            NETHER_COLOR, HOSTILE_COLOR, eggProps()), ItemType.SPAWN_EGG);
+            NETHER_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> BROWN_HONGO_EGG = register("brown_hongo_spawn_egg", "Brown Hongo Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.BROWN_HONGO_TYPE,
-            OVERWORLD_COLOR, HOSTILE_COLOR, eggProps()), ItemType.SPAWN_EGG);
+            OVERWORLD_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> ILLAGER_MECH_EGG = register("illager_mech_spawn_egg", "Illager Mech Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ILLAGER_MECH_TYPE,
-            OVERWORLD_COLOR, HOSTILE_COLOR, eggProps()), ItemType.SPAWN_EGG);
+            OVERWORLD_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> EUCA_CHARGER_EGG = register("euca_charger_spawn_egg", "Euca Charger Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.EUCA_CHARGER_TYPE,
-            EUCA_COLOR, HOSTILE_COLOR, eggProps()), ItemType.SPAWN_EGG);
+            EUCA_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> DYNASTER_EGG = register("dynaster_spawn_egg", "Dynaster Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.DYNASTER_TYPE,
-            EUCA_COLOR, HOSTILE_COLOR, eggProps()), ItemType.SPAWN_EGG);
+            EUCA_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> GOLDBOT_EGG = register("goldbot_spawn_egg", "Goldbot Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.GOLDBOT_TYPE,
-            EUCA_COLOR, HOSTILE_COLOR, eggProps()), ItemType.SPAWN_EGG);
+            EUCA_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> CRYPIAN_EGG = register("crypian_spawn_egg", "Crypian Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.CRYPIAN_TYPE,
-            EUCA_COLOR, TRADER_COLOR, eggProps()), ItemType.SPAWN_EGG);
+            EUCA_COLOR, TRADER_COLOR, itemProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> SHIMMERER_EGG = register("shimmerer_spawn_egg", "Shimmerer Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.SHIMMERER_TYPE,
-            EUCA_COLOR, HOSTILE_COLOR, eggProps()), ItemType.SPAWN_EGG);
+            EUCA_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> GOLDER_EGG = register("golder_spawn_egg", "Golder Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.GOLDER_TYPE,
-            EUCA_COLOR, HOSTILE_COLOR, eggProps()), ItemType.SPAWN_EGG);
+            EUCA_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> ROYAL_KING = register("royal_king_spawn_egg", "Royal King Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ROYAL_KING_TYPE,
-            EUCA_COLOR, PASSIVE_COLOR, eggProps()), ItemType.SPAWN_EGG);
+            EUCA_COLOR, PASSIVE_COLOR, itemProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> ESKIMO_EGG = register("eskimo_spawn_egg", "Eskimo Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ESKIMO_TYPE,
-            FROZEN_COLOR, TRADER_COLOR, eggProps()), ItemType.SPAWN_EGG);
+            FROZEN_COLOR, TRADER_COLOR, itemProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> FROZEN_GUARDIAN_EGG = register("frozen_guardian_spawn_egg", "Frozen Guardian Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.FROZEN_GUARDIAN_TYPE,
-            FROZEN_COLOR, PASSIVE_COLOR, eggProps()), ItemType.SPAWN_EGG);
+            FROZEN_COLOR, PASSIVE_COLOR, itemProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> UNDERWATER_WORLD_RECORD = registerRecord("underwater_world_record", "Blue Water", JSounds.UNDERWATER_WORLD, 2640);
     public static final RegistryObject<Item> GOLD_PLAINS_RECORD = registerRecord("gold_plains_record", "Gold Plains", JSounds.GOLD_PLAINS_MUSIC, 1120);
@@ -468,15 +469,15 @@ public class JItems {
 
 
     public static RegistryObject<Item> registerNormalItem(String name, String translatedName, CreativeModeTab tab) {
-        return register(name, translatedName, () -> new Item(new Item.Properties().tab(tab)), ItemType.ITEM);
+        return register(name, translatedName, () -> new Item(new Item.Properties()), ItemType.ITEM);
     }
 
     public static RegistryObject<Item> registerNormalItem(String name, String translatedName) {
-        return register(name, translatedName, () -> new Item(new Item.Properties().tab(JTabs.MATERIALS)), ItemType.ITEM);
+        return register(name, translatedName, () -> new Item(new Item.Properties()), ItemType.ITEM);
     }
 
     public static RegistryObject<Item> registerFuelItem(String name, String translatedName, int burnTime /* 200 ticks per item */) {
-        return register(name, translatedName, () -> new Item(new Item.Properties().tab(JTabs.MATERIALS)) {
+        return register(name, translatedName, () -> new Item(new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
                 return burnTime;
@@ -499,7 +500,7 @@ public class JItems {
     public static RegistryObject<Item> registerRecord(String name, String descTranslated, Supplier<SoundEvent> sound, int tickLengths) {
         recordDescName.add("item.jitl." + name + ".desc");
         recordDescLangName.add(descTranslated);
-        return register(name, "Journey Record", () -> new RecordItem(4, sound, miscProps().stacksTo(1), tickLengths), ItemType.RECORD);
+        return register(name, "Journey Record", () -> new RecordItem(4, sound, itemProps().stacksTo(1), tickLengths), ItemType.RECORD);
     }
 
     public static RegistryObject<Item> register(String name, String translatedName, Supplier<Item> item, ItemType type) {
@@ -526,25 +527,14 @@ public class JItems {
         return ITEMS.register(name, item);
     }
 
-    public static Item.Properties weaponProps() {
-        return new Item.Properties().tab(JTabs.WEAPONS);
+    public static RegistryObject<Item> registerBlockItem(String name, Supplier<Item> item) {
+        return BLOCK_ITEMS.register(name, item);
     }
 
-    public static Item.Properties rangedProps() {
-        return new Item.Properties().tab(JTabs.RANGED_WEAPONS);
+    public static Item.Properties itemProps() {
+        return new Item.Properties();
     }
 
-    public static Item.Properties toolProps() {
-        return new Item.Properties().tab(JTabs.TOOLS);
-    }
-
-    public static Item.Properties miscProps() {
-        return new Item.Properties().tab(JTabs.MISC);
-    }
-
-    public static Item.Properties eggProps() {
-        return new Item.Properties().tab(JTabs.MISC);
-    }
 
     public enum ItemType {
         ITEM,

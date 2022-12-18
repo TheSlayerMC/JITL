@@ -4,8 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.math.Quaternion;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import net.jitl.client.JModelLayers;
 import net.jitl.client.model.JBoatModel;
 import net.jitl.common.entity.base.JBoat;
@@ -20,6 +19,7 @@ import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
+import org.joml.Quaternionf;
 
 import java.util.Map;
 import java.util.stream.Stream;
@@ -41,24 +41,24 @@ public class JBoatRenderer extends EntityRenderer<JBoat> {
     public void render(JBoat entity, float entityYaw, float partialTicks_, PoseStack matrixStack, @NotNull MultiBufferSource buffer, int packedLight) {
         matrixStack.pushPose();
         matrixStack.translate(0.0D, 0.375D, 0.0D);
-        matrixStack.mulPose(Vector3f.YP.rotationDegrees(180.0F - entityYaw));
+        matrixStack.mulPose(Axis.YP.rotationDegrees(180.0F - entityYaw));
         float f = (float)entity.getHurtTime() - partialTicks_;
         float f1 = entity.getDamage() - partialTicks_;
         if(f1 < 0.0F)
             f1 = 0.0F;
 
         if(f > 0.0F)
-            matrixStack.mulPose(Vector3f.XP.rotationDegrees(Mth.sin(f) * f * f1 / 10.0F * (float)entity.getHurtDir()));
+            matrixStack.mulPose(Axis.XP.rotationDegrees(Mth.sin(f) * f * f1 / 10.0F * (float)entity.getHurtDir()));
 
         float f2 = entity.getBubbleAngle(partialTicks_);
         if(!Mth.equal(f2, 0.0F))
-            matrixStack.mulPose(new Quaternion(new Vector3f(1.0F, 0.0F, 1.0F), entity.getBubbleAngle(partialTicks_), true));
+            matrixStack.mulPose(new Quaternionf().setAngleAxis(entity.getBubbleAngle(partialTicks_) * ((float)Math.PI / 180F), 1.0F, 0.0F, 1.0F));
 
         Pair<ResourceLocation, JBoatModel> pair = getModelWithLocation(entity);
         ResourceLocation resourcelocation = pair.getFirst();
         JBoatModel JBoatmodel = pair.getSecond();
         matrixStack.scale(-1.0F, -1.0F, 1.0F);
-        matrixStack.mulPose(Vector3f.YP.rotationDegrees(90.0F));
+        matrixStack.mulPose(Axis.YP.rotationDegrees(90.0F));
         JBoatmodel.setupAnim(entity, partialTicks_, 0.0F, -0.1F, 0.0F, 0.0F);
         VertexConsumer vertexconsumer = buffer.getBuffer(JBoatmodel.renderType(resourcelocation));
         JBoatmodel.renderToBuffer(matrixStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);

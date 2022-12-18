@@ -7,6 +7,6 @@ import net.minecraft.world.item.PickaxeItem;
 public class JPickaxeItem extends PickaxeItem {
 
     public JPickaxeItem(JToolTiers tier) {
-        super(tier.getTier(), tier.getDamage(), tier.getSpeedModifier(), JItems.toolProps());
+        super(tier.getTier(), tier.getDamage(), tier.getSpeedModifier(), JItems.itemProps());
     }
 }

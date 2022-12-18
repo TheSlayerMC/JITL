@@ -1,14 +1,13 @@
 package net.jitl.client.render.projectile;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -47,7 +46,7 @@ public class ThrownItemRenderer<T extends Entity & ItemSupplier> extends EntityR
          matrixStack.pushPose();
          matrixStack.scale(this.scale, this.scale, this.scale);
          matrixStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
-         matrixStack.mulPose(Vector3f.YP.rotationDegrees(180.0F));
+         matrixStack.mulPose(Axis.YP.rotationDegrees(180.0F));
          this.itemRenderer.renderStatic(entity.getItem(), ItemTransforms.TransformType.GROUND, packedLight, OverlayTexture.NO_OVERLAY, matrixStack, buffer, entity.getId());
          matrixStack.popPose();
          super.render(entity, entityYaw_, partialTicks, matrixStack, buffer, packedLight);

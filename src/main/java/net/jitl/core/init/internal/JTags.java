@@ -1,9 +1,10 @@
 package net.jitl.core.init.internal;
 
 import net.jitl.core.init.JITL;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.*;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
@@ -16,6 +17,7 @@ public class JTags {
     public static final TagKey<Block> FROZEN_STONE_ORE_REPLACEABLES = tagBlock("frozen_stone_ore_replaceables");
     public static final TagKey<Block> DEPTHS_STONE_ORE_REPLACEABLES = tagBlock("depths_stone_ore_replaceables");
     public static final TagKey<Block> DEPTHS_LAMP_REPLACEABLES = tagBlock("depths_lamp_replaceables");
+    public static final TagKey<Block> END_STONE = tagBlock("end_stone");
     public static final TagKey<Block> JLOGS = tagBlock("jlogs");
     public static final TagKey<Block> JPLANKS = tagBlock("planks");
     public static final TagKey<Block> EUCA_GRASS = tagBlock("euca_grass");
@@ -32,6 +34,6 @@ public class JTags {
     }
 
     private static TagKey<Biome> tagBiome(String name) {
-        return TagKey.create(Registry.BIOME_REGISTRY, JITL.rl("has_structure/" + name));
+        return TagKey.create(Registries.BIOME, JITL.rl("has_structure/" + name));
     }
 }

@@ -2,7 +2,7 @@ package net.jitl.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import net.jitl.client.JModelLayers;
 import net.jitl.common.block.JChestBlock;
 import net.jitl.common.block.entity.JChestBlockEntity;
@@ -101,7 +101,7 @@ public class JChestRenderer<T extends BlockEntity & LidBlockEntity> implements B
         poseStack.pushPose();
         float f = blockstate.getValue(JChestBlock.FACING).toYRot();
         poseStack.translate(0.5D, 0.5D, 0.5D);
-        poseStack.mulPose(Vector3f.YP.rotationDegrees(-f));
+        poseStack.mulPose(Axis.YP.rotationDegrees(-f));
         poseStack.translate(-0.5D, -0.5D, -0.5D);
         DoubleBlockCombiner.NeighborCombineResult<? extends JChestBlockEntity> res;
         if(viable) {
@@ -146,7 +146,7 @@ public class JChestRenderer<T extends BlockEntity & LidBlockEntity> implements B
         matrixStack.pushPose();
         float f = state.getValue(JChestBlock.FACING).toYRot();
         matrixStack.translate(0.5D, 0.5D, 0.5D);
-        matrixStack.mulPose(Vector3f.YP.rotationDegrees(-f));
+        matrixStack.mulPose(Axis.YP.rotationDegrees(-f));
         matrixStack.translate(-0.5D, -0.5D, -0.5D);
         matrixStack.translate(translation[0], translation[1], translation[2]);
         float scale = 1.0F;

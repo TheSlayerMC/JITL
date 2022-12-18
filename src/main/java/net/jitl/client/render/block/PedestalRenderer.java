@@ -1,7 +1,7 @@
 package net.jitl.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import net.jitl.common.block.entity.PedestalTile;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -30,7 +30,7 @@ public class PedestalRenderer implements BlockEntityRenderer<PedestalTile> {
         matrixStack.pushPose();
         float timeD = (float) (360.0 * (System.currentTimeMillis() & 0x3FFFL) / 0x3FFFL) / 16;
         matrixStack.translate(translation[0], translation[1], translation[2]);
-        matrixStack.mulPose(Vector3f.YP.rotation(timeD));
+        matrixStack.mulPose(Axis.YP.rotation(timeD));
         matrixStack.scale(scale, scale, scale);
         BakedModel model = renderEntity.getModel(stack, null, null, 0);
 

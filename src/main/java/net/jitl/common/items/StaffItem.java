@@ -23,7 +23,7 @@ public class StaffItem extends Item implements IEssenceItem {
     private final int essenceUsage;
 
     public StaffItem(int essence, BiFunction<Level, LivingEntity, ThrowableProjectile> projectileFactory) {
-        super(JItems.rangedProps().stacksTo(1));
+        super(JItems.itemProps().stacksTo(1));
         this.projectileFactory = projectileFactory;
         this.essenceUsage = essence;
     }

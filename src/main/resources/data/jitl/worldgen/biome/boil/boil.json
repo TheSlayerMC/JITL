@@ -14,10 +14,10 @@
   "spawn_costs": {},
   "features": [
     [
-      "jitl:boil_fire_placed",
-      "jitl:boil_veg_placed",
-      "jitl:ashual_ore_placed",
-      "jitl:blazium_ore_placed"
+      "jitl:boil_fire",
+      "jitl:boil_plains_veg",
+      "jitl:ashual_ore",
+      "jitl:blazium_ore"
     ]
   ]
 }

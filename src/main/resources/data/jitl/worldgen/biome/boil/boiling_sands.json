@@ -20,15 +20,15 @@
   "spawn_costs": {},
   "features": [
     [
-      "jitl:scorched_cactus_placed",
-      "jitl:boil_sands_veg_placed",
-      "jitl:boil_fire_placed",
-      "jitl:volcanic_rock_placed",
-      "jitl:sulphur_deposit_placed",
-      "jitl:sulphur_crystal_placed",
-      "jitl:dying_burned_tree_placed",
-      "jitl:ashual_ore_placed",
-      "jitl:blazium_ore_placed"
+      "jitl:scorched_cactus",
+      "jitl:boil_sands_veg",
+      "jitl:boil_fire",
+      "jitl:volcanic_rock",
+      "jitl:sulphur_deposit",
+      "jitl:sulphur_crystal",
+      "jitl:dying_burned_tree",
+      "jitl:ashual_ore",
+      "jitl:blazium_ore"
     ]
   ]
 }

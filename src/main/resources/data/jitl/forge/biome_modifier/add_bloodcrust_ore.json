@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
   "biomes": "#minecraft:is_nether",
-  "features": "jitl:blood_ore_placed",
+  "features": "jitl:bloodcrust_ore",
   "step": "underground_ores"
 }

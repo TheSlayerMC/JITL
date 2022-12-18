@@ -27,13 +27,9 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib.core.animation.AnimatableManager;
 
 import javax.annotation.Nullable;
 import java.util.Collection;
@@ -74,6 +70,11 @@ public class BoomBoom extends AnimatableMonster implements PowerableMob {
     }
 
     @Override
+    protected void controller(AnimatableManager.ControllerRegistrar controllers) {
+
+    }
+
+    /*@Override
     public <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if(event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.boomboom.walk", false));
@@ -83,7 +84,7 @@ public class BoomBoom extends AnimatableMonster implements PowerableMob {
         if(!isAttacking() && !event.isMoving())
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.boomboom.idle", true));
         return PlayState.CONTINUE;
-    }
+    }*/
 
     @Override
     public int getMaxFallDistance() {
@@ -219,10 +220,9 @@ public class BoomBoom extends AnimatableMonster implements PowerableMob {
 
     private void explodeBoom() {
         if (!this.level.isClientSide) {
-            Explosion.BlockInteraction e = net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level, this) ? Explosion.BlockInteraction.DESTROY : Explosion.BlockInteraction.NONE;
             float f = this.isPowered() ? 2.0F : 1.0F;
             this.dead = true;
-            this.level.explode(this, this.getX(), this.getY(), this.getZ(), (float)this.explosionRadius * f, e);
+            this.level.explode(this, this.getX(), this.getY(), this.getZ(), (float)this.explosionRadius * f, Level.ExplosionInteraction.MOB);
             this.discard();
             this.spawnLingeringCloud();
         }

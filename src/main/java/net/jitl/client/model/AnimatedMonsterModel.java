@@ -1,17 +1,19 @@
 package net.jitl.client.model;
 
-import net.jitl.core.init.internal.JDimension;
 import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.JDimension;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.GeckoLib;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 
-public class AnimatedMonsterModel<T extends IAnimatable> extends AnimatedGeoModel<T> {
+public class AnimatedMonsterModel<T extends GeoEntity> extends DefaultedEntityGeoModel<T> {
 
     private final String name;
     private final JDimension dim;
 
     public AnimatedMonsterModel(String name, JDimension dim) {
+        super(new ResourceLocation(GeckoLib.MOD_ID, name));
         this.dim = dim;
         this.name = name;
     }

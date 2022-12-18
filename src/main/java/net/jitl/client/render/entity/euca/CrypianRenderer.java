@@ -7,12 +7,12 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 
-public class CrypianRenderer<T extends LivingEntity & IAnimatable> extends AnimatedMonsterRenderer<T> {
+public class CrypianRenderer<T extends LivingEntity & GeoEntity> extends AnimatedMonsterRenderer<T> {
 
-    public CrypianRenderer(EntityRendererProvider.Context renderManager, AnimatedGeoModel<T> modelProvider) {
+    public CrypianRenderer(EntityRendererProvider.Context renderManager, DefaultedEntityGeoModel<T> modelProvider) {
         super(renderManager, modelProvider, 0.5F, 1.25F);
     }
 

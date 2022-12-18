@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
   "biomes": "#minecraft:is_overworld",
-  "features": "jitl:shadium_ore_placed",
+  "features": "jitl:shadium_ore",
   "step": "underground_ores"
 }

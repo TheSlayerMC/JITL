@@ -28,10 +28,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib.core.animation.AnimatableManager;
 
 public class RockiteSmasher extends AnimatableMonster implements IJourneyBoss, IDontAttackWhenPeaceful {
 
@@ -127,7 +124,7 @@ public class RockiteSmasher extends AnimatableMonster implements IJourneyBoss, I
         return null;
     }
 
-    @Override
+    /*@Override
     public <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if(event.isMoving() && !isAttacking()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rockite_smasher.walk", true));
@@ -142,6 +139,11 @@ public class RockiteSmasher extends AnimatableMonster implements IJourneyBoss, I
         if(!isAttacking())
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rockite_smasher.idle", true));
         return PlayState.CONTINUE;
+    }*/
+
+    @Override
+    protected void controller(AnimatableManager.ControllerRegistrar controllers) {
+
     }
 
     @Override

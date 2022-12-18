@@ -56,15 +56,14 @@
   "carvers": {},
   "features": [
     [
-      "jitl:euca_boulder_placed",
-      "jitl:euca_gold_tree_placed",
-      "jitl:euca_green_tree_placed",
-      "jitl:gold_veg_placed",
-      "jitl:celestium_ore_placed",
-      "jitl:korite_ore_placed",
-      "jitl:euca_water_placed",
-      "jitl:euca_ruins_placed"
-
+      "jitl:euca_boulder",
+      "jitl:euca_gold_tree",
+      "jitl:euca_green_tree",
+      "jitl:gold_veg",
+      "jitl:celestium_ore",
+      "jitl:korite_ore",
+      "jitl:euca_water",
+      "jitl:euca_ruins"
     ]
   ]
 }

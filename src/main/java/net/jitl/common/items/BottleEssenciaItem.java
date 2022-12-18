@@ -19,7 +19,7 @@ public class BottleEssenciaItem extends Item implements IEssenceItem {
     private boolean strong;
 
     public BottleEssenciaItem(boolean strong) {
-        super(JItems.miscProps());
+        super(JItems.itemProps());
         this.strong = strong;
     }
 

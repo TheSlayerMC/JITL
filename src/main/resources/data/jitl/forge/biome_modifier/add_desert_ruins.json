@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
   "biomes": "minecraft:desert",
-  "features": "jitl:desert_overworld_ruins_placed",
+  "features": "jitl:desert_overworld_ruins",
   "step": "raw_generation"
 }

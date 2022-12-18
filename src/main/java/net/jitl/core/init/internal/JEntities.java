@@ -183,7 +183,7 @@ public class JEntities {
     //GET TO WORK
     private static RegistryObject<EntityType<Mob>> registerEntity(EntityType.EntityFactory<Mob> factory, String entityName, String langName, int bg, int fg, float width, float height, MobCategory classification) {
         EntityType<Mob> entity = EntityType.Builder.of(factory, classification).sized(width, height).setTrackingRange(15).setShouldReceiveVelocityUpdates(true).build(entityName);
-        JItems.register(entityName + "_spawn_egg", langName + " Spawn Egg", () -> new ForgeSpawnEggItem(() -> entity, bg, fg, JItems.eggProps()), JItems.ItemType.SPAWN_EGG);
+        JItems.register(entityName + "_spawn_egg", langName + " Spawn Egg", () -> new ForgeSpawnEggItem(() -> entity, bg, fg, JItems.itemProps()), JItems.ItemType.SPAWN_EGG);
         return REGISTRY.register(entityName, () -> entity);
     }
 

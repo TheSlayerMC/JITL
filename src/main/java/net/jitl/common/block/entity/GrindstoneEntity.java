@@ -2,43 +2,34 @@ package net.jitl.common.block.entity;
 
 import net.jitl.common.block.JGrindstoneBlock;
 import net.jitl.core.init.internal.JBlockEntities;
-import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import software.bernie.geckolib3.core.AnimationState;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib.animatable.GeoBlockEntity;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
-import java.util.Objects;
+public class GrindstoneEntity extends BlockEntity implements GeoBlockEntity {
 
-
-public class GrindstoneEntity extends BlockEntity implements IAnimatable {
-
-    private final AnimationFactory factory = new AnimationFactory(this);
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public GrindstoneEntity(BlockPos pos, BlockState state) {
         super(JBlockEntities.GRINDSTONE.get(), pos, state);
     }
 
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
-    }
-
-    private <T extends IAnimatable> PlayState predicate(AnimationEvent<T> event) {
-        if(isPowered()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.grindstone.working", true));
-        } else {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.grindstone.nothing", false));
-        }
-        return PlayState.CONTINUE;
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>(this, state -> {
+            if(isPowered()) {
+                return state.setAndContinue(RawAnimation.begin().thenPlay("animation.grindstone.working"));
+            }
+            else {
+                return state.setAndContinue(RawAnimation.begin().thenPlay("animation.grindstone.nothing"));
+            }
+        }));
     }
 
     public boolean isPowered() {
@@ -46,7 +37,8 @@ public class GrindstoneEntity extends BlockEntity implements IAnimatable {
     }
 
     @Override
-    public AnimationFactory getFactory() {
-        return factory;
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.cache;
     }
+
 }

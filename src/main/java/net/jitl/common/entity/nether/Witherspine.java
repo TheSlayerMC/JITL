@@ -1,13 +1,7 @@
 package net.jitl.common.entity.nether;
 
 import net.jitl.common.entity.base.AnimatableMonster;
-import net.jitl.common.entity.goal.IdleHealGoal;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -16,14 +10,7 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import software.bernie.geckolib3.core.AnimationState;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib.core.animation.AnimatableManager;
 
 public class Witherspine extends AnimatableMonster {
 
@@ -51,6 +38,11 @@ public class Witherspine extends AnimatableMonster {
     }
 
     @Override
+    protected void controller(AnimatableManager.ControllerRegistrar controllers) {
+
+    }
+
+   /* @Override
     public <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if(event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.witherspine.walk", false));
@@ -66,5 +58,5 @@ public class Witherspine extends AnimatableMonster {
         if(!isAttacking() && !event.isMoving())
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.witherspine.idle", true));
         return PlayState.CONTINUE;
-    }
+    }*/
 }

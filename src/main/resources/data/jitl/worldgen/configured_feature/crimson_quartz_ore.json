@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:ore",
+	"config": {
+		"size": 12,
+		"discard_chance_on_air_exposure": 0.6,
+		"targets": [
+			{
+				"target": {
+					"predicate_type": "minecraft:tag_match",
+					"tag": "minecraft:base_stone_nether"
+				},
+				"state": {
+					"Name": "jitl:crimson_quartz_ore"
+				}
+			}
+		]
+	}
+}

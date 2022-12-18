@@ -18,15 +18,20 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
 import javax.annotation.Nullable;
 import java.util.Objects;
 import java.util.Set;
 
-public abstract class JVillagerEntity extends PathfinderMob implements Npc, Merchant, Enemy {
+public abstract class JVillagerEntity extends PathfinderMob implements Npc, Merchant, Enemy, GeoEntity {
 
     private Player playerEntity;
     protected MerchantOffers offers;
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public JVillagerEntity(EntityType<? extends PathfinderMob> type, Level worldIn) {
         super(type, worldIn);
@@ -50,6 +55,18 @@ public abstract class JVillagerEntity extends PathfinderMob implements Npc, Merc
             provideTrades();
         }
         return offers;
+    }
+
+    protected abstract void controller(AnimatableManager.ControllerRegistrar controllers);
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controller(controllers);
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.cache;
     }
 
     @Nullable

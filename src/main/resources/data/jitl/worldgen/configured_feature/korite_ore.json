@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:ore",
+	"config": {
+		"size": 7,
+		"discard_chance_on_air_exposure": 0.6,
+		"targets": [
+			{
+				"target": {
+					"predicate_type": "minecraft:tag_match",
+					"tag": "jitl:euca_stone_ore_replaceables"
+				},
+				"state": {
+					"Name": "jitl:korite_ore"
+				}
+			}
+		]
+	}
+}

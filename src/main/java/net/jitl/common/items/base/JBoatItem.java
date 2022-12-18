@@ -1,8 +1,5 @@
 package net.jitl.common.items.base;
 
-import java.util.List;
-import java.util.function.Predicate;
-
 import net.jitl.common.entity.base.JBoat;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
@@ -22,13 +19,16 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+import java.util.function.Predicate;
+
 public class JBoatItem extends Item {
     
     private static final Predicate<Entity> ENTITY_PREDICATE = EntitySelector.NO_SPECTATORS.and(Entity::isPickable);
     private final JBoat.Type type;
 
     public JBoatItem(JBoat.Type type) {
-        super(JItems.miscProps());
+        super(JItems.itemProps());
         this.type = type;
     }
 

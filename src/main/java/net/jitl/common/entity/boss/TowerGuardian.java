@@ -13,9 +13,6 @@ import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -33,16 +30,11 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.ExplosionDamageCalculator;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib.core.animation.AnimatableManager;
 
 public class TowerGuardian extends AnimatableMonster implements IJourneyBoss, IDontAttackWhenPeaceful {
 
@@ -84,7 +76,7 @@ public class TowerGuardian extends AnimatableMonster implements IJourneyBoss, ID
         BlockState blockstate = this.level.getBlockState(blockpos);
         if(hurt) {
             if(random.nextInt(15) == 0) {
-                this.level.explode(this, this.getX(), this.getY(), this.getZ(), explosionRadius, Explosion.BlockInteraction.NONE);
+                this.level.explode(this, this.getX(), this.getY(), this.getZ(), explosionRadius, Level.ExplosionInteraction.NONE);
             }
             if(blockstate.getRenderShape() != RenderShape.INVISIBLE) {
                 for(int i = 0; i < 50; i++) {
@@ -144,7 +136,7 @@ public class TowerGuardian extends AnimatableMonster implements IJourneyBoss, ID
         return BOSS_TRACK;
     }
 
-    @Override
+    /*@Override
     protected <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if(event.isMoving() && !isAttacking()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.tower_guardian.walk", true));
@@ -159,6 +151,11 @@ public class TowerGuardian extends AnimatableMonster implements IJourneyBoss, ID
         if(!isAttacking())
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.tower_guardian.idle", true));
         return PlayState.CONTINUE;
+    }*/
+
+    @Override
+    protected void controller(AnimatableManager.ControllerRegistrar controllers) {
+
     }
 
     @Override

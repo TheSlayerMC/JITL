@@ -66,11 +66,11 @@
   "spawn_costs": {},
   "features": [
     [
-      "jitl:rimestone_ore_placed",
-      "jitl:peridot_ore_placed",
-      "jitl:frozen_veg_placed",
-      "jitl:ice_spike_placed",
-      "jitl:frozen_flowers_placed"
+      "jitl:rimestone_ore",
+      "jitl:peridot_ore",
+      "jitl:frozen_veg",
+      "jitl:ice_spike",
+      "jitl:frozen_flowers"
     ]
   ]
 }

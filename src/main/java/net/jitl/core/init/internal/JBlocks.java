@@ -453,20 +453,20 @@ public class JBlocks {
 
     public static RegistryObject<Block> register(String name, String translatedName, BlockBehaviour.Properties props) {
         normalBlockName.add(name);
-        return register(name, translatedName, () -> new JBlock(props), JTabs.BLOCKS);
+        return register(name, translatedName, () -> new JBlock(props));
     }
 
     public static RegistryObject<Block> register(String name, String translatedName, Supplier<Block> block) {
         normalLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
     public static RegistryObject<Block> register(String name, String translatedName, Supplier<Block> block, CreativeModeTab tab) {
         normalLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(tab)));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -474,7 +474,7 @@ public class JBlocks {
         campfireBlockName.add(name);
         campfireLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, () -> new CampfireBlock(true, 1, JBlockProperties.CAMPFIRE));
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -482,7 +482,7 @@ public class JBlocks {
         furnaceBlockName.add(name);
         furnaceLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, () -> new JFurnaceBlock(JBlockProperties.FURNACE));
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -490,7 +490,7 @@ public class JBlocks {
         chestBlockName.add(name);
         chestLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -498,7 +498,7 @@ public class JBlocks {
         ladderLangName.add(translatedName);
         ladderBlockName.add(name);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -506,7 +506,7 @@ public class JBlocks {
         randomLangName.add(translatedName);
         randomBlockName.add(name);
         RegistryObject<Block> block1 = BLOCKS.register(name, () -> new Block(props));
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -514,7 +514,7 @@ public class JBlocks {
         terrainLangName.add(translatedName);
         terrainBlockName.add(name);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -526,7 +526,7 @@ public class JBlocks {
         rotatableBlockName.add(name);
         rotatableLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -534,7 +534,7 @@ public class JBlocks {
         modelBlockName.add(name);
         modelLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -542,7 +542,7 @@ public class JBlocks {
         grassBlockName.add(name);
         grassLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -550,7 +550,7 @@ public class JBlocks {
         overlayGrassBlockName.add(name);
         overlayGrassLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -558,7 +558,7 @@ public class JBlocks {
         portalBlockName.add(name);
         portalLangName.add(translatedName);
         RegistryObject<JBasePortalBlock> block1 = BLOCKS.register(name, block);
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -566,7 +566,7 @@ public class JBlocks {
         pathBlockName.add(name);
         pathLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -574,7 +574,7 @@ public class JBlocks {
         logBlockName.add(name);
         logLangName.add(translatedName);
         RegistryObject<RotatedPillarBlock> block1 = BLOCKS.register(name, () -> new RotatedPillarBlock(props));
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)) {
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
                 return wood ? 300 : -1;
@@ -586,8 +586,8 @@ public class JBlocks {
     public static RegistryObject<DoorBlock> registerDoor(String name, String translatedName, boolean wood, BlockBehaviour.Properties p) {
         doorBlockName.add(name);
         doorLangName.add(translatedName);
-        RegistryObject<DoorBlock> block1 = BLOCKS.register(name, () -> new DoorBlock(p));
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)) {
+        RegistryObject<DoorBlock> block1 = BLOCKS.register(name, () -> new DoorBlock(p, SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
                 return wood ? 300 : -1;
@@ -599,8 +599,8 @@ public class JBlocks {
     public static RegistryObject<TrapDoorBlock> registerTrapDoor(String name, String translatedName, boolean wood, BlockBehaviour.Properties p) {
         trapDoorBlockName.add(name);
         trapDoorLangName.add(translatedName);
-        RegistryObject<TrapDoorBlock> block1 = BLOCKS.register(name, () -> new TrapDoorBlock(p));
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)) {
+        RegistryObject<TrapDoorBlock> block1 = BLOCKS.register(name, () -> new TrapDoorBlock(p, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
                 return wood ? 300 : -1;
@@ -613,7 +613,7 @@ public class JBlocks {
         stairsBlockName.add(name);
         stairsLangName.add(translatedName);
         RegistryObject<StairBlock> block1 = BLOCKS.register(name, () -> new StairBlock(() -> plank.get().defaultBlockState(), p));
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)) {
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
                 return wood ? 300 : -1;
@@ -626,7 +626,7 @@ public class JBlocks {
         slabBlockName.add(name);
         slabLangName.add(translatedName);
         RegistryObject<SlabBlock> block1 = BLOCKS.register(name, () -> new SlabBlock(p));
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)) {
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
                 return wood ? 300 : -1;
@@ -638,13 +638,13 @@ public class JBlocks {
     public static RegistryObject<ButtonBlock> registerButton(String name, String translatedName, boolean sensitive, boolean wood, BlockBehaviour.Properties p) {
         buttonBlockName.add(name);
         buttonLangName.add(translatedName);
-        RegistryObject<ButtonBlock> block1 = BLOCKS.register(name, () -> new ButtonBlock(sensitive, p) {
+        RegistryObject<ButtonBlock> block1 = BLOCKS.register(name, () -> new ButtonBlock(p, sensitive ? 20 : 30, true, SoundEvents.STONE_BUTTON_CLICK_OFF, SoundEvents.STONE_BUTTON_CLICK_ON) {
             @Override
             protected @NotNull SoundEvent getSound(boolean pIsOn) {
                 return SoundEvents.WOODEN_BUTTON_CLICK_ON;
             }
         });
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)) {
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
                 return wood ? 300 : -1;
@@ -656,8 +656,8 @@ public class JBlocks {
     public static RegistryObject<PressurePlateBlock> registerPressurePlate(String name, String translatedName, PressurePlateBlock.Sensitivity s, boolean wood, BlockBehaviour.Properties p) {
         pressurePlateBlockName.add(name);
         pressurePlateLangName.add(translatedName);
-        RegistryObject<PressurePlateBlock> block1 = BLOCKS.register(name, () -> new PressurePlateBlock(s, p));
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)) {
+        RegistryObject<PressurePlateBlock> block1 = BLOCKS.register(name, () -> new PressurePlateBlock(s, p, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
                 return wood ? 300 : -1;
@@ -669,8 +669,8 @@ public class JBlocks {
     public static RegistryObject<FenceGateBlock> registerFenceGate(String name, String translatedName, boolean wood, BlockBehaviour.Properties p) {
         gateBlockName.add(name);
         gateLangName.add(translatedName);
-        RegistryObject<FenceGateBlock> block1 = BLOCKS.register(name, () -> new FenceGateBlock(p));
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)) {
+        RegistryObject<FenceGateBlock> block1 = BLOCKS.register(name, () -> new FenceGateBlock(p, SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
                 return wood ? 300 : -1;
@@ -683,7 +683,7 @@ public class JBlocks {
         fenceBlockName.add(name);
         fenceLangName.add(translatedName);
         RegistryObject<JFenceBlock> block1 = BLOCKS.register(name, () -> new JFenceBlock(p));
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)) {
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
                 return wood ? 300 : -1;
@@ -696,7 +696,7 @@ public class JBlocks {
         crossBlockName.add(name);
         crossLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -704,7 +704,7 @@ public class JBlocks {
         attachedCrossBlockName.add(name);
         attachedCrossLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -712,7 +712,7 @@ public class JBlocks {
         normalLangName.add(translatedName);
         normalBlockName.add(name);
         RegistryObject<T> block1 = BLOCKS.register(name, block);
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)) {
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
                 return burnTime;
@@ -725,7 +725,7 @@ public class JBlocks {
         normalLangName.add(translatedName);
         normalBlockName.add(name);
         RegistryObject<Block> block1 = BLOCKS.register(name, () -> new Block(p));
-        JItems.register(name, () -> new BlockItem(block1.get(), new Item.Properties().tab(JTabs.BLOCKS)) {
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
                 return burnTime;

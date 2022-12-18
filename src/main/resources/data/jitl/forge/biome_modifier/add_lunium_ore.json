@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
   "biomes": "#minecraft:is_overworld",
-  "features": "jitl:lunium_ore_placed",
+  "features": "jitl:lunium_ore",
   "step": "underground_ores"
 }

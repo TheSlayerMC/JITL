@@ -27,7 +27,7 @@ import java.util.List;
 public class ChestInteractionItem extends Item {
 
     public ChestInteractionItem() {
-        super(JItems.miscProps().stacksTo(16));
+        super(JItems.itemProps().stacksTo(16));
     }
 
     @Override

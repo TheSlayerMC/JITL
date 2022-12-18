@@ -20,14 +20,14 @@
   "spawn_costs": {},
   "features": [
     [
-      "jitl:charred_veg_placed",
-      "jitl:boil_fire_placed",
-      "jitl:volcanic_rock_placed",
-      "jitl:small_burned_tree_placed",
-      "jitl:medium_burned_tree_placed",
-      "jitl:large_burned_tree_placed",
-      "jitl:ashual_ore_placed",
-      "jitl:blazium_ore_placed"
+      "jitl:charred_veg",
+      "jitl:boil_fire",
+      "jitl:volcanic_rock",
+      "jitl:small_burned_tree",
+      "jitl:medium_burned_tree",
+      "jitl:large_burned_tree",
+      "jitl:ashual_ore",
+      "jitl:blazium_ore"
     ]
   ]
 }

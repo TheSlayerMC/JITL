@@ -1,22 +1,19 @@
 package net.jitl.client.render.entity.overworld;
 
+
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.jitl.client.render.AnimatedMonsterRenderer;
 import net.jitl.common.entity.overworld.BoomBoom;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
-import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 
-public class BoomBoomRenderer<T extends LivingEntity & IAnimatable> extends AnimatedMonsterRenderer<T> {
+public class BoomBoomRenderer<T extends LivingEntity & GeoEntity> extends AnimatedMonsterRenderer<T> {
 
-    public BoomBoomRenderer(EntityRendererProvider.Context renderManager, AnimatedGeoModel<T> modelProvider) {
+    public BoomBoomRenderer(EntityRendererProvider.Context renderManager, DefaultedEntityGeoModel<T> modelProvider) {
         super(renderManager, modelProvider, 0.5F);
     }
 
@@ -32,9 +29,9 @@ public class BoomBoomRenderer<T extends LivingEntity & IAnimatable> extends Anim
     }
 
     @Override
-    public RenderType getRenderType(T animatable, float partialTicks, PoseStack stack, @Nullable MultiBufferSource renderTypeBuffer, @Nullable VertexConsumer vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
+    public void render(T entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
         BoomBoom b = (BoomBoom)animatable;
-        scale(b, stack, partialTicks);
-        return super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
+        //scale(b, stack, partialTicks);
+        super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
     }
 }

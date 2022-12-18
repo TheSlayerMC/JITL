@@ -3,9 +3,14 @@ package net.jitl.client.model.block;
 import net.jitl.common.block.entity.RockiteSpawnerEntity;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.GeckoLib;
+import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 
-public class RockiteSpawnerModel extends AnimatedGeoModel<RockiteSpawnerEntity> {
+public class RockiteSpawnerModel extends DefaultedEntityGeoModel<RockiteSpawnerEntity> {
+
+    public RockiteSpawnerModel() {
+        super(new ResourceLocation(GeckoLib.MOD_ID, "geo/rockite_smasher"));
+    }
 
     @Override
     public ResourceLocation getModelResource(RockiteSpawnerEntity object) {

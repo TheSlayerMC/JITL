@@ -3,7 +3,6 @@ package net.jitl.common.items.base;
 import net.jitl.common.items.gear.IAbility;
 import net.jitl.common.items.gear.JGear;
 import net.jitl.core.helper.JToolTiers;
-import net.jitl.core.init.internal.JTabs;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -20,7 +19,7 @@ public class JSwordItem extends SwordItem implements JGear {
     IAbility ability;
 
     public JSwordItem(JToolTiers tier, IAbility swordAbility) {
-        super(tier.getTier(), tier.getDamage(), tier.getSpeedModifier(), new Properties().tab(JTabs.WEAPONS));
+        super(tier.getTier(), tier.getDamage(), tier.getSpeedModifier(), new Properties());
         ability = swordAbility;
     }
 

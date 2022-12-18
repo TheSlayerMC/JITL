@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
   "biomes": "#minecraft:is_end",
-  "features": "jitl:enderillium_ore_placed",
+  "features": "jitl:enderillium_ore",
   "step": "underground_ores"
 }

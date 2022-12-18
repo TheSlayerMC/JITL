@@ -14,11 +14,11 @@
   "spawn_costs": {},
   "features": [
     [
-      "jitl:scorched_stalagmite_placed",
-      "jitl:boil_fire_placed",
-      "jitl:volcanic_rock_placed",
-      "jitl:ashual_ore_placed",
-      "jitl:blazium_ore_placed"
+      "jitl:scorched_stalagmite",
+      "jitl:boil_fire",
+      "jitl:volcanic_rock",
+      "jitl:ashual_ore",
+      "jitl:blazium_ore"
     ]
   ]
 }

@@ -1,58 +1,39 @@
 package net.jitl.core.init.internal;
 
 import net.jitl.core.init.JITL;
-import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import org.jetbrains.annotations.NotNull;
+import net.minecraft.world.level.block.Block;
+import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public class JTabs {
 
-    public static final CreativeModeTab BLOCKS = new CreativeModeTab(JITL.MODID + ".blocks") {
-        @Override
-        public @NotNull ItemStack makeIcon() {
-            return new ItemStack(JBlocks.SAPPHIRE_ORE.get());
-        }
-    };
+    public static final ResourceLocation BLOCKS = new ResourceLocation(JITL.MODID, ".blocks");
+    public static final ResourceLocation ITEMS = new ResourceLocation(JITL.MODID, ".items");
 
-    public static final CreativeModeTab MATERIALS = new CreativeModeTab(JITL.MODID + ".materials") {
-        @Override
-        public @NotNull ItemStack makeIcon() {
-            return new ItemStack(JItems.LUNIUM_POWDER.get());
-        }
-    };
+    private static ItemStack makeBlockIcon() {
+        return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(JITL.MODID, "sapphire_ore")));
+    }
 
-    public static final CreativeModeTab ARMOR = new CreativeModeTab(JITL.MODID + ".armor") {
-        @Override
-        public @NotNull ItemStack makeIcon() {
-            return new ItemStack(JItems.BLOODCRUST_HELMET.get());
-        }
-    };
+    private static ItemStack makeItemIcon() {
+        return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(JITL.MODID, "stone_clump")));
+    }
 
-    public static final CreativeModeTab TOOLS = new CreativeModeTab(JITL.MODID + ".tools") {
-        @Override
-        public @NotNull ItemStack makeIcon() {
-            return new ItemStack(JItems.LUNIUM_SHOVEL.get());
-        }
-    };
+    public static void registerTabs(CreativeModeTabEvent.Register event){
+        event.registerCreativeModeTab(BLOCKS, builder -> builder.title(Component.translatable("itemGroup.jitl.blocks")).icon(JTabs::makeBlockIcon).withSearchBar().displayItems((flags, output, isOp) -> {
+            for(RegistryObject<Block> item : JBlocks.BLOCKS.getEntries()){
+                output.accept(item.get());
+            }
+        }));
 
-    public static final CreativeModeTab WEAPONS = new CreativeModeTab(JITL.MODID + ".weapons") {
-        @Override
-        public @NotNull ItemStack makeIcon() {
-            return new ItemStack(JItems.SHADIUM_INGOT.get());
-        }
-    };
-
-    public static final CreativeModeTab RANGED_WEAPONS = new CreativeModeTab(JITL.MODID + ".ranged") {
-        @Override
-        public @NotNull ItemStack makeIcon() {
-            return new ItemStack(JItems.STAFF_OF_CONJURING.get());
-        }
-    };
-
-    public static final CreativeModeTab MISC = new CreativeModeTab(JITL.MODID + ".misc") {
-        @Override
-        public @NotNull ItemStack makeIcon() {
-            return new ItemStack(JItems.STRONG_BOTTLE_OF_ESSENCIA.get());
-        }
-    };
+        event.registerCreativeModeTab(ITEMS, builder -> builder.title(Component.translatable("itemGroup.jitl.items")).icon(JTabs::makeItemIcon).withSearchBar().displayItems((flags, output, isOp) -> {
+            for(RegistryObject<Item> item : JItems.ITEMS.getEntries()){
+                output.accept(item.get());
+            }
+        }));
+    }
 }
