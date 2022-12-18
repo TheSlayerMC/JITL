@@ -39,10 +39,6 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = JITL.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class JConfiguredFeatures {
 
-    private JConfiguredFeatures() {
-
-    }
-
     public static final RuleTest GRASS = new BlockStateMatchTest(Blocks.GRASS_BLOCK.defaultBlockState());
     public static final RuleTest SAND = new BlockStateMatchTest(Blocks.SAND.defaultBlockState());
     public static final RuleTest EUCA_GRASS = new TagMatchTest(JTags.EUCA_GRASS);

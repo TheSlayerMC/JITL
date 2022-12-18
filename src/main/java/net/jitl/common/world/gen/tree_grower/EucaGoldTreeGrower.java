@@ -1,5 +1,6 @@
 package net.jitl.common.world.gen.tree_grower;
 
+import net.jitl.common.world.gen.JConfiguredFeatures;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
@@ -12,6 +13,6 @@ public class EucaGoldTreeGrower extends AbstractTreeGrower {
     @Nullable
     @Override
     protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(@NotNull RandomSource random, boolean largeHive) {
-        return null;//JConfiguredFeatures.EUCA_GOLD_TREE.getKey();
+        return JConfiguredFeatures.EUCA_GOLD_TREE;
     }
 }
