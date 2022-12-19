@@ -52,7 +52,6 @@ public class JITL {
         JEntities.REGISTRY.register(modEventBus);
         JEntities.EGG_REGISTRY.register(modEventBus);
         JAttributes.REGISTRY.register(modEventBus);
-        JPlacedFeatures.PLACED_FEATURES.register(modEventBus);
         JFoliagePlacers.REGISTRY.register(modEventBus);
         JFeatures.REGISTRY.register(modEventBus);
         JContainers.REGISTRY.register(modEventBus);
@@ -60,7 +59,6 @@ public class JITL {
         Dimensions.REGISTRY.register(modEventBus);
         JCarver.REGISTRY.register(modEventBus);
         JEnchantments.REGISTRY.register(modEventBus);
-        JTreeDecorators.REGISTRY.register(modEventBus);
         JParticleManager.REGISTRY.register(modEventBus);
         JSounds.REGISTRY.register(modEventBus);
 

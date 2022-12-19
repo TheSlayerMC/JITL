@@ -37,14 +37,14 @@
 		},
 		"trunk_placer": {
 			"type": "minecraft:forking_trunk_placer",
-			"base_height": 4,
+			"base_height": 8,
 			"height_rand_a": 1,
 			"height_rand_b": 6
 		},
 		"foliage_placer": {
 			"type": "minecraft:fancy_foliage_placer",
 			"radius": 4,
-			"offset": 1,
+			"offset": 3,
 			"height": 4
 		},
 		"decorators": []

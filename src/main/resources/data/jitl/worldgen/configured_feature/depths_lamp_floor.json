@@ -1,18 +1,4 @@
 {
-	"type": "minecraft:ore",
-	"config": {
-		"size": 32,
-		"discard_chance_on_air_exposure": 0.6,
-		"targets": [
-			{
-				"target": {
-					"predicate_type": "minecraft:tag_match",
-					"tag": "jitl:depths_lamp_replaceables"
-				},
-				"state": {
-					"Name": "jitl:depths_lamp"
-				}
-			}
-		]
-	}
+	"type": "jitl:depths_crystal",
+	"config": {}
 }
