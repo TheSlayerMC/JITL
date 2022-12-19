@@ -10,6 +10,8 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
 
 public class EucaCharger extends AnimatableMonster {
 
@@ -35,25 +37,21 @@ public class EucaCharger extends AnimatableMonster {
                 .add(Attributes.MOVEMENT_SPEED, 0.26).build();
     }
 
-    /*@Override
-    public <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if(event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.euca_charger.walk", false));
-            return PlayState.CONTINUE;
-        }
-
-        if(isAttacking()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.euca_charger.attack", true));
-            return PlayState.CONTINUE;
-        }
-
-        if(!isAttacking() && !event.isMoving())
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.euca_charger.idle", true));
-        return PlayState.CONTINUE;
-    }*/
+    private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.euca_charger.walk");
+    private final RawAnimation ATTACK = RawAnimation.begin().thenLoop("animation.euca_charger.attack");
+    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.euca_charger.idle");
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
-
+        controllers.add(new AnimationController<>(this, "controller", 5, state -> {
+            if(state.isMoving()) {
+                return state.setAndContinue(MOVING);
+            }
+            else if(isAttacking()) {
+                return state.setAndContinue(ATTACK);
+            } else {
+                return state.setAndContinue(IDLE);
+            }
+        }));
     }
 }

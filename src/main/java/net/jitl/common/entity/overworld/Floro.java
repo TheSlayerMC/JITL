@@ -24,6 +24,8 @@ import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
 
 import java.util.EnumSet;
 
@@ -39,35 +41,30 @@ public class Floro extends AnimatableMonster implements RangedAttackMob {
         super(type, world);
     }
 
-    /*@Override
-    protected <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if(event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.floro.walk", true));
-            return PlayState.CONTINUE;
-        }
-
-        if(isHidden()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.floro.hidden", true));
-            return PlayState.CONTINUE;
-        }
-
-        if(isShooting()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.floro.shoot", true));
-            return PlayState.CONTINUE;
-        }
-
-        if(isShowing()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.floro.showing", false));
-            return PlayState.CONTINUE;
-        }
-
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.floro.idle", true));
-        return PlayState.CONTINUE;
-    }*/
+    private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.floro.walk");
+    private final RawAnimation HIDDEN_ANIM = RawAnimation.begin().thenLoop("animation.floro.hidden");
+    private final RawAnimation SHOWING = RawAnimation.begin().thenLoop("animation.floro.showing");
+    private final RawAnimation ATTACK = RawAnimation.begin().thenLoop("animation.floro.shoot");
+    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.floro.idle");
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>(this, "controller", 5, state -> {
+            if(state.isMoving())
+                return state.setAndContinue(MOVING);
 
+            if(isHidden())
+                return state.setAndContinue(HIDDEN_ANIM);
+
+            if(isShooting())
+                return state.setAndContinue(ATTACK);
+
+            if(isShowing())
+                return state.setAndContinue(SHOWING);
+
+            else
+                return state.setAndContinue(IDLE);
+        }));
     }
 
     @Override

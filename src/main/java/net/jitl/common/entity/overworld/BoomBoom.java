@@ -30,6 +30,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
 
 import javax.annotation.Nullable;
 import java.util.Collection;
@@ -69,22 +71,19 @@ public class BoomBoom extends AnimatableMonster implements PowerableMob {
                 .add(Attributes.MOVEMENT_SPEED, 0.26).build();
     }
 
+    private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.boomboom.walk");
+    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.boomboom.idle");
+
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
-
+        controllers.add(new AnimationController<>(this, "controller", 5, state -> {
+            if(state.isMoving()) {
+                return state.setAndContinue(MOVING);
+            } else {
+                return state.setAndContinue(IDLE);
+            }
+        }));
     }
-
-    /*@Override
-    public <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if(event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.boomboom.walk", false));
-            return PlayState.CONTINUE;
-        }
-
-        if(!isAttacking() && !event.isMoving())
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.boomboom.idle", true));
-        return PlayState.CONTINUE;
-    }*/
 
     @Override
     public int getMaxFallDistance() {

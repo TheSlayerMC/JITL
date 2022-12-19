@@ -10,6 +10,8 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
 
 public class Dynaster extends AnimatableMonster {
 
@@ -34,15 +36,12 @@ public class Dynaster extends AnimatableMonster {
                 .add(Attributes.MOVEMENT_SPEED, 0.26).build();
     }
 
-    /*@Override
-    public <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if(!isAttacking() && !event.isMoving())
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.dynaster.idle", true));
-        return PlayState.CONTINUE;
-    }*/
+    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.dynaster.idle");
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
-
+        controllers.add(new AnimationController<>(this, "controller", 5, state -> {
+            return state.setAndContinue(IDLE);
+        }));
     }
 }

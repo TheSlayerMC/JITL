@@ -142,20 +142,17 @@ public class Crypian extends JVillagerEntity {
         return InteractionResult.SUCCESS;
     }
 
-   /* private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if(event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.crypian.walk", true));
-            return PlayState.CONTINUE;
-        }
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.crypian.idle", true));
-        return PlayState.CONTINUE;
-    }*/
-
-    private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.crypian.idle");
+    private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.crypian.walk");
     private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.crypian.idle");
-    
+
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "idle", state -> state.setAndContinue(state.isMoving() ? MOVING : IDLE)));
+        controllers.add(new AnimationController<>(this, "controller", 5, state -> {
+            if(state.isMoving()) {
+                return state.setAndContinue(MOVING);
+            } else {
+                return state.setAndContinue(IDLE);
+            }
+        }));
     }
 }

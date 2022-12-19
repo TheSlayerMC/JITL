@@ -16,6 +16,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
 
 public class Shimmerer extends JFlyingEntity {
 
@@ -42,15 +44,11 @@ public class Shimmerer extends JFlyingEntity {
                 .add(Attributes.MOVEMENT_SPEED, 0.26).build();
     }
 
-    /*@Override
-    public <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.shimmerer.idle", true));
-        return PlayState.CONTINUE;
-    }*/
+    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.shimmerer.idle");
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
-
+        controllers.add(new AnimationController<>(this, "controller", 5, state -> state.setAndContinue(IDLE)));
     }
 
     public static boolean checkSpawn(EntityType<Shimmerer> entity, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {

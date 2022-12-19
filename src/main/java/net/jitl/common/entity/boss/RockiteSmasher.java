@@ -29,6 +29,8 @@ import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
 
 public class RockiteSmasher extends AnimatableMonster implements IJourneyBoss, IDontAttackWhenPeaceful {
 
@@ -124,26 +126,22 @@ public class RockiteSmasher extends AnimatableMonster implements IJourneyBoss, I
         return null;
     }
 
-    /*@Override
-    public <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if(event.isMoving() && !isAttacking()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rockite_smasher.walk", true));
-            return PlayState.CONTINUE;
-        }
-
-        if(isAttacking()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rockite_smasher.swing", false));
-            return PlayState.CONTINUE;
-        }
-
-        if(!isAttacking())
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rockite_smasher.idle", true));
-        return PlayState.CONTINUE;
-    }*/
+    private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.rockite_smasher.walk");
+    private final RawAnimation ATTACK = RawAnimation.begin().thenLoop("animation.rockite_smasher.swing");
+    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.rockite_smasher.idle");
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
-
+        controllers.add(new AnimationController<>(this, "controller", 5, state -> {
+            if(state.isMoving()) {
+                return state.setAndContinue(MOVING);
+            }
+            else if(isAttacking()) {
+                return state.setAndContinue(ATTACK);
+            } else {
+                return state.setAndContinue(IDLE);
+            }
+        }));
     }
 
     @Override

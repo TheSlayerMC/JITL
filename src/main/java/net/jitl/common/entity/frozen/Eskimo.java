@@ -19,6 +19,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
 
 public class Eskimo extends JVillagerEntity {
 
@@ -48,17 +50,17 @@ public class Eskimo extends JVillagerEntity {
                 .add(Attributes.MOVEMENT_SPEED, 0.25D).build();
     }
 
-    /*private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if(event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.eskimo.walk", true));
-            return PlayState.CONTINUE;
-        }
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.eskimo.idle", true));
-        return PlayState.CONTINUE;
-    }*/
+    private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.eskimo.walk");
+    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.eskimo.idle");
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
-
+        controllers.add(new AnimationController<>(this, "controller", 5, state -> {
+            if(state.isMoving()) {
+                return state.setAndContinue(MOVING);
+            } else {
+                return state.setAndContinue(IDLE);
+            }
+        }));
     }
 }

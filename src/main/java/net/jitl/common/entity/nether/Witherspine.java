@@ -11,6 +11,8 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
 
 public class Witherspine extends AnimatableMonster {
 
@@ -37,26 +39,21 @@ public class Witherspine extends AnimatableMonster {
                 .add(Attributes.MOVEMENT_SPEED, 0.26).build();
     }
 
+    private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.witherspine.walk");
+    private final RawAnimation ATTACK = RawAnimation.begin().thenLoop("animation.witherspine.headbutt");
+    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.witherspine.idle");
+
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
-
+        controllers.add(new AnimationController<>(this, "controller", 5, state -> {
+            if(state.isMoving()) {
+                return state.setAndContinue(MOVING);
+            }
+            else if(isAttacking()) {
+                return state.setAndContinue(ATTACK);
+            } else {
+                return state.setAndContinue(IDLE);
+            }
+        }));
     }
-
-   /* @Override
-    public <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if(event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.witherspine.walk", false));
-            return PlayState.CONTINUE;
-        }
-
-        if(isAttacking()){
-            event.getController().markNeedsReload();
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.witherspine.headbutt", false));
-            return PlayState.CONTINUE;
-        }
-
-        if(!isAttacking() && !event.isMoving())
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.witherspine.idle", true));
-        return PlayState.CONTINUE;
-    }*/
 }

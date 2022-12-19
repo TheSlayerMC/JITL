@@ -29,6 +29,8 @@ import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class RoyalKing extends PathfinderMob implements GeoEntity {
@@ -45,14 +47,11 @@ public class RoyalKing extends PathfinderMob implements GeoEntity {
     protected void registerGoals() { }
 
 
-    /*private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.royal_king.idle", true));
-        return PlayState.CONTINUE;
-    }*/
+    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.royal_king.idle");
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-
+        controllers.add(new AnimationController<>(this, "controller", 5, state -> state.setAndContinue(IDLE)));
     }
 
     @Override

@@ -39,6 +39,8 @@ import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class FrozenGuardian extends PathfinderMob implements GeoEntity {
@@ -56,19 +58,16 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
     @Override
     protected void registerGoals() { }
 
-    /*private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.frozen_guardian.idle", true));
-        return PlayState.CONTINUE;
-    }*/
-
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.cache;
     }
 
+    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.frozen_guardian.idle");
+
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-
+        controllers.add(new AnimationController<>(this, "controller", 5, state -> state.setAndContinue(IDLE)));
     }
 
     public static AttributeSupplier createAttributes() {

@@ -35,6 +35,8 @@ import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
 
 public class TowerGuardian extends AnimatableMonster implements IJourneyBoss, IDontAttackWhenPeaceful {
 
@@ -136,26 +138,22 @@ public class TowerGuardian extends AnimatableMonster implements IJourneyBoss, ID
         return BOSS_TRACK;
     }
 
-    /*@Override
-    protected <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if(event.isMoving() && !isAttacking()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.tower_guardian.walk", true));
-            return PlayState.CONTINUE;
-        }
-
-        if(isAttacking()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.tower_guardian.smash", false));
-            return PlayState.CONTINUE;
-        }
-
-        if(!isAttacking())
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.tower_guardian.idle", true));
-        return PlayState.CONTINUE;
-    }*/
+    private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.tower_guardian.walk");
+    private final RawAnimation ATTACK = RawAnimation.begin().thenLoop("animation.tower_guardian.smash");
+    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.tower_guardian.idle");
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
-
+        controllers.add(new AnimationController<>(this, "controller", 5, state -> {
+            if(state.isMoving()) {
+                return state.setAndContinue(MOVING);
+            }
+            else if(isAttacking()) {
+                return state.setAndContinue(ATTACK);
+            } else {
+                return state.setAndContinue(IDLE);
+            }
+        }));
     }
 
     @Override
