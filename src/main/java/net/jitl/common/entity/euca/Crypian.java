@@ -27,6 +27,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
 
 public class Crypian extends JVillagerEntity {
 
@@ -149,8 +151,11 @@ public class Crypian extends JVillagerEntity {
         return PlayState.CONTINUE;
     }*/
 
+    private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.crypian.idle");
+    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.crypian.idle");
+    
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
-
+        controllers.add(new AnimationController<>(this, "idle", state -> state.setAndContinue(state.isMoving() ? MOVING : IDLE)));
     }
 }
