@@ -55,10 +55,12 @@ public class OverworldRuinsFeature extends Feature<NoneFeatureConfiguration> {
                     BlockPos chestPos = new BlockPos(pos.getX(), yPos - 2, pos.getZ());
                     BlockPos spawnPos = new BlockPos(pos.getX(), yPos, pos.getZ());
 
-                    if(reader.getBlockState(spawnPos.below()) == spawn) {
-						BlockState chestState = JBlocks.JOURNEY_CHEST.get().defaultBlockState().setValue(JChestBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(rand));
-						reader.setBlock(chestPos, chestState, 2);
-						RandomizableContainerBlockEntity.setLootTable(reader, rand, chestPos, BuiltInLootTables.SIMPLE_DUNGEON);
+					if(rand.nextInt(5) == 0) {
+						if (reader.getBlockState(spawnPos.below()) == spawn) {
+							BlockState chestState = JBlocks.JOURNEY_CHEST.get().defaultBlockState().setValue(JChestBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(rand));
+							reader.setBlock(chestPos, chestState, 2);
+							RandomizableContainerBlockEntity.setLootTable(reader, rand, chestPos, BuiltInLootTables.SIMPLE_DUNGEON);
+						}
 					}
                 }
 			}
