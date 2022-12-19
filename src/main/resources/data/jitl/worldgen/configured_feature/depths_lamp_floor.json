@@ -1,4 +1,18 @@
 {
-	"type": "jitl:depths_crystal",
-	"config": {}
+  "type": "jitl:depths_lamp_floor",
+  "config": {
+    "size": 32,
+    "discard_chance_on_air_exposure": 0.6,
+    "targets": [
+      {
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "jitl:depths_lamp_replaceables"
+        },
+        "state": {
+          "Name": "jitl:depths_lamp"
+        }
+      }
+    ]
+  }
 }

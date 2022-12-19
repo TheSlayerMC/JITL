@@ -5,6 +5,7 @@ import net.jitl.common.world.gen.boil.SulphurCrystalFeature;
 import net.jitl.common.world.gen.boil.SulphurDepositFeature;
 import net.jitl.common.world.gen.depths.DepthsCrystalFeature;
 import net.jitl.common.world.gen.depths.DepthsLampFeature;
+import net.jitl.common.world.gen.depths.DepthsLampFloorFeature;
 import net.jitl.common.world.gen.euca.BoulderFeature;
 import net.jitl.common.world.gen.frozen.FrozenIceSpikeFeature;
 import net.jitl.common.world.gen.ruins.RuinsFeature;
@@ -13,6 +14,7 @@ import net.jitl.core.init.JITL;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -26,6 +28,7 @@ public class JFeatures {
 
     //DEPTHS
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> ROOF_DEPTHS_LAMP = REGISTRY.register("depths_lamp_roof", () -> new DepthsLampFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<Feature<OreConfiguration>> FLOOR_DEPTHS_LAMP = REGISTRY.register("depths_lamp_floor", () -> new DepthsLampFloorFeature(OreConfiguration.CODEC));
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> DEPTHS_CRYSTAL = REGISTRY.register("depths_crystal", () -> new DepthsCrystalFeature(NoneFeatureConfiguration.CODEC));
 
     //BOIL

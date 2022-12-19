@@ -11,17 +11,14 @@
     {
       "type": "minecraft:height_range",
       "height": {
-        "type": "minecraft:trapezoid",
+        "type": "minecraft:uniform",
         "min_inclusive": {
-          "absolute": 5
+          "absolute": 0
         },
         "max_inclusive": {
-          "absolute": 128
+          "absolute": 180
         }
       }
-    },
-    {
-      "type": "minecraft:biome"
     }
   ]
 }
