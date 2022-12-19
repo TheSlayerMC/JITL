@@ -2,8 +2,10 @@
   "feature": "jitl:volcanic_rock",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 1
+      "type": "minecraft:noise_based_count",
+      "noise_to_count_ratio": 1,
+      "noise_factor": 80,
+      "noise_offset": 1
     },
     {
       "type": "minecraft:in_square"

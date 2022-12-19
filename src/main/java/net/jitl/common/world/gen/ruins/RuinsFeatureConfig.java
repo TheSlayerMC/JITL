@@ -2,9 +2,6 @@ package net.jitl.common.world.gen.ruins;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.jitl.common.block.JChestBlock;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
@@ -18,8 +15,7 @@ public class RuinsFeatureConfig implements FeatureConfiguration {
                     WeightedStateProvider.CODEC.fieldOf("ruined_blocks_provider").forGetter((ruinsFeatureConfig) -> ruinsFeatureConfig.ruinedBlocksProvider),
                     Codec.INT.fieldOf("max_spreading").forGetter((ruinsFeatureConfig) -> ruinsFeatureConfig.maxSpreading),
                     Codec.INT.fieldOf("max_height").forGetter((ruinsFeatureConfig) -> ruinsFeatureConfig.maxHeight),
-                    Codec.INT.fieldOf("max_columns").forGetter((ruinsFeatureConfig) -> ruinsFeatureConfig.maxColumns),
-                    ResourceLocation.CODEC.fieldOf("loot_list").forGetter((ruinsFeatureConfig -> ruinsFeatureConfig.resourceLocation))
+                    Codec.INT.fieldOf("max_columns").forGetter((ruinsFeatureConfig) -> ruinsFeatureConfig.maxColumns)
             ).apply(instance, RuinsFeatureConfig::new));
 
     public final RuleTest spawnBlock;
@@ -28,15 +24,13 @@ public class RuinsFeatureConfig implements FeatureConfiguration {
     public int maxSpreading;
     public int maxHeight;
     public int maxColumns;
-    public final ResourceLocation resourceLocation;
 
-    public RuinsFeatureConfig(RuleTest spawnBlock, BlockStateProvider chest, WeightedStateProvider ruinedBlocksProvider, int maxSpreading, int maxHeight, int maxColumns, ResourceLocation resourceLocation) {
+    public RuinsFeatureConfig(RuleTest spawnBlock, BlockStateProvider chest, WeightedStateProvider ruinedBlocksProvider, int maxSpreading, int maxHeight, int maxColumns) {
         this.spawnBlock = spawnBlock;
         this.chest = chest;
         this.ruinedBlocksProvider = ruinedBlocksProvider;
         this.maxSpreading = maxSpreading;
         this.maxHeight = maxHeight;
-        this.maxColumns = maxHeight;
-        this.resourceLocation = resourceLocation;
+        this.maxColumns = maxColumns;
     }
 }

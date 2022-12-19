@@ -2,35 +2,27 @@
   "feature": "jitl:depths_tree",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 3
+      "type": "minecraft:noise_based_count",
+      "noise_to_count_ratio": 12,
+      "noise_factor": 90
     },
     {
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:block_predicate_filter",
-      "predicate": {
-        "type": "minecraft:would_survive",
-        "state": {
-          "Name": "minecraft:acacia_sapling",
-          "Properties": {
-            "stage": "0"
-          }
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:trapezoid",
+        "min_inclusive": {
+          "absolute": 5
+        },
+        "max_inclusive": {
+          "absolute": 128
         }
       }
     },
     {
-      "type": "minecraft:height_range",
-      "height": {
-        "type": "minecraft:uniform",
-        "min_inclusive": {
-          "absolute": 0
-        },
-        "max_inclusive": {
-          "absolute": 180
-        }
-      }
+      "type": "minecraft:biome"
     }
   ]
 }

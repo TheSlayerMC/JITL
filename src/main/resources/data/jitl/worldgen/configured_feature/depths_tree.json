@@ -1,5 +1,5 @@
 {
-	"type": "minecraft:tree",
+	"type": "jitl:tree",
 	"config": {
 		"ignore_vines": true,
 		"force_dirt": true,

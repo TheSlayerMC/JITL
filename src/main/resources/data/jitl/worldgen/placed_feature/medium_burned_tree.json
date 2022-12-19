@@ -2,8 +2,10 @@
   "feature": "jitl:medium_burned_tree",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 15
+      "type": "minecraft:noise_based_count",
+      "noise_to_count_ratio": 2,
+      "noise_factor": 80,
+      "noise_offset": 1
     },
     {
       "type": "minecraft:in_square"
