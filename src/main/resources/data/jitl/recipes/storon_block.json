@@ -1,15 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "jitl:storon_gemstone"
+    }
+  },
   "pattern": [
     "###",
     "###",
     "###"
   ],
-  "key": {
-    "#": {
-      "item": "jitl:storon_ingot"
-    }
-  },
   "result": {
     "item": "jitl:storon_block"
   }

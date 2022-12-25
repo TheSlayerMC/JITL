@@ -1,0 +1,328 @@
+package net.jitl.core.data;
+
+import net.jitl.core.init.JITL;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+
+import java.util.Objects;
+import java.util.function.Consumer;
+
+public class JRecipeProvider extends RecipeProvider implements IConditionBuilder {
+
+    public JRecipeProvider(PackOutput pOutput) {
+        super(pOutput);
+    }
+
+    @Override
+    public void buildRecipes(Consumer<FinishedRecipe> pWriter) {
+
+    }
+
+
+
+    protected void addSmithingRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike input, ItemLike modifier, Item result) {
+        UpgradeRecipeBuilder.smithing(Ingredient.of(input), Ingredient.of(modifier), RecipeCategory.MISC, result).unlocks("has_" + modifier.toString().toLowerCase(), has(modifier)).save(recipeConsumer, result.getDescriptionId() + "_smithing");
+        JITL.LOGGER.info(modifier.toString().toLowerCase());
+    }
+
+    protected void add3x3Recipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike input, ItemLike output) {
+        add3x3Recipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, input, output);
+    }
+
+    protected void add3x3Recipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike input, ItemLike output, int count) {
+        add3x3Recipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, input, output, count);
+    }
+
+    protected void add3x3Recipe(Consumer<FinishedRecipe> recipeConsumer, RecipeCategory cat, ItemLike input, ItemLike output) {
+        add3x3Recipe(recipeConsumer, cat, input, output, 1);
+    }
+
+    protected void add3x3Recipe(Consumer<FinishedRecipe> recipeConsumer, RecipeCategory cat, ItemLike input, ItemLike output, int count) {
+        ShapedRecipeBuilder.shaped(cat, output, count).define('#', input)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###").unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
+    }
+
+    protected void addShapedRecipe(Consumer<FinishedRecipe> recipeConsumer, RecipeCategory cat, String t, String m, String b, char s, ItemLike input, ItemLike output, int count) {
+        ShapedRecipeBuilder.shaped(cat, output, count).define(s, input)
+                .pattern(t)
+                .pattern(m)
+                .pattern(b).unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
+    }
+
+    protected void addShapedRecipe(Consumer<FinishedRecipe> recipeConsumer, RecipeCategory cat, String t, String m, char s, ItemLike input, ItemLike output, int count) {
+        ShapedRecipeBuilder.shaped(cat, output, count).define(s, input)
+                .pattern(t)
+                .pattern(m).unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
+    }
+
+    protected void addShapedRecipe(Consumer<FinishedRecipe> recipeConsumer, String t, String m, String b, char s, ItemLike input, ItemLike output, int count) {
+        addShapedRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, t, m, b, s, input, output, count);
+    }
+
+    protected void addShapedRecipe(Consumer<FinishedRecipe> recipeConsumer, RecipeCategory cat, String t, String m, String b, char s, ItemLike input, char s2, ItemLike input2, ItemLike output, int count) {
+        ShapedRecipeBuilder.shaped(cat, output, count).define(s, input).define(s2, input2)
+                .pattern(t)
+                .pattern(m)
+                .pattern(b).unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
+    }
+
+    protected void addShapedRecipe(Consumer<FinishedRecipe> recipeConsumer, RecipeCategory cat, String t, String m, String b, char s, ItemLike input, char s2, ItemLike input2, char s3, ItemLike input3, ItemLike output, int count) {
+        ShapedRecipeBuilder.shaped(cat, output, count).define(s, input).define(s2, input2).define(s3, input3)
+                .pattern(t)
+                .pattern(m)
+                .pattern(b).unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
+    }
+
+    protected void addShapedRecipe(Consumer<FinishedRecipe> recipeConsumer, RecipeCategory cat, String t, String m, char s, ItemLike input, char s2, ItemLike input2, ItemLike output, int count) {
+        ShapedRecipeBuilder.shaped(cat, output, count).define(s, input).define(s2, input2)
+                .pattern(t)
+                .pattern(m).unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
+    }
+
+    protected void addShapedRecipe(Consumer<FinishedRecipe> recipeConsumer, String t, String m, String b, char s, ItemLike input, char s2, ItemLike input2, ItemLike output, int count) {
+        addShapedRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, t, m, b, s, input, s2, input2, output, count);
+    }
+
+    protected void addShapelessRecipe(Consumer<FinishedRecipe> recipeConsumer, RecipeCategory cat, ItemLike input, ItemLike output, int count) {
+        ShapelessRecipeBuilder.shapeless(cat, output, count).requires(input).unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
+    }
+
+    protected void addShapelessRecipe(Consumer<FinishedRecipe> recipeConsumer, RecipeCategory cat, ItemLike input, ItemLike input2, ItemLike output, int count) {
+        ShapelessRecipeBuilder.shapeless(cat, output, count).requires(input).requires(input2).unlockedBy(inputToKey(input), has(input)).unlockedBy(inputToKey(input2), has(input2)).save(recipeConsumer);
+    }
+
+    protected void addOreBlockRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike input, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, output, 1).define('#', input)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###").unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, input, 9).requires(output).unlockedBy(inputToKey(output), has(output)).group(input.asItem().toString()).save(recipeConsumer, input.asItem().getDescriptionId() + "_from_block");
+
+        JITL.LOGGER.info(input.asItem().getDescriptionId());
+    }
+
+    protected void add2x2Recipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike input, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, output, 1).define('#', input)
+                .pattern("##")
+                .pattern("##").unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
+    }
+
+    protected void addToolsetAndArmorRecipes(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, RecipePrefix recipePrefix) {
+        addToolsetRecipes(recipeConsumer, stickItem, materialItem, recipePrefix);
+        addArmorRecipes(recipeConsumer, materialItem, recipePrefix);
+    }
+
+    protected void addToolsetRecipes(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, RecipePrefix recipePrefix) {
+        addAxeRecipe(recipeConsumer, stickItem, materialItem, getItemFromRegistryName((recipePrefix.getString() + "axe")));
+        addPickaxeRecipe(recipeConsumer, stickItem, materialItem, getItemFromRegistryName(recipePrefix.getString() + "pickaxe"));
+        addShovelRecipe(recipeConsumer, stickItem, materialItem, getItemFromRegistryName(recipePrefix.getString() + "shovel"));
+        addSwordRecipe(recipeConsumer, stickItem, materialItem, getItemFromRegistryName(recipePrefix.getString() + "sword"));
+        addHoeRecipe(recipeConsumer, stickItem, materialItem, getItemFromRegistryName(recipePrefix.getString() + "hoe"));
+    }
+
+    public void addArmorRecipes(Consumer<FinishedRecipe> recipeConsumer, ItemLike materialItem, RecipePrefix recipePrefix) {
+        addHelmetRecipe(recipeConsumer, materialItem, getItemFromRegistryName((recipePrefix.getString() + "helmet")));
+        addChestplateRecipe(recipeConsumer, materialItem, getItemFromRegistryName((recipePrefix.getString() + "chestplate")));
+        addLeggingsRecipe(recipeConsumer, materialItem, getItemFromRegistryName((recipePrefix.getString() + "leggings")));
+        addBootsRecipe(recipeConsumer, materialItem, getItemFromRegistryName((recipePrefix.getString() + "boots")));
+    }
+
+    public void addWoodType(Consumer<FinishedRecipe> recipeConsumer, RegistryObject<? extends Block> log, RegistryObject<? extends Block> plank, RegistryObject<? extends Block> stairs, RegistryObject<? extends Block> slab, RegistryObject<? extends Block> fence, RegistryObject<? extends Block> gate, RegistryObject<? extends Block> trapdoor, RegistryObject<? extends Block> pressureplate, RegistryObject<? extends Block> door, RegistryObject<? extends Block> button, RegistryObject<Item> boat) {
+        //addAxeRecipe(recipeConsumer, Items.STICK, plank, Items.WOODEN_AXE);
+        //addPickaxeRecipe(recipeConsumer, Items.STICK, plank, Items.WOODEN_PICKAXE);
+        //addShovelRecipe(recipeConsumer, Items.STICK, plank, Items.WOODEN_SHOVEL);
+        //addSwordRecipe(recipeConsumer, Items.STICK, plank, Items.WOODEN_SWORD);
+        //addHoeRecipe(recipeConsumer, Items.STICK, plank, Items.WOODEN_HOE);
+        addBoatRecipe(recipeConsumer, plank.get(), boat.get());
+        addStairRecipe(recipeConsumer, plank.get(), stairs.get());
+        addSlabRecipe(recipeConsumer, plank.get(), slab.get());
+        addFenceRecipe(recipeConsumer, plank.get(), Items.STICK, fence.get());
+        addFenceGateRecipe(recipeConsumer, Items.STICK, plank.get(), gate.get());
+        addTrapdoorRecipe(recipeConsumer, plank.get(), trapdoor.get());
+        addPressureplateRecipe(recipeConsumer, plank.get(), pressureplate.get());
+        addDoorRecipe(recipeConsumer, plank.get(), door.get());
+        //addStick(recipeConsumer, plank);
+        planksFromLogs(recipeConsumer, plank.get(), log.get());
+        buttonBuilder(recipeConsumer, button.get(), plank.get());
+    }
+
+    protected void buttonBuilder(Consumer<FinishedRecipe> recipeConsumer, ItemLike button, ItemLike material) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, button).requires(material).unlockedBy(inputToKey(material), has(material)).save(recipeConsumer);
+    }
+
+    protected void planksFromLogs(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike planks, ItemLike logs) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, planks, 4).requires(logs).unlockedBy(inputToKey(logs), has(logs)).save(finishedRecipeConsumer);
+    }
+
+    protected void addStick(Consumer<FinishedRecipe> recipeConsumer, ItemLike materialItem) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.STICK, 4).define('#', materialItem)
+                .pattern("#")
+                .pattern("#").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+    }
+
+    protected void addDoorRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike materialItem, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, output, 1).define('#', materialItem)
+                .pattern("##")
+                .pattern("##")
+                .pattern("##").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+    }
+
+    protected void addPressureplateRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike materialItem, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, output, 1).define('#', materialItem)
+                .pattern("##").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+    }
+
+    protected void addTrapdoorRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike materialItem, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, output, 1).define('#', materialItem)
+                .pattern("###")
+                .pattern("###").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+    }
+
+    protected void addFenceGateRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, output, 1).define('#', materialItem).define('I', stickItem)
+                .pattern("#I#")
+                .pattern("#I#").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+    }
+
+    protected void addFenceRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, output, 1).define('#', materialItem).define('I', stickItem)
+                .pattern("#I#")
+                .pattern("#I#").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+    }
+
+    protected void addSlabRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike materialItem, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, output, 6).define('#', materialItem)
+                .pattern("###").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+    }
+
+    protected void addStairRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike materialItem, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, output, 1).define('#', materialItem)
+                .pattern("#  ")
+                .pattern("## ")
+                .pattern("###").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+    }
+
+    protected void addBoatRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike materialItem, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, output, 1).define('#', materialItem)
+                .pattern("# #")
+                .pattern("###").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+    }
+
+    protected void addPickaxeRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
+                .pattern("###")
+                .pattern(" I ")
+                .pattern(" I ").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+    }
+
+    protected void addShovelRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
+                .pattern("#")
+                .pattern("I")
+                .pattern("I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+    }
+
+    protected void addAxeRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
+                .pattern("##")
+                .pattern("#I")
+                .pattern(" I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+    }
+
+    protected void addHoeRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
+                .pattern("##")
+                .pattern(" I")
+                .pattern(" I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+    }
+
+    protected void addSwordRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, output, 1).define('#', materialItem).define('I', stickItem)
+                .pattern("#")
+                .pattern("#")
+                .pattern("I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+    }
+
+    protected void addHelmetRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike materialItem, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, output, 1).define('#', materialItem)
+                .pattern("###")
+                .pattern("# #").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+    }
+
+    protected void addChestplateRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike materialItem, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, output, 1).define('#', materialItem)
+                .pattern("# #")
+                .pattern("###")
+                .pattern("###").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+    }
+
+    protected void addLeggingsRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike materialItem, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, output, 1).define('#', materialItem)
+                .pattern("###")
+                .pattern("# #")
+                .pattern("# #").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+    }
+
+    protected void addBootsRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike materialItem, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, output, 1).define('#', materialItem)
+                .pattern("# #")
+                .pattern("# #").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+    }
+
+    protected void addSmeltingRecipe(ItemLike input, ItemLike output, float xpGiven, int time) {
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(input), RecipeCategory.MISC, output, xpGiven, time);
+    }
+
+    protected void addBlastingRecipe(ItemLike input, ItemLike output, float xpGiven, int time) {
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(input), RecipeCategory.MISC, output, xpGiven, time);
+    }
+
+    protected void addCookingRecipe(ItemLike input, ItemLike output, float xpGiven) {
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(input), RecipeCategory.MISC, output, xpGiven, 100);
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(input), RecipeCategory.MISC, output, xpGiven, 600);
+    }
+
+    protected String inputToKey(ItemLike input) {
+        String key = "has_" + Objects.requireNonNull(input.asItem().getDescriptionId());
+        JITL.LOGGER.info(key);
+        return key;
+    }
+
+    public ItemLike getItemFromRegistryName(String registryName) {
+        return ForgeRegistries.ITEMS.getValue(new ResourceLocation(JITL.MODID, registryName));
+    }
+
+    public ItemLike getItemFromRegistryName(String registryName, String modID) {
+        return ForgeRegistries.ITEMS.getValue(new ResourceLocation(modID, registryName));
+    }
+
+    public enum RecipePrefix {
+
+        SAPPHIRE("sapphire_"),
+        LUNIUM("lunium_"),
+        SHADIUM("shadium_"),
+        WOODEN("wooden_")
+        ;
+
+        String prefix;
+
+        RecipePrefix(String prefix) {
+            this.prefix = prefix;
+        }
+
+        public String getString() {
+            return prefix;
+        }
+    }
+}

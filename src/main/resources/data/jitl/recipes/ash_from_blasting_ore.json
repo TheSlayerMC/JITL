@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "jitl:ashual_ore"
-  },
-  "result": "jitl:ash",
-  "experience": 0.7,
-  "cookingtime": 100
-}

@@ -1,18 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "wooden_door",
-  "pattern": [
-    "##",
-    "##",
-    "##"
-  ],
+  "category": "building",
   "key": {
     "#": {
       "item": "jitl:euca_brown_planks"
     }
   },
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
   "result": {
-    "item": "jitl:euca_brown_door",
-    "count": 3
+    "item": "jitl:euca_brown_door"
   }
 }

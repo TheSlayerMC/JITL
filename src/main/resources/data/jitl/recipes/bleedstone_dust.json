@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "jitl:bleedstone"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "jitl:bleedstone_dust"
+  }
+}

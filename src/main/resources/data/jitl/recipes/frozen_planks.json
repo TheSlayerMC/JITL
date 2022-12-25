@@ -1,13 +1,13 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "group": "planks",
+  "category": "building",
   "ingredients": [
     {
       "item": "jitl:frozen_log"
     }
   ],
   "result": {
-    "item": "jitl:frozen_planks",
-    "count": 4
+    "count": 4,
+    "item": "jitl:frozen_planks"
   }
 }

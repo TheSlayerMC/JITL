@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "ash",
+  "ingredients": [
+    {
+      "item": "jitl:ashual_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "jitl:ash"
+  }
+}

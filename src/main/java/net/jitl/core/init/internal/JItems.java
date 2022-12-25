@@ -113,6 +113,7 @@ public class JItems {
     public static final RegistryObject<Item> SPYCLOPSE_EYE = registerNormalItem("spyclopse_eye", "Spyclopse Eye");
     public static final RegistryObject<Item> STONE_CLUMP = registerNormalItem("stone_clump", "Stone Clump");
     public static final RegistryObject<Item> CAVE_CRYSTAL = registerNormalItem("cave_crystal", "Cave Crystal");
+    public static final RegistryObject<Item> CAVE_DUST = registerNormalItem("cave_dust", "Cave Dust");
     public static final RegistryObject<Item> COLLECTOR_ROCK = registerNormalItem("collector_rock", "Collector Rock");
     public static final RegistryObject<Item> CRYSTAL_EYE = registerNormalItem("crystal_eye", "Crystal Eye");
     public static final RegistryObject<Item> DARK_MATTER_GEMSTONE = registerNormalItem("dark_matter_gemstone", "Dark Matter Gemstone");
@@ -122,6 +123,10 @@ public class JItems {
     public static final RegistryObject<Item> EUCA_PORTAL_PIECE_2 = registerNormalItem("euca_portal_piece_2", "Euca Portal Piece");
     public static final RegistryObject<Item> EUCA_PORTAL_PIECE_3 = registerNormalItem("euca_portal_piece_3", "Euca Portal Piece");
     public static final RegistryObject<Item> EUCA_PORTAL_GEM = registerNormalItem("euca_portal_gem", "Euca Portal Gem");
+    public static final RegistryObject<Item> DEPTHS_PORTAL_GEM = registerNormalItem("depths_portal_gem", "Depths Portal Gem");
+    public static final RegistryObject<Item> CORBA_PORTAL_GEM = registerNormalItem("corba_portal_gem", "Corba Portal Gem");
+    public static final RegistryObject<Item> FROZEN_PORTAL_GEM = registerNormalItem("frozen_portal_gem", "Frozen Portal Gem");
+
     public static final RegistryObject<Item> EUCA_TABLET = registerNormalItem("euca_tablet", "Euca Tablet");
     public static final RegistryObject<Item> GOLDER_DUST = registerNormalItem("golder_dust", "Golder Dust");
     public static final RegistryObject<Item> SHIMMERER_DUST = registerNormalItem("shimmerer_dust", "Shimmerer Dust");
@@ -140,12 +145,23 @@ public class JItems {
     public static final RegistryObject<Item> ICE_FLAKE = registerNormalItem("ice_flake", "Ice Flake");
     public static final RegistryObject<Item> COLD_CLUMP = registerNormalItem("cold_clump", "Cold Clump");
     public static final RegistryObject<Item> CRYSTAL_BALL = registerNormalItem("crystal_ball", "Crystal Ball");
+    public static final RegistryObject<Item> MAGIC_DUST = registerNormalItem("magic_dust", "Magic Dust");
+    public static final RegistryObject<Item> DEMONIC_DUST = registerNormalItem("demonic_dust", "Demonic Dust");
+    public static final RegistryObject<Item> DEMONIC_BONE = registerNormalItem("demonic_bone", "Demonic Bone");
+    public static final RegistryObject<Item> SMITHSTONE = registerNormalItem("smithstone", "Smithstone");
+    public static final RegistryObject<Item> SMITHSTONE_DUST = registerNormalItem("smithstone_dust", "Smithstone Dust");
+    public static final RegistryObject<Item> BLEEDSTONE = registerNormalItem("bleedstone", "Bleedstone");
+    public static final RegistryObject<Item> BLEEDSTONE_DUST = registerNormalItem("bleedstone_dust", "Bleedstone Dust");
+    public static final RegistryObject<Item> SOULSTONE = registerNormalItem("soulstone", "Soulstone");
     public static final RegistryObject<Item> CRYSTAL_FLAKE = registerNormalItem("crystal_flake", "Crystal Flake");
     public static final RegistryObject<Item> FREEZING_TABLET = registerNormalItem("freezing_tablet", "Freezing Tablet");
 
     public static final RegistryObject<Item> SIZZLING_EYE = registerNormalItem("sizzling_eye", "Sizzling Eye");
     public static final RegistryObject<Item> WITHIC_DUST = registerNormalItem("withic_dust", "Withic Dust");
     public static final RegistryObject<Item> WITHIC_SOUL = registerNormalItem("withic_soul", "Withic Soul");
+    public static final RegistryObject<Item> LOST_SOUL = registerNormalItem("lost_soul", "Lost Soul");
+    public static final RegistryObject<Item> BLOOD = registerNormalItem("blood", "Blood");
+    public static final RegistryObject<Item> CONCENTRATED_BLOOD = registerNormalItem("concentrated_blood", "Concentrated Blood");
     public static final RegistryObject<Item> BALMY_TEARDROP = registerNormalItem("balmy_teardrop", "Balmy Teardrop");
     public static final RegistryObject<Item> BEASTLY_STOMACH = registerNormalItem("beastly_stomach", "Beastly Stomach");
     public static final RegistryObject<Item> BLAZING_FIREBALL = registerNormalItem("blazing_fireball", "Blazing Fireball");
@@ -327,7 +343,7 @@ public class JItems {
 
     public static final RegistryObject<Item> MUD_BALL = registerNormalItem("mud_ball", "Mud Ball", () -> new ThrowableItem(itemProps(),
             (world, thrower) -> new FloroMudEntity(JEntities.FLORO_MUD_TYPE.get(), world, thrower, 0.0F)).setSound(() -> SoundEvents.SNOWBALL_THROW));
-    
+
     public static final RegistryObject<Item> POISON_SWORD = registerToolItem("poison_sword", "Poison Sword", () -> new JSwordItem(JToolTiers.POISON_SWORD, BASIC));
     public static final RegistryObject<Item> CLOUD_SLICER = registerToolItem("cloud_slicer", "Cloud Slicer", () -> new JSwordItem(JToolTiers.CLOUD_SLICER, BASIC));
     public static final RegistryObject<Item> DRAGONS_TOOTH = registerToolItem("dragons_tooth", "Dragons Tooth", () -> new JSwordItem(JToolTiers.DRAGONS_TOOTH, BASIC));
@@ -466,6 +482,9 @@ public class JItems {
     public static final RegistryObject<Item> EUCA_RECORD_3 = registerRecord("euca_record_3", "Euca", JSounds.EUCA_DISC_3, 3500);
     public static final RegistryObject<Item> FROZEN_RECORD_1 = registerRecord("frozen_record_1", "Frozen", JSounds.FROZEN_DISC_1, 3480);
     public static final RegistryObject<Item> BOIL_RECORD_1 = registerRecord("boil_record_1", "Boiling Point", JSounds.BOIL_DISC_1, 3140);
+
+    public static final RegistryObject<Item> DEMONIC_BOMB = registerNormalItem("demonic_bomb", "Demonic Bomb");
+    public static final RegistryObject<Item> MAGIC_BOMB = registerNormalItem("magic_bomb", "Magic Bomb");
 
 
     public static RegistryObject<Item> registerNormalItem(String name, String translatedName, CreativeModeTab tab) {

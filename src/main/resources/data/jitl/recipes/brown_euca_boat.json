@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "# #",
-	"###"
-  ],
+  "category": "misc",
   "key": {
     "#": {
       "item": "jitl:euca_brown_planks"
     }
   },
+  "pattern": [
+    "# #",
+    "###"
+  ],
   "result": {
-    "item": "jitl:brown_euca_boat",
-    "count": 1
+    "item": "jitl:brown_euca_boat"
   }
 }

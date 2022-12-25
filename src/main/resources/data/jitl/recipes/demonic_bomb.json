@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "d": {
+      "item": "jitl:demonic_dust"
+    },
+    "i": {
+      "item": "jitl:crystal_ball"
+    }
+  },
+  "pattern": [
+    "ddd",
+    "did",
+    "ddd"
+  ],
+  "result": {
+    "count": 16,
+    "item": "jitl:demonic_bomb"
+  }
+}

@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "# #",
-	"###"
-  ],
+  "category": "misc",
   "key": {
     "#": {
       "item": "jitl:frozen_planks"
     }
   },
+  "pattern": [
+    "# #",
+    "###"
+  ],
   "result": {
-    "item": "jitl:frozen_boat",
-    "count": 1
+    "item": "jitl:frozen_boat"
   }
 }

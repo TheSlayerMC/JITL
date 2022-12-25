@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "wooden_slab",
-  "pattern": [
-    "###"
-  ],
+  "category": "building",
   "key": {
     "#": {
       "item": "jitl:euca_gold_planks"
     }
   },
+  "pattern": [
+    "###"
+  ],
   "result": {
-    "item": "jitl:euca_gold_slab",
-    "count": 6
+    "count": 6,
+    "item": "jitl:euca_gold_slab"
   }
 }

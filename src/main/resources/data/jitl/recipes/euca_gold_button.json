@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "group": "wooden_button",
+  "category": "redstone",
   "ingredients": [
     {
       "item": "jitl:euca_gold_planks"

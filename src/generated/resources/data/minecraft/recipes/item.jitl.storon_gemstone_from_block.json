@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "storon_gemstone",
+  "ingredients": [
+    {
+      "item": "jitl:storon_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "jitl:storon_gemstone"
+  }
+}

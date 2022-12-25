@@ -1,18 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "wooden_stairs",
-  "pattern": [
-    "#  ",
-    "## ",
-    "###"
-  ],
+  "category": "building",
   "key": {
     "#": {
       "item": "jitl:euca_brown_planks"
     }
   },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
   "result": {
-    "item": "jitl:euca_brown_stairs",
-    "count": 4
+    "item": "jitl:euca_brown_stairs"
   }
 }

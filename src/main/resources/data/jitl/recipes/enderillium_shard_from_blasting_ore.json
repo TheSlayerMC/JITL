@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "jitl:enderillium_ore"
-  },
-  "result": "jitl:enderillium_shard",
-  "experience": 0.7,
-  "cookingtime": 100
-}

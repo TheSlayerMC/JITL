@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "jitl:peridot_ore"
-  },
-  "result": "jitl:peridot_gemstone",
-  "experience": 0.7,
-  "cookingtime": 100
-}

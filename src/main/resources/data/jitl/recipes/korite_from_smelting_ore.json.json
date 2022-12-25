@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "jitl:korite_ore"
-  },
-  "result": "jitl:korite_ingot",
-  "experience": 0.7,
-  "cookingtime": 200
-}

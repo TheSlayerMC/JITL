@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "mekyum_gemstone",
+  "ingredients": [
+    {
+      "item": "jitl:mekyum_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "jitl:mekyum_gemstone"
+  }
+}

@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "jitl:deepslate_sapphire_ore"
-  },
-  "result": "jitl:sapphire",
-  "experience": 0.7,
-  "cookingtime": 100
-}

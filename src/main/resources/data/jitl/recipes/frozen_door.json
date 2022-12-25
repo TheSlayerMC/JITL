@@ -1,18 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "wooden_door",
-  "pattern": [
-    "##",
-    "##",
-    "##"
-  ],
+  "category": "building",
   "key": {
     "#": {
       "item": "jitl:frozen_planks"
     }
   },
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
   "result": {
-    "item": "jitl:frozen_door",
-    "count": 3
+    "item": "jitl:frozen_door"
   }
 }
