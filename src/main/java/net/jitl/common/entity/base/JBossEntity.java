@@ -2,9 +2,9 @@ package net.jitl.common.entity.base;
 
 import net.jitl.common.entity.IJourneyBoss;
 import net.jitl.common.entity.boss.BossCrystal;
+import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;
@@ -47,17 +47,16 @@ public abstract class JBossEntity extends AnimatableMonster implements IJourneyB
     @Nullable
     protected abstract BossCrystal.Type getDeathCrystalType();
 
+    public abstract ResourceLocation lootTable();
+
     @Override
     public void tickDeath() {
         super.tickDeath();
         if(!level.isClientSide()) {
             BossCrystal.Type crystalType = getDeathCrystalType();
-            if(crystalType != null) {
-                ResourceLocation lootTable = getLootTable();
-                BossCrystal crystal;
-                crystal = BossCrystal.create((ServerLevel)level, blockPosition(), getDeathCrystalType(), null, lootTable, 0L);
-                level.addFreshEntity(crystal);
-            }
+            BossCrystal crystal = new BossCrystal(JEntities.BOSS_CRYSTAL_TYPE.get(), level, getDeathCrystalType(), lootTable());
+            crystal.setPos(position());
+            level.addFreshEntity(crystal);
         }
     }
 }

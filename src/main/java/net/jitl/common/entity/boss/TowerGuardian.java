@@ -1,9 +1,7 @@
 package net.jitl.common.entity.boss;
 
 import net.jitl.client.gui.BossBarRenderer;
-import net.jitl.common.entity.IJourneyBoss;
-import net.jitl.common.entity.base.AnimatableMonster;
-import net.jitl.common.entity.base.IDontAttackWhenPeaceful;
+import net.jitl.common.entity.base.JBossEntity;
 import net.jitl.common.entity.base.JBossInfo;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
 import net.jitl.common.entity.goal.IdleHealGoal;
@@ -13,6 +11,7 @@ import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -33,13 +32,15 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
-public class TowerGuardian extends AnimatableMonster implements IJourneyBoss, IDontAttackWhenPeaceful {
+public class TowerGuardian extends JBossEntity {
 
     private final ServerBossEvent BOSS_INFO = new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
     private final BossBarRenderer BOSS_BAR = new BossBarRenderer(this, JITL.rl("textures/gui/bossbars/tower_guardian.png"));
@@ -162,5 +163,15 @@ public class TowerGuardian extends AnimatableMonster implements IJourneyBoss, ID
     @Override
     public boolean wantsToAttack(LivingEntity target, LivingEntity living) {
         return level.getDifficulty() != Difficulty.PEACEFUL;
+    }
+
+    @Override
+    protected @Nullable BossCrystal.Type getDeathCrystalType() {
+        return BossCrystal.Type.BOIL;
+    }
+
+    @Override
+    public ResourceLocation lootTable() {
+        return BuiltInLootTables.SIMPLE_DUNGEON;
     }
 }

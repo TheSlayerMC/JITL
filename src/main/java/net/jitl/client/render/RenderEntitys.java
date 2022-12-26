@@ -10,6 +10,7 @@ import net.jitl.client.render.block.RockiteSpawnerRenderer;
 import net.jitl.client.render.entity.euca.CrypianRenderer;
 import net.jitl.client.render.entity.euca.RoyalKingRenderer;
 import net.jitl.client.render.entity.frozen.FrozenGuardianRenderer;
+import net.jitl.client.render.entity.misc.BossCrystalRenderer;
 import net.jitl.client.render.entity.overworld.BoomBoomRenderer;
 import net.jitl.client.render.projectile.*;
 import net.jitl.client.render.vehicle.JBoatRenderer;
@@ -35,6 +36,8 @@ public class RenderEntitys {
         event.registerEntityRenderer(JEntities.FLORO_MUD_TYPE.get(), ThrownItemRenderer::new);
 
         event.registerEntityRenderer(JEntities.ESSENCIA_BOLT_TYPE.get(), EssenciaBoltRenderer::new);
+
+        event.registerEntityRenderer(JEntities.BOSS_CRYSTAL_TYPE.get(), BossCrystalRenderer::new);
 
         event.registerEntityRenderer(JEntities.PIERCER_TYPE.get(), manager -> new PiercerRenderer(manager, Minecraft.getInstance().getItemRenderer()));
         event.registerEntityRenderer(JEntities.KNIFE_TYPE.get(), manager -> new KnifeRenderer(manager, Minecraft.getInstance().getItemRenderer()));

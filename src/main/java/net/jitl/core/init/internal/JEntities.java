@@ -77,7 +77,7 @@ public class JEntities {
                     .sized(0.25F, 0.25F).build("essencia_bolt"));
 
     public static final RegistryObject<EntityType<BossCrystal>> BOSS_CRYSTAL_TYPE = REGISTRY.register("boss_crystal", () ->
-            EntityType.Builder.of(BossCrystal::new, MobCategory.MISC)
+            EntityType.Builder.<BossCrystal>of(BossCrystal::new, MobCategory.MISC)
                     .sized(0.25F, 0.25F).build("boss_crystal"));
 
     public static final RegistryObject<EntityType<Mage>> MAGE_TYPE = REGISTRY.register("mage", () ->
