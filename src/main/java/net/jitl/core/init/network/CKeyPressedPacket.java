@@ -29,9 +29,10 @@ public class CKeyPressedPacket {
         buffer.writeBoolean(isDown);
     }
 
-    public boolean handle(Supplier<NetworkEvent.Context> ctx) {
+    public void handle(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
             ServerPlayer player = ctx.get().getSender();
+            assert player != null;
             player.getCapability(PressedKeyCapProvider.PRESSED_KEY_CAP).ifPresent(keys -> {
                 if (isAmulet) {
                     keys.setAmuletPressed(isDown);
@@ -43,7 +44,6 @@ public class CKeyPressedPacket {
             });
             System.out.println(player.getScoreboardName() + " " + (isDown ? "pressed" : "released") + " " + (isAmulet ? "amulet" : "armor") + " ability key.");
         });
-
-        return true;
+        ctx.get().setPacketHandled(true);
     }
 }

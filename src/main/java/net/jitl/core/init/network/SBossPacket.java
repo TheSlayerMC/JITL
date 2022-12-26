@@ -35,14 +35,16 @@ public class SBossPacket {
         buffer.writeInt(bossNum);
     }
 
-    public boolean handle(Supplier<NetworkEvent.Context> ctx) {
+    public void handle(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
             switch(this.addOrRemove) {
                 case ADD -> {
+                    assert Minecraft.getInstance().level != null;
                     Entity boss = Minecraft.getInstance().level.getEntity(this.bossNum);
                     if(boss instanceof IJourneyBoss) {
                         JBossInfo.map.put(this.barUUID, (IJourneyBoss)boss);
                     } else {
+                        assert boss != null;
                         throw new IllegalStateException("Attempted to add boss info to " + boss.getClass().getName());
                     }
                 }
@@ -50,7 +52,7 @@ public class SBossPacket {
                 default -> throw new IllegalStateException();
             }
         });
-            return true;
+        ctx.get().setPacketHandled(true);
     }
 
     public enum Operation {

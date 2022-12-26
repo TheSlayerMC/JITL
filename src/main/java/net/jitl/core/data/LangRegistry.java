@@ -57,12 +57,7 @@ public class LangRegistry {
         /* --------------------- Add manual lines --------------------- */
 
         writeToFile("\"itemGroup.jitl.blocks\" : \"JITL Blocks\",");
-        writeToFile("\"itemGroup.jitl.materials\" : \"JITL Materials\",");
-        writeToFile("\"itemGroup.jitl.tools\" : \"JITL Tools\",");
-        writeToFile("\"itemGroup.jitl.weapons\" : \"JITL Weapons\",");
-        writeToFile("\"itemGroup.jitl.armor\" : \"JITL Armor\",");
-        writeToFile("\"itemGroup.jitl.ranged\" : \"JITL Ranged\",");
-        writeToFile("\"itemGroup.jitl.misc\" : \"JITL MISC\",");
+        writeToFile("\"itemGroup.jitl.items\" : \"JITL Items\",");
         writeToFile("\"jitl.key.stats\" : \"Player Stats\",");
         writeToFile("\"jitl.key\" : \"JITL Keys\",");
         writeToFile("\"jitl.knowledge.level\" : \"Level Up!\",");

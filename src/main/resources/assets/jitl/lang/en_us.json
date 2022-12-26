@@ -1,11 +1,6 @@
 {
 "itemGroup.jitl.blocks" : "JITL Blocks",
-"itemGroup.jitl.materials" : "JITL Materials",
-"itemGroup.jitl.tools" : "JITL Tools",
-"itemGroup.jitl.weapons" : "JITL Weapons",
-"itemGroup.jitl.armor" : "JITL Armor",
-"itemGroup.jitl.ranged" : "JITL Ranged",
-"itemGroup.jitl.misc" : "JITL MISC",
+"itemGroup.jitl.items" : "JITL Items",
 "jitl.key.stats" : "Player Stats",
 "jitl.key" : "JITL Keys",
 "jitl.knowledge.level" : "Level Up!",

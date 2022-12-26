@@ -33,6 +33,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
@@ -117,15 +118,22 @@ public class TowerGuardian extends AnimatableMonster implements IJourneyBoss, ID
     }
 
     @Override
-    public void startSeenByPlayer(ServerPlayer player) {
-        super.startSeenByPlayer(player);
-        JBossInfo.addInfo(player, BOSS_INFO, this);
-    }
-
-    @Override
     public void stopSeenByPlayer(ServerPlayer player) {
         super.stopSeenByPlayer(player);
         JBossInfo.removeInfo(player, BOSS_INFO, this);
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        int playerArea = 10;
+        AABB axisalignedbb = AABB.unitCubeFromLowerCorner(this.position()).inflate(playerArea);
+        for(ServerPlayer player : this.level.getEntitiesOfClass(ServerPlayer.class, axisalignedbb.inflate(2))) {
+            JBossInfo.removeInfo(player, BOSS_INFO, this);
+        }
+        for(ServerPlayer player : this.level.getEntitiesOfClass(ServerPlayer.class, axisalignedbb)) {
+            JBossInfo.addInfo(player, BOSS_INFO, this);
+        }
     }
 
     @Override
