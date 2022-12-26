@@ -118,6 +118,9 @@ public class JItems {
     public static final RegistryObject<Item> CRYSTAL_EYE = registerNormalItem("crystal_eye", "Crystal Eye");
     public static final RegistryObject<Item> DARK_MATTER_GEMSTONE = registerNormalItem("dark_matter_gemstone", "Dark Matter Gemstone");
     public static final RegistryObject<Item> FLORO_PEDAL = registerNormalItem("floro_pedal", "Floro Pedal");
+    public static final RegistryObject<Item> FLORO_SEEDS = registerNormalItem("floro_seeds", "Floro Seeds");
+    public static final RegistryObject<Item> HONGOSHROOM = registerNormalItem("hongoshroom", "Hongoshroom");
+
     public static final RegistryObject<Item> OBSIDIAN_STICK = registerNormalItem("obsidian_stick", "Obsidian Rod");
     public static final RegistryObject<Item> STONE_STICK = registerNormalItem("stone_stick", "Stone Stick");
 
@@ -430,6 +433,7 @@ public class JItems {
     public static final RegistryObject<Item> EYE_OF_THE_BLIZZARD = registerNormalItem("eye_of_the_blizzard", "Eye Of The Blizzard", () -> new JCurioItem(itemProps().stacksTo(1)).overview(true));
     public static final RegistryObject<Item> SKULL_OF_DECAY = registerNormalItem("skull_of_decay", "Skull Of Decay", () -> new JCurioItem(itemProps().stacksTo(1).durability(256)).ability(true));
     public static final RegistryObject<Item> FROSTBORN_SOUL = registerNormalItem("frostborn_soul", "Frostborn Soul");
+    public static final RegistryObject<Item> WITHICSPINE = registerNormalItem("withicspine", "Withicspine");
 
     public static final RegistryObject<Item> HEART_CONTAINER_SMALL = registerNormalItem("heart_container_small", "Heart Container", () -> new HeartContainerItem(itemProps().stacksTo(1)).health(1));
     public static final RegistryObject<Item> HEART_CONTAINER_MEDIUM = registerNormalItem("heart_container_medium", "Heart Container", () -> new HeartContainerItem(itemProps().stacksTo(1)).health(4));

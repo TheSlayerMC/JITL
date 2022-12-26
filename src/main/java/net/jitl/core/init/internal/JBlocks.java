@@ -125,7 +125,6 @@ public class JBlocks {
     public static final RegistryObject<Block> PERIDOT_ORE = register("peridot_ore", "Peridot Ore", JBlockProperties.STONE);
     public static final RegistryObject<Block> PERIDOT_BLOCK = register("peridot_block", "Peridot Block", JBlockProperties.STONE);
 
-    //NO RECIPES FOR BELOW ORES YET
     public static final RegistryObject<Block> DES_ORE = register("des_ore", "Des Ore", JBlockProperties.STONE);
     public static final RegistryObject<Block> DES_BLOCK = register("des_block", "Des Block", JBlockProperties.STONE);
 
@@ -270,7 +269,7 @@ public class JBlocks {
     public static final RegistryObject<Block> GRASSY_PERMAFROST = registerGrassBlock("grassy_permafrost", "Grassy Permafrost", () -> new Block(JBlockProperties.GRASS));
 
     public static final RegistryObject<Block> PERMAFROST = registerTerrainBlock("permafrost", "Permafrost", JBlockProperties.STONE);
-    public static final RegistryObject<Block> CRUMBLED_PERMAFROST = registerTerrainBlock("crumbled_permafrost", "Crumbled Permafrost", JBlockProperties.STONE);
+    public static final RegistryObject<Block> CRUMBLED_PERMAFROST = registerTerrainBlock("crumbled_permafrost", "Crumbled Permafrost", JBlockProperties.DIRT);
     public static final RegistryObject<RotatedPillarBlock> FROZEN_LOG = registerPillar("frozen_log", "Frozen Log", true, JBlockProperties.WOOD);
     public static final RegistryObject<Block> FROZEN_LEAVES = registerTerrainBlock("frozen_leaves", "Frozen Leaves", JBlockProperties.LEAVES);
     public static final RegistryObject<Block> FROSTWOOD_SAPLING = registerCrossBlock("frostwood_sapling", "Frostwood Sapling", () -> new JSaplingBlock(new EucaGreenTreeGrower()));
