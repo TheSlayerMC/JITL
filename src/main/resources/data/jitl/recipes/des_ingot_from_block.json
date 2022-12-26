@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "des_ingot",
+  "ingredients": [
+    {
+      "item": "jitl:des_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "jitl:des_ingot"
+  }
+}

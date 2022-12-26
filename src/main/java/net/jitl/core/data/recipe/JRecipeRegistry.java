@@ -21,12 +21,12 @@ public class JRecipeRegistry extends JRecipeProvider {
     public void buildRecipes(Consumer<FinishedRecipe> recipeConsumer) {
         buildBlockRecipes(recipeConsumer);
         buildItemRecipes(recipeConsumer);
-        buildToolRecipes(recipeConsumer);
-        buildWoodTypes(recipeConsumer);
-        buildBlastingRecipes();
-        buildSmeltingRecipes();
-        buildCookingRecipes();
-        buildSmithingRecipes(recipeConsumer);
+        //buildToolRecipes(recipeConsumer);
+        //buildWoodTypes(recipeConsumer);
+        //buildBlastingRecipes(recipeConsumer);
+        //buildSmeltingRecipes(recipeConsumer);
+        //buildCookingRecipes();
+        //buildSmithingRecipes(recipeConsumer);
     }
 
     public void buildBlockRecipes(Consumer<FinishedRecipe> recipeConsumer) {
@@ -40,26 +40,34 @@ public class JRecipeRegistry extends JRecipeProvider {
         addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JBlocks.BLUE_GEM_BLOCK.get(), JItems.BLUE_GEM.get(), 9);
         addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JBlocks.YELLOW_GEM_BLOCK.get(), JItems.YELLOW_GEM.get(), 9);
 
-        addOreBlockRecipe(recipeConsumer, JItems.SAPPHIRE.get(), JBlocks.SAPPHIRE_BLOCK.get());
-        addOreBlockRecipe(recipeConsumer, JItems.LUNIUM_INGOT.get(), JBlocks.LUNIUM_BLOCK.get());
-        addOreBlockRecipe(recipeConsumer, JItems.SHADIUM_INGOT.get(), JBlocks.SHADIUM_BLOCK.get());
         addOreBlockRecipe(recipeConsumer, JItems.IRIDIUM_NUGGET.get(), JBlocks.IRIDIUM_BLOCK.get());
-        addOreBlockRecipe(recipeConsumer, JItems.BLOODCRUST_INGOT.get(), JBlocks.BLOODCRUST_BLOCK.get());
         addOreBlockRecipe(recipeConsumer, JItems.ENDERILLIUM_SHARD.get(), JBlocks.ENDERILLIUM_BLOCK.get());
         addOreBlockRecipe(recipeConsumer, JItems.ASH.get(), JBlocks.ASHUAL_BLOCK.get());
-        addOreBlockRecipe(recipeConsumer, JItems.CELESTIUM_GEMSTONE.get(), JBlocks.CELESTIUM_BLOCK.get());
-        addOreBlockRecipe(recipeConsumer, JItems.MEKYUM_GEMSTONE.get(), JBlocks.MEKYUM_BLOCK.get());
-        addOreBlockRecipe(recipeConsumer, JItems.STORON_GEMSTONE.get(), JBlocks.STORON_BLOCK.get());
         addOreBlockRecipe(recipeConsumer, JItems.PERIDOT_GEMSTONE.get(), JBlocks.PERIDOT_BLOCK.get());
         addOreBlockRecipe(recipeConsumer, JItems.RIMESTONE.get(), JBlocks.RIMESTONE_BLOCK.get());
+        addOreDefaultItems(recipeConsumer, RecipePrefix.SHADIUM, JBlocks.SHADIUM_BLOCK.get(), JBlocks.SHADIUM_ORE.get(), JBlocks.DEEPSLATE_SHADIUM_ORE.get(), JItems.RAW_SHADIUM.get(), JItems.SHADIUM_INGOT.get(), Items.STICK);
+        addOreDefaultItems(recipeConsumer, RecipePrefix.SAPPHIRE, JBlocks.SAPPHIRE_BLOCK.get(), JBlocks.SAPPHIRE_ORE.get(), JBlocks.DEEPSLATE_SAPPHIRE_ORE.get(), null, JItems.SAPPHIRE.get(), Items.STICK);
+        addOreDefaultItems(recipeConsumer, RecipePrefix.LUNIUM, JBlocks.LUNIUM_BLOCK.get(), JBlocks.LUNIUM_ORE.get(), JBlocks.DEEPSLATE_LUNIUM_ORE.get(), JItems.LUNIUM_POWDER.get(), JItems.LUNIUM_INGOT.get(), Items.STICK);
+        addOreDefaultItems(recipeConsumer, RecipePrefix.BLOODCRUST, JBlocks.BLOODCRUST_BLOCK.get(), JBlocks.BLOODCRUST_ORE.get(), null, JItems.RAW_BLOODCRUST.get(), JItems.BLOODCRUST_INGOT.get(), Items.STICK);
+        addOreNoArmorItems(recipeConsumer, RecipePrefix.CELESTIUM, JBlocks.CELESTIUM_BLOCK.get(), JBlocks.CELESTIUM_ORE.get(), null, JItems.CELESTIUM_GEMSTONE.get(), JItems.CELESTIUM_INGOT.get(), Items.STICK);
+        addOreNoArmorItems(recipeConsumer, RecipePrefix.KORITE, JBlocks.KORITE_BLOCK.get(), JBlocks.KORITE_ORE.get(), null, JItems.KORITE_GEMSTONE.get(), JItems.KORITE_INGOT.get(), Items.STICK);
+        addOreNoArmorItems(recipeConsumer, RecipePrefix.STORON, JBlocks.STORON_BLOCK.get(), JBlocks.STORON_ORE.get(), null, JItems.STORON_GEMSTONE.get(), JItems.STORON_INGOT.get(), Items.STICK);
+        addOreNoArmorItems(recipeConsumer, RecipePrefix.MEKYUM, JBlocks.MEKYUM_BLOCK.get(), JBlocks.MEKYUM_ORE.get(), null, JItems.MEKYUM_GEMSTONE.get(), JItems.MEKYUM_INGOT.get(), Items.STICK);
+        addOreDefaultItems(recipeConsumer, RecipePrefix.FLAIRIUM, JBlocks.FLAIRIUM_BLOCK.get(), JBlocks.FLAIRIUM_ORE.get(), null, null, JItems.FLAIRIUM_INGOT.get(), Items.STICK);
+        addOreNoArmorItems(recipeConsumer, RecipePrefix.DES, JBlocks.DES_BLOCK.get(), JBlocks.DES_ORE.get(), null, null, JItems.DES_INGOT.get(), Items.STICK);
+        addOreNoArmorItems(recipeConsumer, RecipePrefix.GORBITE, JBlocks.GORBITE_BLOCK.get(), JBlocks.GORBITE_ORE.get(), null, null, JItems.GORBITE_GEM.get(), Items.STICK);
+        addOreDefaultItems(recipeConsumer, RecipePrefix.ORBADITE, JBlocks.ORBADITE_BLOCK.get(), JBlocks.ORBADITE_ORE.get(), null, JItems.RAW_ORBADITE.get(), JItems.ORBADITE_INGOT.get(), Items.STICK);
+        addOreNoArmorItems(recipeConsumer, RecipePrefix.SOULSTONE, JBlocks.SOULSTONE_BLOCK.get(), null, null, null, JItems.SOULSTONE.get(), JItems.OBSIDIAN_STICK.get());
 
         add3x3Recipe(recipeConsumer, JItems.EUCA_PORTAL_GEM.get(), JBlocks.EUCA_PORTAL_FRAME.get(), 10);
         add3x3Recipe(recipeConsumer, JBlocks.DEPTHS_PORTAL_FRAME.get(), JItems.DEPTHS_PORTAL_GEM.get(), 12);
         add3x3Recipe(recipeConsumer, JBlocks.CORBA_PORTAL_FRAME.get(), JItems.CORBA_PORTAL_GEM.get(), 12);
         addShapedRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, "iii", "idi", "iii", 'i', Items.SNOWBALL, 'd', Items.DIAMOND, JBlocks.FROZEN_PORTAL_FRAME.get(), 10);
 
-        addShapedRecipe(recipeConsumer, "sss", "sss", "sss", 's', Items.STRING, Blocks.COBWEB, 1);
+        add2x2Recipe(recipeConsumer, JItems.SMITHSTONE.get(), JBlocks.SMITHSTONE_BLOCK.get(), true);
+        add2x2Recipe(recipeConsumer, JItems.BLEEDSTONE.get(), JBlocks.BLEEDSTONE_BLOCK.get(), true);
 
+        addShapedRecipe(recipeConsumer, "s s", " s ", "s s", 's', Items.STRING, Blocks.COBWEB, 1);
     }
 
     public void buildItemRecipes(Consumer<FinishedRecipe> recipeConsumer) {
@@ -69,7 +77,7 @@ public class JRecipeRegistry extends JRecipeProvider {
         addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "iei", "iii",  'i', JItems.MAGIC_DUST.get(), 'e', Items.ENDER_PEARL, JItems.CRYSTAL_BALL.get(), 1);
         addShapedRecipe(recipeConsumer, RecipeCategory.COMBAT, "ddd", "did", "ddd", 'd', JItems.DEMONIC_DUST.get(), 'i', JItems.CRYSTAL_BALL.get(), JItems.DEMONIC_BOMB.get(), 16);
         addShapedRecipe(recipeConsumer, RecipeCategory.COMBAT, "ddd", "did", "ddd",  'd', JItems.MAGIC_DUST.get(), 'i', JItems.CRYSTAL_BALL.get(), JItems.MAGIC_BOMB.get(), 1);
-        //addShapedRecipe(recipeConsumer, RecipeCategory.MISC,"ddd", "ddd", "ddd", 'd', JItems.CAVE_DUST.get(), JItems.STONE_CLUMP.get(), 4);
+        addShapedRecipe(recipeConsumer, RecipeCategory.MISC,"ddd", "ddd", "ddd", 'd', JItems.CAVE_DUST.get(), JItems.STONE_CLUMP.get(), 4, "_2");
         addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "ddd", "ddd", "ddd", 'd', Blocks.STONE, JItems.STONE_CLUMP.get(), 16);
         addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "ddd", "did", "ddd", 'd', JItems.WITHIC_DUST.get(), 'i', JItems.LOST_SOUL.get(), JItems.WITHIC_SOUL.get(), 1);
         addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "ddd", "did", "ddd", 'd', JItems.BLOOD.get(), 'i', JItems.LOST_SOUL.get(), JItems.CONCENTRATED_BLOOD.get(), 1);
@@ -77,8 +85,22 @@ public class JRecipeRegistry extends JRecipeProvider {
         addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.DEMONIC_BONE.get(), JItems.DEMONIC_DUST.get(), 5);
         addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.SMITHSTONE.get(), JItems.SMITHSTONE_DUST.get(), 4);
         addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.BLEEDSTONE.get(), JItems.BLEEDSTONE_DUST.get(), 4);
-        addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.BLEEDSTONE_DUST.get(), JItems.SMITHSTONE_DUST.get(), JItems.SOULSTONE.get(), 1);
+        addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.BLEEDSTONE_DUST.get(), JItems.SMITHSTONE_DUST.get(), JItems.SOULSTONE.get(), 1, "_2");
+        addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.SHADIUM_INGOT.get(), Items.DIAMOND, JItems.DARK_GEM.get(), 1, "_2");
+        addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "ddd", 'd', JItems.BLOODCRUST_INGOT.get(), JItems.BLOODCRUST_CLUMP.get(), 1);
+        addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "ddd", 'd', JItems.SHADIUM_INGOT.get(), JItems.SHADIUM_CLUMP.get(), 1);
+        addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "ddd", 'd', JItems.LUNIUM_INGOT.get(), JItems.LUNIUM_CLUMP.get(), 1);
+        addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.BLOODCRUST_CLUMP.get(), JItems.SHADIUM_CLUMP.get(), JItems.LUNIUM_CLUMP.get(), JItems.SPAWNER_CLUMP.get(), 1);
+        addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.EUCA_PORTAL_PIECE_1.get(), JItems.EUCA_PORTAL_PIECE_2.get(), JItems.EUCA_PORTAL_PIECE_3.get(), JItems.EUCA_PORTAL_GEM.get(), 10);
 
+        addSwordRecipe(recipeConsumer, JItems.BLOODCRUST_INGOT.get(), JItems.WITHIC_DUST.get(), JItems.WITHIC_BLADE.get());
+        addSwordRecipe(recipeConsumer, JItems.STONE_STICK.get(), JItems.REINFORCED_STONE_INGOT.get(), JItems.REINFORCED_STONE_SWORD.get());
+        addSwordRecipe(recipeConsumer, JItems.STONE_STICK.get(), JItems.REINFORCED_CRYSTAL_INGOT.get(), JItems.REINFORCED_CRYSTAL_SWORD.get());
+        addSwordRecipe(recipeConsumer, JItems.STONE_CLUMP.get(), JItems.FLORO_PEDAL.get(), JItems.PEDAL_SWORD.get());
+        addSwordRecipe(recipeConsumer, Blocks.STONE, JItems.CAVE_CRYSTAL.get(), JItems.CRYSTAL_BLADE.get());
+        addSwordRecipe(recipeConsumer, JItems.DEMONIC_BONE.get(), JItems.DEMONIC_DUST.get(), JItems.DEMONIC_SWORD.get());
+
+        addSmeltingAndBlastingRecipe(recipeConsumer, JItems.SPAWNER_CLUMP.get(), JItems.SPAWNER_BAR.get());
     }
 
     public void buildToolRecipes(Consumer<FinishedRecipe> recipeConsumer) {
@@ -92,15 +114,15 @@ public class JRecipeRegistry extends JRecipeProvider {
         //addWoodType(consumer, JBlocks.BURNED_BARK, JBlocks.BURNED_BARK_PLANK, JBlocks.BURNED_BARK_STAIRS, JBlocks.BURNED_BARK_PLANK_SLAB, JBlocks.BURNED_BARK_FENCE, JBlocks.BURNED_BARK_GATE, JBlocks.BURNED_BARK_TRAP_DOOR, JBlocks.BURNED_BARK_PRESSURE_PLATE, JBlocks.BURNED_BARK_DOOR, JBlocks.BURNED_BARK_BUTTON, JItems.BURNED_BOAT);
     }
 
-    public void buildBlastingRecipes() {
-        addBlastingRecipe(JBlocks.FIRESTONE_ORE.get(), JItems.FIRESTONE_CLUMP.get(), 1.0F, 100);
-        addBlastingRecipe(JBlocks.LUNIUM_ORE.get(), JItems.LUNIUM_INGOT.get(), 1.0F, 100);
-        addBlastingRecipe(JItems.LUNIUM_POWDER.get(), JItems.LUNIUM_INGOT.get(), 1.0F, 100);
+    public void buildBlastingRecipes(Consumer<FinishedRecipe> consumer) {
+        addBlastingRecipe(consumer, JBlocks.FIRESTONE_ORE.get(), JItems.FIRESTONE_CLUMP.get(), 1.0F, 100);
+        addBlastingRecipe(consumer, JBlocks.LUNIUM_ORE.get(), JItems.LUNIUM_INGOT.get(), 1.0F, 100);
+        addBlastingRecipe(consumer, JItems.LUNIUM_POWDER.get(), JItems.LUNIUM_INGOT.get(), 1.0F, 100);
     }
 
-    public void buildSmeltingRecipes() {
-        addSmeltingRecipe(JBlocks.FIRESTONE_ORE.get(), JItems.FIRESTONE_CLUMP.get(), 1.0F, 200);
-        addSmeltingRecipe(JItems.LUNIUM_POWDER.get(), JItems.LUNIUM_INGOT.get(), 1.0F, 200);
+    public void buildSmeltingRecipes(Consumer<FinishedRecipe> consumer) {
+        addSmeltingRecipe(consumer, JBlocks.FIRESTONE_ORE.get(), JItems.FIRESTONE_CLUMP.get(), 1.0F, 200);
+        addSmeltingRecipe(consumer, JItems.LUNIUM_POWDER.get(), JItems.LUNIUM_INGOT.get(), 1.0F, 200);
     }
 
     public void buildCookingRecipes() {

@@ -9,6 +9,8 @@ import net.jitl.common.world.gen.depths.DepthsLampFeature;
 import net.jitl.common.world.gen.depths.DepthsLampFloorFeature;
 import net.jitl.common.world.gen.euca.BoulderFeature;
 import net.jitl.common.world.gen.frozen.FrozenIceSpikeFeature;
+import net.jitl.common.world.gen.nether.BleedstoneFeature;
+import net.jitl.common.world.gen.nether.SmithstoneFeature;
 import net.jitl.common.world.gen.ruins.DesertRuinsFeature;
 import net.jitl.common.world.gen.ruins.EucaRuinsFeature;
 import net.jitl.common.world.gen.ruins.GolditeRuinsFeature;
@@ -33,6 +35,10 @@ public class JFeatures {
     //OVERWORLD
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> OVERWORLD_RUINS = REGISTRY.register("overworld_ruins", () -> new OverworldRuinsFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> DESERT_RUINS = REGISTRY.register("desert_ruins", () -> new DesertRuinsFeature(NoneFeatureConfiguration.CODEC));
+
+    //NETHER
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> SMITHSTONE = REGISTRY.register("smithstone", () -> new SmithstoneFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> BLEEDSTONE = REGISTRY.register("bleedstone", () -> new BleedstoneFeature(NoneFeatureConfiguration.CODEC));
 
     //EUCA
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> EUCA_RUINS = REGISTRY.register("euca_ruins", () -> new EucaRuinsFeature(NoneFeatureConfiguration.CODEC));

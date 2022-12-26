@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "gorbite_gem",
+  "ingredients": [
+    {
+      "item": "jitl:gorbite_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "jitl:gorbite_gem"
+  }
+}

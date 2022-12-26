@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "jitl:cave_crystal"
+    },
+    "I": {
+      "item": "minecraft:stone"
+    }
+  },
+  "pattern": [
+    "#",
+    "#",
+    "I"
+  ],
+  "result": {
+    "item": "jitl:crystal_blade"
+  }
+}

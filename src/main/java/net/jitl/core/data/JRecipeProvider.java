@@ -23,11 +23,7 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
     }
 
     @Override
-    public void buildRecipes(Consumer<FinishedRecipe> pWriter) {
-
-    }
-
-
+    public void buildRecipes(Consumer<FinishedRecipe> pWriter) { }
 
     protected void addSmithingRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike input, ItemLike modifier, Item result) {
         UpgradeRecipeBuilder.smithing(Ingredient.of(input), Ingredient.of(modifier), RecipeCategory.MISC, result).unlocks("has_" + modifier.toString().toLowerCase(), has(modifier)).save(recipeConsumer, result.getDescriptionId() + "_smithing");
@@ -53,11 +49,23 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
                 .pattern("###").unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
     }
 
+    protected void addShapedRecipe(Consumer<FinishedRecipe> recipeConsumer, RecipeCategory cat, String t, String m, String b, char s, ItemLike input, ItemLike output, int count, String name) {
+        ShapedRecipeBuilder.shaped(cat, output, count).define(s, input)
+                .pattern(t)
+                .pattern(m)
+                .pattern(b).unlockedBy(inputToKey(input), has(input)).save(recipeConsumer, "jitl:" + getItemFromRegistryName(input.toString()) + name);
+    }
+
     protected void addShapedRecipe(Consumer<FinishedRecipe> recipeConsumer, RecipeCategory cat, String t, String m, String b, char s, ItemLike input, ItemLike output, int count) {
         ShapedRecipeBuilder.shaped(cat, output, count).define(s, input)
                 .pattern(t)
                 .pattern(m)
                 .pattern(b).unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
+    }
+
+    protected void addShapedRecipe(Consumer<FinishedRecipe> recipeConsumer, RecipeCategory cat, String t, char s, ItemLike input, ItemLike output, int count) {
+        ShapedRecipeBuilder.shaped(cat, output, count).define(s, input)
+                .pattern(t).unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
     }
 
     protected void addShapedRecipe(Consumer<FinishedRecipe> recipeConsumer, RecipeCategory cat, String t, String m, char s, ItemLike input, ItemLike output, int count) {
@@ -98,8 +106,16 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
         ShapelessRecipeBuilder.shapeless(cat, output, count).requires(input).unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
     }
 
+    protected void addShapelessRecipe(Consumer<FinishedRecipe> recipeConsumer, RecipeCategory cat, ItemLike input, ItemLike input2, ItemLike output, int count, String name) {
+        ShapelessRecipeBuilder.shapeless(cat, output, count).requires(input).requires(input2).unlockedBy(inputToKey(input), has(input)).unlockedBy(inputToKey(input2), has(input2)).save(recipeConsumer, "jitl:" + getItemFromRegistryName(output.toString()) + name);
+    }
+
     protected void addShapelessRecipe(Consumer<FinishedRecipe> recipeConsumer, RecipeCategory cat, ItemLike input, ItemLike input2, ItemLike output, int count) {
-        ShapelessRecipeBuilder.shapeless(cat, output, count).requires(input).requires(input2).unlockedBy(inputToKey(input), has(input)).unlockedBy(inputToKey(input2), has(input2)).save(recipeConsumer);
+        addShapelessRecipe(recipeConsumer, cat, input, input2, output, count, "");
+    }
+
+    protected void addShapelessRecipe(Consumer<FinishedRecipe> recipeConsumer, RecipeCategory cat, ItemLike input, ItemLike input2, ItemLike input3, ItemLike output, int count) {
+        ShapelessRecipeBuilder.shapeless(cat, output, count).requires(input).requires(input2).requires(input3).unlockedBy(inputToKey(input), has(input)).unlockedBy(inputToKey(input2), has(input2)).save(recipeConsumer);
     }
 
     protected void addOreBlockRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike input, ItemLike output) {
@@ -107,15 +123,52 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
                 .pattern("###")
                 .pattern("###")
                 .pattern("###").unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, input, 9).requires(output).unlockedBy(inputToKey(output), has(output)).group(input.asItem().toString()).save(recipeConsumer, input.asItem().getDescriptionId() + "_from_block");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, input, 9).requires(output)
+                .unlockedBy(inputToKey(output), has(output)).group(input.asItem().toString()).save(recipeConsumer, "jitl:" + getItemFromRegistryName(input.toString()) + "_from_block");
 
         JITL.LOGGER.info(input.asItem().getDescriptionId());
     }
 
-    protected void add2x2Recipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike input, ItemLike output) {
+    protected void add2x2Recipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike input, ItemLike output, boolean addReverse) {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, output, 1).define('#', input)
                 .pattern("##")
                 .pattern("##").unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
+        if(addReverse) {
+            addShapelessRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, output, input, 4);
+        }
+    }
+
+    public void addOreDefaultItems(Consumer<FinishedRecipe> recipeConsumer, RecipePrefix name, ItemLike block, ItemLike oreBlock, ItemLike deepslateOre, ItemLike raw, ItemLike ingot, ItemLike stickItem) {
+        addToolsetAndArmorRecipes(recipeConsumer, stickItem, ingot, name);
+        addOreBlockRecipe(recipeConsumer, ingot, block);
+        addBlastingRecipe(recipeConsumer, oreBlock, ingot, 1.0F, 100, "_ore_blasting");
+        addSmeltingRecipe(recipeConsumer, oreBlock, ingot, 1.0F, 200,  "_ore_smelting");
+        if(deepslateOre != null) {
+            addBlastingRecipe(recipeConsumer, deepslateOre, ingot, 1.0F, 100, "_deep_blasting");
+            addSmeltingRecipe(recipeConsumer, deepslateOre, ingot, 1.0F, 200,  "_deep_smelting");
+        }
+        if(raw != null) {
+            addBlastingRecipe(recipeConsumer, raw, ingot, 1.0F, 100, "_raw_blasting");
+            addSmeltingRecipe(recipeConsumer, raw, ingot, 1.0F, 200, "_raw_smelting");
+        }
+    }
+
+    public void addOreNoArmorItems(Consumer<FinishedRecipe> recipeConsumer, RecipePrefix name, ItemLike block, ItemLike oreBlock, ItemLike deepslateOre, ItemLike raw, ItemLike ingot, ItemLike stickItem) {
+        addToolsetRecipes(recipeConsumer, stickItem, ingot, name);
+        addOreBlockRecipe(recipeConsumer, ingot, block);
+        if(oreBlock != null) {
+            addBlastingRecipe(recipeConsumer, oreBlock, ingot, 1.0F, 100, "_ore_blasting");
+            addSmeltingRecipe(recipeConsumer, oreBlock, ingot, 1.0F, 200, "_ore_smelting");
+        }
+        if(deepslateOre != null) {
+            addBlastingRecipe(recipeConsumer, deepslateOre, ingot, 1.0F, 100, "_deep_blasting");
+            addSmeltingRecipe(recipeConsumer, deepslateOre, ingot, 1.0F, 200,  "_deep_smelting");
+        }
+        if(raw != null) {
+            addBlastingRecipe(recipeConsumer, raw, ingot, 1.0F, 100, "_raw_blasting");
+            addSmeltingRecipe(recipeConsumer, raw, ingot, 1.0F, 200, "_raw_smelting");
+        }
     }
 
     protected void addToolsetAndArmorRecipes(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, RecipePrefix recipePrefix) {
@@ -280,12 +333,25 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
                 .pattern("# #").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
     }
 
-    protected void addSmeltingRecipe(ItemLike input, ItemLike output, float xpGiven, int time) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(input), RecipeCategory.MISC, output, xpGiven, time);
+    protected void addSmeltingRecipe(Consumer<FinishedRecipe> consumer, ItemLike input, ItemLike output, float xpGiven, int time, String name) {
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(input), RecipeCategory.MISC, output, xpGiven, time).unlockedBy(inputToKey(input), has(input)).save(consumer, "jitl:" + getItemFromRegistryName(output.toString()) + name);
     }
 
-    protected void addBlastingRecipe(ItemLike input, ItemLike output, float xpGiven, int time) {
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(input), RecipeCategory.MISC, output, xpGiven, time);
+    protected void addBlastingRecipe(Consumer<FinishedRecipe> consumer, ItemLike input, ItemLike output, float xpGiven, int time, String name) {
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(input), RecipeCategory.MISC, output, xpGiven, time).unlockedBy(inputToKey(input), has(input)).save(consumer, "jitl:" + getItemFromRegistryName(output.toString()) + name);
+    }
+
+    protected void addSmeltingRecipe(Consumer<FinishedRecipe> consumer, ItemLike input, ItemLike output, float xpGiven, int time) {
+        addSmeltingRecipe(consumer, input, output, xpGiven, time, "");
+    }
+
+    protected void addBlastingRecipe(Consumer<FinishedRecipe> consumer, ItemLike input, ItemLike output, float xpGiven, int time) {
+        addBlastingRecipe(consumer, input, output, xpGiven, time, "");
+    }
+
+    protected void addSmeltingAndBlastingRecipe(Consumer<FinishedRecipe> consumer, ItemLike input, ItemLike output) {
+        addSmeltingRecipe(consumer, input, output, 1F, 200, "_smelting");
+        addBlastingRecipe(consumer, input, output, 1F, 100, "_blasting");
     }
 
     protected void addCookingRecipe(ItemLike input, ItemLike output, float xpGiven) {
@@ -303,15 +369,22 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
         return ForgeRegistries.ITEMS.getValue(new ResourceLocation(JITL.MODID, registryName));
     }
 
-    public ItemLike getItemFromRegistryName(String registryName, String modID) {
-        return ForgeRegistries.ITEMS.getValue(new ResourceLocation(modID, registryName));
-    }
-
     public enum RecipePrefix {
 
         SAPPHIRE("sapphire_"),
         LUNIUM("lunium_"),
         SHADIUM("shadium_"),
+        BLOODCRUST("bloodcrust_"),
+        CELESTIUM("celestium_"),
+        STORON("storon_"),
+        KORITE("korite_"),
+        MEKYUM("mekyum_"),
+        FLAIRIUM("flairium_"),
+        DES("des_"),
+        ORBADITE("orbadite_"),
+        GORBITE("gorbite_"),
+        SOULSTONE("soulstone_"),
+
         WOODEN("wooden_")
         ;
 

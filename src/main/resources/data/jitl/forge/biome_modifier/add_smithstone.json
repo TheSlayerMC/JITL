@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_nether",
+  "features": "jitl:smithstone",
+  "step": "underground_decoration"
+}

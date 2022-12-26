@@ -118,6 +118,8 @@ public class JItems {
     public static final RegistryObject<Item> CRYSTAL_EYE = registerNormalItem("crystal_eye", "Crystal Eye");
     public static final RegistryObject<Item> DARK_MATTER_GEMSTONE = registerNormalItem("dark_matter_gemstone", "Dark Matter Gemstone");
     public static final RegistryObject<Item> FLORO_PEDAL = registerNormalItem("floro_pedal", "Floro Pedal");
+    public static final RegistryObject<Item> OBSIDIAN_STICK = registerNormalItem("obsidian_stick", "Obsidian Rod");
+    public static final RegistryObject<Item> STONE_STICK = registerNormalItem("stone_stick", "Stone Stick");
 
     public static final RegistryObject<Item> EUCA_PORTAL_PIECE_1 = registerNormalItem("euca_portal_piece_1", "Euca Portal Piece");
     public static final RegistryObject<Item> EUCA_PORTAL_PIECE_2 = registerNormalItem("euca_portal_piece_2", "Euca Portal Piece");
@@ -152,7 +154,6 @@ public class JItems {
     public static final RegistryObject<Item> SMITHSTONE_DUST = registerNormalItem("smithstone_dust", "Smithstone Dust");
     public static final RegistryObject<Item> BLEEDSTONE = registerNormalItem("bleedstone", "Bleedstone");
     public static final RegistryObject<Item> BLEEDSTONE_DUST = registerNormalItem("bleedstone_dust", "Bleedstone Dust");
-    public static final RegistryObject<Item> SOULSTONE = registerNormalItem("soulstone", "Soulstone");
     public static final RegistryObject<Item> CRYSTAL_FLAKE = registerNormalItem("crystal_flake", "Crystal Flake");
     public static final RegistryObject<Item> FREEZING_TABLET = registerNormalItem("freezing_tablet", "Freezing Tablet");
 
@@ -171,6 +172,8 @@ public class JItems {
     public static final RegistryObject<Item> FLAMING_SPROCKET = registerNormalItem("flaming_sprocket", "Flaming Sprocket");
     public static final RegistryObject<Item> FLAMING_HIDE = registerNormalItem("flaming_hide", "Flaming Hide");
     public static final RegistryObject<Item> HELL_SHARDS = registerNormalItem("hell_shards", "Hell Shards");
+    public static final RegistryObject<Item> SPAWNER_CLUMP = registerNormalItem("spawner_clump", "Spawner Clump");
+    public static final RegistryObject<Item> SPAWNER_BAR = registerNormalItem("spawner_bar", "Spawner Bar");
 
     public static final RegistryObject<Item> TERRASTAR = registerNormalItem("terrastar", "Terrastar");
     public static final RegistryObject<Item> TERRASHROOM = registerNormalItem("terrashroom", "Terrashroom");
@@ -217,6 +220,7 @@ public class JItems {
 
     public static final RegistryObject<Item> RAW_SHADIUM = registerNormalItem("raw_shadium", "Raw Shadium");
     public static final RegistryObject<Item> SHADIUM_INGOT = registerNormalItem("shadium_ingot", "Shadium Ingot");
+    public static final RegistryObject<Item> SHADIUM_CLUMP = registerNormalItem("shadium_clump", "Shadium Clump");
     public static final RegistryObject<Item> SHADIUM_SHOVEL = registerToolItem("shadium_shovel", "Shadium Shovel", () -> new JShovelItem(JToolTiers.SHADIUM_SHOVEL));
     public static final RegistryObject<Item> SHADIUM_PICKAXE = registerToolItem("shadium_pickaxe", "Shadium Pickaxe", () -> new JPickaxeItem(JToolTiers.SHADIUM_PICKAXE));
     public static final RegistryObject<Item> SHADIUM_AXE = registerToolItem("shadium_axe", "Shadium Axe", () -> new JAxeItem(JToolTiers.SHADIUM_AXE));
@@ -293,6 +297,36 @@ public class JItems {
     public static final RegistryObject<Item> DES_AXE = registerToolItem("des_axe", "Des Axe", () -> new JAxeItem(JToolTiers.DES_AXE));
     public static final RegistryObject<Item> DES_HOE = registerToolItem("des_hoe", "Des Hoe", () -> new JHoeItem(JToolTiers.DES_HOE));
     public static final RegistryObject<Item> DES_SWORD = registerToolItem("des_sword", "Des Sword", () -> new JSwordItem(JToolTiers.DES_SWORD, BASIC));
+
+    public static final RegistryObject<Item> GORBITE_GEM = registerNormalItem("gorbite_gem", "Gorbite Gem");
+    public static final RegistryObject<Item> GORBITE_SHOVEL = registerToolItem("gorbite_shovel", "Gorbite Shovel", () -> new JShovelItem(JToolTiers.GORBITE_SHOVEL));
+    public static final RegistryObject<Item> GORBITE_PICKAXE = registerToolItem("gorbite_pickaxe", "Gorbite Pickaxe", () -> new JPickaxeItem(JToolTiers.GORBITE_PICKAXE));
+    public static final RegistryObject<Item> GORBITE_AXE = registerToolItem("gorbite_axe", "Gorbite Axe", () -> new JAxeItem(JToolTiers.GORBITE_AXE));
+    public static final RegistryObject<Item> GORBITE_HOE = registerToolItem("gorbite_hoe", "Gorbite Hoe", () -> new JHoeItem(JToolTiers.GORBITE_HOE));
+    public static final RegistryObject<Item> GORBITE_SWORD = registerToolItem("gorbite_sword", "Gorbite Sword", () -> new JSwordItem(JToolTiers.GORBITE_SWORD, BASIC));
+    public static final RegistryObject<Item> GORBITE_HELMET = registerNormalItem("gorbite_helmet", "Gorbite Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, EquipmentSlot.HEAD, null));
+    public static final RegistryObject<Item> GORBITE_CHEST = registerNormalItem("gorbite_chestplate", "Gorbite Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, EquipmentSlot.CHEST, null));
+    public static final RegistryObject<Item> GORBITE_LEGS = registerNormalItem("gorbite_leggings", "Gorbite Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, EquipmentSlot.LEGS, null));
+    public static final RegistryObject<Item> GORBITE_BOOTS = registerNormalItem("gorbite_boots", "Gorbite Boots", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, EquipmentSlot.FEET, null));
+
+    public static final RegistryObject<Item> RAW_ORBADITE = registerNormalItem("raw_orbadite", "Raw Orbadite");
+    public static final RegistryObject<Item> ORBADITE_INGOT = registerNormalItem("orbadite_ingot", "Orbadite Ingot");
+    public static final RegistryObject<Item> ORBADITE_SHOVEL = registerToolItem("orbadite_shovel", "Orbadite Shovel", () -> new JShovelItem(JToolTiers.ORBADITE_SHOVEL));
+    public static final RegistryObject<Item> ORBADITE_PICKAXE = registerToolItem("orbadite_pickaxe", "Orbadite Pickaxe", () -> new JPickaxeItem(JToolTiers.ORBADITE_PICKAXE));
+    public static final RegistryObject<Item> ORBADITE_AXE = registerToolItem("orbadite_axe", "Orbadite Axe", () -> new JAxeItem(JToolTiers.ORBADITE_AXE));
+    public static final RegistryObject<Item> ORBADITE_HOE = registerToolItem("orbadite_hoe", "Orbadite Hoe", () -> new JHoeItem(JToolTiers.ORBADITE_HOE));
+    public static final RegistryObject<Item> ORBADITE_SWORD = registerToolItem("orbadite_sword", "Orbadite Sword", () -> new JSwordItem(JToolTiers.ORBADITE_SWORD, BASIC));
+    public static final RegistryObject<Item> ORBADITE_HELMET = registerNormalItem("orbadite_helmet", "Orbadite Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, EquipmentSlot.HEAD, null));
+    public static final RegistryObject<Item> ORBADITE_CHEST = registerNormalItem("orbadite_chestplate", "Orbadite Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, EquipmentSlot.CHEST, null));
+    public static final RegistryObject<Item> ORBADITE_LEGS = registerNormalItem("orbadite_leggings", "Orbadite Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, EquipmentSlot.LEGS, null));
+    public static final RegistryObject<Item> ORBADITE_BOOTS = registerNormalItem("orbadite_boots", "Orbadite Boots", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, EquipmentSlot.FEET, null));
+
+    public static final RegistryObject<Item> SOULSTONE = registerNormalItem("soulstone", "Soulstone");
+    public static final RegistryObject<Item> SOULSTONE_SHOVEL = registerToolItem("soulstone_shovel", "Soulstone Shovel", () -> new JShovelItem(JToolTiers.SOULSTONE_SHOVEL));
+    public static final RegistryObject<Item> SOULSTONE_PICKAXE = registerToolItem("soulstone_pickaxe", "Soulstone Pickaxe", () -> new JPickaxeItem(JToolTiers.SOULSTONE_PICKAXE));
+    public static final RegistryObject<Item> SOULSTONE_AXE = registerToolItem("soulstone_axe", "Soulstone Axe", () -> new JAxeItem(JToolTiers.SOULSTONE_AXE));
+    public static final RegistryObject<Item> SOULSTONE_HOE = registerToolItem("soulstone_hoe", "Soulstone Hoe", () -> new JHoeItem(JToolTiers.SOULSTONE_HOE));
+    public static final RegistryObject<Item> SOULSTONE_SWORD = registerToolItem("soulstone_sword", "Soulstone Sword", () -> new JSwordItem(JToolTiers.SOULSTONE_SWORD, BASIC));
 
     public static final RegistryObject<Item> STAFF_OF_CONJURING = registerToolItem("staff_of_conjuring", "Staff of Conjuring", () -> new StaffItem(1, ConjuringProjectileEntity::new));
     public static final RegistryObject<Item> STAFF_OF_ESSENCIA = registerToolItem("staff_of_essencia", "Staff of Essencia", () -> new StaffItem(4, EssenciaProjectileEntity::new));

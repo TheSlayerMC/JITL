@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "orbadite_ingot",
+  "ingredients": [
+    {
+      "item": "jitl:orbadite_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "jitl:orbadite_ingot"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "jitl:bloodcrust_clump"
+    },
+    {
+      "item": "jitl:shadium_clump"
+    },
+    {
+      "item": "jitl:lunium_clump"
+    }
+  ],
+  "result": {
+    "item": "jitl:spawner_clump"
+  }
+}

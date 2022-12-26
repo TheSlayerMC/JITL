@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredient": {
+    "item": "jitl:shadium_ore"
+  },
+  "result": "jitl:shadium_ingot"
+}

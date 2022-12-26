@@ -7,9 +7,9 @@
     }
   },
   "pattern": [
-    "sss",
-    "sss",
-    "sss"
+    "s s",
+    " s ",
+    "s s"
   ],
   "result": {
     "item": "minecraft:cobweb"

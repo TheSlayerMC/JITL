@@ -68,6 +68,24 @@ public enum JToolTiers {
     DES_SHOVEL(JToolTier.DES, 1, 0),
     DES_HOE(JToolTier.DES, 0, 0),
 
+    GORBITE_SWORD(JToolTier.GORBITE, 4, 0),
+    GORBITE_PICKAXE(JToolTier.GORBITE, 2, 0),
+    GORBITE_AXE(JToolTier.GORBITE, 4, 0),
+    GORBITE_SHOVEL(JToolTier.GORBITE, 1, 0),
+    GORBITE_HOE(JToolTier.GORBITE, 0, 0),
+
+    ORBADITE_SWORD(JToolTier.ORBADITE, 4, 0),
+    ORBADITE_PICKAXE(JToolTier.ORBADITE, 2, 0),
+    ORBADITE_AXE(JToolTier.ORBADITE, 4, 0),
+    ORBADITE_SHOVEL(JToolTier.ORBADITE, 1, 0),
+    ORBADITE_HOE(JToolTier.ORBADITE, 0, 0),
+
+    SOULSTONE_SWORD(JToolTier.SOULSTONE, 4, 0),
+    SOULSTONE_PICKAXE(JToolTier.SOULSTONE, 2, 0),
+    SOULSTONE_AXE(JToolTier.SOULSTONE, 4, 0),
+    SOULSTONE_SHOVEL(JToolTier.SOULSTONE, 1, 0),
+    SOULSTONE_HOE(JToolTier.SOULSTONE, 0, 0),
+
 
     CHAMPIONS_SWORD(JToolTier.CHAMPIONS_SWORD, 4, 0),
     THE_WRAITH(JToolTier.THE_WRAITH, 4, 0),
@@ -170,6 +188,7 @@ public enum JToolTiers {
         public static final Tier SHADIUM = new ForgeTier(3, 1561, 8F, 3F, 15, null, () -> Ingredient.of(JItems.SHADIUM_INGOT.get()));
         public static final Tier BLOODCRUST = new ForgeTier(3, 1883, 8F, 3F, 15, null, () -> Ingredient.of(JItems.BLOODCRUST_INGOT.get()));
 
+        //SORT BELOW
         public static final Tier CELESTIUM = new ForgeTier(3, 1883, 8F, 3F, 15, null, () -> Ingredient.of(JItems.CELESTIUM_INGOT.get()));
         public static final Tier KORITE = new ForgeTier(3, 1883, 8F, 3F, 15, null, () -> Ingredient.of(JItems.KORITE_INGOT.get()));
         public static final Tier STORON = new ForgeTier(3, 1883, 8F, 3F, 15, null, () -> Ingredient.of(JItems.STORON_INGOT.get()));
@@ -177,6 +196,11 @@ public enum JToolTiers {
 
         public static final Tier FLAIRIUM = new ForgeTier(3, 1883, 8F, 3F, 15, null, () -> Ingredient.of(JItems.MEKYUM_INGOT.get()));
         public static final Tier DES = new ForgeTier(3, 1883, 8F, 3F, 15, null, () -> Ingredient.of(JItems.DES_INGOT.get()));
+
+        public static final Tier GORBITE = new ForgeTier(3, 1883, 8F, 3F, 15, null, () -> Ingredient.of(JItems.GORBITE_GEM.get()));
+        public static final Tier ORBADITE = new ForgeTier(3, 1883, 8F, 3F, 15, null, () -> Ingredient.of(JItems.ORBADITE_INGOT.get()));
+
+        public static final Tier SOULSTONE = new ForgeTier(3, 1883, 8F, 3F, 15, null, () -> Ingredient.of(JItems.SOULSTONE.get()));
 
         public static final Tier CHAMPIONS_SWORD = new ForgeTier(3, 3000, 8F, 3F, 25, null, () -> null);
         public static final Tier THE_WRAITH = new ForgeTier(3, 3000, 8F, 3F, 25, null, () -> null);
@@ -241,6 +265,9 @@ public enum JToolTiers {
         public static final JArmorMaterial CELESTIUM = new JArmorMaterial("celestium", 33, new int[] {3, 5, 7, 3}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, () -> Ingredient.of(JItems.CELESTIUM_INGOT.get()));
 
         public static final JArmorMaterial FLAIRIUM = new JArmorMaterial("flairium", 33, new int[] {3, 5, 7, 3}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, () -> Ingredient.of(JItems.FLAIRIUM_INGOT.get()));
+
+        public static final JArmorMaterial GORBITE = new JArmorMaterial("gorbite", 33, new int[] {3, 5, 7, 3}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, () -> Ingredient.of(JItems.GORBITE_GEM.get()));
+        public static final JArmorMaterial ORBADITE = new JArmorMaterial("orbadite", 33, new int[] {3, 5, 7, 3}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, () -> Ingredient.of(JItems.ORBADITE_INGOT.get()));
 
     }
 }

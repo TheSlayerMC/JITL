@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "soulstone",
+  "ingredients": [
+    {
+      "item": "jitl:soulstone_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "jitl:soulstone"
+  }
+}

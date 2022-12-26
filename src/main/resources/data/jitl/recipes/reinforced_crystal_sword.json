@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "jitl:reinforced_crystal_ingot"
+    },
+    "I": {
+      "item": "jitl:stone_stick"
+    }
+  },
+  "pattern": [
+    "#",
+    "#",
+    "I"
+  ],
+  "result": {
+    "item": "jitl:reinforced_crystal_sword"
+  }
+}
