@@ -40,17 +40,18 @@ public class JRecipeRegistry extends JRecipeProvider {
         addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JBlocks.BLUE_GEM_BLOCK.get(), JItems.BLUE_GEM.get(), 9);
         addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JBlocks.YELLOW_GEM_BLOCK.get(), JItems.YELLOW_GEM.get(), 9);
 
-
-        addSmeltingAndBlastingRecipe(recipeConsumer, JBlocks.FIRESTONE_ORE.get(), JItems.FIRESTONE_CLUMP.get());
-        addOreBlockRecipe(recipeConsumer, JItems.FIRESTONE_CLUMP.get(), JBlocks.FIRESTONE_BLOCK.get());
-
         addOreBlockRecipe(recipeConsumer, JItems.IRIDIUM_NUGGET.get(), JBlocks.IRIDIUM_BLOCK.get());
         addOreBlockRecipe(recipeConsumer, JItems.ENDERILLIUM_SHARD.get(), JBlocks.ENDERILLIUM_BLOCK.get());
         addOreBlockRecipe(recipeConsumer, JItems.ASH.get(), JBlocks.ASHUAL_BLOCK.get());
         addOreBlockRecipe(recipeConsumer, JItems.PERIDOT_GEMSTONE.get(), JBlocks.PERIDOT_BLOCK.get());
         addOreBlockRecipe(recipeConsumer, JItems.RIMESTONE.get(), JBlocks.RIMESTONE_BLOCK.get());
         addOreBlockRecipe(recipeConsumer, JItems.VERDITE_INGOT.get(), JBlocks.VERDITE_BLOCK.get());
-        addOreBlockRecipe(recipeConsumer, JItems.BLAZIUM_INGOT.get(), JBlocks.BLAZIUM_BLOCK.get());//raw blazium
+
+        addOreBlockRecipe(recipeConsumer, JItems.BLAZIUM_INGOT.get(), JBlocks.BLAZIUM_BLOCK.get());
+        addSmeltingAndBlastingRecipe(recipeConsumer, JItems.RAW_BLAZIUM.get(), JItems.BLAZIUM_INGOT.get());
+
+        addSmeltingAndBlastingRecipe(recipeConsumer, JBlocks.FIRESTONE_ORE.get(), JItems.FIRESTONE_CLUMP.get());
+        addOreBlockRecipe(recipeConsumer, JItems.FIRESTONE_CLUMP.get(), JBlocks.FIRESTONE_BLOCK.get());
 
         addOreDefaultItems(recipeConsumer, RecipePrefix.SHADIUM, JBlocks.SHADIUM_BLOCK.get(), JBlocks.SHADIUM_ORE.get(), JBlocks.DEEPSLATE_SHADIUM_ORE.get(), JItems.RAW_SHADIUM.get(), JItems.SHADIUM_INGOT.get(), Items.STICK);
         addOreDefaultItems(recipeConsumer, RecipePrefix.SAPPHIRE, JBlocks.SAPPHIRE_BLOCK.get(), JBlocks.SAPPHIRE_ORE.get(), JBlocks.DEEPSLATE_SAPPHIRE_ORE.get(), null, JItems.SAPPHIRE.get(), Items.STICK);

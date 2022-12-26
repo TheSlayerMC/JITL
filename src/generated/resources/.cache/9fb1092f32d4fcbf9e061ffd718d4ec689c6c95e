@@ -1,4 +1,4 @@
-// 1.19.3	2022-12-26T16:54:04.2586543	Recipes
+// 1.19.3	2022-12-26T20:55:25.2307726	Recipes
 e4435a2bbb6c92f9127e4f157eae9b6772f4af1c data/jitl/advancements/recipes/building_blocks/ashual_block.json
 c62ec6f67cef60be5bb5968a997f260a09d76505 data/jitl/advancements/recipes/building_blocks/ash_from_block.json
 0297bb0e0cadaf2c62a9a3791a863e618a2c6d44 data/jitl/advancements/recipes/building_blocks/blazium_block.json
@@ -98,6 +98,8 @@ ca2a5bf0cac4ff33a7e2b5a56b1c017c31c4b91b data/jitl/advancements/recipes/combat/s
 d1d2eb2daf80e17b9172dd937915b1a11f37aec2 data/jitl/advancements/recipes/combat/withic_blade.json
 a2f6b90ffbd9aeb66f768347cdcefb591b5da479 data/jitl/advancements/recipes/misc/air_blasting.json
 6057ac78ef1149cda1b70a726a19d49130bb2403 data/jitl/advancements/recipes/misc/air_smelting.json
+76879b966578f863a2570799c84036f473acbce6 data/jitl/advancements/recipes/misc/blazium_ingot_blasting.json
+4d0ee60eb377e675c7112006edb652fcb40144a5 data/jitl/advancements/recipes/misc/blazium_ingot_smelting.json
 02f82327ac73134942554a59a38949dda42113b2 data/jitl/advancements/recipes/misc/bleedstone_block.json
 13e3ff561e14bb7ac21ba03eee862f1df3800891 data/jitl/advancements/recipes/misc/bleedstone_dust.json
 5ed74ac6b66facb7e7fd528c62d13f45a96fa922 data/jitl/advancements/recipes/misc/bloodcrust_clump.json
@@ -230,7 +232,9 @@ ed964f7dce58d3a18f37adc65727c05e57db08fe data/jitl/advancements/recipes/tools/sh
 6e8d3ab2825054d95a8e6f28891d7b56cc99645f data/jitl/recipes/ashual_block.json
 ad9659a50567f31c769aac27b0d0a00b778f616c data/jitl/recipes/ash_from_block.json
 3180443925715841f32307616c4c4b60ee48954e data/jitl/recipes/blazium_block.json
+16e9472a18356e6115a1d00887cf977bd386ec64 data/jitl/recipes/blazium_ingot_blasting.json
 366ac82a2cdff9ed5b4263336017d580cedd88f2 data/jitl/recipes/blazium_ingot_from_block.json
+b1086f4462834fba06fd7d99ee3081987f3f2538 data/jitl/recipes/blazium_ingot_smelting.json
 e6548cf66c0c83e1c27936041fbc68a9ef257ad9 data/jitl/recipes/bleedstone.json
 fccb98f2be44f8888b57a915b10a6882f134660c data/jitl/recipes/bleedstone_block.json
 7cb95d1c6a2a94c767428dd7878d491d2d0e7368 data/jitl/recipes/bleedstone_dust.json

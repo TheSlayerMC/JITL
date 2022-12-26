@@ -141,11 +141,6 @@ public class TowerGuardian extends AnimatableMonster implements IJourneyBoss, ID
         return BOSS_BAR;
     }
 
-    @Override
-    public JMusic getBossMusic() {
-        return BOSS_TRACK;
-    }
-
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.tower_guardian.walk");
     private final RawAnimation ATTACK = RawAnimation.begin().thenLoop("animation.tower_guardian.smash");
     private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.tower_guardian.idle");

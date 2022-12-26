@@ -7,7 +7,6 @@ import net.jitl.common.entity.base.IDontAttackWhenPeaceful;
 import net.jitl.common.entity.base.JBossInfo;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
 import net.jitl.common.entity.goal.IdleHealGoal;
-import net.jitl.core.helper.JMusic;
 import net.jitl.core.init.JITL;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
@@ -127,11 +126,6 @@ public class RockiteSmasher extends AnimatableMonster implements IJourneyBoss, I
     @Override
     public BossBarRenderer getBossBar() {
         return BOSS_BAR;
-    }
-
-    @Override
-    public JMusic getBossMusic() {
-        return null;
     }
 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.rockite_smasher.walk");
