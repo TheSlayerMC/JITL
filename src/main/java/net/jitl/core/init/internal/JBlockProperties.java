@@ -57,11 +57,13 @@ public class JBlockProperties {
             .noOcclusion();
 
     public static BlockBehaviour.Properties DUNGEON_BLOCK = BlockBehaviour.Properties.of(Material.STONE)
-            .strength(1000000000F, -1F)
+            .strength(-1F, 3600000.0F)
+            .noLootTable()
             .sound(SoundType.STONE);
 
     public static BlockBehaviour.Properties DUNGEON_LAMP = BlockBehaviour.Properties.of(Material.STONE)
-            .strength(1000000000F, -1F)
+            .strength(-1F, 3600000.0F)
+            .noLootTable()
             .lightLevel((level) -> 7)
             .sound(SoundType.STONE);
 
