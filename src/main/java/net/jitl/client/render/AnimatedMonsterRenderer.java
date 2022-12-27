@@ -1,5 +1,7 @@
 package net.jitl.client.render;
 
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
@@ -32,17 +34,10 @@ public class AnimatedMonsterRenderer<T extends LivingEntity & GeoEntity> extends
     public @NotNull ResourceLocation getTextureLocation(@NotNull T instance) {
         return getGeoModel().getTextureResource(instance);
     }
-//TODO
-    /*@Override
-    public RenderType getRenderType(T animatable, float partialTicks, PoseStack stack, @Nullable MultiBufferSource renderTypeBuffer
-            , @Nullable VertexConsumer vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
-        stack.scale(this.size, this.size, this.size);
-        return super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
-    }
 
     @Override
-    public RenderType getRenderType(T animatable, ResourceLocation texture, @Nullable MultiBufferSource bufferSource, float partialTick) {
-        //stack.scale(this.size, this.size, this.size);
-        return super.getRenderType(animatable, texture, bufferSource, partialTick);
-    }*/
+    public void render(@NotNull T entity, float entityYaw, float partialTick, PoseStack stack, @NotNull MultiBufferSource bufferSource, int packedLight) {
+        stack.scale(this.size, this.size, this.size);
+        super.render(entity, entityYaw, partialTick, stack, bufferSource, packedLight);
+    }
 }

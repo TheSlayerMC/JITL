@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
+import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 
@@ -29,9 +30,9 @@ public class BoomBoomRenderer<T extends LivingEntity & GeoEntity> extends Animat
     }
 
     @Override
-    public void render(T entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
+    public void render(@NotNull T entity, float entityYaw, float partialTick, PoseStack poseStack, @NotNull MultiBufferSource bufferSource, int packedLight) {
         BoomBoom b = (BoomBoom)animatable;
-        //scale(b, stack, partialTicks);
+        scale(b, poseStack, partialTick);
         super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
     }
 }
