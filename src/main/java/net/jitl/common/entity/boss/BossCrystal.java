@@ -3,7 +3,9 @@ package net.jitl.common.entity.boss;
 import net.jitl.core.init.JITL;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.ContainerHelper;
@@ -22,7 +24,7 @@ import net.minecraft.world.level.storage.loot.LootTables;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.entity.IEntityAdditionalSpawnData;
+import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -33,15 +35,15 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 import java.util.Iterator;
 import java.util.List;
 
-public class BossCrystal extends Entity implements IEntityAdditionalSpawnData, GeoEntity {
+public class BossCrystal extends Entity implements GeoEntity {
     
     private final NonNullList<ItemStack> storedItems = NonNullList.create();
-    private String type;
     private ResourceLocation table;
+    private static final EntityDataAccessor<String> TYPE = SynchedEntityData.defineId(BossCrystal.class, EntityDataSerializers.STRING);
 
     public BossCrystal(EntityType<? extends BossCrystal> pEntityType, Level pLevel, Type t, ResourceLocation loot) {
         this(pEntityType, pLevel);
-        setType(t);
+        setType(t.getName());
         setLootTable(loot);
     }
 
@@ -50,10 +52,16 @@ public class BossCrystal extends Entity implements IEntityAdditionalSpawnData, G
     }
 
     @Override
-    protected void defineSynchedData() { }
+    protected void defineSynchedData() {
+        this.entityData.define(TYPE, "");
+    }
 
-    public void setType(Type type) {
-        this.type = type.getName();
+    public String getCrystalType() {
+        return this.entityData.get(TYPE);
+    }
+
+    public void setType(String t) {
+        this.entityData.set(TYPE, t);
     }
 
     public void setLootTable(ResourceLocation table) {
@@ -63,13 +71,13 @@ public class BossCrystal extends Entity implements IEntityAdditionalSpawnData, G
     @Override
     protected void readAdditionalSaveData(CompoundTag compound) {
         ContainerHelper.loadAllItems(compound, storedItems);
-        type = compound.getString("type");
+        setType(compound.getString("type"));
     }
 
     @Override
     protected void addAdditionalSaveData(CompoundTag compound) {
         ContainerHelper.saveAllItems(compound, storedItems);
-        compound.putString("type", type);
+        compound.putString("type", getCrystalType());
     }
 
     @Override
@@ -78,9 +86,8 @@ public class BossCrystal extends Entity implements IEntityAdditionalSpawnData, G
     }
 
     @Override
-    public InteractionResult interact(Player player, InteractionHand hand) {
+    public @NotNull InteractionResult interact(Player player, InteractionHand hand) {
         if (!this.level.isClientSide) {
-
             LootTables ltManager = this.getLevel().getServer().getLootTables();
             LootTable lt = ltManager.get(table);
             ItemStack sword = new ItemStack(Items.DIAMOND_SWORD);
@@ -114,17 +121,7 @@ public class BossCrystal extends Entity implements IEntityAdditionalSpawnData, G
     }
 
     public ResourceLocation getTexture() {
-        return JITL.rl("textures/entity/crystal/" + type + ".png");
-    }
-
-    @Override
-    public void writeSpawnData(FriendlyByteBuf buffer) {
-        buffer.writeUtf(type);
-    }
-
-    @Override
-    public void readSpawnData(FriendlyByteBuf buffer) {
-        //this.type = buffer.readUtf();
+        return JITL.rl("textures/entity/crystal/" + getCrystalType() + ".png");
     }
 
     private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.bosscrystal.idle");

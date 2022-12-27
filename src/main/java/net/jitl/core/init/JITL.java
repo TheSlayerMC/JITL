@@ -2,9 +2,11 @@ package net.jitl.core.init;
 
 import net.jitl.client.ClientEventHandler;
 import net.jitl.client.render.RenderEntitys;
+import net.jitl.common.event.BossDeathEvent;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.common.world.dimension.JCarver;
-import net.jitl.common.world.gen.*;
+import net.jitl.common.world.gen.JFeatures;
+import net.jitl.common.world.gen.JFoliagePlacers;
 import net.jitl.core.config.JClientConfig;
 import net.jitl.core.config.JCommonConfig;
 import net.jitl.core.data.JBlockPathGenerator;
@@ -61,6 +63,8 @@ public class JITL {
         JEnchantments.REGISTRY.register(modEventBus);
         JParticleManager.REGISTRY.register(modEventBus);
         JSounds.REGISTRY.register(modEventBus);
+
+        forgeEventBus.addListener(BossDeathEvent::deathEvent);
 
         ClientEventHandler.regToBus(forgeEventBus, modEventBus);
 
