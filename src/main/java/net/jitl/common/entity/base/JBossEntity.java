@@ -12,11 +12,14 @@ import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import org.jetbrains.annotations.NotNull;
 
 public abstract class JBossEntity extends AnimatableMonster implements IJourneyBoss, IDontAttackWhenPeaceful{
 
@@ -80,19 +83,22 @@ public abstract class JBossEntity extends AnimatableMonster implements IJourneyB
         super.tick();
         int playerArea = 10;
         AABB axisalignedbb = AABB.unitCubeFromLowerCorner(this.position()).inflate(playerArea);
-        for(ServerPlayer player : this.level.getEntitiesOfClass(ServerPlayer.class, axisalignedbb.inflate(2))) {
-            JBossInfo.removeInfo(player, getEvent(), this);
-        }
-        for(ServerPlayer player : this.level.getEntitiesOfClass(ServerPlayer.class, axisalignedbb)) {
-            JBossInfo.addInfo(player, getEvent(), this);
+        for(Player player : this.level.getEntitiesOfClass(Player.class, axisalignedbb)) {
+            if(player instanceof ServerPlayer p) {
+                if(!level.isClientSide())
+                    JBossInfo.addInfo(p, getEvent(), this);
+            }
         }
     }
 
     @Override
-    public void tickDeath() {
-        super.tickDeath();
+    public void die(@NotNull DamageSource s) {
+        super.die(s);
         if(!level.isClientSide()) {
             if(!hasSpawned()) {
+                if(s.getEntity() instanceof Player p) {
+                    JBossInfo.removeInfo((ServerPlayer)p, getEvent(), this);
+                }
                 BossCrystal crystal = new BossCrystal(JEntities.BOSS_CRYSTAL_TYPE.get(), level, getDeathCrystalType(), lootTable());
                 crystal.setPos(position().add(0, 1, 0));
                 level.addFreshEntity(crystal);

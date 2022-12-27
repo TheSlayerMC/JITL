@@ -26,7 +26,6 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
@@ -111,16 +110,9 @@ public class RockiteSmasher extends AnimatableMonster implements IJourneyBoss, I
     }
 
     @Override
-    public void tick() {
-        super.tick();
-        int playerArea = 10;
-        AABB axisalignedbb = AABB.unitCubeFromLowerCorner(this.position()).inflate(playerArea);
-        for(ServerPlayer player : this.level.getEntitiesOfClass(ServerPlayer.class, axisalignedbb.inflate(2))) {
-            JBossInfo.removeInfo(player, BOSS_INFO, this);
-        }
-        for(ServerPlayer player : this.level.getEntitiesOfClass(ServerPlayer.class, axisalignedbb)) {
-            JBossInfo.addInfo(player, BOSS_INFO, this);
-        }
+    public void startSeenByPlayer(@NotNull ServerPlayer player) {
+        super.startSeenByPlayer(player);
+        JBossInfo.addInfo(player, BOSS_INFO, this);
     }
 
     @Override
