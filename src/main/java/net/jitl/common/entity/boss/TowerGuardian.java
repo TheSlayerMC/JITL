@@ -98,16 +98,6 @@ public class TowerGuardian extends JBossEntity {
         super.handleEntityEvent(id);
     }
 
-    @Override
-    protected boolean shouldDespawnInPeaceful() {
-        return false;
-    }
-
-    @Override
-    public boolean removeWhenFarAway(double distanceToClosestPlayer) {
-        return false;
-    }
-
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, 100)
@@ -156,5 +146,10 @@ public class TowerGuardian extends JBossEntity {
     @Override
     public ResourceLocation lootTable() {
         return BuiltInLootTables.SIMPLE_DUNGEON;
+    }
+
+    @Override
+    public boolean showBarWhenSpawned() {
+        return false;
     }
 }

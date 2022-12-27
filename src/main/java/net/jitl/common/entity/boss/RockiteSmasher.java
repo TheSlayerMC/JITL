@@ -1,22 +1,17 @@
 package net.jitl.common.entity.boss;
 
 import net.jitl.client.gui.BossBarRenderer;
-import net.jitl.common.entity.IJourneyBoss;
-import net.jitl.common.entity.base.AnimatableMonster;
-import net.jitl.common.entity.base.IDontAttackWhenPeaceful;
-import net.jitl.common.entity.base.JBossInfo;
+import net.jitl.common.entity.base.JBossEntity;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
 import net.jitl.common.entity.goal.IdleHealGoal;
 import net.jitl.core.init.JITL;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.BossEvent;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -26,12 +21,14 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
-public class RockiteSmasher extends AnimatableMonster implements IJourneyBoss, IDontAttackWhenPeaceful {
+public class RockiteSmasher extends JBossEntity {
 
     private final ServerBossEvent BOSS_INFO = new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
     private final BossBarRenderer BOSS_BAR = new BossBarRenderer(this, JITL.rl("textures/gui/bossbars/rockite_smasher.png"));
@@ -87,11 +84,6 @@ public class RockiteSmasher extends AnimatableMonster implements IJourneyBoss, I
     }
 
     @Override
-    protected boolean shouldDespawnInPeaceful() {
-        return false;
-    }
-
-    @Override
     public boolean removeWhenFarAway(double distanceToClosestPlayer) {
         return false;
     }
@@ -101,23 +93,6 @@ public class RockiteSmasher extends AnimatableMonster implements IJourneyBoss, I
                 .add(Attributes.MAX_HEALTH, 100)
                 .add(Attributes.FOLLOW_RANGE, 25)
                 .add(Attributes.MOVEMENT_SPEED, 0.26).build();
-    }
-
-    @Override
-    public void stopSeenByPlayer(@NotNull ServerPlayer player) {
-        super.stopSeenByPlayer(player);
-        JBossInfo.removeInfo(player, BOSS_INFO, this);
-    }
-
-    @Override
-    public void startSeenByPlayer(@NotNull ServerPlayer player) {
-        super.startSeenByPlayer(player);
-        JBossInfo.addInfo(player, BOSS_INFO, this);
-    }
-
-    @Override
-    public BossBarRenderer getBossBar() {
-        return BOSS_BAR;
     }
 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.rockite_smasher.walk");
@@ -139,7 +114,27 @@ public class RockiteSmasher extends AnimatableMonster implements IJourneyBoss, I
     }
 
     @Override
-    public boolean wantsToAttack(LivingEntity target, LivingEntity living) {
-        return level.getDifficulty() != Difficulty.PEACEFUL;
+    protected @Nullable BossCrystal.Type getDeathCrystalType() {
+        return BossCrystal.Type.FROZEN;
+    }
+
+    @Override
+    public ResourceLocation lootTable() {
+        return BuiltInLootTables.SIMPLE_DUNGEON;
+    }
+
+    @Override
+    public boolean showBarWhenSpawned() {
+        return true;
+    }
+
+    @Override
+    public BossBarRenderer getBossBar() {
+        return BOSS_BAR;
+    }
+
+    @Override
+    public ServerBossEvent getEvent() {
+        return BOSS_INFO;
     }
 }

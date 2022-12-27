@@ -101,7 +101,7 @@ public class BossCrystal extends Entity implements GeoEntity {
             List<ItemStack> generated = lt.getRandomItems(ctx);
             storedItems.addAll(generated);
 
-            for (Iterator<ItemStack> iterator = storedItems.iterator(); iterator.hasNext(); ) {
+            for(Iterator<ItemStack> iterator = storedItems.iterator(); iterator.hasNext(); ) {
                 ItemStack itemStack = iterator.next();
                 if (player.addItem(itemStack)) {
                     iterator.remove();

@@ -79,16 +79,27 @@ public abstract class JBossEntity extends AnimatableMonster implements IJourneyB
     }
 
     @Override
-    public void tick() {
-        super.tick();
-        int playerArea = 10;
-        AABB axisalignedbb = AABB.unitCubeFromLowerCorner(this.position()).inflate(playerArea);
-        for(Player player : this.level.getEntitiesOfClass(Player.class, axisalignedbb)) {
-            if(player instanceof ServerPlayer p) {
-                if(!level.isClientSide())
-                    JBossInfo.addInfo(p, getEvent(), this);
+    public void startSeenByPlayer(ServerPlayer player) {
+        super.stopSeenByPlayer(player);
+        if(showBarWhenSpawned())
+            JBossInfo.addInfo(player, getEvent(), this);
+    }
+
+    public abstract boolean showBarWhenSpawned();
+
+    @Override
+    public boolean hurt(@NotNull DamageSource d, float f) {
+        if(!level.isClientSide()) {
+            if(!showBarWhenSpawned()) {
+                if (d.getEntity() instanceof Player) {
+                    AABB axisalignedbb = AABB.unitCubeFromLowerCorner(this.position()).inflate(10);
+                    for (Player player : this.level.getEntitiesOfClass(Player.class, axisalignedbb)) {
+                        JBossInfo.addInfo((ServerPlayer) player, getEvent(), this);
+                    }
+                }
             }
         }
+        return super.hurt(d, f);
     }
 
     @Override
@@ -96,9 +107,6 @@ public abstract class JBossEntity extends AnimatableMonster implements IJourneyB
         super.die(s);
         if(!level.isClientSide()) {
             if(!hasSpawned()) {
-                if(s.getEntity() instanceof Player p) {
-                    JBossInfo.removeInfo((ServerPlayer)p, getEvent(), this);
-                }
                 BossCrystal crystal = new BossCrystal(JEntities.BOSS_CRYSTAL_TYPE.get(), level, getDeathCrystalType(), lootTable());
                 crystal.setPos(position().add(0, 1, 0));
                 level.addFreshEntity(crystal);
