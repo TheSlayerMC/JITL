@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_block.jitl.des_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jitl:des_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jitl:item.jitl.des_ingot_ore_blasting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_block.jitl.des_ore",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jitl:item.jitl.des_ingot_ore_blasting"
+    ]
+  }
+}

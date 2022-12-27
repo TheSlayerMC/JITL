@@ -22,6 +22,7 @@ public class JRecipeRegistry extends JRecipeProvider {
         buildBlockRecipes(recipeConsumer);
         buildItemRecipes(recipeConsumer);
         buildWoodTypes(recipeConsumer);
+        buildQuartzTypes(recipeConsumer);
         buildSmithingRecipes(recipeConsumer);
     }
 
@@ -114,6 +115,11 @@ public class JRecipeRegistry extends JRecipeProvider {
         addWoodType(consumer, JBlocks.EUCA_BROWN_LOG, JBlocks.EUCA_BROWN_PLANKS, JBlocks.EUCA_BROWN_STAIRS, JBlocks.EUCA_BROWN_SLAB, JBlocks.EUCA_BROWN_FENCE, JBlocks.EUCA_BROWN_FENCE_GATE, JBlocks.EUCA_BROWN_TRAP_DOOR, JBlocks.EUCA_BROWN_PRESSURE_PLATE, JBlocks.EUCA_BROWN_DOOR, JBlocks.EUCA_BROWN_BUTTON, JItems.BROWN_EUCA_BOAT);
         addWoodType(consumer, JBlocks.FROZEN_LOG, JBlocks.FROZEN_PLANKS, JBlocks.FROZEN_STAIRS, JBlocks.FROZEN_SLAB, JBlocks.FROZEN_FENCE, JBlocks.FROZEN_FENCE_GATE, JBlocks.FROZEN_TRAP_DOOR, JBlocks.FROZEN_PRESSURE_PLATE, JBlocks.FROZEN_DOOR, JBlocks.FROZEN_BUTTON, JItems.FROZEN_BOAT);
         addWoodType(consumer, JBlocks.BURNED_BARK, JBlocks.BURNED_PLANKS, JBlocks.BURNED_STAIRS, JBlocks.BURNED_SLAB, JBlocks.BURNED_FENCE, JBlocks.BURNED_FENCE_GATE, JBlocks.BURNED_TRAP_DOOR, JBlocks.BURNED_PRESSURE_PLATE, JBlocks.BURNED_DOOR, JBlocks.BURNED_BUTTON, JItems.BURNED_BOAT);
+    }
+
+    public void buildQuartzTypes(Consumer<FinishedRecipe> consumer) {
+        addQuartzType(consumer, JItems.CRIMSON_QUARTZ, JBlocks.CRIMSON_QUARTZ_ORE, JBlocks.CRIMSON_QUARTZ_BLOCK, JBlocks.SMOOTH_CRIMSON_QUARTZ, JBlocks.CRIMSON_QUARTZ_STAIRS, JBlocks.SMOOTH_CRIMSON_QUARTZ_STAIRS, JBlocks.CRIMSON_QUARTZ_SLAB, JBlocks.SMOOTH_CRIMSON_QUARTZ_SLAB, JBlocks.CRIMSON_QUARTZ_BRICKS, JBlocks.CHISELED_CRIMSON_QUARTZ_BLOCK, JBlocks.CRIMSON_QUARTZ_PILLAR);
+        addQuartzType(consumer, JItems.WARPED_QUARTZ, JBlocks.WARPED_QUARTZ_ORE, JBlocks.WARPED_QUARTZ_BLOCK, JBlocks.SMOOTH_WARPED_QUARTZ, JBlocks.WARPED_QUARTZ_STAIRS, JBlocks.SMOOTH_WARPED_QUARTZ_STAIRS, JBlocks.WARPED_QUARTZ_SLAB, JBlocks.SMOOTH_WARPED_QUARTZ_SLAB, JBlocks.WARPED_QUARTZ_BRICKS, JBlocks.CHISELED_WARPED_QUARTZ_BLOCK, JBlocks.WARPED_QUARTZ_PILLAR);
     }
 
     public void buildSmithingRecipes(Consumer<FinishedRecipe> recipeConsumer) {

@@ -26,8 +26,7 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
     public void buildRecipes(Consumer<FinishedRecipe> pWriter) { }
 
     protected void addSmithingRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike input, ItemLike modifier, Item result) {
-        UpgradeRecipeBuilder.smithing(Ingredient.of(input), Ingredient.of(modifier), RecipeCategory.MISC, result).unlocks("has_" + modifier.toString().toLowerCase(), has(modifier)).save(recipeConsumer, result.getDescriptionId() + "_smithing");
-        JITL.LOGGER.info(modifier.toString().toLowerCase());
+        UpgradeRecipeBuilder.smithing(Ingredient.of(input), Ingredient.of(modifier), RecipeCategory.MISC, result).unlocks("has_" + modifier.toString().toLowerCase(), has(modifier)).save(recipeConsumer, "jitl:" + result.getDescriptionId() + "_smithing");
     }
 
     protected void add3x3Recipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike input, ItemLike output) {
@@ -130,13 +129,17 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
         JITL.LOGGER.info(input.asItem().getDescriptionId());
     }
 
-    protected void add2x2Recipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike input, ItemLike output, boolean addReverse) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, output, 1).define('#', input)
+    protected void add2x2Recipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike input, ItemLike output, int count, boolean addReverse) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, output, count).define('#', input)
                 .pattern("##")
                 .pattern("##").unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
         if(addReverse) {
             addShapelessRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, output, input, 4);
         }
+    }
+
+    protected void add2x2Recipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike input, ItemLike output, boolean addReverse) {
+        add2x2Recipe(recipeConsumer, input, output, 1, addReverse);
     }
 
     public void addOreDefaultItems(Consumer<FinishedRecipe> recipeConsumer, RecipePrefix name, ItemLike block, ItemLike oreBlock, ItemLike deepslateOre, ItemLike raw, ItemLike ingot, ItemLike stickItem) {
@@ -192,11 +195,11 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
     }
 
     public void addWoodType(Consumer<FinishedRecipe> recipeConsumer, RegistryObject<? extends Block> log, RegistryObject<? extends Block> plank, RegistryObject<? extends Block> stairs, RegistryObject<? extends Block> slab, RegistryObject<? extends Block> fence, RegistryObject<? extends Block> gate, RegistryObject<? extends Block> trapdoor, RegistryObject<? extends Block> pressureplate, RegistryObject<? extends Block> door, RegistryObject<? extends Block> button, RegistryObject<Item> boat) {
-        //addAxeRecipe(recipeConsumer, Items.STICK, plank, Items.WOODEN_AXE);
-        //addPickaxeRecipe(recipeConsumer, Items.STICK, plank, Items.WOODEN_PICKAXE);
-        //addShovelRecipe(recipeConsumer, Items.STICK, plank, Items.WOODEN_SHOVEL);
-        //addSwordRecipe(recipeConsumer, Items.STICK, plank, Items.WOODEN_SWORD);
-        //addHoeRecipe(recipeConsumer, Items.STICK, plank, Items.WOODEN_HOE);
+        addAxeRecipe(recipeConsumer, Items.STICK, plank.get(), Items.WOODEN_AXE, plank.get().getDescriptionId());
+        addPickaxeRecipe(recipeConsumer, Items.STICK, plank.get(), Items.WOODEN_PICKAXE, plank.get().getDescriptionId());
+        addShovelRecipe(recipeConsumer, Items.STICK, plank.get(), Items.WOODEN_SHOVEL, plank.get().getDescriptionId());
+        addSwordRecipe(recipeConsumer, Items.STICK, plank.get(), Items.WOODEN_SWORD, plank.get().getDescriptionId());
+        addHoeRecipe(recipeConsumer, Items.STICK, plank.get(), Items.WOODEN_HOE, plank.get().getDescriptionId());
         addBoatRecipe(recipeConsumer, plank.get(), boat.get());
         addStairRecipe(recipeConsumer, plank.get(), stairs.get());
         addSlabRecipe(recipeConsumer, plank.get(), slab.get());
@@ -205,9 +208,25 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
         addTrapdoorRecipe(recipeConsumer, plank.get(), trapdoor.get());
         addPressureplateRecipe(recipeConsumer, plank.get(), pressureplate.get());
         addDoorRecipe(recipeConsumer, plank.get(), door.get());
-        //addStick(recipeConsumer, plank);
+        addStick(recipeConsumer, plank.get());
         planksFromLogs(recipeConsumer, plank.get(), log.get());
         buttonBuilder(recipeConsumer, button.get(), plank.get());
+    }
+
+    public void addQuartzType(Consumer<FinishedRecipe> recipeConsumer, RegistryObject<? extends Item> quartz, RegistryObject<? extends Block> quartzOre, RegistryObject<? extends Block> quartzBlock, RegistryObject<? extends Block> smoothQuartzBlock, RegistryObject<? extends Block> quartzStairs, RegistryObject<? extends Block> smoothQuartzStairs, RegistryObject<? extends Block> quartzSlab, RegistryObject<? extends Block> smoothQuartzSlab
+            , RegistryObject<? extends Block> quartzBricks, RegistryObject<? extends Block> chiseledQuartzBlock, RegistryObject<? extends Block> quartzPillar) {
+
+        addSmeltingAndBlastingRecipe(recipeConsumer, quartzBlock.get(), smoothQuartzBlock.get());
+        addSmeltingAndBlastingRecipe(recipeConsumer, quartzOre.get(), quartz.get());
+        add2x2Recipe(recipeConsumer, quartz.get(), quartzBlock.get(), false);
+        addStairRecipe(recipeConsumer, quartzBlock.get(), quartzStairs.get());
+        addSlabRecipe(recipeConsumer, quartzBlock.get(), quartzSlab.get());
+        addStairRecipe(recipeConsumer, smoothQuartzBlock.get(), smoothQuartzStairs.get());
+        addSlabRecipe(recipeConsumer, smoothQuartzBlock.get(), smoothQuartzSlab.get());
+        addShapedRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, "s", "s", 's', quartzSlab.get(), chiseledQuartzBlock.get(), 1);
+        addShapedRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, "s", "s", 's', quartzBlock.get(), quartzPillar.get(), 2);
+        add2x2Recipe(recipeConsumer, quartzBlock.get(), quartzBricks.get(), 4,false);
+
     }
 
     protected void buttonBuilder(Consumer<FinishedRecipe> recipeConsumer, ItemLike button, ItemLike material) {
@@ -221,7 +240,7 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
     protected void addStick(Consumer<FinishedRecipe> recipeConsumer, ItemLike materialItem) {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.STICK, 4).define('#', materialItem)
                 .pattern("#")
-                .pattern("#").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+                .pattern("#").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer, "jitl:" + materialItem.asItem().getDescriptionId() + "_to_stick");
     }
 
     protected void addDoorRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike materialItem, ItemLike output) {
@@ -272,39 +291,96 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
                 .pattern("###").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
     }
 
+    protected void addPickaxeRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output, String name) {
+        if(!Objects.equals(name, "")) {
+            ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
+                    .pattern("###")
+                    .pattern(" I ")
+                    .pattern(" I ").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer, "jitl:" + materialItem.asItem().getDescriptionId() + "_to_pickaxe");
+        } else {
+            ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
+                    .pattern("###")
+                    .pattern(" I ")
+                    .pattern(" I ").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+        }
+    }
+
+    protected void addShovelRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output, String name) {
+        if(!Objects.equals(name, "")) {
+            ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
+                    .pattern("#")
+                    .pattern("I")
+                    .pattern("I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer, "jitl:" + materialItem.asItem().getDescriptionId() + "_to_shovel");
+        } else {
+            ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
+                    .pattern("#")
+                    .pattern("I")
+                    .pattern("I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+        }
+    }
+
+    protected void addAxeRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output, String name) {
+        if(!Objects.equals(name, "")) {
+            ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
+                    .pattern("##")
+                    .pattern("#I")
+                    .pattern(" I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer, "jitl:" + materialItem.asItem().getDescriptionId() + "_to_axe");
+        } else {
+            ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
+                    .pattern("##")
+                    .pattern("#I")
+                    .pattern(" I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+        }
+    }
+
+    protected void addHoeRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output, String name) {
+       if(!Objects.equals(name, "")) {
+            ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
+                    .pattern("##")
+                    .pattern(" I")
+                    .pattern(" I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer, "jitl:" + materialItem.asItem().getDescriptionId() + "_to_hoe");
+        } else {
+            ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
+                    .pattern("##")
+                    .pattern(" I")
+                    .pattern(" I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+        }
+    }
+
+    protected void addSwordRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output, String name) {
+        if(!Objects.equals(name, "")) {
+            ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, output, 1).define('#', materialItem).define('I', stickItem)
+                    .pattern("#")
+                    .pattern("#")
+                    .pattern("I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer, "jitl:" + materialItem.asItem().getDescriptionId() + "_to_sword");
+        } else {
+            ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, output, 1).define('#', materialItem).define('I', stickItem)
+                    .pattern("#")
+                    .pattern("#")
+                    .pattern("I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+        }
+    }
+
     protected void addPickaxeRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
-                .pattern("###")
-                .pattern(" I ")
-                .pattern(" I ").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+        addPickaxeRecipe(recipeConsumer, stickItem, materialItem, output, "");
     }
 
     protected void addShovelRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
-                .pattern("#")
-                .pattern("I")
-                .pattern("I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+        addShovelRecipe(recipeConsumer, stickItem, materialItem, output, "");
+
     }
 
     protected void addAxeRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
-                .pattern("##")
-                .pattern("#I")
-                .pattern(" I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+        addAxeRecipe(recipeConsumer, stickItem, materialItem, output, "");
+
     }
 
     protected void addHoeRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
-                .pattern("##")
-                .pattern(" I")
-                .pattern(" I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+        addHoeRecipe(recipeConsumer, stickItem, materialItem, output, "");
     }
 
     protected void addSwordRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, output, 1).define('#', materialItem).define('I', stickItem)
-                .pattern("#")
-                .pattern("#")
-                .pattern("I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+        addSwordRecipe(recipeConsumer, stickItem, materialItem, output, "");
     }
 
     protected void addHelmetRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike materialItem, ItemLike output) {
@@ -334,11 +410,11 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
     }
 
     protected void addSmeltingRecipe(Consumer<FinishedRecipe> consumer, ItemLike input, ItemLike output, float xpGiven, int time, String name) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(input), RecipeCategory.MISC, output, xpGiven, time).unlockedBy(inputToKey(input), has(input)).save(consumer, "jitl:" + getItemFromRegistryName(output.toString()) + name);
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(input), RecipeCategory.MISC, output, xpGiven, time).unlockedBy(inputToKey(input), has(input)).save(consumer, "jitl:" + output.asItem().getDescriptionId() + name);
     }
 
     protected void addBlastingRecipe(Consumer<FinishedRecipe> consumer, ItemLike input, ItemLike output, float xpGiven, int time, String name) {
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(input), RecipeCategory.MISC, output, xpGiven, time).unlockedBy(inputToKey(input), has(input)).save(consumer, "jitl:" + getItemFromRegistryName(output.toString()) + name);
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(input), RecipeCategory.MISC, output, xpGiven, time).unlockedBy(inputToKey(input), has(input)).save(consumer, "jitl:" + output.asItem().getDescriptionId() + name);
     }
 
     protected void addSmeltingRecipe(Consumer<FinishedRecipe> consumer, ItemLike input, ItemLike output, float xpGiven, int time) {
