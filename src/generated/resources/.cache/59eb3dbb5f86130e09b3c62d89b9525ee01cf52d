@@ -1,4 +1,4 @@
-// 1.19.3	2022-12-26T18:08:51.1769177	Loot Tables
+// 1.19.3	2022-12-27T21:11:02.5473485	Loot Tables
 2457a609d1013b09a4b98006bc45ac5b88a8dd34 data/jitl/loot_tables/blocks/ashual_block.json
 8e2328733f44aa7897a1615390447d529289992b data/jitl/loot_tables/blocks/ashual_ore.json
 1cf87f0c90ea97e41d295e96f2a013547ae8c7fd data/jitl/loot_tables/blocks/ash_block.json
@@ -65,7 +65,7 @@ ca77d12ae4b949d2d5129dc91312484c428200e5 data/jitl/loot_tables/blocks/corba_gras
 aa16cc019a08517068f77b782072d9ed4533ec48 data/jitl/loot_tables/blocks/corba_light_bricks.json
 df08233720081d6d1efce4953dcf715bc07d804e data/jitl/loot_tables/blocks/corba_light_purple_flower.json
 fec071d13c2b3aed1fb705e64ddf2473b8427253 data/jitl/loot_tables/blocks/corba_log.json
-2c0253610f1da1065cbcb3992495e064e61c7e43 data/jitl/loot_tables/blocks/corba_path.json
+27fcd4c46e757da5b8849ae1bc35dfc0140ba7b8 data/jitl/loot_tables/blocks/corba_path.json
 ba7fd03cfc0d68ac32b7a55559007894272cc75f data/jitl/loot_tables/blocks/corba_pillar.json
 62b9f1cd877db6d08e776e52f48e9e9e08ab3ffa data/jitl/loot_tables/blocks/corba_planks.json
 1d4929d7d6176f60e5ea991a577527ed251ef375 data/jitl/loot_tables/blocks/corba_portal.json
@@ -99,6 +99,7 @@ a27a42cc0a048779c78b8fd511f30e478ca45088 data/jitl/loot_tables/blocks/crumbling_
 b3a6680f5f79f4ff72955a964ba6a3abb1a9f85d data/jitl/loot_tables/blocks/deepslate_lunium_ore.json
 c035d4d6ef0c651bd53aa2b9dcffb9620025561b data/jitl/loot_tables/blocks/deepslate_sapphire_ore.json
 ff61784d54aa57f538bb1fd60a47eb8b1d43b0d5 data/jitl/loot_tables/blocks/deepslate_shadium_ore.json
+6241c06ddd4ca72f9810aa2ac36676f4da00b5ce data/jitl/loot_tables/blocks/deepslate_verdite_ore.json
 2aa46e1c86e86210af710b038df2616b6a86b8d6 data/jitl/loot_tables/blocks/depths_blue_flower.json
 0dd83ecfc1cc004184aa6780fd4388fa58fbd7f5 data/jitl/loot_tables/blocks/depths_book_shelf.json
 ed17edd2eaec741ba1ae0459c0837bfe71115c87 data/jitl/loot_tables/blocks/depths_brick.json

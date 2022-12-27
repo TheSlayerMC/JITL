@@ -47,7 +47,8 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.LUNIUM_BLOCK);
 
         this.dropSelf(JBlocks.VERDITE_ORE);
-        this.dropSelf(JBlocks.VERDITE_BLOCK);//TODO MAKE DEEPSLATE
+        this.dropSelf(JBlocks.VERDITE_BLOCK);
+        this.dropSelf(JBlocks.DEEPSLATE_VERDITE_ORE);
 
         this.add(JBlocks.BLOODCRUST_ORE, (block) -> createOreDrop(block, JItems.RAW_BLOODCRUST.get()));
         this.dropSelf(JBlocks.BLOODCRUST_BLOCK);
@@ -196,9 +197,6 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.EUCA_GOLD_FENCE_GATE);
         this.dropSelf(JBlocks.EUCA_GOLD_FENCE);
         this.add(JBlocks.GOLDITE_PATH, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.GOLDITE_DIRT.get()));
-        this.dropSelf(JBlocks.POLISHED_ROYAL_STONE);
-        this.dropSelf(JBlocks.POLISHED_ROYAL_STONE);
-        this.dropSelf(JBlocks.POLISHED_ROYAL_STONE);
 
         this.dropSelf(JBlocks.EUCA_BROWN_LOG);
         this.add(JBlocks.EUCA_GREEN_LEAVES, (block) -> this.createLeavesDrops(block, JBlocks.EUCA_GREEN_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
@@ -248,7 +246,6 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.FROZEN_BRICKS);
         this.dropSelf(JBlocks.PACKED_SNOW_BRICKS_STAIRS);
         this.dropSelf(JBlocks.PACKED_ICE_BRICKS_STAIRS);
-        this.dropSelf(JBlocks.PERMAFROST_ROAD);
         this.add(JBlocks.PERMAFROST_ROAD, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.CRUMBLED_PERMAFROST.get()));
         this.dropSelf(JBlocks.FROZEN_BLOOM);
         this.dropSelf(JBlocks.FROZEN_FLOWER);
@@ -354,7 +351,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
 
         this.dropSelf(JBlocks.CORBA_DIRT);
         this.add(JBlocks.CORBA_STONE, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.CORBA_COBBLESTONE.get()));
-        this.add(JBlocks.CORBA_PATH, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.DEPTHS_DIRT.get()));
+        this.add(JBlocks.CORBA_PATH, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.CORBA_DIRT.get()));
         this.dropSelf(JBlocks.CORBA_POST);
         this.dropSelf(JBlocks.CORBA_PLILLAR);
         this.dropSelf(JBlocks.TAINTED_MUD);
@@ -390,7 +387,6 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.ROYAL_PEDESTAL);
         this.dropSelf(JBlocks.STONE_PLILLAR);
         this.dropSelf(JBlocks.SMALL_STONE_BRICKS);
-
     }
 
     protected LootTable.Builder createGemBlockDrops(Block block, boolean rare) {

@@ -33,7 +33,7 @@ minecraft {
     //
     // Use non-default mappings at your own risk. They may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: 'parchment', version: '2022.12.18-1.19.3'
+    mappings channel: 'parchment', version: "${buildProps["parchment.version"]}"
 
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -56,10 +56,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'jitl'
 
             mods {
-                examplemod {
+                jitl {
                     source sourceSets.main
                 }
             }
@@ -72,10 +72,10 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'jitl'
 
             mods {
-                examplemod {
+                jitl {
                     source sourceSets.main
                 }
             }
@@ -91,10 +91,10 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'jitl'
 
             mods {
-                examplemod {
+                jitl {
                     source sourceSets.main
                 }
             }
@@ -111,7 +111,7 @@ minecraft {
             args '--mod', 'jitl', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                examplemod {
+                jitl {
                     source sourceSets.main
                 }
             }
@@ -150,10 +150,10 @@ dependencies {
     //compileOnly(fg.deobf("mezz.jei:jei-${buildProps["minecraft.version"]}-forge-api:${buildProps["jei_version"]}"))
     //runtimeOnly(fg.deobf("mezz.jei:jei-${buildProps["minecraft.version"]}-forge:${buildProps["jei_version"]}"))
 
-    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.3-5.1.1.2")
-    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.3-5.1.1.2:api")
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${buildProps["curios.version"]}")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${buildProps["curios.version"]}:api")
 
-    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19.3:4.0.2')
+    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${buildProps["gekolib.version"]}")
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
