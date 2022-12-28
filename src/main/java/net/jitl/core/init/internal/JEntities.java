@@ -7,6 +7,7 @@ import net.jitl.common.entity.boss.TowerGuardian;
 import net.jitl.common.entity.euca.*;
 import net.jitl.common.entity.frozen.Eskimo;
 import net.jitl.common.entity.frozen.FrozenGuardian;
+import net.jitl.common.entity.nether.MiniGhast;
 import net.jitl.common.entity.nether.Witherspine;
 import net.jitl.common.entity.overworld.BoomBoom;
 import net.jitl.common.entity.overworld.BrownHongo;
@@ -78,6 +79,7 @@ public class JEntities {
 
     //NETHER MOBS
     public static final RegistryObject<EntityType<Witherspine>> WITHERSPINE_TYPE = registerEntity(Witherspine::new, "witherspine", "Witherspine", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<MiniGhast>> MINI_GHAST_TYPE = registerEntity(MiniGhast::new, "mini_ghast", "Mini Ghast", 1F, 1F, NETHER_COLOR, HOSTILE_COLOR);
 
     //EUCA MOBS
     public static final RegistryObject<EntityType<EucaCharger>> EUCA_CHARGER_TYPE = registerEntity(EucaCharger::new, "euca_charger", "Euca Charger", 0.5F, 0.75F, EUCA_COLOR, HOSTILE_COLOR);
@@ -125,9 +127,11 @@ public class JEntities {
         event.put(BOOM_TYPE.get(), BoomBoom.createAttributes());
         event.put(TOWER_GUARDIAN_TYPE.get(), TowerGuardian.createAttributes());
         event.put(ROCKITE_SMASHER_TYPE.get(), RockiteSmasher.createAttributes());
-        event.put(WITHERSPINE_TYPE.get(), Witherspine.createAttributes());
         event.put(BROWN_HONGO_TYPE.get(), BrownHongo.createAttributes());
         event.put(ILLAGER_MECH_TYPE.get(), IllagerMech.createAttributes());
+
+        event.put(WITHERSPINE_TYPE.get(), Witherspine.createAttributes());
+        event.put(MINI_GHAST_TYPE.get(), MiniGhast.createAttributes());
 
         event.put(EUCA_CHARGER_TYPE.get(), EucaCharger.createAttributes());
         event.put(DYNASTER_TYPE.get(), Dynaster.createAttributes());
@@ -144,5 +148,6 @@ public class JEntities {
     @SubscribeEvent
     public static void registerSpawnPlacement(SpawnPlacementRegisterEvent event) {
         event.register(SHIMMERER_TYPE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Shimmerer::checkSpawn, SpawnPlacementRegisterEvent.Operation.AND);
+        event.register(MINI_GHAST_TYPE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MiniGhast::checkSpawn, SpawnPlacementRegisterEvent.Operation.AND);
     }
 }
