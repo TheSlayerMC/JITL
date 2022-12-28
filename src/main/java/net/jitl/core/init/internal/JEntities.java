@@ -86,6 +86,7 @@ public class JEntities {
     public static final RegistryObject<EntityType<Dynaster>> DYNASTER_TYPE = registerEntity(Dynaster::new, "dynaster", "Dynaster", 1F, 1F, EUCA_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<Goldbot>> GOLDBOT_TYPE = registerEntity(Goldbot::new, "goldbot", "Goldbot", 0.5F, 0.75F, EUCA_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<Crypian>> CRYPIAN_TYPE = registerEntity(Crypian::new, "crypian", "Crypian", 0.75F, 1.8F, EUCA_COLOR, TRADER_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<AlloyMender>> ALLOY_MENDER_TYPE = registerEntity(AlloyMender::new, "alloy_mender", "Alloy Mender", 0.75F, 1.8F, EUCA_COLOR, TRADER_COLOR, MobCategory.CREATURE);
     public static final RegistryObject<EntityType<Shimmerer>> SHIMMERER_TYPE = registerEntity(Shimmerer::new, "shimmerer", "Shimmerer", 0.5F, 0.75F, EUCA_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<Golder>> GOLDER_TYPE = registerEntity(Golder::new, "golder", "Golder", 1F, 2F, EUCA_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<RoyalKing>> ROYAL_KING_TYPE = registerEntity(RoyalKing::new, "royal_king", "Royal King", 1F, 2F, EUCA_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
@@ -140,6 +141,7 @@ public class JEntities {
         event.put(GOLDER_TYPE.get(), Golder.createAttributes());
         event.put(ROYAL_KING_TYPE.get(), RoyalKing.createAttributes());
         event.put(CRYPIAN_TYPE.get(), Crypian.createAttributes());
+        event.put(ALLOY_MENDER_TYPE.get(), AlloyMender.createAttributes());
 
         event.put(ESKIMO_TYPE.get(), Eskimo.createAttributes());
         event.put(FROZEN_GUARDIAN_TYPE.get(), FrozenGuardian.createAttributes());

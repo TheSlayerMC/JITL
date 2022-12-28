@@ -1,0 +1,59 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.alloy_mendeer",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "head",
+					"pivot": [0, 19, -2],
+					"cubes": [
+						{"origin": [-4, 19, -6], "size": [8, 8, 8], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "body",
+					"pivot": [0, 22, 0],
+					"cubes": [
+						{"origin": [-4, 10, -2], "size": [8, 12, 4], "uv": [16, 16]}
+					]
+				},
+				{
+					"name": "rightarm",
+					"pivot": [-5, 20, 0],
+					"cubes": [
+						{"origin": [-8, 10, -2], "size": [4, 12, 4], "uv": [40, 16]}
+					]
+				},
+				{
+					"name": "leftarm",
+					"pivot": [5, 20, 0],
+					"cubes": [
+						{"origin": [4, 10, -2], "size": [4, 12, 4], "uv": [40, 16]}
+					]
+				},
+				{
+					"name": "rightleg",
+					"pivot": [-2, 10, 0],
+					"cubes": [
+						{"origin": [-4, 0, -2], "size": [4, 10, 4], "uv": [0, 16]}
+					]
+				},
+				{
+					"name": "leftleg",
+					"pivot": [2, 10, 0],
+					"cubes": [
+						{"origin": [0, 0, -2], "size": [4, 10, 4], "uv": [0, 16]}
+					]
+				}
+			]
+		}
+	]
+}
