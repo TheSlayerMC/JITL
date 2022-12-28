@@ -38,11 +38,22 @@ public class JRecipeRegistry extends JRecipeProvider {
         addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JBlocks.YELLOW_GEM_BLOCK.get(), JItems.YELLOW_GEM.get(), 9);
 
         addOreBlockRecipe(recipeConsumer, JItems.IRIDIUM_NUGGET.get(), JBlocks.IRIDIUM_BLOCK.get());
+        addSmeltingAndBlastingRecipe(recipeConsumer, JBlocks.IRIDIUM_ORE.get(), JItems.IRIDIUM_NUGGET.get());
+
         addOreBlockRecipe(recipeConsumer, JItems.ENDERILLIUM_SHARD.get(), JBlocks.ENDERILLIUM_BLOCK.get());
+        addSmeltingAndBlastingRecipe(recipeConsumer, JBlocks.ENDERILLIUM_ORE.get(), JItems.ENDERILLIUM_SHARD.get());
+
         addOreBlockRecipe(recipeConsumer, JItems.ASH.get(), JBlocks.ASHUAL_BLOCK.get());
+        addSmeltingAndBlastingRecipe(recipeConsumer, JBlocks.ASHUAL_ORE.get(), JItems.ASH.get());
+
         addOreBlockRecipe(recipeConsumer, JItems.PERIDOT_GEMSTONE.get(), JBlocks.PERIDOT_BLOCK.get());
+        addSmeltingAndBlastingRecipe(recipeConsumer, JBlocks.PERIDOT_ORE.get(), JItems.PERIDOT_GEMSTONE.get());
+
         addOreBlockRecipe(recipeConsumer, JItems.RIMESTONE.get(), JBlocks.RIMESTONE_BLOCK.get());
+        addSmeltingAndBlastingRecipe(recipeConsumer, JBlocks.RIMESTONE_ORE.get(), JItems.RIMESTONE.get());
+
         addOreBlockRecipe(recipeConsumer, JItems.VERDITE_INGOT.get(), JBlocks.VERDITE_BLOCK.get());
+        addSmeltingAndBlastingRecipe(recipeConsumer, JBlocks.VERDITE_ORE.get(), JItems.VERDITE_INGOT.get());
 
         addOreBlockRecipe(recipeConsumer, JItems.BLAZIUM_INGOT.get(), JBlocks.BLAZIUM_BLOCK.get());
         addSmeltingAndBlastingRecipe(recipeConsumer, JItems.RAW_BLAZIUM.get(), JItems.BLAZIUM_INGOT.get());
@@ -115,6 +126,9 @@ public class JRecipeRegistry extends JRecipeProvider {
         addWoodType(consumer, JBlocks.EUCA_BROWN_LOG, JBlocks.EUCA_BROWN_PLANKS, JBlocks.EUCA_BROWN_STAIRS, JBlocks.EUCA_BROWN_SLAB, JBlocks.EUCA_BROWN_FENCE, JBlocks.EUCA_BROWN_FENCE_GATE, JBlocks.EUCA_BROWN_TRAP_DOOR, JBlocks.EUCA_BROWN_PRESSURE_PLATE, JBlocks.EUCA_BROWN_DOOR, JBlocks.EUCA_BROWN_BUTTON, JItems.BROWN_EUCA_BOAT);
         addWoodType(consumer, JBlocks.FROZEN_LOG, JBlocks.FROZEN_PLANKS, JBlocks.FROZEN_STAIRS, JBlocks.FROZEN_SLAB, JBlocks.FROZEN_FENCE, JBlocks.FROZEN_FENCE_GATE, JBlocks.FROZEN_TRAP_DOOR, JBlocks.FROZEN_PRESSURE_PLATE, JBlocks.FROZEN_DOOR, JBlocks.FROZEN_BUTTON, JItems.FROZEN_BOAT);
         addWoodType(consumer, JBlocks.BURNED_BARK, JBlocks.BURNED_PLANKS, JBlocks.BURNED_STAIRS, JBlocks.BURNED_SLAB, JBlocks.BURNED_FENCE, JBlocks.BURNED_FENCE_GATE, JBlocks.BURNED_TRAP_DOOR, JBlocks.BURNED_PRESSURE_PLATE, JBlocks.BURNED_DOOR, JBlocks.BURNED_BUTTON, JItems.BURNED_BOAT);
+        addWoodType(consumer, JBlocks.DEPTHS_LOG, JBlocks.DEPTHS_PLANKS, JBlocks.DEPTHS_STAIRS, JBlocks.DEPTHS_SLAB, JBlocks.DEPTHS_FENCE, JBlocks.DEPTHS_FENCE_GATE, JBlocks.DEPTHS_TRAP_DOOR, JBlocks.DEPTHS_PRESSURE_PLATE, JBlocks.DEPTHS_DOOR, JBlocks.DEPTHS_BUTTON, JItems.DEPTHS_BOAT);
+        addWoodType(consumer, JBlocks.CORBA_LOG, JBlocks.CORBA_PLANKS, JBlocks.CORBA_STAIRS, JBlocks.CORBA_SLAB, JBlocks.CORBA_FENCE, JBlocks.CORBA_FENCE_GATE, JBlocks.CORBA_TRAP_DOOR, JBlocks.CORBA_PRESSURE_PLATE, JBlocks.CORBA_DOOR, JBlocks.CORBA_BUTTON, JItems.CORBA_BOAT);
+
     }
 
     public void buildQuartzTypes(Consumer<FinishedRecipe> consumer) {

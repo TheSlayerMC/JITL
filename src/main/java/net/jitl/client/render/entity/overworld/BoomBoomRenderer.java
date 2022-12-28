@@ -31,7 +31,7 @@ public class BoomBoomRenderer<T extends LivingEntity & GeoEntity> extends Animat
 
     @Override
     public void render(@NotNull T entity, float entityYaw, float partialTick, PoseStack poseStack, @NotNull MultiBufferSource bufferSource, int packedLight) {
-        BoomBoom b = (BoomBoom)animatable;
+        BoomBoom b = (BoomBoom)entity;
         scale(b, poseStack, partialTick);
         super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
     }

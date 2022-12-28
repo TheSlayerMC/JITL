@@ -339,6 +339,7 @@ public class JItems {
     public static final RegistryObject<Item> FROZEN_BOAT = registerNormalItem("frozen_boat", "Frostwood Boat", () -> new JBoatItem(JBoat.Type.FROZEN));
     public static final RegistryObject<Item> DEPTHS_BOAT = registerNormalItem("depths_boat", "Depths Boat", () -> new JBoatItem(JBoat.Type.DEPTHS));
     public static final RegistryObject<Item> BURNED_BOAT = registerNormalItem("burned_boat", "Burned Boat", () -> new JBoatItem(JBoat.Type.BURNED));
+    public static final RegistryObject<Item> CORBA_BOAT = registerNormalItem("corba_boat", "Corba Boat", () -> new JBoatItem(JBoat.Type.CORBA));
 
     public static final RegistryObject<Item> EUCA_PIERCER = registerToolItem("euca_piercer", "Euca Piercer", () ->
             new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
@@ -462,57 +463,6 @@ public class JItems {
 
     public static final RegistryObject<Item> EUDOR_CROWN = registerNormalItem("eudor_crown", "Eudor's Crown");
 
-
-    public static final RegistryObject<Item> MAGE_EGG = register("mage_spawn_egg", "Mage Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.MAGE_TYPE,
-            OVERWORLD_COLOR, TRADER_COLOR, itemProps()), ItemType.SPAWN_EGG);
-
-    public static final RegistryObject<Item> FLORO_EGG = register("floro_spawn_egg", "Floro Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.FLORO_TYPE,
-            OVERWORLD_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
-
-    public static final RegistryObject<Item> BOOMBOOM_EGG = register("boomboom_spawn_egg", "BoomBoom Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.BOOM_TYPE,
-            OVERWORLD_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
-
-    public static final RegistryObject<Item> TOWER_GUARDIAN_EGG = register("tower_guardian_spawn_egg", "Tower Guarduan Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.TOWER_GUARDIAN_TYPE,
-            OVERWORLD_COLOR, BOSS_COLOR, itemProps()), ItemType.SPAWN_EGG);
-
-    public static final RegistryObject<Item> ROCKITE_SMASHER_EGG = register("rockite_smasher_spawn_egg", "Rockite Smasher Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ROCKITE_SMASHER_TYPE,
-            OVERWORLD_COLOR, BOSS_COLOR, itemProps()), ItemType.SPAWN_EGG);
-
-    public static final RegistryObject<Item> WITHERSPINE_SMASHER_EGG = register("witherspine_spawn_egg", "Witherspine Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.WITHERSPINE_TYPE,
-            NETHER_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
-
-    public static final RegistryObject<Item> BROWN_HONGO_EGG = register("brown_hongo_spawn_egg", "Brown Hongo Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.BROWN_HONGO_TYPE,
-            OVERWORLD_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
-
-    public static final RegistryObject<Item> ILLAGER_MECH_EGG = register("illager_mech_spawn_egg", "Illager Mech Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ILLAGER_MECH_TYPE,
-            OVERWORLD_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
-
-    public static final RegistryObject<Item> EUCA_CHARGER_EGG = register("euca_charger_spawn_egg", "Euca Charger Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.EUCA_CHARGER_TYPE,
-            EUCA_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
-
-    public static final RegistryObject<Item> DYNASTER_EGG = register("dynaster_spawn_egg", "Dynaster Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.DYNASTER_TYPE,
-            EUCA_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
-
-    public static final RegistryObject<Item> GOLDBOT_EGG = register("goldbot_spawn_egg", "Goldbot Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.GOLDBOT_TYPE,
-            EUCA_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
-
-    public static final RegistryObject<Item> CRYPIAN_EGG = register("crypian_spawn_egg", "Crypian Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.CRYPIAN_TYPE,
-            EUCA_COLOR, TRADER_COLOR, itemProps()), ItemType.SPAWN_EGG);
-
-    public static final RegistryObject<Item> SHIMMERER_EGG = register("shimmerer_spawn_egg", "Shimmerer Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.SHIMMERER_TYPE,
-            EUCA_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
-
-    public static final RegistryObject<Item> GOLDER_EGG = register("golder_spawn_egg", "Golder Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.GOLDER_TYPE,
-            EUCA_COLOR, HOSTILE_COLOR, itemProps()), ItemType.SPAWN_EGG);
-
-    public static final RegistryObject<Item> ROYAL_KING = register("royal_king_spawn_egg", "Royal King Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ROYAL_KING_TYPE,
-            EUCA_COLOR, PASSIVE_COLOR, itemProps()), ItemType.SPAWN_EGG);
-
-    public static final RegistryObject<Item> ESKIMO_EGG = register("eskimo_spawn_egg", "Eskimo Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.ESKIMO_TYPE,
-            FROZEN_COLOR, TRADER_COLOR, itemProps()), ItemType.SPAWN_EGG);
-
-    public static final RegistryObject<Item> FROZEN_GUARDIAN_EGG = register("frozen_guardian_spawn_egg", "Frozen Guardian Spawn Egg", () -> new ForgeSpawnEggItem(JEntities.FROZEN_GUARDIAN_TYPE,
-            FROZEN_COLOR, PASSIVE_COLOR, itemProps()), ItemType.SPAWN_EGG);
 
     public static final RegistryObject<Item> UNDERWATER_WORLD_RECORD = registerRecord("underwater_world_record", "Blue Water", JSounds.UNDERWATER_WORLD, 2640);
     public static final RegistryObject<Item> GOLD_PLAINS_RECORD = registerRecord("gold_plains_record", "Gold Plains", JSounds.GOLD_PLAINS_MUSIC, 1120);

@@ -1,6 +1,7 @@
 package net.jitl.core.data;
 
 import net.jitl.core.init.internal.JBlocks;
+import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
 
 import java.io.*;
@@ -14,6 +15,8 @@ public class LangRegistry {
         String langDir = "../src/main/resources/assets/jitl/lang/en_us.json";
 
         File en_us = new File(langDir);
+
+        ArrayList<String> mobList = new ArrayList<>(JEntities.entityName);
 
         ArrayList<String> blockList = new ArrayList<>(JBlocks.normalBlockName);
         ArrayList<String> logList = new ArrayList<>(JBlocks.logBlockName);
@@ -68,8 +71,7 @@ public class LangRegistry {
         writeToFile("\"jitl.knowledge.euca\" : \"Euca Knowledge\",");
         writeToFile("\"jitl.knowledge.boil\" : \"Boiling Knowledge\",");
         writeToFile("\"jitl.knowledge.frozen\" : \"Frozen Knowledge\",");
-        writeToFile("\"entity.jitl.eskimo\" : \"Eskimo\",");
-        writeToFile("\"entity.jitl.mage\" : \"Mage\",");
+
 
         writeToFile("\"jitl.tooltip.freeze\" : \"On hit: Freezes the target for 6 seconds\",");
         writeToFile("\"jitl.tooltip.poison\" : \"On hit: Poisions for 6 seconds\",");
@@ -95,6 +97,10 @@ public class LangRegistry {
         writeToFile("\"jitl.tooltip.uses_remaining\" : \"Uses Remaining\",");
 
         /* --------------------- Finish manual lines --------------------- */
+
+        for(int i = 0; i < mobList.size(); i++) {
+            writeToFile("\"entity.jitl." + mobList.get(i) + "\": \"" + JEntities.entityLangName.get(i) + "\"" + ",");
+        }
 
         for(int i = 0; i < recordDescList.size(); i++) {
             writeToFile("\"" + recordDescList.get(i) + "\": \"" + JItems.recordDescLangName.get(i) + "\",");

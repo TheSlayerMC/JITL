@@ -212,6 +212,7 @@ public class JBoat extends Boat {
             case FROZEN -> JItems.FROZEN_BOAT.get();
             case DEPTHS -> JItems.DEPTHS_BOAT.get();
             case BURNED -> JItems.BURNED_BOAT.get();
+            case CORBA -> JItems.CORBA_BOAT.get();
         };
     }
 
@@ -831,7 +832,9 @@ public class JBoat extends Boat {
         BROWN_EUCA(JBlocks.EUCA_BROWN_PLANKS.get(), "brown_euca"),
         FROZEN(JBlocks.FROZEN_PLANKS.get(), "frozen"),
         DEPTHS(JBlocks.DEPTHS_PLANKS.get(), "depths"),
-        BURNED(JBlocks.BURNED_PLANKS.get(), "burned")
+        BURNED(JBlocks.BURNED_PLANKS.get(), "burned"),
+        CORBA(JBlocks.CORBA_PLANKS.get(), "corba")
+
         ;
 
         private final String name;

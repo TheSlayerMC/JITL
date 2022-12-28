@@ -15,11 +15,9 @@ import net.jitl.common.entity.overworld.IllagerMech;
 import net.jitl.common.entity.overworld.npc.Mage;
 import net.jitl.common.entity.projectile.*;
 import net.jitl.core.init.JITL;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.item.Item;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -36,160 +34,88 @@ import java.util.ArrayList;
 public class JEntities {
 
     public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, JITL.MODID);
-    public static final DeferredRegister<Item> EGG_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, JITL.MODID);
-    public static final ArrayList<String> eggName = new ArrayList<>();
-    public static final ArrayList<String> eggLangName = new ArrayList<>();
     public static final ArrayList<String> entityName = new ArrayList<>();
     public static final ArrayList<String> entityLangName = new ArrayList<>();
 
-    public static final RegistryObject<EntityType<ConjuringProjectileEntity>> CONJURING_PROJECTILE_TYPE = REGISTRY.register("conjuring_projectile", () ->
-            EntityType.Builder.<ConjuringProjectileEntity>of(ConjuringProjectileEntity::new, MobCategory.MISC)
-                    .setTrackingRange(80)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(0.25F, 0.25F).build("conjuring_projectile"));
+    private static final int OVERWORLD_COLOR = 0x32f53f;
+    private static final int NETHER_COLOR = 0x881a2b;
+    private static final int END_COLOR = 0x000000/*0x931aa3*/;
+    private static final int FROZEN_COLOR = 0x3ea4ff;
+    private static final int BOILING_COLOR = 0xeb8026;
+    private static final int EUCA_COLOR = 0xffff0b;
+    private static final int DEPTHS_COLOR = 0x0705a7;
+    private static final int CORBA_COLOR = 0x106903;
+    private static final int TERRANIA_COLOR = 0x91046d;
+    private static final int CLOUDIA_COLOR = 0xfa45cd;
+    private static final int SENTERIAN_COLOR = 0x2e2d2c;
+    //mob type colors
+    private static final int PASSIVE_COLOR = 0x00ff00;
+    private static final int NEUTRAL_COLOR = 0x555555;
+    private static final int HOSTILE_COLOR = 0xff0000;
+    private static final int TRADER_COLOR = 0x7d007d;
+    private static final int BOSS_COLOR = 0xffff7d;
 
-    public static final RegistryObject<EntityType<EssenciaProjectileEntity>> ESSENCIA_PROJECTILE_TYPE = REGISTRY.register("essencia_projectile", () ->
-            EntityType.Builder.<EssenciaProjectileEntity>of(EssenciaProjectileEntity::new, MobCategory.MISC)
-                    .setTrackingRange(80)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(0.25F, 0.25F).build("essencia_projectile"));
+    //PROJECTILES
+    public static final RegistryObject<EntityType<ConjuringProjectileEntity>> CONJURING_PROJECTILE_TYPE = registerProjectile(ConjuringProjectileEntity::new, "conjuring_projectile", "Conjuring", 0.25F, 0.25F);
+    public static final RegistryObject<EntityType<EssenciaProjectileEntity>> ESSENCIA_PROJECTILE_TYPE = registerProjectile(EssenciaProjectileEntity::new, "essencia_projectile", "Essencia", 0.25F, 0.25F);
+    public static final RegistryObject<EntityType<FloroMudEntity>> FLORO_MUD_TYPE = registerProjectile(FloroMudEntity::new, "floro_mud", "Floro Mud", 0.5F, 0.5F);
+    public static final RegistryObject<EntityType<PiercerEntity>> PIERCER_TYPE = registerProjectile(PiercerEntity::new, "piercer", "Piercer", 0.5F, 0.5F);
+    public static final RegistryObject<EntityType<KnifeEntity>> KNIFE_TYPE = registerProjectile(KnifeEntity::new, "knife", "Knife", 0.5F, 0.5F);
 
-    public static final RegistryObject<EntityType<FloroMudEntity>> FLORO_MUD_TYPE = REGISTRY.register("floro_mud", () ->
-            EntityType.Builder.<FloroMudEntity>of(FloroMudEntity::new, MobCategory.MISC)
-                    .setTrackingRange(80)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(0.5F, 0.5F).build("floro_mud"));
+    //RAW ENTITYS
+    public static final RegistryObject<EntityType<EssenciaBoltEntity>> ESSENCIA_BOLT_TYPE = registerRawEntity(EssenciaBoltEntity::new, "essencia_bolt", "Essencia Bolt", 0.25F, 0.25F);
+    public static final RegistryObject<EntityType<BossCrystal>> BOSS_CRYSTAL_TYPE = registerRawEntity(BossCrystal::new, "boss_crystal", "Boss Crystal", 0.5F, 0.5F);
+    public static final RegistryObject<EntityType<JBoat>> JBOAT_TYPE = registerRawEntity(JBoat::new, "jboat", "Journey Boat", 1.375F, 0.5625F);
 
-    public static final RegistryObject<EntityType<PiercerEntity>> PIERCER_TYPE = REGISTRY.register("piercer", () ->
-                    EntityType.Builder.<PiercerEntity>of(PiercerEntity::new, MobCategory.MISC)
-                            .setTrackingRange(80)
-                            .setShouldReceiveVelocityUpdates(true)
-                            .sized(0.5F, 0.5F).build("piercer"));
+    //OVERWORLD MOBS
+    public static final RegistryObject<EntityType<Mage>> MAGE_TYPE = registerEntity(Mage::new, "mage", "Mage", 1F, 1.75F, OVERWORLD_COLOR, TRADER_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<Floro>> FLORO_TYPE = registerEntity(Floro::new, "floro", "Floro", 1F, 1.75F, OVERWORLD_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<BoomBoom>> BOOM_TYPE = registerEntity(BoomBoom::new, "boomboom", "BoomBoom", 1F, 1.75F, OVERWORLD_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<TowerGuardian>> TOWER_GUARDIAN_TYPE = registerEntity(TowerGuardian::new, "tower_guardian", "Tower Guardian", 2F, 3.5F, OVERWORLD_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<RockiteSmasher>> ROCKITE_SMASHER_TYPE = registerEntity(RockiteSmasher::new, "rockite_smasher", "Rockite Smasher", 2F, 3.25F, OVERWORLD_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<IllagerMech>> ILLAGER_MECH_TYPE = registerEntity(IllagerMech::new, "illager_mech", "Illager Mech", 2F, 3.25F, OVERWORLD_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<BrownHongo>> BROWN_HONGO_TYPE = registerEntity(BrownHongo::new, "brown_hongo", "Brown Hongo", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
 
-    public static final RegistryObject<EntityType<KnifeEntity>> KNIFE_TYPE = REGISTRY.register("knife", () ->
-            EntityType.Builder.<KnifeEntity>of(KnifeEntity::new, MobCategory.MISC)
-                    .setTrackingRange(80)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(0.5F, 0.5F).build("knife"));
+    //NETHER MOBS
+    public static final RegistryObject<EntityType<Witherspine>> WITHERSPINE_TYPE = registerEntity(Witherspine::new, "witherspine", "Witherspine", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
 
-    public static final RegistryObject<EntityType<EssenciaBoltEntity>> ESSENCIA_BOLT_TYPE = REGISTRY.register("essencia_bolt", () ->
-            EntityType.Builder.of(EssenciaBoltEntity::new, MobCategory.MISC)
-                    .sized(0.25F, 0.25F).build("essencia_bolt"));
+    //EUCA MOBS
+    public static final RegistryObject<EntityType<EucaCharger>> EUCA_CHARGER_TYPE = registerEntity(EucaCharger::new, "euca_charger", "Euca Charger", 0.5F, 0.75F, EUCA_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Dynaster>> DYNASTER_TYPE = registerEntity(Dynaster::new, "dynaster", "Dynaster", 1F, 1F, EUCA_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Goldbot>> GOLDBOT_TYPE = registerEntity(Goldbot::new, "goldbot", "Goldbot", 0.5F, 0.75F, EUCA_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Crypian>> CRYPIAN_TYPE = registerEntity(Crypian::new, "crypian", "Crypian", 0.75F, 1.8F, EUCA_COLOR, TRADER_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<Shimmerer>> SHIMMERER_TYPE = registerEntity(Shimmerer::new, "shimmerer", "Shimmerer", 0.5F, 0.75F, EUCA_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Golder>> GOLDER_TYPE = registerEntity(Golder::new, "golder", "Golder", 1F, 2F, EUCA_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<RoyalKing>> ROYAL_KING_TYPE = registerEntity(RoyalKing::new, "royal_king", "Royal King", 1F, 2F, EUCA_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
 
-    public static final RegistryObject<EntityType<BossCrystal>> BOSS_CRYSTAL_TYPE = REGISTRY.register("boss_crystal", () ->
-            EntityType.Builder.<BossCrystal>of(BossCrystal::new, MobCategory.MISC)
-                    .sized(0.25F, 0.25F).build("boss_crystal"));
+    //FROZEN MOBS
+    public static final RegistryObject<EntityType<Eskimo>> ESKIMO_TYPE = registerEntity(Eskimo::new, "eskimo", "Eskimo", 1F, 2F, FROZEN_COLOR, TRADER_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<FrozenGuardian>> FROZEN_GUARDIAN_TYPE = registerEntity(FrozenGuardian::new, "frozen_guardian", "Frozen Guardian", 0.75F, 2F, FROZEN_COLOR, TRADER_COLOR, MobCategory.CREATURE);
 
-    public static final RegistryObject<EntityType<Mage>> MAGE_TYPE = REGISTRY.register("mage", () ->
-            EntityType.Builder.of(Mage::new, MobCategory.MONSTER)
-                    .sized(1F, 1.75F).build("mage"));
+    //DEPTHS MOBS
 
-    public static final RegistryObject<EntityType<Floro>> FLORO_TYPE = REGISTRY.register("floro", () ->
-            EntityType.Builder.of(Floro::new, MobCategory.MONSTER)
-                    .setTrackingRange(15)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(1F, 1.75F).build("floro"));
+    private static <T extends Mob> RegistryObject<EntityType<T>> registerEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height, int backgroundColor, int highlightColor, MobCategory category) {
+        RegistryObject<EntityType<T>> entity = REGISTRY.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).build(new ResourceLocation(JITL.MODID, name).toString()));
+        JItems.register(name + "_spawn_egg" , lang + " Spawn Egg", () -> new ForgeSpawnEggItem(entity, backgroundColor, highlightColor, JItems.itemProps()), JItems.ItemType.SPAWN_EGG);
+        entityName.add(name);
+        entityLangName.add(lang);
+        return entity;
+    }
 
-    public static final RegistryObject<EntityType<BoomBoom>> BOOM_TYPE = REGISTRY.register("boomboom", () ->
-            EntityType.Builder.of(BoomBoom::new, MobCategory.MONSTER)
-                    .setTrackingRange(15)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(1F, 1.75F).build("boomboom"));
+    private static <T extends Mob> RegistryObject<EntityType<T>> registerEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height, int backgroundColor, int highlightColor) {
+        return registerEntity(factory, name, lang, width, height, backgroundColor, highlightColor, MobCategory.MONSTER);
+    }
 
-    public static final RegistryObject<EntityType<TowerGuardian>> TOWER_GUARDIAN_TYPE = REGISTRY.register("tower_guardian", () ->
-            EntityType.Builder.of(TowerGuardian::new, MobCategory.MONSTER)
-                    .setTrackingRange(15)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(2.0F, 3.5F).build("tower_guardian"));
+    private static <T extends Entity> RegistryObject<EntityType<T>> registerRawEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height) {
+        entityName.add(name);
+        entityLangName.add(lang);
+        return REGISTRY.register(name, () -> EntityType.Builder.of(factory, MobCategory.MISC).sized(width, height).setShouldReceiveVelocityUpdates(true).setTrackingRange(80).build(new ResourceLocation(JITL.MODID, name).toString()));
+    }
 
-    public static final RegistryObject<EntityType<RockiteSmasher>> ROCKITE_SMASHER_TYPE = REGISTRY.register("rockite_smasher", () ->
-            EntityType.Builder.of(RockiteSmasher::new, MobCategory.MONSTER)
-                    .setTrackingRange(15)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(2.0F, 3.25F).build("rockite_smasher"));
-
-    public static final RegistryObject<EntityType<IllagerMech>> ILLAGER_MECH_TYPE = REGISTRY.register("illager_mech", () ->
-            EntityType.Builder.of(IllagerMech::new, MobCategory.MONSTER)
-                    .setTrackingRange(15)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(2.0F, 3.25F).build("illager_mech"));
-
-    public static final RegistryObject<EntityType<Witherspine>> WITHERSPINE_TYPE = REGISTRY.register("witherspine", () ->
-            EntityType.Builder.of(Witherspine::new, MobCategory.MONSTER)
-                    .setTrackingRange(15)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(1F, 2.0F).build("witherspine"));
-
-    public static final RegistryObject<EntityType<BrownHongo>> BROWN_HONGO_TYPE = REGISTRY.register("brown_hongo", () ->
-            EntityType.Builder.of(BrownHongo::new, MobCategory.MONSTER)
-                    .setTrackingRange(15)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(1F, 2.0F).build("brown_hongo"));
-
-    public static final RegistryObject<EntityType<JBoat>> JBOAT_TYPE = REGISTRY.register("jboat", () ->
-                    EntityType.Builder.<JBoat>of(JBoat::new, MobCategory.MISC)
-                            .setTrackingRange(10)
-                            .sized(1.375F, 0.5625F).build("jboat"));
-
-    public static final RegistryObject<EntityType<EucaCharger>> EUCA_CHARGER_TYPE = REGISTRY.register("euca_charger", () ->
-            EntityType.Builder.of(EucaCharger::new, MobCategory.MONSTER)
-                    .setTrackingRange(15)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(0.5F, 0.75F).build("euca_charger"));
-
-    public static final RegistryObject<EntityType<Dynaster>> DYNASTER_TYPE = REGISTRY.register("dynaster", () ->
-            EntityType.Builder.of(Dynaster::new, MobCategory.MONSTER)
-                    .setTrackingRange(15)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(1F, 1F).build("dynaster"));
-
-    public static final RegistryObject<EntityType<Goldbot>> GOLDBOT_TYPE = REGISTRY.register("goldbot", () ->
-            EntityType.Builder.of(Goldbot::new, MobCategory.MONSTER)
-                    .setTrackingRange(15)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(0.5F, 0.75F).build("goldbot"));
-
-    public static final RegistryObject<EntityType<Crypian>> CRYPIAN_TYPE = REGISTRY.register("crypian", () ->
-            EntityType.Builder.of(Crypian::new, MobCategory.CREATURE)
-                    .setTrackingRange(15)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(0.75F, 1.8F).build("crypian"));
-
-    public static final RegistryObject<EntityType<Shimmerer>> SHIMMERER_TYPE = REGISTRY.register("shimmerer", () ->
-            EntityType.Builder.of(Shimmerer::new, MobCategory.MONSTER)
-                    .setTrackingRange(15)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(0.5F, 0.75F).build("shimmerer"));
-
-    public static final RegistryObject<EntityType<Golder>> GOLDER_TYPE = REGISTRY.register("golder", () ->
-            EntityType.Builder.of(Golder::new, MobCategory.MONSTER)
-                    .setTrackingRange(15)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(1F, 2F).build("golder"));
-
-    public static final RegistryObject<EntityType<RoyalKing>> ROYAL_KING_TYPE = REGISTRY.register("royal_king", () ->
-            EntityType.Builder.of(RoyalKing::new, MobCategory.CREATURE)
-                    .setTrackingRange(15)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(0.75F, 2F).build("royal_king"));
-
-    public static final RegistryObject<EntityType<Eskimo>> ESKIMO_TYPE = REGISTRY.register("eskimo", () ->
-            EntityType.Builder.of(Eskimo::new, MobCategory.CREATURE)
-                    .setTrackingRange(15)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(0.75F, 2F).build("eskimo"));
-
-    public static final RegistryObject<EntityType<FrozenGuardian>> FROZEN_GUARDIAN_TYPE = REGISTRY.register("frozen_guardian", () ->
-            EntityType.Builder.of(FrozenGuardian::new, MobCategory.CREATURE)
-                    .setTrackingRange(15)
-                    .setShouldReceiveVelocityUpdates(true)
-                    .sized(0.75F, 2F).build("frozen_guardian"));
-
-    //GET TO WORK
-    private static RegistryObject<EntityType<Mob>> registerEntity(EntityType.EntityFactory<Mob> factory, String entityName, String langName, int bg, int fg, float width, float height, MobCategory classification) {
-        EntityType<Mob> entity = EntityType.Builder.of(factory, classification).sized(width, height).setTrackingRange(15).setShouldReceiveVelocityUpdates(true).build(entityName);
-        JItems.register(entityName + "_spawn_egg", langName + " Spawn Egg", () -> new ForgeSpawnEggItem(() -> entity, bg, fg, JItems.itemProps()), JItems.ItemType.SPAWN_EGG);
-        return REGISTRY.register(entityName, () -> entity);
+    private static <T extends Projectile> RegistryObject<EntityType<T>> registerProjectile(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height) {
+        entityName.add(name);
+        entityLangName.add(lang);
+        return REGISTRY.register(name, () -> EntityType.Builder.of(factory, MobCategory.MISC).sized(width, height).setShouldReceiveVelocityUpdates(true).setTrackingRange(120).setUpdateInterval(20).build(new ResourceLocation(JITL.MODID, name).getPath()));
     }
 
     @SubscribeEvent
@@ -213,9 +139,7 @@ public class JEntities {
 
         event.put(ESKIMO_TYPE.get(), Eskimo.createAttributes());
         event.put(FROZEN_GUARDIAN_TYPE.get(), FrozenGuardian.createAttributes());
-
     }
-
 
     @SubscribeEvent
     public static void registerSpawnPlacement(SpawnPlacementRegisterEvent event) {
