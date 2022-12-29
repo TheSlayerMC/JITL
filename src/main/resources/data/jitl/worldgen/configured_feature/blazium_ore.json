@@ -10,7 +10,7 @@
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
-          "tag": "jitl:nether_ore_replaceables"
+          "tag": "jitl:boil_stone_ore_replaceables"
         }
       }
     ]

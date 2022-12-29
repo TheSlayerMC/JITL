@@ -178,6 +178,10 @@
     "jitl:corba_chest",
     "jitl:rockite_spawner",
     "jitl:frozen_pedestal",
-    "jitl:royal_pedestal"
+    "jitl:royal_pedestal",
+
+    "jitl:verdite_ore",
+    "jitl:deepslate_verdite_ore",
+    "jitl:verdite_block"
   ]
 }

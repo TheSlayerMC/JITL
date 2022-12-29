@@ -132,7 +132,6 @@ public class JBlocks {
     public static final RegistryObject<Block> FLAIRIUM_BLOCK = register("flairium_block", "Flairium Block", JBlockProperties.STONE);
 
     public static final RegistryObject<Block> VERDITE_ORE = register("verdite_ore", "Verdite Ore", JBlockProperties.STONE);
-    //TODO gen
     public static final RegistryObject<Block> DEEPSLATE_VERDITE_ORE = register("deepslate_verdite_ore", "Deepslate Verdite Ore", JBlockProperties.STONE);
     public static final RegistryObject<Block> VERDITE_BLOCK = register("verdite_block", "Verdite Block", JBlockProperties.STONE);
 

@@ -6,7 +6,7 @@
     "targets": [
       {
         "state": {
-          "Name": "jitl:lunium_ore"
+          "Name": "jitl:verdite_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
@@ -15,7 +15,7 @@
       },
       {
         "state": {
-          "Name": "jitl:deepslate_lunium_ore"
+          "Name": "jitl:deepslate_verdite_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

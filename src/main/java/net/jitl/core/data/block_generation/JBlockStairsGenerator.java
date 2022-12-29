@@ -174,7 +174,6 @@ public class JBlockStairsGenerator {
         writeToBlockstateFile("         \"x\": 180,");
         writeToBlockstateFile("         \"y\": 270");
         writeToBlockstateFile("      },");
-
         writeToBlockstateFile("    \"facing=north,half=top,shape=inner_right\": {");
         writeToBlockstateFile("        \"model\": \"" + modID + ":" + "block/" + name + "_inner\",");
         writeToBlockstateFile("         \"uvlock\": true,");
@@ -198,9 +197,7 @@ public class JBlockStairsGenerator {
         writeToBlockstateFile("         \"y\": 270");
         writeToBlockstateFile("      },");
         writeToBlockstateFile("    \"facing=south,half=bottom,shape=inner_left\": {");
-        writeToBlockstateFile("        \"model\": \"" + modID + ":" + "block/" + name + "_inner\",");
-        writeToBlockstateFile("         \"uvlock\": true,");
-        writeToBlockstateFile("         \"y\": 90");
+        writeToBlockstateFile("        \"model\": \"" + modID + ":" + "block/" + name + "_inner\"");
         writeToBlockstateFile("      },");
         writeToBlockstateFile("    \"facing=south,half=bottom,shape=inner_right\": {");
         writeToBlockstateFile("        \"model\": \"" + modID + ":" + "block/" + name + "_inner\",");

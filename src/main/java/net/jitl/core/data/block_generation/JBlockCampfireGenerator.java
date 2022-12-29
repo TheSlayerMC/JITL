@@ -62,9 +62,11 @@ public class JBlockCampfireGenerator {
 
     public void getBlockModel(String modID, String name) {
         writeToBlockModelFile(blockModelWriter, "{");
-        writeToBlockModelFile(blockModelWriter, "  \"parent\": \"minecraft:block/template_campfire\",");
+        writeToBlockModelFile(blockModelWriter, "  \"parent\": \"minecraft:block/campfire\",");
         writeToBlockModelFile(blockModelWriter, "  \"textures\": {");
+        writeToBlockModelFile(blockModelWriter, "    \"particle\": \"" + modID + ":" + "block/" + name + "_log\",");
         writeToBlockModelFile(blockModelWriter, "    \"fire\": \"" + modID + ":" + "block/" + name + "_fire\",");
+        writeToBlockModelFile(blockModelWriter, "    \"log\": \"" + modID + ":" + "block/" + name + "_log\",");
         writeToBlockModelFile(blockModelWriter, "    \"lit_log\": \"" + modID + ":" + "block/" + name + "_log_lit\"");
         writeToBlockModelFile(blockModelWriter, "  }");
         writeToBlockModelFile(blockModelWriter, "}");

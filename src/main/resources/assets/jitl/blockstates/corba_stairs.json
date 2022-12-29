@@ -100,9 +100,7 @@
          "y": 270
       },
     "facing=south,half=bottom,shape=inner_left": {
-        "model": "jitl:block/corba_stairs_inner",
-         "uvlock": true,
-         "y": 90
+        "model": "jitl:block/corba_stairs_inner"
       },
     "facing=south,half=bottom,shape=inner_right": {
         "model": "jitl:block/corba_stairs_inner",

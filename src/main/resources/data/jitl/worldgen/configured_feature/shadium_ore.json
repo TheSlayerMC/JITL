@@ -15,7 +15,7 @@
       },
       {
         "state": {
-          "Name": "jitl:deepslate_sapphire_ore"
+          "Name": "jitl:deepslate_shadium_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
