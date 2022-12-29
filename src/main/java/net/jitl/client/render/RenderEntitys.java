@@ -94,6 +94,7 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.DARKENER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("darkener", JDimension.DEPTHS)));
         EntityRenderers.register(JEntities.DARKNESS_CRAWLER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("darkness_crawler", JDimension.DEPTHS)));
         EntityRenderers.register(JEntities.DARK_SORCERER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("dark_sorcerer", JDimension.DEPTHS)));
+        EntityRenderers.register(JEntities.DEPTHS_BEAST_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("depths_beast", JDimension.DEPTHS), 0.5F, 2.0F));
 
     }
 }
