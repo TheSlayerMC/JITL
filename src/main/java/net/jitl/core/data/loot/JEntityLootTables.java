@@ -72,6 +72,7 @@ public class JEntityLootTables extends EntityLootSubProvider {
         this.add(JEntities.INFERNO_BLAZE_TYPE.get(), empty());
         this.add(JEntities.HELL_COW_TYPE.get(), empty());
         this.add(JEntities.SPYCLOPSE_TYPE.get(), empty());
+        this.add(JEntities.DARKENER_TYPE.get(), empty());
 
         this.add(JEntities.SHIMMERER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                 .add(LootItem.lootTableItem(JItems.ROYAL_DISK.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))

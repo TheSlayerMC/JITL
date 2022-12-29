@@ -4,6 +4,7 @@ import net.jitl.common.entity.base.JBoat;
 import net.jitl.common.entity.boss.BossCrystal;
 import net.jitl.common.entity.boss.RockiteSmasher;
 import net.jitl.common.entity.boss.TowerGuardian;
+import net.jitl.common.entity.depths.Darkener;
 import net.jitl.common.entity.euca.*;
 import net.jitl.common.entity.frozen.Eskimo;
 import net.jitl.common.entity.frozen.FrozenGuardian;
@@ -97,6 +98,7 @@ public class JEntities {
     public static final RegistryObject<EntityType<FrozenGuardian>> FROZEN_GUARDIAN_TYPE = registerEntity(FrozenGuardian::new, "frozen_guardian", "Frozen Guardian", 0.75F, 2F, FROZEN_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
 
     //DEPTHS MOBS
+    public static final RegistryObject<EntityType<Darkener>> DARKENER_TYPE = registerEntity(Darkener::new, "darkener", "Darkener", 1F, 1F, DEPTHS_COLOR, NEUTRAL_COLOR);
 
     private static <T extends Mob> RegistryObject<EntityType<T>> registerEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height, int backgroundColor, int highlightColor, MobCategory category) {
         RegistryObject<EntityType<T>> entity = REGISTRY.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).build(new ResourceLocation(JITL.MODID, name).toString()));
@@ -149,6 +151,8 @@ public class JEntities {
         event.put(CRYPIAN_TYPE.get(), Crypian.createAttributes());
         event.put(ALLOY_MENDER_TYPE.get(), AlloyMender.createAttributes());
 
+        event.put(DARKENER_TYPE.get(), Darkener.createAttributes());
+
         event.put(ESKIMO_TYPE.get(), Eskimo.createAttributes());
         event.put(FROZEN_GUARDIAN_TYPE.get(), FrozenGuardian.createAttributes());
     }
@@ -157,5 +161,6 @@ public class JEntities {
     public static void registerSpawnPlacement(SpawnPlacementRegisterEvent event) {
         event.register(SHIMMERER_TYPE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Shimmerer::checkSpawn, SpawnPlacementRegisterEvent.Operation.AND);
         event.register(MINI_GHAST_TYPE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MiniGhast::checkSpawn, SpawnPlacementRegisterEvent.Operation.AND);
+        event.register(DARKENER_TYPE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Darkener::checkSpawn, SpawnPlacementRegisterEvent.Operation.AND);
     }
 }
