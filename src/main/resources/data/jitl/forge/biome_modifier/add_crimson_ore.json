@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#minecraft:is_nether",
-  "features": "jitl:crimson_quartz_ore",
-  "step": "underground_ores"
-}

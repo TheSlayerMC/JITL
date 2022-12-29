@@ -1,0 +1,13 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": [
+    "jitl:iridium_ore",
+    "jitl:lunium_ore",
+    "jitl:verdite_ore",
+    "jitl:sapphire_ore",
+    "jitl:shadium_ore"
+
+  ],
+  "step": "underground_ores"
+}
