@@ -15,8 +15,13 @@ public class JTags {
     public static final TagKey<Block> EUCA_STONE_ORE_REPLACEABLES = tagBlock("euca_stone_ore_replaceables");
     public static final TagKey<Block> BOIL_STONE_ORE_REPLACEABLES = tagBlock("boil_stone_ore_replaceables");
     public static final TagKey<Block> FROZEN_STONE_ORE_REPLACEABLES = tagBlock("frozen_stone_ore_replaceables");
+    public static final TagKey<Block> FROZEN_CARVER_REPLACEABLES = tagBlock("frozen_carver_replaceables");
+    public static final TagKey<Block> BOIL_CARVER_REPLACEABLES = tagBlock("boil_carver_replaceables");
     public static final TagKey<Block> DEPTHS_STONE_ORE_REPLACEABLES = tagBlock("depths_stone_ore_replaceables");
     public static final TagKey<Block> DEPTHS_LAMP_REPLACEABLES = tagBlock("depths_lamp_replaceables");
+    public static final TagKey<Block> NETHER_ORE_REPLACEABLES = tagBlock("nether_ore_replaceables");
+    public static final TagKey<Block> OVERWORLD_ORE_REPLACEABLES = tagBlock("overworld_ore_replaceables");
+    public static final TagKey<Block> DEEPSLATE_ORE_REPLACEABLES = tagBlock("deepslate_ore_replaceables");
     public static final TagKey<Block> END_STONE = tagBlock("end_stone");
     public static final TagKey<Block> JLOGS = tagBlock("jlogs");
     public static final TagKey<Block> JPLANKS = tagBlock("planks");

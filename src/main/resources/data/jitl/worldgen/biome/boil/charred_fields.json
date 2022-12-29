@@ -16,7 +16,11 @@
     }
   },
   "spawners": {},
-  "carvers": {},
+  "carvers": {
+    "air": [
+      "jitl:boil_carver"
+    ]
+  },
   "spawn_costs": {},
   "features": [
     [
@@ -25,7 +29,7 @@
       "jitl:volcanic_rock",
       "jitl:small_burned_tree",
       "jitl:medium_burned_tree",
-      "jitl:large_burned_tree",
+      "jitl:large_charred_tree",
       "jitl:ashual_ore",
       "jitl:blazium_ore"
     ]

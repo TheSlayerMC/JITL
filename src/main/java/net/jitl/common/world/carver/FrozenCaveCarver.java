@@ -22,6 +22,7 @@ public class FrozenCaveCarver extends CaveWorldCarver {
     public FrozenCaveCarver(Codec<CaveCarverConfiguration> codec_) {
         super(codec_);
         this.liquids = ImmutableSet.of(Fluids.LAVA, Fluids.WATER);
+
     }
 
     @Override

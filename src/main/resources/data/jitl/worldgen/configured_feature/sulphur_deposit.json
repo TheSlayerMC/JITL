@@ -1,8 +1,8 @@
 {
-	"type": "jitl:sulphur_deposit",
-	"config": {
-		"state": {
-			"Name": "jitl:sulphur_rock"
-		}
-	}
+  "type": "jitl:sulphur_deposit",
+  "config": {
+    "state": {
+      "Name": "jitl:sulphur_rock"
+    }
+  }
 }

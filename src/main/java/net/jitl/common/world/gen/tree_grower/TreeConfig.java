@@ -1,7 +1,9 @@
 package net.jitl.common.world.gen.tree_grower;
 
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.FeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
@@ -60,5 +62,56 @@ public class TreeConfig extends TreeConfiguration {
 		this.decorators = dec;
 		this.ignoreVines = vines;
 		this.forceDirt = forceDirt;
+	}
+
+	public static class JTreeConfigurationBuilder {
+		public final BlockStateProvider trunkProvider;
+		private final TrunkPlacer trunkPlacer;
+		public final BlockStateProvider foliageProvider;
+		private final FoliagePlacer foliagePlacer;
+		private final Optional<RootPlacer> rootPlacer;
+		private BlockStateProvider dirtProvider;
+		private final FeatureSize minimumSize;
+		private List<TreeDecorator> decorators = ImmutableList.of();
+		private boolean ignoreVines;
+		private boolean forceDirt;
+
+		public JTreeConfigurationBuilder(BlockStateProvider pTrunkProvider, TrunkPlacer pTrunkPlacer, BlockStateProvider pFoliageProvider, FoliagePlacer pFoliagePlacer, Optional<RootPlacer> pRootPlacer, FeatureSize pMinimumSize) {
+			this.trunkProvider = pTrunkProvider;
+			this.trunkPlacer = pTrunkPlacer;
+			this.foliageProvider = pFoliageProvider;
+			this.dirtProvider = BlockStateProvider.simple(Blocks.DIRT);
+			this.foliagePlacer = pFoliagePlacer;
+			this.rootPlacer = pRootPlacer;
+			this.minimumSize = pMinimumSize;
+		}
+
+		public JTreeConfigurationBuilder(BlockStateProvider pTrunkProvider, TrunkPlacer pTrunkPlacer, BlockStateProvider pFoliageProvider, FoliagePlacer pFoliagePlacer, FeatureSize pMinimumSize) {
+			this(pTrunkProvider, pTrunkPlacer, pFoliageProvider, pFoliagePlacer, Optional.empty(), pMinimumSize);
+		}
+
+		public TreeConfig.JTreeConfigurationBuilder dirt(BlockStateProvider pDirtProvider) {
+			this.dirtProvider = pDirtProvider;
+			return this;
+		}
+
+		public TreeConfig.JTreeConfigurationBuilder decorators(List<TreeDecorator> pDecorators) {
+			this.decorators = pDecorators;
+			return this;
+		}
+
+		public TreeConfig.JTreeConfigurationBuilder ignoreVines() {
+			this.ignoreVines = true;
+			return this;
+		}
+
+		public TreeConfig.JTreeConfigurationBuilder forceDirt() {
+			this.forceDirt = true;
+			return this;
+		}
+
+		public TreeConfig build() {
+			return new TreeConfig(this.trunkProvider, this.trunkPlacer, this.foliageProvider, this.foliagePlacer, this.rootPlacer, this.dirtProvider, this.minimumSize, this.decorators, this.ignoreVines, this.forceDirt);
+		}
 	}
 }

@@ -10,12 +10,16 @@
     "water_fog_color": 4262144
   },
   "spawners": {},
-  "carvers": {},
+  "carvers": {
+    "air": [
+      "jitl:boil_carver"
+    ]
+  },
   "spawn_costs": {},
   "features": [
     [
       "jitl:boil_fire",
-      "jitl:boil_plains_veg",
+      "jitl:boil_veg",
       "jitl:ashual_ore",
       "jitl:blazium_ore"
     ]

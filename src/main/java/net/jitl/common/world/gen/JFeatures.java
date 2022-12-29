@@ -11,17 +11,17 @@ import net.jitl.common.world.gen.euca.BoulderFeature;
 import net.jitl.common.world.gen.frozen.FrozenIceSpikeFeature;
 import net.jitl.common.world.gen.nether.BleedstoneFeature;
 import net.jitl.common.world.gen.nether.SmithstoneFeature;
-import net.jitl.common.world.gen.ruins.DesertRuinsFeature;
-import net.jitl.common.world.gen.ruins.EucaRuinsFeature;
-import net.jitl.common.world.gen.ruins.GolditeRuinsFeature;
-import net.jitl.common.world.gen.ruins.OverworldRuinsFeature;
+import net.jitl.common.world.gen.ruins.RuinsFeature;
+import net.jitl.common.world.gen.ruins.RuinsFeatureConfig;
 import net.jitl.common.world.gen.tree_grower.JourneyTree;
 import net.jitl.common.world.gen.tree_grower.TreeConfig;
 import net.jitl.core.init.JITL;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.SpringFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.SpringConfiguration;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -33,16 +33,14 @@ public class JFeatures {
     public static final RegistryObject<Feature<TreeConfig>> JTREE = REGISTRY.register("tree", JourneyTree::new);
 
     //OVERWORLD
-    public static final RegistryObject<Feature<NoneFeatureConfiguration>> OVERWORLD_RUINS = REGISTRY.register("overworld_ruins", () -> new OverworldRuinsFeature(NoneFeatureConfiguration.CODEC));
-    public static final RegistryObject<Feature<NoneFeatureConfiguration>> DESERT_RUINS = REGISTRY.register("desert_ruins", () -> new DesertRuinsFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<Feature<RuinsFeatureConfig>> RUINS = REGISTRY.register("ruins", () -> new RuinsFeature(RuinsFeatureConfig.CODEC));
 
     //NETHER
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> SMITHSTONE = REGISTRY.register("smithstone", () -> new SmithstoneFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> BLEEDSTONE = REGISTRY.register("bleedstone", () -> new BleedstoneFeature(NoneFeatureConfiguration.CODEC));
 
     //EUCA
-    public static final RegistryObject<Feature<NoneFeatureConfiguration>> EUCA_RUINS = REGISTRY.register("euca_ruins", () -> new EucaRuinsFeature(NoneFeatureConfiguration.CODEC));
-    public static final RegistryObject<Feature<NoneFeatureConfiguration>> GOLDITE_RUINS = REGISTRY.register("goldite_ruins", () -> new GolditeRuinsFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<Feature<SpringConfiguration>> EUCA_WATER_GEN = REGISTRY.register("euca_water_gen", () -> new SpringFeature(SpringConfiguration.CODEC));
 
     //DEPTHS
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> ROOF_DEPTHS_LAMP = REGISTRY.register("depths_lamp_roof", () -> new DepthsLampFeature(NoneFeatureConfiguration.CODEC));

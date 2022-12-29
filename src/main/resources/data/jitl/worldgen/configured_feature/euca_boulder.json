@@ -1,8 +1,8 @@
 {
-	"type": "minecraft:forest_rock",
-	"config": {
-		"state": {
-			"Name": "jitl:goldite_cobblestone"
-		}
-	}
+  "type": "jitl:boulder",
+  "config": {
+    "state": {
+      "Name": "jitl:goldite_cobblestone"
+    }
+  }
 }

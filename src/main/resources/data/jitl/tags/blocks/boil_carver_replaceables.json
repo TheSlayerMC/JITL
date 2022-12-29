@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "jitl:ash_block",
+    "jitl:hot_ground",
+    "jitl:volcanic_sand",
+    "jitl:volcanic_sand",
+    "jitl:volcanic_soil",
+    "jitl:volcanic_sandstone",
+    "jitl:rubble",
+    "jitl:scorched_rubble"
+  ]
+}

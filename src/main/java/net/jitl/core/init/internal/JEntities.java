@@ -172,12 +172,13 @@ public class JEntities {
         event.put(FROZEN_GUARDIAN_TYPE.get(), FrozenGuardian.createAttributes());
     }
 
+
     @SubscribeEvent
     public static void registerSpawnPlacement(SpawnPlacementRegisterEvent event) {
         setCustomSpawn(event, SHIMMERER_TYPE.get(), Shimmerer::checkSpawn);
         setCustomSpawn(event, MINI_GHAST_TYPE.get(), MiniGhast::checkSpawn);
         setCustomSpawn(event, DARKENER_TYPE.get(), Darkener::checkSpawn);
-        
+
         setDefaultMonsterSpawn(event, FLORO_TYPE);
         setDefaultMonsterSpawn(event, BOOM_TYPE);
         setDefaultMonsterSpawn(event, BROWN_HONGO_TYPE);

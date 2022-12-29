@@ -61,7 +61,9 @@
     ]
   },
   "carvers": {
-
+    "air": [
+      "jitl:frozen_carver"
+    ]
   },
   "spawn_costs": {},
   "features": [

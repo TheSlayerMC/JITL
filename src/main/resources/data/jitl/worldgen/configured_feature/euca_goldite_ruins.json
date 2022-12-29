@@ -1,4 +1,47 @@
 {
-	"type": "jitl:goldite_ruins",
-	"config": {	}
+  "type": "jitl:ruins",
+  "config": {
+    "chest_block": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "jitl:euca_chest",
+        "Properties": {
+          "type": "single",
+          "facing": "north",
+          "locked": "false",
+          "waterlogged": "false"
+        }
+      }
+    },
+    "loot_list": "minecraft:chests/village/village_weaponsmith",
+    "max_columns": 6,
+    "max_height": 6,
+    "max_spreading": 8,
+    "ruined_blocks_provider": {
+      "entries": [
+        {
+          "data": {
+            "Name": "jitl:euca_square_bricks"
+          },
+          "weight": 3
+        },
+        {
+          "data": {
+            "Name": "jitl:euca_square_runic_bricks"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "jitl:euca_runic_bricks"
+          },
+          "weight": 2
+        }
+      ]
+    },
+    "spawn_block": {
+      "predicate_type": "minecraft:tag_match",
+      "tag": "jitl:euca_grass"
+    }
+  }
 }
