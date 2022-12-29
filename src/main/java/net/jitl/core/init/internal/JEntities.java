@@ -15,6 +15,7 @@ import net.jitl.common.entity.projectile.*;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.ForgeSpawnEggItem;
@@ -173,8 +174,53 @@ public class JEntities {
 
     @SubscribeEvent
     public static void registerSpawnPlacement(SpawnPlacementRegisterEvent event) {
-        event.register(SHIMMERER_TYPE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Shimmerer::checkSpawn, SpawnPlacementRegisterEvent.Operation.AND);
-        event.register(MINI_GHAST_TYPE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MiniGhast::checkSpawn, SpawnPlacementRegisterEvent.Operation.AND);
-        event.register(DARKENER_TYPE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Darkener::checkSpawn, SpawnPlacementRegisterEvent.Operation.AND);
+        setCustomSpawn(event, SHIMMERER_TYPE.get(), Shimmerer::checkSpawn);
+        setCustomSpawn(event, MINI_GHAST_TYPE.get(), MiniGhast::checkSpawn);
+        setCustomSpawn(event, DARKENER_TYPE.get(), Darkener::checkSpawn);
+        
+        setDefaultMonsterSpawn(event, FLORO_TYPE);
+        setDefaultMonsterSpawn(event, BOOM_TYPE);
+        setDefaultMonsterSpawn(event, BROWN_HONGO_TYPE);
+        setDefaultMonsterSpawn(event, SPYCLOPSE_TYPE);
+
+        setDefaultMonsterSpawn(event, WITHERSPINE_TYPE);
+        setDefaultMonsterSpawn(event, HELL_TURTLE_TYPE);
+        setDefaultMonsterSpawn(event, REAPER_TYPE);
+        setDefaultMonsterSpawn(event, INFERNO_BLAZE_TYPE);
+        setDefaultMonsterSpawn(event, HELL_COW_TYPE);
+
+        setDefaultMonsterSpawn(event, EUCA_CHARGER_TYPE);
+        setDefaultMonsterSpawn(event, DYNASTER_TYPE);
+        //MAKE STRUCTURE
+        setDefaultMonsterSpawn(event, GOLDBOT_TYPE);
+        setDefaultMonsterSpawn(event, GOLDER_TYPE);
+
+        setDefaultMonsterSpawn(event, DARKNESS_CRAWLER_TYPE);
+        setDefaultMonsterSpawn(event, DARK_SORCERER_TYPE);
+        setDefaultMonsterSpawn(event, DEPTHS_BEAST_TYPE);
+        setDefaultMonsterSpawn(event, SPIKED_BEAST_TYPE);
+        setDefaultMonsterSpawn(event, ROC_TYPE);
+        setDefaultMonsterSpawn(event, DEPTHS_HUNTER_TYPE);
+
+        setDefaultSpawn(event, ESKIMO_TYPE);
+    }
+
+    public static <T extends Entity> void setCustomSpawn(SpawnPlacementRegisterEvent event, EntityType<T> entity, SpawnPlacements.SpawnPredicate<T> spawn) {
+        event.register(entity, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, spawn, SpawnPlacementRegisterEvent.Operation.AND);
+    }
+
+    //For normal mob spawns (animals / NPC's)
+    public static <T extends Mob> void setDefaultSpawn(SpawnPlacementRegisterEvent event, RegistryObject<EntityType<T>> entity) {
+        event.register(entity.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.AND);
+    }
+
+    //For monsters to spawn anywhere
+    public static <T extends Monster> void setDefaultMonsterSpawn(SpawnPlacementRegisterEvent event, RegistryObject<EntityType<T>> entity) {
+        event.register(entity.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.AND);
+    }
+
+    //For monsters in only dark spots
+    public static  <T extends Monster> void setDarkMonsterSpawn(SpawnPlacementRegisterEvent event, RegistryObject<EntityType<T>> entity) {
+        event.register(entity.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.AND);
     }
 }

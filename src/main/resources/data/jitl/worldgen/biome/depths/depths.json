@@ -10,7 +10,52 @@
     "grass_color": 4159204,
     "foliage_color": 4159204
   },
-  "spawners": {},
+  "spawners": {
+    "monster": [
+      {
+        "type": "jitl:darkener",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "jitl:darkness_crawler",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 5
+      },
+      {
+        "type": "jitl:dark_sorcerer",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 5
+      },
+      {
+        "type": "jitl:depths_beast",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 5
+      },
+      {
+        "type": "jitl:spiked_beast",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 5
+      },
+      {
+        "type": "jitl:depths_hunter",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 5
+      },
+      {
+        "type": "jitl:roc",
+        "weight": 5,
+        "minCount": 2,
+        "maxCount": 5
+      }
+    ]
+  },
   "spawn_costs": {},
   "carvers": {},
   "features": [
