@@ -109,7 +109,7 @@ public abstract class JBossEntity extends AnimatableMonster implements IJourneyB
             if(!hasSpawned()) {
                 BossCrystal crystal = new BossCrystal(JEntities.BOSS_CRYSTAL_TYPE.get(), level, getDeathCrystalType(), lootTable());
                 crystal.setPos(position().add(0, 1, 0));
-                level.addFreshEntity(crystal);
+                //level.addFreshEntity(crystal);TODO make crystal work
                 setHasSpawned();
             }
         }
