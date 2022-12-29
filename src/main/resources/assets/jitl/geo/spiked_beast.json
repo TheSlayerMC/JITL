@@ -1,0 +1,73 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.spiked_beast",
+				"texture_width": 64,
+				"texture_height": 32,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "Body",
+					"pivot": [0, 14, 1],
+					"rotation": [21, 0, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-0.51563, 12.55169, 1.68304], "size": [1, 1, 7], "pivot": [0, 14, 7.5], "rotation": [-2.5, -2.5, 0], "uv": [30, 0]},
+						{"origin": [-2.53123, 15.56642, 2.643], "size": [1, 1, 7], "pivot": [-2, 17, 6.5], "rotation": [0, -5, 0], "uv": [30, 0]},
+						{"origin": [1.59275, 15.56642, 1.65384], "size": [1, 1, 7], "pivot": [2, 17, 6.5], "rotation": [0, 15, 0], "uv": [30, 0]},
+						{"origin": [-3.5, 9.06642, -1.35837], "size": [7, 10, 4], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "LeftArm",
+					"pivot": [4, 19, 0],
+					"rotation": [15, 78.99999, 41],
+					"mirror": true,
+					"cubes": [
+						{"origin": [2.62518, 17.10433, -0.07327], "size": [11, 2, 2], "uv": [0, 14]},
+						{"origin": [7.32485, 22.24505, -5.20395], "size": [1, 1, 7], "pivot": [7.34576, 21.97055, -0.29089], "rotation": [133.5, -80.5, 15], "uv": [30, 0]}
+					]
+				},
+				{
+					"name": "RightArm",
+					"pivot": [-4, 19, 0],
+					"rotation": [6, 99, 28],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-5.57344, 17.07342, -1.13114], "size": [11, 2, 2], "uv": [0, 14]}
+					]
+				},
+				{
+					"name": "LeftLeg",
+					"pivot": [2, 10.5, 2],
+					"mirror": true,
+					"cubes": [
+						{"origin": [1, -0.5, 1], "size": [2, 10, 2], "uv": [22, 0]}
+					]
+				},
+				{
+					"name": "RightLeg",
+					"pivot": [-2, 10.5, 2],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-3, -0.5, 1], "size": [2, 10, 2], "uv": [22, 0]}
+					]
+				},
+				{
+					"name": "Head",
+					"pivot": [0, 18, -2],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-2, 14.5, -6], "size": [4, 5, 4], "uv": [30, 8]},
+						{"origin": [-1.26915, 17.93877, -7.35693], "size": [6, 1, 1], "pivot": [1.73085, 18.43877, -5.85693], "rotation": [-25, -110, -22.5], "uv": [46, 0]}
+					]
+				}
+			]
+		}
+	]
+}

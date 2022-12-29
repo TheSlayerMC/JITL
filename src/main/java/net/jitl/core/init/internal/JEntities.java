@@ -4,10 +4,7 @@ import net.jitl.common.entity.base.JBoat;
 import net.jitl.common.entity.boss.BossCrystal;
 import net.jitl.common.entity.boss.RockiteSmasher;
 import net.jitl.common.entity.boss.TowerGuardian;
-import net.jitl.common.entity.depths.DarkSorcerer;
-import net.jitl.common.entity.depths.Darkener;
-import net.jitl.common.entity.depths.DarknessCrawler;
-import net.jitl.common.entity.depths.DepthsBeast;
+import net.jitl.common.entity.depths.*;
 import net.jitl.common.entity.euca.*;
 import net.jitl.common.entity.frozen.Eskimo;
 import net.jitl.common.entity.frozen.FrozenGuardian;
@@ -105,6 +102,10 @@ public class JEntities {
     public static final RegistryObject<EntityType<DarknessCrawler>> DARKNESS_CRAWLER_TYPE = registerEntity(DarknessCrawler::new, "darkness_crawler", "Darkness Crawler", 1F, 1F, DEPTHS_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<DarkSorcerer>> DARK_SORCERER_TYPE = registerEntity(DarkSorcerer::new, "dark_sorcerer", "Dark Sorcerer", 0.75F, 3F, DEPTHS_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<DepthsBeast>> DEPTHS_BEAST_TYPE = registerEntity(DepthsBeast::new, "depths_beast", "Depths Beast", 1F, 2F, DEPTHS_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<StaringGuardian>> STARING_GUARDIAN_TYPE = registerEntity(StaringGuardian::new, "staring_guardian", "Staring Guardian", 1F, 2F, DEPTHS_COLOR, TRADER_COLOR);
+    public static final RegistryObject<EntityType<SpikedBeast>> SPIKED_BEAST_TYPE = registerEntity(SpikedBeast::new, "spiked_beast", "Spiked Beast", 0.75F, 1.5F, DEPTHS_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<DepthsHunter>> DEPTHS_HUNTER_TYPE = registerEntity(DepthsHunter::new, "depths_hunter", "Depths Hunter", 1.25F, 2F, DEPTHS_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Roc>> ROC_TYPE = registerEntity(Roc::new, "roc", "Roc", 0.5F, 1F, DEPTHS_COLOR, NEUTRAL_COLOR);
 
     private static <T extends Mob> RegistryObject<EntityType<T>> registerEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height, int backgroundColor, int highlightColor, MobCategory category) {
         RegistryObject<EntityType<T>> entity = REGISTRY.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).build(new ResourceLocation(JITL.MODID, name).toString()));
@@ -161,6 +162,10 @@ public class JEntities {
         event.put(DARKNESS_CRAWLER_TYPE.get(), DarknessCrawler.createAttributes());
         event.put(DARK_SORCERER_TYPE.get(), DarknessCrawler.createAttributes());
         event.put(DEPTHS_BEAST_TYPE.get(), DepthsBeast.createAttributes());
+        event.put(STARING_GUARDIAN_TYPE.get(), StaringGuardian.createAttributes());
+        event.put(SPIKED_BEAST_TYPE.get(), SpikedBeast.createAttributes());
+        event.put(ROC_TYPE.get(), Roc.createAttributes());
+        event.put(DEPTHS_HUNTER_TYPE.get(), DepthsHunter.createAttributes());
 
         event.put(ESKIMO_TYPE.get(), Eskimo.createAttributes());
         event.put(FROZEN_GUARDIAN_TYPE.get(), FrozenGuardian.createAttributes());

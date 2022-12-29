@@ -95,6 +95,9 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.DARKNESS_CRAWLER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("darkness_crawler", JDimension.DEPTHS)));
         EntityRenderers.register(JEntities.DARK_SORCERER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("dark_sorcerer", JDimension.DEPTHS)));
         EntityRenderers.register(JEntities.DEPTHS_BEAST_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("depths_beast", JDimension.DEPTHS), 0.5F, 2.0F));
-
+        EntityRenderers.register(JEntities.ROC_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("roc", JDimension.DEPTHS)));
+        EntityRenderers.register(JEntities.SPIKED_BEAST_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("spiked_beast", JDimension.DEPTHS)));
+        EntityRenderers.register(JEntities.DEPTHS_HUNTER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("depths_hunter", JDimension.DEPTHS), 0.5F, 1.5F));
+        EntityRenderers.register(JEntities.STARING_GUARDIAN_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("staring_guardian", JDimension.DEPTHS)));
     }
 }
