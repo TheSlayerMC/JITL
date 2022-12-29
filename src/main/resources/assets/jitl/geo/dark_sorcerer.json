@@ -1,0 +1,60 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.dark_sorcerer",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [0, 1.75, 0]
+			},
+			"bones": [
+				{
+					"name": "Head",
+					"pivot": [0, 34, -1],
+					"cubes": [
+						{"origin": [-4, 34, -5], "size": [8, 8, 8], "uv": [0, 0]},
+						{"origin": [-4.5, 33.5, -4.5], "size": [9, 9, 9], "pivot": [0, 38, 0], "rotation": [-3, 0, 0], "uv": [0, 34]}
+					]
+				},
+				{
+					"name": "Body",
+					"pivot": [0, 34, 0],
+					"cubes": [
+						{"origin": [-4, 20, -2], "size": [8, 14, 4], "uv": [32, 16]}
+					]
+				},
+				{
+					"name": "RightArm",
+					"pivot": [-5, 38, 0],
+					"cubes": [
+						{"origin": [-6, 8, -1], "size": [2, 30, 2], "uv": [56, 32]}
+					]
+				},
+				{
+					"name": "LeftArm",
+					"pivot": [5, 36, 0],
+					"cubes": [
+						{"origin": [4, 8, -1], "size": [2, 30, 2], "uv": [56, 32]}
+					]
+				},
+				{
+					"name": "RightLeg",
+					"pivot": [-2, 20, 0],
+					"cubes": [
+						{"origin": [-3, 0, -1], "size": [2, 20, 2], "uv": [56, 0]}
+					]
+				},
+				{
+					"name": "LeftLeg",
+					"pivot": [2, 20, 0],
+					"cubes": [
+						{"origin": [1, 0, -1], "size": [2, 20, 2], "uv": [56, 0]}
+					]
+				}
+			]
+		}
+	]
+}
