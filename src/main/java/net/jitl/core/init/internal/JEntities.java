@@ -9,6 +9,7 @@ import net.jitl.common.entity.frozen.Eskimo;
 import net.jitl.common.entity.frozen.FrozenGuardian;
 import net.jitl.common.entity.nether.HellTurtle;
 import net.jitl.common.entity.nether.MiniGhast;
+import net.jitl.common.entity.nether.Reaper;
 import net.jitl.common.entity.nether.Witherspine;
 import net.jitl.common.entity.overworld.BoomBoom;
 import net.jitl.common.entity.overworld.BrownHongo;
@@ -82,6 +83,7 @@ public class JEntities {
     public static final RegistryObject<EntityType<Witherspine>> WITHERSPINE_TYPE = registerEntity(Witherspine::new, "witherspine", "Witherspine", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<MiniGhast>> MINI_GHAST_TYPE = registerEntity(MiniGhast::new, "mini_ghast", "Mini Ghast", 1F, 1F, NETHER_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<HellTurtle>> HELL_TURTLE_TYPE = registerEntity(HellTurtle::new, "hell_turtle", "Hell Turtle", 2F, 2F, NETHER_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<Reaper>> REAPER_TYPE = registerEntity(Reaper::new, "reaper", "Reaper", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
 
     //EUCA MOBS
     public static final RegistryObject<EntityType<EucaCharger>> EUCA_CHARGER_TYPE = registerEntity(EucaCharger::new, "euca_charger", "Euca Charger", 0.5F, 0.75F, EUCA_COLOR, HOSTILE_COLOR);
@@ -136,6 +138,7 @@ public class JEntities {
         event.put(WITHERSPINE_TYPE.get(), Witherspine.createAttributes());
         event.put(MINI_GHAST_TYPE.get(), MiniGhast.createAttributes());
         event.put(HELL_TURTLE_TYPE.get(), HellTurtle.createAttributes());
+        event.put(REAPER_TYPE.get(), Reaper.createAttributes());
 
         event.put(EUCA_CHARGER_TYPE.get(), EucaCharger.createAttributes());
         event.put(DYNASTER_TYPE.get(), Dynaster.createAttributes());
