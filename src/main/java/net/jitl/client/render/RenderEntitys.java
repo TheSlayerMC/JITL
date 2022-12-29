@@ -92,6 +92,7 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.FROZEN_GUARDIAN_TYPE.get(), renderer -> new FrozenGuardianRenderer<>(renderer, new AnimatedMonsterModel<>("frozen_guardian", JDimension.FROZEN)));
 
         EntityRenderers.register(JEntities.DARKENER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("darkener", JDimension.DEPTHS)));
+        EntityRenderers.register(JEntities.DARKNESS_CRAWLER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("darkness_crawler", JDimension.DEPTHS)));
 
     }
 }
