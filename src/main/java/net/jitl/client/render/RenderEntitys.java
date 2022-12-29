@@ -76,6 +76,7 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.HELL_TURTLE_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("hell_turtle", JDimension.NETHER), 1.0F));
         EntityRenderers.register(JEntities.REAPER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("reaper", JDimension.NETHER), 0.5F));
         EntityRenderers.register(JEntities.INFERNO_BLAZE_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("inferno_blaze", JDimension.NETHER), 0.5F));
+        EntityRenderers.register(JEntities.HELL_COW_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("hell_cow", JDimension.NETHER), 1.0F));
 
         EntityRenderers.register(JEntities.EUCA_CHARGER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("euca_charger", JDimension.EUCA), 0.5F));
         EntityRenderers.register(JEntities.DYNASTER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("dynaster", JDimension.EUCA), 0.8F));

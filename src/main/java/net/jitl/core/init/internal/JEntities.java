@@ -82,6 +82,7 @@ public class JEntities {
     public static final RegistryObject<EntityType<HellTurtle>> HELL_TURTLE_TYPE = registerEntity(HellTurtle::new, "hell_turtle", "Hell Turtle", 2F, 2F, NETHER_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
     public static final RegistryObject<EntityType<Reaper>> REAPER_TYPE = registerEntity(Reaper::new, "reaper", "Reaper", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<InfernoBlaze>> INFERNO_BLAZE_TYPE = registerEntity(InfernoBlaze::new, "inferno_blaze", "Inferno Blaze", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<HellCow>> HELL_COW_TYPE = registerEntity(HellCow::new, "hell_cow", "Hell Cow", 1.5F, 1.75F, NETHER_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
 
     //EUCA MOBS
     public static final RegistryObject<EntityType<EucaCharger>> EUCA_CHARGER_TYPE = registerEntity(EucaCharger::new, "euca_charger", "Euca Charger", 0.5F, 0.75F, EUCA_COLOR, HOSTILE_COLOR);
@@ -138,6 +139,7 @@ public class JEntities {
         event.put(HELL_TURTLE_TYPE.get(), HellTurtle.createAttributes());
         event.put(REAPER_TYPE.get(), Reaper.createAttributes());
         event.put(INFERNO_BLAZE_TYPE.get(), InfernoBlaze.createAttributes());
+        event.put(HELL_COW_TYPE.get(), HellCow.createAttributes());
 
         event.put(EUCA_CHARGER_TYPE.get(), EucaCharger.createAttributes());
         event.put(DYNASTER_TYPE.get(), Dynaster.createAttributes());
