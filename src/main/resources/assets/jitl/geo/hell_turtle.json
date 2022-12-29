@@ -1,0 +1,73 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.hell_turtle",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "shellBase",
+					"pivot": [0, 7, 0],
+					"cubes": [
+						{"origin": [-16, 5, -16], "size": [32, 4, 32], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "foot1",
+					"pivot": [14, 6, 14],
+					"cubes": [
+						{"origin": [11, 0, 11], "size": [6, 8, 6], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "foot2",
+					"pivot": [14, 6, -14],
+					"cubes": [
+						{"origin": [11, 0, -17], "size": [6, 8, 6], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "foot3",
+					"pivot": [-14, 6, -14],
+					"cubes": [
+						{"origin": [-17, 0, -17], "size": [6, 8, 6], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "foot4",
+					"pivot": [-14, 6, 14],
+					"cubes": [
+						{"origin": [-17, 0, 11], "size": [6, 8, 6], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "shellMain",
+					"pivot": [0, 15, 0],
+					"cubes": [
+						{"origin": [-15, 7, -15], "size": [30, 16, 30], "uv": [0, 36]}
+					]
+				},
+				{
+					"name": "shellTop",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{"origin": [-14, 23, -14], "size": [28, 2, 28], "uv": [0, 82]}
+					]
+				},
+				{
+					"name": "head",
+					"pivot": [0, 8, -17],
+					"cubes": [
+						{"origin": [-4, 4, -24], "size": [8, 8, 8], "uv": [0, 14]}
+					]
+				}
+			]
+		}
+	]
+}
