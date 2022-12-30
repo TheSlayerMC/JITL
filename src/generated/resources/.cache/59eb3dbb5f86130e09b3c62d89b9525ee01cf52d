@@ -1,4 +1,4 @@
-// 1.19.3	2022-12-29T22:23:49.3228533	Loot Tables
+// 1.19.3	2022-12-30T21:57:47.2148337	Loot Tables
 2457a609d1013b09a4b98006bc45ac5b88a8dd34 data/jitl/loot_tables/blocks/ashual_block.json
 8e2328733f44aa7897a1615390447d529289992b data/jitl/loot_tables/blocks/ashual_ore.json
 1cf87f0c90ea97e41d295e96f2a013547ae8c7fd data/jitl/loot_tables/blocks/ash_block.json
@@ -327,6 +327,8 @@ b99d6a25a6353fb6f4a769510a050f1ca2aacf79 data/jitl/loot_tables/blocks/warped_qua
 afa715d1e3e0fbd69ac4c9707ab440389931b849 data/jitl/loot_tables/blocks/warped_quartz_stairs.json
 7aa707b9ab74bb66a8fce479f833c006618fb956 data/jitl/loot_tables/blocks/yellow_gem_block.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/jitl/loot_tables/entities/alloy_mender.json
+ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/jitl/loot_tables/entities/big_hongo.json
+ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/jitl/loot_tables/entities/blizzard.json
 123e4628c3caf9b0fa83a7e7a7134311c08eba7b data/jitl/loot_tables/entities/boomboom.json
 2e9de23ffd4481fba052f01b40eeaacc6f4183bb data/jitl/loot_tables/entities/brown_hongo.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/jitl/loot_tables/entities/crypian.json
@@ -347,12 +349,14 @@ ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/jitl/loot_tables/entities/hell_tur
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/jitl/loot_tables/entities/illager_mech.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/jitl/loot_tables/entities/inferno_blaze.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/jitl/loot_tables/entities/mage.json
+ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/jitl/loot_tables/entities/medium_hongo.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/jitl/loot_tables/entities/mini_ghast.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/jitl/loot_tables/entities/reaper.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/jitl/loot_tables/entities/roc.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/jitl/loot_tables/entities/rockite_smasher.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/jitl/loot_tables/entities/royal_king.json
 e134b2227e31ddd80414b17629870e56004d06be data/jitl/loot_tables/entities/shimmerer.json
+ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/jitl/loot_tables/entities/small_hongo.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/jitl/loot_tables/entities/spiked_beast.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/jitl/loot_tables/entities/spyclopse.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/jitl/loot_tables/entities/staring_guardian.json
