@@ -9,6 +9,24 @@
       "maxCount": 3
     },
     {
+      "type": "jitl:big_hongo",
+      "weight": 3,
+      "minCount": 1,
+      "maxCount": 3
+    },
+    {
+      "type": "jitl:medium_hongo",
+      "weight": 3,
+      "minCount": 1,
+      "maxCount": 3
+    },
+    {
+      "type": "jitl:small_hongo",
+      "weight": 3,
+      "minCount": 1,
+      "maxCount": 3
+    },
+    {
       "type": "jitl:floro",
       "weight": 3,
       "minCount": 1,

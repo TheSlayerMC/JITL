@@ -76,6 +76,9 @@ public class JEntities {
     public static final RegistryObject<EntityType<BrownHongo>> BROWN_HONGO_TYPE = registerEntity(BrownHongo::new, "brown_hongo", "Brown Hongo", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<Spyclopse>> SPYCLOPSE_TYPE = registerEntity(Spyclopse::new, "spyclopse", "Spyclopse", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<Blizzard>> BLIZZARD_TYPE = registerEntity(Blizzard::new, "blizzard", "Blizzard", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<BigHongo>> BIG_HONGO_TYPE = registerEntity(BigHongo::new, "big_hongo", "Big Hongo", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<MediumHongo>> MEDIUM_HONGO_TYPE = registerEntity(MediumHongo::new, "medium_hongo", "Medium Hongo", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<SmallHongo>> SMALL_HONGO_TYPE = registerEntity(SmallHongo::new, "small_hongo", "Small Hongo", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
 
     //NETHER MOBS
     public static final RegistryObject<EntityType<Witherspine>> WITHERSPINE_TYPE = registerEntity(Witherspine::new, "witherspine", "Witherspine", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
@@ -144,6 +147,9 @@ public class JEntities {
         event.put(ILLAGER_MECH_TYPE.get(), IllagerMech.createAttributes());
         event.put(SPYCLOPSE_TYPE.get(), Spyclopse.createAttributes());
         event.put(BLIZZARD_TYPE.get(), Blizzard.createAttributes());
+        event.put(BIG_HONGO_TYPE.get(), BigHongo.createAttributes());
+        event.put(MEDIUM_HONGO_TYPE.get(), MediumHongo.createAttributes());
+        event.put(SMALL_HONGO_TYPE.get(), SmallHongo.createAttributes());
 
         event.put(WITHERSPINE_TYPE.get(), Witherspine.createAttributes());
         event.put(MINI_GHAST_TYPE.get(), MiniGhast.createAttributes());
@@ -186,6 +192,9 @@ public class JEntities {
         setDefaultMonsterSpawn(event, BROWN_HONGO_TYPE);
         setDefaultMonsterSpawn(event, SPYCLOPSE_TYPE);
         setDefaultMonsterSpawn(event, BLIZZARD_TYPE);
+        setDefaultMonsterSpawn(event, BIG_HONGO_TYPE);
+        setDefaultMonsterSpawn(event, MEDIUM_HONGO_TYPE);
+        setDefaultMonsterSpawn(event, SMALL_HONGO_TYPE);
 
         setDefaultMonsterSpawn(event, WITHERSPINE_TYPE);
         setDefaultMonsterSpawn(event, HELL_TURTLE_TYPE);

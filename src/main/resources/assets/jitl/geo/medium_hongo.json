@@ -1,0 +1,45 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.small_hongo",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "bod",
+					"pivot": [-4, 11, -3.5],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-4, 0, -3.5], "size": [8, 11, 7], "uv": [0, 18]},
+						{"origin": [-6.5, 8, -6], "size": [13, 6, 12], "uv": [0, 37]},
+						{"origin": [-4.8, 14, -5], "size": [10, 3, 10], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "lArm",
+					"pivot": [3.8, 5, -0.5],
+					"rotation": [0, 0, -5],
+					"mirror": true,
+					"cubes": [
+						{"origin": [3.8, -1, -1.5], "size": [2, 6, 3], "uv": [34, 24]}
+					]
+				},
+				{
+					"name": "rArm",
+					"pivot": [-3.8, 5, -0.5],
+					"rotation": [0, 0, 7],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-5.8, -1, -1.5], "size": [2, 6, 3], "uv": [34, 24]}
+					]
+				}
+			]
+		}
+	]
+}
