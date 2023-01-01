@@ -72,6 +72,8 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.DEPTHS_GLASS.get());
         cutout.add(JBlocks.DEPTHS_BLUE_FLOWER.get());
         cutout.add(JBlocks.DEPTHS_FLOWER.get());
+        cutout.add(JBlocks.BURNED_DOOR.get());
+        cutout.add(JBlocks.BURNED_TRAP_DOOR.get());
 
         cutout.add(JBlocks.CORBA_LEAVES.get());
         cutout.add(JBlocks.CORBA_SAPLING.get());
