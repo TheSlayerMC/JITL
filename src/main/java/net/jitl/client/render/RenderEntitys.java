@@ -3,10 +3,7 @@ package net.jitl.client.render;
 import net.jitl.client.JModelLayers;
 import net.jitl.client.model.AnimatedMonsterModel;
 import net.jitl.client.model.JBoatModel;
-import net.jitl.client.render.block.GrindstoneRenderer;
-import net.jitl.client.render.block.JChestRenderer;
-import net.jitl.client.render.block.PedestalRenderer;
-import net.jitl.client.render.block.RockiteSpawnerRenderer;
+import net.jitl.client.render.block.*;
 import net.jitl.client.render.entity.euca.CrypianRenderer;
 import net.jitl.client.render.entity.euca.RoyalKingRenderer;
 import net.jitl.client.render.entity.frozen.FrozenGuardianRenderer;
@@ -49,6 +46,7 @@ public class RenderEntitys {
         event.registerBlockEntityRenderer(JBlockEntities.ROCKITE.get(), RockiteSpawnerRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.JCHEST.get(), JChestRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.PEDESTAL.get(), PedestalRenderer::new);
+        event.registerBlockEntityRenderer(JBlockEntities.GOLD_BOT_SPAWNER.get(), JSpawnerRenderer::new);
     }
 
     @SubscribeEvent

@@ -1,4 +1,4 @@
-// 1.19.3	2022-12-30T00:35:33.2451123	Registries
+// 1.19.3	2023-01-01T14:57:31.8795161	Registries
 8c70fa6d7bad9f068bbed8b5108b4c27cca6790a data/jitl/worldgen/configured_feature/ashual_ore.json
 35ceda35b88ed900f31fbf436afe609e7c098c9b data/jitl/worldgen/configured_feature/blazium_ore.json
 72887bb6672c20e1157f6e214ba881c6ff320820 data/jitl/worldgen/configured_feature/bleedstone.json
@@ -30,6 +30,7 @@ fbc4bdde58d72a6adc8bfaaac0cb81114dbc947f data/jitl/worldgen/configured_feature/e
 741fb305af5755f86b6679674ae715437667cb0d data/jitl/worldgen/configured_feature/frozen_ice_spike.json
 cca3857e77f7743c3a6ee1abb12a829ecbe6fd78 data/jitl/worldgen/configured_feature/frozen_veg.json
 cdb45c967ca2e65bfc8a39bf753480e6e9f61195 data/jitl/worldgen/configured_feature/goldite_veg.json
+e9cac39d23ffb6d50a00aec9d687763dabf5c6d1 data/jitl/worldgen/configured_feature/gold_bot_spawner.json
 8ea6bd2620734a894be497c35bd53ec9fb84bbe9 data/jitl/worldgen/configured_feature/gold_veg.json
 92ac21d3a7d8fb87ff761d96a60bc66f552913f2 data/jitl/worldgen/configured_feature/iridium_ore.json
 9086dad17dbc34f3dee5e74207ee6976181f0f55 data/jitl/worldgen/configured_feature/korite_ore.json

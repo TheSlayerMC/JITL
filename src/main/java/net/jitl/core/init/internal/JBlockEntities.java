@@ -29,6 +29,9 @@ public class JBlockEntities {
     public static final RegistryObject<BlockEntityType<JFurnaceTile>> JFURNACE = REGISTRY.register("furnace",
             () -> BlockEntityType.Builder.of(JFurnaceTile::new, JBlocks.GOLDITE_FURNACE.get(), JBlocks.PERMAFROST_FURNACE.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<GoldBotSpawnerTile>> GOLD_BOT_SPAWNER = REGISTRY.register("gb_spawner",
+            () -> BlockEntityType.Builder.of(GoldBotSpawnerTile::new, JBlocks.GOLD_BOT_SPAWNER.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<PedestalTile>> PEDESTAL = REGISTRY.register("pedestal",
             () -> BlockEntityType.Builder.of(PedestalTile::new, JBlocks.FROZEN_PEDESTAL.get(), JBlocks.ROYAL_PEDESTAL.get()).build(null));
 }

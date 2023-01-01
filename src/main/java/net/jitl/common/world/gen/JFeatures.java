@@ -8,6 +8,7 @@ import net.jitl.common.world.gen.depths.DepthsCrystalFeature;
 import net.jitl.common.world.gen.depths.DepthsLampFeature;
 import net.jitl.common.world.gen.depths.DepthsLampFloorFeature;
 import net.jitl.common.world.gen.euca.BoulderFeature;
+import net.jitl.common.world.gen.euca.EucaBotSpawner;
 import net.jitl.common.world.gen.frozen.FrozenIceSpikeFeature;
 import net.jitl.common.world.gen.nether.BleedstoneFeature;
 import net.jitl.common.world.gen.nether.SmithstoneFeature;
@@ -41,6 +42,7 @@ public class JFeatures {
 
     //EUCA
     public static final RegistryObject<Feature<SpringConfiguration>> EUCA_WATER_GEN = REGISTRY.register("euca_water_gen", () -> new SpringFeature(SpringConfiguration.CODEC));
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> GOLD_BOT_SPAWNER = REGISTRY.register("gold_bot_spawner", () -> new EucaBotSpawner(NoneFeatureConfiguration.CODEC));
 
     //DEPTHS
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> ROOF_DEPTHS_LAMP = REGISTRY.register("depths_lamp_roof", () -> new DepthsLampFeature(NoneFeatureConfiguration.CODEC));

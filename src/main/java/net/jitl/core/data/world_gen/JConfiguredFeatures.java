@@ -94,7 +94,8 @@ public class JConfiguredFeatures {
             KORITE_ORE = registerKey("korite_ore"),
             GOLDITE_VEG = registerKey("goldite_veg"),
             GOLD_VEG = registerKey("gold_veg"),
-            EUCA_WATER = registerKey("euca_water");
+            EUCA_WATER = registerKey("euca_water"),
+            GOLD_BOT_SPAWNER = registerKey("gold_bot_spawner");
 
     //DEPTHS
     public static final ResourceKey<ConfiguredFeature<?, ?>> DEPTHS_LAMP_ROOF = registerKey("depths_lamp_roof"),
@@ -160,6 +161,7 @@ public class JConfiguredFeatures {
         register(context, EUCA_GREEN_TREE, JFeatures.JTREE.get(), new TreeConfig.JTreeConfigurationBuilder(BlockStateProvider.simple(JBlocks.EUCA_BROWN_LOG.get()), new ForkingTrunkPlacer(4, 1, 6), BlockStateProvider.simple(JBlocks.EUCA_GREEN_LEAVES.get()), new SphericalFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), 1), new TwoLayersFeatureSize(1, 1, 2)).ignoreVines().dirt(BlockStateProvider.simple(JBlocks.GOLDITE_DIRT.get())).build());
         register(context, EUCA_BOULDER, JFeatures.BOULDER.get(), new BlockStateConfiguration(JBlocks.GOLDITE_COBBLESTONE.get().defaultBlockState()));
         register(context, EUCA_WATER, JFeatures.EUCA_WATER_GEN.get(), new SpringConfiguration(Fluids.WATER.defaultFluidState(), false, 4, 1, HolderSet.direct(JBlocks.GOLDITE_STONE.getHolder().get(), JBlocks.GOLDITE_DIRT.getHolder().get())));
+        register(context, GOLD_BOT_SPAWNER, JFeatures.GOLD_BOT_SPAWNER.get(), new NoneFeatureConfiguration());
         register(context, EUCA_GOLDITE_RUINS, JFeatures.RUINS.get(), new RuinsFeatureConfig(EUCA_GRASS, BlockStateProvider.simple(JBlocks.EUCA_CHEST.get()), new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(JBlocks.EUCA_SQUARE_BRICKS.get().defaultBlockState(), 3).add(JBlocks.EUCA_SQUARE_RUNIC_BRICKS.get().defaultBlockState(), 1).add(JBlocks.EUCA_RUNIC_BRICKS.get().defaultBlockState(), 2)), 8, 6, 9, BuiltInLootTables.VILLAGE_WEAPONSMITH));
         register(context, EUCA_RUINS, JFeatures.RUINS.get(), new RuinsFeatureConfig(EUCA_GRASS, BlockStateProvider.simple(JBlocks.EUCA_CHEST.get()), new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(JBlocks.EUCA_SQUARE_BRICKS.get().defaultBlockState(), 3).add(JBlocks.EUCA_SQUARE_RUNIC_BRICKS.get().defaultBlockState(), 1).add(JBlocks.EUCA_RUNIC_BRICKS.get().defaultBlockState(), 2)), 7, 6, 9, BuiltInLootTables.VILLAGE_WEAPONSMITH));
         register(context, MEKYUM_ORE, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(EUCA_REPLACEABLES, JBlocks.MEKYUM_ORE.get().defaultBlockState()))).get(), 7));
