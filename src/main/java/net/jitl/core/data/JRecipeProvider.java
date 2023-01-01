@@ -185,6 +185,11 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
         addShovelRecipe(recipeConsumer, stickItem, materialItem, getItemFromRegistryName(recipePrefix.getString() + "shovel"));
         addSwordRecipe(recipeConsumer, stickItem, materialItem, getItemFromRegistryName(recipePrefix.getString() + "sword"));
         addHoeRecipe(recipeConsumer, stickItem, materialItem, getItemFromRegistryName(recipePrefix.getString() + "hoe"));
+        addMultitoolRecipe(recipeConsumer,
+                getItemFromRegistryName((recipePrefix.getString() + "axe")), getItemFromRegistryName(recipePrefix.getString() + "pickaxe")
+                , getItemFromRegistryName(recipePrefix.getString() + "shovel"), getItemFromRegistryName(recipePrefix.getString() + "hoe")
+                , getItemFromRegistryName(recipePrefix.getString() + "multitool"));
+
     }
 
     public void addArmorRecipes(Consumer<FinishedRecipe> recipeConsumer, ItemLike materialItem, RecipePrefix recipePrefix) {
@@ -345,6 +350,10 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
                     .pattern(" I")
                     .pattern(" I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
         }
+    }
+
+    protected void addMultitoolRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike axe, ItemLike pick, ItemLike shovel, ItemLike hoe, ItemLike output) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, output).requires(axe).requires(pick).requires(shovel).requires(hoe).unlockedBy(inputToKey(axe), has(axe)).save(recipeConsumer);
     }
 
     protected void addSwordRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output, String name) {

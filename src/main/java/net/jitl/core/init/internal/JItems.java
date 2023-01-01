@@ -25,9 +25,11 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.RecordItem;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -184,6 +186,7 @@ public class JItems {
     public static final RegistryObject<Item> SAPPHIRE_PICKAXE = registerToolItem("sapphire_pickaxe", "Sapphire Pickaxe", () -> new JPickaxeItem(JToolTiers.SAPPHIRE_PICKAXE));
     public static final RegistryObject<Item> SAPPHIRE_AXE = registerToolItem("sapphire_axe", "Sapphire Axe", () -> new JAxeItem(JToolTiers.SAPPHIRE_AXE));
     public static final RegistryObject<Item> SAPPHIRE_HOE = registerToolItem("sapphire_hoe", "Sapphire Hoe", () -> new JHoeItem(JToolTiers.SAPPHIRE_HOE));
+    public static final RegistryObject<Item> SAPPHIRE_MULTITOOL = registerToolItem("sapphire_multitool", "Sapphire Multitool", () -> new MultitoolItem(JToolTiers.SAPPHIRE_AXE));
     public static final RegistryObject<Item> SAPPHIRE_SWORD = registerToolItem("sapphire_sword", "Sapphire Sword", () -> new JSwordItem(JToolTiers.SAPPHIRE_SWORD, BASIC));
     public static final RegistryObject<Item> SAPPHIRE_HELMET = registerNormalItem("sapphire_helmet", "Sapphire Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.SAPPHIRE, EquipmentSlot.HEAD, null));
     public static final RegistryObject<Item> SAPPHIRE_CHEST = registerNormalItem("sapphire_chestplate", "Sapphire Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.SAPPHIRE, EquipmentSlot.CHEST, null));
@@ -197,6 +200,7 @@ public class JItems {
     public static final RegistryObject<Item> LUNIUM_PICKAXE = registerToolItem("lunium_pickaxe", "Lunium Pickaxe", () -> new JPickaxeItem(JToolTiers.LUNIUM_PICKAXE));
     public static final RegistryObject<Item> LUNIUM_AXE = registerToolItem("lunium_axe", "Lunium Axe", () -> new JAxeItem(JToolTiers.LUNIUM_AXE));
     public static final RegistryObject<Item> LUNIUM_HOE = registerToolItem("lunium_hoe", "Lunium Hoe", () -> new JHoeItem(JToolTiers.LUNIUM_HOE));
+    public static final RegistryObject<Item> LUNIUM_MULTITOOL = registerToolItem("lunium_multitool", "Lunium Multitool", () -> new MultitoolItem(JToolTiers.LUNIUM_AXE));
     public static final RegistryObject<Item> LUNIUM_SWORD = registerToolItem("lunium_sword", "Lunium Sword", () -> new JSwordItem(JToolTiers.LUNIUM_SWORD, LUNIUM_ABILITY));
     public static final RegistryObject<Item> LUNIUM_HELMET = registerNormalItem("lunium_helmet", "Lunium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.LUNIUM, EquipmentSlot.HEAD, LUNIUM_ABILITY));
     public static final RegistryObject<Item> LUNIUM_CHEST = registerNormalItem("lunium_chestplate", "Lunium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.LUNIUM, EquipmentSlot.CHEST, LUNIUM_ABILITY));
@@ -210,6 +214,7 @@ public class JItems {
     public static final RegistryObject<Item> SHADIUM_PICKAXE = registerToolItem("shadium_pickaxe", "Shadium Pickaxe", () -> new JPickaxeItem(JToolTiers.SHADIUM_PICKAXE));
     public static final RegistryObject<Item> SHADIUM_AXE = registerToolItem("shadium_axe", "Shadium Axe", () -> new JAxeItem(JToolTiers.SHADIUM_AXE));
     public static final RegistryObject<Item> SHADIUM_HOE = registerToolItem("shadium_hoe", "Shadium Hoe", () -> new JHoeItem(JToolTiers.SHADIUM_HOE));
+    public static final RegistryObject<Item> SHADIUM_MULTITOOL = registerToolItem("shadium_multitool", "Shadium Multitool", () -> new MultitoolItem(JToolTiers.SHADIUM_AXE));
     public static final RegistryObject<Item> SHADIUM_SWORD = registerToolItem("shadium_sword", "Shadium Sword", () -> new JSwordItem(JToolTiers.SHADIUM_SWORD, BASIC));
     public static final RegistryObject<Item> SHADIUM_HELMET = registerNormalItem("shadium_helmet", "Shadium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.SHADIUM, EquipmentSlot.HEAD, null));
     public static final RegistryObject<Item> SHADIUM_CHEST = registerNormalItem("shadium_chestplate", "Shadium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.SHADIUM, EquipmentSlot.CHEST, null));
@@ -222,6 +227,7 @@ public class JItems {
     public static final RegistryObject<Item> BLOODCRUST_SHOVEL = registerToolItem("bloodcrust_shovel", "Bloodcrust Shovel", () -> new JShovelItem(JToolTiers.BLOODCRUST_SHOVEL));
     public static final RegistryObject<Item> BLOODCRUST_PICKAXE = registerToolItem("bloodcrust_pickaxe", "Bloodcrust Pickaxe", () -> new JPickaxeItem(JToolTiers.BLOODCRUST_PICKAXE));
     public static final RegistryObject<Item> BLOODCRUST_AXE = registerToolItem("bloodcrust_axe", "Bloodcrust Axe", () -> new JAxeItem(JToolTiers.BLOODCRUST_AXE));
+    public static final RegistryObject<Item> BLOODCRUST_MULTITOOL = registerToolItem("bloodcrust_multitool", "Bloodcrust Multitool", () -> new MultitoolItem(JToolTiers.BLOODCRUST_AXE));
     public static final RegistryObject<Item> BLOODCRUST_HOE = registerToolItem("bloodcrust_hoe", "Bloodcrust Hoe", () -> new JHoeItem(JToolTiers.BLOODCRUST_HOE));
     public static final RegistryObject<Item> BLOODCRUST_SWORD = registerToolItem("bloodcrust_sword", "Bloodcrust Sword", () -> new JSwordItem(JToolTiers.BLOODCRUST_SWORD, BLOODCRUST_SWORD_ABILITY));
     public static final RegistryObject<Item> BLOODCRUST_HELMET = registerNormalItem("bloodcrust_helmet", "Bloodcrust Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.BLOODCRUST, EquipmentSlot.HEAD, BLOODCRUST_ARMOR_ABILITY));
@@ -235,6 +241,7 @@ public class JItems {
     public static final RegistryObject<Item> CELESTIUM_PICKAXE = registerToolItem("celestium_pickaxe", "Celestium Pickaxe", () -> new JPickaxeItem(JToolTiers.CELESTIUM_PICKAXE));
     public static final RegistryObject<Item> CELESTIUM_AXE = registerToolItem("celestium_axe", "Celestium Axe", () -> new JAxeItem(JToolTiers.CELESTIUM_AXE));
     public static final RegistryObject<Item> CELESTIUM_HOE = registerToolItem("celestium_hoe", "Celestium Hoe", () -> new JHoeItem(JToolTiers.CELESTIUM_HOE));
+    public static final RegistryObject<Item> CELESTIUM_MULTITOOL = registerToolItem("celestium_multitool", "Celestium Multitool", () -> new MultitoolItem(JToolTiers.CELESTIUM_AXE));
     public static final RegistryObject<Item> CELESTIUM_SWORD = registerToolItem("celestium_sword", "Celestium Sword", () -> new JSwordItem(JToolTiers.CELESTIUM_SWORD, BASIC));
     public static final RegistryObject<Item> CELESTIUM_HELMET = registerNormalItem("celestium_helmet", "Celestium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, EquipmentSlot.HEAD, CELESTIUM_ARMOR_ABILITY));
     public static final RegistryObject<Item> CELESTIUM_CHEST = registerNormalItem("celestium_chestplate", "Celestium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, EquipmentSlot.CHEST, CELESTIUM_ARMOR_ABILITY));
@@ -247,6 +254,7 @@ public class JItems {
     public static final RegistryObject<Item> MEKYUM_PICKAXE = registerToolItem("mekyum_pickaxe", "Mekyum Pickaxe", () -> new JPickaxeItem(JToolTiers.MEKYUM_PICKAXE));
     public static final RegistryObject<Item> MEKYUM_AXE = registerToolItem("mekyum_axe", "Mekyum Axe", () -> new JAxeItem(JToolTiers.MEKYUM_AXE));
     public static final RegistryObject<Item> MEKYUM_HOE = registerToolItem("mekyum_hoe", "Mekyum Hoe", () -> new JHoeItem(JToolTiers.MEKYUM_HOE));
+    public static final RegistryObject<Item> MEKYUM_MULTITOOL = registerToolItem("mekyum_multitool", "Mekyum Multitool", () -> new MultitoolItem(JToolTiers.MEKYUM_AXE));
     public static final RegistryObject<Item> MEKYUM_SWORD = registerToolItem("mekyum_sword", "Mekyum Sword", () -> new JSwordItem(JToolTiers.MEKYUM_SWORD, MEKYUM_SWORD_ABILITY));
 
     public static final RegistryObject<Item> STORON_INGOT = registerNormalItem("storon_ingot", "Storon Ingot");
@@ -255,6 +263,7 @@ public class JItems {
     public static final RegistryObject<Item> STORON_PICKAXE = registerToolItem("storon_pickaxe", "Storon Pickaxe", () -> new JPickaxeItem(JToolTiers.STORON_PICKAXE));
     public static final RegistryObject<Item> STORON_AXE = registerToolItem("storon_axe", "Storon Axe", () -> new JAxeItem(JToolTiers.STORON_AXE));
     public static final RegistryObject<Item> STORON_HOE = registerToolItem("storon_hoe", "Storon Hoe", () -> new JHoeItem(JToolTiers.STORON_HOE));
+    public static final RegistryObject<Item> STORON_MULTITOOL = registerToolItem("storon_multitool", "Storon Multitool", () -> new MultitoolItem(JToolTiers.STORON_AXE));
     public static final RegistryObject<Item> STORON_SWORD = registerToolItem("storon_sword", "Storon Sword", () -> new JSwordItem(JToolTiers.STORON_SWORD, BASIC));
 
     public static final RegistryObject<Item> KORITE_INGOT = registerNormalItem("korite_ingot", "Korite Ingot");
@@ -263,6 +272,7 @@ public class JItems {
     public static final RegistryObject<Item> KORITE_PICKAXE = registerToolItem("korite_pickaxe", "Korite Pickaxe", () -> new JPickaxeItem(JToolTiers.KORITE_PICKAXE));
     public static final RegistryObject<Item> KORITE_AXE = registerToolItem("korite_axe", "korite Axe", () -> new JAxeItem(JToolTiers.KORITE_AXE));
     public static final RegistryObject<Item> KORITE_HOE = registerToolItem("korite_hoe", "Korite Hoe", () -> new JHoeItem(JToolTiers.KORITE_HOE));
+    public static final RegistryObject<Item> KORITE_MULTITOOL = registerToolItem("korite_multitool", "Korite Multitool", () -> new MultitoolItem(JToolTiers.KORITE_AXE));
     public static final RegistryObject<Item> KORITE_SWORD = registerToolItem("korite_sword", "korite Sword", () -> new JSwordItem(JToolTiers.KORITE_SWORD, KORITE_SWORD_ABILITY));
 
     public static final RegistryObject<Item> FLAIRIUM_INGOT = registerNormalItem("flairium_ingot", "Flairium Ingot");
@@ -270,6 +280,7 @@ public class JItems {
     public static final RegistryObject<Item> FLAIRIUM_PICKAXE = registerToolItem("flairium_pickaxe", "Flairium Pickaxe", () -> new JPickaxeItem(JToolTiers.FLAIRIUM_PICKAXE));
     public static final RegistryObject<Item> FLAIRIUM_AXE = registerToolItem("flairium_axe", "Flairium Axe", () -> new JAxeItem(JToolTiers.FLAIRIUM_AXE));
     public static final RegistryObject<Item> FLAIRIUM_HOE = registerToolItem("flairium_hoe", "Flairium Hoe", () -> new JHoeItem(JToolTiers.FLAIRIUM_HOE));
+    public static final RegistryObject<Item> FLAIRIUM_MULTITOOL = registerToolItem("flairium_multitool", "Flairium Multitool", () -> new MultitoolItem(JToolTiers.FLAIRIUM_AXE));
     public static final RegistryObject<Item> FLAIRIUM_SWORD = registerToolItem("flairium_sword", "Flairium Sword", () -> new JSwordItem(JToolTiers.FLAIRIUM_SWORD, BASIC));
     public static final RegistryObject<Item> FLAIRIUM_HELMET = registerNormalItem("flairium_helmet", "Flairium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, EquipmentSlot.HEAD, null));
     public static final RegistryObject<Item> FLAIRIUM_CHEST = registerNormalItem("flairium_chestplate", "Flairium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, EquipmentSlot.CHEST, null));
@@ -281,6 +292,7 @@ public class JItems {
     public static final RegistryObject<Item> DES_PICKAXE = registerToolItem("des_pickaxe", "Des Pickaxe", () -> new JPickaxeItem(JToolTiers.DES_PICKAXE));
     public static final RegistryObject<Item> DES_AXE = registerToolItem("des_axe", "Des Axe", () -> new JAxeItem(JToolTiers.DES_AXE));
     public static final RegistryObject<Item> DES_HOE = registerToolItem("des_hoe", "Des Hoe", () -> new JHoeItem(JToolTiers.DES_HOE));
+    public static final RegistryObject<Item> DES_MULTITOOL = registerToolItem("des_multitool", "Des Multitool", () -> new MultitoolItem(JToolTiers.DES_AXE));
     public static final RegistryObject<Item> DES_SWORD = registerToolItem("des_sword", "Des Sword", () -> new JSwordItem(JToolTiers.DES_SWORD, BASIC));
 
     public static final RegistryObject<Item> GORBITE_GEM = registerNormalItem("gorbite_gem", "Gorbite Gem");
@@ -288,6 +300,7 @@ public class JItems {
     public static final RegistryObject<Item> GORBITE_PICKAXE = registerToolItem("gorbite_pickaxe", "Gorbite Pickaxe", () -> new JPickaxeItem(JToolTiers.GORBITE_PICKAXE));
     public static final RegistryObject<Item> GORBITE_AXE = registerToolItem("gorbite_axe", "Gorbite Axe", () -> new JAxeItem(JToolTiers.GORBITE_AXE));
     public static final RegistryObject<Item> GORBITE_HOE = registerToolItem("gorbite_hoe", "Gorbite Hoe", () -> new JHoeItem(JToolTiers.GORBITE_HOE));
+    public static final RegistryObject<Item> GORBITE_MULTITOOL = registerToolItem("gorbite_multitool", "Gorbite Multitool", () -> new MultitoolItem(JToolTiers.GORBITE_AXE));
     public static final RegistryObject<Item> GORBITE_SWORD = registerToolItem("gorbite_sword", "Gorbite Sword", () -> new JSwordItem(JToolTiers.GORBITE_SWORD, BASIC));
     public static final RegistryObject<Item> GORBITE_HELMET = registerNormalItem("gorbite_helmet", "Gorbite Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, EquipmentSlot.HEAD, null));
     public static final RegistryObject<Item> GORBITE_CHEST = registerNormalItem("gorbite_chestplate", "Gorbite Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, EquipmentSlot.CHEST, null));
@@ -300,6 +313,7 @@ public class JItems {
     public static final RegistryObject<Item> ORBADITE_PICKAXE = registerToolItem("orbadite_pickaxe", "Orbadite Pickaxe", () -> new JPickaxeItem(JToolTiers.ORBADITE_PICKAXE));
     public static final RegistryObject<Item> ORBADITE_AXE = registerToolItem("orbadite_axe", "Orbadite Axe", () -> new JAxeItem(JToolTiers.ORBADITE_AXE));
     public static final RegistryObject<Item> ORBADITE_HOE = registerToolItem("orbadite_hoe", "Orbadite Hoe", () -> new JHoeItem(JToolTiers.ORBADITE_HOE));
+    public static final RegistryObject<Item> ORBADITE_MULTITOOL = registerToolItem("orbadite_multitool", "Orbadite Multitool", () -> new MultitoolItem(JToolTiers.ORBADITE_AXE));
     public static final RegistryObject<Item> ORBADITE_SWORD = registerToolItem("orbadite_sword", "Orbadite Sword", () -> new JSwordItem(JToolTiers.ORBADITE_SWORD, BASIC));
     public static final RegistryObject<Item> ORBADITE_HELMET = registerNormalItem("orbadite_helmet", "Orbadite Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, EquipmentSlot.HEAD, null));
     public static final RegistryObject<Item> ORBADITE_CHEST = registerNormalItem("orbadite_chestplate", "Orbadite Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, EquipmentSlot.CHEST, null));
@@ -311,6 +325,7 @@ public class JItems {
     public static final RegistryObject<Item> SOULSTONE_PICKAXE = registerToolItem("soulstone_pickaxe", "Soulstone Pickaxe", () -> new JPickaxeItem(JToolTiers.SOULSTONE_PICKAXE));
     public static final RegistryObject<Item> SOULSTONE_AXE = registerToolItem("soulstone_axe", "Soulstone Axe", () -> new JAxeItem(JToolTiers.SOULSTONE_AXE));
     public static final RegistryObject<Item> SOULSTONE_HOE = registerToolItem("soulstone_hoe", "Soulstone Hoe", () -> new JHoeItem(JToolTiers.SOULSTONE_HOE));
+    public static final RegistryObject<Item> SOULSTONE_MULTITOOL = registerToolItem("soulstone_multitool", "Soulstone Multitool", () -> new MultitoolItem(JToolTiers.SOULSTONE_AXE));
     public static final RegistryObject<Item> SOULSTONE_SWORD = registerToolItem("soulstone_sword", "Soulstone Sword", () -> new JSwordItem(JToolTiers.SOULSTONE_SWORD, BASIC));
 
     public static final RegistryObject<Item> STAFF_OF_CONJURING = registerToolItem("staff_of_conjuring", "Staff of Conjuring", () -> new StaffItem(1, ConjuringProjectileEntity::new));
