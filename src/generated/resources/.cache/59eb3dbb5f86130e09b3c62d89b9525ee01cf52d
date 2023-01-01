@@ -1,4 +1,4 @@
-// 1.19.3	2022-12-30T21:57:47.2148337	Loot Tables
+// 1.19.3	2023-01-01T19:07:05.4994773	Loot Tables
 2457a609d1013b09a4b98006bc45ac5b88a8dd34 data/jitl/loot_tables/blocks/ashual_block.json
 8e2328733f44aa7897a1615390447d529289992b data/jitl/loot_tables/blocks/ashual_ore.json
 1cf87f0c90ea97e41d295e96f2a013547ae8c7fd data/jitl/loot_tables/blocks/ash_block.json
@@ -13,6 +13,7 @@ f567a44d7bafa9709bd49ff727012528accfbbff data/jitl/loot_tables/blocks/bloodcrust
 b72e478fc1590e9653a4601a8e8b065fb009a1fb data/jitl/loot_tables/blocks/bogwood_leaves.json
 ca957ea8e2d2559eff30e5bbed1b7d1a167f6c81 data/jitl/loot_tables/blocks/bogwood_log.json
 7ddf89cbc58d4344fb4f5730c74434a608063ac4 data/jitl/loot_tables/blocks/bogwood_sapling.json
+d94feaedf5e6a26c62537b11beec400a4d48ac04 data/jitl/loot_tables/blocks/boiling_bars.json
 07c1d93b08c342863be5fbeb732c5046aa0dae5e data/jitl/loot_tables/blocks/boil_chest.json
 1d4929d7d6176f60e5ea991a577527ed251ef375 data/jitl/loot_tables/blocks/boil_lock.json
 1d4929d7d6176f60e5ea991a577527ed251ef375 data/jitl/loot_tables/blocks/boil_portal.json
@@ -251,7 +252,11 @@ e682826fbaad867bf7e86f7fb8ceca1160c31a42 data/jitl/loot_tables/blocks/lunium_blo
 532380a2f8e961ad4bf4c5e6e966e0b12b389455 data/jitl/loot_tables/blocks/lunium_ore.json
 e9b7da0fbbd79fe697839909e7a9b6869a5f493e data/jitl/loot_tables/blocks/mekyum_block.json
 0eab9d4dbf3b24387a0b9b4c857c94868db36de9 data/jitl/loot_tables/blocks/mekyum_ore.json
+1d4929d7d6176f60e5ea991a577527ed251ef375 data/jitl/loot_tables/blocks/mini_ghast_spawner.json
 774a6de94e2740b424a8aa196643128dfe916936 data/jitl/loot_tables/blocks/nether_chest.json
+d54fadf2dbc11d437e89534c7b8888c4a128ac66 data/jitl/loot_tables/blocks/nether_dungeon_bricks.json
+8781de0b6f7c8f40f04ed9472ac07c5543b2b66e data/jitl/loot_tables/blocks/nether_dungeon_brick_fence.json
+737d7ce0c5b1d690860314cb1237b30920f79531 data/jitl/loot_tables/blocks/nether_dungeon_brick_stairs.json
 09c5b37fb69258f2ea039a08826c90d03496ec43 data/jitl/loot_tables/blocks/orbadite_block.json
 80906076f5c9c673fca475f2025814a52ebe01b8 data/jitl/loot_tables/blocks/orbadite_ore.json
 72c020ab089c0ce35e3dc8baeb69e39fef78234c data/jitl/loot_tables/blocks/packed_ice_bricks.json
