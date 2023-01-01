@@ -6,12 +6,15 @@
     }
   ],
   "placement": {
+    "type": "minecraft:random_spread",
     "salt": 16421364715478,
-
+    "locate_offset": [
+      0,
+      50,
+      0
+    ],
+    "spread_type": "linear",
     "spacing": 20,
-
-    "separation": 6,
-
-    "type": "minecraft:random_spread"
+    "separation": 6
   }
 }

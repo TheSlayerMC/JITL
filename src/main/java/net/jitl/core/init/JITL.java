@@ -58,6 +58,7 @@ public class JITL {
         JBlockEntities.REGISTRY.register(modEventBus);
         Dimensions.REGISTRY.register(modEventBus);
         JCarver.REGISTRY.register(modEventBus);
+        StructureRegistry.REGISTRY.register(modEventBus);
         JEnchantments.REGISTRY.register(modEventBus);
         JParticleManager.REGISTRY.register(modEventBus);
         JSounds.REGISTRY.register(modEventBus);
