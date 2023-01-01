@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/iron_bars_cap_alt",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "jitl:block/boiling_bars",
+    "bars": "jitl:block/boiling_bars",
+    "edge": "jitl:block/boiling_bars"
+  }
+}

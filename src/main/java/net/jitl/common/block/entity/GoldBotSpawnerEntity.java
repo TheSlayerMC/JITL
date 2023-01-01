@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
-public class GoldBotSpawnerTile extends JSpawnerEntity {
+public class GoldBotSpawnerEntity extends JSpawnerEntity {
 
     private final BaseSpawner spawner = new BaseSpawner() {
 
@@ -33,11 +33,11 @@ public class GoldBotSpawnerTile extends JSpawnerEntity {
 
         @Override
         public @NotNull BlockEntity getSpawnerBlockEntity(){
-            return GoldBotSpawnerTile.this;
+            return GoldBotSpawnerEntity.this;
         }
     };
 
-    public GoldBotSpawnerTile(BlockPos pPos, BlockState pBlockState) {
+    public GoldBotSpawnerEntity(BlockPos pPos, BlockState pBlockState) {
         super(JBlockEntities.GOLD_BOT_SPAWNER.get(), pPos, pBlockState);
     }
 

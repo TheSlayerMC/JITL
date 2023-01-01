@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_post",
+  "textures": {
+    "texture": "jitl:block/nether_dungeon_bricks"
+  }
+}

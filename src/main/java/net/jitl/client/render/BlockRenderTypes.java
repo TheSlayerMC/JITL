@@ -63,6 +63,7 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.ICE_BUSH.get());
         cutout.add(JBlocks.ICE_BUD.get());
         cutout.add(JBlocks.GOLD_BOT_SPAWNER.get());
+        cutout.add(JBlocks.MINI_GHAST_SPAWNER.get());
         cutout.add(JBlocks.BITTERWOOD_CAMPFIRE.get());
         cutout.add(JBlocks.DEPTHS_LEAVES.get());
         cutout.add(JBlocks.DEPTHS_CRYSTAL.get());
@@ -74,6 +75,7 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.DEPTHS_FLOWER.get());
         cutout.add(JBlocks.BURNED_DOOR.get());
         cutout.add(JBlocks.BURNED_TRAP_DOOR.get());
+        cutout.add(JBlocks.BOILING_BARS.get());
 
         cutout.add(JBlocks.CORBA_LEAVES.get());
         cutout.add(JBlocks.CORBA_SAPLING.get());

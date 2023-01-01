@@ -1,6 +1,6 @@
-package net.jitl.common.block;
+package net.jitl.common.block.spawners;
 
-import net.jitl.common.block.entity.GoldBotSpawnerTile;
+import net.jitl.common.block.entity.MinIGhastSpawnerEntity;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JEntities;
@@ -17,18 +17,17 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class GoldBotSpawnerBlock extends SpawnerBlock {
+public class MiniGhastSpawnerBlock extends SpawnerBlock {
 
-    public GoldBotSpawnerBlock() {
+    public MiniGhastSpawnerBlock() {
         super(JBlockProperties.SPAWNER);
     }
 
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        GoldBotSpawnerTile spawner = new GoldBotSpawnerTile(pos, state);
-
-        spawner.setEntityId(JEntities.GOLDBOT_TYPE.get(), RandomSource.create());
+        MinIGhastSpawnerEntity spawner = new MinIGhastSpawnerEntity(pos, state);
+        spawner.setEntityId(JEntities.MINI_GHAST_TYPE.get(), RandomSource.create());
         return spawner;
     }
 
@@ -41,6 +40,6 @@ public class GoldBotSpawnerBlock extends SpawnerBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level_, @NotNull BlockState state_, @NotNull BlockEntityType<T> blockEntityType_) {
-        return createTickerHelper(blockEntityType_, JBlockEntities.GOLD_BOT_SPAWNER.get(), level_.isClientSide ? GoldBotSpawnerTile::clientTick : GoldBotSpawnerTile::serverTick);
+        return createTickerHelper(blockEntityType_, JBlockEntities.MINI_GHAST_SPAWNER.get(), level_.isClientSide ? MinIGhastSpawnerEntity::clientTick : MinIGhastSpawnerEntity::serverTick);
     }
 }

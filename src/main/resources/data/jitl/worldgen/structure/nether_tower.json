@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:jigsaw",
+  "start_pool": "jitl:nether/nether_tower/start_pool",
+  "size": 1,
+  "max_distance_from_center": 80,
+  "biomes": "#minecraft:is_nether",
+  "step": "surface_structures",
+  "terrain_adaptation": "beard_thin",
+  "start_height": {
+    "absolute": 33
+  },
+  "use_expansion_hack": false,
+  "spawn_overrides": {}
+}

@@ -1,6 +1,8 @@
 package net.jitl.core.init.internal;
 
 import net.jitl.common.block.*;
+import net.jitl.common.block.spawners.GoldBotSpawnerBlock;
+import net.jitl.common.block.spawners.MiniGhastSpawnerBlock;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.common.world.gen.tree_grower.EucaGoldTreeGrower;
 import net.jitl.common.world.gen.tree_grower.EucaGreenTreeGrower;
@@ -53,6 +55,8 @@ public class JBlocks {
     public static final ArrayList<String> gateLangName = new ArrayList<>();
     public static final ArrayList<String> fenceBlockName = new ArrayList<>();
     public static final ArrayList<String> fenceLangName = new ArrayList<>();
+    public static final ArrayList<String> paneBlockName = new ArrayList<>();
+    public static final ArrayList<String> paneLangName = new ArrayList<>();
     public static final ArrayList<String> crossBlockName = new ArrayList<>();
     public static final ArrayList<String> crossLangName = new ArrayList<>();
     public static final ArrayList<String> attachedCrossBlockName = new ArrayList<>();
@@ -192,6 +196,13 @@ public class JBlocks {
     public static final RegistryObject<StairBlock> DUNGEON_LAMP_STAIRS = registerStairs("dungeon_lamp_stairs", "Dungeon Lamp Stairs", DUNGEON_LAMP, false, JBlockProperties.DUNGEON_LAMP);
     public static final RegistryObject<JFenceBlock> DUNGEON_LAMP_FENCE = registerFence("dungeon_lamp_fence", "Dungeon Lamp Fence", false, JBlockProperties.DUNGEON_LAMP);
 
+    public static final RegistryObject<Block> NETHER_DUNGEON_BRICKS = register("nether_dungeon_bricks", "Nether Dungeon Bricks", JBlockProperties.STONE);
+    public static final RegistryObject<StairBlock> NETHER_DUNGEON_BRICK_STAIRS = registerStairs("nether_dungeon_brick_stairs", "Nether Dungeon Brick Stairs", NETHER_DUNGEON_BRICKS, false, JBlockProperties.STONE);
+    public static final RegistryObject<JFenceBlock> NETHER_DUNGEON_BRICK_FENCE = registerFence("nether_dungeon_brick_fence", "Nether Dungeon Brick Fence", false, JBlockProperties.STONE);
+    public static final RegistryObject<Block> MINI_GHAST_SPAWNER = register("mini_ghast_spawner", "Mini Ghast Spawner", MiniGhastSpawnerBlock::new, true);
+    public static final RegistryObject<IronBarsBlock> BOILING_BARS = registerPaneBlock("boiling_bars", "Boiling Bars", JBlockProperties.STONE);
+
+
     public static final RegistryObject<Block> EUCA_PORTAL_FRAME = register("euca_portal_frame", "Euca Portal Frame", JBlockProperties.STONE);
     public static final RegistryObject<JBasePortalBlock> EUCA_PORTAL = registerPortalBlock("euca_portal", "Euca Portal", () -> new JBasePortalBlock(Dimensions.EUCA, EUCA_PORTAL_FRAME));
     public static final RegistryObject<Block> GOLDITE_DIRT = registerTerrainBlock("goldite_dirt", "Goldite Soil", JBlockProperties.DIRT);
@@ -231,7 +242,7 @@ public class JBlocks {
     public static final RegistryObject<Block> GOLDITE_FLOWER = registerCrossBlock("goldite_flower", "Goldite Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> GOLDITE_STALKS = registerCrossBlock("goldite_stalks", "Goldite Stalks", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> GOLDITE_BULB = registerCrossBlock("goldite_bulb", "Goldite Bulb", () -> new TallGrassBlock(JBlockProperties.FLOWER));
-    public static final RegistryObject<Block> GOLD_BOT_SPAWNER = register("gold_bot_spawner", "Gold Bot Spawner", GoldBotSpawnerBlock::new);
+    public static final RegistryObject<Block> GOLD_BOT_SPAWNER = register("gold_bot_spawner", "Gold Bot Spawner", GoldBotSpawnerBlock::new, true);
     public static final RegistryObject<Block> GOLDITE_FURNACE = registerFurnaceBlock("goldite_furnace", "Goldite Furnace");
     public static final RegistryObject<Block> EUCA_PUMPKIN = registerRotatableBlock("euca_pumpkin", "Euca Pumpkin", () -> new FaceableBlock(JBlockProperties.WOOD));
 
@@ -455,11 +466,13 @@ public class JBlocks {
 
     public static RegistryObject<Block> register(String name, String translatedName, BlockBehaviour.Properties props) {
         normalBlockName.add(name);
-        return register(name, translatedName, () -> new JBlock(props));
+        return register(name, translatedName, () -> new JBlock(props), false);
     }
 
-    public static RegistryObject<Block> register(String name, String translatedName, Supplier<Block> block) {
+    public static RegistryObject<Block> register(String name, String translatedName, Supplier<Block> block, boolean addName) {
         normalLangName.add(translatedName);
+        if(addName)
+            normalBlockName.add(name);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
@@ -691,6 +704,14 @@ public class JBlocks {
                 return wood ? 300 : -1;
             }
         });
+        return block1;
+    }
+
+    public static RegistryObject<IronBarsBlock> registerPaneBlock(String name, String translatedName, BlockBehaviour.Properties p) {
+        paneBlockName.add(name);
+        paneLangName.add(translatedName);
+        RegistryObject<IronBarsBlock> block1 = BLOCKS.register(name, () -> new IronBarsBlock(p));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 

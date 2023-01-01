@@ -140,6 +140,11 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.DUNGEON_LAMP);
         this.dropSelf(JBlocks.DUNGEON_LAMP_STAIRS);
         this.dropSelf(JBlocks.DUNGEON_LAMP_FENCE);
+        this.dropSelf(JBlocks.NETHER_DUNGEON_BRICK_STAIRS);
+        this.dropSelf(JBlocks.NETHER_DUNGEON_BRICKS);
+        this.dropSelf(JBlocks.NETHER_DUNGEON_BRICK_FENCE);
+        this.add(JBlocks.MINI_GHAST_SPAWNER, noDrop());
+        this.dropSelf(JBlocks.BOILING_BARS);
 
         this.dropSelf(JBlocks.EUCA_PORTAL_FRAME);
         this.add(JBlocks.EUCA_PORTAL, noDrop());

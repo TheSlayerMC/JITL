@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:nether_tower",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 2642146163899,
+    "spacing": 20,
+    "separation": 6,
+    "type": "minecraft:random_spread"
+  }
+}

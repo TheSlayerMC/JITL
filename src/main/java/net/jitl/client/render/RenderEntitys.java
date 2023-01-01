@@ -47,6 +47,7 @@ public class RenderEntitys {
         event.registerBlockEntityRenderer(JBlockEntities.JCHEST.get(), JChestRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.PEDESTAL.get(), PedestalRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.GOLD_BOT_SPAWNER.get(), JSpawnerRenderer::new);
+        event.registerBlockEntityRenderer(JBlockEntities.MINI_GHAST_SPAWNER.get(), JSpawnerRenderer::new);
     }
 
     @SubscribeEvent

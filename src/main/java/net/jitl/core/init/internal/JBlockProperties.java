@@ -216,6 +216,9 @@ public class JBlockProperties {
         if(name.contains("dungeon_brick")) {
             texName = "dungeon_bricks";
         }
+        if(name.contains("nether_dungeon_brick")) {
+            texName = "nether_dungeon_bricks";
+        }
         if(name.contains("gilded_dungeon_brick")) {
             texName = "gilded_dungeon_bricks";
         }
