@@ -35,9 +35,11 @@ public class RuinsFeature extends Feature<RuinsFeatureConfig> {
 				int yPos = reader.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, xPos, zPos);
 				int height = 1 + rand.nextInt(config.maxHeight);
 				placePos.set(xPos, yPos, zPos);
-				for (int i = 0; i < height; ++i) {
-					reader.setBlock(placePos, config.ruinedBlocksProvider.getState(rand, placePos), 2);
-					placePos.move(Direction.UP);
+				if (config.spawnBlock.test(reader.getBlockState(placePos.below()), rand)) {
+					for (int i = 0; i < height; ++i) {
+						reader.setBlock(placePos, config.ruinedBlocksProvider.getState(rand, placePos), 2);
+						placePos.move(Direction.UP);
+					}
 				}
 				if (rand.nextInt(4) == 0) {
                     BlockPos chestPos = new BlockPos(pos.getX(), yPos - 2, pos.getZ());
