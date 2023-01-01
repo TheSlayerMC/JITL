@@ -66,9 +66,10 @@ public class RockiteBlock extends BaseEntityBlock {
                 entity.setPos(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F);
                 level.addFreshEntity(entity);
                 level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     @Override
