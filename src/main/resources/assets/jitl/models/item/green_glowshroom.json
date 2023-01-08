@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "jitl:block/green_glowshroom_top"
+    "layer0": "jitl:block/green_glowshroom"
   }
 }
