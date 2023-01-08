@@ -80,6 +80,9 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.TALL_GREEN_GLOWSHROOM.get());
         cutout.add(JBlocks.TALL_BLUE_GLOWSHROOM.get());
         cutout.add(JBlocks.TALL_RED_GLOWSHROOM.get());
+        cutout.add(JBlocks.GREEN_GLOWSHROOM.get());
+        cutout.add(JBlocks.BLUE_GLOWSHROOM.get());
+        cutout.add(JBlocks.RED_GLOWSHROOM.get());
         cutout.add(JBlocks.TALL_CHARRED_GRASS.get());
         cutout.add(JBlocks.SIZZLESHROOM.get());
         cutout.add(JBlocks.TALL_SIZZLESHROOM.get());
