@@ -59,8 +59,12 @@ public class JBlocks {
     public static final ArrayList<String> paneLangName = new ArrayList<>();
     public static final ArrayList<String> crossBlockName = new ArrayList<>();
     public static final ArrayList<String> crossLangName = new ArrayList<>();
+    public static final ArrayList<String> vineBlockName = new ArrayList<>();
+    public static final ArrayList<String> vineLangName = new ArrayList<>();
     public static final ArrayList<String> attachedCrossBlockName = new ArrayList<>();
     public static final ArrayList<String> attachedCrossLangName = new ArrayList<>();
+    public static final ArrayList<String> doublePlantBlockName = new ArrayList<>();
+    public static final ArrayList<String> doublePlantLangName = new ArrayList<>();
     public static final ArrayList<String> grassBlockName = new ArrayList<>();
     public static final ArrayList<String> grassLangName = new ArrayList<>();
     public static final ArrayList<String> terrainBlockName = new ArrayList<>();
@@ -178,6 +182,13 @@ public class JBlocks {
     public static final RegistryObject<Block> SMITHSTONE_BLOCK = register("smithstone_block", "Smithstone Block", JBlockProperties.GLOW_LAMP);
     public static final RegistryObject<Block> SOULSTONE_BLOCK = register("soulstone_block", "Soulstone Block", JBlockProperties.GLOW_LAMP);
 
+    public static final RegistryObject<Block> TALL_GREEN_GLOWSHROOM = registerDoublePlant("tall_green_glowshroom", "Tall Green Glowshroom", () -> new TallGlowshroomBlock(JBlockProperties.CAVE_GLOW_PLANT));
+    public static final RegistryObject<Block> TALL_BLUE_GLOWSHROOM = registerDoublePlant("tall_blue_glowshroom", "Tall Blue Glowshroom", () -> new TallGlowshroomBlock(JBlockProperties.CAVE_GLOW_PLANT));
+    public static final RegistryObject<Block> TALL_RED_GLOWSHROOM = registerDoublePlant("tall_red_glowshroom", "Tall Red Glowshroom", () -> new TallGlowshroomBlock(JBlockProperties.CAVE_GLOW_PLANT));
+    public static final RegistryObject<Block> GREEN_GLOWSHROOM = registerDoublePlant("green_glowshroom", "Green Glowshroom", () -> new CavePlantBlock(JBlockProperties.CAVE_GLOW_PLANT));
+    public static final RegistryObject<Block> BLUE_GLOWSHROOM = registerDoublePlant("blue_glowshroom", "Blue Glowshroom", () -> new CavePlantBlock(JBlockProperties.CAVE_GLOW_PLANT));
+    public static final RegistryObject<Block> RED_GLOWSHROOM = registerDoublePlant("red_glowshroom", "Red Glowshroom", () -> new CavePlantBlock(JBlockProperties.CAVE_GLOW_PLANT));
+
     public static final RegistryObject<Block> DUNGEON_BRICKS = register("dungeon_bricks", "Dungeon Bricks", JBlockProperties.DUNGEON_BLOCK);
     public static final RegistryObject<StairBlock> DUNGEON_BRICK_STAIRS = registerStairs("dungeon_brick_stairs", "Dungeon Brick Stairs", DUNGEON_BRICKS, false, JBlockProperties.DUNGEON_BLOCK);
     public static final RegistryObject<JFenceBlock> DUNGEON_BRICK_FENCE = registerFence("dungeon_brick_fence", "Dungeon Brick Fence", false, JBlockProperties.DUNGEON_BLOCK);
@@ -201,7 +212,6 @@ public class JBlocks {
     public static final RegistryObject<JFenceBlock> NETHER_DUNGEON_BRICK_FENCE = registerFence("nether_dungeon_brick_fence", "Nether Dungeon Brick Fence", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> MINI_GHAST_SPAWNER = register("mini_ghast_spawner", "Mini Ghast Spawner", MiniGhastSpawnerBlock::new, true);
     public static final RegistryObject<IronBarsBlock> BOILING_BARS = registerPaneBlock("boiling_bars", "Boiling Bars", JBlockProperties.STONE);
-
 
     public static final RegistryObject<Block> EUCA_PORTAL_FRAME = register("euca_portal_frame", "Euca Portal Frame", JBlockProperties.STONE);
     public static final RegistryObject<JBasePortalBlock> EUCA_PORTAL = registerPortalBlock("euca_portal", "Euca Portal", () -> new JBasePortalBlock(Dimensions.EUCA, EUCA_PORTAL_FRAME));
@@ -245,6 +255,7 @@ public class JBlocks {
     public static final RegistryObject<Block> GOLD_BOT_SPAWNER = register("gold_bot_spawner", "Gold Bot Spawner", GoldBotSpawnerBlock::new, true);
     public static final RegistryObject<Block> GOLDITE_FURNACE = registerFurnaceBlock("goldite_furnace", "Goldite Furnace");
     public static final RegistryObject<Block> EUCA_PUMPKIN = registerRotatableBlock("euca_pumpkin", "Euca Pumpkin", () -> new FaceableBlock(JBlockProperties.WOOD));
+    public static final RegistryObject<Block> GLIMMER_ROOT = registerVineBlock("glimmer_root", "Glimmer Root", () -> new JVineBlock(JBlockProperties.VINE));
 
     public static final RegistryObject<Block> EUCA_GOLD_GRASS = registerGrassBlock("euca_gold_grass", "Euca Gold Grass", () -> new JGrassBlock(GOLDITE_DIRT));
     public static final RegistryObject<Block> GOLDITE_GRASS = registerGrassBlock("goldite_grass", "Goldite Grass", () -> new JGrassBlock(GOLDITE_DIRT));
@@ -363,6 +374,11 @@ public class JBlocks {
     public static final RegistryObject<JFenceBlock> BURNED_FENCE = registerFence("burned_fence", "Burned Fence", true, JBlockProperties.WOOD);
     public static final RegistryObject<Block> VOLCANIC_ROCK = registerModeledBlock("volcanic_rock", "Volcanic Rock", () -> new VolcanicRockBlock(JBlockProperties.VOLCANIC_BLOCK));
     public static final RegistryObject<Block> BOIL_LOCK = registerRotatableBlock("boil_lock", "Boiling Lock", LockBlock::new);
+    public static final RegistryObject<Block> TALL_MOLTEN_PLANT = registerDoublePlant("tall_molten_plant", "Tall Molten Plant", () -> new JDoublePlantBlock(JBlockProperties.PLANT));
+    public static final RegistryObject<Block> TALL_CRUMBLING_PINE = registerDoublePlant("tall_crumbling_pine", "Tall Crumbling Pine", () -> new JDoublePlantBlock(JBlockProperties.PLANT));
+    public static final RegistryObject<Block> TALL_CHARRED_GRASS = registerDoublePlant("tall_charred_grass", "Tall Charred Grass", () -> new JDoublePlantBlock(JBlockProperties.PLANT));
+    public static final RegistryObject<Block> TALL_SIZZLESHROOM = registerDoublePlant("tall_sizzleshroom", "Tall Sizzleshroom", () -> new TallGlowshroomBlock(JBlockProperties.CAVE_GLOW_PLANT));
+    public static final RegistryObject<Block> SIZZLESHROOM = registerCrossBlock("sizzleshroom", "Sizzleshroom", () -> new TallGrassBlock(JBlockProperties.CAVE_GLOW_PLANT));
 
     public static final RegistryObject<Block> DEPTHS_PORTAL_FRAME = register("depths_portal_frame", "Depths Portal Frame", JBlockProperties.STONE);
     public static final RegistryObject<JBasePortalBlock> DEPTHS_PORTAL = registerPortalBlock("depths_portal", "Depths Portal", () -> new JBasePortalBlock(Dimensions.DEPTHS, DEPTHS_PORTAL_FRAME));
@@ -493,6 +509,14 @@ public class JBlocks {
         return block1;
     }
 
+    public static RegistryObject<Block> registerDoublePlant(String name, String translatedName, Supplier<Block> block) {
+        doublePlantBlockName.add(name);
+        doublePlantLangName.add(translatedName);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
+        return block1;
+    }
+
     public static RegistryObject<Block> registerFurnaceBlock(String name, String translatedName) {
         furnaceBlockName.add(name);
         furnaceLangName.add(translatedName);
@@ -540,6 +564,14 @@ public class JBlocks {
     public static RegistryObject<Block> registerRotatableBlock(String name, String translatedName, Supplier<Block> block) {
         rotatableBlockName.add(name);
         rotatableLangName.add(translatedName);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerVineBlock(String name, String translatedName, Supplier<JVineBlock> block) {
+        vineBlockName.add(name);
+        vineLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;

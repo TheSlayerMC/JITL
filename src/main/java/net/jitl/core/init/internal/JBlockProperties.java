@@ -116,6 +116,13 @@ public class JBlockProperties {
             .noOcclusion()
             .offsetType(BlockBehaviour.OffsetType.XZ);
 
+    public static BlockBehaviour.Properties PLANT = BlockBehaviour.Properties.of(Material.PLANT)
+            .instabreak()
+            .sound(SoundType.GRASS)
+            .noCollission()
+            .noOcclusion()
+            .offsetType(BlockBehaviour.OffsetType.XZ);
+
     public static BlockBehaviour.Properties FLOWER = BlockBehaviour.Properties.of(Material.PLANT)
             .instabreak()
             .sound(SoundType.GRASS)
@@ -189,6 +196,22 @@ public class JBlockProperties {
             .sound(SoundType.GRASS)
             .isViewBlocking((state, getter, pos) -> true)
             .isSuffocating((state, getter, pos) -> true);
+
+    public static final BlockBehaviour.Properties GLOW_PLANT = BlockBehaviour.Properties.of(Material.GLASS)
+            .sound(JSoundTypes.CRYSTAL_FRUIT)
+            .noOcclusion()
+            .offsetType(BlockBehaviour.OffsetType.XZ)
+            .noCollission()
+            .lightLevel((state) -> 10)
+            .instabreak();
+
+    public static final BlockBehaviour.Properties CAVE_GLOW_PLANT = BlockBehaviour.Properties.of(Material.PLANT)
+            .sound(JSoundTypes.CRYSTAL_FRUIT)
+            .noOcclusion()
+            .noCollission()
+            .offsetType(BlockBehaviour.OffsetType.XZ)
+            .lightLevel((state) -> 5)
+            .instabreak();
 
     public static String getTextureFromName(String name) {
         String texName = "";

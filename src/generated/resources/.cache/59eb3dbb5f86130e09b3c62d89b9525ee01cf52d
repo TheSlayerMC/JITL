@@ -1,4 +1,4 @@
-// 1.19.3	2023-01-01T19:07:05.4994773	Loot Tables
+// 1.19.3	2023-01-08T15:24:50.5618949	Loot Tables
 2457a609d1013b09a4b98006bc45ac5b88a8dd34 data/jitl/loot_tables/blocks/ashual_block.json
 8e2328733f44aa7897a1615390447d529289992b data/jitl/loot_tables/blocks/ashual_ore.json
 1cf87f0c90ea97e41d295e96f2a013547ae8c7fd data/jitl/loot_tables/blocks/ash_block.json
@@ -10,6 +10,7 @@ f1dd49ba41144757067b5d2929e96659d5995bf0 data/jitl/loot_tables/blocks/bleedstone
 5ed3d9006061b038b15eb002a8ed66241eab4036 data/jitl/loot_tables/blocks/bloodcrust_block.json
 f567a44d7bafa9709bd49ff727012528accfbbff data/jitl/loot_tables/blocks/bloodcrust_ore.json
 006cd894a5c4c3eea9fba58364a280eb8b374ec8 data/jitl/loot_tables/blocks/blue_gem_block.json
+9ddf4411fb56631eb555ced6111ef314b44871db data/jitl/loot_tables/blocks/blue_glowshroom.json
 b72e478fc1590e9653a4601a8e8b065fb009a1fb data/jitl/loot_tables/blocks/bogwood_leaves.json
 ca957ea8e2d2559eff30e5bbed1b7d1a167f6c81 data/jitl/loot_tables/blocks/bogwood_log.json
 7ddf89cbc58d4344fb4f5730c74434a608063ac4 data/jitl/loot_tables/blocks/bogwood_sapling.json
@@ -223,6 +224,7 @@ c848a86d13c374fc8b75e37a3b184ace3029a791 data/jitl/loot_tables/blocks/frozen_sla
 25f679c8b19c5f749e9bc55f6d82b2d54d9fbf82 data/jitl/loot_tables/blocks/gilded_dungeon_bricks.json
 14cc827e28c50a700c6cebc5a03085687737b13c data/jitl/loot_tables/blocks/gilded_dungeon_brick_fence.json
 d5abf184dc8c69c20c259ed39ef24b454805e60a data/jitl/loot_tables/blocks/gilded_dungeon_brick_stairs.json
+9422d2833dc697bc0ca6aa8f18889377d897d33a data/jitl/loot_tables/blocks/glimmer_root.json
 e84f819daac178611bcb20e33db36f2a618028b7 data/jitl/loot_tables/blocks/goldite_bulb.json
 3f98dcc04e6dcf3ad579707beaf83533a5045c51 data/jitl/loot_tables/blocks/goldite_cobblestone.json
 dc6b4ee84d809e0dd414260bb67103d4017de2a3 data/jitl/loot_tables/blocks/goldite_dirt.json
@@ -237,6 +239,7 @@ e5001f7423ec1578bbbe70e0ca058f34f3db17fc data/jitl/loot_tables/blocks/gorbite_bl
 1387a1797bcc0542374535c2c0ef92a216e524ba data/jitl/loot_tables/blocks/gorbite_ore.json
 27b9c26dc0b109ad7a6a9329b7f0c4c0b65e1edd data/jitl/loot_tables/blocks/grassy_permafrost.json
 cf2806b5ef5c6f0c7a48df5d5a7343f69c015ebc data/jitl/loot_tables/blocks/green_gem_block.json
+296d45d72a25a4003d561f7b371b381e421d7304 data/jitl/loot_tables/blocks/green_glowshroom.json
 be42f3ca03bf2300b65f48cef4c90cc8807699bc data/jitl/loot_tables/blocks/grindstone.json
 d889d49f9080ea37359176950185c399cb48b55b data/jitl/loot_tables/blocks/hot_ground.json
 c7e858617709ca0491d73c2818c8f6e2ad1f566c data/jitl/loot_tables/blocks/ice_bud.json
@@ -275,6 +278,7 @@ d35754d9eca42e4eb1add6189e27ac8dc5c2bcd6 data/jitl/loot_tables/blocks/polished_r
 386065e56428cb2f4fc13e742a360cd8c0880ae6 data/jitl/loot_tables/blocks/polished_royal_stone.json
 0ac33459a5a31b3cdd7b0f0793d60831a4f0a79a data/jitl/loot_tables/blocks/purple_gem_block.json
 8da1ff86cbe44df5996d6591afc82b389ac9e1f6 data/jitl/loot_tables/blocks/rare_gem_block.json
+192c6b869b7bd9d0cd0cd4d9d20d521107555087 data/jitl/loot_tables/blocks/red_glowshroom.json
 bd1655c04e26ff10f03a81655873c5f725fdc726 data/jitl/loot_tables/blocks/rimestone_block.json
 0d4ac9dc3fe1d8433887162bb7dcf8198a820302 data/jitl/loot_tables/blocks/rimestone_ore.json
 1d4929d7d6176f60e5ea991a577527ed251ef375 data/jitl/loot_tables/blocks/rockite_spawner.json
@@ -303,6 +307,7 @@ cd7bb73ab1e58e9de96e9742a35aeae635c16007 data/jitl/loot_tables/blocks/scorched_s
 71fe035b88609837af038f3473408b92e0565a7c data/jitl/loot_tables/blocks/scorched_stalagmite_tiny.json
 2414def4b4508640ffabf0f6568d1ea8c4ef0aa9 data/jitl/loot_tables/blocks/shadium_block.json
 ad9a4b87f5c9e42b4ac4dac9c3962e63344b2120 data/jitl/loot_tables/blocks/shadium_ore.json
+52070e89278f93ec0a696dc65da0f007b59541d9 data/jitl/loot_tables/blocks/sizzleshroom.json
 a2ce88c02832fe421b6250691996d769e68efdf8 data/jitl/loot_tables/blocks/small_stone_bricks.json
 3f8840a752cf517f3871007978e82091fa4e7fd8 data/jitl/loot_tables/blocks/smithstone_block.json
 767b826d985604b4fff5606f4904a1c34163b1da data/jitl/loot_tables/blocks/smooth_crimson_quartz_block.json
@@ -318,6 +323,13 @@ d15d32ac2f2570a147d094dc836dca4f8f150f3e data/jitl/loot_tables/blocks/storon_ore
 da2bc917a9e77357af355328235190678650ad13 data/jitl/loot_tables/blocks/sulphur_crystal.json
 bb8ceb1248ce4ee7bb2062155615ec58eef0715b data/jitl/loot_tables/blocks/sulphur_rock.json
 f6b7ed07fa3cbf77e8399a081eb0a8d3a8a201fd data/jitl/loot_tables/blocks/tainted_mud.json
+23bf837828e75064076f459f0478322129ad8b45 data/jitl/loot_tables/blocks/tall_blue_glowshroom.json
+f650786cfb58c63b72cd137bcb981b16801ca34b data/jitl/loot_tables/blocks/tall_charred_grass.json
+4cf08a9464aa6d8a43d10a99aca76f9543662c96 data/jitl/loot_tables/blocks/tall_crumbling_pine.json
+35e9266c2e3678c65c4afc41a0616051d05d8633 data/jitl/loot_tables/blocks/tall_green_glowshroom.json
+73cdf9907b7d5330ef3e2621907de406b0ac756f data/jitl/loot_tables/blocks/tall_molten_plant.json
+fd75411764547d62612b59918e40f3a875a2afbc data/jitl/loot_tables/blocks/tall_red_glowshroom.json
+099e5270cef6a2afab111b1a3d248d3d2c7fa916 data/jitl/loot_tables/blocks/tall_sizzleshroom.json
 6eb56e7284ab5c1ae4689618813ca5f8ea71dcb4 data/jitl/loot_tables/blocks/verdite_block.json
 69f01baf5070558538ad11ae98ea788b274b1bf1 data/jitl/loot_tables/blocks/verdite_ore.json
 27b21bd7f6b77889c4aead207b3307c388dca81f data/jitl/loot_tables/blocks/volcanic_rock.json

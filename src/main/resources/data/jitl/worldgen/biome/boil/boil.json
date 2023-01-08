@@ -21,7 +21,8 @@
       "jitl:boil_fire",
       "jitl:boil_veg",
       "jitl:ashual_ore",
-      "jitl:blazium_ore"
+      "jitl:blazium_ore",
+      "jitl:boil_undergrowth"
     ]
   ]
 }

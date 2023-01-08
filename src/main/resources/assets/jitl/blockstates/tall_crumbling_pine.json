@@ -1,0 +1,10 @@
+{
+  "variants": {
+  "half=lower": {
+      "model": "jitl:block/tall_crumbling_pine_bottom"
+    },
+  "half=upper": {
+      "model": "jitl:block/tall_crumbling_pine_top"
+    }
+  }
+}

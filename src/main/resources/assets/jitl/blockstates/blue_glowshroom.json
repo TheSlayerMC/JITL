@@ -1,0 +1,10 @@
+{
+  "variants": {
+  "half=lower": {
+      "model": "jitl:block/blue_glowshroom_bottom"
+    },
+  "half=upper": {
+      "model": "jitl:block/blue_glowshroom_top"
+    }
+  }
+}

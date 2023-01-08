@@ -76,6 +76,15 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.BURNED_DOOR.get());
         cutout.add(JBlocks.BURNED_TRAP_DOOR.get());
         cutout.add(JBlocks.BOILING_BARS.get());
+        cutout.add(JBlocks.GLIMMER_ROOT.get());
+        cutout.add(JBlocks.TALL_GREEN_GLOWSHROOM.get());
+        cutout.add(JBlocks.TALL_BLUE_GLOWSHROOM.get());
+        cutout.add(JBlocks.TALL_RED_GLOWSHROOM.get());
+        cutout.add(JBlocks.TALL_CHARRED_GRASS.get());
+        cutout.add(JBlocks.SIZZLESHROOM.get());
+        cutout.add(JBlocks.TALL_SIZZLESHROOM.get());
+        cutout.add(JBlocks.TALL_MOLTEN_PLANT.get());
+        cutout.add(JBlocks.TALL_CRUMBLING_PINE.get());
 
         cutout.add(JBlocks.CORBA_LEAVES.get());
         cutout.add(JBlocks.CORBA_SAPLING.get());
@@ -88,7 +97,6 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.CORBA_DARK_PURPLE_FLOWER.get());
         cutout.add(JBlocks.CORBA_FLOWER.get());
         cutout.add(JBlocks.CORBA_LADDER.get());
-
 
         translucent.add(JBlocks.EUCA_PORTAL.get());
         translucent.add(JBlocks.FROZEN_PORTAL.get());

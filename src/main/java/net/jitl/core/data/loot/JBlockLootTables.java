@@ -123,6 +123,13 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.add(JBlocks.SMITHSTONE_BLOCK, (block) -> createOreDrop(block, JItems.SMITHSTONE.get()));
         this.dropSelf(JBlocks.SOULSTONE_BLOCK);
 
+        this.dropSelf(JBlocks.TALL_GREEN_GLOWSHROOM);
+        this.dropSelf(JBlocks.TALL_BLUE_GLOWSHROOM);
+        this.dropSelf(JBlocks.TALL_RED_GLOWSHROOM);
+        this.dropSelf(JBlocks.GREEN_GLOWSHROOM);
+        this.dropSelf(JBlocks.BLUE_GLOWSHROOM);
+        this.dropSelf(JBlocks.RED_GLOWSHROOM);
+
         this.dropSelf(JBlocks.DUNGEON_BRICKS);
         this.dropSelf(JBlocks.DUNGEON_BRICK_STAIRS);
         this.dropSelf(JBlocks.DUNGEON_BRICK_FENCE);
@@ -186,6 +193,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.add(JBlocks.GOLD_BOT_SPAWNER, noDrop());
         this.dropSelf(JBlocks.GOLDITE_FURNACE);
         this.dropSelf(JBlocks.EUCA_PUMPKIN);
+        this.dropSelf(JBlocks.GLIMMER_ROOT);
 
         this.add(JBlocks.EUCA_GOLD_GRASS, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.GOLDITE_DIRT.get()));
         this.add(JBlocks.GOLDITE_GRASS, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.GOLDITE_DIRT.get()));
@@ -298,6 +306,11 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.BURNED_FENCE);
         this.dropSelf(JBlocks.VOLCANIC_ROCK);
         this.add(JBlocks.BOIL_LOCK, noDrop());
+        this.dropSelf(JBlocks.TALL_MOLTEN_PLANT);
+        this.dropSelf(JBlocks.TALL_CRUMBLING_PINE);
+        this.dropSelf(JBlocks.TALL_SIZZLESHROOM);
+        this.dropSelf(JBlocks.TALL_CHARRED_GRASS);
+        this.dropSelf(JBlocks.SIZZLESHROOM);
 
         this.dropSelf(JBlocks.DEPTHS_PORTAL_FRAME);
         this.add(JBlocks.DEPTHS_PORTAL, noDrop());

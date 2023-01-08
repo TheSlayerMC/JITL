@@ -2,17 +2,16 @@ package net.jitl.core.init.internal;
 
 import net.jitl.client.render.particle.*;
 import net.jitl.core.init.JITL;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.client.particle.SnowflakeParticle;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.*;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 @Mod.EventBusSubscriber(modid = JITL.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class JParticleManager {
@@ -29,6 +28,7 @@ public class JParticleManager {
     public static final RegistryObject<SimpleParticleType> CRYSTAL_FRUIT = REGISTRY.register("crystal_fruit", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> GOLDITE_FLOWER = REGISTRY.register("goldite_flower", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> FLAME_POLLEN = REGISTRY.register("flame_pollen", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> CAVE_VINE = REGISTRY.register("cave_vine", () -> new SimpleParticleType(false));
 
     @SubscribeEvent
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {

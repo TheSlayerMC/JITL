@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "jitl:block/green_glowshroom_bottom"
+  }
+}

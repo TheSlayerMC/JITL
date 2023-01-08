@@ -17,6 +17,18 @@
             "seed": 2345,
             "states": [
               {
+                "Name": "jitl:tall_molten_plant",
+                "Properties": {
+                  "half": "lower"
+                }
+              },
+              {
+                "Name": "jitl:tall_crumbling_pine",
+                "Properties": {
+                  "half": "lower"
+                }
+              },
+              {
                 "Name": "jitl:lava_bloom"
               },
               {

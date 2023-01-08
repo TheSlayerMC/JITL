@@ -21,6 +21,7 @@ public class LangRegistry {
         ArrayList<String> blockList = new ArrayList<>(JBlocks.normalBlockName);
         ArrayList<String> logList = new ArrayList<>(JBlocks.logBlockName);
         ArrayList<String> crossList = new ArrayList<>(JBlocks.crossBlockName);
+        ArrayList<String> doublePlantList = new ArrayList<>(JBlocks.doublePlantBlockName);
         ArrayList<String> paneList = new ArrayList<>(JBlocks.paneBlockName);
         ArrayList<String> attachedCrossList = new ArrayList<>(JBlocks.attachedCrossBlockName);
         ArrayList<String> doorList = new ArrayList<>(JBlocks.doorBlockName);
@@ -33,6 +34,7 @@ public class LangRegistry {
         ArrayList<String> fenceList = new ArrayList<>(JBlocks.fenceBlockName);
         ArrayList<String> modelBlockList = new ArrayList<>(JBlocks.modelBlockName);
         ArrayList<String> rotatableBlockList = new ArrayList<>(JBlocks.rotatableBlockName);
+        ArrayList<String> vineBlockList = new ArrayList<>(JBlocks.vineBlockName);
         ArrayList<String> furnaceBlockList = new ArrayList<>(JBlocks.furnaceBlockName);
         ArrayList<String> portalBlockList = new ArrayList<>(JBlocks.portalBlockName);
         ArrayList<String> campfireBlockList = new ArrayList<>(JBlocks.campfireBlockName);
@@ -111,6 +113,11 @@ public class LangRegistry {
             writeToFile("\"block.jitl." + blockList.get(i) + "\": \"" + JBlocks.normalLangName.get(i) + "\"" + ",");
         }
 
+
+        for(int i = 0; i < doublePlantList.size(); i++) {
+            writeToFile("\"block.jitl." + doublePlantList.get(i) + "\": \"" + JBlocks.doublePlantLangName.get(i) + "\"" + ",");
+        }
+
         for(int i = 0; i < logList.size(); i++) {
             writeToFile("\"block.jitl." + logList.get(i) + "\": \"" + JBlocks.logLangName.get(i) + "\"" + ",");
         }
@@ -125,6 +132,10 @@ public class LangRegistry {
 
         for(int i = 0; i < chestBlockList.size(); i++) {
             writeToFile("\"block.jitl." + chestBlockList.get(i) + "\": \"" + JBlocks.chestLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < vineBlockList.size(); i++) {
+            writeToFile("\"block.jitl." + vineBlockList.get(i) + "\": \"" + JBlocks.vineLangName.get(i) + "\"" + ",");
         }
 
         for(int i = 0; i < ladderBlockList.size(); i++) {

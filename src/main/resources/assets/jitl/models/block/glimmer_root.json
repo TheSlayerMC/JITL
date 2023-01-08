@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/vine",
+  "textures": {
+    "vine": "jitl:block/glimmer_root",
+    "particle": "jitl:block/glimmer_root"
+  }
+}

@@ -6,6 +6,7 @@ import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.common.world.dimension.JCarver;
 import net.jitl.common.world.gen.JFeatures;
 import net.jitl.common.world.gen.JFoliagePlacers;
+import net.jitl.common.world.gen.JTreeDecorators;
 import net.jitl.core.config.JClientConfig;
 import net.jitl.core.config.JCommonConfig;
 import net.jitl.core.data.JBlockPathGenerator;
@@ -61,6 +62,7 @@ public class JITL {
         StructureRegistry.REGISTRY.register(modEventBus);
         JEnchantments.REGISTRY.register(modEventBus);
         JParticleManager.REGISTRY.register(modEventBus);
+        JTreeDecorators.REGISTRY.register(modEventBus);
         JSounds.REGISTRY.register(modEventBus);
 
         ClientEventHandler.regToBus(forgeEventBus, modEventBus);
@@ -73,6 +75,7 @@ public class JITL {
             new JBlockRotatableGenerator().generate();
             new JBlockFurnaceGenerator().generate();
             new JBlockCrossGenerator().generate();
+            new JBlockDoublePlantGenerator().generate();
             new JBlockAttachedCrossGenerator().generate();
             new JBlockPillarGenerator().generate();
             new JBlockDoorGenerator().generate();
@@ -81,6 +84,7 @@ public class JITL {
             new JBlockStairsGenerator().generate();
             new JBlockSlabGenerator().generate();
             new JBlockPressurePlateGenerator().generate();
+            new JBlockVineGenerator().generate();
             new JBlockButtonGenerator().generate();
             new JBlockGateGenerator().generate();
             new JBlockFenceGenerator().generate();

@@ -66,6 +66,7 @@ public class JConfiguredFeatures {
     //OVERWORLD
     public static final ResourceKey<ConfiguredFeature<?, ?>> DESERT_OVERWORLD_RUINS = registerKey("desert_overworld_ruins"),
             DEFAULT_OVERWORLD_RUINS = registerKey("default_overworld_ruins"),
+            GLOWSHROOMS = registerKey("glowshrooms"),
             IRIDIUM_ORE = registerKey("iridium_ore"),
             SAPPHIRE_ORE = registerKey("sapphire_ore"),
             SHADIUM_ORE = registerKey("shadium_ore"),
@@ -119,6 +120,7 @@ public class JConfiguredFeatures {
             FIRE = registerKey("boil_fire"),
             BOIL_PLAINS_VEG = registerKey("boil_veg"),
             BOIL_SANDS_VEG = registerKey("boil_sands_veg"),
+            BOIL_UNDERGROWTH = registerKey("boil_undergrowth"),
             CHARRED_FIELDS_VEG = registerKey("charred_veg"),
             ASHUAL_ORE = registerKey("ashual_ore"),
             BLAZIUM_ORE = registerKey("blazium_ore");
@@ -145,6 +147,7 @@ public class JConfiguredFeatures {
         register(context, SHADIUM_ORE, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(OVERWORLD_REPLACEABLES, JBlocks.SHADIUM_ORE.get().defaultBlockState()), OreConfiguration.target(OVERWORLD_DEEPSLATE_REPLACEABLES, JBlocks.DEEPSLATE_SHADIUM_ORE.get().defaultBlockState()))).get(), 7));
         register(context, LUNIUM_ORE, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(OVERWORLD_REPLACEABLES, JBlocks.LUNIUM_ORE.get().defaultBlockState()), OreConfiguration.target(OVERWORLD_DEEPSLATE_REPLACEABLES, JBlocks.DEEPSLATE_LUNIUM_ORE.get().defaultBlockState()))).get(), 7));
         register(context, VERDITE_ORE, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(OVERWORLD_REPLACEABLES, JBlocks.VERDITE_ORE.get().defaultBlockState()), OreConfiguration.target(OVERWORLD_DEEPSLATE_REPLACEABLES, JBlocks.DEEPSLATE_VERDITE_ORE.get().defaultBlockState()))).get(), 7));
+        register(context, GLOWSHROOMS, Feature.FLOWER, new RandomPatchConfiguration(64, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.GREEN_GLOWSHROOM.get().defaultBlockState(), JBlocks.TALL_GREEN_GLOWSHROOM.get().defaultBlockState(), JBlocks.BLUE_GLOWSHROOM.get().defaultBlockState(), JBlocks.TALL_BLUE_GLOWSHROOM.get().defaultBlockState(), JBlocks.RED_GLOWSHROOM.get().defaultBlockState(), JBlocks.TALL_RED_GLOWSHROOM.get().defaultBlockState()))))));
 
         //NETHER
         register(context, SMITHSTONE, JFeatures.SMITHSTONE.get(), new NoneFeatureConfiguration());
@@ -194,8 +197,9 @@ public class JConfiguredFeatures {
         register(context, SCORCHED_CACTUS, Feature.RANDOM_PATCH, FeatureUtils.simpleRandomPatchConfiguration(10, PlacementUtils.inlinePlaced(Feature.BLOCK_COLUMN, BlockColumnConfiguration.simple(BiasedToBottomInt.of(1, 5), BlockStateProvider.simple(JBlocks.SCORCHED_CACTUS.get())), BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.wouldSurvive(JBlocks.SCORCHED_CACTUS.get().defaultBlockState(), BlockPos.ZERO))))));
         register(context, BOIL_PLAINS_VEG, Feature.FLOWER, new RandomPatchConfiguration(60, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.INFERNO_BUSH.get().defaultBlockState(), JBlocks.FLAME_POD.get().defaultBlockState(), JBlocks.CRISP_GRASS.get().defaultBlockState(), JBlocks.LAVA_BLOOM.get().defaultBlockState()))))));
         register(context, CHARRED_FIELDS_VEG, Feature.FLOWER, new RandomPatchConfiguration(96, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.CHARRED_BRUSH.get().defaultBlockState(), JBlocks.CHARRED_GRASS.get().defaultBlockState(), JBlocks.CHARRED_WEEDS.get().defaultBlockState(), JBlocks.CHARRED_SHORT_GRASS.get().defaultBlockState()))))));
-        register(context, BOIL_SANDS_VEG , Feature.FLOWER, new RandomPatchConfiguration(60, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.LAVA_BLOOM.get().defaultBlockState(), JBlocks.CRUMBLING_PINE.get().defaultBlockState(), JBlocks.INFERNO_BUSH.get().defaultBlockState()))))));
+        register(context, BOIL_SANDS_VEG , Feature.FLOWER, new RandomPatchConfiguration(60, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.TALL_MOLTEN_PLANT.get().defaultBlockState(), JBlocks.TALL_CRUMBLING_PINE.get().defaultBlockState(), JBlocks.LAVA_BLOOM.get().defaultBlockState(), JBlocks.CRUMBLING_PINE.get().defaultBlockState(), JBlocks.INFERNO_BUSH.get().defaultBlockState()))))));
         register(context, FIRE, Feature.RANDOM_PATCH, new RandomPatchConfiguration(50, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(Blocks.FIRE.defaultBlockState()))))));
+        register(context, BOIL_UNDERGROWTH, Feature.FLOWER, new RandomPatchConfiguration(60, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.SIZZLESHROOM.get().defaultBlockState(), JBlocks.TALL_SIZZLESHROOM.get().defaultBlockState()))))));
 
         //FROZEN
         register(context, SMALL_FROZEN_TREE, JFeatures.JTREE.get(), new TreeConfig.JTreeConfigurationBuilder(BlockStateProvider.simple(JBlocks.FROZEN_LOG.get().defaultBlockState()), new ForkingTrunkPlacer(2, 1, 3), BlockStateProvider.simple(JBlocks.FROZEN_LEAVES.get().defaultBlockState()), new PineFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), ConstantInt.of(2)), new TwoLayersFeatureSize(1, 1, 2)).ignoreVines().forceDirt().dirt(BlockStateProvider.simple(JBlocks.GRASSY_PERMAFROST.get())).build());

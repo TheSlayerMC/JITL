@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "jitl:block/tall_sizzleshroom_top"
+  }
+}
