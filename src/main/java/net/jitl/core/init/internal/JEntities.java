@@ -79,6 +79,9 @@ public class JEntities {
     public static final RegistryObject<EntityType<BigHongo>> BIG_HONGO_TYPE = registerEntity(BigHongo::new, "big_hongo", "Big Hongo", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<MediumHongo>> MEDIUM_HONGO_TYPE = registerEntity(MediumHongo::new, "medium_hongo", "Medium Hongo", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<SmallHongo>> SMALL_HONGO_TYPE = registerEntity(SmallHongo::new, "small_hongo", "Small Hongo", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<JungleTurtle>> JUNGLE_TURTLE_TYPE = registerEntity(JungleTurtle::new, "jungle_turtle", "Jungle Turtle", 2F, 2F, OVERWORLD_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<JungleGolem>> JUNGLE_GOLEM_TYPE = registerEntity(JungleGolem::new, "jungle_golem", "Jungle Golem", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<SandCrawler>> SAND_CRAWLER_TYPE = registerEntity(SandCrawler::new, "sand_crawler", "Sand Crawler", 1.3F, 1F, OVERWORLD_COLOR, HOSTILE_COLOR);
 
     //NETHER MOBS
     public static final RegistryObject<EntityType<Witherspine>> WITHERSPINE_TYPE = registerEntity(Witherspine::new, "witherspine", "Witherspine", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
@@ -150,6 +153,9 @@ public class JEntities {
         event.put(BIG_HONGO_TYPE.get(), BigHongo.createAttributes());
         event.put(MEDIUM_HONGO_TYPE.get(), MediumHongo.createAttributes());
         event.put(SMALL_HONGO_TYPE.get(), SmallHongo.createAttributes());
+        event.put(JUNGLE_TURTLE_TYPE.get(), JungleTurtle.createAttributes());
+        event.put(JUNGLE_GOLEM_TYPE.get(), JungleGolem.createAttributes());
+        event.put(SAND_CRAWLER_TYPE.get(), SandCrawler.createAttributes());
 
         event.put(WITHERSPINE_TYPE.get(), Witherspine.createAttributes());
         event.put(MINI_GHAST_TYPE.get(), MiniGhast.createAttributes());
@@ -195,6 +201,9 @@ public class JEntities {
         setDefaultMonsterSpawn(event, BIG_HONGO_TYPE);
         setDefaultMonsterSpawn(event, MEDIUM_HONGO_TYPE);
         setDefaultMonsterSpawn(event, SMALL_HONGO_TYPE);
+        setDefaultMonsterSpawn(event, JUNGLE_TURTLE_TYPE);
+        setDefaultMonsterSpawn(event, JUNGLE_GOLEM_TYPE);
+        setDefaultMonsterSpawn(event, SAND_CRAWLER_TYPE);
 
         setDefaultMonsterSpawn(event, WITHERSPINE_TYPE);
         setDefaultMonsterSpawn(event, HELL_TURTLE_TYPE);
