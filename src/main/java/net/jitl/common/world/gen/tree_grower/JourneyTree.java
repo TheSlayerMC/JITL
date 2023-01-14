@@ -31,6 +31,7 @@ import java.util.Set;
 import java.util.function.BiConsumer;
 
 public class JourneyTree extends Feature<TreeConfig> {
+
 	public JourneyTree() {
 		super(TreeConfig.CODEC);
 	}
@@ -76,9 +77,7 @@ public class JourneyTree extends Feature<TreeConfig> {
 			int j = config.foliagePlacer.foliageHeight(random, i, config);
 			int k = i - j;
 			int l = config.foliagePlacer.foliageRadius(random, k);
-			BlockPos blockpos = config.rootPlacer.map((p_225286_) -> {
-				return p_225286_.getTrunkOrigin(pos, random);
-			}).orElse(pos);
+			BlockPos blockpos = config.rootPlacer.map((p_225286_) -> p_225286_.getTrunkOrigin(pos, random)).orElse(pos);
 			int i1 = Math.min(pos.getY(), blockpos.getY());
 			int j1 = Math.max(pos.getY(), blockpos.getY()) + i + 1;
 			if (i1 >= level.getMinBuildHeight() + 1 && j1 <= level.getMaxBuildHeight()) {
@@ -127,6 +126,7 @@ public class JourneyTree extends Feature<TreeConfig> {
 		setBlockKnownShape(l, p, s);
 	}
 
+	@Override
 	public final boolean place(FeaturePlaceContext<TreeConfig> config) {
 		WorldGenLevel worldgenlevel = config.level();
 		RandomSource randomsource = config.random();

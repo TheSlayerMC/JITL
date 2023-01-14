@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "jitl:boi/boil",
-    "jitl:boi/boiling_sands",
-    "jitl:boi/charred_fields",
-    "jitl:boi/scorched_wastelands"
+    "jitl:boil/boil",
+    "jitl:boil/boiling_sands",
+    "jitl:boil/charred_fields",
+    "jitl:boil/scorched_wastelands"
   ]
 }
