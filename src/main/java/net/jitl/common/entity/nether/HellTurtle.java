@@ -1,6 +1,6 @@
 package net.jitl.common.entity.nether;
 
-import net.jitl.common.entity.base.AnimatableMonster;
+import net.jitl.common.entity.base.JMonsterEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -13,7 +13,7 @@ import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
-public class HellTurtle extends AnimatableMonster {
+public class HellTurtle extends JMonsterEntity {
 
     public HellTurtle(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -27,6 +27,11 @@ public class HellTurtle extends AnimatableMonster {
         this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+    }
+
+    @Override
+    public boolean fireImmune() {
+        return true;
     }
 
     public static AttributeSupplier createAttributes() {

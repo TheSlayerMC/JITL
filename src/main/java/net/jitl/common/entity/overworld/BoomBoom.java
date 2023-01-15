@@ -1,6 +1,6 @@
 package net.jitl.common.entity.overworld;
 
-import net.jitl.common.entity.base.AnimatableMonster;
+import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.goal.BoomSwellGoal;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -36,7 +36,7 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import javax.annotation.Nullable;
 import java.util.Collection;
 
-public class BoomBoom extends AnimatableMonster implements PowerableMob {
+public class BoomBoom extends JMonsterEntity implements PowerableMob {
 
     private static final EntityDataAccessor<Integer> DATA_SWELL_DIR = SynchedEntityData.defineId(BoomBoom.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> DATA_IS_POWERED = SynchedEntityData.defineId(BoomBoom.class, EntityDataSerializers.BOOLEAN);

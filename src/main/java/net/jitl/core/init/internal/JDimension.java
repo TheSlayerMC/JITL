@@ -6,6 +6,7 @@ public enum JDimension {
     END("end"),
     NETHER("nether"),
     FROZEN("frozen"),
+    BOIL("boil"),
     EUCA("euca"),
     DEPTHS("depths")
     ;

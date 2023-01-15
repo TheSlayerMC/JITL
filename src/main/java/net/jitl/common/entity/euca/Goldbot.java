@@ -1,6 +1,6 @@
 package net.jitl.common.entity.euca;
 
-import net.jitl.common.entity.base.AnimatableMonster;
+import net.jitl.common.entity.base.JMonsterEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -13,7 +13,7 @@ import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
-public class Goldbot extends AnimatableMonster {
+public class Goldbot extends JMonsterEntity {
 
     public Goldbot(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);

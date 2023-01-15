@@ -49,6 +49,11 @@ public class MiniGhast extends JFlyingEntity {
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, (e) -> Math.abs(e.getY() - this.getY()) <= 4.0D));
     }
 
+    @Override
+    public boolean fireImmune() {
+        return true;
+    }
+
     public boolean isCharging() {
         return this.entityData.get(DATA_IS_CHARGING);
     }

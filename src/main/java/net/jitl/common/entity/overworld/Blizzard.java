@@ -1,6 +1,6 @@
 package net.jitl.common.entity.overworld;
 
-import net.jitl.common.entity.base.AnimatableMonster;
+import net.jitl.common.entity.base.JMonsterEntity;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -25,7 +25,7 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 
 import java.util.EnumSet;
 
-public class Blizzard extends AnimatableMonster {
+public class Blizzard extends JMonsterEntity {
 
     private static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(Blizzard.class, EntityDataSerializers.BYTE);
 

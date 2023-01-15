@@ -16,11 +16,11 @@ public class JTabs {
     public static final ResourceLocation ITEMS = new ResourceLocation(JITL.MODID, ".items");
 
     private static ItemStack makeBlockIcon() {
-        return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(JITL.MODID, "sapphire_ore")));
+        return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(JITL.MODID, "firestone_block")));
     }
 
     private static ItemStack makeItemIcon() {
-        return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(JITL.MODID, "stone_clump")));
+        return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(JITL.MODID, "blazing_fireball")));
     }
 
     public static void registerTabs(CreativeModeTabEvent.Register event){

@@ -21,7 +21,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class JBossEntity extends AnimatableMonster implements IJourneyBoss, IDontAttackWhenPeaceful{
+public abstract class JBossEntity extends JMonsterEntity implements IJourneyBoss, IDontAttackWhenPeaceful{
 
     private static final EntityDataAccessor<Boolean> HAS_SPAWNED = SynchedEntityData.defineId(JBossEntity.class, EntityDataSerializers.BOOLEAN);
 

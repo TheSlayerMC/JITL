@@ -1,6 +1,6 @@
 package net.jitl.common.entity.nether;
 
-import net.jitl.common.entity.base.AnimatableMonster;
+import net.jitl.common.entity.base.JMonsterEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -14,7 +14,7 @@ import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
-public class Witherspine extends AnimatableMonster {
+public class Witherspine extends JMonsterEntity {
 
     public Witherspine(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -37,6 +37,10 @@ public class Witherspine extends AnimatableMonster {
                 .add(Attributes.MAX_HEALTH, 25)
                 .add(Attributes.FOLLOW_RANGE, 10)
                 .add(Attributes.MOVEMENT_SPEED, 0.26).build();
+    }
+    @Override
+    public boolean fireImmune() {
+        return true;
     }
 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.witherspine.walk");

@@ -1,6 +1,6 @@
 package net.jitl.common.entity.overworld;
 
-import net.jitl.common.entity.base.AnimatableMonster;
+import net.jitl.common.entity.base.JMonsterEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
@@ -14,12 +14,11 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.material.Material;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
-public class Cavurn extends AnimatableMonster {
+public class Cavurn extends JMonsterEntity {
 
     public Cavurn(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -38,7 +37,7 @@ public class Cavurn extends AnimatableMonster {
     }
 
     public static boolean checkSpawn(EntityType<Cavurn> entity, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
-        return pos.getY() < 40.0D && checkMobSpawnRules(entity, level, spawnType, pos, random) && level.getBlockState(pos.below()).getMaterial() == Material.STONE;
+        return pos.getY() < 40.0D && checkMobSpawnRules(entity, level, spawnType, pos, random);
     }
 
     public static AttributeSupplier createAttributes() {

@@ -1,25 +1,33 @@
 package net.jitl.common.entity.base;
 
+import net.jitl.client.knowledge.EnumKnowledge;
+import net.jitl.client.knowledge.PlayerKnowledgeProvider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public abstract class AnimatableMonster extends Monster implements GeoEntity {
+public abstract class JMonsterEntity extends Monster implements GeoEntity {
 
-    private static final EntityDataAccessor<Boolean> ATTACK = SynchedEntityData.defineId(AnimatableMonster.class, EntityDataSerializers.BOOLEAN);
+    protected EnumKnowledge knowledge;
+    protected float knowledgeAmount = 0.0F;
+
+    private static final EntityDataAccessor<Boolean> ATTACK = SynchedEntityData.defineId(JMonsterEntity.class, EntityDataSerializers.BOOLEAN);
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    protected AnimatableMonster(EntityType<? extends Monster> pEntityType, Level pLevel) {
+    protected JMonsterEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
@@ -33,6 +41,22 @@ public abstract class AnimatableMonster extends Monster implements GeoEntity {
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.cache;
+    }
+
+    public JMonsterEntity setKnowledge(EnumKnowledge knowledge, float amount) {
+        this.knowledge = knowledge;
+        this.knowledgeAmount = amount;
+        return this;
+    }
+
+    @Override
+    public void die(@NotNull DamageSource cause) {
+        super.die(cause);
+        if(cause.getEntity() instanceof Player player && knowledge != null) {
+            player.getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(knowledge -> {
+                knowledge.addXP(this.knowledge, player, this.knowledgeAmount, false);
+            });
+        }
     }
 
     @Override
@@ -64,9 +88,9 @@ public abstract class AnimatableMonster extends Monster implements GeoEntity {
     }
 
     public class AnimatedAttackGoal extends MeleeAttackGoal {
-        private final AnimatableMonster entity;
+        private final JMonsterEntity entity;
 
-        public AnimatedAttackGoal(AnimatableMonster entity, double speed, boolean useLongMemory) {
+        public AnimatedAttackGoal(JMonsterEntity entity, double speed, boolean useLongMemory) {
             super(entity, speed, useLongMemory);
             this.entity = entity;
         }

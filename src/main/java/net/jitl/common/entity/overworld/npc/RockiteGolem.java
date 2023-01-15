@@ -21,7 +21,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.material.Material;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
@@ -44,7 +43,7 @@ public class RockiteGolem extends JVillagerEntity {
     }
 
     public static boolean checkSpawn(EntityType<RockiteGolem> entity, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
-        return pos.getY() < 40.0D && checkMobSpawnRules(entity, level, spawnType, pos, random) && level.getBlockState(pos.below()).getMaterial() == Material.STONE;
+        return pos.getY() < 40.0D && checkMobSpawnRules(entity, level, spawnType, pos, random);
     }
 
     @Override

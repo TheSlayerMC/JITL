@@ -1,6 +1,6 @@
 package net.jitl.common.entity.overworld;
 
-import net.jitl.common.entity.base.AnimatableMonster;
+import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.projectile.FloroMudEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -29,7 +29,7 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 
 import java.util.EnumSet;
 
-public class Floro extends AnimatableMonster implements RangedAttackMob {
+public class Floro extends JMonsterEntity implements RangedAttackMob {
 
     private static final EntityDataAccessor<Boolean> HIDDEN = SynchedEntityData.defineId(Floro.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> IS_SHOOTING = SynchedEntityData.defineId(Floro.class, EntityDataSerializers.BOOLEAN);

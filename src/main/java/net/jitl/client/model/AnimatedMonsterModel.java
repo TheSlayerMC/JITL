@@ -20,16 +20,16 @@ public class AnimatedMonsterModel<T extends GeoEntity> extends DefaultedEntityGe
 
     @Override
     public ResourceLocation getModelResource(T object) {
-        return JITL.rl("geo/" + name +".json");
+        return JITL.rl("geo/" + this.name +".json");
     }
 
     @Override
     public ResourceLocation getTextureResource(T object) {
-        return JITL.rl("textures/entity/" + dim.getDim() + "/" + name +".png");
+        return JITL.rl("textures/entity/" + dim.getDim() + "/" + this.name +".png");
     }
 
     @Override
     public ResourceLocation getAnimationResource(T animatable) {
-        return JITL.rl("animations/" + name + ".animation.json");
+        return JITL.rl("animations/" + this.name + ".animation.json");
     }
 }

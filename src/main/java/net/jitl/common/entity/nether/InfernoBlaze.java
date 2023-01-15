@@ -1,6 +1,6 @@
 package net.jitl.common.entity.nether;
 
-import net.jitl.common.entity.base.AnimatableMonster;
+import net.jitl.common.entity.base.JMonsterEntity;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -24,7 +24,7 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 
 import java.util.EnumSet;
 
-public class InfernoBlaze extends AnimatableMonster {
+public class InfernoBlaze extends JMonsterEntity {
     
     private static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(InfernoBlaze.class, EntityDataSerializers.BYTE);
 
@@ -42,6 +42,11 @@ public class InfernoBlaze extends AnimatableMonster {
         this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, null));
+    }
+
+    @Override
+    public boolean fireImmune() {
+        return true;
     }
 
     public static AttributeSupplier createAttributes() {

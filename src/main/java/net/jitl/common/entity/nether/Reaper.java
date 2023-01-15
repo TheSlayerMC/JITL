@@ -1,6 +1,6 @@
 package net.jitl.common.entity.nether;
 
-import net.jitl.common.entity.base.AnimatableMonster;
+import net.jitl.common.entity.base.JMonsterEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -14,7 +14,7 @@ import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
-public class Reaper extends AnimatableMonster {
+public class Reaper extends JMonsterEntity {
 
     public Reaper(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -37,6 +37,11 @@ public class Reaper extends AnimatableMonster {
                 .add(Attributes.MAX_HEALTH, 30)
                 .add(Attributes.FOLLOW_RANGE, 10)
                 .add(Attributes.MOVEMENT_SPEED, 0.26).build();
+    }
+
+    @Override
+    public boolean fireImmune() {
+        return true;
     }
 
     private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.reaper.idle");

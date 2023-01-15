@@ -1,0 +1,159 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.flame_lotus",
+				"texture_width": 128,
+				"texture_height": 32,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "pedalbottom4",
+					"pivot": [0, 0, 0],
+					"rotation": [-8, -136.04, 0],
+					"cubes": [
+						{"origin": [-4, 0, -20], "size": [8, 0, 20], "uv": [28, 10]}
+					]
+				},
+				{
+					"name": "pedalbottom2",
+					"pivot": [0, 0, 0],
+					"rotation": [-8, 44, 0],
+					"cubes": [
+						{"origin": [-4, 0, -20], "size": [8, 0, 20], "uv": [28, 10]}
+					]
+				},
+				{
+					"name": "pedalbottom1",
+					"pivot": [0, 0, 0],
+					"rotation": [-8, 136, 0],
+					"cubes": [
+						{"origin": [-4, 0, -20], "size": [8, 0, 20], "uv": [28, 10]}
+					]
+				},
+				{
+					"name": "pedalbottom3",
+					"pivot": [0, 0, 0],
+					"rotation": [-8, -44, 0],
+					"cubes": [
+						{"origin": [-4, 0, -20], "size": [8, 0, 20], "uv": [28, 10]}
+					]
+				},
+				{
+					"name": "pedaltop1",
+					"pivot": [0, 0, 0],
+					"rotation": [-14, 0, 0],
+					"cubes": [
+						{"origin": [-4, 0, -20], "size": [8, 0, 16], "uv": [16, 0]}
+					]
+				},
+				{
+					"name": "pedaltop2",
+					"pivot": [0, 0, 0],
+					"rotation": [-14, 90, 0],
+					"cubes": [
+						{"origin": [-4, 0, -20], "size": [8, 0, 16], "uv": [16, 0]}
+					]
+				},
+				{
+					"name": "pedaltop3",
+					"pivot": [0, 0, 0],
+					"rotation": [-14, -90, 0],
+					"cubes": [
+						{"origin": [-4, 0, -20], "size": [8, 0, 16], "uv": [16, 0]}
+					]
+				},
+				{
+					"name": "pedalmid4",
+					"pivot": [0, 0, 0],
+					"rotation": [-11, 22, 0],
+					"cubes": [
+						{"origin": [-4, 0, -20], "size": [8, 0, 20], "uv": [44, 10]}
+					]
+				},
+				{
+					"name": "pedalmid8",
+					"pivot": [0, 0, 0],
+					"rotation": [-11, -156.97, 0],
+					"cubes": [
+						{"origin": [-4, 0, -20], "size": [8, 0, 20], "uv": [44, 10]}
+					]
+				},
+				{
+					"name": "pedalmid3",
+					"pivot": [0, 0, 0],
+					"rotation": [-11, 68, 0],
+					"cubes": [
+						{"origin": [-4, 0, -20], "size": [8, 0, 20], "uv": [44, 10]}
+					]
+				},
+				{
+					"name": "pedalmid2",
+					"pivot": [0, 0, 0],
+					"rotation": [-11, 112.04, 0],
+					"cubes": [
+						{"origin": [-4, 0, -20], "size": [8, 0, 20], "uv": [44, 10]}
+					]
+				},
+				{
+					"name": "pedalmid1",
+					"pivot": [0, 0, 0],
+					"rotation": [-11, 156.52, 0],
+					"cubes": [
+						{"origin": [-4, 0, -20], "size": [8, 0, 20], "uv": [44, 10]}
+					]
+				},
+				{
+					"name": "pedalmid5",
+					"pivot": [0, 0, 0],
+					"rotation": [-11, -20.87, 0],
+					"cubes": [
+						{"origin": [-4, 0, -20], "size": [8, 0, 20], "uv": [44, 10]}
+					]
+				},
+				{
+					"name": "pedalmid6",
+					"pivot": [0, 0, 0],
+					"rotation": [-11, -67.83, 0],
+					"cubes": [
+						{"origin": [-4, 0, -20], "size": [8, 0, 20], "uv": [44, 10]}
+					]
+				},
+				{
+					"name": "pedalmid7",
+					"pivot": [0, 0, 0],
+					"rotation": [-11, -112.17, 0],
+					"cubes": [
+						{"origin": [-4, 0, -20], "size": [8, 0, 20], "uv": [44, 10]}
+					]
+				},
+				{
+					"name": "flowerbudtop",
+					"pivot": [2, 3, 2],
+					"cubes": [
+						{"origin": [-4, 1, -4], "size": [8, 2, 8], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "flowerbud",
+					"pivot": [0, 2, 0],
+					"cubes": [
+						{"origin": [-6, 0, -6], "size": [12, 2, 12], "uv": [0, 18]}
+					]
+				},
+				{
+					"name": "pedaltop4",
+					"pivot": [0, 0, 0],
+					"rotation": [-14, 180, 0],
+					"cubes": [
+						{"origin": [-4, 0, -20], "size": [8, 0, 16], "uv": [16, 0]}
+					]
+				}
+			]
+		}
+	]
+}
