@@ -193,6 +193,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.GOLDITE_FLOWER);
         this.dropSelf(JBlocks.GOLDITE_STALKS);
         this.dropSelf(JBlocks.GOLDITE_BULB);
+        this.dropSelf(JBlocks.GOLDITE_TALL_GRASS);
         this.add(JBlocks.GOLD_BOT_SPAWNER, noDrop());
         this.dropSelf(JBlocks.GOLDITE_FURNACE);
         this.dropSelf(JBlocks.EUCA_PUMPKIN);
@@ -410,6 +411,11 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.SMALL_STONE_BRICKS);
 
         this.addCrop(JBlocks.FLORO_PEDAL_CROP.get(), JItems.FLORO_PEDAL.get(), JItems.FLORO_SEEDS.get(), 7);
+        this.addCrop(JBlocks.CORVEGGIES_CROP.get(), JItems.CORVEGGIES.get(), JItems.CORVEGGIES.get(), 3);
+        this.addCrop(JBlocks.CRAKEBULB_CROP.get(), JItems.CRAKEBULB.get(), JItems.CRAKEBULB.get(), 4);
+        this.addCrop(JBlocks.CRACKENCANE_CROP.get(), JItems.CRACKENCANE.get(), JItems.CRACKENCANE_SEEDS.get(), 7);
+        this.addCrop(JBlocks.GLOWA_CROP.get(), JItems.GLOWA.get(), JItems.GLOWA_SEEDS.get(), 4);
+        this.addCrop(JBlocks.SPINEBERRY_CROP.get(), JItems.SPINEBERRIES.get(), JItems.SPINEBERRY_SEEDS.get(), 7);
     }
 
     protected void addCrop(Block cropBlock, Item crop, Item seeds, int maxAge) {

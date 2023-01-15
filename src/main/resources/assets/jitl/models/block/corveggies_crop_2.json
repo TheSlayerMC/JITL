@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "jitl:block/corveggies_crop_2"
+  }
+}

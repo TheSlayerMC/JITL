@@ -1,7 +1,7 @@
 package net.jitl.core.init.internal;
 
 import net.jitl.common.block.*;
-import net.jitl.common.block.crop.FloroCropBlock;
+import net.jitl.common.block.crop.*;
 import net.jitl.common.block.spawners.GoldBotSpawnerBlock;
 import net.jitl.common.block.spawners.MiniGhastSpawnerBlock;
 import net.jitl.common.world.dimension.Dimensions;
@@ -256,6 +256,7 @@ public class JBlocks {
     public static final RegistryObject<Block> GOLDITE_FLOWER = registerCrossBlock("goldite_flower", "Goldite Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> GOLDITE_STALKS = registerCrossBlock("goldite_stalks", "Goldite Stalks", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> GOLDITE_BULB = registerCrossBlock("goldite_bulb", "Goldite Bulb", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final RegistryObject<Block> GOLDITE_TALL_GRASS = registerDoublePlant("goldite_tall_grass", "Goldite Tall Grass", () -> new JDoublePlantBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> GOLD_BOT_SPAWNER = register("gold_bot_spawner", "Gold Bot Spawner", GoldBotSpawnerBlock::new, true);
     public static final RegistryObject<Block> GOLDITE_FURNACE = registerFurnaceBlock("goldite_furnace", "Goldite Furnace");
     public static final RegistryObject<Block> EUCA_PUMPKIN = registerRotatableBlock("euca_pumpkin", "Euca Pumpkin", () -> new FaceableBlock(JBlockProperties.WOOD));
@@ -481,6 +482,11 @@ public class JBlocks {
     public static final RegistryObject<Block> SMALL_STONE_BRICKS = register("small_stone_bricks", "Small Stone Bricks", JBlockProperties.STONE);
 
     public static final RegistryObject<Block> FLORO_PEDAL_CROP = registerCropBlock("floro_pedal_crop", "Floro Pedal", 8, FloroCropBlock::new);
+    public static final RegistryObject<Block> CORVEGGIES_CROP = registerCropBlock("corveggies_crop", "Corveggies", 3, CorveggieCropBlock::new);
+    public static final RegistryObject<Block> CRACKENCANE_CROP = registerCropBlock("crackencane_crop", "Crackencane", 8, CrackencanesCropBlock::new);
+    public static final RegistryObject<Block> CRAKEBULB_CROP = registerCropBlock("crakebulb_crop", "Crakebulb", 4, CrakebulbCropBlock::new);
+    public static final RegistryObject<Block> GLOWA_CROP = registerCropBlock("glowa_crop", "Glowa", 4, GlowaCropBlock::new);
+    public static final RegistryObject<Block> SPINEBERRY_CROP = registerCropBlock("spineberry_crop", "Spineberry", 8, SpineberryCropBlock::new);
 
     public static RegistryObject<Block> register(String name, String translatedName, BlockBehaviour.Properties props, CreativeModeTab tab) {
         return register(name, translatedName, () -> new Block(props), tab);

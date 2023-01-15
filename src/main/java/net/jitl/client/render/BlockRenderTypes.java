@@ -59,6 +59,7 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.GOLDITE_FLOWER.get());
         cutout.add(JBlocks.GOLDITE_STALKS.get());
         cutout.add(JBlocks.GOLDITE_BULB.get());
+        cutout.add(JBlocks.GOLDITE_TALL_GRASS.get());
         cutout.add(JBlocks.BITTERWOOD_SAPLING.get());
         cutout.add(JBlocks.ICE_BUSH.get());
         cutout.add(JBlocks.ICE_BUD.get());
@@ -101,6 +102,11 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.CORBA_FLOWER.get());
         cutout.add(JBlocks.CORBA_LADDER.get());
         cutout.add(JBlocks.FLORO_PEDAL_CROP.get());
+        cutout.add(JBlocks.CORVEGGIES_CROP.get());
+        cutout.add(JBlocks.CRACKENCANE_CROP.get());
+        cutout.add(JBlocks.CRAKEBULB_CROP.get());
+        cutout.add(JBlocks.GLOWA_CROP.get());
+        cutout.add(JBlocks.SPINEBERRY_CROP.get());
 
         translucent.add(JBlocks.EUCA_PORTAL.get());
         translucent.add(JBlocks.FROZEN_PORTAL.get());

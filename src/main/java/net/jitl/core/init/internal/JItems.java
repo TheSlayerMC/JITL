@@ -99,7 +99,16 @@ public class JItems {
     public static final RegistryObject<Item> CRYSTAL_EYE = registerNormalItem("crystal_eye", "Crystal Eye");
     public static final RegistryObject<Item> DARK_MATTER_GEMSTONE = registerNormalItem("dark_matter_gemstone", "Dark Matter Gemstone");
     public static final RegistryObject<Item> FLORO_PEDAL = registerNormalItem("floro_pedal", "Floro Pedal");
-    public static final RegistryObject<Item> FLORO_SEEDS = registerNormalItem("floro_seeds", "Floro Seeds", () -> new ItemNameBlockItem(JBlocks.FLORO_PEDAL_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> FLORO_SEEDS = registerNormalItem("floro_seeds", "Floro Seeds", () -> new ItemNameBlockItem(JBlocks.FLORO_PEDAL_CROP.get(), JItems.itemProps()));
+    public static final RegistryObject<Item> CORVEGGIES = registerNormalItem("corveggies", "Corveggies", () -> new ItemNameBlockItem(JBlocks.CORVEGGIES_CROP.get(), JItems.itemProps()));
+    public static final RegistryObject<Item> CRACKENCANE_SEEDS = registerNormalItem("crackencane_seeds", "Crackencane Seeds", () -> new ItemNameBlockItem(JBlocks.CRACKENCANE_CROP.get(), JItems.itemProps()));
+    public static final RegistryObject<Item> CRACKENCANE = registerNormalItem("crackencane", "Crackencane");
+    public static final RegistryObject<Item> CRAKEBULB_SEEDS = registerNormalItem("crakebulb_seeds", "Crakebulb Seeds", () -> new ItemNameBlockItem(JBlocks.CRAKEBULB_CROP.get(), JItems.itemProps()));
+    public static final RegistryObject<Item> CRAKEBULB = registerNormalItem("crakebulb", "Crakebulb");
+    public static final RegistryObject<Item> GLOWA_SEEDS = registerNormalItem("glowa_seeds", "Glowa Seeds", () -> new ItemNameBlockItem(JBlocks.GLOWA_CROP.get(), JItems.itemProps()));
+    public static final RegistryObject<Item> GLOWA = registerNormalItem("glowa", "Glowa");
+    public static final RegistryObject<Item> SPINEBERRY_SEEDS = registerNormalItem("spineberry_seeds", "Spineberry Seeds", () -> new ItemNameBlockItem(JBlocks.SPINEBERRY_CROP.get(), JItems.itemProps()));
+    public static final RegistryObject<Item> SPINEBERRIES = registerNormalItem("spineberries", "Spineberries");
     public static final RegistryObject<Item> HONGOSHROOM = registerNormalItem("hongoshroom", "Hongoshroom");
 
     public static final RegistryObject<Item> OBSIDIAN_STICK = registerNormalItem("obsidian_stick", "Obsidian Rod");
@@ -111,7 +120,6 @@ public class JItems {
     public static final RegistryObject<Item> EUCA_PORTAL_GEM = registerNormalItem("euca_portal_gem", "Euca Portal Gem");
     public static final RegistryObject<Item> DEPTHS_PORTAL_GEM = registerNormalItem("depths_portal_gem", "Depths Portal Gem");
     public static final RegistryObject<Item> CORBA_PORTAL_GEM = registerNormalItem("corba_portal_gem", "Corba Portal Gem");
-    public static final RegistryObject<Item> FROZEN_PORTAL_GEM = registerNormalItem("frozen_portal_gem", "Frozen Portal Gem");
 
     public static final RegistryObject<Item> EUCA_TABLET = registerNormalItem("euca_tablet", "Euca Tablet");
     public static final RegistryObject<Item> GOLDER_DUST = registerNormalItem("golder_dust", "Golder Dust");

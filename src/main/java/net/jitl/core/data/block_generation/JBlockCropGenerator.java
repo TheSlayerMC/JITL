@@ -93,7 +93,7 @@ public class JBlockCropGenerator {
         getBlockModel(JITL.MODID, name, maxStages);
         getBlockstate(JITL.MODID, name, maxStages);
 
-        writerInit();
+        writerInit(maxStages);
     }
 
     public void getBlockItem(String modID, String name, int maxStages) {
@@ -131,17 +131,24 @@ public class JBlockCropGenerator {
         writeToBlockstateFile("}");
     }
 
-    public void writerInit() {
+    public void writerInit(int maxStages) {
         try {
             itemModelWriter.close();
             blockModelWriter0.close();
-            blockModelWriter1.close();
-            blockModelWriter2.close();
-            blockModelWriter3.close();
-            blockModelWriter4.close();
-            blockModelWriter5.close();
-            blockModelWriter6.close();
-            blockModelWriter7.close();
+            if(maxStages > 1)
+                blockModelWriter1.close();
+            if(maxStages > 2)
+                blockModelWriter2.close();
+            if(maxStages > 3)
+                blockModelWriter3.close();
+            if(maxStages > 4)
+                blockModelWriter4.close();
+            if(maxStages > 5)
+                blockModelWriter5.close();
+            if(maxStages > 6)
+                blockModelWriter6.close();
+            if(maxStages > 7)
+                blockModelWriter7.close();
             blockstateWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
