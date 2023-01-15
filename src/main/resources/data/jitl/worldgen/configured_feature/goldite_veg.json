@@ -17,6 +17,12 @@
             "seed": 2345,
             "states": [
               {
+                "Name": "jitl:goldite_tall_grass",
+                "Properties": {
+                  "half": "lower"
+                }
+              },
+              {
                 "Name": "jitl:goldite_stalks"
               },
               {
