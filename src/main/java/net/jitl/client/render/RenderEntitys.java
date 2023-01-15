@@ -77,6 +77,10 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.JUNGLE_TURTLE_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("jungle_turtle", JDimension.OVERWORLD), 1.0F));
         EntityRenderers.register(JEntities.JUNGLE_GOLEM_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("jungle_golem", JDimension.OVERWORLD), 0.9F));
         EntityRenderers.register(JEntities.SAND_CRAWLER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("sand_crawler", JDimension.OVERWORLD), 0.5F));
+        EntityRenderers.register(JEntities.ROCKITE_GOLEM_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("rockite_golem", JDimension.OVERWORLD), 0.5F));
+        EntityRenderers.register(JEntities.STONEWALKER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("stonewalker", JDimension.OVERWORLD), 0.5F));
+        EntityRenderers.register(JEntities.CAVELING_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("caveling", JDimension.OVERWORLD), 0.5F));
+        EntityRenderers.register(JEntities.CAVURN_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("cavurn", JDimension.OVERWORLD), 0.5F));
 
         EntityRenderers.register(JEntities.WITHERSPINE_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("witherspine", JDimension.NETHER), 0.6F));
         EntityRenderers.register(JEntities.MINI_GHAST_TYPE.get(), renderer -> new MiniGhastRenderer<>(renderer, new AnimatedMonsterModel<>("mini_ghast", JDimension.NETHER)));

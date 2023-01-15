@@ -1,0 +1,67 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.rockite_golem",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "body",
+					"pivot": [0, 31, 0],
+					"cubes": [
+						{"origin": [-9, 21, -6], "size": [18, 12, 11], "uv": [0, 40]}
+					]
+				},
+				{
+					"name": "lowerBody",
+					"pivot": [-0.5, 31, 0],
+					"cubes": [
+						{"origin": [-5, 14, -3.5], "size": [10, 7, 6], "inflate": 0.5, "uv": [0, 70]}
+					]
+				},
+				{
+					"name": "arm1",
+					"pivot": [9, 31, 0],
+					"cubes": [
+						{"origin": [9, 12, -3], "size": [4, 22, 6], "uv": [60, 58]}
+					]
+				},
+				{
+					"name": "arm2",
+					"pivot": [-10, 29, 0],
+					"cubes": [
+						{"origin": [-13, 12, -3], "size": [4, 22, 6], "uv": [60, 21]}
+					]
+				},
+				{
+					"name": "leg1",
+					"pivot": [-4, 13, 0],
+					"cubes": [
+						{"origin": [-7.5, 0, -3], "size": [6, 16, 5], "uv": [37, 0]}
+					]
+				},
+				{
+					"name": "head",
+					"pivot": [0, 31, -2],
+					"cubes": [
+						{"origin": [-8, 27, -10], "size": [16, 10, 8], "uv": [0, 100]}
+					]
+				},
+				{
+					"name": "leg2",
+					"pivot": [5, 13, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [1.5, 0, -3], "size": [6, 16, 5], "uv": [60, 0]}
+					]
+				}
+			]
+		}
+	]
+}

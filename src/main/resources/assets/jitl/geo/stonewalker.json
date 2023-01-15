@@ -1,0 +1,83 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.stonewalker",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "leftBackLeg",
+					"pivot": [6, 9, 7],
+					"mirror": true,
+					"cubes": [
+						{"origin": [6, 0, 6], "size": [2, 13, 2], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "rightBackLeg",
+					"pivot": [-6, 9, 7],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-8, 0, 6], "size": [2, 13, 2], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "leftFrontLeg",
+					"pivot": [6, 9, -7],
+					"mirror": true,
+					"cubes": [
+						{"origin": [6, 0, -8], "size": [2, 13, 2], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "rightFrontLeg",
+					"pivot": [-6, 9, -7],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-8, 0, -8], "size": [2, 13, 2], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "body",
+					"pivot": [-2, 19, -2],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-2, 3, -2], "size": [4, 16, 4], "uv": [0, 15]}
+					]
+				},
+				{
+					"name": "limb2",
+					"pivot": [0, 10, 1],
+					"rotation": [0, -45, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-10.5, 8, -1], "size": [20, 2, 2], "uv": [8, 0]}
+					]
+				},
+				{
+					"name": "limb1",
+					"pivot": [-1, 10, 1],
+					"rotation": [0, 45, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-9.5, 8, 0], "size": [20, 2, 2], "uv": [8, 0]}
+					]
+				},
+				{
+					"name": "head",
+					"pivot": [0, 19, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-4, 19, -4], "size": [8, 8, 8], "uv": [0, 35]}
+					]
+				}
+			]
+		}
+	]
+}

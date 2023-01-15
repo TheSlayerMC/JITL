@@ -11,6 +11,7 @@ import net.jitl.common.entity.frozen.FrozenGuardian;
 import net.jitl.common.entity.nether.*;
 import net.jitl.common.entity.overworld.*;
 import net.jitl.common.entity.overworld.npc.Mage;
+import net.jitl.common.entity.overworld.npc.RockiteGolem;
 import net.jitl.common.entity.projectile.*;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.ResourceLocation;
@@ -82,6 +83,10 @@ public class JEntities {
     public static final RegistryObject<EntityType<JungleTurtle>> JUNGLE_TURTLE_TYPE = registerEntity(JungleTurtle::new, "jungle_turtle", "Jungle Turtle", 2F, 2F, OVERWORLD_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
     public static final RegistryObject<EntityType<JungleGolem>> JUNGLE_GOLEM_TYPE = registerEntity(JungleGolem::new, "jungle_golem", "Jungle Golem", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<SandCrawler>> SAND_CRAWLER_TYPE = registerEntity(SandCrawler::new, "sand_crawler", "Sand Crawler", 1.3F, 1F, OVERWORLD_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<RockiteGolem>> ROCKITE_GOLEM_TYPE = registerEntity(RockiteGolem::new, "rockite_golem", "Rockite Golem", 1.3F, 1.5F, OVERWORLD_COLOR, TRADER_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<Caveling>> CAVELING_TYPE = registerEntity(Caveling::new, "caveling", "Caveling", 1F, 1.1F, OVERWORLD_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Cavurn>> CAVURN_TYPE = registerEntity(Cavurn::new, "cavurn", "Cavurn", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Stonewalker>> STONEWALKER_TYPE = registerEntity(Stonewalker::new, "stonewalker", "Stonewalker", 1F, 1.2F, OVERWORLD_COLOR, HOSTILE_COLOR);
 
     //NETHER MOBS
     public static final RegistryObject<EntityType<Witherspine>> WITHERSPINE_TYPE = registerEntity(Witherspine::new, "witherspine", "Witherspine", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
@@ -156,6 +161,10 @@ public class JEntities {
         event.put(JUNGLE_TURTLE_TYPE.get(), JungleTurtle.createAttributes());
         event.put(JUNGLE_GOLEM_TYPE.get(), JungleGolem.createAttributes());
         event.put(SAND_CRAWLER_TYPE.get(), SandCrawler.createAttributes());
+        event.put(ROCKITE_GOLEM_TYPE.get(), RockiteGolem.createAttributes());
+        event.put(CAVURN_TYPE.get(), Cavurn.createAttributes());
+        event.put(CAVELING_TYPE.get(), Caveling.createAttributes());
+        event.put(STONEWALKER_TYPE.get(), Stonewalker.createAttributes());
 
         event.put(WITHERSPINE_TYPE.get(), Witherspine.createAttributes());
         event.put(MINI_GHAST_TYPE.get(), MiniGhast.createAttributes());
@@ -204,6 +213,10 @@ public class JEntities {
         setDefaultMonsterSpawn(event, JUNGLE_TURTLE_TYPE);
         setDefaultMonsterSpawn(event, JUNGLE_GOLEM_TYPE);
         setDefaultMonsterSpawn(event, SAND_CRAWLER_TYPE);
+        setDefaultSpawn(event, ROCKITE_GOLEM_TYPE);//Spawn underground
+        setDefaultSpawn(event, CAVELING_TYPE);//Spawn underground
+        setDefaultSpawn(event, STONEWALKER_TYPE);//Spawn underground
+        setDefaultSpawn(event, CAVURN_TYPE);//Spawn underground
 
         setDefaultMonsterSpawn(event, WITHERSPINE_TYPE);
         setDefaultMonsterSpawn(event, HELL_TURTLE_TYPE);
