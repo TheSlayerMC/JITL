@@ -1,17 +1,17 @@
 {
   "type": "forge:add_spawns",
-  "biomes": "minecraft:desert",
+  "biomes": "#minecraft:is_jungle",
   "spawners": [
     {
-      "type": "jitl:spyclopse",
+      "type": "jitl:jungle_golem",
       "weight": 3,
       "minCount": 1,
-      "maxCount": 3
+      "maxCount": 2
     },
     {
-      "type": "jitl:sand_crawler",
+      "type": "jitl:jungle_turtle",
       "weight": 3,
-      "minCount": 1,
+      "minCount": 2,
       "maxCount": 3
     }
   ]

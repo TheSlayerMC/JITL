@@ -198,9 +198,14 @@ public class JEntities {
 
     @SubscribeEvent
     public static void registerSpawnPlacement(SpawnPlacementRegisterEvent event) {
-        setCustomSpawn(event, SHIMMERER_TYPE.get(), Shimmerer::checkSpawn);
-        setCustomSpawn(event, MINI_GHAST_TYPE.get(), MiniGhast::checkSpawn);
-        setCustomSpawn(event, DARKENER_TYPE.get(), Darkener::checkSpawn);
+        setCustomSpawn(event, SHIMMERER_TYPE, Shimmerer::checkSpawn);
+        setCustomSpawn(event, MINI_GHAST_TYPE, MiniGhast::checkSpawn);
+        setCustomSpawn(event, DARKENER_TYPE, Darkener::checkSpawn);
+        setCustomSpawn(event, ROCKITE_GOLEM_TYPE, RockiteGolem::checkSpawn);
+        setCustomSpawn(event, CAVELING_TYPE, Caveling::checkSpawn);
+        setCustomSpawn(event, STONEWALKER_TYPE, Stonewalker::checkSpawn);
+        setCustomSpawn(event, CAVURN_TYPE, Cavurn::checkSpawn);
+        setCustomSpawn(event, DARKENER_TYPE, Darkener::checkSpawn);
 
         setDefaultMonsterSpawn(event, FLORO_TYPE);
         setDefaultMonsterSpawn(event, BOOM_TYPE);
@@ -213,10 +218,6 @@ public class JEntities {
         setDefaultMonsterSpawn(event, JUNGLE_TURTLE_TYPE);
         setDefaultMonsterSpawn(event, JUNGLE_GOLEM_TYPE);
         setDefaultMonsterSpawn(event, SAND_CRAWLER_TYPE);
-        setDefaultSpawn(event, ROCKITE_GOLEM_TYPE);//Spawn underground
-        setDefaultSpawn(event, CAVELING_TYPE);//Spawn underground
-        setDefaultSpawn(event, STONEWALKER_TYPE);//Spawn underground
-        setDefaultSpawn(event, CAVURN_TYPE);//Spawn underground
 
         setDefaultMonsterSpawn(event, WITHERSPINE_TYPE);
         setDefaultMonsterSpawn(event, HELL_TURTLE_TYPE);
@@ -240,8 +241,8 @@ public class JEntities {
         setDefaultSpawn(event, ESKIMO_TYPE);
     }
 
-    public static <T extends Entity> void setCustomSpawn(SpawnPlacementRegisterEvent event, EntityType<T> entity, SpawnPlacements.SpawnPredicate<T> spawn) {
-        event.register(entity, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, spawn, SpawnPlacementRegisterEvent.Operation.AND);
+    public static <T extends Entity> void setCustomSpawn(SpawnPlacementRegisterEvent event, RegistryObject<EntityType<T>> entity, SpawnPlacements.SpawnPredicate<T> spawn) {
+        event.register(entity.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, spawn, SpawnPlacementRegisterEvent.Operation.AND);
     }
 
     //For normal mob spawns (animals / NPC's)
