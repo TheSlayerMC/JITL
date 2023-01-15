@@ -205,7 +205,6 @@ public class JEntities {
         setCustomSpawn(event, CAVELING_TYPE, Caveling::checkSpawn);
         setCustomSpawn(event, STONEWALKER_TYPE, Stonewalker::checkSpawn);
         setCustomSpawn(event, CAVURN_TYPE, Cavurn::checkSpawn);
-        setCustomSpawn(event, DARKENER_TYPE, Darkener::checkSpawn);
 
         setDefaultMonsterSpawn(event, FLORO_TYPE);
         setDefaultMonsterSpawn(event, BOOM_TYPE);
