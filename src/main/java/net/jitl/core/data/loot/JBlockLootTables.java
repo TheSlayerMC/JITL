@@ -2,16 +2,19 @@ package net.jitl.core.data.loot;
 
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
@@ -405,6 +408,12 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.ROYAL_PEDESTAL);
         this.dropSelf(JBlocks.STONE_PLILLAR);
         this.dropSelf(JBlocks.SMALL_STONE_BRICKS);
+
+        this.addCrop(JBlocks.FLORO_PEDAL_CROP.get(), JItems.FLORO_PEDAL.get(), JItems.FLORO_SEEDS.get(), 7);
+    }
+
+    protected void addCrop(Block cropBlock, Item crop, Item seeds, int maxAge) {
+        this.add(cropBlock, this.createCropDrops(cropBlock, crop, seeds, LootItemBlockStatePropertyCondition.hasBlockStateProperties(cropBlock).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, maxAge))));
     }
 
     protected LootTable.Builder createGemBlockDrops(Block block, boolean rare) {

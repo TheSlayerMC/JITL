@@ -100,6 +100,7 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.CORBA_DARK_PURPLE_FLOWER.get());
         cutout.add(JBlocks.CORBA_FLOWER.get());
         cutout.add(JBlocks.CORBA_LADDER.get());
+        cutout.add(JBlocks.FLORO_PEDAL_CROP.get());
 
         translucent.add(JBlocks.EUCA_PORTAL.get());
         translucent.add(JBlocks.FROZEN_PORTAL.get());

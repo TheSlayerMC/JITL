@@ -96,6 +96,13 @@ public class JBlockProperties {
             .noOcclusion()
             .requiresCorrectToolForDrops();
 
+    public static BlockBehaviour.Properties CROP = BlockBehaviour.Properties.of(Material.PLANT)
+            .sound(SoundType.CROP)
+            .instabreak()
+            .noCollission()
+            .noOcclusion()
+            .randomTicks();
+
     public static BlockBehaviour.Properties LUMINESCENT_LEAVES = BlockBehaviour.Properties.of(Material.LEAVES)
             .strength(0.5F)
             .sound(SoundType.GRASS)

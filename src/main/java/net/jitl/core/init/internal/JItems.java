@@ -25,10 +25,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.RecordItem;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -102,7 +99,7 @@ public class JItems {
     public static final RegistryObject<Item> CRYSTAL_EYE = registerNormalItem("crystal_eye", "Crystal Eye");
     public static final RegistryObject<Item> DARK_MATTER_GEMSTONE = registerNormalItem("dark_matter_gemstone", "Dark Matter Gemstone");
     public static final RegistryObject<Item> FLORO_PEDAL = registerNormalItem("floro_pedal", "Floro Pedal");
-    public static final RegistryObject<Item> FLORO_SEEDS = registerNormalItem("floro_seeds", "Floro Seeds");
+    public static final RegistryObject<Item> FLORO_SEEDS = registerNormalItem("floro_seeds", "Floro Seeds", () -> new ItemNameBlockItem(JBlocks.FLORO_PEDAL_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> HONGOSHROOM = registerNormalItem("hongoshroom", "Hongoshroom");
 
     public static final RegistryObject<Item> OBSIDIAN_STICK = registerNormalItem("obsidian_stick", "Obsidian Rod");

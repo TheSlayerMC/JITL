@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "jitl:block/floro_pedal_crop_0"
+  }
+}

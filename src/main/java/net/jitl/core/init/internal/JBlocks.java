@@ -1,11 +1,13 @@
 package net.jitl.core.init.internal;
 
 import net.jitl.common.block.*;
+import net.jitl.common.block.crop.FloroCropBlock;
 import net.jitl.common.block.spawners.GoldBotSpawnerBlock;
 import net.jitl.common.block.spawners.MiniGhastSpawnerBlock;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.common.world.gen.tree_grower.EucaGoldTreeGrower;
 import net.jitl.common.world.gen.tree_grower.EucaGreenTreeGrower;
+import net.jitl.core.data.block_generation.JBlockCropGenerator;
 import net.jitl.core.init.JITL;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -83,6 +85,8 @@ public class JBlocks {
     public static final ArrayList<String> campfireLangName = new ArrayList<>();
     public static final ArrayList<String> pathBlockName = new ArrayList<>();
     public static final ArrayList<String> pathLangName = new ArrayList<>();
+    public static final ArrayList<String> cropBlockName = new ArrayList<>();
+    public static final ArrayList<String> cropLangName = new ArrayList<>();
 
     public static final RegistryObject<Block> IRIDIUM_ORE = register("iridium_ore", "Iridium Ore", JBlockProperties.STONE);
     public static final RegistryObject<Block> IRIDIUM_BLOCK = registerFuelBlock("iridium_block", "Iridium Block", () -> new Block(JBlockProperties.STONE), 16000);
@@ -476,6 +480,8 @@ public class JBlocks {
     public static final RegistryObject<RotatedPillarBlock> STONE_PLILLAR = registerPillar("stone_pillar", "Stone Pillar", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> SMALL_STONE_BRICKS = register("small_stone_bricks", "Small Stone Bricks", JBlockProperties.STONE);
 
+    public static final RegistryObject<Block> FLORO_PEDAL_CROP = registerCropBlock("floro_pedal_crop", "Floro Pedal", 8, FloroCropBlock::new);
+
     public static RegistryObject<Block> register(String name, String translatedName, BlockBehaviour.Properties props, CreativeModeTab tab) {
         return register(name, translatedName, () -> new Block(props), tab);
     }
@@ -612,6 +618,17 @@ public class JBlocks {
     public static RegistryObject<Block> registerPathBlock(String name, String translatedName, Supplier<Block> block) {
         pathBlockName.add(name);
         pathLangName.add(translatedName);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerCropBlock(String name, String translatedName, int maxStages, Supplier<Block> block) {
+        if(JITL.DEV_MODE)
+            new JBlockCropGenerator().generate(name, maxStages);
+
+        cropBlockName.add(name);
+        cropBlockName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;

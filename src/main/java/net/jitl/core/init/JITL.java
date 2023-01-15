@@ -48,8 +48,8 @@ public class JITL {
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
 
         modEventBus.addListener(JTabs::registerTabs);
-        JBlocks.BLOCKS.register(modEventBus);
         JItems.ITEMS.register(modEventBus);
+        JBlocks.BLOCKS.register(modEventBus);
         JItems.BLOCK_ITEMS.register(modEventBus);
         JEntities.REGISTRY.register(modEventBus);
         JAttributes.REGISTRY.register(modEventBus);
