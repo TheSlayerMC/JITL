@@ -109,6 +109,10 @@ public class JItems {
     public static final RegistryObject<Item> GLOWA = registerNormalItem("glowa", "Glowa");
     public static final RegistryObject<Item> SPINEBERRY_SEEDS = registerNormalItem("spineberry_seeds", "Spineberry Seeds", () -> new ItemNameBlockItem(JBlocks.SPINEBERRY_CROP.get(), JItems.itemProps()));
     public static final RegistryObject<Item> SPINEBERRIES = registerNormalItem("spineberries", "Spineberries");
+    public static final RegistryObject<Item> ZATPEDAL_SEEDS = registerNormalItem("zatpedal_seeds", "Zatpedal Seeds", () -> new ItemNameBlockItem(JBlocks.ZATPEDAL_CROP.get(), JItems.itemProps()));
+    public static final RegistryObject<Item> ZATPEDAL = registerNormalItem("zatpedal", "Zatpedal");
+    public static final RegistryObject<Item> TOMATO_SEEDS = registerNormalItem("tomato_seeds", "Tomato Seeds", () -> new ItemNameBlockItem(JBlocks.TOMATO_CROP.get(), JItems.itemProps()));
+    public static final RegistryObject<Item> TOMATO = registerNormalItem("tomato", "Tomato");
     public static final RegistryObject<Item> HONGOSHROOM = registerNormalItem("hongoshroom", "Hongoshroom");
 
     public static final RegistryObject<Item> OBSIDIAN_STICK = registerNormalItem("obsidian_stick", "Obsidian Rod");

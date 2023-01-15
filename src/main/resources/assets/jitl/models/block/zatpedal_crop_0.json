@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "jitl:block/zatpedal_crop_0"
+  }
+}

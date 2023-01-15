@@ -487,6 +487,8 @@ public class JBlocks {
     public static final RegistryObject<Block> CRAKEBULB_CROP = registerCropBlock("crakebulb_crop", "Crakebulb", 4, CrakebulbCropBlock::new);
     public static final RegistryObject<Block> GLOWA_CROP = registerCropBlock("glowa_crop", "Glowa", 4, GlowaCropBlock::new);
     public static final RegistryObject<Block> SPINEBERRY_CROP = registerCropBlock("spineberry_crop", "Spineberry", 8, SpineberryCropBlock::new);
+    public static final RegistryObject<Block> ZATPEDAL_CROP = registerCropBlock("zatpedal_crop", "Zatpedal", 8, ZatpedalCropBlock::new);
+    public static final RegistryObject<Block> TOMATO_CROP = registerCropBlock("tomato_crop", "Tomato", 8, TomatoCropBlock::new);
 
     public static RegistryObject<Block> register(String name, String translatedName, BlockBehaviour.Properties props, CreativeModeTab tab) {
         return register(name, translatedName, () -> new Block(props), tab);

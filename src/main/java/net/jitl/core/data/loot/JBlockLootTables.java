@@ -416,6 +416,8 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.addCrop(JBlocks.CRACKENCANE_CROP.get(), JItems.CRACKENCANE.get(), JItems.CRACKENCANE_SEEDS.get(), 7);
         this.addCrop(JBlocks.GLOWA_CROP.get(), JItems.GLOWA.get(), JItems.GLOWA_SEEDS.get(), 4);
         this.addCrop(JBlocks.SPINEBERRY_CROP.get(), JItems.SPINEBERRIES.get(), JItems.SPINEBERRY_SEEDS.get(), 7);
+        this.addCrop(JBlocks.ZATPEDAL_CROP.get(), JItems.ZATPEDAL.get(), JItems.ZATPEDAL_SEEDS.get(), 7);
+        this.addCrop(JBlocks.TOMATO_CROP.get(), JItems.TOMATO.get(), JItems.TOMATO_SEEDS.get(), 7);
     }
 
     protected void addCrop(Block cropBlock, Item crop, Item seeds, int maxAge) {
