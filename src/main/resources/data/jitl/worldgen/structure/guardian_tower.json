@@ -3,7 +3,7 @@
   "start_pool": "jitl:overworld/guardian_tower/start_pool",
   "size": 5,
   "max_distance_from_center": 80,
-  "biomes": "#jitl:has_structure/is_overworld",
+  "biomes": "#jitl:has_structure/guardian_tower",
   "step": "surface_structures",
   "terrain_adaptation": "beard_thin",
   "start_height": {

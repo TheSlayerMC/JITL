@@ -2,10 +2,10 @@ package net.jitl.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.client.render.world.EucaRenderInfo;
+import net.jitl.client.util.ClientGetter;
 import net.jitl.common.capability.stats.PlayerStatsProvider;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.core.init.internal.JItems;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
@@ -23,9 +23,8 @@ public class ClientEventHandler {
 
     public static void onFogDensityEvent(ViewportEvent.RenderFog event) {
         float farPlaneDistance = event.getFarPlaneDistance();
-        Player player = Minecraft.getInstance().player;
-        assert player != null;
-        if (player.level.dimension() == Dimensions.FROZEN_LANDS) {
+        Player player = ClientGetter.player();
+        if (ClientGetter.level().dimension() == Dimensions.FROZEN_LANDS) {
             player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
                 float density;
                 if(stats.hasBlizzard() || CuriosApi.getCuriosHelper().findFirstCurio(player, JItems.EYE_OF_THE_BLIZZARD.get()).isPresent()) {

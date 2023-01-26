@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:is_mountain",
+    "#minecraft:is_forest",
+    "#minecraft:is_jungle",
+    "#minecraft:is_taiga",
+    "#minecraft:is_hill",
+    "minecraft:plains",
+    "minecraft:snowy_plains",
+    "minecraft:mangrove_swamp",
+    "minecraft:swamp",
+    "minecraft:sunflower_plains",
+    "minecraft:taiga",
+    "minecraft:meadow"
+  ]
+}
