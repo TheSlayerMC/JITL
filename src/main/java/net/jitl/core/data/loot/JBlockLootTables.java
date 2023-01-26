@@ -411,10 +411,10 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.SMALL_STONE_BRICKS);
 
         this.addCrop(JBlocks.FLORO_PEDAL_CROP.get(), JItems.FLORO_PEDAL.get(), JItems.FLORO_SEEDS.get(), 7);
-        this.addCrop(JBlocks.CORVEGGIES_CROP.get(), JItems.CORVEGGIES.get(), JItems.CORVEGGIES.get(), 3);
-        this.addCrop(JBlocks.CRAKEBULB_CROP.get(), JItems.CRAKEBULB.get(), JItems.CRAKEBULB.get(), 4);
+        this.addCrop(JBlocks.CORVEGGIES_CROP.get(), JItems.CORVEGGIES.get(), JItems.CORVEGGIES.get(), 2);
+        this.addCrop(JBlocks.CRAKEBULB_CROP.get(), JItems.CRAKEBULB.get(), JItems.CRAKEBULB.get(), 3);
         this.addCrop(JBlocks.CRACKENCANE_CROP.get(), JItems.CRACKENCANE.get(), JItems.CRACKENCANE_SEEDS.get(), 7);
-        this.addCrop(JBlocks.GLOWA_CROP.get(), JItems.GLOWA.get(), JItems.GLOWA_SEEDS.get(), 4);
+        this.addCrop(JBlocks.GLOWA_CROP.get(), JItems.GLOWA.get(), JItems.GLOWA_SEEDS.get(), 3);
         this.addCrop(JBlocks.SPINEBERRY_CROP.get(), JItems.SPINEBERRIES.get(), JItems.SPINEBERRY_SEEDS.get(), 7);
         this.addCrop(JBlocks.ZATPEDAL_CROP.get(), JItems.ZATPEDAL.get(), JItems.ZATPEDAL_SEEDS.get(), 7);
         this.addCrop(JBlocks.TOMATO_CROP.get(), JItems.TOMATO.get(), JItems.TOMATO_SEEDS.get(), 7);
