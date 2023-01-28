@@ -25,6 +25,8 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -98,9 +100,9 @@ public class JItems {
     public static final RegistryObject<Item> COLLECTOR_ROCK = registerNormalItem("collector_rock", "Collector Rock");
     public static final RegistryObject<Item> CRYSTAL_EYE = registerNormalItem("crystal_eye", "Crystal Eye");
     public static final RegistryObject<Item> DARK_MATTER_GEMSTONE = registerNormalItem("dark_matter_gemstone", "Dark Matter Gemstone");
-    public static final RegistryObject<Item> FLORO_PEDAL = registerNormalItem("floro_pedal", "Floro Pedal");
+    public static final RegistryObject<Item> FLORO_PEDAL = registerFoodItem("floro_pedal", "Floro Pedal", JFood.FLORO_PEDAL);
     public static final RegistryObject<Item> FLORO_SEEDS = registerNormalItem("floro_seeds", "Floro Seeds", () -> new ItemNameBlockItem(JBlocks.FLORO_PEDAL_CROP.get(), JItems.itemProps()));
-    public static final RegistryObject<Item> CORVEGGIES = registerNormalItem("corveggies", "Corveggies", () -> new ItemNameBlockItem(JBlocks.CORVEGGIES_CROP.get(), JItems.itemProps()));
+    public static final RegistryObject<Item> CORVEGGIES = registerNormalItem("corveggies", "Corveggies", () -> new ItemNameBlockItem(JBlocks.CORVEGGIES_CROP.get(), JItems.itemProps().food(Foods.CARROT)));
     public static final RegistryObject<Item> CRACKENCANE_SEEDS = registerNormalItem("crackencane_seeds", "Crackencane Seeds", () -> new ItemNameBlockItem(JBlocks.CRACKENCANE_CROP.get(), JItems.itemProps()));
     public static final RegistryObject<Item> CRACKENCANE = registerNormalItem("crackencane", "Crackencane");
     public static final RegistryObject<Item> CRAKEBULB_SEEDS = registerNormalItem("crakebulb_seeds", "Crakebulb Seeds", () -> new ItemNameBlockItem(JBlocks.CRAKEBULB_CROP.get(), JItems.itemProps()));
@@ -112,8 +114,24 @@ public class JItems {
     public static final RegistryObject<Item> ZATPEDAL_SEEDS = registerNormalItem("zatpedal_seeds", "Zatpedal Seeds", () -> new ItemNameBlockItem(JBlocks.ZATPEDAL_CROP.get(), JItems.itemProps()));
     public static final RegistryObject<Item> ZATPEDAL = registerNormalItem("zatpedal", "Zatpedal");
     public static final RegistryObject<Item> TOMATO_SEEDS = registerNormalItem("tomato_seeds", "Tomato Seeds", () -> new ItemNameBlockItem(JBlocks.TOMATO_CROP.get(), JItems.itemProps()));
-    public static final RegistryObject<Item> TOMATO = registerNormalItem("tomato", "Tomato");
-    public static final RegistryObject<Item> HONGOSHROOM = registerNormalItem("hongoshroom", "Hongoshroom");
+    public static final RegistryObject<Item> TOMATO = registerFoodItem("tomato", "Tomato", JFood.TOMATO);
+    public static final RegistryObject<Item> HONGOSHROOM = registerFoodItem("hongoshroom", "Hongoshroom", JFood.HONGOSROOM);
+    public static final RegistryObject<Item> HONGLOWSHROOM = registerFoodItem("honglowshroom", "Honglowshroom", JFood.HONGLOWSROOM);
+    public static final RegistryObject<Item> CRYSTAL_APPLE = registerFoodItem("crystal_apple", "Crystal Apple", JFood.CRYSTAL_APPLE);
+    public static final RegistryObject<Item> FRIED_GHAST_TENTACLE = registerFoodItem("fried_ghast_tentacle", "Fried Ghast Tentacle", JFood.FRIED_GHAST_TENTACLE);
+    public static final RegistryObject<Item> FLAMING_GHAST_TENTACLE = registerFoodItem("flaming_ghast_tentacle", "Flaming Ghast Tentacle", JFood.FLAMING_GHAST_TENTACLE);
+    public static final RegistryObject<Item> FRIED_FLAMING_GHAST_TENTACLE = registerFoodItem("fried_flaming_ghast_tentacle", "Fried Flaming Ghast Tentacle", JFood.FRIED_FLAMING_GHAST_TENTACLE);
+    public static final RegistryObject<Item> GHAST_TENTACLE = registerFoodItem("ghast_tentacle", "Ghast Tentacle", JFood.GHAST_TENTACLE);
+    public static final RegistryObject<Item> FRIED_EGG = registerFoodItem("fried_egg", "Fried Egg", JFood.FRIED_EGG);
+    public static final RegistryObject<Item> MINT_CANDY_CANE = registerFoodItem("mint_candy_cane", "Mint Candy Cane", JFood.MINT_CANDY_CANE);
+    public static final RegistryObject<Item> FRUITY_CANDY_CANE = registerFoodItem("fruity_candy_cane", "Fruity Candy Cane", JFood.FRUITY_CANDY_CANE);
+    public static final RegistryObject<Item> CHERRY_CANDY_CANE = registerFoodItem("cherry_candy_cane", "Cherry Candy Cane", JFood.CHERRY_CANDY_CANE);
+    public static final RegistryObject<Item> PEPPERMINT = registerFoodItem("peppermint", "Peppermint", JFood.PEPPERMINT);
+    public static final RegistryObject<Item> JELLYBEANS = registerFoodItem("jellybeans", "Jellybeans", JFood.JELLYBEANS);
+    public static final RegistryObject<Item> CHOCOLATE = registerFoodItem("chocolate", "Chocolate", JFood.CHOCOLATE);
+    public static final RegistryObject<Item> VANILLA_WAFER = registerFoodItem("vanilla_wafer", "Vanilla Wafer", JFood.VANILLA_WAFER);
+    public static final RegistryObject<Item> REDCURRANT_BERRY = registerNormalItem("redcurrant_berry", "Redcurrant Berry", () -> new ItemNameBlockItem(JBlocks.REDCURRANT_BUSH.get(), JItems.itemProps().food(JFood.REDCURRANT)));
+    public static final RegistryObject<Item> BRADBERRY = registerNormalItem("bradberry", "bradberry", () -> new ItemNameBlockItem(JBlocks.BRADBERRY_BUSH.get(), JItems.itemProps().food(JFood.BRADBERRY)));
 
     public static final RegistryObject<Item> OBSIDIAN_STICK = registerNormalItem("obsidian_stick", "Obsidian Rod");
     public static final RegistryObject<Item> STONE_STICK = registerNormalItem("stone_stick", "Stone Stick");
@@ -126,6 +144,7 @@ public class JItems {
     public static final RegistryObject<Item> CORBA_PORTAL_GEM = registerNormalItem("corba_portal_gem", "Corba Portal Gem");
 
     public static final RegistryObject<Item> EUCA_TABLET = registerNormalItem("euca_tablet", "Euca Tablet");
+    public static final RegistryObject<Item> EUCA_MEAT = registerFoodItem("euca_meat", "Euca Meat", JFood.EUCA_MEAT);
     public static final RegistryObject<Item> GOLDER_DUST = registerNormalItem("golder_dust", "Golder Dust");
     public static final RegistryObject<Item> SHIMMERER_DUST = registerNormalItem("shimmerer_dust", "Shimmerer Dust");
     public static final RegistryObject<Item> METAL_DISK = registerNormalItem("metal_disk", "Metal Disk");
@@ -490,6 +509,10 @@ public class JItems {
         return register(name, translatedName, () -> new Item(new Item.Properties()), ItemType.ITEM);
     }
 
+    public static RegistryObject<Item> registerFoodItem(String name, String translatedName, FoodProperties props) {
+        return register(name, translatedName, () -> new Item(JItems.foodProps(props)), ItemType.ITEM);
+    }
+
     public static RegistryObject<Item> registerFuelItem(String name, String translatedName, int burnTime /* 200 ticks per item */) {
         return register(name, translatedName, () -> new Item(new Item.Properties()) {
             @Override
@@ -547,6 +570,10 @@ public class JItems {
 
     public static Item.Properties itemProps() {
         return new Item.Properties();
+    }
+
+    public static Item.Properties foodProps(FoodProperties props) {
+        return new Item.Properties().food(props);
     }
 
 

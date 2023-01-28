@@ -74,6 +74,19 @@ public class JBlockProperties {
             .strength(1F)
             .sound(SoundType.GRAVEL);
 
+    public static BlockBehaviour.Properties FARMLAND = BlockBehaviour.Properties.of(Material.DIRT)
+            .randomTicks()
+            .strength(0.6F)
+            .sound(SoundType.GRAVEL)
+            .isViewBlocking((state, getter, pos) -> true)
+            .isSuffocating((state, getter, pos) -> true);
+
+    public static final BlockBehaviour.Properties PATH = BlockBehaviour.Properties.of(Material.DIRT)
+            .strength(0.65F)
+            .sound(SoundType.GRASS)
+            .isViewBlocking((state, getter, pos) -> true)
+            .isSuffocating((state, getter, pos) -> true);
+
     public static BlockBehaviour.Properties FIRE_DIRT = BlockBehaviour.Properties.of(Material.DIRT)
             .strength(1F)
             .sound(SoundType.GRAVEL);
@@ -98,6 +111,13 @@ public class JBlockProperties {
 
     public static BlockBehaviour.Properties CROP = BlockBehaviour.Properties.of(Material.PLANT)
             .sound(SoundType.CROP)
+            .instabreak()
+            .noCollission()
+            .noOcclusion()
+            .randomTicks();
+
+    public static BlockBehaviour.Properties GROWING_BUSH = BlockBehaviour.Properties.of(Material.PLANT)
+            .sound(SoundType.SWEET_BERRY_BUSH)
             .instabreak()
             .noCollission()
             .noOcclusion()
@@ -197,12 +217,6 @@ public class JBlockProperties {
             .requiresCorrectToolForDrops()
             .lightLevel(litBlockEmission(13))
             .strength(1.5F, 6.0F);
-
-    public static final BlockBehaviour.Properties PATH = BlockBehaviour.Properties.of(Material.DIRT)
-            .strength(0.65F)
-            .sound(SoundType.GRASS)
-            .isViewBlocking((state, getter, pos) -> true)
-            .isSuffocating((state, getter, pos) -> true);
 
     public static final BlockBehaviour.Properties GLOW_PLANT = BlockBehaviour.Properties.of(Material.GLASS)
             .sound(JSoundTypes.CRYSTAL_FRUIT)

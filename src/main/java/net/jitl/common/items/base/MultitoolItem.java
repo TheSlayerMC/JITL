@@ -57,7 +57,7 @@ public class MultitoolItem extends DiggerItem {
             return InteractionResult.PASS;
         } else {
             Player player = pContext.getPlayer();
-            BlockState blockstate1 = blockstate.getToolModifiedState(pContext, net.minecraftforge.common.ToolActions.SHOVEL_FLATTEN, false);
+            BlockState blockstate1 = blockstate.getToolModifiedState(pContext, ToolActions.SHOVEL_FLATTEN, false);
             BlockState blockstate2 = null;
             if (blockstate1 != null && level.isEmptyBlock(blockpos.above())) {
                 level.playSound(player, blockpos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -82,7 +82,7 @@ public class MultitoolItem extends DiggerItem {
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }
 
-            BlockState toolModifiedState = level.getBlockState(blockpos).getToolModifiedState(pContext, net.minecraftforge.common.ToolActions.HOE_TILL, false);
+            BlockState toolModifiedState = level.getBlockState(blockpos).getToolModifiedState(pContext, ToolActions.HOE_TILL, false);
             Pair<Predicate<UseOnContext>, Consumer<UseOnContext>> pair = toolModifiedState == null ? null : Pair.of(ctx -> true, changeIntoState(toolModifiedState));
             if(pair == null) {
                 return InteractionResult.PASS;

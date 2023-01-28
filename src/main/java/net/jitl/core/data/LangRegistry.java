@@ -45,6 +45,9 @@ public class LangRegistry {
         ArrayList<String> overlayGrassBlockList = new ArrayList<>(JBlocks.overlayGrassBlockName);
         ArrayList<String> terrainBlockList = new ArrayList<>(JBlocks.terrainBlockName);
         ArrayList<String> randomizedBlockList = new ArrayList<>(JBlocks.randomBlockName);
+        ArrayList<String> bushBlockList = new ArrayList<>(JBlocks.bushBlockName);
+        ArrayList<String> farmBlockList = new ArrayList<>(JBlocks.farmlandBlockName);
+        ArrayList<String> cropBlockList = new ArrayList<>(JBlocks.cropBlockName);
 
         ArrayList<String> toolItemList = new ArrayList<>(JItems.toolName);
         ArrayList<String> itemList = new ArrayList<>(JItems.itemName);
@@ -74,7 +77,8 @@ public class LangRegistry {
         writeToFile("\"jitl.knowledge.euca\" : \"Euca Knowledge\",");
         writeToFile("\"jitl.knowledge.boil\" : \"Boiling Knowledge\",");
         writeToFile("\"jitl.knowledge.frozen\" : \"Frozen Knowledge\",");
-
+        writeToFile("\"death.attack.bradberryBush\" : \"%1$s was poked to death by a Bradberry bush\",");
+        writeToFile("\"death.attack.redcurrant\" : \"%1$s was poked to death by a Redcurrant bush\",");
 
         writeToFile("\"jitl.tooltip.freeze\" : \"On hit: Freezes the target for 6 seconds\",");
         writeToFile("\"jitl.tooltip.poison\" : \"On hit: Poisions for 6 seconds\",");
@@ -212,6 +216,19 @@ public class LangRegistry {
 
         for(int i = 0; i < pathBlockList.size(); i++) {
             writeToFile("\"block.jitl." + pathBlockList.get(i) + "\": \"" + JBlocks.pathLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < farmBlockList.size(); i++) {
+            writeToFile("\"block.jitl." + farmBlockList.get(i) + "\": \"" + JBlocks.farmlandLangName.get(i) + "\"" + ",");
+        }
+
+
+        for(int i = 0; i < cropBlockList.size(); i++) {
+            writeToFile("\"block.jitl." + cropBlockList.get(i) + "\": \"" + JBlocks.cropLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < bushBlockList.size(); i++) {
+            writeToFile("\"block.jitl." + pathBlockList.get(i) + "\": \"" + JBlocks.bushLangName.get(i) + "\"" + ",");
         }
 
         for(int i = 0; i < furnaceBlockList.size(); i++) {

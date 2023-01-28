@@ -76,6 +76,7 @@ public class JITL {
             new JBlockFurnaceGenerator().generate();
             new JBlockCrossGenerator().generate();
             new JBlockDoublePlantGenerator().generate();
+            new JBlockBushGenerator().generate();
             new JBlockAttachedCrossGenerator().generate();
             new JBlockPillarGenerator().generate();
             new JBlockDoorGenerator().generate();
@@ -95,6 +96,7 @@ public class JITL {
             new JBlockPathGenerator().generate();
             new JBlockLadderGenerator().generate();
             new JRandomizedBlockGenerator().generate();
+            new JBlockFarmGenerator().generate();
 
             new LangRegistry().generate();
         }

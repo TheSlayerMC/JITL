@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -418,10 +419,19 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.addCrop(JBlocks.SPINEBERRY_CROP.get(), JItems.SPINEBERRIES.get(), JItems.SPINEBERRY_SEEDS.get(), 7);
         this.addCrop(JBlocks.ZATPEDAL_CROP.get(), JItems.ZATPEDAL.get(), JItems.ZATPEDAL_SEEDS.get(), 7);
         this.addCrop(JBlocks.TOMATO_CROP.get(), JItems.TOMATO.get(), JItems.TOMATO_SEEDS.get(), 7);
+
+        this.addBerryBush(JBlocks.REDCURRANT_BUSH.get(), JItems.REDCURRANT_BERRY.get());
+        this.addBerryBush(JBlocks.BRADBERRY_BUSH.get(), JItems.BRADBERRY.get());
     }
 
     protected void addCrop(Block cropBlock, Item crop, Item seeds, int maxAge) {
         this.add(cropBlock, this.createCropDrops(cropBlock, crop, seeds, LootItemBlockStatePropertyCondition.hasBlockStateProperties(cropBlock).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, maxAge))));
+    }
+
+    protected void addBerryBush(Block bush, Item berry) {
+        this.add(bush, this.applyExplosionDecay(bush, LootTable.lootTable().withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(bush).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 3)))
+                .add(LootItem.lootTableItem(berry)).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))).withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(bush).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 2)))
+                .add(LootItem.lootTableItem(berry)).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))));
     }
 
     protected LootTable.Builder createGemBlockDrops(Block block, boolean rare) {

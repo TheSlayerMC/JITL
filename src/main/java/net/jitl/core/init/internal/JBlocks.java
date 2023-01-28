@@ -2,6 +2,8 @@ package net.jitl.core.init.internal;
 
 import net.jitl.common.block.*;
 import net.jitl.common.block.crop.*;
+import net.jitl.common.block.crop.bushs.BradberryBushBlock;
+import net.jitl.common.block.crop.bushs.RedcurrantBushBlock;
 import net.jitl.common.block.spawners.GoldBotSpawnerBlock;
 import net.jitl.common.block.spawners.MiniGhastSpawnerBlock;
 import net.jitl.common.world.dimension.Dimensions;
@@ -87,6 +89,10 @@ public class JBlocks {
     public static final ArrayList<String> pathLangName = new ArrayList<>();
     public static final ArrayList<String> cropBlockName = new ArrayList<>();
     public static final ArrayList<String> cropLangName = new ArrayList<>();
+    public static final ArrayList<String> bushBlockName = new ArrayList<>();
+    public static final ArrayList<String> bushLangName = new ArrayList<>();
+    public static final ArrayList<String> farmlandBlockName = new ArrayList<>();
+    public static final ArrayList<String> farmlandLangName = new ArrayList<>();
 
     public static final RegistryObject<Block> IRIDIUM_ORE = register("iridium_ore", "Iridium Ore", JBlockProperties.STONE);
     public static final RegistryObject<Block> IRIDIUM_BLOCK = registerFuelBlock("iridium_block", "Iridium Block", () -> new Block(JBlockProperties.STONE), 16000);
@@ -219,7 +225,7 @@ public class JBlocks {
 
     public static final RegistryObject<Block> EUCA_PORTAL_FRAME = register("euca_portal_frame", "Euca Portal Frame", JBlockProperties.STONE);
     public static final RegistryObject<JBasePortalBlock> EUCA_PORTAL = registerPortalBlock("euca_portal", "Euca Portal", () -> new JBasePortalBlock(Dimensions.EUCA, EUCA_PORTAL_FRAME));
-    public static final RegistryObject<Block> GOLDITE_DIRT = registerTerrainBlock("goldite_dirt", "Goldite Soil", JBlockProperties.DIRT);
+    public static final RegistryObject<Block> GOLDITE_DIRT = registerTerrainBlock("goldite_dirt", "Goldite Soil", JDirt::new);
     public static final RegistryObject<Block> GOLDITE_STONE = registerTerrainBlock("goldite_stone", "Goldite Stone", JBlockProperties.STONE);
     public static final RegistryObject<Block> GOLDITE_COBBLESTONE = register("goldite_cobblestone", "Goldite Cobblestone", JBlockProperties.STONE);
     public static final RegistryObject<Block> EUCA_BRICK = register("euca_brick", "Euca Bricks", JBlockProperties.STONE);
@@ -489,6 +495,10 @@ public class JBlocks {
     public static final RegistryObject<Block> SPINEBERRY_CROP = registerCropBlock("spineberry_crop", "Spineberry", 8, SpineberryCropBlock::new);
     public static final RegistryObject<Block> ZATPEDAL_CROP = registerCropBlock("zatpedal_crop", "Zatpedal", 8, ZatpedalCropBlock::new);
     public static final RegistryObject<Block> TOMATO_CROP = registerCropBlock("tomato_crop", "Tomato", 8, TomatoCropBlock::new);
+    public static final RegistryObject<Block> REDCURRANT_BUSH = registerGrowingBushBlock("redcurrant_bush", "Redcurrant Bush", RedcurrantBushBlock::new);
+    public static final RegistryObject<Block> BRADBERRY_BUSH = registerGrowingBushBlock("bradberry_bush", "Bradberry Bush", BradberryBushBlock::new);
+
+    public static final RegistryObject<Block> GOLDITE_FARMLAND = registerFarmlandBlock("goldite_farmland", "Goldite Farmland", GolditeFarmland::new);
 
     public static RegistryObject<Block> register(String name, String translatedName, BlockBehaviour.Properties props, CreativeModeTab tab) {
         return register(name, translatedName, () -> new Block(props), tab);
@@ -631,12 +641,28 @@ public class JBlocks {
         return block1;
     }
 
+    public static RegistryObject<Block> registerGrowingBushBlock(String name, String translatedName, Supplier<Block> block) {
+        bushBlockName.add(name);
+        bushLangName.add(translatedName);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerFarmlandBlock(String name, String translatedName, Supplier<Block> block) {
+        farmlandBlockName.add(name);
+        farmlandLangName.add(translatedName);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
+        return block1;
+    }
+
     public static RegistryObject<Block> registerCropBlock(String name, String translatedName, int maxStages, Supplier<Block> block) {
         if(JITL.DEV_MODE)
             new JBlockCropGenerator().generate(name, maxStages);
 
         cropBlockName.add(name);
-        cropBlockName.add(translatedName);
+        cropLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;

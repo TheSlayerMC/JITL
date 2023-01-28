@@ -109,6 +109,8 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.SPINEBERRY_CROP.get());
         cutout.add(JBlocks.TOMATO_CROP.get());
         cutout.add(JBlocks.ZATPEDAL_CROP.get());
+        cutout.add(JBlocks.BRADBERRY_BUSH.get());
+        cutout.add(JBlocks.REDCURRANT_BUSH.get());
 
         translucent.add(JBlocks.EUCA_PORTAL.get());
         translucent.add(JBlocks.FROZEN_PORTAL.get());
