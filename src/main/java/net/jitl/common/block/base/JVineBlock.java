@@ -1,4 +1,4 @@
-package net.jitl.common.block;
+package net.jitl.common.block.base;
 
 import net.jitl.core.init.internal.JParticleManager;
 import net.minecraft.core.BlockPos;

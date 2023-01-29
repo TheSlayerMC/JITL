@@ -1,6 +1,7 @@
 package net.jitl.core.init.internal;
 
 import net.jitl.common.block.*;
+import net.jitl.common.block.base.*;
 import net.jitl.common.block.crop.*;
 import net.jitl.common.block.crop.bushs.BradberryBushBlock;
 import net.jitl.common.block.crop.bushs.RedcurrantBushBlock;
@@ -268,8 +269,8 @@ public class JBlocks {
     public static final RegistryObject<Block> EUCA_PUMPKIN = registerRotatableBlock("euca_pumpkin", "Euca Pumpkin", () -> new FaceableBlock(JBlockProperties.WOOD));
     public static final RegistryObject<Block> GLIMMER_ROOT = registerVineBlock("glimmer_root", "Glimmer Root", () -> new JVineBlock(JBlockProperties.VINE));
 
-    public static final RegistryObject<Block> EUCA_GOLD_GRASS = registerGrassBlock("euca_gold_grass", "Euca Gold Grass", () -> new JGrassBlock(GOLDITE_DIRT));
-    public static final RegistryObject<Block> GOLDITE_GRASS = registerGrassBlock("goldite_grass", "Goldite Grass", () -> new JGrassBlock(GOLDITE_DIRT));
+    public static final RegistryObject<Block> EUCA_GOLD_GRASS = registerGrassBlock("euca_gold_grass", "Euca Gold Grass", JGrassBlock::new);
+    public static final RegistryObject<Block> GOLDITE_GRASS = registerGrassBlock("goldite_grass", "Goldite Grass", JGrassBlock::new);
     public static final RegistryObject<RotatedPillarBlock> EUCA_GOLD_LOG = registerPillar("euca_gold_log", "Euca Gold Log", true, JBlockProperties.WOOD);
     public static final RegistryObject<Block> EUCA_GOLD_LEAVES = registerTerrainBlock("euca_gold_leaves", "Euca Gold Leaves", JBlockProperties.LEAVES);//JLeavesBlock::new);
     public static final RegistryObject<Block> EUCA_GOLD_SAPLING = registerCrossBlock("euca_gold_sapling", "Euca Gold Sapling", () -> new JSaplingBlock(new EucaGoldTreeGrower()));
@@ -300,10 +301,10 @@ public class JBlocks {
     public static final RegistryObject<Block> FROZEN_PORTAL_FRAME = register("frozen_portal_frame", "Frozen Portal Frame", JBlockProperties.STONE);
     public static final RegistryObject<JBasePortalBlock> FROZEN_PORTAL = registerPortalBlock("frozen_portal", "Frozen Portal", () -> new JBasePortalBlock(Dimensions.FROZEN_LANDS, FROZEN_PORTAL_FRAME));
     public static final RegistryObject<Block> FUMICE = register("fumice", "Fumice", JBlockProperties.DIRT);
-    public static final RegistryObject<Block> GRASSY_PERMAFROST = registerGrassBlock("grassy_permafrost", "Grassy Permafrost", () -> new Block(JBlockProperties.GRASS));
+    public static final RegistryObject<Block> GRASSY_PERMAFROST = registerGrassBlock("grassy_permafrost", "Grassy Permafrost", JGrassBlock::new);
 
     public static final RegistryObject<Block> PERMAFROST = registerTerrainBlock("permafrost", "Permafrost", JBlockProperties.STONE);
-    public static final RegistryObject<Block> CRUMBLED_PERMAFROST = registerTerrainBlock("crumbled_permafrost", "Crumbled Permafrost", JBlockProperties.DIRT);
+    public static final RegistryObject<Block> CRUMBLED_PERMAFROST = registerTerrainBlock("crumbled_permafrost", "Crumbled Permafrost", JDirt::new);
     public static final RegistryObject<RotatedPillarBlock> FROZEN_LOG = registerPillar("frozen_log", "Frozen Log", true, JBlockProperties.WOOD);
     public static final RegistryObject<Block> FROZEN_LEAVES = registerTerrainBlock("frozen_leaves", "Frozen Leaves", JBlockProperties.LEAVES);
     public static final RegistryObject<Block> FROSTWOOD_SAPLING = registerCrossBlock("frostwood_sapling", "Frostwood Sapling", () -> new JSaplingBlock(new EucaGreenTreeGrower()));
@@ -352,7 +353,7 @@ public class JBlocks {
     public static final RegistryObject<Block> VOLCANIC_SAND = registerTerrainBlock("volcanic_sand", "Volcanic Sand", JBlockProperties.FIRE_SAND);
     public static final RegistryObject<Block> VOLCANIC_SOIL = registerTerrainBlock("volcanic_soil", "Volcanic Soil", JBlockProperties.FIRE_DIRT);
     public static final RegistryObject<Block> HOT_GROUND = registerTerrainBlock("hot_ground", "Hot Ground", JBlockProperties.FIRE_STONE);
-    public static final RegistryObject<Block> CHARRED_GRASS = registerGrassBlock("charred_grass", "Charred Grass", () -> new JGrassBlock(RUBBLE));
+    public static final RegistryObject<Block> CHARRED_GRASS = registerGrassBlock("charred_grass", "Charred Grass", JGrassBlock::new);
     public static final RegistryObject<Block> VOLCANIC_SANDSTONE = registerGrassBlock("volcanic_sandstone", "Volcanic Sandstone", () -> new Block(JBlockProperties.STONE));
 
     public static final RegistryObject<Block> SCORCHED_STALAGMITE_TINY = registerModeledBlock("scorched_stalagmite_tiny", "Scorched Stalagmite", JBlockStalagmite::new);
@@ -393,8 +394,8 @@ public class JBlocks {
 
     public static final RegistryObject<Block> DEPTHS_PORTAL_FRAME = register("depths_portal_frame", "Depths Portal Frame", JBlockProperties.STONE);
     public static final RegistryObject<JBasePortalBlock> DEPTHS_PORTAL = registerPortalBlock("depths_portal", "Depths Portal", () -> new JBasePortalBlock(Dimensions.DEPTHS, DEPTHS_PORTAL_FRAME));
-    public static final RegistryObject<Block> DEPTHS_GRASS = registerGrassBlock("depths_grass", "Depths Grass", () -> new JGrassBlock(RUBBLE));
-    public static final RegistryObject<Block> DEPTHS_DIRT = registerTerrainBlock("depths_dirt", "Depths Soil", JBlockProperties.DIRT);
+    public static final RegistryObject<Block> DEPTHS_GRASS = registerGrassBlock("depths_grass", "Depths Grass", JGrassBlock::new);
+    public static final RegistryObject<Block> DEPTHS_DIRT = registerTerrainBlock("depths_dirt", "Depths Soil", JDirt::new);
     public static final RegistryObject<Block> DEPTHS_STONE = registerTerrainBlock("depths_stone", "Depths Stone", JBlockProperties.STONE);
     public static final RegistryObject<Block> DEPTHS_LAMP = register("depths_lamp", "Depths Lamp", JBlockProperties.GLOW_LAMP);
     public static final RegistryObject<Block> DEPTHS_LIGHT = register("depths_light", "Depths Light", JBlockProperties.GLOW_LAMP);
@@ -429,8 +430,8 @@ public class JBlocks {
 
     public static final RegistryObject<Block> CORBA_PORTAL_FRAME = register("corba_portal_frame", "Corba Portal Frame", JBlockProperties.STONE);
     public static final RegistryObject<JBasePortalBlock> CORBA_PORTAL = registerPortalBlock("corba_portal", "Corba Portal", () -> new JBasePortalBlock(Dimensions.CORBA, CORBA_PORTAL_FRAME));
-    public static final RegistryObject<Block> CORBA_DIRT = registerTerrainBlock("corba_dirt", "Depths Dirt", JBlockProperties.DIRT);
-    public static final RegistryObject<Block> CORBA_GRASS = registerOverlayGrassBlock("corba_grass", "Corba Grass", () -> new JGrassBlock(CORBA_DIRT));
+    public static final RegistryObject<Block> CORBA_DIRT = registerTerrainBlock("corba_dirt", "Depths Dirt", JDirt::new);
+    public static final RegistryObject<Block> CORBA_GRASS = registerOverlayGrassBlock("corba_grass", "Corba Grass", JGrassBlock::new);
     public static final RegistryObject<Block> CORBA_STONE = registerTerrainBlock("corba_stone", "Depths Stone", JBlockProperties.STONE);
     public static final RegistryObject<Block> CORBA_PATH = registerPathBlock("corba_path", "Corba Path", () -> new JDirtPathBlock(JBlockProperties.PATH));
     public static final RegistryObject<JFenceBlock> CORBA_POST = registerFence("corba_post", "Corba Post", true, JBlockProperties.WOOD);
@@ -487,18 +488,29 @@ public class JBlocks {
     public static final RegistryObject<RotatedPillarBlock> STONE_PLILLAR = registerPillar("stone_pillar", "Stone Pillar", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> SMALL_STONE_BRICKS = register("small_stone_bricks", "Small Stone Bricks", JBlockProperties.STONE);
 
-    public static final RegistryObject<Block> FLORO_PEDAL_CROP = registerCropBlock("floro_pedal_crop", "Floro Pedal", 8, FloroCropBlock::new);
-    public static final RegistryObject<Block> CORVEGGIES_CROP = registerCropBlock("corveggies_crop", "Corveggies", 3, CorveggieCropBlock::new);
-    public static final RegistryObject<Block> CRACKENCANE_CROP = registerCropBlock("crackencane_crop", "Crackencane", 8, CrackencanesCropBlock::new);
-    public static final RegistryObject<Block> CRAKEBULB_CROP = registerCropBlock("crakebulb_crop", "Crakebulb", 4, CrakebulbCropBlock::new);
-    public static final RegistryObject<Block> GLOWA_CROP = registerCropBlock("glowa_crop", "Glowa", 4, GlowaCropBlock::new);
-    public static final RegistryObject<Block> SPINEBERRY_CROP = registerCropBlock("spineberry_crop", "Spineberry", 8, SpineberryCropBlock::new);
-    public static final RegistryObject<Block> ZATPEDAL_CROP = registerCropBlock("zatpedal_crop", "Zatpedal", 8, ZatpedalCropBlock::new);
+    //OVERWORLD
     public static final RegistryObject<Block> TOMATO_CROP = registerCropBlock("tomato_crop", "Tomato", 8, TomatoCropBlock::new);
+    public static final RegistryObject<Block> FLORO_PEDAL_CROP = registerCropBlock("floro_pedal_crop", "Floro Pedal", 8, FloroCropBlock::new);
+
+    //EUCA
+    public static final RegistryObject<Block> ZATPEDAL_CROP = registerCropBlock("zatpedal_crop", "Zatpedal", 8, ZatpedalCropBlock::new);
+    public static final RegistryObject<Block> SPINEBERRY_CROP = registerCropBlock("spineberry_crop", "Spineberry", 8, SpineberryCropBlock::new);
+
+    //DEPTHS
+    public static final RegistryObject<Block> CRAKEBULB_CROP = registerCropBlock("crakebulb_crop", "Crakebulb", 4, CrakebulbCropBlock::new);
+    public static final RegistryObject<Block> CRACKENCANE_CROP = registerCropBlock("crackencane_crop", "Crackencane", 8, CrackencanesCropBlock::new);
+
+    //CORBA
+    public static final RegistryObject<Block> CORVEGGIES_CROP = registerCropBlock("corveggies_crop", "Corveggies", 3, CorveggieCropBlock::new);
+    public static final RegistryObject<Block> GLOWA_CROP = registerCropBlock("glowa_crop", "Glowa", 4, GlowaCropBlock::new);
+
     public static final RegistryObject<Block> REDCURRANT_BUSH = registerGrowingBushBlock("redcurrant_bush", "Redcurrant Bush", RedcurrantBushBlock::new);
     public static final RegistryObject<Block> BRADBERRY_BUSH = registerGrowingBushBlock("bradberry_bush", "Bradberry Bush", BradberryBushBlock::new);
 
     public static final RegistryObject<Block> GOLDITE_FARMLAND = registerFarmlandBlock("goldite_farmland", "Goldite Farmland", GolditeFarmland::new);
+    public static final RegistryObject<Block> DEPTHS_FARMLAND = registerFarmlandBlock("depths_farmland", "Depths Farmland", DepthsFarmland::new);
+    public static final RegistryObject<Block> PERMAFROST_FARMLAND = registerFarmlandBlock("permafrost_farmland", "Permafrost Farmland", DepthsFarmland::new);
+    public static final RegistryObject<Block> CORBA_FARMLAND = registerFarmlandBlock("corba_farmland", "Corba Farmland", DepthsFarmland::new);
 
     public static RegistryObject<Block> register(String name, String translatedName, BlockBehaviour.Properties props, CreativeModeTab tab) {
         return register(name, translatedName, () -> new Block(props), tab);

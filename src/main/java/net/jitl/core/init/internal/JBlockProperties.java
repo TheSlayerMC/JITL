@@ -169,6 +169,7 @@ public class JBlockProperties {
             .noOcclusion();
 
     public static BlockBehaviour.Properties GRASS = BlockBehaviour.Properties.of(Material.GRASS)
+            .randomTicks()
             .strength(0.75F)
             .sound(SoundType.GRASS);
 

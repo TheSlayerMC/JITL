@@ -23,17 +23,33 @@ public class JDirt extends Block {
         super(JBlockProperties.DIRT);
     }
 
+    public Block getFarmlandFromGrassDirt(Block checkedBlock) {
+        Block farmLand = null;
+        if(checkedBlock == JBlocks.GOLDITE_GRASS.get() || checkedBlock == JBlocks.EUCA_GOLD_GRASS.get() || this == JBlocks.GOLDITE_DIRT.get())
+            farmLand = JBlocks.GOLDITE_FARMLAND.get();
+
+        if(checkedBlock == JBlocks.GRASSY_PERMAFROST.get() || checkedBlock == JBlocks.CRUMBLED_PERMAFROST.get())
+            farmLand = JBlocks.PERMAFROST_FARMLAND.get();
+
+        if(checkedBlock == JBlocks.DEPTHS_GRASS.get() || checkedBlock == JBlocks.DEPTHS_DIRT.get())
+            farmLand = JBlocks.DEPTHS_FARMLAND.get();
+
+        if(checkedBlock == JBlocks.CORBA_GRASS.get() || checkedBlock == JBlocks.CORBA_DIRT.get())
+            farmLand = JBlocks.CORBA_FARMLAND.get();
+
+        return farmLand;
+    }
+
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         Item itemstack = pPlayer.getItemInHand(pHand).getItem();
-        Block farmLand = JBlocks.GOLDITE_FARMLAND.get();
-        if(this == JBlocks.GOLDITE_DIRT.get()) {
-            farmLand = JBlocks.GOLDITE_FARMLAND.get();
-        }
-        pLevel.playSound(pPlayer, pPos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-        if(!pLevel.isClientSide) {
-            pLevel.setBlock(pPos, farmLand.defaultBlockState(), 2);
-            pPlayer.getItemInHand(pHand).hurt(1, pLevel.random, (ServerPlayer)pPlayer);
+        Block farmLand = getFarmlandFromGrassDirt(pLevel.getBlockState(pPos).getBlock());
+        if(farmLand != null) {
+            pLevel.playSound(pPlayer, pPos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
+            if(!pLevel.isClientSide) {
+                pLevel.setBlock(pPos, farmLand.defaultBlockState(), 2);
+                pPlayer.getItemInHand(pHand).hurt(1, pLevel.random, (ServerPlayer)pPlayer);
+            }
         }
         return itemstack instanceof HoeItem || itemstack instanceof MultitoolItem ? InteractionResult.SUCCESS : InteractionResult.PASS;
     }

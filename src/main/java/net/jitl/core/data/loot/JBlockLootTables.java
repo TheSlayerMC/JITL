@@ -422,6 +422,10 @@ public class JBlockLootTables extends BlockLootSubProvider {
 
         this.addBerryBush(JBlocks.REDCURRANT_BUSH.get(), JItems.REDCURRANT_BERRY.get());
         this.addBerryBush(JBlocks.BRADBERRY_BUSH.get(), JItems.BRADBERRY.get());
+
+        this.add(JBlocks.GOLDITE_FARMLAND, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.GOLDITE_DIRT.get()));
+        this.add(JBlocks.DEPTHS_FARMLAND, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.DEPTHS_DIRT.get()));
+
     }
 
     protected void addCrop(Block cropBlock, Item crop, Item seeds, int maxAge) {

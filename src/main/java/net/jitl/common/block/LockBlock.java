@@ -1,5 +1,6 @@
 package net.jitl.common.block;
 
+import net.jitl.common.block.base.FaceableBlock;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;

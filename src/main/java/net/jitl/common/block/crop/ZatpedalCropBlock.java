@@ -1,15 +1,14 @@
 package net.jitl.common.block.crop;
 
-import net.jitl.core.init.internal.JBlockProperties;
+import net.jitl.common.block.base.JCropBlock;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.CropBlock;
 import org.jetbrains.annotations.NotNull;
 
-public class ZatpedalCropBlock extends CropBlock {
+public class ZatpedalCropBlock extends JCropBlock {
 
     public ZatpedalCropBlock() {
-        super(JBlockProperties.CROP);
+        super(DimensionCrops.EUCA);
     }
 
     @Override

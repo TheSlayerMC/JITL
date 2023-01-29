@@ -1,15 +1,14 @@
 package net.jitl.common.block.crop;
 
-import net.jitl.core.init.internal.JBlockProperties;
+import net.jitl.common.block.base.JCropBlock;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.CropBlock;
 import org.jetbrains.annotations.NotNull;
 
-public class FloroCropBlock extends CropBlock {
+public class FloroCropBlock extends JCropBlock {
 
     public FloroCropBlock() {
-        super(JBlockProperties.CROP);
+        super(DimensionCrops.OVERWORLD);
     }
 
     @Override

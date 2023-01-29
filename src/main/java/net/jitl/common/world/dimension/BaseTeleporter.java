@@ -1,6 +1,6 @@
 package net.jitl.common.world.dimension;
 
-import net.jitl.common.block.JBasePortalBlock;
+import net.jitl.common.block.base.JBasePortalBlock;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

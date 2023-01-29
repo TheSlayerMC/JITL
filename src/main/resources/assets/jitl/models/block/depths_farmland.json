@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_farmland",
+  "textures": {
+    "dirt": "jitl:block/depths_farmland_dirt",
+    "top": "jitl:block/depths_farmland"
+  }
+}

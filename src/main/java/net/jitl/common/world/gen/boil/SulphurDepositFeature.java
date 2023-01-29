@@ -1,7 +1,7 @@
 package net.jitl.common.world.gen.boil;
 
 import com.mojang.serialization.Codec;
-import net.jitl.common.block.AttachedBlock;
+import net.jitl.common.block.base.AttachedBlock;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
