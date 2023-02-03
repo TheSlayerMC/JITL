@@ -2,6 +2,7 @@ package net.jitl.common.items.gear.bloodcrust;
 
 import net.jitl.common.items.gear.FullArmorAbility;
 import net.jitl.common.items.gear.IAbility;
+import net.jitl.core.helper.TooltipFiller;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -14,12 +15,12 @@ public class BloodcrustArmorAbility implements IAbility {
         return new BloodcrustFullAbility(nbt);
     }
 
-/*    @Override
+   @Override
     public void fillTooltips(ItemStack stack, List<Component> tooltip) {
         TooltipFiller filler = new TooltipFiller(tooltip, "bloodcrust_armor");
         filler.addOverview();
         filler.addDetail();
         filler.addDetail();
-    }*/
+    }
 }
 

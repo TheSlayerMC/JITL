@@ -34,6 +34,7 @@ public class IceAmuletItem extends JCurioItem {
         AttributeInstance attribAttackSpeed = player.getAttribute(Attributes.ATTACK_SPEED);
 
         if (player.level.getBiome(player.blockPosition()).value().getBaseTemperature() <= 0.2F) {
+            assert attribMovementSpeed != null;
             if (!attribMovementSpeed.hasModifier(SPEED_MOD)) {
                 attribMovementSpeed.addTransientModifier(SPEED_MOD);
             }

@@ -1,6 +1,7 @@
 package net.jitl.common.items.gear.bloodcrust;
 
 import net.jitl.common.items.gear.IAbility;
+import net.jitl.core.helper.TooltipFiller;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
@@ -51,12 +52,12 @@ public class BloodcrustSwordAbility implements IAbility {
         if (slot == EquipmentSlot.MAINHAND) entity.getAttribute(Attributes.ATTACK_DAMAGE).removeModifier(ID);
     }
 
-/*    @Override
+    @Override
     public void fillTooltips(ItemStack stack, List<Component> tooltip) {
         TooltipFiller filler = new TooltipFiller(tooltip, "bloodcrust_sword");
         filler.addOverview();
         filler.addDetail();
         filler.addBreak();
         filler.addValue(stack.getTag().getInt("Fire boost"));
-    }*/
+    }
 }

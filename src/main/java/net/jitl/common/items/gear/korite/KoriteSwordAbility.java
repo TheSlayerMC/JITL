@@ -2,6 +2,7 @@ package net.jitl.common.items.gear.korite;
 
 import net.jitl.common.capability.essence.PlayerEssenceProvider;
 import net.jitl.common.items.gear.IAbility;
+import net.jitl.core.helper.TooltipFiller;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -66,15 +67,16 @@ public class KoriteSwordAbility implements IAbility {
             Objects.requireNonNull(entity.getAttribute(Attributes.ATTACK_DAMAGE)).removeModifier(ID);
         }
     }
-/*
+
     @Override
     public void fillTooltips(ItemStack stack, List<Component> tooltip) {
         TooltipFiller filler = new TooltipFiller(tooltip, "korite_sword");
         filler.addOverview();
         filler.addDrawback();
         filler.addBreak();
+        assert stack.getTag() != null;
         filler.addValue(Math.floor(stack.getTag().getFloat("bonus") * 100) / 100);
-    }*/
+    }
 
     private void addModifier(LivingEntity entity, float value) {
         AttributeInstance attribute = entity.getAttribute(Attributes.ATTACK_DAMAGE);

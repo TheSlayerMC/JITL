@@ -425,6 +425,8 @@ public class JBlockLootTables extends BlockLootSubProvider {
 
         this.add(JBlocks.GOLDITE_FARMLAND, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.GOLDITE_DIRT.get()));
         this.add(JBlocks.DEPTHS_FARMLAND, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.DEPTHS_DIRT.get()));
+        this.add(JBlocks.PERMAFROST_FARMLAND, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.CRUMBLED_PERMAFROST.get()));
+        this.add(JBlocks.CORBA_FARMLAND, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.CORBA_DIRT.get()));
 
     }
 

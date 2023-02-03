@@ -1,6 +1,6 @@
 package net.jitl.common.items.gear;
 
-import net.jitl.core.init.JITL;
+import net.jitl.core.helper.TooltipFiller;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -27,7 +27,7 @@ public class LuniumAbility implements IAbility.INBTUpdateAbility {
         }
     }
 
-    /*@Override
+    @Override
     public void fillTooltips(ItemStack stack, List<Component> tooltip) {
         TooltipFiller filler = new TooltipFiller(tooltip, "lunium_gear");
         filler.addOverview();
@@ -36,5 +36,5 @@ public class LuniumAbility implements IAbility.INBTUpdateAbility {
             filler.addBreak();
             filler.addValue((int) (100 - stack.getTag().getFloat("cooldown")));
         }
-    }*/
+    }
 }

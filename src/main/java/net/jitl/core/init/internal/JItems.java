@@ -68,7 +68,7 @@ public class JItems {
     public static final RegistryObject<Item> ENDERILLIUM_SHARD = registerNormalItem("enderillium_shard", "Enderillium Shard");
     public static final RegistryObject<Item> WARPED_QUARTZ = registerNormalItem("warped_quartz", "Warped Quartz");
     public static final RegistryObject<Item> CRIMSON_QUARTZ = registerNormalItem("crimson_quartz", "Crimson Quartz");
-    public static final RegistryObject<Item> FIRESTONE_CLUMP = registerNormalItem("firestone_clump", "Firestone Clump");
+    public static final RegistryObject<Item> FIRESTONE_CLUMP = registerFuelItem("firestone_clump", "Firestone Clump", 2000);
     public static final RegistryObject<Item> ASH = registerNormalItem("ash", "Ash");
     public static final RegistryObject<Item> RIMESTONE = registerNormalItem("rimestone", "Rimestone");
     public static final RegistryObject<Item> PERIDOT_GEMSTONE = registerNormalItem("peridot_gemstone", "Peridot Gemstone");
@@ -117,7 +117,7 @@ public class JItems {
     public static final RegistryObject<Item> TOMATO = registerFoodItem("tomato", "Tomato", JFood.TOMATO);
     public static final RegistryObject<Item> HONGOSHROOM = registerFoodItem("hongoshroom", "Hongoshroom", JFood.HONGOSROOM);
     public static final RegistryObject<Item> HONGLOWSHROOM = registerFoodItem("honglowshroom", "Honglowshroom", JFood.HONGLOWSROOM);
-    public static final RegistryObject<Item> CRYSTAL_APPLE = registerFoodItem("crystal_apple", "Crystal Apple", JFood.CRYSTAL_APPLE);
+    public static final RegistryObject<Item> CRYSTAL_APPLE = registerFoodItem("crystal_apple", "Crystal Apple", true, JFood.CRYSTAL_APPLE);
     public static final RegistryObject<Item> FRIED_GHAST_TENTACLE = registerFoodItem("fried_ghast_tentacle", "Fried Ghast Tentacle", JFood.FRIED_GHAST_TENTACLE);
     public static final RegistryObject<Item> FLAMING_GHAST_TENTACLE = registerFoodItem("flaming_ghast_tentacle", "Flaming Ghast Tentacle", JFood.FLAMING_GHAST_TENTACLE);
     public static final RegistryObject<Item> FRIED_FLAMING_GHAST_TENTACLE = registerFoodItem("fried_flaming_ghast_tentacle", "Fried Flaming Ghast Tentacle", JFood.FRIED_FLAMING_GHAST_TENTACLE);
@@ -500,17 +500,16 @@ public class JItems {
     public static final RegistryObject<Item> DEMONIC_BOMB = registerNormalItem("demonic_bomb", "Demonic Bomb");
     public static final RegistryObject<Item> MAGIC_BOMB = registerNormalItem("magic_bomb", "Magic Bomb");
 
-
-    public static RegistryObject<Item> registerNormalItem(String name, String translatedName, CreativeModeTab tab) {
-        return register(name, translatedName, () -> new Item(new Item.Properties()), ItemType.ITEM);
-    }
-
     public static RegistryObject<Item> registerNormalItem(String name, String translatedName) {
         return register(name, translatedName, () -> new Item(new Item.Properties()), ItemType.ITEM);
     }
 
+    public static RegistryObject<Item> registerFoodItem(String name, String translatedName, boolean foil, FoodProperties props) {
+        return register(name, translatedName, foil ? () -> new FoilItem(JItems.foodProps(props)) : () -> new Item(JItems.foodProps(props)), ItemType.ITEM);
+    }
+
     public static RegistryObject<Item> registerFoodItem(String name, String translatedName, FoodProperties props) {
-        return register(name, translatedName, () -> new Item(JItems.foodProps(props)), ItemType.ITEM);
+        return registerFoodItem(name, translatedName, false, props);
     }
 
     public static RegistryObject<Item> registerFuelItem(String name, String translatedName, int burnTime /* 200 ticks per item */) {

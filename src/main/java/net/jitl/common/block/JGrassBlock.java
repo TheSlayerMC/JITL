@@ -5,9 +5,6 @@ import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -22,18 +19,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.lighting.LayerLightEngine;
 import net.minecraft.world.phys.BlockHitResult;
 
-import java.util.List;
-import java.util.Optional;
-
-public class JGrassBlock extends Block implements BonemealableBlock {
+public class JGrassBlock extends Block {//implements BonemealableBlock {
 
     public JGrassBlock() {
         super(JBlockProperties.GRASS);
@@ -42,16 +32,36 @@ public class JGrassBlock extends Block implements BonemealableBlock {
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         Item itemstack = pPlayer.getItemInHand(pHand).getItem();
-
-        Block dirt = getDirtFromGrass();
-        if(dirt != null) {
-            pLevel.playSound(pPlayer, pPos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-            if(!pLevel.isClientSide) {
-                pLevel.setBlock(pPos, dirt.defaultBlockState(), 2);
-                pPlayer.getItemInHand(pHand).hurt(1, pLevel.random, (ServerPlayer) pPlayer);
+        Block dirt = getFarmlandFromGrass();
+        if(itemstack instanceof HoeItem || itemstack instanceof MultitoolItem) {
+            if(dirt != null) {
+                pLevel.playSound(pPlayer, pPos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
+                if(!pLevel.isClientSide) {
+                    pLevel.setBlock(pPos, dirt.defaultBlockState(), 2);
+                    if(!pPlayer.isCreative())
+                        pPlayer.getItemInHand(pHand).hurt(1, pLevel.random, (ServerPlayer) pPlayer);
+                }
             }
+            return InteractionResult.SUCCESS;
         }
-        return itemstack instanceof HoeItem || itemstack instanceof MultitoolItem ? InteractionResult.SUCCESS : InteractionResult.PASS;
+        return InteractionResult.PASS;
+    }
+
+    public Block getFarmlandFromGrass() {
+        Block farmland = null;
+        if(this == JBlocks.GOLDITE_GRASS.get() || this == JBlocks.EUCA_GOLD_GRASS.get())
+            farmland = JBlocks.GOLDITE_FARMLAND.get();
+
+        if(this == JBlocks.GRASSY_PERMAFROST.get())
+            farmland = JBlocks.PERMAFROST_FARMLAND.get();
+
+        if(this == JBlocks.DEPTHS_GRASS.get())
+            farmland = JBlocks.DEPTHS_FARMLAND.get();
+
+        if(this == JBlocks.CORBA_GRASS.get())
+            farmland = JBlocks.CORBA_FARMLAND.get();
+
+        return farmland;
     }
 
     public Block getDirtFromGrass() {
@@ -74,11 +84,12 @@ public class JGrassBlock extends Block implements BonemealableBlock {
         return dirt;
     }
 
-    @Override
+   /* @Override
     public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
         return pLevel.getBlockState(pPos.above()).isAir();
     }
 
+    @Override
     public boolean isBonemealSuccess(Level pLevel, RandomSource pRandom, BlockPos pPos, BlockState pState) {
         return true;
     }
@@ -89,26 +100,25 @@ public class JGrassBlock extends Block implements BonemealableBlock {
         BlockState blockstate = this.defaultBlockState();
         Optional<Holder.Reference<PlacedFeature>> optional = pLevel.registryAccess().registryOrThrow(Registries.PLACED_FEATURE).getHolder(VegetationPlacements.GRASS_BONEMEAL);
 
+
         label46:
-        for (int i = 0; i < 128; ++i) {
+        for(int i = 0; i < 128; i++) {
             BlockPos blockpos1 = blockpos;
 
-            for (int j = 0; j < i / 16; ++j) {
+            for(int j = 0; j < i / 16; j++) {
                 blockpos1 = blockpos1.offset(pRandom.nextInt(3) - 1, (pRandom.nextInt(3) - 1) * pRandom.nextInt(3) / 2, pRandom.nextInt(3) - 1);
-                if (!pLevel.getBlockState(blockpos1.below()).is(this) || pLevel.getBlockState(blockpos1).isCollisionShapeFullBlock(pLevel, blockpos1))
+                if(!pLevel.getBlockState(blockpos1.below()).is(this) || pLevel.getBlockState(blockpos1).isCollisionShapeFullBlock(pLevel, blockpos1))
                     continue label46;
-
             }
-
             BlockState blockstate1 = pLevel.getBlockState(blockpos1);
-            if (blockstate1.is(blockstate.getBlock()) && pRandom.nextInt(10) == 0)
+            if(blockstate1.is(blockstate.getBlock()) && pRandom.nextInt(10) == 0)
                 ((BonemealableBlock) blockstate.getBlock()).performBonemeal(pLevel, pRandom, blockpos1, blockstate1);
 
-            if (blockstate1.isAir()) {
+            if(blockstate1.isAir()) {
                 Holder<PlacedFeature> holder;
-                if (pRandom.nextInt(8) == 0) {
+                if(pRandom.nextInt(8) == 0) {
                     List<ConfiguredFeature<?, ?>> list = pLevel.getBiome(blockpos1).value().getGenerationSettings().getFlowerFeatures();
-                    if (list.isEmpty())
+                    if(list.isEmpty())
                         continue;
                     holder = ((RandomPatchConfiguration) list.get(0).config()).feature();
                 } else {
@@ -121,7 +131,7 @@ public class JGrassBlock extends Block implements BonemealableBlock {
             }
         }
 
-    }
+    }*/
 
     private static boolean canBeGrass(BlockState pState, LevelReader pLevelReader, BlockPos pPos) {
         BlockPos blockpos = pPos.above();
@@ -151,7 +161,6 @@ public class JGrassBlock extends Block implements BonemealableBlock {
                     }
                 }
             }
-
         }
     }
 }

@@ -44,14 +44,17 @@ public class JDirt extends Block {
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         Item itemstack = pPlayer.getItemInHand(pHand).getItem();
         Block farmLand = getFarmlandFromGrassDirt(pLevel.getBlockState(pPos).getBlock());
-        if(farmLand != null) {
-            pLevel.playSound(pPlayer, pPos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-            if(!pLevel.isClientSide) {
-                pLevel.setBlock(pPos, farmLand.defaultBlockState(), 2);
-                pPlayer.getItemInHand(pHand).hurt(1, pLevel.random, (ServerPlayer)pPlayer);
+        if(itemstack instanceof HoeItem || itemstack instanceof MultitoolItem) {
+            if(farmLand != null) {
+                pLevel.playSound(pPlayer, pPos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
+                if(!pLevel.isClientSide) {
+                    pLevel.setBlock(pPos, farmLand.defaultBlockState(), 2);
+                    if(!pPlayer.isCreative())
+                        pPlayer.getItemInHand(pHand).hurt(1, pLevel.random, (ServerPlayer) pPlayer);
+                }
+                return InteractionResult.SUCCESS;
             }
         }
-        return itemstack instanceof HoeItem || itemstack instanceof MultitoolItem ? InteractionResult.SUCCESS : InteractionResult.PASS;
+        return  InteractionResult.PASS;
     }
-
 }

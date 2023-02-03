@@ -95,6 +95,8 @@ public class JConfiguredFeatures {
             KORITE_ORE = registerKey("korite_ore"),
             GOLDITE_VEG = registerKey("goldite_veg"),
             GOLD_VEG = registerKey("gold_veg"),
+            SINGLE_EUCA_GRASS = registerKey("gold_grass"),
+            SINGLE_GOLDITE_STALKS = registerKey("goldite_stalks"),
             EUCA_WATER = registerKey("euca_water"),
             GOLD_BOT_SPAWNER = registerKey("gold_bot_spawner");
 
@@ -173,6 +175,8 @@ public class JConfiguredFeatures {
         register(context, CELESTIUM_ORE, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(EUCA_REPLACEABLES, JBlocks.CELESTIUM_ORE.get().defaultBlockState()))).get(), 7));
         register(context, GOLDITE_VEG , Feature.FLOWER, new RandomPatchConfiguration(40, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.GOLDITE_TALL_GRASS.get().defaultBlockState(), JBlocks.GOLDITE_STALKS.get().defaultBlockState(), JBlocks.GOLDITE_FLOWER.get().defaultBlockState(), JBlocks.GOLDITE_BULB.get().defaultBlockState()))))));
         register(context, GOLD_VEG , Feature.FLOWER, new RandomPatchConfiguration(96, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.EUCA_SILVER_FLOWER.get().defaultBlockState(), JBlocks.EUCA_TALL_FLOWERS.get().defaultBlockState(), JBlocks.EUCA_TALL_GRASS.get().defaultBlockState()))))));
+        register(context, SINGLE_GOLDITE_STALKS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(JBlocks.GOLDITE_STALKS.get().defaultBlockState())));
+        register(context, SINGLE_EUCA_GRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(JBlocks.EUCA_TALL_GRASS.get().defaultBlockState())));
 
         //DEPTHS
         register(context, DEPTHS_LAMP_ROOF, JFeatures.ROOF_DEPTHS_LAMP.get(), new NoneFeatureConfiguration());
