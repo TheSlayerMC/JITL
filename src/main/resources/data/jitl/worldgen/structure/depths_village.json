@@ -8,7 +8,7 @@
   "min_height": 15,
   "max_height": 60,
   "bury": 0,
-  "size": 5,
+  "size": 7,
   "spawn_overrides": {
     "creature": {
       "bounding_box": "piece",
@@ -18,3 +18,4 @@
     }
   }
 }
+
