@@ -59,15 +59,15 @@ public class KnifeEntity extends AbstractKnifeEntity implements ItemSupplier {
 
     @Override
     protected void onHitEntity(@NotNull EntityHitResult entityRayTraceResult_) {
-        if(isFireKnife(getStack().getItem())) {
-            Entity entity = entityRayTraceResult_.getEntity();
-            if(entity instanceof LivingEntity && entity != this.getOwner()) {
-                if(!level.isClientSide()) {
-                    if(entity.hurt(DamageSource.thrown(this, this.getOwner()), (float) getBaseDamage())) {
+        Entity entity = entityRayTraceResult_.getEntity();
+        if(entity instanceof LivingEntity && entity != this.getOwner()) {
+            if(!level.isClientSide()) {
+                if(entity.hurt(DamageSource.thrown(this, this.getOwner()), (float) getBaseDamage())) {
+                    if(isFireKnife(getStack().getItem())) {
                         entity.setSecondsOnFire(10);
                     }
-                    this.playSound(JSounds.KNIFE.get(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
                 }
+                this.playSound(JSounds.KNIFE.get(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
             }
         } else {
             super.onHitEntity(entityRayTraceResult_);

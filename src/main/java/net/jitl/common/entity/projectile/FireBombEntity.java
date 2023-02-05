@@ -1,11 +1,9 @@
 package net.jitl.common.entity.projectile;
 
 import net.jitl.core.init.internal.JDamageSources;
-import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
-import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -13,9 +11,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
@@ -31,64 +27,42 @@ public class FireBombEntity extends DamagingProjectileEntity implements ItemSupp
         super(type, world, thrower, damage);
     }
 
-    public FireBombEntity(Level world, LivingEntity thrower, float damage) {
-        super(JEntities.FIRE_BOMB_TYPE.get(), world, thrower, damage);
-    }
-
     @Override
     protected void onEntityImpact(HitResult result, Entity target) {
         if(target instanceof LivingEntity && target.hurt(DamageSource.thrown(this, this.getOwner()), getDamage())) {
             target.hurt(JDamageSources.FIRE_BOMB, this.getDamage());
             target.setSecondsOnFire(3);
-            if (!level.isClientSide) {
-                int count = 2;
-                Vec3 vector3d = this.getDeltaMovement();
-                double d0 = this.getX() + vector3d.x;
-                double d1 = this.getY() + vector3d.y;
-                double d2 = this.getZ() + vector3d.z;
-                for (int i = 0; i < count; ++i) {
-                    this.level.addParticle(ParticleTypes.EFFECT,
-                            d0 - vector3d.x * 0.25D + this.random.nextDouble() * 0.6D - 0.3D,
-                            d1 - vector3d.y + 0.25F,
-                            d2 - vector3d.z * 0.25D + this.random.nextDouble() * 0.6D - 0.3D,
-                            vector3d.x,
-                            vector3d.y,
-                            vector3d.z);
-                }
-                level.playSound(null, new BlockPos(result.getLocation()), SoundType.GLASS.getBreakSound(), SoundSource.AMBIENT, 1.0F, 1.5F);
+            if(!this.level.isClientSide) {
+                this.level.broadcastEntityEvent(this, (byte)1);
+                this.discard();
             }
+        }
+    }
+
+    @Override
+    public void handleEntityEvent(byte id) {
+        ParticleOptions particleoptions = ParticleTypes.EFFECT;
+
+        if(id == 1) {
+            for(int i = 0; i < 15; ++i)
+                this.level.addParticle(particleoptions, getX() + level.random.nextDouble(), getY(), getZ() + level.random.nextDouble(), 1, 0.0D, 0.0D);
+        }
+
+        if(id == 2) {
+            for(int i = 0; i < 15; ++i)
+                this.level.addParticle(particleoptions, getX() + level.random.nextDouble(), getY() + 1, getZ() + level.random.nextDouble(), 1, 0.0D, 0.0D);
         }
     }
 
     @Override
     protected void onHit(HitResult result) {
         super.onHit(result);
-        if (!level.isClientSide) {
-            if(result.getType() != HitResult.Type.MISS) {
-                int count = 2;
-                Vec3 vector3d = this.getDeltaMovement();
-                double d0 = this.getX() + vector3d.x;
-                double d1 = this.getY() + vector3d.y;
-                double d2 = this.getZ() + vector3d.z;
-                for(int i = 0; i < count; ++i) {
-                    this.level.addParticle(ParticleTypes.EFFECT,
-                            d0 - vector3d.x * 0.25D + this.random.nextDouble() * 0.6D - 0.3D,
-                            d1 - vector3d.y + 0.25F,
-                            d2 - vector3d.z * 0.25D + this.random.nextDouble() * 0.6D - 0.3D,
-                            vector3d.x,
-                            vector3d.y,
-                            vector3d.z);
-                }
-                level.playSound(null, new BlockPos(result.getLocation()), SoundType.GLASS.getBreakSound(), SoundSource.AMBIENT, 1.0F, 1.5F);
+        if(result.getType() == HitResult.Type.BLOCK) {
+            if (!this.level.isClientSide) {
+                this.level.broadcastEntityEvent(this, (byte)2);
+                this.discard();
             }
-        } else {
-            remove(RemovalReason.DISCARDED);
         }
-    }
-
-    @Override
-    protected float getGravity() {
-        return 0.31F;
     }
 
     @Override

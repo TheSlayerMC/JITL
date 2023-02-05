@@ -51,10 +51,12 @@ public class MagicBombEntity extends AbstractArrow implements ItemSupplier {
     @Override
     public void tick() {
         super.tick();
-        if(collidedWith() != null && collidedWith() != this.getOwner()) {
-            if(!level.isClientSide) {
-                level.explode(this, position().x, position().y, position().z, 2.0F, Level.ExplosionInteraction.BLOCK);
-                this.remove(RemovalReason.DISCARDED);
+        if(isInGround()) {
+            if (collidedWith() != null && collidedWith() != this.getOwner()) {
+                if (!level.isClientSide) {
+                    level.explode(this, position().x, position().y, position().z, 2.0F, Level.ExplosionInteraction.BLOCK);
+                    this.remove(RemovalReason.DISCARDED);
+                }
             }
         }
     }
@@ -78,7 +80,7 @@ public class MagicBombEntity extends AbstractArrow implements ItemSupplier {
     }
 
     @Override
-    public ItemStack getPickupItem() {
+    public @NotNull ItemStack getPickupItem() {
         return new ItemStack(JItems.MAGIC_BOMB.get());
     }
 
