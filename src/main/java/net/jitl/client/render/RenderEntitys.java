@@ -32,6 +32,9 @@ public class RenderEntitys {
         event.registerEntityRenderer(JEntities.CONJURING_PROJECTILE_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/conjuring.png")));
         event.registerEntityRenderer(JEntities.ESSENCIA_PROJECTILE_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/essencia.png")));
         event.registerEntityRenderer(JEntities.FLORO_MUD_TYPE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(JEntities.DEMONIC_BOMB_TYPE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(JEntities.FIRE_BOMB_TYPE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(JEntities.MAGIC_BOMB_TYPE.get(), ThrownItemRenderer::new);
 
         event.registerEntityRenderer(JEntities.ESSENCIA_BOLT_TYPE.get(), EssenciaBoltRenderer::new);
 

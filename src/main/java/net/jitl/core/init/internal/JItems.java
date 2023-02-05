@@ -408,6 +408,15 @@ public class JItems {
     public static final RegistryObject<Item> MUD_BALL = registerNormalItem("mud_ball", "Mud Ball", () -> new ThrowableItem(itemProps(),
             (world, thrower) -> new FloroMudEntity(JEntities.FLORO_MUD_TYPE.get(), world, thrower, 0.0F)).setSound(() -> SoundEvents.SNOWBALL_THROW));
 
+    public static final RegistryObject<Item> DEMONIC_BOMB = registerNormalItem("demonic_bomb", "Demonic Bomb", () -> new ThrowableItem(itemProps(),
+            (w, thrower) -> new DemonicBombEntity(JEntities.DEMONIC_BOMB_TYPE.get(), w, thrower, 4F)).setSound(() -> SoundEvents.SNOWBALL_THROW));
+
+    public static final RegistryObject<Item> FIRE_BOMB = registerNormalItem("fire_bomb", "Fire Bomb", () -> new ThrowableItem(itemProps(),
+            (w, thrower) -> new FireBombEntity(JEntities.FIRE_BOMB_TYPE.get(), w, thrower, 6F)).setSound(() -> SoundEvents.SNOWBALL_THROW));
+
+    public static final RegistryObject<Item> MAGIC_BOMB = registerNormalItem("magic_bomb", "Magic Bomb", () -> new ThrowableItem(itemProps(),
+            (w, thrower) -> new MagicBombEntity(w, thrower, 1F)).setSound(() -> SoundEvents.SNOWBALL_THROW));
+
     public static final RegistryObject<Item> POISON_SWORD = registerToolItem("poison_sword", "Poison Sword", () -> new JSwordItem(JToolTiers.POISON_SWORD, BASIC));
     public static final RegistryObject<Item> CLOUD_SLICER = registerToolItem("cloud_slicer", "Cloud Slicer", () -> new JSwordItem(JToolTiers.CLOUD_SLICER, BASIC));
     public static final RegistryObject<Item> DRAGONS_TOOTH = registerToolItem("dragons_tooth", "Dragons Tooth", () -> new JSwordItem(JToolTiers.DRAGONS_TOOTH, BASIC));
@@ -496,9 +505,6 @@ public class JItems {
     public static final RegistryObject<Item> EUCA_RECORD_3 = registerRecord("euca_record_3", "Euca", JSounds.EUCA_DISC_3, 3500);
     public static final RegistryObject<Item> FROZEN_RECORD_1 = registerRecord("frozen_record_1", "Frozen", JSounds.FROZEN_DISC_1, 3480);
     public static final RegistryObject<Item> BOIL_RECORD_1 = registerRecord("boil_record_1", "Boiling Point", JSounds.BOIL_DISC_1, 3140);
-
-    public static final RegistryObject<Item> DEMONIC_BOMB = registerNormalItem("demonic_bomb", "Demonic Bomb");
-    public static final RegistryObject<Item> MAGIC_BOMB = registerNormalItem("magic_bomb", "Magic Bomb");
 
     public static RegistryObject<Item> registerNormalItem(String name, String translatedName) {
         return register(name, translatedName, () -> new Item(new Item.Properties()), ItemType.ITEM);

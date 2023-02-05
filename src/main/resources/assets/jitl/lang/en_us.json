@@ -39,6 +39,9 @@
 "entity.jitl.floro_mud": "Floro Mud",
 "entity.jitl.piercer": "Piercer",
 "entity.jitl.knife": "Knife",
+"entity.jitl.demonic_bomb": "Demonic Bomb",
+"entity.jitl.fire_bomb": "Fire Bomb",
+"entity.jitl.magic_bomb": "Magic Bomb",
 "entity.jitl.essencia_bolt": "Essencia Bolt",
 "entity.jitl.boss_crystal": "Boss Crystal",
 "entity.jitl.jboat": "Journey Boat",
@@ -841,6 +844,9 @@
 "item.jitl.burned_boat": "Burned Boat",
 "item.jitl.corba_boat": "Corba Boat",
 "item.jitl.mud_ball": "Mud Ball",
+"item.jitl.demonic_bomb": "Demonic Bomb",
+"item.jitl.fire_bomb": "Fire Bomb",
+"item.jitl.magic_bomb": "Magic Bomb",
 "item.jitl.eye_of_the_blizzard": "Eye Of The Blizzard",
 "item.jitl.skull_of_decay": "Skull Of Decay",
 "item.jitl.frostborn_soul": "Frostborn Soul",
@@ -864,7 +870,5 @@
 "item.jitl.strong_essence_crystal": "Strong Essence Crystal",
 "item.jitl.very_strong_essence_crystal": "Very Strong Essence Crystal",
 "item.jitl.breathing_stone": "Breathing Stone",
-"item.jitl.eudor_crown": "Eudor's Crown",
-"item.jitl.demonic_bomb": "Demonic Bomb",
-"item.jitl.magic_bomb": "Magic Bomb"
+"item.jitl.eudor_crown": "Eudor's Crown"
 }

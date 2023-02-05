@@ -62,6 +62,9 @@ public class JEntities {
     public static final RegistryObject<EntityType<FloroMudEntity>> FLORO_MUD_TYPE = registerProjectile(FloroMudEntity::new, "floro_mud", "Floro Mud", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<PiercerEntity>> PIERCER_TYPE = registerProjectile(PiercerEntity::new, "piercer", "Piercer", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<KnifeEntity>> KNIFE_TYPE = registerProjectile(KnifeEntity::new, "knife", "Knife", 0.5F, 0.5F);
+    public static final RegistryObject<EntityType<DemonicBombEntity>> DEMONIC_BOMB_TYPE = registerProjectile(DemonicBombEntity::new, "demonic_bomb", "Demonic Bomb", 0.5F, 0.5F);
+    public static final RegistryObject<EntityType<FireBombEntity>> FIRE_BOMB_TYPE = registerProjectile(FireBombEntity::new, "fire_bomb", "Fire Bomb", 0.5F, 0.5F);
+    public static final RegistryObject<EntityType<MagicBombEntity>> MAGIC_BOMB_TYPE = registerProjectile(MagicBombEntity::new, "magic_bomb", "Magic Bomb", 0.5F, 0.5F);
 
     //RAW ENTITYS
     public static final RegistryObject<EntityType<EssenciaBoltEntity>> ESSENCIA_BOLT_TYPE = registerRawEntity(EssenciaBoltEntity::new, "essencia_bolt", "Essencia Bolt", 0.25F, 0.25F);
