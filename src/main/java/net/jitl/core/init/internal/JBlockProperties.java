@@ -18,6 +18,7 @@ public class JBlockProperties {
     public static BlockBehaviour.Properties GLASS = BlockBehaviour.Properties.of(Material.GLASS)
             .strength(1F)
             .sound(SoundType.GLASS)
+            .noOcclusion()
             .requiresCorrectToolForDrops();
 
     public static BlockBehaviour.Properties GLOW_LAMP = BlockBehaviour.Properties.of(Material.GLASS)

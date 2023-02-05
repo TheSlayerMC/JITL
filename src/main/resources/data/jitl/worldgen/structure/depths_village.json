@@ -1,0 +1,20 @@
+{
+  "type": "jitl:highest_ground",
+  "start_pool": "jitl:depths/depths_village/starting_well",
+  "biomes": "#jitl:has_structure/depths",
+  "max_distance_from_center": 80,
+  "step": "surface_structures",
+  "terrain_adaptation": "beard_thin",
+  "min_height": 15,
+  "max_height": 60,
+  "bury": 0,
+  "size": 5,
+  "spawn_overrides": {
+    "creature": {
+      "bounding_box": "piece",
+      "spawns": [
+
+      ]
+    }
+  }
+}

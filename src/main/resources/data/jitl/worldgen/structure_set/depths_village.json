@@ -1,0 +1,20 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:depths_village",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 156586415844358,
+    "locate_offset": [
+      0,
+      5,
+      0
+    ],
+    "spread_type": "linear",
+    "spacing": 20,
+    "separation": 6
+  }
+}

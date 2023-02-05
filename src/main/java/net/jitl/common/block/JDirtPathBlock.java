@@ -47,6 +47,9 @@ public class JDirtPathBlock extends Block {
         if(this == JBlocks.GOLDITE_PATH.get()) {
             dirt = JBlocks.GOLDITE_DIRT.get();
         }
+        if(this == JBlocks.DEPTHS_PATH.get()) {
+            dirt = JBlocks.DEPTHS_DIRT.get();
+        }
         return dirt;
     }
 
