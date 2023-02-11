@@ -7,7 +7,7 @@
       "element": {
         "location": "jitl:depths/depths_village/path_cross",
         "processors": "minecraft:empty",
-        "projection": "terrain_matching",
+        "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
     },
@@ -16,7 +16,7 @@
       "element": {
         "location": "jitl:depths/depths_village/path_straight",
         "processors": "minecraft:empty",
-        "projection": "terrain_matching",
+        "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
     },
@@ -25,7 +25,7 @@
       "element": {
         "location": "jitl:depths/depths_village/path_corner",
         "processors": "minecraft:empty",
-        "projection": "terrain_matching",
+        "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
     }
