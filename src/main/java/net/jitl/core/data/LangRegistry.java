@@ -48,6 +48,7 @@ public class LangRegistry {
         ArrayList<String> bushBlockList = new ArrayList<>(JBlocks.bushBlockName);
         ArrayList<String> farmBlockList = new ArrayList<>(JBlocks.farmlandBlockName);
         ArrayList<String> cropBlockList = new ArrayList<>(JBlocks.cropBlockName);
+        ArrayList<String> wallBlockList = new ArrayList<>(JBlocks.wallBlockName);
 
         ArrayList<String> toolItemList = new ArrayList<>(JItems.toolName);
         ArrayList<String> itemList = new ArrayList<>(JItems.itemName);
@@ -117,7 +118,6 @@ public class LangRegistry {
             writeToFile("\"block.jitl." + blockList.get(i) + "\": \"" + JBlocks.normalLangName.get(i) + "\"" + ",");
         }
 
-
         for(int i = 0; i < doublePlantList.size(); i++) {
             writeToFile("\"block.jitl." + doublePlantList.get(i) + "\": \"" + JBlocks.doublePlantLangName.get(i) + "\"" + ",");
         }
@@ -136,6 +136,10 @@ public class LangRegistry {
 
         for(int i = 0; i < chestBlockList.size(); i++) {
             writeToFile("\"block.jitl." + chestBlockList.get(i) + "\": \"" + JBlocks.chestLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < wallBlockList.size(); i++) {
+            writeToFile("\"block.jitl." + wallBlockList.get(i) + "\": \"" + JBlocks.wallLangName.get(i) + "\"" + ",");
         }
 
         for(int i = 0; i < vineBlockList.size(); i++) {

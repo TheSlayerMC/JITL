@@ -79,6 +79,7 @@ public class JITL {
             new JBlockBushGenerator().generate();
             new JBlockAttachedCrossGenerator().generate();
             new JBlockPillarGenerator().generate();
+            new JBlockWallGenerator().generate();
             new JBlockDoorGenerator().generate();
             new JBlockTrapDoorGenerator().generate();
             new JBlockPaneGenerator().generate();

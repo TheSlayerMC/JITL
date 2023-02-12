@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "jitl:corba/bogweed_fields",
+    "jitl:corba/tainted_swamp",
+    "jitl:corba/tainted_forest",
+    "jitl:corba/corba_plains"
+  ]
+}

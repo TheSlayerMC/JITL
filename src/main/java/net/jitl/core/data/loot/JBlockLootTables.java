@@ -376,6 +376,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.add(JBlocks.CORBA_STONE, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.CORBA_COBBLESTONE.get()));
         this.add(JBlocks.CORBA_PATH, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.CORBA_DIRT.get()));
         this.dropSelf(JBlocks.CORBA_POST);
+        this.dropSelf(JBlocks.CORBA_COBBLESTONE_WALL);
         this.dropSelf(JBlocks.CORBA_PLILLAR);
         this.dropSelf(JBlocks.TAINTED_MUD);
         this.dropSelf(JBlocks.DRIED_MUD);

@@ -313,6 +313,12 @@ public class JBlockProperties {
         if(name.contains("royal_shingle")) {
             texName = "royal_shingle";
         }
+        if(name.contains("corba_cobblestone_wall")) {
+            texName = "corba_cobblestone";
+        }
+        if(name.contains("corba_brick")) {
+            texName = "corba_bricks";
+        }
         return texName;
     }
 

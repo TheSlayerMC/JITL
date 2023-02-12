@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "jitl:corba/tainted_forest",
+    "jitl:corba/corba_plains"
+  ]
+}

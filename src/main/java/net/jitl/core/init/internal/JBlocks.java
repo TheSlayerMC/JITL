@@ -60,6 +60,8 @@ public class JBlocks {
     public static final ArrayList<String> gateLangName = new ArrayList<>();
     public static final ArrayList<String> fenceBlockName = new ArrayList<>();
     public static final ArrayList<String> fenceLangName = new ArrayList<>();
+    public static final ArrayList<String> wallBlockName = new ArrayList<>();
+    public static final ArrayList<String> wallLangName = new ArrayList<>();
     public static final ArrayList<String> paneBlockName = new ArrayList<>();
     public static final ArrayList<String> paneLangName = new ArrayList<>();
     public static final ArrayList<String> crossBlockName = new ArrayList<>();
@@ -226,8 +228,8 @@ public class JBlocks {
 
     public static final RegistryObject<Block> GOLDITE_FARMLAND = registerFarmlandBlock("goldite_farmland", "Goldite Farmland", GolditeFarmland::new);
     public static final RegistryObject<Block> DEPTHS_FARMLAND = registerFarmlandBlock("depths_farmland", "Depths Farmland", DepthsFarmland::new);
-    public static final RegistryObject<Block> PERMAFROST_FARMLAND = registerFarmlandBlock("permafrost_farmland", "Permafrost Farmland", DepthsFarmland::new);
-    public static final RegistryObject<Block> CORBA_FARMLAND = registerFarmlandBlock("corba_farmland", "Corba Farmland", DepthsFarmland::new);
+    public static final RegistryObject<Block> PERMAFROST_FARMLAND = registerFarmlandBlock("permafrost_farmland", "Permafrost Farmland", PermafrostFarmland::new);
+    public static final RegistryObject<Block> CORBA_FARMLAND = registerFarmlandBlock("corba_farmland", "Corba Farmland", CorbaFarmland::new);
 
     public static final RegistryObject<Block> EUCA_PORTAL_FRAME = register("euca_portal_frame", "Euca Portal Frame", JBlockProperties.STONE);
     public static final RegistryObject<JBasePortalBlock> EUCA_PORTAL = registerPortalBlock("euca_portal", "Euca Portal", () -> new JBasePortalBlock(Dimensions.EUCA, EUCA_PORTAL_FRAME));
@@ -436,15 +438,16 @@ public class JBlocks {
 
     public static final RegistryObject<Block> CORBA_PORTAL_FRAME = register("corba_portal_frame", "Corba Portal Frame", JBlockProperties.STONE);
     public static final RegistryObject<JBasePortalBlock> CORBA_PORTAL = registerPortalBlock("corba_portal", "Corba Portal", () -> new JBasePortalBlock(Dimensions.CORBA, CORBA_PORTAL_FRAME));
-    public static final RegistryObject<Block> CORBA_DIRT = registerTerrainBlock("corba_dirt", "Depths Dirt", JDirt::new);
+    public static final RegistryObject<Block> CORBA_DIRT = registerTerrainBlock("corba_dirt", "Corba Dirt", JDirt::new);
     public static final RegistryObject<Block> CORBA_GRASS = registerOverlayGrassBlock("corba_grass", "Corba Grass", JGrassBlock::new);
     public static final RegistryObject<Block> CORBA_STONE = registerTerrainBlock("corba_stone", "Depths Stone", JBlockProperties.STONE);
     public static final RegistryObject<Block> CORBA_PATH = registerPathBlock("corba_path", "Corba Path", () -> new JDirtPathBlock(JBlockProperties.PATH));
     public static final RegistryObject<JFenceBlock> CORBA_POST = registerFence("corba_post", "Corba Post", true, JBlockProperties.WOOD);
+    public static final RegistryObject<JWallBlock> CORBA_COBBLESTONE_WALL = registerWallBlock("corba_cobblestone_wall", "Corba Cobblestone Wall", JBlockProperties.STONE);
     public static final RegistryObject<RotatedPillarBlock> CORBA_PLILLAR = registerPillar("corba_pillar", "Corba Pillar", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> TAINTED_MUD = registerTerrainBlock("tainted_mud", "Tainted Mud", JBlockProperties.DIRT);
     public static final RegistryObject<Block> DRIED_MUD = registerTerrainBlock("dried_mud", "Dried Mud", JBlockProperties.DIRT);
-    public static final RegistryObject<Block> CORBA_LAMP = registerTerrainBlock("corba_lamp", "Corba Lamp", JBlockProperties.GLOW_LAMP);
+    public static final RegistryObject<Block> CORBA_LAMP = register("corba_lamp", "Corba Lamp", JBlockProperties.GLOW_LAMP);
     public static final RegistryObject<RotatedPillarBlock> BOGWOOD_LOG = registerPillar("bogwood_log", "Bogwood Log", true, JBlockProperties.WOOD);
     public static final RegistryObject<Block> BOGWOOD_LEAVES = registerTerrainBlock("bogwood_leaves", "Bogwood Leaves", JBlockProperties.LEAVES);
     public static final RegistryObject<Block> BOGWOOD_SAPLING = registerCrossBlock("bogwood_sapling", "Bogwood Sapling", () -> new JSaplingBlock(new EucaGreenTreeGrower()));
@@ -462,6 +465,7 @@ public class JBlocks {
     public static final RegistryObject<JFenceBlock> CORBA_FENCE = registerFence("corba_fence", "Corba Fence", true, JBlockProperties.WOOD);
     public static final RegistryObject<Block> CORBA_COBBLESTONE = register("corba_cobblestone", "Corba Cobblestone", JBlockProperties.STONE);
     public static final RegistryObject<Block> CORBA_BRICKS = register("corba_bricks", "Corba Bricks", JBlockProperties.STONE);
+    public static final RegistryObject<StairBlock> CORBA_BRICK_STAIRS = registerStairs("corba_brick_stairs", "Corba Brick Stairs", CORBA_BRICKS, false, JBlockProperties.STONE);
     public static final RegistryObject<Block> CORBA_CRACKED_BRICKS = register("corba_cracked_bricks", "Corba Cracked Bricks", JBlockProperties.STONE);
     public static final RegistryObject<Block> CORBA_DARK_BRICKS = register("corba_dark_bricks", "Corba Dark Bricks", JBlockProperties.STONE);
     public static final RegistryObject<Block> CORBA_LIGHT_BRICKS = register("corba_light_bricks", "Corba Light Bricks", JBlockProperties.STONE);
@@ -800,6 +804,14 @@ public class JBlocks {
                 return wood ? 300 : -1;
             }
         });
+        return block1;
+    }
+
+    public static RegistryObject<JWallBlock> registerWallBlock(String name, String translatedName, BlockBehaviour.Properties p) {
+        wallBlockName.add(name);
+        wallLangName.add(translatedName);
+        RegistryObject<JWallBlock> block1 = BLOCKS.register(name, () -> new JWallBlock(p));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 

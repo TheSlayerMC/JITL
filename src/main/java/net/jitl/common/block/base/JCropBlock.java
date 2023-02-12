@@ -29,7 +29,7 @@ public class JCropBlock extends CropBlock {
         OVERWORLD(Blocks.FARMLAND),
         EUCA(JBlocks.GOLDITE_FARMLAND.get()),
         DEPTHS(JBlocks.DEPTHS_FARMLAND.get()),
-        CORBA(JBlocks.DEPTHS_FARMLAND.get())
+        CORBA(JBlocks.CORBA_FARMLAND.get())
             ;
 
         private final Block growOn;
