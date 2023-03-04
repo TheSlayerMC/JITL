@@ -150,6 +150,7 @@ public class JConfiguredFeatures {
             CORBA_TALL_GRASS = registerKey("corba_tall_grass"),
             CORBA_TALL_PLANTS = registerKey("corba_tall_plants"),
             CORBA_RUINS = registerKey("corba_ruins"),
+            CORBA_LILY_PAD = registerKey("corba_lily_pad"),
             BOGSHROOMS = registerKey("bogshrooms");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
@@ -238,6 +239,7 @@ public class JConfiguredFeatures {
         register(context, CORBA_TALL_PLANTS, Feature.FLOWER, new RandomPatchConfiguration(60, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.BOGWEED.get().defaultBlockState()))))));
         register(context, BOGSHROOMS, Feature.FLOWER, new RandomPatchConfiguration(40, 4, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.SMALL_BOGSHROOM.get().defaultBlockState(), JBlocks.TALL_BOGSHROOM.get().defaultBlockState()))))));
         register(context, CORBA_RUINS, JFeatures.RUINS.get(), new RuinsFeatureConfig(CORBA_MUD, BlockStateProvider.simple(JBlocks.CORBA_CHEST.get()), new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(JBlocks.CORBA_BRICKS.get().defaultBlockState(), 6).add(JBlocks.CORBA_CRACKED_BRICKS.get().defaultBlockState(), 3).add(JBlocks.CORBA_DARK_BRICKS.get().defaultBlockState(), 4).add(JBlocks.CORBA_LIGHT_BRICKS.get().defaultBlockState(), 3)),5, 5, 8, BuiltInLootTables.ABANDONED_MINESHAFT));
+        register(context, CORBA_LILY_PAD, Feature.RANDOM_PATCH, new RandomPatchConfiguration(10, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.LILY_PAD)))));
 
     }
 

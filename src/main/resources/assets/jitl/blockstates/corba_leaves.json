@@ -1,21 +1,7 @@
 {
   "variants": {
-    "": [
-      {
-        "model": "jitl:block/corba_leaves"
-      },
-      {
-        "model": "jitl:block/corba_leaves",
-         "y": 90
-      },
-      {
-        "model": "jitl:block/corba_leaves",
-         "y": 180
-      },
-      {
-        "model": "jitl:block/corba_leaves",
-         "y": 270
-      }
-    ]
+  "": {
+      "model": "jitl:block/corba_leaves"
+     }
   }
 }

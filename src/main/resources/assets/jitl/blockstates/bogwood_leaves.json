@@ -1,21 +1,7 @@
 {
   "variants": {
-    "": [
-      {
-        "model": "jitl:block/bogwood_leaves"
-      },
-      {
-        "model": "jitl:block/bogwood_leaves",
-         "y": 90
-      },
-      {
-        "model": "jitl:block/bogwood_leaves",
-         "y": 180
-      },
-      {
-        "model": "jitl:block/bogwood_leaves",
-         "y": 270
-      }
-    ]
+  "": {
+      "model": "jitl:block/bogwood_leaves"
+     }
   }
 }

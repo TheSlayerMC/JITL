@@ -92,6 +92,8 @@ public class JITL {
             new JBlockFenceGenerator().generate();
             new JBlockGrassGenerator().generate();
             new JBlockOverlayGrassGenerator().generate();
+            new JBlockTintedCrossGenerator().generate();
+            new JBlockTintedLeavesGenerator().generate();
             new JBlockPortalGenerator().generate();
             new JBlockCampfireGenerator().generate();
             new JBlockPathGenerator().generate();

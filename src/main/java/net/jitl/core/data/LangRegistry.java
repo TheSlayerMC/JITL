@@ -21,6 +21,8 @@ public class LangRegistry {
         ArrayList<String> blockList = new ArrayList<>(JBlocks.normalBlockName);
         ArrayList<String> logList = new ArrayList<>(JBlocks.logBlockName);
         ArrayList<String> crossList = new ArrayList<>(JBlocks.crossBlockName);
+        ArrayList<String> tintedCrossList = new ArrayList<>(JBlocks.tintedCrossBlockName);
+        ArrayList<String> tintedLeavesList = new ArrayList<>(JBlocks.tintedLeavesBlockName);
         ArrayList<String> doublePlantList = new ArrayList<>(JBlocks.doublePlantBlockName);
         ArrayList<String> paneList = new ArrayList<>(JBlocks.paneBlockName);
         ArrayList<String> attachedCrossList = new ArrayList<>(JBlocks.attachedCrossBlockName);
@@ -128,6 +130,14 @@ public class LangRegistry {
 
         for(int i = 0; i < crossList.size(); i++) {
             writeToFile("\"block.jitl." + crossList.get(i) + "\": \"" + JBlocks.crossLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < tintedCrossList.size(); i++) {
+            writeToFile("\"block.jitl." + tintedCrossList.get(i) + "\": \"" + JBlocks.tintedCrossLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < tintedLeavesList.size(); i++) {
+            writeToFile("\"block.jitl." + tintedLeavesList.get(i) + "\": \"" + JBlocks.tintedLeavesLangName.get(i) + "\"" + ",");
         }
 
         for(int i = 0; i < grassBlockList.size(); i++) {

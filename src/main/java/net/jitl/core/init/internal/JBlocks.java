@@ -42,6 +42,8 @@ public class JBlocks {
     public static final ArrayList<String> furnaceLangName = new ArrayList<>();
     public static final ArrayList<String> normalBlockName = new ArrayList<>();
     public static final ArrayList<String> normalLangName = new ArrayList<>();
+    public static final ArrayList<String> tintedLeavesBlockName = new ArrayList<>();
+    public static final ArrayList<String> tintedLeavesLangName = new ArrayList<>();
     public static final ArrayList<String> logBlockName = new ArrayList<>();
     public static final ArrayList<String> logLangName = new ArrayList<>();
     public static final ArrayList<String> doorBlockName = new ArrayList<>();
@@ -66,6 +68,8 @@ public class JBlocks {
     public static final ArrayList<String> paneLangName = new ArrayList<>();
     public static final ArrayList<String> crossBlockName = new ArrayList<>();
     public static final ArrayList<String> crossLangName = new ArrayList<>();
+    public static final ArrayList<String> tintedCrossBlockName = new ArrayList<>();
+    public static final ArrayList<String> tintedCrossLangName = new ArrayList<>();
     public static final ArrayList<String> vineBlockName = new ArrayList<>();
     public static final ArrayList<String> vineLangName = new ArrayList<>();
     public static final ArrayList<String> attachedCrossBlockName = new ArrayList<>();
@@ -450,10 +454,10 @@ public class JBlocks {
     public static final RegistryObject<Block> DRIED_MUD = registerTerrainBlock("dried_mud", "Dried Mud", JBlockProperties.DIRT);
     public static final RegistryObject<Block> CORBA_LAMP = register("corba_lamp", "Corba Lamp", JBlockProperties.GLOW_LAMP);
     public static final RegistryObject<RotatedPillarBlock> BOGWOOD_LOG = registerPillar("bogwood_log", "Bogwood Log", true, JBlockProperties.WOOD);
-    public static final RegistryObject<Block> BOGWOOD_LEAVES = registerTerrainBlock("bogwood_leaves", "Bogwood Leaves", JBlockProperties.LEAVES);
+    public static final RegistryObject<Block> BOGWOOD_LEAVES = registerTintedLeavesBlock("bogwood_leaves", "Bogwood Leaves", JBlockProperties.LEAVES);
     public static final RegistryObject<Block> BOGWOOD_SAPLING = registerCrossBlock("bogwood_sapling", "Bogwood Sapling", () -> new JSaplingBlock(new EucaGreenTreeGrower()));
     public static final RegistryObject<RotatedPillarBlock> CORBA_LOG = registerPillar("corba_log", "Corba Log", true, JBlockProperties.WOOD);
-    public static final RegistryObject<Block> CORBA_LEAVES = registerTerrainBlock("corba_leaves", "Corba Leaves", JBlockProperties.LEAVES);
+    public static final RegistryObject<Block> CORBA_LEAVES = registerTintedLeavesBlock("corba_leaves", "Corba Leaves", JBlockProperties.LEAVES);
     public static final RegistryObject<Block> CORBA_SAPLING = registerCrossBlock("corba_sapling", "Corba Sapling", () -> new JSaplingBlock(new EucaGreenTreeGrower()));
     public static final RegistryObject<Block> CORBA_PLANKS = registerFuelBlock("corba_planks", "Corba Planks", JBlockProperties.WOOD, 300);
     public static final RegistryObject<DoorBlock> CORBA_DOOR = registerDoor("corba_door", "Corba Door", true, JBlockProperties.DOOR);
@@ -481,7 +485,7 @@ public class JBlocks {
     public static final RegistryObject<Block> CORBA_LIGHT_PURPLE_FLOWER = registerCrossBlock("corba_light_purple_flower", "Corba Light Purple Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> CORBA_DARK_PURPLE_FLOWER = registerCrossBlock("corba_dark_purple_flower", "Corba Dark Purple Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> CORBA_FLOWER = registerCrossBlock("corba_flower", "Corba Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
-    public static final RegistryObject<Block> CORBA_TALL_GRASS = registerCrossBlock("corba_tall_grass", "Corba Tall Grass", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final RegistryObject<Block> CORBA_TALL_GRASS = registerTintedCrossBlock("corba_tall_grass", "Corba Tall Grass", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> SMALL_BOGSHROOM = registerModeledBlock("small_bogshroom", "Small Bogshroom", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> TALL_BOGSHROOM = registerModeledBlock("tall_bogshroom", "Tall Bogshroom", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> BOGWEED = registerDoublePlant("bogweed", "Bogweed", () -> new JDoublePlantBlock(JBlockProperties.PLANT));
@@ -591,6 +595,14 @@ public class JBlocks {
     public static RegistryObject<Block> registerAltTexBlock(String name, String translatedName, BlockBehaviour.Properties props) {
         randomLangName.add(translatedName);
         randomBlockName.add(name);
+        RegistryObject<Block> block1 = BLOCKS.register(name, () -> new Block(props));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerTintedLeavesBlock(String name, String translatedName, BlockBehaviour.Properties props) {
+        tintedLeavesLangName.add(translatedName);
+        tintedLeavesBlockName.add(name);
         RegistryObject<Block> block1 = BLOCKS.register(name, () -> new Block(props));
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
@@ -832,6 +844,14 @@ public class JBlocks {
     public static RegistryObject<Block> registerCrossBlock(String name, String translatedName, Supplier<Block> block) {
         crossBlockName.add(name);
         crossLangName.add(translatedName);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerTintedCrossBlock(String name, String translatedName, Supplier<Block> block) {
+        tintedCrossBlockName.add(name);
+        tintedCrossLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
