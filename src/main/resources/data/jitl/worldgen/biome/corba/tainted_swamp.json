@@ -5,10 +5,10 @@
   "effects": {
     "sky_color": 209664,
     "fog_color": 1524224,
-    "water_color": 539399,
-    "water_fog_color": 539399,
-    "grass_color": 539399,
-    "foliage_color": 539399
+    "water_color": 3496974,
+    "water_fog_color": 3496974,
+    "grass_color": 3496974,
+    "foliage_color": 3496974
   },
   "spawners": {},
   "spawn_costs": {},
