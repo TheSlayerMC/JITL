@@ -396,6 +396,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.CORBA_LIGHT_PURPLE_FLOWER);
         this.dropSelf(JBlocks.CORBA_DARK_PURPLE_FLOWER);
         this.dropSelf(JBlocks.CORBA_FLOWER);
+        this.dropSelf(JBlocks.CORBA_FURNACE);
 
         this.dropSelf(JBlocks.GRINDSTONE);
         this.dropSelf(JBlocks.JOURNEY_CHEST);

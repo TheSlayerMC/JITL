@@ -464,6 +464,7 @@ public class JBlocks {
     public static final RegistryObject<FenceGateBlock> CORBA_FENCE_GATE = registerFenceGate("corba_fence_gate", "Corba Fence Gate", true, JBlockProperties.WOOD);
     public static final RegistryObject<JFenceBlock> CORBA_FENCE = registerFence("corba_fence", "Corba Fence", true, JBlockProperties.WOOD);
     public static final RegistryObject<Block> CORBA_COBBLESTONE = register("corba_cobblestone", "Corba Cobblestone", JBlockProperties.STONE);
+    public static final RegistryObject<Block> CORBA_FURNACE = registerFurnaceBlock("corba_furnace", "Corba Furnace");
     public static final RegistryObject<Block> CORBA_BRICKS = register("corba_bricks", "Corba Bricks", JBlockProperties.STONE);
     public static final RegistryObject<StairBlock> CORBA_BRICK_STAIRS = registerStairs("corba_brick_stairs", "Corba Brick Stairs", CORBA_BRICKS, false, JBlockProperties.STONE);
     public static final RegistryObject<Block> CORBA_CRACKED_BRICKS = register("corba_cracked_bricks", "Corba Cracked Bricks", JBlockProperties.STONE);

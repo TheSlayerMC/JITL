@@ -3,7 +3,7 @@
   "fallback": "minecraft:empty",
   "elements": [
     {
-      "weight": 75,
+      "weight": 50,
       "element": {
         "location": "jitl:corba/corba_village/small_house1",
         "processors": "minecraft:empty",
@@ -12,9 +12,18 @@
       }
     },
     {
-      "weight": 75,
+      "weight": 50,
       "element": {
         "location": "jitl:corba/corba_village/small_house2",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 50,
+      "element": {
+        "location": "jitl:corba/corba_village/small_house3",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
