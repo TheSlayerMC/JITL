@@ -445,7 +445,7 @@ public class JBlocks {
     public static final RegistryObject<JBasePortalBlock> CORBA_PORTAL = registerPortalBlock("corba_portal", "Corba Portal", () -> new JBasePortalBlock(Dimensions.CORBA, CORBA_PORTAL_FRAME));
     public static final RegistryObject<Block> CORBA_DIRT = registerTerrainBlock("corba_dirt", "Corba Dirt", JDirt::new);
     public static final RegistryObject<Block> CORBA_GRASS = registerOverlayGrassBlock("corba_grass", "Corba Grass", JGrassBlock::new);
-    public static final RegistryObject<Block> CORBA_STONE = registerTerrainBlock("corba_stone", "Depths Stone", JBlockProperties.STONE);
+    public static final RegistryObject<Block> CORBA_STONE = registerTerrainBlock("corba_stone", "Corba Stone", JBlockProperties.STONE);
     public static final RegistryObject<Block> CORBA_PATH = registerPathBlock("corba_path", "Corba Path", () -> new JDirtPathBlock(JBlockProperties.PATH));
     public static final RegistryObject<JFenceBlock> CORBA_POST = registerFence("corba_post", "Corba Post", true, JBlockProperties.WOOD);
     public static final RegistryObject<JWallBlock> CORBA_COBBLESTONE_WALL = registerWallBlock("corba_cobblestone_wall", "Corba Cobblestone Wall", JBlockProperties.STONE);
