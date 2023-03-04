@@ -52,6 +52,7 @@ public class JConfiguredFeatures {
 
     public static final RuleTest GRASS = new BlockStateMatchTest(Blocks.GRASS_BLOCK.defaultBlockState());
     public static final RuleTest SAND = new BlockStateMatchTest(Blocks.SAND.defaultBlockState());
+    public static final RuleTest CORBA_MUD = new TagMatchTest(JTags.CORBA_MUD);
     public static final RuleTest EUCA_GRASS = new TagMatchTest(JTags.EUCA_GRASS);
     public static final RuleTest DEPTHS_LAMP_REPLACEABLES = new TagMatchTest(JTags.DEPTHS_LAMP_REPLACEABLES);
     public static final RuleTest NETHER_ORE_REPLACEABLES = new TagMatchTest(JTags.NETHER_ORE_REPLACEABLES);
@@ -60,6 +61,7 @@ public class JConfiguredFeatures {
     public static final RuleTest END_REPLACEABLES = new TagMatchTest(JTags.END_STONE);
     public static final RuleTest EUCA_REPLACEABLES = new TagMatchTest(JTags.EUCA_STONE_ORE_REPLACEABLES);
     public static final RuleTest FROZEN_REPLACEABLES = new TagMatchTest(JTags.FROZEN_STONE_ORE_REPLACEABLES);
+    public static final RuleTest CORBA_REPLACEABLES = new TagMatchTest(JTags.CORBA_STONE_ORE_REPLACEABLES);
     public static final RuleTest DEPTHS_REPLACEABLES = new TagMatchTest(JTags.DEPTHS_STONE_ORE_REPLACEABLES);
     public static final RuleTest BOIL_REPLACEABLES = new TagMatchTest(JTags.BOIL_STONE_ORE_REPLACEABLES);
 
@@ -140,6 +142,16 @@ public class JConfiguredFeatures {
             SMALL_FROZEN_BITTERWOOD_TREE = registerKey("small_frozen_bitterwood_tree"),
             ICE_SPIKE = registerKey("frozen_ice_spike");
 
+    //CORBA
+    public static final ResourceKey<ConfiguredFeature<?, ?>>
+            ORBADITE_ORE = registerKey("orbadite_ore"),
+            GORBITE_ORE = registerKey("gorbite_ore"),
+            CORBA_VEG = registerKey("corba_veg"),
+            CORBA_TALL_GRASS = registerKey("corba_tall_grass"),
+            CORBA_TALL_PLANTS = registerKey("corba_tall_plants"),
+            CORBA_RUINS = registerKey("corba_ruins"),
+            BOGSHROOMS = registerKey("bogshrooms");
+
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         //OVERWORLD
         register(context, DESERT_OVERWORLD_RUINS, JFeatures.RUINS.get(), new RuinsFeatureConfig(SAND, BlockStateProvider.simple(JBlocks.JOURNEY_CHEST.get()), new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.SANDSTONE.defaultBlockState(), 3).add(Blocks.CHISELED_SANDSTONE.defaultBlockState(), 1).add(Blocks.CUT_SANDSTONE.defaultBlockState(), 2)), 5, 5, 8, BuiltInLootTables.DESERT_PYRAMID));
@@ -217,6 +229,15 @@ public class JConfiguredFeatures {
         register(context, PERIDOT_ORE, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(FROZEN_REPLACEABLES, JBlocks.PERIDOT_ORE.get().defaultBlockState()))).get(), 7));
         register(context, FROZEN_VEG , Feature.FLOWER, new RandomPatchConfiguration(60, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.ICE_BUSH.get().defaultBlockState(), JBlocks.FROSTBERRY_THORN.get().defaultBlockState()))))));
         register(context, FROZEN_FLOWERS, Feature.FLOWER, new RandomPatchConfiguration(60, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.FROZEN_BLOOM.get().defaultBlockState(), JBlocks.ICE_BUD.get().defaultBlockState()))))));
+
+        //CORBA
+        register(context, ORBADITE_ORE, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(CORBA_REPLACEABLES, JBlocks.ORBADITE_ORE.get().defaultBlockState()))).get(), 7));
+        register(context, GORBITE_ORE, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(CORBA_REPLACEABLES, JBlocks.GORBITE_ORE.get().defaultBlockState()))).get(), 7));
+        register(context, CORBA_VEG , Feature.FLOWER, new RandomPatchConfiguration(60, 4, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.CORBA_BLUE_FLOWER.get().defaultBlockState(), JBlocks.CORBA_RED_FLOWER.get().defaultBlockState(), JBlocks.CORBA_SPECKLED_FLOWER.get().defaultBlockState(), JBlocks.CORBA_PURPLE_FLOWER.get().defaultBlockState(), JBlocks.CORBA_LIGHT_PURPLE_FLOWER.get().defaultBlockState(), JBlocks.CORBA_DARK_PURPLE_FLOWER.get().defaultBlockState(), JBlocks.CORBA_FLOWER.get().defaultBlockState()))))));
+        register(context, CORBA_TALL_GRASS , Feature.FLOWER, new RandomPatchConfiguration(60, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.CORBA_TALL_GRASS.get().defaultBlockState()))))));
+        register(context, CORBA_TALL_PLANTS, Feature.FLOWER, new RandomPatchConfiguration(60, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.BOGWEED.get().defaultBlockState()))))));
+        register(context, BOGSHROOMS, Feature.FLOWER, new RandomPatchConfiguration(40, 4, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.SMALL_BOGSHROOM.get().defaultBlockState(), JBlocks.TALL_BOGSHROOM.get().defaultBlockState()))))));
+        register(context, CORBA_RUINS, JFeatures.RUINS.get(), new RuinsFeatureConfig(CORBA_MUD, BlockStateProvider.simple(JBlocks.CORBA_CHEST.get()), new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(JBlocks.CORBA_BRICKS.get().defaultBlockState(), 6).add(JBlocks.CORBA_CRACKED_BRICKS.get().defaultBlockState(), 3).add(JBlocks.CORBA_DARK_BRICKS.get().defaultBlockState(), 4).add(JBlocks.CORBA_LIGHT_BRICKS.get().defaultBlockState(), 3)),5, 5, 8, BuiltInLootTables.ABANDONED_MINESHAFT));
 
     }
 

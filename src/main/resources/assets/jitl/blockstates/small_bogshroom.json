@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "": [
+			{ "model": "jitl:block/small_bogshroom" },
+            { "model": "jitl:block/small_bogshroom", "y": 180 },
+            { "model": "jitl:block/small_bogshroom", "y": 270 },
+            { "model": "jitl:block/small_bogshroom", "y": 90 }
+    ]
+  }
+}

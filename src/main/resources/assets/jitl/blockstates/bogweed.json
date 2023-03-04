@@ -1,0 +1,10 @@
+{
+  "variants": {
+  "half=lower": {
+      "model": "jitl:block/bogweed_bottom"
+    },
+  "half=upper": {
+      "model": "jitl:block/bogweed_top"
+    }
+  }
+}

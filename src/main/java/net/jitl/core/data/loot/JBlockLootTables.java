@@ -351,7 +351,9 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.add(JBlocks.DEPTHS_LOCK, noDrop());
         this.dropSelf(JBlocks.DEPTHS_BOOK_SHELF);
         this.dropSelf(JBlocks.DEPTHS_BLUE_FLOWER);
+        this.dropSelf(JBlocks.DEPTHS_PATH);
         this.dropSelf(JBlocks.DEPTHS_FLOWER);
+        this.dropSelf(JBlocks.DEPTHS_FURNACE);
 
         this.dropSelf(JBlocks.CORBA_PORTAL_FRAME);
         this.add(JBlocks.CORBA_PORTAL, noDrop());
@@ -383,6 +385,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.CORBA_LAMP);
         this.dropSelf(JBlocks.CORBA_BRICKS);
         this.dropSelf(JBlocks.CORBA_CRACKED_BRICKS);
+        this.dropSelf(JBlocks.CORBA_BRICK_STAIRS);
         this.dropSelf(JBlocks.CORBA_COBBLESTONE);
         this.dropSelf(JBlocks.CORBA_DARK_BRICKS);
         this.dropSelf(JBlocks.CORBA_LIGHT_BRICKS);
@@ -395,7 +398,11 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.CORBA_PURPLE_FLOWER);
         this.dropSelf(JBlocks.CORBA_LIGHT_PURPLE_FLOWER);
         this.dropSelf(JBlocks.CORBA_DARK_PURPLE_FLOWER);
+        this.dropSelf(JBlocks.CORBA_TALL_GRASS);
         this.dropSelf(JBlocks.CORBA_FLOWER);
+        this.dropSelf(JBlocks.SMALL_BOGSHROOM);
+        this.dropSelf(JBlocks.TALL_BOGSHROOM);
+        this.dropSelf(JBlocks.BOGWEED);
         this.dropSelf(JBlocks.CORBA_FURNACE);
 
         this.dropSelf(JBlocks.GRINDSTONE);

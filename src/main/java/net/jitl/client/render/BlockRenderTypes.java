@@ -102,6 +102,7 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.CORBA_LIGHT_PURPLE_FLOWER.get());
         cutout.add(JBlocks.CORBA_DARK_PURPLE_FLOWER.get());
         cutout.add(JBlocks.CORBA_FLOWER.get());
+        cutout.add(JBlocks.CORBA_TALL_GRASS.get());
         cutout.add(JBlocks.CORBA_LADDER.get());
         cutout.add(JBlocks.FLORO_PEDAL_CROP.get());
         cutout.add(JBlocks.CORVEGGIES_CROP.get());
@@ -113,6 +114,7 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.ZATPEDAL_CROP.get());
         cutout.add(JBlocks.BRADBERRY_BUSH.get());
         cutout.add(JBlocks.REDCURRANT_BUSH.get());
+        cutout.add(JBlocks.BOGWEED.get());
 
         translucent.add(JBlocks.EUCA_PORTAL.get());
         translucent.add(JBlocks.FROZEN_PORTAL.get());

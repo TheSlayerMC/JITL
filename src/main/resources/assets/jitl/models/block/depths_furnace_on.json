@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "jitl:block/depths_furnace_front_on",
+    "side": "jitl:block/depths_furnace_side",
+    "top": "jitl:block/depths_furnace_top"
+  }
+}

@@ -14,6 +14,11 @@
   "spawn_costs": {},
   "carvers": {},
   "features": [
-    []
+    [
+      "jitl:orbadite_ore",
+      "jitl:gorbite_ore",
+      "jitl:corba_tall_plants",
+      "jitl:corba_ruins"
+    ]
   ]
 }

@@ -21,7 +21,7 @@ import java.util.Random;
 public class LockBlock extends FaceableBlock {
 
     public LockBlock() {
-        super(JBlockProperties.STONE);
+        super(JBlockProperties.DUNGEON_BLOCK);
     }
 
     @Override

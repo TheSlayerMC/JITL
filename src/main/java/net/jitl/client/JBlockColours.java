@@ -39,6 +39,7 @@ public class JBlockColours implements BlockColor, ItemColor {
     public static void registerBlockColours(RegisterColorHandlersEvent.Block event) {
         event.register(BLOCK_COLOUR_INSTANCE,
                 JBlocks.CORBA_GRASS.get(),
+                JBlocks.CORBA_TALL_GRASS.get(),
                 JBlocks.BOGWOOD_LEAVES.get(),
                 JBlocks.CORBA_LEAVES.get());
     }
@@ -47,6 +48,7 @@ public class JBlockColours implements BlockColor, ItemColor {
     public static void registerItemColours(RegisterColorHandlersEvent.Item event) {
         event.register(ITEM_COLOUR_INSTANCE,
                 JBlocks.CORBA_GRASS.get(),
+                JBlocks.CORBA_TALL_GRASS.get(),
                 JBlocks.BOGWOOD_LEAVES.get(),
                 JBlocks.CORBA_LEAVES.get());
     }
