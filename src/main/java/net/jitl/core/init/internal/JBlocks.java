@@ -100,6 +100,10 @@ public class JBlocks {
     public static final ArrayList<String> bushLangName = new ArrayList<>();
     public static final ArrayList<String> farmlandBlockName = new ArrayList<>();
     public static final ArrayList<String> farmlandLangName = new ArrayList<>();
+    public static final ArrayList<String> basePortalBlockName = new ArrayList<>();
+    public static final ArrayList<String> basePortalLangName = new ArrayList<>();
+    public static final ArrayList<String> basePortalFrameBlockName = new ArrayList<>();
+    public static final ArrayList<String> basePortalFrameLangName = new ArrayList<>();
 
     public static final RegistryObject<Block> IRIDIUM_ORE = register("iridium_ore", "Iridium Ore", JBlockProperties.STONE);
     public static final RegistryObject<Block> IRIDIUM_BLOCK = registerFuelBlock("iridium_block", "Iridium Block", () -> new Block(JBlockProperties.STONE), 16000);
@@ -404,7 +408,7 @@ public class JBlocks {
     public static final RegistryObject<Block> SIZZLESHROOM = registerCrossBlock("sizzleshroom", "Sizzleshroom", () -> new CavePlantBlock(JBlockProperties.CAVE_GLOW_PLANT));
 
     public static final RegistryObject<Block> DEPTHS_PORTAL_FRAME = register("depths_portal_frame", "Depths Portal Frame", JBlockProperties.STONE);
-    public static final RegistryObject<JBasePortalBlock> DEPTHS_PORTAL = registerPortalBlock("depths_portal", "Depths Portal", () -> new JBasePortalBlock(Dimensions.DEPTHS, DEPTHS_PORTAL_FRAME));
+    public static final RegistryObject<Block> DEPTHS_PORTAL = registerEndPortalStyleBlock("depths_portal", "Depths Portal", () -> new DepthsPortalBlock());
     public static final RegistryObject<Block> DEPTHS_GRASS = registerGrassBlock("depths_grass", "Depths Grass", JGrassBlock::new);
     public static final RegistryObject<Block> DEPTHS_PATH = registerPathBlock("depths_path", "Depths Path", () -> new JDirtPathBlock(JBlockProperties.PATH));
     public static final RegistryObject<Block> DEPTHS_DIRT = registerTerrainBlock("depths_dirt", "Depths Soil", JDirt::new);
@@ -604,6 +608,22 @@ public class JBlocks {
         tintedLeavesLangName.add(translatedName);
         tintedLeavesBlockName.add(name);
         RegistryObject<Block> block1 = BLOCKS.register(name, () -> new Block(props));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerEndPortalFrameStyleBlock(String name, String translatedName, Supplier<Block> block) {
+        basePortalFrameLangName.add(translatedName);
+        basePortalFrameBlockName.add(name);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerEndPortalStyleBlock(String name, String translatedName, Supplier<Block> block) {
+        basePortalLangName.add(translatedName);
+        basePortalBlockName.add(name);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
