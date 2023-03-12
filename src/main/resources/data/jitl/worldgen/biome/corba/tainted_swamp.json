@@ -20,7 +20,8 @@
       "jitl:corba_tall_grass",
       "jitl:corba_tall_plants",
       "jitl:corba_lily_pad",
-      "jitl:bogshrooms"
+      "jitl:bogshrooms",
+      "jitl:corba_swamp_tree"
     ]
   ]
 }

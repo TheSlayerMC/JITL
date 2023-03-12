@@ -19,6 +19,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.BiasedToBottomInt;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -27,10 +28,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.PineFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.NoiseProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
@@ -151,7 +149,11 @@ public class JConfiguredFeatures {
             CORBA_TALL_PLANTS = registerKey("corba_tall_plants"),
             CORBA_RUINS = registerKey("corba_ruins"),
             CORBA_LILY_PAD = registerKey("corba_lily_pad"),
-            BOGSHROOMS = registerKey("bogshrooms");
+            BOGSHROOMS = registerKey("bogshrooms"),
+            CORBA_TREE_SMALL = registerKey("corba_tree_small"),
+            CORBA_TREE_MEDIUM = registerKey("corba_tree_medium"),
+            CORBA_TREE_LARGE = registerKey("corba_tree_large"),
+            CORBA_SWAMP_TREE = registerKey("corba_swamp_tree");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         //OVERWORLD
@@ -240,6 +242,10 @@ public class JConfiguredFeatures {
         register(context, BOGSHROOMS, Feature.FLOWER, new RandomPatchConfiguration(40, 4, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.SMALL_BOGSHROOM.get().defaultBlockState(), JBlocks.TALL_BOGSHROOM.get().defaultBlockState()))))));
         register(context, CORBA_RUINS, JFeatures.RUINS.get(), new RuinsFeatureConfig(CORBA_MUD, BlockStateProvider.simple(JBlocks.CORBA_CHEST.get()), new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(JBlocks.CORBA_BRICKS.get().defaultBlockState(), 6).add(JBlocks.CORBA_CRACKED_BRICKS.get().defaultBlockState(), 3).add(JBlocks.CORBA_DARK_BRICKS.get().defaultBlockState(), 4).add(JBlocks.CORBA_LIGHT_BRICKS.get().defaultBlockState(), 3)),5, 5, 8, BuiltInLootTables.ABANDONED_MINESHAFT));
         register(context, CORBA_LILY_PAD, Feature.RANDOM_PATCH, new RandomPatchConfiguration(10, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.LILY_PAD)))));
+        register(context, CORBA_TREE_SMALL, JFeatures.JTREE.get(), new TreeConfig.JTreeConfigurationBuilder(BlockStateProvider.simple(JBlocks.CORBA_LOG.get().defaultBlockState()), new StraightTrunkPlacer(6, 4, 1), BlockStateProvider.simple(JBlocks.CORBA_LEAVES.get().defaultBlockState()), new PineFoliagePlacer(ConstantInt.of(1), ConstantInt.of(1), UniformInt.of(3, 4)), new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().forceDirt().dirt(BlockStateProvider.simple(JBlocks.CORBA_DIRT.get())).build());
+        register(context, CORBA_TREE_MEDIUM, JFeatures.JTREE.get(), new TreeConfig.JTreeConfigurationBuilder(BlockStateProvider.simple(JBlocks.CORBA_LOG.get().defaultBlockState()), new ForkingTrunkPlacer(5, 2, 1), BlockStateProvider.simple(JBlocks.CORBA_LEAVES.get().defaultBlockState()), new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(0, 2), UniformInt.of(1, 2)), new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().forceDirt().dirt(BlockStateProvider.simple(JBlocks.CORBA_DIRT.get())).build());
+        register(context, CORBA_TREE_LARGE, JFeatures.JTREE.get(), new TreeConfig.JTreeConfigurationBuilder(BlockStateProvider.simple(JBlocks.CORBA_LOG.get().defaultBlockState()), new GiantTrunkPlacer(13, 2, 5), BlockStateProvider.simple(JBlocks.CORBA_LEAVES.get().defaultBlockState()), new MegaPineFoliagePlacer(UniformInt.of(4, 6), UniformInt.of(0, 2), UniformInt.of(13, 17)), new TwoLayersFeatureSize(3, 1, 3)).ignoreVines().forceDirt().dirt(BlockStateProvider.simple(JBlocks.CORBA_DIRT.get())).build());
+        register(context, CORBA_SWAMP_TREE, JFeatures.CORBA_SWAMP_TREE.get(), new NoneFeatureConfiguration());
 
     }
 

@@ -4,6 +4,7 @@ import net.jitl.common.world.gen.boil.ScorchedStalagmiteFeature;
 import net.jitl.common.world.gen.boil.SulphurCrystalFeature;
 import net.jitl.common.world.gen.boil.SulphurDepositFeature;
 import net.jitl.common.world.gen.boil.VolcaniocRockFeature;
+import net.jitl.common.world.gen.corba.CorbaSwampTreeFeature;
 import net.jitl.common.world.gen.depths.DepthsCrystalFeature;
 import net.jitl.common.world.gen.depths.DepthsLampFeature;
 import net.jitl.common.world.gen.depths.DepthsLampFloorFeature;
@@ -58,5 +59,8 @@ public class JFeatures {
 
     //FROZEN
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> FROZEN_ICE_SPIKE = REGISTRY.register("frozen_ice_spike", () -> new FrozenIceSpikeFeature(NoneFeatureConfiguration.CODEC));
+
+    //CORBA
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> CORBA_SWAMP_TREE = REGISTRY.register("corba_swamp_tree", () -> new CorbaSwampTreeFeature(NoneFeatureConfiguration.CODEC));
 
 }
