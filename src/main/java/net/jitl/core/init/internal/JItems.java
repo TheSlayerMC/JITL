@@ -84,10 +84,6 @@ public class JItems {
     public static final RegistryObject<Item> BLUE_GEM = registerNormalItem("blue_gem", "Blue Gem");
     public static final RegistryObject<Item> AQUA_STONE = registerNormalItem("aqua_stone", "Aqua Stone");
     public static final RegistryObject<Item> HEART_STONE = registerNormalItem("heart_stone", "Heart Stone");
-    public static final RegistryObject<Item> HEART_SMALL = registerNormalItem("heart_small", "Small Heart");
-    public static final RegistryObject<Item> HEART_MEDIUM = registerNormalItem("heart_medium", "Medium Heart");
-    public static final RegistryObject<Item> HEART_LARGE = registerNormalItem("heart_large", "Large Heart");
-    public static final RegistryObject<Item> HEART_ULTRA = registerNormalItem("heart_ultra", "Ultra Heart");
     public static final RegistryObject<Item> HELL_TURTLE_SHELL = registerNormalItem("hell_turtle_shell", "Hell Turtle Shell");
     public static final RegistryObject<Item> OVER_SEEING_EYE = registerNormalItem("over_seeing_eye", "Over Seeing Eye");
     public static final RegistryObject<Item> POTTERY_SHARD = registerNormalItem("pottery_shard", "Pottery Shard");
