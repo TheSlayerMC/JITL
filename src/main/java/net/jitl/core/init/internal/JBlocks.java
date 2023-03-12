@@ -6,6 +6,7 @@ import net.jitl.common.block.crop.*;
 import net.jitl.common.block.crop.bushs.BradberryBushBlock;
 import net.jitl.common.block.crop.bushs.RedcurrantBushBlock;
 import net.jitl.common.block.portal.DepthsPortalBlock;
+import net.jitl.common.block.portal.DepthsPortalFrameBlock;
 import net.jitl.common.block.spawners.GoldBotSpawnerBlock;
 import net.jitl.common.block.spawners.MiniGhastSpawnerBlock;
 import net.jitl.common.world.dimension.Dimensions;
@@ -408,8 +409,8 @@ public class JBlocks {
     public static final RegistryObject<Block> TALL_SIZZLESHROOM = registerDoublePlant("tall_sizzleshroom", "Tall Sizzleshroom", () -> new TallGlowshroomBlock(JBlockProperties.CAVE_GLOW_PLANT));
     public static final RegistryObject<Block> SIZZLESHROOM = registerCrossBlock("sizzleshroom", "Sizzleshroom", () -> new CavePlantBlock(JBlockProperties.CAVE_GLOW_PLANT));
 
-    public static final RegistryObject<Block> DEPTHS_PORTAL_FRAME = register("depths_portal_frame", "Depths Portal Frame", JBlockProperties.STONE);
-    public static final RegistryObject<Block> DEPTHS_PORTAL = registerEndPortalStyleBlock("depths_portal", "Depths Portal", () -> new DepthsPortalBlock());
+    public static final RegistryObject<Block> DEPTHS_PORTAL_FRAME = registerEndPortalFrameStyleBlock("depths_portal_frame", "Depths Portal Frame", DepthsPortalFrameBlock::new);
+    public static final RegistryObject<Block> DEPTHS_PORTAL = registerEndPortalStyleBlock("depths_portal", "Depths Portal", DepthsPortalBlock::new);
     public static final RegistryObject<Block> DEPTHS_GRASS = registerGrassBlock("depths_grass", "Depths Grass", JGrassBlock::new);
     public static final RegistryObject<Block> DEPTHS_PATH = registerPathBlock("depths_path", "Depths Path", () -> new JDirtPathBlock(JBlockProperties.PATH));
     public static final RegistryObject<Block> DEPTHS_DIRT = registerTerrainBlock("depths_dirt", "Depths Soil", JDirt::new);

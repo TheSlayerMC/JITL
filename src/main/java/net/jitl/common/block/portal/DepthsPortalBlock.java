@@ -1,6 +1,5 @@
 package net.jitl.common.block.portal;
 
-import net.jitl.common.world.dimension.BaseTeleporter;
 import net.jitl.common.world.dimension.DepthsTeleporter;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.core.init.internal.JBlockProperties;
@@ -10,7 +9,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -23,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class DepthsPortalBlock extends Block {
 
-    protected static final VoxelShape SHAPE = Block.box(0.0D, 6.0D, 0.0D, 16.0D, 12.0D, 16.0D);
+    protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 11.0D, 16.0D);
 
     public DepthsPortalBlock() {
         super(JBlockProperties.PORTAL);
@@ -59,11 +57,9 @@ public class DepthsPortalBlock extends Block {
         if(minecraftserver != null) {
             ResourceKey<Level> destination = entity.level.dimension() == Dimensions.DEPTHS ? Level.OVERWORLD : Dimensions.DEPTHS;
             ServerLevel destinationWorld = minecraftserver.getLevel(destination);
-            ResourceKey<PoiType> poi = Dimensions.DEPTHS_PORTAL.getKey();
-
             if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
                 entity.setPortalCooldown();
-                //entity.changeDimension(destinationWorld, new DepthsTeleporter(destinationWorld, this, frame.get(), poi, destination));
+                entity.changeDimension(destinationWorld, new DepthsTeleporter(destinationWorld, this, JBlocks.DEPTHS_PORTAL_FRAME.get()));
             }
         }
     }

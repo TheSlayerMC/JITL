@@ -151,7 +151,7 @@ public class JItems {
     public static final RegistryObject<Item> ROYAL_DISK = registerNormalItem("royal_disk", "Royal Disk");
     public static final RegistryObject<Item> GATE_KEYS = registerNormalItem("gate_keys", "Gate Keys");
 
-    public static final RegistryObject<Item> DARK_GEM = registerNormalItem("dark_gem", "Dark Gem");
+    public static final RegistryObject<Item> DARK_GEM = registerNormalItem("dark_gem", "Dark Gem", DarkGemItem::new);
     public static final RegistryObject<Item> DARK_CRYSTAL = registerNormalItem("dark_crystal", "Dark Crystal");
     public static final RegistryObject<Item> DARK_ORB = registerNormalItem("dark_orb", "Dark Orb");
     public static final RegistryObject<Item> GLOSSY_EYE = registerNormalItem("glossy_eye", "Glossy Eye");

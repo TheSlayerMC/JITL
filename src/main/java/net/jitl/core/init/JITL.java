@@ -100,6 +100,8 @@ public class JITL {
             new JBlockLadderGenerator().generate();
             new JRandomizedBlockGenerator().generate();
             new JBlockFarmGenerator().generate();
+            new JBlockEndPortalGenerator().generate();
+            new JBlockEndFrameGenerator().generate();
 
             new LangRegistry().generate();
         }

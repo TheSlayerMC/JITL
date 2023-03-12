@@ -1,222 +1,150 @@
 package net.jitl.common.world.dimension;
 
-import net.jitl.common.block.base.JBasePortalBlock;
-import net.minecraft.BlockUtil;
+import net.jitl.common.block.portal.DepthsPortalBlock;
+import net.jitl.common.block.portal.DepthsPortalFrameBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.TicketType;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiRecord;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.border.WorldBorder;
-import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.portal.PortalInfo;
-import net.minecraft.world.level.portal.PortalShape;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.util.ITeleporter;
 
-import javax.annotation.Nullable;
-import java.util.Comparator;
-import java.util.Optional;
+import java.util.Objects;
 import java.util.function.Function;
 
 public class DepthsTeleporter implements ITeleporter {
 
     protected final ServerLevel level;
-    private final JBasePortalBlock portal_block;
+    private final DepthsPortalBlock portal_block;
     private final Block portal_frame;
-    private final ResourceKey<PoiType> poi;
-    private final ResourceKey<Level> destination;
+    private static final int HARDCODED_DEPTHS_HEIGHT_VALUE = 30;
+    private static final int HARDCODED_WORLD_HEIGHT_LIMIT = 256;
+    public static final int PORTAL_SEARCH_CHUNK_RADIUS = 4;
 
-    public DepthsTeleporter(ServerLevel worldIn, JBasePortalBlock portal, Block frame, ResourceKey<PoiType> poi, ResourceKey<Level> destination) {
+    public DepthsTeleporter(ServerLevel worldIn, DepthsPortalBlock portal, Block frame) {
         this.level = worldIn;
         this.portal_block = portal;
         this.portal_frame = frame;
-        this.poi = poi;
-        this.destination = destination;
     }
 
-    public Optional<BlockUtil.FoundRectangle> getExistingPortal(BlockPos pos) {
-        PoiManager poiManager = this.level.getPoiManager();
-        poiManager.ensureLoadedAndValid(this.level, pos, 64);
-        Optional<PoiRecord> optional = poiManager.getInSquare((poiType) ->
-                poiType.is(poi), pos, 64, PoiManager.Occupancy.ANY).sorted(Comparator.<PoiRecord>comparingDouble((poi) ->
-                poi.getPos().distSqr(pos)).thenComparingInt((poi) ->
-                poi.getPos().getY())).filter((poi) ->
-                this.level.getBlockState(poi.getPos()).hasProperty(BlockStateProperties.HORIZONTAL_AXIS)).findFirst();
-        return optional.map((poi) -> {
-            BlockPos blockpos = poi.getPos();
-            this.level.getChunkSource().addRegionTicket(TicketType.PORTAL, new ChunkPos(blockpos), 3, blockpos);
-            BlockState blockstate = this.level.getBlockState(blockpos);
-            return BlockUtil.getLargestRectangleAround(blockpos, blockstate.getValue(BlockStateProperties.HORIZONTAL_AXIS), 21, Direction.Axis.Y, 21, (posIn) ->
-                    this.level.getBlockState(posIn) == blockstate);
-        });
+    public int getTopBlockOverworld(int x, int z) {
+        for (int i = HARDCODED_WORLD_HEIGHT_LIMIT; i > 0; i--) {
+            if(this.level.getBlockState(new BlockPos(x, i, z)) != Blocks.AIR.defaultBlockState()) {
+                System.out.println("SET HEIGHT:" + i);
+                return i + 1;
+            }
+        }
+        return 0;
     }
 
-    public Optional<BlockUtil.FoundRectangle> makePortal(BlockPos pos, Direction.Axis axis) {
-        Direction direction = Direction.get(Direction.AxisDirection.POSITIVE, axis);
-        double d0 = -1.0D;
-        BlockPos blockpos = null;
-        double d1 = -1.0D;
-        BlockPos blockpos1 = null;
-        WorldBorder worldborder = this.level.getWorldBorder();
-        int dimensionLogicalHeight = this.level.getHeight() - 1;
-        BlockPos.MutableBlockPos mutablePos = pos.mutable();
+    public int getTopBlock(int x, int z) {
+        for(int i = HARDCODED_DEPTHS_HEIGHT_VALUE; i > 0; i--) {
+            if(this.level.getBlockState(new BlockPos(x, i, z)) != Blocks.AIR.defaultBlockState()) {
+                return i + 1;
+            }
+        }
+        return 0;
+    }
 
-        for (BlockPos.MutableBlockPos blockpos$mutable1 : BlockPos.spiralAround(pos, 16, Direction.EAST, Direction.SOUTH)) {
-            int j = Math.min(dimensionLogicalHeight, this.level.getHeight(Heightmap.Types.MOTION_BLOCKING, blockpos$mutable1.getX(), blockpos$mutable1.getZ()));
-            if (worldborder.isWithinBounds(blockpos$mutable1) && worldborder.isWithinBounds(blockpos$mutable1.move(direction, 1))) {
-                blockpos$mutable1.move(direction.getOpposite(), 1);
+    public void placeInPortal(Entity entity, float rotationYaw) {
+        int chunkX;
+        int chunkZ;
+        if(this.level.dimension().equals(Dimensions.DEPTHS)) {
+            chunkX = (Mth.floor(entity.getX()) & ~0xf) / 16;
+            chunkZ = (Mth.floor(entity.getZ()) & ~0xf) / 16;
+            if (!(this.placeInExistingPortal(entity, rotationYaw))) {
+                this.makePortal(new BlockPos(chunkX, getTopBlock(chunkX, chunkZ), chunkZ));
+                this.placeInExistingPortal(entity, rotationYaw);
+            }
+        }
+    }
 
-                for (int l = j; l >= 0; --l) {
-                    blockpos$mutable1.setY(l);
-                    if (this.level.isEmptyBlock(blockpos$mutable1)) {
-                        int i1;
-                        for (i1 = l; l > 0 && this.level.isEmptyBlock(blockpos$mutable1.move(Direction.DOWN)); --l) {
-                        }
+    public boolean placeInExistingPortal(Entity entity, float rotationYaw) {
+        if (this.level.dimension().equals(Dimensions.DEPTHS)) {
 
-                        if (l + 4 <= dimensionLogicalHeight) {
-                            int j1 = i1 - l;
-                            if (j1 <= 0 || j1 >= 3) {
-                                blockpos$mutable1.setY(l);
-                                if (this.checkRegionForPlacement(blockpos$mutable1, mutablePos, direction, 0)) {
-                                    double d2 = pos.distSqr(blockpos$mutable1);
-                                    if (this.checkRegionForPlacement(blockpos$mutable1, mutablePos, direction, -1) && this.checkRegionForPlacement(blockpos$mutable1, mutablePos, direction, 1) && (d0 == -1.0D || d0 > d2)) {
-                                        d0 = d2;
-                                        blockpos = blockpos$mutable1.immutable();
-                                    }
+            int chunkX = entity.level.getChunk(entity.blockPosition()).getPos().x;
+            int chunkZ = entity.level.getChunk(entity.blockPosition()).getPos().z;
 
-                                    if (d0 == -1.0D && (d1 == -1.0D || d1 > d2)) {
-                                        d1 = d2;
-                                        blockpos1 = blockpos$mutable1.immutable();
-                                    }
-                                }
-                            }
+            int portalLocationX = (chunkX * 16) + 6 + 8;
+            int portalLocationZ = (chunkZ * 16) + 5 + 8;
+            int portalLocationY = getTopBlockOverworld(portalLocationX, portalLocationZ);
+
+            if (this.level.getBlockState(new BlockPos(portalLocationX, portalLocationY, portalLocationZ)).getBlock() == portal_frame) {
+                entity.moveTo(portalLocationX + 1.5D, portalLocationY, portalLocationZ + 2.5D, rotationYaw, 0.0F);
+                entity.xo = entity.yo = entity.zo = 0.0D;
+                return true;
+            } else {
+                BlockPos.MutableBlockPos searchPos = new BlockPos.MutableBlockPos();
+                for(int searchX = portalLocationX - (PORTAL_SEARCH_CHUNK_RADIUS * 16); searchX < portalLocationX + (PORTAL_SEARCH_CHUNK_RADIUS * 16); searchX += 16) {
+                    for (int searchZ = portalLocationZ - (PORTAL_SEARCH_CHUNK_RADIUS * 16); searchZ < portalLocationZ + (PORTAL_SEARCH_CHUNK_RADIUS * 16); searchZ += 16) {
+                        searchPos.set(searchX, portalLocationY, searchZ);
+                        if (this.level.getBlockState(searchPos).getBlock() == portal_frame) {
+                            entity.moveTo(searchX + 1.5D, portalLocationY, searchZ + 2.5D, rotationYaw, 0.0F);
+                            entity.xo = entity.yo = entity.zo = 0.0D;
+                            return true;
                         }
                     }
                 }
             }
+            return false;
         }
 
-        if (d0 == -1.0D && d1 != -1.0D) {
-            blockpos = blockpos1;
-            d0 = d1;
-        }
-
-        if (d0 == -1.0D) {
-            blockpos = (new BlockPos(pos.getX(), Mth.clamp(pos.getY(), 70, this.level.getHeight() - 10), pos.getZ())).immutable();
-            Direction direction1 = direction.getClockWise();
-            if (!worldborder.isWithinBounds(blockpos)) {
-                return Optional.empty();
-            }
-
-            for (int l1 = -1; l1 < 2; ++l1) {
-                for (int k2 = 0; k2 < 2; ++k2) {
-                    for (int i3 = -1; i3 < 3; ++i3) {
-                        BlockState blockstate1 = i3 < 0 ? portal_frame.defaultBlockState() : Blocks.AIR.defaultBlockState();
-                        mutablePos.setWithOffset(blockpos, k2 * direction.getStepX() + l1 * direction1.getStepX(), i3, k2 * direction.getStepZ() + l1 * direction1.getStepZ());
-                        this.level.setBlockAndUpdate(mutablePos, blockstate1);
-                    }
-                }
-            }
-        }
-
-        for (int k1 = -1; k1 < 3; ++k1) {
-            for (int i2 = -1; i2 < 4; ++i2) {
-                if (k1 == -1 || k1 == 2 || i2 == -1 || i2 == 3) {
-                    mutablePos.setWithOffset(blockpos, k1 * direction.getStepX(), i2, k1 * direction.getStepZ());
-                    this.level.setBlock(mutablePos, portal_frame.defaultBlockState(), 3);
-                }
-            }
-        }
-
-        BlockState portal = portal_block.defaultBlockState().setValue(JBasePortalBlock.AXIS, axis);
-
-        for (int j2 = 0; j2 < 2; ++j2) {
-            for (int l2 = 0; l2 < 3; ++l2) {
-                mutablePos.setWithOffset(blockpos, j2 * direction.getStepX(), l2, j2 * direction.getStepZ());
-                this.level.setBlock(mutablePos, portal, 18);
-            }
-        }
-
-        return Optional.of(new BlockUtil.FoundRectangle(blockpos.immutable(), 2, 3));
+        return false;
     }
 
-    private boolean checkRegionForPlacement(BlockPos originalPos, BlockPos.MutableBlockPos offsetPos, Direction directionIn, int offsetScale) {
-        Direction direction = directionIn.getClockWise();
+    public void makePortal(BlockPos pos) {
+        int x = pos.getX() * 16;
+        int y = pos.getY();
+        int z = pos.getZ() * 16;
+        this.level.setBlock(new BlockPos(x, y, z), portal_frame.defaultBlockState().setValue(DepthsPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x, y, z + 1), portal_frame.defaultBlockState().setValue(DepthsPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x, y, z + 2), portal_frame.defaultBlockState().setValue(DepthsPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x + 1, y, z + 3), portal_frame.defaultBlockState().setValue(DepthsPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x + 2, y, z + 3), portal_frame.defaultBlockState().setValue(DepthsPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x + 3, y, z + 3), portal_frame.defaultBlockState().setValue(DepthsPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x + 4, y, z), portal_frame.defaultBlockState().setValue(DepthsPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x + 4, y, z + 1), portal_frame.defaultBlockState().setValue(DepthsPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x + 4, y, z + 2), portal_frame.defaultBlockState().setValue(DepthsPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x + 1, y, z - 1), portal_frame.defaultBlockState().setValue(DepthsPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x + 2, y, z - 1), portal_frame.defaultBlockState().setValue(DepthsPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x + 3, y, z - 1), portal_frame.defaultBlockState().setValue(DepthsPortalFrameBlock.HAS_EYE, true), 0);
 
-        for (int i = -1; i < 3; ++i) {
-            for (int j = -1; j < 4; ++j) {
-                offsetPos.setWithOffset(originalPos, directionIn.getStepX() * i + direction.getStepX() * offsetScale, j, directionIn.getStepZ() * i + direction.getStepZ() * offsetScale);
-                if (j < 0 && !this.level.getBlockState(offsetPos).getMaterial().isSolid()) {
-                    return false;
-                }
-
-                if (j >= 0 && !this.level.isEmptyBlock(offsetPos)) {
-                    return false;
-                }
-            }
-        }
-
-        return true;
-    }
-
-    @Nullable
-    @Override
-    public PortalInfo getPortalInfo(Entity entity, ServerLevel destWorld, Function<ServerLevel, PortalInfo> defaultPortalInfo) {
-        boolean destinationIsDim = destWorld.dimension() == destination;
-        if (entity.level.dimension() != destination && !destinationIsDim) {
-            return null;
-        } else {
-            WorldBorder border = destWorld.getWorldBorder();
-            double minX = Math.max(-2.9999872E7D, border.getMinX() + 16.0D);
-            double minZ = Math.max(-2.9999872E7D, border.getMinZ() + 16.0D);
-            double maxX = Math.min(2.9999872E7D, border.getMaxX() - 16.0D);
-            double maxZ = Math.min(2.9999872E7D, border.getMaxZ() - 16.0D);
-            double coordinateDifference = DimensionType.getTeleportationScale(entity.level.dimensionType(), destWorld.dimensionType());
-            BlockPos blockpos = new BlockPos(Mth.clamp(entity.getX() * coordinateDifference, minX, maxX), entity.getY(), Mth.clamp(entity.getZ() * coordinateDifference, minZ, maxZ));
-            return this.getOrMakePortal(entity, blockpos).map((result) -> {
-                BlockState blockstate = entity.level.getBlockState(entity.portalEntrancePos);
-                Direction.Axis axis;
-                Vec3 vector3d;
-                if (blockstate.hasProperty(BlockStateProperties.HORIZONTAL_AXIS)) {
-                    axis = blockstate.getValue(BlockStateProperties.HORIZONTAL_AXIS);
-                    BlockUtil.FoundRectangle rectangle = BlockUtil.getLargestRectangleAround(entity.portalEntrancePos, axis, 21, Direction.Axis.Y, 21, (pos) -> entity.level.getBlockState(pos) == blockstate);
-                    vector3d = entity.getRelativePortalPosition(axis, rectangle);
-                } else {
-                    axis = Direction.Axis.X;
-                    vector3d = new Vec3(0.5D, 0.0D, 0.0D);
-                }
-
-                return PortalShape.createPortalInfo(destWorld, result, axis, vector3d, entity, entity.getDeltaMovement(), entity.getYRot(), entity.getXRot());
-            }).orElse(null);
-        }
-    }
-
-    protected Optional<BlockUtil.FoundRectangle> getOrMakePortal(Entity entity, BlockPos pos) {
-        Optional<BlockUtil.FoundRectangle> existingPortal = this.getExistingPortal(pos);
-        if (existingPortal.isPresent()) {
-            return existingPortal;
-        } else {
-            Direction.Axis portalAxis = this.level.getBlockState(entity.portalEntrancePos).getOptionalValue(JBasePortalBlock.AXIS).orElse(Direction.Axis.X);
-            return this.makePortal(pos, portalAxis);
-        }
+        this.level.setBlock(new BlockPos(x + 1, y, z), portal_block.defaultBlockState(), 0);
+        this.level.setBlock(new BlockPos(x + 2, y, z), portal_block.defaultBlockState(), 0);
+        this.level.setBlock(new BlockPos(x + 3, y, z), portal_block.defaultBlockState(), 0);
+        this.level.setBlock(new BlockPos(x + 1, y, z + 1), portal_block.defaultBlockState(), 0);
+        this.level.setBlock(new BlockPos(x + 2, y, z + 1), portal_block.defaultBlockState(), 0);
+        this.level.setBlock(new BlockPos(x + 3, y, z + 1), portal_block.defaultBlockState(), 0);
+        this.level.setBlock(new BlockPos(x + 1, y, z + 2), portal_block.defaultBlockState(), 0);
+        this.level.setBlock(new BlockPos(x + 2, y, z + 2), portal_block.defaultBlockState(), 0);
+        this.level.setBlock(new BlockPos(x + 3, y, z + 2), portal_block.defaultBlockState(), 0);
     }
 
     @Override
     public boolean playTeleportSound(ServerPlayer player, ServerLevel sourceWorld, ServerLevel destWorld) {
         return true;
+    }
+
+    @Override
+    public Entity placeEntity(Entity entity, ServerLevel currentWorld, ServerLevel destWorld, float yaw, Function<Boolean, Entity> repositionEntity) {
+        if(entity instanceof ServerPlayer) {
+            this.placeInPortal(entity, yaw);
+        } else {
+            this.placeInExistingPortal(entity, yaw);
+        }
+        entity.setPortalCooldown();
+        entity = repositionEntity.apply(false);
+        if(destWorld != Objects.requireNonNull(entity.level.getServer()).getLevel(Level.OVERWORLD)) {
+            entity.teleportTo(entity.getX(), getTopBlock((int) entity.getX(), (int)entity.getZ()), entity.getZ());
+            System.out.println("Placed OVERWORLD Player TO DEPTHS Y:" + entity.getY());
+        } else {
+            entity.teleportTo(entity.getX(), level.getHeight(Heightmap.Types.WORLD_SURFACE, (int)entity.getX(), (int)entity.getZ()), entity.getZ());
+            System.out.println("Placed DEPTHS Player TO OVERWORLD Y:" + entity.getY());
+        }
+        return entity;
     }
 }

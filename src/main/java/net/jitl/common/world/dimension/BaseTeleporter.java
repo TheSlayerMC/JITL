@@ -35,12 +35,12 @@ import java.util.function.Function;
 public class BaseTeleporter implements ITeleporter {
 
     protected final ServerLevel level;
-    private final JBasePortalBlock portal_block;
-    private final Block portal_frame;
-    private final ResourceKey<PoiType> poi;
-    private final ResourceKey<Level> destination;
+    protected final Block portal_block;
+    protected final Block portal_frame;
+    protected final ResourceKey<PoiType> poi;
+    protected final ResourceKey<Level> destination;
 
-    public BaseTeleporter(ServerLevel worldIn, JBasePortalBlock portal, Block frame, ResourceKey<PoiType> poi, ResourceKey<Level> destination) {
+    public BaseTeleporter(ServerLevel worldIn, Block portal, Block frame, ResourceKey<PoiType> poi, ResourceKey<Level> destination) {
         this.level = worldIn;
         this.portal_block = portal;
         this.portal_frame = frame;
