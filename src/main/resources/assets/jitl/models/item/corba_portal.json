@@ -1,3 +1,6 @@
 {
-  "parent": "jitl:block/corba_portal_ns"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "jitl:block/corba_portal"
+  }
 }

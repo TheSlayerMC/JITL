@@ -5,6 +5,8 @@ import net.jitl.common.block.base.*;
 import net.jitl.common.block.crop.*;
 import net.jitl.common.block.crop.bushs.BradberryBushBlock;
 import net.jitl.common.block.crop.bushs.RedcurrantBushBlock;
+import net.jitl.common.block.portal.CorbaPortalBlock;
+import net.jitl.common.block.portal.CorbaPortalFrameBlock;
 import net.jitl.common.block.portal.DepthsPortalBlock;
 import net.jitl.common.block.portal.DepthsPortalFrameBlock;
 import net.jitl.common.block.spawners.GoldBotSpawnerBlock;
@@ -447,8 +449,8 @@ public class JBlocks {
     public static final RegistryObject<Block> DEPTHS_FLOWER = registerCrossBlock("depths_flower", "Depths Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> DEPTHS_FURNACE = registerFurnaceBlock("depths_furnace", "Depths Furnace");
 
-    public static final RegistryObject<Block> CORBA_PORTAL_FRAME = register("corba_portal_frame", "Corba Portal Frame", JBlockProperties.STONE);
-    public static final RegistryObject<JBasePortalBlock> CORBA_PORTAL = registerPortalBlock("corba_portal", "Corba Portal", () -> new JBasePortalBlock(Dimensions.CORBA, CORBA_PORTAL_FRAME));
+    public static final RegistryObject<Block> CORBA_PORTAL_FRAME = registerEndPortalFrameStyleBlock("corba_portal_frame", "Corba Portal Frame", CorbaPortalFrameBlock::new);
+    public static final RegistryObject<Block> CORBA_PORTAL = registerEndPortalStyleBlock("corba_portal", "Corba Portal", CorbaPortalBlock::new);
     public static final RegistryObject<Block> CORBA_DIRT = registerTerrainBlock("corba_dirt", "Corba Dirt", JDirt::new);
     public static final RegistryObject<Block> CORBA_GRASS = registerOverlayGrassBlock("corba_grass", "Corba Grass", JGrassBlock::new);
     public static final RegistryObject<Block> CORBA_STONE = registerTerrainBlock("corba_stone", "Corba Stone", JBlockProperties.STONE);

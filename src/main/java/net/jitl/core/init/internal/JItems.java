@@ -152,6 +152,7 @@ public class JItems {
     public static final RegistryObject<Item> GATE_KEYS = registerNormalItem("gate_keys", "Gate Keys");
 
     public static final RegistryObject<Item> DARK_GEM = registerNormalItem("dark_gem", "Dark Gem", DarkGemItem::new);
+    public static final RegistryObject<Item> DEMONIC_EYE = registerNormalItem("demonic_eye", "Demonic Eye", DemonicEyeItem::new);
     public static final RegistryObject<Item> DARK_CRYSTAL = registerNormalItem("dark_crystal", "Dark Crystal");
     public static final RegistryObject<Item> DARK_ORB = registerNormalItem("dark_orb", "Dark Orb");
     public static final RegistryObject<Item> GLOSSY_EYE = registerNormalItem("glossy_eye", "Glossy Eye");
@@ -182,7 +183,6 @@ public class JItems {
     public static final RegistryObject<Item> BEASTLY_STOMACH = registerNormalItem("beastly_stomach", "Beastly Stomach");
     public static final RegistryObject<Item> BLAZING_FIREBALL = registerNormalItem("blazing_fireball", "Blazing Fireball");
     public static final RegistryObject<Item> DEMONIC_SKULL = registerNormalItem("demonic_skull", "Demonic Skull");
-    public static final RegistryObject<Item> DEMONIC_EYE = registerNormalItem("demonic_eye", "Demonic Eye");
     public static final RegistryObject<Item> FLAMING_SPRING = registerNormalItem("flaming_spring", "Flaming Spring");
     public static final RegistryObject<Item> FLAMING_SPROCKET = registerNormalItem("flaming_sprocket", "Flaming Sprocket");
     public static final RegistryObject<Item> FLAMING_HIDE = registerNormalItem("flaming_hide", "Flaming Hide");
