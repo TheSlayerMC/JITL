@@ -35,11 +35,11 @@ public class CorbaSwampTreeFeature extends Feature<NoneFeatureConfiguration> {
 
         BlockPos soilPos = blockPos.below();
 
-        BlockPos.MutableBlockPos basePos = new BlockPos.MutableBlockPos(blockPos.getX(), world.getHeight(), blockPos.getZ());
+        BlockPos.MutableBlockPos basePos = new BlockPos.MutableBlockPos(blockPos.getX(), blockPos.getY() - 2, blockPos.getZ());
 
-        if (isSpawnBlock(world.getBlockState(soilPos))) {
+        if(isSpawnBlock(world.getBlockState(soilPos))) {
 
-            int stumpHeight = random.nextInt(5) + 2;
+            int stumpHeight = random.nextInt(5) + 3;
 
             for (int i = 0; i < stumpHeight; i++) {
                 placeStumps(world, basePos);
@@ -53,10 +53,10 @@ public class CorbaSwampTreeFeature extends Feature<NoneFeatureConfiguration> {
 
             for (int j5 = 0; j5 <= 10; ++j5) {
                 for (int l5 = 0; l5 <= 10; ++l5) {
-                    createCrown(world, leafPos.move(getRandomDirection(random), random.nextInt(2)), random.nextInt(3) + 1);
-                    createCrown(world, leafPos.move(getRandomDirection(random), random.nextInt(5)), random.nextInt(3) + 1);
-                    createCrown(world, leafPos.move(getRandomDirection(random), random.nextInt(3)), random.nextInt(3) + 1);
-                    createCrown(world, leafPos.move(getRandomDirection(random), random.nextInt(5)), random.nextInt(3) + 1);
+                    createCrown(world, leafPos.relative(getRandomDirection(random), random.nextInt(2)), random.nextInt(3) + 1);
+                    createCrown(world, leafPos.relative(getRandomDirection(random), random.nextInt(5)), random.nextInt(3) + 1);
+                    createCrown(world, leafPos.relative(getRandomDirection(random), random.nextInt(3)), random.nextInt(3) + 1);
+                    createCrown(world, leafPos.relative(getRandomDirection(random), random.nextInt(5)), random.nextInt(3) + 1);
                 }
             }
 
@@ -107,22 +107,22 @@ public class CorbaSwampTreeFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     private void placeLog(WorldGenLevel world, BlockPos.MutableBlockPos pos) {
-        setBlock(world, pos.move(Direction.UP), JBlocks.BOGWOOD_LEAVES.get().defaultBlockState());
+        setBlock(world, pos.move(Direction.UP), JBlocks.BOGWOOD_LOG.get().defaultBlockState());
     }
 
     private void placeStumps(WorldGenLevel world, BlockPos.MutableBlockPos logPos) {
-        setBlock(world, logPos.move(Direction.UP).east(), JBlocks.BOGWOOD_LEAVES.get().defaultBlockState());
-        setBlock(world, logPos.west(), JBlocks.BOGWOOD_LEAVES.get().defaultBlockState());
-        setBlock(world, logPos.north(), JBlocks.BOGWOOD_LEAVES.get().defaultBlockState());
-        setBlock(world, logPos.south(), JBlocks.BOGWOOD_LEAVES.get().defaultBlockState());
+        setBlock(world, logPos.move(Direction.UP).east(), JBlocks.BOGWOOD_LOG.get().defaultBlockState());
+        setBlock(world, logPos.west(), JBlocks.BOGWOOD_LOG.get().defaultBlockState());
+        setBlock(world, logPos.north(), JBlocks.BOGWOOD_LOG.get().defaultBlockState());
+        setBlock(world, logPos.south(), JBlocks.BOGWOOD_LOG.get().defaultBlockState());
     }
 
     private void placeStems(WorldGenLevel world, BlockPos.MutableBlockPos logPos, Direction direction) {
-        setBlock(world, logPos.move(direction, 1).move(Direction.UP, 1).below(5), JBlocks.BOGWOOD_LEAVES.get().defaultBlockState());
+        setBlock(world, logPos.move(direction, 1).move(Direction.UP, 1).below(5), JBlocks.BOGWOOD_LOG.get().defaultBlockState());
     }
 
     private void createCrown(WorldGenLevel world, BlockPos pos, int size) {
-        pos = pos.offset(Direction.UP.getNormal());
+        pos = pos.above();
         for (byte x = 0; x <= size; x++) {
             for (byte y = 0; y <= size; y++) {
                 for (byte z = 0; z <= size; z++) {
