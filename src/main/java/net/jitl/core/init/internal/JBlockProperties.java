@@ -151,6 +151,11 @@ public class JBlockProperties {
             .noOcclusion()
             .offsetType(BlockBehaviour.OffsetType.XZ);
 
+    public static BlockBehaviour.Properties LILY_PLANT = BlockBehaviour.Properties.of(Material.PLANT)
+            .instabreak()
+            .sound(SoundType.GRASS)
+            .noOcclusion();
+
     public static BlockBehaviour.Properties FLOWER = BlockBehaviour.Properties.of(Material.PLANT)
             .instabreak()
             .sound(SoundType.GRASS)

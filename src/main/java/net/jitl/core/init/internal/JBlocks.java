@@ -80,6 +80,8 @@ public class JBlocks {
     public static final ArrayList<String> attachedCrossLangName = new ArrayList<>();
     public static final ArrayList<String> doublePlantBlockName = new ArrayList<>();
     public static final ArrayList<String> doublePlantLangName = new ArrayList<>();
+    public static final ArrayList<String> lilyPadBlockName = new ArrayList<>();
+    public static final ArrayList<String> lilyPadLangName = new ArrayList<>();
     public static final ArrayList<String> grassBlockName = new ArrayList<>();
     public static final ArrayList<String> grassLangName = new ArrayList<>();
     public static final ArrayList<String> terrainBlockName = new ArrayList<>();
@@ -497,6 +499,7 @@ public class JBlocks {
     public static final RegistryObject<Block> SMALL_BOGSHROOM = registerModeledBlock("small_bogshroom", "Small Bogshroom", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> TALL_BOGSHROOM = registerModeledBlock("tall_bogshroom", "Tall Bogshroom", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> BOGWEED = registerDoublePlant("bogweed", "Bogweed", () -> new JDoublePlantBlock(JBlockProperties.PLANT));
+    public static final RegistryObject<Block> SWAMP_LILY = registerLilyPad("swamp_lily", "Swamp Lilly", () -> new WaterlilyBlock(JBlockProperties.LILY_PLANT));
 
     public static final RegistryObject<Block> GRINDSTONE = registerModeledBlock("grindstone", "Grindstone", JGrindstoneBlock::new);
     public static final RegistryObject<Block> JOURNEY_CHEST = registerChestBlock("journey_chest", "Journey Chest", JChestBlock::new);
@@ -571,6 +574,14 @@ public class JBlocks {
     public static RegistryObject<Block> registerDoublePlant(String name, String translatedName, Supplier<Block> block) {
         doublePlantBlockName.add(name);
         doublePlantLangName.add(translatedName);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerLilyPad(String name, String translatedName, Supplier<Block> block) {
+        lilyPadBlockName.add(name);
+        lilyPadLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;

@@ -508,7 +508,7 @@
               "then_run": {
                 "type": "minecraft:block",
                 "result_state": {
-                  "Name": "jitl:corba_grass"
+                  "Name": "jitl:dried_mud"
                 }
               }
             },

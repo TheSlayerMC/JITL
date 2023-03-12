@@ -115,6 +115,7 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.BRADBERRY_BUSH.get());
         cutout.add(JBlocks.REDCURRANT_BUSH.get());
         cutout.add(JBlocks.BOGWEED.get());
+        cutout.add(JBlocks.SWAMP_LILY.get());
 
         translucent.add(JBlocks.EUCA_PORTAL.get());
         translucent.add(JBlocks.FROZEN_PORTAL.get());

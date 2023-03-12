@@ -24,6 +24,7 @@ public class LangRegistry {
         ArrayList<String> tintedCrossList = new ArrayList<>(JBlocks.tintedCrossBlockName);
         ArrayList<String> tintedLeavesList = new ArrayList<>(JBlocks.tintedLeavesBlockName);
         ArrayList<String> doublePlantList = new ArrayList<>(JBlocks.doublePlantBlockName);
+        ArrayList<String> lilyList = new ArrayList<>(JBlocks.lilyPadBlockName);
         ArrayList<String> paneList = new ArrayList<>(JBlocks.paneBlockName);
         ArrayList<String> attachedCrossList = new ArrayList<>(JBlocks.attachedCrossBlockName);
         ArrayList<String> doorList = new ArrayList<>(JBlocks.doorBlockName);
@@ -130,6 +131,10 @@ public class LangRegistry {
 
         for(int i = 0; i < crossList.size(); i++) {
             writeToFile("\"block.jitl." + crossList.get(i) + "\": \"" + JBlocks.crossLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < lilyList.size(); i++) {
+            writeToFile("\"block.jitl." + lilyList.get(i) + "\": \"" + JBlocks.lilyPadLangName.get(i) + "\"" + ",");
         }
 
         for(int i = 0; i < tintedCrossList.size(); i++) {

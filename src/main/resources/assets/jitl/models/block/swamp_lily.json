@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/lily_pad",
+  "textures": {
+    "particle": "jitl:block/swamp_lily",
+    "texture": "jitl:block/swamp_lily"
+  }
+}

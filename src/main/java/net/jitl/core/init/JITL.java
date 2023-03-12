@@ -75,6 +75,7 @@ public class JITL {
             new JBlockRotatableGenerator().generate();
             new JBlockFurnaceGenerator().generate();
             new JBlockCrossGenerator().generate();
+            new JBlockLilyGenerator().generate();
             new JBlockDoublePlantGenerator().generate();
             new JBlockBushGenerator().generate();
             new JBlockAttachedCrossGenerator().generate();

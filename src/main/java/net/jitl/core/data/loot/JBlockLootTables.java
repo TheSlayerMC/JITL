@@ -403,6 +403,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.SMALL_BOGSHROOM);
         this.dropSelf(JBlocks.TALL_BOGSHROOM);
         this.dropSelf(JBlocks.BOGWEED);
+        this.dropSelf(JBlocks.SWAMP_LILY);
         this.dropSelf(JBlocks.CORBA_FURNACE);
 
         this.dropSelf(JBlocks.GRINDSTONE);

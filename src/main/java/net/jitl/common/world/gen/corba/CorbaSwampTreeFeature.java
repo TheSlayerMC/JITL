@@ -6,9 +6,7 @@ import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
@@ -146,6 +144,6 @@ public class CorbaSwampTreeFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     private void placeMushroom(WorldGenLevel world, BlockPos pos, Direction facing) {
-        //setBlock(world, pos, JourneyBlocks.SWAMP_SHELF.getDefaultState().withProperty(JBlockFungalShelf.FACING, facing));
+        //setBlock(world, pos, JBlocks.SWAMP_SHELF.getDefaultState().withProperty(JBlockFungalShelf.FACING, facing));
     }
 }
