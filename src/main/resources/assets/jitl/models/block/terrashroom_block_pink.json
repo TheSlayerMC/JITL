@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_single_face",
+  "textures": {
+    "texture": "jitl:block/terrashroom_block_pink_skin"
+  }
+}

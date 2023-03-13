@@ -1,0 +1,37 @@
+{
+  "type": "jitl:terrania",
+  "forge:use_server_seed": true,
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "jitl:terranian_generation",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "jitl:terrania/terrania",
+          "parameters": {
+            "temperature": 1,
+            "humidity": 0,
+            "continentalness": -0.2,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "jitl:terrania/mushroom_forest",
+          "parameters": {
+            "temperature": 1,
+            "humidity": -0.5,
+            "continentalness": -0.2,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        }
+      ]
+    }
+  }
+}

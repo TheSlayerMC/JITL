@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "jitl:block/terrashroom_block_purple_skin"
+  }
+}

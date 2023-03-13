@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/vine",
+  "textures": {
+    "vine": "jitl:block/terranian_vine",
+    "particle": "jitl:block/terranian_vine"
+  }
+}

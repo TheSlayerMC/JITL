@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "up": "jitl:block/terranian_grass_top",
+    "north": "jitl:block/terranian_grass_side",
+    "east": "jitl:block/terranian_grass_side",
+    "south": "jitl:block/terranian_grass_side",
+    "west": "jitl:block/terranian_grass_side",
+    "down": "jitl:block/terranian_grass_bottom",
+    "particle": "jitl:block/terranian_grass_bottom"
+  }
+}

@@ -17,6 +17,8 @@
     "jitl:corba_grass",
     "jitl:corba_dirt",
     "jitl:dried_mud",
-    "jitl:tainted_mud"
+    "jitl:tainted_mud",
+    "jitl:terranian_grass",
+    "jitl:terranian_dirt"
   ]
 }

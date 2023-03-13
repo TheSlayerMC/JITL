@@ -42,6 +42,11 @@ public class FlameCoinItem extends Item {
                             return InteractionResult.CONSUME;
                         }
                     }
+                    if (blockstate.getBlock() == JBlocks.TERRANIAN_PORTAL_FRAME.get() && context.getClickedFace() == Direction.UP) {
+                        if (JBlocks.TERRANIAN_PORTAL.get().makePortal(context.getLevel(), blockpos.relative(direction))) {
+                            return InteractionResult.CONSUME;
+                        }
+                    }
                 }
                 if (!player.isCreative()) context.getItemInHand().shrink(1);
             }

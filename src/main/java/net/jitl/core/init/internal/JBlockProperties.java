@@ -27,6 +27,11 @@ public class JBlockProperties {
             .lightLevel((level) -> 15)
             .requiresCorrectToolForDrops();
 
+    public static BlockBehaviour.Properties MUSHROOM_BLOCK = BlockBehaviour.Properties.of(Material.PLANT)
+            .strength(0.5F)
+            .sound(SoundType.WOOD)
+            .requiresCorrectToolForDrops();
+
     public static BlockBehaviour.Properties SPAWNER = BlockBehaviour.Properties.of(Material.STONE)
             .strength(1.5F)
             .noOcclusion()
@@ -163,6 +168,14 @@ public class JBlockProperties {
             .noOcclusion()
             .offsetType(BlockBehaviour.OffsetType.XZ);
 
+    public static BlockBehaviour.Properties GLOW_FLOWER = BlockBehaviour.Properties.of(Material.PLANT)
+            .instabreak()
+            .sound(SoundType.GRASS)
+            .noCollission()
+            .noOcclusion()
+            .lightLevel((state) -> 5)
+            .offsetType(BlockBehaviour.OffsetType.XZ);
+
     public static BlockBehaviour.Properties CRYSTAL = BlockBehaviour.Properties.of(Material.PLANT)
             .sound(SoundType.GLASS)
             .noCollission()
@@ -172,7 +185,8 @@ public class JBlockProperties {
     public static BlockBehaviour.Properties VINE = BlockBehaviour.Properties.of(Material.LEAVES)
             .sound(SoundType.GRASS)
             .noCollission()
-            .noOcclusion();
+            .noOcclusion()
+            .randomTicks();
 
     public static BlockBehaviour.Properties GRASS = BlockBehaviour.Properties.of(Material.GRASS)
             .randomTicks()

@@ -406,6 +406,28 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.SWAMP_LILY);
         this.dropSelf(JBlocks.CORBA_FURNACE);
 
+        this.dropSelf(JBlocks.TERRANIAN_PORTAL_FRAME);
+        this.dropSelf(JBlocks.TERRANIAN_PORTAL);
+        this.dropSelf(JBlocks.TERRANIAN_GRASS);
+        this.dropSelf(JBlocks.TERRANIAN_DIRT);
+        this.dropSelf(JBlocks.TERRANIAN_STONE);
+        this.dropSelf(JBlocks.TERRANIAN_LEAVES);
+        this.dropSelf(JBlocks.TERRANIAN_VINE);
+        this.dropSelf(JBlocks.TERRANIAN_LOG);
+        this.dropSelf(JBlocks.TERRANIAN_BARS);
+        this.dropSelf(JBlocks.TERRANIAN_DARK_PANELS);
+        this.dropSelf(JBlocks.TERRANIAN_PANELS);
+        this.dropSelf(JBlocks.TERRANIAN_TALL_GRASS);
+        this.dropSelf(JBlocks.TERRAMUSHROOM);
+        this.dropSelf(JBlocks.TALL_TERRAMUSHROOM);
+        this.dropSelf(JBlocks.TERRANIAN_FLOWER);
+        this.dropSelf(JBlocks.TERRANIAN_LAMP);
+        this.dropSelf(JBlocks.ENCHANTED_SHROOMS_SMALL);
+        this.dropSelf(JBlocks.ENCHANTED_SHROOMS_TALL);
+        this.dropSelf(JBlocks.TERRAMUSHROOM_BLOCK_PINK);
+        this.dropSelf(JBlocks.TERRAMUSHROOM_BLOCK_PURPLE);
+        this.dropSelf(JBlocks.TERRASHROOM_STEM);
+
         this.dropSelf(JBlocks.GRINDSTONE);
         this.dropSelf(JBlocks.JOURNEY_CHEST);
         this.dropSelf(JBlocks.NETHER_CHEST);

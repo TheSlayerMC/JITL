@@ -110,6 +110,10 @@ public class JBlocks {
     public static final ArrayList<String> basePortalLangName = new ArrayList<>();
     public static final ArrayList<String> basePortalFrameBlockName = new ArrayList<>();
     public static final ArrayList<String> basePortalFrameLangName = new ArrayList<>();
+    public static final ArrayList<String> mushroomBlockName = new ArrayList<>();
+    public static final ArrayList<String> mushroomLangName = new ArrayList<>();
+    public static final ArrayList<String> topBottomBlockName = new ArrayList<>();
+    public static final ArrayList<String> topBottomLangName = new ArrayList<>();
 
     public static final RegistryObject<Block> IRIDIUM_ORE = register("iridium_ore", "Iridium Ore", JBlockProperties.STONE);
     public static final RegistryObject<Block> IRIDIUM_BLOCK = registerFuelBlock("iridium_block", "Iridium Block", () -> new Block(JBlockProperties.STONE), 16000);
@@ -496,10 +500,32 @@ public class JBlocks {
     public static final RegistryObject<Block> CORBA_DARK_PURPLE_FLOWER = registerCrossBlock("corba_dark_purple_flower", "Corba Dark Purple Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> CORBA_FLOWER = registerCrossBlock("corba_flower", "Corba Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> CORBA_TALL_GRASS = registerTintedCrossBlock("corba_tall_grass", "Corba Tall Grass", () -> new TallGrassBlock(JBlockProperties.FLOWER));
-    public static final RegistryObject<Block> SMALL_BOGSHROOM = registerModeledBlock("small_bogshroom", "Small Bogshroom", () -> new TallGrassBlock(JBlockProperties.FLOWER));
-    public static final RegistryObject<Block> TALL_BOGSHROOM = registerModeledBlock("tall_bogshroom", "Tall Bogshroom", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final RegistryObject<Block> SMALL_BOGSHROOM = registerModeledBlock("small_bogshroom", "Small Bogshroom", () -> new TallGrassBlock(JBlockProperties.GLOW_FLOWER));
+    public static final RegistryObject<Block> TALL_BOGSHROOM = registerModeledBlock("tall_bogshroom", "Tall Bogshroom", () -> new TallGrassBlock(JBlockProperties.GLOW_FLOWER));
     public static final RegistryObject<Block> BOGWEED = registerDoublePlant("bogweed", "Bogweed", () -> new JDoublePlantBlock(JBlockProperties.PLANT));
     public static final RegistryObject<Block> SWAMP_LILY = registerLilyPad("swamp_lily", "Swamp Lilly", () -> new WaterlilyBlock(JBlockProperties.LILY_PLANT));
+
+    public static final RegistryObject<Block> TERRANIAN_PORTAL_FRAME = register("terranian_portal_frame", "Terranian Portal Frame", JBlockProperties.STONE);
+    public static final RegistryObject<JBasePortalBlock> TERRANIAN_PORTAL = registerPortalBlock("terranian_portal", "Terranian Portal", () -> new JBasePortalBlock(Dimensions.TERRANIA, TERRANIAN_PORTAL_FRAME));
+    public static final RegistryObject<Block> TERRANIAN_GRASS = registerGrassBlock("terranian_grass", "Terranian Grass", JGrassBlock::new);
+    public static final RegistryObject<Block> TERRANIAN_DIRT = register("terranian_dirt", "Terranian Dirt", JBlockProperties.DIRT);
+    public static final RegistryObject<Block> TERRANIAN_STONE = register("terranian_stone", "Terranian Stone", JBlockProperties.STONE);
+    public static final RegistryObject<Block> TERRANIAN_LEAVES = registerTopBottomBlock("terranian_leaves", "Terrania Leaves", () -> new Block(JBlockProperties.LEAVES));
+    public static final RegistryObject<Block> TERRANIAN_VINE = registerVineBlock("terranian_vine", "Terrania Vine", () -> new JVineBlock(JBlockProperties.VINE));
+    public static final RegistryObject<RotatedPillarBlock> TERRANIAN_LOG = registerPillar("terranian_log", "Terranian Log", true, JBlockProperties.WOOD);
+    public static final RegistryObject<IronBarsBlock> TERRANIAN_BARS = registerPaneBlock("terranian_bars", "Terranian Bars", JBlockProperties.STONE);
+    public static final RegistryObject<Block> TERRANIAN_DARK_PANELS = register("terranian_dark_panels", "Terranian Dark Panels", JBlockProperties.STONE);
+    public static final RegistryObject<Block> TERRANIAN_PANELS = register("terranian_panels", "Terranian Panels", JBlockProperties.STONE);
+    public static final RegistryObject<Block> TERRANIAN_TALL_GRASS = registerCrossBlock("terranian_tall_grass", "Terranian Tall Grass", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final RegistryObject<Block> TERRAMUSHROOM = registerCrossBlock("terramushroom", "Terranian Shroom", () -> new TallGrassBlock(JBlockProperties.FLOWER));//makes big terrashroom
+    public static final RegistryObject<Block> TALL_TERRAMUSHROOM = registerDoublePlant("tall_terramushroom", "Tall Terranian Shroom", () -> new JDoublePlantBlock(JBlockProperties.GLOW_FLOWER));
+    public static final RegistryObject<Block> TERRANIAN_FLOWER = registerCrossBlock("terranian_flower", "Terranian Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final RegistryObject<Block> TERRANIAN_LAMP = register("terrania_lamp", "Terrania Lamp", JBlockProperties.GLOW_LAMP);
+    public static final RegistryObject<Block> ENCHANTED_SHROOMS_SMALL = registerModeledBlock("enchanted_shrooms_small", "Enchanted Shrooms", () -> new TallGrassBlock(JBlockProperties.GLOW_FLOWER));
+    public static final RegistryObject<Block> ENCHANTED_SHROOMS_TALL = registerModeledBlock("enchanted_shroom_tall", "Tall Enchanted Shroom",  () -> new JDoublePlantBlock(JBlockProperties.GLOW_FLOWER));
+    public static final RegistryObject<Block> TERRAMUSHROOM_BLOCK_PINK = registerMushroomBlock("terrashroom_block_pink", "Terrashroom Block", () -> new HugeMushroomBlock(JBlockProperties.MUSHROOM_BLOCK));
+    public static final RegistryObject<Block> TERRAMUSHROOM_BLOCK_PURPLE = registerMushroomBlock("terrashroom_block_purple", "Terrashroom Block", () -> new HugeMushroomBlock(JBlockProperties.MUSHROOM_BLOCK));
+    public static final RegistryObject<Block> TERRASHROOM_STEM = registerMushroomBlock("terrashroom_stem", "Terrashroom Stem", () -> new HugeMushroomBlock(JBlockProperties.MUSHROOM_BLOCK));
 
     public static final RegistryObject<Block> GRINDSTONE = registerModeledBlock("grindstone", "Grindstone", JGrindstoneBlock::new);
     public static final RegistryObject<Block> JOURNEY_CHEST = registerChestBlock("journey_chest", "Journey Chest", JChestBlock::new);
@@ -538,9 +564,6 @@ public class JBlocks {
     public static final RegistryObject<Block> REDCURRANT_BUSH = registerGrowingBushBlock("redcurrant_bush", "Redcurrant Bush", RedcurrantBushBlock::new);
     public static final RegistryObject<Block> BRADBERRY_BUSH = registerGrowingBushBlock("bradberry_bush", "Bradberry Bush", BradberryBushBlock::new);
 
-    public static RegistryObject<Block> register(String name, String translatedName, BlockBehaviour.Properties props, CreativeModeTab tab) {
-        return register(name, translatedName, () -> new Block(props), tab);
-    }
 
     public static RegistryObject<Block> register(String name, String translatedName, BlockBehaviour.Properties props) {
         normalBlockName.add(name);
@@ -555,14 +578,6 @@ public class JBlocks {
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
-
-    public static RegistryObject<Block> register(String name, String translatedName, Supplier<Block> block, CreativeModeTab tab) {
-        normalLangName.add(translatedName);
-        RegistryObject<Block> block1 = BLOCKS.register(name, block);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
-        return block1;
-    }
-
     public static RegistryObject<Block> registerCampfire(String name, String translatedName) {
         campfireBlockName.add(name);
         campfireLangName.add(translatedName);
@@ -623,6 +638,14 @@ public class JBlocks {
         tintedLeavesLangName.add(translatedName);
         tintedLeavesBlockName.add(name);
         RegistryObject<Block> block1 = BLOCKS.register(name, () -> new Block(props));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerMushroomBlock(String name, String translatedName, Supplier<Block> block) {
+        mushroomLangName.add(translatedName);
+        mushroomBlockName.add(name);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
@@ -879,6 +902,14 @@ public class JBlocks {
     public static RegistryObject<Block> registerCrossBlock(String name, String translatedName, Supplier<Block> block) {
         crossBlockName.add(name);
         crossLangName.add(translatedName);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerTopBottomBlock(String name, String translatedName, Supplier<Block> block) {
+        topBottomBlockName.add(name);
+        topBottomLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;

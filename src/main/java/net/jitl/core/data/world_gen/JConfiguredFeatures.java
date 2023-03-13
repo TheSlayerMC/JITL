@@ -1,8 +1,11 @@
 package net.jitl.core.data.world_gen;
 
 import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
 import net.jitl.common.world.gen.JFeatures;
 import net.jitl.common.world.gen.ruins.RuinsFeatureConfig;
+import net.jitl.common.world.gen.terrania.TerranianLeaveVineDecorator;
+import net.jitl.common.world.gen.terrania.TerranianTrunkVineDecorator;
 import net.jitl.common.world.gen.tree_grower.SphericalFoliagePlacer;
 import net.jitl.common.world.gen.tree_grower.TreeConfig;
 import net.jitl.core.init.JITL;
@@ -22,6 +25,7 @@ import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -32,10 +36,9 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.NoiseProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
+import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.*;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockStateMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
@@ -155,6 +158,20 @@ public class JConfiguredFeatures {
             CORBA_TREE_LARGE = registerKey("corba_tree_large"),
             CORBA_SWAMP_TREE = registerKey("corba_swamp_tree");
 
+    //TERRANIA
+    public static final ResourceKey<ConfiguredFeature<?, ?>>
+            TERRANIA_VEG = registerKey("terrania_veg"),
+            TERRANIA_TALL_GRASS = registerKey("terrania_tall_grass"),
+            ENCHANTED_SHROOMS = registerKey("enchanted_shrooms"),
+            ENCHANTED_SHROOMS_TALL = registerKey("enchanted_shrooms_tall"),
+            TALL_TERRAMUSHROOM = registerKey("tall_terramushroom"),
+            SMALL_TERRAMUSHROOM = registerKey("small_terramushroom"),
+            HUGE_PINK_TERRASHROOM = registerKey("huge_pink_terrashroom"),
+            HUGE_PURPLE_TERRASHROOM = registerKey("huge_purple_terrashroom"),
+            MEGA_TERRANIAN_TREE = registerKey("mega_terranian_tree")
+            ;
+
+
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         //OVERWORLD
         register(context, DESERT_OVERWORLD_RUINS, JFeatures.RUINS.get(), new RuinsFeatureConfig(SAND, BlockStateProvider.simple(JBlocks.JOURNEY_CHEST.get()), new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.SANDSTONE.defaultBlockState(), 3).add(Blocks.CHISELED_SANDSTONE.defaultBlockState(), 1).add(Blocks.CUT_SANDSTONE.defaultBlockState(), 2)), 5, 5, 8, BuiltInLootTables.DESERT_PYRAMID));
@@ -246,6 +263,17 @@ public class JConfiguredFeatures {
         register(context, CORBA_TREE_MEDIUM, JFeatures.JTREE.get(), new TreeConfig.JTreeConfigurationBuilder(BlockStateProvider.simple(JBlocks.CORBA_LOG.get().defaultBlockState()), new ForkingTrunkPlacer(5, 2, 1), BlockStateProvider.simple(JBlocks.CORBA_LEAVES.get().defaultBlockState()), new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(0, 2), UniformInt.of(1, 2)), new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().forceDirt().dirt(BlockStateProvider.simple(JBlocks.CORBA_DIRT.get())).build());
         register(context, CORBA_TREE_LARGE, JFeatures.JTREE.get(), new TreeConfig.JTreeConfigurationBuilder(BlockStateProvider.simple(JBlocks.CORBA_LOG.get().defaultBlockState()), new GiantTrunkPlacer(13, 2, 5), BlockStateProvider.simple(JBlocks.CORBA_LEAVES.get().defaultBlockState()), new MegaPineFoliagePlacer(UniformInt.of(4, 6), UniformInt.of(0, 2), UniformInt.of(13, 17)), new TwoLayersFeatureSize(3, 1, 3)).ignoreVines().forceDirt().dirt(BlockStateProvider.simple(JBlocks.CORBA_DIRT.get())).build());
         register(context, CORBA_SWAMP_TREE, JFeatures.CORBA_SWAMP_TREE.get(), new NoneFeatureConfiguration());
+
+        //TERRANIA
+        register(context, TERRANIA_VEG , Feature.FLOWER, new RandomPatchConfiguration(40, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.TERRANIAN_FLOWER.get().defaultBlockState(), JBlocks.TERRANIAN_TALL_GRASS.get().defaultBlockState()))))));
+        register(context, TERRANIA_TALL_GRASS , Feature.FLOWER, new RandomPatchConfiguration(40, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.TERRANIAN_TALL_GRASS.get().defaultBlockState()))))));
+        register(context, ENCHANTED_SHROOMS, Feature.FLOWER, new RandomPatchConfiguration(40, 5, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.ENCHANTED_SHROOMS_SMALL.get().defaultBlockState()))))));
+        register(context, ENCHANTED_SHROOMS_TALL, Feature.FLOWER, new RandomPatchConfiguration(40, 3, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.ENCHANTED_SHROOMS_TALL.get().defaultBlockState()))))));
+        register(context, TALL_TERRAMUSHROOM, Feature.FLOWER, new RandomPatchConfiguration(35, 2, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.TALL_TERRAMUSHROOM.get().defaultBlockState()))))));
+        register(context, SMALL_TERRAMUSHROOM, Feature.FLOWER, new RandomPatchConfiguration(35, 3, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.TERRAMUSHROOM.get().defaultBlockState()))))));
+        register(context, HUGE_PINK_TERRASHROOM, Feature.HUGE_BROWN_MUSHROOM, new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(JBlocks.TERRAMUSHROOM_BLOCK_PINK.get().defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.TRUE).setValue(HugeMushroomBlock.DOWN, Boolean.FALSE)), BlockStateProvider.simple(JBlocks.TERRASHROOM_STEM.get().defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.FALSE).setValue(HugeMushroomBlock.DOWN, Boolean.FALSE)), 3));
+        register(context, HUGE_PURPLE_TERRASHROOM, Feature.HUGE_RED_MUSHROOM, new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(JBlocks.TERRAMUSHROOM_BLOCK_PURPLE.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, Boolean.FALSE)), BlockStateProvider.simple(JBlocks.TERRASHROOM_STEM.get().defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.FALSE).setValue(HugeMushroomBlock.DOWN, Boolean.FALSE)), 2));
+        register(context, MEGA_TERRANIAN_TREE, JFeatures.JTREE.get(), new TreeConfig.JTreeConfigurationBuilder(BlockStateProvider.simple(JBlocks.TERRANIAN_LOG.get().defaultBlockState()), new MegaJungleTrunkPlacer(10, 2, 19), BlockStateProvider.simple(JBlocks.TERRANIAN_LEAVES.get()), new MegaJungleFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 2), new TwoLayersFeatureSize(1, 1, 2)).decorators(ImmutableList.of(TerranianTrunkVineDecorator.INSTANCE, new TerranianLeaveVineDecorator(0.25F))).forceDirt().dirt(BlockStateProvider.simple(JBlocks.TERRANIAN_DIRT.get())).build());
 
     }
 

@@ -117,6 +117,16 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.BOGWEED.get());
         cutout.add(JBlocks.SWAMP_LILY.get());
 
+        cutout.add(JBlocks.TERRAMUSHROOM.get());
+        cutout.add(JBlocks.TERRANIAN_FLOWER.get());
+        cutout.add(JBlocks.TERRANIAN_LEAVES.get());
+        cutout.add(JBlocks.TERRANIAN_TALL_GRASS.get());
+        cutout.add(JBlocks.TERRANIAN_BARS.get());
+        cutout.add(JBlocks.TALL_TERRAMUSHROOM.get());
+        cutout.add(JBlocks.TERRANIAN_VINE.get());
+        cutout.add(JBlocks.TERRANIAN_PORTAL.get());
+
+
         translucent.add(JBlocks.EUCA_PORTAL.get());
         translucent.add(JBlocks.FROZEN_PORTAL.get());
         translucent.add(JBlocks.BOIL_PORTAL.get());

@@ -1,0 +1,36 @@
+{
+  "temperature": 1,
+  "downfall": 0.4,
+  "precipitation": "none",
+  "temperature_modifier": "none",
+  "effects": {
+    "sky_color": 8847544,
+    "fog_color": 3473505,
+    "water_color": 10682526,
+    "water_fog_color": 10682526,
+    "grass_color": 16711927,
+    "foliage_color": 15597823,
+    "grass_color_modifier": "none",
+    "ambient_sound": "jitl:music.terrania.ambience"
+  },
+  "spawners": {},
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "jitl:frozen_carver"
+    ]
+  },
+  "features": [
+    [
+      "jitl:huge_pink_terrashroom",
+      "jitl:huge_purple_terrashroom",
+      "jitl:terrania_veg",
+      "jitl:terrania_tall_grass",
+      "jitl:enchanted_shrooms",
+      "jitl:enchanted_shrooms_tall",
+      "jitl:tall_terramushroom",
+      "jitl:small_terramushroom"
+    ]
+  ]
+}
+

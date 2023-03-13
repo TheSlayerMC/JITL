@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/iron_bars_side_alt",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "jitl:block/terranian_bars",
+    "bars": "jitl:block/terranian_bars",
+    "edge": "jitl:block/terranian_bars"
+  }
+}

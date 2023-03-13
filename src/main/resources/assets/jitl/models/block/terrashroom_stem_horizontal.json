@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "jitl:block/terrashroom_stem_top",
+    "side": "jitl:block/terrashroom_stem_side"
+  }
+}
