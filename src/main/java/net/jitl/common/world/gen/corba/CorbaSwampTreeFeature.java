@@ -1,6 +1,7 @@
 package net.jitl.common.world.gen.corba;
 
 import com.mojang.serialization.Codec;
+import net.jitl.common.block.JBlockFungalShelf;
 import net.jitl.core.helper.RandHelper;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
@@ -144,6 +145,6 @@ public class CorbaSwampTreeFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     private void placeMushroom(WorldGenLevel world, BlockPos pos, Direction facing) {
-        //setBlock(world, pos, JBlocks.SWAMP_SHELF.getDefaultState().withProperty(JBlockFungalShelf.FACING, facing));
+        setBlock(world, pos, JBlocks.FUNGAL_SHELF.get().defaultBlockState().setValue(JBlockFungalShelf.FACING, facing));
     }
 }
