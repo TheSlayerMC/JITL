@@ -56,7 +56,7 @@ public class TerranianLeaveVineDecorator extends TreeDecorator {
    }
 
    private static void addHangingVine(BlockPos pPos, BooleanProperty pSideProperty, TreeDecorator.Context pContext) {
-      pContext.placeVine(pPos, pSideProperty);
+      pContext.setBlock(pPos, JBlocks.TERRANIAN_VINE.get().defaultBlockState().setValue(pSideProperty, Boolean.TRUE));
       int i = 4;
 
       for(BlockPos blockpos = pPos.below(); pContext.isAir(blockpos) && i > 0; --i) {
