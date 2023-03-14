@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:terranian_mega_mushroom",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 5618484124874,
+
+    "spacing": 20,
+
+    "separation": 6,
+
+    "type": "minecraft:random_spread"
+  }
+}
