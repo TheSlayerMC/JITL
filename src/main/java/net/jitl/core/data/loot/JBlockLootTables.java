@@ -418,6 +418,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.TERRANIAN_DARK_PANELS);
         this.dropSelf(JBlocks.TERRANIAN_PANELS);
         this.dropSelf(JBlocks.TERRANIAN_TALL_GRASS);
+        this.dropSelf(JBlocks.TERRANIAN_POST);
         this.dropSelf(JBlocks.TERRAMUSHROOM);
         this.dropSelf(JBlocks.TALL_TERRAMUSHROOM);
         this.dropSelf(JBlocks.TERRANIAN_FLOWER);
@@ -427,6 +428,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.TERRAMUSHROOM_BLOCK_PINK);
         this.dropSelf(JBlocks.TERRAMUSHROOM_BLOCK_PURPLE);
         this.dropSelf(JBlocks.TERRASHROOM_STEM);
+        this.dropSelf(JBlocks.TERRANIAN_SAPLING);
 
         this.dropSelf(JBlocks.GRINDSTONE);
         this.dropSelf(JBlocks.JOURNEY_CHEST);
@@ -436,6 +438,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.BOIL_CHEST);
         this.dropSelf(JBlocks.DEPTHS_CHEST);
         this.dropSelf(JBlocks.CORBA_CHEST);
+        this.dropSelf(JBlocks.TERRANIAN_CHEST);
 
         this.add(JBlocks.ROCKITE_SPAWNER, noDrop());
         this.dropSelf(JBlocks.FROZEN_PEDESTAL);

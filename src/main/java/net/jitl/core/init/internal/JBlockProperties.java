@@ -338,6 +338,9 @@ public class JBlockProperties {
         if(name.contains("corba_brick")) {
             texName = "corba_bricks";
         }
+        if(name.contains("terranian_post")) {
+            texName = "terranian_post";
+        }
         return texName;
     }
 

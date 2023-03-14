@@ -179,6 +179,9 @@ public class JChestRenderer<T extends BlockEntity & LidBlockEntity> implements B
         if(chest == JBlocks.CORBA_CHEST.get()) {
             name = "corba_chest";
         }
+        if(chest == JBlocks.TERRANIAN_CHEST.get()) {
+            name = "terranian_chest";
+        }
         return name;
     }
 

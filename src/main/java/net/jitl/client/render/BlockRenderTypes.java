@@ -119,6 +119,7 @@ public class BlockRenderTypes {
 
         cutout.add(JBlocks.TERRAMUSHROOM.get());
         cutout.add(JBlocks.TERRANIAN_FLOWER.get());
+        cutout.add(JBlocks.TERRANIAN_SAPLING.get());
         cutout.add(JBlocks.TERRANIAN_LEAVES.get());
         cutout.add(JBlocks.TERRANIAN_TALL_GRASS.get());
         cutout.add(JBlocks.TERRANIAN_BARS.get());

@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:terranian_mega_tree",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1642136479,
+
+    "spacing": 20,
+
+    "separation": 6,
+
+    "type": "minecraft:random_spread"
+  }
+}
