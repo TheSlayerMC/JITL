@@ -128,7 +128,6 @@ public class JITL {
     private void clientSetup(final FMLClientSetupEvent event) {
         RenderEntitys.registerAnimationRenderers();
         event.enqueueWork(JContainers::register);
-        event.enqueueWork(ClientEventHandler::onClientSetup);
     }
 
     private void enqueue(InterModEnqueueEvent event) {

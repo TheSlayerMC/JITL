@@ -7,10 +7,7 @@ import net.jitl.common.capability.stats.PlayerStatsProvider;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JItems;
-import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RegisterDimensionSpecialEffectsEvent;
 import net.minecraftforge.client.event.ViewportEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -18,9 +15,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.CuriosApi;
 
-import java.awt.*;
-
-@OnlyIn(Dist.CLIENT)
 @Mod.EventBusSubscriber(modid = JITL.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ClientEventHandler {
 
@@ -47,6 +41,6 @@ public class ClientEventHandler {
 
     @SubscribeEvent
     public static void registerDimensionSpecialEffects(RegisterDimensionSpecialEffectsEvent event) {
-        //event.register(Dimensions.EUCA_EFFECTS, new EucaRenderInfo()); WORKS BUT CRASHES
+        //event.register(Dimensions.EUCA_EFFECTS, new EucaRenderInfo()); Crashes
     }
 }
