@@ -26,17 +26,12 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
     private static final ResourceLocation SUN_LOCATION = JITL.rl("textures/environment/boil_sun.png");
     private static final ResourceLocation BOIL_SKY_LOCATION = JITL.rl("textures/environment/boil_sky.png");
 
-    @Nullable private VertexBuffer skyBuffer;
+    @Nullable private final VertexBuffer skyBuffer;
 
     public BoilRenderInfo() {
         super(256F, true, SkyType.NORMAL, false, false);
-        Tesselator tesselator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tesselator.getBuilder();
         RenderSystem.setShader(GameRenderer::getPositionShader);
         VertexBuffer.unbind();
-        tesselator = Tesselator.getInstance();
-        bufferbuilder = tesselator.getBuilder();
-        if(skyBuffer != null) skyBuffer.close();
         skyBuffer = new VertexBuffer();
         skyBuffer.bind();
         VertexBuffer.unbind();
