@@ -36,6 +36,9 @@ public class Dimensions {
     public static final ResourceKey<Level> TERRANIA = ResourceKey.create(Registries.DIMENSION, JITL.rl("terrania"));
     public static final ResourceKey<DimensionType> TERRANIA_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, JITL.rl("terrania"));
 
+    public static final ResourceKey<Level> CLOUDIA = ResourceKey.create(Registries.DIMENSION, JITL.rl("cloudia"));
+    public static final ResourceKey<DimensionType> CLOUDIA_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, JITL.rl("cloudia"));
+
     public static final RegistryObject<PoiType> FROZEN_PORTAL = REGISTRY.register("frozen_portal",
             () -> new PoiType(ImmutableSet.copyOf(JBlocks.FROZEN_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
 
@@ -53,4 +56,7 @@ public class Dimensions {
 
     public static final RegistryObject<PoiType> TERRANIAN_PORTAL = REGISTRY.register("terranian_portal",
             () -> new PoiType(ImmutableSet.copyOf(JBlocks.TERRANIAN_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
+
+    public static final RegistryObject<PoiType> CLOUDIA_PORTAL = REGISTRY.register("cloudia_portal",
+            () -> new PoiType(ImmutableSet.copyOf(JBlocks.CLOUDIA_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
 }

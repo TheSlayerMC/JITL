@@ -1,0 +1,11 @@
+{
+  "type": "jitl:cloudia",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "jitl:cloudia_generation",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "jitl:cloudia/cloudia"
+    }
+  }
+}

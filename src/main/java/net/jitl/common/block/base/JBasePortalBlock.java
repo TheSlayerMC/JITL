@@ -132,6 +132,9 @@ public class JBasePortalBlock extends Block {
             if(this == JBlocks.TERRANIAN_PORTAL.get())
                 poi = Dimensions.TERRANIAN_PORTAL.getKey();
 
+            if(this == JBlocks.CLOUDIA_PORTAL.get())
+                poi = Dimensions.CLOUDIA_PORTAL.getKey();
+
             if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
                 entity.setPortalCooldown();
                 entity.changeDimension(destinationWorld, new BaseTeleporter(destinationWorld, this, frame.get(), poi, destination));

@@ -126,12 +126,15 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.TALL_TERRAMUSHROOM.get());
         cutout.add(JBlocks.TERRANIAN_VINE.get());
         cutout.add(JBlocks.TERRANIAN_PORTAL.get());
-
+        cutout.add(JBlocks.CLOUDIA_LEAVES.get());
 
         translucent.add(JBlocks.EUCA_PORTAL.get());
         translucent.add(JBlocks.FROZEN_PORTAL.get());
         translucent.add(JBlocks.BOIL_PORTAL.get());
         translucent.add(JBlocks.DEPTHS_PORTAL.get());
+        translucent.add(JBlocks.LIGHT_BLUE_CLOUDIA_CLOUD.get());
+        translucent.add(JBlocks.BLUE_CLOUDIA_CLOUD.get());
+        translucent.add(JBlocks.PINK_CLOUDIA_CLOUD.get());
 
         for(Block b : cutout) {
             ItemBlockRenderTypes.setRenderLayer(b, RenderType.cutout());

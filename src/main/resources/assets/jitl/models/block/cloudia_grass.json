@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "up": "jitl:block/cloudia_grass_top",
+    "north": "jitl:block/cloudia_grass_side",
+    "east": "jitl:block/cloudia_grass_side",
+    "south": "jitl:block/cloudia_grass_side",
+    "west": "jitl:block/cloudia_grass_side",
+    "down": "jitl:block/cloudia_grass_bottom",
+    "particle": "jitl:block/cloudia_grass_bottom"
+  }
+}

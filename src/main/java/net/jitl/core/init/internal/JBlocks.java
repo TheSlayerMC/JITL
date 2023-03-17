@@ -33,6 +33,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.openjdk.nashorn.internal.scripts.JD;
 
 import java.util.ArrayList;
 import java.util.function.Supplier;
@@ -512,7 +513,7 @@ public class JBlocks {
     public static final RegistryObject<Block> TERRANIAN_PORTAL_FRAME = register("terranian_portal_frame", "Terranian Portal Frame", JBlockProperties.STONE);
     public static final RegistryObject<JBasePortalBlock> TERRANIAN_PORTAL = registerPortalBlock("terranian_portal", "Terranian Portal", () -> new JBasePortalBlock(Dimensions.TERRANIA, TERRANIAN_PORTAL_FRAME));
     public static final RegistryObject<Block> TERRANIAN_GRASS = registerGrassBlock("terranian_grass", "Terranian Grass", JGrassBlock::new);
-    public static final RegistryObject<Block> TERRANIAN_DIRT = register("terranian_dirt", "Terranian Dirt", JBlockProperties.DIRT);
+    public static final RegistryObject<Block> TERRANIAN_DIRT = registerTerrainBlock("terranian_dirt", "Terranian Dirt", JDirt::new);
     public static final RegistryObject<Block> TERRANIAN_STONE = register("terranian_stone", "Terranian Stone", JBlockProperties.STONE);
     public static final RegistryObject<Block> TERRANIAN_LEAVES = registerTopBottomBlock("terranian_leaves", "Terrania Leaves", () -> new Block(JBlockProperties.LEAVES));
     public static final RegistryObject<Block> TERRANIAN_VINE = registerVineBlock("terranian_vine", "Terrania Vine", () -> new JVineBlock(JBlockProperties.VINE));
@@ -532,6 +533,27 @@ public class JBlocks {
     public static final RegistryObject<Block> TERRAMUSHROOM_BLOCK_PURPLE = registerMushroomBlock("terrashroom_block_purple", "Terrashroom Block", () -> new HugeMushroomBlock(JBlockProperties.MUSHROOM_BLOCK));
     public static final RegistryObject<Block> TERRASHROOM_STEM = registerMushroomBlock("terrashroom_stem", "Terrashroom Stem", () -> new HugeMushroomBlock(JBlockProperties.MUSHROOM_BLOCK));
     public static final RegistryObject<Block> TERRANIAN_SAPLING = registerCrossBlock("terranian_sapling", "Terranian Sapling", () -> new JSaplingBlock(new TerranianTreeGrower()));
+
+    public static final RegistryObject<Block> CLOUDIA_PORTAL_FRAME = register("cloudia_portal_frame", "Cloudia Portal Frame", JBlockProperties.STONE);
+    public static final RegistryObject<JBasePortalBlock> CLOUDIA_PORTAL = registerPortalBlock("cloudia_portal", "Cloudia Portal", () -> new JBasePortalBlock(Dimensions.CLOUDIA, CLOUDIA_PORTAL_FRAME));
+    public static final RegistryObject<Block> CLOUDIA_DIRT = registerTerrainBlock("cloudia_dirt", "Cloudia Dirt", JDirt::new);
+    public static final RegistryObject<Block> CLOUDIA_GRASS = registerGrassBlock("cloudia_grass", "Cloudia Grass", JGrassBlock::new);
+    public static final RegistryObject<RotatedPillarBlock> CLOUDIA_LOG = registerPillar("cloudia_log", "Cloudia Log", true, JBlockProperties.WOOD);
+    public static final RegistryObject<Block> CLOUDIA_ROCK = register("cloudia_rock", "Cloudia Rock", JBlockProperties.STONE);
+    public static final RegistryObject<RotatedPillarBlock> CLOUDIA_PILLAR = registerPillar("cloudia_pillar", "Cloudia Pillar", false, JBlockProperties.STONE);
+    public static final RegistryObject<Block> CLOUDIA_PLANKS = register("cloudia_planks", "Cloudia Planks", JBlockProperties.WOOD);
+    public static final RegistryObject<Block> CLOUDIA_BRICK = register("cloudia_brick", "Cloudia Bricks", JBlockProperties.STONE);
+    public static final RegistryObject<JWallBlock> CLOUDIA_WALL = registerWallBlock("cloudia_wall", "Cloudia Wall", JBlockProperties.STONE);
+    public static final RegistryObject<Block> CLOUDIA_TILE = register("cloudia_tile", "Cloudia Tile", JBlockProperties.STONE);
+    public static final RegistryObject<Block> CLOUDIA_LEAVES = register("cloudia_leaves", "Cloudia Leaves", JBlockProperties.LUMINESCENT_LEAVES);
+    public static final RegistryObject<Block> CLOUDIA_LAMP = register("cloudia_lamp", "Cloudia Lamp", JBlockProperties.GLOW_LAMP);
+    public static final RegistryObject<Block> CLOUDIA_COBBLESTONE = register("cloudia_cobblestone", "Cloudia Cobblestone", JBlockProperties.STONE);
+    public static final RegistryObject<StairBlock> CLOUDIA_BRICK_STAIRS = registerStairs("cloudia_brick_stairs", "Cloudia Brick Stairs", CLOUDIA_BRICK, false, JBlockProperties.STONE);
+    public static final RegistryObject<StairBlock> CLOUDIA_TILE_STAIRS = registerStairs("cloudia_tile_stairs", "Cloudia Tile Stairs",CLOUDIA_TILE, false, JBlockProperties.STONE);
+    public static final RegistryObject<JFenceBlock> CLOUDIA_POST = registerFence("cloudia_post", "Cloudia Post", false, JBlockProperties.STONE);
+    public static final RegistryObject<Block> PINK_CLOUDIA_CLOUD = register("pink_cloudia_cloud", "Pink Cloudia Cloud", JBlockProperties.CLOUD);
+    public static final RegistryObject<Block> BLUE_CLOUDIA_CLOUD = register("blue_cloudia_cloud", "Blue Cloudia Cloud", JBlockProperties.CLOUD);
+    public static final RegistryObject<Block> LIGHT_BLUE_CLOUDIA_CLOUD = register("light_blue_cloudia_cloud", "Light Blue Cloudia Cloud", JBlockProperties.CLOUD);
 
     public static final RegistryObject<Block> GRINDSTONE = registerModeledBlock("grindstone", "Grindstone", JGrindstoneBlock::new);
     public static final RegistryObject<Block> JOURNEY_CHEST = registerChestBlock("journey_chest", "Journey Chest", JChestBlock::new);

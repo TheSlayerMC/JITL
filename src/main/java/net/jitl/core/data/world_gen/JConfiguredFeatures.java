@@ -169,6 +169,9 @@ public class JConfiguredFeatures {
             MEGA_TERRANIAN_TREE = registerKey("mega_terranian_tree")
             ;
 
+    //CLOUDIA
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CLOUDIA_TERRAIN = registerKey("cloudia_terrain");
+
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         //OVERWORLD
@@ -272,6 +275,9 @@ public class JConfiguredFeatures {
         register(context, HUGE_PINK_TERRASHROOM, Feature.HUGE_BROWN_MUSHROOM, new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(JBlocks.TERRAMUSHROOM_BLOCK_PINK.get().defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.TRUE).setValue(HugeMushroomBlock.DOWN, Boolean.FALSE)), BlockStateProvider.simple(JBlocks.TERRASHROOM_STEM.get().defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.FALSE).setValue(HugeMushroomBlock.DOWN, Boolean.FALSE)), 3));
         register(context, HUGE_PURPLE_TERRASHROOM, Feature.HUGE_RED_MUSHROOM, new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(JBlocks.TERRAMUSHROOM_BLOCK_PURPLE.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, Boolean.FALSE)), BlockStateProvider.simple(JBlocks.TERRASHROOM_STEM.get().defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.FALSE).setValue(HugeMushroomBlock.DOWN, Boolean.FALSE)), 2));
         register(context, MEGA_TERRANIAN_TREE, JFeatures.JTREE.get(), new TreeConfig.JTreeConfigurationBuilder(BlockStateProvider.simple(JBlocks.TERRANIAN_LOG.get().defaultBlockState()), new MegaJungleTrunkPlacer(10, 2, 19), BlockStateProvider.simple(JBlocks.TERRANIAN_LEAVES.get()), new MegaJungleFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 2), new TwoLayersFeatureSize(1, 1, 2)).decorators(ImmutableList.of(TerranianTrunkVineDecorator.INSTANCE, new TerranianLeaveVineDecorator(0.25F))).forceDirt().dirt(BlockStateProvider.simple(JBlocks.TERRANIAN_DIRT.get())).build());
+
+        //CLOUDIA
+        register(context, CLOUDIA_TERRAIN, JFeatures.CLOUDIA_TERRAIN.get(), new NoneFeatureConfiguration());
 
     }
 

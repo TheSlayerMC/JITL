@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "jitl:block/cloudia_grass"
+      },
+      {
+        "model": "jitl:block/cloudia_grass",
+         "y": 90
+      },
+      {
+        "model": "jitl:block/cloudia_grass",
+         "y": 180
+      },
+      {
+        "model": "jitl:block/cloudia_grass",
+         "y": 270
+      }
+    ]
+  }
+}

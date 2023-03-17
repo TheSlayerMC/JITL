@@ -115,6 +115,12 @@ public class JBlockProperties {
             .noOcclusion()
             .requiresCorrectToolForDrops();
 
+    public static BlockBehaviour.Properties CLOUD = BlockBehaviour.Properties.of(Material.WOOL)
+            .strength(0.5F)
+            .sound(SoundType.WOOL)
+            .noOcclusion()
+            .requiresCorrectToolForDrops();
+
     public static BlockBehaviour.Properties CROP = BlockBehaviour.Properties.of(Material.PLANT)
             .sound(SoundType.CROP)
             .instabreak()
@@ -341,6 +347,19 @@ public class JBlockProperties {
         if(name.contains("terranian_post")) {
             texName = "terranian_post";
         }
+        if(name.contains("cloudia_post")) {
+            texName = "cloudia_post";
+        }
+        if(name.contains("cloudia_tile_stairs")) {
+            texName = "cloudia_tile";
+        }
+        if(name.contains("cloudia_brick_stairs")) {
+            texName = "cloudia_brick";
+        }
+        if(name.contains("cloudia_wall")) {
+            texName = "cloudia_wall";
+        }
+
         return texName;
     }
 

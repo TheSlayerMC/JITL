@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x": {
+        "model": "jitl:block/cloudia_portal_ns"
+      },
+    "axis=z": {
+        "model": "jitl:block/cloudia_portal_ew"
+      }
+  }
+}
