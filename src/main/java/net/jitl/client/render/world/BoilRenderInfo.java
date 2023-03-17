@@ -1,15 +1,16 @@
 package net.jitl.client.render.world;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 
-public class EucaRenderInfo extends DimensionSpecialEffects {
+public class BoilRenderInfo extends DimensionSpecialEffects {
 
-    public EucaRenderInfo() {
+    public BoilRenderInfo() {
         super(160.0F, true, SkyType.NONE, false, false);
     }
 
@@ -20,9 +21,9 @@ public class EucaRenderInfo extends DimensionSpecialEffects {
     }
 
     @Override
-    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f projectionMatrix) {
-        //new EucaCloudsRenderer().renderClouds(level, ticks, poseStack, projectionMatrix, partialTick, camX, camY, camZ);
-        return true;
+    public boolean renderSky(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, Camera camera, Matrix4f projectionMatrix, boolean isFoggy, Runnable setupFog) {
+        //new BoilSkyRenderer().render(ticks, partialTick, poseStack, level);
+        return super.renderSky(level, ticks, partialTick, poseStack, camera, projectionMatrix, isFoggy, setupFog);
     }
 
     @Override
