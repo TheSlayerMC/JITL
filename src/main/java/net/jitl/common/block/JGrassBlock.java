@@ -64,6 +64,9 @@ public class JGrassBlock extends Block {//implements BonemealableBlock {
         if(this == JBlocks.TERRANIAN_GRASS.get())
             farmland = JBlocks.TERRANIAN_GRASS.get();
 
+        if(this == JBlocks.CLOUDIA_GRASS.get())
+            farmland = JBlocks.CLOUDIA_GRASS.get();
+
         return farmland;
     }
 
@@ -86,6 +89,10 @@ public class JGrassBlock extends Block {//implements BonemealableBlock {
 
         if(this == JBlocks.TERRANIAN_GRASS.get())
             dirt = JBlocks.TERRANIAN_DIRT.get();
+
+        if(this == JBlocks.CLOUDIA_GRASS.get())
+            dirt = JBlocks.CLOUDIA_DIRT.get();
+
         return dirt;
     }
 

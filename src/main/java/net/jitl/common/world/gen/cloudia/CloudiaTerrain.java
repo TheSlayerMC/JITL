@@ -41,7 +41,9 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
         };
 
         bottom = new CloudiaPiece[] {
-                new CloudiaPiece(manager, "cloudia/bottom/tall_house1")
+                new CloudiaPiece(manager, "cloudia/bottom/tall_house1"),
+                new CloudiaPiece(manager, "cloudia/bottom/island_1"),
+
         };
 
         return generate(level, random, pos);
