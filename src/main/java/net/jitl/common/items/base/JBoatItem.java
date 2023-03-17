@@ -60,7 +60,7 @@ public class JBoatItem extends Item {
                 } else {
                     if(!level.isClientSide) {
                         level.addFreshEntity(boat);
-                        level.gameEvent(player, GameEvent.ENTITY_PLACE, new BlockPos(hitresult.getLocation()));
+                        level.gameEvent(player, GameEvent.ENTITY_PLACE, BlockPos.containing(hitresult.getLocation()));
                         if(!player.getAbilities().instabuild) {
                             itemstack.shrink(1);
                         }

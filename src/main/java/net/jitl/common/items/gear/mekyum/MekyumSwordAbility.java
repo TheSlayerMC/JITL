@@ -15,7 +15,7 @@ public class MekyumSwordAbility implements IAbility {
         int time = entity.invulnerableTime;
         event.setCanceled(true);
         entity.invulnerableTime = 0;
-        entity.hurt(DamageSource.MAGIC, event.getAmount());
+        entity.hurt(entity.level.damageSources().magic(), event.getAmount());
         entity.invulnerableTime = time;
         JITL.LOGGER.info(time);
     }

@@ -11,6 +11,7 @@ import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import org.jetbrains.annotations.NotNull;
 import java.util.function.BiConsumer;
@@ -29,7 +30,7 @@ public class SphericalFoliagePlacer extends BlobFoliagePlacer {
     }
 
     @Override
-    protected void createFoliage(@NotNull LevelSimulatedReader reader, @NotNull BiConsumer<BlockPos, BlockState> blockSetter, @NotNull RandomSource rand, @NotNull TreeConfiguration baseTreeFeatureConfig, int maxFreeTreeHeight, FoliageAttachment foliage, int foliageHeight, int foliageRadius, int offset) {
+    protected void createFoliage(@NotNull LevelSimulatedReader reader, @NotNull FoliagePlacer.FoliageSetter blockSetter, @NotNull RandomSource rand, @NotNull TreeConfiguration baseTreeFeatureConfig, int maxFreeTreeHeight, FoliageAttachment foliage, int foliageHeight, int foliageRadius, int offset) {
         int size = foliageRadius + foliage.radiusOffset();
         BlockPos pos = foliage.pos().above(offset);
         pos = pos.offset(Direction.UP.getNormal());

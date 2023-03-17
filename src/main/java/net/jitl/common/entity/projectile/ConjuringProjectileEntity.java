@@ -44,10 +44,10 @@ public class ConjuringProjectileEntity extends ThrowableProjectile {
     protected void onHitEntity(EntityHitResult pResult) {
         super.onHitEntity(pResult);
         Entity entity = pResult.getEntity();
-        if(entity instanceof LivingEntity && entity.hurt(DamageSource.thrown(this, this.getOwner()), getDamage())) {
+        if(entity instanceof LivingEntity && entity.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage())) {
             MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.POISON, 60);
             ((LivingEntity)entity).addEffect(effectInstance);
-            entity.hurt(DamageSource.thrown(this, this.getOwner()), getDamage());
+            entity.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage());
         }
     }
 

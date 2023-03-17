@@ -71,7 +71,7 @@ public class JourneyTree extends Feature<TreeConfig> {
 		if(hasSpace(block) || (replace && !block.is(Blocks.BEDROCK))) setBlock(level, pos, state);
 	}
 
-	private boolean doPlace(WorldGenLevel level, RandomSource random, BlockPos pos, BiConsumer<BlockPos, BlockState> root, BiConsumer<BlockPos, BlockState> trunk, BiConsumer<BlockPos, BlockState> foiliage, TreeConfig config) {
+	private boolean doPlace(WorldGenLevel level, RandomSource random, BlockPos pos, BiConsumer<BlockPos, BlockState> root, BiConsumer<BlockPos, BlockState> trunk, FoliagePlacer.FoliageSetter foiliage, TreeConfig config) {
 		if(canBeHere(level, pos)) {
 			int i = config.trunkPlacer.getTreeHeight(random);
 			int j = config.foliagePlacer.foliageHeight(random, i, config);
@@ -144,9 +144,15 @@ public class JourneyTree extends Feature<TreeConfig> {
 			set1.add(p.immutable());
 			worldgenlevel.setBlock(p, s, 19);
 		};
-		BiConsumer<BlockPos, BlockState> biconsumer2 = (p, s) -> {
-			set2.add(p.immutable());
-			worldgenlevel.setBlock(p, s, 19);
+		FoliagePlacer.FoliageSetter biconsumer2 = new FoliagePlacer.FoliageSetter() {
+			public void set(BlockPos p_272825_, @NotNull BlockState s) {
+				set2.add(p_272825_.immutable());
+				worldgenlevel.setBlock(p_272825_, s, 19);
+			}
+
+			public boolean isSet(BlockPos p) {
+				return set2.contains(p);
+			}
 		};
 		BiConsumer<BlockPos, BlockState> biconsumer3 = (p, s) -> {
 			set3.add(p.immutable());

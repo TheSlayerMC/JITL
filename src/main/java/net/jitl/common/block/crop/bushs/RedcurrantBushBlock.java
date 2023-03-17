@@ -85,7 +85,7 @@ public class RedcurrantBushBlock extends BushBlock implements BonemealableBlock 
                 double d0 = Math.abs(pEntity.getX() - pEntity.xOld);
                 double d1 = Math.abs(pEntity.getZ() - pEntity.zOld);
                 if (d0 >= HURT_SPEED_THRESHOLD || d1 >= HURT_SPEED_THRESHOLD) {
-                    pEntity.hurt(JDamageSources.REDCURRANT_BUSH, 1.0F);
+                    //pEntity.hurt(JDamageSources.REDCURRANT_BUSH, 1.0F);//TODO
                 }
             }
         }

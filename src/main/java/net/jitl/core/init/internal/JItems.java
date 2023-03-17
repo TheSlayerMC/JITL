@@ -212,10 +212,10 @@ public class JItems {
     public static final RegistryObject<Item> SAPPHIRE_HOE = registerToolItem("sapphire_hoe", "Sapphire Hoe", () -> new JHoeItem(JToolTiers.SAPPHIRE_HOE));
     public static final RegistryObject<Item> SAPPHIRE_MULTITOOL = registerToolItem("sapphire_multitool", "Sapphire Multitool", () -> new MultitoolItem(JToolTiers.SAPPHIRE_AXE));
     public static final RegistryObject<Item> SAPPHIRE_SWORD = registerToolItem("sapphire_sword", "Sapphire Sword", () -> new JSwordItem(JToolTiers.SAPPHIRE_SWORD, BASIC));
-    public static final RegistryObject<Item> SAPPHIRE_HELMET = registerNormalItem("sapphire_helmet", "Sapphire Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.SAPPHIRE, EquipmentSlot.HEAD, null));
-    public static final RegistryObject<Item> SAPPHIRE_CHEST = registerNormalItem("sapphire_chestplate", "Sapphire Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.SAPPHIRE, EquipmentSlot.CHEST, null));
-    public static final RegistryObject<Item> SAPPHIRE_LEGS = registerNormalItem("sapphire_leggings", "Sapphire Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.SAPPHIRE, EquipmentSlot.LEGS, null));
-    public static final RegistryObject<Item> SAPPHIRE_BOOTS = registerNormalItem("sapphire_boots", "Sapphire Boots", () -> new JArmorItem(JToolTiers.JArmorTier.SAPPHIRE, EquipmentSlot.FEET, null));
+    public static final RegistryObject<Item> SAPPHIRE_HELMET = registerNormalItem("sapphire_helmet", "Sapphire Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.SAPPHIRE, ArmorItem.Type.HELMET, null));
+    public static final RegistryObject<Item> SAPPHIRE_CHEST = registerNormalItem("sapphire_chestplate", "Sapphire Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.SAPPHIRE, ArmorItem.Type.CHESTPLATE, null));
+    public static final RegistryObject<Item> SAPPHIRE_LEGS = registerNormalItem("sapphire_leggings", "Sapphire Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.SAPPHIRE, ArmorItem.Type.LEGGINGS, null));
+    public static final RegistryObject<Item> SAPPHIRE_BOOTS = registerNormalItem("sapphire_boots", "Sapphire Boots", () -> new JArmorItem(JToolTiers.JArmorTier.SAPPHIRE, ArmorItem.Type.BOOTS, null));
 
     public static final RegistryObject<Item> LUNIUM_POWDER = registerNormalItem("lunium_powder", "Lunium Powder");
     public static final RegistryObject<Item> LUNIUM_INGOT = registerNormalItem("lunium_ingot", "Lunium Ingot");
@@ -226,10 +226,10 @@ public class JItems {
     public static final RegistryObject<Item> LUNIUM_HOE = registerToolItem("lunium_hoe", "Lunium Hoe", () -> new JHoeItem(JToolTiers.LUNIUM_HOE));
     public static final RegistryObject<Item> LUNIUM_MULTITOOL = registerToolItem("lunium_multitool", "Lunium Multitool", () -> new MultitoolItem(JToolTiers.LUNIUM_AXE));
     public static final RegistryObject<Item> LUNIUM_SWORD = registerToolItem("lunium_sword", "Lunium Sword", () -> new JSwordItem(JToolTiers.LUNIUM_SWORD, LUNIUM_ABILITY));
-    public static final RegistryObject<Item> LUNIUM_HELMET = registerNormalItem("lunium_helmet", "Lunium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.LUNIUM, EquipmentSlot.HEAD, LUNIUM_ABILITY));
-    public static final RegistryObject<Item> LUNIUM_CHEST = registerNormalItem("lunium_chestplate", "Lunium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.LUNIUM, EquipmentSlot.CHEST, LUNIUM_ABILITY));
-    public static final RegistryObject<Item> LUNIUM_LEGS = registerNormalItem("lunium_leggings", "Lunium Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.LUNIUM, EquipmentSlot.LEGS, LUNIUM_ABILITY));
-    public static final RegistryObject<Item> LUNIUM_BOOTS = registerNormalItem("lunium_boots", "Lunium Boots", () -> new JArmorItem(JToolTiers.JArmorTier.LUNIUM, EquipmentSlot.FEET, LUNIUM_ABILITY));
+    public static final RegistryObject<Item> LUNIUM_HELMET = registerNormalItem("lunium_helmet", "Lunium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.LUNIUM, ArmorItem.Type.HELMET, LUNIUM_ABILITY));
+    public static final RegistryObject<Item> LUNIUM_CHEST = registerNormalItem("lunium_chestplate", "Lunium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.LUNIUM, ArmorItem.Type.CHESTPLATE, LUNIUM_ABILITY));
+    public static final RegistryObject<Item> LUNIUM_LEGS = registerNormalItem("lunium_leggings", "Lunium Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.LUNIUM, ArmorItem.Type.LEGGINGS, LUNIUM_ABILITY));
+    public static final RegistryObject<Item> LUNIUM_BOOTS = registerNormalItem("lunium_boots", "Lunium Boots", () -> new JArmorItem(JToolTiers.JArmorTier.LUNIUM, ArmorItem.Type.BOOTS, LUNIUM_ABILITY));
 
     public static final RegistryObject<Item> RAW_SHADIUM = registerNormalItem("raw_shadium", "Raw Shadium");
     public static final RegistryObject<Item> SHADIUM_INGOT = registerNormalItem("shadium_ingot", "Shadium Ingot");
@@ -240,10 +240,10 @@ public class JItems {
     public static final RegistryObject<Item> SHADIUM_HOE = registerToolItem("shadium_hoe", "Shadium Hoe", () -> new JHoeItem(JToolTiers.SHADIUM_HOE));
     public static final RegistryObject<Item> SHADIUM_MULTITOOL = registerToolItem("shadium_multitool", "Shadium Multitool", () -> new MultitoolItem(JToolTiers.SHADIUM_AXE));
     public static final RegistryObject<Item> SHADIUM_SWORD = registerToolItem("shadium_sword", "Shadium Sword", () -> new JSwordItem(JToolTiers.SHADIUM_SWORD, BASIC));
-    public static final RegistryObject<Item> SHADIUM_HELMET = registerNormalItem("shadium_helmet", "Shadium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.SHADIUM, EquipmentSlot.HEAD, null));
-    public static final RegistryObject<Item> SHADIUM_CHEST = registerNormalItem("shadium_chestplate", "Shadium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.SHADIUM, EquipmentSlot.CHEST, null));
-    public static final RegistryObject<Item> SHADIUM_LEGS = registerNormalItem("shadium_leggings", "Shadium Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.SHADIUM, EquipmentSlot.LEGS, null));
-    public static final RegistryObject<Item> SHADIUM_BOOTS = registerNormalItem("shadium_boots", "Shadium Boots", () -> new JArmorItem(JToolTiers.JArmorTier.SHADIUM, EquipmentSlot.FEET, null));
+    public static final RegistryObject<Item> SHADIUM_HELMET = registerNormalItem("shadium_helmet", "Shadium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.SHADIUM, ArmorItem.Type.HELMET, null));
+    public static final RegistryObject<Item> SHADIUM_CHEST = registerNormalItem("shadium_chestplate", "Shadium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.SHADIUM, ArmorItem.Type.CHESTPLATE, null));
+    public static final RegistryObject<Item> SHADIUM_LEGS = registerNormalItem("shadium_leggings", "Shadium Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.SHADIUM, ArmorItem.Type.LEGGINGS, null));
+    public static final RegistryObject<Item> SHADIUM_BOOTS = registerNormalItem("shadium_boots", "Shadium Boots", () -> new JArmorItem(JToolTiers.JArmorTier.SHADIUM, ArmorItem.Type.BOOTS, null));
 
     public static final RegistryObject<Item> RAW_BLOODCRUST = registerNormalItem("raw_bloodcrust", "Raw Bloodcrust");
     public static final RegistryObject<Item> BLOODCRUST_INGOT = registerNormalItem("bloodcrust_ingot", "Bloodcrust Ingot");
@@ -254,10 +254,10 @@ public class JItems {
     public static final RegistryObject<Item> BLOODCRUST_MULTITOOL = registerToolItem("bloodcrust_multitool", "Bloodcrust Multitool", () -> new MultitoolItem(JToolTiers.BLOODCRUST_AXE));
     public static final RegistryObject<Item> BLOODCRUST_HOE = registerToolItem("bloodcrust_hoe", "Bloodcrust Hoe", () -> new JHoeItem(JToolTiers.BLOODCRUST_HOE));
     public static final RegistryObject<Item> BLOODCRUST_SWORD = registerToolItem("bloodcrust_sword", "Bloodcrust Sword", () -> new JSwordItem(JToolTiers.BLOODCRUST_SWORD, BLOODCRUST_SWORD_ABILITY));
-    public static final RegistryObject<Item> BLOODCRUST_HELMET = registerNormalItem("bloodcrust_helmet", "Bloodcrust Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.BLOODCRUST, EquipmentSlot.HEAD, BLOODCRUST_ARMOR_ABILITY));
-    public static final RegistryObject<Item> BLOODCRUST_CHEST = registerNormalItem("bloodcrust_chestplate", "Bloodcrust Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.BLOODCRUST, EquipmentSlot.CHEST, BLOODCRUST_ARMOR_ABILITY));
-    public static final RegistryObject<Item> BLOODCRUST_LEGS = registerNormalItem("bloodcrust_leggings", "Bloodcrust Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.BLOODCRUST, EquipmentSlot.LEGS, BLOODCRUST_ARMOR_ABILITY));
-    public static final RegistryObject<Item> BLOODCRUST_BOOTS = registerNormalItem("bloodcrust_boots", "Bloodcrust Boots", () -> new JArmorItem(JToolTiers.JArmorTier.BLOODCRUST, EquipmentSlot.FEET, BLOODCRUST_ARMOR_ABILITY));
+    public static final RegistryObject<Item> BLOODCRUST_HELMET = registerNormalItem("bloodcrust_helmet", "Bloodcrust Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.BLOODCRUST, ArmorItem.Type.HELMET, BLOODCRUST_ARMOR_ABILITY));
+    public static final RegistryObject<Item> BLOODCRUST_CHEST = registerNormalItem("bloodcrust_chestplate", "Bloodcrust Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.BLOODCRUST, ArmorItem.Type.CHESTPLATE, BLOODCRUST_ARMOR_ABILITY));
+    public static final RegistryObject<Item> BLOODCRUST_LEGS = registerNormalItem("bloodcrust_leggings", "Bloodcrust Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.BLOODCRUST, ArmorItem.Type.LEGGINGS, BLOODCRUST_ARMOR_ABILITY));
+    public static final RegistryObject<Item> BLOODCRUST_BOOTS = registerNormalItem("bloodcrust_boots", "Bloodcrust Boots", () -> new JArmorItem(JToolTiers.JArmorTier.BLOODCRUST, ArmorItem.Type.BOOTS, BLOODCRUST_ARMOR_ABILITY));
 
     public static final RegistryObject<Item> CELESTIUM_INGOT = registerNormalItem("celestium_ingot", "Celestium Ingot");
     public static final RegistryObject<Item> CELESTIUM_GEMSTONE = registerNormalItem("celestium_gemstone", "Celestium Gemstone");
@@ -267,10 +267,10 @@ public class JItems {
     public static final RegistryObject<Item> CELESTIUM_HOE = registerToolItem("celestium_hoe", "Celestium Hoe", () -> new JHoeItem(JToolTiers.CELESTIUM_HOE));
     public static final RegistryObject<Item> CELESTIUM_MULTITOOL = registerToolItem("celestium_multitool", "Celestium Multitool", () -> new MultitoolItem(JToolTiers.CELESTIUM_AXE));
     public static final RegistryObject<Item> CELESTIUM_SWORD = registerToolItem("celestium_sword", "Celestium Sword", () -> new JSwordItem(JToolTiers.CELESTIUM_SWORD, BASIC));
-    public static final RegistryObject<Item> CELESTIUM_HELMET = registerNormalItem("celestium_helmet", "Celestium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, EquipmentSlot.HEAD, CELESTIUM_ARMOR_ABILITY));
-    public static final RegistryObject<Item> CELESTIUM_CHEST = registerNormalItem("celestium_chestplate", "Celestium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, EquipmentSlot.CHEST, CELESTIUM_ARMOR_ABILITY));
-    public static final RegistryObject<Item> CELESTIUM_LEGS = registerNormalItem("celestium_leggings", "Celestium Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, EquipmentSlot.LEGS, CELESTIUM_ARMOR_ABILITY));
-    public static final RegistryObject<Item> CELESTIUM_BOOTS = registerNormalItem("celestium_boots", "Celestium Boots", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, EquipmentSlot.FEET, CELESTIUM_ARMOR_ABILITY));
+    public static final RegistryObject<Item> CELESTIUM_HELMET = registerNormalItem("celestium_helmet", "Celestium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, ArmorItem.Type.HELMET, CELESTIUM_ARMOR_ABILITY));
+    public static final RegistryObject<Item> CELESTIUM_CHEST = registerNormalItem("celestium_chestplate", "Celestium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, ArmorItem.Type.CHESTPLATE, CELESTIUM_ARMOR_ABILITY));
+    public static final RegistryObject<Item> CELESTIUM_LEGS = registerNormalItem("celestium_leggings", "Celestium Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, ArmorItem.Type.LEGGINGS, CELESTIUM_ARMOR_ABILITY));
+    public static final RegistryObject<Item> CELESTIUM_BOOTS = registerNormalItem("celestium_boots", "Celestium Boots", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, ArmorItem.Type.BOOTS, CELESTIUM_ARMOR_ABILITY));
 
     public static final RegistryObject<Item> MEKYUM_INGOT = registerNormalItem("mekyum_ingot", "Mekyum Ingot");
     public static final RegistryObject<Item> MEKYUM_GEMSTONE = registerNormalItem("mekyum_gemstone", "Mekyum Gemstone");
@@ -306,10 +306,10 @@ public class JItems {
     public static final RegistryObject<Item> FLAIRIUM_HOE = registerToolItem("flairium_hoe", "Flairium Hoe", () -> new JHoeItem(JToolTiers.FLAIRIUM_HOE));
     public static final RegistryObject<Item> FLAIRIUM_MULTITOOL = registerToolItem("flairium_multitool", "Flairium Multitool", () -> new MultitoolItem(JToolTiers.FLAIRIUM_AXE));
     public static final RegistryObject<Item> FLAIRIUM_SWORD = registerToolItem("flairium_sword", "Flairium Sword", () -> new JSwordItem(JToolTiers.FLAIRIUM_SWORD, BASIC));
-    public static final RegistryObject<Item> FLAIRIUM_HELMET = registerNormalItem("flairium_helmet", "Flairium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, EquipmentSlot.HEAD, null));
-    public static final RegistryObject<Item> FLAIRIUM_CHEST = registerNormalItem("flairium_chestplate", "Flairium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, EquipmentSlot.CHEST, null));
-    public static final RegistryObject<Item> FLAIRIUM_LEGS = registerNormalItem("flairium_leggings", "Flairium Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, EquipmentSlot.LEGS, null));
-    public static final RegistryObject<Item> FLAIRIUM_BOOTS = registerNormalItem("flairium_boots", "Flairium Boots", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, EquipmentSlot.FEET, null));
+    public static final RegistryObject<Item> FLAIRIUM_HELMET = registerNormalItem("flairium_helmet", "Flairium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, ArmorItem.Type.HELMET, null));
+    public static final RegistryObject<Item> FLAIRIUM_CHEST = registerNormalItem("flairium_chestplate", "Flairium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, ArmorItem.Type.CHESTPLATE, null));
+    public static final RegistryObject<Item> FLAIRIUM_LEGS = registerNormalItem("flairium_leggings", "Flairium Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, ArmorItem.Type.LEGGINGS, null));
+    public static final RegistryObject<Item> FLAIRIUM_BOOTS = registerNormalItem("flairium_boots", "Flairium Boots", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, ArmorItem.Type.BOOTS, null));
 
     public static final RegistryObject<Item> DES_INGOT = registerNormalItem("des_ingot", "Des Ingot");
     public static final RegistryObject<Item> DES_SHOVEL = registerToolItem("des_shovel", "Des Shovel", () -> new JShovelItem(JToolTiers.DES_SHOVEL));
@@ -326,10 +326,10 @@ public class JItems {
     public static final RegistryObject<Item> GORBITE_HOE = registerToolItem("gorbite_hoe", "Gorbite Hoe", () -> new JHoeItem(JToolTiers.GORBITE_HOE));
     public static final RegistryObject<Item> GORBITE_MULTITOOL = registerToolItem("gorbite_multitool", "Gorbite Multitool", () -> new MultitoolItem(JToolTiers.GORBITE_AXE));
     public static final RegistryObject<Item> GORBITE_SWORD = registerToolItem("gorbite_sword", "Gorbite Sword", () -> new JSwordItem(JToolTiers.GORBITE_SWORD, BASIC));
-    public static final RegistryObject<Item> GORBITE_HELMET = registerNormalItem("gorbite_helmet", "Gorbite Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, EquipmentSlot.HEAD, null));
-    public static final RegistryObject<Item> GORBITE_CHEST = registerNormalItem("gorbite_chestplate", "Gorbite Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, EquipmentSlot.CHEST, null));
-    public static final RegistryObject<Item> GORBITE_LEGS = registerNormalItem("gorbite_leggings", "Gorbite Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, EquipmentSlot.LEGS, null));
-    public static final RegistryObject<Item> GORBITE_BOOTS = registerNormalItem("gorbite_boots", "Gorbite Boots", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, EquipmentSlot.FEET, null));
+    public static final RegistryObject<Item> GORBITE_HELMET = registerNormalItem("gorbite_helmet", "Gorbite Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, ArmorItem.Type.HELMET, null));
+    public static final RegistryObject<Item> GORBITE_CHEST = registerNormalItem("gorbite_chestplate", "Gorbite Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, ArmorItem.Type.CHESTPLATE, null));
+    public static final RegistryObject<Item> GORBITE_LEGS = registerNormalItem("gorbite_leggings", "Gorbite Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, ArmorItem.Type.LEGGINGS, null));
+    public static final RegistryObject<Item> GORBITE_BOOTS = registerNormalItem("gorbite_boots", "Gorbite Boots", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, ArmorItem.Type.BOOTS, null));
 
     public static final RegistryObject<Item> RAW_ORBADITE = registerNormalItem("raw_orbadite", "Raw Orbadite");
     public static final RegistryObject<Item> ORBADITE_INGOT = registerNormalItem("orbadite_ingot", "Orbadite Ingot");
@@ -339,10 +339,10 @@ public class JItems {
     public static final RegistryObject<Item> ORBADITE_HOE = registerToolItem("orbadite_hoe", "Orbadite Hoe", () -> new JHoeItem(JToolTiers.ORBADITE_HOE));
     public static final RegistryObject<Item> ORBADITE_MULTITOOL = registerToolItem("orbadite_multitool", "Orbadite Multitool", () -> new MultitoolItem(JToolTiers.ORBADITE_AXE));
     public static final RegistryObject<Item> ORBADITE_SWORD = registerToolItem("orbadite_sword", "Orbadite Sword", () -> new JSwordItem(JToolTiers.ORBADITE_SWORD, BASIC));
-    public static final RegistryObject<Item> ORBADITE_HELMET = registerNormalItem("orbadite_helmet", "Orbadite Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, EquipmentSlot.HEAD, null));
-    public static final RegistryObject<Item> ORBADITE_CHEST = registerNormalItem("orbadite_chestplate", "Orbadite Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, EquipmentSlot.CHEST, null));
-    public static final RegistryObject<Item> ORBADITE_LEGS = registerNormalItem("orbadite_leggings", "Orbadite Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, EquipmentSlot.LEGS, null));
-    public static final RegistryObject<Item> ORBADITE_BOOTS = registerNormalItem("orbadite_boots", "Orbadite Boots", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, EquipmentSlot.FEET, null));
+    public static final RegistryObject<Item> ORBADITE_HELMET = registerNormalItem("orbadite_helmet", "Orbadite Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.HELMET, null));
+    public static final RegistryObject<Item> ORBADITE_CHEST = registerNormalItem("orbadite_chestplate", "Orbadite Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.CHESTPLATE, null));
+    public static final RegistryObject<Item> ORBADITE_LEGS = registerNormalItem("orbadite_leggings", "Orbadite Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.LEGGINGS, null));
+    public static final RegistryObject<Item> ORBADITE_BOOTS = registerNormalItem("orbadite_boots", "Orbadite Boots", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.BOOTS, null));
 
     public static final RegistryObject<Item> SOULSTONE = registerNormalItem("soulstone", "Soulstone");
     public static final RegistryObject<Item> SOULSTONE_SHOVEL = registerToolItem("soulstone_shovel", "Soulstone Shovel", () -> new JShovelItem(JToolTiers.SOULSTONE_SHOVEL));

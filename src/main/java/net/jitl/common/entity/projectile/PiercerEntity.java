@@ -161,7 +161,7 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
                     getStack().hurtAndBreak(1, player, (context) -> context.broadcastBreakEvent(player.getUsedItemHand()));
                 }
 
-                if(entity.hurt(DamageSource.thrown(this, this.getOwner()), (float) getBaseDamage())) {
+                if(entity.hurt(this.damageSources().thrown(this, this.getOwner()), (float) getBaseDamage())) {
                     if (getFlameAddend() > 0) {
                         entity.setSecondsOnFire(getFlameAddend() * 4);
                     }

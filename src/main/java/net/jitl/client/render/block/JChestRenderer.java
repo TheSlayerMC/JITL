@@ -25,6 +25,7 @@ import net.minecraft.client.renderer.blockentity.BrightnessCombiner;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -152,7 +153,7 @@ public class JChestRenderer<T extends BlockEntity & LidBlockEntity> implements B
         float scale = 1.0F;
         matrixStack.scale(scale, scale, scale + 0.15F);
         BakedModel model = renderer.getModel(stack, null, null, 0);
-        renderer.render(stack, ItemTransforms.TransformType.GROUND, true, matrixStack, buffer, lightLevel, combinedOverlay, model);
+        renderer.render(stack, ItemDisplayContext.GROUND, true, matrixStack, buffer, lightLevel, combinedOverlay, model);
         matrixStack.popPose();
     }
 

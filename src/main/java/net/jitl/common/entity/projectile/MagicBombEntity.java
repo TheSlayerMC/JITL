@@ -37,7 +37,7 @@ public class MagicBombEntity extends AbstractArrow implements ItemSupplier {
         Entity entity = entityRayTraceResult_.getEntity();
         if(entity instanceof LivingEntity && entity != this.getOwner()) {
             if(!level.isClientSide()) {
-                if(entity.hurt(DamageSource.thrown(this, this.getOwner()), (float) getBaseDamage())) {
+                if(entity.hurt(this.damageSources().thrown(this, this.getOwner()), (float) getBaseDamage())) {
                     level.explode(this, position().x, position().y, position().z, 2.0F, Level.ExplosionInteraction.BLOCK);
                     this.remove(RemovalReason.DISCARDED);
                 }

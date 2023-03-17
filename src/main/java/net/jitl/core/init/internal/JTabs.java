@@ -24,13 +24,13 @@ public class JTabs {
     }
 
     public static void registerTabs(CreativeModeTabEvent.Register event){
-        event.registerCreativeModeTab(BLOCKS, builder -> builder.title(Component.translatable("itemGroup.jitl.blocks")).icon(JTabs::makeBlockIcon).withSearchBar().displayItems((flags, output, isOp) -> {
+        event.registerCreativeModeTab(BLOCKS, builder -> builder.title(Component.translatable("itemGroup.jitl.blocks")).icon(JTabs::makeBlockIcon).withSearchBar().displayItems((flags, output) -> {
             for(RegistryObject<Block> item : JBlocks.BLOCKS.getEntries()){
                 output.accept(item.get());
             }
         }));
 
-        event.registerCreativeModeTab(ITEMS, builder -> builder.title(Component.translatable("itemGroup.jitl.items")).icon(JTabs::makeItemIcon).withSearchBar().displayItems((flags, output, isOp) -> {
+        event.registerCreativeModeTab(ITEMS, builder -> builder.title(Component.translatable("itemGroup.jitl.items")).icon(JTabs::makeItemIcon).withSearchBar().displayItems((flags, output) -> {
             for(RegistryObject<Item> item : JItems.ITEMS.getEntries()){
                 output.accept(item.get());
             }

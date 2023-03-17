@@ -77,7 +77,7 @@ public class RenderUtils {
         float f2 = (float) (colorIn & 255) / 255.0F;
         BufferBuilder bufferbuilder = Tesselator.getInstance().getBuilder();
         RenderSystem.enableBlend();
-        RenderSystem.disableTexture();
+        //RenderSystem.disableTexture();
         RenderSystem.defaultBlendFunc();
         bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
         bufferbuilder.vertex(matrix, (float) minX, (float) maxY, 0.0F).color(f, f1, f2, f3).endVertex();
@@ -85,12 +85,12 @@ public class RenderUtils {
         bufferbuilder.vertex(matrix, (float) maxX, (float) minY, 0.0F).color(f, f1, f2, f3).endVertex();
         bufferbuilder.vertex(matrix, (float) minX, (float) minY, 0.0F).color(f, f1, f2, f3).endVertex();
         BufferUploader.drawWithShader(bufferbuilder.end());
-        RenderSystem.enableTexture();
+        //RenderSystem.enableTexture();
         RenderSystem.disableBlend();
     }
 
     public void fillGradient(PoseStack matrixStack, int x1, int y1, int x2, int y2, int colorFrom, int colorTo, int blitOffset) {
-        RenderSystem.disableTexture();
+        //RenderSystem.disableTexture();
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
         RenderSystem.setShader(GameRenderer::getPositionColorShader);
@@ -100,7 +100,7 @@ public class RenderUtils {
         fillGradient(matrixStack.last().pose(), bufferbuilder, x1, y1, x2, y2, blitOffset, colorFrom, colorTo);
         tessellator.end();
         RenderSystem.disableBlend();
-        RenderSystem.enableTexture();
+        //RenderSystem.enableTexture();
     }
 
     public static void fillGradient(Matrix4f matrix, BufferBuilder builder, int x1, int y1, int x2, int y2, int z, int colorA, int colorB) {
@@ -284,8 +284,8 @@ public class RenderUtils {
             }
 
             poseStack_.pushPose();
-            float f = itemRenderer.blitOffset;
-            itemRenderer.blitOffset = 400.0F;
+            //float f = itemRenderer.blitOffset;
+            //itemRenderer.blitOffset = 400.0F;
             Tesselator tesselator = Tesselator.getInstance();
             BufferBuilder bufferbuilder = tesselator.getBuilder();
             RenderSystem.setShader(GameRenderer::getPositionColorShader);
@@ -302,12 +302,12 @@ public class RenderUtils {
             fillGradient(matrix4f, bufferbuilder, j2 - 3, k2 - 3, j2 + i + 3, k2 - 3 + 1, 400, colorEvent.getBorderStart(), colorEvent.getBorderStart());
             fillGradient(matrix4f, bufferbuilder, j2 - 3, k2 + j + 2, j2 + i + 3, k2 + j + 3, 400, colorEvent.getBorderEnd(), colorEvent.getBorderEnd());
             RenderSystem.enableDepthTest();
-            RenderSystem.disableTexture();
+            //RenderSystem.disableTexture();
             RenderSystem.enableBlend();
             RenderSystem.defaultBlendFunc();
             BufferUploader.drawWithShader(bufferbuilder.end());
             RenderSystem.disableBlend();
-            RenderSystem.enableTexture();
+            //RenderSystem.enableTexture();
             MultiBufferSource.BufferSource multibuffersource$buffersource = MultiBufferSource.immediate(Tesselator.getInstance().getBuilder());
             poseStack_.translate(0.0D, 0.0D, 400.0D);
             int l1 = k2;
@@ -324,11 +324,11 @@ public class RenderUtils {
 
             for (int l2 = 0; l2 < clientTooltipComponents_.size(); ++l2) {
                 ClientTooltipComponent clienttooltipcomponent2 = clientTooltipComponents_.get(l2);
-                clienttooltipcomponent2.renderImage(preEvent.getFont(), j2, l1, poseStack_, itemRenderer, 400);
+                clienttooltipcomponent2.renderImage(preEvent.getFont(), j2, l1, poseStack_, itemRenderer);
                 l1 += clienttooltipcomponent2.getHeight() + (l2 == 0 ? 2 : 0);
             }
 
-            itemRenderer.blitOffset = f;
+            //itemRenderer.blitOffset = f;
         }
     }
 

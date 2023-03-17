@@ -69,7 +69,7 @@ public class TowerGuardian extends JBossEntity {
         double particleWidth = 4;
         Vec3 vec3 = this.getDeltaMovement();
         float f1 = (int)damage > 0 ? damage / 2.0F + (float)this.random.nextInt((int)damage) : damage;
-        boolean hurt = entity.hurt(DamageSource.mobAttack(this), f1);
+        boolean hurt = entity.hurt(this.damageSources().mobAttack(this), f1);
         int x = Mth.floor(entity.getX());
         int y = Mth.floor(entity.getY() - (double)0.2F);
         int z = Mth.floor(entity.getZ());

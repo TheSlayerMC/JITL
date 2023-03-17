@@ -14,6 +14,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ItemSupplier;
+import net.minecraft.world.entity.projectile.Snowball;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -62,7 +63,7 @@ public class KnifeEntity extends AbstractKnifeEntity implements ItemSupplier {
         Entity entity = entityRayTraceResult_.getEntity();
         if(entity instanceof LivingEntity && entity != this.getOwner()) {
             if(!level.isClientSide()) {
-                if(entity.hurt(DamageSource.thrown(this, this.getOwner()), (float) getBaseDamage())) {
+                if(entity.hurt(this.damageSources().thrown(this, this.getOwner()), (float) getBaseDamage())) {
                     if(isFireKnife(getStack().getItem())) {
                         entity.setSecondsOnFire(10);
                     }

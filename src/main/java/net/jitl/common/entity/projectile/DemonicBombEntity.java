@@ -29,8 +29,9 @@ public class DemonicBombEntity extends DamagingProjectileEntity implements ItemS
 
     @Override
     protected void onEntityImpact(HitResult result, Entity target) {
-        if(target instanceof LivingEntity && target.hurt(DamageSource.thrown(this, this.getOwner()), getDamage())) {
-            target.hurt(JDamageSources.DEMONIC_BOMB, this.getDamage());
+        if(target instanceof LivingEntity && target.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage())) {
+            //target.hurt(JDamageSources.DEMONIC_BOMB, this.getDamage());//TODO
+            target.hurt(this.damageSources().cactus(), this.getDamage());
             if(!this.level.isClientSide) {
                 this.level.broadcastEntityEvent(this, (byte)1);
                 this.discard();

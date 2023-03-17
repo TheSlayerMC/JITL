@@ -132,7 +132,7 @@ public class RoyalKing extends PathfinderMob implements GeoEntity {
         int neededTables = 8;
 
         final Level world = this.level;
-        final BlockPos entityPos = new BlockPos(this.position());
+        final BlockPos entityPos = BlockPos.containing(this.position());
         for (int x = -check_radius; x <= check_radius; x++) {
             for (int z = -check_radius; z <= check_radius; z++) {
                 for (int y = -check_radius; y <= check_radius; y++) {

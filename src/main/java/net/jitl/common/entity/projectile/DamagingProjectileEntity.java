@@ -78,7 +78,7 @@ public class DamagingProjectileEntity extends ThrowableProjectile {
     }
 
     protected void onEntityImpact(HitResult result, Entity target) {
-        target.hurt(DamageSource.thrown(this, this.getOwner()), getDamage());
+        target.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage());
     }
 
     protected void onBlockImpact(BlockHitResult result) {

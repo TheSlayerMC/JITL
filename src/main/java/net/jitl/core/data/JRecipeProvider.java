@@ -26,7 +26,8 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
     public void buildRecipes(Consumer<FinishedRecipe> pWriter) { }
 
     protected void addSmithingRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike input, ItemLike modifier, Item result) {
-        UpgradeRecipeBuilder.smithing(Ingredient.of(input), Ingredient.of(modifier), RecipeCategory.MISC, result).unlocks("has_" + modifier.toString().toLowerCase(), has(modifier)).save(recipeConsumer, "jitl:" + result.getDescriptionId() + "_smithing");
+        //SmithingTransformRecipeBuilder.smithing(Ingredient.of(input), Ingredient.of(modifier), RecipeCategory.MISC, result).unlocks("has_" + modifier.toString().toLowerCase(), has(modifier)).save(recipeConsumer, "jitl:" + result.getDescriptionId() + "_smithing");
+        //FIX
     }
 
     protected void add3x3Recipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike input, ItemLike output) {

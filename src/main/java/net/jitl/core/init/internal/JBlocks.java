@@ -26,6 +26,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -782,7 +784,7 @@ public class JBlocks {
     public static RegistryObject<DoorBlock> registerDoor(String name, String translatedName, boolean wood, BlockBehaviour.Properties p) {
         doorBlockName.add(name);
         doorLangName.add(translatedName);
-        RegistryObject<DoorBlock> block1 = BLOCKS.register(name, () -> new DoorBlock(p, SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN));
+        RegistryObject<DoorBlock> block1 = BLOCKS.register(name, () -> new DoorBlock(p, BlockSetType.OAK));
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
@@ -795,7 +797,7 @@ public class JBlocks {
     public static RegistryObject<TrapDoorBlock> registerTrapDoor(String name, String translatedName, boolean wood, BlockBehaviour.Properties p) {
         trapDoorBlockName.add(name);
         trapDoorLangName.add(translatedName);
-        RegistryObject<TrapDoorBlock> block1 = BLOCKS.register(name, () -> new TrapDoorBlock(p, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN));
+        RegistryObject<TrapDoorBlock> block1 = BLOCKS.register(name, () -> new TrapDoorBlock(p, BlockSetType.OAK));
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
@@ -834,7 +836,7 @@ public class JBlocks {
     public static RegistryObject<ButtonBlock> registerButton(String name, String translatedName, boolean sensitive, boolean wood, BlockBehaviour.Properties p) {
         buttonBlockName.add(name);
         buttonLangName.add(translatedName);
-        RegistryObject<ButtonBlock> block1 = BLOCKS.register(name, () -> new ButtonBlock(p, sensitive ? 20 : 30, true, SoundEvents.STONE_BUTTON_CLICK_OFF, SoundEvents.STONE_BUTTON_CLICK_ON) {
+        RegistryObject<ButtonBlock> block1 = BLOCKS.register(name, () -> new ButtonBlock(p, BlockSetType.OAK, sensitive ? 20 : 30, true) {
             @Override
             protected @NotNull SoundEvent getSound(boolean pIsOn) {
                 return SoundEvents.WOODEN_BUTTON_CLICK_ON;
@@ -852,7 +854,7 @@ public class JBlocks {
     public static RegistryObject<PressurePlateBlock> registerPressurePlate(String name, String translatedName, PressurePlateBlock.Sensitivity s, boolean wood, BlockBehaviour.Properties p) {
         pressurePlateBlockName.add(name);
         pressurePlateLangName.add(translatedName);
-        RegistryObject<PressurePlateBlock> block1 = BLOCKS.register(name, () -> new PressurePlateBlock(s, p, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON));
+        RegistryObject<PressurePlateBlock> block1 = BLOCKS.register(name, () -> new PressurePlateBlock(s, p, BlockSetType.OAK));
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
@@ -865,7 +867,7 @@ public class JBlocks {
     public static RegistryObject<FenceGateBlock> registerFenceGate(String name, String translatedName, boolean wood, BlockBehaviour.Properties p) {
         gateBlockName.add(name);
         gateLangName.add(translatedName);
-        RegistryObject<FenceGateBlock> block1 = BLOCKS.register(name, () -> new FenceGateBlock(p, SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
+        RegistryObject<FenceGateBlock> block1 = BLOCKS.register(name, () -> new FenceGateBlock(p, WoodType.OAK));
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {

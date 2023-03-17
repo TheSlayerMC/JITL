@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
 public class PedestalRenderer implements BlockEntityRenderer<PedestalTile> {
@@ -34,7 +35,7 @@ public class PedestalRenderer implements BlockEntityRenderer<PedestalTile> {
         matrixStack.scale(scale, scale, scale);
         BakedModel model = renderEntity.getModel(stack, null, null, 0);
 
-        this.renderEntity.render(stack, ItemTransforms.TransformType.GROUND, true, matrixStack, buffer, lightLevel, combinedOverlay, model);
+        this.renderEntity.render(stack, ItemDisplayContext.GROUND, true, matrixStack, buffer, lightLevel, combinedOverlay, model);
         matrixStack.popPose();
     }
 }

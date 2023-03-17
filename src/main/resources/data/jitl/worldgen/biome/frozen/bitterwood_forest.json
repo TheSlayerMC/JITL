@@ -1,7 +1,7 @@
 {
   "temperature": -0.8,
   "downfall": 0.85,
-  "precipitation": "snow",
+  "has_precipitation": true,
   "category": "taiga",
   "effects": {
     "sky_color": 8297684,

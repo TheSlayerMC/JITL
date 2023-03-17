@@ -13,6 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.inventory.InventoryMenu;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
@@ -47,7 +48,7 @@ public class ThrownItemRenderer<T extends Entity & ItemSupplier> extends EntityR
          matrixStack.scale(this.scale, this.scale, this.scale);
          matrixStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
          matrixStack.mulPose(Axis.YP.rotationDegrees(180.0F));
-         this.itemRenderer.renderStatic(entity.getItem(), ItemTransforms.TransformType.GROUND, packedLight, OverlayTexture.NO_OVERLAY, matrixStack, buffer, entity.getId());
+         this.itemRenderer.renderStatic(entity.getItem(), ItemDisplayContext.GROUND, packedLight, OverlayTexture.NO_OVERLAY, matrixStack, buffer, entity.level, entity.getId());
          matrixStack.popPose();
          super.render(entity, entityYaw_, partialTicks, matrixStack, buffer, packedLight);
       }

@@ -58,7 +58,7 @@ public class JBlockCactus extends Block implements IPlantable {
 
     @Override
     public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entityIn) {
-        entityIn.hurt(DamageSource.CACTUS, 1.0F);
+        entityIn.hurt(worldIn.damageSources().cactus(), 1.0F);
     }
 
     @Override

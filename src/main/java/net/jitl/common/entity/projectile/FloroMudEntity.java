@@ -58,7 +58,7 @@ public class FloroMudEntity extends DamagingProjectileEntity implements ItemSupp
 
     @Override
     protected void onEntityImpact(HitResult result, Entity target) {
-        if(target instanceof LivingEntity && target.hurt(DamageSource.thrown(this, this.getOwner()), getDamage())) {
+        if(target instanceof LivingEntity && target.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage())) {
             MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20);
             ((LivingEntity) target).addEffect(effectInstance);
         }
@@ -69,7 +69,7 @@ public class FloroMudEntity extends DamagingProjectileEntity implements ItemSupp
         super.onHit(result);
         if (!level.isClientSide) {
             if(result.getType() != HitResult.Type.MISS) {
-                level.playSound(null, new BlockPos(result.getLocation()), JSounds.MUD_BLOCK_BREAK.get(), SoundSource.AMBIENT, 1.0F, 1.5F);
+                level.playSound(null, BlockPos.containing(result.getLocation()), JSounds.MUD_BLOCK_BREAK.get(), SoundSource.AMBIENT, 1.0F, 1.5F);
             }
         } else {
             remove(RemovalReason.DISCARDED);

@@ -217,7 +217,7 @@ public class JBoat extends Boat {
     }
 
     @Override
-    public void animateHurt() {
+    public void animateHurt(float f) {
         this.setHurtDir(-this.getHurtDir());
         this.setHurtTime(10);
         this.setDamage(this.getDamage() * 11.0F);
@@ -285,7 +285,6 @@ public class JBoat extends Boat {
                         double d0 = i == 1 ? -vec3.z : vec3.z;
                         double d1 = i == 1 ? vec3.x : -vec3.x;
                         this.level.playSound(null, this.getX() + d0, this.getY(), this.getZ() + d1, soundevent, this.getSoundSource(), 1.0F, 0.8F + 0.4F * this.random.nextFloat());
-                        this.level.gameEvent(this.getControllingPassenger(), GameEvent.SPLASH, new BlockPos(this.getX() + d0, this.getY(), this.getZ() + d1));
                     }
                 }
 
@@ -628,7 +627,7 @@ public class JBoat extends Boat {
         Vec3 vec3 = getCollisionHorizontalEscapeVector(this.getBbWidth() * Mth.SQRT_OF_TWO, livingEntity.getBbWidth(), livingEntity.getYRot());
         double d0 = this.getX() + vec3.x;
         double d1 = this.getZ() + vec3.z;
-        BlockPos blockpos = new BlockPos(d0, this.getBoundingBox().maxY, d1);
+        BlockPos blockpos = BlockPos.containing(d0, this.getBoundingBox().maxY, d1);
         BlockPos blockpos1 = blockpos.below();
         if(!this.level.isWaterAt(blockpos1)) {
             List<Vec3> list = Lists.newArrayList();
@@ -707,7 +706,7 @@ public class JBoat extends Boat {
                         this.resetFallDistance();
                         return;
                     }
-                    this.causeFallDamage(this.fallDistance, 1.0F, DamageSource.FALL);
+                    this.causeFallDamage(this.fallDistance, 1.0F, this.damageSources().fall());
                     if(!this.level.isClientSide && !this.isRemoved()) {
                         this.kill();
                         if(this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
@@ -783,9 +782,16 @@ public class JBoat extends Boat {
         return this.getPassengers().size() < this.getMaxPassengers() && !this.canBoatInFluid(this.getEyeInFluidType());
     }
 
-    @Override
-    public @Nullable Entity getControllingPassenger() {
-        return this.getFirstPassenger();
+    @Nullable
+    public LivingEntity getControllingPassenger() {
+        Entity entity = this.getFirstPassenger();
+        LivingEntity livingentity1;
+        if (entity instanceof LivingEntity livingentity) {
+            livingentity1 = livingentity;
+        } else {
+            livingentity1 = null;
+        }
+        return livingentity1;
     }
 
     public void setInput(boolean leftInputDown, boolean rightInputDown, boolean forwardInputDown, boolean backInputDown) {
