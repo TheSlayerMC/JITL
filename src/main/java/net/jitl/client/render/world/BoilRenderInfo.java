@@ -31,7 +31,7 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
     private static final ResourceLocation EUCA_MOON_LOCATION = JITL.rl("textures/environment/euca_moon.png");
 
     public BoilRenderInfo() {
-        super(200F, true, SkyType.NONE, false, false);
+        super(150F, true, SkyType.NONE, false, false);
     }
 
     @Override

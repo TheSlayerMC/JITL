@@ -135,6 +135,7 @@ public class BlockRenderTypes {
         translucent.add(JBlocks.LIGHT_BLUE_CLOUDIA_CLOUD.get());
         translucent.add(JBlocks.BLUE_CLOUDIA_CLOUD.get());
         translucent.add(JBlocks.PINK_CLOUDIA_CLOUD.get());
+        translucent.add(JBlocks.CLOUDIA_PORTAL.get());
 
         for(Block b : cutout) {
             ItemBlockRenderTypes.setRenderLayer(b, RenderType.cutout());

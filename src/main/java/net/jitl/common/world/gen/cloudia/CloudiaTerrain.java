@@ -6,13 +6,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.XoroshiroRandomSource;
-import net.minecraft.world.level.levelgen.feature.*;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.structure.templatesystem.*;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import org.jetbrains.annotations.NotNull;
 
 public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
@@ -43,7 +42,7 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
         bottom = new CloudiaPiece[] {
                 new CloudiaPiece(manager, "cloudia/bottom/tall_house1"),
                 new CloudiaPiece(manager, "cloudia/bottom/island_1"),
-
+                new CloudiaPiece(manager, "cloudia/bottom/tall_house3"),
         };
 
         return generate(level, random, pos);
