@@ -94,11 +94,13 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
                 RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
                 poseStack.pushPose();
 
+                this.renderSkyTexture(poseStack);
+
+                //START SUN
                 poseStack.mulPose(Axis.YP.rotationDegrees(-90.0F));
                 poseStack.mulPose(Axis.XP.rotationDegrees(level.getTimeOfDay(partialTick) * 360.0F));
                 Matrix4f matrix4f1 = poseStack.last().pose();
                 float f12 = 80F;
-                this.renderSkyTexture(poseStack);
                 RenderSystem.setShader(GameRenderer::getPositionTexShader);
                 RenderSystem.setShaderTexture(0, SUN_LOCATION);
                 bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
@@ -108,11 +110,11 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
                 bufferbuilder.vertex(matrix4f1, -f12, 100.0F, f12).uv(0.0F, 1.0F).endVertex();
                 BufferUploader.drawWithShader(bufferbuilder.end());
 
-                f12 = 2.0F;
+                //START MOON
                 poseStack.mulPose(Axis.YP.rotationDegrees(-45.0F));
                 poseStack.mulPose(Axis.XP.rotationDegrees(6600F));
                 matrix4f1 = poseStack.last().pose();
-
+                f12 = 2.0F;
                 RenderSystem.setShader(GameRenderer::getPositionTexShader);
                 RenderSystem.setShaderTexture(0, CORBA_MOON_LOCATION);
                 bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
@@ -126,8 +128,6 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
                 RenderSystem.disableBlend();
                 RenderSystem.defaultBlendFunc();
                 poseStack.popPose();
-                RenderSystem.setShaderColor(0.0F, 0.0F, 0.0F, 1.0F);
-
                 RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
                 RenderSystem.depthMask(true);
             }
