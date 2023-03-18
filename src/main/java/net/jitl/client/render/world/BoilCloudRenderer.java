@@ -65,11 +65,9 @@ public class BoilCloudRenderer {
                 }
 
                 this.cloudBuffer = new VertexBuffer();
-                BufferBuilder.RenderedBuffer bufferbuilder$renderedbuffer = this.buildClouds(bufferbuilder, d2, d3, d4, vector3d);
-
-                //this.buildClouds(bufferbuilder, d2, d3, d4, vector3d);
+                BufferBuilder.RenderedBuffer buffer = this.buildClouds(bufferbuilder, d2, d3, d4, vector3d);
                 this.cloudBuffer.bind();
-                this.cloudBuffer.upload(bufferbuilder$renderedbuffer);
+                this.cloudBuffer.upload(buffer);
             }
             RenderSystem.setShader(GameRenderer::getPositionTexColorNormalShader);
             RenderSystem.setShaderTexture(0, CLOUDS_LOCATION);
@@ -89,6 +87,7 @@ public class BoilCloudRenderer {
                     }
 
                     ShaderInstance shaderinstance = RenderSystem.getShader();
+                    assert shaderinstance != null;
                     this.cloudBuffer.drawWithShader(matrixStackIn.last().pose(), projectionMatrix, shaderinstance);
                 }
 
@@ -182,8 +181,8 @@ public class BoilCloudRenderer {
                 for (int i2 = -32; i2 < 32; i2 += 32) {
                     bufferIn.vertex((l1), f17, (i2 + 32)).uv((float) (l1) * 0.00390625F + f3, (float) (i2 + 32) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
                     bufferIn.vertex((l1 + 32), f17, (i2 + 32)).uv((float) (l1 + 32) * 0.00390625F + f3, (float) (i2 + 32) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
-                    bufferIn.vertex((l1 + 32), f17, (i2)).uv((float) (l1 + 32) * 0.00390625F + f3, (float) (i2 + 0) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
-                    bufferIn.vertex((l1), f17, (i2)).uv((float) (l1 + 0) * 0.00390625F + f3, (float) (i2 + 0) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
+                    bufferIn.vertex((l1 + 32), f17, (i2)).uv((float) (l1 + 32) * 0.00390625F + f3, (float) (i2) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
+                    bufferIn.vertex((l1), f17, (i2)).uv((float) (l1) * 0.00390625F + f3, (float) (i2) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
                 }
             }
         }
