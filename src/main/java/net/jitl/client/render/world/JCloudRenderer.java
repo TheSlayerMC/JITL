@@ -3,7 +3,6 @@ package net.jitl.client.render.world;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
-import net.jitl.core.init.JITL;
 import net.minecraft.client.CloudStatus;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -15,7 +14,8 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Matrix4f;
 
-public class EucaCloudsRenderer {
+public class JCloudRenderer {
+
     private CloudStatus prevCloudsType;
     private Vec3 prevCloudColor = Vec3.ZERO;
     private VertexBuffer cloudBuffer;
@@ -23,13 +23,13 @@ public class EucaCloudsRenderer {
     private int prevCloudY = Integer.MIN_VALUE;
     private int prevCloudZ = Integer.MIN_VALUE;
     private boolean generateClouds = true;
+    private final ResourceLocation CLOUDS_LOCATION;
 
-    private static final ResourceLocation CLOUDS_LOCATION = JITL.rl("textures/environment/euca_clouds.png");
+    public JCloudRenderer(ResourceLocation texture) {
+        this.CLOUDS_LOCATION = texture;
+    }
 
-    public void renderClouds(ClientLevel level, int ticks, PoseStack pPoseStack, Matrix4f pProjectionMatrix, float pPartialTick, double pCamX, double pCamY, double pCamZ) {
-        Minecraft minecraft = Minecraft.getInstance();
-        if (level.effects().renderClouds(level, ticks, pPartialTick, pPoseStack, pCamX, pCamY, pCamZ, pProjectionMatrix))
-            return;
+    public void render(ClientLevel level, int ticks, float partialTicks, PoseStack matrixStackIn, Minecraft minecraft, double viewEntityX, double viewEntityY, double viewEntityZ, Matrix4f projectionMatrix) {
         float f = level.effects().getCloudHeight();
         if (!Float.isNaN(f)) {
             RenderSystem.disableCull();
@@ -37,25 +37,25 @@ public class EucaCloudsRenderer {
             RenderSystem.enableDepthTest();
             RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
             RenderSystem.depthMask(true);
-            double d1 = (((float)ticks + pPartialTick) * 0.03F);
-            double d2 = (pCamX + d1) / 12.0D;
-            double d3 = (f - (float)pCamY + 0.33F);
-            double d4 = pCamZ / 12.0D + (double)0.33F;
-            d2 -= (Mth.floor(d2 / 2048.0D) * 2048);
-            d4 -= (Mth.floor(d4 / 2048.0D) * 2048);
-            float f3 = (float)(d2 - (double)Mth.floor(d2));
-            float f4 = (float)(d3 / 4.0D - (double)Mth.floor(d3 / 4.0D)) * 4.0F;
-            float f5 = (float)(d4 - (double)Mth.floor(d4));
-            Vec3 vec3 = level.getCloudColor(pPartialTick);
-            int i = (int)Math.floor(d2);
-            int j = (int)Math.floor(d3 / 4.0D);
-            int k = (int)Math.floor(d4);
-            if (i != this.prevCloudX || j != this.prevCloudY || k != this.prevCloudZ || minecraft.options.getCloudsType() != this.prevCloudsType || this.prevCloudColor.distanceToSqr(vec3) > 2.0E-4D) {
+            double d1 = ((float) ticks + partialTicks) * 0.3F;
+            double d2 = (viewEntityX + d1) / 12.0D;
+            double d3 = f - (float) viewEntityY + 0.33F;
+            double d4 = viewEntityZ / 12.0D + (double) 0.33F;
+            d2 = d2 - (double) (Mth.floor(d2 / 2048.0D) * 2048);
+            d4 = d4 - (double) (Mth.floor(d4 / 2048.0D) * 2048);
+            float f3 = (float) (d2 - (double) Mth.floor(d2));
+            float f4 = (float) (d3 / 4.0D - (double) Mth.floor(d3 / 4.0D)) * 4.0F;
+            float f5 = (float) (d4 - (double) Mth.floor(d4));
+            Vec3 vector3d = level.getCloudColor(partialTicks);
+            int i = (int) Math.floor(d2);
+            int j = (int) Math.floor(d3 / 4.0D);
+            int k = (int) Math.floor(d4);
+            if (i != this.prevCloudX || j != this.prevCloudY || k != this.prevCloudZ || minecraft.options.getCloudsType() != this.prevCloudsType || this.prevCloudColor.distanceToSqr(vector3d) > 2.0E-4D) {
                 this.prevCloudX = i;
                 this.prevCloudY = j;
                 this.prevCloudZ = k;
-                this.prevCloudColor = vec3;
-                this.prevCloudsType = minecraft.options.getCloudsType();
+                prevCloudColor = vector3d;
+                prevCloudsType = minecraft.options.getCloudsType();
                 this.generateClouds = true;
             }
 
@@ -67,37 +67,37 @@ public class EucaCloudsRenderer {
                 }
 
                 this.cloudBuffer = new VertexBuffer();
-                BufferBuilder.RenderedBuffer b = this.buildClouds(bufferbuilder, d2, d3, d4, vec3);
+                BufferBuilder.RenderedBuffer buffer = this.buildClouds(bufferbuilder, d2, d3, d4, vector3d);
                 this.cloudBuffer.bind();
-                this.cloudBuffer.upload(b);
-                VertexBuffer.unbind();
+                this.cloudBuffer.upload(buffer);
             }
-
             RenderSystem.setShader(GameRenderer::getPositionTexColorNormalShader);
             RenderSystem.setShaderTexture(0, CLOUDS_LOCATION);
             FogRenderer.levelFogColor();
-            pPoseStack.pushPose();
-            pPoseStack.scale(12.0F, 1.0F, 12.0F);
-            pPoseStack.translate((double)(-f3), (double)f4, (double)(-f5));
-            if (this.cloudBuffer != null) {
-                this.cloudBuffer.bind();
-                int l = this.prevCloudsType == CloudStatus.FANCY ? 0 : 1;
 
-                for(int i1 = l; i1 < 2; ++i1) {
-                    if (i1 == 0) {
+            matrixStackIn.pushPose();
+            matrixStackIn.scale(12.0F, 1.0F, 12.0F);
+            matrixStackIn.translate(-f3, f4, -f5);
+            if (this.cloudBuffer != null) {
+                int i1 = prevCloudsType == CloudStatus.FANCY ? 0 : 1;
+
+                for (int l = i1; l < 2; ++l) {
+                    if (l == 0) {
                         RenderSystem.colorMask(false, false, false, false);
                     } else {
                         RenderSystem.colorMask(true, true, true, true);
                     }
 
                     ShaderInstance shaderinstance = RenderSystem.getShader();
-                    this.cloudBuffer.drawWithShader(pPoseStack.last().pose(), pProjectionMatrix, shaderinstance);
+                    assert shaderinstance != null;
+                    this.cloudBuffer.drawWithShader(matrixStackIn.last().pose(), projectionMatrix, shaderinstance);
                 }
 
                 VertexBuffer.unbind();
+                DefaultVertexFormat.POSITION_TEX_COLOR_NORMAL.clearBufferState();
             }
 
-            pPoseStack.popPose();
+            matrixStackIn.popPose();
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
             RenderSystem.enableCull();
             RenderSystem.disableBlend();
@@ -183,8 +183,8 @@ public class EucaCloudsRenderer {
                 for (int i2 = -32; i2 < 32; i2 += 32) {
                     bufferIn.vertex((l1), f17, (i2 + 32)).uv((float) (l1) * 0.00390625F + f3, (float) (i2 + 32) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
                     bufferIn.vertex((l1 + 32), f17, (i2 + 32)).uv((float) (l1 + 32) * 0.00390625F + f3, (float) (i2 + 32) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
-                    bufferIn.vertex((l1 + 32), f17, (i2)).uv((float) (l1 + 32) * 0.00390625F + f3, (float) (i2 + 0) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
-                    bufferIn.vertex((l1), f17, (i2)).uv((float) (l1 + 0) * 0.00390625F + f3, (float) (i2 + 0) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
+                    bufferIn.vertex((l1 + 32), f17, (i2)).uv((float) (l1 + 32) * 0.00390625F + f3, (float) (i2) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
+                    bufferIn.vertex((l1), f17, (i2)).uv((float) (l1) * 0.00390625F + f3, (float) (i2) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
                 }
             }
         }

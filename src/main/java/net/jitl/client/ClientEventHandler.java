@@ -42,7 +42,7 @@ public class ClientEventHandler {
 
     @SubscribeEvent
     public static void registerDimensionSpecialEffects(RegisterDimensionSpecialEffectsEvent event) {
-        //event.register(Dimensions.EUCA_EFFECTS, new EucaRenderInfo()); //Crashes
+        event.register(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
         event.register(Dimensions.BOIL_EFFECTS, new BoilRenderInfo());
     }
 }

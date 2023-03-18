@@ -29,7 +29,7 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
     @Nullable private final VertexBuffer skyBuffer;
 
     public BoilRenderInfo() {
-        super(256F, true, SkyType.NORMAL, false, false);
+        super(200F, true, SkyType.NORMAL, false, false);
         RenderSystem.setShader(GameRenderer::getPositionShader);
         VertexBuffer.unbind();
         skyBuffer = new VertexBuffer();
@@ -39,7 +39,7 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
 
     @Override
     public boolean renderClouds(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f projectionMatrix) {
-        new BoilCloudRenderer().render(level, ticks, partialTick, poseStack, Minecraft.getInstance(), camX, camY, camZ, projectionMatrix);
+        new JCloudRenderer(JITL.rl("textures/environment/boil_clouds.png")).render(level, ticks, partialTick, poseStack, Minecraft.getInstance(), camX, camY, camZ, projectionMatrix);
         return true;
     }
 

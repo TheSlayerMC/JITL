@@ -1,6 +1,8 @@
 package net.jitl.client.render.world;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.jitl.core.init.JITL;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.world.phys.Vec3;
@@ -10,7 +12,7 @@ import org.joml.Matrix4f;
 public class EucaRenderInfo extends DimensionSpecialEffects {
 
     public EucaRenderInfo() {
-        super(160.0F, true, SkyType.NONE, false, false);
+        super(0F, true, SkyType.NONE, false, false);
     }
 
     @Override
@@ -21,7 +23,7 @@ public class EucaRenderInfo extends DimensionSpecialEffects {
 
     @Override
     public boolean renderClouds(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f projectionMatrix) {
-        //new EucaCloudsRenderer().renderClouds(level, ticks, poseStack, projectionMatrix, partialTick, camX, camY, camZ);
+        new JCloudRenderer(JITL.rl("textures/environment/euca_clouds.png")).render(level, ticks, partialTick, poseStack, Minecraft.getInstance(), camX, camY, camZ, projectionMatrix);
         return true;
     }
 
