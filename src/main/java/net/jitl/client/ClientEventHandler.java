@@ -3,6 +3,7 @@ package net.jitl.client;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.client.render.world.BoilRenderInfo;
 import net.jitl.client.render.world.EucaRenderInfo;
+import net.jitl.client.render.world.FrozenRenderInfo;
 import net.jitl.client.util.ClientGetter;
 import net.jitl.common.capability.stats.PlayerStatsProvider;
 import net.jitl.common.world.dimension.Dimensions;
@@ -44,5 +45,6 @@ public class ClientEventHandler {
     public static void registerDimensionSpecialEffects(RegisterDimensionSpecialEffectsEvent event) {
         event.register(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
         event.register(Dimensions.BOIL_EFFECTS, new BoilRenderInfo());
+        event.register(Dimensions.FROZEN_EFFECTS, new FrozenRenderInfo());
     }
 }

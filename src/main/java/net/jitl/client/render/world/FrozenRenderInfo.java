@@ -9,10 +9,10 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 
-public class EucaRenderInfo extends DimensionSpecialEffects {
+public class FrozenRenderInfo extends DimensionSpecialEffects {
 
-    public EucaRenderInfo() {
-        super(0F, true, SkyType.NONE, false, false);
+    public FrozenRenderInfo() {
+        super(150F, true, SkyType.NONE, false, false);
     }
 
     @Override
@@ -23,7 +23,7 @@ public class EucaRenderInfo extends DimensionSpecialEffects {
 
     @Override
     public boolean renderClouds(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f projectionMatrix) {
-        new JCloudRenderer(JITL.rl("textures/environment/euca_clouds.png")).render(level, ticks, partialTick, poseStack, Minecraft.getInstance(), camX, camY, camZ, projectionMatrix);
+        new JCloudRenderer(JITL.rl("textures/environment/frozen_clouds.png")).render(level, ticks, partialTick, poseStack, Minecraft.getInstance(), camX, camY, camZ, projectionMatrix);
         return true;
     }
 

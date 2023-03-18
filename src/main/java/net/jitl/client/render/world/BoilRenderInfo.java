@@ -25,6 +25,7 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
     private static final ResourceLocation SUN_LOCATION = JITL.rl("textures/environment/boil_sun.png");
     private static final ResourceLocation BOIL_SKY_LOCATION = JITL.rl("textures/environment/boil_sky.png");
     private static final ResourceLocation CORBA_MOON_LOCATION = JITL.rl("textures/environment/corba_moon.png");
+    private static final ResourceLocation EUCA_MOON_LOCATION = JITL.rl("textures/environment/euca_moon.png");
 
     @Nullable private final VertexBuffer skyBuffer;
 
@@ -116,13 +117,27 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
                 bufferbuilder.vertex(matrix4f1, -f12, 100.0F, f12).uv(0.0F, 1.0F).endVertex();
                 BufferUploader.drawWithShader(bufferbuilder.end());
 
-                //START MOON
+                //START CORBA MOON
                 poseStack.mulPose(Axis.YP.rotationDegrees(-45.0F));
                 poseStack.mulPose(Axis.XP.rotationDegrees(6600F));
                 matrix4f1 = poseStack.last().pose();
                 f12 = 2.0F;
                 RenderSystem.setShader(GameRenderer::getPositionTexShader);
                 RenderSystem.setShaderTexture(0, CORBA_MOON_LOCATION);
+                bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+                bufferbuilder.vertex(matrix4f1, -f12, 100.0F, -f12).uv(0.0F, 0.0F).endVertex();
+                bufferbuilder.vertex(matrix4f1, f12, 100.0F, -f12).uv(1.0F, 0.0F).endVertex();
+                bufferbuilder.vertex(matrix4f1, f12, 100.0F, f12).uv(1.0F, 1.0F).endVertex();
+                bufferbuilder.vertex(matrix4f1, -f12, 100.0F, f12).uv(0.0F, 1.0F).endVertex();
+                BufferUploader.drawWithShader(bufferbuilder.end());
+
+                //START EUCA MOON
+                poseStack.mulPose(Axis.YP.rotationDegrees(77.5F));
+                poseStack.mulPose(Axis.XP.rotationDegrees(level.getTimeOfDay(partialTick) * 360.0F + 2000));
+                matrix4f1 = poseStack.last().pose();
+                f12 = 4.0F;
+                RenderSystem.setShader(GameRenderer::getPositionTexShader);
+                RenderSystem.setShaderTexture(0, EUCA_MOON_LOCATION);
                 bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
                 bufferbuilder.vertex(matrix4f1, -f12, 100.0F, -f12).uv(0.0F, 0.0F).endVertex();
                 bufferbuilder.vertex(matrix4f1, f12, 100.0F, -f12).uv(1.0F, 0.0F).endVertex();
