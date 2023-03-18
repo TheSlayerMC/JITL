@@ -8,17 +8,18 @@ import net.jitl.core.init.JITL;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.DimensionSpecialEffects;
+import net.minecraft.client.renderer.FogRenderer;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.*;
+import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.material.FogType;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
-
-import javax.annotation.Nullable;
 
 public class BoilRenderInfo extends DimensionSpecialEffects {
 
@@ -27,15 +28,8 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
     private static final ResourceLocation CORBA_MOON_LOCATION = JITL.rl("textures/environment/corba_moon.png");
     private static final ResourceLocation EUCA_MOON_LOCATION = JITL.rl("textures/environment/euca_moon.png");
 
-    @Nullable private final VertexBuffer skyBuffer;
-
     public BoilRenderInfo() {
-        super(200F, true, SkyType.NORMAL, false, false);
-        RenderSystem.setShader(GameRenderer::getPositionShader);
-        VertexBuffer.unbind();
-        skyBuffer = new VertexBuffer();
-        skyBuffer.bind();
-        VertexBuffer.unbind();
+        super(200F, true, SkyType.NONE, false, false);
     }
 
     @Override
@@ -70,8 +64,6 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
                 BufferBuilder bufferbuilder = Tesselator.getInstance().getBuilder();
                 RenderSystem.depthMask(false);
                 RenderSystem.setShaderColor(f, f1, f2, 1.0F);
-                assert this.skyBuffer != null;
-                this.skyBuffer.bind();
                 VertexBuffer.unbind();
                 RenderSystem.enableBlend();
                 float[] afloat = level.effects().getSunriseColor(level.getTimeOfDay(partialTick), partialTick);
@@ -121,7 +113,7 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
                 poseStack.mulPose(Axis.YP.rotationDegrees(-45.0F));
                 poseStack.mulPose(Axis.XP.rotationDegrees(6600F));
                 matrix4f1 = poseStack.last().pose();
-                f12 = 2.0F;
+                f12 = 1.5F;
                 RenderSystem.setShader(GameRenderer::getPositionTexShader);
                 RenderSystem.setShaderTexture(0, CORBA_MOON_LOCATION);
                 bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
