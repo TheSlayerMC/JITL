@@ -206,6 +206,7 @@ public class JBlockProperties {
     public static BlockBehaviour.Properties LADDER = BlockBehaviour.Properties.of(Material.WOOD)
             .strength(1F)
             .noOcclusion()
+            .dynamicShape()
             .sound(SoundType.WOOD);
 
     public static BlockBehaviour.Properties CAMPFIRE = BlockBehaviour.Properties.of(Material.WOOD)

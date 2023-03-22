@@ -39,6 +39,12 @@ public class ClientEventHandler {
                 RenderSystem.setShaderFogEnd(density * farPlaneDistance);
             });
         }
+
+        if(ClientGetter.level().dimension() == Dimensions.CLOUDIA) {
+            float density = 0.35F;
+            RenderSystem.setShaderFogStart(density);
+            RenderSystem.setShaderFogEnd(density * farPlaneDistance);
+        }
     }
 
     @SubscribeEvent
