@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "jitl:block/cloudia_tile",
+    "side": "jitl:block/cloudia_tile",
+    "top": "jitl:block/cloudia_tile"
+  }
+}

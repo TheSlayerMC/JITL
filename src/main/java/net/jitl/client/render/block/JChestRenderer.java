@@ -18,7 +18,6 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.BrightnessCombiner;
@@ -182,6 +181,9 @@ public class JChestRenderer<T extends BlockEntity & LidBlockEntity> implements B
         }
         if(chest == JBlocks.TERRANIAN_CHEST.get()) {
             name = "terranian_chest";
+        }
+        if(chest == JBlocks.CLOUDIA_CHEST.get()) {
+            name = "cloudia_chest";
         }
         return name;
     }

@@ -36,21 +36,25 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
         };
 
         top = new CloudiaPiece[] {
-                new CloudiaPiece(manager, "cloudia/top/tall_house2")
+                new CloudiaPiece(manager, "cloudia/top/tall_house2"),
+                new CloudiaPiece(manager, "cloudia/top/tall_house4")
         };
 
         bottom = new CloudiaPiece[] {
                 new CloudiaPiece(manager, "cloudia/bottom/tall_house1"),
                 new CloudiaPiece(manager, "cloudia/bottom/island_1"),
                 new CloudiaPiece(manager, "cloudia/bottom/tall_house3"),
+                new CloudiaPiece(manager, "cloudia/bottom/melon_farm"),
         };
 
         return generate(level, random, pos);
     }
 
     public boolean generate(WorldGenLevel level, RandomSource random, BlockPos pos) {
-        int topLayer = 94;//sits 12 blocks taller (structures can then be 16x16x16 but top of the bottom structure is reserved for pathing)
+        boolean hasSpawned = false;
+
         int bottomLayer = 82;
+        int topLayer = bottomLayer + 12;//sits 12 blocks taller (structures can then be 16x16x16 but top of the bottom structure is reserved for pathing)
         int emptyRarity = 2;
 
         BlockPos topPos = new BlockPos(pos.getX(), topLayer, pos.getZ());
@@ -58,19 +62,21 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
 
         int hallwayRarity = emptyRarity * 2;
 
-        if(random.nextInt(hallwayRarity) == 0)
+        if (random.nextInt(hallwayRarity) == 0) {
             paths[random.nextInt(paths.length)].gen(level, random, bottomPos, Rotation.getRandom(random));
+        }
 
-        if(random.nextInt(hallwayRarity) == 0)
+        if (random.nextInt(hallwayRarity) == 0) {
             paths[random.nextInt(paths.length)].gen(level, random, topPos, Rotation.getRandom(random));
+        }
 
-        if(random.nextInt(emptyRarity) != 0)
+        if (random.nextInt(emptyRarity) != 0) {
             bottom[random.nextInt(bottom.length)].gen(level, random, bottomPos, Rotation.getRandom(random));
+        }
 
-        if(random.nextInt(emptyRarity) != 0)
+        if (random.nextInt(emptyRarity) != 0) {
             top[random.nextInt(top.length)].gen(level, random, topPos, Rotation.getRandom(random));
-
-
+        }
 
         return true;
     }

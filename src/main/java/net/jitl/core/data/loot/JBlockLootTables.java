@@ -439,6 +439,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.DEPTHS_CHEST);
         this.dropSelf(JBlocks.CORBA_CHEST);
         this.dropSelf(JBlocks.TERRANIAN_CHEST);
+        this.dropSelf(JBlocks.CLOUDIA_CHEST);
 
         this.add(JBlocks.ROCKITE_SPAWNER, noDrop());
         this.dropSelf(JBlocks.FROZEN_PEDESTAL);

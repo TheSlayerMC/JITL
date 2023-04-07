@@ -351,10 +351,10 @@ public class JBlockProperties {
         if(name.contains("cloudia_post")) {
             texName = "cloudia_post";
         }
-        if(name.contains("cloudia_tile_stairs")) {
+        if(name.contains("cloudia_tile")) {
             texName = "cloudia_tile";
         }
-        if(name.contains("cloudia_brick_stairs")) {
+        if(name.contains("cloudia_brick")) {
             texName = "cloudia_brick";
         }
         if(name.contains("cloudia_wall")) {
