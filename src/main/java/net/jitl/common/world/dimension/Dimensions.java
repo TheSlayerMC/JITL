@@ -37,9 +37,11 @@ public class Dimensions {
 
     public static final ResourceKey<Level> TERRANIA = ResourceKey.create(Registries.DIMENSION, JITL.rl("terrania"));
     public static final ResourceKey<DimensionType> TERRANIA_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, JITL.rl("terrania"));
+    public static final ResourceLocation TERRANIA_EFFECTS = JITL.rl("terrania");
 
     public static final ResourceKey<Level> CLOUDIA = ResourceKey.create(Registries.DIMENSION, JITL.rl("cloudia"));
     public static final ResourceKey<DimensionType> CLOUDIA_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, JITL.rl("cloudia"));
+    public static final ResourceLocation CLOUDIA_EFFECTS = JITL.rl("cloudia");
 
     public static final RegistryObject<PoiType> FROZEN_PORTAL = REGISTRY.register("frozen_portal",
             () -> new PoiType(ImmutableSet.copyOf(JBlocks.FROZEN_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));

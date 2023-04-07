@@ -12,6 +12,7 @@
   "fixed_time": 0,
   "logical_height": 256,
   "infiniburn": "#minecraft:infiniburn_overworld",
+  "effects": "jitl:cloudia",
   "min_y": -64,
   "height": 256,
   "monster_spawn_light_level": {
