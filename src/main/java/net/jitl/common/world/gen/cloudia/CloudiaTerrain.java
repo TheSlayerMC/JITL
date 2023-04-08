@@ -65,11 +65,7 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
         BlockPos topPos = new BlockPos(pos.getX(), topLayer, pos.getZ());
         BlockPos bottomPos = new BlockPos(pos.getX(), bottomLayer, pos.getZ());
 
-        int hallwayRarity = emptyRarity * 2;
-
-        if (random.nextInt(hallwayRarity) == 0) {
-            paths[random.nextInt(paths.length)].gen(level, random, bottomPos, Rotation.getRandom(random));
-        }
+        int hallwayRarity = 2;
 
         if (random.nextInt(hallwayRarity) == 0) {
             paths[random.nextInt(paths.length)].gen(level, random, topPos, Rotation.getRandom(random));
@@ -77,6 +73,10 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
 
         if (random.nextInt(emptyRarity) != 0) {
             top[random.nextInt(top.length)].gen(level, random, topPos, Rotation.getRandom(random));
+        }
+
+        if (random.nextInt(hallwayRarity) == 0) {
+            paths[random.nextInt(paths.length)].gen(level, random, bottomPos, Rotation.getRandom(random));
         }
 
         if (random.nextInt(emptyRarity) != 0) {
