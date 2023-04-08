@@ -47,12 +47,17 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
                 new CloudiaPiece(manager, "cloudia/bottom/melon_farm"),
         };
 
-        return generate(level, random, pos);
+        boolean hasSpawned = false;
+
+        if(!hasSpawned) {
+            generate(level, random, pos);
+            hasSpawned = true;
+        }
+
+        return hasSpawned;
     }
 
     public boolean generate(WorldGenLevel level, RandomSource random, BlockPos pos) {
-        boolean hasSpawned = false;
-
         int bottomLayer = 82;
         int topLayer = bottomLayer + 12;//sits 12 blocks taller (structures can then be 16x16x16 but top of the bottom structure is reserved for pathing)
         int emptyRarity = 2;
@@ -71,11 +76,11 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
         }
 
         if (random.nextInt(emptyRarity) != 0) {
-            bottom[random.nextInt(bottom.length)].gen(level, random, bottomPos, Rotation.getRandom(random));
+            top[random.nextInt(top.length)].gen(level, random, topPos, Rotation.getRandom(random));
         }
 
         if (random.nextInt(emptyRarity) != 0) {
-            top[random.nextInt(top.length)].gen(level, random, topPos, Rotation.getRandom(random));
+            bottom[random.nextInt(bottom.length)].gen(level, random, bottomPos, Rotation.getRandom(random));
         }
 
         return true;
