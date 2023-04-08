@@ -80,7 +80,7 @@ public class CloudiaRenderInfo extends DimensionSpecialEffects {
 
             this.renderSkyTexture(poseStack);
             Matrix4f matrix4f1 = poseStack.last().pose();
-            float f12 = 16.0F;
+            float f12 = 14.0F;
             poseStack.mulPose(Axis.YP.rotationDegrees(90F));
             poseStack.mulPose(Axis.XP.rotationDegrees(level.getTimeOfDay(partialTick) * 360.0F));
             RenderSystem.setShader(GameRenderer::getPositionTexShader);
