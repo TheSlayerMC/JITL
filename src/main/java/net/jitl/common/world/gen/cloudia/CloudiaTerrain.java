@@ -14,7 +14,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 
 public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
 
-    public static CloudiaPiece[] TOP, BOTTOM, PATHS, TOP_PATHS;
+    public static CloudiaPiece[] TOP, BIG_TOP, BOTTOM, PATHS, TOP_PATHS;
 
     public CloudiaTerrain() {
         super(NoneFeatureConfiguration.CODEC);
@@ -43,7 +43,11 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
 
         TOP = new CloudiaPiece[] {
                 new CloudiaPiece(manager, "cloudia/top/tall_house2"),
-                new CloudiaPiece(manager, "cloudia/top/tall_house4")
+                new CloudiaPiece(manager, "cloudia/top/tall_house4"),
+        };
+
+        BIG_TOP = new CloudiaPiece[] {
+                new CloudiaPiece(manager, "cloudia/top/big_base")
         };
 
         BOTTOM = new CloudiaPiece[] {
@@ -62,17 +66,21 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
         int bottomLayer = 100;
         int topLayer = bottomLayer + 12;//sits 12 blocks taller (structures can then be 16x16x16 but top of the bottom structure is reserved for pathing)
         int rarity = 2;
+        int big_rarity = 6;
 
         BlockPos topPos = new BlockPos(pos.getX(), topLayer, pos.getZ());
         BlockPos bottomPos = new BlockPos(pos.getX(), bottomLayer, pos.getZ());
 
         TOP_PATHS[random.nextInt(TOP_PATHS.length)].gen(level, random, topPos, Rotation.getRandom(random));
-        if(random.nextInt(rarity) != 0)
+        if(random.nextInt(rarity) == 0)
             TOP[random.nextInt(TOP.length)].gen(level, random, topPos, Rotation.getRandom(random));
 
         PATHS[random.nextInt(PATHS.length)].gen(level, random, bottomPos, Rotation.getRandom(random));
-        if(random.nextInt(rarity) != 0)
+        if(random.nextInt(rarity) == 0)
             BOTTOM[random.nextInt(BOTTOM.length)].gen(level, random, bottomPos, Rotation.getRandom(random));
+
+        //if(random.nextInt(big_rarity) == 0)
+            //BIG_TOP[random.nextInt(BIG_TOP.length)].gen(level, random, topPos, Rotation.getRandom(random));
     }
 
     public static void placePiece(StructureTemplate structure, WorldGenLevel level, RandomSource random, BlockPos pos, Rotation rotation) {
