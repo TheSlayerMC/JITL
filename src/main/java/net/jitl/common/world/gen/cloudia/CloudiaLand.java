@@ -70,7 +70,7 @@ public class CloudiaLand extends Feature<NoneFeatureConfiguration> {
                                         w.setBlock(new BlockPos(x, y - 3, z), this.stone, 2);
 
                                         if (r.nextInt(18) == 0) {
-                                            w.setBlock(blockpos1.below(3), JBlocks.LUNIUM_ORE.get().defaultBlockState(), 2);
+                                            w.setBlock(blockpos1.below(3), JBlocks.LUNITE_ORE.get().defaultBlockState(), 2);
                                         }
                                     }
                                 }

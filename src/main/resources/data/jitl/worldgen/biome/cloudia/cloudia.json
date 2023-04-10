@@ -16,6 +16,10 @@
   "carvers": {},
   "features": [
     [
+      "jitl:blue_cloudia_clouds",
+      "jitl:light_blue_cloudia_clouds",
+      "jitl:pink_cloudia_clouds",
+      "jitl:cloudia_island",
       "jitl:cloudia_terrain"
     ]
   ]

@@ -22,7 +22,7 @@
     "facing=east,half=top,shape=inner_left": {
         "model": "jitl:block/depths_stairs_inner",
          "uvlock": true,
-         "y": 180
+         "x": 180
       },
     "facing=east,half=top,shape=inner_right": {
         "model": "jitl:block/depths_stairs_inner",

@@ -182,6 +182,9 @@ public class JBlocks {
     public static final RegistryObject<Block> GORBITE_ORE = register("gorbite_ore", "Gorbite Ore", JBlockProperties.STONE);
     public static final RegistryObject<Block> GORBITE_BLOCK = register("gorbite_block", "Gorbite Block", JBlockProperties.STONE);
 
+    public static final RegistryObject<Block> LUNITE_ORE = register("lunite_ore", "Lunite Ore", JBlockProperties.STONE);
+    public static final RegistryObject<Block> LUNITE_BLOCK = register("lunite_block", "Lunite Block", JBlockProperties.STONE);
+
     public static final RegistryObject<Block> RARE_GEM_BLOCK = register("rare_gem_block", "Rare Gem Block", JBlockProperties.STONE);
     public static final RegistryObject<Block> COMMON_GEM_BLOCK = register("common_gem_block", "Common Gem Block", JBlockProperties.STONE);
     public static final RegistryObject<Block> YELLOW_GEM_BLOCK = register("yellow_gem_block", "Yellow Gem Block", JBlockProperties.STONE);
