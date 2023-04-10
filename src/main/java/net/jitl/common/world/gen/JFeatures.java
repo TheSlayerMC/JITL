@@ -4,6 +4,8 @@ import net.jitl.common.world.gen.boil.ScorchedStalagmiteFeature;
 import net.jitl.common.world.gen.boil.SulphurCrystalFeature;
 import net.jitl.common.world.gen.boil.SulphurDepositFeature;
 import net.jitl.common.world.gen.boil.VolcaniocRockFeature;
+import net.jitl.common.world.gen.cloudia.CloudFeature;
+import net.jitl.common.world.gen.cloudia.CloudiaLand;
 import net.jitl.common.world.gen.cloudia.CloudiaTerrain;
 import net.jitl.common.world.gen.corba.CorbaSwampTreeFeature;
 import net.jitl.common.world.gen.depths.DepthsCrystalFeature;
@@ -66,5 +68,8 @@ public class JFeatures {
 
     //CLOUDIA
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> CLOUDIA_TERRAIN = REGISTRY.register("cloudia_terrain", CloudiaTerrain::new);
+    public static final RegistryObject<Feature<OreConfiguration>> CLOUDIA_CLOUDS = REGISTRY.register("cloudia_clouds", () -> new CloudFeature(OreConfiguration.CODEC));
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> CLOUDIA_ISLAND = REGISTRY.register("cloudia_island", CloudiaLand::new);
+
 
 }

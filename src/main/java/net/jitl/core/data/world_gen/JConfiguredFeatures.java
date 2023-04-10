@@ -54,6 +54,7 @@ public class JConfiguredFeatures {
     public static final RuleTest CORBA_MUD = new TagMatchTest(JTags.CORBA_MUD);
     public static final RuleTest EUCA_GRASS = new TagMatchTest(JTags.EUCA_GRASS);
     public static final RuleTest DEPTHS_LAMP_REPLACEABLES = new TagMatchTest(JTags.DEPTHS_LAMP_REPLACEABLES);
+    public static final RuleTest CLOUDIA_CLOUD_REPLACEABLES = new TagMatchTest(JTags.CLOUDIA_CLOUD_REPLACEABLES);
     public static final RuleTest NETHER_ORE_REPLACEABLES = new TagMatchTest(JTags.NETHER_ORE_REPLACEABLES);
     public static final RuleTest OVERWORLD_REPLACEABLES = new TagMatchTest(JTags.OVERWORLD_ORE_REPLACEABLES);
     public static final RuleTest OVERWORLD_DEEPSLATE_REPLACEABLES = new TagMatchTest(JTags.DEEPSLATE_ORE_REPLACEABLES);
@@ -167,10 +168,14 @@ public class JConfiguredFeatures {
             HUGE_PINK_TERRASHROOM = registerKey("huge_pink_terrashroom"),
             HUGE_PURPLE_TERRASHROOM = registerKey("huge_purple_terrashroom"),
             MEGA_TERRANIAN_TREE = registerKey("mega_terranian_tree")
-            ;
+                    ;
 
     //CLOUDIA
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CLOUDIA_TERRAIN = registerKey("cloudia_terrain");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CLOUDIA_TERRAIN = registerKey("cloudia_terrain"),
+            CLOUDIA_CLOUD_BLUE = registerKey("blue_cloudia_clouds"),
+            CLOUDIA_CLOUD_LIGHT_BLUE = registerKey("light_blue_cloudia_clouds"),
+            CLOUDIA_CLOUD_PINK = registerKey("pink_cloudia_clouds"),
+            CLOUDIA_ISLAND = registerKey("cloudia_island");
 
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
@@ -278,6 +283,10 @@ public class JConfiguredFeatures {
 
         //CLOUDIA
         register(context, CLOUDIA_TERRAIN, JFeatures.CLOUDIA_TERRAIN.get(), new NoneFeatureConfiguration());
+        register(context, CLOUDIA_CLOUD_BLUE, JFeatures.CLOUDIA_CLOUDS.get(), new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(CLOUDIA_CLOUD_REPLACEABLES, JBlocks.BLUE_CLOUDIA_CLOUD.get().defaultBlockState()))).get(), 20));
+        register(context, CLOUDIA_CLOUD_LIGHT_BLUE, JFeatures.CLOUDIA_CLOUDS.get(), new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(CLOUDIA_CLOUD_REPLACEABLES, JBlocks.LIGHT_BLUE_CLOUDIA_CLOUD.get().defaultBlockState()))).get(), 20));
+        register(context, CLOUDIA_CLOUD_PINK, JFeatures.CLOUDIA_CLOUDS.get(), new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(CLOUDIA_CLOUD_REPLACEABLES, JBlocks.PINK_CLOUDIA_CLOUD.get().defaultBlockState()))).get(), 20));
+        register(context, CLOUDIA_ISLAND, JFeatures.CLOUDIA_ISLAND.get(), new NoneFeatureConfiguration());
 
     }
 

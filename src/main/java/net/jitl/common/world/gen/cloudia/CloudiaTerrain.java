@@ -58,7 +58,7 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
     }
 
     public boolean generate(WorldGenLevel level, RandomSource random, BlockPos pos) {
-        int bottomLayer = 82;
+        int bottomLayer = 100;
         int topLayer = bottomLayer + 12;//sits 12 blocks taller (structures can then be 16x16x16 but top of the bottom structure is reserved for pathing)
         int emptyRarity = 2;
 
