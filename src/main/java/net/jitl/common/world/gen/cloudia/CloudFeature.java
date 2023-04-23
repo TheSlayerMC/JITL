@@ -122,7 +122,7 @@ public class CloudFeature extends Feature<OreConfiguration> {
                                                         BlockPos pos = new BlockPos(i2, j2, k2);
                                                         if(pLevel.getBlockState(pos) == Blocks.AIR.defaultBlockState()) {
                                                             pLevel.setBlock(pos, oreconfiguration$targetblockstate.state, 2);
-                                                            System.out.println("GEN: " + pos);
+                                                            //System.out.println("GEN: " + pos);
                                                         }
                                                         i++;
                                                         break;
