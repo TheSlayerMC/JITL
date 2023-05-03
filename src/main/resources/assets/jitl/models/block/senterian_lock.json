@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "jitl:block/senterian_lock_front",
+    "side": "jitl:block/senterian_lock_side",
+    "top": "jitl:block/senterian_lock_top"
+  }
+}

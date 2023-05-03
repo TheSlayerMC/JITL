@@ -1,5 +1,8 @@
 package net.jitl.core.init.internal;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,6 +22,10 @@ public class JBlockProperties {
             .strength(1F)
             .sound(SoundType.GLASS)
             .noOcclusion()
+            .isViewBlocking(JBlockProperties::never)
+            .isSuffocating(JBlockProperties::never)
+            .isValidSpawn(JBlockProperties::never)
+            .isRedstoneConductor(JBlockProperties::never)
             .requiresCorrectToolForDrops();
 
     public static BlockBehaviour.Properties GLOW_LAMP = BlockBehaviour.Properties.of(Material.GLASS)
@@ -360,11 +367,24 @@ public class JBlockProperties {
         if(name.contains("cloudia_wall")) {
             texName = "cloudia_wall";
         }
-
+        if(name.contains("senterian_post")) {
+            texName = "senterian_post";
+        }
+        if(name.contains("senterian_brick")) {
+            texName = "senterian_bricks";
+        }
         return texName;
     }
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return (state) -> state.getValue(BlockStateProperties.LIT) ? lightValue : 0;
+    }
+
+    private static boolean never(BlockState s, BlockGetter g, BlockPos p) {
+        return false;
+    }
+
+    private static Boolean never(BlockState s, BlockGetter g, BlockPos p, EntityType<?> e) {
+        return false;
     }
 }

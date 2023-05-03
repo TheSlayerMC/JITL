@@ -24,7 +24,6 @@ import net.jitl.core.init.JITL;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
@@ -196,6 +195,7 @@ public class JItems {
     public static final RegistryObject<Item> BOIL_LOCK_KEY = registerNormalItem("boil_lock_key", "Boiling Lock Key");
     public static final RegistryObject<Item> DEPTHS_KEY = registerNormalItem("depths_lock_key", "Depths Lock Key");
     public static final RegistryObject<Item> DARK_KEY = registerNormalItem("dark_lock_key", "Darkly Lock Key");
+    public static final RegistryObject<Item> SENTRY_KEY = registerNormalItem("sentry_key", "Sentry Key");
 
     public static final RegistryObject<Item> PADLOCK = registerNormalItem("padlock", "Padlock", ChestInteractionItem::new);
     public static final RegistryObject<Item> CHEST_KEY = registerNormalItem("chest_key", "Master Chest Key", ChestInteractionItem::new);

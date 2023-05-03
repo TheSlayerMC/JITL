@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+        "model": "jitl:block/senterian_lock",
+         "y": 90
+     },
+    "facing=north": {
+        "model": "jitl:block/senterian_lock"
+     },
+    "facing=south": {
+        "model": "jitl:block/senterian_lock",
+         "y": 180
+     },
+    "facing=west": {
+        "model": "jitl:block/senterian_lock",
+         "y": 270
+     }
+  }
+}

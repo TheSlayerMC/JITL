@@ -30,7 +30,8 @@ public class LockBlock extends FaceableBlock {
         Random r = new Random();
         boolean canOpen = this == JBlocks.BOIL_LOCK.get() && heldItem.getItem() == JItems.BOIL_LOCK_KEY.get() ||
                 this == JBlocks.DARKLY_LOCK.get() && heldItem.getItem() == JItems.DARK_KEY.get() ||
-                this == JBlocks.DEPTHS_LOCK.get() && heldItem.getItem() == JItems.DEPTHS_KEY.get();
+                this == JBlocks.DEPTHS_LOCK.get() && heldItem.getItem() == JItems.DEPTHS_KEY.get() ||
+                this == JBlocks.SENTRY_LOCK.get() && heldItem.getItem() == JItems.SENTRY_KEY.get();
 
         if(heldItem != null && canOpen) {
             worldIn.playSound(player, pos, SoundEvents.IRON_DOOR_OPEN, SoundSource.BLOCKS, 1.0F, r.nextFloat());
