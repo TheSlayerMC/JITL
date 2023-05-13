@@ -1,0 +1,11 @@
+{
+  "type": "jitl:senterian",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "jitl:senterian_generation",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "jitl:senterian/senterian"
+    }
+  }
+}

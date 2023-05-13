@@ -43,6 +43,9 @@ public class Dimensions {
     public static final ResourceKey<DimensionType> CLOUDIA_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, JITL.rl("cloudia"));
     public static final ResourceLocation CLOUDIA_EFFECTS = JITL.rl("cloudia");
 
+    public static final ResourceKey<Level> SENTERIAN = ResourceKey.create(Registries.DIMENSION, JITL.rl("senterian"));
+    public static final ResourceKey<DimensionType> SENTERIAN_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, JITL.rl("senterian"));
+
     public static final RegistryObject<PoiType> FROZEN_PORTAL = REGISTRY.register("frozen_portal",
             () -> new PoiType(ImmutableSet.copyOf(JBlocks.FROZEN_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
 

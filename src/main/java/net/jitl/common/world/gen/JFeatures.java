@@ -18,6 +18,7 @@ import net.jitl.common.world.gen.nether.BleedstoneFeature;
 import net.jitl.common.world.gen.nether.SmithstoneFeature;
 import net.jitl.common.world.gen.ruins.RuinsFeature;
 import net.jitl.common.world.gen.ruins.RuinsFeatureConfig;
+import net.jitl.common.world.gen.senterian.SenterianTerrain;
 import net.jitl.common.world.gen.tree_grower.JourneyTree;
 import net.jitl.common.world.gen.tree_grower.TreeConfig;
 import net.jitl.core.init.JITL;
@@ -71,5 +72,7 @@ public class JFeatures {
     public static final RegistryObject<Feature<OreConfiguration>> CLOUDIA_CLOUDS = REGISTRY.register("cloudia_clouds", () -> new CloudFeature(OreConfiguration.CODEC));
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> CLOUDIA_ISLAND = REGISTRY.register("cloudia_island", CloudiaLand::new);
 
+    //SENTERIAN
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> SENTERIAN_TERRAIN = REGISTRY.register("senterian_terrain", SenterianTerrain::new);
 
 }

@@ -1,0 +1,22 @@
+{
+  "temperature": 0.8,
+  "downfall": 0,
+  "has_precipitation": false,
+  "effects": {
+    "sky_color": 61183,
+    "fog_color": 61183,
+    "water_color": 61183,
+    "water_fog_color": 61183,
+    "grass_color": 61183,
+    "foliage_color": 61183,
+    "grass_color_modifier": "none"
+  },
+  "spawners": {},
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [
+      "jitl:senterian_terrain"
+    ]
+  ]
+}

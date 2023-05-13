@@ -177,6 +177,8 @@ public class JConfiguredFeatures {
             CLOUDIA_CLOUD_PINK = registerKey("pink_cloudia_clouds"),
             CLOUDIA_ISLAND = registerKey("cloudia_island");
 
+    //SENTERIAN
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SENTERIAN_TERRAIN = registerKey("senterian_terrain");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         //OVERWORLD
@@ -287,6 +289,9 @@ public class JConfiguredFeatures {
         register(context, CLOUDIA_CLOUD_LIGHT_BLUE, JFeatures.CLOUDIA_CLOUDS.get(), new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(CLOUDIA_CLOUD_REPLACEABLES, JBlocks.LIGHT_BLUE_CLOUDIA_CLOUD.get().defaultBlockState()))).get(), 20));
         register(context, CLOUDIA_CLOUD_PINK, JFeatures.CLOUDIA_CLOUDS.get(), new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(CLOUDIA_CLOUD_REPLACEABLES, JBlocks.PINK_CLOUDIA_CLOUD.get().defaultBlockState()))).get(), 20));
         register(context, CLOUDIA_ISLAND, JFeatures.CLOUDIA_ISLAND.get(), new NoneFeatureConfiguration());
+
+        //SENTERIAN
+        register(context, SENTERIAN_TERRAIN, JFeatures.SENTERIAN_TERRAIN.get(), new NoneFeatureConfiguration());
 
     }
 

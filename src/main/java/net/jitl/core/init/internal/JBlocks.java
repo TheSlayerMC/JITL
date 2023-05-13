@@ -5,10 +5,7 @@ import net.jitl.common.block.base.*;
 import net.jitl.common.block.crop.*;
 import net.jitl.common.block.crop.bushs.BradberryBushBlock;
 import net.jitl.common.block.crop.bushs.RedcurrantBushBlock;
-import net.jitl.common.block.portal.CorbaPortalBlock;
-import net.jitl.common.block.portal.CorbaPortalFrameBlock;
-import net.jitl.common.block.portal.DepthsPortalBlock;
-import net.jitl.common.block.portal.DepthsPortalFrameBlock;
+import net.jitl.common.block.portal.*;
 import net.jitl.common.block.spawners.GoldBotSpawnerBlock;
 import net.jitl.common.block.spawners.MiniGhastSpawnerBlock;
 import net.jitl.common.world.dimension.Dimensions;
@@ -558,6 +555,8 @@ public class JBlocks {
     public static final RegistryObject<SlabBlock> CLOUDIA_TILE_SLAB = registerSlab("cloudia_tile_slab", "Cloudia Tile Slab", false, JBlockProperties.STONE);
     public static final RegistryObject<SlabBlock> CLOUDIA_BRICK_SLAB = registerSlab("cloudia_brick_slab", "Cloudia Brick Slab", false, JBlockProperties.STONE);
 
+    public static final RegistryObject<Block> SENTERIAN_PORTAL_FRAME = registerEndPortalFrameStyleBlock("senterian_portal_frame", "Sentarian Portal Frame", SenterianPortalFrameBlock::new);
+    public static final RegistryObject<Block> SENTERIAN_PORTAL = registerEndPortalStyleBlock("senterian_portal", "Sentarian Portal", SenterianPortalBlock::new);
     public static final RegistryObject<IronBarsBlock> SENTERIAN_BARS = registerPaneBlock("senterian_bars", "Sentarian Bars", JBlockProperties.STONE);
     public static final RegistryObject<Block> SENTERIAN_BRICKS = register("senterian_bricks", "Sentarian Bricks", JBlockProperties.STONE);
     public static final RegistryObject<StairBlock> SENTERIAN_BRICK_STAIRS = registerStairs("senterian_brick_stairs", "Sentarian Brick Stairs", SENTERIAN_BRICKS, false, JBlockProperties.STONE);
