@@ -202,7 +202,7 @@ public class Floro extends JMonsterEntity implements RangedAttackMob {
 
     @Override
     public void performRangedAttack(LivingEntity pTarget, float pVelocity) {
-        FloroMudEntity mud = new FloroMudEntity(this.level, this, 3.5F);
+        FloroMudEntity mud = new FloroMudEntity(this.level(), this, 3.5F);
         double d0 = pTarget.getEyeY() - (double)1.1F;
         double d1 = pTarget.getX() - this.getX();
         double d2 = d0 - mud.getY();
@@ -210,7 +210,7 @@ public class Floro extends JMonsterEntity implements RangedAttackMob {
         double d4 = Math.sqrt(d1 * d1 + d3 * d3) * (double)0.2F;
         mud.shoot(d1, d2 + d4, d3, 1.6F, 12.0F);
         this.playSound(SoundEvents.SNOW_GOLEM_SHOOT, 1.0F, 0.4F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
-        this.level.addFreshEntity(mud);
+        this.level().addFreshEntity(mud);
     }
 
     private class FloroRevealingGoal extends Goal {

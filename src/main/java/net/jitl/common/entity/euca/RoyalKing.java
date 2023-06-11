@@ -77,9 +77,9 @@ public class RoyalKing extends PathfinderMob implements GeoEntity {
     public void tick() {
         super.tick();
         if(isActivated()) {
-            if (!level.isClientSide) {
+            if (!level().isClientSide) {
                 if(hasCrown())
-                    this.level.addFreshEntity(new ItemEntity(level, this.position().x + 0.5F, this.position().y + 1.4F, this.position().z + 0.5F, new ItemStack(JItems.EUDOR_CROWN.get(), 1)));
+                    this.level().addFreshEntity(new ItemEntity(level(), this.position().x + 0.5F, this.position().y + 1.4F, this.position().z + 0.5F, new ItemStack(JItems.EUDOR_CROWN.get(), 1)));
                 setHasCrown(false);
             }
         }
@@ -131,7 +131,7 @@ public class RoyalKing extends PathfinderMob implements GeoEntity {
         int neededDisks = 6;
         int neededTables = 8;
 
-        final Level world = this.level;
+        final Level world = this.level();
         final BlockPos entityPos = BlockPos.containing(this.position());
         for (int x = -check_radius; x <= check_radius; x++) {
             for (int z = -check_radius; z <= check_radius; z++) {
@@ -163,11 +163,11 @@ public class RoyalKing extends PathfinderMob implements GeoEntity {
             this.playSound(JSounds.FROZEN_GUARDIAN_DEATH.get(), 1.5F, 1.0F);
             setActivated(true);
         }
-        if(!level.isClientSide) {
+        if(!level().isClientSide) {
             if(hasCrown())
                 playerEntity.sendSystemMessage(Component.translatable("I need " + neededDisks + " more Royal Disks and " + neededTables + " Euca Tablets"));
             if (!hasCrown()) {
-                playerEntity.sendSystemMessage(Component.translatable("Good Luck... Hero"));
+                playerEntity.sendSystemMessage(Component.translatable("jitl.king.hero"));
             }
         }
         return super.mobInteract(playerEntity, hand);

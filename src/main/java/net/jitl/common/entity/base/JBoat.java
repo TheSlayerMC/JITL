@@ -23,13 +23,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
@@ -155,7 +149,7 @@ public class JBoat extends Boat {
     public boolean hurt(@NotNull DamageSource source, float amount) {
         if(this.isInvulnerableTo(source)) {
             return false;
-        } else if(!this.level.isClientSide && !this.isRemoved()) {
+        } else if(!this.level().isClientSide && !this.isRemoved()) {
             this.setHurtDir(-this.getHurtDir());
             this.setHurtTime(10);
             this.setDamage(this.getDamage() + amount * 10.0F);
@@ -163,7 +157,7 @@ public class JBoat extends Boat {
             this.gameEvent(GameEvent.ENTITY_DAMAGE, source.getEntity());
             boolean flag = source.getEntity() instanceof Player && ((Player)source.getEntity()).getAbilities().instabuild;
             if(flag || this.getDamage() > 40.0F) {
-                if(!flag && this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
+                if(!flag && this.level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
                     this.spawnAtLocation(this.getDropItem());
                 }
                 this.discard();
@@ -176,7 +170,7 @@ public class JBoat extends Boat {
 
     @Override
     public void onAboveBubbleCol(boolean downwards) {
-        if(!this.level.isClientSide) {
+        if(!this.level().isClientSide) {
             this.isAboveBubbleColumn = true;
             this.bubbleColumnDirectionIsDown = downwards;
             if(this.getBubbleTime() == 0) {
@@ -184,9 +178,9 @@ public class JBoat extends Boat {
             }
         }
 
-        this.level.addParticle(ParticleTypes.SPLASH, this.getX() + (double)this.random.nextFloat(), this.getY() + 0.7D, this.getZ() + (double)this.random.nextFloat(), 0.0D, 0.0D, 0.0D);
+        this.level().addParticle(ParticleTypes.SPLASH, this.getX() + (double)this.random.nextFloat(), this.getY() + 0.7D, this.getZ() + (double)this.random.nextFloat(), 0.0D, 0.0D, 0.0D);
         if(this.random.nextInt(20) == 0) {
-            this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), this.getSwimSplashSound(), this.getSoundSource(), 1.0F, 0.8F + 0.4F * this.random.nextFloat(), false);
+            this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), this.getSwimSplashSound(), this.getSoundSource(), 1.0F, 0.8F + 0.4F * this.random.nextFloat(), false);
         }
 
         this.gameEvent(GameEvent.SPLASH, this.getControllingPassenger());
@@ -252,7 +246,7 @@ public class JBoat extends Boat {
          else 
             this.outOfControlTicks++;
         
-        if(!this.level.isClientSide && this.outOfControlTicks >= 60.0F) 
+        if(!this.level().isClientSide && this.outOfControlTicks >= 60.0F) 
             this.ejectPassengers();
 
         if(this.getHurtTime() > 0) 
@@ -267,9 +261,9 @@ public class JBoat extends Boat {
                 this.setPaddleState(false, false);
             }
             this.floatJBoat();
-            if(this.level.isClientSide) {
+            if(this.level().isClientSide) {
                 this.controlJBoat();
-                this.level.sendPacketToServer(new ServerboundPaddleBoatPacket(this.getPaddleState(0), this.getPaddleState(1)));
+                this.level().sendPacketToServer(new ServerboundPaddleBoatPacket(this.getPaddleState(0), this.getPaddleState(1)));
             }
             this.move(MoverType.SELF, this.getDeltaMovement());
         } else {
@@ -284,7 +278,7 @@ public class JBoat extends Boat {
                         Vec3 vec3 = this.getViewVector(1.0F);
                         double d0 = i == 1 ? -vec3.z : vec3.z;
                         double d1 = i == 1 ? vec3.x : -vec3.x;
-                        this.level.playSound(null, this.getX() + d0, this.getY(), this.getZ() + d1, soundevent, this.getSoundSource(), 1.0F, 0.8F + 0.4F * this.random.nextFloat());
+                        this.level().playSound(null, this.getX() + d0, this.getY(), this.getZ() + d1, soundevent, this.getSoundSource(), 1.0F, 0.8F + 0.4F * this.random.nextFloat());
                     }
                 }
 
@@ -295,9 +289,9 @@ public class JBoat extends Boat {
         }
 
         this.checkInsideBlocks();
-        List<Entity> list = this.level.getEntities(this, this.getBoundingBox().inflate(0.2F, -0.01F, 0.2F), EntitySelector.pushableBy(this));
+        List<Entity> list = this.level().getEntities(this, this.getBoundingBox().inflate(0.2F, -0.01F, 0.2F), EntitySelector.pushableBy(this));
         if(!list.isEmpty()) {
-            boolean flag = !this.level.isClientSide && !(this.getControllingPassenger() instanceof Player);
+            boolean flag = !this.level().isClientSide && !(this.getControllingPassenger() instanceof Player);
             for(Entity entity : list) {
                 if (!entity.hasPassenger(this)) {
                     if (flag && this.getPassengers().size() < 2 && !entity.isPassenger() && entity.getBbWidth() < this.getBbWidth() && entity instanceof LivingEntity && !(entity instanceof WaterAnimal) && !(entity instanceof Player)) {
@@ -312,7 +306,7 @@ public class JBoat extends Boat {
     }
 
     private void tickBubbleColumn() {
-        if(this.level.isClientSide) {
+        if(this.level().isClientSide) {
             int i = this.getBubbleTime();
             if(i > 0) {
                 this.bubbleMultiplier += 0.05F;
@@ -321,7 +315,7 @@ public class JBoat extends Boat {
             }
             this.bubbleMultiplier = Mth.clamp(this.bubbleMultiplier, 0.0F, 1.0F);
             this.bubbleAngleO = this.bubbleAngle;
-            this.bubbleAngle = 10.0F * (float)Math.sin(0.5F * (float)this.level.getGameTime()) * this.bubbleMultiplier;
+            this.bubbleAngle = 10.0F * (float)Math.sin(0.5F * (float)this.level().getGameTime()) * this.bubbleMultiplier;
         } else {
             if(!this.isAboveBubbleColumn) {
                 this.setBubbleTime(0);
@@ -419,9 +413,9 @@ public class JBoat extends Boat {
             for(int l1 = i; l1 < j; ++l1) {
                 for(int i2 = i1; i2 < j1; ++i2) {
                     pos.set(l1, k1, i2);
-                    FluidState fluidstate = this.level.getFluidState(pos);
+                    FluidState fluidstate = this.level().getFluidState(pos);
                     if(fluidstate.is(FluidTags.WATER)) {
-                        f = Math.max(f, fluidstate.getHeight(this.level, pos));
+                        f = Math.max(f, fluidstate.getHeight(this.level(), pos));
                     }
 
                     if(f >= 1.0F) {
@@ -460,9 +454,9 @@ public class JBoat extends Boat {
                     for(int k2 = k; k2 < l; ++k2) {
                         if(j2 <= 0 || k2 != k && k2 != l - 1) {
                             pos.set(l1, k2, i2);
-                            BlockState blockstate = this.level.getBlockState(pos);
-                            if(!(blockstate.getBlock() instanceof WaterlilyBlock) && Shapes.joinIsNotEmpty(blockstate.getCollisionShape(this.level, pos).move(l1, k2, i2), voxelshape, BooleanOp.AND)) {
-                                f += blockstate.getFriction(this.level, pos, this);
+                            BlockState blockstate = this.level().getBlockState(pos);
+                            if(!(blockstate.getBlock() instanceof WaterlilyBlock) && Shapes.joinIsNotEmpty(blockstate.getCollisionShape(this.level(), pos).move(l1, k2, i2), voxelshape, BooleanOp.AND)) {
+                                f += blockstate.getFriction(this.level(), pos, this);
                                 ++k1;
                             }
                         }
@@ -489,9 +483,9 @@ public class JBoat extends Boat {
             for(int l1 = k; l1 < l; ++l1) {
                 for(int i2 = i1; i2 < j1; ++i2) {
                     pos.set(k1, l1, i2);
-                    FluidState fluidstate = this.level.getFluidState(pos);
+                    FluidState fluidstate = this.level().getFluidState(pos);
                     if(fluidstate.is(FluidTags.WATER)) {
-                        float f = (float)l1 + fluidstate.getHeight(this.level, pos);
+                        float f = (float)l1 + fluidstate.getHeight(this.level(), pos);
                         this.waterLevel = Math.max(f, this.waterLevel);
                         flag |= aabb.minY < (double)f;
                     }
@@ -519,8 +513,8 @@ public class JBoat extends Boat {
             for(int l1 = k; l1 < l; ++l1) {
                 for(int i2 = i1; i2 < j1; ++i2) {
                     pos.set(k1, l1, i2);
-                    FluidState fluidstate = this.level.getFluidState(pos);
-                    if(fluidstate.is(FluidTags.WATER) && d0 < (double)((float)pos.getY() + fluidstate.getHeight(this.level, pos))) {
+                    FluidState fluidstate = this.level().getFluidState(pos);
+                    if(fluidstate.is(FluidTags.WATER) && d0 < (double)((float)pos.getY() + fluidstate.getHeight(this.level(), pos))) {
                         if(!fluidstate.isSource()) {
                             return JBoat.Status.UNDER_FLOWING_WATER;
                         }
@@ -593,7 +587,7 @@ public class JBoat extends Boat {
     }
 
     @Override
-    public void positionRider(@NotNull Entity passenger) {
+    public void positionRider(@NotNull Entity passenger, MoveFunction move) {
         if(this.hasPassenger(passenger)) {
             float f = 0.0F;
             float f1 = (float)((this.isRemoved() ? (double)0.01F : this.getPassengersRidingOffset()) + passenger.getMyRidingOffset());
@@ -629,21 +623,21 @@ public class JBoat extends Boat {
         double d1 = this.getZ() + vec3.z;
         BlockPos blockpos = BlockPos.containing(d0, this.getBoundingBox().maxY, d1);
         BlockPos blockpos1 = blockpos.below();
-        if(!this.level.isWaterAt(blockpos1)) {
+        if(!this.level().isWaterAt(blockpos1)) {
             List<Vec3> list = Lists.newArrayList();
-            double d2 = this.level.getBlockFloorHeight(blockpos);
+            double d2 = this.level().getBlockFloorHeight(blockpos);
             if(DismountHelper.isBlockFloorValid(d2)) {
                 list.add(new Vec3(d0, (double)blockpos.getY() + d2, d1));
             }
 
-            double d3 = this.level.getBlockFloorHeight(blockpos1);
+            double d3 = this.level().getBlockFloorHeight(blockpos1);
             if(DismountHelper.isBlockFloorValid(d3)) {
                 list.add(new Vec3(d0, (double)blockpos1.getY() + d3, d1));
             }
 
             for(Pose pose : livingEntity.getDismountPoses()) {
                 for(Vec3 vec31 : list) {
-                    if(DismountHelper.canDismountTo(this.level, vec31, livingEntity, pose)) {
+                    if(DismountHelper.canDismountTo(this.level(), vec31, livingEntity, pose)) {
                         livingEntity.setPose(pose);
                         return vec31;
                     }
@@ -686,7 +680,7 @@ public class JBoat extends Boat {
         if(player.isSecondaryUseActive()) {
             return InteractionResult.PASS;
         } else if(this.outOfControlTicks < 60.0F) {
-            if(!this.level.isClientSide) {
+            if(!this.level().isClientSide) {
                 return player.startRiding(this) ? InteractionResult.CONSUME : InteractionResult.PASS;
             } else {
                 return InteractionResult.SUCCESS;
@@ -707,9 +701,9 @@ public class JBoat extends Boat {
                         return;
                     }
                     this.causeFallDamage(this.fallDistance, 1.0F, this.damageSources().fall());
-                    if(!this.level.isClientSide && !this.isRemoved()) {
+                    if(!this.level().isClientSide && !this.isRemoved()) {
                         this.kill();
-                        if(this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
+                        if(this.level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
                             for(int i = 0; i < 3; ++i) {
                                 this.spawnAtLocation(this.getJBoatType().getPlanks());
                             }
@@ -722,7 +716,7 @@ public class JBoat extends Boat {
                 }
 
                 this.resetFallDistance();
-            } else if(!this.level.getFluidState(this.blockPosition().below()).is(FluidTags.WATER) && y < 0.0D) {
+            } else if(!this.level().getFluidState(this.blockPosition().below()).is(FluidTags.WATER) && y < 0.0D) {
                 this.fallDistance = (float)((double)this.fallDistance - y);
             }
 

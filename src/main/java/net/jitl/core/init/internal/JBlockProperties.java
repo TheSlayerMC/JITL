@@ -7,18 +7,18 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 
 import java.util.function.ToIntFunction;
 
 public class JBlockProperties {
 
-    public static BlockBehaviour.Properties STONE = BlockBehaviour.Properties.of(Material.STONE)
+    public static BlockBehaviour.Properties STONE = BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
             .strength(1.5F)
             .sound(SoundType.STONE)
             .requiresCorrectToolForDrops();
 
-    public static BlockBehaviour.Properties GLASS = BlockBehaviour.Properties.of(Material.GLASS)
+    public static BlockBehaviour.Properties GLASS = BlockBehaviour.Properties.of()
             .strength(1F)
             .sound(SoundType.GLASS)
             .noOcclusion()
@@ -28,160 +28,162 @@ public class JBlockProperties {
             .isRedstoneConductor(JBlockProperties::never)
             .requiresCorrectToolForDrops();
 
-    public static BlockBehaviour.Properties GLOW_LAMP = BlockBehaviour.Properties.of(Material.GLASS)
+    public static BlockBehaviour.Properties GLOW_LAMP = BlockBehaviour.Properties.of()
             .strength(1.0F)
             .sound(SoundType.GLASS)
             .lightLevel((level) -> 15)
             .requiresCorrectToolForDrops();
 
-    public static BlockBehaviour.Properties MUSHROOM_BLOCK = BlockBehaviour.Properties.of(Material.PLANT)
+    public static BlockBehaviour.Properties MUSHROOM_BLOCK = BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_BROWN)
             .strength(0.5F)
             .sound(SoundType.WOOD)
             .requiresCorrectToolForDrops();
 
-    public static BlockBehaviour.Properties SPAWNER = BlockBehaviour.Properties.of(Material.STONE)
+    public static BlockBehaviour.Properties SPAWNER = BlockBehaviour.Properties.of()
             .strength(1.5F)
+            .mapColor(MapColor.COLOR_BLACK)
             .noOcclusion()
             .sound(SoundType.STONE);
 
-    public static final BlockBehaviour.Properties LUNIUM_ORE_PROPS = BlockBehaviour.Properties.of(Material.STONE)
+    public static final BlockBehaviour.Properties LUNIUM_ORE_PROPS = BlockBehaviour.Properties.of()
             .sound(JSoundTypes.LUNIUM_ORE)
             .requiresCorrectToolForDrops()
             .strength(3.0F, 3.0F);
 
-    public static BlockBehaviour.Properties FIRE_STONE = BlockBehaviour.Properties.of(Material.STONE)
+    public static BlockBehaviour.Properties FIRE_STONE = BlockBehaviour.Properties.of()
             .strength(1.5F)
             .sound(SoundType.STONE)
             .requiresCorrectToolForDrops();
 
-    public static BlockBehaviour.Properties GRINDSTONE = BlockBehaviour.Properties.of(Material.STONE)
+    public static BlockBehaviour.Properties GRINDSTONE = BlockBehaviour.Properties.of()
             .strength(1.5F)
             .sound(SoundType.STONE)
             .noOcclusion();
 
-    public static BlockBehaviour.Properties ROCKITE_SPAWNER = BlockBehaviour.Properties.of(Material.STONE)
+    public static BlockBehaviour.Properties ROCKITE_SPAWNER = BlockBehaviour.Properties.of()
             .strength(1.5F)
             .sound(SoundType.STONE)
             .noOcclusion();
 
-    public static BlockBehaviour.Properties CHEST = BlockBehaviour.Properties.of(Material.STONE)
+    public static BlockBehaviour.Properties CHEST = BlockBehaviour.Properties.of()
             .strength(1.5F)
             .sound(SoundType.STONE)
             .noOcclusion();
 
-    public static BlockBehaviour.Properties DUNGEON_BLOCK = BlockBehaviour.Properties.of(Material.STONE)
+    public static BlockBehaviour.Properties DUNGEON_BLOCK = BlockBehaviour.Properties.of()
             .strength(-1F, 3600000.0F)
             .sound(SoundType.STONE);
 
-    public static BlockBehaviour.Properties DUNGEON_LAMP = BlockBehaviour.Properties.of(Material.STONE)
+    public static BlockBehaviour.Properties DUNGEON_LAMP = BlockBehaviour.Properties.of()
             .strength(-1F, 3600000.0F)
             .lightLevel((level) -> 7)
             .sound(SoundType.STONE);
 
-    public static BlockBehaviour.Properties BREAKABLE_DUNGEON_LAMP = BlockBehaviour.Properties.of(Material.STONE)
+    public static BlockBehaviour.Properties BREAKABLE_DUNGEON_LAMP = BlockBehaviour.Properties.of()
             .strength(1.5F)
             .lightLevel((level) -> 7)
             .sound(SoundType.STONE);
 
-    public static BlockBehaviour.Properties DIRT = BlockBehaviour.Properties.of(Material.DIRT)
+    public static BlockBehaviour.Properties DIRT = BlockBehaviour.Properties.of()
             .strength(1F)
             .sound(SoundType.GRAVEL);
 
-    public static BlockBehaviour.Properties FARMLAND = BlockBehaviour.Properties.of(Material.DIRT)
+    public static BlockBehaviour.Properties FARMLAND = BlockBehaviour.Properties.of()
             .randomTicks()
             .strength(0.6F)
             .sound(SoundType.GRAVEL)
             .isViewBlocking((state, getter, pos) -> true)
             .isSuffocating((state, getter, pos) -> true);
 
-    public static final BlockBehaviour.Properties PATH = BlockBehaviour.Properties.of(Material.DIRT)
+    public static final BlockBehaviour.Properties PATH = BlockBehaviour.Properties.of()
             .strength(0.65F)
             .sound(SoundType.GRASS)
             .isViewBlocking((state, getter, pos) -> true)
             .isSuffocating((state, getter, pos) -> true);
 
-    public static BlockBehaviour.Properties FIRE_DIRT = BlockBehaviour.Properties.of(Material.DIRT)
+    public static BlockBehaviour.Properties FIRE_DIRT = BlockBehaviour.Properties.of()
             .strength(1F)
             .sound(SoundType.GRAVEL);
 
-    public static BlockBehaviour.Properties SAND = BlockBehaviour.Properties.of(Material.SAND)
+    public static BlockBehaviour.Properties SAND = BlockBehaviour.Properties.of()
             .strength(1F)
             .sound(SoundType.SAND);
 
-    public static BlockBehaviour.Properties FIRE_SAND = BlockBehaviour.Properties.of(Material.SAND)
+    public static BlockBehaviour.Properties FIRE_SAND = BlockBehaviour.Properties.of()
             .strength(1F)
             .sound(SoundType.SAND);
 
-    public static BlockBehaviour.Properties CACTUS = BlockBehaviour.Properties.of(Material.CACTUS)
+    public static BlockBehaviour.Properties CACTUS = BlockBehaviour.Properties.of()
             .strength(1F)
             .sound(SoundType.WOOL);
 
-    public static BlockBehaviour.Properties LEAVES = BlockBehaviour.Properties.of(Material.LEAVES)
+    public static BlockBehaviour.Properties LEAVES = BlockBehaviour.Properties.of()
             .strength(0.5F)
             .sound(SoundType.GRASS)
             .noOcclusion()
             .requiresCorrectToolForDrops();
 
-    public static BlockBehaviour.Properties CLOUD = BlockBehaviour.Properties.of(Material.WOOL)
+    public static BlockBehaviour.Properties CLOUD = BlockBehaviour.Properties.of()
             .strength(0.5F)
             .sound(SoundType.WOOL)
             .noOcclusion()
             .requiresCorrectToolForDrops();
 
-    public static BlockBehaviour.Properties CROP = BlockBehaviour.Properties.of(Material.PLANT)
+    public static BlockBehaviour.Properties CROP = BlockBehaviour.Properties.of()
             .sound(SoundType.CROP)
             .instabreak()
             .noCollission()
             .noOcclusion()
             .randomTicks();
 
-    public static BlockBehaviour.Properties GROWING_BUSH = BlockBehaviour.Properties.of(Material.PLANT)
+    public static BlockBehaviour.Properties GROWING_BUSH = BlockBehaviour.Properties.of()
             .sound(SoundType.SWEET_BERRY_BUSH)
             .instabreak()
             .noCollission()
             .noOcclusion()
             .randomTicks();
 
-    public static BlockBehaviour.Properties LUMINESCENT_LEAVES = BlockBehaviour.Properties.of(Material.LEAVES)
+    public static BlockBehaviour.Properties LUMINESCENT_LEAVES = BlockBehaviour.Properties.of()
             .strength(0.5F)
             .sound(SoundType.GRASS)
             .noOcclusion()
             .lightLevel((state) -> 4)
             .requiresCorrectToolForDrops();
 
-    public static BlockBehaviour.Properties ICE = BlockBehaviour.Properties.of(Material.ICE)
+    public static BlockBehaviour.Properties ICE = BlockBehaviour.Properties.of()
             .strength(0.5F)
             .sound(SoundType.GLASS)
             .noOcclusion()
             .requiresCorrectToolForDrops();
 
-    public static BlockBehaviour.Properties REPLACABLE_PLANT = BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT)
+    public static BlockBehaviour.Properties REPLACABLE_PLANT = BlockBehaviour.Properties.of()
             .instabreak()
             .sound(SoundType.GRASS)
             .noCollission()
             .noOcclusion()
             .offsetType(BlockBehaviour.OffsetType.XZ);
 
-    public static BlockBehaviour.Properties PLANT = BlockBehaviour.Properties.of(Material.PLANT)
+    public static BlockBehaviour.Properties PLANT = BlockBehaviour.Properties.of()
             .instabreak()
             .sound(SoundType.GRASS)
             .noCollission()
             .noOcclusion()
             .offsetType(BlockBehaviour.OffsetType.XZ);
 
-    public static BlockBehaviour.Properties LILY_PLANT = BlockBehaviour.Properties.of(Material.PLANT)
+    public static BlockBehaviour.Properties LILY_PLANT = BlockBehaviour.Properties.of()
             .instabreak()
             .sound(SoundType.GRASS)
             .noOcclusion();
 
-    public static BlockBehaviour.Properties FLOWER = BlockBehaviour.Properties.of(Material.PLANT)
+    public static BlockBehaviour.Properties FLOWER = BlockBehaviour.Properties.of()
             .instabreak()
             .sound(SoundType.GRASS)
             .noCollission()
             .noOcclusion()
             .offsetType(BlockBehaviour.OffsetType.XZ);
 
-    public static BlockBehaviour.Properties GLOW_FLOWER = BlockBehaviour.Properties.of(Material.PLANT)
+    public static BlockBehaviour.Properties GLOW_FLOWER = BlockBehaviour.Properties.of()
             .instabreak()
             .sound(SoundType.GRASS)
             .noCollission()
@@ -189,71 +191,71 @@ public class JBlockProperties {
             .lightLevel((state) -> 5)
             .offsetType(BlockBehaviour.OffsetType.XZ);
 
-    public static BlockBehaviour.Properties CRYSTAL = BlockBehaviour.Properties.of(Material.PLANT)
+    public static BlockBehaviour.Properties CRYSTAL = BlockBehaviour.Properties.of()
             .sound(SoundType.GLASS)
             .noCollission()
             .noOcclusion()
             .offsetType(BlockBehaviour.OffsetType.XZ);
 
-    public static BlockBehaviour.Properties VINE = BlockBehaviour.Properties.of(Material.LEAVES)
+    public static BlockBehaviour.Properties VINE = BlockBehaviour.Properties.of()
             .sound(SoundType.GRASS)
             .noCollission()
             .noOcclusion()
             .randomTicks();
 
-    public static BlockBehaviour.Properties GRASS = BlockBehaviour.Properties.of(Material.GRASS)
+    public static BlockBehaviour.Properties GRASS = BlockBehaviour.Properties.of()
             .randomTicks()
             .strength(0.75F)
             .sound(SoundType.GRASS);
 
-    public static BlockBehaviour.Properties WOOD = BlockBehaviour.Properties.of(Material.WOOD)
+    public static BlockBehaviour.Properties WOOD = BlockBehaviour.Properties.of()
             .strength(1F)
             .sound(SoundType.WOOD);
 
-    public static BlockBehaviour.Properties LADDER = BlockBehaviour.Properties.of(Material.WOOD)
+    public static BlockBehaviour.Properties LADDER = BlockBehaviour.Properties.of()
             .strength(1F)
             .noOcclusion()
             .dynamicShape()
             .sound(SoundType.WOOD);
 
-    public static BlockBehaviour.Properties CAMPFIRE = BlockBehaviour.Properties.of(Material.WOOD)
+    public static BlockBehaviour.Properties CAMPFIRE = BlockBehaviour.Properties.of()
             .strength(1F)
             .noOcclusion()
             .lightLevel((state) -> 10)
             .sound(SoundType.WOOD);
 
-    public static BlockBehaviour.Properties BUTTON = BlockBehaviour.Properties.of(Material.WOOD)
+    public static BlockBehaviour.Properties BUTTON = BlockBehaviour.Properties.of()
             .strength(1F)
             .noOcclusion()
             .noCollission()
             .sound(SoundType.WOOD);
 
-    public static BlockBehaviour.Properties DOOR = BlockBehaviour.Properties.of(Material.WOOD)
+    public static BlockBehaviour.Properties DOOR = BlockBehaviour.Properties.of()
             .strength(3F)
             .noOcclusion()
             .dynamicShape()
             .sound(SoundType.WOOD);
 
-    public static BlockBehaviour.Properties PORTAL = BlockBehaviour.Properties.of(Material.PORTAL)
+    public static BlockBehaviour.Properties PORTAL = BlockBehaviour.Properties.of()
             .strength(100F)
             .sound(SoundType.GLASS)
             .lightLevel((state) -> 4)
             .noOcclusion()
             .noCollission();
 
-    public static final BlockBehaviour.Properties VOLCANIC_BLOCK = BlockBehaviour.Properties.of(Material.STONE)
+    public static final BlockBehaviour.Properties VOLCANIC_BLOCK = BlockBehaviour.Properties.of()
             .sound(SoundType.STONE)
             .noOcclusion()
             .lightLevel((state) -> 10)
             .strength(1.5F, 6.0F);
 
-    public static final BlockBehaviour.Properties FURNACE = BlockBehaviour.Properties.of(Material.STONE)
+    public static final BlockBehaviour.Properties FURNACE = BlockBehaviour.Properties.of()
             .sound(SoundType.STONE)
             .requiresCorrectToolForDrops()
             .lightLevel(litBlockEmission(13))
             .strength(1.5F, 6.0F);
 
-    public static final BlockBehaviour.Properties GLOW_PLANT = BlockBehaviour.Properties.of(Material.GLASS)
+    public static final BlockBehaviour.Properties GLOW_PLANT = BlockBehaviour.Properties.of()
             .sound(JSoundTypes.CRYSTAL_FRUIT)
             .noOcclusion()
             .offsetType(BlockBehaviour.OffsetType.XZ)
@@ -261,7 +263,7 @@ public class JBlockProperties {
             .lightLevel((state) -> 10)
             .instabreak();
 
-    public static final BlockBehaviour.Properties CAVE_GLOW_PLANT = BlockBehaviour.Properties.of(Material.PLANT)
+    public static final BlockBehaviour.Properties CAVE_GLOW_PLANT = BlockBehaviour.Properties.of()
             .sound(JSoundTypes.CRYSTAL_FRUIT)
             .noOcclusion()
             .noCollission()

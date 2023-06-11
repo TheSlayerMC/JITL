@@ -103,13 +103,13 @@ public abstract class JVillagerEntity extends PathfinderMob implements Npc, Merc
         if (offer.shouldRewardExp()) {
             int i = 3 + random.nextInt(4);
             double y = getY() + getBbHeight() / 2;
-            level.addFreshEntity(new ExperienceOrb(level, getX(), y, getZ(), i));
+            level().addFreshEntity(new ExperienceOrb(level(), getX(), y, getZ(), i));
         }
     }
 
     public void trade(Player playerEntity) {
         if (!getOffers().isEmpty()) {
-            if (!level.isClientSide()) {
+            if (!level().isClientSide()) {
                 setTradingPlayer(playerEntity);
                 openTradingScreen(playerEntity, getDisplayName(), 1);
             }
@@ -133,9 +133,8 @@ public abstract class JVillagerEntity extends PathfinderMob implements Npc, Merc
     @Override
     public void notifyTradeUpdated(@NotNull ItemStack stack) { }
 
-    @Override
     public @NotNull Level getLevel() {
-        return level;
+        return level();
     }
 
     @Override

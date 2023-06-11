@@ -13,7 +13,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -97,7 +96,7 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
         if (launch) {
             Entity bounceTo = null;
             if (++currentBounces <= maxBounces) {
-                List<LivingEntity> entitiesNear = this.level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(4D + getRangeAddend()));
+                List<LivingEntity> entitiesNear = this.level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(4D + getRangeAddend()));
                 for (LivingEntity e : entitiesNear) {
                     if (e != this.getOwner() && this.pathTo(e) && e.invulnerableTime == 0 && !e.isDeadOrDying() && e.getClassification(false) == MobCategory.MONSTER) { //check whether this entity is a valid target
                         if (bounceTo == null || this.distanceTo(e) < this.distanceTo(bounceTo)) {
@@ -120,7 +119,7 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
                 this.setNoPhysics(true);
                 Vec3 vector3d = new Vec3(entity.getX() - this.getX(), entity.getEyeY() - this.getY(), entity.getZ() - this.getZ());
                 this.setPosRaw(this.getX(), this.getY() + vector3d.y * 0.015D * (double) faithfulLevel, this.getZ());
-                if(this.level.isClientSide)
+                if(this.level().isClientSide)
                     this.yOld = this.getY();
 
                 double d0 = 0.15D * (double) faithfulLevel;
@@ -132,7 +131,7 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
             }
         }
         if(getStack().isEmpty()) {
-            level.playSound(null, blockPosition(), SoundEvents.ITEM_BREAK, SoundSource.AMBIENT, 1.0F, 1.0F);
+            level().playSound(null, blockPosition(), SoundEvents.ITEM_BREAK, SoundSource.AMBIENT, 1.0F, 1.0F);
             discard();
         }
     }
@@ -149,14 +148,14 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
     private boolean pathTo(Entity entityIn) {
         Vec3 vector3d = new Vec3(this.getX(), this.getY(0.5), this.getZ());
         Vec3 vector3d1 = new Vec3(entityIn.getX(), entityIn.getY(0.8), entityIn.getZ());
-        return this.level.clip(new ClipContext(vector3d, vector3d1, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this)).getType() == HitResult.Type.MISS;
+        return this.level().clip(new ClipContext(vector3d, vector3d1, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this)).getType() == HitResult.Type.MISS;
     }
 
     @Override
     protected void onHitEntity(EntityHitResult entityRayTraceResult_) {
         Entity entity = entityRayTraceResult_.getEntity();
         if(entity instanceof LivingEntity && entity != this.getOwner()) {
-            if(!level.isClientSide()) {
+            if(!level().isClientSide()) {
                 if(getOwner() instanceof ServerPlayer player) {
                     getStack().hurtAndBreak(1, player, (context) -> context.broadcastBreakEvent(player.getUsedItemHand()));
                 }
@@ -174,7 +173,7 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
 
     @Override
     public void playerTouch(@NotNull Player entityIn) {
-        if(!this.level.isClientSide) {
+        if(!this.level().isClientSide) {
             boolean isOwner = this.getOwner().getUUID() == entityIn.getUUID();
             if((isOwner && currentBounces > 0) || ((this.inGround || this.isNoPhysics()) && this.shakeTime <= 0)) {
                 boolean flag = this.pickup == Pickup.ALLOWED || this.pickup == Pickup.CREATIVE_ONLY && entityIn.canUseGameMasterBlocks() || this.isNoPhysics() && isOwner;

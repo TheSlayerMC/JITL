@@ -66,7 +66,7 @@ public class JCloudRenderer {
                     this.cloudBuffer.close();
                 }
 
-                this.cloudBuffer = new VertexBuffer();
+                this.cloudBuffer = new VertexBuffer(VertexBuffer.Usage.STATIC);
                 BufferBuilder.RenderedBuffer buffer = this.buildClouds(bufferbuilder, d2, d3, d4, vector3d);
                 this.cloudBuffer.bind();
                 this.cloudBuffer.upload(buffer);

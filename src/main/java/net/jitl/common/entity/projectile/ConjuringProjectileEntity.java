@@ -4,7 +4,6 @@ import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JParticleManager;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -35,7 +34,7 @@ public class ConjuringProjectileEntity extends ThrowableProjectile {
     public void handleEntityEvent(byte pId) {
         if (pId == 3) {
             for(int i = 0; i < 8; ++i) {
-                this.level.addParticle(JParticleManager.CONJURING.get(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+                this.level().addParticle(JParticleManager.CONJURING.get(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
             }
         }
     }
@@ -58,8 +57,8 @@ public class ConjuringProjectileEntity extends ThrowableProjectile {
     @Override
     protected void onHit(HitResult pResult) {
         super.onHit(pResult);
-        if (!this.level.isClientSide) {
-            this.level.broadcastEntityEvent(this, (byte)3);
+        if (!this.level().isClientSide) {
+            this.level().broadcastEntityEvent(this, (byte)3);
             this.discard();
         }
 

@@ -63,7 +63,7 @@ public class RockiteSmasher extends JBossEntity {
 
     @Override
     public boolean doHurtTarget(Entity entity) {
-        this.level.broadcastEntityEvent(this, (byte)1);
+        this.level().broadcastEntityEvent(this, (byte)1);
         float damage = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
         float f1 = (int)damage > 0 ? damage / 2.0F + (float)this.random.nextInt((int)damage) : damage;
         boolean hurt = entity.hurt(this.damageSources().mobAttack(this), f1);

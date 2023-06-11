@@ -7,7 +7,6 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -18,11 +17,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.LootTables;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -33,7 +27,6 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Iterator;
-import java.util.List;
 
 public class BossCrystal extends Entity implements GeoEntity {
     
@@ -87,19 +80,19 @@ public class BossCrystal extends Entity implements GeoEntity {
 
     @Override
     public @NotNull InteractionResult interact(Player player, InteractionHand hand) {
-        if (!this.level.isClientSide) {
-            LootTables ltManager = this.getLevel().getServer().getLootTables();
-            LootTable lt = ltManager.get(table);
+        if (!this.level().isClientSide) {
+            //LootTable ltManager = Objects.requireNonNull(this.level().getServer()).getLootData().getLootTable();
+           // LootTable lt = ltManager.get(table);
             ItemStack sword = new ItemStack(Items.DIAMOND_SWORD);
             sword.enchant(Enchantments.MOB_LOOTING, 3);
             sword.enchant(Enchantments.FIRE_ASPECT, 1);
             Vec3 position = new Vec3(getX(), getY(), getZ());
-            LootContext.Builder builder = (new LootContext.Builder((ServerLevel) this.level))
-                    .withParameter(LootContextParams.TOOL, sword)
-                    .withParameter(LootContextParams.ORIGIN, position);
-            LootContext ctx = builder.create(LootContextParamSets.FISHING);
-            List<ItemStack> generated = lt.getRandomItems(ctx);
-            storedItems.addAll(generated);
+            //LootContext.Builder builder = (new LootContext.Builder((ServerLevel) this.level()))
+             //       .withParameter(LootContextParams.TOOL, sword)
+            //        .withParameter(LootContextParams.ORIGIN, position);
+            //LootContext ctx = builder.create(LootContextParamSets.FISHING);
+            //List<ItemStack> generated = lt.getRandomItems(ctx);
+            //storedItems.addAll(generated);
 
             for(Iterator<ItemStack> iterator = storedItems.iterator(); iterator.hasNext(); ) {
                 ItemStack itemStack = iterator.next();

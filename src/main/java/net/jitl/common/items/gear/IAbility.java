@@ -92,7 +92,7 @@ public interface IAbility {
         @Override
         default boolean animate(boolean original, ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
             if (oldStack.equals(newStack)) return false;
-            if (oldStack.sameItem(newStack)) {
+            if (oldStack.is(newStack.getItem())) {
                 int durability = oldStack.getDamageValue() - newStack.getDamageValue();
                 return durability != 0 && durability != 1; //for repair
             }
@@ -102,7 +102,7 @@ public interface IAbility {
         @Override
         default boolean resetBreak(boolean original, ItemStack oldStack, ItemStack newStack) {
             if (oldStack.equals(newStack)) return false;
-            if (oldStack.sameItem(newStack)) {
+            if (oldStack.is(newStack.getItem())) {
                 int durability = oldStack.getDamageValue() - newStack.getDamageValue();
                 return durability != 0 && durability != 1; //for repair
             }

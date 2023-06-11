@@ -83,6 +83,8 @@ public class LangRegistry {
         writeToFile("\"jitl.knowledge.frozen\" : \"Frozen Knowledge\",");
         writeToFile("\"death.attack.bradberryBush\" : \"%1$s was poked to death by a Bradberry bush\",");
         writeToFile("\"death.attack.redcurrant\" : \"%1$s was poked to death by a Redcurrant bush\",");
+        writeToFile("\"jitl.stats\" : \"Player Stats\",");
+        writeToFile("\"jitl.king.hero\" : \"Good Luck... Hero\",");
 
         writeToFile("\"jitl.tooltip.freeze\" : \"On hit: Freezes the target for 6 seconds\",");
         writeToFile("\"jitl.tooltip.poison\" : \"On hit: Poisions for 6 seconds\",");

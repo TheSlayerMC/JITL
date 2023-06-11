@@ -42,7 +42,7 @@ public class SenterianPortalBlock extends Block {
             if (entity.isOnPortalCooldown()) {
                 entity.setPortalCooldown();
             } else {
-                if(!entity.level.isClientSide && !pos.equals(entity.portalEntrancePos)) {
+                if(!entity.level().isClientSide && !pos.equals(entity.portalEntrancePos)) {
                     entity.portalEntrancePos = pos.immutable();
                 }
                 teleport(entity);
@@ -51,10 +51,10 @@ public class SenterianPortalBlock extends Block {
     }
 
     public void teleport(Entity entity) {
-        Level entityWorld = entity.level;
+        Level entityWorld = entity.level();
         MinecraftServer minecraftserver = entityWorld.getServer();
         if(minecraftserver != null) {
-            ResourceKey<Level> destination = entity.level.dimension() == Dimensions.SENTERIAN ? Level.OVERWORLD : Dimensions.SENTERIAN;
+            ResourceKey<Level> destination = entity.level().dimension() == Dimensions.SENTERIAN ? Level.OVERWORLD : Dimensions.SENTERIAN;
             ServerLevel destinationWorld = minecraftserver.getLevel(destination);
             if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
                 entity.setPortalCooldown();

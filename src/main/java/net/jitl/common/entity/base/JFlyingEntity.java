@@ -107,7 +107,7 @@ public abstract class JFlyingEntity extends FlyingMob implements Enemy, GeoEntit
 
             for(int i = 1; i < int_; ++i) {
                 a = a.move(vector3d_);
-                if (!this.entity.level.noCollision(this.entity, a)) {
+                if (!this.entity.level().noCollision(this.entity, a)) {
                     return false;
                 }
             }

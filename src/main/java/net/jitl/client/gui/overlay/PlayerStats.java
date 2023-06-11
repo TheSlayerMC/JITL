@@ -1,7 +1,6 @@
 package net.jitl.client.gui.overlay;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.jitl.client.knowledge.ClientKnowledge;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.client.knowledge.PlayerKnowledgeProvider;
@@ -10,6 +9,7 @@ import net.jitl.core.helper.internal.EmptyContainer;
 import net.jitl.core.init.JITL;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.PageButton;
 import net.minecraft.client.renderer.GameRenderer;
@@ -63,14 +63,14 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
     }
 
     @Override
-    protected void renderBg(PoseStack poseStack, float partialTick, int mouseX, int mouseY) {
+    protected void renderBg(@NotNull GuiGraphics poseStack, float partialTick, int mouseX, int mouseY) {
         this.renderBackground(poseStack);//Dims around the GUI for a more vanilla look
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
-        poseStack.pushPose();
+        poseStack.pose().pushPose();
         RenderSystem.setShader(GameRenderer::getPositionTexColorNormalShader);
         RenderSystem.setShaderTexture(0, this.BACKGROUND);
-        blit(poseStack, x, y, 0, 0, this.imageWidth, this.imageHeight);//Draws the main Background
+        poseStack.blit(BACKGROUND, x, y, 0, 0, this.imageWidth, this.imageHeight);//Draws the main Background
 
 //        switch(pageNumber) {
 //            case 0 -> page1(poseStack);
@@ -80,11 +80,11 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
 //        }
         page1(poseStack);
 
-        poseStack.popPose();
+        poseStack.pose().popPose();
         RenderSystem.enableDepthTest();
     }
 
-    public void page1(PoseStack stack) {
+    public void page1(GuiGraphics stack) {
         int height = 43;
         int x = 9;
         int h = 9;
@@ -102,40 +102,40 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         drawKnowledgeSprite(stack, 126, h, EnumKnowledge.EUCA, "Euca");
 
         h += height;
-        //drawKnowledgeSprite(stack, 126, h, EnumKnowledge.DEPTHS, "The Depths");
-        //drawKnowledgeSprite(stack, x, h,  EnumKnowledge.CORBA, "Corba");
+        drawKnowledgeSprite(stack, 126, h, EnumKnowledge.DEPTHS, "The Depths");
+        drawKnowledgeSprite(stack, x, h,  EnumKnowledge.CORBA, "Corba");
     }
 
-    public void drawSprite(PoseStack matrixStack, int x, int y, int spriteX, int spriteY, String s) {
+    public void drawSprite(GuiGraphics matrixStack, int x, int y, int spriteX, int spriteY, String s) {
         int k = (width - imageWidth) / 2;
         int l = (height - imageHeight) / 2;
-        matrixStack.pushPose();
+        matrixStack.pose().pushPose();
         RenderSystem.setShader(GameRenderer::getPositionTexColorNormalShader);
         RenderSystem.setShaderTexture(0, this.BACKGROUND);
 
-        blit(matrixStack, k + x - 4, l + y - 4, 0, 216, 115, 40);//Draws the yellow rectangle bg for the sprites
-        matrixStack.popPose();
+        matrixStack.blit(BACKGROUND, k + x - 4, l + y - 4, 0, 216, 115, 40);//Draws the yellow rectangle bg for the sprites
+        matrixStack.pose().popPose();
 
-        matrixStack.pushPose();
+        matrixStack.pose().pushPose();
         RenderSystem.setShader(GameRenderer::getPositionTexColorNormalShader);
         RenderSystem.setShaderTexture(0, this.KNOWLEDGE_SPRITE);
 
-        blit(matrixStack, k + x, l + y, spriteX, spriteY, 32, 32); //Draws the knowledge sprite
-        font.draw(matrixStack, s, k + x + 35, l + y + 5, 4210752); //Draws the sprite name
+        matrixStack.blit(KNOWLEDGE_SPRITE, k + x, l + y, spriteX, spriteY, 32, 32); //Draws the knowledge sprite
+        matrixStack.drawString(font, s, k + x + 35, l + y + 5, 4210752, true); //Draws the sprite name
 
         //if(s.contains("Sentacoins"))
         //    font.draw(matrixStack, "" + jPlayer.sentacoins.getAmount(), k + x + 35, l + y + 15, 4210752);
 
-        matrixStack.popPose();
+        matrixStack.pose().popPose();
         RenderSystem.enableDepthTest();
     }
 
-    public void drawKnowledgeSprite(PoseStack matrixStack, int x, int y, EnumKnowledge type, String s) {
+    public void drawKnowledgeSprite(GuiGraphics matrixStack, int x, int y, EnumKnowledge type, String s) {
         drawSprite(matrixStack, x, y, type.getSpriteX(), type.getSpriteY(), s);
         int progressBarSize = 65;
         int k = (width - imageWidth) / 2;
         int l = (height - imageHeight) / 2;
-        matrixStack.pushPose();
+        matrixStack.pose().pushPose();
         RenderSystem.setShader(GameRenderer::getPositionTexColorNormalShader);
         RenderSystem.setShaderTexture(0, this.KNOWLEDGE_SPRITE);
         Player player = Minecraft.getInstance().player;
@@ -146,11 +146,11 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
                 int width = (int) (percents * progressBarSize);
 
                 int progressBarX = k + x + 35, progressBarY = l + y + 19;
-                blit(matrixStack, progressBarX, progressBarY, 0, 5, progressBarSize, 5);
-                blit(matrixStack, progressBarX, progressBarY, 0, 0, width, 5);
+                matrixStack.blit(KNOWLEDGE_SPRITE, progressBarX, progressBarY, 0, 5, progressBarSize, 5);
+                matrixStack.blit(KNOWLEDGE_SPRITE, progressBarX, progressBarY, 0, 0, width, 5);
 
                 if(completed) {
-                    blit(matrixStack, k + x, l + y + 3, 130, 43, 32, 29);
+                    matrixStack.blit(KNOWLEDGE_SPRITE, k + x, l + y + 3, 130, 43, 32, 29);
                 }
 
                 int lvX = progressBarX + 29, lvY = progressBarY - 1;
@@ -158,14 +158,14 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
                 int getLevelCount = ClientKnowledge.getClientKnowledgeLevel(type);
                 String level = "" + getLevelCount;
 
-                font.drawShadow(matrixStack, "" + (getLevelCount), lvX - this.font.width(level) / 2 + 4, lvY, ArgbColor.from(ChatFormatting.WHITE));
-                matrixStack.popPose();
+                matrixStack.drawString(font, "" + (getLevelCount), lvX - this.font.width(level) / 2 + 4, lvY, ArgbColor.from(ChatFormatting.WHITE), true);
+                matrixStack.pose().popPose();
             });
         }
         RenderSystem.enableDepthTest();
     }
 
-    public void page2(PoseStack stack) {
+    public void page2(GuiGraphics stack) {
         int height = 43;
         int x = 9;
         int h = 9;
@@ -188,7 +188,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
     }
 
     @Override
-    protected void renderLabels(@NotNull PoseStack matrixStack, int x, int y) {
+    protected void renderLabels(@NotNull GuiGraphics matrixStack, int x, int y) {
 
     }
 }

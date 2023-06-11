@@ -15,7 +15,7 @@ public class DimensionWeatherHandler {
     @SubscribeEvent
     public static void handleDimensionWeather(TickEvent.PlayerTickEvent event) {
         Player player = event.player;
-        Level level = event.player.level;
+        Level level = event.player.level();
         player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
             if (level.dimension() == Dimensions.FROZEN_LANDS) {
                 if(stats.hasBlizzard()) {

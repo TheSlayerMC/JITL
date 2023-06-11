@@ -1,10 +1,8 @@
 package net.jitl.common.entity.projectile;
 
-import net.jitl.core.init.internal.JDamageSources;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -32,8 +30,8 @@ public class DemonicBombEntity extends DamagingProjectileEntity implements ItemS
         if(target instanceof LivingEntity && target.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage())) {
             //target.hurt(JDamageSources.DEMONIC_BOMB, this.getDamage());//TODO
             target.hurt(this.damageSources().cactus(), this.getDamage());
-            if(!this.level.isClientSide) {
-                this.level.broadcastEntityEvent(this, (byte)1);
+            if(!this.level().isClientSide) {
+                this.level().broadcastEntityEvent(this, (byte)1);
                 this.discard();
             }
         }
@@ -45,12 +43,12 @@ public class DemonicBombEntity extends DamagingProjectileEntity implements ItemS
 
         if(id == 1) {
             for(int i = 0; i < 15; ++i)
-                this.level.addParticle(particleoptions, getX() + level.random.nextDouble(), getY(), getZ() + level.random.nextDouble(), 1, 0.0D, 0.0D);
+                this.level().addParticle(particleoptions, getX() + level().random.nextDouble(), getY(), getZ() + level().random.nextDouble(), 1, 0.0D, 0.0D);
         }
 
         if(id == 2) {
             for(int i = 0; i < 15; ++i)
-                this.level.addParticle(particleoptions, getX() + level.random.nextDouble(), getY() + 1, getZ() + level.random.nextDouble(), 1, 0.0D, 0.0D);
+                this.level().addParticle(particleoptions, getX() + level().random.nextDouble(), getY() + 1, getZ() + level().random.nextDouble(), 1, 0.0D, 0.0D);
         }
     }
 
@@ -58,8 +56,8 @@ public class DemonicBombEntity extends DamagingProjectileEntity implements ItemS
     protected void onHit(HitResult result) {
         super.onHit(result);
         if(result.getType() == HitResult.Type.BLOCK) {
-            if (!this.level.isClientSide) {
-                this.level.broadcastEntityEvent(this, (byte)2);
+            if (!this.level().isClientSide) {
+                this.level().broadcastEntityEvent(this, (byte)2);
                 this.discard();
             }
         }

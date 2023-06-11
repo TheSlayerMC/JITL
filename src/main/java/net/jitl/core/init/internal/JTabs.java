@@ -1,39 +1,35 @@
 package net.jitl.core.init.internal;
 
 import net.jitl.core.init.JITL;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.event.CreativeModeTabEvent;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = JITL.MODID)
 public class JTabs {
+    public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, JITL.MODID);
 
-    public static final ResourceLocation BLOCKS = new ResourceLocation(JITL.MODID, ".blocks");
-    public static final ResourceLocation ITEMS = new ResourceLocation(JITL.MODID, ".items");
+    public static final RegistryObject<CreativeModeTab> BLOCKS = REGISTRY.register("blocks", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.jitl.blocks")).icon(() -> new ItemStack(JBlocks.FIRESTONE_BLOCK.get())).build());
+    public static final RegistryObject<CreativeModeTab> ITEMS = REGISTRY.register("items", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.jitl.items")).icon(() -> new ItemStack(JItems.BLAZING_FIREBALL.get())).build());
 
-    private static ItemStack makeBlockIcon() {
-        return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(JITL.MODID, "firestone_block")));
-    }
-
-    private static ItemStack makeItemIcon() {
-        return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(JITL.MODID, "blazing_fireball")));
-    }
-
-    public static void registerTabs(CreativeModeTabEvent.Register event){
-        event.registerCreativeModeTab(BLOCKS, builder -> builder.title(Component.translatable("itemGroup.jitl.blocks")).icon(JTabs::makeBlockIcon).withSearchBar().displayItems((flags, output) -> {
+    public static void registerTabs(BuildCreativeModeTabContentsEvent event){
+        if (event.getTab() == BLOCKS.get()) {
             for(RegistryObject<Block> item : JBlocks.BLOCKS.getEntries()){
-                output.accept(item.get());
+                event.accept(item.get());
             }
-        }));
+        };
 
-        event.registerCreativeModeTab(ITEMS, builder -> builder.title(Component.translatable("itemGroup.jitl.items")).icon(JTabs::makeItemIcon).withSearchBar().displayItems((flags, output) -> {
+        if (event.getTab() == ITEMS.get()) {
             for(RegistryObject<Item> item : JItems.ITEMS.getEntries()){
-                output.accept(item.get());
+                event.accept(item.get());
             }
-        }));
+        };
     }
 }

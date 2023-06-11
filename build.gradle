@@ -34,7 +34,8 @@ minecraft {
     // Use non-default mappings at your own risk. They may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
 
-    mappings channel: 'parchment', version: "${buildProps["parchment.version"]}"
+    //mappings channel: 'parchment', version: "${buildProps["parchment.version"]}"
+    mappings channel: 'official', version: "1.20"
 
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -151,12 +152,12 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${buildProps["minecraft.version"]}-${buildProps["forge.version"]}"
 
-    //compileOnly(fg.deobf("mezz.jei:jei-${buildProps["minecraft.version"]}-common-api:${buildProps["jei_version"]}"))
-    //compileOnly(fg.deobf("mezz.jei:jei-${buildProps["minecraft.version"]}-forge-api:${buildProps["jei_version"]}"))
-    //runtimeOnly(fg.deobf("mezz.jei:jei-${buildProps["minecraft.version"]}-forge:${buildProps["jei_version"]}"))
+    compileOnly(fg.deobf("mezz.jei:jei-${buildProps["minecraft.version"]}-common-api:${buildProps["jei_version"]}"))
+    compileOnly(fg.deobf("mezz.jei:jei-${buildProps["minecraft.version"]}-forge-api:${buildProps["jei_version"]}"))
+    runtimeOnly(fg.deobf("mezz.jei:jei-${buildProps["minecraft.version"]}-forge:${buildProps["jei_version"]}"))
 
-    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${buildProps["curios.version"]}")
-    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${buildProps["curios.version"]}:api")
+    //runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${buildProps["curios.version"]}")
+    //compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${buildProps["curios.version"]}:api")
 
     implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${buildProps["gekolib.version"]}")
 }

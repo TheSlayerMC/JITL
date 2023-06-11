@@ -39,13 +39,13 @@ public abstract class AbstractKnifeEntity extends AbstractArrow {
         Entity entity = this.getOwner();
         if((this.dealtDamage || this.isNoPhysics()) && entity != null) {
             if(!this.isAcceptableReturnOwner()) {
-                if(!this.level.isClientSide && this.pickup == Pickup.ALLOWED) {
+                if(!this.level().isClientSide && this.pickup == Pickup.ALLOWED) {
                     this.spawnAtLocation(this.getPickupItem(), 0.1F);
                 }
                 this.remove(RemovalReason.DISCARDED);
             }
         }
-        if(level.isClientSide) {
+        if(level().isClientSide) {
             onClientTick();
         }
         super.tick();

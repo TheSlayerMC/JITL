@@ -89,7 +89,7 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
         super.tick();
         if(isActivated()) {
             this.death_timer--;
-            this.level.addParticle(ParticleTypes.CLOUD,
+            this.level().addParticle(ParticleTypes.CLOUD,
                     this.getX() - 0.5D + random.nextDouble(),
                     this.getY() + 0.5D + random.nextDouble(),
                     this.getZ() - 0.5D + random.nextDouble(),
@@ -98,7 +98,7 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
                     this.random.nextGaussian() * 0.05D);
             if (death_timer <= 0) {
                 for (int i = 0; i < 24; ++i) {
-                    this.level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE,
+                    this.level().addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE,
                             this.getX() - Mth.nextDouble(random, -0.45D, 0.75D),
                             this.getY() + Mth.nextDouble(random, 0.5D, 2.0D),
                             this.getZ() - Mth.nextDouble(random, -0.45D, 0.75D),
@@ -109,8 +109,8 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
                 this.playSound(SoundEvents.FIRE_EXTINGUISH, 1.0F, 1.0F);
                 this.remove(RemovalReason.DISCARDED);
                 
-                if (!level.isClientSide) {
-                    this.level.addFreshEntity(new ItemEntity(level, this.position().x + 0.5F, this.position().y + 1.4F, this.position().z + 0.5F, new ItemStack(JItems.STAFF_OF_CONJURING.get(), 1)));
+                if (!level().isClientSide) {
+                    this.level().addFreshEntity(new ItemEntity(level(), this.position().x + 0.5F, this.position().y + 1.4F, this.position().z + 0.5F, new ItemStack(JItems.STAFF_OF_CONJURING.get(), 1)));
                 }
                 this.death_timer = 100;
             }
@@ -183,7 +183,7 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
     protected InteractionResult mobInteract(Player playerEntity, InteractionHand hand) {
         int check_radius = 8;
         int totalPedestals = 0;
-        final Level world = this.level;
+        final Level world = this.level();
         final BlockPos entityPos = BlockPos.containing(this.position());
         for (int x = -check_radius; x <= check_radius; x++) {
             for (int z = -check_radius; z <= check_radius; z++) {
@@ -194,7 +194,7 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
                         PedestalTile tile = (PedestalTile) world.getBlockEntity(pos);
                         if (tile != null && tile.getItem(0).getItem().equals(JItems.FROSTBORN_SOUL.get())) {
                             if (isActivated()) {
-                                if (!level.isClientSide) {
+                                if (!level().isClientSide) {
                                     summonLightning(pos);
                                     disableFrozenBlizzard();
                                 }
@@ -214,18 +214,18 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
     }
 
     public void summonLightning(BlockPos pos) {
-        EssenciaBoltEntity bolt = new EssenciaBoltEntity(JEntities.ESSENCIA_BOLT_TYPE.get(), level);
+        EssenciaBoltEntity bolt = new EssenciaBoltEntity(JEntities.ESSENCIA_BOLT_TYPE.get(), level());
         bolt.setPos(pos.getX(), pos.getY() + 1.0D, pos.getZ());
         bolt.setARGB(0x5acbff);
         bolt.setVisualOnly(true);
-        if(!level.isClientSide)
-            this.level.addFreshEntity(bolt);
+        if(!level().isClientSide)
+            this.level().addFreshEntity(bolt);
     }
 
     public void disableFrozenBlizzard() {
         int playerArea = 10;
         AABB axisalignedbb = AABB.unitCubeFromLowerCorner(this.position()).inflate(playerArea);
-        for (Player player : this.level.getEntitiesOfClass(Player.class, axisalignedbb)) {
+        for (Player player : this.level().getEntitiesOfClass(Player.class, axisalignedbb)) {
             player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
                 stats.setBlizzard(true);
             });

@@ -1,7 +1,6 @@
 package net.jitl.common.block.portal;
 
 import net.jitl.common.world.dimension.CorbaTeleporter;
-import net.jitl.common.world.dimension.DepthsTeleporter;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
@@ -44,7 +43,7 @@ public class CorbaPortalBlock extends Block {
             if (entity.isOnPortalCooldown()) {
                 entity.setPortalCooldown();
             } else {
-                if(!entity.level.isClientSide && !pos.equals(entity.portalEntrancePos)) {
+                if(!entity.level().isClientSide && !pos.equals(entity.portalEntrancePos)) {
                     entity.portalEntrancePos = pos.immutable();
                 }
                 teleport(entity);
@@ -53,10 +52,10 @@ public class CorbaPortalBlock extends Block {
     }
 
     public void teleport(Entity entity) {
-        Level entityWorld = entity.level;
+        Level entityWorld = entity.level();
         MinecraftServer minecraftserver = entityWorld.getServer();
         if(minecraftserver != null) {
-            ResourceKey<Level> destination = entity.level.dimension() == Dimensions.CORBA ? Level.OVERWORLD : Dimensions.CORBA;
+            ResourceKey<Level> destination = entity.level().dimension() == Dimensions.CORBA ? Level.OVERWORLD : Dimensions.CORBA;
             ServerLevel destinationWorld = minecraftserver.getLevel(destination);
             if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
                 entity.setPortalCooldown();

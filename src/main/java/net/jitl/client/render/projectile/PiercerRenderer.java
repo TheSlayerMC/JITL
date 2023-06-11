@@ -4,7 +4,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.jitl.common.entity.projectile.PiercerEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
@@ -39,7 +38,7 @@ public class PiercerRenderer extends EntityRenderer<PiercerEntity> {
         ItemStack itemstack = entityIn.getItem();
         int i = itemstack.isEmpty() ? 187 : Item.getId(itemstack.getItem()) + itemstack.getDamageValue();
         this.random.setSeed(i);
-        BakedModel ibakedmodel = this.itemRenderer.getModel(itemstack, entityIn.level, null, entityIn.getId());
+        BakedModel ibakedmodel = this.itemRenderer.getModel(itemstack, entityIn.level(), null, entityIn.getId());
 
         float f1 = ((float) entityIn.tickCount + partialTicks) / 10 * (float) (Math.PI * 2.0D);
 

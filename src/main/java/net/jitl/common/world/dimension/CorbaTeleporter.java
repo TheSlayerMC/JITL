@@ -66,8 +66,8 @@ public class CorbaTeleporter implements ITeleporter {
     public boolean placeInExistingPortal(Entity entity, float rotationYaw) {
         if (this.level.dimension().equals(Dimensions.CORBA)) {
 
-            int chunkX = entity.level.getChunk(entity.blockPosition()).getPos().x;
-            int chunkZ = entity.level.getChunk(entity.blockPosition()).getPos().z;
+            int chunkX = entity.level().getChunk(entity.blockPosition()).getPos().x;
+            int chunkZ = entity.level().getChunk(entity.blockPosition()).getPos().z;
 
             int portalLocationX = (chunkX * 16) + 6 + 8;
             int portalLocationZ = (chunkZ * 16) + 5 + 8;
@@ -138,7 +138,7 @@ public class CorbaTeleporter implements ITeleporter {
         }
         entity.setPortalCooldown();
         entity = repositionEntity.apply(false);
-        if(destWorld != Objects.requireNonNull(entity.level.getServer()).getLevel(Level.OVERWORLD)) {
+        if(destWorld != Objects.requireNonNull(entity.level().getServer()).getLevel(Level.OVERWORLD)) {
             entity.teleportTo(entity.getX(), getTopBlock((int) entity.getX(), (int)entity.getZ()), entity.getZ());
             System.out.println("Placed OVERWORLD Player TO CORBA Y:" + entity.getY());
         } else {

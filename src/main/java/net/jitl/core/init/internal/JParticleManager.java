@@ -32,15 +32,15 @@ public class JParticleManager {
 
     @SubscribeEvent
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
-        event.register(RED_FLAME.get(), RedFlameParticle.Factory::new);
-        event.register(MUD.get(), MudParticle.Factory::new);
-        event.register(CONJURING.get(), ConjuringParticle.Factory::new);
-        event.register(ESSENCIA_LIGHTNING.get(), EssenciaLightningParticle.Factory::new);
-        event.register(MINERS_PEARL.get(), MinersPearlParticle.Factory::new);
-        event.register(SNOWFLAKE.get(), SnowflakeParticle.Provider::new);
-        event.register(SULPHUR.get(), SulphurParticle.Factory::new);
-        event.register(CRYSTAL_FRUIT.get(), CrystalFruitParticle.Factory::new);
-        event.register(GOLDITE_FLOWER.get(), GolditeFlowerParticle.Factory::new);
-        event.register(FLAME_POLLEN.get(), FlamePollenParticle.Factory::new);
+        event.registerSpriteSet(RED_FLAME.get(), RedFlameParticle.Factory::new);
+        event.registerSpriteSet(MUD.get(), MudParticle.Factory::new);
+        event.registerSpriteSet(CONJURING.get(), ConjuringParticle.Factory::new);
+        event.registerSpriteSet(ESSENCIA_LIGHTNING.get(), EssenciaLightningParticle.Factory::new);
+        event.registerSpriteSet(MINERS_PEARL.get(), MinersPearlParticle.Factory::new);
+        event.registerSpriteSet(SNOWFLAKE.get(), SnowflakeParticle.Provider::new);
+        event.registerSpriteSet(SULPHUR.get(), SulphurParticle.Factory::new);
+        event.registerSpriteSet(CRYSTAL_FRUIT.get(), CrystalFruitParticle.Factory::new);
+        event.registerSpriteSet(GOLDITE_FLOWER.get(), GolditeFlowerParticle.Factory::new);
+        event.registerSpriteSet(FLAME_POLLEN.get(), FlamePollenParticle.Factory::new);
     }
 }

@@ -11,7 +11,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
@@ -53,7 +52,6 @@ public class JBlockStalagmite extends Block {
     @Override
     public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
         BlockState blockstate = worldIn.getBlockState(pos.below());
-        Material material = blockstate.getMaterial();
-        return material.isSolid() || blockstate.getBlock() instanceof JBlockStalagmite;
+        return blockstate.isSolid() || blockstate.getBlock() instanceof JBlockStalagmite;
     }
 }

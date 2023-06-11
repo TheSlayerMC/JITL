@@ -3,7 +3,6 @@ package net.jitl.common.entity.projectile;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -42,7 +41,7 @@ public class DamagingProjectileEntity extends ThrowableProjectile {
     @Override
     public void tick() {
         super.tick();
-        if(!level.isClientSide) {
+        if(!level().isClientSide) {
             if(shouldDespawn()) {
                 remove(RemovalReason.DISCARDED);
             }
@@ -60,7 +59,7 @@ public class DamagingProjectileEntity extends ThrowableProjectile {
 
     @Override
     protected void onHit(HitResult result) {
-        if(!level.isClientSide) {
+        if(!level().isClientSide) {
             if(result.getType() == HitResult.Type.ENTITY) {
                 Entity target = ((EntityHitResult) result).getEntity();
 

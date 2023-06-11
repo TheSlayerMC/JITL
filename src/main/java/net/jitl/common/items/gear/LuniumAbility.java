@@ -17,7 +17,7 @@ public class LuniumAbility implements IAbility.INBTUpdateAbility {
             CompoundTag tag = stack.getTag();
             float value = tag.getFloat("cooldown");
             if (stack.getDamageValue() > 0 || value < 100) {
-                value -= entity.level.getBrightness(LightLayer.BLOCK, entity.blockPosition());
+                value -= entity.level().getBrightness(LightLayer.BLOCK, entity.blockPosition());
                 if (value <= 0) {
                     value = 100;
                     stack.setDamageValue(stack.getDamageValue() - 1);

@@ -13,6 +13,8 @@
 "jitl.knowledge.frozen" : "Frozen Knowledge",
 "death.attack.bradberryBush" : "%1$s was poked to death by a Bradberry bush",
 "death.attack.redcurrant" : "%1$s was poked to death by a Redcurrant bush",
+"jitl.stats" : "Player Stats",
+"jitl.king.hero" : "Good Luck... Hero",
 "jitl.tooltip.freeze" : "On hit: Freezes the target for 6 seconds",
 "jitl.tooltip.poison" : "On hit: Poisions for 6 seconds",
 "jitl.tooltip.fire" : "On hit: Burns for 10 seconds",

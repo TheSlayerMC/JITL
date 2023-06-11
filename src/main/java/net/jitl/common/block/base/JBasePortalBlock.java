@@ -98,7 +98,7 @@ public class JBasePortalBlock extends Block {
             if (entity.isOnPortalCooldown()) {
                 entity.setPortalCooldown();
             } else {
-                if(!entity.level.isClientSide && !pos.equals(entity.portalEntrancePos)) {
+                if(!entity.level().isClientSide && !pos.equals(entity.portalEntrancePos)) {
                     entity.portalEntrancePos = pos.immutable();
                 }
                 teleport(entity);
@@ -107,10 +107,10 @@ public class JBasePortalBlock extends Block {
     }
 
     public void teleport(Entity entity) {
-        Level entityWorld = entity.level;
+        Level entityWorld = entity.level();
         MinecraftServer minecraftserver = entityWorld.getServer();
         if(minecraftserver != null) {
-            ResourceKey<Level> destination = entity.level.dimension() == dimensionID ? Level.OVERWORLD : dimensionID;
+            ResourceKey<Level> destination = entity.level().dimension() == dimensionID ? Level.OVERWORLD : dimensionID;
             ServerLevel destinationWorld = minecraftserver.getLevel(destination);
             ResourceKey<PoiType> poi = Dimensions.FROZEN_PORTAL.getKey();
 

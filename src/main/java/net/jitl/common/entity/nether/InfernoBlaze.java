@@ -175,12 +175,12 @@ public class InfernoBlaze extends JMonsterEntity {
                         if(this.attackStep > 1) {
                             double d4 = Math.sqrt(Math.sqrt(d0)) * 0.5D;
                             if(!this.blaze.isSilent()) {
-                                this.blaze.level.levelEvent((Player)null, 1018, this.blaze.blockPosition(), 0);
+                                this.blaze.level().levelEvent(null, 1018, this.blaze.blockPosition(), 0);
                             }
                             for(int i = 0; i < 1; ++i) {
-                                SmallFireball smallfireball = new SmallFireball(this.blaze.level, this.blaze, this.blaze.getRandom().triangle(d1, 2.297D * d4), d2, this.blaze.getRandom().triangle(d3, 2.297D * d4));
+                                SmallFireball smallfireball = new SmallFireball(this.blaze.level(), this.blaze, this.blaze.getRandom().triangle(d1, 2.297D * d4), d2, this.blaze.getRandom().triangle(d3, 2.297D * d4));
                                 smallfireball.setPos(smallfireball.getX(), this.blaze.getY(0.5D) + 0.5D, smallfireball.getZ());
-                                this.blaze.level.addFreshEntity(smallfireball);
+                                this.blaze.level().addFreshEntity(smallfireball);
                             }
                         }
                     }

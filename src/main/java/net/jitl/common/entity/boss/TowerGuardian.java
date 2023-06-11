@@ -16,7 +16,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -63,7 +62,7 @@ public class TowerGuardian extends JBossEntity {
 
     @Override
     public boolean doHurtTarget(Entity entity) {
-        this.level.broadcastEntityEvent(this, (byte)1);
+        this.level().broadcastEntityEvent(this, (byte)1);
         float damage = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
         float explosionRadius = 3;
         double particleWidth = 4;
@@ -74,14 +73,14 @@ public class TowerGuardian extends JBossEntity {
         int y = Mth.floor(entity.getY() - (double)0.2F);
         int z = Mth.floor(entity.getZ());
         BlockPos blockpos = new BlockPos(x, y, z);
-        BlockState blockstate = this.level.getBlockState(blockpos);
+        BlockState blockstate = this.level().getBlockState(blockpos);
         if(hurt) {
             if(random.nextInt(15) == 0) {
-                this.level.explode(this, this.getX(), this.getY(), this.getZ(), explosionRadius, Level.ExplosionInteraction.NONE);
+                this.level().explode(this, this.getX(), this.getY(), this.getZ(), explosionRadius, Level.ExplosionInteraction.NONE);
             }
             if(blockstate.getRenderShape() != RenderShape.INVISIBLE) {
                 for(int i = 0; i < 50; i++) {
-                    this.level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, blockstate).setPos(blockpos), this.getX() + (this.random.nextDouble() - 0.5D) * particleWidth, this.getY() + 0.1D, this.getZ() + (this.random.nextDouble() - 0.5D) * particleWidth, vec3.x * -4.0D, 1.5D, vec3.z * -4.0D);
+                    this.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, blockstate).setPos(blockpos), this.getX() + (this.random.nextDouble() - 0.5D) * particleWidth, this.getY() + 0.1D, this.getZ() + (this.random.nextDouble() - 0.5D) * particleWidth, vec3.x * -4.0D, 1.5D, vec3.z * -4.0D);
                 }
             }
             this.doEnchantDamageEffects(this, entity);
@@ -135,7 +134,7 @@ public class TowerGuardian extends JBossEntity {
 
     @Override
     public boolean wantsToAttack(LivingEntity target, LivingEntity living) {
-        return level.getDifficulty() != Difficulty.PEACEFUL;
+        return level().getDifficulty() != Difficulty.PEACEFUL;
     }
 
     @Override

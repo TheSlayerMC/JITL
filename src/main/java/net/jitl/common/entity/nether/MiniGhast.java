@@ -155,7 +155,7 @@ public class MiniGhast extends JFlyingEntity {
             if (livingentity != null) {
                 double d0 = 64.0D;
                 if (livingentity.distanceToSqr(this.ghast) < 4096.0D && this.ghast.hasLineOfSight(livingentity)) {
-                    Level level = this.ghast.level;
+                    Level level = this.ghast.level();
                     ++this.chargeTime;
                     if (this.chargeTime == 10 && !this.ghast.isSilent()) {
                         level.levelEvent((Player)null, 1015, this.ghast.blockPosition(), 0);

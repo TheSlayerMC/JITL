@@ -69,7 +69,7 @@ public class JDirtPathBlock extends Block {
     @Override
     public boolean canSurvive(BlockState s, LevelReader l, BlockPos p) {
         BlockState blockstate = l.getBlockState(p.above());
-        return !blockstate.getMaterial().isSolid() || blockstate.getBlock() instanceof FenceGateBlock;
+        return !blockstate.isSolid() || blockstate.getBlock() instanceof FenceGateBlock;
     }
 
     @Override

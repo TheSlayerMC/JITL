@@ -29,7 +29,7 @@ public class EssenciaProjectileEntity extends ThrowableProjectile {
     public void handleEntityEvent(byte pId) {
         if (pId == 3) {
             for(int i = 0; i < 8; ++i) {
-                this.level.addParticle(JParticleManager.ESSENCIA_LIGHTNING.get(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+                this.level().addParticle(JParticleManager.ESSENCIA_LIGHTNING.get(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
             }
         }
     }
@@ -37,10 +37,10 @@ public class EssenciaProjectileEntity extends ThrowableProjectile {
     @Override
     protected void onHitEntity(EntityHitResult result) {
         super.onHitEntity(result);
-        EssenciaBoltEntity essenciaBoltEntity = new EssenciaBoltEntity(JEntities.ESSENCIA_BOLT_TYPE.get(), level);
+        EssenciaBoltEntity essenciaBoltEntity = new EssenciaBoltEntity(JEntities.ESSENCIA_BOLT_TYPE.get(), level());
         essenciaBoltEntity.setPos(result.getLocation().x(), result.getLocation().y(), result.getLocation().z());
         essenciaBoltEntity.setARGB(0xff4800);
-        level.addFreshEntity(essenciaBoltEntity);
+        level().addFreshEntity(essenciaBoltEntity);
     }
 
     @Override

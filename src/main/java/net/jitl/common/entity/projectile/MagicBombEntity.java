@@ -4,7 +4,6 @@ import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -36,9 +35,9 @@ public class MagicBombEntity extends AbstractArrow implements ItemSupplier {
     protected void onHitEntity(@NotNull EntityHitResult entityRayTraceResult_) {
         Entity entity = entityRayTraceResult_.getEntity();
         if(entity instanceof LivingEntity && entity != this.getOwner()) {
-            if(!level.isClientSide()) {
+            if(!level().isClientSide()) {
                 if(entity.hurt(this.damageSources().thrown(this, this.getOwner()), (float) getBaseDamage())) {
-                    level.explode(this, position().x, position().y, position().z, 2.0F, Level.ExplosionInteraction.BLOCK);
+                    level().explode(this, position().x, position().y, position().z, 2.0F, Level.ExplosionInteraction.BLOCK);
                     this.remove(RemovalReason.DISCARDED);
                 }
             }
@@ -53,8 +52,8 @@ public class MagicBombEntity extends AbstractArrow implements ItemSupplier {
         super.tick();
         if(isInGround()) {
             if (collidedWith() != null && collidedWith() != this.getOwner()) {
-                if (!level.isClientSide) {
-                    level.explode(this, position().x, position().y, position().z, 2.0F, Level.ExplosionInteraction.BLOCK);
+                if (!level().isClientSide) {
+                    level().explode(this, position().x, position().y, position().z, 2.0F, Level.ExplosionInteraction.BLOCK);
                     this.remove(RemovalReason.DISCARDED);
                 }
             }
@@ -62,7 +61,7 @@ public class MagicBombEntity extends AbstractArrow implements ItemSupplier {
     }
 
     public Entity collidedWith() {
-        for(Entity entity : this.level.getEntities(this, this.getBoundingBox())) {
+        for(Entity entity : this.level().getEntities(this, this.getBoundingBox())) {
             if(entity instanceof LivingEntity) {
                 return entity;
             }

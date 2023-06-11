@@ -204,24 +204,24 @@ public class BoomBoom extends JMonsterEntity implements PowerableMob {
     protected InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
         if (itemstack.is(Items.FLINT_AND_STEEL)) {
-            this.level.playSound(pPlayer, this.getX(), this.getY(), this.getZ(), SoundEvents.FLINTANDSTEEL_USE, this.getSoundSource(), 1.0F, this.random.nextFloat() * 0.4F + 0.8F);
-            if (!this.level.isClientSide) {
+            this.level().playSound(pPlayer, this.getX(), this.getY(), this.getZ(), SoundEvents.FLINTANDSTEEL_USE, this.getSoundSource(), 1.0F, this.random.nextFloat() * 0.4F + 0.8F);
+            if (!this.level().isClientSide) {
                 this.ignite();
                 itemstack.hurtAndBreak(1, pPlayer, (p_32290_) -> {
                     p_32290_.broadcastBreakEvent(pHand);
                 });
             }
-            return InteractionResult.sidedSuccess(this.level.isClientSide);
+            return InteractionResult.sidedSuccess(this.level().isClientSide);
         } else {
             return super.mobInteract(pPlayer, pHand);
         }
     }
 
     private void explodeBoom() {
-        if (!this.level.isClientSide) {
+        if (!this.level().isClientSide) {
             float f = this.isPowered() ? 2.0F : 1.0F;
             this.dead = true;
-            this.level.explode(this, this.getX(), this.getY(), this.getZ(), (float)this.explosionRadius * f, Level.ExplosionInteraction.MOB);
+            this.level().explode(this, this.getX(), this.getY(), this.getZ(), (float)this.explosionRadius * f, Level.ExplosionInteraction.MOB);
             this.discard();
             this.spawnLingeringCloud();
         }
@@ -230,7 +230,7 @@ public class BoomBoom extends JMonsterEntity implements PowerableMob {
     private void spawnLingeringCloud() {
         Collection<MobEffectInstance> collection = this.getActiveEffects();
         if (!collection.isEmpty()) {
-            AreaEffectCloud areaeffectcloud = new AreaEffectCloud(this.level, this.getX(), this.getY(), this.getZ());
+            AreaEffectCloud areaeffectcloud = new AreaEffectCloud(this.level(), this.getX(), this.getY(), this.getZ());
             areaeffectcloud.setRadius(2.5F);
             areaeffectcloud.setRadiusOnUse(-0.5F);
             areaeffectcloud.setWaitTime(10);
@@ -238,7 +238,7 @@ public class BoomBoom extends JMonsterEntity implements PowerableMob {
             areaeffectcloud.setRadiusPerTick(-areaeffectcloud.getRadius() / (float)areaeffectcloud.getDuration());
             for(MobEffectInstance mobeffectinstance : collection)
                 areaeffectcloud.addEffect(new MobEffectInstance(mobeffectinstance));
-            this.level.addFreshEntity(areaeffectcloud);
+            this.level().addFreshEntity(areaeffectcloud);
         }
 
     }

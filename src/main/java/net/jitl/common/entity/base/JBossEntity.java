@@ -55,7 +55,7 @@ public abstract class JBossEntity extends JMonsterEntity implements IJourneyBoss
 
     @Override
     public boolean wantsToAttack(LivingEntity target, LivingEntity living) {
-        return level.getDifficulty() != Difficulty.PEACEFUL;
+        return level().getDifficulty() != Difficulty.PEACEFUL;
     }
 
     @Override
@@ -89,11 +89,11 @@ public abstract class JBossEntity extends JMonsterEntity implements IJourneyBoss
 
     @Override
     public boolean hurt(@NotNull DamageSource d, float f) {
-        if(!level.isClientSide()) {
+        if(!level().isClientSide()) {
             if(!showBarWhenSpawned()) {
                 if (d.getEntity() instanceof Player) {
                     AABB axisalignedbb = AABB.unitCubeFromLowerCorner(this.position()).inflate(10);
-                    for (Player player : this.level.getEntitiesOfClass(Player.class, axisalignedbb)) {
+                    for (Player player : this.level().getEntitiesOfClass(Player.class, axisalignedbb)) {
                         JBossInfo.addInfo((ServerPlayer) player, getEvent(), this);
                     }
                 }
@@ -105,9 +105,9 @@ public abstract class JBossEntity extends JMonsterEntity implements IJourneyBoss
     @Override
     public void die(@NotNull DamageSource s) {
         super.die(s);
-        if(!level.isClientSide()) {
+        if(!level().isClientSide()) {
             if(!hasSpawned()) {
-                BossCrystal crystal = new BossCrystal(JEntities.BOSS_CRYSTAL_TYPE.get(), level, getDeathCrystalType(), lootTable());
+                BossCrystal crystal = new BossCrystal(JEntities.BOSS_CRYSTAL_TYPE.get(), level(), getDeathCrystalType(), lootTable());
                 crystal.setPos(position().add(0, 1, 0));
                 //level.addFreshEntity(crystal);TODO make crystal work
                 setHasSpawned();

@@ -11,12 +11,14 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterials;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -32,18 +34,18 @@ public class GearAbilityHandler {
             ItemStack hand = entity.getMainHandItem();
             Item item = hand.getItem();
             if (item instanceof JGear && !(item instanceof JArmorItem)) {
-                ((JGear) hand.getItem()).getAbility().tick(entity, entity.level, hand);
+                ((JGear) hand.getItem()).getAbility().tick(entity, entity.level(), hand);
             }
             hand = entity.getOffhandItem();
             item = hand.getItem();
             if (item instanceof JGear && !(item instanceof JArmorItem)) {
-                ((JGear) hand.getItem()).getAbility().tick(entity, entity.level, hand);
+                ((JGear) hand.getItem()).getAbility().tick(entity, entity.level(), hand);
             }
             event.getEntity().getCapability(PlayerArmorProvider.PLAYER_ARMOR).ifPresent(armor -> {
                 ArrayList<ItemStack> stacks = armor.getArmor();
                 if (stacks != null) {
                     for (ItemStack stack : stacks) {
-                        ((JArmorItem) stack.getItem()).getAbility().tick(entity, entity.level, stack);
+                        ((JArmorItem) stack.getItem()).getAbility().tick(entity, entity.level(), stack);
                     }
                 }
                 FullArmorAbility fullSet = armor.getFullArmor();
