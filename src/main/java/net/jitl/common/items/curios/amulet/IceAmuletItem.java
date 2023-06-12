@@ -1,8 +1,14 @@
 package net.jitl.common.items.curios.amulet;
 
 import net.jitl.common.items.curios.JCurioItem;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.UUID;
 
@@ -19,52 +25,52 @@ public class IceAmuletItem extends JCurioItem {
         super(properties);
         properties.durability(256);
     }
-//TODO
-//    @Override
-//    public void curioTick(String identifier, int index, LivingEntity livingEntity, ItemStack stack) {
-//        Player player = (Player) livingEntity;
-//        AttributeInstance attribMovementSpeed = player.getAttribute(Attributes.MOVEMENT_SPEED);
-//        AttributeInstance attribAttackDamage = player.getAttribute(Attributes.ATTACK_DAMAGE);
-//        AttributeInstance attribAttackSpeed = player.getAttribute(Attributes.ATTACK_SPEED);
-//
-//        if (player.level().getBiome(player.blockPosition()).value().getBaseTemperature() <= 0.2F) {
-//            assert attribMovementSpeed != null;
-//            if (!attribMovementSpeed.hasModifier(SPEED_MOD)) {
-//                attribMovementSpeed.addTransientModifier(SPEED_MOD);
-//            }
-//            if (!attribAttackDamage.hasModifier(DAMAGE_MOD)) {
-//                attribAttackDamage.addTransientModifier(DAMAGE_MOD);
-//            }
-//            if (!attribAttackSpeed.hasModifier(ATTACK_MOD)) {
-//                attribAttackSpeed.addTransientModifier(ATTACK_MOD);
-//            }
-//        } else {
-//            if (attribMovementSpeed.hasModifier(SPEED_MOD)) {
-//                attribMovementSpeed.removeModifier(SPEED_MOD);
-//            }
-//            if (attribAttackDamage.hasModifier(DAMAGE_MOD)) {
-//                attribAttackDamage.removeModifier(DAMAGE_MOD);
-//            }
-//            if (attribAttackSpeed.hasModifier(ATTACK_MOD)) {
-//                attribAttackSpeed.removeModifier(ATTACK_MOD);
-//            }
-//        }
-//    }
 
-//    @Override
-//    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
-//        AttributeInstance attribMovementSpeed = slotContext.getWearer().getAttribute(Attributes.MOVEMENT_SPEED);
-//        AttributeInstance attribAttackDamage = slotContext.getWearer().getAttribute(Attributes.ATTACK_DAMAGE);
-//        AttributeInstance attribAttackSpeed = slotContext.getWearer().getAttribute(Attributes.ATTACK_SPEED);
-//
-//        if (attribMovementSpeed.hasModifier(SPEED_MOD)) {
-//            attribMovementSpeed.removeModifier(SPEED_MOD);
-//        }
-//        if (attribAttackDamage.hasModifier(DAMAGE_MOD)) {
-//            attribAttackDamage.removeModifier(DAMAGE_MOD);
-//        }
-//        if (attribAttackSpeed.hasModifier(ATTACK_MOD)) {
-//            attribAttackSpeed.removeModifier(ATTACK_MOD);
-//        }
-//    }
+    @Override
+    public void curioTick(String identifier, int index, LivingEntity livingEntity, ItemStack stack) {
+        Player player = (Player) livingEntity;
+        AttributeInstance attribMovementSpeed = player.getAttribute(Attributes.MOVEMENT_SPEED);
+        AttributeInstance attribAttackDamage = player.getAttribute(Attributes.ATTACK_DAMAGE);
+        AttributeInstance attribAttackSpeed = player.getAttribute(Attributes.ATTACK_SPEED);
+
+        if (player.level().getBiome(player.blockPosition()).value().getBaseTemperature() <= 0.2F) {
+            assert attribMovementSpeed != null;
+            if (!attribMovementSpeed.hasModifier(SPEED_MOD)) {
+                attribMovementSpeed.addTransientModifier(SPEED_MOD);
+            }
+            if (!attribAttackDamage.hasModifier(DAMAGE_MOD)) {
+                attribAttackDamage.addTransientModifier(DAMAGE_MOD);
+            }
+            if (!attribAttackSpeed.hasModifier(ATTACK_MOD)) {
+                attribAttackSpeed.addTransientModifier(ATTACK_MOD);
+            }
+        } else {
+            if (attribMovementSpeed.hasModifier(SPEED_MOD)) {
+                attribMovementSpeed.removeModifier(SPEED_MOD);
+            }
+            if (attribAttackDamage.hasModifier(DAMAGE_MOD)) {
+                attribAttackDamage.removeModifier(DAMAGE_MOD);
+            }
+            if (attribAttackSpeed.hasModifier(ATTACK_MOD)) {
+                attribAttackSpeed.removeModifier(ATTACK_MOD);
+            }
+        }
+    }
+
+    @Override
+    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
+        AttributeInstance attribMovementSpeed = slotContext.getWearer().getAttribute(Attributes.MOVEMENT_SPEED);
+        AttributeInstance attribAttackDamage = slotContext.getWearer().getAttribute(Attributes.ATTACK_DAMAGE);
+        AttributeInstance attribAttackSpeed = slotContext.getWearer().getAttribute(Attributes.ATTACK_SPEED);
+
+        if (attribMovementSpeed.hasModifier(SPEED_MOD)) {
+            attribMovementSpeed.removeModifier(SPEED_MOD);
+        }
+        if (attribAttackDamage.hasModifier(DAMAGE_MOD)) {
+            attribAttackDamage.removeModifier(DAMAGE_MOD);
+        }
+        if (attribAttackSpeed.hasModifier(ATTACK_MOD)) {
+            attribAttackSpeed.removeModifier(ATTACK_MOD);
+        }
+    }
 }

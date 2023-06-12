@@ -39,7 +39,7 @@ public class KnowledgeToast implements JToast {
         RenderSystem.setShaderTexture(0, TEXTURE);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         JDisplayInfo displayinfo = isLevel ? this.knowledge.getLevelDisplay() : this.knowledge.getXPDisplay();
-        poseStack.blit(KNOWLEDGE_SPRITE, 0, 0, 0, 0, this.width(), this.height());
+        poseStack.blit(TEXTURE, 0, 0, 0, 0, this.width(), this.height());
         if(displayinfo != null) {
             List<FormattedCharSequence> list = toastComponent.getMinecraft().font.split(displayinfo.getDescription(), 125);
             int i = displayinfo.getFrame() == JFrameType.LEVEL ? ArgbColor.from(ChatFormatting.DARK_PURPLE) : ArgbColor.from(ChatFormatting.BLACK);

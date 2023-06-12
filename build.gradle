@@ -156,8 +156,8 @@ dependencies {
     compileOnly(fg.deobf("mezz.jei:jei-${buildProps["minecraft.version"]}-forge-api:${buildProps["jei_version"]}"))
     runtimeOnly(fg.deobf("mezz.jei:jei-${buildProps["minecraft.version"]}-forge:${buildProps["jei_version"]}"))
 
-    //runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${buildProps["curios.version"]}")
-    //compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${buildProps["curios.version"]}:api")
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${buildProps["curios.version"]}")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${buildProps["curios.version"]}:api")
 
     implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${buildProps["gekolib.version"]}")
 }
