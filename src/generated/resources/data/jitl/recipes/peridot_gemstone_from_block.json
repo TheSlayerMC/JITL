@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "peridot_gemstone",
+  "ingredients": [
+    {
+      "item": "jitl:peridot_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "jitl:peridot_gemstone"
+  }
+}

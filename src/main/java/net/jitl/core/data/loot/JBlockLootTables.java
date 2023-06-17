@@ -49,6 +49,8 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.add(JBlocks.LUNIUM_ORE, (block) -> createOreDrop(block, JItems.LUNIUM_POWDER.get()));
         this.add(JBlocks.DEEPSLATE_LUNIUM_ORE, (block) -> createOreDrop(block, JItems.LUNIUM_POWDER.get()));
         this.dropSelf(JBlocks.LUNIUM_BLOCK);
+        this.add(JBlocks.LUNITE_ORE, (block) -> createOreDrop(block, JItems.LUNITE_CHUNK.get()));
+        this.dropSelf(JBlocks.LUNITE_BLOCK);
 
         this.dropSelf(JBlocks.VERDITE_ORE);
         this.dropSelf(JBlocks.VERDITE_BLOCK);
@@ -407,11 +409,11 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.CORBA_FURNACE);
 
         this.dropSelf(JBlocks.TERRANIAN_PORTAL_FRAME);
-        this.dropSelf(JBlocks.TERRANIAN_PORTAL);
-        this.dropSelf(JBlocks.TERRANIAN_GRASS);
+        this.add(JBlocks.TERRANIAN_PORTAL, noDrop());
+        this.add(JBlocks.TERRANIAN_GRASS, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.TERRANIAN_DIRT.get()));
         this.dropSelf(JBlocks.TERRANIAN_DIRT);
         this.dropSelf(JBlocks.TERRANIAN_STONE);
-        this.dropSelf(JBlocks.TERRANIAN_LEAVES);
+        this.add(JBlocks.TERRANIAN_LEAVES, (block) -> this.createLeavesDrops(block, JBlocks.TERRANIAN_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         this.dropSelf(JBlocks.TERRANIAN_VINE);
         this.dropSelf(JBlocks.TERRANIAN_LOG);
         this.dropSelf(JBlocks.TERRANIAN_BARS);
@@ -463,6 +465,46 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.add(JBlocks.DEPTHS_FARMLAND, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.DEPTHS_DIRT.get()));
         this.add(JBlocks.PERMAFROST_FARMLAND, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.CRUMBLED_PERMAFROST.get()));
         this.add(JBlocks.CORBA_FARMLAND, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.CORBA_DIRT.get()));
+
+        this.dropSelf(JBlocks.FUNGAL_SHELF);
+        this.dropSelf(JBlocks.CLOUDIA_PORTAL_FRAME);
+        this.add(JBlocks.CLOUDIA_PORTAL, noDrop());
+        this.dropSelf(JBlocks.CLOUDIA_DIRT);
+        this.dropSelf(JBlocks.CLOUDIA_LOG);
+        this.add(JBlocks.CLOUDIA_ROCK, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.CLOUDIA_COBBLESTONE.get()));
+        this.dropSelf(JBlocks.CLOUDIA_COBBLESTONE);
+        this.dropSelf(JBlocks.CLOUDIA_PILLAR);
+        this.dropSelf(JBlocks.CLOUDIA_PLANKS);
+        this.dropSelf(JBlocks.CLOUDIA_BRICK);
+        this.dropSelf(JBlocks.CLOUDIA_WALL);
+        this.dropSelf(JBlocks.CLOUDIA_TILE);
+        this.dropSelf(JBlocks.CLOUDIA_LAMP);
+        this.add(JBlocks.CLOUDIA_GRASS, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.CLOUDIA_DIRT.get()));
+        this.add(JBlocks.CLOUDIA_LEAVES, (block) -> this.createLeavesDrops(block, JBlocks.BOGWOOD_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        this.add(JBlocks.CLOUDIA_TILE_SLAB, this::createSlabItemTable);
+        this.add(JBlocks.CLOUDIA_BRICK_SLAB, this::createSlabItemTable);
+        this.dropSelf(JBlocks.CLOUDIA_TILE_STAIRS);
+        this.dropSelf(JBlocks.CLOUDIA_BRICK_STAIRS);
+        this.dropSelf(JBlocks.CLOUDIA_POST);
+        this.dropSelf(JBlocks.PINK_CLOUDIA_CLOUD);
+        this.dropSelf(JBlocks.BLUE_CLOUDIA_CLOUD);
+        this.dropSelf(JBlocks.LIGHT_BLUE_CLOUDIA_CLOUD);
+
+        this.add(JBlocks.SENTERIAN_PORTAL, noDrop());
+        this.dropSelf(JBlocks.SENTERIAN_PORTAL_FRAME);
+        this.dropSelf(JBlocks.SENTERIAN_BARS);
+        this.dropSelf(JBlocks.SENTERIAN_BRICKS);
+        this.dropSelf(JBlocks.SENTERIAN_BRICK_STAIRS);
+        this.dropSelf(JBlocks.SENTERIAN_CARVED_ROCK);
+        this.dropSelf(JBlocks.SENTERIAN_FLOOR);
+        this.dropSelf(JBlocks.SENTERIAN_FLOOR);
+        this.dropSelf(JBlocks.SENTERIAN_ROCK);
+        this.dropSelf(JBlocks.SENTERIAN_GLASS);
+        this.dropSelf(JBlocks.SENTERIAN_GUARDIAN_LAMP);
+        this.dropSelf(JBlocks.SENTERIAN_LIGHT_LAMP);
+        this.dropSelf(JBlocks.SENTERIAN_MELLOW_LAMP);
+        this.dropSelf(JBlocks.SENTERIAN_POST);
+        this.dropSelf(JBlocks.SENTRY_LOCK);
 
     }
 

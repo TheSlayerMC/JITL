@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "jitl:corba_log"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "jitl:corba_planks"
+  }
+}

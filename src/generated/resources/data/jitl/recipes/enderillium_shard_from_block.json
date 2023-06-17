@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "enderillium_shard",
+  "ingredients": [
+    {
+      "item": "jitl:enderillium_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "jitl:enderillium_shard"
+  }
+}

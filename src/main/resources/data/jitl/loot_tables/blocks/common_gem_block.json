@@ -90,5 +90,6 @@
       ],
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "jitl:blocks/common_gem_block"
 }

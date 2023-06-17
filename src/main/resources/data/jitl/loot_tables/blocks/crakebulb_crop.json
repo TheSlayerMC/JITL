@@ -19,7 +19,7 @@
                   "block": "jitl:crakebulb_crop",
                   "condition": "minecraft:block_state_property",
                   "properties": {
-                    "age": "4"
+                    "age": "3"
                   }
                 }
               ],
@@ -41,7 +41,7 @@
           "block": "jitl:crakebulb_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
-            "age": "4"
+            "age": "3"
           }
         }
       ],
@@ -64,5 +64,6 @@
       ],
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "jitl:blocks/crakebulb_crop"
 }

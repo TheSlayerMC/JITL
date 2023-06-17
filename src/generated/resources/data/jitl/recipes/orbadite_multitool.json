@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "jitl:orbadite_axe"
+    },
+    {
+      "item": "jitl:orbadite_pickaxe"
+    },
+    {
+      "item": "jitl:orbadite_shovel"
+    },
+    {
+      "item": "jitl:orbadite_hoe"
+    }
+  ],
+  "result": {
+    "item": "jitl:orbadite_multitool"
+  }
+}

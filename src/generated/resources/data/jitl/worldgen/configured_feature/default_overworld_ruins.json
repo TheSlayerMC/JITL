@@ -1,0 +1,94 @@
+{
+  "type": "jitl:ruins",
+  "config": {
+    "chest_block": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "jitl:journey_chest",
+        "Properties": {
+          "type": "single",
+          "facing": "north",
+          "locked": "false",
+          "waterlogged": "false"
+        }
+      }
+    },
+    "loot_list": "minecraft:chests/abandoned_mineshaft",
+    "max_columns": 5,
+    "max_height": 5,
+    "max_spreading": 5,
+    "ruined_blocks_provider": {
+      "entries": [
+        {
+          "data": {
+            "Name": "minecraft:stone_bricks"
+          },
+          "weight": 6
+        },
+        {
+          "data": {
+            "Name": "minecraft:cracked_stone_bricks"
+          },
+          "weight": 5
+        },
+        {
+          "data": {
+            "Name": "minecraft:mossy_stone_bricks"
+          },
+          "weight": 4
+        },
+        {
+          "data": {
+            "Name": "minecraft:mossy_cobblestone"
+          },
+          "weight": 3
+        },
+        {
+          "data": {
+            "Name": "minecraft:cobblestone"
+          },
+          "weight": 4
+        },
+        {
+          "data": {
+            "Name": "minecraft:chiseled_stone_bricks"
+          },
+          "weight": 2
+        },
+        {
+          "data": {
+            "Name": "minecraft:infested_cobblestone"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:infested_stone_bricks"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:infested_mossy_stone_bricks"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:infested_cracked_stone_bricks"
+          },
+          "weight": 1
+        }
+      ]
+    },
+    "spawn_block": {
+      "block_state": {
+        "Name": "minecraft:grass_block",
+        "Properties": {
+          "snowy": "false"
+        }
+      },
+      "predicate_type": "minecraft:blockstate_match"
+    }
+  }
+}

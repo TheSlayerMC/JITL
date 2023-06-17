@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "jitl:gorbite_axe"
+    },
+    {
+      "item": "jitl:gorbite_pickaxe"
+    },
+    {
+      "item": "jitl:gorbite_shovel"
+    },
+    {
+      "item": "jitl:gorbite_hoe"
+    }
+  ],
+  "result": {
+    "item": "jitl:gorbite_multitool"
+  }
+}

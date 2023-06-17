@@ -19,7 +19,7 @@
                   "block": "jitl:corveggies_crop",
                   "condition": "minecraft:block_state_property",
                   "properties": {
-                    "age": "3"
+                    "age": "2"
                   }
                 }
               ],
@@ -41,7 +41,7 @@
           "block": "jitl:corveggies_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
-            "age": "3"
+            "age": "2"
           }
         }
       ],
@@ -64,5 +64,6 @@
       ],
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "jitl:blocks/corveggies_crop"
 }

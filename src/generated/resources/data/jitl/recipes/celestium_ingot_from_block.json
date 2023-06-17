@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "celestium_ingot",
+  "ingredients": [
+    {
+      "item": "jitl:celestium_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "jitl:celestium_ingot"
+  }
+}

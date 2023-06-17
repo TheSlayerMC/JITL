@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "jitl:mekyum_axe"
+    },
+    {
+      "item": "jitl:mekyum_pickaxe"
+    },
+    {
+      "item": "jitl:mekyum_shovel"
+    },
+    {
+      "item": "jitl:mekyum_hoe"
+    }
+  ],
+  "result": {
+    "item": "jitl:mekyum_multitool"
+  }
+}
