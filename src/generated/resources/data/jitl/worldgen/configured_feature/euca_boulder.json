@@ -1,8 +1,0 @@
-{
-  "type": "jitl:boulder",
-  "config": {
-    "state": {
-      "Name": "jitl:goldite_cobblestone"
-    }
-  }
-}
