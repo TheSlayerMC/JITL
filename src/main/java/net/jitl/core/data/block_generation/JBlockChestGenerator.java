@@ -38,7 +38,7 @@ public class JBlockChestGenerator {
                 e.printStackTrace();
             }
 
-            getBlockItem();
+            getBlockItem(JITL.MODID, name);
             getBlockModel(JITL.MODID, name);
             getBlockstate();
 
@@ -46,44 +46,12 @@ public class JBlockChestGenerator {
         }
     }
 
-    public void getBlockItem() {
+    public void getBlockItem(String modID, String name) {
         writeToItemModelFile("{");
-        writeToItemModelFile("    \"parent\": \"builtin/entity\",");
-        writeToItemModelFile("    \"textures\": {");
-        writeToItemModelFile("        \"particle\": \"block/cobblestone\"");
-        writeToItemModelFile("    },");
-        writeToItemModelFile("    \"display\": {");
-        writeToItemModelFile("        \"gui\": {");
-        writeToItemModelFile("            \"rotation\": [ 30, 45, 0 ],");
-        writeToItemModelFile("            \"translation\": [ 0, 0, 0],");
-        writeToItemModelFile("            \"scale\":[ 0.625, 0.625, 0.625 ]");
-        writeToItemModelFile("        },");
-        writeToItemModelFile("        \"ground\": {");
-        writeToItemModelFile("            \"rotation\": [ 0, 0, 0 ],");
-        writeToItemModelFile("            \"translation\": [ 0, 3, 0],");
-        writeToItemModelFile("            \"scale\":[ 0.25, 0.25, 0.25 ]");
-        writeToItemModelFile("        },");
-        writeToItemModelFile("        \"head\": {");
-        writeToItemModelFile("            \"rotation\": [ 0, 180, 0 ],");
-        writeToItemModelFile("            \"translation\": [ 0, 0, 0],");
-        writeToItemModelFile("            \"scale\":[ 1, 1, 1]");
-        writeToItemModelFile("        },");
-        writeToItemModelFile("        \"fixed\": {");
-        writeToItemModelFile("            \"rotation\": [ 0, 180, 0 ],");
-        writeToItemModelFile("            \"translation\": [ 0, 0, 0],");
-        writeToItemModelFile("            \"scale\":[ 0.5, 0.5, 0.5 ]");
-        writeToItemModelFile("        },");
-        writeToItemModelFile("        \"thirdperson_righthand\": {");
-        writeToItemModelFile("            \"rotation\": [ 75, 315, 0 ],");
-        writeToItemModelFile("            \"translation\": [ 0, 2.5, 0],");
-        writeToItemModelFile("            \"scale\": [ 0.375, 0.375, 0.375 ]");
-        writeToItemModelFile("        },");
-        writeToItemModelFile("        \"firstperson_righthand\": {");
-        writeToItemModelFile("            \"rotation\": [ 0, 315, 0 ],");
-        writeToItemModelFile("            \"translation\": [ 0, 0, 0],");
-        writeToItemModelFile("            \"scale\": [ 0.4, 0.4, 0.4 ]");
-        writeToItemModelFile("        }");
-        writeToItemModelFile("    }");
+        writeToItemModelFile("    \"parent\": \"jitl:item/mod_chest\",");
+        writeToItemModelFile("  \"textures\": {");
+        writeToItemModelFile("    \"0\": \"" + modID + ":" + "block/" + name + "\"");
+        writeToItemModelFile("  }");
         writeToItemModelFile("}");
     }
 

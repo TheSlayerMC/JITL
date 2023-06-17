@@ -1,0 +1,66 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.rockite_smasher",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "head",
+					"pivot": [0, 15, 1],
+					"cubes": [
+						{"origin": [-7, 23, -12], "size": [14, 6, 8], "uv": [0, 0]},
+						{"origin": [-6.77098, 27.03297, -10.82569], "size": [3, 6, 3], "pivot": [-5.27098, 29.03297, -9.32569], "rotation": [0, -5, -27.5], "uv": [0, 100]}
+					]
+				},
+				{
+					"name": "body",
+					"pivot": [-0.75, 15, 1],
+					"cubes": [
+						{"origin": [-9, 13, -7], "size": [18, 13, 11], "pivot": [0, 20.5, -1.5], "rotation": [27.5, 0, 0], "uv": [0, 40]},
+						{"origin": [-4.5, 10, -1], "size": [9, 5, 6], "uv": [0, 70]},
+						{"origin": [7, 27, -3], "size": [4, 8, 4], "pivot": [6, 32, 1], "rotation": [0, -15, 30], "uv": [0, 86]},
+						{"origin": [8.66096, 25.30537, -3.62363], "size": [2, 6, 2], "pivot": [10.66096, 28.30537, -3.62363], "rotation": [25, -25, 20], "uv": [32, 86]},
+						{"origin": [5.28047, 25.21802, 0.72698], "size": [2, 6, 2], "pivot": [6.28047, 27.21802, 1.72698], "rotation": [-32.5, -25, 42.5], "uv": [32, 86]},
+						{"origin": [4.08582, 27.49605, -2.16171], "size": [2, 6, 2], "pivot": [5.08582, 30.49605, -1.16171], "rotation": [2.5, -7.5, -7.5], "uv": [32, 100]},
+						{"origin": [8.95869, 24.08403, -1.37856], "size": [2, 6, 2], "pivot": [9.95869, 27.08403, -0.37856], "rotation": [-5, -7.5, 62.5], "uv": [32, 100]}
+					]
+				},
+				{
+					"name": "rightLeg",
+					"pivot": [-4.5, 9, 2],
+					"cubes": [
+						{"origin": [-7.5, 0, -0.5], "size": [6, 10, 5], "uv": [94, 20]}
+					]
+				},
+				{
+					"name": "leftLeg",
+					"pivot": [4.5, 9, 2],
+					"cubes": [
+						{"origin": [1.5, 0, -0.5], "size": [6, 10, 5], "uv": [48, 0]}
+					]
+				},
+				{
+					"name": "leftArm",
+					"pivot": [11, 21, -4],
+					"cubes": [
+						{"origin": [9, 0, -7], "size": [4, 24, 6], "uv": [60, 21]}
+					]
+				},
+				{
+					"name": "rightArm",
+					"pivot": [-11, 21, -4],
+					"cubes": [
+						{"origin": [-13, 0, -7], "size": [4, 24, 6], "uv": [60, 21]}
+					]
+				}
+			]
+		}
+	]
+}
