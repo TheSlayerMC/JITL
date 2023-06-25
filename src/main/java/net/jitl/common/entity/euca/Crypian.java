@@ -3,11 +3,11 @@ package net.jitl.common.entity.euca;
 import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import net.jitl.client.ChatUtils;
 import net.jitl.common.entity.base.CurrencyForItemsTrade;
 import net.jitl.common.entity.base.JVillagerEntity;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -105,13 +105,13 @@ public class Crypian extends JVillagerEntity {
         if(isAlive() && this.getTradingPlayer() == null && canTrade() && !isAlloyHouse()) {
             switch(random.nextInt(3)) {
                 case 0:
-                    player.sendSystemMessage(Component.translatable("Crypian: Yeah I took some of it"));
+                    ChatUtils.addDialogStyleChat(player, "Crypian: Yeah I took some of it");
                     break;
                 case 1:
-                    player.sendSystemMessage(Component.translatable("Crypian: IT'S MINE.... Unless you want it?"));
+                    ChatUtils.addDialogStyleChat(player, "Crypian: IT'S MINE.... Unless you want it?");
                     break;
                 case 2:
-                    player.sendSystemMessage(Component.translatable("Crypian: I might go see where he has moved to...."));
+                    ChatUtils.addDialogStyleChat(player, "Crypian: I might go see where he has moved to....");
                     break;
             }
             trade(player);
@@ -119,22 +119,22 @@ public class Crypian extends JVillagerEntity {
             if(isAlloyHouse()) {
                 switch(random.nextInt(3)) {
                     case 0:
-                        player.sendSystemMessage(Component.translatable("Crypian: Alloy Mender used to live here, but he moved into the royal lands"));
+                        ChatUtils.addDialogStyleChat(player, "Crypian: Alloy Mender used to live here, but he moved into the royal lands");
                     break;
                     case 1:
-                        player.sendSystemMessage(Component.translatable("Crypian: Everyone has raided his house"));
+                        ChatUtils.addDialogStyleChat(player, "Crypian: Everyone has raided his house");
                         break;
                     case 2:
-                        player.sendSystemMessage(Component.translatable("Crypian: You could possibly trade with some of them"));
+                        ChatUtils.addDialogStyleChat(player, "Crypian: You could possibly trade with some of them");
                         break;
                 }
             } else {
                 switch(random.nextInt(2)) {
                     case 0:
-                        player.sendSystemMessage(Component.translatable("Crypian: I missed out on the Alloy Menders gear"));
+                        ChatUtils.addDialogStyleChat(player, "Crypian: I missed out on the Alloy Menders gear");
                         break;
                     case 1:
-                        player.sendSystemMessage(Component.translatable("Crypian: A few others have some of the Alloy Menders things"));
+                        ChatUtils.addDialogStyleChat(player, "Crypian: A few others have some of the Alloy Menders things");
                         break;
                 }
             }
