@@ -1,12 +1,12 @@
 package net.jitl.common.entity.euca;
 
+import net.jitl.client.ChatUtils;
 import net.jitl.common.block.entity.PedestalTile;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -133,20 +133,20 @@ public class RoyalKing extends PathfinderMob implements GeoEntity {
 
         final Level world = this.level();
         final BlockPos entityPos = BlockPos.containing(this.position());
-        for (int x = -check_radius; x <= check_radius; x++) {
-            for (int z = -check_radius; z <= check_radius; z++) {
-                for (int y = -check_radius; y <= check_radius; y++) {
+        for(int x = -check_radius; x <= check_radius; x++) {
+            for(int z = -check_radius; z <= check_radius; z++) {
+                for(int y = -check_radius; y <= check_radius; y++) {
                     final BlockPos pos = entityPos.offset(x, y, z);
                     final Block block = world.getBlockState(pos).getBlock();
-                    if (block == JBlocks.ROYAL_PEDESTAL.get()) {
+                    if(block == JBlocks.ROYAL_PEDESTAL.get()) {
                         PedestalTile tile = (PedestalTile) world.getBlockEntity(pos);
-                        if (tile != null) {
-                            if (tile.getItem(0).getItem().equals(JItems.ROYAL_DISK.get())) {
+                        if(tile != null) {
+                            if(tile.getItem(0).getItem().equals(JItems.ROYAL_DISK.get())) {
                                 totalDisks++;
                                 neededDisks--;
                             }
 
-                            if (tile.getItem(0).getItem().equals(JItems.EUCA_TABLET.get())) {
+                            if(tile.getItem(0).getItem().equals(JItems.EUCA_TABLET.get())) {
                                 totalTablets++;
                                 neededTables--;
                             }
@@ -160,15 +160,13 @@ public class RoyalKing extends PathfinderMob implements GeoEntity {
             }
         }
         if(totalDisks >= 6 && totalTablets >= 8) {
-            this.playSound(JSounds.FROZEN_GUARDIAN_DEATH.get(), 1.5F, 1.0F);
+            this.playSound(JSounds.COIN_PICKUP.get(), 1.5F, 1.0F);
             setActivated(true);
         }
-        if(!level().isClientSide) {
             if(hasCrown())
-                playerEntity.sendSystemMessage(Component.translatable("I need " + neededDisks + " more Royal Disks and " + neededTables + " Euca Tablets"));
+                ChatUtils.addDialogStyleChat(playerEntity, "I need " + neededDisks + " more Royal Disks and " + neededTables + " Euca Tablets");
             if (!hasCrown()) {
-                playerEntity.sendSystemMessage(Component.translatable("jitl.king.hero"));
-            }
+                ChatUtils.addDialogStyleChat(playerEntity, "jitl.king.hero");
         }
         return super.mobInteract(playerEntity, hand);
     }
