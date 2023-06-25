@@ -402,6 +402,11 @@
       "jitl:entities/piercer_return"
     ]
   },
+  "misc.coin_pickup": {
+    "sounds": [
+      "jitl:misc/coin_pickup"
+    ]
+  },
   "entities.knife": {
     "sounds": [
       "jitl:entities/knife"

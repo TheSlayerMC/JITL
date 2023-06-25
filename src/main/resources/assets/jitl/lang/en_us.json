@@ -47,6 +47,7 @@
 "entity.jitl.essencia_bolt": "Essencia Bolt",
 "entity.jitl.boss_crystal": "Boss Crystal",
 "entity.jitl.jboat": "Journey Boat",
+"entity.jitl.sentacoin": "Sentacoin",
 "entity.jitl.mage": "Mage",
 "entity.jitl.floro": "Floro",
 "entity.jitl.boomboom": "BoomBoom",
@@ -937,5 +938,7 @@
 "item.jitl.strong_essence_crystal": "Strong Essence Crystal",
 "item.jitl.very_strong_essence_crystal": "Very Strong Essence Crystal",
 "item.jitl.breathing_stone": "Breathing Stone",
-"item.jitl.eudor_crown": "Eudor's Crown"
+"item.jitl.eudor_crown": "Eudor's Crown",
+"item.jitl.sentacoin": "Sentacoin",
+"item.jitl.sentacoin_bag": "Sentacoin Bag"
 }

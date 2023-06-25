@@ -105,6 +105,7 @@ public class JSounds {
     public static final RegistryObject<SoundEvent> BOIL_DISC_1 = registerSound("music.record.boil_1");
 
     public static final RegistryObject<SoundEvent> BOSS_DEATH = registerSound("entities.boss.death");
+    public static final RegistryObject<SoundEvent> COIN_PICKUP = registerSound("misc.coin_pickup");
 
 
     private static RegistryObject<SoundEvent> registerSound(String name) {

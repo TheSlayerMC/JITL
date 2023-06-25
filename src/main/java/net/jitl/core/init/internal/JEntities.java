@@ -9,6 +9,7 @@ import net.jitl.common.entity.depths.*;
 import net.jitl.common.entity.euca.*;
 import net.jitl.common.entity.frozen.Eskimo;
 import net.jitl.common.entity.frozen.FrozenGuardian;
+import net.jitl.common.entity.misc.SentacoinEntity;
 import net.jitl.common.entity.nether.*;
 import net.jitl.common.entity.overworld.*;
 import net.jitl.common.entity.overworld.npc.Mage;
@@ -70,6 +71,7 @@ public class JEntities {
     public static final RegistryObject<EntityType<EssenciaBoltEntity>> ESSENCIA_BOLT_TYPE = registerRawEntity(EssenciaBoltEntity::new, "essencia_bolt", "Essencia Bolt", 0.25F, 0.25F);
     public static final RegistryObject<EntityType<BossCrystal>> BOSS_CRYSTAL_TYPE = registerRawEntity(BossCrystal::new, "boss_crystal", "Boss Crystal", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<JBoat>> JBOAT_TYPE = registerRawEntity(JBoat::new, "jboat", "Journey Boat", 1.375F, 0.5625F);
+    public static final RegistryObject<EntityType<SentacoinEntity>> SENTACOIN_TYPE = registerRawEntity(SentacoinEntity::new, "sentacoin", "Sentacoin", 0.1F, 0.1F);
 
     //OVERWORLD MOBS
     public static final RegistryObject<EntityType<Mage>> MAGE_TYPE = registerEntity(Mage::new, "mage", "Mage", 1F, 1.75F, OVERWORLD_COLOR, TRADER_COLOR, MobCategory.CREATURE);
