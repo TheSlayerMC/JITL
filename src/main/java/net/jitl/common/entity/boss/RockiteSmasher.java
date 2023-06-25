@@ -5,6 +5,7 @@ import net.jitl.common.entity.base.JBossEntity;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
 import net.jitl.common.entity.goal.IdleHealGoal;
 import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.JLootTables;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -21,7 +22,6 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -120,7 +120,7 @@ public class RockiteSmasher extends JBossEntity {
 
     @Override
     public ResourceLocation lootTable() {
-        return BuiltInLootTables.SIMPLE_DUNGEON;
+        return JLootTables.ROCKITE_SMASHER_CRYSTAL;
     }
 
     @Override
