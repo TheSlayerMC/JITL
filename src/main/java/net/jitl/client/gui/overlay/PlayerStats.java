@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.client.knowledge.ClientKnowledge;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.client.knowledge.PlayerKnowledgeProvider;
+import net.jitl.client.stats.ClientPlayerStats;
 import net.jitl.core.helper.internal.ArgbColor;
 import net.jitl.core.helper.internal.EmptyContainer;
 import net.jitl.core.init.JITL;
@@ -136,8 +137,8 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         matrixStack.blit(KNOWLEDGE_SPRITE, k + x, l + y, spriteX, spriteY, 32, 32); //Draws the knowledge sprite
         matrixStack.drawString(font, s, k + x + 35, l + y + 5, 4210752, false); //Draws the sprite name
 
-        //if(s.contains("Sentacoins"))
-        //    font.draw(matrixStack, "" + jPlayer.sentacoins.getAmount(), k + x + 35, l + y + 15, 4210752);
+        if(s.contains("Sentacoins"))
+            matrixStack.drawString(font, "" + ClientPlayerStats.getSentacoins(), k + x + 35, l + y + 15, ArgbColor.from(ChatFormatting.WHITE));
 
         matrixStack.pose().popPose();
         RenderSystem.enableDepthTest();

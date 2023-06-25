@@ -30,7 +30,8 @@ public class TestBugItem extends Item implements IEssenceItem {
 
             });
             player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
-                stats.setBlizzard(!stats.hasBlizzard());
+                //stats.setBlizzard(!stats.hasBlizzard());
+                stats.addSentacoins(10);
             });
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());

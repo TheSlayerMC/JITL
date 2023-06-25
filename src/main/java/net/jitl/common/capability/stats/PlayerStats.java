@@ -11,6 +11,7 @@ import net.minecraftforge.network.PacketDistributor;
 public class PlayerStats {
 
     private boolean hasBlizzard;
+    private int sentacoins;
 
     public void copyFrom(PlayerStats stats) {
         this.hasBlizzard = stats.hasBlizzard;
@@ -28,6 +29,22 @@ public class PlayerStats {
         this.hasBlizzard = false;
     }
 
+    public int getSentacoins(){
+        return sentacoins;
+    }
+
+    public void setSentacoins(int value){
+        sentacoins = value;
+    }
+
+    public void useSentacoins(int amount) {
+        sentacoins -= amount;
+    }
+
+    public void addSentacoins(int amount) {
+       sentacoins += amount;
+    }
+
     public void sendPacket(Player player) {
         if(!(player instanceof FakePlayer) && player instanceof ServerPlayer) {
             JNetworkRegistry.INSTANCE.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer)player), new PacketPlayerStats(this));
@@ -40,9 +57,11 @@ public class PlayerStats {
 
     public void saveNBT(CompoundTag nbt) {
         nbt.putBoolean("hasBlizzard", this.hasBlizzard);
+        nbt.putInt("sentacoins", this.sentacoins);
     }
 
     public void readNBT(CompoundTag nbt) {
         hasBlizzard = nbt.getBoolean("hasBlizzard");
+        sentacoins = nbt.getInt("sentacoins");
     }
 }
