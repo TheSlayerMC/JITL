@@ -106,6 +106,8 @@ public class JSounds {
 
     public static final RegistryObject<SoundEvent> BOSS_DEATH = registerSound("entities.boss.death");
     public static final RegistryObject<SoundEvent> COIN_PICKUP = registerSound("misc.coin_pickup");
+    public static final RegistryObject<SoundEvent> CRYSTAL_ERROR = registerSound("misc.crystal_error");
+    public static final RegistryObject<SoundEvent> CRYSTAL_PICKUP = registerSound("misc.crystal_pickup");
 
 
     private static RegistryObject<SoundEvent> registerSound(String name) {

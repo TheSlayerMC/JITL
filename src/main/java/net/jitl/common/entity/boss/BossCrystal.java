@@ -1,23 +1,35 @@
 package net.jitl.common.entity.boss;
 
 import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -26,27 +38,37 @@ import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
 
-public class BossCrystal extends Entity implements GeoEntity {
+public class BossCrystal extends Mob implements GeoEntity {
     
     private final NonNullList<ItemStack> storedItems = NonNullList.create();
-    private ResourceLocation table;
+    private ResourceLocation loot_table;
     private static final EntityDataAccessor<String> TYPE = SynchedEntityData.defineId(BossCrystal.class, EntityDataSerializers.STRING);
 
     public BossCrystal(EntityType<? extends BossCrystal> pEntityType, Level pLevel, Type t, ResourceLocation loot) {
         this(pEntityType, pLevel);
         setType(t.getName());
         setLootTable(loot);
+        this.setDeltaMovement(0, 0, 0);
     }
 
     public BossCrystal(EntityType<? extends BossCrystal> entityEntityType, Level level) {
         super(entityEntityType, level);
     }
 
+    public static AttributeSupplier createAttributes() {
+        return Monster.createMonsterAttributes()
+                .add(Attributes.MAX_HEALTH, 1)
+                .add(Attributes.FOLLOW_RANGE, 0)
+                .add(Attributes.MOVEMENT_SPEED, 0.0).build();
+    }
+
     @Override
     protected void defineSynchedData() {
-        this.entityData.define(TYPE, "");
+        super.defineSynchedData();
+        this.entityData.define(TYPE, "type");
     }
 
     public String getCrystalType() {
@@ -58,17 +80,17 @@ public class BossCrystal extends Entity implements GeoEntity {
     }
 
     public void setLootTable(ResourceLocation table) {
-        this.table = table;
+        this.loot_table = table;
     }
 
     @Override
-    protected void readAdditionalSaveData(CompoundTag compound) {
+    public void readAdditionalSaveData(CompoundTag compound) {
         ContainerHelper.loadAllItems(compound, storedItems);
         setType(compound.getString("type"));
     }
 
     @Override
-    protected void addAdditionalSaveData(CompoundTag compound) {
+    public void addAdditionalSaveData(CompoundTag compound) {
         ContainerHelper.saveAllItems(compound, storedItems);
         compound.putString("type", getCrystalType());
     }
@@ -79,38 +101,67 @@ public class BossCrystal extends Entity implements GeoEntity {
     }
 
     @Override
-    public @NotNull InteractionResult interact(Player player, InteractionHand hand) {
-        if (!this.level().isClientSide) {
-            //LootTable ltManager = Objects.requireNonNull(this.level().getServer()).getLootData().getLootTable();
-           // LootTable lt = ltManager.get(table);
-            ItemStack sword = new ItemStack(Items.DIAMOND_SWORD);
-            sword.enchant(Enchantments.MOB_LOOTING, 3);
-            sword.enchant(Enchantments.FIRE_ASPECT, 1);
-            Vec3 position = new Vec3(getX(), getY(), getZ());
-            //LootContext.Builder builder = (new LootContext.Builder((ServerLevel) this.level()))
-             //       .withParameter(LootContextParams.TOOL, sword)
-            //        .withParameter(LootContextParams.ORIGIN, position);
-            //LootContext ctx = builder.create(LootContextParamSets.FISHING);
-            //List<ItemStack> generated = lt.getRandomItems(ctx);
-            //storedItems.addAll(generated);
-
-            for(Iterator<ItemStack> iterator = storedItems.iterator(); iterator.hasNext(); ) {
-                ItemStack itemStack = iterator.next();
-                if (player.addItem(itemStack)) {
-                    iterator.remove();
-                } else {
-                    //ChatUtils.sendColored(player, TextFormatting.RED, new TextComponentTranslation("msg.journey.boss_crystal.not_enough_space"));
-                    //playSound(JSounds.CRYSTAL_ERROR, 1.0F, 1.0F);
-                    break;
-                }
+    public @NotNull InteractionResult mobInteract(@NotNull Player player, @NotNull InteractionHand hand) {
+        if(!this.level().isClientSide) {
+            LootTable table = Objects.requireNonNull(level().getServer()).getLootData().getLootTable(loot_table);
+            List<ItemStack> itemList = table.getRandomItems(new LootParams.Builder((ServerLevel)level()).withParameter(LootContextParams.THIS_ENTITY, player).withParameter(LootContextParams.ORIGIN, player.position()).create(LootContextParamSets.GIFT));
+            storedItems.addAll(itemList);
+            for(ItemStack storedItem : storedItems) {
+                ItemStack item = new ItemStack(storedItem.getItem());
+                item.setCount(storedItem.getCount());
+                ItemEntity entity = new ItemEntity(level(), this.getX(), this.getY(), this.getZ(), item);
+                level().addFreshEntity(entity);
             }
-
-            if (storedItems.isEmpty()) {
-                //playSound(JourneySounds.CRYSTAL_ALL_RETRIEVED, 1.0F, 1.0F);
-                remove(RemovalReason.DISCARDED);
-            }
+            playSound(JSounds.CRYSTAL_PICKUP.get(), 1.0F, 1.0F);
+            remove(RemovalReason.DISCARDED);
         }
-        return InteractionResult.SUCCESS;
+        return InteractionResult.sidedSuccess(level().isClientSide);
+    }
+
+    @Override
+    public boolean isNoGravity() {
+        return true;
+    }
+
+    @Override
+    public @NotNull Packet<ClientGamePacketListener> getAddEntityPacket() {
+        return NetworkHooks.getEntitySpawningPacket(this);
+    }
+
+    @Override
+    public boolean canCollideWith(Entity e) {
+        return false;
+    }
+
+    @Override
+    public boolean canBeLeashed(Player player) {
+        return false;
+    }
+
+    @Override
+    public boolean isAttackable() {
+        return false;
+    }
+
+    @Override
+    public void push(Entity entity) { }
+
+    @Override
+    protected void doPush(Entity entityIn) { }
+
+    @Override
+    public boolean isPushable() {
+        return false;
+    }
+
+    @Override
+    public boolean hurt(DamageSource source, float amount) {
+        return false;
+    }
+
+    @Override
+    public boolean fireImmune() {
+        return true;
     }
 
     public ResourceLocation getTexture() {

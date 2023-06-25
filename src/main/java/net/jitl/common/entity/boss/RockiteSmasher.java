@@ -115,7 +115,7 @@ public class RockiteSmasher extends JBossEntity {
 
     @Override
     protected @Nullable BossCrystal.Type getDeathCrystalType() {
-        return BossCrystal.Type.FROZEN;
+        return BossCrystal.Type.COMMON;
     }
 
     @Override

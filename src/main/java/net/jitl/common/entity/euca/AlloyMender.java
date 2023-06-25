@@ -65,8 +65,8 @@ public class AlloyMender extends JVillagerEntity {
     }
 
 //    @Override
-//    protected void tickDeath() {
-//        super.tickDeath();
+//    protected void die() {
+//        super.die();
 //        boolean addedCoins = false;
 //        if(!addedCoins) {
 //            if(!level().isClientSide) {

@@ -412,6 +412,16 @@
       "jitl:entities/knife"
     ]
   },
+  "misc.crystal_pickup": {
+    "sounds": [
+      "jitl:misc/crystal_pickup"
+    ]
+  },
+  "misc.crystal_error": {
+    "sounds": [
+      "jitl:misc/crystal_error"
+    ]
+  },
   "music.menu": {
     "replace": false,
     "sounds": [

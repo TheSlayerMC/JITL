@@ -6,6 +6,7 @@ import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
 import net.jitl.common.entity.goal.IdleHealGoal;
 import net.jitl.core.helper.JMusic;
 import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.JLootTables;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -29,7 +30,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -139,12 +139,12 @@ public class TowerGuardian extends JBossEntity {
 
     @Override
     protected @Nullable BossCrystal.Type getDeathCrystalType() {
-        return BossCrystal.Type.FROZEN;
+        return BossCrystal.Type.COMMON;
     }
 
     @Override
     public ResourceLocation lootTable() {
-        return BuiltInLootTables.SIMPLE_DUNGEON;
+        return JLootTables.TOWER_GUARDIAN_CRYSTAL;
     }
 
     @Override

@@ -69,9 +69,9 @@ public class JEntities {
 
     //RAW ENTITYS
     public static final RegistryObject<EntityType<EssenciaBoltEntity>> ESSENCIA_BOLT_TYPE = registerRawEntity(EssenciaBoltEntity::new, "essencia_bolt", "Essencia Bolt", 0.25F, 0.25F);
-    public static final RegistryObject<EntityType<BossCrystal>> BOSS_CRYSTAL_TYPE = registerRawEntity(BossCrystal::new, "boss_crystal", "Boss Crystal", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<JBoat>> JBOAT_TYPE = registerRawEntity(JBoat::new, "jboat", "Journey Boat", 1.375F, 0.5625F);
     public static final RegistryObject<EntityType<SentacoinEntity>> SENTACOIN_TYPE = registerRawEntity(SentacoinEntity::new, "sentacoin", "Sentacoin", 0.1F, 0.1F);
+    public static final RegistryObject<EntityType<BossCrystal>> BOSS_CRYSTAL_TYPE = registerEntity(BossCrystal::new, "boss_crystal", "Boss Crystal", 0.5F, 0.5F, OVERWORLD_COLOR, HOSTILE_COLOR);
 
     //OVERWORLD MOBS
     public static final RegistryObject<EntityType<Mage>> MAGE_TYPE = registerEntity(Mage::new, "mage", "Mage", 1F, 1.75F, OVERWORLD_COLOR, TRADER_COLOR, MobCategory.CREATURE);
@@ -174,6 +174,7 @@ public class JEntities {
         event.put(CAVURN_TYPE.get(), Cavurn.createAttributes());
         event.put(CAVELING_TYPE.get(), Caveling.createAttributes());
         event.put(STONEWALKER_TYPE.get(), Stonewalker.createAttributes());
+        event.put(BOSS_CRYSTAL_TYPE.get(), BossCrystal.createAttributes());
 
         event.put(WITHERSPINE_TYPE.get(), Witherspine.createAttributes());
         event.put(MINI_GHAST_TYPE.get(), MiniGhast.createAttributes());

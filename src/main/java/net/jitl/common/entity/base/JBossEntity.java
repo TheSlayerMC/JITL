@@ -4,9 +4,6 @@ import net.jitl.common.entity.IJourneyBoss;
 import net.jitl.common.entity.boss.BossCrystal;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JSounds;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
@@ -23,24 +20,8 @@ import org.jetbrains.annotations.NotNull;
 
 public abstract class JBossEntity extends JMonsterEntity implements IJourneyBoss, IDontAttackWhenPeaceful{
 
-    private static final EntityDataAccessor<Boolean> HAS_SPAWNED = SynchedEntityData.defineId(JBossEntity.class, EntityDataSerializers.BOOLEAN);
-
     protected JBossEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-    }
-
-    @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(HAS_SPAWNED, false);
-    }
-
-    public void setHasSpawned() {
-        this.entityData.set(HAS_SPAWNED, true);
-    }
-
-    public boolean hasSpawned() {
-        return this.entityData.get(HAS_SPAWNED);
     }
 
     @Override
@@ -106,12 +87,9 @@ public abstract class JBossEntity extends JMonsterEntity implements IJourneyBoss
     public void die(@NotNull DamageSource s) {
         super.die(s);
         if(!level().isClientSide()) {
-            if(!hasSpawned()) {
-                BossCrystal crystal = new BossCrystal(JEntities.BOSS_CRYSTAL_TYPE.get(), level(), getDeathCrystalType(), lootTable());
-                crystal.setPos(position().add(0, 1, 0));
-                //level.addFreshEntity(crystal);TODO make crystal work
-                setHasSpawned();
-            }
+            BossCrystal crystal = new BossCrystal(JEntities.BOSS_CRYSTAL_TYPE.get(), level(), getDeathCrystalType(), lootTable());
+            crystal.setPos(position().add(0, 1, 0));
+            level().addFreshEntity(crystal);
         }
     }
 }
