@@ -16,19 +16,24 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
-public class SentacoinEntity extends Entity {
+public class Sentacoin extends Entity {
 
     public int coinAge;
     private int coinHealth = 5;
+    private Type type = Type.COIN;
 
-    public SentacoinEntity(Level level, double x, double y, double z) {
-        super(JEntities.SENTACOIN_TYPE.get(), level);
-        this.setPos(x, y, z);
+    public Sentacoin(EntityType<? extends Sentacoin> entity, Entity spawningEntity) {
+        super(entity, spawningEntity.level());
+
+        if(entity == JEntities.SENTACOIN_BAG_TYPE.get())
+            this.type = Type.BAG;
+
+        this.setPos(spawningEntity.getX(), spawningEntity.getY(), spawningEntity.getZ());
         this.setYRot((float)(this.random.nextDouble() * 360.0D));
         this.setDeltaMovement((this.random.nextDouble() * (double)0.2F - (double)0.1F) * 2.0D, this.random.nextDouble() * 0.2D * 2.0D, (this.random.nextDouble() * (double)0.2F - (double)0.1F) * 2.0D);
     }
 
-    public SentacoinEntity(EntityType<? extends SentacoinEntity> entity,Level level) {
+    public Sentacoin(EntityType<? extends Sentacoin> entity, Level level) {
         super(entity, level);
     }
 
@@ -99,11 +104,24 @@ public class SentacoinEntity extends Entity {
     @Override
     public void playerTouch(@NotNull Player player) {
         if(!this.level().isClientSide()) {
+            int amount = 0;
+            int bagRand = random.nextInt(10);
+            int coinRand = random.nextInt(1);
+            switch(type) {
+                case BAG -> amount = 5 + bagRand;
+                case COIN -> amount = 1 + coinRand;
+            }
+            final int finalAmount = amount;
             player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
-                stats.addSentacoins(10);
                 player.take(this, 1);
-                stats.addSentacoins(1);
-                this.playSound(JSounds.COIN_PICKUP.get(), 1.0F, 1.0F + random.nextFloat());
+                stats.addSentacoins(finalAmount);
+                if(this.type == Type.BAG) {
+                    for(int i = 0; i < 5; i++) {
+                        this.playSound(JSounds.COIN_PICKUP.get(), 1.0F, 1.0F + random.nextFloat());
+                    }
+                } else {
+                    this.playSound(JSounds.COIN_PICKUP.get(), 1.0F, 1.0F + random.nextFloat());
+                }
                 this.discard();
             });
         }
@@ -137,5 +155,10 @@ public class SentacoinEntity extends Entity {
     @Override
     public @NotNull SoundSource getSoundSource() {
         return SoundSource.AMBIENT;
+    }
+
+    public enum Type {
+        COIN,
+        BAG
     }
 }

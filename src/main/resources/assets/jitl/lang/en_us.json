@@ -47,6 +47,7 @@
 "entity.jitl.essencia_bolt": "Essencia Bolt",
 "entity.jitl.jboat": "Journey Boat",
 "entity.jitl.sentacoin": "Sentacoin",
+"entity.jitl.sentacoin_bag": "Sentacoin Bag",
 "entity.jitl.boss_crystal": "Boss Crystal",
 "entity.jitl.mage": "Mage",
 "entity.jitl.floro": "Floro",
@@ -715,6 +716,7 @@
 "item.jitl.spiked_beast_spawn_egg": "Spiked Beast Spawn Egg",
 "item.jitl.depths_hunter_spawn_egg": "Depths Hunter Spawn Egg",
 "item.jitl.roc_spawn_egg": "Roc Spawn Egg",
+"item.jitl.sentacoin_bag": "Sentacoin Bag",
 "item.jitl.test_bug": "Test Bug",
 "item.jitl.iridium_nugget": "Iridium Nugget",
 "item.jitl.enderillium_shard": "Enderillium Shard",
@@ -940,6 +942,5 @@
 "item.jitl.very_strong_essence_crystal": "Very Strong Essence Crystal",
 "item.jitl.breathing_stone": "Breathing Stone",
 "item.jitl.eudor_crown": "Eudor's Crown",
-"item.jitl.sentacoin": "Sentacoin",
-"item.jitl.sentacoin_bag": "Sentacoin Bag"
+"item.jitl.sentacoin": "Sentacoin"
 }

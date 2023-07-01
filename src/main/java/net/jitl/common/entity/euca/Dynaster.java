@@ -40,8 +40,6 @@ public class Dynaster extends JMonsterEntity {
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "controller", 5, state -> {
-            return state.setAndContinue(IDLE);
-        }));
+        controllers.add(new AnimationController<>(this, "controller", 5, state -> state.setAndContinue(IDLE)));
     }
 }

@@ -57,6 +57,7 @@ public class LangRegistry {
         ArrayList<String> itemList = new ArrayList<>(JItems.itemName);
         ArrayList<String> spawnEggList = new ArrayList<>(JItems.spawnName);
         ArrayList<String> recordList = new ArrayList<>(JItems.recordName);
+        ArrayList<String> modelItemList = new ArrayList<>(JItems.modelName);
         ArrayList<String> recordDescList = new ArrayList<>(JItems.recordDescName);
 
         try {
@@ -266,6 +267,10 @@ public class LangRegistry {
 
         for(int i = 0; i < spawnEggList.size(); i++) {
             writeToFile("\"item.jitl." + spawnEggList.get(i) + "\": \"" + JItems.spawnLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < modelItemList.size(); i++) {
+            writeToFile("\"item.jitl." + modelItemList.get(i) + "\": \"" + JItems.modelLangName.get(i) + "\"" + ",");
         }
 
         int j = 0;

@@ -14,6 +14,7 @@ import net.jitl.client.render.entity.overworld.BoomBoomRenderer;
 import net.jitl.client.render.projectile.*;
 import net.jitl.client.render.vehicle.JBoatRenderer;
 import net.jitl.common.entity.base.JBoat;
+import net.jitl.common.entity.misc.Sentacoin;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JDimension;
@@ -45,7 +46,8 @@ public class RenderEntitys {
         event.registerEntityRenderer(JEntities.KNIFE_TYPE.get(), manager -> new KnifeRenderer(manager, Minecraft.getInstance().getItemRenderer()));
 
         event.registerEntityRenderer(JEntities.JBOAT_TYPE.get(), JBoatRenderer::new);
-        event.registerEntityRenderer(JEntities.SENTACOIN_TYPE.get(), SentacoinRender::new);
+        event.registerEntityRenderer(JEntities.SENTACOIN_TYPE.get(), (context) -> new SentacoinRender(context, Sentacoin.Type.COIN));
+        event.registerEntityRenderer(JEntities.SENTACOIN_BAG_TYPE.get(), (context) -> new SentacoinRender(context, Sentacoin.Type.BAG));
 
         event.registerBlockEntityRenderer(JBlockEntities.GRINDSTONE.get(), GrindstoneRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.ROCKITE.get(), RockiteSpawnerRenderer::new);

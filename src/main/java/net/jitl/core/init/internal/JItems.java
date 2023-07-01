@@ -1,6 +1,7 @@
 package net.jitl.core.init.internal;
 
 import net.jitl.common.entity.base.JBoat;
+import net.jitl.common.entity.misc.Sentacoin;
 import net.jitl.common.entity.projectile.*;
 import net.jitl.common.items.*;
 import net.jitl.common.items.base.*;
@@ -51,6 +52,7 @@ public class JItems {
 
     public static final ArrayList<String> itemName = new ArrayList<>();
     public static final ArrayList<String> toolName = new ArrayList<>();
+    public static final ArrayList<String> modelName = new ArrayList<>();
     public static final ArrayList<String> recordName = new ArrayList<>();
     public static final ArrayList<String> recordDescName = new ArrayList<>();
     public static final ArrayList<String> spawnName = new ArrayList<>();
@@ -58,6 +60,7 @@ public class JItems {
 
     public static final ArrayList<String> langName = new ArrayList<>();
     public static final ArrayList<String> toolLangName = new ArrayList<>();
+    public static final ArrayList<String> modelLangName = new ArrayList<>();
     public static final ArrayList<String> recordLangName = new ArrayList<>();
     public static final ArrayList<String> recordDescLangName = new ArrayList<>();
 
@@ -497,8 +500,8 @@ public class JItems {
     public static final RegistryObject<Item> BREATHING_STONE = registerNormalItem("breathing_stone", "Breathing Stone", () -> new EssenceRegenCatalystItem(itemProps().stacksTo(1)).speed(0.0112F));
 
     public static final RegistryObject<Item> EUDOR_CROWN = registerNormalItem("eudor_crown", "Eudor's Crown");
-    public static final RegistryObject<Item> SENTACOIN = registerNormalItem("sentacoin", "Sentacoin");
-    public static final RegistryObject<Item> SENTACOIN_BAG = register("sentacoin_bag", "Sentacoin Bag");
+    public static final RegistryObject<Item> SENTACOIN = registerNormalItem("sentacoin", "Sentacoin", () -> new SentacoinItem(Sentacoin.Type.COIN));
+    public static final RegistryObject<Item> SENTACOIN_BAG = register("sentacoin_bag", "Sentacoin Bag", () -> new SentacoinItem(Sentacoin.Type.BAG), ItemType.MODEL);
 
     public static final RegistryObject<Item> UNDERWATER_WORLD_RECORD = registerRecord("underwater_world_record", "Blue Water", JSounds.UNDERWATER_WORLD, 2640);
     public static final RegistryObject<Item> GOLD_PLAINS_RECORD = registerRecord("gold_plains_record", "Gold Plains", JSounds.GOLD_PLAINS_MUSIC, 1120);
@@ -560,6 +563,10 @@ public class JItems {
             recordName.add(name);
             recordLangName.add(translatedName);
         }
+        if(type == ItemType.MODEL) {
+            modelName.add(name);
+            modelLangName.add(translatedName);
+        }
         if(type == ItemType.SPAWN_EGG) {
             spawnName.add(name);
             spawnLangName.add(translatedName);
@@ -588,6 +595,7 @@ public class JItems {
         ITEM,
         RECORD,
         SPAWN_EGG,
+        MODEL,
         TOOL;
     }
 }

@@ -9,7 +9,7 @@ import net.jitl.common.entity.depths.*;
 import net.jitl.common.entity.euca.*;
 import net.jitl.common.entity.frozen.Eskimo;
 import net.jitl.common.entity.frozen.FrozenGuardian;
-import net.jitl.common.entity.misc.SentacoinEntity;
+import net.jitl.common.entity.misc.Sentacoin;
 import net.jitl.common.entity.nether.*;
 import net.jitl.common.entity.overworld.*;
 import net.jitl.common.entity.overworld.npc.Mage;
@@ -70,7 +70,8 @@ public class JEntities {
     //RAW ENTITYS
     public static final RegistryObject<EntityType<EssenciaBoltEntity>> ESSENCIA_BOLT_TYPE = registerRawEntity(EssenciaBoltEntity::new, "essencia_bolt", "Essencia Bolt", 0.25F, 0.25F);
     public static final RegistryObject<EntityType<JBoat>> JBOAT_TYPE = registerRawEntity(JBoat::new, "jboat", "Journey Boat", 1.375F, 0.5625F);
-    public static final RegistryObject<EntityType<SentacoinEntity>> SENTACOIN_TYPE = registerRawEntity(SentacoinEntity::new, "sentacoin", "Sentacoin", 0.1F, 0.1F);
+    public static final RegistryObject<EntityType<Sentacoin>> SENTACOIN_TYPE = registerRawEntity(Sentacoin::new, "sentacoin", "Sentacoin", 0.1F, 0.1F);
+    public static final RegistryObject<EntityType<Sentacoin>> SENTACOIN_BAG_TYPE = registerRawEntity(Sentacoin::new, "sentacoin_bag", "Sentacoin Bag", 0.375F, 0.375F);
     public static final RegistryObject<EntityType<BossCrystal>> BOSS_CRYSTAL_TYPE = registerEntity(BossCrystal::new, "boss_crystal", "Boss Crystal", 0.5F, 0.5F, OVERWORLD_COLOR, HOSTILE_COLOR);
 
     //OVERWORLD MOBS

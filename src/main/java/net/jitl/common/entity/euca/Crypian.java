@@ -155,4 +155,14 @@ public class Crypian extends JVillagerEntity {
             }
         }));
     }
+
+//    @Override
+//    public void die(DamageSource d) {
+//        super.die(d);
+//        if(!level().isClientSide) {
+//            for(int i = 0; i < 2 + random.nextInt(4); i++) {
+//                this.level().addFreshEntity(new Sentacoin(JEntities.SENTACOIN_TYPE.get(), this));
+//            }
+//        }
+//    }
 }

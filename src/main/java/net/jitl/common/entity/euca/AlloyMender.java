@@ -68,10 +68,8 @@ public class AlloyMender extends JVillagerEntity {
 //    public void die(DamageSource d) {
 //        super.die(d);
 //        if(!level().isClientSide) {
-//            for (int i = 0; i < 2 + random.nextInt(4); i++) {
-//                this.level().addFreshEntity(new SentacoinEntity(this.level(), this.getX(), this.getY(), this.getZ()));
-//                //if(random.nextInt(10) == 0)
-//                //this.level().spawnEntity(new EntitySentacoinBag(this.world, this.posX, this.posY, this.posZ));
+//            for(int i = 0; i < 2 + random.nextInt(4); i++) {
+//                this.level().addFreshEntity(new Sentacoin(JEntities.SENTACOIN_BAG_TYPE.get(), this));
 //            }
 //        }
 //    }
