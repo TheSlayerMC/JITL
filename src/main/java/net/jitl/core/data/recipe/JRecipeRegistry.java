@@ -97,7 +97,7 @@ public class JRecipeRegistry extends JRecipeProvider {
         addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "ddd", "ddd", "ddd", 'd', Blocks.STONE, JItems.STONE_CLUMP.get(), 16);
         addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "ddd", "did", "ddd", 'd', JItems.WITHIC_DUST.get(), 'i', JItems.LOST_SOUL.get(), JItems.WITHIC_SOUL.get(), 1);
         addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "ddd", "did", "ddd", 'd', JItems.BLOOD.get(), 'i', JItems.LOST_SOUL.get(), JItems.CONCENTRATED_BLOOD.get(), 1);
-        addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "dgd", "did", "dgd", 'd', JItems.FLAMING_SPRING.get(), 'i', JItems.FLAMING_SPROCKET.get(), 'g', Items.GOLD_INGOT, JItems.BOILING_KEY.get(), 1);
+        addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "dgd", "did", "dgd", 'd', JItems.FLAMING_SPRING.get(), 'i', JItems.FLAMING_SPROCKET.get(), 'g', Items.GOLD_INGOT, JItems.NETHER_KEY.get(), 1);
         addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.DEMONIC_BONE.get(), JItems.DEMONIC_DUST.get(), 5);
         addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.SMITHSTONE.get(), JItems.SMITHSTONE_DUST.get(), 4);
         addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.BLEEDSTONE.get(), JItems.BLEEDSTONE_DUST.get(), 4);

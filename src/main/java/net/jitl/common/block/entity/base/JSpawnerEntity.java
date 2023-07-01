@@ -55,7 +55,8 @@ public abstract class JSpawnerEntity extends BlockEntity {
 
     @Override
     public boolean triggerEvent(int pId, int pType) {
-        return this.getBaseSpawner().onEventTriggered(this.level, pId) ? true : super.triggerEvent(pId, pType);
+        assert this.level != null;
+        return this.getBaseSpawner().onEventTriggered(this.level, pId) || super.triggerEvent(pId, pType);
     }
 
     @Override

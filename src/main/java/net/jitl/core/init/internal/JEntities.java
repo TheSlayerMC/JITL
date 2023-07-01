@@ -102,6 +102,7 @@ public class JEntities {
     public static final RegistryObject<EntityType<Reaper>> REAPER_TYPE = registerEntity(Reaper::new, "reaper", "Reaper", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<InfernoBlaze>> INFERNO_BLAZE_TYPE = registerEntity(InfernoBlaze::new, "inferno_blaze", "Inferno Blaze", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<HellCow>> HELL_COW_TYPE = registerEntity(HellCow::new, "hell_cow", "Hell Cow", 1.5F, 1.75F, NETHER_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<Hellbot>> HELLBOT_TYPE = registerEntity(Hellbot::new, "hellbot", "Hellbot", 0.5F, 0.75F, NETHER_COLOR, HOSTILE_COLOR);
 
     //BOIL MOBS
     public static final RegistryObject<EntityType<FlameLotus>> FLAME_LOTUS_TYPE = registerEntity(FlameLotus::new, "flame_lotus", "Flame Lotus", 1F, 0.25F, BOILING_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
@@ -183,6 +184,7 @@ public class JEntities {
         event.put(REAPER_TYPE.get(), Reaper.createAttributes());
         event.put(INFERNO_BLAZE_TYPE.get(), InfernoBlaze.createAttributes());
         event.put(HELL_COW_TYPE.get(), HellCow.createAttributes());
+        event.put(HELLBOT_TYPE.get(), Hellbot.createAttributes());
 
         event.put(FLAME_LOTUS_TYPE.get(), FlameLotus.createAttributes());
 
@@ -236,13 +238,12 @@ public class JEntities {
         setDefaultMonsterSpawn(event, REAPER_TYPE);
         setDefaultMonsterSpawn(event, INFERNO_BLAZE_TYPE);
         setDefaultMonsterSpawn(event, HELL_COW_TYPE);
+        setDefaultMonsterSpawn(event, HELLBOT_TYPE);
 
         setDefaultSpawn(event, FLAME_LOTUS_TYPE);
 
         setDefaultMonsterSpawn(event, EUCA_CHARGER_TYPE);
         setDefaultMonsterSpawn(event, DYNASTER_TYPE);
-        //MAKE STRUCTURE
-        setDefaultMonsterSpawn(event, GOLDBOT_TYPE);
         setDefaultMonsterSpawn(event, GOLDER_TYPE);
 
         setDefaultMonsterSpawn(event, DARKNESS_CRAWLER_TYPE);

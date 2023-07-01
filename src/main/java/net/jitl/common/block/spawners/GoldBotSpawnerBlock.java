@@ -33,7 +33,7 @@ public class GoldBotSpawnerBlock extends SpawnerBlock {
 
     @NotNull
     @Override
-    public ItemStack getCloneItemStack(BlockGetter level_, BlockPos pos_, BlockState state_) {
+    public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
         return new ItemStack(this);
     }
 

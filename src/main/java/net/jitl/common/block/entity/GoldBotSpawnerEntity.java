@@ -1,6 +1,7 @@
 package net.jitl.common.block.entity;
 
 import net.jitl.common.block.entity.base.JSpawnerEntity;
+import net.jitl.common.block.entity.logic.DarkNotNeededSpawner;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
@@ -15,15 +16,15 @@ import javax.annotation.Nullable;
 
 public class GoldBotSpawnerEntity extends JSpawnerEntity {
 
-    private final BaseSpawner spawner = new BaseSpawner() {
+    private final DarkNotNeededSpawner spawner = new DarkNotNeededSpawner() {
 
         @Override
-        public void broadcastEvent(Level l, BlockPos pos, int id) {
+        public void broadcastEvent(@NotNull Level l, @NotNull BlockPos pos, int id) {
             l.blockEvent(pos, JBlocks.GOLD_BOT_SPAWNER.get(), id, 0);
         }
 
         @Override
-        public void setNextSpawnData(@Nullable Level l, BlockPos p, SpawnData s) {
+        public void setNextSpawnData(@Nullable Level l, @NotNull BlockPos p, @NotNull SpawnData s) {
             super.setNextSpawnData(l, p, s);
             if(l != null) {
                 BlockState blockstate = l.getBlockState(p);

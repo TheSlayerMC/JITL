@@ -125,10 +125,12 @@ public class RoyalKing extends PathfinderMob implements GeoEntity {
     @Override
     protected InteractionResult mobInteract(Player playerEntity, InteractionHand hand) {
         int check_radius = 10;
-        int totalDisks = 0;
+        int totalRoyalDisks = 0;
+        int totalMetalDisks = 0;
         int totalTablets = 0;
 
-        int neededDisks = 6;
+        int neededRoyalDisks = 4;
+        int neededMetalDisks = 2;
         int neededTables = 8;
 
         final Level world = this.level();
@@ -142,8 +144,13 @@ public class RoyalKing extends PathfinderMob implements GeoEntity {
                         PedestalTile tile = (PedestalTile) world.getBlockEntity(pos);
                         if(tile != null) {
                             if(tile.getItem(0).getItem().equals(JItems.ROYAL_DISK.get())) {
-                                totalDisks++;
-                                neededDisks--;
+                                totalRoyalDisks++;
+                                neededRoyalDisks--;
+                            }
+
+                            if(tile.getItem(0).getItem().equals(JItems.METAL_DISK.get())) {
+                                totalMetalDisks++;
+                                neededMetalDisks--;
                             }
 
                             if(tile.getItem(0).getItem().equals(JItems.EUCA_TABLET.get())) {
@@ -159,12 +166,12 @@ public class RoyalKing extends PathfinderMob implements GeoEntity {
                 }
             }
         }
-        if(totalDisks >= 6 && totalTablets >= 8) {
+        if(totalRoyalDisks >= 4 && totalTablets >= 8 && totalMetalDisks >= 2) {
             this.playSound(JSounds.COIN_PICKUP.get(), 1.5F, 1.0F);
             setActivated(true);
         }
             if(hasCrown())
-                ChatUtils.addDialogStyleChat(playerEntity, "I need " + neededDisks + " more Royal Disks and " + neededTables + " Euca Tablets");
+                ChatUtils.addDialogStyleChat(playerEntity, "I need " + neededRoyalDisks + " more Royal Disks, " + neededMetalDisks + " Metal Disks and " + neededTables + " Euca Tablets");
             if (!hasCrown()) {
                 ChatUtils.addDialogStyleChat(playerEntity, "jitl.king.hero");
         }
