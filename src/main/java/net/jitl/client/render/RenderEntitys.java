@@ -98,6 +98,14 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.HELLBOT_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("hellbot", JDimension.NETHER), 0.8F));
 
         EntityRenderers.register(JEntities.FLAME_LOTUS_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("flame_lotus", JDimension.BOIL), 0.5F));
+        EntityRenderers.register(JEntities.BURNING_LIGHT_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("burning_light", JDimension.BOIL), 0.5F));
+        EntityRenderers.register(JEntities.FRIGHTENER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("frightener", JDimension.BOIL), 0.5F, 1.25F));
+        EntityRenderers.register(JEntities.HELLWING_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("hellwing", JDimension.BOIL), 0.5F));
+        EntityRenderers.register(JEntities.MAGMA_BLAZE_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("magma_blaze", JDimension.BOIL), 0.5F, 1.25F));
+        EntityRenderers.register(JEntities.OBSERVER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("observer", JDimension.BOIL), 0.5F, 1.25F));
+        EntityRenderers.register(JEntities.SCREAMER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("screamer", JDimension.BOIL), 0.5F));
+        EntityRenderers.register(JEntities.BOIL_TRADER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("boil_trader", JDimension.BOIL), 0.5F));
+        EntityRenderers.register(JEntities.ESCAPED_CONVICT_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("escaped_convict", JDimension.BOIL), 0.5F, 1.5F));
 
         EntityRenderers.register(JEntities.EUCA_CHARGER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("euca_charger", JDimension.EUCA), 0.5F));
         EntityRenderers.register(JEntities.DYNASTER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("dynaster", JDimension.EUCA), 0.8F));

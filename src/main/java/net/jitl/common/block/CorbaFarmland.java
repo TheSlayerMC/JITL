@@ -8,6 +8,6 @@ public class CorbaFarmland extends JFarmlandBlock {
 
     @Override
     public Block setDirt() {
-        return JBlocks.CORBA_FARMLAND.get();
+        return JBlocks.CORBA_DIRT.get();
     }
 }

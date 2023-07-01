@@ -1,6 +1,6 @@
 package net.jitl.common.block.spawners;
 
-import net.jitl.common.block.entity.GoldBotSpawnerEntity;
+import net.jitl.common.block.entity.spawner.GoldBotSpawnerEntity;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JEntities;

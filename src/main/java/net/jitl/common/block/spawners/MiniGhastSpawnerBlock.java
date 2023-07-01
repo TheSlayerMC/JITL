@@ -1,6 +1,6 @@
 package net.jitl.common.block.spawners;
 
-import net.jitl.common.block.entity.MinIGhastSpawnerEntity;
+import net.jitl.common.block.entity.spawner.MiniGhastSpawnerEntity;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JEntities;
@@ -26,7 +26,7 @@ public class MiniGhastSpawnerBlock extends SpawnerBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        MinIGhastSpawnerEntity spawner = new MinIGhastSpawnerEntity(pos, state);
+        MiniGhastSpawnerEntity spawner = new MiniGhastSpawnerEntity(pos, state);
         spawner.setEntityId(JEntities.MINI_GHAST_TYPE.get(), RandomSource.create());
         return spawner;
     }
@@ -40,6 +40,6 @@ public class MiniGhastSpawnerBlock extends SpawnerBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level_, @NotNull BlockState state_, @NotNull BlockEntityType<T> blockEntityType_) {
-        return createTickerHelper(blockEntityType_, JBlockEntities.MINI_GHAST_SPAWNER.get(), level_.isClientSide ? MinIGhastSpawnerEntity::clientTick : MinIGhastSpawnerEntity::serverTick);
+        return createTickerHelper(blockEntityType_, JBlockEntities.MINI_GHAST_SPAWNER.get(), level_.isClientSide ? MiniGhastSpawnerEntity::clientTick : MiniGhastSpawnerEntity::serverTick);
     }
 }

@@ -1,0 +1,100 @@
+{
+  "multipart": [
+     {
+        "apply": {
+            "model": "jitl:block/boil_chain_post_ends"
+        }
+     },
+     {
+        "apply": {
+            "model": "jitl:block/boil_chain_post"
+        },
+        "when": {
+            "east": "false",
+            "north": "false",
+            "south": "false",
+            "west": "false"
+        }
+     },
+     {
+        "apply": {
+            "model": "jitl:block/boil_chain_cap"
+        },
+        "when": {
+            "east": "false",
+            "north": "true",
+            "south": "false",
+            "west": "false"
+        }
+     },
+     {
+        "apply": {
+            "model": "jitl:block/boil_chain_cap",
+            "y": 90
+        },
+        "when": {
+            "east": "true",
+            "north": "false",
+            "south": "false",
+            "west": "false"
+        }
+     },
+     {
+        "apply": {
+            "model": "jitl:block/boil_chain_cap_alt"
+        },
+        "when": {
+            "east": "false",
+            "north": "false",
+            "south": "true",
+            "west": "false"
+        }
+     },
+     {
+        "apply": {
+            "model": "jitl:block/boil_chain_cap_alt",
+            "y": 90
+        },
+        "when": {
+            "east": "false",
+            "north": "false",
+            "south": "false",
+            "west": "true"
+        }
+     },
+     {
+        "apply": {
+            "model": "jitl:block/boil_chain_side"
+        },
+        "when": {
+            "north": "true"
+        }
+     },
+     {
+        "apply": {
+            "model": "jitl:block/boil_chain_side",
+            "y": 90
+        },
+        "when": {
+            "east": "true"
+        }
+     },
+     {
+        "apply": {
+            "model": "jitl:block/boil_chain_side_alt"
+        },
+        "when": {
+            "south": "true"
+        }
+     },
+     {
+        "apply": {
+            "model": "jitl:block/boil_chain_side_alt",
+            "y": 90
+        },
+        "when": {
+            "west": "true"
+        }
+     }
+  ]
+}

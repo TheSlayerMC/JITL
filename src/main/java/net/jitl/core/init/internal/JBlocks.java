@@ -6,8 +6,7 @@ import net.jitl.common.block.crop.*;
 import net.jitl.common.block.crop.bushs.BradberryBushBlock;
 import net.jitl.common.block.crop.bushs.RedcurrantBushBlock;
 import net.jitl.common.block.portal.*;
-import net.jitl.common.block.spawners.GoldBotSpawnerBlock;
-import net.jitl.common.block.spawners.MiniGhastSpawnerBlock;
+import net.jitl.common.block.spawners.*;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.common.world.gen.tree_grower.EucaGoldTreeGrower;
 import net.jitl.common.world.gen.tree_grower.EucaGreenTreeGrower;
@@ -244,7 +243,25 @@ public class JBlocks {
     public static final RegistryObject<StairBlock> NETHER_DUNGEON_BRICK_STAIRS = registerStairs("nether_dungeon_brick_stairs", "Nether Dungeon Brick Stairs", NETHER_DUNGEON_BRICKS, false, JBlockProperties.STONE);
     public static final RegistryObject<JFenceBlock> NETHER_DUNGEON_BRICK_FENCE = registerFence("nether_dungeon_brick_fence", "Nether Dungeon Brick Fence", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> MINI_GHAST_SPAWNER = register("mini_ghast_spawner", "Mini Ghast Spawner", MiniGhastSpawnerBlock::new, true);
-    public static final RegistryObject<IronBarsBlock> BOILING_BARS = registerPaneBlock("boiling_bars", "Boiling Bars", JBlockProperties.STONE);
+
+    //THESE
+    public static final RegistryObject<IronBarsBlock> BOIL_CHAIN = registerPaneBlock("boil_chain", "Boil Chain", JBlockProperties.STONE);
+    public static final RegistryObject<IronBarsBlock> BRISON_BARS = registerPaneBlock("brison_bars", "Brison Bars", JBlockProperties.STONE);
+    public static final RegistryObject<Block> BOIL_COBBLESTONE = register("boil_cobblestone", "Boiling Cobblestone", JBlockProperties.STONE);
+    public static final RegistryObject<RotatedPillarBlock> BOIL_PILLAR = registerPillar("boil_pillar", "Boil Pillar", false, JBlockProperties.STONE);
+    public static final RegistryObject<Block> BOIL_BRICKS = register("boil_bricks", "Boil Bricks", JBlockProperties.STONE);
+    public static final RegistryObject<Block> BOIL_SQUARE_BRICKS = register("boil_square_bricks", "Boil Square Bricks", JBlockProperties.STONE);
+    public static final RegistryObject<Block> BOIL_SHINGLE = register("boil_shingle", "Boil Shingle", JBlockProperties.STONE);
+    public static final RegistryObject<Block> BLAZIER_BRICKS = register("blazier_bricks", "Blazier Bricks", JBlockProperties.STONE);
+    public static final RegistryObject<Block> BLAZIER_METAL = register("blazier_metal", "Blazier Metal", JBlockProperties.STONE);
+    public static final RegistryObject<Block> HELLWING_SPAWNER = register("hellwing_spawner", "Hellwing Spawner", HellwingSpawnerBlock::new, true);
+    public static final RegistryObject<Block> OBSERVER_SPAWNER = register("observer_spawner", "Observer Spawner", ObserverSpawnerBlock::new, true);
+    public static final RegistryObject<Block> SCREAMER_SPAWNER = register("screamer_spawner", "Screamer Spawner", ScreamerSpawnerBlock::new, true);
+    public static final RegistryObject<Block> SMALL_BRISON_BRICKS = register("small_brison_bricks", "Small Brison Bricks", JBlockProperties.STONE);
+    public static final RegistryObject<Block> RED_BRISON_BRICKS = register("red_brison_brick", "Red Brison Brick", JBlockProperties.STONE);
+    public static final RegistryObject<Block> BRISON_STONE = register("brison_stone", "Brison Stone", JBlockProperties.STONE);
+    public static final RegistryObject<Block> BOILING_LAMP = register("boiling_lamp", "Boiling Lamp", JBlockProperties.GLOW_LAMP);
+    public static final RegistryObject<JFenceBlock> SIZZLING_POST = registerFence("sizzling_post", "Sizzling Post", false, JBlockProperties.WOOD);
 
     public static final RegistryObject<Block> GOLDITE_FARMLAND = registerFarmlandBlock("goldite_farmland", "Goldite Farmland", GolditeFarmland::new);
     public static final RegistryObject<Block> DEPTHS_FARMLAND = registerFarmlandBlock("depths_farmland", "Depths Farmland", DepthsFarmland::new);

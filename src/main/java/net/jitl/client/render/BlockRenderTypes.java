@@ -76,7 +76,11 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.DEPTHS_FLOWER.get());
         cutout.add(JBlocks.BURNED_DOOR.get());
         cutout.add(JBlocks.BURNED_TRAP_DOOR.get());
-        cutout.add(JBlocks.BOILING_BARS.get());
+        cutout.add(JBlocks.BRISON_BARS.get());
+        cutout.add(JBlocks.HELLWING_SPAWNER.get());
+        cutout.add(JBlocks.OBSERVER_SPAWNER.get());
+        cutout.add(JBlocks.SCREAMER_SPAWNER.get());
+
         cutout.add(JBlocks.GLIMMER_ROOT.get());
         cutout.add(JBlocks.TALL_GREEN_GLOWSHROOM.get());
         cutout.add(JBlocks.TALL_BLUE_GLOWSHROOM.get());

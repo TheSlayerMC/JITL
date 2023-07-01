@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:brison",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 156586415887435,
+    "spacing": 20,
+    "separation": 6,
+    "type": "minecraft:random_spread"
+  }
+}

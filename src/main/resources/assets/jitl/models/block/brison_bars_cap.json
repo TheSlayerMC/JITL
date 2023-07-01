@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/iron_bars_cap",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "jitl:block/brison_bars",
+    "bars": "jitl:block/brison_bars",
+    "edge": "jitl:block/brison_bars"
+  }
+}

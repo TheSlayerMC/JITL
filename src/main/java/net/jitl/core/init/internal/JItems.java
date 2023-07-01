@@ -181,6 +181,7 @@ public class JItems {
     public static final RegistryObject<Item> BEASTLY_STOMACH = registerNormalItem("beastly_stomach", "Beastly Stomach");
     public static final RegistryObject<Item> BLAZING_FIREBALL = registerNormalItem("blazing_fireball", "Blazing Fireball");
     public static final RegistryObject<Item> DEMONIC_SKULL = registerNormalItem("demonic_skull", "Demonic Skull");
+    public static final RegistryObject<Item> BOILING_SKULL = registerNormalItem("boiling_skull", "Boiling Skull");
     public static final RegistryObject<Item> FLAMING_SPRING = registerNormalItem("flaming_spring", "Flaming Spring");
     public static final RegistryObject<Item> FLAMING_SPROCKET = registerNormalItem("flaming_sprocket", "Flaming Sprocket");
     public static final RegistryObject<Item> FLAMING_HIDE = registerNormalItem("flaming_hide", "Flaming Hide");
@@ -388,7 +389,10 @@ public class JItems {
             new PiercerItem(itemProps().durability(128), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 3.0F)));
 
     public static final RegistryObject<Item> MOLTEN_KNIFE = registerToolItem("molten_knife", "Molten Knife", () ->
-            new KnifeItem(itemProps(), (worldIn, owner, stack) ->  new KnifeEntity(worldIn, owner, stack, 10.0F)));
+            new KnifeItem(itemProps(), (worldIn, owner, stack) ->  new KnifeEntity(worldIn, owner, stack, 4.0F)));
+
+    public static final RegistryObject<Item> SIZZLING_KNIFE = registerToolItem("sizzling_knife", "Sizzling Knife", () ->
+            new KnifeItem(itemProps(), (worldIn, owner, stack) ->  new KnifeEntity(worldIn, owner, stack, 4.0F)));
 
     public static final RegistryObject<Item> IRON_THROWING_KNIFE = registerToolItem("iron_throwing_knife", "Iron Throwing Knife", () ->
             new KnifeItem(itemProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
@@ -470,6 +474,7 @@ public class JItems {
     public static final RegistryObject<Item> SKULL_OF_DECAY = registerNormalItem("skull_of_decay", "Skull Of Decay", () -> new JCurioItem(itemProps().stacksTo(1).durability(256)).ability(true));
     public static final RegistryObject<Item> FROSTBORN_SOUL = registerNormalItem("frostborn_soul", "Frostborn Soul");
     public static final RegistryObject<Item> WITHICSPINE = registerNormalItem("withicspine", "Withicspine");
+    public static final RegistryObject<Item> BOIL_POWDER = registerNormalItem("boil_powder", "Boil Powder");
 
     public static final RegistryObject<Item> HEART_CONTAINER_SMALL = registerNormalItem("heart_container_small", "Heart Container", () -> new HeartContainerItem(itemProps().stacksTo(1)).health(1));
     public static final RegistryObject<Item> HEART_CONTAINER_MEDIUM = registerNormalItem("heart_container_medium", "Heart Container", () -> new HeartContainerItem(itemProps().stacksTo(1)).health(4));

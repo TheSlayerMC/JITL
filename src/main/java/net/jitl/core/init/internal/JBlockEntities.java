@@ -1,6 +1,7 @@
 package net.jitl.core.init.internal;
 
 import net.jitl.common.block.entity.*;
+import net.jitl.common.block.entity.spawner.*;
 import net.jitl.core.init.JITL;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.CampfireBlockEntity;
@@ -33,8 +34,17 @@ public class JBlockEntities {
     public static final RegistryObject<BlockEntityType<GoldBotSpawnerEntity>> GOLD_BOT_SPAWNER = REGISTRY.register("gb_spawner",
             () -> BlockEntityType.Builder.of(GoldBotSpawnerEntity::new, JBlocks.GOLD_BOT_SPAWNER.get()).build(null));
 
-    public static final RegistryObject<BlockEntityType<MinIGhastSpawnerEntity>> MINI_GHAST_SPAWNER = REGISTRY.register("mg_spawner",
-            () -> BlockEntityType.Builder.of(MinIGhastSpawnerEntity::new, JBlocks.MINI_GHAST_SPAWNER.get()).build(null));
+    public static final RegistryObject<BlockEntityType<MiniGhastSpawnerEntity>> MINI_GHAST_SPAWNER = REGISTRY.register("mg_spawner",
+            () -> BlockEntityType.Builder.of(MiniGhastSpawnerEntity::new, JBlocks.MINI_GHAST_SPAWNER.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<HellwingSpawnerEntity>> HELLWING_SPAWNER = REGISTRY.register("hw_spawner",
+            () -> BlockEntityType.Builder.of(HellwingSpawnerEntity::new, JBlocks.HELLWING_SPAWNER.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<ObserverSpawnerEntity>> OBSERVER_SPAWNER = REGISTRY.register("observer_spawner",
+            () -> BlockEntityType.Builder.of(ObserverSpawnerEntity::new, JBlocks.OBSERVER_SPAWNER.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<ScreamerSpawnerEntity>> SCREAMER_SPAWNER = REGISTRY.register("screamer_spawner",
+            () -> BlockEntityType.Builder.of(ScreamerSpawnerEntity::new, JBlocks.SCREAMER_SPAWNER.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<PedestalTile>> PEDESTAL = REGISTRY.register("pedestal",
             () -> BlockEntityType.Builder.of(PedestalTile::new, JBlocks.FROZEN_PEDESTAL.get(), JBlocks.ROYAL_PEDESTAL.get()).build(null));

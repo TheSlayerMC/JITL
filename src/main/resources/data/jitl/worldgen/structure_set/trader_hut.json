@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:trader_hut",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 156586415887719,
+    "spacing": 20,
+    "separation": 6,
+    "type": "minecraft:random_spread"
+  }
+}

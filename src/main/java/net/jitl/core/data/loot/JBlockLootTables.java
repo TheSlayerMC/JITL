@@ -157,7 +157,6 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.NETHER_DUNGEON_BRICKS);
         this.dropSelf(JBlocks.NETHER_DUNGEON_BRICK_FENCE);
         this.add(JBlocks.MINI_GHAST_SPAWNER, noDrop());
-        this.dropSelf(JBlocks.BOILING_BARS);
 
         this.dropSelf(JBlocks.EUCA_PORTAL_FRAME);
         this.add(JBlocks.EUCA_PORTAL, noDrop());
@@ -297,6 +296,25 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.INFERNO_BUSH);
         this.dropSelf(JBlocks.LAVA_BLOOM);
         this.dropSelf(JBlocks.SCORCHED_CACTUS);
+        this.dropSelf(JBlocks.BOIL_CHAIN);
+
+        this.dropSelf(JBlocks.BOIL_CHAIN);
+        this.dropSelf(JBlocks.BRISON_BARS);
+        this.dropSelf(JBlocks.BOIL_COBBLESTONE);
+        this.dropSelf(JBlocks.BOIL_PILLAR);
+        this.dropSelf(JBlocks.BOIL_BRICKS);
+        this.dropSelf(JBlocks.BOIL_SQUARE_BRICKS);
+        this.dropSelf(JBlocks.BOIL_SHINGLE);
+        this.dropSelf(JBlocks.BLAZIER_BRICKS);
+        this.dropSelf(JBlocks.BLAZIER_METAL);
+        this.dropSelf(JBlocks.RED_BRISON_BRICKS);
+        this.dropSelf(JBlocks.SMALL_BRISON_BRICKS);
+        this.dropSelf(JBlocks.BRISON_STONE);
+        this.dropSelf(JBlocks.BOILING_LAMP);
+        this.dropSelf(JBlocks.SIZZLING_POST);
+        this.add(JBlocks.HELLWING_SPAWNER, noDrop());
+        this.add(JBlocks.OBSERVER_SPAWNER, noDrop());
+        this.add(JBlocks.SCREAMER_SPAWNER, noDrop());
 
         this.dropSelf(JBlocks.BURNED_BARK);
         this.add(JBlocks.CHARRED_LEAVES, (block) -> this.createLeavesDrops(block, JBlocks.BURNED_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));

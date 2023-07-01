@@ -1,0 +1,43 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.hellwing",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "head",
+					"pivot": [0, 18, 3],
+					"cubes": [
+						{"origin": [-6, 12, -3], "size": [12, 12, 12], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "rightwing",
+					"pivot": [-3, 24, 3],
+					"rotation": [0, -44.35, 0],
+					"cubes": [
+						{"origin": [-15, 7, 4.5], "size": [10, 16, 1], "uv": [0, 46]},
+						{"origin": [-23, 10, 4.5], "size": [8, 12, 1], "uv": [0, 30]}
+					]
+				},
+				{
+					"name": "leftwing",
+					"pivot": [3, 24, 3],
+					"rotation": [0, 44, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [5, 7, 4.5], "size": [10, 16, 1], "uv": [24, 46]},
+						{"origin": [15, 10, 4.5], "size": [8, 12, 1], "uv": [24, 30]}
+					]
+				}
+			]
+		}
+	]
+}

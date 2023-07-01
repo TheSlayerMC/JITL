@@ -202,8 +202,15 @@ public class JEntityLootTables extends EntityLootSubProvider {
                 .add(LootItem.lootTableItem(JItems.SAPPHIRE.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
 
-
         this.add(JEntities.FLAME_LOTUS_TYPE.get(), empty());
+        this.add(JEntities.BURNING_LIGHT_TYPE.get(), empty());
+        this.add(JEntities.FRIGHTENER_TYPE.get(), empty());
+        this.add(JEntities.HELLWING_TYPE.get(), empty());
+        this.add(JEntities.MAGMA_BLAZE_TYPE.get(), empty());
+        this.add(JEntities.OBSERVER_TYPE.get(), empty());
+        this.add(JEntities.SCREAMER_TYPE.get(), empty());
+        this.add(JEntities.BOIL_TRADER_TYPE.get(), empty());
+        this.add(JEntities.ESCAPED_CONVICT_TYPE.get(), empty());
 
         this.add(JEntities.SHIMMERER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                 .add(LootItem.lootTableItem(JItems.ROYAL_DISK.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))

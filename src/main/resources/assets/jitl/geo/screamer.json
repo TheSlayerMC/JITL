@@ -1,0 +1,52 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.screamer",
+				"texture_width": 64,
+				"texture_height": 32,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "body",
+					"pivot": [0, 20, 0],
+					"cubes": [
+						{"origin": [-3.5, 16.5, -3.5], "size": [7, 7, 7], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "arm1",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{"origin": [-1, 23.5, -1], "size": [2, 5, 2], "uv": [14, 14]}
+					]
+				},
+				{
+					"name": "arm2",
+					"pivot": [0, 15.5, 0],
+					"cubes": [
+						{"origin": [-1, 11.5, -1], "size": [2, 5, 2], "uv": [14, 14]}
+					]
+				},
+				{
+					"name": "arm3",
+					"pivot": [0, 27.5, 0],
+					"cubes": [
+						{"origin": [-1, 26.5, -6], "size": [2, 2, 7], "uv": [0, 21]}
+					]
+				},
+				{
+					"name": "arm4",
+					"pivot": [0, 12.5, 0],
+					"cubes": [
+						{"origin": [-1, 11.5, -6], "size": [2, 2, 7], "uv": [0, 21]}
+					]
+				}
+			]
+		}
+	]
+}

@@ -15,7 +15,34 @@
       "probability": 0.001428
     }
   },
-  "spawners": {},
+  "spawners": {
+    "monster": [
+      {
+        "type": "jitl:flame_lotus",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "jitl:burning_light",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "jitl:frightener",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "jitl:magma_blaze",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 3
+      }
+    ]
+  },
   "carvers": {
     "air": [
       "jitl:boil_carver"

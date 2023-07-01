@@ -1,7 +1,9 @@
 package net.jitl.core.init.internal;
 
 import net.jitl.common.entity.base.JBoat;
-import net.jitl.common.entity.boil.FlameLotus;
+import net.jitl.common.entity.boil.*;
+import net.jitl.common.entity.boil.npc.BoilTrader;
+import net.jitl.common.entity.boil.npc.EscapedConvict;
 import net.jitl.common.entity.boss.BossCrystal;
 import net.jitl.common.entity.boss.RockiteSmasher;
 import net.jitl.common.entity.boss.TowerGuardian;
@@ -106,6 +108,14 @@ public class JEntities {
 
     //BOIL MOBS
     public static final RegistryObject<EntityType<FlameLotus>> FLAME_LOTUS_TYPE = registerEntity(FlameLotus::new, "flame_lotus", "Flame Lotus", 1F, 0.25F, BOILING_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<BurningLight>> BURNING_LIGHT_TYPE = registerEntity(BurningLight::new, "burning_light", "Burning Light", 0.5F, 2F, BOILING_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Frightener>> FRIGHTENER_TYPE = registerEntity(Frightener::new, "frightener", "Frightener", 0.5F, 2F, BOILING_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Hellwing>> HELLWING_TYPE = registerEntity(Hellwing::new, "hellwing", "Hellwing", 1F, 1F, NETHER_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<MagmaBlaze>> MAGMA_BLAZE_TYPE = registerEntity(MagmaBlaze::new, "magma_blaze", "Magma Blaze", 0.5F, 1.75F, NETHER_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Observer>> OBSERVER_TYPE = registerEntity(Observer::new, "observer", "Observer", 0.5F, 2F, NETHER_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Screamer>> SCREAMER_TYPE = registerEntity(Screamer::new, "screamer", "Screamer", 0.5F, 2F, NETHER_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<BoilTrader>> BOIL_TRADER_TYPE = registerEntity(BoilTrader::new, "boil_trader", "Boil Trader", 0.5F, 2F, NETHER_COLOR, TRADER_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<EscapedConvict>> ESCAPED_CONVICT_TYPE = registerEntity(EscapedConvict::new, "escaped_convict", "Escaped Convict", 1F, 1.9F, NETHER_COLOR, TRADER_COLOR, MobCategory.CREATURE);
 
     //EUCA MOBS
     public static final RegistryObject<EntityType<EucaCharger>> EUCA_CHARGER_TYPE = registerEntity(EucaCharger::new, "euca_charger", "Euca Charger", 0.5F, 0.75F, EUCA_COLOR, HOSTILE_COLOR);
@@ -187,6 +197,14 @@ public class JEntities {
         event.put(HELLBOT_TYPE.get(), Hellbot.createAttributes());
 
         event.put(FLAME_LOTUS_TYPE.get(), FlameLotus.createAttributes());
+        event.put(BURNING_LIGHT_TYPE.get(), BurningLight.createAttributes());
+        event.put(FRIGHTENER_TYPE.get(), Frightener.createAttributes());
+        event.put(HELLWING_TYPE.get(), Hellwing.createAttributes());
+        event.put(MAGMA_BLAZE_TYPE.get(), MagmaBlaze.createAttributes());
+        event.put(OBSERVER_TYPE.get(), Observer.createAttributes());
+        event.put(SCREAMER_TYPE.get(), Screamer.createAttributes());
+        event.put(BOIL_TRADER_TYPE.get(), BoilTrader.createAttributes());
+        event.put(ESCAPED_CONVICT_TYPE.get(), EscapedConvict.createAttributes());
 
         event.put(EUCA_CHARGER_TYPE.get(), EucaCharger.createAttributes());
         event.put(DYNASTER_TYPE.get(), Dynaster.createAttributes());
@@ -220,6 +238,8 @@ public class JEntities {
         setCustomSpawn(event, CAVELING_TYPE, Caveling::checkSpawn);
         setCustomSpawn(event, STONEWALKER_TYPE, Stonewalker::checkSpawn);
         setCustomSpawn(event, CAVURN_TYPE, Cavurn::checkSpawn);
+        setCustomSpawn(event, HELLWING_TYPE, Hellwing::checkSpawn);
+        setCustomSpawn(event, SCREAMER_TYPE, Screamer::checkSpawn);
 
         setDefaultMonsterSpawn(event, FLORO_TYPE);
         setDefaultMonsterSpawn(event, BOOM_TYPE);
@@ -241,6 +261,12 @@ public class JEntities {
         setDefaultMonsterSpawn(event, HELLBOT_TYPE);
 
         setDefaultSpawn(event, FLAME_LOTUS_TYPE);
+        setDefaultSpawn(event, BURNING_LIGHT_TYPE);
+        setDefaultSpawn(event, MAGMA_BLAZE_TYPE);
+        setDefaultSpawn(event, FRIGHTENER_TYPE);
+        setDefaultSpawn(event, BOIL_TRADER_TYPE);
+        setDefaultSpawn(event, ESCAPED_CONVICT_TYPE);
+        setDefaultSpawn(event, OBSERVER_TYPE);
 
         setDefaultMonsterSpawn(event, EUCA_CHARGER_TYPE);
         setDefaultMonsterSpawn(event, DYNASTER_TYPE);

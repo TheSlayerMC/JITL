@@ -27,13 +27,16 @@
                 }
               },
               {
-                "Name": "jitl:charred_grass"
+                "Name": "jitl:charred_short_grass"
               },
               {
                 "Name": "jitl:charred_weeds"
               },
               {
-                "Name": "jitl:charred_short_grass"
+                "Name": "jitl:tall_charred_grass",
+                "Properties": {
+                  "half": "lower"
+                }
               }
             ]
           }

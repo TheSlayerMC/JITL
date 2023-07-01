@@ -1,4 +1,4 @@
-package net.jitl.common.block.entity;
+package net.jitl.common.block.entity.spawner;
 
 import net.jitl.common.block.entity.base.JSpawnerEntity;
 import net.jitl.core.init.internal.JBlockEntities;
@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
-public class MinIGhastSpawnerEntity extends JSpawnerEntity {
+public class MiniGhastSpawnerEntity extends JSpawnerEntity {
 
     private final BaseSpawner spawner = new BaseSpawner() {
 
@@ -33,11 +33,11 @@ public class MinIGhastSpawnerEntity extends JSpawnerEntity {
 
         @Override
         public @NotNull BlockEntity getSpawnerBlockEntity(){
-            return MinIGhastSpawnerEntity.this;
+            return MiniGhastSpawnerEntity.this;
         }
     };
 
-    public MinIGhastSpawnerEntity(BlockPos pPos, BlockState pBlockState) {
+    public MiniGhastSpawnerEntity(BlockPos pPos, BlockState pBlockState) {
         super(JBlockEntities.MINI_GHAST_SPAWNER.get(), pPos, pBlockState);
     }
 

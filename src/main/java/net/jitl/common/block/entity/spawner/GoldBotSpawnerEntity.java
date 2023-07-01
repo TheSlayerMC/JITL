@@ -1,4 +1,4 @@
-package net.jitl.common.block.entity;
+package net.jitl.common.block.entity.spawner;
 
 import net.jitl.common.block.entity.base.JSpawnerEntity;
 import net.jitl.common.block.entity.logic.DarkNotNeededSpawner;

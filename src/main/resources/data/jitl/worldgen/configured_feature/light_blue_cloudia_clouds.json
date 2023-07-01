@@ -2,7 +2,7 @@
   "type": "jitl:cloudia_clouds",
   "config": {
     "discard_chance_on_air_exposure": 0.0,
-    "size": 32,
+    "size": 20,
     "targets": [
       {
         "state": {

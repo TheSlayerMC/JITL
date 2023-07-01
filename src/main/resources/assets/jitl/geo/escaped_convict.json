@@ -1,0 +1,61 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.escaped_convict",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "head",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{"origin": [-6, 24.6, -4], "size": [12, 6, 8], "inflate": 0.5, "uv": [-2, 0]},
+						{"origin": [-8, 30, 0], "size": [2, 4, 2], "pivot": [-7, 32, 1], "rotation": [0, 0, -17.5], "uv": [0, 36]},
+						{"origin": [6, 30, 0], "size": [2, 4, 2], "pivot": [7, 32, 1], "rotation": [0, 0, 20], "uv": [0, 36]}
+					]
+				},
+				{
+					"name": "arm1",
+					"pivot": [-5, 22, 0],
+					"cubes": [
+						{"origin": [-8, 12, -2], "size": [4, 12, 4], "uv": [40, 16]}
+					]
+				},
+				{
+					"name": "body",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{"origin": [-4, 12, -2], "size": [8, 12, 4], "uv": [16, 16]}
+					]
+				},
+				{
+					"name": "arm2",
+					"pivot": [5, 22, 0],
+					"cubes": [
+						{"origin": [4, 12, -2], "size": [4, 12, 4], "uv": [32, 48]}
+					]
+				},
+				{
+					"name": "leg2",
+					"pivot": [1.9, 12, 0.1],
+					"cubes": [
+						{"origin": [-0.1, 0, -1.9], "size": [4, 12, 4], "uv": [16, 48]}
+					]
+				},
+				{
+					"name": "leg1",
+					"pivot": [-1.9, 12, 0.1],
+					"cubes": [
+						{"origin": [-3.9, 0, -1.9], "size": [4, 12, 4], "uv": [0, 16]}
+					]
+				}
+			]
+		}
+	]
+}
