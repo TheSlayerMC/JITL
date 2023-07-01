@@ -3,7 +3,7 @@
   "start_pool": "jitl:boil/trader_hut/start_pool",
   "size": 2,
   "max_distance_from_center": 80,
-  "biomes": "#jitl:has_structure/brison",
+  "biomes": "#jitl:has_structure/trader_hut",
   "step": "surface_structures",
   "terrain_adaptation": "beard_thin",
 
