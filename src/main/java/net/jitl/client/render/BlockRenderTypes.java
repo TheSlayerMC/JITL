@@ -80,6 +80,7 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.HELLWING_SPAWNER.get());
         cutout.add(JBlocks.OBSERVER_SPAWNER.get());
         cutout.add(JBlocks.SCREAMER_SPAWNER.get());
+        cutout.add(JBlocks.HELLBOT_SPAWNER.get());
 
         cutout.add(JBlocks.GLIMMER_ROOT.get());
         cutout.add(JBlocks.TALL_GREEN_GLOWSHROOM.get());

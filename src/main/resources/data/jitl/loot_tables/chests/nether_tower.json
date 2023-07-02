@@ -120,7 +120,7 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 7,
+          "weight": 5,
           "name": "jitl:boil_lock_key",
           "functions": [
             {

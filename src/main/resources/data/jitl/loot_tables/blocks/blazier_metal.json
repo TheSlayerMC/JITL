@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "jitl:boiling_bars"
+          "name": "jitl:blazier_metal"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "jitl:blocks/boiling_bars"
+  "random_sequence": "jitl:blocks/blazier_metal"
 }

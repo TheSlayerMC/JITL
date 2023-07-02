@@ -239,7 +239,6 @@ public class JEntities {
         setCustomSpawn(event, STONEWALKER_TYPE, Stonewalker::checkSpawn);
         setCustomSpawn(event, CAVURN_TYPE, Cavurn::checkSpawn);
         setCustomSpawn(event, HELLWING_TYPE, Hellwing::checkSpawn);
-        setCustomSpawn(event, SCREAMER_TYPE, Screamer::checkSpawn);
 
         setDefaultMonsterSpawn(event, FLORO_TYPE);
         setDefaultMonsterSpawn(event, BOOM_TYPE);
@@ -267,6 +266,7 @@ public class JEntities {
         setDefaultSpawn(event, BOIL_TRADER_TYPE);
         setDefaultSpawn(event, ESCAPED_CONVICT_TYPE);
         setDefaultSpawn(event, OBSERVER_TYPE);
+        setDefaultSpawn(event, SCREAMER_TYPE);
 
         setDefaultMonsterSpawn(event, EUCA_CHARGER_TYPE);
         setDefaultMonsterSpawn(event, DYNASTER_TYPE);

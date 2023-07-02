@@ -8,6 +8,7 @@
     "jitl:volcanic_soil",
     "jitl:volcanic_sandstone",
     "jitl:rubble",
-    "jitl:scorched_rubble"
+    "jitl:scorched_rubble",
+    "minecraft:lava"
   ]
 }

@@ -155,6 +155,8 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.DUNGEON_LAMP_FENCE);
         this.dropSelf(JBlocks.NETHER_DUNGEON_BRICK_STAIRS);
         this.dropSelf(JBlocks.NETHER_DUNGEON_BRICKS);
+        this.dropSelf(JBlocks.LARGE_NETHER_BRICKS);
+        this.dropSelf(JBlocks.NETHIC_LAMP);
         this.dropSelf(JBlocks.NETHER_DUNGEON_BRICK_FENCE);
         this.add(JBlocks.MINI_GHAST_SPAWNER, noDrop());
 
@@ -315,6 +317,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.add(JBlocks.HELLWING_SPAWNER, noDrop());
         this.add(JBlocks.OBSERVER_SPAWNER, noDrop());
         this.add(JBlocks.SCREAMER_SPAWNER, noDrop());
+        this.add(JBlocks.HELLBOT_SPAWNER, noDrop());
 
         this.dropSelf(JBlocks.BURNED_BARK);
         this.add(JBlocks.CHARRED_LEAVES, (block) -> this.createLeavesDrops(block, JBlocks.BURNED_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));

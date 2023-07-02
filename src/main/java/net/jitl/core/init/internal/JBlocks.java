@@ -113,6 +113,11 @@ public class JBlocks {
     public static final ArrayList<String> topBottomBlockName = new ArrayList<>();
     public static final ArrayList<String> topBottomLangName = new ArrayList<>();
 
+    public static final ArrayList<String> PICKAXE_BLOCKS = new ArrayList<>();
+    public static final ArrayList<String> AXE_BLOCKS = new ArrayList<>();
+    public static final ArrayList<String> SHOVEL_BLOCKS = new ArrayList<>();
+    public static final ArrayList<String> HOE_BLOCKS = new ArrayList<>();
+
     public static final RegistryObject<Block> IRIDIUM_ORE = register("iridium_ore", "Iridium Ore", JBlockProperties.STONE);
     public static final RegistryObject<Block> IRIDIUM_BLOCK = registerFuelBlock("iridium_block", "Iridium Block", () -> new Block(JBlockProperties.STONE), 16000);
     public static final RegistryObject<Block> DEEPSLATE_IRIDIUM_ORE = register("deepslate_iridium_ore", "Deepslate Iridium Ore", JBlockProperties.STONE);
@@ -240,9 +245,12 @@ public class JBlocks {
     public static final RegistryObject<JFenceBlock> DUNGEON_LAMP_FENCE = registerFence("dungeon_lamp_fence", "Dungeon Lamp Fence", false, JBlockProperties.DUNGEON_LAMP);
 
     public static final RegistryObject<Block> NETHER_DUNGEON_BRICKS = register("nether_dungeon_bricks", "Nether Dungeon Bricks", JBlockProperties.STONE);
+    public static final RegistryObject<Block> LARGE_NETHER_BRICKS = register("large_nether_bricks", "Large Nether Bricks", JBlockProperties.STONE);
+    public static final RegistryObject<Block> NETHIC_LAMP = register("nethic_lamp", "Nethic Lamp", JBlockProperties.GLOW_LAMP);
     public static final RegistryObject<StairBlock> NETHER_DUNGEON_BRICK_STAIRS = registerStairs("nether_dungeon_brick_stairs", "Nether Dungeon Brick Stairs", NETHER_DUNGEON_BRICKS, false, JBlockProperties.STONE);
     public static final RegistryObject<JFenceBlock> NETHER_DUNGEON_BRICK_FENCE = registerFence("nether_dungeon_brick_fence", "Nether Dungeon Brick Fence", false, JBlockProperties.STONE);
-    public static final RegistryObject<Block> MINI_GHAST_SPAWNER = register("mini_ghast_spawner", "Mini Ghast Spawner", MiniGhastSpawnerBlock::new, true);
+    public static final RegistryObject<Block> MINI_GHAST_SPAWNER = register("mini_ghast_spawner", "Mini Ghast Spawner", MiniGhastSpawnerBlock::new, JBlockProperties.SPAWNER);
+    public static final RegistryObject<Block> HELLBOT_SPAWNER = register("hellbot_spawner", "Hellbot Spawner", HellbotSpawnerBlock::new, JBlockProperties.SPAWNER);
 
     //THESE
     public static final RegistryObject<IronBarsBlock> BOIL_CHAIN = registerPaneBlock("boil_chain", "Boil Chain", JBlockProperties.STONE);
@@ -254,9 +262,9 @@ public class JBlocks {
     public static final RegistryObject<Block> BOIL_SHINGLE = register("boil_shingle", "Boil Shingle", JBlockProperties.STONE);
     public static final RegistryObject<Block> BLAZIER_BRICKS = register("blazier_bricks", "Blazier Bricks", JBlockProperties.STONE);
     public static final RegistryObject<Block> BLAZIER_METAL = register("blazier_metal", "Blazier Metal", JBlockProperties.STONE);
-    public static final RegistryObject<Block> HELLWING_SPAWNER = register("hellwing_spawner", "Hellwing Spawner", HellwingSpawnerBlock::new, true);
-    public static final RegistryObject<Block> OBSERVER_SPAWNER = register("observer_spawner", "Observer Spawner", ObserverSpawnerBlock::new, true);
-    public static final RegistryObject<Block> SCREAMER_SPAWNER = register("screamer_spawner", "Screamer Spawner", ScreamerSpawnerBlock::new, true);
+    public static final RegistryObject<Block> HELLWING_SPAWNER = register("hellwing_spawner", "Hellwing Spawner", HellwingSpawnerBlock::new, JBlockProperties.SPAWNER);
+    public static final RegistryObject<Block> OBSERVER_SPAWNER = register("observer_spawner", "Observer Spawner", ObserverSpawnerBlock::new, JBlockProperties.SPAWNER);
+    public static final RegistryObject<Block> SCREAMER_SPAWNER = register("screamer_spawner", "Screamer Spawner", ScreamerSpawnerBlock::new, JBlockProperties.SPAWNER);
     public static final RegistryObject<Block> SMALL_BRISON_BRICKS = register("small_brison_bricks", "Small Brison Bricks", JBlockProperties.STONE);
     public static final RegistryObject<Block> RED_BRISON_BRICKS = register("red_brison_brick", "Red Brison Brick", JBlockProperties.STONE);
     public static final RegistryObject<Block> BRISON_STONE = register("brison_stone", "Brison Stone", JBlockProperties.STONE);
@@ -308,7 +316,7 @@ public class JBlocks {
     public static final RegistryObject<Block> GOLDITE_STALKS = registerCrossBlock("goldite_stalks", "Goldite Stalks", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> GOLDITE_BULB = registerCrossBlock("goldite_bulb", "Goldite Bulb", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> GOLDITE_TALL_GRASS = registerDoublePlant("goldite_tall_grass", "Goldite Tall Grass", () -> new JDoublePlantBlock(JBlockProperties.FLOWER));
-    public static final RegistryObject<Block> GOLD_BOT_SPAWNER = register("gold_bot_spawner", "Gold Bot Spawner", GoldBotSpawnerBlock::new, true);
+    public static final RegistryObject<Block> GOLD_BOT_SPAWNER = register("gold_bot_spawner", "Gold Bot Spawner", GoldBotSpawnerBlock::new, JBlockProperties.SPAWNER);
     public static final RegistryObject<Block> GOLDITE_FURNACE = registerFurnaceBlock("goldite_furnace", "Goldite Furnace");
     public static final RegistryObject<Block> EUCA_PUMPKIN = registerRotatableBlock("euca_pumpkin", "Euca Pumpkin", () -> new FaceableBlock(JBlockProperties.WOOD));
     public static final RegistryObject<Block> GLIMMER_ROOT = registerVineBlock("glimmer_root", "Glimmer Root", () -> new JVineBlock(JBlockProperties.VINE));
@@ -398,7 +406,7 @@ public class JBlocks {
     public static final RegistryObject<Block> VOLCANIC_SOIL = registerTerrainBlock("volcanic_soil", "Volcanic Soil", JBlockProperties.FIRE_DIRT);
     public static final RegistryObject<Block> HOT_GROUND = registerTerrainBlock("hot_ground", "Hot Ground", JBlockProperties.FIRE_STONE);
     public static final RegistryObject<Block> CHARRED_GRASS = registerGrassBlock("charred_grass", "Charred Grass", JGrassBlock::new);
-    public static final RegistryObject<Block> VOLCANIC_SANDSTONE = registerGrassBlock("volcanic_sandstone", "Volcanic Sandstone", () -> new Block(JBlockProperties.STONE));
+    public static final RegistryObject<Block> VOLCANIC_SANDSTONE = registerGrassBlock("volcanic_sandstone", "Volcanic Sandstone", () -> new Block(JBlockProperties.STONE), JBlockProperties.STONE);
 
     public static final RegistryObject<Block> SCORCHED_STALAGMITE_TINY = registerModeledBlock("scorched_stalagmite_tiny", "Scorched Stalagmite", JBlockStalagmite::new);
     public static final RegistryObject<Block> SCORCHED_STALAGMITE_SMALL = registerModeledBlock("scorched_stalagmite_small", "Scorched Stalagmite", JBlockStalagmite::new);
@@ -465,7 +473,7 @@ public class JBlocks {
     public static final RegistryObject<Block> DEPTHS_DARK_SHINGLE = register("depths_dark_shingle", "Depths Dark Shingle", JBlockProperties.STONE);
     public static final RegistryObject<Block> DEPTHS_COBBLESTONE = register("depths_cobblestone", "Depths Cobblestone", JBlockProperties.STONE);
     public static final RegistryObject<Block> DEPTHS_TILE = register("depths_tile", "Depths Tile", JBlockProperties.STONE);
-    public static final RegistryObject<Block> DEPTHS_GLASS = register("depths_glass", "Depths Glass", () -> new GlassBlock(JBlockProperties.GLASS));
+    public static final RegistryObject<Block> DEPTHS_GLASS = register("depths_glass", "Depths Glass", () -> new GlassBlock(JBlockProperties.GLASS), JBlockProperties.GLASS);
     public static final RegistryObject<RotatedPillarBlock> DEPTHS_PILLAR = registerPillar("depths_pillar", "Depths Pillar", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> DARKLY_LOCK = registerRotatableBlock("darkly_lock", "Darkly Lock", LockBlock::new);
     public static final RegistryObject<Block> DEPTHS_LOCK = registerRotatableBlock("depths_lock", "Depths Lock", LockBlock::new);
@@ -580,7 +588,7 @@ public class JBlocks {
     public static final RegistryObject<Block> SENTERIAN_CARVED_ROCK = register("senterian_carved_rock", "Sentarian Carved Rock", JBlockProperties.STONE);
     public static final RegistryObject<Block> SENTERIAN_FLOOR = register("senterian_floor", "Sentarian Floor", JBlockProperties.STONE);
     public static final RegistryObject<Block> SENTERIAN_ROCK = register("senterian_rock", "Sentarian Rock", JBlockProperties.STONE);
-    public static final RegistryObject<Block> SENTERIAN_GLASS = register("senterian_glass", "Sentarian Glass", () -> new GlassBlock(JBlockProperties.GLASS));
+    public static final RegistryObject<Block> SENTERIAN_GLASS = register("senterian_glass", "Sentarian Glass", () -> new GlassBlock(JBlockProperties.GLASS), JBlockProperties.GLASS);
     public static final RegistryObject<Block> SENTERIAN_GUARDIAN_LAMP = register("senterian_guardian_lamp", "Sentarian Guardian Lamp", JBlockProperties.GLOW_LAMP);
     public static final RegistryObject<Block> SENTERIAN_LIGHT_LAMP = register("senterian_light_lamp", "Sentarian Light Lamp", JBlockProperties.GLOW_LAMP);
     public static final RegistryObject<Block> SENTERIAN_MELLOW_LAMP = register("senterian_mellow_lamp", "Sentarian Mellow Lamp", JBlockProperties.GLOW_LAMP);
@@ -626,10 +634,66 @@ public class JBlocks {
     public static final RegistryObject<Block> REDCURRANT_BUSH = registerGrowingBushBlock("redcurrant_bush", "Redcurrant Bush", RedcurrantBushBlock::new);
     public static final RegistryObject<Block> BRADBERRY_BUSH = registerGrowingBushBlock("bradberry_bush", "Bradberry Bush", BradberryBushBlock::new);
 
+    private static void checkForPickaxeableBlocks(BlockBehaviour.Properties props, String name) {
+        if(props == JBlockProperties.STONE || props == JBlockProperties.GLOW_LAMP || props == JBlockProperties.BREAKABLE_DUNGEON_LAMP || props == JBlockProperties.CRYSTAL
+                || props == JBlockProperties.FIRE_STONE || props == JBlockProperties.FURNACE || props == JBlockProperties.ICE
+                || props == JBlockProperties.VOLCANIC_BLOCK || props == JBlockProperties.SPAWNER || props == JBlockProperties.ROCKITE_SPAWNER || props == JBlockProperties.GRINDSTONE
+                || props == JBlockProperties.GLASS || props == JBlockProperties.DUNGEON_BLOCK || props == JBlockProperties.LUNIUM_ORE_PROPS || props == JBlockProperties.CHEST
+                || props == JBlockProperties.DUNGEON_LAMP || props == JBlockProperties.CLOUD) {
+            addPickaxeableBlocks(name);
+        }
+    }
+
+    private static void checkForAxeableBlocks(BlockBehaviour.Properties props, String name) {
+        if(props == JBlockProperties.WOOD || props == JBlockProperties.CLOUD || props == JBlockProperties.VINE || props == JBlockProperties.CACTUS || props == JBlockProperties.LADDER || props == JBlockProperties.CAMPFIRE || props == JBlockProperties.BUTTON || props == JBlockProperties.DOOR || props == JBlockProperties.MUSHROOM_BLOCK) {
+            addAxeableBlocks(name);
+        }
+    }
+
+    private static void checkForShovelableBlocks(BlockBehaviour.Properties props, String name) {
+        if(props == JBlockProperties.SAND || props == JBlockProperties.FIRE_SAND || props == JBlockProperties.PATH || props == JBlockProperties.DIRT || props == JBlockProperties.FARMLAND || props == JBlockProperties.FIRE_DIRT) {
+            addShovelableBlocks(name);
+        }
+    }
+
+    private static void checkForHoeableBlocks(BlockBehaviour.Properties props, String name) {
+        if(props == JBlockProperties.LEAVES || props == JBlockProperties.LUMINESCENT_LEAVES) {
+            addHoeableBlocks(name);
+        }
+    }
+
+    private static void addAxeableBlocks(String name) {
+        AXE_BLOCKS.add(name);
+    }
+
+    private static void addPickaxeableBlocks(String name) {
+        PICKAXE_BLOCKS.add(name);
+    }
+
+    private static void addHoeableBlocks(String name) {
+        HOE_BLOCKS.add(name);
+    }
+
+    private static void addShovelableBlocks(String name) {
+        SHOVEL_BLOCKS.add(name);
+    }
 
     public static RegistryObject<Block> register(String name, String translatedName, BlockBehaviour.Properties props) {
+        checkForHoeableBlocks(props, name);
+        checkForShovelableBlocks(props, name);
+        checkForAxeableBlocks(props, name);
+        checkForPickaxeableBlocks(props, name);
         normalBlockName.add(name);
         return register(name, translatedName, () -> new JBlock(props), false);
+    }
+
+    public static RegistryObject<Block> register(String name, String translatedName, Supplier<Block> block, BlockBehaviour.Properties props) {
+        checkForHoeableBlocks(props, name);
+        checkForShovelableBlocks(props, name);
+        checkForAxeableBlocks(props, name);
+        checkForPickaxeableBlocks(props, name);
+        normalBlockName.add(name);
+        return register(name, translatedName, block, false);
     }
 
     public static RegistryObject<Block> register(String name, String translatedName, Supplier<Block> block) {
@@ -646,6 +710,7 @@ public class JBlocks {
         return block1;
     }
     public static RegistryObject<Block> registerCampfire(String name, String translatedName) {
+        addAxeableBlocks(name);
         campfireBlockName.add(name);
         campfireLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, () -> new CampfireBlock(true, 1, JBlockProperties.CAMPFIRE));
@@ -670,6 +735,7 @@ public class JBlocks {
     }
 
     public static RegistryObject<Block> registerFurnaceBlock(String name, String translatedName) {
+        addPickaxeableBlocks(name);
         furnaceBlockName.add(name);
         furnaceLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, () -> new JFurnaceBlock(JBlockProperties.FURNACE));
@@ -678,6 +744,7 @@ public class JBlocks {
     }
 
     public static RegistryObject<Block> registerChestBlock(String name, String translatedName, Supplier<Block> block) {
+        addPickaxeableBlocks(name);
         chestBlockName.add(name);
         chestLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
@@ -686,6 +753,7 @@ public class JBlocks {
     }
 
     public static RegistryObject<Block> registerLadder(String name, String translatedName, Supplier<Block> block) {
+        addAxeableBlocks(name);
         ladderLangName.add(translatedName);
         ladderBlockName.add(name);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
@@ -694,6 +762,10 @@ public class JBlocks {
     }
 
     public static RegistryObject<Block> registerAltTexBlock(String name, String translatedName, BlockBehaviour.Properties props) {
+        checkForShovelableBlocks(props, name);
+        checkForAxeableBlocks(props, name);
+        checkForPickaxeableBlocks(props, name);
+        checkForHoeableBlocks(props, name);
         randomLangName.add(translatedName);
         randomBlockName.add(name);
         RegistryObject<Block> block1 = BLOCKS.register(name, () -> new Block(props));
@@ -702,6 +774,10 @@ public class JBlocks {
     }
 
     public static RegistryObject<Block> registerTintedLeavesBlock(String name, String translatedName, BlockBehaviour.Properties props) {
+        checkForShovelableBlocks(props, name);
+        checkForAxeableBlocks(props, name);
+        checkForPickaxeableBlocks(props, name);
+        checkForHoeableBlocks(props, name);
         tintedLeavesLangName.add(translatedName);
         tintedLeavesBlockName.add(name);
         RegistryObject<Block> block1 = BLOCKS.register(name, () -> new Block(props));
@@ -710,6 +786,7 @@ public class JBlocks {
     }
 
     public static RegistryObject<Block> registerMushroomBlock(String name, String translatedName, Supplier<Block> block) {
+        addAxeableBlocks(name);
         mushroomLangName.add(translatedName);
         mushroomBlockName.add(name);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
@@ -718,6 +795,7 @@ public class JBlocks {
     }
 
     public static RegistryObject<Block> registerEndPortalFrameStyleBlock(String name, String translatedName, Supplier<Block> block) {
+        addPickaxeableBlocks(name);
         basePortalFrameLangName.add(translatedName);
         basePortalFrameBlockName.add(name);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
@@ -734,6 +812,8 @@ public class JBlocks {
     }
 
     public static RegistryObject<Block> registerTerrainBlock(String name, String translatedName, Supplier<Block> block) {
+        if(!name.contains("stone"))
+            addShovelableBlocks(name);
         terrainLangName.add(translatedName);
         terrainBlockName.add(name);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
@@ -742,10 +822,14 @@ public class JBlocks {
     }
 
     public static RegistryObject<Block> registerTerrainBlock(String name, String translatedName, BlockBehaviour.Properties props) {
+        checkForAxeableBlocks(props, name);
+        checkForPickaxeableBlocks(props, name);
+        checkForHoeableBlocks(props, name);
         return registerTerrainBlock(name, translatedName, () -> new Block(props));
     }
 
     public static RegistryObject<Block> registerRotatableBlock(String name, String translatedName, Supplier<Block> block) {
+        addPickaxeableBlocks(name);
         rotatableBlockName.add(name);
         rotatableLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
@@ -754,6 +838,7 @@ public class JBlocks {
     }
 
     public static RegistryObject<Block> registerVineBlock(String name, String translatedName, Supplier<JVineBlock> block) {
+        addHoeableBlocks(name);
         vineBlockName.add(name);
         vineLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
@@ -762,6 +847,7 @@ public class JBlocks {
     }
 
     public static RegistryObject<Block> registerModeledBlock(String name, String translatedName, Supplier<Block> block) {
+        addPickaxeableBlocks(name);
         modelBlockName.add(name);
         modelLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
@@ -769,7 +855,11 @@ public class JBlocks {
         return block1;
     }
 
-    public static RegistryObject<Block> registerGrassBlock(String name, String translatedName, Supplier<Block> block) {
+    public static RegistryObject<Block> registerGrassBlock(String name, String translatedName, Supplier<Block> block, BlockBehaviour.Properties props) {
+        checkForShovelableBlocks(props, name);
+        checkForAxeableBlocks(props, name);
+        checkForPickaxeableBlocks(props, name);
+        checkForHoeableBlocks(props, name);
         grassBlockName.add(name);
         grassLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
@@ -777,7 +867,12 @@ public class JBlocks {
         return block1;
     }
 
+    public static RegistryObject<Block> registerGrassBlock(String name, String translatedName, Supplier<Block> block) {
+        return registerGrassBlock(name, translatedName, block, JBlockProperties.GRASS);
+    }
+
     public static RegistryObject<Block> registerOverlayGrassBlock(String name, String translatedName, Supplier<Block> block) {
+        addShovelableBlocks(name);
         overlayGrassBlockName.add(name);
         overlayGrassLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
@@ -794,6 +889,7 @@ public class JBlocks {
     }
 
     public static RegistryObject<Block> registerPathBlock(String name, String translatedName, Supplier<Block> block) {
+        addShovelableBlocks(name);
         pathBlockName.add(name);
         pathLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
@@ -810,6 +906,7 @@ public class JBlocks {
     }
 
     public static RegistryObject<Block> registerFarmlandBlock(String name, String translatedName, Supplier<Block> block) {
+        addShovelableBlocks(name);
         farmlandBlockName.add(name);
         farmlandLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
@@ -829,6 +926,11 @@ public class JBlocks {
     }
 
     public static RegistryObject<RotatedPillarBlock> registerPillar(String name, String translatedName, boolean wood, BlockBehaviour.Properties props) {
+        if(wood) {
+            addAxeableBlocks(name);
+        } else {
+          addPickaxeableBlocks(name);
+        }
         logBlockName.add(name);
         logLangName.add(translatedName);
         RegistryObject<RotatedPillarBlock> block1 = BLOCKS.register(name, () -> new RotatedPillarBlock(props));
@@ -842,6 +944,11 @@ public class JBlocks {
     }
 
     public static RegistryObject<DoorBlock> registerDoor(String name, String translatedName, boolean wood, BlockBehaviour.Properties p) {
+        if(wood) {
+            addAxeableBlocks(name);
+        } else {
+            addPickaxeableBlocks(name);
+        }
         doorBlockName.add(name);
         doorLangName.add(translatedName);
         RegistryObject<DoorBlock> block1 = BLOCKS.register(name, () -> new DoorBlock(p, BlockSetType.OAK));
@@ -855,6 +962,11 @@ public class JBlocks {
     }
 
     public static RegistryObject<TrapDoorBlock> registerTrapDoor(String name, String translatedName, boolean wood, BlockBehaviour.Properties p) {
+        if(wood) {
+            addAxeableBlocks(name);
+        } else {
+            addPickaxeableBlocks(name);
+        }
         trapDoorBlockName.add(name);
         trapDoorLangName.add(translatedName);
         RegistryObject<TrapDoorBlock> block1 = BLOCKS.register(name, () -> new TrapDoorBlock(p, BlockSetType.OAK));
@@ -868,6 +980,11 @@ public class JBlocks {
     }
 
     public static RegistryObject<StairBlock> registerStairs(String name, String translatedName, RegistryObject<Block> plank, boolean wood, BlockBehaviour.Properties p) {
+        if(wood) {
+            addAxeableBlocks(name);
+        } else {
+            addPickaxeableBlocks(name);
+        }
         stairsBlockName.add(name);
         stairsLangName.add(translatedName);
         RegistryObject<StairBlock> block1 = BLOCKS.register(name, () -> new StairBlock(() -> plank.get().defaultBlockState(), p));
@@ -881,6 +998,11 @@ public class JBlocks {
     }
 
     public static RegistryObject<SlabBlock> registerSlab(String name, String translatedName, boolean wood, BlockBehaviour.Properties p) {
+        if(wood) {
+            addAxeableBlocks(name);
+        } else {
+            addPickaxeableBlocks(name);
+        }
         slabBlockName.add(name);
         slabLangName.add(translatedName);
         RegistryObject<SlabBlock> block1 = BLOCKS.register(name, () -> new SlabBlock(p));
@@ -894,6 +1016,11 @@ public class JBlocks {
     }
 
     public static RegistryObject<ButtonBlock> registerButton(String name, String translatedName, boolean sensitive, boolean wood, BlockBehaviour.Properties p) {
+        if(wood) {
+            addAxeableBlocks(name);
+        } else {
+            addPickaxeableBlocks(name);
+        }
         buttonBlockName.add(name);
         buttonLangName.add(translatedName);
         RegistryObject<ButtonBlock> block1 = BLOCKS.register(name, () -> new ButtonBlock(p, BlockSetType.OAK, sensitive ? 20 : 30, true) {
@@ -912,6 +1039,11 @@ public class JBlocks {
     }
 
     public static RegistryObject<PressurePlateBlock> registerPressurePlate(String name, String translatedName, PressurePlateBlock.Sensitivity s, boolean wood, BlockBehaviour.Properties p) {
+        if(wood) {
+            addAxeableBlocks(name);
+        } else {
+            addPickaxeableBlocks(name);
+        }
         pressurePlateBlockName.add(name);
         pressurePlateLangName.add(translatedName);
         RegistryObject<PressurePlateBlock> block1 = BLOCKS.register(name, () -> new PressurePlateBlock(s, p, BlockSetType.OAK));
@@ -925,6 +1057,11 @@ public class JBlocks {
     }
 
     public static RegistryObject<FenceGateBlock> registerFenceGate(String name, String translatedName, boolean wood, BlockBehaviour.Properties p) {
+        if(wood) {
+            addAxeableBlocks(name);
+        } else {
+            addPickaxeableBlocks(name);
+        }
         gateBlockName.add(name);
         gateLangName.add(translatedName);
         RegistryObject<FenceGateBlock> block1 = BLOCKS.register(name, () -> new FenceGateBlock(p, WoodType.OAK));
@@ -938,6 +1075,11 @@ public class JBlocks {
     }
 
     public static RegistryObject<JFenceBlock> registerFence(String name, String translatedName, boolean wood, BlockBehaviour.Properties p) {
+        if(wood) {
+            addAxeableBlocks(name);
+        } else {
+            addPickaxeableBlocks(name);
+        }
         fenceBlockName.add(name);
         fenceLangName.add(translatedName);
         RegistryObject<JFenceBlock> block1 = BLOCKS.register(name, () -> new JFenceBlock(p));
@@ -950,18 +1092,26 @@ public class JBlocks {
         return block1;
     }
 
-    public static RegistryObject<JWallBlock> registerWallBlock(String name, String translatedName, BlockBehaviour.Properties p) {
+    public static RegistryObject<JWallBlock> registerWallBlock(String name, String translatedName, BlockBehaviour.Properties props) {
+        checkForShovelableBlocks(props, name);
+        checkForAxeableBlocks(props, name);
+        checkForPickaxeableBlocks(props, name);
+        checkForHoeableBlocks(props, name);
         wallBlockName.add(name);
         wallLangName.add(translatedName);
-        RegistryObject<JWallBlock> block1 = BLOCKS.register(name, () -> new JWallBlock(p));
+        RegistryObject<JWallBlock> block1 = BLOCKS.register(name, () -> new JWallBlock(props));
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static RegistryObject<IronBarsBlock> registerPaneBlock(String name, String translatedName, BlockBehaviour.Properties p) {
+    public static RegistryObject<IronBarsBlock> registerPaneBlock(String name, String translatedName, BlockBehaviour.Properties props) {
+        checkForShovelableBlocks(props, name);
+        checkForAxeableBlocks(props, name);
+        checkForPickaxeableBlocks(props, name);
+        checkForHoeableBlocks(props, name);
         paneBlockName.add(name);
         paneLangName.add(translatedName);
-        RegistryObject<IronBarsBlock> block1 = BLOCKS.register(name, () -> new IronBarsBlock(p));
+        RegistryObject<IronBarsBlock> block1 = BLOCKS.register(name, () -> new IronBarsBlock(props));
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
@@ -975,6 +1125,7 @@ public class JBlocks {
     }
 
     public static RegistryObject<Block> registerTopBottomBlock(String name, String translatedName, Supplier<Block> block) {
+        addHoeableBlocks(name);//only for terranian leaves
         topBottomBlockName.add(name);
         topBottomLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
@@ -999,6 +1150,7 @@ public class JBlocks {
     }
 
     public static <T extends Block>RegistryObject<T> registerFuelBlock(String name, String translatedName, Supplier<T> block, int burnTime) {
+        addPickaxeableBlocks(name);
         normalLangName.add(translatedName);
         normalBlockName.add(name);
         RegistryObject<T> block1 = BLOCKS.register(name, block);
@@ -1011,10 +1163,14 @@ public class JBlocks {
         return block1;
     }
 
-    public static RegistryObject<Block> registerFuelBlock(String name, String translatedName, BlockBehaviour.Properties p, int burnTime) {
+    public static RegistryObject<Block> registerFuelBlock(String name, String translatedName, BlockBehaviour.Properties props, int burnTime) {
+        checkForShovelableBlocks(props, name);
+        checkForAxeableBlocks(props, name);
+        checkForPickaxeableBlocks(props, name);
+        checkForHoeableBlocks(props, name);
         normalLangName.add(translatedName);
         normalBlockName.add(name);
-        RegistryObject<Block> block1 = BLOCKS.register(name, () -> new Block(p));
+        RegistryObject<Block> block1 = BLOCKS.register(name, () -> new Block(props));
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {

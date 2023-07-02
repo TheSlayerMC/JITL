@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "jitl:euca_pumpkin",
     "jitl:euca_gold_log",
     "jitl:euca_gold_planks",
     "jitl:euca_gold_door",
@@ -33,7 +32,6 @@
     "jitl:frozen_fence_gate",
     "jitl:frozen_fence",
     "jitl:bitterwood_campfire",
-    "jitl:scorched_cactus",
     "jitl:burned_bark",
     "jitl:burned_bark_planks",
     "jitl:burned_door",
@@ -67,6 +65,15 @@
     "jitl:corba_pressure_plate",
     "jitl:corba_fence_gate",
     "jitl:corba_fence",
-    "jitl:corba_ladder"
+    "jitl:corba_ladder",
+    "jitl:terranian_log",
+    "jitl:terrashroom_block_pink",
+    "jitl:terrashroom_block_purple",
+    "jitl:terrashroom_stem",
+    "jitl:cloudia_log",
+    "jitl:cloudia_planks",
+    "jitl:pink_cloudia_cloud",
+    "jitl:blue_cloudia_cloud",
+    "jitl:light_blue_cloudia_cloud"
   ]
 }

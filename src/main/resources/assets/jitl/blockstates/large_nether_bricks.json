@@ -1,0 +1,7 @@
+{
+  "variants": {
+  "": {
+      "model": "jitl:block/large_nether_bricks"
+     }
+  }
+}

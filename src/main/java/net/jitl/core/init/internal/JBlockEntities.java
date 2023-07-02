@@ -46,6 +46,9 @@ public class JBlockEntities {
     public static final RegistryObject<BlockEntityType<ScreamerSpawnerEntity>> SCREAMER_SPAWNER = REGISTRY.register("screamer_spawner",
             () -> BlockEntityType.Builder.of(ScreamerSpawnerEntity::new, JBlocks.SCREAMER_SPAWNER.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<HellbotSpawnerEntity>> HELLBOT_SPAWNER = REGISTRY.register("hb_spawner",
+            () -> BlockEntityType.Builder.of(HellbotSpawnerEntity::new, JBlocks.HELLBOT_SPAWNER.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<PedestalTile>> PEDESTAL = REGISTRY.register("pedestal",
             () -> BlockEntityType.Builder.of(PedestalTile::new, JBlocks.FROZEN_PEDESTAL.get(), JBlocks.ROYAL_PEDESTAL.get()).build(null));
 }

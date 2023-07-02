@@ -9,7 +9,8 @@ import net.jitl.common.world.gen.JFoliagePlacers;
 import net.jitl.common.world.gen.JTreeDecorators;
 import net.jitl.core.config.JClientConfig;
 import net.jitl.core.config.JCommonConfig;
-import net.jitl.core.data.JBlockPathGenerator;
+import net.jitl.core.data.BlockBreakingGenerator;
+import net.jitl.core.data.block_generation.JBlockPathGenerator;
 import net.jitl.core.data.JItemGenerator;
 import net.jitl.core.data.JNetworkRegistry;
 import net.jitl.core.data.LangRegistry;
@@ -68,6 +69,7 @@ public class JITL {
         ClientEventHandler.regToBus(forgeEventBus, modEventBus);
 
         if(DEV_MODE) {
+            new BlockBreakingGenerator().generate();
             new JItemGenerator().generate();
             new JBlockGenerator().generate();
             new JTerrainBlockGenerator().generate();

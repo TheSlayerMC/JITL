@@ -21,12 +21,6 @@
       "maxCount": 3
     },
     {
-      "type": "jitl:hellbot",
-      "weight": 2,
-      "minCount": 1,
-      "maxCount": 3
-    },
-    {
       "type": "jitl:inferno_blaze",
       "weight": 2,
       "minCount": 1,
