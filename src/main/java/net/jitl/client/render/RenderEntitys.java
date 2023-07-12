@@ -96,6 +96,7 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.INFERNO_BLAZE_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("inferno_blaze", JDimension.NETHER), 0.5F));
         EntityRenderers.register(JEntities.HELL_COW_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("hell_cow", JDimension.NETHER), 1.0F));
         EntityRenderers.register(JEntities.HELLBOT_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("hellbot", JDimension.NETHER), 0.8F));
+        EntityRenderers.register(JEntities.OKOLOO_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("okoloo", JDimension.NETHER), 0.8F, 1.5F));
 
         EntityRenderers.register(JEntities.FLAME_LOTUS_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("flame_lotus", JDimension.BOIL), 0.5F));
         EntityRenderers.register(JEntities.BURNING_LIGHT_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("burning_light", JDimension.BOIL), 0.5F));

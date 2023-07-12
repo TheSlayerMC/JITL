@@ -5,6 +5,7 @@ import net.jitl.common.entity.boil.*;
 import net.jitl.common.entity.boil.npc.BoilTrader;
 import net.jitl.common.entity.boil.npc.EscapedConvict;
 import net.jitl.common.entity.boss.BossCrystal;
+import net.jitl.common.entity.boss.Okoloo;
 import net.jitl.common.entity.boss.RockiteSmasher;
 import net.jitl.common.entity.boss.TowerGuardian;
 import net.jitl.common.entity.depths.*;
@@ -105,6 +106,7 @@ public class JEntities {
     public static final RegistryObject<EntityType<InfernoBlaze>> INFERNO_BLAZE_TYPE = registerEntity(InfernoBlaze::new, "inferno_blaze", "Inferno Blaze", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<HellCow>> HELL_COW_TYPE = registerEntity(HellCow::new, "hell_cow", "Hell Cow", 1.5F, 1.75F, NETHER_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
     public static final RegistryObject<EntityType<Hellbot>> HELLBOT_TYPE = registerEntity(Hellbot::new, "hellbot", "Hellbot", 0.5F, 0.75F, NETHER_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Okoloo>> OKOLOO_TYPE = registerEntity(Okoloo::new, "okoloo", "Okoloo", 1.2F, 1.9F, NETHER_COLOR, BOSS_COLOR);
 
     //BOIL MOBS
     public static final RegistryObject<EntityType<FlameLotus>> FLAME_LOTUS_TYPE = registerEntity(FlameLotus::new, "flame_lotus", "Flame Lotus", 1F, 0.25F, BOILING_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
@@ -195,6 +197,7 @@ public class JEntities {
         event.put(INFERNO_BLAZE_TYPE.get(), InfernoBlaze.createAttributes());
         event.put(HELL_COW_TYPE.get(), HellCow.createAttributes());
         event.put(HELLBOT_TYPE.get(), Hellbot.createAttributes());
+        event.put(OKOLOO_TYPE.get(), Okoloo.createAttributes());
 
         event.put(FLAME_LOTUS_TYPE.get(), FlameLotus.createAttributes());
         event.put(BURNING_LIGHT_TYPE.get(), BurningLight.createAttributes());
@@ -258,6 +261,7 @@ public class JEntities {
         setDefaultMonsterSpawn(event, INFERNO_BLAZE_TYPE);
         setDefaultMonsterSpawn(event, HELL_COW_TYPE);
         setDefaultMonsterSpawn(event, HELLBOT_TYPE);
+        setDefaultMonsterSpawn(event, OKOLOO_TYPE);
 
         setDefaultSpawn(event, FLAME_LOTUS_TYPE);
         setDefaultSpawn(event, BURNING_LIGHT_TYPE);

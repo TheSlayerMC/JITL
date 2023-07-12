@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "jitl:euca_pumpkin",
     "jitl:euca_gold_log",
     "jitl:euca_gold_planks",
     "jitl:euca_gold_door",

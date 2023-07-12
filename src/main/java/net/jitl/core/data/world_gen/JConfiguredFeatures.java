@@ -100,7 +100,8 @@ public class JConfiguredFeatures {
             SINGLE_EUCA_GRASS = registerKey("gold_grass"),
             SINGLE_GOLDITE_STALKS = registerKey("goldite_stalks"),
             EUCA_WATER = registerKey("euca_water"),
-            GOLD_BOT_SPAWNER = registerKey("gold_bot_spawner");
+            GOLD_BOT_SPAWNER = registerKey("gold_bot_spawner"),
+            EUCA_PUMPKIN = registerKey("euca_pumpkin");
 
     //DEPTHS
     public static final ResourceKey<ConfiguredFeature<?, ?>> DEPTHS_LAMP_ROOF = registerKey("depths_lamp_roof"),
@@ -217,6 +218,7 @@ public class JConfiguredFeatures {
         register(context, GOLD_VEG , Feature.FLOWER, new RandomPatchConfiguration(96, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.EUCA_SILVER_FLOWER.get().defaultBlockState(), JBlocks.EUCA_TALL_FLOWERS.get().defaultBlockState(), JBlocks.EUCA_TALL_GRASS.get().defaultBlockState()))))));
         register(context, SINGLE_GOLDITE_STALKS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(JBlocks.GOLDITE_STALKS.get().defaultBlockState())));
         register(context, SINGLE_EUCA_GRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(JBlocks.EUCA_TALL_GRASS.get().defaultBlockState())));
+        register(context, EUCA_PUMPKIN, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(JBlocks.EUCA_PUMPKIN.get())), List.of(JBlocks.EUCA_GOLD_GRASS.get())));
 
         //DEPTHS
         register(context, DEPTHS_LAMP_ROOF, JFeatures.ROOF_DEPTHS_LAMP.get(), new NoneFeatureConfiguration());

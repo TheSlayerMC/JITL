@@ -64,7 +64,8 @@
       "jitl:korite_ore",
       "jitl:gold_bot_spawner",
       "jitl:euca_water",
-      "jitl:euca_ruins"
+      "jitl:euca_ruins",
+      "jitl:euca_pumpkin"
     ]
   ]
 }
