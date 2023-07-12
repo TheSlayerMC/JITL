@@ -3,6 +3,7 @@ package net.jitl.common.entity.boss;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -63,6 +64,14 @@ public class BossCrystal extends Mob implements GeoEntity {
                 .add(Attributes.MAX_HEALTH, 1)
                 .add(Attributes.FOLLOW_RANGE, 0)
                 .add(Attributes.MOVEMENT_SPEED, 0.0).build();
+    }
+
+    @Override
+    public void aiStep() {
+        for (int i = 0; i < 1; i++) {
+            this.level().addParticle(ParticleTypes.SMOKE, this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
+        }
+        super.aiStep();
     }
 
     @Override
