@@ -504,7 +504,9 @@ public class JItems {
 
     public static final RegistryObject<Item> BREATHING_STONE = registerNormalItem("breathing_stone", "Breathing Stone", () -> new EssenceRegenCatalystItem(itemProps().stacksTo(1)).speed(0.0112F));
 
-    public static final RegistryObject<Item> EUDOR_CROWN = registerNormalItem("eudor_crown", "Eudor's Crown");
+    public static final RegistryObject<Item> EUDOR_CROWN = registerNormalItem("eudor_crown", "Eudor's Crown", BossSpawnerItem::new);
+    public static final RegistryObject<Item> BROKEN_OKOLOO_CLUB = register("broken_okoloo_club", "Broken Okoloo Club", BossSpawnerItem::new, ItemType.MODEL);
+
     public static final RegistryObject<Item> SENTACOIN = registerNormalItem("sentacoin", "Sentacoin", () -> new SentacoinItem(Sentacoin.Type.COIN));
     public static final RegistryObject<Item> SENTACOIN_BAG = register("sentacoin_bag", "Sentacoin Bag", () -> new SentacoinItem(Sentacoin.Type.BAG), ItemType.MODEL);
 

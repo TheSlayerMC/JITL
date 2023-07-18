@@ -99,7 +99,7 @@ public class JEntities {
     public static final RegistryObject<EntityType<Stonewalker>> STONEWALKER_TYPE = registerEntity(Stonewalker::new, "stonewalker", "Stonewalker", 1F, 1.2F, OVERWORLD_COLOR, HOSTILE_COLOR);
 
     //NETHER MOBS
-    public static final RegistryObject<EntityType<Witherspine>> WITHERSPINE_TYPE = registerEntity(Witherspine::new, "witherspine", "Witherspine", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Witherspine>> WITHERSPINE_TYPE = registerEntity(Witherspine::new, "witherspine", "Witherspine", 1F, 3.75F, NETHER_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<MiniGhast>> MINI_GHAST_TYPE = registerEntity(MiniGhast::new, "mini_ghast", "Mini Ghast", 1F, 1F, NETHER_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<HellTurtle>> HELL_TURTLE_TYPE = registerEntity(HellTurtle::new, "hell_turtle", "Hell Turtle", 2F, 2F, NETHER_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
     public static final RegistryObject<EntityType<Reaper>> REAPER_TYPE = registerEntity(Reaper::new, "reaper", "Reaper", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);

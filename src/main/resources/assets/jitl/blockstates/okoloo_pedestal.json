@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "has_club=false": {
+      "model": "jitl:block/okoloo_pedestal_empty"
+    },
+    "has_club=true": {
+      "model": "jitl:block/okoloo_pedestal_full"
+    }
+  }
+}

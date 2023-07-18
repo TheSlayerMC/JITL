@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:okoloo_crypt",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1642236464,
+    "spacing": 20,
+    "separation": 6,
+    "type": "minecraft:random_spread"
+  }
+}
