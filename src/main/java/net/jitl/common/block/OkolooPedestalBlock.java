@@ -40,7 +40,7 @@ public class OkolooPedestalBlock extends Block {
         if(state.getValue(HAS_CLUB)) {
             if(!worldIn.isClientSide()) {
                 Okoloo okoloo = new Okoloo(JEntities.OKOLOO_TYPE.get(), worldIn);
-                okoloo.setPos(pos.getX(), pos.getY() + 1, pos.getZ());
+                okoloo.setPos(pos.getX() + 0.5D, pos.getY() + 1, pos.getZ() + 0.5D);
                 worldIn.addFreshEntity(okoloo);
                 BlockState empty_state = state.setValue(OkolooPedestalBlock.HAS_CLUB, Boolean.FALSE);
                 worldIn.setBlock(pos, empty_state, 2);

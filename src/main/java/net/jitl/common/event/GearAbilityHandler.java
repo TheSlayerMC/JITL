@@ -32,29 +32,27 @@ public class GearAbilityHandler {
         LivingEntity entity = event.getEntity();
         if(entity != null) {
             ItemStack hand = entity.getMainHandItem();
-                Item item = hand.getItem();
-            if (item != null) {
-                if (item instanceof JGear && !(item instanceof JArmorItem)) {
-                    ((JGear) hand.getItem()).getAbility().tick(entity, entity.level(), hand);
-                }
-                hand = entity.getOffhandItem();
-                item = hand.getItem();
-                if (item instanceof JGear && !(item instanceof JArmorItem)) {
-                    ((JGear) hand.getItem()).getAbility().tick(entity, entity.level(), hand);
-                }
-                event.getEntity().getCapability(PlayerArmorProvider.PLAYER_ARMOR).ifPresent(armor -> {
-                    ArrayList<ItemStack> stacks = armor.getArmor();
-                    if (stacks != null) {
-                        for (ItemStack stack : stacks) {
-                            ((JArmorItem) stack.getItem()).getAbility().tick(entity, entity.level(), stack);
-                        }
-                    }
-                    FullArmorAbility fullSet = armor.getFullArmor();
-                    if (fullSet != null) {
-                        fullSet.tick(entity);
-                    }
-                });
+            Item item = hand.getItem();
+            if (item instanceof JGear && !(item instanceof JArmorItem)) {
+                ((JGear) hand.getItem()).getAbility().tick(entity, entity.level(), hand);
             }
+            hand = entity.getOffhandItem();
+            item = hand.getItem();
+            if (item instanceof JGear && !(item instanceof JArmorItem)) {
+                ((JGear) hand.getItem()).getAbility().tick(entity, entity.level(), hand);
+            }
+            event.getEntity().getCapability(PlayerArmorProvider.PLAYER_ARMOR).ifPresent(armor -> {
+                ArrayList<ItemStack> stacks = armor.getArmor();
+                if (stacks != null) {
+                    for (ItemStack stack : stacks) {
+                        ((JArmorItem) stack.getItem()).getAbility().tick(entity, entity.level(), stack);
+                    }
+                }
+                FullArmorAbility fullSet = armor.getFullArmor();
+                if (fullSet != null) {
+                    fullSet.tick(entity);
+                }
+            });
         }
     }
 
