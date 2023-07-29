@@ -192,6 +192,8 @@
     "jitl:darkly_lock",
     "jitl:depths_lock",
     "jitl:depths_furnace",
+    "jitl:depths_gate",
+    "jitl:dark_sorcerer_spawner",
     "jitl:corba_portal_frame",
     "jitl:corba_stone",
     "jitl:corba_cobblestone_wall",

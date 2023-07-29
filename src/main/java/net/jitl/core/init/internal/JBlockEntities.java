@@ -34,6 +34,9 @@ public class JBlockEntities {
     public static final RegistryObject<BlockEntityType<GoldBotSpawnerEntity>> GOLD_BOT_SPAWNER = REGISTRY.register("gb_spawner",
             () -> BlockEntityType.Builder.of(GoldBotSpawnerEntity::new, JBlocks.GOLD_BOT_SPAWNER.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<DarkSorcererSpawnerEntity>> DARK_SORCERER_SPAWNER = REGISTRY.register("ds_spawner",
+            () -> BlockEntityType.Builder.of(DarkSorcererSpawnerEntity::new, JBlocks.DARK_SORCERER_SPAWNER.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<MiniGhastSpawnerEntity>> MINI_GHAST_SPAWNER = REGISTRY.register("mg_spawner",
             () -> BlockEntityType.Builder.of(MiniGhastSpawnerEntity::new, JBlocks.MINI_GHAST_SPAWNER.get()).build(null));
 

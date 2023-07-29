@@ -1,0 +1,100 @@
+{
+  "multipart": [
+     {
+        "apply": {
+            "model": "jitl:block/depths_gate_post_ends"
+        }
+     },
+     {
+        "apply": {
+            "model": "jitl:block/depths_gate_post"
+        },
+        "when": {
+            "east": "false",
+            "north": "false",
+            "south": "false",
+            "west": "false"
+        }
+     },
+     {
+        "apply": {
+            "model": "jitl:block/depths_gate_cap"
+        },
+        "when": {
+            "east": "false",
+            "north": "true",
+            "south": "false",
+            "west": "false"
+        }
+     },
+     {
+        "apply": {
+            "model": "jitl:block/depths_gate_cap",
+            "y": 90
+        },
+        "when": {
+            "east": "true",
+            "north": "false",
+            "south": "false",
+            "west": "false"
+        }
+     },
+     {
+        "apply": {
+            "model": "jitl:block/depths_gate_cap_alt"
+        },
+        "when": {
+            "east": "false",
+            "north": "false",
+            "south": "true",
+            "west": "false"
+        }
+     },
+     {
+        "apply": {
+            "model": "jitl:block/depths_gate_cap_alt",
+            "y": 90
+        },
+        "when": {
+            "east": "false",
+            "north": "false",
+            "south": "false",
+            "west": "true"
+        }
+     },
+     {
+        "apply": {
+            "model": "jitl:block/depths_gate_side"
+        },
+        "when": {
+            "north": "true"
+        }
+     },
+     {
+        "apply": {
+            "model": "jitl:block/depths_gate_side",
+            "y": 90
+        },
+        "when": {
+            "east": "true"
+        }
+     },
+     {
+        "apply": {
+            "model": "jitl:block/depths_gate_side_alt"
+        },
+        "when": {
+            "south": "true"
+        }
+     },
+     {
+        "apply": {
+            "model": "jitl:block/depths_gate_side_alt",
+            "y": 90
+        },
+        "when": {
+            "west": "true"
+        }
+     }
+  ]
+}

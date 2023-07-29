@@ -1,0 +1,17 @@
+{
+  "name": "jitl:dark_sorcerers_dungeon/start_pool",
+
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "jitl:depths/dark_sorcerers_dungeon",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

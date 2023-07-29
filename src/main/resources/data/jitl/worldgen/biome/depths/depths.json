@@ -25,12 +25,6 @@
         "maxCount": 5
       },
       {
-        "type": "jitl:dark_sorcerer",
-        "weight": 5,
-        "minCount": 1,
-        "maxCount": 5
-      },
-      {
         "type": "jitl:depths_beast",
         "weight": 5,
         "minCount": 1,

@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:depths_watchtower",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 156586415103247,
+    "spacing": 20,
+    "separation": 6,
+    "type": "minecraft:random_spread"
+  }
+}

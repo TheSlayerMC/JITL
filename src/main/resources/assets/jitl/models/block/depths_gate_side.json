@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/iron_bars_side",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "jitl:block/depths_gate",
+    "bars": "jitl:block/depths_gate",
+    "edge": "jitl:block/depths_gate"
+  }
+}
