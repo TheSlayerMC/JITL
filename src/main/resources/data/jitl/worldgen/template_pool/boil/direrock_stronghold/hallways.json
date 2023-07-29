@@ -12,18 +12,18 @@
       }
     },
     {
-      "weight": 10,
+      "weight": 25,
       "element": {
-        "location": "jitl:boil/direrock_stronghold/dire_stairs_hallways",
+        "location": "jitl:boil/direrock_stronghold/dire_hallway_2",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
     },
     {
-      "weight": 10,
+      "weight": 25,
       "element": {
-        "location": "jitl:boil/direrock_stronghold/dire_stairs_roof_1",
+        "location": "jitl:boil/direrock_stronghold/dire_hallway_3",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"

@@ -20,9 +20,9 @@ public class PacketKnowledge {
     public PacketKnowledge(EnumKnowledge knowledge, KnowledgeStorage storage) {
         if(storage == null || knowledge == null)
             return;
-        this.knowledge = knowledge;
         this.knowledgeXP = storage.getAmountOnCurrentLevel();
         this.level = storage.getLevelCount();
+        this.knowledge = knowledge;
     }
 
     public void toBytes(FriendlyByteBuf buf) {

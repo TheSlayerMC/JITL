@@ -16,7 +16,7 @@ import java.util.Optional;
 public class JNetworkRegistry {
 
     private static int packetId = 0;
-    public static SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(JITL.MODID, "jitl_packet"), () -> "1.0", s -> true, s -> true);
+    public static SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(JITL.MODID, "jitl_packet"), () -> "1.0", c -> true, s -> true);
 
     private static int nextID() {
         return packetId++;

@@ -314,6 +314,8 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.BRISON_STONE);
         this.dropSelf(JBlocks.BOILING_LAMP);
         this.dropSelf(JBlocks.SIZZLING_POST);
+        this.dropSelf(JBlocks.SCORCHED_RUBBLE_BRICKS);
+        this.dropSelf(JBlocks.SCORCHED_RUBBLE_BRICK_STAIRS);
         this.add(JBlocks.HELLWING_SPAWNER, noDrop());
         this.add(JBlocks.OBSERVER_SPAWNER, noDrop());
         this.add(JBlocks.SCREAMER_SPAWNER, noDrop());

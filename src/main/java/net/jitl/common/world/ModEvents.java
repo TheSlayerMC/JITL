@@ -85,7 +85,7 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if (event.side == LogicalSide.SERVER) {
+        if(event.side == LogicalSide.SERVER) {
             event.player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
                 if (event.phase == TickEvent.Phase.END) {
                     if (essence.isRegenReady()) {
@@ -99,7 +99,7 @@ public class ModEvents {
 
             event.player.getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(knowledge -> {
                 if(event.phase == TickEvent.Phase.END) {
-                   // knowledge.update(event.player); ADD BACK LATER
+                    knowledge.update(event.player);
                 }
             });
 

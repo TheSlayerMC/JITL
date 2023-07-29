@@ -1,11 +1,11 @@
 {
-  "name": "jitl:boil/direrock_stronghold/stairways",
+  "name": "jitl:boil/direrock_stronghold/rooms",
   "fallback": "minecraft:empty",
   "elements": [
     {
       "weight": 25,
       "element": {
-        "location": "jitl:boil/direrock_stronghold/dire_stairs_1",
+        "location": "jitl:boil/direrock_stronghold/dire_room_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -14,7 +14,7 @@
     {
       "weight": 25,
       "element": {
-        "location": "jitl:boil/direrock_stronghold/dire_stairs_hallways_1",
+        "location": "jitl:boil/direrock_stronghold/dire_room_2",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -23,7 +23,7 @@
     {
       "weight": 25,
       "element": {
-        "location": "jitl:boil/direrock_stronghold/dire_stairs_hallways_2",
+        "location": "jitl:boil/direrock_stronghold/dire_room_3",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"

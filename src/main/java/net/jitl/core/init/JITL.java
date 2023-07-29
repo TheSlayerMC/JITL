@@ -46,8 +46,6 @@ public class JITL {
 
     public JITL() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
-
         modEventBus.addListener(JTabs::registerTabs);
         JItems.ITEMS.register(modEventBus);
         JBlocks.BLOCKS.register(modEventBus);
@@ -66,7 +64,6 @@ public class JITL {
         JTreeDecorators.REGISTRY.register(modEventBus);
         JSounds.REGISTRY.register(modEventBus);
         JTabs.REGISTRY.register(modEventBus);
-        ClientEventHandler.regToBus(forgeEventBus, modEventBus);
 
         if(DEV_MODE) {
             new BlockBreakingGenerator().generate();
@@ -107,7 +104,6 @@ public class JITL {
             new JBlockEndPortalGenerator().generate();
             new JBlockEndFrameGenerator().generate();
             new JBlockMushroomGenerator().generate();
-
             new LangRegistry().generate();
         }
 
@@ -130,6 +126,8 @@ public class JITL {
     private void clientSetup(final FMLClientSetupEvent event) {
         RenderEntitys.registerAnimationRenderers();
         event.enqueueWork(JContainers::register);
+        IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
+        ClientEventHandler.regToBus(forgeEventBus);
     }
 
     private void enqueue(InterModEnqueueEvent event) {

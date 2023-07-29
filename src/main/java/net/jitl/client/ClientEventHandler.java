@@ -8,6 +8,7 @@ import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterDimensionSpecialEffectsEvent;
 import net.minecraftforge.client.event.ViewportEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -15,10 +16,10 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.CuriosApi;
 
-@Mod.EventBusSubscriber(modid = JITL.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = JITL.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientEventHandler {
 
-    public static void regToBus(IEventBus forgeBus, IEventBus modEventBus) {
+    public static void regToBus(IEventBus forgeBus) {
         forgeBus.addListener(ClientEventHandler::onFogDensityEvent);
     }
 

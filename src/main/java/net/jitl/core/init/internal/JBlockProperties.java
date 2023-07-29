@@ -378,6 +378,9 @@ public class JBlockProperties {
         if(name.contains("sizzling_post")) {
             texName = "sizzling_post";
         }
+        if(name.contains("scorched_rubble_brick")) {
+            texName = "scorched_rubble_bricks";
+        }
         return texName;
     }
 

@@ -270,6 +270,8 @@ public class JBlocks {
     public static final RegistryObject<Block> BRISON_STONE = register("brison_stone", "Brison Stone", JBlockProperties.STONE);
     public static final RegistryObject<Block> BOILING_LAMP = register("boiling_lamp", "Boiling Lamp", JBlockProperties.GLOW_LAMP);
     public static final RegistryObject<JFenceBlock> SIZZLING_POST = registerFence("sizzling_post", "Sizzling Post", false, JBlockProperties.WOOD);
+    public static final RegistryObject<Block> SCORCHED_RUBBLE_BRICKS = register("scorched_rubble_bricks", "Scorched Rubble Bricks", JBlockProperties.STONE);
+    public static final RegistryObject<StairBlock> SCORCHED_RUBBLE_BRICK_STAIRS = registerStairs("scorched_rubble_brick_stairs", "Scorched Rubble Brick Stairs", SCORCHED_RUBBLE_BRICKS, false, JBlockProperties.STONE);
 
     public static final RegistryObject<Block> GOLDITE_FARMLAND = registerFarmlandBlock("goldite_farmland", "Goldite Farmland", GolditeFarmland::new);
     public static final RegistryObject<Block> DEPTHS_FARMLAND = registerFarmlandBlock("depths_farmland", "Depths Farmland", DepthsFarmland::new);
