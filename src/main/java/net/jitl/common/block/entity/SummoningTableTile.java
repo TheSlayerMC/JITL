@@ -39,14 +39,14 @@ public class SummoningTableTile extends RandomizableContainerBlockEntity impleme
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, SummoningTableTile entity) {
         if(entity.areItemsInSlots(
-                JItems.SPAWNER_BAR.get(),
-                JItems.ASH.get(),
-                JItems.SPAWNER_BAR.get(),
+                JItems.BLOODCRUST_INGOT.get(),
                 JItems.HELL_SHARDS.get(),
+                JItems.BLOODCRUST_INGOT.get(),
                 JItems.SPAWNER_BAR.get(),
-                JItems.ASH.get(),
-                JItems.SPAWNER_BAR.get())){
-            entity.summonItem(new ItemStack(JItems.BLOOD_KNIFE.get()));
+                JItems.BLOODCRUST_INGOT.get(),
+                JItems.HELL_SHARDS.get(),
+                JItems.BLOODCRUST_INGOT.get())){
+            entity.summonItem(new ItemStack(JItems.BROKEN_OKOLOO_CLUB.get()));
         }
 
         if(entity.startedSummon()) {

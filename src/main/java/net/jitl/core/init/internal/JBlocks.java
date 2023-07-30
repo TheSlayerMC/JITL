@@ -622,7 +622,7 @@ public class JBlocks {
     public static final RegistryObject<RotatedPillarBlock> BLOOD_PILLAR = registerPillar("blood_pillar", "Blood Pillar", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> BLOOD_BRICKS = register("blood_bricks", "Blood Rock", JBlockProperties.STONE);
     public static final RegistryObject<Block> CARVED_BLOOD_ROCK = register("carved_blood_rock", "Carved Blood Rock", JBlockProperties.STONE);
-    public static final RegistryObject<Block> OBELISK = register("obelisk", "Obelisk", JBlockProperties.STONE);
+    public static final RegistryObject<Block> OBELISK = register("obelisk", "Obelisk", JBlockProperties.BREAKABLE_DUNGEON_LAMP);
     public static final RegistryObject<Block> SUMMONING_TABLE = registerModeledBlock("summoning_table", "Summoning Table", SummoningTableBlock::new);
 
     public static final RegistryObject<RotatedPillarBlock> STONE_PLILLAR = registerPillar("stone_pillar", "Stone Pillar", false, JBlockProperties.STONE);
