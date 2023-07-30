@@ -41,7 +41,6 @@ public class SummoningTableRenderer implements BlockEntityRenderer<SummoningTabl
         matrixStack.mulPose(Axis.YP.rotation(timeD));
         matrixStack.scale(scale, scale, scale);
         BakedModel model = renderEntity.getModel(stack, null, null, 0);
-
         this.renderEntity.render(stack, ItemDisplayContext.GROUND, true, matrixStack, buffer, lightLevel, combinedOverlay, model);
         matrixStack.popPose();
     }

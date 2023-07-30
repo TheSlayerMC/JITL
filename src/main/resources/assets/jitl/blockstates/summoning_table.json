@@ -1,7 +1,10 @@
 {
   "variants": {
-  "": {
+    "is_active=false": {
       "model": "jitl:block/summoning_table"
-     }
+    },
+    "is_active=true": {
+      "model": "jitl:block/summoning_table_active"
+    }
   }
 }
