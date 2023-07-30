@@ -1,6 +1,6 @@
 package net.jitl.common.block.entity;
 
-import net.jitl.client.render.screen.JFurnaceMenu;
+import net.jitl.common.block.entity.container.JFurnaceMenu;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;

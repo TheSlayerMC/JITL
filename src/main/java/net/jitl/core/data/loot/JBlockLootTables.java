@@ -473,6 +473,15 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.ROYAL_PEDESTAL);
         this.dropSelf(JBlocks.STONE_PLILLAR);
         this.dropSelf(JBlocks.SMALL_STONE_BRICKS);
+        this.dropSelf(JBlocks.OKOLOO_PEDESTAL);
+
+        this.dropSelf(JBlocks.BLOOD_ROCK);
+        this.dropSelf(JBlocks.BLOOD_RUNE);
+        this.dropSelf(JBlocks.BLOOD_PILLAR);
+        this.dropSelf(JBlocks.BLOOD_BRICKS);
+        this.dropSelf(JBlocks.CARVED_BLOOD_ROCK);
+        this.dropSelf(JBlocks.OBELISK);
+        this.dropSelf(JBlocks.SUMMONING_TABLE);
 
         this.addCrop(JBlocks.FLORO_PEDAL_CROP.get(), JItems.FLORO_PEDAL.get(), JItems.FLORO_SEEDS.get(), 7);
         this.addCrop(JBlocks.CORVEGGIES_CROP.get(), JItems.CORVEGGIES.get(), JItems.CORVEGGIES.get(), 2);

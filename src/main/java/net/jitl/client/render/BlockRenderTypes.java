@@ -135,6 +135,7 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.CLOUDIA_LEAVES.get());
         cutout.add(JBlocks.SENTERIAN_GLASS.get());
         cutout.add(JBlocks.SENTERIAN_BARS.get());
+        cutout.add(JBlocks.SUMMONING_TABLE.get());
 
         translucent.add(JBlocks.EUCA_PORTAL.get());
         translucent.add(JBlocks.FROZEN_PORTAL.get());

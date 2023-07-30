@@ -87,6 +87,9 @@ public class LangRegistry {
         writeToFile("\"jitl.stats\" : \"Player Stats\",");
         writeToFile("\"jitl.king.hero\" : \"Good Luck... Hero\",");
 
+        writeToFile("\"jitl.tile.summon_table\" : \"Summoning Table\",");
+
+
         writeToFile("\"jitl.tooltip.freeze\" : \"On hit: Freezes the target for 6 seconds\",");
         writeToFile("\"jitl.tooltip.poison\" : \"On hit: Poisions for 6 seconds\",");
         writeToFile("\"jitl.tooltip.fire\" : \"On hit: Burns for 10 seconds\",");

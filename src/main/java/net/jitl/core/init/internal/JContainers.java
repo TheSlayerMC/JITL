@@ -1,7 +1,9 @@
 package net.jitl.core.init.internal;
 
-import net.jitl.client.render.screen.JFurnaceMenu;
-import net.jitl.client.render.screen.JFurnaceScreen;
+import net.jitl.client.gui.screen.SummoningTableScreen;
+import net.jitl.common.block.entity.container.JFurnaceMenu;
+import net.jitl.client.gui.screen.JFurnaceScreen;
+import net.jitl.common.block.entity.container.SummoningTableContainer;
 import net.jitl.core.helper.internal.EmptyContainer;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -18,7 +20,10 @@ public class JContainers {
 
     public static final RegistryObject<MenuType<JFurnaceMenu>> JFURNACE = REGISTRY.register("jfurnace", () -> IForgeMenuType.create((id, inv, data) -> new JFurnaceMenu(id, inv)));
 
+    public static final RegistryObject<MenuType<SummoningTableContainer>> SUMMONING_TABLE = REGISTRY.register("summoning_table", () -> IForgeMenuType.create(SummoningTableContainer::new));
+
     public static void register() {
         MenuScreens.register(JFURNACE.get(), JFurnaceScreen::new);
+        MenuScreens.register(SUMMONING_TABLE.get(), SummoningTableScreen::new);
     }
 }

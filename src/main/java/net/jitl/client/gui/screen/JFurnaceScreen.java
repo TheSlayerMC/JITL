@@ -1,5 +1,6 @@
-package net.jitl.client.render.screen;
+package net.jitl.client.gui.screen;
 
+import net.jitl.common.block.entity.container.JFurnaceMenu;
 import net.minecraft.client.gui.screens.inventory.AbstractFurnaceScreen;
 import net.minecraft.client.gui.screens.recipebook.SmeltingRecipeBookComponent;
 import net.minecraft.network.chat.Component;

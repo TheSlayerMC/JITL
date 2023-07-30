@@ -55,6 +55,14 @@ public class RenderEntitys {
         event.registerBlockEntityRenderer(JBlockEntities.PEDESTAL.get(), PedestalRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.GOLD_BOT_SPAWNER.get(), JSpawnerRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.MINI_GHAST_SPAWNER.get(), JSpawnerRenderer::new);
+        event.registerBlockEntityRenderer(JBlockEntities.DARK_SORCERER_SPAWNER.get(), JSpawnerRenderer::new);
+        event.registerBlockEntityRenderer(JBlockEntities.SCREAMER_SPAWNER.get(), JSpawnerRenderer::new);
+        event.registerBlockEntityRenderer(JBlockEntities.OBSERVER_SPAWNER.get(), JSpawnerRenderer::new);
+        event.registerBlockEntityRenderer(JBlockEntities.HELLWING_SPAWNER.get(), JSpawnerRenderer::new);
+        event.registerBlockEntityRenderer(JBlockEntities.HELLBOT_SPAWNER.get(), JSpawnerRenderer::new);
+
+        event.registerBlockEntityRenderer(JBlockEntities.SUMMONING_TABLE.get(), SummoningTableRenderer::new);
+
     }
 
     @SubscribeEvent
