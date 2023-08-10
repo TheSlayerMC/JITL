@@ -28,6 +28,6 @@ public class JLootTableSubProvider extends LootTableProvider {
 
     @Override
     protected void validate(Map<ResourceLocation, LootTable> map, @NotNull ValidationContext validationcontext) {
-        //TODO map.forEach((id, table) -> LootTables.validate(validationcontext, id, table));
+        map.forEach((id, table) -> table.validate(validationcontext));
     }
 }
