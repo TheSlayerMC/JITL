@@ -4,6 +4,8 @@ import net.jitl.common.capability.essence.PlayerEssenceProvider;
 import net.jitl.common.entity.projectile.EssenceArrowEntity;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JTags;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -14,13 +16,17 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.ForgeEventFactory;
 import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nullable;
+import java.text.DecimalFormat;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.function.Predicate;
 
 public class JBowItem extends BowItem {
@@ -34,9 +40,9 @@ public class JBowItem extends BowItem {
     public EnumSet<EssenceArrowEntity.BowEffects> effect;
     public static final Predicate<ItemStack> ESSENCE_ARROW = (tag) -> tag.is(JTags.ESSENCE_ARROW);
 
-    public JBowItem(float damage, int uses, EnumSet<EssenceArrowEntity.BowEffects> effects, int pullbackSpeed) {
+    public JBowItem(float damage, int uses, EnumSet<EssenceArrowEntity.BowEffects> effect, int pullbackSpeed) {
         super(JItems.itemProps().stacksTo(1).durability(uses));
-        this.effect = effects;
+        this.effect = effect;
         this.arrow_item = JItems.ESSENCE_ARROW.get();
         this.damage = damage;
         this.uses = uses;
@@ -60,9 +66,8 @@ public class JBowItem extends BowItem {
     }
 
     @Override
-    public void releaseUsing(ItemStack stack, Level worldIn, LivingEntity entityLiving, int timeLeft) {
-        if (entityLiving instanceof Player) {
-            Player player = (Player) entityLiving;
+    public void releaseUsing(@NotNull ItemStack stack, @NotNull Level worldIn, @NotNull LivingEntity entityLiving, int timeLeft) {
+        if (entityLiving instanceof Player player) {
             boolean emptyPickup = player.isCreative() || EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0
                     || effect.contains(EssenceArrowEntity.BowEffects.CONSUMES_ESSENCE);
 
@@ -213,6 +218,37 @@ public class JBowItem extends BowItem {
             return ItemStack.EMPTY;
         }
     }
+
+    @Override
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> comp, @NotNull TooltipFlag isAdvanced) {
+        super.appendHoverText(stack, level, comp, isAdvanced);
+        comp.add(Component.translatable("Damage: " + ChatFormatting.GOLD + damage + " - " + ChatFormatting.GOLD + damage * 4));
+        float maxUse = (float) DEFAULT_DURATION / (float) this.maxUseDuration;
+        DecimalFormat df = new DecimalFormat("#.##");
+        comp.add(Component.translatable("Pull Back Speed: " + ChatFormatting.GOLD + df.format(maxUse)));
+
+        if(effect != null) {
+            if(effect.contains(EssenceArrowEntity.BowEffects.WITHER))
+                comp.add(Component.translatable(ChatFormatting.DARK_GRAY + "Ability: Withers foe"));
+
+            if(effect.contains(EssenceArrowEntity.BowEffects.FLAME))
+                comp.add(Component.translatable(ChatFormatting.GOLD + "Ability: Sets foe ablaze"));
+
+            if(effect.contains(EssenceArrowEntity.BowEffects.POISON))
+                comp.add(Component.translatable(ChatFormatting.GREEN + "Ability: Poisons foe"));
+
+            if(effect.contains(EssenceArrowEntity.BowEffects.SLOWNESS))
+                comp.add(Component.translatable(ChatFormatting.BLUE + "Ability: Stuns foe"));
+
+            if(effect.contains(EssenceArrowEntity.BowEffects.DOUBLE_ARROW))
+                comp.add(Component.translatable(ChatFormatting.BLUE + "Ability: Shoots 2 arrows"));
+
+            if(effect.contains(EssenceArrowEntity.BowEffects.CONSUMES_ESSENCE))
+                comp.add(Component.translatable(ChatFormatting.GREEN + "Ability: Consumes " + essence_use + " Essence instead of arrows"));
+        }
+        comp.add(Component.translatable("Uses remaining: " + ChatFormatting.GRAY + uses));
+    }
+
 
     @Override
     public @NotNull Predicate<ItemStack> getAllSupportedProjectiles() {

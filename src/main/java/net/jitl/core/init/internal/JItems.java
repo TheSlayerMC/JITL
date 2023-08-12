@@ -388,6 +388,12 @@ public class JItems {
     public static final RegistryObject<Item> BOILING_PIERCER = registerToolItem("boiling_piercer", "Boiling Piercer", () ->
             new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
 
+    public static final RegistryObject<Item> DEPTHS_PIERCER = registerToolItem("depths_piercer", "Depths Piercer", () ->
+            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+
+    public static final RegistryObject<Item> CORBA_PIERCER = registerToolItem("corba_piercer", "Corba Piercer", () ->
+            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+
     public static final RegistryObject<Item> PIERCER = registerToolItem("piercer", "Piercer", () ->
             new PiercerItem(itemProps().durability(128), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 3.0F)));
 

@@ -73,6 +73,6 @@ public class EssenceArrowEntity extends AbstractArrow implements ItemSupplier {
 
 
     public enum BowEffects {
-        WITHER, SLOWNESS, FLAME, POISON, DEFAULT, DOUBLE_ARROW, CONSUMES_ESSENCE
+        WITHER, SLOWNESS, FLAME, POISON, DOUBLE_ARROW, CONSUMES_ESSENCE
     }
 }
