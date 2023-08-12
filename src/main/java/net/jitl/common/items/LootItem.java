@@ -40,6 +40,7 @@ public class LootItem extends Item {
             case NORMAL -> lootName = "basic";
             case GOLD -> lootName = "gold";
             case DIAMOND -> lootName = "diamond";
+            case FROSTY_GIFT -> lootName = "frosty_gift";
         }
         if(!world.isClientSide) {
             LootTable table = Objects.requireNonNull(world.getServer()).getLootData().getLootTable(JITL.rl("loot/loot_" + lootName));
@@ -60,7 +61,7 @@ public class LootItem extends Item {
     public Rarity getRarity(ItemStack p_41461_) {
         Rarity r = Rarity.COMMON;
         switch(this.tier) {
-            case NORMAL -> r = Rarity.UNCOMMON;
+            case NORMAL, FROSTY_GIFT -> r = Rarity.UNCOMMON;
             case GOLD -> r = Rarity.RARE;
             case DIAMOND -> r = Rarity.EPIC;
         }
@@ -75,6 +76,7 @@ public class LootItem extends Item {
     public enum LootTier {
         NORMAL,
         GOLD,
-        DIAMOND
+        DIAMOND,
+        FROSTY_GIFT
     }
 }

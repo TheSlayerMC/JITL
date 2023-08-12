@@ -1,6 +1,7 @@
 package net.jitl.core.init;
 
 import net.jitl.client.ClientEventHandler;
+import net.jitl.client.render.ModelPropertyRegistry;
 import net.jitl.client.render.RenderEntitys;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.common.world.dimension.JCarver;
@@ -9,11 +10,7 @@ import net.jitl.common.world.gen.JFoliagePlacers;
 import net.jitl.common.world.gen.JTreeDecorators;
 import net.jitl.core.config.JClientConfig;
 import net.jitl.core.config.JCommonConfig;
-import net.jitl.core.data.BlockBreakingGenerator;
-import net.jitl.core.data.block_generation.JBlockPathGenerator;
-import net.jitl.core.data.JItemGenerator;
-import net.jitl.core.data.JNetworkRegistry;
-import net.jitl.core.data.LangRegistry;
+import net.jitl.core.data.*;
 import net.jitl.core.data.block_generation.*;
 import net.jitl.core.init.internal.*;
 import net.minecraft.resources.ResourceLocation;
@@ -68,6 +65,7 @@ public class JITL {
         if(DEV_MODE) {
             new BlockBreakingGenerator().generate();
             new JItemGenerator().generate();
+            new JBowItemGenerator().generate();
             new JBlockGenerator().generate();
             new JTerrainBlockGenerator().generate();
             new JBlockChestGenerator().generate();
@@ -125,6 +123,7 @@ public class JITL {
 
     private void clientSetup(final FMLClientSetupEvent event) {
         RenderEntitys.registerAnimationRenderers();
+        ModelPropertyRegistry.init();
         event.enqueueWork(JContainers::register);
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
         ClientEventHandler.regToBus(forgeEventBus);

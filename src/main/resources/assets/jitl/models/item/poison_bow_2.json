@@ -1,0 +1,6 @@
+{
+    "parent": "jitl:item/poison_bow",
+    "textures": {
+        "layer0": "jitl:item/poison_bow_2"
+    }
+}

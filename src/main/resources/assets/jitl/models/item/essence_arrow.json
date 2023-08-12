@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "jitl:item/flairium_gemstone"
+    "layer0": "jitl:item/essence_arrow"
   }
 }

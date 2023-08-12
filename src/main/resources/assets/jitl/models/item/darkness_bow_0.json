@@ -1,0 +1,6 @@
+{
+    "parent": "jitl:item/darkness_bow",
+    "textures": {
+        "layer0": "jitl:item/darkness_bow_0"
+    }
+}

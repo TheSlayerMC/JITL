@@ -35,6 +35,7 @@ import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.function.Supplier;
 
 public class JItems {
@@ -57,6 +58,8 @@ public class JItems {
     public static final ArrayList<String> recordDescName = new ArrayList<>();
     public static final ArrayList<String> spawnName = new ArrayList<>();
     public static final ArrayList<String> spawnLangName = new ArrayList<>();
+    public static final ArrayList<String> bowName = new ArrayList<>();
+    public static final ArrayList<String> bowLangName = new ArrayList<>();
 
     public static final ArrayList<String> langName = new ArrayList<>();
     public static final ArrayList<String> toolLangName = new ArrayList<>();
@@ -421,6 +424,12 @@ public class JItems {
     public static final RegistryObject<Item> MAGIC_BOMB = registerNormalItem("magic_bomb", "Magic Bomb", () -> new ThrowableItem(itemProps(),
             (w, thrower) -> new MagicBombEntity(w, thrower, 1F)).setSound(() -> SoundEvents.SNOWBALL_THROW));
 
+    public static final RegistryObject<Item> ESSENCE_ARROW = registerNormalItem("essence_arrow", "Essence Arrow", EssenceArrowItem::new);
+    public static final RegistryObject<Item> BLAZING_BOW = registerBowItem("blazing_bow", "Blazing Bow", () -> new JBowItem(2, 368, EnumSet.of(EssenceArrowEntity.BowEffects.FLAME), JBowItem.DEFAULT_DURATION));
+    public static final RegistryObject<Item> POISON_BOW = registerBowItem("poison_bow", "Poison Bow", () -> new JBowItem(2, 368, EnumSet.of(EssenceArrowEntity.BowEffects.POISON), JBowItem.DEFAULT_DURATION));
+    public static final RegistryObject<Item> DARKNESS_BOW = registerBowItem("darkness_bow", "Darkness Bow", () -> new JBowItem(2, 368, EnumSet.of(EssenceArrowEntity.BowEffects.WITHER), JBowItem.DEFAULT_DURATION));
+    public static final RegistryObject<Item> FROZEN_BOW = registerBowItem("frozen_bow", "Frozen Bow", () -> new JBowItem(2, 368, EnumSet.of(EssenceArrowEntity.BowEffects.SLOWNESS), JBowItem.DEFAULT_DURATION));
+
     public static final RegistryObject<Item> POISON_SWORD = registerToolItem("poison_sword", "Poison Sword", () -> new JSwordItem(JToolTiers.POISON_SWORD, BASIC));
     public static final RegistryObject<Item> CLOUD_SLICER = registerToolItem("cloud_slicer", "Cloud Slicer", () -> new JSwordItem(JToolTiers.CLOUD_SLICER, BASIC));
     public static final RegistryObject<Item> DRAGONS_TOOTH = registerToolItem("dragons_tooth", "Dragons Tooth", () -> new JSwordItem(JToolTiers.DRAGONS_TOOTH, BASIC));
@@ -492,6 +501,7 @@ public class JItems {
     public static final RegistryObject<Item> LOOT_POUCH = registerNormalItem("loot_pouch", "Loot Pouch", () -> new LootItem(LootItem.LootTier.NORMAL));
     public static final RegistryObject<Item> GOLD_LOOT_POUCH = registerNormalItem("gold_loot_pouch", "Loot Pouch", () -> new LootItem(LootItem.LootTier.GOLD));
     public static final RegistryObject<Item> DIAMOND_LOOT_POUCH = registerNormalItem("diamond_loot_pouch", "Loot Pouch", () -> new LootItem(LootItem.LootTier.DIAMOND));
+    public static final RegistryObject<Item> FROSTY_GIFT = registerNormalItem("frosty_gift", "Frosty Gift", () -> new LootItem(LootItem.LootTier.FROSTY_GIFT));
 
     public static final RegistryObject<Item> CLOUDWALKING_AMULET = registerNormalItem("cloudwalker_amulet", "Cloudwalker Amulet", () -> new CloudwalkingAmuletItem(itemProps()));
     public static final RegistryObject<Item> DYNASTER_AMULET = registerNormalItem("dynaster_amulet", "Amulet of the Dynaster", () -> new DynasterAmuletItem(itemProps().stacksTo(1)));
@@ -547,6 +557,10 @@ public class JItems {
         return register(name, translatedName, tool, ItemType.TOOL);
     }
 
+    public static RegistryObject<Item> registerBowItem(String name, String translatedName, Supplier<Item> bow) {
+        return register(name, translatedName, bow, ItemType.BOW);
+    }
+
     public static RegistryObject<Item> register(String name, String translatedName) {
         return register(name, translatedName, () -> new Item(new Item.Properties()), ItemType.ITEM);
     }
@@ -578,6 +592,10 @@ public class JItems {
             spawnName.add(name);
             spawnLangName.add(translatedName);
         }
+        if(type == ItemType.BOW) {
+            bowName.add(name);
+            bowLangName.add(translatedName);
+        }
         return register(name, item);
     }
 
@@ -603,6 +621,7 @@ public class JItems {
         RECORD,
         SPAWN_EGG,
         MODEL,
-        TOOL;
+        TOOL,
+        BOW;
     }
 }
