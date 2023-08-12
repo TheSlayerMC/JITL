@@ -1,0 +1,6 @@
+{
+    "parent": "jitl:item/terrian_bow",
+    "textures": {
+        "layer0": "jitl:item/terrian_bow_0"
+    }
+}

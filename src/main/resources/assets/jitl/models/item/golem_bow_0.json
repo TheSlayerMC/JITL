@@ -1,0 +1,6 @@
+{
+    "parent": "jitl:item/golem_bow",
+    "textures": {
+        "layer0": "jitl:item/golem_bow_0"
+    }
+}

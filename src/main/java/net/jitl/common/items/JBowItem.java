@@ -3,6 +3,7 @@ package net.jitl.common.items;
 import net.jitl.common.capability.essence.PlayerEssenceProvider;
 import net.jitl.common.entity.projectile.EssenceArrowEntity;
 import net.jitl.core.init.internal.JItems;
+import net.jitl.core.init.internal.JTags;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -10,7 +11,9 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BowItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
@@ -18,6 +21,7 @@ import net.minecraftforge.event.ForgeEventFactory;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.EnumSet;
+import java.util.function.Predicate;
 
 public class JBowItem extends BowItem {
 
@@ -27,7 +31,8 @@ public class JBowItem extends BowItem {
     protected Item arrow_item;
     protected int uses;
     protected int essence_use;
-    protected EnumSet<EssenceArrowEntity.BowEffects> effect;
+    public EnumSet<EssenceArrowEntity.BowEffects> effect;
+    public static final Predicate<ItemStack> ESSENCE_ARROW = (tag) -> tag.is(JTags.ESSENCE_ARROW);
 
     public JBowItem(float damage, int uses, EnumSet<EssenceArrowEntity.BowEffects> effects, int pullbackSpeed) {
         super(JItems.itemProps().stacksTo(1).durability(uses));
@@ -36,6 +41,11 @@ public class JBowItem extends BowItem {
         this.damage = damage;
         this.uses = uses;
         this.maxUseDuration = pullbackSpeed;
+    }
+
+    public JBowItem setEssenceUse(int amount) {
+        this.essence_use = amount;
+        return this;
     }
 
     public float getScaledArrowVelocity(int charge) {
@@ -53,17 +63,16 @@ public class JBowItem extends BowItem {
     public void releaseUsing(ItemStack stack, Level worldIn, LivingEntity entityLiving, int timeLeft) {
         if (entityLiving instanceof Player) {
             Player player = (Player) entityLiving;
-            boolean flag = player.isCreative() ||
-                    EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0 ||
-                    effect.contains(EssenceArrowEntity.BowEffects.CONSUMES_ESSENCE);
+            boolean emptyPickup = player.isCreative() || EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0
+                    || effect.contains(EssenceArrowEntity.BowEffects.CONSUMES_ESSENCE);
 
             ItemStack itemstack = this.findAmmo(player);
 
             int i = this.maxUseDuration - timeLeft;
-            i = ForgeEventFactory.onArrowLoose(stack, worldIn, player, i, !itemstack.isEmpty() || flag);
+            i = ForgeEventFactory.onArrowLoose(stack, worldIn, player, i, !itemstack.isEmpty() || emptyPickup);
             if (i < 0) return;
 
-            if (!itemstack.isEmpty() || flag) {
+            if (!itemstack.isEmpty() || emptyPickup) {
                 if (itemstack.isEmpty()) {
                     itemstack = new ItemStack(arrow_item);
                 }
@@ -89,21 +98,19 @@ public class JBowItem extends BowItem {
                             assert entityarrow2 != null;
                             entityarrow2.shootFromRotation(player, player.getXRot(), player.getYRot() - 3.25F, 0.0F, f * 3.0F, 1.0F);
 
-                            if (f == 1.0F) {
+                            int j = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.POWER_ARROWS, stack);
+                            if(j == 1.0F) {
                                 entityarrow.setCritArrow(true);
                                 entityarrow2.setCritArrow(true);
                             }
 
-                            int j = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.POWER_ARROWS, stack);
-
                             int k = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.PUNCH_ARROWS, stack);
-
-                            if (k > 0) {
+                            if(k > 0) {
                                 entityarrow.setKnockback(k);
                                 entityarrow2.setKnockback(k);
                             }
 
-                            if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, stack) > 0) {
+                            if(EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, stack) > 0) {
                                 entityarrow.setSecondsOnFire(100);
                                 entityarrow2.setSecondsOnFire(100);
                             }
@@ -113,12 +120,14 @@ public class JBowItem extends BowItem {
 
                             stack.hurtAndBreak(1, player, (onBroken) -> onBroken.broadcastBreakEvent(player.getUsedItemHand()));
 
-                            if (flag || player.isCreative()
-                                    && (itemstack.getItem() == Items.SPECTRAL_ARROW
-                                    || itemstack.getItem() == Items.TIPPED_ARROW)) {
+                            if(!emptyPickup) {
+                                entityarrow.pickup = AbstractArrow.Pickup.ALLOWED;
+                                entityarrow2.pickup = AbstractArrow.Pickup.ALLOWED;
+                            } else {
                                 entityarrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
                                 entityarrow2.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
                             }
+
                             worldIn.addFreshEntity(entityarrow);
                             worldIn.addFreshEntity(entityarrow2);
                         }
@@ -130,19 +139,15 @@ public class JBowItem extends BowItem {
                             entityarrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, f * 3.0F, 1.0F);
 
                             int j = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.POWER_ARROWS, stack);
-
                             if(j == 1.0F)
                                 entityarrow.setCritArrow(true);
 
                             int k = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.PUNCH_ARROWS, stack);
-
-                            if (k > 0) {
+                            if(k > 0)
                                 entityarrow.setKnockback(k);
-                            }
 
-                            if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, stack) > 0) {
+                            if(EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, stack) > 0)
                                 entityarrow.setSecondsOnFire(100);
-                            }
 
                             entityarrow.setBaseDamage(this.damage);
 
@@ -150,17 +155,17 @@ public class JBowItem extends BowItem {
                                 onBroken.broadcastBreakEvent(player.getUsedItemHand());
                             });
 
-                            if (flag || player.isCreative()
-                                    && (itemstack.getItem() == Items.SPECTRAL_ARROW
-                                    || itemstack.getItem() == Items.TIPPED_ARROW)) {
+                            if(!emptyPickup) {
+                                entityarrow.pickup = AbstractArrow.Pickup.ALLOWED;
+                            } else {
                                 entityarrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
                             }
 
                             if(effect.contains(EssenceArrowEntity.BowEffects.CONSUMES_ESSENCE)) {
-                                EssenceArrowEntity essenceArrow = entityarrow;
+                                EssenceArrowEntity finalEntityarrow = entityarrow;
                                 player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
                                     if(essence.consumeEssence(player, essence_use)) {
-                                        worldIn.addFreshEntity(essenceArrow);
+                                        worldIn.addFreshEntity(finalEntityarrow);
                                     }
                                 });
                             }
@@ -173,7 +178,7 @@ public class JBowItem extends BowItem {
 
                     worldIn.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (worldIn.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 
-                    if(!flag && !player.isCreative()) {
+                    if(!emptyPickup) {
                         if(effect.contains(EssenceArrowEntity.BowEffects.DOUBLE_ARROW)) {
                             itemstack.shrink(2);
                         } else {
@@ -207,6 +212,11 @@ public class JBowItem extends BowItem {
 
             return ItemStack.EMPTY;
         }
+    }
+
+    @Override
+    public @NotNull Predicate<ItemStack> getAllSupportedProjectiles() {
+        return ESSENCE_ARROW;
     }
 
     @Override

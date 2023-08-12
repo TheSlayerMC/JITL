@@ -1,0 +1,6 @@
+{
+    "parent": "jitl:item/death_piercer_bow",
+    "textures": {
+        "layer0": "jitl:item/death_piercer_bow_1"
+    }
+}

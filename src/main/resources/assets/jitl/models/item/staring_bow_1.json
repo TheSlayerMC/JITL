@@ -1,0 +1,6 @@
+{
+    "parent": "jitl:item/staring_bow",
+    "textures": {
+        "layer0": "jitl:item/staring_bow_1"
+    }
+}

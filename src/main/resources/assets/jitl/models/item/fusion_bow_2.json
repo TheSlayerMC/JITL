@@ -1,0 +1,6 @@
+{
+    "parent": "jitl:item/fusion_bow",
+    "textures": {
+        "layer0": "jitl:item/fusion_bow_2"
+    }
+}

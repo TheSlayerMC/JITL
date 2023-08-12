@@ -425,10 +425,58 @@ public class JItems {
             (w, thrower) -> new MagicBombEntity(w, thrower, 1F)).setSound(() -> SoundEvents.SNOWBALL_THROW));
 
     public static final RegistryObject<Item> ESSENCE_ARROW = registerNormalItem("essence_arrow", "Essence Arrow", EssenceArrowItem::new);
-    public static final RegistryObject<Item> BLAZING_BOW = registerBowItem("blazing_bow", "Blazing Bow", () -> new JBowItem(2, 368, EnumSet.of(EssenceArrowEntity.BowEffects.FLAME), JBowItem.DEFAULT_DURATION));
+
+    //OVERWORLD BOWS
+    public static final RegistryObject<Item> FLAME_BOW = registerBowItem("flame_bow", "Flame Bow", () -> new JBowItem(2, 368, EnumSet.of(EssenceArrowEntity.BowEffects.FLAME), JBowItem.DEFAULT_DURATION));
     public static final RegistryObject<Item> POISON_BOW = registerBowItem("poison_bow", "Poison Bow", () -> new JBowItem(2, 368, EnumSet.of(EssenceArrowEntity.BowEffects.POISON), JBowItem.DEFAULT_DURATION));
     public static final RegistryObject<Item> DARKNESS_BOW = registerBowItem("darkness_bow", "Darkness Bow", () -> new JBowItem(2, 368, EnumSet.of(EssenceArrowEntity.BowEffects.WITHER), JBowItem.DEFAULT_DURATION));
     public static final RegistryObject<Item> FROZEN_BOW = registerBowItem("frozen_bow", "Frozen Bow", () -> new JBowItem(2, 368, EnumSet.of(EssenceArrowEntity.BowEffects.SLOWNESS), JBowItem.DEFAULT_DURATION));
+
+    //FROZEN BOWS
+    public static final RegistryObject<Item> FROSTBITTEN_BOW = registerBowItem("frostbitten_bow", "Frostbitten Bow", () -> new JBowItem(2.5F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.SLOWNESS), 64000));
+    public static final RegistryObject<Item> FROSTY_BOW = registerBowItem("frosty_bow", "Frosty Bow", () -> new JBowItem(2.5F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.SLOWNESS), 64000));
+
+    //NETHER BOWS
+    public static final RegistryObject<Item> STARING_BOW = registerBowItem("staring_bow", "Staring Bow", () -> new JBowItem(2.5F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.FLAME), 56000));
+
+    //BOIL BOWS
+    public static final RegistryObject<Item> CHARRED_BOW = registerBowItem("charred_bow", "Charred Bow", () -> new JBowItem(2.75F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.WITHER), 64000));
+    public static final RegistryObject<Item> FLAMING_BOW = registerBowItem("flaming_bow", "Flaming Bow", () -> new JBowItem(2.75F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.FLAME), 64000));
+    public static final RegistryObject<Item> BLAZING_BOW = registerBowItem("blazing_bow", "Blazing Bow", () -> new JBowItem(2.75F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.FLAME), 56000));
+
+    //EUCA BOWS
+    public static final RegistryObject<Item> MANTLE_BOW = registerBowItem("mantle_bow", "Mantle Bow", () -> new JBowItem(3.5F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.FLAME), 48000));
+    public static final RegistryObject<Item> CORE_EXPANDER = registerBowItem("core_expander", "Core Expander", () -> new JBowItem(2.5F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.CONSUMES_ESSENCE, EssenceArrowEntity.BowEffects.FLAME), JBowItem.DEFAULT_DURATION).setEssenceUse(3));
+    public static final RegistryObject<Item> ROYAL_BOW = registerBowItem("royal_bow", "Royal Bow", () -> new JBowItem(3F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.WITHER), 64000));
+
+    //DEPTHS BOWS
+    public static final RegistryObject<Item> DARK_ENFORCER = registerBowItem("dark_enforcer", "Dark Enforcer", () -> new JBowItem(5F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.CONSUMES_ESSENCE), 64000).setEssenceUse(3));
+    public static final RegistryObject<Item> DEPTHS_BOW = registerBowItem("depths_bow", "Depths Bow", () -> new JBowItem(4F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.CONSUMES_ESSENCE), 32000).setEssenceUse(3));
+    public static final RegistryObject<Item> ROCS_WING = registerBowItem("rocs_wing", "Roc's Wing", () -> new JBowItem(4F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.WITHER), 54000));
+    public static final RegistryObject<Item> SCALE_BOW = registerBowItem("scale_bow", "Scale Bow", () -> new JBowItem(4F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.SLOWNESS), 54000));
+
+    //CORBA BOWS
+    public static final RegistryObject<Item> LOGGERS_BOW = registerBowItem("loggers_bow", "Logger's Bow", () -> new JBowItem(4.5F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.POISON), 48000));
+    public static final RegistryObject<Item> OVERGROWN_BOW = registerBowItem("overgrown_bow", "Overgrown Bow", () -> new JBowItem(4.5F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.POISON), 54000));
+    public static final RegistryObject<Item> OVERSEER_BOW = registerBowItem("overseer_bow", "Overseer Bow", () -> new JBowItem(4.5F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.WITHER), 38000));
+    public static final RegistryObject<Item> WOODLAND_BOW = registerBowItem("woodland_bow", "Woodland Bow", () -> new JBowItem(4.5F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.POISON), 54000));
+
+    //TERRANIA BOWS
+    public static final RegistryObject<Item> DARK_TERRA_BOW = registerBowItem("dark_terra_bow", "Dark Terra Bow", () -> new JBowItem(5F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.WITHER), 48000));
+    public static final RegistryObject<Item> LAVENDER_BOW = registerBowItem("lavender_bow", "Lavender Bow", () -> new JBowItem(5F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.SLOWNESS), 36000));
+    public static final RegistryObject<Item> TERRALIGHT_BOW = registerBowItem("terralight_bow", "Terralight Bow", () -> new JBowItem(5F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.CONSUMES_ESSENCE), 32000).setEssenceUse(2));
+    public static final RegistryObject<Item> TERRIAN_BOW = registerBowItem("terrian_bow", "Terrian Bow", () -> new JBowItem(5F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.POISON), 40000));
+
+    //CLOUDIA BOWS
+    public static final RegistryObject<Item> STARLIGHT_BOW = registerBowItem("starlight_bow", "Starlight Bow", () -> new JBowItem(5.5F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.POISON), 24000));
+    public static final RegistryObject<Item> FLUFFY_BOW = registerBowItem("fluffy_bow", "Fluffy Bow", () -> new JBowItem(5.5F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.SLOWNESS), 18000));
+    public static final RegistryObject<Item> GOLEM_BOW = registerBowItem("golem_bow", "Golem Bow", () -> new JBowItem(5.5F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.WITHER), 36000));
+
+    //MISC BOWS
+    public static final RegistryObject<Item> DEATH_PIERCER_BOW = registerBowItem("death_piercer_bow", "Death Piercer Bow", () -> new JBowItem(3F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.WITHER), JBowItem.DEFAULT_DURATION));
+    public static final RegistryObject<Item> FUSION_BOW = registerBowItem("fusion_bow", "Fusion Bow", () -> new JBowItem(3F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.WITHER), JBowItem.DEFAULT_DURATION));
+    public static final RegistryObject<Item> SPRING_BOW = registerBowItem("spring_bow", "Spring Bow", () -> new JBowItem(5F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.FLAME), JBowItem.DEFAULT_DURATION));
+    public static final RegistryObject<Item> WASTEFUL_BOW = registerBowItem("wasteful_bow", "Wasteful Bow", () -> new JBowItem(3F, 384, EnumSet.of(EssenceArrowEntity.BowEffects.DOUBLE_ARROW), JBowItem.DEFAULT_DURATION));
 
     public static final RegistryObject<Item> POISON_SWORD = registerToolItem("poison_sword", "Poison Sword", () -> new JSwordItem(JToolTiers.POISON_SWORD, BASIC));
     public static final RegistryObject<Item> CLOUD_SLICER = registerToolItem("cloud_slicer", "Cloud Slicer", () -> new JSwordItem(JToolTiers.CLOUD_SLICER, BASIC));

@@ -1,0 +1,6 @@
+{
+    "parent": "jitl:item/wasteful_bow",
+    "textures": {
+        "layer0": "jitl:item/wasteful_bow_0"
+    }
+}

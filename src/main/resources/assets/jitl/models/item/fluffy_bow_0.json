@@ -1,0 +1,6 @@
+{
+    "parent": "jitl:item/fluffy_bow",
+    "textures": {
+        "layer0": "jitl:item/fluffy_bow_0"
+    }
+}

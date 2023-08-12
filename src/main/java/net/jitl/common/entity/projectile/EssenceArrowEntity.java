@@ -7,6 +7,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.item.ItemStack;
@@ -52,17 +53,21 @@ public class EssenceArrowEntity extends AbstractArrow implements ItemSupplier {
     }
 
     @Override
-    protected ItemStack getPickupItem() {
+    protected @NotNull ItemStack getPickupItem() {
         return getItem();
     }
-
 
     private void applyPotionEffect(LivingEntity effectedEntity, MobEffect potionEffect, int duration, int amplifier) {
         effectedEntity.addEffect(new MobEffectInstance(potionEffect, duration, amplifier));
     }
 
     @Override
-    public ItemStack getItem() {
+    protected boolean tryPickup(Player pPlayer) {
+        return !(effects == null) && !effects.contains(BowEffects.CONSUMES_ESSENCE);
+    }
+
+    @Override
+    public @NotNull ItemStack getItem() {
         return new ItemStack(JItems.ESSENCE_ARROW.get());
     }
 

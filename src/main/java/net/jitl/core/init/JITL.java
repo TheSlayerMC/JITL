@@ -124,7 +124,7 @@ public class JITL {
     private void clientSetup(final FMLClientSetupEvent event) {
         RenderEntitys.registerAnimationRenderers();
         ModelPropertyRegistry.init();
-        event.enqueueWork(JContainers::register);
+        JContainers.register();
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
         ClientEventHandler.regToBus(forgeEventBus);
     }

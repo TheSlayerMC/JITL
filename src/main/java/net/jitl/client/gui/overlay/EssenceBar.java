@@ -4,6 +4,8 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.client.essence.ClientEssence;
 import net.jitl.common.capability.essence.PlayerEssenceProvider;
+import net.jitl.common.entity.projectile.EssenceArrowEntity;
+import net.jitl.common.items.JBowItem;
 import net.jitl.core.config.JClientConfig;
 import net.jitl.core.config.enums.EssencePosition;
 import net.jitl.core.helper.IEssenceItem;
@@ -17,8 +19,11 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.gui.overlay.ForgeGui;
 
+@OnlyIn(Dist.CLIENT)
 public class EssenceBar {
 
     private static float transparency;
@@ -175,7 +180,13 @@ public class EssenceBar {
      * Allows Essence transparency rendering to be compatible with (hopefully) all Essence-related items without referencing many individual classes/items
      */
     private static boolean instanceOfEssenceItem(Item isEssence) {
-        return isEssence instanceof IEssenceItem;
+        boolean essenceBow = false;
+        if(isEssence instanceof JBowItem bow) {
+            if(bow.effect.contains(EssenceArrowEntity.BowEffects.CONSUMES_ESSENCE)) {
+                essenceBow = true;
+            }
+        }
+        return isEssence instanceof IEssenceItem || essenceBow;
     }
 
     /**

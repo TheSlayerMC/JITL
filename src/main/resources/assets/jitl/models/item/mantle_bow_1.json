@@ -1,0 +1,6 @@
+{
+    "parent": "jitl:item/mantle_bow",
+    "textures": {
+        "layer0": "jitl:item/mantle_bow_1"
+    }
+}

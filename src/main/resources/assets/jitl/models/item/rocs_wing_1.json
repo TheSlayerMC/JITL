@@ -1,0 +1,6 @@
+{
+    "parent": "jitl:item/rocs_wing",
+    "textures": {
+        "layer0": "jitl:item/rocs_wing_1"
+    }
+}

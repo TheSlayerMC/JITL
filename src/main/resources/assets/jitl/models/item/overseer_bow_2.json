@@ -1,0 +1,6 @@
+{
+    "parent": "jitl:item/overseer_bow",
+    "textures": {
+        "layer0": "jitl:item/overseer_bow_2"
+    }
+}

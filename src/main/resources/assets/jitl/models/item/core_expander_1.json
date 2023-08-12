@@ -1,0 +1,6 @@
+{
+    "parent": "jitl:item/core_expander",
+    "textures": {
+        "layer0": "jitl:item/core_expander_1"
+    }
+}

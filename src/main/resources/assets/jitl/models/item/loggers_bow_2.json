@@ -1,0 +1,6 @@
+{
+    "parent": "jitl:item/loggers_bow",
+    "textures": {
+        "layer0": "jitl:item/loggers_bow_2"
+    }
+}

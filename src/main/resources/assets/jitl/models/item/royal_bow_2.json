@@ -1,0 +1,6 @@
+{
+    "parent": "jitl:item/royal_bow",
+    "textures": {
+        "layer0": "jitl:item/royal_bow_2"
+    }
+}

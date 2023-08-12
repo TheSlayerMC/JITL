@@ -1,0 +1,6 @@
+{
+    "parent": "jitl:item/dark_enforcer",
+    "textures": {
+        "layer0": "jitl:item/dark_enforcer_0"
+    }
+}

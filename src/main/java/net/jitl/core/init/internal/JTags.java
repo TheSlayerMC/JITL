@@ -29,6 +29,7 @@ public class JTags {
     public static final TagKey<Block> JPLANKS = tagBlock("planks");
     public static final TagKey<Block> EUCA_GRASS = tagBlock("euca_grass");
     public static final TagKey<Block> CORBA_MUD = tagBlock("corba_mud");
+    public static final TagKey<Item> ESSENCE_ARROW = tagItem("essence_arrows");
 
     private static TagKey<Item> tagItem(String name) {
         return ItemTags.create(JITL.rl(name));
