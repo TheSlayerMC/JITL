@@ -162,6 +162,7 @@ public class JItems {
     public static final RegistryObject<Item> FROST_FLAKE = registerNormalItem("frost_flake", "Frost Flake");
     public static final RegistryObject<Item> FROZEN_ICE_BALL = registerNormalItem("frozen_ice_ball", "Frozen Ice Ball");
     public static final RegistryObject<Item> ICE_FLAKE = registerNormalItem("ice_flake", "Ice Flake");
+    public static final RegistryObject<Item> DEPTHS_FLAKE = registerNormalItem("depths_flake", "Depths Flake");
     public static final RegistryObject<Item> COLD_CLUMP = registerNormalItem("cold_clump", "Cold Clump");
     public static final RegistryObject<Item> CRYSTAL_BALL = registerNormalItem("crystal_ball", "Crystal Ball");
     public static final RegistryObject<Item> MAGIC_DUST = registerNormalItem("magic_dust", "Magic Dust");

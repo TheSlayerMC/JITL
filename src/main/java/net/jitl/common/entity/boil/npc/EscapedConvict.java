@@ -3,9 +3,12 @@ package net.jitl.common.entity.boil.npc;
 import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import net.jitl.client.ChatUtils;
 import net.jitl.common.entity.base.CurrencyForItemsTrade;
 import net.jitl.common.entity.base.JVillagerEntity;
 import net.jitl.core.init.internal.JItems;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -17,6 +20,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
@@ -24,7 +28,8 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 public class EscapedConvict extends JVillagerEntity {
 
     private static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
-            new CurrencyForItemsTrade(JItems.BOILING_SKULL.get(), 10, JItems.BOIL_POWDER.get(), 64, JItems.CHARRED_BLADE.get(), 15, 12, 5),
+            new CurrencyForItemsTrade(JItems.BOILING_SKULL.get(), 10, JItems.BOIL_POWDER.get(), 64, JItems.CHARRED_BLADE.get(), 16, 12, 5),
+            new CurrencyForItemsTrade(JItems.BOILING_SKULL.get(), 10, JItems.BOIL_POWDER.get(), 64, JItems.CHARRED_BOW.get(), 1, 12, 5),
             new CurrencyForItemsTrade(JItems.BOILING_SKULL.get(), 32, JItems.BOIL_POWDER.get(), 64, JItems.BLOODWIELD_SWORD.get(), 1, 12, 5)
     }));
 
@@ -48,6 +53,16 @@ public class EscapedConvict extends JVillagerEntity {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, 60.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.25D).build();
+    }
+
+    @Override
+    public @NotNull InteractionResult mobInteract(@NotNull Player player, @NotNull InteractionHand playerHand) {
+        switch (random.nextInt(3)) {
+            case 0 -> ChatUtils.addDialogStyleChat(player, "jitl.trader.escaped_convict1");
+            case 1 -> ChatUtils.addDialogStyleChat(player, "jitl.trader.escaped_convict2");
+            case 2 -> ChatUtils.addDialogStyleChat(player, "jitl.trader.escaped_convict3");
+        }
+        return super.mobInteract(player, playerHand);
     }
 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.escaped_convict.walk");

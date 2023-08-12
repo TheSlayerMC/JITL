@@ -88,8 +88,48 @@ public class LangRegistry {
         writeToFile("\"jitl.stats\" : \"Player Stats\",");
         writeToFile("\"jitl.king.hero\" : \"Good Luck... Hero\",");
 
-        writeToFile("\"jitl.tile.summon_table\" : \"Summoning Table\",");
+        writeToFile("\"jitl.trader.boil_trader1\" : \"Boil Trader: It's not often that newcomers arrive here. Can you stand the heat?\",");
+        writeToFile("\"jitl.trader.boil_trader2\" : \"Boil Trader: I'm an unusual collector, but I have the best deals of any realm!\",");
+        writeToFile("\"jitl.trader.boil_trader3\" : \"Boil Trader: I can see that you're having a tough time getting around. An armor upgrade, perhaps?\",");
 
+        writeToFile("\"jitl.trader.escaped_convict1\" : \"Escaped Convict: I'm an innocent man! I have no reason to be in this realm!\",");
+        writeToFile("\"jitl.trader.escaped_convict2\" : \"Escaped Convict: Don't be threatened by me, strange thing!\",");
+        writeToFile("\"jitl.trader.escaped_convict3\" : \"Escaped Convict: I managed to find some great loot on my way here. If you can help me out of here, I'll give back in return.\",");
+
+        writeToFile("\"jitl.trader.staring_guardian1\" : \"Guardian: It sure is dark down here... I've always speculated about what's on the surface.\",");
+        writeToFile("\"jitl.trader.staring_guardian2\" : \"Guardian: You don't look like any normal creature I've seen here before. We don't get a lot of travelers.\",");
+        writeToFile("\"jitl.trader.staring_guardian3\" : \"Guardian: It's always too dark here to see. Hopefully, there'll be a journey to the light as some wish.\",");
+
+        writeToFile("\"jitl.trader.alloy_mender1\" : \"Alloy Mender: It takes over a thousand degreese to melt this gold!\",");
+        writeToFile("\"jitl.trader.alloy_mender2\" : \"Alloy Mender: My weapons have been melted and shaped into deadly perfection!\",");
+        writeToFile("\"jitl.trader.alloy_mender3\" : \"Alloy Mender: It's a real struggle living here, when everything wants to kill you...\",");
+        writeToFile("\"jitl.trader.alloy_mender4\" : \"Alloy Mender: Did they steal my other things at the village?\",");
+
+        writeToFile("\"jitl.trader.crypian1\" : \"Crypian: Yeah I took some of it\",");
+        writeToFile("\"jitl.trader.crypian2\" : \"Crypian: IT'S MINE.... Unless you want it?\",");
+        writeToFile("\"jitl.trader.crypian3\" : \"Crypian: I might go see where he has moved to....\",");
+
+        writeToFile("\"jitl.npc.crypian_alloy1\" : \"Crypian: Alloy Mender used to live here, but he moved into the royal lands\",");
+        writeToFile("\"jitl.npc.crypian_alloy2\" : \"Crypian: Everyone has raided his house\",");
+        writeToFile("\"jitl.npc.crypian_alloy3\" : \"Crypian: I'm sure you could possibly trade with some of them\",");
+
+        writeToFile("\"jitl.npc.crypian1\" : \"Crypian: I missed out on the Alloy Menders gear\",");
+        writeToFile("\"jitl.npc.crypian2\" : \"Crypian: A few others have some of the Alloy Menders things\",");
+
+        writeToFile("\"jitl.trader.eskimo1\" : \"Eskimo: Did you know its not as cold as it has been?\",");
+        writeToFile("\"jitl.trader.eskimo2\" : \"Eskimo: Storms have been raging since the shrine showed up...\",");
+        writeToFile("\"jitl.trader.eskimo3\" : \"Eskimo: Please sort out the shrine... It's Freezing!\",");
+
+        writeToFile("\"jitl.npc.frozen_guardian1\" : \"Frozen Guardian: Warmth...\",");
+        writeToFile("\"jitl.npc.frozen_guardian2\" : \"Frozen Guardian: ...\",");
+
+        writeToFile("\"jitl.trader.mage1\" : \"Mage: I have some great deals!\",");
+        writeToFile("\"jitl.trader.mage2\" : \"Mage: I've got some nice valuables!\",");
+        writeToFile("\"jitl.trader.mage3\" : \"Mage: Greetings, weary traveller!\",");
+
+        writeToFile("\"jitl.trader.rockite_golem\" : \"Rockite Golem: ...\",");
+
+        writeToFile("\"jitl.tile.summon_table\" : \"Summoning Table\",");
 
         writeToFile("\"jitl.tooltip.freeze\" : \"On hit: Freezes the target for 6 seconds\",");
         writeToFile("\"jitl.tooltip.poison\" : \"On hit: Poisions for 6 seconds\",");

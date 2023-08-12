@@ -1,5 +1,6 @@
 package net.jitl.common.entity.frozen;
 
+import net.jitl.client.ChatUtils;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.client.knowledge.PlayerKnowledgeProvider;
 import net.jitl.common.block.entity.PedestalTile;
@@ -206,9 +207,12 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
                 }
             }
         }
-        if (totalPedestals >= 8) {
+        if(totalPedestals >= 8) {
             this.playSound(JSounds.FROZEN_GUARDIAN_DEATH.get(), 1.5F, 1.0F);
+            ChatUtils.addDialogStyleChat(playerEntity, "jitl.npc.frozen_guardian1");
             setActivated(true);
+        } else {
+            ChatUtils.addDialogStyleChat(playerEntity, "jitl.npc.frozen_guardian2");
         }
         return super.mobInteract(playerEntity, hand);
     }

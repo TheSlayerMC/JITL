@@ -1,4 +1,4 @@
-package net.jitl.common.entity.euca;
+package net.jitl.common.entity.euca.npc;
 
 import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -103,39 +103,23 @@ public class Crypian extends JVillagerEntity {
     @Override
     public @NotNull InteractionResult mobInteract(@NotNull Player player, @NotNull InteractionHand playerHand) {
         if(isAlive() && this.getTradingPlayer() == null && canTrade() && !isAlloyHouse()) {
-            switch(random.nextInt(3)) {
-                case 0:
-                    ChatUtils.addDialogStyleChat(player, "Crypian: Yeah I took some of it");
-                    break;
-                case 1:
-                    ChatUtils.addDialogStyleChat(player, "Crypian: IT'S MINE.... Unless you want it?");
-                    break;
-                case 2:
-                    ChatUtils.addDialogStyleChat(player, "Crypian: I might go see where he has moved to....");
-                    break;
+            switch (random.nextInt(3)) {
+                case 0 -> ChatUtils.addDialogStyleChat(player, "jitl.trader.crypian1");
+                case 1 -> ChatUtils.addDialogStyleChat(player, "jitl.trader.crypian2");
+                case 2 -> ChatUtils.addDialogStyleChat(player, "jitl.trader.crypian3");
             }
             trade(player);
         } else {
             if(isAlloyHouse()) {
-                switch(random.nextInt(3)) {
-                    case 0:
-                        ChatUtils.addDialogStyleChat(player, "Crypian: Alloy Mender used to live here, but he moved into the royal lands");
-                    break;
-                    case 1:
-                        ChatUtils.addDialogStyleChat(player, "Crypian: Everyone has raided his house");
-                        break;
-                    case 2:
-                        ChatUtils.addDialogStyleChat(player, "Crypian: You could possibly trade with some of them");
-                        break;
+                switch (random.nextInt(3)) {
+                    case 0 -> ChatUtils.addDialogStyleChat(player, "jitl.npc.crypian_alloy1");
+                    case 1 -> ChatUtils.addDialogStyleChat(player, "jitl.npc.crypian_alloy2");
+                    case 2 -> ChatUtils.addDialogStyleChat(player, "jitl.npc.crypian_alloy3");
                 }
             } else {
-                switch(random.nextInt(2)) {
-                    case 0:
-                        ChatUtils.addDialogStyleChat(player, "Crypian: I missed out on the Alloy Menders gear");
-                        break;
-                    case 1:
-                        ChatUtils.addDialogStyleChat(player, "Crypian: A few others have some of the Alloy Menders things");
-                        break;
+                switch (random.nextInt(2)) {
+                    case 0 -> ChatUtils.addDialogStyleChat(player, "jitl.npc.crypian1");
+                    case 1 -> ChatUtils.addDialogStyleChat(player, "jitl.npc.crypian2");
                 }
             }
         }

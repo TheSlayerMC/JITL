@@ -1,6 +1,6 @@
 package net.jitl.client.render.entity.euca;
 
-import net.jitl.common.entity.euca.RoyalKing;
+import net.jitl.common.entity.euca.npc.RoyalKing;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;

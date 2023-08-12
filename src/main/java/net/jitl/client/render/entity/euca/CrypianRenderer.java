@@ -1,7 +1,7 @@
 package net.jitl.client.render.entity.euca;
 
 import net.jitl.client.render.AnimatedMonsterRenderer;
-import net.jitl.common.entity.euca.Crypian;
+import net.jitl.common.entity.euca.npc.Crypian;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;

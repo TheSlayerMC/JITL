@@ -1,4 +1,4 @@
-package net.jitl.common.entity.euca;
+package net.jitl.common.entity.euca.npc;
 
 import net.jitl.client.ChatUtils;
 import net.jitl.common.block.entity.PedestalTile;

@@ -1,11 +1,14 @@
-package net.jitl.common.entity.depths;
+package net.jitl.common.entity.euca.npc;
 
 import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import net.jitl.client.ChatUtils;
 import net.jitl.common.entity.base.CurrencyForItemsTrade;
 import net.jitl.common.entity.base.JVillagerEntity;
 import net.jitl.core.init.internal.JItems;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -16,19 +19,20 @@ import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
-public class StaringGuardian extends JVillagerEntity {
+public class AlloyMender extends JVillagerEntity {
 
     private static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
-            new CurrencyForItemsTrade(JItems.PERIDOT_GEMSTONE.get(), 1, Items.COMPASS, 1, 12, 5)
+            new CurrencyForItemsTrade(JItems.SHIMMERER_DUST.get(), 64, JItems.METAL_DISK.get(), 1, JItems.ROYAL_BOW.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.SHIMMERER_DUST.get(), 16, JItems.GOLDER_DUST.get(), 16, JItems.ROYAL_KNIFE.get(), 16, 12, 5)
     }));
 
-    public StaringGuardian(EntityType<? extends PathfinderMob> type, Level worldIn) {
+    public AlloyMender(EntityType<? extends PathfinderMob> type, Level worldIn) {
         super(type, worldIn);
     }
 
@@ -50,8 +54,8 @@ public class StaringGuardian extends JVillagerEntity {
                 .add(Attributes.MOVEMENT_SPEED, 0.25D).build();
     }
 
-    private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.staring_guardian.walk");
-    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.staring_guardian.idle");
+    private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.alloy_mender.walk");
+    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.alloy_mender.idle");
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
@@ -63,4 +67,29 @@ public class StaringGuardian extends JVillagerEntity {
             }
         }));
     }
+
+    @Override
+    public @NotNull InteractionResult mobInteract(@NotNull Player player, @NotNull InteractionHand playerHand) {
+        switch (random.nextInt(4)) {
+            case 0 ->
+                    ChatUtils.addDialogStyleChat(player, "jitl.trader.alloy_mender1");
+            case 1 ->
+                    ChatUtils.addDialogStyleChat(player, "jitl.trader.alloy_mender2");
+            case 2 ->
+                    ChatUtils.addDialogStyleChat(player, "jitl.trader.alloy_mender3");
+            case 3 ->
+                    ChatUtils.addDialogStyleChat(player, "jitl.trader.alloy_mender4");
+        }
+        return super.mobInteract(player, playerHand);
+    }
+
+//    @Override
+//    public void die(DamageSource d) {
+//        super.die(d);
+//        if(!level().isClientSide) {
+//            for(int i = 0; i < 2 + random.nextInt(4); i++) {
+//                this.level().addFreshEntity(new Sentacoin(JEntities.SENTACOIN_BAG_TYPE.get(), this));
+//            }
+//        }
+//    }
 }
