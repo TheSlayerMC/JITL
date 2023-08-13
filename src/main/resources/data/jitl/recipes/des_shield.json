@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "M": {
+      "item": "jitl:des_ingot"
+    }
+  },
+  "pattern": [
+    "#M#",
+    "###",
+    " # "
+  ],
+  "result": {
+    "item": "jitl:des_shield"
+  },
+  "show_notification": true
+}

@@ -2,7 +2,6 @@ package net.jitl.core.helper;
 
 import net.jitl.core.init.JITL;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -42,6 +41,10 @@ public record JArmorMaterial(String name, int dur, int[] prot, int enchantabilit
     @Override
     public @NotNull String getName() {
         return JITL.PREFIX + this.name;
+    }
+
+    public String getRawName() {
+        return this.name;
     }
 
     @Override

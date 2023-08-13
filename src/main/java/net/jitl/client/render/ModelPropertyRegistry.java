@@ -1,6 +1,7 @@
 package net.jitl.client.render;
 
-import net.jitl.common.items.JBowItem;
+import net.jitl.common.items.base.JBowItem;
+import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
@@ -44,6 +45,25 @@ public class ModelPropertyRegistry {
         registerBow(JItems.FUSION_BOW.get());
         registerBow(JItems.SPRING_BOW.get());
         registerBow(JItems.WASTEFUL_BOW.get());
+
+        registerShield(JItems.SAPPHIRE_SHIELD.get());
+        registerShield(JItems.LUNIUM_SHIELD.get());
+        registerShield(JItems.SHADIUM_SHIELD.get());
+        registerShield(JItems.BLOODCRUST_SHIELD.get());
+        registerShield(JItems.CELESTIUM_SHIELD.get());
+        registerShield(JItems.MEKYUM_SHIELD.get());
+        registerShield(JItems.STORON_SHIELD.get());
+        registerShield(JItems.KORITE_SHIELD.get());
+        registerShield(JItems.FLAIRIUM_SHIELD.get());
+        registerShield(JItems.DES_SHIELD.get());
+        registerShield(JItems.GORBITE_SHIELD.get());
+        registerShield(JItems.ORBADITE_SHIELD.get());
+        registerShield(JItems.SOULSTONE_SHIELD.get());
+    }
+
+    private static void registerShield(Item shield) {
+            ItemProperties.register(shield.asItem(), JITL.rl("blocking"),
+                    (stack, world, entity, i) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
     }
 
     public static void registerBow(Item item){

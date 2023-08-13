@@ -66,6 +66,7 @@ public class JITL {
             new BlockBreakingGenerator().generate();
             new JItemGenerator().generate();
             new JBowItemGenerator().generate();
+            new JShieldItemGenerator().generate();
             new JBlockGenerator().generate();
             new JTerrainBlockGenerator().generate();
             new JBlockChestGenerator().generate();

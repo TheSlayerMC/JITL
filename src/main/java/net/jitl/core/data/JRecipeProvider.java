@@ -4,6 +4,7 @@ import net.jitl.core.init.JITL;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -27,7 +28,7 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
 
     protected void addSmithingRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike input, ItemLike modifier, Item result) {
         //SmithingTransformRecipeBuilder.smithing(Ingredient.of(input), Ingredient.of(modifier), RecipeCategory.MISC, result).unlocks("has_" + modifier.toString().toLowerCase(), has(modifier)).save(recipeConsumer, "jitl:" + result.getDescriptionId() + "_smithing");
-        //FIX
+        //TODO FIX
     }
 
     protected void add3x3Recipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike input, ItemLike output) {
@@ -145,6 +146,7 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
 
     public void addOreDefaultItems(Consumer<FinishedRecipe> recipeConsumer, RecipePrefix name, ItemLike block, ItemLike oreBlock, ItemLike deepslateOre, ItemLike raw, ItemLike ingot, ItemLike stickItem) {
         addToolsetAndArmorRecipes(recipeConsumer, stickItem, ingot, name);
+        addShieldRecipe(recipeConsumer, ingot,  getItemFromRegistryName(name.getString() + "shield"));
         addOreBlockRecipe(recipeConsumer, ingot, block);
         addBlastingRecipe(recipeConsumer, oreBlock, ingot, 1.0F, 100, "_ore_blasting");
         addSmeltingRecipe(recipeConsumer, oreBlock, ingot, 1.0F, 200,  "_ore_smelting");
@@ -160,6 +162,7 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
 
     public void addOreNoArmorItems(Consumer<FinishedRecipe> recipeConsumer, RecipePrefix name, ItemLike block, ItemLike oreBlock, ItemLike deepslateOre, ItemLike raw, ItemLike ingot, ItemLike stickItem) {
         addToolsetRecipes(recipeConsumer, stickItem, ingot, name);
+        addShieldRecipe(recipeConsumer, ingot,  getItemFromRegistryName(name.getString() + "shield"));
         addOreBlockRecipe(recipeConsumer, ingot, block);
         if(oreBlock != null) {
             addBlastingRecipe(recipeConsumer, oreBlock, ingot, 1.0F, 100, "_ore_blasting");
@@ -391,6 +394,13 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
 
     protected void addSwordRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output) {
         addSwordRecipe(recipeConsumer, stickItem, materialItem, output, "");
+    }
+
+    protected void addShieldRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike materialItem, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, output, 1).define('#', ItemTags.PLANKS).define('M', materialItem)
+                .pattern("#M#")
+                .pattern("###")
+                .pattern(" # ").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
     }
 
     protected void addHelmetRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike materialItem, ItemLike output) {

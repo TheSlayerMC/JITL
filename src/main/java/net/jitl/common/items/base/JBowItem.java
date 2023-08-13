@@ -1,4 +1,4 @@
-package net.jitl.common.items;
+package net.jitl.common.items.base;
 
 import net.jitl.common.capability.essence.PlayerEssenceProvider;
 import net.jitl.common.entity.projectile.EssenceArrowEntity;

@@ -57,6 +57,7 @@ public class LangRegistry {
         ArrayList<String> itemList = new ArrayList<>(JItems.itemName);
         ArrayList<String> spawnEggList = new ArrayList<>(JItems.spawnName);
         ArrayList<String> bowItemList = new ArrayList<>(JItems.bowName);
+        ArrayList<String> shieldItemList = new ArrayList<>(JItems.shieldName);
         ArrayList<String> recordList = new ArrayList<>(JItems.recordName);
         ArrayList<String> modelItemList = new ArrayList<>(JItems.modelName);
         ArrayList<String> recordDescList = new ArrayList<>(JItems.recordDescName);
@@ -307,6 +308,10 @@ public class LangRegistry {
 
         for(int i = 0; i < bowItemList.size(); i++) {
             writeToFile("\"item.jitl." + bowItemList.get(i) + "\": \"" + JItems.bowLangName.get(i) + "\"" + ",");
+        }
+
+        for(int i = 0; i < shieldItemList.size(); i++) {
+            writeToFile("\"item.jitl." + shieldItemList.get(i) + "\": \"" + JItems.shieldLangName.get(i) + "\"" + ",");
         }
 
         for(int i = 0; i < recordList.size(); i++) {

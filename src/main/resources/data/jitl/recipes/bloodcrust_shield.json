@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "M": {
+      "item": "jitl:bloodcrust_ingot"
+    }
+  },
+  "pattern": [
+    "#M#",
+    "###",
+    " # "
+  ],
+  "result": {
+    "item": "jitl:bloodcrust_shield"
+  },
+  "show_notification": true
+}

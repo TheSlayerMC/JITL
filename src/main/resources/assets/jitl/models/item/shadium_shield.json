@@ -1,0 +1,14 @@
+{
+  "parent": "item/shield",
+  "textures": {
+    "particle": "jitl:shield/shadium_shield"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "jitl:blocking": 1
+      },
+      "model": "jitl:item/shadium_shield_blocking"
+    }
+  ]
+}

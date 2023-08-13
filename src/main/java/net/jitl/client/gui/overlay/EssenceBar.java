@@ -5,7 +5,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.client.essence.ClientEssence;
 import net.jitl.common.capability.essence.PlayerEssenceProvider;
 import net.jitl.common.entity.projectile.EssenceArrowEntity;
-import net.jitl.common.items.JBowItem;
+import net.jitl.common.items.base.JBowItem;
 import net.jitl.core.config.JClientConfig;
 import net.jitl.core.config.enums.EssencePosition;
 import net.jitl.core.helper.IEssenceItem;

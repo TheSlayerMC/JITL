@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "M": {
+      "item": "jitl:celestium_ingot"
+    }
+  },
+  "pattern": [
+    "#M#",
+    "###",
+    " # "
+  ],
+  "result": {
+    "item": "jitl:celestium_shield"
+  },
+  "show_notification": true
+}
