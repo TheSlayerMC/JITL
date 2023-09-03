@@ -152,179 +152,164 @@ public class LangRegistry {
         writeToFile("\"jitl.tooltip.night\" : \"On hit: Grants the player Night vision\",");
         writeToFile("\"jitl.tooltip.bubble\" : \"On hit: Poisons enemies and grants player damage boost\",");
         writeToFile("\"jitl.tooltip.logger\" : \"On hit: Stuns enemies and grants player damage boost\",");
+        writeToFile("\"jitl.tooltip.lunium_gear.0\" : \"Auto-repair\",");
+        writeToFile("\"jitl.tooltip.lunium_gear.1\" : \"Repair speed relies on light level\",");
+        writeToFile("\"jitl.tooltip.lunium_gear.2\" : \"%1$s%% charge\",");
+        writeToFile("\"jitl.tooltip.shadium_sword.0\" : \"Deals extra damage while in darkness\",");
+        writeToFile("\"jitl.tooltip.shadium_sword.1\" : \"Maximum +4 damage\",");
+        writeToFile("\"jitl.tooltip.shadium_sword.2\" : \"+%s damage\",");
+        writeToFile("\"jitl.tooltip.shadium_tool.0\" : \"Mines faster while in darkness\",");
+        writeToFile("\"jitl.tooltip.shadium_tool.1\" : \"Maximum +50% mining speed\",");
+        writeToFile("\"jitl.tooltip.shadium_tool.2\" : \"+%s mining speed\",");
+        writeToFile("\"jitl.tooltip.shadium_armor.0\" : \"Provides Armor Toughness in darkness\",");
+        writeToFile("\"jitl.tooltip.shadium_armor.1\" : \"Maximum +3.75 Armor Toughness per piece\",");
+        writeToFile("\"jitl.tooltip.shadium_armor.2\" : \"+%s Armor Toughness\",");
+        writeToFile("\"jitl.tooltip.bloodcrust_sword.0\" : \"Absorbs target's flames to empower your next strike\",");
+        writeToFile("\"jitl.tooltip.bloodcrust_sword.1\" : \"Damage gained is equal to what the target would have taken from being on fire\",");
+        writeToFile("\"jitl.tooltip.bloodcrust_sword.2\" : \"+%s damage\",");
+        writeToFile("\"jitl.tooltip.bloodcrust_tool.0\" : \"Absorb fire to gain triple mining speed\",");
+        writeToFile("\"jitl.tooltip.bloodcrust_tool.1\" : \"Every block broken removes 1/16th of the boost\",");
+        writeToFile("\"jitl.tooltip.bloodcrust_tool.2\" : \"+%1$s%% mining speed\",");
+        writeToFile("\"jitl.tooltip.bloodcrust_armor.0\" : \"Full set lights attackers on fire\",");
+        writeToFile("\"jitl.tooltip.bloodcrust_armor.1\" : \"Fire duration stacks with existing flames to a maximum of 30 seconds\",");
+        writeToFile("\"jitl.tooltip.bloodcrust_armor.2\" : \"Every life lost adds an extra second\",");
+        writeToFile("\"jitl.tooltip.mekyum_sword.0\" : \"Deals magic damage\",");
+        writeToFile("\"jitl.tooltip.korite_sword.0\" : \"Right-click to consume Essence and charge your next attack\",");
+        writeToFile("\"jitl.tooltip.korite_sword.1\" : \"Maximum +5 damage\",");
+        writeToFile("\"jitl.tooltip.korite_sword.2\" : \"+%s damage\",");
+        writeToFile("\"jitl.tooltip.celestium_armor.0\" : \"Jumping in the air allows you to dash\",");
+        writeToFile("\"jitl.tooltip.celestium_armor.1\" : \"Dashing cancels your vertical movement and increases your horizontal movement\",");
+        writeToFile("\"jitl.tooltip.celestium_armor.2\" : \"To recharge this ability, touch the ground at least 2 seconds after previous dash\",");
 
         writeToFile("\"jitl.tooltip.uses_remaining\" : \"Uses Remaining\",");
 
         /* --------------------- Finish manual lines --------------------- */
 
-        for(int i = 0; i < mobList.size(); i++) {
+        for(int i = 0; i < mobList.size(); i++)
             writeToFile("\"entity.jitl." + mobList.get(i) + "\": \"" + JEntities.entityLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < recordDescList.size(); i++) {
+        for(int i = 0; i < recordDescList.size(); i++)
             writeToFile("\"" + recordDescList.get(i) + "\": \"" + JItems.recordDescLangName.get(i) + "\",");
-        }
 
-        for(int i = 0; i < blockList.size(); i++) {
+        for(int i = 0; i < blockList.size(); i++)
             writeToFile("\"block.jitl." + blockList.get(i) + "\": \"" + JBlocks.normalLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < doublePlantList.size(); i++) {
+        for(int i = 0; i < doublePlantList.size(); i++)
             writeToFile("\"block.jitl." + doublePlantList.get(i) + "\": \"" + JBlocks.doublePlantLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < logList.size(); i++) {
+        for(int i = 0; i < logList.size(); i++)
             writeToFile("\"block.jitl." + logList.get(i) + "\": \"" + JBlocks.logLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < crossList.size(); i++) {
+        for(int i = 0; i < crossList.size(); i++)
             writeToFile("\"block.jitl." + crossList.get(i) + "\": \"" + JBlocks.crossLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < lilyList.size(); i++) {
+        for(int i = 0; i < lilyList.size(); i++)
             writeToFile("\"block.jitl." + lilyList.get(i) + "\": \"" + JBlocks.lilyPadLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < tintedCrossList.size(); i++) {
+        for(int i = 0; i < tintedCrossList.size(); i++)
             writeToFile("\"block.jitl." + tintedCrossList.get(i) + "\": \"" + JBlocks.tintedCrossLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < tintedLeavesList.size(); i++) {
+        for(int i = 0; i < tintedLeavesList.size(); i++)
             writeToFile("\"block.jitl." + tintedLeavesList.get(i) + "\": \"" + JBlocks.tintedLeavesLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < grassBlockList.size(); i++) {
+        for(int i = 0; i < grassBlockList.size(); i++)
             writeToFile("\"block.jitl." + grassBlockList.get(i) + "\": \"" + JBlocks.grassLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < chestBlockList.size(); i++) {
+        for(int i = 0; i < chestBlockList.size(); i++)
             writeToFile("\"block.jitl." + chestBlockList.get(i) + "\": \"" + JBlocks.chestLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < wallBlockList.size(); i++) {
+        for(int i = 0; i < wallBlockList.size(); i++)
             writeToFile("\"block.jitl." + wallBlockList.get(i) + "\": \"" + JBlocks.wallLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < vineBlockList.size(); i++) {
+        for(int i = 0; i < vineBlockList.size(); i++)
             writeToFile("\"block.jitl." + vineBlockList.get(i) + "\": \"" + JBlocks.vineLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < ladderBlockList.size(); i++) {
+        for(int i = 0; i < ladderBlockList.size(); i++)
             writeToFile("\"block.jitl." + ladderBlockList.get(i) + "\": \"" + JBlocks.ladderLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < overlayGrassBlockList.size(); i++) {
+        for(int i = 0; i < overlayGrassBlockList.size(); i++)
             writeToFile("\"block.jitl." + overlayGrassBlockList.get(i) + "\": \"" + JBlocks.overlayGrassLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < paneList.size(); i++) {
+        for(int i = 0; i < paneList.size(); i++)
             writeToFile("\"block.jitl." + paneList.get(i) + "\": \"" + JBlocks.paneLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < terrainBlockList.size(); i++) {
+        for(int i = 0; i < terrainBlockList.size(); i++)
             writeToFile("\"block.jitl." + terrainBlockList.get(i) + "\": \"" + JBlocks.terrainLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < attachedCrossList.size(); i++) {
+        for(int i = 0; i < attachedCrossList.size(); i++)
             writeToFile("\"block.jitl." + attachedCrossList.get(i) + "\": \"" + JBlocks.attachedCrossLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < doorList.size(); i++) {
+        for(int i = 0; i < doorList.size(); i++)
             writeToFile("\"block.jitl." + doorList.get(i) + "\": \"" + JBlocks.doorLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < trapDoorList.size(); i++) {
+        for(int i = 0; i < trapDoorList.size(); i++)
             writeToFile("\"block.jitl." + trapDoorList.get(i) + "\": \"" + JBlocks.trapDoorLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < stairList.size(); i++) {
+        for(int i = 0; i < stairList.size(); i++)
             writeToFile("\"block.jitl." + stairList.get(i) + "\": \"" + JBlocks.stairsLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < slabList.size(); i++) {
+        for(int i = 0; i < slabList.size(); i++)
             writeToFile("\"block.jitl." + slabList.get(i) + "\": \"" + JBlocks.slabLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < buttonList.size(); i++) {
+        for(int i = 0; i < buttonList.size(); i++)
             writeToFile("\"block.jitl." + buttonList.get(i) + "\": \"" + JBlocks.buttonLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < pressureList.size(); i++) {
+        for(int i = 0; i < pressureList.size(); i++)
             writeToFile("\"block.jitl." + pressureList.get(i) + "\": \"" + JBlocks.pressurePlateLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < fenceList.size(); i++) {
+        for(int i = 0; i < fenceList.size(); i++)
             writeToFile("\"block.jitl." + fenceList.get(i) + "\": \"" + JBlocks.fenceLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < gateList.size(); i++) {
+        for(int i = 0; i < gateList.size(); i++)
             writeToFile("\"block.jitl." + gateList.get(i) + "\": \"" + JBlocks.gateLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < modelBlockList.size(); i++) {
+        for(int i = 0; i < modelBlockList.size(); i++)
             writeToFile("\"block.jitl." + modelBlockList.get(i) + "\": \"" + JBlocks.modelLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < rotatableBlockList.size(); i++) {
+        for(int i = 0; i < rotatableBlockList.size(); i++)
             writeToFile("\"block.jitl." + rotatableBlockList.get(i) + "\": \"" + JBlocks.rotatableLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < randomizedBlockList.size(); i++) {
+        for(int i = 0; i < randomizedBlockList.size(); i++)
             writeToFile("\"block.jitl." + randomizedBlockList.get(i) + "\": \"" + JBlocks.randomLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < portalBlockList.size(); i++) {
+        for(int i = 0; i < portalBlockList.size(); i++)
             writeToFile("\"block.jitl." + portalBlockList.get(i) + "\": \"" + JBlocks.portalLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < campfireBlockList.size(); i++) {
+        for(int i = 0; i < campfireBlockList.size(); i++)
             writeToFile("\"block.jitl." + campfireBlockList.get(i) + "\": \"" + JBlocks.campfireLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < pathBlockList.size(); i++) {
+        for(int i = 0; i < pathBlockList.size(); i++)
             writeToFile("\"block.jitl." + pathBlockList.get(i) + "\": \"" + JBlocks.pathLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < farmBlockList.size(); i++) {
+        for(int i = 0; i < farmBlockList.size(); i++)
             writeToFile("\"block.jitl." + farmBlockList.get(i) + "\": \"" + JBlocks.farmlandLangName.get(i) + "\"" + ",");
-        }
 
-
-        for(int i = 0; i < cropBlockList.size(); i++) {
+        for(int i = 0; i < cropBlockList.size(); i++)
             writeToFile("\"block.jitl." + cropBlockList.get(i) + "\": \"" + JBlocks.cropLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < bushBlockList.size(); i++) {
+        for(int i = 0; i < bushBlockList.size(); i++)
             writeToFile("\"block.jitl." + pathBlockList.get(i) + "\": \"" + JBlocks.bushLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < furnaceBlockList.size(); i++) {
+        for(int i = 0; i < furnaceBlockList.size(); i++)
             writeToFile("\"block.jitl." + furnaceBlockList.get(i) + "\": \"" + JBlocks.furnaceLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < toolItemList.size(); i++) {
+        for(int i = 0; i < toolItemList.size(); i++)
             writeToFile("\"item.jitl." + toolItemList.get(i) + "\": \"" + JItems.toolLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < bowItemList.size(); i++) {
+        for(int i = 0; i < bowItemList.size(); i++)
             writeToFile("\"item.jitl." + bowItemList.get(i) + "\": \"" + JItems.bowLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < shieldItemList.size(); i++) {
+        for(int i = 0; i < shieldItemList.size(); i++)
             writeToFile("\"item.jitl." + shieldItemList.get(i) + "\": \"" + JItems.shieldLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < recordList.size(); i++) {
+        for(int i = 0; i < recordList.size(); i++)
             writeToFile("\"item.jitl." + recordList.get(i) + "\": \"" + JItems.recordLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < spawnEggList.size(); i++) {
+        for(int i = 0; i < spawnEggList.size(); i++)
             writeToFile("\"item.jitl." + spawnEggList.get(i) + "\": \"" + JItems.spawnLangName.get(i) + "\"" + ",");
-        }
 
-        for(int i = 0; i < modelItemList.size(); i++) {
+        for(int i = 0; i < modelItemList.size(); i++)
             writeToFile("\"item.jitl." + modelItemList.get(i) + "\": \"" + JItems.modelLangName.get(i) + "\"" + ",");
-        }
 
         int j = 0;
         for(int i = 0; i < itemList.size(); i++) {
