@@ -8,8 +8,11 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
+@OnlyIn(Dist.CLIENT)
 public class SummoningTableScreen extends AbstractContainerScreen<SummoningTableContainer> {
 
     private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(JITL.MODID, "textures/gui/summoning_table.png");

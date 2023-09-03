@@ -7,7 +7,16 @@
     {
       "weight": 1,
       "element": {
-        "location": "jitl:depths/depths_watchtower",
+        "location": "jitl:depths/dark_sorcerers_dungeon",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "jitl:depths/dark_sorcerers_dungeon_2",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
