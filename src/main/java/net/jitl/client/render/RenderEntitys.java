@@ -137,5 +137,14 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.SPIKED_BEAST_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("spiked_beast", JDimension.DEPTHS)));
         EntityRenderers.register(JEntities.DEPTHS_HUNTER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("depths_hunter", JDimension.DEPTHS), 0.5F, 1.5F));
         EntityRenderers.register(JEntities.STARING_GUARDIAN_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("staring_guardian", JDimension.DEPTHS)));
+        EntityRenderers.register(JEntities.AURON_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("auron", JDimension.DEPTHS), 0.35F, 1.5F));
+
+        EntityRenderers.register(JEntities.CORBANIAN_MOLLUSK_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("corbanian_mollusk", JDimension.CORBA), 0.35F, 1.5F));
+        EntityRenderers.register(JEntities.SMELLY_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("smelly", JDimension.CORBA)));
+        EntityRenderers.register(JEntities.STINKY_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("stinky", JDimension.CORBA)));
+        EntityRenderers.register(JEntities.RED_TORDO_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("red_tordo", JDimension.CORBA)));
+        EntityRenderers.register(JEntities.WOOD_CREATURE_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("wood_creature", JDimension.CORBA)));
+        EntityRenderers.register(JEntities.GREEN_TORDO_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("green_tordo", JDimension.CORBA)));
+        EntityRenderers.register(JEntities.TREE_GOLEM.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("tree_golem", JDimension.CORBA)));
     }
 }

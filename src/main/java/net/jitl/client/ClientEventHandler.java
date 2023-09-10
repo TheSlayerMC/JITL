@@ -44,6 +44,12 @@ public class ClientEventHandler {
             RenderSystem.setShaderFogStart(density);
             RenderSystem.setShaderFogEnd(density * farPlaneDistance);
         }
+
+        if(ClientGetter.level().dimension() == Dimensions.DEPTHS) {
+            float density = 0.5F;
+            RenderSystem.setShaderFogStart(density);
+            RenderSystem.setShaderFogEnd(density * farPlaneDistance);
+        }
     }
 
     @SubscribeEvent

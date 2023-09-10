@@ -8,7 +8,11 @@ import net.jitl.common.entity.boss.BossCrystal;
 import net.jitl.common.entity.boss.Okoloo;
 import net.jitl.common.entity.boss.RockiteSmasher;
 import net.jitl.common.entity.boss.TowerGuardian;
+import net.jitl.common.entity.corba.*;
+import net.jitl.common.entity.corba.npc.GreenTordo;
+import net.jitl.common.entity.corba.npc.RedTordo;
 import net.jitl.common.entity.depths.*;
+import net.jitl.common.entity.depths.npc.Auron;
 import net.jitl.common.entity.depths.npc.StaringGuardian;
 import net.jitl.common.entity.euca.*;
 import net.jitl.common.entity.euca.npc.AlloyMender;
@@ -147,6 +151,16 @@ public class JEntities {
     public static final RegistryObject<EntityType<SpikedBeast>> SPIKED_BEAST_TYPE = registerEntity(SpikedBeast::new, "spiked_beast", "Spiked Beast", 0.75F, 1.5F, DEPTHS_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<DepthsHunter>> DEPTHS_HUNTER_TYPE = registerEntity(DepthsHunter::new, "depths_hunter", "Depths Hunter", 1.25F, 2F, DEPTHS_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<Roc>> ROC_TYPE = registerEntity(Roc::new, "roc", "Roc", 0.5F, 1F, DEPTHS_COLOR, NEUTRAL_COLOR);
+    public static final RegistryObject<EntityType<Auron>> AURON_TYPE = registerEntity(Auron::new, "auron", "Auron", 0.5F, 1.1F, DEPTHS_COLOR, TRADER_COLOR);
+
+    //CORBA MOBS
+    public static final RegistryObject<EntityType<CorbanianMollusk>> CORBANIAN_MOLLUSK_TYPE = registerEntity(CorbanianMollusk::new, "corbanian_mollusk", "Corbanian Mollusk", 0.75F, 1.8F, CORBA_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<Smelly>> SMELLY_TYPE = registerEntity(Smelly::new, "smelly", "Smelly", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<Stinky>> STINKY_TYPE = registerEntity(Stinky::new, "stinky", "Stinky", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<GreenTordo>> GREEN_TORDO_TYPE = registerEntity(GreenTordo::new, "green_tordo", "Green Tordo", 0.75F, 1.8F, CORBA_COLOR, TRADER_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<RedTordo>> RED_TORDO_TYPE = registerEntity(RedTordo::new, "red_tordo", "Red Tordo", 0.75F, 1.8F, CORBA_COLOR, TRADER_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<WoodCreature>> WOOD_CREATURE_TYPE = registerEntity(WoodCreature::new, "wood_creature", "Wood Creature", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<TreeGolem>> TREE_GOLEM = registerEntity(TreeGolem::new, "tree_golem", "Tree Golem", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
 
     private static <T extends Mob> RegistryObject<EntityType<T>> registerEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height, int backgroundColor, int highlightColor, MobCategory category) {
         RegistryObject<EntityType<T>> entity = REGISTRY.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).build(new ResourceLocation(JITL.MODID, name).toString()));
@@ -231,11 +245,19 @@ public class JEntities {
         event.put(SPIKED_BEAST_TYPE.get(), SpikedBeast.createAttributes());
         event.put(ROC_TYPE.get(), Roc.createAttributes());
         event.put(DEPTHS_HUNTER_TYPE.get(), DepthsHunter.createAttributes());
+        event.put(AURON_TYPE.get(), Auron.createAttributes());
 
         event.put(ESKIMO_TYPE.get(), Eskimo.createAttributes());
         event.put(FROZEN_GUARDIAN_TYPE.get(), FrozenGuardian.createAttributes());
-    }
 
+        event.put(CORBANIAN_MOLLUSK_TYPE.get(), CorbanianMollusk.createAttributes());
+        event.put(SMELLY_TYPE.get(), Smelly.createAttributes());
+        event.put(STINKY_TYPE.get(), Stinky.createAttributes());
+        event.put(RED_TORDO_TYPE.get(), RedTordo.createAttributes());
+        event.put(GREEN_TORDO_TYPE.get(), GreenTordo.createAttributes());
+        event.put(WOOD_CREATURE_TYPE.get(), WoodCreature.createAttributes());
+        event.put(TREE_GOLEM.get(), TreeGolem.createAttributes());
+    }
 
     @SubscribeEvent
     public static void registerSpawnPlacement(SpawnPlacementRegisterEvent event) {
@@ -282,13 +304,15 @@ public class JEntities {
         setDefaultMonsterSpawn(event, GOLDER_TYPE);
 
         setDefaultMonsterSpawn(event, DARKNESS_CRAWLER_TYPE);
-        setDefaultMonsterSpawn(event, DARK_SORCERER_TYPE);
         setDefaultMonsterSpawn(event, DEPTHS_BEAST_TYPE);
         setDefaultMonsterSpawn(event, SPIKED_BEAST_TYPE);
         setDefaultMonsterSpawn(event, ROC_TYPE);
         setDefaultMonsterSpawn(event, DEPTHS_HUNTER_TYPE);
 
         setDefaultSpawn(event, ESKIMO_TYPE);
+
+        setDefaultSpawn(event, CORBANIAN_MOLLUSK_TYPE);
+
     }
 
     public static <T extends Entity> void setCustomSpawn(SpawnPlacementRegisterEvent event, RegistryObject<EntityType<T>> entity, SpawnPlacements.SpawnPredicate<T> spawn) {

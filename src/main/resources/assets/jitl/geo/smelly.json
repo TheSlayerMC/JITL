@@ -1,0 +1,95 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.smelly",
+				"texture_width": 256,
+				"texture_height": 256,
+				"visible_bounds_width": 5,
+				"visible_bounds_height": 5,
+				"visible_bounds_offset": [0, 1.5, 0]
+			},
+			"bones": [
+				{
+					"name": "arms",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "arms2",
+					"parent": "arms",
+					"pivot": [14, 42, -1],
+					"cubes": [
+						{"origin": [16, 12, -5], "size": [8, 24, 8], "uv": [0, 38]},
+						{"origin": [14, 36, -7], "size": [12, 12, 12], "uv": [88, 0]}
+					]
+				},
+				{
+					"name": "arms1",
+					"parent": "arms",
+					"pivot": [-14, 42, 0],
+					"cubes": [
+						{"origin": [-26, 36, -7], "size": [12, 12, 12], "uv": [88, 24]},
+						{"origin": [-24, 12, -5], "size": [8, 24, 8], "uv": [48, 94]},
+						{"origin": [-22, 14, -27], "size": [4, 4, 32], "uv": [0, 38]},
+						{"origin": [-26, 4, -39], "size": [12, 24, 12], "uv": [0, 74]}
+					]
+				},
+				{
+					"name": "legs",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "leg1",
+					"parent": "legs",
+					"pivot": [-6, 16, 0],
+					"cubes": [
+						{"origin": [-10, 0, -4], "size": [8, 16, 8], "uv": [0, 110]}
+					]
+				},
+				{
+					"name": "leg2",
+					"parent": "legs",
+					"pivot": [6, 16, 0],
+					"cubes": [
+						{"origin": [2, 0, -4], "size": [8, 16, 8], "uv": [80, 94]}
+					]
+				},
+				{
+					"name": "body",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-14, 28, -9], "size": [28, 22, 16], "uv": [0, 0]},
+						{"origin": [-11, 16, -6], "size": [22, 12, 12], "uv": [60, 70]}
+					]
+				},
+				{
+					"name": "head",
+					"pivot": [0, 39, -8],
+					"cubes": [
+						{"origin": [-9, 37, -18], "size": [16, 16, 16], "uv": [40, 38]},
+						{"origin": [-4, 34, -24], "size": [6, 12, 6], "uv": [104, 48]}
+					]
+				},
+				{
+					"name": "ear1",
+					"parent": "head",
+					"pivot": [-9.8939, 49.0404, -9],
+					"rotation": [0, 0, 20.00196],
+					"cubes": [
+						{"origin": [-10.3939, 45.0404, -12], "size": [1, 8, 6], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "ear2",
+					"parent": "head",
+					"pivot": [7.5, 52, -9],
+					"rotation": [0, 0, -20.00196],
+					"cubes": [
+						{"origin": [6.4617, 44.9831, -12], "size": [1, 8, 6], "uv": [40, 40]}
+					]
+				}
+			]
+		}
+	]
+}
