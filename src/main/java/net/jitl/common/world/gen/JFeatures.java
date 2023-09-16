@@ -8,6 +8,7 @@ import net.jitl.common.world.gen.cloudia.CloudFeature;
 import net.jitl.common.world.gen.cloudia.CloudiaLand;
 import net.jitl.common.world.gen.cloudia.CloudiaTerrain;
 import net.jitl.common.world.gen.corba.CorbaSwampTreeFeature;
+import net.jitl.common.world.gen.corba.SwampLilyFeature;
 import net.jitl.common.world.gen.depths.DepthsCrystalFeature;
 import net.jitl.common.world.gen.depths.DepthsLampFeature;
 import net.jitl.common.world.gen.depths.DepthsLampFloorFeature;
@@ -24,10 +25,7 @@ import net.jitl.common.world.gen.tree_grower.TreeConfig;
 import net.jitl.core.init.JITL;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.SpringFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SpringConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -66,6 +64,7 @@ public class JFeatures {
 
     //CORBA
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> CORBA_SWAMP_TREE = REGISTRY.register("corba_swamp_tree", () -> new CorbaSwampTreeFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<Feature<RandomPatchConfiguration>> SWAMP_LILY = REGISTRY.register("swamp_lily", () -> new SwampLilyFeature(RandomPatchConfiguration.CODEC));
 
     //CLOUDIA
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> CLOUDIA_TERRAIN = REGISTRY.register("cloudia_terrain", CloudiaTerrain::new);

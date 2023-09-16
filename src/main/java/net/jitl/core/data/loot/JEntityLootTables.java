@@ -276,6 +276,16 @@ public class JEntityLootTables extends EntityLootSubProvider {
                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
                 .add(LootItem.lootTableItem(JItems.SHIMMERER_DUST.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.AURON_TYPE.get(), empty());
+
+        this.add(JEntities.CORBANIAN_MOLLUSK_TYPE.get(), empty());
+        this.add(JEntities.SMELLY_TYPE.get(), empty());
+        this.add(JEntities.STINKY_TYPE.get(), empty());
+        this.add(JEntities.GREEN_TORDO_TYPE.get(), empty());
+        this.add(JEntities.RED_TORDO_TYPE.get(), empty());
+        this.add(JEntities.WOOD_CREATURE_TYPE.get(), empty());
+        this.add(JEntities.TREE_GOLEM.get(), empty());
     }
 
     private LootTable.Builder empty() {
