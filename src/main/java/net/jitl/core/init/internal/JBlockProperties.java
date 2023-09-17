@@ -40,6 +40,13 @@ public class JBlockProperties {
             .sound(SoundType.WOOD)
             .requiresCorrectToolForDrops();
 
+    public static BlockBehaviour.Properties MUSHROOM_SHELF = BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_BROWN)
+            .strength(0.5F)
+            .sound(SoundType.WOOD)
+            .noCollission()
+            .requiresCorrectToolForDrops();
+
     public static BlockBehaviour.Properties SPAWNER = BlockBehaviour.Properties.of()
             .strength(1.5F)
             .mapColor(MapColor.COLOR_BLACK)
