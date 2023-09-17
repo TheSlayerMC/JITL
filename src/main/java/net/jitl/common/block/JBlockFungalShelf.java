@@ -27,7 +27,7 @@ public class JBlockFungalShelf extends JBlock {
     protected static final VoxelShape SHROOM_EAST_AABB = Block.box(0.0D, 0.20000000298023224D, 0.3499999940395355D, 0.30000001192092896D, 0.800000011920929D, 0.6499999761581421D);
 
     public JBlockFungalShelf() {
-        super(JBlockProperties.MUSHROOM_BLOCK);
+        super(JBlockProperties.MUSHROOM_SHELF);
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
     }
 
