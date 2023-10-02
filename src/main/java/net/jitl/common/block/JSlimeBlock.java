@@ -19,7 +19,6 @@ import org.jetbrains.annotations.NotNull;
 public class JSlimeBlock extends Block {
 
     protected static final VoxelShape SLIME_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2D, 16.0D);
-    private int age = 2;
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 3);
 
     public JSlimeBlock() {
