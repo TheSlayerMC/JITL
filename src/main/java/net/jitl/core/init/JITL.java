@@ -83,6 +83,7 @@ public class JITL {
             new JBlockDoorGenerator().generate();
             new JBlockTrapDoorGenerator().generate();
             new JBlockPaneGenerator().generate();
+            new JBlockSlimeGenerator().generate();
             new JBlockStairsGenerator().generate();
             new JBlockSlabGenerator().generate();
             new JBlockPressurePlateGenerator().generate();

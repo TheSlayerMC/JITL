@@ -432,6 +432,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.BOGWEED);
         this.dropSelf(JBlocks.SWAMP_LILY);
         this.dropSelf(JBlocks.CORBA_FURNACE);
+        this.add(JBlocks.SLIME, noDrop());
 
         this.dropSelf(JBlocks.TERRANIAN_PORTAL_FRAME);
         this.add(JBlocks.TERRANIAN_PORTAL, noDrop());

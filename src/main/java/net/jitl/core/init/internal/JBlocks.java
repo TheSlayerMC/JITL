@@ -112,6 +112,8 @@ public class JBlocks {
     public static final ArrayList<String> mushroomLangName = new ArrayList<>();
     public static final ArrayList<String> topBottomBlockName = new ArrayList<>();
     public static final ArrayList<String> topBottomLangName = new ArrayList<>();
+    public static final ArrayList<String> slimeBlockName = new ArrayList<>();
+    public static final ArrayList<String> slimeLangName = new ArrayList<>();
 
     public static final ArrayList<String> PICKAXE_BLOCKS = new ArrayList<>();
     public static final ArrayList<String> AXE_BLOCKS = new ArrayList<>();
@@ -536,6 +538,7 @@ public class JBlocks {
     public static final RegistryObject<Block> BOGWEED = registerDoublePlant("bogweed", "Bogweed", () -> new JDoublePlantBlock(JBlockProperties.PLANT));
     public static final RegistryObject<Block> SWAMP_LILY = registerLilyPad("swamp_lily", "Swamp Lilly", () -> new WaterlilyBlock(JBlockProperties.LILY_PLANT));
     public static final RegistryObject<Block> FUNGAL_SHELF = registerModeledBlock("fungal_shelf", "Fungal Shelf", JBlockFungalShelf::new);
+    public static final RegistryObject<Block> SLIME = registerSlimeStyleBlock("slime", "Slime", JSlimeBlock::new);
 
     public static final RegistryObject<Block> TERRANIAN_PORTAL_FRAME = register("terranian_portal_frame", "Terranian Portal Frame", JBlockProperties.STONE);
     public static final RegistryObject<JBasePortalBlock> TERRANIAN_PORTAL = registerPortalBlock("terranian_portal", "Terranian Portal", () -> new JBasePortalBlock(Dimensions.TERRANIA, TERRANIAN_PORTAL_FRAME));
@@ -811,6 +814,15 @@ public class JBlocks {
         addPickaxeableBlocks(name);
         basePortalFrameLangName.add(translatedName);
         basePortalFrameBlockName.add(name);
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
+        return block1;
+    }
+
+    public static RegistryObject<Block> registerSlimeStyleBlock(String name, String translatedName, Supplier<Block> block) {
+        addShovelableBlocks(name);
+        slimeLangName.add(translatedName);
+        slimeBlockName.add(name);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;

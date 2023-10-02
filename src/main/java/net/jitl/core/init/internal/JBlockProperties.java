@@ -96,6 +96,15 @@ public class JBlockProperties {
             .strength(1F)
             .sound(SoundType.GRAVEL);
 
+    public static BlockBehaviour.Properties SLIME = BlockBehaviour.Properties.of()
+            .strength(0.5F)
+            .sound(SoundType.SLIME_BLOCK)
+            .noOcclusion()
+            .randomTicks()
+            .speedFactor(0.3F)
+            .isViewBlocking((state, getter, pos) -> true)
+            .isSuffocating((state, getter, pos) -> true);
+
     public static BlockBehaviour.Properties FARMLAND = BlockBehaviour.Properties.of()
             .randomTicks()
             .strength(0.6F)

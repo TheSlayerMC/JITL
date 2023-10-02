@@ -28,6 +28,7 @@
     "jitl:corba_path",
     "jitl:tainted_mud",
     "jitl:dried_mud",
+    "jitl:slime",
     "jitl:terranian_dirt",
     "jitl:cloudia_dirt"
   ]

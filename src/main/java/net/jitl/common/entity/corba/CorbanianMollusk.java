@@ -1,6 +1,9 @@
 package net.jitl.common.entity.corba;
 
 import net.jitl.common.entity.base.JMonsterEntity;
+import net.jitl.core.init.internal.JBlocks;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -9,6 +12,8 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
@@ -49,5 +54,25 @@ public class CorbanianMollusk extends JMonsterEntity {
                 return state.setAndContinue(IDLE);
             }
         }));
+    }
+
+    @Override
+    public void aiStep() {
+        super.aiStep();
+        if(!this.level().isClientSide) {
+            if(!net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level(), this))
+                return;
+            BlockState slime = JBlocks.SLIME.get().defaultBlockState();
+            for(int i = 0; i < 4; ++i) {
+                int j = Mth.floor(this.getX() + (double)((float)(i % 2 * 2 - 1) * 0.25F));
+                int k = Mth.floor(this.getY());
+                int l = Mth.floor(this.getZ() + (double)((float)(i / 2 % 2 * 2 - 1) * 0.25F));
+                BlockPos blockpos = new BlockPos(j, k, l);
+                if(this.level().isEmptyBlock(blockpos) && slime.canSurvive(this.level(), blockpos)) {
+                    this.level().setBlockAndUpdate(blockpos, slime);
+                    this.level().gameEvent(GameEvent.BLOCK_PLACE, blockpos, GameEvent.Context.of(this, slime));
+                }
+            }
+        }
     }
 }
