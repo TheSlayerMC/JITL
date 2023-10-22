@@ -1,32 +1,53 @@
 package net.jitl.core.data;
 
-import net.jitl.core.init.network.CKeyPressedPacket;
-import net.jitl.core.network.PacketEssenceBar;
 import net.jitl.client.knowledge.PacketKnowledge;
 import net.jitl.client.stats.PacketPlayerStats;
 import net.jitl.core.init.JITL;
+import net.jitl.core.init.network.CKeyPressedPacket;
 import net.jitl.core.init.network.SBossPacket;
+import net.jitl.core.network.PacketEssenceBar;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.network.ChannelBuilder;
 import net.minecraftforge.network.NetworkDirection;
-import net.minecraftforge.network.NetworkRegistry;
-import net.minecraftforge.network.simple.SimpleChannel;
-
-import java.util.Optional;
+import net.minecraftforge.network.SimpleChannel;
 
 public class JNetworkRegistry {
 
-    private static int packetId = 0;
-    public static SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(JITL.MODID, "jitl_packet"), () -> "1.0", c -> true, s -> true);
-
-    private static int nextID() {
-        return packetId++;
-    }
+    public static SimpleChannel INSTANCE = ChannelBuilder
+            .named(new ResourceLocation(JITL.MODID, "main"))
+            .networkProtocolVersion(1)
+            .simpleChannel();
 
     public static void init() {
-        INSTANCE.registerMessage(nextID(), PacketEssenceBar.class, PacketEssenceBar::toBytes, PacketEssenceBar::new, PacketEssenceBar::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
-        INSTANCE.registerMessage(nextID(), CKeyPressedPacket.class, CKeyPressedPacket::toBytes, CKeyPressedPacket::new, CKeyPressedPacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
-        INSTANCE.registerMessage(nextID(), SBossPacket.class, SBossPacket::toBytes, SBossPacket::new, SBossPacket::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
-        INSTANCE.registerMessage(nextID(), PacketKnowledge.class, PacketKnowledge::toBytes, PacketKnowledge::new, PacketKnowledge::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
-        INSTANCE.registerMessage(nextID(), PacketPlayerStats.class, PacketPlayerStats::toBytes, PacketPlayerStats::new, PacketPlayerStats::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+        INSTANCE.messageBuilder(PacketEssenceBar.class, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(PacketEssenceBar::encode)
+                .decoder(PacketEssenceBar::decode)
+                .consumerNetworkThread(PacketEssenceBar::handle)
+                .add();
+
+        INSTANCE.messageBuilder(CKeyPressedPacket.class, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(CKeyPressedPacket::encode)
+                .decoder(CKeyPressedPacket::new)
+                .consumerNetworkThread(CKeyPressedPacket::handle)
+                .add();
+
+        INSTANCE.messageBuilder(SBossPacket.class, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(SBossPacket::encode)
+                .decoder(SBossPacket::new)
+                .consumerNetworkThread(SBossPacket::handle)
+                .add();
+
+        INSTANCE.messageBuilder(PacketKnowledge.class, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(PacketKnowledge::encode)
+                .decoder(PacketKnowledge::new)
+                .consumerNetworkThread(PacketKnowledge::handle)
+                .add();
+
+
+        INSTANCE.messageBuilder(PacketPlayerStats.class, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(PacketPlayerStats::encode)
+                .decoder(PacketPlayerStats::new)
+                .consumerNetworkThread(PacketPlayerStats::handle)
+                .add();
     }
 }

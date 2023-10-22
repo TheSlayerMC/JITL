@@ -3,18 +3,18 @@ package net.jitl.core.network;
 import io.netty.buffer.ByteBuf;
 import net.jitl.client.essence.ClientEssence;
 import net.jitl.common.capability.essence.PlayerEssence;
-import net.minecraftforge.network.NetworkEvent;
-
-import java.util.function.Supplier;
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraftforge.event.network.CustomPayloadEvent;
 
 public class PacketEssenceBar {
 
     private float essence;
     private float burnout;
 
-    public PacketEssenceBar(ByteBuf buf) {
-        essence = buf.readFloat();
-        burnout = buf.readFloat();
+    public PacketEssenceBar(float essence, float burnout) {
+        this.essence = essence;
+        this.burnout = burnout;
     }
 
     public PacketEssenceBar(PlayerEssence essence) {
@@ -24,16 +24,20 @@ public class PacketEssenceBar {
         this.burnout = essence.getBurnout();
     }
 
-    public void toBytes(ByteBuf buf) {
+    public static PacketEssenceBar decode(FriendlyByteBuf buffer) {
+        return new PacketEssenceBar(buffer.readFloat(), buffer.readFloat());
+    }
+
+    public void encode(ByteBuf buf) {
         buf.writeFloat(essence);
         buf.writeFloat(burnout);
     }
 
-    public void handle(Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> ctx.get().enqueueWork(() -> {
+    public void handle(CustomPayloadEvent.Context context) {
+        if(Minecraft.getInstance().player != null) {
             ClientEssence.setClientEssence(this.essence);
             ClientEssence.setClientBurnout(this.burnout);
-        }));
-        ctx.get().setPacketHandled(true);
+            context.setPacketHandled(true);
+        }
     }
 }

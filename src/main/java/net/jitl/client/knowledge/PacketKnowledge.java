@@ -1,9 +1,8 @@
 package net.jitl.client.knowledge;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.network.NetworkEvent;
-
-import java.util.function.Supplier;
+import net.minecraftforge.event.network.CustomPayloadEvent;
 
 public class PacketKnowledge {
 
@@ -25,17 +24,17 @@ public class PacketKnowledge {
         this.knowledge = knowledge;
     }
 
-    public void toBytes(FriendlyByteBuf buf) {
+    public void encode(FriendlyByteBuf buf) {
         buf.writeFloat(knowledgeXP);
         buf.writeInt(level);
         buf.writeEnum(knowledge);
     }
 
-    public void handle(Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
+    public void handle(CustomPayloadEvent.Context ctx) {
+        if(Minecraft.getInstance().player != null) {
             ClientKnowledge.setClientKnowledgeXP(knowledge, this.knowledgeXP);
             ClientKnowledge.setClientKnowledgeLevel(knowledge, this.level);
-        });
-        ctx.get().setPacketHandled(true);
+            ctx.setPacketHandled(true);
+        }
     }
 }

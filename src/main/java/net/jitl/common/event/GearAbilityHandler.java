@@ -101,10 +101,12 @@ public class GearAbilityHandler {
     }
 
     public static void onKeyPressed(Player player) {
-        player.getCapability(PlayerArmorProvider.PLAYER_ARMOR).ifPresent(playerArmor -> {
-            FullArmorAbility armor = playerArmor.getFullArmor();
-            if (armor != null) armor.keyPressed(player);
-        });
+        if(player != null) {
+            player.getCapability(PlayerArmorProvider.PLAYER_ARMOR).ifPresent(playerArmor -> {
+                FullArmorAbility armor = playerArmor.getFullArmor();
+                if (armor != null) armor.keyPressed(player);
+            });
+        }
     }
 
     //TODO: reimplement vanilla tooltips

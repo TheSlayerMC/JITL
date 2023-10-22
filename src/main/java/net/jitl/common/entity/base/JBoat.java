@@ -46,6 +46,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3f;
 
 import java.util.List;
 
@@ -141,8 +142,21 @@ public class JBoat extends Boat {
     }
 
     @Override
-    public double getPassengersRidingOffset() {
-        return -0.1D;
+    protected Vector3f getPassengerAttachmentPoint(Entity pEntity, EntityDimensions pDimensions, float pScale) {
+        float f = this.getSinglePassengerXOffset();
+        if (this.getPassengers().size() > 1) {
+            int i = this.getPassengers().indexOf(pEntity);
+            if (i == 0) {
+                f = 0.2F;
+            } else {
+                f = -0.6F;
+            }
+
+            if (pEntity instanceof Animal) {
+                f += 0.2F;
+            }
+        }
+        return new Vector3f(0.0F, this.getVariant() == Boat.Type.BAMBOO ? pDimensions.height * 0.8888889F : pDimensions.height / 3.0F, f);
     }
 
     @Override
@@ -220,16 +234,6 @@ public class JBoat extends Boat {
     @Override
     public boolean isPickable() {
         return !this.isRemoved();
-    }
-
-    @Override
-    public void lerpTo(double x, double y, double z, float yaw, float pitch, int posRotationIncrements, boolean teleport) {
-        this.lerpX = x;
-        this.lerpY = y;
-        this.lerpZ = z;
-        this.lerpYRot = yaw;
-        this.lerpXRot = pitch;
-        this.lerpSteps = 10;
     }
 
     @Override
@@ -587,33 +591,17 @@ public class JBoat extends Boat {
     }
 
     @Override
-    public void positionRider(@NotNull Entity passenger, MoveFunction move) {
-        if(this.hasPassenger(passenger)) {
-            float f = 0.0F;
-            float f1 = (float)((this.isRemoved() ? (double)0.01F : this.getPassengersRidingOffset()) + passenger.getMyRidingOffset());
-            if(this.getPassengers().size() > 1) {
-                int i = this.getPassengers().indexOf(passenger);
-                if(i == 0) {
-                    f = 0.2F;
-                } else {
-                    f = -0.6F;
-                }
-                if(passenger instanceof Animal) {
-                    f = (float)((double)f + 0.2D);
-                }
-            }
-            Vec3 vec3 = (new Vec3(f, 0.0D, 0.0D)).yRot(-this.getYRot() * ((float)Math.PI / 180F) - ((float)Math.PI / 2F));
-            passenger.setPos(this.getX() + vec3.x, this.getY() + (double)f1, this.getZ() + vec3.z);
-            passenger.setYRot(passenger.getYRot() + this.deltaRotation);
-            passenger.setYHeadRot(passenger.getYHeadRot() + this.deltaRotation);
-            this.clampRotation(passenger);
-            if(passenger instanceof Animal && this.getPassengers().size() > 1) {
-                int j = passenger.getId() % 2 == 0 ? 90 : 270;
-                passenger.setYBodyRot(((Animal)passenger).yBodyRot + (float)j);
-                passenger.setYHeadRot(passenger.getYHeadRot() + (float)j);
-            }
-
+    protected void positionRider(Entity pPassenger, Entity.MoveFunction pCallback) {
+        super.positionRider(pPassenger, pCallback);
+        pPassenger.setYRot(pPassenger.getYRot() + this.deltaRotation);
+        pPassenger.setYHeadRot(pPassenger.getYHeadRot() + this.deltaRotation);
+        this.clampRotation(pPassenger);
+        if (pPassenger instanceof Animal && this.getPassengers().size() == this.getMaxPassengers()) {
+            int i = pPassenger.getId() % 2 == 0 ? 90 : 270;
+            pPassenger.setYBodyRot(((Animal)pPassenger).yBodyRot + (float)i);
+            pPassenger.setYHeadRot(pPassenger.getYHeadRot() + (float)i);
         }
+
     }
 
     @Override

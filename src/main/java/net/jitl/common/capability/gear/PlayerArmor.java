@@ -1,18 +1,11 @@
 package net.jitl.common.capability.gear;
 
-import net.jitl.common.capability.essence.PlayerEssence;
 import net.jitl.common.items.base.JArmorItem;
 import net.jitl.common.items.gear.FullArmorAbility;
-import net.jitl.core.data.JNetworkRegistry;
-import net.jitl.core.network.PacketEssenceBar;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.util.FakePlayer;
-import net.minecraftforge.network.PacketDistributor;
 
 import java.util.ArrayList;
 import java.util.Iterator;

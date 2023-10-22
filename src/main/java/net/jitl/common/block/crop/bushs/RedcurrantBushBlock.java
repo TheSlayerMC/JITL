@@ -1,7 +1,6 @@
 package net.jitl.common.block.crop.bushs;
 
 import net.jitl.core.init.internal.JBlockProperties;
-import net.jitl.core.init.internal.JDamageSources;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -116,7 +115,7 @@ public class RedcurrantBushBlock extends BushBlock implements BonemealableBlock 
     }
 
     @Override
-    public boolean isValidBonemealTarget(@NotNull LevelReader pLevel, @NotNull BlockPos pPos, BlockState pState, boolean pIsClient) {
+    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return pState.getValue(AGE) < MAX_AGE;
     }
 

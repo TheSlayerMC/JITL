@@ -1,25 +1,12 @@
 package net.jitl.common.event;
 
 import net.jitl.core.init.JITL;
-import net.jitl.core.init.internal.JItems;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import org.jetbrains.annotations.NotNull;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.SlotResult;
-
-import java.util.Optional;
 
 @Mod.EventBusSubscriber(modid = JITL.MODID)
 public class CurioEventHandler {
 
-    @SubscribeEvent
+   /* @SubscribeEvent
     public static void onPlayerAttacked(LivingHurtEvent event) {
        LivingEntity entity = event.getEntity();
         if (!entity.level().isClientSide()) {
@@ -41,5 +28,5 @@ public class CurioEventHandler {
 
     public static void onKeyPressed(Player player) {
 
-    }
+    }*/
 }

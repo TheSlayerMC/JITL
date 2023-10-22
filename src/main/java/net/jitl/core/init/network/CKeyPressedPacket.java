@@ -1,13 +1,10 @@
 package net.jitl.core.init.network;
 
 import net.jitl.common.capability.keypressed.PressedKeyCapProvider;
-import net.jitl.common.event.CurioEventHandler;
 import net.jitl.common.event.GearAbilityHandler;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.network.NetworkEvent;
-
-import java.util.function.Supplier;
+import net.minecraftforge.event.network.CustomPayloadEvent;
 
 public class CKeyPressedPacket {
 
@@ -24,26 +21,24 @@ public class CKeyPressedPacket {
         this.isDown = isDown;
     }
 
-    public void toBytes(FriendlyByteBuf buffer) {
+    public void encode(FriendlyByteBuf buffer) {
         buffer.writeBoolean(isAmulet);
         buffer.writeBoolean(isDown);
     }
 
-    public void handle(Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
-            ServerPlayer player = ctx.get().getSender();
+    public void handle(CustomPayloadEvent.Context context) {
+            ServerPlayer player = context.getSender();
             assert player != null;
             player.getCapability(PressedKeyCapProvider.PRESSED_KEY_CAP).ifPresent(keys -> {
                 if (isAmulet) {
                     keys.setAmuletPressed(isDown);
-                    CurioEventHandler.onKeyPressed(player);
+                    //CurioEventHandler.onKeyPressed(player);
                 } else {
                     keys.setArmorPressed(isDown);
                     GearAbilityHandler.onKeyPressed(player);
                 }
             });
             System.out.println(player.getScoreboardName() + " " + (isDown ? "pressed" : "released") + " " + (isAmulet ? "amulet" : "armor") + " ability key.");
-        });
-        ctx.get().setPacketHandled(true);
+        context.setPacketHandled(true);
     }
 }

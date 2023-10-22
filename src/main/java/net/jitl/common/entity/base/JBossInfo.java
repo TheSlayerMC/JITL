@@ -16,11 +16,11 @@ public class JBossInfo {
 
     public static void addInfo(ServerPlayer player, ServerBossEvent info, IJourneyBoss boss) {
         info.addPlayer(player);
-        JNetworkRegistry.INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), new SBossPacket(SBossPacket.Operation.ADD, info.getId(), (LivingEntity) boss));
+        JNetworkRegistry.INSTANCE.send(new SBossPacket(SBossPacket.Operation.ADD, info.getId(), (LivingEntity) boss), PacketDistributor.PLAYER.with(player));
     }
 
     public static void removeInfo(ServerPlayer player, ServerBossEvent info, IJourneyBoss boss) {
         info.removePlayer(player);
-        JNetworkRegistry.INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), new SBossPacket(SBossPacket.Operation.REMOVE, info.getId(), (LivingEntity) boss));
+        JNetworkRegistry.INSTANCE.send(new SBossPacket(SBossPacket.Operation.REMOVE, info.getId(), (LivingEntity) boss), PacketDistributor.PLAYER.with(player));
     }
 }

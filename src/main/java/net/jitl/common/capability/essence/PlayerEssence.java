@@ -6,7 +6,6 @@ import net.jitl.core.network.PacketEssenceBar;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.network.PacketDistributor;
 
 import java.util.Objects;
@@ -98,8 +97,8 @@ public class PlayerEssence {
     }
 
     public void sendPacket(Player player) {
-        if(!(player instanceof FakePlayer) && player instanceof ServerPlayer) {
-            JNetworkRegistry.INSTANCE.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer)player), new PacketEssenceBar(this));
+        if(player != null && player instanceof ServerPlayer) {
+            JNetworkRegistry.INSTANCE.send(new PacketEssenceBar(this), PacketDistributor.PLAYER.with((ServerPlayer)player));
         }
     }
 }

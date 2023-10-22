@@ -29,7 +29,7 @@ public class SummoningTableScreen extends AbstractContainerScreen<SummoningTable
 
     @Override
     protected void renderBg(@NotNull GuiGraphics graphics, float tick, int mouseX, int mouseY) {
-        this.renderBackground(graphics);
+        this.renderBackground(graphics, mouseX, mouseY, tick);//Dims around the GUI for a more vanilla look
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, GUI_TEXTURE);
         int i = this.leftPos;

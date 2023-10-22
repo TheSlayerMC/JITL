@@ -2,9 +2,8 @@ package net.jitl.client.stats;
 
 import io.netty.buffer.ByteBuf;
 import net.jitl.common.capability.stats.PlayerStats;
-import net.minecraftforge.network.NetworkEvent;
-
-import java.util.function.Supplier;
+import net.minecraft.client.Minecraft;
+import net.minecraftforge.event.network.CustomPayloadEvent;
 
 public class PacketPlayerStats {
 
@@ -23,16 +22,16 @@ public class PacketPlayerStats {
         this.sentacoins = stats.getSentacoins();
     }
 
-    public void toBytes(ByteBuf buf) {
+    public void encode(ByteBuf buf) {
         buf.writeBoolean(hasBlizzard);
         buf.writeInt(sentacoins);
     }
 
-    public void handle(Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
-            ctx.get().enqueueWork(() -> ClientPlayerStats.setHasBlizzard(this.hasBlizzard));
-            ctx.get().enqueueWork(() -> ClientPlayerStats.setSentacoins(this.sentacoins));
-        });
-        ctx.get().setPacketHandled(true);
+    public void handle(CustomPayloadEvent.Context ctx) {
+        if(Minecraft.getInstance().player != null) {
+            ClientPlayerStats.setHasBlizzard(this.hasBlizzard);
+            ClientPlayerStats.setSentacoins(this.sentacoins);
+            ctx.setPacketHandled(true);
+        }
     }
 }

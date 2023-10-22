@@ -85,29 +85,31 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if(event.side == LogicalSide.SERVER) {
-            event.player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
-                if (event.phase == TickEvent.Phase.END) {
-                    if (essence.isRegenReady()) {
-                        essence.addEssence(event.player, (float) Objects.requireNonNull(event.player.getAttribute(JAttributes.ESSENCE_REGEN_SPEED.get())).getValue());
-                    } else {
-                        essence.setBurnout(essence.getBurnout() - 0.1F);
+        if(event.player != null) {
+            if (event.side == LogicalSide.SERVER) {
+                event.player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
+                    if (event.phase == TickEvent.Phase.END) {
+                        if (essence.isRegenReady()) {
+                            essence.addEssence(event.player, (float) Objects.requireNonNull(event.player.getAttribute(JAttributes.ESSENCE_REGEN_SPEED.get())).getValue());
+                        } else {
+                            essence.setBurnout(essence.getBurnout() - 0.1F);
+                        }
+                        essence.sendPacket(event.player);
                     }
-                    essence.sendPacket(event.player);
-                }
-            });
+                });
 
-            event.player.getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(knowledge -> {
-                if(event.phase == TickEvent.Phase.END) {
-                    knowledge.update(event.player);
-                }
-            });
+                event.player.getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(knowledge -> {
+                    if (event.phase == TickEvent.Phase.END) {
+                        knowledge.update(event.player);
+                    }
+                });
 
-            event.player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
-                if(event.phase == TickEvent.Phase.END) {
-                    stats.update(event.player);
-                }
-            });
+                event.player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
+                    if (event.phase == TickEvent.Phase.END) {
+                        stats.update(event.player);
+                    }
+                });
+            }
         }
     }
 }

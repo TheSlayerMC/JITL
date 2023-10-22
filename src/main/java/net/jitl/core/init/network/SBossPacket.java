@@ -1,15 +1,13 @@
 package net.jitl.core.init.network;
 
 import net.jitl.common.entity.IJourneyBoss;
-
 import net.jitl.common.entity.base.JBossInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.Entity;
-import net.minecraftforge.network.NetworkEvent;
+import net.minecraftforge.event.network.CustomPayloadEvent;
 
 import java.util.UUID;
-import java.util.function.Supplier;
 
 public class SBossPacket {
 
@@ -29,14 +27,13 @@ public class SBossPacket {
         this.bossNum = boss.getId();
     }
 
-    public void toBytes(FriendlyByteBuf buffer) {
+    public void encode(FriendlyByteBuf buffer) {
         buffer.writeEnum(addOrRemove);
         buffer.writeUUID(barUUID);
         buffer.writeInt(bossNum);
     }
 
-    public void handle(Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
+    public void handle(CustomPayloadEvent.Context ctx) {
             switch(this.addOrRemove) {
                 case ADD -> {
                     assert Minecraft.getInstance().level != null;
@@ -51,8 +48,7 @@ public class SBossPacket {
                 case REMOVE -> JBossInfo.map.remove(barUUID);
                 default -> throw new IllegalStateException();
             }
-        });
-        ctx.get().setPacketHandled(true);
+        ctx.setPacketHandled(true);
     }
 
     public enum Operation {

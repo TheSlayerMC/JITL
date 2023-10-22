@@ -1,14 +1,8 @@
 package net.jitl.common.items.curios.amulet;
 
 import net.jitl.common.items.curios.JCurioItem;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.UUID;
 
@@ -26,7 +20,7 @@ public class IceAmuletItem extends JCurioItem {
         properties.durability(256);
     }
 
-    @Override
+   /* @Override
     public void curioTick(String identifier, int index, LivingEntity livingEntity, ItemStack stack) {
         Player player = (Player) livingEntity;
         AttributeInstance attribMovementSpeed = player.getAttribute(Attributes.MOVEMENT_SPEED);
@@ -46,13 +40,13 @@ public class IceAmuletItem extends JCurioItem {
             }
         } else {
             if (attribMovementSpeed.hasModifier(SPEED_MOD)) {
-                attribMovementSpeed.removeModifier(SPEED_MOD);
+                attribMovementSpeed.removeModifier(SPEED_MOD.getId());
             }
             if (attribAttackDamage.hasModifier(DAMAGE_MOD)) {
-                attribAttackDamage.removeModifier(DAMAGE_MOD);
+                attribAttackDamage.removeModifier(DAMAGE_MOD.getId());
             }
             if (attribAttackSpeed.hasModifier(ATTACK_MOD)) {
-                attribAttackSpeed.removeModifier(ATTACK_MOD);
+                attribAttackSpeed.removeModifier(ATTACK_MOD.getId());
             }
         }
     }
@@ -64,13 +58,13 @@ public class IceAmuletItem extends JCurioItem {
         AttributeInstance attribAttackSpeed = slotContext.getWearer().getAttribute(Attributes.ATTACK_SPEED);
 
         if (attribMovementSpeed.hasModifier(SPEED_MOD)) {
-            attribMovementSpeed.removeModifier(SPEED_MOD);
+            attribMovementSpeed.removeModifier(SPEED_MOD.getId());
         }
         if (attribAttackDamage.hasModifier(DAMAGE_MOD)) {
-            attribAttackDamage.removeModifier(DAMAGE_MOD);
+            attribAttackDamage.removeModifier(DAMAGE_MOD.getId());
         }
         if (attribAttackSpeed.hasModifier(ATTACK_MOD)) {
-            attribAttackSpeed.removeModifier(ATTACK_MOD);
+            attribAttackSpeed.removeModifier(ATTACK_MOD.getId());
         }
-    }
+    }*/
 }

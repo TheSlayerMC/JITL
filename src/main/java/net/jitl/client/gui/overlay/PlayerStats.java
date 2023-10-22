@@ -68,7 +68,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
 
     @Override
     protected void renderBg(@NotNull GuiGraphics poseStack, float partialTick, int mouseX, int mouseY) {
-        this.renderBackground(poseStack);//Dims around the GUI for a more vanilla look
+        this.renderBackground(poseStack, mouseX, mouseY, partialTick);//Dims around the GUI for a more vanilla look
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
         poseStack.pose().pushPose();

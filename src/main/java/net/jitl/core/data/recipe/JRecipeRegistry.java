@@ -4,12 +4,10 @@ import net.jitl.core.data.JRecipeProvider;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
-
-import java.util.function.Consumer;
 
 public class JRecipeRegistry extends JRecipeProvider {
 
@@ -18,15 +16,17 @@ public class JRecipeRegistry extends JRecipeProvider {
     }
 
     @Override
-    public void buildRecipes(Consumer<FinishedRecipe> recipeConsumer) {
+    public void buildRecipes(RecipeOutput recipeConsumer) {
         buildBlockRecipes(recipeConsumer);
         buildItemRecipes(recipeConsumer);
         buildWoodTypes(recipeConsumer);
         buildQuartzTypes(recipeConsumer);
         buildSmithingRecipes(recipeConsumer);
     }
+    
+    
 
-    public void buildBlockRecipes(Consumer<FinishedRecipe> recipeConsumer) {
+    public void buildBlockRecipes(RecipeOutput recipeConsumer) {
         add3x3Recipe(recipeConsumer, JItems.GREEN_GEM.get(), JBlocks.GREEN_GEM_BLOCK.get());
         add3x3Recipe(recipeConsumer, JItems.PURPLE_GEM.get(), JBlocks.PURPLE_GEM_BLOCK.get());
         add3x3Recipe(recipeConsumer, JItems.BLUE_GEM.get(), JBlocks.BLUE_GEM_BLOCK.get());
@@ -86,7 +86,7 @@ public class JRecipeRegistry extends JRecipeProvider {
         addShapedRecipe(recipeConsumer, "s s", " s ", "s s", 's', Items.STRING, Blocks.COBWEB, 1);
     }
 
-    public void buildItemRecipes(Consumer<FinishedRecipe> recipeConsumer) {
+    public void buildItemRecipes(RecipeOutput recipeConsumer) {
         addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "iii", "idi", "iii", 'i', Items.GOLD_INGOT, 'd', Items.DIAMOND, JItems.FLAME_COIN.get(), 1);
         addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "ddd", "did", "ddd", 'd', JItems.STONE_CLUMP.get(), 'i', Blocks.STONE, JItems.REINFORCED_STONE_INGOT.get(), 1);
         addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "ddd", "did", "ddd", 'd', JItems.STONE_CLUMP.get(), 'i', JItems.CAVE_CRYSTAL.get(), JItems.REINFORCED_CRYSTAL_INGOT.get(), 1);
@@ -121,7 +121,7 @@ public class JRecipeRegistry extends JRecipeProvider {
         addSmeltingAndBlastingRecipe(recipeConsumer, Items.ROTTEN_FLESH, Items.LEATHER);
     }
 
-    public void buildWoodTypes(Consumer<FinishedRecipe> consumer) {
+    public void buildWoodTypes(RecipeOutput consumer) {
         addWoodType(consumer, JBlocks.EUCA_GOLD_LOG, JBlocks.EUCA_GOLD_PLANKS, JBlocks.EUCA_GOLD_STAIRS, JBlocks.EUCA_GOLD_SLAB, JBlocks.EUCA_GOLD_FENCE, JBlocks.EUCA_GOLD_FENCE_GATE, JBlocks.EUCA_GOLD_TRAP_DOOR, JBlocks.EUCA_GOLD_PRESSURE_PLATE, JBlocks.EUCA_GOLD_DOOR, JBlocks.EUCA_GOLD_BUTTON, JItems.GOLDEN_EUCA_BOAT);
         addWoodType(consumer, JBlocks.EUCA_BROWN_LOG, JBlocks.EUCA_BROWN_PLANKS, JBlocks.EUCA_BROWN_STAIRS, JBlocks.EUCA_BROWN_SLAB, JBlocks.EUCA_BROWN_FENCE, JBlocks.EUCA_BROWN_FENCE_GATE, JBlocks.EUCA_BROWN_TRAP_DOOR, JBlocks.EUCA_BROWN_PRESSURE_PLATE, JBlocks.EUCA_BROWN_DOOR, JBlocks.EUCA_BROWN_BUTTON, JItems.BROWN_EUCA_BOAT);
         addWoodType(consumer, JBlocks.FROZEN_LOG, JBlocks.FROZEN_PLANKS, JBlocks.FROZEN_STAIRS, JBlocks.FROZEN_SLAB, JBlocks.FROZEN_FENCE, JBlocks.FROZEN_FENCE_GATE, JBlocks.FROZEN_TRAP_DOOR, JBlocks.FROZEN_PRESSURE_PLATE, JBlocks.FROZEN_DOOR, JBlocks.FROZEN_BUTTON, JItems.FROZEN_BOAT);
@@ -131,12 +131,12 @@ public class JRecipeRegistry extends JRecipeProvider {
 
     }
 
-    public void buildQuartzTypes(Consumer<FinishedRecipe> consumer) {
+    public void buildQuartzTypes(RecipeOutput consumer) {
         addQuartzType(consumer, JItems.CRIMSON_QUARTZ, JBlocks.CRIMSON_QUARTZ_ORE, JBlocks.CRIMSON_QUARTZ_BLOCK, JBlocks.SMOOTH_CRIMSON_QUARTZ, JBlocks.CRIMSON_QUARTZ_STAIRS, JBlocks.SMOOTH_CRIMSON_QUARTZ_STAIRS, JBlocks.CRIMSON_QUARTZ_SLAB, JBlocks.SMOOTH_CRIMSON_QUARTZ_SLAB, JBlocks.CRIMSON_QUARTZ_BRICKS, JBlocks.CHISELED_CRIMSON_QUARTZ_BLOCK, JBlocks.CRIMSON_QUARTZ_PILLAR);
         addQuartzType(consumer, JItems.WARPED_QUARTZ, JBlocks.WARPED_QUARTZ_ORE, JBlocks.WARPED_QUARTZ_BLOCK, JBlocks.SMOOTH_WARPED_QUARTZ, JBlocks.WARPED_QUARTZ_STAIRS, JBlocks.SMOOTH_WARPED_QUARTZ_STAIRS, JBlocks.WARPED_QUARTZ_SLAB, JBlocks.SMOOTH_WARPED_QUARTZ_SLAB, JBlocks.WARPED_QUARTZ_BRICKS, JBlocks.CHISELED_WARPED_QUARTZ_BLOCK, JBlocks.WARPED_QUARTZ_PILLAR);
     }
 
-    public void buildSmithingRecipes(Consumer<FinishedRecipe> recipeConsumer) {
+    public void buildSmithingRecipes(RecipeOutput recipeConsumer) {
         addSmithingRecipe(recipeConsumer, Items.DIAMOND_HELMET, JItems.LUNIUM_INGOT.get(), JItems.LUNIUM_HELMET.get());
         addSmithingRecipe(recipeConsumer, Items.DIAMOND_CHESTPLATE, JItems.LUNIUM_INGOT.get(), JItems.LUNIUM_CHEST.get());
         addSmithingRecipe(recipeConsumer, Items.DIAMOND_LEGGINGS, JItems.LUNIUM_INGOT.get(), JItems.LUNIUM_LEGS.get());

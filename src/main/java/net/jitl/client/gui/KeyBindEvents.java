@@ -2,9 +2,7 @@ package net.jitl.client.gui;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import net.jitl.client.gui.overlay.PlayerStats;
-import net.jitl.core.data.JNetworkRegistry;
 import net.jitl.core.init.JITL;
-import net.jitl.core.init.network.CKeyPressedPacket;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.language.I18n;
@@ -103,7 +101,7 @@ public class KeyBindEvents {
     static void handleAbilityKeys(InputConstants.Key input, int action) {
         boolean key = input == keyAmulet.getKey();
         if (key || input == keyArmor.getKey()) {
-            JNetworkRegistry.INSTANCE.sendToServer(new CKeyPressedPacket(key, action == GLFW.GLFW_PRESS));
+            //JNetworkRegistry.INSTANCE.send(new CKeyPressedPacket(key, action == GLFW.GLFW_PRESS));
         }
     }
 }
