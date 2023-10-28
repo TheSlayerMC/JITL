@@ -10,12 +10,14 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
+import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
 
-public class JCurioItem extends Item { //implements ICurioItem {
+public class JCurioItem extends Item implements ICurioItem {
     private boolean hasOverview;
     private boolean hasAbility;
     private boolean hasNegativeEffects;
@@ -39,10 +41,10 @@ public class JCurioItem extends Item { //implements ICurioItem {
         return this;
     }
 
-//    @Override
-//    public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
-//        return true;
-//    }
+    @Override
+    public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
+        return true;
+    }
 
     @Override
     @OnlyIn(Dist.CLIENT)

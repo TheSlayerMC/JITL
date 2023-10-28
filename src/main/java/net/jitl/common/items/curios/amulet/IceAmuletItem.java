@@ -1,8 +1,13 @@
 package net.jitl.common.items.curios.amulet;
 
 import net.jitl.common.items.curios.JCurioItem;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.UUID;
 
@@ -20,33 +25,34 @@ public class IceAmuletItem extends JCurioItem {
         properties.durability(256);
     }
 
-   /* @Override
-    public void curioTick(String identifier, int index, LivingEntity livingEntity, ItemStack stack) {
-        Player player = (Player) livingEntity;
-        AttributeInstance attribMovementSpeed = player.getAttribute(Attributes.MOVEMENT_SPEED);
-        AttributeInstance attribAttackDamage = player.getAttribute(Attributes.ATTACK_DAMAGE);
-        AttributeInstance attribAttackSpeed = player.getAttribute(Attributes.ATTACK_SPEED);
+    @Override
+    public void curioTick(SlotContext slotContext, ItemStack stack) {
+        if(slotContext.entity() instanceof Player player) {
+            AttributeInstance attribMovementSpeed = player.getAttribute(Attributes.MOVEMENT_SPEED);
+            AttributeInstance attribAttackDamage = player.getAttribute(Attributes.ATTACK_DAMAGE);
+            AttributeInstance attribAttackSpeed = player.getAttribute(Attributes.ATTACK_SPEED);
 
-        if (player.level().getBiome(player.blockPosition()).value().getBaseTemperature() <= 0.2F) {
-            assert attribMovementSpeed != null;
-            if (!attribMovementSpeed.hasModifier(SPEED_MOD)) {
-                attribMovementSpeed.addTransientModifier(SPEED_MOD);
-            }
-            if (!attribAttackDamage.hasModifier(DAMAGE_MOD)) {
-                attribAttackDamage.addTransientModifier(DAMAGE_MOD);
-            }
-            if (!attribAttackSpeed.hasModifier(ATTACK_MOD)) {
-                attribAttackSpeed.addTransientModifier(ATTACK_MOD);
-            }
-        } else {
-            if (attribMovementSpeed.hasModifier(SPEED_MOD)) {
-                attribMovementSpeed.removeModifier(SPEED_MOD.getId());
-            }
-            if (attribAttackDamage.hasModifier(DAMAGE_MOD)) {
-                attribAttackDamage.removeModifier(DAMAGE_MOD.getId());
-            }
-            if (attribAttackSpeed.hasModifier(ATTACK_MOD)) {
-                attribAttackSpeed.removeModifier(ATTACK_MOD.getId());
+            if (player.level().getBiome(player.blockPosition()).value().getBaseTemperature() <= 0.2F) {
+                assert attribMovementSpeed != null;
+                if (!attribMovementSpeed.hasModifier(SPEED_MOD)) {
+                    attribMovementSpeed.addTransientModifier(SPEED_MOD);
+                }
+                if (!attribAttackDamage.hasModifier(DAMAGE_MOD)) {
+                    attribAttackDamage.addTransientModifier(DAMAGE_MOD);
+                }
+                if (!attribAttackSpeed.hasModifier(ATTACK_MOD)) {
+                    attribAttackSpeed.addTransientModifier(ATTACK_MOD);
+                }
+            } else {
+                if (attribMovementSpeed.hasModifier(SPEED_MOD)) {
+                    attribMovementSpeed.removeModifier(SPEED_MOD.getId());
+                }
+                if (attribAttackDamage.hasModifier(DAMAGE_MOD)) {
+                    attribAttackDamage.removeModifier(DAMAGE_MOD.getId());
+                }
+                if (attribAttackSpeed.hasModifier(ATTACK_MOD)) {
+                    attribAttackSpeed.removeModifier(ATTACK_MOD.getId());
+                }
             }
         }
     }
@@ -66,5 +72,5 @@ public class IceAmuletItem extends JCurioItem {
         if (attribAttackSpeed.hasModifier(ATTACK_MOD)) {
             attribAttackSpeed.removeModifier(ATTACK_MOD.getId());
         }
-    }*/
+    }
 }
