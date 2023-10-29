@@ -70,7 +70,10 @@ public class SummoningTableTile extends RandomizableContainerBlockEntity impleme
         this.inventory.set(3, orb);
 
         assert this.level != null;
-        this.level.playSound(null, this.getBlockPos(), JSounds.LOOT.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+        this.level.playSound(null, this.getBlockPos(), JSounds.EUCA_DISC_1.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+        if(!level.isClientSide()) {
+            level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+        }
         addParticles();
     }
 
@@ -171,6 +174,9 @@ public class SummoningTableTile extends RandomizableContainerBlockEntity impleme
     @Override
     public void setItem(int pIndex, ItemStack pStack) {
         this.inventory.set(pIndex, pStack);
+        if(!level.isClientSide()) {
+            level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+        }
         if(pStack.getCount() > this.getMaxStackSize()) {
             pStack.setCount(this.getMaxStackSize());
         }

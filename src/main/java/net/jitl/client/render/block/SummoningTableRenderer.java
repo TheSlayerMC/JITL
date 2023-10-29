@@ -23,7 +23,7 @@ public class SummoningTableRenderer implements BlockEntityRenderer<SummoningTabl
     @Override
     public void render(SummoningTableTile e, float partialTicks, PoseStack matrixStackIn, MultiBufferSource bufferIn, int combinedLightIn, int combinedOverlayIn) {
         double y = 1D;
-        /*renderItem(e.getItem(0), new double[]{0.85D, y, 0.85D}, matrixStackIn, bufferIn, combinedOverlayIn, combinedLightIn, 0.7F);
+        renderItem(e.getItem(0), new double[]{0.85D, y, 0.85D}, matrixStackIn, bufferIn, combinedOverlayIn, combinedLightIn, 0.7F);
         renderItem(e.getItem(1), new double[]{0.85D, y, 0.5D}, matrixStackIn, bufferIn, combinedOverlayIn, combinedLightIn, 0.7F);
         renderItem(e.getItem(2), new double[]{0.85D, y, 0.15D}, matrixStackIn, bufferIn, combinedOverlayIn, combinedLightIn, 0.7F);
 
@@ -31,7 +31,7 @@ public class SummoningTableRenderer implements BlockEntityRenderer<SummoningTabl
 
         renderItem(e.getItem(4), new double[]{0.15D, y, 0.85D}, matrixStackIn, bufferIn, combinedOverlayIn, combinedLightIn, 0.7F);
         renderItem(e.getItem(5), new double[]{0.15D, y, 0.5D}, matrixStackIn, bufferIn, combinedOverlayIn, combinedLightIn, 0.7F);
-        renderItem(e.getItem(6), new double[]{0.15D, y, 0.15D}, matrixStackIn, bufferIn, combinedOverlayIn, combinedLightIn, 0.7F);*/
+        renderItem(e.getItem(6), new double[]{0.15D, y, 0.15D}, matrixStackIn, bufferIn, combinedOverlayIn, combinedLightIn, 0.7F);
     }
 
     private void renderItem(ItemStack stack, double[] translation, PoseStack matrixStack, MultiBufferSource buffer, int combinedOverlay, int lightLevel, float scale) {
