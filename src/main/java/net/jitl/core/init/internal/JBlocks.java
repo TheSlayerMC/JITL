@@ -602,7 +602,6 @@ public class JBlocks {
     public static final RegistryObject<JFenceBlock> SENTERIAN_POST = registerFence("senterian_post", "Senterian Post", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> SENTRY_LOCK = registerRotatableBlock("sentry_lock", "Sentry Lock", LockBlock::new, false);
 
-    public static final RegistryObject<Block> GRINDSTONE = registerModeledBlock("grindstone", "Grindstone", JGrindstoneBlock::new);
     public static final RegistryObject<Block> JOURNEY_CHEST = registerChestBlock("journey_chest", "Journey Chest", JChestBlock::new);
     public static final RegistryObject<Block> NETHER_CHEST = registerChestBlock("nether_chest", "Nether Chest", JChestBlock::new);
     public static final RegistryObject<Block> FROZEN_CHEST = registerChestBlock("frozen_chest", "Frozen Chest", JChestBlock::new);

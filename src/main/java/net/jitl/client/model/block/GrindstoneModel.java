@@ -1,6 +1,5 @@
 package net.jitl.client.model.block;
 
-import net.jitl.common.block.entity.GrindstoneEntity;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.GeckoLib;

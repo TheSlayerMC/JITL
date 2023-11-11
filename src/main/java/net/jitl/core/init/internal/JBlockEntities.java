@@ -13,9 +13,6 @@ public class JBlockEntities {
 
     public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, JITL.MODID);
 
-    public static final RegistryObject<BlockEntityType<GrindstoneEntity>> GRINDSTONE = REGISTRY.register("grindstone",
-            () -> BlockEntityType.Builder.of(GrindstoneEntity::new, JBlocks.GRINDSTONE.get()).build(null));
-
     public static final RegistryObject<BlockEntityType<SummoningTableTile>> SUMMONING_TABLE = REGISTRY.register("summon_table",
             () -> BlockEntityType.Builder.of(SummoningTableTile::new, JBlocks.SUMMONING_TABLE.get()).build(null));
 
