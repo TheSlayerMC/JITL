@@ -2,7 +2,6 @@ package net.jitl.common.world.gen.tree_grower.decorators;
 
 import com.mojang.serialization.Codec;
 import net.jitl.common.world.gen.JTreeDecorators;
-import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -36,8 +35,8 @@ public class IceShroomTreeDecorator extends TreeDecorator {
                         Direction direction1 = direction.getOpposite();
                         BlockPos blockpos = blockPos1_.offset(direction1.getStepX(), 0, direction1.getStepZ());
                         if (context.isAir(blockpos)) {
-                            //BlockState blockstate = JBlocks.ICE_SHROOM_SHELF.get().defaultBlockState().setValue(AttachedBlock.FACING, direction.getOpposite());
-                            context.setBlock(blockpos, JBlocks.ICE_SHROOM_SHELF.get().defaultBlockState());//blockstate));
+                           // BlockState blockstate = JBlocks.ICE_SHROOM_SHELF.get().defaultBlockState().setValue(AttachedBlock.FACING, direction.getOpposite());
+                           // context.setBlock(blockpos, blockstate);
                         }
                     }
                 }
