@@ -279,6 +279,11 @@ public class JBlockProperties {
             .lightLevel((state) -> 10)
             .instabreak();
 
+    public static final BlockBehaviour.Properties CRYSTAL_FRUIT = BlockBehaviour.Properties.of()
+            .sound(JSoundTypes.CRYSTAL_FRUIT)
+            .noOcclusion()
+            .lightLevel((state) -> 10);
+
     public static final BlockBehaviour.Properties CAVE_GLOW_PLANT = BlockBehaviour.Properties.of()
             .sound(JSoundTypes.CRYSTAL_FRUIT)
             .noOcclusion()

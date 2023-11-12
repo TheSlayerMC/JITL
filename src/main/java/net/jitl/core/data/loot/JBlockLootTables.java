@@ -257,6 +257,12 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.FROSTBERRY_THORN);
         this.dropSelf(JBlocks.ICE_BUSH);
         this.dropSelf(JBlocks.ICE_BUD);
+        this.dropSelf(JBlocks.ICY_BRUSH);
+        this.dropSelf(JBlocks.CICLEBLOOM);
+        this.dropSelf(JBlocks.CRYSTAL_FRUIT);
+        this.dropSelf(JBlocks.ICE_SHROOM_SHELF);
+        this.dropSelf(JBlocks.ICY_IVY);
+        this.dropSelf(JBlocks.ICY_IVY_PLANT);
         this.dropSelf(JBlocks.BITTERWOOD_SAPLING);
         this.dropSelf(JBlocks.BITTERWOOD_CAMPFIRE);
         this.dropSelf(JBlocks.PERMAFROST_FURNACE);
@@ -458,7 +464,6 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.TERRASHROOM_STEM);
         this.dropSelf(JBlocks.TERRANIAN_SAPLING);
 
-        this.dropSelf(JBlocks.GRINDSTONE);
         this.dropSelf(JBlocks.JOURNEY_CHEST);
         this.dropSelf(JBlocks.NETHER_CHEST);
         this.dropSelf(JBlocks.FROZEN_CHEST);

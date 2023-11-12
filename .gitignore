@@ -30,6 +30,7 @@ forge*changelog.txt
 /saves
 /world
 /crash-reports
+/run-data
 /screenshots
 /config
 banned-ips.json

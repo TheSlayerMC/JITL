@@ -1,5 +1,6 @@
 package net.jitl.core.init.internal;
 
+import net.jitl.common.block.IcyIvyBlock;
 import net.jitl.common.block.*;
 import net.jitl.common.block.base.*;
 import net.jitl.common.block.crop.*;
@@ -380,6 +381,13 @@ public class JBlocks {
     public static final RegistryObject<Block> FROSTBERRY_THORN = registerCrossBlock("frostberry_thorn", "Frostberry Thorn", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> ICE_BUSH = registerCrossBlock("ice_bush", "Ice Bush", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> ICE_BUD = registerCrossBlock("ice_bud", "Ice Bud", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final RegistryObject<Block> CICLEBLOOM = registerModeledBlock("ciclebloom", "Cicle Bloom", () -> new SingleDoublePlant(JBlockProperties.PLANT.lightLevel((light) -> 4)));
+    public static final RegistryObject<Block> ICY_BRUSH = registerModeledBlock("icy_brush", "Icy Brush", () -> new VineBlock(JBlockProperties.VINE));
+    public static final RegistryObject<Block> CRYSTAL_FRUIT = registerModeledBlock("crystal_fruit", "Crystal Fruit", () -> new CrystalFruit(JBlockProperties.CRYSTAL_FRUIT));
+    public static final RegistryObject<GrowingPlantHeadBlock> ICY_IVY = registerGrowingPlantHeadBlock("icy_ivy", "Icy Ivy", () -> new IcyIvyTopBlock(JBlockProperties.VINE));
+    public static final RegistryObject<Block> ICY_IVY_PLANT = registerCrossBlock("icy_ivy_plant", "Icy Ivy", () -> new IcyIvyBlock(JBlockProperties.VINE));
+
+    public static final RegistryObject<Block> ICE_SHROOM_SHELF = registerModeledBlock("ice_shroom_shelf", "Ice Shroom Shelf", JBlockFungalShelf::new);
     public static final RegistryObject<Block> BITTERWOOD_SAPLING = registerCrossBlock("bitterwood_sapling", "Bitterwood Sapling", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> BITTERWOOD_CAMPFIRE = registerCampfire("bitterwood_campfire", "Bitterwood Campfire");
     public static final RegistryObject<Block> PERMAFROST_FURNACE = registerFurnaceBlock("permafrost_furnace", "Permafrost Furnace");
@@ -1148,6 +1156,14 @@ public class JBlocks {
         crossBlockName.add(name);
         crossLangName.add(translatedName);
         RegistryObject<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
+        return block1;
+    }
+
+    public static RegistryObject<GrowingPlantHeadBlock> registerGrowingPlantHeadBlock(String name, String translatedName, Supplier<GrowingPlantHeadBlock> block) {
+        crossBlockName.add(name);
+        crossLangName.add(translatedName);
+        RegistryObject<GrowingPlantHeadBlock> block1 = BLOCKS.register(name, block);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }

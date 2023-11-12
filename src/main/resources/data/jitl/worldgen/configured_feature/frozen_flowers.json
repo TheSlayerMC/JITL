@@ -20,6 +20,9 @@
                 "Name": "jitl:frozen_bloom"
               },
               {
+                "Name": "jitl:ciclebloom"
+              },
+              {
                 "Name": "jitl:ice_bud"
               }
             ]

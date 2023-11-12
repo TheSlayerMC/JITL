@@ -63,6 +63,10 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.BITTERWOOD_SAPLING.get());
         cutout.add(JBlocks.ICE_BUSH.get());
         cutout.add(JBlocks.ICE_BUD.get());
+        cutout.add(JBlocks.CICLEBLOOM.get());
+        cutout.add(JBlocks.ICY_IVY.get());
+        cutout.add(JBlocks.ICY_IVY_PLANT.get());
+        cutout.add(JBlocks.ICY_BRUSH.get());
         cutout.add(JBlocks.GOLD_BOT_SPAWNER.get());
         cutout.add(JBlocks.MINI_GHAST_SPAWNER.get());
         cutout.add(JBlocks.BITTERWOOD_CAMPFIRE.get());

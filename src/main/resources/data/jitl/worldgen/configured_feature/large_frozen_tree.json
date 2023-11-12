@@ -1,7 +1,19 @@
 {
   "type": "jitl:tree",
   "config": {
-    "decorators": [],
+    "decorators": [
+      {
+        "type": "jitl:icy_brush_tree_decorator"
+      },
+      {
+        "type": "jitl:ice_tree_decorator",
+        "probability": 0.2
+      },
+      {
+        "type": "jitl:crystal_fruit_tree_decorator",
+        "height": 4
+      }
+    ],
     "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {

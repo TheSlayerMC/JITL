@@ -50,7 +50,6 @@ public class RenderEntitys {
         event.registerEntityRenderer(JEntities.SENTACOIN_TYPE.get(), (context) -> new SentacoinRender(context, Sentacoin.Type.COIN));
         event.registerEntityRenderer(JEntities.SENTACOIN_BAG_TYPE.get(), (context) -> new SentacoinRender(context, Sentacoin.Type.BAG));
 
-        event.registerBlockEntityRenderer(JBlockEntities.GRINDSTONE.get(), GrindstoneRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.ROCKITE.get(), RockiteSpawnerRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.JCHEST.get(), JChestRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.PEDESTAL.get(), PedestalRenderer::new);

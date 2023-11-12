@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "jitl:block/ice_shroom_shelf" },
+        "facing=south": { "model": "jitl:block/ice_shroom_shelf", "y": 180 },
+        "facing=west":  { "model": "jitl:block/ice_shroom_shelf", "y": 270 },
+        "facing=east":  { "model": "jitl:block/ice_shroom_shelf", "y": 90 }
+    }
+}

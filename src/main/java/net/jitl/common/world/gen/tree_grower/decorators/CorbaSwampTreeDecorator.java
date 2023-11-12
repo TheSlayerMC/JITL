@@ -24,7 +24,7 @@ public class CorbaSwampTreeDecorator extends TreeDecorator {
 
     @Override
     protected @NotNull TreeDecoratorType<?> type() {
-        return JTreeDecorators.FROZEN_DECORATOR.get();
+        return JTreeDecorators.CORBA_SWAMP_DECORATOR.get();
     }
 
     @Override

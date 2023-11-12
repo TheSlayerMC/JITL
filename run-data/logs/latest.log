@@ -1,21 +1,444 @@
-[22Oct2023 12:14:45.526] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forge_userdev_data, --assetIndex, 8, --assetsDir, C:\Users\brock\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 48.0.30, --fml.mcVersion, 1.20.2, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230921.100330, --mod, jitl, --all, --output, D:\Development\Minecraft\JITL\src\generated\resources, --existing, D:\Development\Minecraft\JITL\src\main\resources]
-[22Oct2023 12:14:45.528] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.6 by Oracle Corporation; OS Windows 11 arch amd64 version 10.0
-[22Oct2023 12:14:45.585] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forge_userdev_data
-[22Oct2023 12:14:45.611] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/brock/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23126!/ Service=ModLauncher Env=UNKNOWN
-[22Oct2023 12:14:45.725] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\brock\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.2-48.0.30\ecee89263b58953ef20135e210d3a4e357abfeca\fmlcore-1.20.2-48.0.30.jar is missing mods.toml file
-[22Oct2023 12:14:45.727] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\brock\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.2-48.0.30\e8c55e5276b9fbe06c9b01b282079e5a73ee7f10\javafmllanguage-1.20.2-48.0.30.jar is missing mods.toml file
-[22Oct2023 12:14:45.729] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\brock\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.2-48.0.30\48394149b9b7b5c40b6ef3672f7e0a9b6dc15654\lowcodelanguage-1.20.2-48.0.30.jar is missing mods.toml file
-[22Oct2023 12:14:45.730] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\brock\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.2-48.0.30\5b4ba5c09a1a8e696df57a80afcad3a593334b36\mclanguage-1.20.2-48.0.30.jar is missing mods.toml file
-[22Oct2023 12:14:46.085] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 1 dependencies adding them to mods collection
-[22Oct2023 12:14:46.778] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
-[22Oct2023 12:14:46.780] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forge_userdev_data' with arguments [--gameDir, ., --assetsDir, C:\Users\brock\.gradle\caches\forge_gradle\assets, --assetIndex, 8, --mod, jitl, --all, --output, D:\Development\Minecraft\JITL\src\generated\resources, --existing, D:\Development\Minecraft\JITL\src\main\resources]
-[22Oct2023 12:14:46.944] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using D:\Development\Minecraft\JITL\build\createSrgToMcp\output.srg
-[22Oct2023 12:14:46.946] [main/WARN] [mixin/]: Mixin environment was unable to detect the current side, sided mixins will not be applied
-[22Oct2023 12:14:49.197] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 48.0.30, for MC 1.20.2 with MCP 20230921.100330
-[22Oct2023 12:14:49.198] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v48.0.30 Initialized
-[22Oct2023 12:14:49.232] [modloading-worker-0/WARN] [software.bernie.geckolib.GeckoLib/]: Minecraft.getInstance() was null, could not register reload listeners
-[22Oct2023 12:14:49.313] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
-[22Oct2023 12:14:49.316] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 2.293 ms
-[22Oct2023 12:14:49.474] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [jitl]
-[22Oct2023 12:14:49.506] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/D:/Development/Minecraft/JITL/build/fg_cache/net/minecraftforge/forge/1.20.2-48.0.30_mapped_parchment_2023.10.08-1.20.2/forge-1.20.2-48.0.30_mapped_parchment_2023.10.08-1.20.2-recomp.jar%23187!/assets/.mcassetsroot' uses unexpected schema
-[22Oct2023 12:14:49.506] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/D:/Development/Minecraft/JITL/build/fg_cache/net/minecraftforge/forge/1.20.2-48.0.30_mapped_parchment_2023.10.08-1.20.2/forge-1.20.2-48.0.30_mapped_parchment_2023.10.08-1.20.2-recomp.jar%23187!/data/.mcassetsroot' uses unexpected schema
+[12Nov2023 11:52:33.024] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forge_userdev_data, --assetIndex, 8, --assetsDir, C:\Users\brock\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 48.0.37, --fml.mcVersion, 1.20.2, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230921.100330, --mod, jitl, --all, --output, D:\Development\Minecraft\JITL\src\generated\resources, --existing, D:\Development\Minecraft\JITL\src\main\resources]
+[12Nov2023 11:52:33.026] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 17.0.6+9-LTS-190
+[12Nov2023 11:52:33.027] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.1.1 starting: java version 17.0.6 by Oracle Corporation; OS Windows 11 arch amd64 version 10.0
+[12Nov2023 11:52:33.089] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forge_userdev_data
+[12Nov2023 11:52:33.121] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/brock/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23127!/ Service=ModLauncher Env=UNKNOWN
+[12Nov2023 11:52:33.240] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\brock\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.2-48.0.37\606c2129fc74b2cf52859a4d84e23d48a9ba9f69\fmlcore-1.20.2-48.0.37.jar is missing mods.toml file
+[12Nov2023 11:52:33.243] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\brock\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.2-48.0.37\448a561223220d9722196701380330c37cc70fa1\javafmllanguage-1.20.2-48.0.37.jar is missing mods.toml file
+[12Nov2023 11:52:33.245] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\brock\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.2-48.0.37\b1a46bb450f5494d454104e7e6ab093d9bc113e7\lowcodelanguage-1.20.2-48.0.37.jar is missing mods.toml file
+[12Nov2023 11:52:33.246] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\brock\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.2-48.0.37\86b6af0c27b61fc8900322302e72a31aafab55ba\mclanguage-1.20.2-48.0.37.jar is missing mods.toml file
+[12Nov2023 11:52:33.316] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 1 dependencies adding them to mods collection
+[12Nov2023 11:52:34.193] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[12Nov2023 11:52:34.197] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forge_userdev_data' with arguments [--gameDir, ., --assetsDir, C:\Users\brock\.gradle\caches\forge_gradle\assets, --assetIndex, 8, --mod, jitl, --all, --output, D:\Development\Minecraft\JITL\src\generated\resources, --existing, D:\Development\Minecraft\JITL\src\main\resources]
+[12Nov2023 11:52:34.365] [main/INFO] [mixin/]: Remapping refMap curios.refmap.json using D:\Development\Minecraft\JITL\build\createSrgToMcp\output.srg
+[12Nov2023 11:52:34.367] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using D:\Development\Minecraft\JITL\build\createSrgToMcp\output.srg
+[12Nov2023 11:52:34.401] [main/WARN] [mixin/]: Mixin environment was unable to detect the current side, sided mixins will not be applied
+[12Nov2023 11:52:34.401] [main/WARN] [mixin/]: Mixin environment was unable to detect the current side, sided mixins will not be applied
+[12Nov2023 11:52:36.894] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 48.0.37, for MC 1.20.2 with MCP 20230921.100330
+[12Nov2023 11:52:36.894] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v48.0.37 Initialized
+[12Nov2023 11:52:36.936] [modloading-worker-0/WARN] [software.bernie.geckolib.GeckoLib/]: Minecraft.getInstance() was null, could not register reload listeners
+[12Nov2023 11:52:37.016] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
+[12Nov2023 11:52:37.022] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 3.287 ms
+[12Nov2023 11:52:38.011] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [jitl]
+[12Nov2023 11:52:38.036] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/D:/Development/Minecraft/JITL/build/fg_cache/net/minecraftforge/forge/1.20.2-48.0.37_mapped_parchment_2023.10.08-1.20.2/forge-1.20.2-48.0.37_mapped_parchment_2023.10.08-1.20.2-recomp.jar%23188!/assets/.mcassetsroot' uses unexpected schema
+[12Nov2023 11:52:38.036] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/D:/Development/Minecraft/JITL/build/fg_cache/net/minecraftforge/forge/1.20.2-48.0.37_mapped_parchment_2023.10.08-1.20.2/forge-1.20.2-48.0.37_mapped_parchment_2023.10.08-1.20.2-recomp.jar%23188!/data/.mcassetsroot' uses unexpected schema
+[12Nov2023 11:52:38.266] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[12Nov2023 11:52:38.269] [main/INFO] [jitl/]: has_item.jitl.green_gem
+[12Nov2023 11:52:38.293] [main/INFO] [jitl/]: has_item.jitl.purple_gem
+[12Nov2023 11:52:38.294] [main/INFO] [jitl/]: has_item.jitl.blue_gem
+[12Nov2023 11:52:38.294] [main/INFO] [jitl/]: has_item.jitl.yellow_gem
+[12Nov2023 11:52:38.295] [main/INFO] [jitl/]: has_block.jitl.green_gem_block
+[12Nov2023 11:52:38.296] [main/INFO] [jitl/]: has_block.jitl.purple_gem_block
+[12Nov2023 11:52:38.297] [main/INFO] [jitl/]: has_block.jitl.blue_gem_block
+[12Nov2023 11:52:38.297] [main/INFO] [jitl/]: has_block.jitl.yellow_gem_block
+[12Nov2023 11:52:38.298] [main/INFO] [jitl/]: has_item.jitl.iridium_nugget
+[12Nov2023 11:52:38.298] [main/INFO] [jitl/]: has_block.jitl.iridium_block
+[12Nov2023 11:52:38.299] [main/INFO] [jitl/]: item.jitl.iridium_nugget
+[12Nov2023 11:52:38.301] [main/INFO] [jitl/]: has_block.jitl.iridium_ore
+[12Nov2023 11:52:38.302] [main/INFO] [jitl/]: has_block.jitl.iridium_ore
+[12Nov2023 11:52:38.304] [main/INFO] [jitl/]: has_item.jitl.enderillium_shard
+[12Nov2023 11:52:38.305] [main/INFO] [jitl/]: has_block.jitl.enderillium_block
+[12Nov2023 11:52:38.305] [main/INFO] [jitl/]: item.jitl.enderillium_shard
+[12Nov2023 11:52:38.305] [main/INFO] [jitl/]: has_block.jitl.enderillium_ore
+[12Nov2023 11:52:38.306] [main/INFO] [jitl/]: has_block.jitl.enderillium_ore
+[12Nov2023 11:52:38.306] [main/INFO] [jitl/]: has_item.jitl.ash
+[12Nov2023 11:52:38.306] [main/INFO] [jitl/]: has_block.jitl.ashual_block
+[12Nov2023 11:52:38.307] [main/INFO] [jitl/]: item.jitl.ash
+[12Nov2023 11:52:38.307] [main/INFO] [jitl/]: has_block.jitl.ashual_ore
+[12Nov2023 11:52:38.307] [main/INFO] [jitl/]: has_block.jitl.ashual_ore
+[12Nov2023 11:52:38.307] [main/INFO] [jitl/]: has_item.jitl.peridot_gemstone
+[12Nov2023 11:52:38.308] [main/INFO] [jitl/]: has_block.jitl.peridot_block
+[12Nov2023 11:52:38.308] [main/INFO] [jitl/]: item.jitl.peridot_gemstone
+[12Nov2023 11:52:38.308] [main/INFO] [jitl/]: has_block.jitl.peridot_ore
+[12Nov2023 11:52:38.309] [main/INFO] [jitl/]: has_block.jitl.peridot_ore
+[12Nov2023 11:52:38.309] [main/INFO] [jitl/]: has_item.jitl.rimestone
+[12Nov2023 11:52:38.310] [main/INFO] [jitl/]: has_block.jitl.rimestone_block
+[12Nov2023 11:52:38.310] [main/INFO] [jitl/]: item.jitl.rimestone
+[12Nov2023 11:52:38.310] [main/INFO] [jitl/]: has_block.jitl.rimestone_ore
+[12Nov2023 11:52:38.310] [main/INFO] [jitl/]: has_block.jitl.rimestone_ore
+[12Nov2023 11:52:38.311] [main/INFO] [jitl/]: has_item.jitl.verdite_ingot
+[12Nov2023 11:52:38.311] [main/INFO] [jitl/]: has_block.jitl.verdite_block
+[12Nov2023 11:52:38.311] [main/INFO] [jitl/]: item.jitl.verdite_ingot
+[12Nov2023 11:52:38.311] [main/INFO] [jitl/]: has_block.jitl.verdite_ore
+[12Nov2023 11:52:38.311] [main/INFO] [jitl/]: has_block.jitl.verdite_ore
+[12Nov2023 11:52:38.311] [main/INFO] [jitl/]: has_item.jitl.blazium_ingot
+[12Nov2023 11:52:38.312] [main/INFO] [jitl/]: has_block.jitl.blazium_block
+[12Nov2023 11:52:38.312] [main/INFO] [jitl/]: item.jitl.blazium_ingot
+[12Nov2023 11:52:38.312] [main/INFO] [jitl/]: has_item.jitl.raw_blazium
+[12Nov2023 11:52:38.312] [main/INFO] [jitl/]: has_item.jitl.raw_blazium
+[12Nov2023 11:52:38.312] [main/INFO] [jitl/]: has_block.jitl.firestone_ore
+[12Nov2023 11:52:38.312] [main/INFO] [jitl/]: has_block.jitl.firestone_ore
+[12Nov2023 11:52:38.312] [main/INFO] [jitl/]: has_item.jitl.firestone_clump
+[12Nov2023 11:52:38.313] [main/INFO] [jitl/]: has_block.jitl.firestone_block
+[12Nov2023 11:52:38.313] [main/INFO] [jitl/]: item.jitl.firestone_clump
+[12Nov2023 11:52:38.314] [main/INFO] [jitl/]: has_item.jitl.shadium_ingot
+[12Nov2023 11:52:38.314] [main/INFO] [jitl/]: has_item.jitl.shadium_ingot
+[12Nov2023 11:52:38.314] [main/INFO] [jitl/]: has_item.jitl.shadium_ingot
+[12Nov2023 11:52:38.315] [main/INFO] [jitl/]: has_item.jitl.shadium_ingot
+[12Nov2023 11:52:38.315] [main/INFO] [jitl/]: has_item.jitl.shadium_ingot
+[12Nov2023 11:52:38.315] [main/INFO] [jitl/]: has_item.jitl.shadium_axe
+[12Nov2023 11:52:38.316] [main/INFO] [jitl/]: has_item.jitl.shadium_ingot
+[12Nov2023 11:52:38.316] [main/INFO] [jitl/]: has_item.jitl.shadium_ingot
+[12Nov2023 11:52:38.317] [main/INFO] [jitl/]: has_item.jitl.shadium_ingot
+[12Nov2023 11:52:38.317] [main/INFO] [jitl/]: has_item.jitl.shadium_ingot
+[12Nov2023 11:52:38.318] [main/INFO] [jitl/]: has_item.jitl.shadium_ingot
+[12Nov2023 11:52:38.318] [main/INFO] [jitl/]: has_item.jitl.shadium_ingot
+[12Nov2023 11:52:38.318] [main/INFO] [jitl/]: has_block.jitl.shadium_block
+[12Nov2023 11:52:38.319] [main/INFO] [jitl/]: item.jitl.shadium_ingot
+[12Nov2023 11:52:38.319] [main/INFO] [jitl/]: has_block.jitl.shadium_ore
+[12Nov2023 11:52:38.319] [main/INFO] [jitl/]: has_block.jitl.shadium_ore
+[12Nov2023 11:52:38.319] [main/INFO] [jitl/]: has_block.jitl.deepslate_shadium_ore
+[12Nov2023 11:52:38.319] [main/INFO] [jitl/]: has_block.jitl.deepslate_shadium_ore
+[12Nov2023 11:52:38.320] [main/INFO] [jitl/]: has_item.jitl.raw_shadium
+[12Nov2023 11:52:38.320] [main/INFO] [jitl/]: has_item.jitl.raw_shadium
+[12Nov2023 11:52:38.320] [main/INFO] [jitl/]: has_item.jitl.sapphire
+[12Nov2023 11:52:38.320] [main/INFO] [jitl/]: has_item.jitl.sapphire
+[12Nov2023 11:52:38.320] [main/INFO] [jitl/]: has_item.jitl.sapphire
+[12Nov2023 11:52:38.320] [main/INFO] [jitl/]: has_item.jitl.sapphire
+[12Nov2023 11:52:38.320] [main/INFO] [jitl/]: has_item.jitl.sapphire
+[12Nov2023 11:52:38.321] [main/INFO] [jitl/]: has_item.jitl.sapphire_axe
+[12Nov2023 11:52:38.321] [main/INFO] [jitl/]: has_item.jitl.sapphire
+[12Nov2023 11:52:38.322] [main/INFO] [jitl/]: has_item.jitl.sapphire
+[12Nov2023 11:52:38.322] [main/INFO] [jitl/]: has_item.jitl.sapphire
+[12Nov2023 11:52:38.322] [main/INFO] [jitl/]: has_item.jitl.sapphire
+[12Nov2023 11:52:38.322] [main/INFO] [jitl/]: has_item.jitl.sapphire
+[12Nov2023 11:52:38.322] [main/INFO] [jitl/]: has_item.jitl.sapphire
+[12Nov2023 11:52:38.322] [main/INFO] [jitl/]: has_block.jitl.sapphire_block
+[12Nov2023 11:52:38.322] [main/INFO] [jitl/]: item.jitl.sapphire
+[12Nov2023 11:52:38.322] [main/INFO] [jitl/]: has_block.jitl.sapphire_ore
+[12Nov2023 11:52:38.322] [main/INFO] [jitl/]: has_block.jitl.sapphire_ore
+[12Nov2023 11:52:38.322] [main/INFO] [jitl/]: has_block.jitl.deepslate_sapphire_ore
+[12Nov2023 11:52:38.324] [main/INFO] [jitl/]: has_block.jitl.deepslate_sapphire_ore
+[12Nov2023 11:52:38.324] [main/INFO] [jitl/]: has_item.jitl.lunium_ingot
+[12Nov2023 11:52:38.324] [main/INFO] [jitl/]: has_item.jitl.lunium_ingot
+[12Nov2023 11:52:38.324] [main/INFO] [jitl/]: has_item.jitl.lunium_ingot
+[12Nov2023 11:52:38.324] [main/INFO] [jitl/]: has_item.jitl.lunium_ingot
+[12Nov2023 11:52:38.325] [main/INFO] [jitl/]: has_item.jitl.lunium_ingot
+[12Nov2023 11:52:38.325] [main/INFO] [jitl/]: has_item.jitl.lunium_axe
+[12Nov2023 11:52:38.325] [main/INFO] [jitl/]: has_item.jitl.lunium_ingot
+[12Nov2023 11:52:38.325] [main/INFO] [jitl/]: has_item.jitl.lunium_ingot
+[12Nov2023 11:52:38.325] [main/INFO] [jitl/]: has_item.jitl.lunium_ingot
+[12Nov2023 11:52:38.325] [main/INFO] [jitl/]: has_item.jitl.lunium_ingot
+[12Nov2023 11:52:38.325] [main/INFO] [jitl/]: has_item.jitl.lunium_ingot
+[12Nov2023 11:52:38.326] [main/INFO] [jitl/]: has_item.jitl.lunium_ingot
+[12Nov2023 11:52:38.326] [main/INFO] [jitl/]: has_block.jitl.lunium_block
+[12Nov2023 11:52:38.326] [main/INFO] [jitl/]: item.jitl.lunium_ingot
+[12Nov2023 11:52:38.326] [main/INFO] [jitl/]: has_block.jitl.lunium_ore
+[12Nov2023 11:52:38.326] [main/INFO] [jitl/]: has_block.jitl.lunium_ore
+[12Nov2023 11:52:38.326] [main/INFO] [jitl/]: has_block.jitl.deepslate_lunium_ore
+[12Nov2023 11:52:38.327] [main/INFO] [jitl/]: has_block.jitl.deepslate_lunium_ore
+[12Nov2023 11:52:38.327] [main/INFO] [jitl/]: has_item.jitl.lunium_powder
+[12Nov2023 11:52:38.327] [main/INFO] [jitl/]: has_item.jitl.lunium_powder
+[12Nov2023 11:52:38.327] [main/INFO] [jitl/]: has_item.jitl.bloodcrust_ingot
+[12Nov2023 11:52:38.327] [main/INFO] [jitl/]: has_item.jitl.bloodcrust_ingot
+[12Nov2023 11:52:38.328] [main/INFO] [jitl/]: has_item.jitl.bloodcrust_ingot
+[12Nov2023 11:52:38.328] [main/INFO] [jitl/]: has_item.jitl.bloodcrust_ingot
+[12Nov2023 11:52:38.328] [main/INFO] [jitl/]: has_item.jitl.bloodcrust_ingot
+[12Nov2023 11:52:38.328] [main/INFO] [jitl/]: has_item.jitl.bloodcrust_axe
+[12Nov2023 11:52:38.329] [main/INFO] [jitl/]: has_item.jitl.bloodcrust_ingot
+[12Nov2023 11:52:38.329] [main/INFO] [jitl/]: has_item.jitl.bloodcrust_ingot
+[12Nov2023 11:52:38.329] [main/INFO] [jitl/]: has_item.jitl.bloodcrust_ingot
+[12Nov2023 11:52:38.329] [main/INFO] [jitl/]: has_item.jitl.bloodcrust_ingot
+[12Nov2023 11:52:38.329] [main/INFO] [jitl/]: has_item.jitl.bloodcrust_ingot
+[12Nov2023 11:52:38.330] [main/INFO] [jitl/]: has_item.jitl.bloodcrust_ingot
+[12Nov2023 11:52:38.330] [main/INFO] [jitl/]: has_block.jitl.bloodcrust_block
+[12Nov2023 11:52:38.330] [main/INFO] [jitl/]: item.jitl.bloodcrust_ingot
+[12Nov2023 11:52:38.330] [main/INFO] [jitl/]: has_block.jitl.bloodcrust_ore
+[12Nov2023 11:52:38.330] [main/INFO] [jitl/]: has_block.jitl.bloodcrust_ore
+[12Nov2023 11:52:38.330] [main/INFO] [jitl/]: has_item.jitl.raw_bloodcrust
+[12Nov2023 11:52:38.330] [main/INFO] [jitl/]: has_item.jitl.raw_bloodcrust
+[12Nov2023 11:52:38.331] [main/INFO] [jitl/]: has_item.jitl.celestium_ingot
+[12Nov2023 11:52:38.331] [main/INFO] [jitl/]: has_item.jitl.celestium_ingot
+[12Nov2023 11:52:38.331] [main/INFO] [jitl/]: has_item.jitl.celestium_ingot
+[12Nov2023 11:52:38.331] [main/INFO] [jitl/]: has_item.jitl.celestium_ingot
+[12Nov2023 11:52:38.332] [main/INFO] [jitl/]: has_item.jitl.celestium_ingot
+[12Nov2023 11:52:38.332] [main/INFO] [jitl/]: has_item.jitl.celestium_axe
+[12Nov2023 11:52:38.332] [main/INFO] [jitl/]: has_item.jitl.celestium_ingot
+[12Nov2023 11:52:38.332] [main/INFO] [jitl/]: has_item.jitl.celestium_ingot
+[12Nov2023 11:52:38.332] [main/INFO] [jitl/]: has_block.jitl.celestium_block
+[12Nov2023 11:52:38.333] [main/INFO] [jitl/]: item.jitl.celestium_ingot
+[12Nov2023 11:52:38.333] [main/INFO] [jitl/]: has_block.jitl.celestium_ore
+[12Nov2023 11:52:38.333] [main/INFO] [jitl/]: has_block.jitl.celestium_ore
+[12Nov2023 11:52:38.333] [main/INFO] [jitl/]: has_item.jitl.celestium_gemstone
+[12Nov2023 11:52:38.333] [main/INFO] [jitl/]: has_item.jitl.celestium_gemstone
+[12Nov2023 11:52:38.334] [main/INFO] [jitl/]: has_item.jitl.korite_ingot
+[12Nov2023 11:52:38.334] [main/INFO] [jitl/]: has_item.jitl.korite_ingot
+[12Nov2023 11:52:38.334] [main/INFO] [jitl/]: has_item.jitl.korite_ingot
+[12Nov2023 11:52:38.334] [main/INFO] [jitl/]: has_item.jitl.korite_ingot
+[12Nov2023 11:52:38.335] [main/INFO] [jitl/]: has_item.jitl.korite_ingot
+[12Nov2023 11:52:38.335] [main/INFO] [jitl/]: has_item.jitl.korite_axe
+[12Nov2023 11:52:38.335] [main/INFO] [jitl/]: has_item.jitl.korite_ingot
+[12Nov2023 11:52:38.335] [main/INFO] [jitl/]: has_item.jitl.korite_ingot
+[12Nov2023 11:52:38.336] [main/INFO] [jitl/]: has_block.jitl.korite_block
+[12Nov2023 11:52:38.336] [main/INFO] [jitl/]: item.jitl.korite_ingot
+[12Nov2023 11:52:38.336] [main/INFO] [jitl/]: has_block.jitl.korite_ore
+[12Nov2023 11:52:38.336] [main/INFO] [jitl/]: has_block.jitl.korite_ore
+[12Nov2023 11:52:38.336] [main/INFO] [jitl/]: has_item.jitl.korite_gemstone
+[12Nov2023 11:52:38.336] [main/INFO] [jitl/]: has_item.jitl.korite_gemstone
+[12Nov2023 11:52:38.336] [main/INFO] [jitl/]: has_item.jitl.storon_ingot
+[12Nov2023 11:52:38.336] [main/INFO] [jitl/]: has_item.jitl.storon_ingot
+[12Nov2023 11:52:38.337] [main/INFO] [jitl/]: has_item.jitl.storon_ingot
+[12Nov2023 11:52:38.337] [main/INFO] [jitl/]: has_item.jitl.storon_ingot
+[12Nov2023 11:52:38.337] [main/INFO] [jitl/]: has_item.jitl.storon_ingot
+[12Nov2023 11:52:38.337] [main/INFO] [jitl/]: has_item.jitl.storon_axe
+[12Nov2023 11:52:38.337] [main/INFO] [jitl/]: has_item.jitl.storon_ingot
+[12Nov2023 11:52:38.337] [main/INFO] [jitl/]: has_item.jitl.storon_ingot
+[12Nov2023 11:52:38.338] [main/INFO] [jitl/]: has_block.jitl.storon_block
+[12Nov2023 11:52:38.338] [main/INFO] [jitl/]: item.jitl.storon_ingot
+[12Nov2023 11:52:38.338] [main/INFO] [jitl/]: has_block.jitl.storon_ore
+[12Nov2023 11:52:38.338] [main/INFO] [jitl/]: has_block.jitl.storon_ore
+[12Nov2023 11:52:38.338] [main/INFO] [jitl/]: has_item.jitl.storon_gemstone
+[12Nov2023 11:52:38.339] [main/INFO] [jitl/]: has_item.jitl.storon_gemstone
+[12Nov2023 11:52:38.339] [main/INFO] [jitl/]: has_item.jitl.mekyum_ingot
+[12Nov2023 11:52:38.339] [main/INFO] [jitl/]: has_item.jitl.mekyum_ingot
+[12Nov2023 11:52:38.339] [main/INFO] [jitl/]: has_item.jitl.mekyum_ingot
+[12Nov2023 11:52:38.339] [main/INFO] [jitl/]: has_item.jitl.mekyum_ingot
+[12Nov2023 11:52:38.340] [main/INFO] [jitl/]: has_item.jitl.mekyum_ingot
+[12Nov2023 11:52:38.340] [main/INFO] [jitl/]: has_item.jitl.mekyum_axe
+[12Nov2023 11:52:38.340] [main/INFO] [jitl/]: has_item.jitl.mekyum_ingot
+[12Nov2023 11:52:38.340] [main/INFO] [jitl/]: has_item.jitl.mekyum_ingot
+[12Nov2023 11:52:38.341] [main/INFO] [jitl/]: has_block.jitl.mekyum_block
+[12Nov2023 11:52:38.341] [main/INFO] [jitl/]: item.jitl.mekyum_ingot
+[12Nov2023 11:52:38.341] [main/INFO] [jitl/]: has_block.jitl.mekyum_ore
+[12Nov2023 11:52:38.341] [main/INFO] [jitl/]: has_block.jitl.mekyum_ore
+[12Nov2023 11:52:38.341] [main/INFO] [jitl/]: has_item.jitl.mekyum_gemstone
+[12Nov2023 11:52:38.341] [main/INFO] [jitl/]: has_item.jitl.mekyum_gemstone
+[12Nov2023 11:52:38.341] [main/INFO] [jitl/]: has_item.jitl.flairium_ingot
+[12Nov2023 11:52:38.341] [main/INFO] [jitl/]: has_item.jitl.flairium_ingot
+[12Nov2023 11:52:38.341] [main/INFO] [jitl/]: has_item.jitl.flairium_ingot
+[12Nov2023 11:52:38.342] [main/INFO] [jitl/]: has_item.jitl.flairium_ingot
+[12Nov2023 11:52:38.342] [main/INFO] [jitl/]: has_item.jitl.flairium_ingot
+[12Nov2023 11:52:38.342] [main/INFO] [jitl/]: has_item.jitl.flairium_axe
+[12Nov2023 11:52:38.342] [main/INFO] [jitl/]: has_item.jitl.flairium_ingot
+[12Nov2023 11:52:38.342] [main/INFO] [jitl/]: has_item.jitl.flairium_ingot
+[12Nov2023 11:52:38.342] [main/INFO] [jitl/]: has_item.jitl.flairium_ingot
+[12Nov2023 11:52:38.342] [main/INFO] [jitl/]: has_item.jitl.flairium_ingot
+[12Nov2023 11:52:38.342] [main/INFO] [jitl/]: has_item.jitl.flairium_ingot
+[12Nov2023 11:52:38.344] [main/INFO] [jitl/]: has_item.jitl.flairium_ingot
+[12Nov2023 11:52:38.344] [main/INFO] [jitl/]: has_block.jitl.flairium_block
+[12Nov2023 11:52:38.344] [main/INFO] [jitl/]: item.jitl.flairium_ingot
+[12Nov2023 11:52:38.344] [main/INFO] [jitl/]: has_block.jitl.flairium_ore
+[12Nov2023 11:52:38.344] [main/INFO] [jitl/]: has_block.jitl.flairium_ore
+[12Nov2023 11:52:38.345] [main/INFO] [jitl/]: has_item.jitl.des_ingot
+[12Nov2023 11:52:38.345] [main/INFO] [jitl/]: has_item.jitl.des_ingot
+[12Nov2023 11:52:38.345] [main/INFO] [jitl/]: has_item.jitl.des_ingot
+[12Nov2023 11:52:38.345] [main/INFO] [jitl/]: has_item.jitl.des_ingot
+[12Nov2023 11:52:38.345] [main/INFO] [jitl/]: has_item.jitl.des_ingot
+[12Nov2023 11:52:38.346] [main/INFO] [jitl/]: has_item.jitl.des_axe
+[12Nov2023 11:52:38.346] [main/INFO] [jitl/]: has_item.jitl.des_ingot
+[12Nov2023 11:52:38.346] [main/INFO] [jitl/]: has_item.jitl.des_ingot
+[12Nov2023 11:52:38.347] [main/INFO] [jitl/]: has_block.jitl.des_block
+[12Nov2023 11:52:38.347] [main/INFO] [jitl/]: item.jitl.des_ingot
+[12Nov2023 11:52:38.347] [main/INFO] [jitl/]: has_block.jitl.des_ore
+[12Nov2023 11:52:38.347] [main/INFO] [jitl/]: has_block.jitl.des_ore
+[12Nov2023 11:52:38.347] [main/INFO] [jitl/]: has_item.jitl.gorbite_gem
+[12Nov2023 11:52:38.347] [main/INFO] [jitl/]: has_item.jitl.gorbite_gem
+[12Nov2023 11:52:38.348] [main/INFO] [jitl/]: has_item.jitl.gorbite_gem
+[12Nov2023 11:52:38.348] [main/INFO] [jitl/]: has_item.jitl.gorbite_gem
+[12Nov2023 11:52:38.348] [main/INFO] [jitl/]: has_item.jitl.gorbite_gem
+[12Nov2023 11:52:38.348] [main/INFO] [jitl/]: has_item.jitl.gorbite_axe
+[12Nov2023 11:52:38.348] [main/INFO] [jitl/]: has_item.jitl.gorbite_gem
+[12Nov2023 11:52:38.348] [main/INFO] [jitl/]: has_item.jitl.gorbite_gem
+[12Nov2023 11:52:38.348] [main/INFO] [jitl/]: has_block.jitl.gorbite_block
+[12Nov2023 11:52:38.349] [main/INFO] [jitl/]: item.jitl.gorbite_gem
+[12Nov2023 11:52:38.349] [main/INFO] [jitl/]: has_block.jitl.gorbite_ore
+[12Nov2023 11:52:38.349] [main/INFO] [jitl/]: has_block.jitl.gorbite_ore
+[12Nov2023 11:52:38.349] [main/INFO] [jitl/]: has_item.jitl.orbadite_ingot
+[12Nov2023 11:52:38.349] [main/INFO] [jitl/]: has_item.jitl.orbadite_ingot
+[12Nov2023 11:52:38.349] [main/INFO] [jitl/]: has_item.jitl.orbadite_ingot
+[12Nov2023 11:52:38.349] [main/INFO] [jitl/]: has_item.jitl.orbadite_ingot
+[12Nov2023 11:52:38.350] [main/INFO] [jitl/]: has_item.jitl.orbadite_ingot
+[12Nov2023 11:52:38.350] [main/INFO] [jitl/]: has_item.jitl.orbadite_axe
+[12Nov2023 11:52:38.350] [main/INFO] [jitl/]: has_item.jitl.orbadite_ingot
+[12Nov2023 11:52:38.350] [main/INFO] [jitl/]: has_item.jitl.orbadite_ingot
+[12Nov2023 11:52:38.350] [main/INFO] [jitl/]: has_item.jitl.orbadite_ingot
+[12Nov2023 11:52:38.350] [main/INFO] [jitl/]: has_item.jitl.orbadite_ingot
+[12Nov2023 11:52:38.351] [main/INFO] [jitl/]: has_item.jitl.orbadite_ingot
+[12Nov2023 11:52:38.351] [main/INFO] [jitl/]: has_item.jitl.orbadite_ingot
+[12Nov2023 11:52:38.351] [main/INFO] [jitl/]: has_block.jitl.orbadite_block
+[12Nov2023 11:52:38.351] [main/INFO] [jitl/]: item.jitl.orbadite_ingot
+[12Nov2023 11:52:38.351] [main/INFO] [jitl/]: has_block.jitl.orbadite_ore
+[12Nov2023 11:52:38.352] [main/INFO] [jitl/]: has_block.jitl.orbadite_ore
+[12Nov2023 11:52:38.352] [main/INFO] [jitl/]: has_item.jitl.raw_orbadite
+[12Nov2023 11:52:38.352] [main/INFO] [jitl/]: has_item.jitl.raw_orbadite
+[12Nov2023 11:52:38.352] [main/INFO] [jitl/]: has_item.jitl.soulstone
+[12Nov2023 11:52:38.352] [main/INFO] [jitl/]: has_item.jitl.soulstone
+[12Nov2023 11:52:38.352] [main/INFO] [jitl/]: has_item.jitl.soulstone
+[12Nov2023 11:52:38.352] [main/INFO] [jitl/]: has_item.jitl.soulstone
+[12Nov2023 11:52:38.352] [main/INFO] [jitl/]: has_item.jitl.soulstone
+[12Nov2023 11:52:38.353] [main/INFO] [jitl/]: has_item.jitl.soulstone_axe
+[12Nov2023 11:52:38.353] [main/INFO] [jitl/]: has_item.jitl.soulstone
+[12Nov2023 11:52:38.353] [main/INFO] [jitl/]: has_item.jitl.soulstone
+[12Nov2023 11:52:38.353] [main/INFO] [jitl/]: has_block.jitl.soulstone_block
+[12Nov2023 11:52:38.353] [main/INFO] [jitl/]: item.jitl.soulstone
+[12Nov2023 11:52:38.353] [main/INFO] [jitl/]: has_item.jitl.euca_portal_gem
+[12Nov2023 11:52:38.354] [main/INFO] [jitl/]: has_block.jitl.depths_portal_frame
+[12Nov2023 11:52:38.354] [main/INFO] [jitl/]: has_block.jitl.corba_portal_frame
+[12Nov2023 11:52:38.354] [main/INFO] [jitl/]: has_item.minecraft.snowball
+[12Nov2023 11:52:38.354] [main/INFO] [jitl/]: has_item.jitl.smithstone
+[12Nov2023 11:52:38.354] [main/INFO] [jitl/]: has_block.jitl.smithstone_block
+[12Nov2023 11:52:38.354] [main/INFO] [jitl/]: has_item.jitl.bleedstone
+[12Nov2023 11:52:38.354] [main/INFO] [jitl/]: has_block.jitl.bleedstone_block
+[12Nov2023 11:52:38.355] [main/INFO] [jitl/]: has_item.minecraft.string
+[12Nov2023 11:52:38.355] [main/INFO] [jitl/]: has_item.minecraft.gold_ingot
+[12Nov2023 11:52:38.355] [main/INFO] [jitl/]: has_item.jitl.stone_clump
+[12Nov2023 11:52:38.355] [main/INFO] [jitl/]: has_item.jitl.stone_clump
+[12Nov2023 11:52:38.355] [main/INFO] [jitl/]: has_item.jitl.magic_dust
+[12Nov2023 11:52:38.355] [main/INFO] [jitl/]: has_item.jitl.demonic_dust
+[12Nov2023 11:52:38.356] [main/INFO] [jitl/]: has_item.jitl.magic_dust
+[12Nov2023 11:52:38.356] [main/INFO] [jitl/]: has_item.jitl.cave_dust
+[12Nov2023 11:52:38.356] [main/INFO] [jitl/]: has_block.minecraft.stone
+[12Nov2023 11:52:38.356] [main/INFO] [jitl/]: has_item.jitl.withic_dust
+[12Nov2023 11:52:38.356] [main/INFO] [jitl/]: has_item.jitl.blood
+[12Nov2023 11:52:38.357] [main/INFO] [jitl/]: has_item.jitl.flaming_spring
+[12Nov2023 11:52:38.357] [main/INFO] [jitl/]: has_item.jitl.demonic_bone
+[12Nov2023 11:52:38.357] [main/INFO] [jitl/]: has_item.jitl.smithstone
+[12Nov2023 11:52:38.357] [main/INFO] [jitl/]: has_item.jitl.bleedstone
+[12Nov2023 11:52:38.357] [main/INFO] [jitl/]: has_item.jitl.bleedstone_dust
+[12Nov2023 11:52:38.357] [main/INFO] [jitl/]: has_item.jitl.smithstone_dust
+[12Nov2023 11:52:38.357] [main/INFO] [jitl/]: has_item.jitl.shadium_ingot
+[12Nov2023 11:52:38.357] [main/INFO] [jitl/]: has_item.minecraft.diamond
+[12Nov2023 11:52:38.357] [main/INFO] [jitl/]: has_item.jitl.bloodcrust_ingot
+[12Nov2023 11:52:38.358] [main/INFO] [jitl/]: has_item.jitl.shadium_ingot
+[12Nov2023 11:52:38.358] [main/INFO] [jitl/]: has_item.jitl.lunium_ingot
+[12Nov2023 11:52:38.358] [main/INFO] [jitl/]: has_item.jitl.bloodcrust_clump
+[12Nov2023 11:52:38.358] [main/INFO] [jitl/]: has_item.jitl.shadium_clump
+[12Nov2023 11:52:38.359] [main/INFO] [jitl/]: has_item.jitl.euca_portal_piece_1
+[12Nov2023 11:52:38.359] [main/INFO] [jitl/]: has_item.jitl.euca_portal_piece_2
+[12Nov2023 11:52:38.359] [main/INFO] [jitl/]: has_item.jitl.withic_dust
+[12Nov2023 11:52:38.359] [main/INFO] [jitl/]: has_item.jitl.reinforced_stone_ingot
+[12Nov2023 11:52:38.359] [main/INFO] [jitl/]: has_item.jitl.reinforced_crystal_ingot
+[12Nov2023 11:52:38.359] [main/INFO] [jitl/]: has_item.jitl.floro_pedal
+[12Nov2023 11:52:38.359] [main/INFO] [jitl/]: has_item.jitl.cave_crystal
+[12Nov2023 11:52:38.360] [main/INFO] [jitl/]: has_item.jitl.demonic_dust
+[12Nov2023 11:52:38.360] [main/INFO] [jitl/]: has_item.jitl.spawner_clump
+[12Nov2023 11:52:38.360] [main/INFO] [jitl/]: has_item.jitl.spawner_clump
+[12Nov2023 11:52:38.360] [main/INFO] [jitl/]: has_item.minecraft.rotten_flesh
+[12Nov2023 11:52:38.360] [main/INFO] [jitl/]: has_item.minecraft.rotten_flesh
+[12Nov2023 11:52:38.360] [main/INFO] [jitl/]: has_block.jitl.euca_gold_planks
+[12Nov2023 11:52:38.360] [main/INFO] [jitl/]: has_block.jitl.euca_gold_planks
+[12Nov2023 11:52:38.360] [main/INFO] [jitl/]: has_block.jitl.euca_gold_planks
+[12Nov2023 11:52:38.360] [main/INFO] [jitl/]: has_block.jitl.euca_gold_planks
+[12Nov2023 11:52:38.362] [main/INFO] [jitl/]: has_block.jitl.euca_gold_planks
+[12Nov2023 11:52:38.362] [main/INFO] [jitl/]: has_block.jitl.euca_gold_planks
+[12Nov2023 11:52:38.362] [main/INFO] [jitl/]: has_block.jitl.euca_gold_planks
+[12Nov2023 11:52:38.362] [main/INFO] [jitl/]: has_block.jitl.euca_gold_planks
+[12Nov2023 11:52:38.362] [main/INFO] [jitl/]: has_item.minecraft.stick
+[12Nov2023 11:52:38.362] [main/INFO] [jitl/]: has_block.jitl.euca_gold_planks
+[12Nov2023 11:52:38.362] [main/INFO] [jitl/]: has_block.jitl.euca_gold_planks
+[12Nov2023 11:52:38.362] [main/INFO] [jitl/]: has_block.jitl.euca_gold_planks
+[12Nov2023 11:52:38.363] [main/INFO] [jitl/]: has_block.jitl.euca_gold_planks
+[12Nov2023 11:52:38.363] [main/INFO] [jitl/]: has_block.jitl.euca_gold_planks
+[12Nov2023 11:52:38.363] [main/INFO] [jitl/]: has_block.jitl.euca_gold_log
+[12Nov2023 11:52:38.363] [main/INFO] [jitl/]: has_block.jitl.euca_gold_planks
+[12Nov2023 11:52:38.363] [main/INFO] [jitl/]: has_block.jitl.euca_brown_planks
+[12Nov2023 11:52:38.364] [main/INFO] [jitl/]: has_block.jitl.euca_brown_planks
+[12Nov2023 11:52:38.364] [main/INFO] [jitl/]: has_block.jitl.euca_brown_planks
+[12Nov2023 11:52:38.364] [main/INFO] [jitl/]: has_block.jitl.euca_brown_planks
+[12Nov2023 11:52:38.364] [main/INFO] [jitl/]: has_block.jitl.euca_brown_planks
+[12Nov2023 11:52:38.364] [main/INFO] [jitl/]: has_block.jitl.euca_brown_planks
+[12Nov2023 11:52:38.364] [main/INFO] [jitl/]: has_block.jitl.euca_brown_planks
+[12Nov2023 11:52:38.364] [main/INFO] [jitl/]: has_block.jitl.euca_brown_planks
+[12Nov2023 11:52:38.365] [main/INFO] [jitl/]: has_item.minecraft.stick
+[12Nov2023 11:52:38.365] [main/INFO] [jitl/]: has_block.jitl.euca_brown_planks
+[12Nov2023 11:52:38.365] [main/INFO] [jitl/]: has_block.jitl.euca_brown_planks
+[12Nov2023 11:52:38.365] [main/INFO] [jitl/]: has_block.jitl.euca_brown_planks
+[12Nov2023 11:52:38.365] [main/INFO] [jitl/]: has_block.jitl.euca_brown_planks
+[12Nov2023 11:52:38.365] [main/INFO] [jitl/]: has_block.jitl.euca_brown_planks
+[12Nov2023 11:52:38.365] [main/INFO] [jitl/]: has_block.jitl.euca_brown_log
+[12Nov2023 11:52:38.366] [main/INFO] [jitl/]: has_block.jitl.euca_brown_planks
+[12Nov2023 11:52:38.366] [main/INFO] [jitl/]: has_block.jitl.frozen_planks
+[12Nov2023 11:52:38.366] [main/INFO] [jitl/]: has_block.jitl.frozen_planks
+[12Nov2023 11:52:38.366] [main/INFO] [jitl/]: has_block.jitl.frozen_planks
+[12Nov2023 11:52:38.366] [main/INFO] [jitl/]: has_block.jitl.frozen_planks
+[12Nov2023 11:52:38.366] [main/INFO] [jitl/]: has_block.jitl.frozen_planks
+[12Nov2023 11:52:38.366] [main/INFO] [jitl/]: has_block.jitl.frozen_planks
+[12Nov2023 11:52:38.366] [main/INFO] [jitl/]: has_block.jitl.frozen_planks
+[12Nov2023 11:52:38.367] [main/INFO] [jitl/]: has_block.jitl.frozen_planks
+[12Nov2023 11:52:38.367] [main/INFO] [jitl/]: has_item.minecraft.stick
+[12Nov2023 11:52:38.367] [main/INFO] [jitl/]: has_block.jitl.frozen_planks
+[12Nov2023 11:52:38.367] [main/INFO] [jitl/]: has_block.jitl.frozen_planks
+[12Nov2023 11:52:38.367] [main/INFO] [jitl/]: has_block.jitl.frozen_planks
+[12Nov2023 11:52:38.367] [main/INFO] [jitl/]: has_block.jitl.frozen_planks
+[12Nov2023 11:52:38.367] [main/INFO] [jitl/]: has_block.jitl.frozen_planks
+[12Nov2023 11:52:38.368] [main/INFO] [jitl/]: has_block.jitl.frozen_log
+[12Nov2023 11:52:38.368] [main/INFO] [jitl/]: has_block.jitl.frozen_planks
+[12Nov2023 11:52:38.368] [main/INFO] [jitl/]: has_block.jitl.burned_bark_planks
+[12Nov2023 11:52:38.368] [main/INFO] [jitl/]: has_block.jitl.burned_bark_planks
+[12Nov2023 11:52:38.368] [main/INFO] [jitl/]: has_block.jitl.burned_bark_planks
+[12Nov2023 11:52:38.368] [main/INFO] [jitl/]: has_block.jitl.burned_bark_planks
+[12Nov2023 11:52:38.368] [main/INFO] [jitl/]: has_block.jitl.burned_bark_planks
+[12Nov2023 11:52:38.369] [main/INFO] [jitl/]: has_block.jitl.burned_bark_planks
+[12Nov2023 11:52:38.369] [main/INFO] [jitl/]: has_block.jitl.burned_bark_planks
+[12Nov2023 11:52:38.369] [main/INFO] [jitl/]: has_block.jitl.burned_bark_planks
+[12Nov2023 11:52:38.369] [main/INFO] [jitl/]: has_item.minecraft.stick
+[12Nov2023 11:52:38.369] [main/INFO] [jitl/]: has_block.jitl.burned_bark_planks
+[12Nov2023 11:52:38.369] [main/INFO] [jitl/]: has_block.jitl.burned_bark_planks
+[12Nov2023 11:52:38.370] [main/INFO] [jitl/]: has_block.jitl.burned_bark_planks
+[12Nov2023 11:52:38.370] [main/INFO] [jitl/]: has_block.jitl.burned_bark_planks
+[12Nov2023 11:52:38.370] [main/INFO] [jitl/]: has_block.jitl.burned_bark_planks
+[12Nov2023 11:52:38.370] [main/INFO] [jitl/]: has_block.jitl.burned_bark
+[12Nov2023 11:52:38.370] [main/INFO] [jitl/]: has_block.jitl.burned_bark_planks
+[12Nov2023 11:52:38.371] [main/INFO] [jitl/]: has_block.jitl.depths_planks
+[12Nov2023 11:52:38.371] [main/INFO] [jitl/]: has_block.jitl.depths_planks
+[12Nov2023 11:52:38.371] [main/INFO] [jitl/]: has_block.jitl.depths_planks
+[12Nov2023 11:52:38.371] [main/INFO] [jitl/]: has_block.jitl.depths_planks
+[12Nov2023 11:52:38.371] [main/INFO] [jitl/]: has_block.jitl.depths_planks
+[12Nov2023 11:52:38.371] [main/INFO] [jitl/]: has_block.jitl.depths_planks
+[12Nov2023 11:52:38.371] [main/INFO] [jitl/]: has_block.jitl.depths_planks
+[12Nov2023 11:52:38.371] [main/INFO] [jitl/]: has_block.jitl.depths_planks
+[12Nov2023 11:52:38.371] [main/INFO] [jitl/]: has_item.minecraft.stick
+[12Nov2023 11:52:38.371] [main/INFO] [jitl/]: has_block.jitl.depths_planks
+[12Nov2023 11:52:38.371] [main/INFO] [jitl/]: has_block.jitl.depths_planks
+[12Nov2023 11:52:38.371] [main/INFO] [jitl/]: has_block.jitl.depths_planks
+[12Nov2023 11:52:38.372] [main/INFO] [jitl/]: has_block.jitl.depths_planks
+[12Nov2023 11:52:38.372] [main/INFO] [jitl/]: has_block.jitl.depths_planks
+[12Nov2023 11:52:38.372] [main/INFO] [jitl/]: has_block.jitl.depths_log
+[12Nov2023 11:52:38.372] [main/INFO] [jitl/]: has_block.jitl.depths_planks
+[12Nov2023 11:52:38.372] [main/INFO] [jitl/]: has_block.jitl.corba_planks
+[12Nov2023 11:52:38.372] [main/INFO] [jitl/]: has_block.jitl.corba_planks
+[12Nov2023 11:52:38.372] [main/INFO] [jitl/]: has_block.jitl.corba_planks
+[12Nov2023 11:52:38.373] [main/INFO] [jitl/]: has_block.jitl.corba_planks
+[12Nov2023 11:52:38.373] [main/INFO] [jitl/]: has_block.jitl.corba_planks
+[12Nov2023 11:52:38.373] [main/INFO] [jitl/]: has_block.jitl.corba_planks
+[12Nov2023 11:52:38.373] [main/INFO] [jitl/]: has_block.jitl.corba_planks
+[12Nov2023 11:52:38.373] [main/INFO] [jitl/]: has_block.jitl.corba_planks
+[12Nov2023 11:52:38.373] [main/INFO] [jitl/]: has_item.minecraft.stick
+[12Nov2023 11:52:38.373] [main/INFO] [jitl/]: has_block.jitl.corba_planks
+[12Nov2023 11:52:38.373] [main/INFO] [jitl/]: has_block.jitl.corba_planks
+[12Nov2023 11:52:38.373] [main/INFO] [jitl/]: has_block.jitl.corba_planks
+[12Nov2023 11:52:38.373] [main/INFO] [jitl/]: has_block.jitl.corba_planks
+[12Nov2023 11:52:38.374] [main/INFO] [jitl/]: has_block.jitl.corba_planks
+[12Nov2023 11:52:38.374] [main/INFO] [jitl/]: has_block.jitl.corba_log
+[12Nov2023 11:52:38.374] [main/INFO] [jitl/]: has_block.jitl.corba_planks
+[12Nov2023 11:52:38.374] [main/INFO] [jitl/]: has_block.jitl.crimson_quartz_block
+[12Nov2023 11:52:38.374] [main/INFO] [jitl/]: has_block.jitl.crimson_quartz_block
+[12Nov2023 11:52:38.374] [main/INFO] [jitl/]: has_block.jitl.crimson_quartz_ore
+[12Nov2023 11:52:38.374] [main/INFO] [jitl/]: has_block.jitl.crimson_quartz_ore
+[12Nov2023 11:52:38.374] [main/INFO] [jitl/]: has_item.jitl.crimson_quartz
+[12Nov2023 11:52:38.375] [main/INFO] [jitl/]: has_block.jitl.crimson_quartz_block
+[12Nov2023 11:52:38.375] [main/INFO] [jitl/]: has_block.jitl.crimson_quartz_block
+[12Nov2023 11:52:38.375] [main/INFO] [jitl/]: has_block.jitl.smooth_crimson_quartz_block
+[12Nov2023 11:52:38.375] [main/INFO] [jitl/]: has_block.jitl.smooth_crimson_quartz_block
+[12Nov2023 11:52:38.375] [main/INFO] [jitl/]: has_block.jitl.crimson_quartz_slab
+[12Nov2023 11:52:38.375] [main/INFO] [jitl/]: has_block.jitl.crimson_quartz_block
+[12Nov2023 11:52:38.375] [main/INFO] [jitl/]: has_block.jitl.crimson_quartz_block
+[12Nov2023 11:52:38.375] [main/INFO] [jitl/]: has_block.jitl.warped_quartz_block
+[12Nov2023 11:52:38.375] [main/INFO] [jitl/]: has_block.jitl.warped_quartz_block
+[12Nov2023 11:52:38.375] [main/INFO] [jitl/]: has_block.jitl.warped_quartz_ore
+[12Nov2023 11:52:38.376] [main/INFO] [jitl/]: has_block.jitl.warped_quartz_ore
+[12Nov2023 11:52:38.376] [main/INFO] [jitl/]: has_item.jitl.warped_quartz
+[12Nov2023 11:52:38.376] [main/INFO] [jitl/]: has_block.jitl.warped_quartz_block
+[12Nov2023 11:52:38.376] [main/INFO] [jitl/]: has_block.jitl.warped_quartz_block
+[12Nov2023 11:52:38.376] [main/INFO] [jitl/]: has_block.jitl.smooth_warped_quartz_block
+[12Nov2023 11:52:38.376] [main/INFO] [jitl/]: has_block.jitl.smooth_warped_quartz_block
+[12Nov2023 11:52:38.376] [main/INFO] [jitl/]: has_block.jitl.warped_quartz_slab
+[12Nov2023 11:52:38.376] [main/INFO] [jitl/]: has_block.jitl.warped_quartz_block
+[12Nov2023 11:52:38.376] [main/INFO] [jitl/]: has_block.jitl.warped_quartz_block
+[12Nov2023 11:52:38.379] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 111 ms
+[12Nov2023 11:52:38.379] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[12Nov2023 11:52:38.480] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 101 ms
+[12Nov2023 11:52:38.480] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
+[12Nov2023 11:52:38.499] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 19 ms
+[12Nov2023 11:52:38.500] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 233 ms
+[12Nov2023 11:52:38.516] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 1398, old count: 0, new count: 1399, removed stale: 0, written: 1398
