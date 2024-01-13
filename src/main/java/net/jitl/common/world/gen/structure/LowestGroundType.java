@@ -12,6 +12,7 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
+import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup;
 
 import java.util.Optional;
 
@@ -72,7 +73,8 @@ public final class LowestGroundType extends Structure {
                         new BlockPos(x, y, z),
                         false,
                         Optional.empty(),
-                        this.maxDistanceFromCenter);
+                        this.maxDistanceFromCenter,
+                        PoolAliasLookup.EMPTY);
 
         return structurePiecesGenerator;
     }

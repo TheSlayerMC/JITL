@@ -1,8 +1,8 @@
 package net.jitl.common.block;
 
+import com.mojang.serialization.MapCodec;
 import net.jitl.common.block.entity.SummoningTableTile;
 import net.jitl.core.init.internal.JBlockEntities;
-import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.pattern.BlockInWorld;
@@ -32,14 +33,21 @@ import javax.annotation.Nullable;
 
 public class SummoningTableBlock extends BaseEntityBlock {
 
+    public static final MapCodec<SummoningTableBlock> CODEC = simpleCodec(SummoningTableBlock::new);
+
     public static final BooleanProperty IS_ACTIVE = BooleanProperty.create("is_active");
 
     public static BlockPattern STRUCTURE_PATTERN;
 
-    public SummoningTableBlock() {
-        super(JBlockProperties.GRINDSTONE);
+    public SummoningTableBlock(BlockBehaviour.Properties p) {
+        super(p);
         getOrCreateStructurePattern();
         this.registerDefaultState(this.stateDefinition.any().setValue(IS_ACTIVE, Boolean.FALSE));
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return null;
     }
 
     @Override

@@ -20,13 +20,14 @@ import java.util.EnumSet;
 public class EssenceArrowEntity extends AbstractArrow implements ItemSupplier {
 
     private EnumSet<BowEffects> effects;
+    private static final ItemStack DEFAULT_ARROW_STACK = new ItemStack(JItems.ESSENCE_ARROW.get());
 
     public EssenceArrowEntity(EntityType<? extends AbstractArrow> type, Level level) {
-        super(type, level);
+        super(type, level, DEFAULT_ARROW_STACK);
     }
 
     public EssenceArrowEntity(Level level, LivingEntity player, EnumSet<BowEffects> effects, float damage) {
-        super(JEntities.ESSENCE_ARROW_TYPE.get(), player, level);
+        super(JEntities.ESSENCE_ARROW_TYPE.get(), player, level, DEFAULT_ARROW_STACK);
         this.effects = effects;
         this.setBaseDamage(damage);
     }

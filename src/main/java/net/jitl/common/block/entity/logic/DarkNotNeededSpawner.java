@@ -26,7 +26,6 @@ import org.slf4j.Logger;
 
 import javax.annotation.Nullable;
 import java.util.Optional;
-import java.util.function.Function;
 
 public abstract class DarkNotNeededSpawner extends BaseSpawner {
 
@@ -232,20 +231,20 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
         return pTag;
     }
 
-    @Nullable
-    @Override
-    public Entity getOrCreateDisplayEntity(@NotNull Level pLevel, @NotNull RandomSource pRandom, @NotNull BlockPos pPos) {
-        if (this.displayEntity == null) {
-            CompoundTag compoundtag = this.getOrCreateNextSpawnData(pLevel, pRandom, pPos).getEntityToSpawn();
-            if (!compoundtag.contains("id", 8)) {
-                return null;
-            }
-
-            this.displayEntity = EntityType.loadEntityRecursive(compoundtag, pLevel, Function.identity());
-        }
-
-        return this.displayEntity;
-    }
+//    @Nullable
+//    @Override
+//    public Entity getOrCreateDisplayEntity(@NotNull Level pLevel, @NotNull RandomSource pRandom, @NotNull BlockPos pPos) {
+//        if (this.displayEntity == null) {
+//            CompoundTag compoundtag = this.getOrCreateNextSpawnData(pLevel, pRandom, pPos).getEntityToSpawn();
+//            if (!compoundtag.contains("id", 8)) {
+//                return null;
+//            }
+//
+//            this.displayEntity = EntityType.loadEntityRecursive(compoundtag, pLevel, Function.identity());
+//        }
+//
+//        return this.displayEntity;
+//    }
 
     @Override
     public boolean onEventTriggered(@NotNull Level pLevel, int pId) {

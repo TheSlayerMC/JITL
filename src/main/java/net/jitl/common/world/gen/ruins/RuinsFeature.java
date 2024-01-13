@@ -6,11 +6,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+
+import java.util.Objects;
 
 public class RuinsFeature extends Feature<RuinsFeatureConfig> {
 
@@ -48,7 +50,9 @@ public class RuinsFeature extends Feature<RuinsFeatureConfig> {
                     if (config.spawnBlock.test(reader.getBlockState(spawnPos.below()), rand)) {
 						BlockState chestState = config.chest.getState(rand, chestPos).setValue(JChestBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(rand));
 						reader.setBlock(chestPos, chestState, 2);
-						RandomizableContainerBlockEntity.setLootTable(reader, rand, chestPos, config.resourceLocation);
+						if(reader.getBlockEntity(chestPos) instanceof ChestBlockEntity) {
+							((ChestBlockEntity)Objects.requireNonNull(reader.getBlockEntity(chestPos))).setLootTable(config.resourceLocation);
+						}
 					}
                 }
 			}

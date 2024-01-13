@@ -17,12 +17,15 @@ import org.jetbrains.annotations.NotNull;
 
 public class MagicBombEntity extends AbstractArrow implements ItemSupplier {
 
+    private static final ItemStack DEFAULT_ARROW_STACK = new ItemStack(JItems.MAGIC_BOMB.get());
+
+
     public MagicBombEntity(EntityType<? extends AbstractArrow> type, Level world) {
-        super(type, world);
+        super(type, world, DEFAULT_ARROW_STACK);
     }
 
     public MagicBombEntity(Level worldIn, LivingEntity player, float damage) {
-        super(JEntities.MAGIC_BOMB_TYPE.get(), player, worldIn);
+        super(JEntities.MAGIC_BOMB_TYPE.get(), player, worldIn, DEFAULT_ARROW_STACK);
         setBaseDamage(damage);
     }
 

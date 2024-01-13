@@ -43,9 +43,10 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
     private int currentBounces;
     private int maxBounces;
     public int soundTickCount;
+    private static final ItemStack DEFAULT_ARROW_STACK = new ItemStack(JItems.ESSENCE_ARROW.get());
 
     public PiercerEntity(LivingEntity shooter, Level worldIn, ItemStack stack, int maxBounces, float damage) {
-        super(JEntities.PIERCER_TYPE.get(), shooter, worldIn);
+        super(JEntities.PIERCER_TYPE.get(), shooter, worldIn, DEFAULT_ARROW_STACK);
         setStack(stack.copy());
         this.setSoundEvent(JSounds.PIERCER.get());
         this.maxBounces = maxBounces;
@@ -53,7 +54,7 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
     }
 
     public PiercerEntity(EntityType<PiercerEntity> eucaPiercerEntityEntityType, Level world) {
-        super(eucaPiercerEntityEntityType, world);
+        super(eucaPiercerEntityEntityType, world, DEFAULT_ARROW_STACK);
         this.setSoundEvent(JSounds.PIERCER.get());
     }
 

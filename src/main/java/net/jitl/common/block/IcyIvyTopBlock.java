@@ -1,5 +1,6 @@
 package net.jitl.common.block;
 
+import com.mojang.serialization.MapCodec;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -16,6 +17,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 public class IcyIvyTopBlock extends GrowingPlantHeadBlock {
+
+    public static final MapCodec<IcyIvyTopBlock> CODEC = simpleCodec(IcyIvyTopBlock::new);
+
 
     protected static final VoxelShape SHAPE = Block.box(4.0D, 9.0D, 4.0D, 12.0D, 16.0D, 12.0D);
 
@@ -36,6 +40,11 @@ public class IcyIvyTopBlock extends GrowingPlantHeadBlock {
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         return SHAPE;
+    }
+
+    @Override
+    protected MapCodec<? extends GrowingPlantHeadBlock> codec() {
+        return CODEC;
     }
 
     @Override

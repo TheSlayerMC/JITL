@@ -1,8 +1,8 @@
 package net.jitl.common.block;
 
+import com.mojang.serialization.MapCodec;
 import net.jitl.common.entity.boss.RockiteSmasher;
 import net.jitl.core.init.internal.JBlockEntities;
-import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -27,12 +28,15 @@ import org.jetbrains.annotations.Nullable;
 
 public class RockiteBlock extends BaseEntityBlock {
 
+    public static final MapCodec<RockiteBlock> CODEC = simpleCodec(RockiteBlock::new);
+
+
     private static final VoxelShape BASE = Block.box(-16.0D, 0.0D, -16.0D, 32.0D, 40.0D, 16.0D);
 
     private static final VoxelShape SHAPE = Shapes.or(BASE);
 
-    public RockiteBlock() {
-        super(JBlockProperties.ROCKITE_SPAWNER);
+    public RockiteBlock(BlockBehaviour.Properties p) {
+        super(p);
     }
 
     @Nullable
@@ -70,6 +74,11 @@ public class RockiteBlock extends BaseEntityBlock {
             }
         }
         return false;
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return null;
     }
 
     @Override

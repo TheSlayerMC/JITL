@@ -1,6 +1,7 @@
 package net.jitl.common.block.base;
 
-import net.jitl.core.init.internal.JBlockProperties;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -10,7 +11,8 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.BushBlock;
-import net.minecraft.world.level.block.grower.AbstractTreeGrower;
+import net.minecraft.world.level.block.grower.TreeGrower;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -21,12 +23,18 @@ import org.jetbrains.annotations.NotNull;
 
 public class JSaplingBlock extends BushBlock implements BonemealableBlock {
 
+    public static final MapCodec<JSaplingBlock> CODEC = RecordCodecBuilder.mapCodec((p_312128_) -> {
+        return p_312128_.group(TreeGrower.CODEC.fieldOf("tree").forGetter((p_310598_) -> {
+            return p_310598_.treeGrower;
+        }), propertiesCodec()).apply(p_312128_, JSaplingBlock::new);
+    });
+
     public static final IntegerProperty STAGE = BlockStateProperties.STAGE;
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
-    private final AbstractTreeGrower treeGrower;
+    private final TreeGrower treeGrower;
 
-    public JSaplingBlock(AbstractTreeGrower treeIn) {
-        super(JBlockProperties.FLOWER);
+    public JSaplingBlock(TreeGrower treeIn, BlockBehaviour.Properties p) {
+        super(p);
         this.treeGrower = treeIn;
         this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, 0));
     }
@@ -70,5 +78,10 @@ public class JSaplingBlock extends BushBlock implements BonemealableBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(STAGE);
+    }
+
+    @Override
+    protected MapCodec<? extends BushBlock> codec() {
+        return CODEC;
     }
 }

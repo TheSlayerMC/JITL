@@ -13,6 +13,8 @@ import net.minecraft.world.level.BaseSpawner;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import java.util.Objects;
+
 @OnlyIn(Dist.CLIENT)
 public class JSpawnerRenderer implements BlockEntityRenderer<JSpawnerEntity> {
 
@@ -27,7 +29,7 @@ public class JSpawnerRenderer implements BlockEntityRenderer<JSpawnerEntity> {
       pPoseStack.pushPose();
       pPoseStack.translate(0.5F, 0.0F, 0.5F);
       BaseSpawner basespawner = pBlockEntity.getSpawner();
-      Entity entity = basespawner.getOrCreateDisplayEntity(pBlockEntity.getLevel(), pBlockEntity.getLevel().getRandom(), pBlockEntity.getBlockPos());
+      Entity entity = basespawner.getOrCreateDisplayEntity(Objects.requireNonNull(pBlockEntity.getLevel()), pBlockEntity.getBlockPos());
       if (entity != null) {
          float f = 0.53125F;
          float f1 = Math.max(entity.getBbWidth(), entity.getBbHeight());
