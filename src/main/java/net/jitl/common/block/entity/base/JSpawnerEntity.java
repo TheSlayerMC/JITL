@@ -8,12 +8,13 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.BaseSpawner;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.Spawner;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class JSpawnerEntity extends BlockEntity {
+public abstract class JSpawnerEntity extends BlockEntity implements Spawner {
 
     public abstract BaseSpawner getBaseSpawner();
 
@@ -66,6 +67,7 @@ public abstract class JSpawnerEntity extends BlockEntity {
 
     public void setEntityId(EntityType<?> e, RandomSource r) {
         this.getBaseSpawner().setEntityId(e, this.level, r, this.worldPosition);
+        this.setChanged();
     }
 
     public BaseSpawner getSpawner() {
