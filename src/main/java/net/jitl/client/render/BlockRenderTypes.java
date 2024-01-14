@@ -126,6 +126,7 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.REDCURRANT_BUSH.get());
         cutout.add(JBlocks.BOGWEED.get());
         cutout.add(JBlocks.SWAMP_LILY.get());
+        cutout.add(JBlocks.AIRROOT_CROP.get());
 
         cutout.add(JBlocks.TERRAMUSHROOM.get());
         cutout.add(JBlocks.TERRANIAN_FLOWER.get());

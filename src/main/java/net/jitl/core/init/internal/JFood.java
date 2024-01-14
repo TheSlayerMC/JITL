@@ -25,6 +25,8 @@ public class JFood {
     public static final FoodProperties FLORO_PEDAL = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.3F).effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 100, 3), 0.5F).build();
     public static final FoodProperties TOMATO = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.6F).build();
 
+    public static final FoodProperties AIRMELON = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.6F).build();
+
     public static final FoodProperties FRIED_GHAST_TENTACLE = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.6F).meat().effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 5, 1), 1.0F).build();
     public static final FoodProperties FLAMING_GHAST_TENTACLE = (new FoodProperties.Builder()).nutrition(1).saturationMod(0.6F).meat().effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 5, 1), 1.0F).build();
     public static final FoodProperties FRIED_FLAMING_GHAST_TENTACLE = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.6F).meat().build();

@@ -134,6 +134,8 @@ public class JItems {
     public static final RegistryObject<Item> VANILLA_WAFER = registerFoodItem("vanilla_wafer", "Vanilla Wafer", JFood.VANILLA_WAFER);
     public static final RegistryObject<Item> REDCURRANT_BERRY = registerNormalItem("redcurrant_berry", "Redcurrant Berry", () -> new ItemNameBlockItem(JBlocks.REDCURRANT_BUSH.get(), JItems.itemProps().food(JFood.REDCURRANT)));
     public static final RegistryObject<Item> BRADBERRY = registerNormalItem("bradberry", "bradberry", () -> new ItemNameBlockItem(JBlocks.BRADBERRY_BUSH.get(), JItems.itemProps().food(JFood.BRADBERRY)));
+    public static final RegistryObject<Item> AIRMELON = registerFoodItem("airmelon", "Airmelon", JFood.AIRMELON);
+    public static final RegistryObject<Item> AIRROOT_SEEDS = registerNormalItem("airroot_seeds", "Airroot Seeds", () -> new ItemNameBlockItem(JBlocks.AIRROOT_CROP.get(), JItems.itemProps()));
 
     public static final RegistryObject<Item> OBSIDIAN_STICK = registerNormalItem("obsidian_stick", "Obsidian Rod");
     public static final RegistryObject<Item> STONE_STICK = registerNormalItem("stone_stick", "Stone Stick");
