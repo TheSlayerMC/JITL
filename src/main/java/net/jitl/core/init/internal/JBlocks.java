@@ -640,6 +640,8 @@ public class JBlocks {
     //OVERWORLD
     public static final RegistryObject<Block> TOMATO_CROP = registerCropBlock("tomato_crop", "Tomato", 8, TomatoCropBlock::new);
     public static final RegistryObject<Block> FLORO_PEDAL_CROP = registerCropBlock("floro_pedal_crop", "Floro Pedal", 8, FloroCropBlock::new);
+    public static final RegistryObject<Block> REDCURRANT_BUSH = registerGrowingBushBlock("redcurrant_bush", "Redcurrant Bush", () -> new RedcurrantBushBlock(JBlockProperties.GROWING_BUSH));
+    public static final RegistryObject<Block> BRADBERRY_BUSH = registerGrowingBushBlock("bradberry_bush", "Bradberry Bush", () -> new BradberryBushBlock(JBlockProperties.GROWING_BUSH));
 
     //EUCA
     public static final RegistryObject<Block> ZATPEDAL_CROP = registerCropBlock("zatpedal_crop", "Zatpedal", 8, ZatpedalCropBlock::new);
@@ -657,9 +659,6 @@ public class JBlocks {
     public static final RegistryObject<Block> AIRROOT_MELON = registerModeledBlock("airroot_melon", "Airroot Melon", () -> new Block(JBlockProperties.WOOD));
     public static final RegistryObject<Block> AIRROOT_CROP = registerModeledCropBlock("airroot", "Airroot", 4, AirrootCropBlock::new);
 
-
-    public static final RegistryObject<Block> REDCURRANT_BUSH = registerGrowingBushBlock("redcurrant_bush", "Redcurrant Bush", () -> new RedcurrantBushBlock(JBlockProperties.GROWING_BUSH));
-    public static final RegistryObject<Block> BRADBERRY_BUSH = registerGrowingBushBlock("bradberry_bush", "Bradberry Bush", () -> new BradberryBushBlock(JBlockProperties.GROWING_BUSH));
 
     private static void checkForPickaxeableBlocks(BlockBehaviour.Properties props, String name) {
         if(props == JBlockProperties.STONE || props == JBlockProperties.GLOW_LAMP || props == JBlockProperties.BREAKABLE_DUNGEON_LAMP || props == JBlockProperties.CRYSTAL

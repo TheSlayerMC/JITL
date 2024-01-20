@@ -118,6 +118,8 @@ public class JRecipeRegistry extends JRecipeProvider {
 
         addSmeltingAndBlastingRecipe(recipeConsumer, JItems.SPAWNER_CLUMP.get(), JItems.SPAWNER_BAR.get());
 
+        threeByThreePacker(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, JBlocks.AIRROOT_MELON.get(), JItems.AIRMELON.get());
+
         addSmeltingAndBlastingRecipe(recipeConsumer, Items.ROTTEN_FLESH, Items.LEATHER);
     }
 

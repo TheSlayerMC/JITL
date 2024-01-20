@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -395,6 +396,10 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
 
     protected void addSwordRecipe(RecipeOutput recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output) {
         addSwordRecipe(recipeConsumer, stickItem, materialItem, output, "");
+    }
+
+    protected static void threeByThreePacker(@NotNull RecipeOutput pRecipeOutput, @NotNull RecipeCategory pCategory, ItemLike pPacked, @NotNull ItemLike pUnpacked, @NotNull String pCriterionName) {
+        ShapelessRecipeBuilder.shapeless(pCategory, pPacked).requires(pUnpacked, 9).unlockedBy(pCriterionName, has(pUnpacked)).save(pRecipeOutput);
     }
 
     protected void addShieldRecipe(RecipeOutput recipeConsumer, ItemLike materialItem, ItemLike output) {

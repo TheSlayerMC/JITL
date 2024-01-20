@@ -1,5 +1,6 @@
 package net.jitl.core.init.internal;
 
+import net.jitl.common.block.base.JCropBlock;
 import net.jitl.core.init.JITL;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -20,13 +21,14 @@ public class JTabs {
     public static final RegistryObject<CreativeModeTab> ITEMS = REGISTRY.register("items", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.jitl.items")).icon(() -> new ItemStack(JItems.BLAZING_FIREBALL.get())).build());
 
     public static void registerTabs(BuildCreativeModeTabContentsEvent event){
-        if (event.getTab() == BLOCKS.get()) {
-            for(RegistryObject<Block> item : JBlocks.BLOCKS.getEntries()){
-                event.accept(item.get());
+        if(event.getTab() == BLOCKS.get()) {
+            for(RegistryObject<Block> block : JBlocks.BLOCKS.getEntries()){
+                if(!(block.get() instanceof JCropBlock))
+                    event.accept(block.get());
             }
         };
 
-        if (event.getTab() == ITEMS.get()) {
+        if(event.getTab() == ITEMS.get()) {
             for(RegistryObject<Item> item : JItems.ITEMS.getEntries()){
                 event.accept(item.get());
             }

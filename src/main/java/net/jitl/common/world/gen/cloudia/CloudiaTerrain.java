@@ -57,9 +57,13 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
                 new CloudiaPiece(manager, "cloudia/bottom/melon_farm"),
         };
 
-        this.generate(level, random, pos);
+        boolean needToPlace = true;
 
-        return true;
+        if(needToPlace) {
+            this.generate(level, random, pos);
+            needToPlace = false;
+        }
+        return needToPlace;
     }
 
     public void generate(WorldGenLevel level, RandomSource random, BlockPos pos) {
@@ -68,8 +72,8 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
         int rarity = 2;
         int big_rarity = 6;
 
-        BlockPos topPos = new BlockPos(pos.getX(), topLayer, pos.getZ());
-        BlockPos bottomPos = new BlockPos(pos.getX(), bottomLayer, pos.getZ());
+        BlockPos topPos = pos.offset(0, topLayer, 0);//new BlockPos(pos.getX(), topLayer, pos.getZ());
+        BlockPos bottomPos = pos.offset(0, bottomLayer, 0);//new BlockPos(pos.getX(), bottomLayer, pos.getZ());
 
         TOP_PATHS[random.nextInt(TOP_PATHS.length)].gen(level, random, topPos, Rotation.getRandom(random));
         if(random.nextInt(rarity) == 0)
