@@ -196,6 +196,7 @@ public class JItems {
     public static final RegistryObject<Item> SPAWNER_CLUMP = registerNormalItem("spawner_clump", "Spawner Clump");
     public static final RegistryObject<Item> SPAWNER_BAR = registerNormalItem("spawner_bar", "Spawner Bar");
     public static final RegistryObject<Item> LUNITE_CHUNK = registerNormalItem("lunite_chunk", "Lunite Chunk");
+    public static final RegistryObject<Item> SENTRY_EYE = registerNormalItem("sentry_eye", "Sentry Eye", SentryEyeItem::new);
 
     public static final RegistryObject<Item> TERRASTAR = registerNormalItem("terrastar", "Terrastar");
     public static final RegistryObject<Item> TERRASHROOM = registerNormalItem("terrashroom", "Terrashroom");

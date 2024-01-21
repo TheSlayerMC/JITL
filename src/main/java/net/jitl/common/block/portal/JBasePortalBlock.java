@@ -1,4 +1,4 @@
-package net.jitl.common.block.base;
+package net.jitl.common.block.portal;
 
 import net.jitl.common.world.dimension.BaseTeleporter;
 import net.jitl.common.world.dimension.Dimensions;

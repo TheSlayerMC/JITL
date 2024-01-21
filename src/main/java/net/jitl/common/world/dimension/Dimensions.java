@@ -66,4 +66,7 @@ public class Dimensions {
 
     public static final RegistryObject<PoiType> CLOUDIA_PORTAL = REGISTRY.register("cloudia_portal",
             () -> new PoiType(ImmutableSet.copyOf(JBlocks.CLOUDIA_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
+
+    public static final RegistryObject<PoiType> SENTERIAN_PORTAL = REGISTRY.register("senterian_portal",
+            () -> new PoiType(ImmutableSet.copyOf(JBlocks.SENTERIAN_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
 }

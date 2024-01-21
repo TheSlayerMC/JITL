@@ -2,6 +2,7 @@ package net.jitl.common.block.portal;
 
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.common.world.dimension.SenterianTeleporter;
+import net.jitl.common.world.dimension.SenterianToOverworldTeleporter;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
@@ -46,12 +47,12 @@ public class SenterianPortalBlock extends Block {
                 if(!entity.level().isClientSide && !pos.equals(entity.portalEntrancePos)) {
                     entity.portalEntrancePos = pos.immutable();
                 }
-                teleport(entity);
+                teleport(entity, entity.portalEntrancePos);
             }
         }
     }
 
-    public void teleport(Entity entity) {
+    public void teleport(Entity entity, BlockPos pos) {
         Level entityWorld = entity.level();
         MinecraftServer minecraftserver = entityWorld.getServer();
         if(minecraftserver != null) {
@@ -59,7 +60,12 @@ public class SenterianPortalBlock extends Block {
             ServerLevel destinationWorld = minecraftserver.getLevel(destination);
             if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
                 entity.setPortalCooldown();
-                entity.changeDimension(destinationWorld, new SenterianTeleporter(destinationWorld));
+
+                if(destination == Level.OVERWORLD) {
+                    entity.changeDimension(destinationWorld, new SenterianToOverworldTeleporter(destinationWorld, destination, pos));
+                } else {
+                    entity.changeDimension(destinationWorld, new SenterianTeleporter(destinationWorld, destination));
+                }
             }
         }
     }

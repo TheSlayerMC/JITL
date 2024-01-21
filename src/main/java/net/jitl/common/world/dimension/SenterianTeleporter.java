@@ -1,33 +1,149 @@
 package net.jitl.common.world.dimension;
 
+import net.jitl.common.block.portal.CorbaPortalFrameBlock;
 import net.jitl.common.block.portal.SenterianPortalFrameBlock;
 import net.jitl.core.init.internal.JBlocks;
+import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerEntity;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.TicketType;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ai.village.poi.PoiManager;
+import net.minecraft.world.entity.ai.village.poi.PoiRecord;
+import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.border.WorldBorder;
+import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.level.portal.PortalInfo;
+import net.minecraft.world.level.portal.PortalShape;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.util.ITeleporter;
 
+import javax.annotation.Nullable;
+import java.util.Comparator;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class SenterianTeleporter implements ITeleporter {
 
-    protected ServerLevel myWorld;
-    private ServerEntity player;
+    protected ServerLevel level;
+    protected final ResourceKey<Level> destination;
 
-    public SenterianTeleporter(ServerLevel var1) {
-        this.myWorld = var1;
+    public SenterianTeleporter(ServerLevel level, ResourceKey<Level> destination) {
+        this.level = level;
+        this.destination = destination;
     }
 
-    public Entity placeEntity(Entity entity, ServerLevel currentWorld, ServerLevel destWorld, float yaw, Function<Boolean, Entity> repositionEntity) {
-        entity.teleportTo(3, 16, 3);
-        this.makePortalAt(this.myWorld, 0, 15, 0);
-        entity.xo = entity.yo = entity.zo = 0.0D;
-        return entity;
+    public Optional<BlockUtil.FoundRectangle> getExistingPortal(BlockPos pos) {
+        PoiManager poiManager = this.level.getPoiManager();
+        poiManager.ensureLoadedAndValid(this.level, pos, 64);
+        Optional<PoiRecord> optional = poiManager.getInSquare((poiType) -> {
+            assert Dimensions.SENTERIAN_PORTAL.getKey() != null;
+            return poiType.is(Dimensions.SENTERIAN_PORTAL.getKey());
+        }, pos, 64, PoiManager.Occupancy.ANY).sorted(Comparator.<PoiRecord>comparingDouble((poi) ->
+                poi.getPos().distSqr(pos)).thenComparingInt((poi) ->
+                poi.getPos().getY())).filter((poi) ->
+                this.level.getBlockState(poi.getPos()).hasProperty(BlockStateProperties.HORIZONTAL_AXIS)).findFirst();
+        return optional.map((poi) -> {
+            BlockPos blockpos = poi.getPos();
+            this.level.getChunkSource().addRegionTicket(TicketType.PORTAL, new ChunkPos(blockpos), 3, blockpos);
+            BlockState blockstate = this.level.getBlockState(blockpos);
+            return BlockUtil.getLargestRectangleAround(blockpos, blockstate.getValue(BlockStateProperties.HORIZONTAL_AXIS), 21, Direction.Axis.Y, 21, (posIn) ->
+                    this.level.getBlockState(posIn) == blockstate);
+        });
     }
 
-    private void makePortalAt(ServerLevel world, int x, int y, int z) {
+    @Nullable
+    @Override
+    public PortalInfo getPortalInfo(Entity entity, ServerLevel destWorld, Function<ServerLevel, PortalInfo> defaultPortalInfo) {
+        boolean destinationIsDim = destWorld.dimension() == destination;
+        if (entity.level().dimension() != destination && !destinationIsDim) {
+            return null;
+        } else {
+            WorldBorder border = destWorld.getWorldBorder();
+            double minX = Math.max(-2.9999872E7D, border.getMinX() + 16.0D);
+            double minZ = Math.max(-2.9999872E7D, border.getMinZ() + 16.0D);
+            double maxX = Math.min(2.9999872E7D, border.getMaxX() - 16.0D);
+            double maxZ = Math.min(2.9999872E7D, border.getMaxZ() - 16.0D);
+            double coordinateDifference = DimensionType.getTeleportationScale(entity.level().dimensionType(), destWorld.dimensionType());
+            BlockPos blockpos = BlockPos.containing(Mth.clamp(entity.getX() * coordinateDifference, minX, maxX), entity.getY(), Mth.clamp(entity.getZ() * coordinateDifference, minZ, maxZ));
+            if(destination == Dimensions.SENTERIAN) {
+                return this.getOrMakePortal(destWorld, new BlockPos(0, 16, 0)).map((result) -> {
+                    BlockState blockstate = entity.level().getBlockState(entity.portalEntrancePos);
+                    Direction.Axis axis = Direction.Axis.X;
+                    BlockUtil.FoundRectangle rectangle = BlockUtil.getLargestRectangleAround(entity.portalEntrancePos, axis, 21, Direction.Axis.Y, 21, (pos) -> entity.level().getBlockState(pos) == blockstate);
+                    Vec3 vector3d = entity.getRelativePortalPosition(axis, rectangle);
+                    entity.teleportTo(3, 17, 0);
+                    return PortalShape.createPortalInfo(destWorld, result, axis, vector3d, entity, entity.getDeltaMovement(), entity.getYRot(), entity.getXRot());
+                }).orElse(null);
+            }
+        }
+        return null;
+    }
+
+    protected Optional<BlockUtil.FoundRectangle> getOrMakePortal(ServerLevel level, BlockPos pos) {
+        Optional<BlockUtil.FoundRectangle> existingPortal = this.getExistingPortal(pos);
+        if (existingPortal.isPresent()) {
+            return existingPortal;
+        } else {
+            return this.makePortalAt(level, pos);
+        }
+    }
+
+    protected Optional<BlockUtil.FoundRectangle> getOrMakeOverworldPortal(ServerLevel level, BlockPos pos) {
+        Optional<BlockUtil.FoundRectangle> existingPortal = this.getExistingPortal(pos);
+        if (existingPortal.isPresent()) {
+            return existingPortal;
+        } else {
+            return this.makeOverworldPortal(pos);
+        }
+    }
+
+    public Optional<BlockUtil.FoundRectangle> makeOverworldPortal(BlockPos pos) {
+        int x = pos.getX();
+        int y = pos.getY();
+        int z = pos.getZ();
+        Block portal_block = JBlocks.SENTERIAN_PORTAL.get();
+        Block portal_frame = JBlocks.SENTERIAN_PORTAL_FRAME.get();
+        this.level.setBlock(new BlockPos(x, y, z), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x, y, z + 1), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x, y, z + 2), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x + 1, y, z + 3), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x + 2, y, z + 3), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x + 3, y, z + 3), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x + 4, y, z), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x + 4, y, z + 1), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x + 4, y, z + 2), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x + 1, y, z - 1), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x + 2, y, z - 1), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
+        this.level.setBlock(new BlockPos(x + 3, y, z - 1), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
+
+        this.level.setBlock(new BlockPos(x + 1, y, z), portal_block.defaultBlockState(), 0);
+        this.level.setBlock(new BlockPos(x + 2, y, z), portal_block.defaultBlockState(), 0);
+        this.level.setBlock(new BlockPos(x + 3, y, z), portal_block.defaultBlockState(), 0);
+        this.level.setBlock(new BlockPos(x + 1, y, z + 1), portal_block.defaultBlockState(), 0);
+        this.level.setBlock(new BlockPos(x + 2, y, z + 1), portal_block.defaultBlockState(), 0);
+        this.level.setBlock(new BlockPos(x + 3, y, z + 1), portal_block.defaultBlockState(), 0);
+        this.level.setBlock(new BlockPos(x + 1, y, z + 2), portal_block.defaultBlockState(), 0);
+        this.level.setBlock(new BlockPos(x + 2, y, z + 2), portal_block.defaultBlockState(), 0);
+        this.level.setBlock(new BlockPos(x + 3, y, z + 2), portal_block.defaultBlockState(), 0);
+
+        return Optional.of(new BlockUtil.FoundRectangle(pos.immutable(), 1, 1));
+
+    }
+
+    private Optional<BlockUtil.FoundRectangle> makePortalAt(ServerLevel world, BlockPos pos) {
+        int x = pos.getX();
+        int y = pos.getY();
+        int z = pos.getZ();
+
         world.setBlock(new BlockPos(x, y, z), JBlocks.SENTERIAN_FLOOR.get().defaultBlockState(), 0);
         world.setBlock(new BlockPos(x, y, z + 1), JBlocks.SENTERIAN_FLOOR.get().defaultBlockState(), 0);
         world.setBlock(new BlockPos(x, y, z + 2), JBlocks.SENTERIAN_FLOOR.get().defaultBlockState(), 0);
@@ -1425,6 +1541,7 @@ public class SenterianTeleporter implements ITeleporter {
         world.setBlock(new BlockPos(x + 9, y + 6, z + 2), Blocks.AIR.defaultBlockState(), 0);
         world.setBlock(new BlockPos(x + 9, y + 6, z + 3), JBlocks.SENTERIAN_ROCK.get().defaultBlockState(), 0);
         generate2(world, x, y, z);
+        return Optional.of(new BlockUtil.FoundRectangle(pos.immutable(), 1, 1));
     }
 
     public void generate2(ServerLevel world, int x, int y, int z) {
