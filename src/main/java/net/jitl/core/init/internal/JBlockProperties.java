@@ -29,6 +29,7 @@ public class JBlockProperties {
             .requiresCorrectToolForDrops();
 
     public static BlockBehaviour.Properties GLOW_LAMP = BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_ORANGE)
             .strength(1.0F)
             .sound(SoundType.GLASS)
             .lightLevel((level) -> 15)

@@ -1,6 +1,5 @@
 package net.jitl.common.world.dimension;
 
-import net.jitl.common.block.portal.CorbaPortalFrameBlock;
 import net.jitl.common.block.portal.SenterianPortalFrameBlock;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.BlockUtil;
@@ -15,7 +14,6 @@ import net.minecraft.world.entity.ai.village.poi.PoiManager;
 import net.minecraft.world.entity.ai.village.poi.PoiRecord;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -95,48 +93,6 @@ public class SenterianTeleporter implements ITeleporter {
         } else {
             return this.makePortalAt(level, pos);
         }
-    }
-
-    protected Optional<BlockUtil.FoundRectangle> getOrMakeOverworldPortal(ServerLevel level, BlockPos pos) {
-        Optional<BlockUtil.FoundRectangle> existingPortal = this.getExistingPortal(pos);
-        if (existingPortal.isPresent()) {
-            return existingPortal;
-        } else {
-            return this.makeOverworldPortal(pos);
-        }
-    }
-
-    public Optional<BlockUtil.FoundRectangle> makeOverworldPortal(BlockPos pos) {
-        int x = pos.getX();
-        int y = pos.getY();
-        int z = pos.getZ();
-        Block portal_block = JBlocks.SENTERIAN_PORTAL.get();
-        Block portal_frame = JBlocks.SENTERIAN_PORTAL_FRAME.get();
-        this.level.setBlock(new BlockPos(x, y, z), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
-        this.level.setBlock(new BlockPos(x, y, z + 1), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
-        this.level.setBlock(new BlockPos(x, y, z + 2), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
-        this.level.setBlock(new BlockPos(x + 1, y, z + 3), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
-        this.level.setBlock(new BlockPos(x + 2, y, z + 3), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
-        this.level.setBlock(new BlockPos(x + 3, y, z + 3), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
-        this.level.setBlock(new BlockPos(x + 4, y, z), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
-        this.level.setBlock(new BlockPos(x + 4, y, z + 1), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
-        this.level.setBlock(new BlockPos(x + 4, y, z + 2), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
-        this.level.setBlock(new BlockPos(x + 1, y, z - 1), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
-        this.level.setBlock(new BlockPos(x + 2, y, z - 1), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
-        this.level.setBlock(new BlockPos(x + 3, y, z - 1), portal_frame.defaultBlockState().setValue(CorbaPortalFrameBlock.HAS_EYE, true), 0);
-
-        this.level.setBlock(new BlockPos(x + 1, y, z), portal_block.defaultBlockState(), 0);
-        this.level.setBlock(new BlockPos(x + 2, y, z), portal_block.defaultBlockState(), 0);
-        this.level.setBlock(new BlockPos(x + 3, y, z), portal_block.defaultBlockState(), 0);
-        this.level.setBlock(new BlockPos(x + 1, y, z + 1), portal_block.defaultBlockState(), 0);
-        this.level.setBlock(new BlockPos(x + 2, y, z + 1), portal_block.defaultBlockState(), 0);
-        this.level.setBlock(new BlockPos(x + 3, y, z + 1), portal_block.defaultBlockState(), 0);
-        this.level.setBlock(new BlockPos(x + 1, y, z + 2), portal_block.defaultBlockState(), 0);
-        this.level.setBlock(new BlockPos(x + 2, y, z + 2), portal_block.defaultBlockState(), 0);
-        this.level.setBlock(new BlockPos(x + 3, y, z + 2), portal_block.defaultBlockState(), 0);
-
-        return Optional.of(new BlockUtil.FoundRectangle(pos.immutable(), 1, 1));
-
     }
 
     private Optional<BlockUtil.FoundRectangle> makePortalAt(ServerLevel world, BlockPos pos) {
