@@ -1,7 +1,6 @@
 package net.jitl.common.world.gen.cloudia;
 
 import net.jitl.core.init.JITL;
-import net.jitl.core.init.internal.StructureRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
@@ -9,12 +8,14 @@ import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 
 public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
 
     public static CloudiaPiece[] TOP, BIG_TOP, BOTTOM, PATHS, TOP_PATHS;
+    public static final StructurePlaceSettings defaultSettings = new StructurePlaceSettings().setIgnoreEntities(false).setFinalizeEntities(true).setKeepLiquids(true);
 
     public CloudiaTerrain() {
         super(NoneFeatureConfiguration.CODEC);
@@ -88,7 +89,9 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
     }
 
     public static void placePiece(StructureTemplate structure, WorldGenLevel level, RandomSource random, BlockPos pos, Rotation rotation) {
-        structure.placeInWorld(level, pos, pos, StructureRegistry.defaultSettings.setRotation(rotation), random, 2);
+        boolean b = rotation == Rotation.CLOCKWISE_180;
+        pos = pos.offset(b || rotation == Rotation.CLOCKWISE_90 ? 15 : 0, 0, b || rotation == Rotation.COUNTERCLOCKWISE_90 ? 15 : 0);
+        structure.placeInWorld(level, pos, pos, defaultSettings.setRotation(rotation), random, 2);
     }
 
     private static class CloudiaPiece {

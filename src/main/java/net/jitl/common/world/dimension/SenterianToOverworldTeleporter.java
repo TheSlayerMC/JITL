@@ -165,8 +165,6 @@ public class SenterianToOverworldTeleporter implements ITeleporter {
         this.level.setBlock(new BlockPos(x + 1, y, z + 2), portal_block.defaultBlockState(), 0);
         this.level.setBlock(new BlockPos(x + 2, y, z + 2), portal_block.defaultBlockState(), 0);
         this.level.setBlock(new BlockPos(x + 3, y, z + 2), portal_block.defaultBlockState(), 0);*/
-
         return Optional.of(new BlockUtil.FoundRectangle(pos.immutable(), 1, 1));
-
     }
 }
