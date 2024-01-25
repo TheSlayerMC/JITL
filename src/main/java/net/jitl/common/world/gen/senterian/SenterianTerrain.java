@@ -44,13 +44,13 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
             StructureTemplateManager manager = level.getLevel().getServer().getStructureManager();
 
             entranceRoom = manager.getOrCreate(new ResourceLocation(JITL.MODID, "senterian/room/portal_room"));
-            doorway = manager.getOrCreate(new ResourceLocation(JITL.MODID, "senterian/doors/door_1"));
+            doorway = manager.getOrCreate(new ResourceLocation(JITL.MODID, "senterian/doors/door"));
 
             BlockState rock = JBlocks.SENTERIAN_ROCK.get().defaultBlockState();
             BlockState brick = JBlocks.SENTERIAN_BRICKS.get().defaultBlockState();
 
             doors = new StructureTemplate[] {
-                    manager.getOrCreate(new ResourceLocation(JITL.MODID, "senterian/doors/door_1")),
+                    manager.getOrCreate(new ResourceLocation(JITL.MODID, "senterian/doors/door")),
             };
 
             adaptiveRooms = new Room[] {

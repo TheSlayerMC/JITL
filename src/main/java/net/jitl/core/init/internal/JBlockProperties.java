@@ -28,13 +28,6 @@ public class JBlockProperties {
             .isRedstoneConductor(JBlockProperties::never)
             .requiresCorrectToolForDrops();
 
-    public static BlockBehaviour.Properties GLOW_LAMP = BlockBehaviour.Properties.of()
-            .mapColor(MapColor.COLOR_ORANGE)
-            .strength(1.0F)
-            .sound(SoundType.GLASS)
-            .lightLevel((level) -> 15)
-            .requiresCorrectToolForDrops();
-
     public static BlockBehaviour.Properties MUSHROOM_BLOCK = BlockBehaviour.Properties.of()
             .mapColor(MapColor.COLOR_BROWN)
             .strength(0.5F)
@@ -91,7 +84,12 @@ public class JBlockProperties {
     public static BlockBehaviour.Properties BREAKABLE_DUNGEON_LAMP = BlockBehaviour.Properties.of()
             .strength(1.5F)
             .lightLevel((level) -> 7)
-            .sound(SoundType.STONE);
+            .sound(SoundType.GLASS);
+
+    public static BlockBehaviour.Properties GLOW_BLOCK = BlockBehaviour.Properties.of()
+            .strength(1.5F)
+            .lightLevel((level) -> 15)
+            .sound(SoundType.GLASS);
 
     public static BlockBehaviour.Properties DIRT = BlockBehaviour.Properties.of()
             .strength(1F)

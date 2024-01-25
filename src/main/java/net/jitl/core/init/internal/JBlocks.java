@@ -216,9 +216,9 @@ public class JBlocks {
     public static final RegistryObject<SlabBlock> SMOOTH_CRIMSON_QUARTZ_SLAB = registerSlab("smooth_crimson_quartz_slab", "Smooth Crimson Quartz Slab", false, JBlockProperties.STONE);
     public static final RegistryObject<StairBlock> SMOOTH_CRIMSON_QUARTZ_STAIRS = registerStairs("smooth_crimson_quartz_stairs", "Smooth Crimson Quartz Stairs", SMOOTH_CRIMSON_QUARTZ, false, JBlockProperties.STONE);
 
-    public static final RegistryObject<Block> BLEEDSTONE_BLOCK = register("bleedstone_block", "Bleedstone Block", JBlockProperties.GLOW_LAMP);
-    public static final RegistryObject<Block> SMITHSTONE_BLOCK = register("smithstone_block", "Smithstone Block", JBlockProperties.GLOW_LAMP);
-    public static final RegistryObject<Block> SOULSTONE_BLOCK = register("soulstone_block", "Soulstone Block", JBlockProperties.GLOW_LAMP);
+    public static final RegistryObject<Block> BLEEDSTONE_BLOCK = register("bleedstone_block", "Bleedstone Block", JBlockProperties.GLOW_BLOCK);
+    public static final RegistryObject<Block> SMITHSTONE_BLOCK = register("smithstone_block", "Smithstone Block", JBlockProperties.GLOW_BLOCK);
+    public static final RegistryObject<Block> SOULSTONE_BLOCK = register("soulstone_block", "Soulstone Block", JBlockProperties.GLOW_BLOCK);
 
     public static final RegistryObject<Block> TALL_GREEN_GLOWSHROOM = registerDoublePlant("tall_green_glowshroom", "Tall Green Glowshroom", () -> new TallGlowshroomBlock(JBlockProperties.CAVE_GLOW_PLANT));
     public static final RegistryObject<Block> TALL_BLUE_GLOWSHROOM = registerDoublePlant("tall_blue_glowshroom", "Tall Blue Glowshroom", () -> new TallGlowshroomBlock(JBlockProperties.CAVE_GLOW_PLANT));
@@ -247,13 +247,12 @@ public class JBlocks {
 
     public static final RegistryObject<Block> NETHER_DUNGEON_BRICKS = register("nether_dungeon_bricks", "Nether Dungeon Bricks", JBlockProperties.STONE);
     public static final RegistryObject<Block> LARGE_NETHER_BRICKS = register("large_nether_bricks", "Large Nether Bricks", JBlockProperties.STONE);
-    public static final RegistryObject<Block> NETHIC_LAMP = register("nethic_lamp", "Nethic Lamp", JBlockProperties.GLOW_LAMP);
+    public static final RegistryObject<Block> NETHIC_LAMP = register("nethic_lamp", "Nethic Lamp", JBlockProperties.GLOW_BLOCK);
     public static final RegistryObject<StairBlock> NETHER_DUNGEON_BRICK_STAIRS = registerStairs("nether_dungeon_brick_stairs", "Nether Dungeon Brick Stairs", NETHER_DUNGEON_BRICKS, false, JBlockProperties.STONE);
     public static final RegistryObject<JFenceBlock> NETHER_DUNGEON_BRICK_FENCE = registerFence("nether_dungeon_brick_fence", "Nether Dungeon Brick Fence", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> MINI_GHAST_SPAWNER = register("mini_ghast_spawner", "Mini Ghast Spawner", MiniGhastSpawnerBlock::new, JBlockProperties.SPAWNER);
     public static final RegistryObject<Block> HELLBOT_SPAWNER = register("hellbot_spawner", "Hellbot Spawner", HellbotSpawnerBlock::new, JBlockProperties.SPAWNER);
 
-    //THESE
     public static final RegistryObject<IronBarsBlock> BOIL_CHAIN = registerPaneBlock("boil_chain", "Boil Chain", JBlockProperties.DUNGEON_BLOCK);
     public static final RegistryObject<IronBarsBlock> BRISON_BARS = registerPaneBlock("brison_bars", "Brison Bars", JBlockProperties.STONE);
     public static final RegistryObject<Block> BOIL_COBBLESTONE = register("boil_cobblestone", "Boiling Cobblestone", JBlockProperties.STONE);
@@ -269,7 +268,7 @@ public class JBlocks {
     public static final RegistryObject<Block> SMALL_BRISON_BRICKS = register("small_brison_bricks", "Small Brison Bricks", JBlockProperties.STONE);
     public static final RegistryObject<Block> RED_BRISON_BRICKS = register("red_brison_brick", "Red Brison Brick", JBlockProperties.STONE);
     public static final RegistryObject<Block> BRISON_STONE = register("brison_stone", "Brison Stone", JBlockProperties.STONE);
-    public static final RegistryObject<Block> BOILING_LAMP = register("boiling_lamp", "Boiling Lamp", JBlockProperties.GLOW_LAMP);
+    public static final RegistryObject<Block> BOILING_LAMP = register("boiling_lamp", "Boiling Lamp", JBlockProperties.GLOW_BLOCK);
     public static final RegistryObject<JFenceBlock> SIZZLING_POST = registerFence("sizzling_post", "Sizzling Post", false, JBlockProperties.WOOD);
     public static final RegistryObject<Block> SCORCHED_RUBBLE_BRICKS = register("scorched_rubble_bricks", "Scorched Rubble Bricks", JBlockProperties.STONE);
     public static final RegistryObject<StairBlock> SCORCHED_RUBBLE_BRICK_STAIRS = registerStairs("scorched_rubble_brick_stairs", "Scorched Rubble Brick Stairs", SCORCHED_RUBBLE_BRICKS, false, JBlockProperties.STONE);
@@ -461,8 +460,8 @@ public class JBlocks {
     public static final RegistryObject<Block> DEPTHS_PATH = registerPathBlock("depths_path", "Depths Path", () -> new JDirtPathBlock(JBlockProperties.PATH));
     public static final RegistryObject<Block> DEPTHS_DIRT = registerTerrainBlock("depths_dirt", "Depths Soil", JDirt::new);
     public static final RegistryObject<Block> DEPTHS_STONE = registerTerrainBlock("depths_stone", "Depths Stone", JBlockProperties.STONE);
-    public static final RegistryObject<Block> DEPTHS_LAMP = register("depths_lamp", "Depths Lamp", JBlockProperties.GLOW_LAMP);
-    public static final RegistryObject<Block> DEPTHS_LIGHT = register("depths_light", "Depths Light", JBlockProperties.GLOW_LAMP);
+    public static final RegistryObject<Block> DEPTHS_LAMP = register("depths_lamp", "Depths Lamp", JBlockProperties.GLOW_BLOCK);
+    public static final RegistryObject<Block> DEPTHS_LIGHT = register("depths_light", "Depths Light", JBlockProperties.GLOW_BLOCK);
     public static final RegistryObject<RotatedPillarBlock> DEPTHS_LOG = registerPillar("depths_log", "Depths Log", true, JBlockProperties.WOOD);
     public static final RegistryObject<Block> DEPTHS_LEAVES = registerTerrainBlock("depths_leaves", "Depths Leaves", JBlockProperties.LUMINESCENT_LEAVES);
     public static final RegistryObject<Block> DEPTHS_SAPLING = registerCrossBlock("depths_sapling", "Depths Sapling", () -> new JSaplingBlock(JTreeGrower.DEPTHS_TREE_GROWER, JBlockProperties.FLOWER));
@@ -475,7 +474,7 @@ public class JBlocks {
     public static final RegistryObject<PressurePlateBlock> DEPTHS_PRESSURE_PLATE = registerPressurePlate("depths_pressure_plate", "Depths Pressure Plate", true, JBlockProperties.WOOD);
     public static final RegistryObject<FenceGateBlock> DEPTHS_FENCE_GATE = registerFenceGate("depths_fence_gate", "Depths Fence Gate", true, JBlockProperties.WOOD);
     public static final RegistryObject<JFenceBlock> DEPTHS_FENCE = registerFence("depths_fence", "Depths Fence", true, JBlockProperties.WOOD);
-    public static final RegistryObject<Block> DEPTHS_CRYSTAL = registerAttachedCrossBlock("depths_crystal", "Depths Crystal", () -> new AttachedBlock(JBlockProperties.GLOW_LAMP.noCollission().noOcclusion()));
+    public static final RegistryObject<Block> DEPTHS_CRYSTAL = registerAttachedCrossBlock("depths_crystal", "Depths Crystal", () -> new AttachedBlock(JBlockProperties.GLOW_BLOCK.noCollission().noOcclusion()));
     public static final RegistryObject<Block> DARK_BRICK = register("dark_brick", "Dark Brick", JBlockProperties.STONE);
     public static final RegistryObject<Block> DARK_FLOOR = register("dark_floor", "Dark Floor", JBlockProperties.STONE);
     public static final RegistryObject<Block> DARK_SHINGLE = register("dark_shingle", "Dark Shingle", JBlockProperties.STONE);
@@ -506,7 +505,7 @@ public class JBlocks {
     public static final RegistryObject<RotatedPillarBlock> CORBA_PLILLAR = registerPillar("corba_pillar", "Corba Pillar", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> TAINTED_MUD = registerTerrainBlock("tainted_mud", "Tainted Mud", JBlockProperties.DIRT);
     public static final RegistryObject<Block> DRIED_MUD = registerTerrainBlock("dried_mud", "Dried Mud", JBlockProperties.DIRT);
-    public static final RegistryObject<Block> CORBA_LAMP = register("corba_lamp", "Corba Lamp", JBlockProperties.GLOW_LAMP);
+    public static final RegistryObject<Block> CORBA_LAMP = register("corba_lamp", "Corba Lamp", JBlockProperties.GLOW_BLOCK);
     public static final RegistryObject<RotatedPillarBlock> BOGWOOD_LOG = registerPillar("bogwood_log", "Bogwood Log", true, JBlockProperties.WOOD);
     public static final RegistryObject<Block> BOGWOOD_LEAVES = registerTintedLeavesBlock("bogwood_leaves", "Bogwood Leaves", JBlockProperties.LEAVES);
     public static final RegistryObject<Block> BOGWOOD_SAPLING = registerCrossBlock("bogwood_sapling", "Bogwood Sapling", () -> new JSaplingBlock(JTreeGrower.BOGWOOD_TREE_GROWER, JBlockProperties.FLOWER));
@@ -563,7 +562,7 @@ public class JBlocks {
     public static final RegistryObject<Block> TERRAMUSHROOM = registerCrossBlock("terramushroom", "Terranian Shroom", () -> new TallGrassBlock(JBlockProperties.FLOWER));//makes big terrashroom
     public static final RegistryObject<Block> TALL_TERRAMUSHROOM = registerDoublePlant("tall_terramushroom", "Tall Terranian Shroom", () -> new JDoublePlantBlock(JBlockProperties.GLOW_FLOWER));
     public static final RegistryObject<Block> TERRANIAN_FLOWER = registerCrossBlock("terranian_flower", "Terranian Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
-    public static final RegistryObject<Block> TERRANIAN_LAMP = register("terrania_lamp", "Terrania Lamp", JBlockProperties.GLOW_LAMP);
+    public static final RegistryObject<Block> TERRANIAN_LAMP = register("terrania_lamp", "Terrania Lamp", JBlockProperties.GLOW_BLOCK);
     public static final RegistryObject<Block> ENCHANTED_SHROOMS_SMALL = registerModeledBlock("enchanted_shrooms_small", "Enchanted Shrooms", () -> new TallGrassBlock(JBlockProperties.GLOW_FLOWER));
     public static final RegistryObject<Block> ENCHANTED_SHROOMS_TALL = registerModeledBlock("enchanted_shroom_tall", "Tall Enchanted Shroom",  () -> new JDoublePlantBlock(JBlockProperties.GLOW_FLOWER));
     public static final RegistryObject<Block> TERRAMUSHROOM_BLOCK_PINK = registerMushroomBlock("terrashroom_block_pink", "Terrashroom Block", () -> new HugeMushroomBlock(JBlockProperties.MUSHROOM_BLOCK));
@@ -583,7 +582,7 @@ public class JBlocks {
     public static final RegistryObject<JWallBlock> CLOUDIA_WALL = registerWallBlock("cloudia_wall", "Cloudia Wall", JBlockProperties.STONE);
     public static final RegistryObject<Block> CLOUDIA_TILE = register("cloudia_tile", "Cloudia Tile", JBlockProperties.STONE);
     public static final RegistryObject<Block> CLOUDIA_LEAVES = register("cloudia_leaves", "Cloudia Leaves", JBlockProperties.LUMINESCENT_LEAVES);
-    public static final RegistryObject<Block> CLOUDIA_LAMP = register("cloudia_lamp", "Cloudia Lamp", JBlockProperties.GLOW_LAMP);
+    public static final RegistryObject<Block> CLOUDIA_LAMP = register("cloudia_lamp", "Cloudia Lamp", JBlockProperties.GLOW_BLOCK);
     public static final RegistryObject<Block> CLOUDIA_COBBLESTONE = register("cloudia_cobblestone", "Cloudia Cobblestone", JBlockProperties.STONE);
     public static final RegistryObject<StairBlock> CLOUDIA_BRICK_STAIRS = registerStairs("cloudia_brick_stairs", "Cloudia Brick Stairs", CLOUDIA_BRICK, false, JBlockProperties.STONE);
     public static final RegistryObject<StairBlock> CLOUDIA_TILE_STAIRS = registerStairs("cloudia_tile_stairs", "Cloudia Tile Stairs",CLOUDIA_TILE, false, JBlockProperties.STONE);
@@ -603,9 +602,9 @@ public class JBlocks {
     public static final RegistryObject<Block> SENTERIAN_FLOOR = register("senterian_floor", "Sentarian Floor", JBlockProperties.STONE);
     public static final RegistryObject<Block> SENTERIAN_ROCK = register("senterian_rock", "Sentarian Rock", JBlockProperties.STONE);
     public static final RegistryObject<Block> SENTERIAN_GLASS = register("senterian_glass", "Sentarian Glass", () -> new TransparentBlock(JBlockProperties.GLASS), JBlockProperties.GLASS);
-    public static final RegistryObject<Block> SENTERIAN_GUARDIAN_LAMP = register("senterian_guardian_lamp", "Sentarian Guardian Lamp", JBlockProperties.GLOW_LAMP);
-    public static final RegistryObject<Block> SENTERIAN_LIGHT_LAMP = register("senterian_light_lamp", "Sentarian Light Lamp", JBlockProperties.GLOW_LAMP);
-    public static final RegistryObject<Block> SENTERIAN_MELLOW_LAMP = register("senterian_mellow_lamp", "Sentarian Mellow Lamp", JBlockProperties.GLOW_LAMP);
+    public static final RegistryObject<Block> SENTERIAN_GUARDIAN_LAMP = register("senterian_guardian_lamp", "Sentarian Guardian Lamp", JBlockProperties.GLOW_BLOCK);
+    public static final RegistryObject<Block> SENTERIAN_LIGHT_LAMP = register("senterian_light_lamp", "Sentarian Light Lamp", JBlockProperties.GLOW_BLOCK);
+    public static final RegistryObject<Block> SENTERIAN_MELLOW_LAMP = register("senterian_mellow_lamp", "Sentarian Mellow Lamp", JBlockProperties.GLOW_BLOCK);
     public static final RegistryObject<JFenceBlock> SENTERIAN_POST = registerFence("senterian_post", "Senterian Post", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> SENTRY_LOCK = registerRotatableBlock("sentry_lock", "Sentry Lock", LockBlock::new, false);
 
@@ -661,7 +660,7 @@ public class JBlocks {
 
 
     private static void checkForPickaxeableBlocks(BlockBehaviour.Properties props, String name) {
-        if(props == JBlockProperties.STONE || props == JBlockProperties.GLOW_LAMP || props == JBlockProperties.BREAKABLE_DUNGEON_LAMP || props == JBlockProperties.CRYSTAL
+        if(props == JBlockProperties.STONE || props == JBlockProperties.GLOW_BLOCK || props == JBlockProperties.BREAKABLE_DUNGEON_LAMP || props == JBlockProperties.CRYSTAL
                 || props == JBlockProperties.FIRE_STONE || props == JBlockProperties.FURNACE || props == JBlockProperties.ICE
                 || props == JBlockProperties.VOLCANIC_BLOCK || props == JBlockProperties.SPAWNER || props == JBlockProperties.ROCKITE_SPAWNER || props == JBlockProperties.GRINDSTONE
                 || props == JBlockProperties.GLASS || props == JBlockProperties.DUNGEON_BLOCK || props == JBlockProperties.LUNIUM_ORE_PROPS || props == JBlockProperties.CHEST
