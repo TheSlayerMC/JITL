@@ -112,11 +112,11 @@ public class SenterianToOverworldTeleporter implements ITeleporter {
             double finalVar2 = var28;
             double finalVar21 = var24;
             return this.getOrMakeOverworldPortal(entity, destWorld, new BlockPos((int) var28, (int) var22, (int) var24)).map((result) -> {
-                BlockState blockstate = entity.level().getBlockState(entity.portalEntrancePos);
+                BlockState blockstate = entity.level().getBlockState(entrancePos);
                 Direction.Axis axis = Direction.Axis.X;
-                BlockUtil.FoundRectangle rectangle = BlockUtil.getLargestRectangleAround(entity.portalEntrancePos, axis, 21, Direction.Axis.Y, 21, (pos) -> entity.level().getBlockState(pos) == blockstate);
+                BlockUtil.FoundRectangle rectangle = BlockUtil.getLargestRectangleAround(entrancePos, axis, 21, Direction.Axis.Y, 21, (pos) -> entity.level().getBlockState(pos) == blockstate);
                 Vec3 vector3d = entity.getRelativePortalPosition(axis, rectangle);
-                entity.teleportTo((int) finalVar2, (int) var22, (int) finalVar21);
+                //entity.teleportTo((int) finalVar2, (int) var22, (int) finalVar21);
                 return PortalShape.createPortalInfo(destWorld, result, axis, vector3d, entity, entity.getDeltaMovement(), entity.getYRot(), entity.getXRot());
             }).orElse(null);
         }

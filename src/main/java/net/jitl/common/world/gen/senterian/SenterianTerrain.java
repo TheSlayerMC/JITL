@@ -19,6 +19,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
 
@@ -54,27 +55,27 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
             };
 
             adaptiveRooms = new Room[] {
-                    new Room(manager, "senterian/room/room_1", brick)
+                    new Room(manager, "senterian/room/room_1", brick)//
             };
 
             crossroads = new Room[] {
-                    new Room(manager, "senterian/hallways/cross_1", brick)
+                    new Room(manager, "senterian/hallways/cross_1", brick)//
             };
             deadends = new Room[] {
-                    new Room(manager, "senterian/ends/deadend_1", brick)
+                    new Room(manager, "senterian/ends/deadend_1", brick)//
             };
             hallways = new Room[] {
-                    new Room(manager, "senterian/hallways/straight", brick)
+                    new Room(manager, "senterian/hallways/hallway_straight", brick)//
             };
             corners = new Room[] {
-                    new Room(manager, "senterian/hallways/corner_1", brick)
+                    new Room(manager, "senterian/hallways/corner_1", brick)//
             };
             verticalRooms = new VerticalRoom[] {
                     new VerticalRoom(manager, "senterian/tall/staircase_hallway", brick, null),
-                    new VerticalRoom(manager, "senterian/tall/staircase_1", brick, null)
+                    new VerticalRoom(manager, "senterian/tall/staircase_1", brick, null)//
             };
             bigRooms = new BigRoom[] {
-                    new BigRoom(manager, "senterian/big/altar_1"),
+                    new BigRoom(manager, "senterian/big/altar_1"),//
                     new BigRoom(manager, "senterian/big/altar_1"),
                     new BigRoom(manager, "senterian/big/altar_1")
 
@@ -155,7 +156,8 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
     }
     public static boolean wantsBigRoom(int chunkX, int y, int chunkZ) {
         int xPart = chunkX % 2, zPart = chunkZ % 2;
-        return getDoorAmount(chunkX, y, chunkZ) == 0
+        Random rand = new Random();
+        return rand.nextInt(2) == 0 && getDoorAmount(chunkX, y, chunkZ) == 0
                 || getDoorAmount(chunkX + 1 + ((chunkX > -1 ? -2 : 2) * xPart), y, chunkZ) == 0
                 || getDoorAmount(chunkX, y, chunkZ + 1 + ((chunkZ > -1 ? -2 : 2) * zPart)) == 0
                 || getDoorAmount(chunkX + 1 + ((chunkX > -1 ? -2 : 2) * xPart), y, chunkZ + 1 + ((chunkZ > -1 ? -2 : 2) * zPart)) == 0;
