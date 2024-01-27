@@ -55,27 +55,30 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
             };
 
             adaptiveRooms = new Room[] {
-                    new Room(manager, "senterian/room/room_1", brick)//
+                    new Room(manager, "senterian/room/room_1", brick),
+                    new Room(manager, "senterian/room/maze_1", brick)
             };
 
             crossroads = new Room[] {
-                    new Room(manager, "senterian/hallways/cross_1", brick)//
+                    new Room(manager, "senterian/hallways/cross_1", brick),
+                    new Room(manager, "senterian/hallways/cross_2", brick)
             };
             deadends = new Room[] {
-                    new Room(manager, "senterian/ends/deadend_1", brick)//
+                    new Room(manager, "senterian/ends/deadend_1", brick)
             };
             hallways = new Room[] {
-                    new Room(manager, "senterian/hallways/hallway_straight", brick)//
+                    new Room(manager, "senterian/hallways/hallway_straight", brick)
             };
             corners = new Room[] {
-                    new Room(manager, "senterian/hallways/corner_1", brick)//
+                    new Room(manager, "senterian/hallways/corner_1", brick)
             };
             verticalRooms = new VerticalRoom[] {
-                    new VerticalRoom(manager, "senterian/tall/staircase_hallway", brick, null),
-                    new VerticalRoom(manager, "senterian/tall/staircase_1", brick, null)//
+                    new VerticalRoom(manager, "senterian/tall/staircase_hallway", brick, doors[0]),
+                    new VerticalRoom(manager, "senterian/tall/staircase_1", brick, doors[0]),
+                    new VerticalRoom(manager, "senterian/tall/tall_loot_1", brick, null)
             };
             bigRooms = new BigRoom[] {
-                    new BigRoom(manager, "senterian/big/altar_1"),//
+                    new BigRoom(manager, "senterian/big/altar_1"),
                     new BigRoom(manager, "senterian/big/altar_1"),
                     new BigRoom(manager, "senterian/big/altar_1")
 
@@ -243,7 +246,8 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
             boolean b = wallBlock != null;
             if(b) {
                 genWalls(level, random, pos, wallBlock, roomShape, null);
-                genWalls(level, random, pos.offset(0, 8, 0), wallBlock, upperRoomShape, door);
+                if(door != null)
+                    genWalls(level, random, pos.offset(0, 8, 0), wallBlock, upperRoomShape, door);
             }
             placeRoom(room, level, random, pos, rotation, b ? (byte)1 : 0);
         }
