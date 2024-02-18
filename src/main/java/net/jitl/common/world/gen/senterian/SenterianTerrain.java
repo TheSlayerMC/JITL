@@ -18,7 +18,6 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
-import javax.annotation.Nullable;
 import java.util.Random;
 
 public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
@@ -26,8 +25,6 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
     public static final StructurePlaceSettings defaultSettings = new StructurePlaceSettings().setIgnoreEntities(false).setFinalizeEntities(true).setKeepLiquids(true);
     public static NormalNoise dungeonNoise;
     public static long seed;
-    public static StructureTemplate doorway, entranceRoom;
-    public static StructureTemplate[] doors;
     public static Room[] adaptiveRooms, corners, crossroads, deadends, hallways;
     public static VerticalRoom[] verticalRooms;
     public static BigRoom[] bigRooms;
@@ -41,41 +38,30 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
 
     @Override
     public boolean place(NoneFeatureConfiguration c, WorldGenLevel level, ChunkGenerator g, RandomSource random, BlockPos pos) {
-        if(doorway == null) {
             StructureTemplateManager manager = level.getLevel().getServer().getStructureManager();
 
-            entranceRoom = manager.getOrCreate(new ResourceLocation(JITL.MODID, "senterian/room/portal_room"));
-            doorway = manager.getOrCreate(new ResourceLocation(JITL.MODID, "senterian/doors/door"));
-
-            BlockState rock = JBlocks.SENTERIAN_ROCK.get().defaultBlockState();
-            BlockState brick = JBlocks.SENTERIAN_BRICKS.get().defaultBlockState();
-
-            doors = new StructureTemplate[] {
-                    manager.getOrCreate(new ResourceLocation(JITL.MODID, "senterian/doors/door")),
-            };
 
             adaptiveRooms = new Room[] {
-                    new Room(manager, "senterian/room/room_1", brick),
-                    new Room(manager, "senterian/room/maze_1", brick)
+                    new Room(manager, "senterian/room/room_1"),
+                    new Room(manager, "senterian/room/maze_1")
             };
-
             crossroads = new Room[] {
-                    new Room(manager, "senterian/hallways/cross_1", brick),
-                    new Room(manager, "senterian/hallways/cross_2", brick)
+                    new Room(manager, "senterian/hallways/cross_1"),
+                    new Room(manager, "senterian/hallways/cross_2")
             };
             deadends = new Room[] {
-                    new Room(manager, "senterian/ends/deadend_1", brick)
+                    new Room(manager, "senterian/ends/deadend_1")
             };
             hallways = new Room[] {
-                    new Room(manager, "senterian/hallways/hallway_straight", brick)
+                    new Room(manager, "senterian/hallways/hallway_straight")
             };
             corners = new Room[] {
-                    new Room(manager, "senterian/hallways/corner_1", brick)
+                    new Room(manager, "senterian/hallways/corner_1")
             };
             verticalRooms = new VerticalRoom[] {
-                    new VerticalRoom(manager, "senterian/tall/staircase_hallway", brick, doors[0]),
-                    new VerticalRoom(manager, "senterian/tall/staircase_1", brick, doors[0]),
-                    new VerticalRoom(manager, "senterian/tall/tall_loot_1", brick, null)
+                    new VerticalRoom(manager, "senterian/tall/staircase_hallway"),
+                    new VerticalRoom(manager, "senterian/tall/staircase_1"),
+                    new VerticalRoom(manager, "senterian/tall/tall_loot_1")
             };
             bigRooms = new BigRoom[] {
                     new BigRoom(manager, "senterian/big/altar_1"),
@@ -83,7 +69,6 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
                     new BigRoom(manager, "senterian/big/altar_1")
 
             };
-        }
         long newSeed = level.getSeed();
         if(seed != newSeed) {
             dungeonNoise = NormalNoise.create(new XoroshiroRandomSource(newSeed), 1, 1.5);
@@ -125,21 +110,16 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
         return true;
     }
 
-    private void genEntrance(WorldGenLevel level, RandomSource random, BlockPos pos, byte roomShape) {
-        placeStructure(entranceRoom, level, random, pos.offset(1, 0, 1), Rotation.NONE);
-        genWalls(level, random, pos, JBlocks.SENTERIAN_BRICKS.get().defaultBlockState(), roomShape, null);
-    }
-
     private void genVertical(WorldGenLevel level, RandomSource random, BlockPos pos, byte roomShape, byte upperRoomShape, byte doorAmount) {
         if(doorAmount == 2) {
             if(getsNorthEntrance(roomShape)) {
-                if(hasEastDoor(roomShape)) verticalRooms[random.nextInt(verticalRooms.length)].gen(level, random, pos, Rotation.NONE, roomShape, upperRoomShape);
-                else if(getsWestEntrance(roomShape)) verticalRooms[random.nextInt(verticalRooms.length)].gen(level, random, pos, Rotation.COUNTERCLOCKWISE_90, roomShape, upperRoomShape);
-                else verticalRooms[random.nextInt(verticalRooms.length)].gen(level, random, pos, Rotation.NONE, roomShape, upperRoomShape);
+                if(hasEastDoor(roomShape)) verticalRooms[random.nextInt(verticalRooms.length)].gen(level, random, pos, Rotation.NONE);
+                else if(getsWestEntrance(roomShape)) verticalRooms[random.nextInt(verticalRooms.length)].gen(level, random, pos, Rotation.COUNTERCLOCKWISE_90);
+                else verticalRooms[random.nextInt(verticalRooms.length)].gen(level, random, pos, Rotation.NONE);
             } else if(hasEastDoor(roomShape)) {
-                if(hasSouthDoor(roomShape)) verticalRooms[random.nextInt(verticalRooms.length)].gen(level, random, pos, Rotation.CLOCKWISE_90, roomShape, upperRoomShape);
-                else verticalRooms[random.nextInt(verticalRooms.length)].gen(level, random, pos, Rotation.CLOCKWISE_90, roomShape, upperRoomShape);
-            } else verticalRooms[random.nextInt(verticalRooms.length)].gen(level, random, pos, Rotation.CLOCKWISE_180, roomShape, upperRoomShape);
+                if(hasSouthDoor(roomShape)) verticalRooms[random.nextInt(verticalRooms.length)].gen(level, random, pos, Rotation.CLOCKWISE_90);
+                else verticalRooms[random.nextInt(verticalRooms.length)].gen(level, random, pos, Rotation.CLOCKWISE_90);
+            } else verticalRooms[random.nextInt(verticalRooms.length)].gen(level, random, pos, Rotation.CLOCKWISE_180);
         } //else verticalRooms[1 + random.nextInt(3)].gen(level, random, pos, Rotation.getRandom(random), roomShape, upperRoomShape);
     }
     private void genRegular(WorldGenLevel level, RandomSource random, BlockPos pos, byte roomShape, byte doorAmount) {
@@ -182,40 +162,18 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
         return getDoorValue(chunkX, y, chunkZ) % 2 == 1;
     }
     public static boolean hasSouthDoor(byte doorValue) {return (doorValue / 2) % 2 == 1;}
-    public static boolean hasSouthDoor(int chunkX, int y, int chunkZ) {
-        return (getDoorValue(chunkX, y, chunkZ) / 2) % 2 == 1;
-    }
+
     public static byte getDoorValue(int chunkX, int y, int chunkZ) {
         byte value = 0;
         for(byte steps = 0; value == 0 && steps < 16; steps++) value = (byte) (Math.abs(dungeonNoise.getValue(chunkX - (111 * steps), y + (112 * steps), chunkZ - (113 * steps))) * 15.7);
         return value;
     }
-    public static void placeRoom(StructureTemplate room, WorldGenLevel level, RandomSource random, BlockPos pos, Rotation rotation, byte getsWalls) {
+    public static void placeRoom(StructureTemplate room, WorldGenLevel level, RandomSource random, BlockPos pos, Rotation rotation) {
         boolean b = rotation == Rotation.CLOCKWISE_180;
-        pos = pos.offset(b || rotation == Rotation.CLOCKWISE_90 ? 15 - getsWalls : getsWalls, 0, b || rotation == Rotation.COUNTERCLOCKWISE_90 ? 15 - getsWalls : getsWalls);
+        pos = pos.offset(b || rotation == Rotation.CLOCKWISE_90 ? 15 : 0, 0, b || rotation == Rotation.COUNTERCLOCKWISE_90 ? 15 : 0);
         room.placeInWorld(level, pos, pos, defaultSettings.setRotation(rotation), random, 2);
     }
     public static void setBlock(WorldGenLevel level, BlockPos pos, BlockState block) {level.setBlock(pos, block, 3);}
-    public static void genDoors(WorldGenLevel level, RandomSource random, BlockPos pos, byte roomShape, @Nullable StructureTemplate door) {
-        boolean b = door == null;
-        if(hasEastDoor(roomShape)) placeStructure(b ? (random.nextInt(25) == 0 ? doors[random.nextInt(doors.length)] : doorway) : door, level, random, pos.offset(15, 1, 6), Rotation.CLOCKWISE_90);
-        if(hasSouthDoor(roomShape)) placeStructure(b ? (random.nextInt(25) == 0 ? doors[random.nextInt(doors.length)] : doorway) : door, level, random, pos.offset(9, 1, 15), Rotation.CLOCKWISE_180);
-        if(getsWestEntrance(roomShape)) placeStructure(b ? (random.nextInt(25) == 0 ? doors[random.nextInt(doors.length)] : doorway) : door, level, random, pos.offset(0, 1, 9), Rotation.COUNTERCLOCKWISE_90);
-        if(getsNorthEntrance(roomShape)) placeStructure(b ? (random.nextInt(25) == 0 ? doors[random.nextInt(doors.length)] : doorway) : door, level, random, pos.offset(6, 1, 0), Rotation.NONE);
-    }
-    public static void genWalls(WorldGenLevel level, RandomSource random, BlockPos pos, BlockState wallBlock, byte roomShape, @Nullable StructureTemplate door) {
-        for(int y = 0; y < 8; y++) {
-            for(int x = 0; x < 16; x++) {
-                setBlock(level, pos.offset(x, y, 0), wallBlock);
-                setBlock(level, pos.offset(x, y, 15), wallBlock);
-            }
-            for(int z = 1; z < 15; z++) {
-                setBlock(level, pos.offset(0, y, z), wallBlock);
-                setBlock(level, pos.offset(15, y, z), wallBlock);
-            }
-        }
-        genDoors(level, random, pos, roomShape, door);
-    }
 
     public static void placeStructure(StructureTemplate structure, WorldGenLevel level, RandomSource random, BlockPos pos, Rotation rotation) {
         structure.placeInWorld(level, pos, pos, defaultSettings.copy().setRotation(rotation), random, 2);
@@ -223,33 +181,21 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
 
     class Room {
         public final StructureTemplate room;
-        public final BlockState wallBlock;
-        public Room(StructureTemplateManager manager, String location, @Nullable BlockState wallBlock) {
+        public Room(StructureTemplateManager manager, String location) {
             room = manager.getOrCreate(new ResourceLocation(JITL.MODID, location));
-            this.wallBlock = wallBlock;
         }
         public void gen(WorldGenLevel level, RandomSource random, BlockPos pos, Rotation rotation, byte roomShape) {
-            boolean b = wallBlock != null;
-            if(b) genWalls(level, random, pos, wallBlock, roomShape, null);
-            placeRoom(room, level, random, pos, rotation, b ? (byte)1 : 0);
+            placeRoom(room, level, random, pos, rotation);
         }
     }
     class VerticalRoom {
-        public final StructureTemplate room, door;
-        public final BlockState wallBlock;
-        public VerticalRoom(StructureTemplateManager manager, String location, @Nullable BlockState wallBlock, @Nullable StructureTemplate upperRoomDoor) {
+        public final StructureTemplate room;
+        public VerticalRoom(StructureTemplateManager manager, String location) {
             room = manager.getOrCreate(new ResourceLocation(JITL.MODID, location));
-            this.wallBlock = wallBlock;
-            this.door = upperRoomDoor;
         }
-        public void gen(WorldGenLevel level, RandomSource random, BlockPos pos, Rotation rotation, byte roomShape, byte upperRoomShape) {
-            boolean b = wallBlock != null;
-            if(b) {
-                genWalls(level, random, pos, wallBlock, roomShape, null);
-                if(door != null)
-                    genWalls(level, random, pos.offset(0, 8, 0), wallBlock, upperRoomShape, door);
-            }
-            placeRoom(room, level, random, pos, rotation, b ? (byte)1 : 0);
+        public void gen(WorldGenLevel level, RandomSource random, BlockPos pos, Rotation rotation) {
+
+            placeRoom(room, level, random, pos, rotation);
         }
     }
     class BigRoom {
@@ -259,11 +205,11 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
         }
         public void gen(WorldGenLevel level, RandomSource random, BlockPos pos, int xPart, int zPart) {
             if(xPart == 0) {
-                if(zPart == 0) placeRoom(room, level, random, pos, Rotation.NONE, (byte)0);
-                else placeRoom(room, level, random, pos, Rotation.COUNTERCLOCKWISE_90, (byte)0);
+                if(zPart == 0) placeRoom(room, level, random, pos, Rotation.NONE);
+                else placeRoom(room, level, random, pos, Rotation.COUNTERCLOCKWISE_90);
             } else {
-                if(zPart == 0) placeRoom(room, level, random, pos, Rotation.CLOCKWISE_90, (byte)0);
-                else placeRoom(room, level, random, pos, Rotation.CLOCKWISE_180, (byte)0);
+                if(zPart == 0) placeRoom(room, level, random, pos, Rotation.CLOCKWISE_90);
+                else placeRoom(room, level, random, pos, Rotation.CLOCKWISE_180);
             }
         }
     }
