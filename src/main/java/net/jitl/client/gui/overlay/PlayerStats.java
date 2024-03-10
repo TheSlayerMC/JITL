@@ -139,7 +139,6 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         matrixStack.blit(BACKGROUND, k + x - 4, l + y - 4, 0, 216, 115, 40);//Draws the rectangle bg for the sprites
         matrixStack.pose().popPose();
 
-        matrixStack.pose().pushPose();
         RenderSystem.setShader(GameRenderer::getPositionTexColorNormalShader);
         RenderSystem.setShaderTexture(0, this.KNOWLEDGE_SPRITE);
 

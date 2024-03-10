@@ -329,13 +329,13 @@ public class JEntities {
         setDefaultMonsterSpawn(event, DEPTHS_HUNTER_TYPE);
 
         setDefaultSpawn(event, ESKIMO_TYPE);
-        setDefaultSpawn(event, ICE_GOLEM_TYPE);
-        setDefaultSpawn(event, FROZEN_TROLL_TYPE);
-        setDefaultSpawn(event, FROZEN_FROSTBITER_TYPE);
-        setDefaultSpawn(event, PERMAFRAUST_TYPE);
-        setDefaultSpawn(event, SHIVERING_BUSHWALKER_TYPE);
-        setDefaultSpawn(event, SHIVERING_SHRIEKER_TYPE);
-        setDefaultSpawn(event, CAPYBARA_TYPE);
+        setDefaultMonsterSpawn(event, ICE_GOLEM_TYPE);
+        setDefaultMonsterSpawn(event, FROZEN_TROLL_TYPE);
+        setDefaultMonsterSpawn(event, FROZEN_FROSTBITER_TYPE);
+        setDefaultMonsterSpawn(event, PERMAFRAUST_TYPE);
+        setDefaultMonsterSpawn(event, SHIVERING_BUSHWALKER_TYPE);
+        setDefaultMonsterSpawn(event, SHIVERING_SHRIEKER_TYPE);
+        setDefaultMonsterSpawn(event, CAPYBARA_TYPE);
 
         setDefaultSpawn(event, CORBANIAN_MOLLUSK_TYPE);
 

@@ -23,8 +23,6 @@ public class JRecipeRegistry extends JRecipeProvider {
         buildQuartzTypes(recipeConsumer);
         buildSmithingRecipes(recipeConsumer);
     }
-    
-    
 
     public void buildBlockRecipes(RecipeOutput recipeConsumer) {
         add3x3Recipe(recipeConsumer, JItems.GREEN_GEM.get(), JBlocks.GREEN_GEM_BLOCK.get());

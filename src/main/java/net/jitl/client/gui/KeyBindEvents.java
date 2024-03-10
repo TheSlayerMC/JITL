@@ -1,7 +1,7 @@
 package net.jitl.client.gui;
 
 import com.mojang.blaze3d.platform.InputConstants;
-import net.jitl.client.gui.overlay.PlayerStats;
+import net.jitl.client.gui.overlay.JRecipeBookGUI;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
@@ -85,7 +85,7 @@ public class KeyBindEvents {
 
             if (action == GLFW.GLFW_PRESS) {
                 if (key == keyStats.getKey()) {
-                    Minecraft.getInstance().setScreen(new PlayerStats(Minecraft.getInstance().player.getInventory()));
+                    Minecraft.getInstance().setScreen(new JRecipeBookGUI(Minecraft.getInstance().player.getInventory()));
 
                 } else {
                     //handleIsometricCameraKeys(key);
