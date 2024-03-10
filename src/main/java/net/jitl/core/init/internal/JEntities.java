@@ -18,8 +18,7 @@ import net.jitl.common.entity.euca.*;
 import net.jitl.common.entity.euca.npc.AlloyMender;
 import net.jitl.common.entity.euca.npc.Crypian;
 import net.jitl.common.entity.euca.npc.RoyalKing;
-import net.jitl.common.entity.frozen.Eskimo;
-import net.jitl.common.entity.frozen.FrozenGuardian;
+import net.jitl.common.entity.frozen.*;
 import net.jitl.common.entity.misc.Sentacoin;
 import net.jitl.common.entity.nether.*;
 import net.jitl.common.entity.overworld.*;
@@ -140,7 +139,16 @@ public class JEntities {
 
     //FROZEN MOBS
     public static final RegistryObject<EntityType<Eskimo>> ESKIMO_TYPE = registerEntity(Eskimo::new, "eskimo", "Eskimo", 1F, 2F, FROZEN_COLOR, TRADER_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<FrozenTrollEntity>> FROZEN_TROLL_TYPE = registerEntity(FrozenTrollEntity::new, "frozen_troll", "Frozen Troll", 1F, 2F, FROZEN_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
     public static final RegistryObject<EntityType<FrozenGuardian>> FROZEN_GUARDIAN_TYPE = registerEntity(FrozenGuardian::new, "frozen_guardian", "Frozen Guardian", 0.75F, 2F, FROZEN_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<CrystalCluster>> CRYSTAL_CLUSTER_TYPE = registerEntity(CrystalCluster::new, "crystal_cluster", "Crystal Cluster", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<FrozenFrostbiter>> FROZEN_FROSTBITER_TYPE = registerEntity(FrozenFrostbiter::new, "frozen_frostbiter", "Frozen Frostbiter", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<IceGolem>> ICE_GOLEM_TYPE = registerEntity(IceGolem::new, "ice_golem", "Ice Golem", 1F, 2F,FROZEN_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Permafraust>> PERMAFRAUST_TYPE = registerEntity(Permafraust::new, "permafraust", "Permafraust", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Shatterer>> SHATTERER_TYPE = registerEntity(Shatterer::new, "shatterer", "Shatterer", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<ShiveringBushwalker>> SHIVERING_BUSHWALKER_TYPE = registerEntity(ShiveringBushwalker::new, "shivering_bushwalker", "Shivering Bushwalker", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<ShiveringShrieker>> SHIVERING_SHRIEKER_TYPE = registerEntity(ShiveringShrieker::new, "shivering_shrieker", "Shivering Shrieker", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Capybara>> CAPYBARA_TYPE = registerEntity(Capybara::new, "capybara", "Capybara", 1F, 2F, FROZEN_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
 
     //DEPTHS MOBS
     public static final RegistryObject<EntityType<Darkener>> DARKENER_TYPE = registerEntity(Darkener::new, "darkener", "Darkener", 1F, 1F, DEPTHS_COLOR, NEUTRAL_COLOR);
@@ -249,6 +257,15 @@ public class JEntities {
 
         event.put(ESKIMO_TYPE.get(), Eskimo.createAttributes());
         event.put(FROZEN_GUARDIAN_TYPE.get(), FrozenGuardian.createAttributes());
+        event.put(CRYSTAL_CLUSTER_TYPE.get(), CrystalCluster.createAttributes());
+        event.put(FROZEN_FROSTBITER_TYPE.get(), FrozenFrostbiter.createAttributes());
+        event.put(ICE_GOLEM_TYPE.get(), IceGolem.createAttributes());
+        event.put(PERMAFRAUST_TYPE.get(), Permafraust.createAttributes());
+        event.put(SHATTERER_TYPE.get(), Shatterer.createAttributes());
+        event.put(SHIVERING_BUSHWALKER_TYPE.get(), ShiveringBushwalker.createAttributes());
+        event.put(SHIVERING_SHRIEKER_TYPE.get(), ShiveringShrieker.createAttributes());
+        event.put(FROZEN_TROLL_TYPE.get(), FrozenTrollEntity.createAttributes());
+        event.put(CAPYBARA_TYPE.get(), Capybara.createAttributes());
 
         event.put(CORBANIAN_MOLLUSK_TYPE.get(), CorbanianMollusk.createAttributes());
         event.put(SMELLY_TYPE.get(), Smelly.createAttributes());
@@ -269,6 +286,8 @@ public class JEntities {
         setCustomSpawn(event, STONEWALKER_TYPE, Stonewalker::checkSpawn);
         setCustomSpawn(event, CAVURN_TYPE, Cavurn::checkSpawn);
         setCustomSpawn(event, HELLWING_TYPE, Hellwing::checkSpawn);
+        setCustomSpawn(event, SHATTERER_TYPE, Shatterer::checkSpawn);
+        setCustomSpawn(event, CRYSTAL_CLUSTER_TYPE, CrystalCluster::checkSpawn);
 
         setDefaultMonsterSpawn(event, FLORO_TYPE);
         setDefaultMonsterSpawn(event, BOOM_TYPE);
@@ -310,6 +329,13 @@ public class JEntities {
         setDefaultMonsterSpawn(event, DEPTHS_HUNTER_TYPE);
 
         setDefaultSpawn(event, ESKIMO_TYPE);
+        setDefaultSpawn(event, ICE_GOLEM_TYPE);
+        setDefaultSpawn(event, FROZEN_TROLL_TYPE);
+        setDefaultSpawn(event, FROZEN_FROSTBITER_TYPE);
+        setDefaultSpawn(event, PERMAFRAUST_TYPE);
+        setDefaultSpawn(event, SHIVERING_BUSHWALKER_TYPE);
+        setDefaultSpawn(event, SHIVERING_SHRIEKER_TYPE);
+        setDefaultSpawn(event, CAPYBARA_TYPE);
 
         setDefaultSpawn(event, CORBANIAN_MOLLUSK_TYPE);
 

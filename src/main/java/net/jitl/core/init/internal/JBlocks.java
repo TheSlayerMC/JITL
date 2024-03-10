@@ -388,14 +388,14 @@ public class JBlocks {
     public static final RegistryObject<Block> ICE_BUSH = registerCrossBlock("ice_bush", "Ice Bush", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> ICE_BUD = registerCrossBlock("ice_bud", "Ice Bud", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final RegistryObject<Block> CICLEBLOOM = registerModeledBlock("ciclebloom", "Cicle Bloom", () -> new SingleDoublePlant(JBlockProperties.PLANT.lightLevel((light) -> 4)));
-    public static final RegistryObject<Block> ICY_BRUSH = registerModeledBlock("icy_brush", "Icy Brush", () -> new VineBlock(JBlockProperties.VINE));
+    public static final RegistryObject<Block> ICY_BRUSH = registerVineBlock("icy_brush", "Icy Brush", () -> new JVineBlock(JBlockProperties.VINE));
     public static final RegistryObject<Block> CRYSTAL_FRUIT = registerModeledBlock("crystal_fruit", "Crystal Fruit", () -> new CrystalFruit(JBlockProperties.CRYSTAL_FRUIT));
     public static final RegistryObject<GrowingPlantHeadBlock> ICY_IVY = registerGrowingPlantHeadBlock("icy_ivy", "Icy Ivy", () -> new IcyIvyTopBlock(JBlockProperties.VINE));
     public static final RegistryObject<Block> ICY_IVY_PLANT = registerCrossBlock("icy_ivy_plant", "Icy Ivy", () -> new IcyIvyBlock(JBlockProperties.VINE));
 
     public static final RegistryObject<Block> ICE_SHROOM_SHELF = registerModeledBlock("ice_shroom_shelf", "Ice Shroom Shelf", JBlockFungalShelf::new);
     public static final RegistryObject<Block> BITTERWOOD_SAPLING = registerCrossBlock("bitterwood_sapling", "Bitterwood Sapling", () -> new TallGrassBlock(JBlockProperties.FLOWER));
-    public static final RegistryObject<Block> BITTERWOOD_CAMPFIRE = registerCampfire("bitterwood_campfire", "Bitterwood Campfire");
+    public static final RegistryObject<Block> BITTERWOOD_CAMPFIRE = registerCampfire("bitterwood_campfire", "Bitterwood Campfire", BitterwoodCampfireBlock::new);
     public static final RegistryObject<Block> PERMAFROST_FURNACE = registerFurnaceBlock("permafrost_furnace", "Permafrost Furnace");
 
     public static final RegistryObject<Block> PACKED_SNOW_BRICKS = register("packed_snow_bricks", "Packed Snow Bricks", JBlockProperties.STONE);
@@ -734,11 +734,11 @@ public class JBlocks {
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
-    public static RegistryObject<Block> registerCampfire(String name, String translatedName) {
+    public static RegistryObject<Block> registerCampfire(String name, String translatedName, Supplier<Block> block) {
         addAxeableBlocks(name);
         campfireBlockName.add(name);
         campfireLangName.add(translatedName);
-        RegistryObject<Block> block1 = BLOCKS.register(name, () -> new CampfireBlock(true, 1, JBlockProperties.CAMPFIRE));
+        RegistryObject<Block> block1 = BLOCKS.register(name, block);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }

@@ -28,9 +28,11 @@ import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
+import java.util.Objects;
+
 public class RockiteSmasher extends JBossEntity {
 
-    private final ServerBossEvent BOSS_INFO = new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
+    private final ServerBossEvent BOSS_INFO = new ServerBossEvent(Objects.requireNonNull(this.getDisplayName()), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS);
     private final BossBarRenderer BOSS_BAR = new BossBarRenderer(this, JITL.rl("textures/gui/bossbars/rockite_smasher.png"));
 
     public RockiteSmasher(EntityType<? extends Monster> pEntityType, Level pLevel) {
@@ -125,7 +127,7 @@ public class RockiteSmasher extends JBossEntity {
 
     @Override
     public boolean showBarWhenSpawned() {
-        return true;
+        return false;
     }
 
     @Override

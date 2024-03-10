@@ -9,6 +9,8 @@ public class JLootTables {
     public static ResourceLocation ROCKITE_SMASHER_CRYSTAL = addBoosCrystalLootTable("rockite_smasher");
     public static ResourceLocation OKOLOO_CRYSTAL = addBoosCrystalLootTable("okoloo");
 
+    public static ResourceLocation FROZEN_TROLL_TRADES = addBoosCrystalLootTable("temple_guardian");
+
     public static ResourceLocation addLootTable(String name) {
         return JITL.rl(name);
     }

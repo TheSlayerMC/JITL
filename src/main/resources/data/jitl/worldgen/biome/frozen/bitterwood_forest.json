@@ -33,25 +33,43 @@
         "maxCount": 1
       },
       {
+        "type": "jitl:crystal_cluster",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "jitl:frozen_frostbiter",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "jitl:shivering_bushwalker",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "jitl:shivering_shrieker",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "jitl:permafraust",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
         "type": "jitl:frozen_troll",
         "weight": 12,
         "minCount": 1,
         "maxCount": 4
-      },
-      {
-        "type": "minecraft:stray",
-        "weight": 20,
-        "minCount": 1,
-        "maxCount": 1
       }
     ],
     "creature": [
-      {
-        "type": "jitl:shivering_ram",
-        "weight": 26,
-        "minCount": 1,
-        "maxCount": 4
-      },
       {
         "type": "jitl:capybara",
         "weight": 26,

@@ -58,13 +58,13 @@ public abstract class JBossEntity extends JMonsterEntity implements IJourneyBoss
         super.stopSeenByPlayer(player);
         JBossInfo.removeInfo(player, getEvent(), this);
     }
-
-    @Override
-    public void startSeenByPlayer(ServerPlayer player) {
-        super.stopSeenByPlayer(player);
-        if(showBarWhenSpawned())
-            JBossInfo.addInfo(player, getEvent(), this);
-    }
+//
+//    @Override
+//    public void startSeenByPlayer(ServerPlayer player) {
+//        super.stopSeenByPlayer(player);
+//        if(showBarWhenSpawned())
+//            JBossInfo.addInfo(player, getEvent(), this);
+//    }
 
     public abstract boolean showBarWhenSpawned();
 

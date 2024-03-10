@@ -8,6 +8,7 @@ import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JLootTables;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;
@@ -51,6 +52,17 @@ public class Okoloo extends JBossEntity {
         this.targetSelector.addGoal(1, new AttackWhenDifficultGoal(this, this));
         this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, null));
+    }
+
+    @Override
+    public void stopSeenByPlayer(ServerPlayer player) {
+        this.BOSS_INFO.removePlayer(player);
+    }
+
+    @Override
+    public void startSeenByPlayer(ServerPlayer player) {
+        if(showBarWhenSpawned())
+            this.BOSS_INFO.addPlayer(player);
     }
 
     public static AttributeSupplier createAttributes() {
@@ -106,6 +118,6 @@ public class Okoloo extends JBossEntity {
 
     @Override
     public boolean showBarWhenSpawned() {
-        return true;
+        return false;
     }
 }

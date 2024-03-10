@@ -14,7 +14,7 @@ public class BossOverlayRegistry {
     @SubscribeEvent
     public static void registerOverlays(CustomizeGuiOverlayEvent.BossEventProgress event) {
         IJourneyBoss boss = JBossInfo.map.get(event.getBossEvent().getId());
-        if (boss != null) {
+        if(boss != null) {
             event.setCanceled(true);
             boss.getBossBar().render(event);
         }

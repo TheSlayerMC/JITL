@@ -22,6 +22,12 @@
           "weight": 10,
           "minCount": 3,
           "maxCount": 10
+        },
+        {
+          "type": "jitl:ice_golem",
+          "weight": 1,
+          "minCount": 1,
+          "maxCount": 2
         }
       ]
     }

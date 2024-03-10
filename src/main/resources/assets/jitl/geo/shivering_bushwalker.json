@@ -1,0 +1,61 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.shivering_bushwalker",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "body",
+					"pivot": [0, 8, 0.5],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-5, 2, -3.5], "size": [10, 12, 8], "uv": [0, 16]}
+					]
+				},
+				{
+					"name": "leaves",
+					"pivot": [0.31608, 14.66745, 0.15571],
+					"rotation": [-1.59764, 2, 10.65089],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-6.18392, 10.66745, -5.84429], "size": [13, 8, 12], "uv": [0, 37]}
+					]
+				},
+				{
+					"name": "leavesTop",
+					"pivot": [-0.45477, 17.5433, 2.71612],
+					"rotation": [-25.56213, 0, 7.26036],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-5.45477, 14.5433, -2.28388], "size": [10, 6, 10], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "lLeg",
+					"pivot": [4.8, 6, -0.5],
+					"rotation": [0, 0, -5],
+					"mirror": true,
+					"cubes": [
+						{"origin": [5.05766, 0.09857, -0.5], "size": [2, 6, 3], "uv": [38, 24]}
+					]
+				},
+				{
+					"name": "rLeg",
+					"pivot": [-4.8, 6, -0.5],
+					"rotation": [0, 0, 7],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-6.8, 0, -0.5], "size": [2, 6, 3], "uv": [38, 24]}
+					]
+				}
+			]
+		}
+	]
+}

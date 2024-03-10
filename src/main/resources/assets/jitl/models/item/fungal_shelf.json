@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "jitl:block/fungal_shelf_large"
-  }
+  "parent": "jitl:block/fungal_shelf_large"
 }

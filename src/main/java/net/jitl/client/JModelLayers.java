@@ -14,6 +14,8 @@ public class JModelLayers {
     public static final ModelLayerLocation JCHEST = register("jchest");
     public static final ModelLayerLocation JDOUBLE_CHEST_LEFT = register("jdouble_chest_left");
     public static final ModelLayerLocation JDOUBLE_CHEST_RIGHT = register("jdouble_chest_right");
+    public static final ModelLayerLocation FROZEN_TROLL_MODEL_LAYER = register("frozen_troll");
+    public static final ModelLayerLocation FROZEN_TROLL_HELD_ITEM_LAYER = register("frozen_troll", "held_item");
 
     private static ModelLayerLocation register(String path) {
         return register(path, "main");

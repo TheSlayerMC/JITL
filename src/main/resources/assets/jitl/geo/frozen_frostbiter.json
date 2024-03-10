@@ -1,0 +1,66 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.frozen_frostbiter",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "head",
+					"pivot": [1, 24, -1],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-3, 24, -5], "size": [6, 8, 8], "uv": [0, 0]},
+						{"origin": [-3, 20, -5], "size": [6, 4, 8], "uv": [0, 28]}
+					]
+				},
+				{
+					"name": "body",
+					"pivot": [0, 20, -1],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-1, 16, -2], "size": [2, 8, 2], "uv": [16, 16]}
+					]
+				},
+				{
+					"name": "ice4",
+					"pivot": [-4, 13, -1],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-5, 8, -2], "size": [2, 10, 2], "uv": [8, 16]}
+					]
+				},
+				{
+					"name": "ice3",
+					"pivot": [4, 13, -1],
+					"mirror": true,
+					"cubes": [
+						{"origin": [3, 8, -2], "size": [2, 10, 2], "uv": [8, 16]}
+					]
+				},
+				{
+					"name": "ice2",
+					"pivot": [0, 15, -7],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-1, 10, -8], "size": [2, 10, 2], "uv": [0, 16]}
+					]
+				},
+				{
+					"name": "ice1",
+					"pivot": [0, 15, 5],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-1, 10, 4], "size": [2, 10, 2], "uv": [0, 16]}
+					]
+				}
+			]
+		}
+	]
+}

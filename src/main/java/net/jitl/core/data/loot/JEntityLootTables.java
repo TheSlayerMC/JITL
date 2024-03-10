@@ -277,6 +277,26 @@ public class JEntityLootTables extends EntityLootSubProvider {
                 .add(LootItem.lootTableItem(JItems.SHIMMERER_DUST.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
 
+        this.add(JEntities.SHIVERING_SHRIEKER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(JItems.CRYSTAL_FLAKE.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 3.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.SHIVERING_BUSHWALKER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(JItems.CRYSTAL_FLAKE.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 3.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.FROZEN_FROSTBITER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(JItems.CRYSTAL_FLAKE.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.PERMAFRAUST_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(JItems.CRYSTAL_FLAKE.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.SHATTERER_TYPE.get(), empty());
+        this.add(JEntities.CRYSTAL_CLUSTER_TYPE.get(), empty());
+        this.add(JEntities.ICE_GOLEM_TYPE.get(), empty());
+
         this.add(JEntities.AURON_TYPE.get(), empty());
 
         this.add(JEntities.CORBANIAN_MOLLUSK_TYPE.get(), empty());

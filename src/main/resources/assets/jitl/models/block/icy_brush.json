@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cross",
+  "parent": "minecraft:block/vine",
   "textures": {
-    "cross": "jitl:block/icy_brush"
+    "vine": "jitl:block/icy_brush",
+    "particle": "jitl:block/icy_brush"
   }
 }

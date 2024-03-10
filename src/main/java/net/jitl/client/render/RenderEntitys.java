@@ -2,11 +2,13 @@ package net.jitl.client.render;
 
 import net.jitl.client.JModelLayers;
 import net.jitl.client.model.AnimatedMonsterModel;
+import net.jitl.client.model.FrozenTrollModel;
 import net.jitl.client.model.JBoatModel;
 import net.jitl.client.render.block.*;
 import net.jitl.client.render.entity.euca.CrypianRenderer;
 import net.jitl.client.render.entity.euca.RoyalKingRenderer;
 import net.jitl.client.render.entity.frozen.FrozenGuardianRenderer;
+import net.jitl.client.render.entity.frozen.FrozenTrollRenderer;
 import net.jitl.client.render.entity.misc.BossCrystalRenderer;
 import net.jitl.client.render.entity.misc.SentacoinRender;
 import net.jitl.client.render.entity.nether.MiniGhastRenderer;
@@ -50,6 +52,8 @@ public class RenderEntitys {
         event.registerEntityRenderer(JEntities.SENTACOIN_TYPE.get(), (context) -> new SentacoinRender(context, Sentacoin.Type.COIN));
         event.registerEntityRenderer(JEntities.SENTACOIN_BAG_TYPE.get(), (context) -> new SentacoinRender(context, Sentacoin.Type.BAG));
 
+        event.registerEntityRenderer(JEntities.FROZEN_TROLL_TYPE.get(), FrozenTrollRenderer::new);
+
         event.registerBlockEntityRenderer(JBlockEntities.ROCKITE.get(), RockiteSpawnerRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.JCHEST.get(), JChestRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.PEDESTAL.get(), PedestalRenderer::new);
@@ -62,7 +66,7 @@ public class RenderEntitys {
         event.registerBlockEntityRenderer(JBlockEntities.HELLBOT_SPAWNER.get(), JSpawnerRenderer::new);
 
         event.registerBlockEntityRenderer(JBlockEntities.SUMMONING_TABLE.get(), SummoningTableRenderer::new);
-
+        event.registerBlockEntityRenderer(JBlockEntities.BITTERWOOD_CAMPFIRE.get(), BitterwoodCampfireRenderer::new);
     }
 
     @SubscribeEvent
@@ -70,6 +74,9 @@ public class RenderEntitys {
         for(JBoat.Type type : JBoat.Type.values()) {
             event.registerLayerDefinition(JModelLayers.createBoatModelName(type), JBoatModel::createBodyModel);
         }
+
+        event.registerLayerDefinition(JModelLayers.FROZEN_TROLL_MODEL_LAYER, FrozenTrollModel::createBodyLayer);
+        event.registerLayerDefinition(JModelLayers.FROZEN_TROLL_HELD_ITEM_LAYER, FrozenTrollModel::createBodyLayer);
 
         event.registerLayerDefinition(JModelLayers.JCHEST, JChestRenderer::createSingleBodyLayer);
         event.registerLayerDefinition(JModelLayers.JDOUBLE_CHEST_RIGHT, JChestRenderer::createDoubleBodyRightLayer);
@@ -127,6 +134,14 @@ public class RenderEntitys {
 
         EntityRenderers.register(JEntities.ESKIMO_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("eskimo", JDimension.FROZEN), 0.5F));
         EntityRenderers.register(JEntities.FROZEN_GUARDIAN_TYPE.get(), renderer -> new FrozenGuardianRenderer<>(renderer, new AnimatedMonsterModel<>("frozen_guardian", JDimension.FROZEN)));
+        EntityRenderers.register(JEntities.CRYSTAL_CLUSTER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("crystal_cluster", JDimension.FROZEN)));
+        EntityRenderers.register(JEntities.FROZEN_FROSTBITER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("frozen_frostbiter", JDimension.FROZEN)));
+        EntityRenderers.register(JEntities.ICE_GOLEM_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("ice_golem", JDimension.FROZEN), 1.5F, 2F));
+        EntityRenderers.register(JEntities.PERMAFRAUST_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("permafraust", JDimension.FROZEN)));
+        EntityRenderers.register(JEntities.SHATTERER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("shatterer", JDimension.FROZEN)));
+        EntityRenderers.register(JEntities.SHIVERING_BUSHWALKER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("shivering_bushwalker", JDimension.FROZEN)));
+        EntityRenderers.register(JEntities.SHIVERING_SHRIEKER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("shivering_shrieker", JDimension.FROZEN)));
+        EntityRenderers.register(JEntities.CAPYBARA_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("capybara", JDimension.FROZEN)));
 
         EntityRenderers.register(JEntities.DARKENER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("darkener", JDimension.DEPTHS)));
         EntityRenderers.register(JEntities.DARKNESS_CRAWLER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("darkness_crawler", JDimension.DEPTHS)));

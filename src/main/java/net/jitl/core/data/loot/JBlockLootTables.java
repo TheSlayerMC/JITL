@@ -509,6 +509,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.add(JBlocks.DEPTHS_FARMLAND, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.DEPTHS_DIRT.get()));
         this.add(JBlocks.PERMAFROST_FARMLAND, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.CRUMBLED_PERMAFROST.get()));
         this.add(JBlocks.CORBA_FARMLAND, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.CORBA_DIRT.get()));
+        this.add(JBlocks.CLOUDIA_FARMLAND, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.CLOUDIA_DIRT.get()));
 
         this.dropSelf(JBlocks.FUNGAL_SHELF);
         this.dropSelf(JBlocks.CLOUDIA_PORTAL_FRAME);
@@ -533,6 +534,8 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.PINK_CLOUDIA_CLOUD);
         this.dropSelf(JBlocks.BLUE_CLOUDIA_CLOUD);
         this.dropSelf(JBlocks.LIGHT_BLUE_CLOUDIA_CLOUD);
+        this.add(JBlocks.AIRROOT_MELON, (block) -> createRandomAmount(block, JItems.AIRMELON.get(), 1, 3));
+        this.add(JBlocks.AIRROOT_CROP, noDrop());
 
         this.add(JBlocks.SENTERIAN_PORTAL, noDrop());
         this.dropSelf(JBlocks.SENTERIAN_PORTAL_FRAME);
