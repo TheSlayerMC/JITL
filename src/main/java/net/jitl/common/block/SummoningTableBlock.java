@@ -2,10 +2,13 @@ package net.jitl.common.block;
 
 import com.mojang.serialization.MapCodec;
 import net.jitl.common.block.entity.SummoningTableTile;
+import net.jitl.core.config.JCommonConfig;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -79,13 +82,31 @@ public class SummoningTableBlock extends BaseEntityBlock {
         } else {
             BlockEntity blockentity = level.getBlockEntity(pos);
             if(blockentity instanceof SummoningTableTile) {
-                if(STRUCTURE_PATTERN.find(level, pos.below(1).north(2).west(2)) != null || player.isCreative()) {
+                if(STRUCTURE_PATTERN.find(level, pos.below(1).north(2).west(2)) != null || player.isCreative() || !JCommonConfig.NEED_SUMMONING_STRUCTRE.get()) {
                     player.openMenu((SummoningTableTile) blockentity);
                     return InteractionResult.CONSUME;
                 }
             }
         }
         return InteractionResult.PASS;
+    }
+
+    @Override
+    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
+        for(int i = 0; i < 10; i++) {
+            if (pRandom.nextInt(5) == 0) {
+                double d0 = (double) pPos.getX() + pRandom.nextFloat();
+                double d1 = (double) pPos.getY() + 1.0D;
+                double d2 = (double) pPos.getZ() + pRandom.nextFloat();
+                if(STRUCTURE_PATTERN.find(pLevel, pPos.below(1).north(2).west(2)) != null || !JCommonConfig.NEED_SUMMONING_STRUCTRE.get()) {
+                    pLevel.addParticle(ParticleTypes.ENCHANT, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+                    if (pState.getValue(IS_ACTIVE)) {
+                        pLevel.addParticle(ParticleTypes.ENCHANT, d0, d1 + 0.2D, d2, 0.0D, 0.0D, 0.0D);
+                        pLevel.addParticle(ParticleTypes.CRIT, d0, d1 + 0.2D, d2, 0.0D, 0.0D, 0.0D);
+                    }
+                }
+            }
+        }
     }
 
     @Override

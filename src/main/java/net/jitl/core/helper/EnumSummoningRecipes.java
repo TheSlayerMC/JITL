@@ -73,17 +73,17 @@ public enum EnumSummoningRecipes {
             JItems.SAPPHIRE_PICKAXE.get(), JItems.FLAIRIUM_PICKAXE.get()}),
     ;
 
-    public Item[] items;
+    public final Item[] items;
 
     EnumSummoningRecipes(Item[] items) {
         this.items = items;
     }
 
-    public Item getItems(int index) {
+    public Item getItem(int index) {
         return items[index];
     }
 
     public String getName() {
-        return getItems(7).asItem().toString();
+        return getItem(7).asItem().toString();
     }
 }

@@ -55,16 +55,16 @@ public class SummoningTableTile extends RandomizableContainerBlockEntity impleme
 
     public void checkRecipeAndSummon(SummoningTableTile entity, EnumSummoningRecipes recipe) {
         if(entity.areItemsInSlots(
-                recipe.getItems(0),
-                recipe.getItems(1),
-                recipe.getItems(2),
+                recipe.getItem(0),
+                recipe.getItem(1),
+                recipe.getItem(2),
 
-                recipe.getItems(3),
+                recipe.getItem(3),
 
-                recipe.getItems(4),
-                recipe.getItems(5),
-                recipe.getItems(6))) {
-            entity.summonItem(new ItemStack(recipe.getItems(7)));
+                recipe.getItem(4),
+                recipe.getItem(5),
+                recipe.getItem(6))) {
+            entity.summonItem(new ItemStack(recipe.getItem(7)));
         }
     }
 

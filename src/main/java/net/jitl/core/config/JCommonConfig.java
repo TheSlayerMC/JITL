@@ -12,6 +12,8 @@ public class JCommonConfig {
 	public static final ForgeConfigSpec.IntValue IRIDIUM_ORE_MIN_Y;
 	public static final ForgeConfigSpec.IntValue IRIDIUM_ORE_MAX_Y;
 
+	public static final ForgeConfigSpec.BooleanValue NEED_SUMMONING_STRUCTRE;
+
 	static {
 		BUILDER.push("Common configs for JITL");
 
@@ -22,6 +24,8 @@ public class JCommonConfig {
 		IRIDIUM_ORE_MIN_Y = BUILDER.comment("Min Y Iridium ore can spawn").defineInRange("Value: ", -80, -128, 384);
 
 		IRIDIUM_ORE_MAX_Y = BUILDER.comment("Max Y Iridium ore can spawn").defineInRange("Value: ", 48, -128, 384);
+
+		NEED_SUMMONING_STRUCTRE = BUILDER.comment("Need structure to use Summoning Table").define("Value: ", true);
 
 		BUILDER.pop();
 		SPEC = BUILDER.build();

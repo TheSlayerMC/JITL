@@ -152,7 +152,7 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
     }
 
     public void renderItem(GuiGraphics matrixStack, int mouseX, int mouseY, int x, int y, EnumSummoningRecipes recipe, int index) {
-        ItemStack item = new ItemStack(recipe.getItems(index));
+        ItemStack item = new ItemStack(recipe.getItem(index));
         matrixStack.renderItem(item, x, y);
         if(isMouseOver(mouseX, mouseY ,x, y)) {
             renderTooltip(matrixStack, mouseX, mouseY, item);
