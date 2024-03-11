@@ -1,0 +1,90 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.thunder_bird",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "Body",
+					"pivot": [0, 3, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-4, 5, -4], "size": [8, 6, 8], "uv": [32, 0]}
+					]
+				},
+				{
+					"name": "Neck",
+					"pivot": [-1, 15, -6],
+					"rotation": [10.65089, 0, 0],
+					"mirror": true
+				},
+				{
+					"name": "Head",
+					"pivot": [0, 10.66667, -4],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-3, 14, -10], "size": [6, 6, 8], "uv": [0, 0]},
+						{"origin": [-3, 14, -14], "size": [6, 2, 4], "uv": [43, 32]},
+						{"origin": [-1, 8, -5], "size": [2, 7, 2], "pivot": [0, 11.5, -5], "rotation": [30, 0, 0], "uv": [44, 21]}
+					]
+				},
+				{
+					"name": "Feet1",
+					"pivot": [-3, 5, -1],
+					"mirror": true
+				},
+				{
+					"name": "Leg1",
+					"pivot": [-2, 5, -1],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-2, 0, -1], "size": [1, 5, 1], "uv": [56, 24]},
+						{"origin": [-3, 0, -3], "size": [3, 0.01, 2], "uv": [44, 16]}
+					]
+				},
+				{
+					"name": "Leg2",
+					"pivot": [2, 5, -1],
+					"mirror": true,
+					"cubes": [
+						{"origin": [1, 0, -1], "size": [1, 5, 1], "uv": [56, 24]},
+						{"origin": [0, 0, -3], "size": [3, 0.01, 2], "uv": [44, 16]}
+					]
+				},
+				{
+					"name": "Feather",
+					"pivot": [-0.5, 11, 4],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-10, 9, 4], "size": [19, 14, 0], "uv": [1, 16]}
+					]
+				},
+				{
+					"name": "Feather1",
+					"pivot": [-2.21113, 13.54427, 4.5117],
+					"rotation": [-4, 0, 40],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-2.71113, 11, 4.5117], "size": [19, 14, 0], "uv": [1, 16]}
+					]
+				},
+				{
+					"name": "Feather2",
+					"pivot": [2.766, 12.25723, 4.5117],
+					"rotation": [-4, 0, -40],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-15.73403, 11, 4.5117], "size": [19, 14, 0], "uv": [1, 16]}
+					]
+				}
+			]
+		}
+	]
+}

@@ -56,21 +56,96 @@ public enum EnumSummoningRecipes {
 
             JItems.SOUL_WATCHER_ORB.get()}),
 
-    d(new Item[]{JItems.BLOODCRUST_AXE.get(),
-            JItems.CELESTIUM_AXE.get(),
-            JItems.CELESTIUM_AXE.get(),
-            JItems.GORBITE_AXE.get(),
-            JItems.MEKYUM_AXE.get(),
-            JItems.ORBADITE_AXE.get(),
-            JItems.BLOODCRUST_AXE.get(), JItems.SAPPHIRE_AXE.get()}),
+    CORALLATOR(new Item[]{
+            JItems.GATE_KEYS.get(),
+            JItems.GOLD_CLUMP.get(),
+            JItems.GATE_KEYS.get(),
 
-    f(new Item[]{JItems.BLOODCRUST_PICKAXE.get(),
-            JItems.DES_PICKAXE.get(),
-            JItems.FLAIRIUM_PICKAXE.get(),
-            JItems.KORITE_PICKAXE.get(),
-            JItems.DES_PICKAXE.get(),
-            JItems.GORBITE_PICKAXE.get(),
-            JItems.SAPPHIRE_PICKAXE.get(), JItems.FLAIRIUM_PICKAXE.get()}),
+            JItems.METAL_DISK.get(),
+
+            JItems.GATE_KEYS.get(),
+            JItems.GOLD_CLUMP.get(),
+            JItems.GATE_KEYS.get(),
+
+            JItems.CORALLATOR_ORB.get()}),
+
+    BLAZIER(new Item[]{
+            JItems.BOIL_POWDER.get(),
+            JItems.ASH.get(),
+            JItems.BOIL_POWDER.get(),
+
+            JItems.BLAZING_FIREBALL.get(),
+
+            JItems.BOIL_POWDER.get(),
+            JItems.ASH.get(),
+            JItems.BOIL_POWDER.get(),
+
+            JItems.BLAZIER_ORB.get()}),
+
+    THUNDERBIRD(new Item[]{
+            JItems.ROC_FEATHER.get(),
+            JItems.DARK_CRYSTAL.get(),
+            JItems.ROC_FEATHER.get(),
+
+            JItems.DARK_ORB.get(),
+
+            JItems.ROC_FEATHER.get(),
+            JItems.DARK_CRYSTAL.get(),
+            JItems.ROC_FEATHER.get(),
+
+            JItems.THUNDER_BIRD_ORB.get()}),
+
+    SCALE(new Item[]{
+            JItems.SCALE.get(),
+            JItems.BEASTLY_STOMACH.get(),
+            JItems.SCALE.get(),
+
+            JItems.DARK_ORB.get(),
+
+            JItems.SCALE.get(),
+            JItems.BEASTLY_STOMACH.get(),
+            JItems.SCALE.get(),
+
+            JItems.SCALE_ORB.get()}),
+
+    LOGGER(new Item[]{
+            JItems.NATURE_TABLET.get(),
+            JItems.ENCHANTED_LEAF.get(),
+            JItems.NATURE_TABLET.get(),
+
+            JItems.OVERGROWN_NATURE_BALL.get(),
+
+            JItems.NATURE_TABLET.get(),
+            JItems.ENCHANTED_LEAF.get(),
+            JItems.NATURE_TABLET.get(),
+
+            JItems.LOGGER_ORB.get()}),
+
+    SENTRY_KING(new Item[]{
+            JItems.OVER_SEEING_EYE.get(),
+            JItems.COLLECTOR_ROCK.get(),
+            JItems.OVER_SEEING_EYE.get(),
+
+            JItems.OVER_SEEING_TABLET.get(),
+
+            JItems.OVER_SEEING_EYE.get(),
+            JItems.COLLECTOR_ROCK.get(),
+            JItems.OVER_SEEING_EYE.get(),
+
+            JItems.SENTRY_KING_ORB.get()}),
+
+    TERRASTAR(new Item[]{
+            JItems.EARTHEN_CRYSTAL.get(),
+            JItems.PURPLE_POWDER.get(),
+            JItems.EARTHEN_CRYSTAL.get(),
+
+            JItems.TERRASTAR.get(),
+
+            JItems.EARTHEN_CRYSTAL.get(),
+            JItems.PURPLE_POWDER.get(),
+            JItems.EARTHEN_CRYSTAL.get(),
+
+            JItems.ENCHANTED_TERRASTAR.get()}),
     ;
 
     public final Item[] items;

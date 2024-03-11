@@ -1,0 +1,74 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.soul_watcher",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 5,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "body_tails_parent",
+					"pivot": [0, 8, -7],
+					"cubes": [
+						{"origin": [-6, 2, -5], "size": [12, 12, 16], "uv": [14, 94]}
+					]
+				},
+				{
+					"name": "tail1",
+					"parent": "body_tails_parent",
+					"pivot": [0, 24, -2],
+					"rotation": [0, 0.2, 0],
+					"cubes": [
+						{"origin": [-1.01745, 5, -4.00003], "size": [6, 6, 8], "uv": [40, 0]}
+					]
+				},
+				{
+					"name": "tail2",
+					"parent": "tail1",
+					"pivot": [-1.5, 23.5, 12],
+					"rotation": [0, 0.41, 0],
+					"cubes": [
+						{"origin": [-1.55323, 6.5, 10.99972], "size": [3, 3, 6], "uv": [0, 54]}
+					]
+				},
+				{
+					"name": "tailFin",
+					"parent": "tail2",
+					"pivot": [-1, 23, 18],
+					"rotation": [0, 0.61, 0],
+					"cubes": [
+						{"origin": [-0.10646, 3, 19.99887], "size": [1, 10, 10], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "tail3",
+					"parent": "tail2",
+					"pivot": [-1, 23, 18],
+					"rotation": [0, 0.61, 0],
+					"cubes": [
+						{"origin": [-1.10646, 7, 16.99887], "size": [2, 2, 6], "uv": [0, 70]}
+					]
+				},
+				{
+					"name": "body_seperate",
+					"pivot": [0, 8, -17],
+					"cubes": [
+						{"origin": [-8, 0, -21], "size": [16, 16, 18], "uv": [14, 88]}
+					]
+				},
+				{
+					"name": "head",
+					"pivot": [0, 9, -31],
+					"cubes": [
+						{"origin": [-5, 4, -31], "size": [10, 10, 10], "uv": [39, 56]}
+					]
+				}
+			]
+		}
+	]
+}

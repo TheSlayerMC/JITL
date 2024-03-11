@@ -104,6 +104,14 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.CAVELING_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("caveling", JDimension.OVERWORLD), 0.5F));
         EntityRenderers.register(JEntities.CAVURN_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("cavurn", JDimension.OVERWORLD), 0.5F));
 
+        EntityRenderers.register(JEntities.BLAZIER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("blazier", JDimension.BOSS), 0.6F, 2.5F));
+        EntityRenderers.register(JEntities.CALCIA_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("calcia", JDimension.BOSS), 0.6F, 1.2F));
+        EntityRenderers.register(JEntities.SOUL_WATCHER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("soul_watcher", JDimension.BOSS), 0.6F, 1.5F));
+        EntityRenderers.register(JEntities.WITHERING_BEAST_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("withering_beast", JDimension.BOSS), 0.6F, 1.2F));
+        EntityRenderers.register(JEntities.EUDOR_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("eudor", JDimension.BOSS), 0.6F, 1.7F));
+        EntityRenderers.register(JEntities.CORALLATOR_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("corallator", JDimension.BOSS), 0.6F, 2.5F));
+        EntityRenderers.register(JEntities.THUNDER_BIRD_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("thunder_bird", JDimension.BOSS), 0.6F, 3F));
+
         EntityRenderers.register(JEntities.WITHERSPINE_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("witherspine", JDimension.NETHER), 0.6F));
         EntityRenderers.register(JEntities.MINI_GHAST_TYPE.get(), renderer -> new MiniGhastRenderer<>(renderer, new AnimatedMonsterModel<>("mini_ghast", JDimension.NETHER)));
         EntityRenderers.register(JEntities.HELL_TURTLE_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("hell_turtle", JDimension.NETHER), 1.0F));

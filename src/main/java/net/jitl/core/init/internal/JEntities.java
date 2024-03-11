@@ -4,10 +4,7 @@ import net.jitl.common.entity.base.JBoat;
 import net.jitl.common.entity.boil.*;
 import net.jitl.common.entity.boil.npc.BoilTrader;
 import net.jitl.common.entity.boil.npc.EscapedConvict;
-import net.jitl.common.entity.boss.BossCrystal;
-import net.jitl.common.entity.boss.Okoloo;
-import net.jitl.common.entity.boss.RockiteSmasher;
-import net.jitl.common.entity.boss.TowerGuardian;
+import net.jitl.common.entity.boss.*;
 import net.jitl.common.entity.corba.*;
 import net.jitl.common.entity.corba.npc.GreenTordo;
 import net.jitl.common.entity.corba.npc.RedTordo;
@@ -85,12 +82,22 @@ public class JEntities {
     public static final RegistryObject<EntityType<Sentacoin>> SENTACOIN_BAG_TYPE = registerRawEntity(Sentacoin::new, "sentacoin_bag", "Sentacoin Bag", 0.375F, 0.375F);
     public static final RegistryObject<EntityType<BossCrystal>> BOSS_CRYSTAL_TYPE = registerEntity(BossCrystal::new, "boss_crystal", "Boss Crystal", 0.5F, 0.5F, OVERWORLD_COLOR, HOSTILE_COLOR);
 
+    //BOSS MOBS
+    public static final RegistryObject<EntityType<TowerGuardian>> TOWER_GUARDIAN_TYPE = registerEntity(TowerGuardian::new, "tower_guardian", "Tower Guardian", 2F, 3.5F, OVERWORLD_COLOR, BOSS_COLOR);
+    public static final RegistryObject<EntityType<RockiteSmasher>> ROCKITE_SMASHER_TYPE = registerEntity(RockiteSmasher::new, "rockite_smasher", "Rockite Smasher", 2F, 3.25F, OVERWORLD_COLOR, BOSS_COLOR);
+    public static final RegistryObject<EntityType<Okoloo>> OKOLOO_TYPE = registerEntity(Okoloo::new, "okoloo", "Okoloo", 1.2F, 1.9F, NETHER_COLOR, BOSS_COLOR);
+    public static final RegistryObject<EntityType<Blazier>> BLAZIER_TYPE = registerEntity(Blazier::new, "blazier", "Okoloo", 1.2F, 1.9F, NETHER_COLOR, BOSS_COLOR);
+    public static final RegistryObject<EntityType<Calcia>> CALCIA_TYPE = registerEntity(Calcia::new, "calcia", "Calcia", 1.2F, 1.9F, NETHER_COLOR, BOSS_COLOR);
+    public static final RegistryObject<EntityType<SoulWatcher>> SOUL_WATCHER_TYPE = registerEntity(SoulWatcher::new, "soul_watcher", "Soul Watcher", 1.2F, 1.9F, NETHER_COLOR, BOSS_COLOR);
+    public static final RegistryObject<EntityType<WitheringBeast>> WITHERING_BEAST_TYPE = registerEntity(WitheringBeast::new, "withering_beast", "Withering Beast", 1.2F, 1.9F, NETHER_COLOR, BOSS_COLOR);
+    public static final RegistryObject<EntityType<Eudor>> EUDOR_TYPE = registerEntity(Eudor::new, "eudor", "Eudor", 1.2F, 1.9F, EUCA_COLOR, BOSS_COLOR);
+    public static final RegistryObject<EntityType<Corallator>> CORALLATOR_TYPE = registerEntity(Corallator::new, "corallator", "Corallator", 1.2F, 1.9F, EUCA_COLOR, BOSS_COLOR);
+    public static final RegistryObject<EntityType<ThunderBird>> THUNDER_BIRD_TYPE = registerEntity(ThunderBird::new, "thunder_bird", "Thunder Bird", 1.2F, 1.9F, DEPTHS_COLOR, BOSS_COLOR);
+
     //OVERWORLD MOBS
     public static final RegistryObject<EntityType<Mage>> MAGE_TYPE = registerEntity(Mage::new, "mage", "Mage", 1F, 1.75F, OVERWORLD_COLOR, TRADER_COLOR, MobCategory.CREATURE);
     public static final RegistryObject<EntityType<Floro>> FLORO_TYPE = registerEntity(Floro::new, "floro", "Floro", 1F, 1.75F, OVERWORLD_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<BoomBoom>> BOOM_TYPE = registerEntity(BoomBoom::new, "boomboom", "BoomBoom", 1F, 1.75F, OVERWORLD_COLOR, HOSTILE_COLOR);
-    public static final RegistryObject<EntityType<TowerGuardian>> TOWER_GUARDIAN_TYPE = registerEntity(TowerGuardian::new, "tower_guardian", "Tower Guardian", 2F, 3.5F, OVERWORLD_COLOR, BOSS_COLOR);
-    public static final RegistryObject<EntityType<RockiteSmasher>> ROCKITE_SMASHER_TYPE = registerEntity(RockiteSmasher::new, "rockite_smasher", "Rockite Smasher", 2F, 3.25F, OVERWORLD_COLOR, BOSS_COLOR);
     public static final RegistryObject<EntityType<IllagerMech>> ILLAGER_MECH_TYPE = registerEntity(IllagerMech::new, "illager_mech", "Illager Mech", 2F, 3.25F, OVERWORLD_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<BrownHongo>> BROWN_HONGO_TYPE = registerEntity(BrownHongo::new, "brown_hongo", "Brown Hongo", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<Spyclopse>> SPYCLOPSE_TYPE = registerEntity(Spyclopse::new, "spyclopse", "Spyclopse", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
@@ -114,7 +121,6 @@ public class JEntities {
     public static final RegistryObject<EntityType<InfernoBlaze>> INFERNO_BLAZE_TYPE = registerEntity(InfernoBlaze::new, "inferno_blaze", "Inferno Blaze", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<HellCow>> HELL_COW_TYPE = registerEntity(HellCow::new, "hell_cow", "Hell Cow", 1.5F, 1.75F, NETHER_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
     public static final RegistryObject<EntityType<Hellbot>> HELLBOT_TYPE = registerEntity(Hellbot::new, "hellbot", "Hellbot", 0.5F, 0.75F, NETHER_COLOR, HOSTILE_COLOR);
-    public static final RegistryObject<EntityType<Okoloo>> OKOLOO_TYPE = registerEntity(Okoloo::new, "okoloo", "Okoloo", 1.2F, 1.9F, NETHER_COLOR, BOSS_COLOR);
 
     //BOIL MOBS
     public static final RegistryObject<EntityType<FlameLotus>> FLAME_LOTUS_TYPE = registerEntity(FlameLotus::new, "flame_lotus", "Flame Lotus", 1F, 0.25F, BOILING_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
@@ -216,6 +222,14 @@ public class JEntities {
         event.put(CAVELING_TYPE.get(), Caveling.createAttributes());
         event.put(STONEWALKER_TYPE.get(), Stonewalker.createAttributes());
         event.put(BOSS_CRYSTAL_TYPE.get(), BossCrystal.createAttributes());
+
+        event.put(WITHERING_BEAST_TYPE.get(), WitheringBeast.createAttributes());
+        event.put(CALCIA_TYPE.get(), Calcia.createAttributes());
+        event.put(SOUL_WATCHER_TYPE.get(), SoulWatcher.createAttributes());
+        event.put(CORALLATOR_TYPE.get(), Corallator.createAttributes());
+        event.put(BLAZIER_TYPE.get(), Blazier.createAttributes());
+        event.put(THUNDER_BIRD_TYPE.get(), ThunderBird.createAttributes());
+        event.put(EUDOR_TYPE.get(), Eudor.createAttributes());
 
         event.put(WITHERSPINE_TYPE.get(), Witherspine.createAttributes());
         event.put(MINI_GHAST_TYPE.get(), MiniGhast.createAttributes());
@@ -336,6 +350,14 @@ public class JEntities {
         setDefaultMonsterSpawn(event, SHIVERING_BUSHWALKER_TYPE);
         setDefaultMonsterSpawn(event, SHIVERING_SHRIEKER_TYPE);
         setDefaultMonsterSpawn(event, CAPYBARA_TYPE);
+
+        setDefaultMonsterSpawn(event, BLAZIER_TYPE);
+        setDefaultMonsterSpawn(event, CALCIA_TYPE);
+        setDefaultMonsterSpawn(event, SOUL_WATCHER_TYPE);
+        setDefaultMonsterSpawn(event, WITHERING_BEAST_TYPE);
+        setDefaultMonsterSpawn(event, EUDOR_TYPE);
+        setDefaultMonsterSpawn(event, CORALLATOR_TYPE);
+        setDefaultMonsterSpawn(event, THUNDER_BIRD_TYPE);
 
         setDefaultSpawn(event, CORBANIAN_MOLLUSK_TYPE);
 

@@ -1,0 +1,84 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.blazier",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "head",
+					"pivot": [0, 30, 0],
+					"cubes": [
+						{"origin": [-4, 26, -4], "size": [8, 8, 8], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "shield2",
+					"pivot": [0, 25.46, 0],
+					"rotation": [0, 0, 16],
+					"cubes": [
+						{"origin": [-10, 5.46, -5], "size": [2, 20, 10], "uv": [0, 32]}
+					]
+				},
+				{
+					"name": "shield2_1",
+					"pivot": [0, 24, 0],
+					"rotation": [0, 0, -16],
+					"cubes": [
+						{"origin": [8, 5.46, -5], "size": [2, 20, 10], "uv": [0, 32]}
+					]
+				},
+				{
+					"name": "shield2_2",
+					"pivot": [0, 25.46, 0],
+					"rotation": [-16, 0, 0],
+					"cubes": [
+						{"origin": [-5, 5.46, -10], "size": [10, 20, 2], "uv": [26, 32]}
+					]
+				},
+				{
+					"name": "shield2_3",
+					"pivot": [0, 25.46, 0],
+					"rotation": [16, 0, 0],
+					"cubes": [
+						{"origin": [-5, 5.32812, 7.40773], "size": [10, 20, 2], "uv": [26, 32]}
+					]
+				},
+				{
+					"name": "1",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-7, 15, 0], "size": [2, 9, 2], "uv": [41, 31]}
+					]
+				},
+				{
+					"name": "2",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [3, 12, -8], "size": [2, 9, 2], "uv": [41, 31]}
+					]
+				},
+				{
+					"name": "3",
+					"pivot": [0, 30, 0],
+					"cubes": [
+						{"origin": [3, 15, 3], "size": [2, 9, 2], "uv": [41, 31]}
+					]
+				},
+				{
+					"name": "4",
+					"pivot": [0, 30, 0],
+					"cubes": [
+						{"origin": [-1, 5, 0], "size": [2, 9, 2], "uv": [41, 31]}
+					]
+				}
+			]
+		}
+	]
+}

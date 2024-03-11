@@ -9,7 +9,8 @@ public enum JDimension {
     BOIL("boil"),
     EUCA("euca"),
     DEPTHS("depths"),
-    CORBA("corba")
+    CORBA("corba"),
+    BOSS("boss")
     ;
 
     private final String dim;

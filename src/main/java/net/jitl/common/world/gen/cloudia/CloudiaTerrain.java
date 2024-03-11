@@ -2,6 +2,7 @@ package net.jitl.common.world.gen.cloudia;
 
 import net.jitl.core.init.JITL;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Rotation;
@@ -14,7 +15,9 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 
 public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
 
-    public static CloudiaPiece[] TOP, BIG_TOP, BOTTOM, PATHS, TOP_PATHS;
+    public static CloudiaPiece[] TOP, BOTTOM, PATHS, TOP_PATHS;
+    public static BigRoom[] BIG_TOP;
+
     public static final StructurePlaceSettings defaultSettings = new StructurePlaceSettings().setIgnoreEntities(false).setFinalizeEntities(true).setKeepLiquids(true);
 
     public CloudiaTerrain() {
@@ -47,8 +50,8 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
                 new CloudiaPiece(manager, "cloudia/top/tall_house4"),
         };
 
-        BIG_TOP = new CloudiaPiece[] {
-                new CloudiaPiece(manager, "cloudia/top/big_base")
+        BIG_TOP = new BigRoom[] {
+                new BigRoom(manager, "cloudia/top/big_base")
         };
 
         BOTTOM = new CloudiaPiece[] {
@@ -72,9 +75,10 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
         int topLayer = bottomLayer + 12;//sits 12 blocks taller (structures can then be 16x16x16 but top of the bottom structure is reserved for pathing)
         int rarity = 2;
         int big_rarity = 6;
+        int chunkX = pos.getX() / 16, chunkZ = pos.getZ() / 16;
 
-        BlockPos topPos = pos.offset(0, topLayer, 0);//new BlockPos(pos.getX(), topLayer, pos.getZ());
-        BlockPos bottomPos = pos.offset(0, bottomLayer, 0);//new BlockPos(pos.getX(), bottomLayer, pos.getZ());
+        BlockPos topPos = pos.offset(0, topLayer, 0);
+        BlockPos bottomPos = pos.offset(0, bottomLayer, 0);
 
         TOP_PATHS[random.nextInt(TOP_PATHS.length)].gen(level, random, topPos, Rotation.getRandom(random));
         if(random.nextInt(rarity) == 0)
@@ -84,8 +88,8 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
         if(random.nextInt(rarity) == 0)
             BOTTOM[random.nextInt(BOTTOM.length)].gen(level, random, bottomPos, Rotation.getRandom(random));
 
-        //if(random.nextInt(big_rarity) == 0)
-            //BIG_TOP[random.nextInt(BIG_TOP.length)].gen(level, random, topPos, Rotation.getRandom(random));
+       // if(random.nextInt(big_rarity) == 0)
+        //    BIG_TOP[random.nextInt(BIG_TOP.length)].gen(level, random, topPos, chunkX % 2, chunkZ % 2);
     }
 
     public static void placePiece(StructureTemplate structure, WorldGenLevel level, RandomSource random, BlockPos pos, Rotation rotation) {
@@ -104,6 +108,22 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
 
         public void gen(WorldGenLevel level, RandomSource random, BlockPos pos, Rotation rotation) {
             placePiece(part, level, random, pos, rotation);
+        }
+    }
+
+    class BigRoom {
+        public final StructureTemplate room;
+        public BigRoom(StructureTemplateManager manager, String room) {
+            this.room = manager.getOrCreate(new ResourceLocation(JITL.MODID, room));
+        }
+        public void gen(WorldGenLevel level, RandomSource random, BlockPos pos, int xPart, int zPart) {
+            if(xPart == 0) {
+                if(zPart == 0) placePiece(room, level, random, pos, Rotation.NONE);
+                else placePiece(room, level, random, pos, Rotation.COUNTERCLOCKWISE_90);
+            } else {
+                if(zPart == 0) placePiece(room, level, random, pos, Rotation.CLOCKWISE_90);
+                else placePiece(room, level, random, pos, Rotation.CLOCKWISE_180);
+            }
         }
     }
 }

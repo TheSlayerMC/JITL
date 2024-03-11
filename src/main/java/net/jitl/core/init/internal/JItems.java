@@ -92,6 +92,7 @@ public class JItems {
     public static final RegistryObject<Item> HEART_STONE = registerNormalItem("heart_stone", "Heart Stone");
     public static final RegistryObject<Item> HELL_TURTLE_SHELL = registerNormalItem("hell_turtle_shell", "Hell Turtle Shell");
     public static final RegistryObject<Item> OVER_SEEING_EYE = registerNormalItem("over_seeing_eye", "Over Seeing Eye");
+    public static final RegistryObject<Item> OVER_SEEING_TABLET = registerNormalItem("over_seeing_tablet", "Over Seeing tablet");
     public static final RegistryObject<Item> POTTERY_SHARD = registerNormalItem("pottery_shard", "Pottery Shard");
     public static final RegistryObject<Item> ROCK_SHARD = registerNormalItem("rock_shard", "Rock Shard");
     public static final RegistryObject<Item> SLIMY_FLESH = registerNormalItem("slimy_flesh", "Slimy Flesh");
@@ -154,6 +155,7 @@ public class JItems {
     public static final RegistryObject<Item> METAL_DISK = registerNormalItem("metal_disk", "Metal Disk");
     public static final RegistryObject<Item> ROYAL_DISK = registerNormalItem("royal_disk", "Royal Disk");
     public static final RegistryObject<Item> GATE_KEYS = registerNormalItem("gate_keys", "Gate Keys");
+    public static final RegistryObject<Item> GOLD_CLUMP = registerNormalItem("gold_clump", "Gold Clump");
 
     public static final RegistryObject<Item> DARK_GEM = registerNormalItem("dark_gem", "Dark Gem", DarkGemItem::new);
     public static final RegistryObject<Item> DEMONIC_EYE = registerNormalItem("demonic_eye", "Demonic Eye", DemonicEyeItem::new);
@@ -162,6 +164,13 @@ public class JItems {
     public static final RegistryObject<Item> GLOSSY_EYE = registerNormalItem("glossy_eye", "Glossy Eye");
 
     public static final RegistryObject<Item> FROST_GEM = registerNormalItem("frost_gem", "Frost Gem");
+    public static final RegistryObject<Item> ROC_FEATHER = registerNormalItem("roc_feather", "Roc Feather");
+    public static final RegistryObject<Item> SCALE = registerNormalItem("scale", "Scale");
+    public static final RegistryObject<Item> NATURE_TABLET = registerNormalItem("nature_tablet", "Nature Tablet");
+    public static final RegistryObject<Item> ENCHANTED_LEAF = registerNormalItem("enchanted_leaf", "Enchanted Leaf");
+    public static final RegistryObject<Item> OVERGROWN_NATURE_BALL = registerNormalItem("overgrown_nature_ball", "Overgrown Nature Ball");
+    public static final RegistryObject<Item> EARTHEN_CRYSTAL = registerNormalItem("earthen_crystal", "Earthen Crystal");
+    public static final RegistryObject<Item> PURPLE_POWDER = registerNormalItem("purple_powder", "Purple Powder");
     public static final RegistryObject<Item> FROST_FLAKE = registerNormalItem("frost_flake", "Frost Flake");
     public static final RegistryObject<Item> FROZEN_ICE_BALL = registerNormalItem("frozen_ice_ball", "Frozen Ice Ball");
     public static final RegistryObject<Item> ICE_FLAKE = registerNormalItem("ice_flake", "Ice Flake");
@@ -587,11 +596,20 @@ public class JItems {
 
     public static final RegistryObject<Item> BREATHING_STONE = registerNormalItem("breathing_stone", "Breathing Stone", () -> new EssenceRegenCatalystItem(itemProps().stacksTo(1)).speed(0.0112F));
 
-    public static final RegistryObject<Item> EUDOR_CROWN = registerNormalItem("eudor_crown", "Eudor's Crown", BossSpawnerItem::new);
     public static final RegistryObject<Item> BROKEN_OKOLOO_CLUB = register("broken_okoloo_club", "Broken Okoloo Club", BossSpawnerItem::new, ItemType.MODEL);
     public static final RegistryObject<Item> WITHERING_BEAST_ORB = registerNormalItem("withering_beast_orb", "Withering Beast Orb", BossSpawnerItem::new);
     public static final RegistryObject<Item> CALCIA_ORB = registerNormalItem("calcia_orb", "Calcia Orb", BossSpawnerItem::new);
     public static final RegistryObject<Item> SOUL_WATCHER_ORB = registerNormalItem("soul_watcher_orb", "Soul Watcher Orb", BossSpawnerItem::new);
+    public static final RegistryObject<Item> EUDOR_CROWN = registerNormalItem("eudor_crown", "Eudor's Crown", BossSpawnerItem::new);
+    public static final RegistryObject<Item> CORALLATOR_ORB = registerNormalItem("corallator_orb", "Corallator Orb", BossSpawnerItem::new);
+    public static final RegistryObject<Item> BLAZIER_ORB = registerNormalItem("blazier_orb", "Blazier Orb", BossSpawnerItem::new);
+    public static final RegistryObject<Item> THUNDER_BIRD_ORB = registerNormalItem("thunder_bird_orb", "Thunderbird Orb", BossSpawnerItem::new);
+
+    public static final RegistryObject<Item> SCALE_ORB = registerNormalItem("scale_orb", "Scale Orb", BossSpawnerItem::new);
+    public static final RegistryObject<Item> LOGGER_ORB = registerNormalItem("logger_orb", "Logger Orb", BossSpawnerItem::new);
+    public static final RegistryObject<Item> SENTRY_KING_ORB = registerNormalItem("sentry_king_orb", "Sentry King Orb", BossSpawnerItem::new);
+    public static final RegistryObject<Item> MYSTERIOUS_DISK = registerNormalItem("mysterious_disk", "Mysterious Disk", BossSpawnerItem::new);
+    public static final RegistryObject<Item> ENCHANTED_TERRASTAR = registerNormalItem("enchanted_terrastar", "Enchanted Terrastar", BossSpawnerItem::new);
 
     public static final RegistryObject<Item> SENTACOIN = registerNormalItem("sentacoin", "Sentacoin", () -> new SentacoinItem(Sentacoin.Type.COIN));
     public static final RegistryObject<Item> SENTACOIN_BAG = register("sentacoin_bag", "Sentacoin Bag", () -> new SentacoinItem(Sentacoin.Type.BAG), ItemType.MODEL);

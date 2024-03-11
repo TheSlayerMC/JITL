@@ -32,33 +32,24 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
     }
 
     @Override
-    public void render(GuiGraphics graphics, int pMouseX, int pMouseY, float pPartialTick) {
-        super.render(graphics, pMouseX, pMouseY, pPartialTick);
-        this.renderBackground(graphics, pMouseX, pMouseY, pPartialTick);//Dims around the GUI for a more vanilla look
-        this.updateButtonVisibility();
-    }
-
-    @Override
     protected void init() {
         super.init();
-        int w = (this.width - this.imageWidth) / 2;
-        int h = (this.height - this.imageHeight) / 2;
-        int xPos = w + 95;
-        int yPos = h + 200;
-        this.nextButton = this.addRenderableWidget(new PageButton(xPos + 32, yPos, true, (button) -> {
-            this.flipPage(true);
-        }, true));
-        this.previousButton = this.addRenderableWidget(new PageButton(xPos, yPos, false, (button) -> {
-            this.flipPage(false);
-        }, true));
+        int w1 = (this.width - this.imageWidth) / 2;
+        int h1 = (this.height - this.imageHeight) / 2;
+        int xPos = w1 + 95;
+        int yPos = h1 + 198;
+        this.nextButton = this.addRenderableWidget(new PageButton(xPos + 28, yPos, true, (button) -> this.flipPage(true), true));
+        this.previousButton = this.addRenderableWidget(new PageButton(xPos, yPos, false, (button) -> this.flipPage(false), true));
         this.updateButtonVisibility();
     }
 
     private void updateButtonVisibility() {
+        int maxPages = 5;
         this.nextButton.visible = true;
         this.previousButton.visible = true;
-        this.nextButton.active = pageNumber != 1;
+        this.nextButton.active = pageNumber != maxPages;
         this.previousButton.active = pageNumber != 0;
+        System.out.println(pageNumber);
     }
 
     protected void flipPage(boolean forward) {
@@ -78,7 +69,8 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
 
         switch(pageNumber) {
             case 0 -> page1(poseStack, mouseX, mouseY);
-            case 1 -> page2(poseStack);
+            case 1 -> page2(poseStack, mouseX, mouseY);
+            case 2 -> page3(poseStack, mouseX, mouseY);
             default -> {
             }
         }
@@ -88,7 +80,6 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
 
     public void page1(GuiGraphics stack, int mouseX, int mouseY) {
         int w = 120;
-
         int x = -3;
         int y = -3;
 
@@ -104,15 +95,40 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
 
         y = y + 65;
         x -= w;
-        //drawSprite(stack, x, y, EnumSummoningRecipes.d);
+        drawSprite(stack, mouseX, mouseY, x, y, EnumSummoningRecipes.CORALLATOR);
         x += w;
-        //drawSprite(stack, x, y, EnumSummoningRecipes.f);
+        drawSprite(stack, mouseX, mouseY, x, y, EnumSummoningRecipes.BLAZIER);
+
+
     }
 
-    public void page2(GuiGraphics stack) {
-        int height = 65;
-        int x = 9;
-        int h = 9;
+    public void page2(GuiGraphics stack, int mouseX, int mouseY) {
+        int w = 120;
+        int x = -3;
+        int y = -3;
+
+        drawSprite(stack, mouseX, mouseY, x, y, EnumSummoningRecipes.THUNDERBIRD);
+        x += w;
+        drawSprite(stack, mouseX, mouseY, x, y, EnumSummoningRecipes.SCALE);
+
+        y = y + 65;
+        x -= w;
+        drawSprite(stack, mouseX, mouseY, x, y, EnumSummoningRecipes.LOGGER);
+        x += w;
+        drawSprite(stack, mouseX, mouseY, x, y, EnumSummoningRecipes.SENTRY_KING);
+
+        y = y + 65;
+        x -= w;
+        drawSprite(stack, mouseX, mouseY, x, y, EnumSummoningRecipes.TERRASTAR);
+        x += w;
+       // drawSprite(stack, mouseX, mouseY, x, y, EnumSummoningRecipes.BLAZIER);
+
+    }
+
+    private void page3(GuiGraphics poseStack, int mouseX, int mouseY) {
+        int w = 120;
+        int x = -3;
+        int y = -3;
 
     }
 

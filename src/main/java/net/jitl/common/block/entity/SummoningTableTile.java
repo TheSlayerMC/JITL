@@ -26,6 +26,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,11 +40,8 @@ public class SummoningTableTile extends RandomizableContainerBlockEntity impleme
     }
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, SummoningTableTile entity) {
-
-        entity.checkRecipeAndSummon(entity, EnumSummoningRecipes.OKOLOO);
-        entity.checkRecipeAndSummon(entity, EnumSummoningRecipes.SOUL_WATCHER);
-        entity.checkRecipeAndSummon(entity, EnumSummoningRecipes.WITHERING_BEAST);
-        entity.checkRecipeAndSummon(entity, EnumSummoningRecipes.CALCIA);
+        for(EnumSummoningRecipes summoningRecipes : EnumSummoningRecipes.values())
+            entity.checkRecipeAndSummon(entity, summoningRecipes);
 
         if(entity.startedSummon()) {
             BlockState active_state = state.setValue(SummoningTableBlock.IS_ACTIVE, Boolean.TRUE);
@@ -81,12 +80,11 @@ public class SummoningTableTile extends RandomizableContainerBlockEntity impleme
 
         assert this.level != null;
         this.level.playSound(null, this.getBlockPos(), JSounds.EUCA_DISC_1.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-        if(!level.isClientSide()) {
-            level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
-        }
+
         addParticles();
     }
 
+    @OnlyIn(Dist.CLIENT)
     public void addParticles() {
         RandomSource r = RandomSource.create();
         assert this.level != null;
