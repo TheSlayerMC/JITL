@@ -82,7 +82,7 @@ public class SummoningTableBlock extends BaseEntityBlock {
         } else {
             BlockEntity blockentity = level.getBlockEntity(pos);
             if(blockentity instanceof SummoningTableTile) {
-                if(STRUCTURE_PATTERN.find(level, pos.below(1).north(2).west(2)) != null || player.isCreative() || !JCommonConfig.NEED_SUMMONING_STRUCTRE.get()) {
+                if(isUsable(level, pos) || player.isCreative()) {
                     player.openMenu((SummoningTableTile) blockentity);
                     return InteractionResult.CONSUME;
                 }
@@ -98,7 +98,7 @@ public class SummoningTableBlock extends BaseEntityBlock {
                 double d0 = (double) pPos.getX() + pRandom.nextFloat();
                 double d1 = (double) pPos.getY() + 1.0D;
                 double d2 = (double) pPos.getZ() + pRandom.nextFloat();
-                if(STRUCTURE_PATTERN.find(pLevel, pPos.below(1).north(2).west(2)) != null || !JCommonConfig.NEED_SUMMONING_STRUCTRE.get()) {
+                if(isUsable(pLevel, pPos)) {
                     pLevel.addParticle(ParticleTypes.ENCHANT, d0, d1, d2, 0.0D, 0.0D, 0.0D);
                     if (pState.getValue(IS_ACTIVE)) {
                         pLevel.addParticle(ParticleTypes.ENCHANT, d0, d1 + 0.2D, d2, 0.0D, 0.0D, 0.0D);
@@ -107,6 +107,10 @@ public class SummoningTableBlock extends BaseEntityBlock {
                 }
             }
         }
+    }
+
+    public boolean isUsable(Level level, BlockPos pos) {
+        return STRUCTURE_PATTERN.find(level, pos.below(1).north(2).west(2)) != null || !JCommonConfig.NEED_SUMMONING_STRUCTRE.get();
     }
 
     @Override
