@@ -1023,6 +1023,7 @@
 "item.jitl.crystal_flake": "Crystal Flake",
 "item.jitl.freezing_tablet": "Freezing Tablet",
 "item.jitl.sizzling_eye": "Sizzling Eye",
+"item.jitl.snake_skin": "Snake Skin",
 "item.jitl.withic_dust": "Withic Dust",
 "item.jitl.withic_soul": "Withic Soul",
 "item.jitl.lost_soul": "Lost Soul",
@@ -1127,7 +1128,7 @@
 "item.jitl.eye_of_the_blizzard": "Eye Of The Blizzard",
 "item.jitl.skull_of_decay": "Skull Of Decay",
 "item.jitl.frostborn_soul": "Frostborn Soul",
-"item.jitl.withicspine": "Withicspine",
+"item.jitl.withicspine": "Withic Spine",
 "item.jitl.boil_powder": "Boil Powder",
 "item.jitl.heart_container_small": "Heart Container",
 "item.jitl.heart_container_medium": "Heart Container",
@@ -1153,6 +1154,9 @@
 "item.jitl.very_strong_essence_crystal": "Very Strong Essence Crystal",
 "item.jitl.breathing_stone": "Breathing Stone",
 "item.jitl.eudor_crown": "Eudor's Crown",
+"item.jitl.withering_beast_orb": "Withering Beast Orb",
+"item.jitl.calcia_orb": "Calcia Orb",
+"item.jitl.soul_watcher_orb": "Soul Watcher Orb",
 "item.jitl.sentacoin": "Sentacoin",
 "item.jitl.recipe_book": "Recipe Book"
 }

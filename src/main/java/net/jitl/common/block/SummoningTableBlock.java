@@ -79,7 +79,7 @@ public class SummoningTableBlock extends BaseEntityBlock {
         } else {
             BlockEntity blockentity = level.getBlockEntity(pos);
             if(blockentity instanceof SummoningTableTile) {
-                if(STRUCTURE_PATTERN.find(level, pos.below(1).north(2).west(2)) != null) {
+                if(STRUCTURE_PATTERN.find(level, pos.below(1).north(2).west(2)) != null || player.isCreative()) {
                     player.openMenu((SummoningTableTile) blockentity);
                     return InteractionResult.CONSUME;
                 }

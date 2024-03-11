@@ -157,7 +157,6 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         int progressBarSize = 65;
         int k = (width - imageWidth) / 2;
         int l = (height - imageHeight) / 2;
-        matrixStack.pose().pushPose();
         RenderSystem.setShader(GameRenderer::getPositionTexColorNormalShader);
         RenderSystem.setShaderTexture(0, this.KNOWLEDGE_SPRITE);
         Player player = Minecraft.getInstance().player;
@@ -181,10 +180,8 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
                 String level = "" + getLevelCount;
 
                 matrixStack.drawString(font, "" + (getLevelCount), lvX - this.font.width(level) / 2 + 4, lvY, ArgbColor.from(ChatFormatting.WHITE), true);
-                matrixStack.pose().popPose();
             });
         }
-        RenderSystem.enableDepthTest();
     }
 
     @Override

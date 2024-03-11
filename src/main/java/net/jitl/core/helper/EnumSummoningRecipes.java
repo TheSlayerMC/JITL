@@ -4,37 +4,57 @@ import net.jitl.core.init.internal.JItems;
 import net.minecraft.world.item.Item;
 
 public enum EnumSummoningRecipes {
-    OKOLOO(new Item[]{JItems.BLOODCRUST_INGOT.get(),
+    OKOLOO(new Item[]{
+            JItems.BLOODCRUST_INGOT.get(),
             JItems.HELL_SHARDS.get(),
             JItems.BLOODCRUST_INGOT.get(),
+
             JItems.SPAWNER_BAR.get(),
+
             JItems.BLOODCRUST_INGOT.get(),
             JItems.HELL_SHARDS.get(),
-            JItems.BLOODCRUST_INGOT.get(), JItems.BROKEN_OKOLOO_CLUB.get()}),
-
-    w(new Item[]{JItems.KORITE_INGOT.get(),
-            JItems.CELESTIUM_INGOT.get(),
-            JItems.FLAIRIUM_INGOT.get(),
-            JItems.MEKYUM_INGOT.get(),
             JItems.BLOODCRUST_INGOT.get(),
-            JItems.ORBADITE_INGOT.get(),
-            JItems.LUNIUM_POWDER.get(), JItems.CELESTIUM_INGOT.get()}),
 
-    a(new Item[]{JItems.BLOODWIELD_SWORD.get(),
-            JItems.SWORD_THUNDERBIRD.get(),
-            JItems.BLOODWIELD_SWORD.get(),
-            JItems.CHAMPIONS_SWORD.get(),
-            JItems.FROSTBITTEN_SWORD.get(),
-            JItems.DEVELOPER_SWORD.get(),
-            JItems.GOLEM_SWORD.get(), JItems.POISON_SWORD.get()}),
+            JItems.BROKEN_OKOLOO_CLUB.get()}),
 
-    s(new Item[]{JItems.BLOODCRUST_SHOVEL.get(),
-            JItems.CELESTIUM_SHOVEL.get(),
-            JItems.BLOODCRUST_SHOVEL.get(),
-            JItems.CELESTIUM_SHOVEL.get(),
-            JItems.GORBITE_SHOVEL.get(),
-            JItems.ORBADITE_SHOVEL.get(),
-            JItems.LUNIUM_SHOVEL.get(), JItems.SNOW_SHOVELER.get()}),
+    WITHERING_BEAST(new Item[]{
+            JItems.WITHICSPINE.get(),
+            JItems.LOST_SOUL.get(),
+            JItems.WITHICSPINE.get(),
+
+            JItems.WITHIC_SOUL.get(),
+
+            JItems.WITHICSPINE.get(),
+            JItems.LOST_SOUL.get(),
+            JItems.WITHICSPINE.get(),
+
+            JItems.WITHERING_BEAST_ORB.get()}),
+
+    CALCIA(new Item[]{
+            JItems.SPAWNER_BAR.get(),
+            JItems.ASH.get(),
+            JItems.SPAWNER_BAR.get(),
+
+            JItems.HELL_SHARDS.get(),
+
+            JItems.SPAWNER_BAR.get(),
+            JItems.ASH.get(),
+            JItems.SPAWNER_BAR.get(),
+
+            JItems.CALCIA_ORB.get()}),
+
+    SOUL_WATCHER(new Item[]{
+            JItems.SNAKE_SKIN.get(),
+            JItems.CONCENTRATED_BLOOD.get(),
+            JItems.SNAKE_SKIN.get(),
+
+            JItems.SIZZLING_EYE.get(),
+
+            JItems.SNAKE_SKIN.get(),
+            JItems.CONCENTRATED_BLOOD.get(),
+            JItems.SNAKE_SKIN.get(),
+
+            JItems.SOUL_WATCHER_ORB.get()}),
 
     d(new Item[]{JItems.BLOODCRUST_AXE.get(),
             JItems.CELESTIUM_AXE.get(),

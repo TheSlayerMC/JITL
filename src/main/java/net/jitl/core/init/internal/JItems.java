@@ -179,6 +179,7 @@ public class JItems {
     public static final RegistryObject<Item> FREEZING_TABLET = registerNormalItem("freezing_tablet", "Freezing Tablet");
 
     public static final RegistryObject<Item> SIZZLING_EYE = registerNormalItem("sizzling_eye", "Sizzling Eye");
+    public static final RegistryObject<Item> SNAKE_SKIN = registerNormalItem("snake_skin", "Snake Skin");
     public static final RegistryObject<Item> WITHIC_DUST = registerNormalItem("withic_dust", "Withic Dust");
     public static final RegistryObject<Item> WITHIC_SOUL = registerNormalItem("withic_soul", "Withic Soul");
     public static final RegistryObject<Item> LOST_SOUL = registerNormalItem("lost_soul", "Lost Soul");
@@ -554,7 +555,7 @@ public class JItems {
     public static final RegistryObject<Item> EYE_OF_THE_BLIZZARD = registerNormalItem("eye_of_the_blizzard", "Eye Of The Blizzard", () -> new JCurioItem(itemProps().stacksTo(1)).overview(true));
     public static final RegistryObject<Item> SKULL_OF_DECAY = registerNormalItem("skull_of_decay", "Skull Of Decay", () -> new JCurioItem(itemProps().stacksTo(1).durability(256)).ability(true));
     public static final RegistryObject<Item> FROSTBORN_SOUL = registerNormalItem("frostborn_soul", "Frostborn Soul");
-    public static final RegistryObject<Item> WITHICSPINE = registerNormalItem("withicspine", "Withicspine");
+    public static final RegistryObject<Item> WITHICSPINE = registerNormalItem("withicspine", "Withic Spine");
     public static final RegistryObject<Item> BOIL_POWDER = registerNormalItem("boil_powder", "Boil Powder");
 
     public static final RegistryObject<Item> HEART_CONTAINER_SMALL = registerNormalItem("heart_container_small", "Heart Container", () -> new HeartContainerItem(itemProps().stacksTo(1)).health(1));
@@ -588,11 +589,14 @@ public class JItems {
 
     public static final RegistryObject<Item> EUDOR_CROWN = registerNormalItem("eudor_crown", "Eudor's Crown", BossSpawnerItem::new);
     public static final RegistryObject<Item> BROKEN_OKOLOO_CLUB = register("broken_okoloo_club", "Broken Okoloo Club", BossSpawnerItem::new, ItemType.MODEL);
+    public static final RegistryObject<Item> WITHERING_BEAST_ORB = registerNormalItem("withering_beast_orb", "Withering Beast Orb", BossSpawnerItem::new);
+    public static final RegistryObject<Item> CALCIA_ORB = registerNormalItem("calcia_orb", "Calcia Orb", BossSpawnerItem::new);
+    public static final RegistryObject<Item> SOUL_WATCHER_ORB = registerNormalItem("soul_watcher_orb", "Soul Watcher Orb", BossSpawnerItem::new);
 
     public static final RegistryObject<Item> SENTACOIN = registerNormalItem("sentacoin", "Sentacoin", () -> new SentacoinItem(Sentacoin.Type.COIN));
     public static final RegistryObject<Item> SENTACOIN_BAG = register("sentacoin_bag", "Sentacoin Bag", () -> new SentacoinItem(Sentacoin.Type.BAG), ItemType.MODEL);
 
-    public static final RegistryObject<Item> RECIPE_BOOK = registerNormalItem("recipe_book", "Recipe Book", () -> new JRecipeBook());
+    public static final RegistryObject<Item> RECIPE_BOOK = registerNormalItem("recipe_book", "Recipe Book", JRecipeBook::new);
 
     public static final RegistryObject<Item> UNDERWATER_WORLD_RECORD = registerRecord("underwater_world_record", "Blue Water", JSounds.UNDERWATER_WORLD, 2640);
     public static final RegistryObject<Item> GOLD_PLAINS_RECORD = registerRecord("gold_plains_record", "Gold Plains", JSounds.GOLD_PLAINS_MUSIC, 1120);

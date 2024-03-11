@@ -2,8 +2,8 @@ package net.jitl.common.block.entity;
 
 import net.jitl.common.block.SummoningTableBlock;
 import net.jitl.common.block.entity.container.SummoningTableContainer;
+import net.jitl.core.helper.EnumSummoningRecipes;
 import net.jitl.core.init.internal.JBlockEntities;
-import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
@@ -38,16 +38,11 @@ public class SummoningTableTile extends RandomizableContainerBlockEntity impleme
     }
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, SummoningTableTile entity) {
-        if(entity.areItemsInSlots(
-                JItems.BLOODCRUST_INGOT.get(),
-                JItems.HELL_SHARDS.get(),
-                JItems.BLOODCRUST_INGOT.get(),
-                JItems.SPAWNER_BAR.get(),
-                JItems.BLOODCRUST_INGOT.get(),
-                JItems.HELL_SHARDS.get(),
-                JItems.BLOODCRUST_INGOT.get())){
-            entity.summonItem(new ItemStack(JItems.BROKEN_OKOLOO_CLUB.get()));
-        }
+
+        entity.checkRecipeAndSummon(entity, EnumSummoningRecipes.OKOLOO);
+        entity.checkRecipeAndSummon(entity, EnumSummoningRecipes.SOUL_WATCHER);
+        entity.checkRecipeAndSummon(entity, EnumSummoningRecipes.WITHERING_BEAST);
+        entity.checkRecipeAndSummon(entity, EnumSummoningRecipes.CALCIA);
 
         if(entity.startedSummon()) {
             BlockState active_state = state.setValue(SummoningTableBlock.IS_ACTIVE, Boolean.TRUE);
@@ -55,6 +50,21 @@ public class SummoningTableTile extends RandomizableContainerBlockEntity impleme
         } else {
             BlockState active_state = state.setValue(SummoningTableBlock.IS_ACTIVE, Boolean.FALSE);
             level.setBlock(pos, active_state, 2);
+        }
+    }
+
+    public void checkRecipeAndSummon(SummoningTableTile entity, EnumSummoningRecipes recipe) {
+        if(entity.areItemsInSlots(
+                recipe.getItems(0),
+                recipe.getItems(1),
+                recipe.getItems(2),
+
+                recipe.getItems(3),
+
+                recipe.getItems(4),
+                recipe.getItems(5),
+                recipe.getItems(6))) {
+            entity.summonItem(new ItemStack(recipe.getItems(7)));
         }
     }
 
