@@ -302,6 +302,33 @@
       "jitl:entities/hongo_spore_release"
     ]
   },
+  "entities.calcia_idle": {
+    "sounds": [
+      "jitl:entities/calcia"
+    ]
+  },
+  "entities.calcia_hurt": {
+    "sounds": [
+      "jitl:entities/calcia_hurt"
+    ]
+  },
+  "entities.blazier_idle":{
+    "sounds": [
+      "journey:blazier_idle_0",
+      "journey:blazier_idle_1",
+      "journey:blazier_idle_2"
+    ]},
+  "entities.blazier_hurt":{
+    "sounds": [
+      "jitl:entities/blazier_hit_0",
+      "jitl:entities/blazier_hit_1",
+      "jitl:entities/blazier_hit_2",
+      "jitl:entities/blazier_hit_3"
+    ]},
+  "entities.blazier_death":{
+    "sounds": [
+      "jitl:entities/blazier_death"
+    ]},
   "entities.glump_ambient": {
     "sounds": [
       "jitl:entities/glump_ambient_0",

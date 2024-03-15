@@ -69,6 +69,13 @@ public class JSounds {
     public static final RegistryObject<SoundEvent> GLUMP_HURT = registerSound("entities.glump_hurt");
     public static final RegistryObject<SoundEvent> GLUMP_DEATH = registerSound("entities.glump_death");
 
+    public static final RegistryObject<SoundEvent> BLAZIER_IDLE = registerSound("entities.blazier_idle");
+    public static final RegistryObject<SoundEvent> BLAZIER_HURT = registerSound("entities.blazier_hurt");
+    public static final RegistryObject<SoundEvent> BLAZIER_DEATH = registerSound("entities.blazier_death");
+
+    public static final RegistryObject<SoundEvent> CALCIA_IDLE = registerSound("entities.calcia");
+    public static final RegistryObject<SoundEvent> CALCIA_HURT = registerSound("entities.calcia_hurt");
+
     public static final RegistryObject<SoundEvent> FROZEN_TROLL_AMBIENT = registerSound("entities.frozen_troll_ambient");
     public static final RegistryObject<SoundEvent> FROZEN_TROLL_HURT = registerSound("entities.frozen_troll_hurt");
     public static final RegistryObject<SoundEvent> FROZEN_TROLL_DEATH = registerSound("entities.frozen_troll_death");

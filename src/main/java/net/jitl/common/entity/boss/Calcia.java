@@ -6,11 +6,17 @@ import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
 import net.jitl.common.entity.goal.IdleHealGoal;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JLootTables;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -31,6 +37,11 @@ public class Calcia extends JBossEntity {
     private final ServerBossEvent BOSS_INFO = new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
     private final BossBarRenderer BOSS_BAR = new BossBarRenderer(this, JITL.rl("textures/gui/bossbars/calcia.png"));
 
+    private int FIRE_TICK = 0;
+    private final int FIRE_MAX = 400;
+    private final int FIRE_MAX_2 = 300;
+    private static final EntityDataAccessor<Boolean> IS_INVISIBLE = SynchedEntityData.defineId(Calcia.class, EntityDataSerializers.BOOLEAN);
+
     public Calcia(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
@@ -38,6 +49,50 @@ public class Calcia extends JBossEntity {
     @Override
     public boolean fireImmune() {
         return true;
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(IS_INVISIBLE, false);
+    }
+
+    public boolean isInvisible() {
+        return this.entityData.get(IS_INVISIBLE);
+    }
+
+    public void setInvisible(boolean isInvis) {
+        this.entityData.set(IS_INVISIBLE, isInvis);
+    }
+
+
+    @Override
+    public void tick() {
+        super.tick();
+        if(this.FIRE_MAX == this.FIRE_TICK && this.FIRE_TICK != 0) {
+            this.setInvisible(true);
+            this.FIRE_TICK = 0;
+        } else {
+            this.FIRE_TICK++;
+        }
+
+        if(this.FIRE_MAX_2 == this.FIRE_TICK && this.FIRE_TICK != 0) {
+            this.setInvisible(false);
+            this.FIRE_TICK = 0;
+        } else {
+            this.FIRE_TICK++;
+        }
+
+        if(isInvisible()) {
+            for(int i = 0; i < 5; i++)
+                this.level().addParticle(ParticleTypes.ENCHANT, this.position().x + (this.random.nextDouble() - 0.5D), this.position().y + this.random.nextDouble(), this.position().z + (this.random.nextDouble() - 0.5D), (this.random.nextDouble() - 0.5D) * 2.0D, -this.random.nextDouble(), (this.random.nextDouble() - 0.5D) * 2.0D);
+
+            this.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 25));
+
+            LivingEntity entity = getLastAttacker();
+            if(entity != null)
+                entity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 25));
+        }
     }
 
     @Override
