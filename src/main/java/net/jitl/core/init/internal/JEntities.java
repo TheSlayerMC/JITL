@@ -353,10 +353,10 @@ public class JEntities {
 
         setDefaultMonsterSpawn(event, BLAZIER_TYPE);
         setDefaultMonsterSpawn(event, CALCIA_TYPE);
-        setDefaultMonsterSpawn(event, SOUL_WATCHER_TYPE);
+        setDefaultSpawn(event, SOUL_WATCHER_TYPE);
         setDefaultMonsterSpawn(event, WITHERING_BEAST_TYPE);
         setDefaultMonsterSpawn(event, EUDOR_TYPE);
-        setDefaultMonsterSpawn(event, CORALLATOR_TYPE);
+        setDefaultSpawn(event, CORALLATOR_TYPE);
         setDefaultMonsterSpawn(event, THUNDER_BIRD_TYPE);
 
         setDefaultSpawn(event, CORBANIAN_MOLLUSK_TYPE);

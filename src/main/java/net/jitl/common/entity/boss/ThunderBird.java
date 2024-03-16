@@ -67,7 +67,7 @@ public class ThunderBird extends JBossEntity {
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 100)
+                .add(Attributes.MAX_HEALTH, 500)
                 .add(Attributes.FOLLOW_RANGE, 25)
                 .add(Attributes.MOVEMENT_SPEED, 0.26).build();
     }

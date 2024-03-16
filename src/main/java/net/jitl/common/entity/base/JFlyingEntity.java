@@ -20,6 +20,7 @@ import java.util.EnumSet;
 public abstract class JFlyingEntity extends FlyingMob implements Enemy, GeoEntity {
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+    private double speed = 0.3D;
 
     public JFlyingEntity(EntityType<? extends JFlyingEntity> type, Level worldIn) {
         super(type, worldIn);
@@ -38,9 +39,13 @@ public abstract class JFlyingEntity extends FlyingMob implements Enemy, GeoEntit
         return this.cache;
     }
 
+    public void setFlyingSpeed(double speed) {
+        this.speed = speed;
+    }
+
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(5, new JFlyingEntity.RandomFlyGoal(this));
+        this.goalSelector.addGoal(5, new JFlyingEntity.RandomFlyGoal(this, this.speed));
         this.goalSelector.addGoal(7, new JFlyingEntity.LookAroundGoal(this));
         this.addGoals();
     }
@@ -118,9 +123,11 @@ public abstract class JFlyingEntity extends FlyingMob implements Enemy, GeoEntit
 
     static class RandomFlyGoal extends Goal {
         private final JFlyingEntity entity;
+        public final double speed;
 
-        public RandomFlyGoal(JFlyingEntity entity) {
+        public RandomFlyGoal(JFlyingEntity entity, double speed) {
             this.entity = entity;
+            this.speed = speed;
             this.setFlags(EnumSet.of(Flag.MOVE));
         }
 
@@ -149,7 +156,7 @@ public abstract class JFlyingEntity extends FlyingMob implements Enemy, GeoEntit
             double d0 = this.entity.getX() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
             double d1 = this.entity.getY() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
             double d2 = this.entity.getZ() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-            this.entity.getMoveControl().setWantedPosition(d0, d1, d2, 0.3D);
+            this.entity.getMoveControl().setWantedPosition(d0, d1, d2, this.speed);
         }
     }
 }

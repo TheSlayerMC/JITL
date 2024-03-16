@@ -29,6 +29,7 @@ public class JParticleManager {
     public static final RegistryObject<SimpleParticleType> GOLDITE_FLOWER = REGISTRY.register("goldite_flower", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> FLAME_POLLEN = REGISTRY.register("flame_pollen", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> CAVE_VINE = REGISTRY.register("cave_vine", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> HELLSTONE = REGISTRY.register("hellstone", () -> new SimpleParticleType(false));
 
     @SubscribeEvent
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
@@ -42,5 +43,6 @@ public class JParticleManager {
         event.registerSpriteSet(CRYSTAL_FRUIT.get(), CrystalFruitParticle.Factory::new);
         event.registerSpriteSet(GOLDITE_FLOWER.get(), GolditeFlowerParticle.Factory::new);
         event.registerSpriteSet(FLAME_POLLEN.get(), FlamePollenParticle.Factory::new);
+        event.registerSpriteSet(HELLSTONE.get(), HellstoneParticle.Factory::new);
     }
 }

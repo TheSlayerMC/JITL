@@ -1,13 +1,13 @@
 package net.jitl.common.items;
 
 import net.jitl.common.block.OkolooPedestalBlock;
-import net.jitl.common.entity.base.JBossEntity;
 import net.jitl.common.entity.boss.*;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;
@@ -38,7 +38,7 @@ public class BossSpawnerItem extends Item {
                     }
                 }
             }
-            JBossEntity entity = null;
+            LivingEntity entity = null;
 
             if(this == JItems.WITHERING_BEAST_ORB.get()) {
                 entity = new WitheringBeast(JEntities.WITHERING_BEAST_TYPE.get(), level);

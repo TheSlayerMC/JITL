@@ -38,8 +38,6 @@ public class Calcia extends JBossEntity {
     private final BossBarRenderer BOSS_BAR = new BossBarRenderer(this, JITL.rl("textures/gui/bossbars/calcia.png"));
 
     private int FIRE_TICK = 0;
-    private final int FIRE_MAX = 400;
-    private final int FIRE_MAX_2 = 300;
     private static final EntityDataAccessor<Boolean> IS_INVISIBLE = SynchedEntityData.defineId(Calcia.class, EntityDataSerializers.BOOLEAN);
 
     public Calcia(EntityType<? extends Monster> pEntityType, Level pLevel) {
@@ -69,14 +67,16 @@ public class Calcia extends JBossEntity {
     @Override
     public void tick() {
         super.tick();
-        if(this.FIRE_MAX == this.FIRE_TICK && this.FIRE_TICK != 0) {
+        int FIRE_MAX = 400;
+        if(FIRE_MAX == this.FIRE_TICK && this.FIRE_TICK != 0) {
             this.setInvisible(true);
             this.FIRE_TICK = 0;
         } else {
             this.FIRE_TICK++;
         }
 
-        if(this.FIRE_MAX_2 == this.FIRE_TICK && this.FIRE_TICK != 0) {
+        int FIRE_MAX_2 = 300;
+        if(FIRE_MAX_2 == this.FIRE_TICK && this.FIRE_TICK != 0) {
             this.setInvisible(false);
             this.FIRE_TICK = 0;
         } else {
@@ -84,8 +84,10 @@ public class Calcia extends JBossEntity {
         }
 
         if(isInvisible()) {
-            for(int i = 0; i < 5; i++)
-                this.level().addParticle(ParticleTypes.ENCHANT, this.position().x + (this.random.nextDouble() - 0.5D), this.position().y + this.random.nextDouble(), this.position().z + (this.random.nextDouble() - 0.5D), (this.random.nextDouble() - 0.5D) * 2.0D, -this.random.nextDouble(), (this.random.nextDouble() - 0.5D) * 2.0D);
+            if(this.level().isClientSide) {
+                for (int i = 0; i < 5; i++)
+                    this.level().addParticle(ParticleTypes.ENCHANT, this.position().x + (this.random.nextDouble() - 0.5D), this.position().y + this.random.nextDouble(), this.position().z + (this.random.nextDouble() - 0.5D), (this.random.nextDouble() - 0.5D) * 2.0D, -this.random.nextDouble(), (this.random.nextDouble() - 0.5D) * 2.0D);
+            }
 
             this.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 25));
 
@@ -122,7 +124,7 @@ public class Calcia extends JBossEntity {
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 100)
+                .add(Attributes.MAX_HEALTH, 400)
                 .add(Attributes.FOLLOW_RANGE, 25)
                 .add(Attributes.MOVEMENT_SPEED, 0.26).build();
     }
