@@ -113,6 +113,11 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.CORALLATOR_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("corallator", JDimension.BOSS), 0.6F, 2.5F));
         EntityRenderers.register(JEntities.THUNDER_BIRD_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("thunder_bird", JDimension.BOSS), 0.6F, 3F));
 
+        EntityRenderers.register(JEntities.LOGGER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("logger", JDimension.BOSS), 0.6F, 2F));
+        EntityRenderers.register(JEntities.TERRANIAN_PROTECTOR_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("terranian_protector", JDimension.BOSS), 0.6F, 1F));
+        EntityRenderers.register(JEntities.SENTRY_KING_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("sentry_king", JDimension.BOSS), 0.6F, 1.2F));
+        EntityRenderers.register(JEntities.SKY_STALKER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("sky_stalker", JDimension.BOSS), 0.6F, 1.5F));
+
         EntityRenderers.register(JEntities.WITHERSPINE_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("witherspine", JDimension.NETHER), 0.6F));
         EntityRenderers.register(JEntities.MINI_GHAST_TYPE.get(), renderer -> new MiniGhastRenderer<>(renderer, new AnimatedMonsterModel<>("mini_ghast", JDimension.NETHER)));
         EntityRenderers.register(JEntities.HELL_TURTLE_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("hell_turtle", JDimension.NETHER), 1.0F));

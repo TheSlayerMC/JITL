@@ -303,6 +303,10 @@ public class JEntityLootTables extends EntityLootSubProvider {
         this.add(JEntities.EUDOR_TYPE.get(), empty());
         this.add(JEntities.CORALLATOR_TYPE.get(), empty());
         this.add(JEntities.THUNDER_BIRD_TYPE.get(), empty());
+        this.add(JEntities.LOGGER_TYPE.get(), empty());
+        this.add(JEntities.TERRANIAN_PROTECTOR_TYPE.get(), empty());
+        this.add(JEntities.SENTRY_KING_TYPE.get(), empty());
+        this.add(JEntities.SKY_STALKER_TYPE.get(), empty());
 
         this.add(JEntities.AURON_TYPE.get(), empty());
 

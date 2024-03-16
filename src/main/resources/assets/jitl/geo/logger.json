@@ -1,0 +1,99 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.logger",
+				"texture_width": 128,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "head",
+					"pivot": [0, 24, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-4, 24, -4], "size": [8, 8, 8], "uv": [64, 0]}
+					]
+				},
+				{
+					"name": "head1",
+					"pivot": [-15, 23, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-23, 19, -4], "size": [8, 8, 8], "uv": [32, 0]}
+					]
+				},
+				{
+					"name": "head2",
+					"pivot": [15, 23, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [15, 19, -4], "size": [8, 8, 8], "uv": [32, 0]}
+					]
+				},
+				{
+					"name": "body",
+					"pivot": [0, 24, -1],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-4, 18, -3], "size": [8, 6, 4], "uv": [16, 16]}
+					]
+				},
+				{
+					"name": "rightarm",
+					"pivot": [-5, 22, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-8, 20, -2], "size": [4, 4, 4], "uv": [40, 24]}
+					]
+				},
+				{
+					"name": "leftarm",
+					"pivot": [5, 22, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [4, 20, -2], "size": [4, 4, 4], "uv": [40, 16]}
+					]
+				},
+				{
+					"name": "rightleg",
+					"pivot": [-12, 19, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-14, 7, -2], "size": [4, 12, 4], "uv": [56, 16]},
+						{"origin": [-15, 0, -3], "size": [6, 7, 6], "uv": [0, 32]}
+					]
+				},
+				{
+					"name": "leftleg",
+					"pivot": [10, 19, -2],
+					"mirror": true,
+					"cubes": [
+						{"origin": [10, 7, -2], "size": [4, 12, 4], "uv": [0, 16]},
+						{"origin": [9, 0, -3], "size": [6, 7, 6], "uv": [24, 32]}
+					]
+				},
+				{
+					"name": "shoulder2",
+					"pivot": [11, 26, -1],
+					"mirror": true,
+					"cubes": [
+						{"origin": [8, 19, -4], "size": [7, 7, 7], "uv": [96, 16]}
+					]
+				},
+				{
+					"name": "Shoulder1",
+					"pivot": [-11, 26, -1],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-15, 19, -4], "size": [7, 7, 7], "uv": [96, 0]}
+					]
+				}
+			]
+		}
+	]
+}

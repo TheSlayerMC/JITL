@@ -6,16 +6,24 @@ import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nullable;
+import java.util.List;
+
 public class BossSpawnerItem extends Item {
+
+    private LivingEntity entity = null;
 
     public BossSpawnerItem() {
         super(JItems.itemProps());
@@ -38,7 +46,6 @@ public class BossSpawnerItem extends Item {
                     }
                 }
             }
-            LivingEntity entity = null;
 
             if(this == JItems.WITHERING_BEAST_ORB.get()) {
                 entity = new WitheringBeast(JEntities.WITHERING_BEAST_TYPE.get(), level);
@@ -68,6 +75,22 @@ public class BossSpawnerItem extends Item {
                 entity = new ThunderBird(JEntities.THUNDER_BIRD_TYPE.get(), level);
             }
 
+            if(this == JItems.LOGGER_ORB.get()) {
+                entity = new Logger(JEntities.LOGGER_TYPE.get(), level);
+            }
+
+            if(this == JItems.SENTRY_KING_ORB.get()) {
+                entity = new SentryKing(JEntities.SENTRY_KING_TYPE.get(), level);
+            }
+
+            if(this == JItems.MYSTERIOUS_DISK.get()) {
+                entity = new SkyStalker(JEntities.SKY_STALKER_TYPE.get(), level);
+            }
+
+            if(this == JItems.ENCHANTED_TERRASTAR.get()) {
+                entity = new TerranianProtector(JEntities.TERRANIAN_PROTECTOR_TYPE.get(), level);
+            }
+
             if(entity != null) {
                 entity.setPos(pos.getX(), pos.getY() + 1, pos.getZ());
                 level.addFreshEntity(entity);
@@ -76,5 +99,14 @@ public class BossSpawnerItem extends Item {
             }
         }
         return InteractionResult.sidedSuccess(level.isClientSide());
+    }
+
+    @Override
+    public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level level, @NotNull List<Component> pTooltip, @NotNull TooltipFlag pFlag) {
+        if(this == JItems.BROKEN_OKOLOO_CLUB.get()) {
+            pTooltip.add(Component.translatable("jitl.tooltip.okoloo"));
+        }
+
+        pTooltip.add(Component.translatable("jitl.tooltip.spawn"));
     }
 }

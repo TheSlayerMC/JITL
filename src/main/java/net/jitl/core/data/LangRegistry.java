@@ -184,6 +184,8 @@ public class LangRegistry {
         writeToFile("\"jitl.tooltip.celestium_armor.2\" : \"To recharge this ability, touch the ground at least 2 seconds after previous dash\",");
 
         writeToFile("\"jitl.tooltip.uses_remaining\" : \"Uses Remaining\",");
+        writeToFile("\"jitl.tooltip.okoloo\" : \"Placed in Okoloo Pedestal\",");
+        writeToFile("\"jitl.tooltip.spawn\" : \"Used to spawn Boss\",");
 
         /* --------------------- Finish manual lines --------------------- */
 

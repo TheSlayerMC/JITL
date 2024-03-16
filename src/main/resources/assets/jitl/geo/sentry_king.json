@@ -1,0 +1,159 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.sentry_king",
+				"texture_width": 256,
+				"texture_height": 128,
+				"visible_bounds_width": 6,
+				"visible_bounds_height": 7.5,
+				"visible_bounds_offset": [0, 3.25, 0]
+			},
+			"bones": [
+				{
+					"name": "Head1",
+					"pivot": [-8, 32, -8],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-8, 9, -8], "size": [16, 16, 16], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Head2",
+					"pivot": [8, 48, -8],
+					"mirror": true,
+					"cubes": [
+						{"origin": [8, 25, -8], "size": [16, 16, 16], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Head3",
+					"pivot": [-24, 48, -8],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-24, 25, -8], "size": [16, 16, 16], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Head4",
+					"pivot": [-24, 80, -8],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-24, 57, -8], "size": [16, 16, 16], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "juncture1",
+					"pivot": [-15, 35, -2],
+					"rotation": [0, 0, 50],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-9.63769, 26.50049, -2], "size": [16, 4, 4], "uv": [64, 9]}
+					]
+				},
+				{
+					"name": "juncture2",
+					"pivot": [5, 23, -2],
+					"rotation": [0, 0, -50],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-0.36231, 14.50049, -2], "size": [16, 4, 4], "uv": [64, 9]}
+					]
+				},
+				{
+					"name": "Head5",
+					"pivot": [24, 64, -8],
+					"mirror": true,
+					"cubes": [
+						{"origin": [24, 41, -8], "size": [16, 16, 16], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Head6",
+					"pivot": [-8, 96, -8],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-8, 73, -8], "size": [16, 16, 16], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Head7",
+					"pivot": [8, 80, -8],
+					"mirror": true,
+					"cubes": [
+						{"origin": [8, 57, -8], "size": [16, 16, 16], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "juncture3",
+					"pivot": [8, 92, -2],
+					"rotation": [0, 0, 50],
+					"mirror": true,
+					"cubes": [
+						{"origin": [13.36231, 83.50049, -2], "size": [16, 4, 4], "uv": [64, 9]}
+					]
+				},
+				{
+					"name": "juncture4",
+					"pivot": [-18, 80, -2],
+					"rotation": [0, 0, -50],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-23.36231, 71.50049, -2], "size": [16, 4, 4], "uv": [64, 9]}
+					]
+				},
+				{
+					"name": "CentralHead",
+					"pivot": [-8, 64, -8],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-8, 41, -8], "size": [16, 16, 16], "uv": [0, 32]}
+					]
+				},
+				{
+					"name": "juncture5",
+					"pivot": [21, 39, -2],
+					"rotation": [0, 0, -50],
+					"mirror": true,
+					"cubes": [
+						{"origin": [15.63769, 30.50049, -2], "size": [16, 4, 4], "uv": [64, 9]}
+					]
+				},
+				{
+					"name": "juncture6",
+					"pivot": [-31, 51, -2],
+					"rotation": [0, 0, 50],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-25.63769, 42.50049, -2], "size": [16, 4, 4], "uv": [64, 9]}
+					]
+				},
+				{
+					"name": "Head8",
+					"pivot": [-40, 64, -8],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-40, 41, -8], "size": [16, 16, 16], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "juncture7",
+					"pivot": [8, 58, -2],
+					"mirror": true,
+					"cubes": [
+						{"origin": [8, 47, -2], "size": [16, 4, 4], "uv": [64, 0]}
+					]
+				},
+				{
+					"name": "juncture8",
+					"pivot": [-24, 58, -2],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-24, 47, -2], "size": [16, 4, 4], "uv": [64, 0]}
+					]
+				}
+			]
+		}
+	]
+}
