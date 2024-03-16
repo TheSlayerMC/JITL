@@ -18,6 +18,12 @@ public class JBlockProperties {
             .sound(SoundType.STONE)
             .requiresCorrectToolForDrops();
 
+    public static BlockBehaviour.Properties TROPHY = BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
+            .strength(1.5F)
+            .sound(SoundType.STONE)
+            .noOcclusion()
+            .requiresCorrectToolForDrops();
+
     public static BlockBehaviour.Properties GLASS = BlockBehaviour.Properties.of()
             .strength(1F)
             .sound(SoundType.GLASS)

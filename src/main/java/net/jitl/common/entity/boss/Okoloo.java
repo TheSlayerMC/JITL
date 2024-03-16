@@ -4,13 +4,16 @@ import net.jitl.client.gui.BossBarRenderer;
 import net.jitl.common.entity.base.JBossEntity;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
 import net.jitl.common.entity.goal.IdleHealGoal;
+import net.jitl.core.helper.MathHelper;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JLootTables;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -52,6 +55,19 @@ public class Okoloo extends JBossEntity {
         this.targetSelector.addGoal(1, new AttackWhenDifficultGoal(this, this));
         this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, null));
+    }
+
+    @Override
+    public boolean doHurtTarget(Entity entity) {
+        this.level().broadcastEntityEvent(this, (byte)1);
+        float damage = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
+        float f1 = (int)damage > 0 ? damage / 2.0F + (float)this.random.nextInt((int)damage) : damage;
+        boolean hurt = entity.hurt(this.damageSources().mobAttack(this), f1);
+        if(hurt)
+            entity.setDeltaMovement((double)(-MathHelper.sin(this.yRotO * (float) Math.PI / 180.0F)) * 2, 0.1D, (double) (MathHelper.cos(this.yRotO * (float) Math.PI / 180.0F)) * 2);
+        
+        this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
+        return hurt;
     }
 
     @Override

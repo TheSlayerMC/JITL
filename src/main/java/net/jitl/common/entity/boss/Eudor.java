@@ -159,12 +159,12 @@ public class Eudor extends JBossEntity {
 
     @Override
     protected @Nullable BossCrystal.Type getDeathCrystalType() {
-        return BossCrystal.Type.NETHER;
+        return BossCrystal.Type.EUCA;
     }
 
     @Override
     public ResourceLocation lootTable() {
-        return JLootTables.OKOLOO_CRYSTAL;
+        return JLootTables.EUDOR_CRYSTAL;
     }
 
     @Override

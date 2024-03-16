@@ -85,15 +85,16 @@ public class JEntities {
     //BOSS MOBS
     public static final RegistryObject<EntityType<TowerGuardian>> TOWER_GUARDIAN_TYPE = registerEntity(TowerGuardian::new, "tower_guardian", "Tower Guardian", 2F, 3.5F, OVERWORLD_COLOR, BOSS_COLOR);
     public static final RegistryObject<EntityType<RockiteSmasher>> ROCKITE_SMASHER_TYPE = registerEntity(RockiteSmasher::new, "rockite_smasher", "Rockite Smasher", 2F, 3.25F, OVERWORLD_COLOR, BOSS_COLOR);
-    public static final RegistryObject<EntityType<Okoloo>> OKOLOO_TYPE = registerEntity(Okoloo::new, "okoloo", "Okoloo", 1.2F, 1.9F, NETHER_COLOR, BOSS_COLOR);
-    public static final RegistryObject<EntityType<Blazier>> BLAZIER_TYPE = registerEntity(Blazier::new, "blazier", "Okoloo", 1.2F, 1.9F, NETHER_COLOR, BOSS_COLOR);
-    public static final RegistryObject<EntityType<Calcia>> CALCIA_TYPE = registerEntity(Calcia::new, "calcia", "Calcia", 1.2F, 1.9F, NETHER_COLOR, BOSS_COLOR);
-    public static final RegistryObject<EntityType<SoulWatcher>> SOUL_WATCHER_TYPE = registerEntity(SoulWatcher::new, "soul_watcher", "Soul Watcher", 1.2F, 1.9F, NETHER_COLOR, BOSS_COLOR);
-    public static final RegistryObject<EntityType<WitheringBeast>> WITHERING_BEAST_TYPE = registerEntity(WitheringBeast::new, "withering_beast", "Withering Beast", 1.2F, 1.9F, NETHER_COLOR, BOSS_COLOR);
-    public static final RegistryObject<EntityType<Eudor>> EUDOR_TYPE = registerEntity(Eudor::new, "eudor", "Eudor", 1.2F, 1.9F, EUCA_COLOR, BOSS_COLOR);
-    public static final RegistryObject<EntityType<Corallator>> CORALLATOR_TYPE = registerEntity(Corallator::new, "corallator", "Corallator", 1.2F, 1.9F, EUCA_COLOR, BOSS_COLOR);
-    public static final RegistryObject<EntityType<ThunderBird>> THUNDER_BIRD_TYPE = registerEntity(ThunderBird::new, "thunder_bird", "Thunder Bird", 1.2F, 1.9F, DEPTHS_COLOR, BOSS_COLOR);
+    public static final RegistryObject<EntityType<Okoloo>> OKOLOO_TYPE = registerEntity(Okoloo::new, "okoloo", "Okoloo", 1.2F, 2.5F, NETHER_COLOR, BOSS_COLOR);
+    public static final RegistryObject<EntityType<Blazier>> BLAZIER_TYPE = registerEntity(Blazier::new, "blazier", "Blazier", 1F, 1.9F, NETHER_COLOR, BOSS_COLOR);
+    public static final RegistryObject<EntityType<Calcia>> CALCIA_TYPE = registerEntity(Calcia::new, "calcia", "Calcia", 1.2F, 2.8F, NETHER_COLOR, BOSS_COLOR);
+    public static final RegistryObject<EntityType<SoulWatcher>> SOUL_WATCHER_TYPE = registerEntity(SoulWatcher::new, "soul_watcher", "Soul Watcher", 1.5F, 1F, NETHER_COLOR, BOSS_COLOR);
+    public static final RegistryObject<EntityType<WitheringBeast>> WITHERING_BEAST_TYPE = registerEntity(WitheringBeast::new, "withering_beast", "Withering Beast", 1.2F, 3F, NETHER_COLOR, BOSS_COLOR);
+    public static final RegistryObject<EntityType<Eudor>> EUDOR_TYPE = registerEntity(Eudor::new, "eudor", "Eudor", 1.6F, 3.5F, EUCA_COLOR, BOSS_COLOR);
+    public static final RegistryObject<EntityType<Corallator>> CORALLATOR_TYPE = registerEntity(Corallator::new, "corallator", "Corallator", 1.2F, 1.8F, EUCA_COLOR, BOSS_COLOR);
+    public static final RegistryObject<EntityType<ThunderBird>> THUNDER_BIRD_TYPE = registerEntity(ThunderBird::new, "thunder_bird", "Thunder Bird", 0.9F, 1.3F, DEPTHS_COLOR, BOSS_COLOR);
 
+    
     //OVERWORLD MOBS
     public static final RegistryObject<EntityType<Mage>> MAGE_TYPE = registerEntity(Mage::new, "mage", "Mage", 1F, 1.75F, OVERWORLD_COLOR, TRADER_COLOR, MobCategory.CREATURE);
     public static final RegistryObject<EntityType<Floro>> FLORO_TYPE = registerEntity(Floro::new, "floro", "Floro", 1F, 1.75F, OVERWORLD_COLOR, HOSTILE_COLOR);

@@ -53,6 +53,7 @@ public class LangRegistry {
         ArrayList<String> cropBlockList = new ArrayList<>(JBlocks.cropBlockName);
         ArrayList<String> wallBlockList = new ArrayList<>(JBlocks.wallBlockName);
         ArrayList<String> slimeBlockList = new ArrayList<>(JBlocks.slimeBlockName);
+        ArrayList<String> trophyBlockList = new ArrayList<>(JBlocks.trophyBlockName);
 
         ArrayList<String> toolItemList = new ArrayList<>(JItems.toolName);
         ArrayList<String> itemList = new ArrayList<>(JItems.itemName);
@@ -296,6 +297,9 @@ public class LangRegistry {
 
         for(int i = 0; i < slimeBlockList.size(); i++)
             writeToFile("\"block.jitl." + slimeBlockList.get(i) + "\": \"" + JBlocks.slimeLangName.get(i) + "\"" + ",");
+
+        for(int i = 0; i < trophyBlockList.size(); i++)
+            writeToFile("\"block.jitl." + trophyBlockList.get(i) + "\": \"" + JBlocks.trophyLangName.get(i) + "\"" + ",");
 
         for(int i = 0; i < toolItemList.size(); i++)
             writeToFile("\"item.jitl." + toolItemList.get(i) + "\": \"" + JItems.toolLangName.get(i) + "\"" + ",");

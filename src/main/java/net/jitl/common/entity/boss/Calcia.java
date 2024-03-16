@@ -166,7 +166,7 @@ public class Calcia extends JBossEntity {
 
     @Override
     public ResourceLocation lootTable() {
-        return JLootTables.OKOLOO_CRYSTAL;
+        return JLootTables.CALCIA_CRYSTAL;
     }
 
     @Override

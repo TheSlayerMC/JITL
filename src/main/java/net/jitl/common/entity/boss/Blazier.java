@@ -161,7 +161,7 @@ public class Blazier extends JBossEntity {
 
     @Override
     public ResourceLocation lootTable() {
-        return JLootTables.OKOLOO_CRYSTAL;
+        return JLootTables.BLAZIER_CRYSTAL;
     }
 
     @Override

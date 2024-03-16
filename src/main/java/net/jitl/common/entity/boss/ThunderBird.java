@@ -21,14 +21,17 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
+import java.util.Objects;
+
 public class ThunderBird extends JBossEntity {
 
-    private final ServerBossEvent BOSS_INFO = new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
+    private final ServerBossEvent BOSS_INFO = new ServerBossEvent(Objects.requireNonNull(this.getDisplayName()), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
     private final BossBarRenderer BOSS_BAR = new BossBarRenderer(this, JITL.rl("textures/gui/bossbars/thunder_bird.png"));
 
     public ThunderBird(EntityType<? extends Monster> pEntityType, Level pLevel) {
@@ -60,7 +63,7 @@ public class ThunderBird extends JBossEntity {
     }
 
     @Override
-    public void startSeenByPlayer(ServerPlayer player) {
+    public void startSeenByPlayer(@NotNull ServerPlayer player) {
         if(showBarWhenSpawned())
             this.BOSS_INFO.addPlayer(player);
     }
@@ -104,12 +107,12 @@ public class ThunderBird extends JBossEntity {
 
     @Override
     protected @Nullable BossCrystal.Type getDeathCrystalType() {
-        return BossCrystal.Type.NETHER;
+        return BossCrystal.Type.DEPTHS;
     }
 
     @Override
     public ResourceLocation lootTable() {
-        return JLootTables.OKOLOO_CRYSTAL;
+        return JLootTables.THUNDER_BIRD_CRYSTAL;
     }
 
     @Override

@@ -151,12 +151,12 @@ public class Corallator extends JFlyingBossEntity implements RangedAttackMob {
 
     @Override
     protected @Nullable BossCrystal.Type getDeathCrystalType() {
-        return BossCrystal.Type.NETHER;
+        return BossCrystal.Type.EUCA;
     }
 
     @Override
     public ResourceLocation lootTable() {
-        return JLootTables.OKOLOO_CRYSTAL;
+        return JLootTables.CORALLATOR_CRYSTAL;
     }
 
     @Override

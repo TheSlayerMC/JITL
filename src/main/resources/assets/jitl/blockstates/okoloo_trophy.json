@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+        "model": "jitl:block/okoloo_trophy",
+         "y": 90
+     },
+    "facing=north": {
+        "model": "jitl:block/okoloo_trophy"
+     },
+    "facing=south": {
+        "model": "jitl:block/okoloo_trophy",
+         "y": 180
+     },
+    "facing=west": {
+        "model": "jitl:block/okoloo_trophy",
+         "y": 270
+     }
+  }
+}

@@ -70,6 +70,7 @@ public class JITL {
             new JTerrainBlockGenerator().generate();
             new JBlockChestGenerator().generate();
             new JBlockRotatableGenerator().generate();
+            new JBlockTrophyGenerator().generate();
             new JBlockFurnaceGenerator().generate();
             new JBlockCrossGenerator().generate();
             new JBlockLilyGenerator().generate();

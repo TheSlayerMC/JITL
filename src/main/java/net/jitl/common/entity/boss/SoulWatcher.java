@@ -124,7 +124,7 @@ public class SoulWatcher extends JFlyingBossEntity {
 
     @Override
     public ResourceLocation lootTable() {
-        return JLootTables.OKOLOO_CRYSTAL;
+        return JLootTables.SOUL_WATCHER_CRYSTAL;
     }
 
     @Override

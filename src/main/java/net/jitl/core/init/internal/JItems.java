@@ -379,6 +379,17 @@ public class JItems {
     public static final RegistryObject<Item> ORBADITE_LEGS = registerNormalItem("orbadite_leggings", "Orbadite Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.LEGGINGS, null));
     public static final RegistryObject<Item> ORBADITE_BOOTS = registerNormalItem("orbadite_boots", "Orbadite Boots", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.BOOTS, null));
 
+    public static final RegistryObject<Item> TWILIGHT_HELMET = registerNormalItem("twilight_helmet", "Twilight Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.HELMET, null));
+    public static final RegistryObject<Item> TWILIGHT_CHEST = registerNormalItem("twilight_chestplate", "Twilight Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.CHESTPLATE, null));
+    public static final RegistryObject<Item> TWILIGHT_LEGS = registerNormalItem("twilight_leggings", "Twilight Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.LEGGINGS, null));
+    public static final RegistryObject<Item> TWILIGHT_BOOTS = registerNormalItem("twilight_boots", "Twilight Boots", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.BOOTS, null));
+
+    public static final RegistryObject<Item> FLAME_HELMET = registerNormalItem("flame_helmet", "Flame Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.HELMET, null));
+    public static final RegistryObject<Item> FLAME_CHEST = registerNormalItem("flame_chestplate", "Flame Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.CHESTPLATE, null));
+    public static final RegistryObject<Item> FLAME_LEGS = registerNormalItem("flame_leggings", "Flame Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.LEGGINGS, null));
+    public static final RegistryObject<Item> FLAME_BOOTS = registerNormalItem("flame_boots", "Flame Boots", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.BOOTS, null));
+
+
     public static final RegistryObject<Item> SOULSTONE = registerNormalItem("soulstone", "Soulstone");
     public static final RegistryObject<Item> SOULSTONE_SHIELD = registerShieldItem("soulstone_shield", "Soulstone Shield", () -> new JShieldItem("soulstone", 1200, SOULSTONE.get()));
     public static final RegistryObject<Item> SOULSTONE_SHOVEL = registerToolItem("soulstone_shovel", "Soulstone Shovel", () -> new JShovelItem(JToolTiers.SOULSTONE_SHOVEL));

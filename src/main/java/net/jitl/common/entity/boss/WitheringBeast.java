@@ -163,7 +163,7 @@ public class WitheringBeast extends JBossEntity implements RangedAttackMob {
 
     @Override
     public ResourceLocation lootTable() {
-        return JLootTables.OKOLOO_CRYSTAL;
+        return JLootTables.WITHERING_BEAST_CRYSTAL;
     }
 
     @Override
