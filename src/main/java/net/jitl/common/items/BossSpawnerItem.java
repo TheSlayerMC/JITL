@@ -23,7 +23,6 @@ import java.util.List;
 
 public class BossSpawnerItem extends Item {
 
-    private LivingEntity entity = null;
 
     public BossSpawnerItem() {
         super(JItems.itemProps());
@@ -46,6 +45,7 @@ public class BossSpawnerItem extends Item {
                     }
                 }
             }
+            LivingEntity entity = null;
 
             if(this == JItems.WITHERING_BEAST_ORB.get()) {
                 entity = new WitheringBeast(JEntities.WITHERING_BEAST_TYPE.get(), level);
@@ -73,6 +73,10 @@ public class BossSpawnerItem extends Item {
 
             if(this == JItems.THUNDER_BIRD_ORB.get()) {
                 entity = new ThunderBird(JEntities.THUNDER_BIRD_TYPE.get(), level);
+            }
+
+            if(this == JItems.SCALE_ORB.get()) {
+                entity = new Scale(JEntities.SCALE_TYPE.get(), level);
             }
 
             if(this == JItems.LOGGER_ORB.get()) {

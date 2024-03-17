@@ -15,7 +15,7 @@ public class JLootTables {
     public static ResourceLocation EUDOR_CRYSTAL = addBossCrystalLootTable("eudor");
     public static ResourceLocation CORALLATOR_CRYSTAL = addBossCrystalLootTable("corallator");
     public static ResourceLocation THUNDER_BIRD_CRYSTAL = addBossCrystalLootTable("thunder_bird");
-
+    public static ResourceLocation SCALE_CRYSTAL = addBossCrystalLootTable("scale");
     public static ResourceLocation LOGGER_CRYSTAL = addBossCrystalLootTable("logger");
     public static ResourceLocation TERRANIAN_PROTECTOR_CRYSTAL = addBossCrystalLootTable("terranian_protector");
     public static ResourceLocation SENTRY_KING_CRYSTAL = addBossCrystalLootTable("sentry_king");

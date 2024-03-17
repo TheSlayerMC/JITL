@@ -112,7 +112,7 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.EUDOR_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("eudor", JDimension.BOSS), 0.6F, 1.7F));
         EntityRenderers.register(JEntities.CORALLATOR_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("corallator", JDimension.BOSS), 0.6F, 2.5F));
         EntityRenderers.register(JEntities.THUNDER_BIRD_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("thunder_bird", JDimension.BOSS), 0.6F, 3F));
-
+        EntityRenderers.register(JEntities.SCALE_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("scale", JDimension.BOSS), 0.6F, 1.5F));
         EntityRenderers.register(JEntities.LOGGER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("logger", JDimension.BOSS), 0.6F, 2F));
         EntityRenderers.register(JEntities.TERRANIAN_PROTECTOR_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("terranian_protector", JDimension.BOSS), 0.6F, 1F));
         EntityRenderers.register(JEntities.SENTRY_KING_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("sentry_king", JDimension.BOSS), 0.6F, 1.2F));

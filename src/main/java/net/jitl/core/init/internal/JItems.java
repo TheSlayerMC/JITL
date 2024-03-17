@@ -147,6 +147,8 @@ public class JItems {
     public static final RegistryObject<Item> EUCA_PORTAL_GEM = registerNormalItem("euca_portal_gem", "Euca Portal Gem");
     public static final RegistryObject<Item> DEPTHS_PORTAL_GEM = registerNormalItem("depths_portal_gem", "Depths Portal Gem");
     public static final RegistryObject<Item> CORBA_PORTAL_GEM = registerNormalItem("corba_portal_gem", "Corba Portal Gem");
+    public static final RegistryObject<Item> TERRANIA_PORTAL_GEM = registerNormalItem("terrania_portal_gem", "Terrania Portal Gem");
+    public static final RegistryObject<Item> CLOUDIA_PORTAL_GEM = registerNormalItem("cloudia_portal_gem", "Cloudia Portal Gem");
 
     public static final RegistryObject<Item> EUCA_TABLET = registerNormalItem("euca_tablet", "Euca Tablet");
     public static final RegistryObject<Item> EUCA_MEAT = registerFoodItem("euca_meat", "Euca Meat", JFood.EUCA_MEAT);
@@ -207,6 +209,7 @@ public class JItems {
     public static final RegistryObject<Item> SPAWNER_BAR = registerNormalItem("spawner_bar", "Spawner Bar");
     public static final RegistryObject<Item> LUNITE_CHUNK = registerNormalItem("lunite_chunk", "Lunite Chunk");
     public static final RegistryObject<Item> SENTRY_EYE = registerNormalItem("sentry_eye", "Sentry Eye", SentryEyeItem::new);
+    public static final RegistryObject<Item> ANCIENT_EYE_OF_OPENING = registerNormalItem("ancient_eye_of_opening", "Ancient Eye Of Opening");
 
     public static final RegistryObject<Item> TERRASTAR = registerNormalItem("terrastar", "Terrastar");
     public static final RegistryObject<Item> TERRASHROOM = registerNormalItem("terrashroom", "Terrashroom");
@@ -389,6 +392,10 @@ public class JItems {
     public static final RegistryObject<Item> FLAME_LEGS = registerNormalItem("flame_leggings", "Flame Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.LEGGINGS, null));
     public static final RegistryObject<Item> FLAME_BOOTS = registerNormalItem("flame_boots", "Flame Boots", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.BOOTS, null));
 
+    public static final RegistryObject<Item> HOLLOW_HELMET = registerNormalItem("hollow_helmet", "Hollow Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.HELMET, null));
+    public static final RegistryObject<Item> HOLLOW_CHEST = registerNormalItem("hollow_chestplate", "Hollow Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.CHESTPLATE, null));
+    public static final RegistryObject<Item> HOLLOW_LEGS = registerNormalItem("hollow_leggings", "Hollow Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.LEGGINGS, null));
+    public static final RegistryObject<Item> HOLLOW_BOOTS = registerNormalItem("hollow_boots", "Hollow Boots", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.BOOTS, null));
 
     public static final RegistryObject<Item> SOULSTONE = registerNormalItem("soulstone", "Soulstone");
     public static final RegistryObject<Item> SOULSTONE_SHIELD = registerShieldItem("soulstone_shield", "Soulstone Shield", () -> new JShieldItem("soulstone", 1200, SOULSTONE.get()));
@@ -431,6 +438,9 @@ public class JItems {
             new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
 
     public static final RegistryObject<Item> CORBA_PIERCER = registerToolItem("corba_piercer", "Corba Piercer", () ->
+            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+
+    public static final RegistryObject<Item> SKY_PIERCER = registerToolItem("sky_piercer", "Sky Piercer", () ->
             new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
 
     public static final RegistryObject<Item> PIERCER = registerToolItem("piercer", "Piercer", () ->

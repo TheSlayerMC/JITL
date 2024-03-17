@@ -643,6 +643,11 @@ public class JBlocks {
     public static final RegistryObject<Block> CORALLATOR_TROPHY = registerTrophyBlock("corallator_trophy", "Corallator Trophy");
     public static final RegistryObject<Block> BLAZIER_TROPHY = registerTrophyBlock("blazier_trophy", "Blazier Trophy");
     public static final RegistryObject<Block> THUNDER_BIRD_TROPHY = registerTrophyBlock("thunder_bird_trophy", "Thunderbird Trophy");
+    public static final RegistryObject<Block> SCALE_TROPHY = registerTrophyBlock("scale_trophy", "Scale Trophy");
+    public static final RegistryObject<Block> LOGGER_TROPHY = registerTrophyBlock("logger_trophy", "Logger Trophy");
+    public static final RegistryObject<Block> SENTRY_KING_TROPHY = registerTrophyBlock("sentry_king_trophy", "Sentry King Trophy");
+    public static final RegistryObject<Block> TERRANIAN_PROTECTOR_TROPHY = registerTrophyBlock("terranian_protector_trophy", "Terranian Protector Trophy");
+    public static final RegistryObject<Block> SKY_STALKER_TROPHY = registerTrophyBlock("sky_stalker_trophy", "Sky Stalker Trophy");
 
     public static final RegistryObject<RotatedPillarBlock> STONE_PLILLAR = registerPillar("stone_pillar", "Stone Pillar", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> SMALL_STONE_BRICKS = register("small_stone_bricks", "Small Stone Bricks", JBlockProperties.STONE);

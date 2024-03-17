@@ -185,7 +185,7 @@ public class LangRegistry {
 
         writeToFile("\"jitl.tooltip.uses_remaining\" : \"Uses Remaining\",");
         writeToFile("\"jitl.tooltip.okoloo\" : \"Placed in Okoloo Pedestal\",");
-        writeToFile("\"jitl.tooltip.spawn\" : \"Used to spawn Boss\",");
+        writeToFile("\"jitl.tooltip.spawn\" : \"Used to spawn a Boss\",");
 
         /* --------------------- Finish manual lines --------------------- */
 

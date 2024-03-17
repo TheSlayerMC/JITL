@@ -110,7 +110,7 @@ public class SummoningTableBlock extends BaseEntityBlock {
     }
 
     public boolean isUsable(Level level, BlockPos pos) {
-        return STRUCTURE_PATTERN.find(level, pos.below(1).north(2).west(2)) != null || !JCommonConfig.NEED_SUMMONING_STRUCTRE.get();
+        return STRUCTURE_PATTERN.find(level, pos.below(1).north(2).west(2)) != null || !JCommonConfig.NEED_SUMMONING_STRUCTURE.get();
     }
 
     @Override

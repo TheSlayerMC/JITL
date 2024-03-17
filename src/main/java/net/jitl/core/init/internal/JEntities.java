@@ -94,6 +94,7 @@ public class JEntities {
     public static final RegistryObject<EntityType<Corallator>> CORALLATOR_TYPE = registerEntity(Corallator::new, "corallator", "Corallator", 1.2F, 1.8F, EUCA_COLOR, BOSS_COLOR);
     public static final RegistryObject<EntityType<ThunderBird>> THUNDER_BIRD_TYPE = registerEntity(ThunderBird::new, "thunder_bird", "Thunder Bird", 0.9F, 1.3F, DEPTHS_COLOR, BOSS_COLOR);
 
+    public static final RegistryObject<EntityType<Scale>> SCALE_TYPE = registerEntity(Scale::new, "scale", "Scale", 1.5F, 1F, DEPTHS_COLOR, BOSS_COLOR);
     public static final RegistryObject<EntityType<Logger>> LOGGER_TYPE = registerEntity(Logger::new, "logger", "Logger", 1.2F, 1.8F, CORBA_COLOR, BOSS_COLOR);
     public static final RegistryObject<EntityType<SentryKing>> SENTRY_KING_TYPE = registerEntity(SentryKing::new, "sentry_king", "Sentry King", 2F, 4F, CORBA_COLOR, BOSS_COLOR);
     public static final RegistryObject<EntityType<TerranianProtector>> TERRANIAN_PROTECTOR_TYPE = registerEntity(TerranianProtector::new, "terranian_protector", "Terranian Protector", 2F, 4F, TERRANIA_COLOR, BOSS_COLOR);
@@ -234,6 +235,7 @@ public class JEntities {
         event.put(CORALLATOR_TYPE.get(), Corallator.createAttributes());
         event.put(BLAZIER_TYPE.get(), Blazier.createAttributes());
         event.put(THUNDER_BIRD_TYPE.get(), ThunderBird.createAttributes());
+        event.put(SCALE_TYPE.get(), Scale.createAttributes());
         event.put(EUDOR_TYPE.get(), Eudor.createAttributes());
         event.put(LOGGER_TYPE.get(), Logger.createAttributes());
         event.put(TERRANIAN_PROTECTOR_TYPE.get(), TerranianProtector.createAttributes());
@@ -367,6 +369,7 @@ public class JEntities {
         setDefaultMonsterSpawn(event, EUDOR_TYPE);
         setDefaultSpawn(event, CORALLATOR_TYPE);
         setDefaultMonsterSpawn(event, THUNDER_BIRD_TYPE);
+        setDefaultSpawn(event, SCALE_TYPE);
         setDefaultMonsterSpawn(event, LOGGER_TYPE);
         setDefaultMonsterSpawn(event, TERRANIAN_PROTECTOR_TYPE);
         setDefaultMonsterSpawn(event, SENTRY_KING_TYPE);
