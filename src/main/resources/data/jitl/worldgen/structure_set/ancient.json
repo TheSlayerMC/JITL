@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:ancient",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 2642136763899,
+    "spacing": 20,
+    "separation": 6,
+    "type": "minecraft:random_spread"
+  }
+}

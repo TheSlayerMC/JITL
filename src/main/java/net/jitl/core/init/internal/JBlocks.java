@@ -652,6 +652,16 @@ public class JBlocks {
     public static final RegistryObject<RotatedPillarBlock> STONE_PLILLAR = registerPillar("stone_pillar", "Stone Pillar", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> SMALL_STONE_BRICKS = register("small_stone_bricks", "Small Stone Bricks", JBlockProperties.STONE);
 
+    public static final RegistryObject<Block> ANCIENT_OBELISK = register("ancient_obelisk", "Ancient Obelisk", JBlockProperties.ANCIENT_STONE.lightLevel((l) -> 2));
+    public static final RegistryObject<Block> ANCIENT_SOCKET = registerModeledBlock("ancient_socket", "Ancient Socket", AncientSocketBlock::new);
+    public static final RegistryObject<Block> ANCIENT_CATALYST = register("ancient_catalyst", "Ancient Catalyst", AncientCatalystBlock::new);
+    public static final RegistryObject<RotatedPillarBlock> ANCIENT_STONE = registerPillar("ancient_stone", "Ancient Stone", false, JBlockProperties.ANCIENT_STONE);
+    public static final RegistryObject<RotatedPillarBlock> ANCIENT_RUNIC_STONE_0 = registerPillar("ancient_stone_runic_0", "Ancient Runic Stone", false, JBlockProperties.ANCIENT_STONE);
+    public static final RegistryObject<RotatedPillarBlock> ANCIENT_RUNIC_STONE_1 = registerPillar("ancient_stone_runic_1", "Ancient Runic Stone", false, JBlockProperties.ANCIENT_STONE);
+    public static final RegistryObject<RotatedPillarBlock> ANCIENT_RUNIC_STONE_2 = registerPillar("ancient_stone_runic_2", "Ancient Runic Stone", false, JBlockProperties.ANCIENT_STONE);
+    public static final RegistryObject<RotatedPillarBlock> ANCIENT_RUNIC_STONE_3 = registerPillar("ancient_stone_runic_3", "Ancient Runic Stone", false, JBlockProperties.ANCIENT_STONE);
+
+
     //OVERWORLD
     public static final RegistryObject<Block> TOMATO_CROP = registerCropBlock("tomato_crop", "Tomato", 8, TomatoCropBlock::new);
     public static final RegistryObject<Block> FLORO_PEDAL_CROP = registerCropBlock("floro_pedal_crop", "Floro Pedal", 8, FloroCropBlock::new);

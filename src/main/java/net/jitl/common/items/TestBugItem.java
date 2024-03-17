@@ -1,19 +1,19 @@
 package net.jitl.common.items;
 
-import net.jitl.common.capability.essence.PlayerEssenceProvider;
 import net.jitl.client.knowledge.PlayerKnowledgeProvider;
+import net.jitl.common.capability.essence.PlayerEssenceProvider;
 import net.jitl.common.capability.stats.PlayerStatsProvider;
+import net.jitl.common.items.base.JItem;
 import net.jitl.core.helper.IEssenceItem;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public class TestBugItem extends Item implements IEssenceItem {
+public class TestBugItem extends JItem implements IEssenceItem {
 
     public TestBugItem() {
         super(JItems.itemProps().stacksTo(1));

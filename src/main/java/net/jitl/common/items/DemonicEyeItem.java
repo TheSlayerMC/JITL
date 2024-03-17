@@ -1,12 +1,11 @@
 package net.jitl.common.items;
 
 import net.jitl.common.block.portal.CorbaPortalFrameBlock;
-import net.jitl.common.block.portal.DepthsPortalFrameBlock;
+import net.jitl.common.items.base.JItem;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -14,7 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.pattern.BlockPattern;
 import org.jetbrains.annotations.NotNull;
 
-public class DemonicEyeItem extends Item {
+public class DemonicEyeItem extends JItem {
 
     public DemonicEyeItem() {
         super(JItems.itemProps());

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "jitl:block/ancient_stone_runic_0_top",
+    "side": "jitl:block/ancient_stone_runic_0_side"
+  }
+}

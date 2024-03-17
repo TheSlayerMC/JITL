@@ -19,7 +19,6 @@ import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -29,7 +28,23 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 public class Eskimo extends JVillagerEntity {
 
     private static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
-            new CurrencyForItemsTrade(JItems.PERIDOT_GEMSTONE.get(), 1, Items.COMPASS, 1, 12, 5)
+            new CurrencyForItemsTrade(JItems.CRYSTAL_FLAKE.get(), 16, JItems.FROST_GEM.get(), 16, JItems.FROSTY_SWORD.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.CRYSTAL_FLAKE.get(), 16, JItems.FROST_GEM.get(), 16, JItems.FROSTY_BOW.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.CRYSTAL_FLAKE.get(), 16, JItems.FROST_GEM.get(), 10, JItems.FROSTY_PIERCER.get(), 16, 12, 5),
+
+            new CurrencyForItemsTrade(JItems.FROST_FLAKE.get(), 16, JItems.FROSTY_SWORD.get(), 1, JItems.FROSTBITTEN_SWORD.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.FROST_FLAKE.get(), 16, JItems.FROSTY_BOW.get(), 1, JItems.FROSTBITTEN_BOW.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.FROST_FLAKE.get(), 16, JItems.FROSTY_PIERCER.get(), 16, JItems.FROSTBITTEN_PIERCER.get(), 16, 12, 5),
+
+            new CurrencyForItemsTrade(JItems.CRYSTAL_FLAKE.get(), 4, JItems.FROST_GEM.get(), 16, JItems.CRYSTAL_FLAKE_HELMET.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.CRYSTAL_FLAKE.get(), 4, JItems.FROST_GEM.get(), 16, JItems.CRYSTAL_FLAKE_CHEST.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.CRYSTAL_FLAKE.get(), 4, JItems.FROST_GEM.get(), 16, JItems.CRYSTAL_FLAKE_LEGS.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.CRYSTAL_FLAKE.get(), 4, JItems.FROST_GEM.get(), 16, JItems.CRYSTAL_FLAKE_BOOTS.get(), 1, 12, 5),
+
+            new CurrencyForItemsTrade(JItems.FROST_FLAKE.get(), 15, JItems.CRYSTAL_FLAKE_HELMET.get(), 15, JItems.FROSTBITTEN_HELMET.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.FROST_FLAKE.get(), 15, JItems.CRYSTAL_FLAKE_CHEST.get(), 15, JItems.FROSTBITTEN_CHEST.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.FROST_FLAKE.get(), 15, JItems.CRYSTAL_FLAKE_LEGS.get(), 15, JItems.FROSTBITTEN_LEGS.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.FROST_FLAKE.get(), 15, JItems.CRYSTAL_FLAKE_BOOTS.get(), 15, JItems.FROSTBITTEN_BOOTS.get(), 1, 12, 5)
     }));
 
     public Eskimo(EntityType<? extends PathfinderMob> type, Level worldIn) {

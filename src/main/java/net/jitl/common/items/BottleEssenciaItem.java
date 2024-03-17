@@ -1,6 +1,7 @@
 package net.jitl.common.items;
 
 import net.jitl.common.capability.essence.PlayerEssenceProvider;
+import net.jitl.common.items.base.JItem;
 import net.jitl.core.helper.IEssenceItem;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -14,7 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.NotNull;
 
-public class BottleEssenciaItem extends Item implements IEssenceItem {
+public class BottleEssenciaItem extends JItem implements IEssenceItem {
 
     private boolean strong;
 

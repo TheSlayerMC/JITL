@@ -209,6 +209,10 @@ public class JItems {
     public static final RegistryObject<Item> SPAWNER_BAR = registerNormalItem("spawner_bar", "Spawner Bar");
     public static final RegistryObject<Item> LUNITE_CHUNK = registerNormalItem("lunite_chunk", "Lunite Chunk");
     public static final RegistryObject<Item> SENTRY_EYE = registerNormalItem("sentry_eye", "Sentry Eye", SentryEyeItem::new);
+    public static final RegistryObject<Item> ANCIENT_PIECE = registerNormalItem("ancient_piece", "Ancient Piece", AncientPieceItem::new);
+    public static final RegistryObject<Item> ANCIENT_SHARD = registerNormalItem("ancient_shard", "Ancient Shard", AncientPieceItem::new);
+    public static final RegistryObject<Item> ANCIENT_CHUNK = registerNormalItem("ancient_chunk", "Ancient Chunk", AncientPieceItem::new);
+    public static final RegistryObject<Item> ANCIENT_FRAGMENT = registerNormalItem("ancient_fragment", "Ancient Fragment", AncientPieceItem::new);
     public static final RegistryObject<Item> ANCIENT_EYE_OF_OPENING = registerNormalItem("ancient_eye_of_opening", "Ancient Eye Of Opening");
 
     public static final RegistryObject<Item> TERRASTAR = registerNormalItem("terrastar", "Terrastar");
@@ -382,21 +386,6 @@ public class JItems {
     public static final RegistryObject<Item> ORBADITE_LEGS = registerNormalItem("orbadite_leggings", "Orbadite Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.LEGGINGS, null));
     public static final RegistryObject<Item> ORBADITE_BOOTS = registerNormalItem("orbadite_boots", "Orbadite Boots", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.BOOTS, null));
 
-    public static final RegistryObject<Item> TWILIGHT_HELMET = registerNormalItem("twilight_helmet", "Twilight Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.HELMET, null));
-    public static final RegistryObject<Item> TWILIGHT_CHEST = registerNormalItem("twilight_chestplate", "Twilight Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.CHESTPLATE, null));
-    public static final RegistryObject<Item> TWILIGHT_LEGS = registerNormalItem("twilight_leggings", "Twilight Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.LEGGINGS, null));
-    public static final RegistryObject<Item> TWILIGHT_BOOTS = registerNormalItem("twilight_boots", "Twilight Boots", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.BOOTS, null));
-
-    public static final RegistryObject<Item> FLAME_HELMET = registerNormalItem("flame_helmet", "Flame Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.HELMET, null));
-    public static final RegistryObject<Item> FLAME_CHEST = registerNormalItem("flame_chestplate", "Flame Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.CHESTPLATE, null));
-    public static final RegistryObject<Item> FLAME_LEGS = registerNormalItem("flame_leggings", "Flame Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.LEGGINGS, null));
-    public static final RegistryObject<Item> FLAME_BOOTS = registerNormalItem("flame_boots", "Flame Boots", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.BOOTS, null));
-
-    public static final RegistryObject<Item> HOLLOW_HELMET = registerNormalItem("hollow_helmet", "Hollow Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.HELMET, null));
-    public static final RegistryObject<Item> HOLLOW_CHEST = registerNormalItem("hollow_chestplate", "Hollow Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.CHESTPLATE, null));
-    public static final RegistryObject<Item> HOLLOW_LEGS = registerNormalItem("hollow_leggings", "Hollow Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.LEGGINGS, null));
-    public static final RegistryObject<Item> HOLLOW_BOOTS = registerNormalItem("hollow_boots", "Hollow Boots", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.BOOTS, null));
-
     public static final RegistryObject<Item> SOULSTONE = registerNormalItem("soulstone", "Soulstone");
     public static final RegistryObject<Item> SOULSTONE_SHIELD = registerShieldItem("soulstone_shield", "Soulstone Shield", () -> new JShieldItem("soulstone", 1200, SOULSTONE.get()));
     public static final RegistryObject<Item> SOULSTONE_SHOVEL = registerToolItem("soulstone_shovel", "Soulstone Shovel", () -> new JShovelItem(JToolTiers.SOULSTONE_SHOVEL));
@@ -405,6 +394,32 @@ public class JItems {
     public static final RegistryObject<Item> SOULSTONE_HOE = registerToolItem("soulstone_hoe", "Soulstone Hoe", () -> new JHoeItem(JToolTiers.SOULSTONE_HOE));
     public static final RegistryObject<Item> SOULSTONE_MULTITOOL = registerToolItem("soulstone_multitool", "Soulstone Multitool", () -> new MultitoolItem(JToolTiers.SOULSTONE_AXE));
     public static final RegistryObject<Item> SOULSTONE_SWORD = registerToolItem("soulstone_sword", "Soulstone Sword", () -> new JSwordItem(JToolTiers.SOULSTONE_SWORD, BASIC));
+
+    public static final RegistryObject<Item> TWILIGHT_HELMET = registerNormalItem("twilight_helmet", "Twilight Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.TWILIGHT, ArmorItem.Type.HELMET, null));
+    public static final RegistryObject<Item> TWILIGHT_CHEST = registerNormalItem("twilight_chestplate", "Twilight Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.TWILIGHT, ArmorItem.Type.CHESTPLATE, null));
+    public static final RegistryObject<Item> TWILIGHT_LEGS = registerNormalItem("twilight_leggings", "Twilight Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.TWILIGHT, ArmorItem.Type.LEGGINGS, null));
+    public static final RegistryObject<Item> TWILIGHT_BOOTS = registerNormalItem("twilight_boots", "Twilight Boots", () -> new JArmorItem(JToolTiers.JArmorTier.TWILIGHT, ArmorItem.Type.BOOTS, null));
+
+    public static final RegistryObject<Item> FLAME_HELMET = registerNormalItem("flame_helmet", "Flame Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.FLAME, ArmorItem.Type.HELMET, null));
+    public static final RegistryObject<Item> FLAME_CHEST = registerNormalItem("flame_chestplate", "Flame Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.FLAME, ArmorItem.Type.CHESTPLATE, null));
+    public static final RegistryObject<Item> FLAME_LEGS = registerNormalItem("flame_leggings", "Flame Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.FLAME, ArmorItem.Type.LEGGINGS, null));
+    public static final RegistryObject<Item> FLAME_BOOTS = registerNormalItem("flame_boots", "Flame Boots", () -> new JArmorItem(JToolTiers.JArmorTier.FLAME, ArmorItem.Type.BOOTS, null));
+
+    public static final RegistryObject<Item> HOLLOW_HELMET = registerNormalItem("hollow_helmet", "Hollow Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.HOLLOW, ArmorItem.Type.HELMET, null));
+    public static final RegistryObject<Item> HOLLOW_CHEST = registerNormalItem("hollow_chestplate", "Hollow Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.HOLLOW, ArmorItem.Type.CHESTPLATE, null));
+    public static final RegistryObject<Item> HOLLOW_LEGS = registerNormalItem("hollow_leggings", "Hollow Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.HOLLOW, ArmorItem.Type.LEGGINGS, null));
+    public static final RegistryObject<Item> HOLLOW_BOOTS = registerNormalItem("hollow_boots", "Hollow Boots", () -> new JArmorItem(JToolTiers.JArmorTier.HOLLOW, ArmorItem.Type.BOOTS, null));
+
+    public static final RegistryObject<Item> CRYSTAL_FLAKE_HELMET = registerNormalItem("crystal_flake_helmet", "Crystal Flake Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.CRYSTAL_FLAKE, ArmorItem.Type.HELMET, null));
+    public static final RegistryObject<Item> CRYSTAL_FLAKE_CHEST = registerNormalItem("crystal_flake_chestplate", "Crystal Flake Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.CRYSTAL_FLAKE, ArmorItem.Type.CHESTPLATE, null));
+    public static final RegistryObject<Item> CRYSTAL_FLAKE_LEGS = registerNormalItem("crystal_flake_leggings", "Crystal Flake Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.CRYSTAL_FLAKE, ArmorItem.Type.LEGGINGS, null));
+    public static final RegistryObject<Item> CRYSTAL_FLAKE_BOOTS = registerNormalItem("crystal_flake_boots", "Crystal Flake Boots", () -> new JArmorItem(JToolTiers.JArmorTier.CRYSTAL_FLAKE, ArmorItem.Type.BOOTS, null));
+
+    public static final RegistryObject<Item> FROSTBITTEN_HELMET = registerNormalItem("frostbitten_helmet", "Frostbitten Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.FROSTBITTEN, ArmorItem.Type.HELMET, null));
+    public static final RegistryObject<Item> FROSTBITTEN_CHEST = registerNormalItem("frostbitten_chestplate", "Frostbitten Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.FROSTBITTEN, ArmorItem.Type.CHESTPLATE, null));
+    public static final RegistryObject<Item> FROSTBITTEN_LEGS = registerNormalItem("frostbitten_leggings", "Frostbitten Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.FROSTBITTEN, ArmorItem.Type.LEGGINGS, null));
+    public static final RegistryObject<Item> FROSTBITTEN_BOOTS = registerNormalItem("frostbitten_boots", "Frostbitten Boots", () -> new JArmorItem(JToolTiers.JArmorTier.FROSTBITTEN, ArmorItem.Type.BOOTS, null));
+
 
     public static final RegistryObject<Item> STAFF_OF_CONJURING = registerToolItem("staff_of_conjuring", "Staff of Conjuring", () -> new StaffItem(1, ConjuringProjectileEntity::new));
     public static final RegistryObject<Item> STAFF_OF_ESSENCIA = registerToolItem("staff_of_essencia", "Staff of Essencia", () -> new StaffItem(4, EssenciaProjectileEntity::new));
@@ -429,6 +444,9 @@ public class JItems {
             new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
 
     public static final RegistryObject<Item> FROZEN_PIERCER = registerToolItem("frozen_piercer", "Frozen Piercer", () ->
+            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+
+    public static final RegistryObject<Item> FROSTY_PIERCER = registerToolItem("frosty_piercer", "Frosty Piercer", () ->
             new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
 
     public static final RegistryObject<Item> BOILING_PIERCER = registerToolItem("boiling_piercer", "Boiling Piercer", () ->
@@ -579,7 +597,7 @@ public class JItems {
     public static final RegistryObject<Item> DARK_PINE_SWORD = registerToolItem("dark_pine_sword", "Dark Pine Sword", () -> new JSwordItem(JToolTiers.DARK_PINE_SWORD, BASIC));
     public static final RegistryObject<Item> HEALERS_BLADE = registerToolItem("healers_blade", "Healers Blade", () -> new JSwordItem(JToolTiers.HEALERS_BLADE, BASIC));
     public static final RegistryObject<Item> TERRONIC_BLADE = registerToolItem("terronic_blade", "Terronic Blade", () -> new JSwordItem(JToolTiers.TERRONIC_BLADE, BASIC));
-    public static final RegistryObject<Item> DARK_KEEPERS_PLADE = registerToolItem("blade_of_dark_keeper", "Dark Keepers Blade", () -> new JSwordItem(JToolTiers.DARK_KEEPER, BASIC));
+    public static final RegistryObject<Item> DARK_KEEPERS_BLADE = registerToolItem("blade_of_dark_keeper", "Dark Keepers Blade", () -> new JSwordItem(JToolTiers.DARK_KEEPER, BASIC));
     public static final RegistryObject<Item> DEVELOPER_SWORD = registerToolItem("developer_sword", "Creative Sword", () -> new JSwordItem(JToolTiers.DEVELOPER_SWORD, BASIC));
 
     public static final RegistryObject<Item> EYE_OF_THE_BLIZZARD = registerNormalItem("eye_of_the_blizzard", "Eye Of The Blizzard", () -> new JCurioItem(itemProps().stacksTo(1)).overview(true));
@@ -606,7 +624,7 @@ public class JItems {
     public static final RegistryObject<Item> DIAMOND_LOOT_POUCH = registerNormalItem("diamond_loot_pouch", "Loot Pouch", () -> new LootItem(LootItem.LootTier.DIAMOND));
     public static final RegistryObject<Item> FROSTY_GIFT = registerNormalItem("frosty_gift", "Frosty Gift", () -> new LootItem(LootItem.LootTier.FROSTY_GIFT));
 
-    public static final RegistryObject<Item> CLOUDWALKING_AMULET = registerNormalItem("cloudwalker_amulet", "Cloudwalker Amulet", () -> new CloudwalkingAmuletItem(itemProps()));
+    public static final RegistryObject<Item> CLOUDWALKER_AMULET = registerNormalItem("cloudwalker_amulet", "Cloudwalker Amulet", () -> new CloudwalkingAmuletItem(itemProps()));
     public static final RegistryObject<Item> DYNASTER_AMULET = registerNormalItem("dynaster_amulet", "Amulet of the Dynaster", () -> new DynasterAmuletItem(itemProps().stacksTo(1)));
     public static final RegistryObject<Item> ICE_AMULET = registerNormalItem("ice_amulet", "Amulet of Glacial Bloodlust", () -> new IceAmuletItem(itemProps().stacksTo(1)));
 
@@ -647,11 +665,11 @@ public class JItems {
     public static final RegistryObject<Item> BOIL_RECORD_1 = registerRecord("boil_record_1", "Boiling Point", JSounds.BOIL_DISC_1, 3140);
 
     public static RegistryObject<Item> registerNormalItem(String name, String translatedName) {
-        return register(name, translatedName, () -> new Item(new Item.Properties()), ItemType.ITEM);
+        return register(name, translatedName, () -> new JItem(new Item.Properties()), ItemType.ITEM);
     }
 
     public static RegistryObject<Item> registerFoodItem(String name, String translatedName, boolean foil, FoodProperties props) {
-        return register(name, translatedName, foil ? () -> new FoilItem(JItems.foodProps(props)) : () -> new Item(JItems.foodProps(props)), ItemType.ITEM);
+        return register(name, translatedName, foil ? () -> new FoilItem(JItems.foodProps(props)) : () -> new JItem(JItems.foodProps(props)), ItemType.ITEM);
     }
 
     public static RegistryObject<Item> registerFoodItem(String name, String translatedName, FoodProperties props) {
@@ -659,7 +677,7 @@ public class JItems {
     }
 
     public static RegistryObject<Item> registerFuelItem(String name, String translatedName, int burnTime /* 200 ticks per item */) {
-        return register(name, translatedName, () -> new Item(new Item.Properties()) {
+        return register(name, translatedName, () -> new JItem(new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
                 return burnTime;
@@ -729,8 +747,8 @@ public class JItems {
         return ITEMS.register(name, item);
     }
 
-    public static RegistryObject<Item> registerBlockItem(String name, Supplier<Item> item) {
-        return BLOCK_ITEMS.register(name, item);
+    public static void registerBlockItem(String name, Supplier<Item> item) {
+        BLOCK_ITEMS.register(name, item);
     }
 
     public static Item.Properties itemProps() {
@@ -749,6 +767,6 @@ public class JItems {
         MODEL,
         TOOL,
         BOW,
-        SHIELD;
+        SHIELD
     }
 }

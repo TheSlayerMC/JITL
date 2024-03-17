@@ -1,6 +1,7 @@
 package net.jitl.common.items;
 
 import net.jitl.common.capability.essence.PlayerEssenceProvider;
+import net.jitl.common.items.base.JItem;
 import net.jitl.core.helper.IEssenceItem;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
@@ -10,14 +11,13 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.BiFunction;
 
-public class StaffItem extends Item implements IEssenceItem {
+public class StaffItem extends JItem implements IEssenceItem {
 
     protected BiFunction<Level, LivingEntity, ThrowableProjectile> projectileFactory;
     private final int essenceUsage;

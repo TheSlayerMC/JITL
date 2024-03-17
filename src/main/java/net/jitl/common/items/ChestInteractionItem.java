@@ -1,11 +1,11 @@
 package net.jitl.common.items;
 
 import net.jitl.common.block.JChestBlock;
+import net.jitl.common.items.base.JItem;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
@@ -24,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ChestInteractionItem extends Item {
+public class ChestInteractionItem extends JItem {
 
     public ChestInteractionItem() {
         super(JItems.itemProps().stacksTo(16));

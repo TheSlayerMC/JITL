@@ -2,6 +2,7 @@ package net.jitl.common.items;
 
 import net.jitl.common.block.OkolooPedestalBlock;
 import net.jitl.common.entity.boss.*;
+import net.jitl.common.items.base.JItem;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
@@ -10,7 +11,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class BossSpawnerItem extends Item {
+public class BossSpawnerItem extends JItem {
 
 
     public BossSpawnerItem() {

@@ -187,6 +187,10 @@ public class LangRegistry {
         writeToFile("\"jitl.tooltip.okoloo\" : \"Placed in Okoloo Pedestal\",");
         writeToFile("\"jitl.tooltip.spawn\" : \"Used to spawn a Boss\",");
 
+        writeToFile("\"jitl.item.desc.sentry_eye\" : \"Inserted into the Senterian Portal Frame\",");
+        writeToFile("\"jitl.item.desc.ancient_socket\" : \"Inserted into a Ancient Socket\",");
+        writeToFile("\"jitl.item.desc.ancient_catalyst\" : \"Used to open the Ancient Catalyst\",");
+
         /* --------------------- Finish manual lines --------------------- */
 
         for(int i = 0; i < mobList.size(); i++)

@@ -2,6 +2,7 @@ package net.jitl.common.items;
 
 import com.mojang.datafixers.util.Function3;
 import net.jitl.common.entity.projectile.PiercerEntity;
+import net.jitl.common.items.base.JItem;
 import net.jitl.core.init.internal.JEnchantments;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -12,7 +13,6 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -24,7 +24,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class PiercerItem extends Item {
+public class PiercerItem extends JItem {
     protected Function3<Level, LivingEntity, ItemStack, PiercerEntity> projectileFactory;
 
     public PiercerItem(Properties properties, Function3<Level, LivingEntity, ItemStack, PiercerEntity> projectileFactory) {
@@ -99,7 +99,7 @@ public class PiercerItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flagIn) {
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
 }
