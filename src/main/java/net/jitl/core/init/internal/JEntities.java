@@ -74,6 +74,7 @@ public class JEntities {
     public static final RegistryObject<EntityType<FireBombEntity>> FIRE_BOMB_TYPE = registerProjectile(FireBombEntity::new, "fire_bomb", "Fire Bomb", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<MagicBombEntity>> MAGIC_BOMB_TYPE = registerProjectile(MagicBombEntity::new, "magic_bomb", "Magic Bomb", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<EssenceArrowEntity>> ESSENCE_ARROW_TYPE = registerProjectile(EssenceArrowEntity::new, "essence_arrow", "Essence Arrow", 0.5F, 0.5F);
+    public static final RegistryObject<EntityType<MagicPotEntity>> MAGIC_POT_TYPE = registerProjectile(MagicPotEntity::new, "magic_pot", "Magic Pot", 0.5F, 0.5F);
 
     //RAW ENTITYS
     public static final RegistryObject<EntityType<EssenciaBoltEntity>> ESSENCIA_BOLT_TYPE = registerRawEntity(EssenciaBoltEntity::new, "essencia_bolt", "Essencia Bolt", 0.25F, 0.25F);

@@ -497,6 +497,9 @@ public class JItems {
     public static final RegistryObject<Item> MAGIC_BOMB = registerNormalItem("magic_bomb", "Magic Bomb", () -> new ThrowableItem(itemProps(),
             (w, thrower) -> new MagicBombEntity(w, thrower, 1F)).setSound(() -> SoundEvents.SNOWBALL_THROW));
 
+    public static final RegistryObject<Item> MAGIC_POT_OF_DESTRUCTION = registerNormalItem("magic_pot_of_destruction", "Magic Pot of Destruction", () -> new ThrowableItem(itemProps().durability(128),
+            (worldIn, owner) -> new MagicPotEntity(owner, worldIn, 3, 4.0F)));
+
     public static final RegistryObject<Item> ESSENCE_ARROW = registerNormalItem("essence_arrow", "Essence Arrow", EssenceArrowItem::new);
 
     //OVERWORLD BOWS
