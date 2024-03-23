@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "jitl:airmelon"
+    },
+    {
+      "item": "jitl:airmelon"
+    },
+    {
+      "item": "jitl:airmelon"
+    },
+    {
+      "item": "jitl:airmelon"
+    },
+    {
+      "item": "jitl:airmelon"
+    },
+    {
+      "item": "jitl:airmelon"
+    },
+    {
+      "item": "jitl:airmelon"
+    },
+    {
+      "item": "jitl:airmelon"
+    },
+    {
+      "item": "jitl:airmelon"
+    }
+  ],
+  "result": {
+    "item": "jitl:airroot_melon"
+  }
+}

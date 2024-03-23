@@ -98,6 +98,12 @@ public class JEntityLootTables extends EntityLootSubProvider {
                 .add(LootItem.lootTableItem(Items.BLAZE_ROD)).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
 
+        this.add(JEntities.HELL_SERPENT_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                .add(LootItem.lootTableItem(JItems.SNAKE_SKIN.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+                .add(LootItem.lootTableItem(JItems.BLOOD.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
         this.add(JEntities.HELL_COW_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
                 .add(LootItem.lootTableItem(JItems.BLOOD.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
@@ -294,6 +300,9 @@ public class JEntityLootTables extends EntityLootSubProvider {
         this.add(JEntities.SHATTERER_TYPE.get(), empty());
         this.add(JEntities.CRYSTAL_CLUSTER_TYPE.get(), empty());
         this.add(JEntities.ICE_GOLEM_TYPE.get(), empty());
+
+        this.add(JEntities.FROZEN_TROLL_TYPE.get(), empty());
+        this.add(JEntities.CAPYBARA_TYPE.get(), empty());
 
         this.add(JEntities.OKOLOO_TYPE.get(), empty());
         this.add(JEntities.BLAZIER_TYPE.get(), empty());

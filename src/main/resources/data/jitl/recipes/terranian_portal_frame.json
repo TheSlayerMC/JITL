@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "d": {
+      "item": "jitl:terrania_portal_gem"
+    }
+  },
+  "pattern": [
+    "ddd",
+    "ddd",
+    "ddd"
+  ],
+  "result": {
+    "count": 10,
+    "item": "jitl:terranian_portal_frame"
+  }
+}

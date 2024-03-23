@@ -18,6 +18,12 @@ public class JBlockEntities {
     public static final RegistryObject<BlockEntityType<RockiteSpawnerEntity>> ROCKITE = REGISTRY.register("rockite",
             () -> BlockEntityType.Builder.of(RockiteSpawnerEntity::new, JBlocks.ROCKITE_SPAWNER.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<ObeliskTile>> OBELISK = REGISTRY.register("obelisk",
+            () -> BlockEntityType.Builder.of(ObeliskTile::new, JBlocks.ANCIENT_OBELISK.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<SenterianAltarTile>> SENTERIAN_ALTAR = REGISTRY.register("senterian_altar",
+            () -> BlockEntityType.Builder.of(SenterianAltarTile::new, JBlocks.SENTERIAN_ALTAR.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<JChestBlockEntity>> JCHEST = REGISTRY.register("jchest",
             () -> BlockEntityType.Builder.of(JChestBlockEntity::new,
                     JBlocks.JOURNEY_CHEST.get(), JBlocks.EUCA_CHEST.get(), JBlocks.BOIL_CHEST.get(), JBlocks.FROZEN_CHEST.get(),

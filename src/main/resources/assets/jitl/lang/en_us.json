@@ -154,6 +154,7 @@
 "entity.jitl.inferno_blaze": "Inferno Blaze",
 "entity.jitl.hell_cow": "Hell Cow",
 "entity.jitl.hellbot": "Hellbot",
+"entity.jitl.hell_serpent": "Hell Serpent",
 "entity.jitl.flame_lotus": "Flame Lotus",
 "entity.jitl.burning_light": "Burning Light",
 "entity.jitl.frightener": "Frightener",
@@ -369,6 +370,7 @@
 "block.jitl.senterian_floor": "Senterian Floor",
 "block.jitl.senterian_rock": "Senterian Rock",
 "block.jitl.senterian_glass": "Senterian Glass",
+"block.jitl.senterian_altar": "Senterian Altar",
 "block.jitl.blood_rock": "Blood Rock",
 "block.jitl.blood_rune": "Blood Rune",
 "block.jitl.blood_bricks": "Blood Bricks",
@@ -927,6 +929,7 @@
 "item.jitl.inferno_blaze_spawn_egg": "Inferno Blaze Spawn Egg",
 "item.jitl.hell_cow_spawn_egg": "Hell Cow Spawn Egg",
 "item.jitl.hellbot_spawn_egg": "Hellbot Spawn Egg",
+"item.jitl.hell_serpent_spawn_egg": "Hell Serpent Spawn Egg",
 "item.jitl.flame_lotus_spawn_egg": "Flame Lotus Spawn Egg",
 "item.jitl.burning_light_spawn_egg": "Burning Light Spawn Egg",
 "item.jitl.frightener_spawn_egg": "Frightener Spawn Egg",
@@ -1256,5 +1259,6 @@
 "item.jitl.mysterious_disk": "Mysterious Disk",
 "item.jitl.enchanted_terrastar": "Enchanted Terrastar",
 "item.jitl.sentacoin": "Sentacoin",
+"item.jitl.sentry_observer": "Sentry Observer",
 "item.jitl.recipe_book": "Recipe Book"
 }

@@ -477,6 +477,14 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.CLOUDIA_CHEST);
 
         this.add(JBlocks.ROCKITE_SPAWNER, noDrop());
+        this.add(JBlocks.ANCIENT_OBELISK, noDrop());
+        this.add(JBlocks.ANCIENT_SOCKET, noDrop());
+        this.add(JBlocks.ANCIENT_CATALYST, noDrop());
+        this.add(JBlocks.ANCIENT_STONE, noDrop());
+        this.add(JBlocks.ANCIENT_RUNIC_STONE_0, noDrop());
+        this.add(JBlocks.ANCIENT_RUNIC_STONE_1, noDrop());
+        this.add(JBlocks.ANCIENT_RUNIC_STONE_2, noDrop());
+        this.add(JBlocks.ANCIENT_RUNIC_STONE_3, noDrop());
         this.dropSelf(JBlocks.FROZEN_PEDESTAL);
         this.dropSelf(JBlocks.ROYAL_PEDESTAL);
         this.dropSelf(JBlocks.STONE_PLILLAR);
@@ -490,6 +498,20 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.CARVED_BLOOD_ROCK);
         this.dropSelf(JBlocks.OBELISK);
         this.dropSelf(JBlocks.SUMMONING_TABLE);
+
+        this.dropSelf(JBlocks.OKOLOO_TROPHY);
+        this.dropSelf(JBlocks.WITHERING_BEAST_TROPHY);
+        this.dropSelf(JBlocks.CALCIA_TROPHY);
+        this.dropSelf(JBlocks.SOUL_WATCHER_TROPHY);
+        this.dropSelf(JBlocks.EUDOR_TROPHY);
+        this.dropSelf(JBlocks.CORALLATOR_TROPHY);
+        this.dropSelf(JBlocks.BLAZIER_TROPHY);
+        this.dropSelf(JBlocks.THUNDER_BIRD_TROPHY);
+        this.dropSelf(JBlocks.SCALE_TROPHY);
+        this.dropSelf(JBlocks.LOGGER_TROPHY);
+        this.dropSelf(JBlocks.SENTRY_KING_TROPHY);
+        this.dropSelf(JBlocks.TERRANIAN_PROTECTOR_TROPHY);
+        this.dropSelf(JBlocks.SKY_STALKER_TROPHY);
 
         this.addCrop(JBlocks.FLORO_PEDAL_CROP.get(), JItems.FLORO_PEDAL.get(), JItems.FLORO_SEEDS.get(), 7);
         this.addCrop(JBlocks.CORVEGGIES_CROP.get(), JItems.CORVEGGIES.get(), JItems.CORVEGGIES.get(), 2);
