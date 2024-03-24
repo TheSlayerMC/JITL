@@ -61,13 +61,9 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
                 new CloudiaPiece(manager, "cloudia/bottom/melon_farm"),
         };
 
-        boolean needToPlace = true;
 
-        if(needToPlace) {
-            this.generate(level, random, pos);
-            needToPlace = false;
-        }
-        return needToPlace;
+        this.generate(level, random, pos);
+        return true;
     }
 
     public void generate(WorldGenLevel level, RandomSource random, BlockPos pos) {
@@ -111,7 +107,7 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    class BigRoom {
+    static class BigRoom {
         public final StructureTemplate room;
         public BigRoom(StructureTemplateManager manager, String room) {
             this.room = manager.getOrCreate(new ResourceLocation(JITL.MODID, room));

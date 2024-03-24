@@ -23,6 +23,6 @@ public class SenterianAltarModel extends DefaultedBlockGeoModel<SenterianAltarTi
 
     @Override
     public ResourceLocation getAnimationResource(SenterianAltarTile animatable) {
-        return new ResourceLocation(JITL.MODID, "animations/senterian_altar.json");
+        return new ResourceLocation(JITL.MODID, "animations/senterian_altar.animation.json");
     }
 }

@@ -23,8 +23,6 @@ import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-import java.util.Objects;
-
 public class SenterianAltarTile extends BlockEntity implements GeoBlockEntity {
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
@@ -49,15 +47,21 @@ public class SenterianAltarTile extends BlockEntity implements GeoBlockEntity {
         spawnCount = tag.getInt("spawnCount");
     }
 
+    @Override
+    public @NotNull CompoundTag getUpdateTag() {
+        return this.saveWithoutMetadata();
+    }
+
     private final RawAnimation ROTATE = RawAnimation.begin().thenLoop("animation.senterian_altar.active");
+    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.senterian_altar.idle");
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController<>(this, "controller", 5, state -> {
-            if(Objects.requireNonNull(getLevel()).getBlockState(getBlockPos()).getValue(SenterianAltar.IS_ACTIVE)) {
+            if(state.getAnimatable().getBlockState().getValue(SenterianAltar.IS_ACTIVE)) {
                 return state.setAndContinue(this.ROTATE);
             } else {
-                return null;
+                return state.setAndContinue(this.IDLE);
             }
         }));
     }
