@@ -1,33 +1,40 @@
 package net.jitl.common.entity.cloudia;
 
-import net.jitl.common.entity.base.JMonsterEntity;
+import net.jitl.common.entity.base.JFlyingEntity;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.*;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
-public class SkyEel extends JMonsterEntity {
+public class SkyEel extends JFlyingEntity {
 
-    public SkyEel(EntityType<? extends Monster> pEntityType, Level pLevel) {
+    public SkyEel(EntityType<? extends JFlyingEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
     @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(0, new AnimatedAttackGoal(this, 1.0D, false));
-        this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(1, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
-        this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+    public void addGoals() {
+            this.goalSelector.addGoal(0, new FloatGoal(this));
+            this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, 8.0F));
+            this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
+    }
+
+    @Override
+    public boolean despawnInPeaceful() {
+        return true;
     }
 
     public static AttributeSupplier createAttributes() {
@@ -42,5 +49,9 @@ public class SkyEel extends JMonsterEntity {
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController<>(this, "controller", 5, state -> state.setAndContinue(IDLE)));
+    }
+
+    public static boolean checkSpawn(EntityType<SkyEel> entity, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+        return level.getDifficulty() != Difficulty.PEACEFUL && random.nextInt(10) == 0 && checkMobSpawnRules(entity, level, spawnType, pos, random);
     }
 }

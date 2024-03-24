@@ -341,6 +341,7 @@ public class JEntities {
         setCustomSpawn(event, HELLWING_TYPE, Hellwing::checkSpawn);
         setCustomSpawn(event, SHATTERER_TYPE, Shatterer::checkSpawn);
         setCustomSpawn(event, CRYSTAL_CLUSTER_TYPE, CrystalCluster::checkSpawn);
+        setCustomSpawn(event, SKY_EEL_TYPE, SkyEel::checkSpawn);
 
         setDefaultMonsterSpawn(event, FLORO_TYPE);
         setDefaultMonsterSpawn(event, BOOM_TYPE);
@@ -392,7 +393,6 @@ public class JEntities {
         setDefaultMonsterSpawn(event, CAPYBARA_TYPE);
 
         setDefaultMonsterSpawn(event, CLOUD_GHOST_TYPE);
-        setDefaultMonsterSpawn(event, SKY_EEL_TYPE);
         setDefaultSpawn(event, STARLIGHT_BLACKSMITH_TYPE);
         setDefaultSpawn(event, STARLIGHT_VILLAGER_TYPE);
         setDefaultMonsterSpawn(event, STARLIGHT_GOLEM_TYPE);
