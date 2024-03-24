@@ -393,8 +393,8 @@ public class JEntities {
 
         setDefaultMonsterSpawn(event, CLOUD_GHOST_TYPE);
         setDefaultMonsterSpawn(event, SKY_EEL_TYPE);
-        setDefaultMonsterSpawn(event, STARLIGHT_BLACKSMITH_TYPE);
-        setDefaultMonsterSpawn(event, STARLIGHT_VILLAGER_TYPE);
+        setDefaultSpawn(event, STARLIGHT_BLACKSMITH_TYPE);
+        setDefaultSpawn(event, STARLIGHT_VILLAGER_TYPE);
         setDefaultMonsterSpawn(event, STARLIGHT_GOLEM_TYPE);
         setDefaultMonsterSpawn(event, STARLIGHT_TRANSPORTER_TYPE);
         setDefaultMonsterSpawn(event, STARLIGHT_WALKER_TYPE);
