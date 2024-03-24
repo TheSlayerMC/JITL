@@ -47,6 +47,11 @@ public class FlameCoinItem extends JItem {
                             return InteractionResult.CONSUME;
                         }
                     }
+                    if (blockstate.getBlock() == JBlocks.CLOUDIA_PORTAL_FRAME.get() && context.getClickedFace() == Direction.UP) {
+                        if (JBlocks.CLOUDIA_PORTAL.get().makePortal(context.getLevel(), blockpos.relative(direction))) {
+                            return InteractionResult.CONSUME;
+                        }
+                    }
                 }
                 if (!player.isCreative()) context.getItemInHand().shrink(1);
             }

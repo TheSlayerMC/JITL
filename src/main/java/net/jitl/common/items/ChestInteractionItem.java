@@ -5,24 +5,17 @@ import net.jitl.common.items.base.JItem;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 public class ChestInteractionItem extends JItem {
 
@@ -33,6 +26,7 @@ public class ChestInteractionItem extends JItem {
     @Override
     public @NotNull InteractionResult useOn(UseOnContext context) {
         Player player = context.getPlayer();
+        assert player != null;
         ItemStack heldItem = player.getMainHandItem();
         Level world = context.getLevel();
         BlockPos pos = context.getClickedPos();
@@ -137,29 +131,4 @@ public class ChestInteractionItem extends JItem {
         }
     }
 
-    @Override
-    @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level world, @NotNull List<Component> text, @NotNull TooltipFlag flag) {
-        if(stack.getItem() == JItems.CHEST_KEY.get()) {
-            text.add(Component.translatable("jitl.key.master.desc"));
-        }
-        if(stack.getItem() == JItems.JOURNEY_KEY.get()) {
-            text.add(Component.translatable("jitl.key.chest.desc"));
-        }
-        if(stack.getItem() == JItems.BOILING_KEY.get()) {
-            text.add(Component.translatable("jitl.key.boiling.desc"));
-        }
-        if(stack.getItem() == JItems.EUCA_KEY.get()) {
-            text.add(Component.translatable("jitl.key.euca.desc"));
-        }
-        if(stack.getItem() == JItems.FROZEN_KEY.get()) {
-            text.add(Component.translatable("jitl.key.frozen.desc"));
-        }
-        if(stack.getItem() == JItems.NETHER_KEY.get()) {
-            text.add(Component.translatable("jitl.key.nether.desc"));
-        }
-        if(stack.getItem() == JItems.PADLOCK.get()) {
-            text.add(Component.translatable("jitl.padlock.desc"));
-        }
-    }
 }

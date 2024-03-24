@@ -177,5 +177,15 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.WOOD_CREATURE_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("wood_creature", JDimension.CORBA)));
         EntityRenderers.register(JEntities.GREEN_TORDO_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("green_tordo", JDimension.CORBA)));
         EntityRenderers.register(JEntities.TREE_GOLEM.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("tree_golem", JDimension.CORBA)));
+
+        EntityRenderers.register(JEntities.CLOUD_GHOST_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("cloud_ghost", JDimension.CLOUDIA)));
+        EntityRenderers.register(JEntities.SKY_EEL_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("sky_eel", JDimension.CLOUDIA)));
+        EntityRenderers.register(JEntities.STARLIGHT_BLACKSMITH_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("starlight_blacksmith", JDimension.CLOUDIA)));
+        EntityRenderers.register(JEntities.STARLIGHT_VILLAGER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("starlight_villager", JDimension.CLOUDIA)));
+        EntityRenderers.register(JEntities.STARLIGHT_GOLEM_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("starlight_golem", JDimension.CLOUDIA)));
+        EntityRenderers.register(JEntities.STARLIGHT_TRANSPORTER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("starlight_transporter", JDimension.CLOUDIA)));
+        EntityRenderers.register(JEntities.STARLIGHT_WALKER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("starlight_walker", JDimension.CLOUDIA)));
+        EntityRenderers.register(JEntities.AERO_LOTUS_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("aero_lotus", JDimension.CLOUDIA)));
+
     }
 }

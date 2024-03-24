@@ -1,4 +1,4 @@
-package net.jitl.common.entity.corba;
+package net.jitl.common.entity.cloudia;
 
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.minecraft.world.entity.EntityType;
@@ -13,9 +13,9 @@ import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
-public class TreeGolem extends JMonsterEntity {
+public class StarlightWalker extends JMonsterEntity {
 
-    public TreeGolem(EntityType<? extends Monster> pEntityType, Level pLevel) {
+    public StarlightWalker(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
@@ -37,8 +37,8 @@ public class TreeGolem extends JMonsterEntity {
                 .add(Attributes.MOVEMENT_SPEED, 0.26).build();
     }
 
-    private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.tree_golem.walk");
-    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.tree_golem.idle");
+    private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.starlight_walker.walk");
+    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.starlight_walker.idle");
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {

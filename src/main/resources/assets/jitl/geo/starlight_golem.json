@@ -1,0 +1,56 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.starlight_golem",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [0, 1.75, 0]
+			},
+			"bones": [
+				{
+					"name": "Booty",
+					"pivot": [0, 23.67188, 3.80842],
+					"rotation": [7, 0, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-8, 9.94171, -3.77994], "size": [16, 16, 16], "uv": [64, 0]},
+						{"origin": [-4, 25.40205, -0.60321], "size": [8, 8, 8], "uv": [0, 32]}
+					]
+				},
+				{
+					"name": "Head",
+					"pivot": [0, 41.03459, 0.91532],
+					"rotation": [7, 0, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-8, 33.03459, -7.08468], "size": [16, 16, 16], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Arm1",
+					"pivot": [13, 36.3333, 1],
+					"mirror": true,
+					"cubes": [
+						{"origin": [9, 8, -3], "size": [8, 24, 8], "uv": [32, 32]},
+						{"origin": [8, 0, -4], "size": [10, 8, 10], "uv": [40, 64]},
+						{"origin": [8, 32, -4], "size": [10, 10, 10], "uv": [0, 84]}
+					]
+				},
+				{
+					"name": "Arm2",
+					"pivot": [-13, 36.33333, 1],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-17, 8, -3], "size": [8, 24, 8], "uv": [64, 32]},
+						{"origin": [-18, 32, -4], "size": [10, 10, 10], "uv": [0, 64]},
+						{"origin": [-18, 0, -4], "size": [10, 8, 10], "uv": [40, 64]}
+					]
+				}
+			]
+		}
+	]
+}

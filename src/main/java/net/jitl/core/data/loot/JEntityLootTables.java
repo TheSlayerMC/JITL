@@ -39,8 +39,6 @@ public class JEntityLootTables extends EntityLootSubProvider {
         this.add(JEntities.WITHERSPINE_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
                 .add(LootItem.lootTableItem(JItems.WITHIC_DUST.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
-                .add(LootItem.lootTableItem(JItems.SKULL_OF_DECAY.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
-                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
                 .add(LootItem.lootTableItem(JItems.WITHICSPINE.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
 
@@ -100,6 +98,8 @@ public class JEntityLootTables extends EntityLootSubProvider {
 
         this.add(JEntities.HELL_SERPENT_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
                 .add(LootItem.lootTableItem(JItems.SNAKE_SKIN.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+                .add(LootItem.lootTableItem(JItems.SNAKE_FLESH.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
                 .add(LootItem.lootTableItem(JItems.BLOOD.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));

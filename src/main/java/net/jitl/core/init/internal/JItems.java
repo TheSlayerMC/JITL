@@ -137,6 +137,7 @@ public class JItems {
     public static final RegistryObject<Item> BRADBERRY = registerNormalItem("bradberry", "bradberry", () -> new ItemNameBlockItem(JBlocks.BRADBERRY_BUSH.get(), JItems.itemProps().food(JFood.BRADBERRY)));
     public static final RegistryObject<Item> AIRMELON = registerFoodItem("airmelon", "Airmelon", JFood.AIRMELON);
     public static final RegistryObject<Item> AIRROOT_SEEDS = registerNormalItem("airroot_seeds", "Airroot Seeds", () -> new ItemNameBlockItem(JBlocks.AIRROOT_CROP.get(), JItems.itemProps()));
+    public static final RegistryObject<Item> SNAKE_FLESH = registerFoodItem("snake_flesh", "Snake Flesh", JFood.SNAKE_FLESH);
 
     public static final RegistryObject<Item> OBSIDIAN_STICK = registerNormalItem("obsidian_stick", "Obsidian Rod");
     public static final RegistryObject<Item> STONE_STICK = registerNormalItem("stone_stick", "Stone Stick");
@@ -604,7 +605,6 @@ public class JItems {
     public static final RegistryObject<Item> DEVELOPER_SWORD = registerToolItem("developer_sword", "Creative Sword", () -> new JSwordItem(JToolTiers.DEVELOPER_SWORD, BASIC));
 
     public static final RegistryObject<Item> EYE_OF_THE_BLIZZARD = registerNormalItem("eye_of_the_blizzard", "Eye Of The Blizzard", () -> new JCurioItem(itemProps().stacksTo(1)).overview(true));
-    public static final RegistryObject<Item> SKULL_OF_DECAY = registerNormalItem("skull_of_decay", "Skull Of Decay", () -> new JCurioItem(itemProps().stacksTo(1).durability(256)).ability(true));
     public static final RegistryObject<Item> FROSTBORN_SOUL = registerNormalItem("frostborn_soul", "Frostborn Soul");
     public static final RegistryObject<Item> WITHICSPINE = registerNormalItem("withicspine", "Withic Spine");
     public static final RegistryObject<Item> BOIL_POWDER = registerNormalItem("boil_powder", "Boil Powder");

@@ -606,7 +606,7 @@ public class JBlocks {
     public static final RegistryObject<Block> SENTERIAN_FLOOR = register("senterian_floor", "Senterian Floor", JBlockProperties.STONE);
     public static final RegistryObject<Block> SENTERIAN_ROCK = register("senterian_rock", "Senterian Rock", JBlockProperties.STONE);
     public static final RegistryObject<Block> SENTERIAN_GLASS = register("senterian_glass", "Senterian Glass", () -> new TransparentBlock(JBlockProperties.GLASS), JBlockProperties.GLASS);
-    public static final RegistryObject<Block> SENTERIAN_ALTAR = register("senterian_altar", "Senterian Altar", () -> new SenterianAltar(JBlockProperties.STONE.lightLevel((l) -> 2).noOcclusion()));
+    public static final RegistryObject<Block> SENTERIAN_ALTAR = registerModeledBlock("senterian_altar", "Senterian Altar", () -> new SenterianAltar(JBlockProperties.STONE.lightLevel((l) -> 2).noOcclusion()));
 
     public static final RegistryObject<JFenceBlock> SENTERIAN_POST = registerFence("senterian_post", "Senterian Post", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> SENTRY_LOCK = registerRotatableBlock("sentry_lock", "Sentry Lock", LockBlock::new, false);
@@ -653,7 +653,7 @@ public class JBlocks {
     public static final RegistryObject<RotatedPillarBlock> STONE_PLILLAR = registerPillar("stone_pillar", "Stone Pillar", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> SMALL_STONE_BRICKS = register("small_stone_bricks", "Small Stone Bricks", JBlockProperties.STONE);
 
-    public static final RegistryObject<Block> ANCIENT_OBELISK = register("ancient_obelisk", "Ancient Obelisk", () -> new ObeliskBlock(JBlockProperties.ANCIENT_STONE.lightLevel((l) -> 2).noOcclusion()));
+    public static final RegistryObject<Block> ANCIENT_OBELISK = registerModeledBlock("ancient_obelisk", "Ancient Obelisk", () -> new ObeliskBlock(JBlockProperties.ANCIENT_STONE.lightLevel((l) -> 2).noOcclusion()));
     public static final RegistryObject<Block> ANCIENT_SOCKET = registerModeledBlock("ancient_socket", "Ancient Socket", AncientSocketBlock::new);
     public static final RegistryObject<Block> ANCIENT_CATALYST = register("ancient_catalyst", "Ancient Catalyst", AncientCatalystBlock::new);
     public static final RegistryObject<RotatedPillarBlock> ANCIENT_STONE = registerPillar("ancient_stone", "Ancient Stone", false, JBlockProperties.ANCIENT_STONE);

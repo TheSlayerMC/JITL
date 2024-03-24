@@ -11,7 +11,46 @@
     "foliage_color": 61183,
     "grass_color_modifier": "none"
   },
-  "spawners": {},
+  "spawners": {
+    "monster": [
+      {
+        "type": "jitl:cloud_ghost",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "jitl:sky_eel",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "jitl:starlight_golem",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "jitl:starlight_transporter",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "jitl:starlight_walker",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "jitl:aero_lotus",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 3
+      }
+    ]
+  },
   "spawn_costs": {},
   "carvers": {},
   "features": [

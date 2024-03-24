@@ -10,6 +10,9 @@ public enum JDimension {
     EUCA("euca"),
     DEPTHS("depths"),
     CORBA("corba"),
+    TERRAINIA("terrania"),
+    CLOUDIA("cloudia"),
+    SENTERIAN("senterian"),
     BOSS("boss")
     ;
 

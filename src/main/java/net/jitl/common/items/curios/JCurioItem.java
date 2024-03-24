@@ -1,9 +1,9 @@
 package net.jitl.common.items.curios;
 
+import net.jitl.common.items.base.JItem;
 import net.jitl.core.helper.TooltipFiller;
 import net.jitl.core.init.JITL;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
 
-public class JCurioItem extends Item implements ICurioItem {
+public class JCurioItem extends JItem implements ICurioItem {
     private boolean hasOverview;
     private boolean hasAbility;
     private boolean hasNegativeEffects;

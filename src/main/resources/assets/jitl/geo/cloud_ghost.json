@@ -1,0 +1,41 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.cloud_ghost",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "Body",
+					"pivot": [0, 38, 0],
+					"rotation": [32, 0, 0],
+					"cubes": [
+						{"origin": [-4, 20.60781, -4.11968], "size": [8, 14, 4], "uv": [32, 16]}
+					]
+				},
+				{
+					"name": "RightArm",
+					"pivot": [-7, 38, 3],
+					"rotation": [-79.99998, 0, 0],
+					"cubes": [
+						{"origin": [-7, 25.30541, 6.93923], "size": [3, 12, 4], "uv": [48, 0]}
+					]
+				},
+				{
+					"name": "LeftArm",
+					"pivot": [5, 36, -1],
+					"rotation": [-79.99998, 0, 0],
+					"cubes": [
+						{"origin": [4, 25.30541, 1.93923], "size": [3, 12, 4], "uv": [48, 0]}
+					]
+				}
+			]
+		}
+	]
+}

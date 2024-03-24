@@ -1,0 +1,43 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.starlight_villager",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "head",
+					"pivot": [0, 29, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-8, 21, -8], "size": [16, 16, 16], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "arm1",
+					"pivot": [8, 34, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [8, 10, -4], "size": [8, 24, 8], "uv": [32, 32]},
+						{"origin": [7, 0, -5], "size": [10, 10, 10], "uv": [0, 84]}
+					]
+				},
+				{
+					"name": "arm2",
+					"pivot": [-8, 34, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-16, 10, -4], "size": [8, 24, 8], "uv": [64, 32]},
+						{"origin": [-17, 0, -5], "size": [10, 10, 10], "uv": [0, 64]}
+					]
+				}
+			]
+		}
+	]
+}

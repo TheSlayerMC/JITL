@@ -57,10 +57,7 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
                 new VerticalRoom(manager, "senterian/tall/tall_loot_1")
         };
         bigRooms = new BigRoom[] {
-                new BigRoom(manager, "senterian/big/altar_1"),
-                new BigRoom(manager, "senterian/big/altar_1"),
                 new BigRoom(manager, "senterian/big/altar_1")
-
         };
         long newSeed = level.getSeed();
         if(seed != newSeed) {
@@ -81,6 +78,7 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
         genRegular(level, random, pos);
 
         if(!topLayer) {
+
             if(random.nextInt(10) == 0)
                 genVertical(level, random, pos);
 

@@ -5,6 +5,9 @@ import net.jitl.common.entity.boil.*;
 import net.jitl.common.entity.boil.npc.BoilTrader;
 import net.jitl.common.entity.boil.npc.EscapedConvict;
 import net.jitl.common.entity.boss.*;
+import net.jitl.common.entity.cloudia.*;
+import net.jitl.common.entity.cloudia.npc.StarlightBlacksmith;
+import net.jitl.common.entity.cloudia.npc.StarlightVillager;
 import net.jitl.common.entity.corba.*;
 import net.jitl.common.entity.corba.npc.GreenTordo;
 import net.jitl.common.entity.corba.npc.RedTordo;
@@ -184,6 +187,18 @@ public class JEntities {
     public static final RegistryObject<EntityType<WoodCreature>> WOOD_CREATURE_TYPE = registerEntity(WoodCreature::new, "wood_creature", "Wood Creature", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
     public static final RegistryObject<EntityType<TreeGolem>> TREE_GOLEM = registerEntity(TreeGolem::new, "tree_golem", "Tree Golem", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
 
+    //TERRANIAN MOBS
+
+    //CLOUDIA MOBS
+    public static final RegistryObject<EntityType<CloudGhost>> CLOUD_GHOST_TYPE = registerEntity(CloudGhost::new, "cloud_ghost", "Cloud Ghost", 0.75F, 1.8F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<SkyEel>> SKY_EEL_TYPE = registerEntity(SkyEel::new, "sky_eel", "Sky Eel", 0.75F, 1.8F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<StarlightBlacksmith>> STARLIGHT_BLACKSMITH_TYPE = registerEntity(StarlightBlacksmith::new, "starlight_blacksmith", "Starlight Blacksmith", 0.75F, 1.8F, TRADER_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<StarlightVillager>> STARLIGHT_VILLAGER_TYPE = registerEntity(StarlightVillager::new, "starlight_villager", "Starlight Villager", 0.75F, 1.8F, TRADER_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<StarlightGolem>> STARLIGHT_GOLEM_TYPE = registerEntity(StarlightGolem::new, "starlight_golem", "Starlight Golem", 0.75F, 1.8F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<StarlightTransporter>> STARLIGHT_TRANSPORTER_TYPE = registerEntity(StarlightTransporter::new, "starlight_transporter", "Starlight Transporter", 0.75F, 1.8F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<StarlightWalker>> STARLIGHT_WALKER_TYPE = registerEntity(StarlightWalker::new, "starlight_walker", "Starlight Walker", 0.75F, 1.8F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<AeroLotus>> AERO_LOTUS_TYPE = registerEntity(AeroLotus::new, "aero_lotus", "Aero Lotus", 0.75F, 1.8F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+
     private static <T extends Mob> RegistryObject<EntityType<T>> registerEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height, int backgroundColor, int highlightColor, MobCategory category) {
         RegistryObject<EntityType<T>> entity = REGISTRY.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).build(new ResourceLocation(JITL.MODID, name).toString()));
         JItems.register(name + "_spawn_egg" , lang + " Spawn Egg", () -> new ForgeSpawnEggItem(entity, backgroundColor, highlightColor, JItems.itemProps()), JItems.ItemType.SPAWN_EGG);
@@ -302,6 +317,16 @@ public class JEntities {
         event.put(GREEN_TORDO_TYPE.get(), GreenTordo.createAttributes());
         event.put(WOOD_CREATURE_TYPE.get(), WoodCreature.createAttributes());
         event.put(TREE_GOLEM.get(), TreeGolem.createAttributes());
+
+        event.put(CLOUD_GHOST_TYPE.get(), CloudGhost.createAttributes());
+        event.put(SKY_EEL_TYPE.get(), SkyEel.createAttributes());
+        event.put(STARLIGHT_BLACKSMITH_TYPE.get(), StarlightBlacksmith.createAttributes());
+        event.put(STARLIGHT_VILLAGER_TYPE.get(), StarlightVillager.createAttributes());
+        event.put(STARLIGHT_GOLEM_TYPE.get(), StarlightGolem.createAttributes());
+        event.put(STARLIGHT_TRANSPORTER_TYPE.get(), StarlightTransporter.createAttributes());
+        event.put(STARLIGHT_WALKER_TYPE.get(), StarlightWalker.createAttributes());
+        event.put(AERO_LOTUS_TYPE.get(), AeroLotus.createAttributes());
+
     }
 
     @SubscribeEvent
@@ -365,6 +390,15 @@ public class JEntities {
         setDefaultMonsterSpawn(event, SHIVERING_BUSHWALKER_TYPE);
         setDefaultMonsterSpawn(event, SHIVERING_SHRIEKER_TYPE);
         setDefaultMonsterSpawn(event, CAPYBARA_TYPE);
+
+        setDefaultSpawn(event, CLOUD_GHOST_TYPE);
+        setDefaultSpawn(event, SKY_EEL_TYPE);
+        setDefaultSpawn(event, STARLIGHT_BLACKSMITH_TYPE);
+        setDefaultSpawn(event, STARLIGHT_VILLAGER_TYPE);
+        setDefaultSpawn(event, STARLIGHT_GOLEM_TYPE);
+        setDefaultSpawn(event, STARLIGHT_TRANSPORTER_TYPE);
+        setDefaultSpawn(event, STARLIGHT_WALKER_TYPE);
+        setDefaultSpawn(event, AERO_LOTUS_TYPE);
 
         setDefaultMonsterSpawn(event, BLAZIER_TYPE);
         setDefaultMonsterSpawn(event, CALCIA_TYPE);

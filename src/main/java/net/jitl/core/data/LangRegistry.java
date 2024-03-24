@@ -54,6 +54,10 @@ public class LangRegistry {
         ArrayList<String> wallBlockList = new ArrayList<>(JBlocks.wallBlockName);
         ArrayList<String> slimeBlockList = new ArrayList<>(JBlocks.slimeBlockName);
         ArrayList<String> trophyBlockList = new ArrayList<>(JBlocks.trophyBlockName);
+        ArrayList<String> mushroomBlockList = new ArrayList<>(JBlocks.mushroomBlockName);
+        ArrayList<String> basePortalBlockList = new ArrayList<>(JBlocks.basePortalBlockName);
+        ArrayList<String> basePortalFrameBlockList = new ArrayList<>(JBlocks.basePortalFrameBlockName);
+        ArrayList<String> topBottomBlockList = new ArrayList<>(JBlocks.topBottomBlockName);
 
         ArrayList<String> toolItemList = new ArrayList<>(JItems.toolName);
         ArrayList<String> itemList = new ArrayList<>(JItems.itemName);
@@ -187,9 +191,38 @@ public class LangRegistry {
         writeToFile("\"jitl.tooltip.okoloo\" : \"Placed in Okoloo Pedestal\",");
         writeToFile("\"jitl.tooltip.spawn\" : \"Used to spawn a Boss\",");
 
+        writeToFile("\"enchantment.jitl.lightweight\" : \"Lightweight\",");
+        writeToFile("\"enchantment.jitl.ambit\" : \"Ambit\",");
+        writeToFile("\"enchantment.jitl.scorching\" : \"Scorching\",");
+        writeToFile("\"enchantment.jitl.faithful\" : \"Faithful\",");
+
+        writeToFile("\"jitl.item.desc.flame_coin\" : \"Used to Light JITL Portals\",");
+        writeToFile("\"jitl.item.desc.padlock\" : \"Used to lock JITL chests\",");
+        writeToFile("\"jitl.item.desc.master_key\" : \"Opens all locked JITL chests\",");
+        writeToFile("\"jitl.item.desc.journey_key\" : \"Opens Locked Journey Chest\",");
+        writeToFile("\"jitl.item.desc.nether_key\" : \"Opens Locked Nether Chest\",");
+        writeToFile("\"jitl.item.desc.frozen_key\" : \"Opens Locked Frozen Chest\",");
+        writeToFile("\"jitl.item.desc.euca_key\" : \"Opens Locked Euca Chest\",");
+        writeToFile("\"jitl.item.desc.boiling_key\" : \"Opens Locked Boil Chest\",");
+        writeToFile("\"jitl.tooltip.eye_of_the_blizzard.0\" : \"Used to see in the Frozen Storm\",");
+
         writeToFile("\"jitl.item.desc.sentry_eye\" : \"Inserted into the Senterian Portal Frame\",");
         writeToFile("\"jitl.item.desc.ancient_socket\" : \"Inserted into a Ancient Socket\",");
         writeToFile("\"jitl.item.desc.ancient_catalyst\" : \"Used to open the Ancient Catalyst\",");
+        writeToFile("\"jitl.item.desc.night\" : \"When eaten: Grants Night Vision\",");
+        writeToFile("\"jitl.item.desc.sat\" : \"When eaten: Grants Saturation\",");
+        writeToFile("\"jitl.item.desc.water\" : \"When eaten: Grants Water Breathing\",");
+        writeToFile("\"jitl.item.desc.dam\" : \"When eaten: Grants Damage Boost\",");
+        writeToFile("\"jitl.item.desc.abs\" : \"When eaten: Grants Absorption\",");
+        writeToFile("\"jitl.item.desc.fire\" : \"When eaten: Grants Fire Resistance\",");
+        writeToFile("\"jitl.item.desc.mine\" : \"When eaten: Increased Mining Speed\",");
+        writeToFile("\"jitl.item.desc.regen\" : \"When eaten: Grants Regeneration\",");
+        writeToFile("\"jitl.item.desc.jump\" : \"When eaten: Grants Jump Boost\",");
+        writeToFile("\"jitl.item.desc.speed\" : \"When eaten: Grants Speed Boost\",");
+        writeToFile("\"jitl.item.desc.iridium\" : \"Radioactive\",");
+        writeToFile("\"jitl.item.desc.demonic_eye\" : \"Inserted into the Corba Portal Frame\",");
+        writeToFile("\"jitl.item.desc.dark_gem\" : \"Inserted into the Depths Portal Frame\",");
+        writeToFile("\"jitl.item.desc.sentry_observer\" : \"Inserted into the Senterian Altar\",");
 
         /* --------------------- Finish manual lines --------------------- */
 
@@ -280,6 +313,18 @@ public class LangRegistry {
         for(int i = 0; i < randomizedBlockList.size(); i++)
             writeToFile("\"block.jitl." + randomizedBlockList.get(i) + "\": \"" + JBlocks.randomLangName.get(i) + "\"" + ",");
 
+        for(int i = 0; i < mushroomBlockList.size(); i++)
+            writeToFile("\"block.jitl." + mushroomBlockList.get(i) + "\": \"" + JBlocks.mushroomLangName.get(i) + "\"" + ",");
+
+        for(int i = 0; i < basePortalBlockList.size(); i++)
+            writeToFile("\"block.jitl." + basePortalBlockList.get(i) + "\": \"" + JBlocks.basePortalLangName.get(i) + "\"" + ",");
+
+        for(int i = 0; i < basePortalFrameBlockList.size(); i++)
+            writeToFile("\"block.jitl." + basePortalFrameBlockList.get(i) + "\": \"" + JBlocks.basePortalFrameLangName.get(i) + "\"" + ",");
+
+        for(int i = 0; i < topBottomBlockList.size(); i++)
+            writeToFile("\"block.jitl." + topBottomBlockList.get(i) + "\": \"" + JBlocks.topBottomLangName.get(i) + "\"" + ",");
+
         for(int i = 0; i < portalBlockList.size(); i++)
             writeToFile("\"block.jitl." + portalBlockList.get(i) + "\": \"" + JBlocks.portalLangName.get(i) + "\"" + ",");
 
@@ -296,7 +341,7 @@ public class LangRegistry {
             writeToFile("\"block.jitl." + cropBlockList.get(i) + "\": \"" + JBlocks.cropLangName.get(i) + "\"" + ",");
 
         for(int i = 0; i < bushBlockList.size(); i++)
-            writeToFile("\"block.jitl." + pathBlockList.get(i) + "\": \"" + JBlocks.bushLangName.get(i) + "\"" + ",");
+            writeToFile("\"block.jitl." + bushBlockList.get(i) + "\": \"" + JBlocks.bushLangName.get(i) + "\"" + ",");
 
         for(int i = 0; i < furnaceBlockList.size(); i++)
             writeToFile("\"block.jitl." + furnaceBlockList.get(i) + "\": \"" + JBlocks.furnaceLangName.get(i) + "\"" + ",");

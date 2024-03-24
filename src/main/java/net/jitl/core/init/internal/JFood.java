@@ -32,6 +32,8 @@ public class JFood {
     public static final FoodProperties FRIED_FLAMING_GHAST_TENTACLE = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.6F).meat().build();
     public static final FoodProperties GHAST_TENTACLE = (new FoodProperties.Builder()).nutrition(1).saturationMod(0.6F).meat().build();
 
+    public static final FoodProperties SNAKE_FLESH = (new FoodProperties.Builder()).nutrition(5).saturationMod(1.2F).meat().effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 5, 1), 1.0F).build();
+
     public static final FoodProperties FRIED_EGG = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.6F).build();
 
     public static final FoodProperties MINT_CANDY_CANE = (new FoodProperties.Builder()).nutrition(3).saturationMod(1.6F).fast().effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 100, 1), 1.0F).build();
