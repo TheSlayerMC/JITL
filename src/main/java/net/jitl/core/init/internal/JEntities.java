@@ -391,14 +391,14 @@ public class JEntities {
         setDefaultMonsterSpawn(event, SHIVERING_SHRIEKER_TYPE);
         setDefaultMonsterSpawn(event, CAPYBARA_TYPE);
 
-        setDefaultSpawn(event, CLOUD_GHOST_TYPE);
-        setDefaultSpawn(event, SKY_EEL_TYPE);
-        setDefaultSpawn(event, STARLIGHT_BLACKSMITH_TYPE);
-        setDefaultSpawn(event, STARLIGHT_VILLAGER_TYPE);
-        setDefaultSpawn(event, STARLIGHT_GOLEM_TYPE);
-        setDefaultSpawn(event, STARLIGHT_TRANSPORTER_TYPE);
-        setDefaultSpawn(event, STARLIGHT_WALKER_TYPE);
-        setDefaultSpawn(event, AERO_LOTUS_TYPE);
+        setDefaultMonsterSpawn(event, CLOUD_GHOST_TYPE);
+        setDefaultMonsterSpawn(event, SKY_EEL_TYPE);
+        setDefaultMonsterSpawn(event, STARLIGHT_BLACKSMITH_TYPE);
+        setDefaultMonsterSpawn(event, STARLIGHT_VILLAGER_TYPE);
+        setDefaultMonsterSpawn(event, STARLIGHT_GOLEM_TYPE);
+        setDefaultMonsterSpawn(event, STARLIGHT_TRANSPORTER_TYPE);
+        setDefaultMonsterSpawn(event, STARLIGHT_WALKER_TYPE);
+        setDefaultMonsterSpawn(event, AERO_LOTUS_TYPE);
 
         setDefaultMonsterSpawn(event, BLAZIER_TYPE);
         setDefaultMonsterSpawn(event, CALCIA_TYPE);
