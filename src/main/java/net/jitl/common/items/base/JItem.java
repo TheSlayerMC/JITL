@@ -29,6 +29,11 @@ public class JItem extends Item {
         addItemDesc(JItems.FROZEN_KEY.get(), tooltip, "jitl.item.desc.frozen_key");
         addItemDesc(JItems.EUCA_KEY.get(), tooltip, "jitl.item.desc.euca_key");
         addItemDesc(JItems.BOILING_KEY.get(), tooltip, "jitl.item.desc.boiling_key");
+        addItemDesc(JItems.DEPTHS_CHEST_KEY.get(), tooltip, "jitl.item.desc.depths_key");
+        addItemDesc(JItems.CORBA_KEY.get(), tooltip, "jitl.item.desc.corba_key");
+        addItemDesc(JItems.TERRANIAN_KEY.get(), tooltip, "jitl.item.desc.terranian_key");
+        addItemDesc(JItems.CLOUDIA_KEY.get(), tooltip, "jitl.item.desc.cloudia_key");
+        addItemDesc(JItems.SENTERIAN_KEY.get(), tooltip, "jitl.item.desc.senterian_key");
 
         addItemDesc(JItems.IRIDIUM_NUGGET.get(), tooltip, "jitl.item.desc.iridium");
         addItemDesc(JItems.DEMONIC_EYE.get(), tooltip, "jitl.item.desc.demonic_eye");

@@ -28,7 +28,7 @@ public class JBlockEntities {
             () -> BlockEntityType.Builder.of(JChestBlockEntity::new,
                     JBlocks.JOURNEY_CHEST.get(), JBlocks.EUCA_CHEST.get(), JBlocks.BOIL_CHEST.get(), JBlocks.FROZEN_CHEST.get(),
                     JBlocks.NETHER_CHEST.get(), JBlocks.DEPTHS_CHEST.get(), JBlocks.CORBA_CHEST.get(), JBlocks.TERRANIAN_CHEST.get(),
-                    JBlocks.CLOUDIA_CHEST.get()).build(null));
+                    JBlocks.CLOUDIA_CHEST.get(), JBlocks.SENTERIAN_CHEST.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<BitterwoodCampfireBlockEntity>> BITTERWOOD_CAMPFIRE = REGISTRY.register("bitterwood_campfire",
             () -> BlockEntityType.Builder.of(BitterwoodCampfireBlockEntity::new, JBlocks.BITTERWOOD_CAMPFIRE.get()).build(null));
@@ -56,6 +56,12 @@ public class JBlockEntities {
 
     public static final RegistryObject<BlockEntityType<HellbotSpawnerEntity>> HELLBOT_SPAWNER = REGISTRY.register("hb_spawner",
             () -> BlockEntityType.Builder.of(HellbotSpawnerEntity::new, JBlocks.HELLBOT_SPAWNER.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<OverseerElderSpawnerEntity>> OVERSEER_ELDER_SPAWNER = REGISTRY.register("oe_spawner",
+            () -> BlockEntityType.Builder.of(OverseerElderSpawnerEntity::new, JBlocks.OVERSEER_ELDER_SPAWNER.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<OverseerSpawnerEntity>> OVERSEER_SPAWNER = REGISTRY.register("ov_spawner",
+            () -> BlockEntityType.Builder.of(OverseerSpawnerEntity::new, JBlocks.OVERSEER_SPAWNER.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<PedestalTile>> PEDESTAL = REGISTRY.register("pedestal",
             () -> BlockEntityType.Builder.of(PedestalTile::new, JBlocks.FROZEN_PEDESTAL.get(), JBlocks.ROYAL_PEDESTAL.get()).build(null));

@@ -28,9 +28,9 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 public class StarlightVillager extends JVillagerEntity {
 
     private static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
-            new CurrencyForItemsTrade(JItems.ASH.get(), 10, JItems.BOIL_POWDER.get(), 16, JItems.MOLTEN_KNIFE.get(), 16, 12, 5),
-            new CurrencyForItemsTrade(JItems.ASH.get(), 15, JItems.BOIL_POWDER.get(), 64, JItems.BOILING_BLADE.get(), 1, 12, 5),
-            new CurrencyForItemsTrade(JItems.ASH.get(), 15, JItems.BOIL_POWDER.get(), 64, JItems.FLAMING_BOW.get(), 1, 12, 5)
+            new CurrencyForItemsTrade(JItems.FLUFFY_FEATHER.get(), 32, JItems.GOLEM_CHUNK.get(), 16, JItems.CLOUDIA_ORB.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.FLUFFY_FEATHER.get(), 64, JItems.GOLEM_CHUNK.get(), 32, JItems.LUNITE_CHUNK.get(), 8, 12, 5),
+            new CurrencyForItemsTrade(JItems.CLOUDIA_ORB.get(), 8, JItems.LUNITE_CHUNK.get(), 16, JItems.MYSTERIOUS_DISK.get(), 1, 12, 5)
     }));
 
     public StarlightVillager(EntityType<? extends PathfinderMob> type, Level worldIn) {

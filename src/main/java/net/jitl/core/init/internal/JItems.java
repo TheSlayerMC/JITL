@@ -95,7 +95,6 @@ public class JItems {
     public static final RegistryObject<Item> OVER_SEEING_TABLET = registerNormalItem("over_seeing_tablet", "Over Seeing tablet");
     public static final RegistryObject<Item> POTTERY_SHARD = registerNormalItem("pottery_shard", "Pottery Shard");
     public static final RegistryObject<Item> ROCK_SHARD = registerNormalItem("rock_shard", "Rock Shard");
-    public static final RegistryObject<Item> SLIMY_FLESH = registerNormalItem("slimy_flesh", "Slimy Flesh");
     public static final RegistryObject<Item> SPYCLOPSE_EYE = registerNormalItem("spyclopse_eye", "Spyclopse Eye");
     public static final RegistryObject<Item> STONE_CLUMP = registerNormalItem("stone_clump", "Stone Clump");
     public static final RegistryObject<Item> CAVE_CRYSTAL = registerNormalItem("cave_crystal", "Cave Crystal");
@@ -138,6 +137,7 @@ public class JItems {
     public static final RegistryObject<Item> AIRMELON = registerFoodItem("airmelon", "Airmelon", JFood.AIRMELON);
     public static final RegistryObject<Item> AIRROOT_SEEDS = registerNormalItem("airroot_seeds", "Airroot Seeds", () -> new ItemNameBlockItem(JBlocks.AIRROOT_CROP.get(), JItems.itemProps()));
     public static final RegistryObject<Item> SNAKE_FLESH = registerFoodItem("snake_flesh", "Snake Flesh", JFood.SNAKE_FLESH);
+    public static final RegistryObject<Item> SLIMY_FLESH = registerFoodItem("slimy_flesh", "Slimy Flesh", JFood.SLIMY_FLESH);
 
     public static final RegistryObject<Item> OBSIDIAN_STICK = registerNormalItem("obsidian_stick", "Obsidian Rod");
     public static final RegistryObject<Item> STONE_STICK = registerNormalItem("stone_stick", "Stone Stick");
@@ -215,6 +215,7 @@ public class JItems {
     public static final RegistryObject<Item> ANCIENT_CHUNK = registerNormalItem("ancient_chunk", "Ancient Chunk", AncientPieceItem::new);
     public static final RegistryObject<Item> ANCIENT_FRAGMENT = registerNormalItem("ancient_fragment", "Ancient Fragment", AncientPieceItem::new);
     public static final RegistryObject<Item> ANCIENT_EYE_OF_OPENING = registerNormalItem("ancient_eye_of_opening", "Ancient Eye Of Opening");
+    public static final RegistryObject<Item> ELDER_KEY = registerNormalItem("elder_key", "Elder Key");
 
     public static final RegistryObject<Item> TERRASTAR = registerNormalItem("terrastar", "Terrastar");
     public static final RegistryObject<Item> TERRASHROOM = registerNormalItem("terrashroom", "Terrashroom");
@@ -235,6 +236,11 @@ public class JItems {
     public static final RegistryObject<Item> FROZEN_KEY = registerNormalItem("frozen_key", "frozen Chest Key", ChestInteractionItem::new);
     public static final RegistryObject<Item> EUCA_KEY = registerNormalItem("euca_key", "Euca Chest Key", ChestInteractionItem::new);
     public static final RegistryObject<Item> BOILING_KEY = registerNormalItem("boiling_key", "Boiling Chest Key", ChestInteractionItem::new);
+    public static final RegistryObject<Item> DEPTHS_CHEST_KEY = registerNormalItem("depths_key", "Depths Chest Key", ChestInteractionItem::new);
+    public static final RegistryObject<Item> CORBA_KEY = registerNormalItem("corba_key", "Corba Chest Key", ChestInteractionItem::new);
+    public static final RegistryObject<Item> TERRANIAN_KEY = registerNormalItem("terranian_key", "Terranian Chest Key", ChestInteractionItem::new);
+    public static final RegistryObject<Item> CLOUDIA_KEY = registerNormalItem("cloudia_key", "Cloudia Chest Key", ChestInteractionItem::new);
+    public static final RegistryObject<Item> SENTERIAN_KEY = registerNormalItem("senterian_key", "Senterian Chest Key", ChestInteractionItem::new);
 
     public static final RegistryObject<Item> SAPPHIRE = registerNormalItem("sapphire", "Sapphire");
     public static final RegistryObject<Item> SAPPHIRE_SHIELD = registerShieldItem("sapphire_shield", "Sapphire Shield", () -> new JShieldItem(JToolTiers.JArmorTier.SAPPHIRE, 1200, SAPPHIRE.get()));
@@ -608,6 +614,9 @@ public class JItems {
     public static final RegistryObject<Item> FROSTBORN_SOUL = registerNormalItem("frostborn_soul", "Frostborn Soul");
     public static final RegistryObject<Item> WITHICSPINE = registerNormalItem("withicspine", "Withic Spine");
     public static final RegistryObject<Item> BOIL_POWDER = registerNormalItem("boil_powder", "Boil Powder");
+    public static final RegistryObject<Item> GOLEM_CHUNK = registerNormalItem("golem_chunk", "Golem Chunk");
+    public static final RegistryObject<Item> FLUFFY_FEATHER = registerNormalItem("fluffy_feather", "Fluffy Feather");
+    public static final RegistryObject<Item> CLOUDIA_ORB = registerNormalItem("cloudia_orb", "Cloudia Orb");
 
     public static final RegistryObject<Item> HEART_CONTAINER_SMALL = registerNormalItem("heart_container_small", "Heart Container", () -> new HeartContainerItem(itemProps().stacksTo(1)).health(1));
     public static final RegistryObject<Item> HEART_CONTAINER_MEDIUM = registerNormalItem("heart_container_medium", "Heart Container", () -> new HeartContainerItem(itemProps().stacksTo(1)).health(4));
@@ -646,9 +655,7 @@ public class JItems {
     public static final RegistryObject<Item> CORALLATOR_ORB = registerNormalItem("corallator_orb", "Corallator Orb", BossSpawnerItem::new);
     public static final RegistryObject<Item> BLAZIER_ORB = registerNormalItem("blazier_orb", "Blazier Orb", BossSpawnerItem::new);
     public static final RegistryObject<Item> THUNDER_BIRD_ORB = registerNormalItem("thunder_bird_orb", "Thunderbird Orb", BossSpawnerItem::new);
-
     public static final RegistryObject<Item> SCALE_ORB = registerNormalItem("scale_orb", "Scale Orb", BossSpawnerItem::new);
-
     public static final RegistryObject<Item> LOGGER_ORB = registerNormalItem("logger_orb", "Logger Orb", BossSpawnerItem::new);
     public static final RegistryObject<Item> SENTRY_KING_ORB = registerNormalItem("sentry_king_orb", "Sentry King Orb", BossSpawnerItem::new);
     public static final RegistryObject<Item> MYSTERIOUS_DISK = registerNormalItem("mysterious_disk", "Mysterious Disk", BossSpawnerItem::new);

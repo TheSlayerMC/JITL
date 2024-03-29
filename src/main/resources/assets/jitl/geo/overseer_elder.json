@@ -1,0 +1,59 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.overseer_elder",
+				"texture_width": 128,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 5.5,
+				"visible_bounds_offset": [0, 2.25, 0]
+			},
+			"bones": [
+				{
+					"name": "Head1",
+					"pivot": [-8, 32, -8],
+					"cubes": [
+						{"origin": [-8, 12, -8], "size": [16, 16, 16], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Head2",
+					"pivot": [8, 48, -8],
+					"cubes": [
+						{"origin": [8, 28, -8], "size": [16, 16, 16], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Head3",
+					"pivot": [-24, 48, -8],
+					"cubes": [
+						{"origin": [-24, 28, -8], "size": [16, 16, 16], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Head4",
+					"pivot": [-8, 64, -8],
+					"cubes": [
+						{"origin": [-8, 44, -8], "size": [16, 16, 16], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Junction1",
+					"pivot": [-2, 48, -2],
+					"cubes": [
+						{"origin": [-2, 28, -2], "size": [4, 16, 4], "uv": [0, -4]}
+					]
+				},
+				{
+					"name": "Junction2",
+					"pivot": [-8, 42, -2],
+					"cubes": [
+						{"origin": [-8, 34, -2], "size": [16, 4, 4], "uv": [0, 52]}
+					]
+				}
+			]
+		}
+	]
+}

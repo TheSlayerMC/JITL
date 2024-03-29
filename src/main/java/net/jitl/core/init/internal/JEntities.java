@@ -10,6 +10,8 @@ import net.jitl.common.entity.cloudia.npc.StarlightBlacksmith;
 import net.jitl.common.entity.cloudia.npc.StarlightVillager;
 import net.jitl.common.entity.corba.*;
 import net.jitl.common.entity.corba.npc.GreenTordo;
+import net.jitl.common.entity.corba.npc.Hooded;
+import net.jitl.common.entity.corba.npc.OvergrownMerchant;
 import net.jitl.common.entity.corba.npc.RedTordo;
 import net.jitl.common.entity.depths.*;
 import net.jitl.common.entity.depths.npc.Auron;
@@ -78,6 +80,7 @@ public class JEntities {
     public static final RegistryObject<EntityType<MagicBombEntity>> MAGIC_BOMB_TYPE = registerProjectile(MagicBombEntity::new, "magic_bomb", "Magic Bomb", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<EssenceArrowEntity>> ESSENCE_ARROW_TYPE = registerProjectile(EssenceArrowEntity::new, "essence_arrow", "Essence Arrow", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<MagicPotEntity>> MAGIC_POT_TYPE = registerProjectile(MagicPotEntity::new, "magic_pot", "Magic Pot", 0.5F, 0.5F);
+    public static final RegistryObject<EntityType<FireballEntity>> FIREBALL_TYPE = registerProjectile(FireballEntity::new, "fireball", "Fireball", 0.25F, 0.25F);
 
     //RAW ENTITYS
     public static final RegistryObject<EntityType<EssenciaBoltEntity>> ESSENCIA_BOLT_TYPE = registerRawEntity(EssenciaBoltEntity::new, "essencia_bolt", "Essencia Bolt", 0.25F, 0.25F);
@@ -179,13 +182,20 @@ public class JEntities {
     public static final RegistryObject<EntityType<Auron>> AURON_TYPE = registerEntity(Auron::new, "auron", "Auron", 0.5F, 1.1F, DEPTHS_COLOR, TRADER_COLOR);
 
     //CORBA MOBS
-    public static final RegistryObject<EntityType<CorbanianMollusk>> CORBANIAN_MOLLUSK_TYPE = registerEntity(CorbanianMollusk::new, "corbanian_mollusk", "Corbanian Mollusk", 0.75F, 1.8F, CORBA_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
-    public static final RegistryObject<EntityType<Smelly>> SMELLY_TYPE = registerEntity(Smelly::new, "smelly", "Smelly", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final RegistryObject<EntityType<Stinky>> STINKY_TYPE = registerEntity(Stinky::new, "stinky", "Stinky", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final RegistryObject<EntityType<GreenTordo>> GREEN_TORDO_TYPE = registerEntity(GreenTordo::new, "green_tordo", "Green Tordo", 0.75F, 1.8F, CORBA_COLOR, TRADER_COLOR, MobCategory.CREATURE);
-    public static final RegistryObject<EntityType<RedTordo>> RED_TORDO_TYPE = registerEntity(RedTordo::new, "red_tordo", "Red Tordo", 0.75F, 1.8F, CORBA_COLOR, TRADER_COLOR, MobCategory.CREATURE);
-    public static final RegistryObject<EntityType<WoodCreature>> WOOD_CREATURE_TYPE = registerEntity(WoodCreature::new, "wood_creature", "Wood Creature", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final RegistryObject<EntityType<TreeGolem>> TREE_GOLEM = registerEntity(TreeGolem::new, "tree_golem", "Tree Golem", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<CorbanianMollusk>> CORBANIAN_MOLLUSK_TYPE = registerEntity(CorbanianMollusk::new, "corbanian_mollusk", "Corbanian Mollusk", 0.75F, 1.8F, CORBA_COLOR, NEUTRAL_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<Smelly>> SMELLY_TYPE = registerEntity(Smelly::new, "smelly", "Smelly", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<Stinky>> STINKY_TYPE = registerEntity(Stinky::new, "stinky", "Stinky", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<GreenTordo>> GREEN_TORDO_TYPE = registerEntity(GreenTordo::new, "green_tordo", "Green Tordo", 0.75F, 1.8F, CORBA_COLOR, TRADER_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<RedTordo>> RED_TORDO_TYPE = registerEntity(RedTordo::new, "red_tordo", "Red Tordo", 0.75F, 1.8F, CORBA_COLOR, TRADER_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<WoodCreature>> WOOD_CREATURE_TYPE = registerEntity(WoodCreature::new, "wood_creature", "Wood Creature", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<TreeGolem>> TREE_GOLEM_TYPE = registerEntity(TreeGolem::new, "tree_golem", "Tree Golem", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<LeafBlower>> LEAF_BLOWER_TYPE = registerEntity(LeafBlower::new, "leaf_blower", "Leaf Blower", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<Overseer>> OVERSEER_TYPE = registerEntity(Overseer::new, "overseer", "Overseer", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<OverseerElder>> OVERSEER_ELDER_TYPE = registerEntity(OverseerElder::new, "overseer_elder", "Overseer Elder", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<SurfaceSeer>> SURFACE_SEER_TYPE = registerEntity(SurfaceSeer::new, "surface_seer", "Surface Seer", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<NatureMage>> NATURE_MAGE_TYPE = registerEntity(NatureMage::new, "nature_mage", "Nature Mage", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<OvergrownMerchant>> OVERGROWN_MERCHANT_TYPE = registerEntity(OvergrownMerchant::new, "overgrown_merchant", "Overgrown Merchant", 0.75F, 1.8F, CORBA_COLOR, TRADER_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<Hooded>> HOODED_TYPE = registerEntity(Hooded::new, "hooded", "The Hooded", 0.75F, 1.8F, CORBA_COLOR, TRADER_COLOR, MobCategory.MONSTER);
 
     //TERRANIAN MOBS
 
@@ -316,7 +326,14 @@ public class JEntities {
         event.put(RED_TORDO_TYPE.get(), RedTordo.createAttributes());
         event.put(GREEN_TORDO_TYPE.get(), GreenTordo.createAttributes());
         event.put(WOOD_CREATURE_TYPE.get(), WoodCreature.createAttributes());
-        event.put(TREE_GOLEM.get(), TreeGolem.createAttributes());
+        event.put(TREE_GOLEM_TYPE.get(), TreeGolem.createAttributes());
+        event.put(OVERSEER_TYPE.get(), Overseer.createAttributes());
+        event.put(OVERSEER_ELDER_TYPE.get(), OverseerElder.createAttributes());
+        event.put(SURFACE_SEER_TYPE.get(), SurfaceSeer.createAttributes());
+        event.put(HOODED_TYPE.get(), Hooded.createAttributes());
+        event.put(OVERGROWN_MERCHANT_TYPE.get(), OvergrownMerchant.createAttributes());
+        event.put(LEAF_BLOWER_TYPE.get(), LeafBlower.createAttributes());
+        event.put(NATURE_MAGE_TYPE.get(), NatureMage.createAttributes());
 
         event.put(CLOUD_GHOST_TYPE.get(), CloudGhost.createAttributes());
         event.put(SKY_EEL_TYPE.get(), SkyEel.createAttributes());
@@ -326,7 +343,6 @@ public class JEntities {
         event.put(STARLIGHT_TRANSPORTER_TYPE.get(), StarlightTransporter.createAttributes());
         event.put(STARLIGHT_WALKER_TYPE.get(), StarlightWalker.createAttributes());
         event.put(AERO_LOTUS_TYPE.get(), AeroLotus.createAttributes());
-
     }
 
     @SubscribeEvent
@@ -342,6 +358,9 @@ public class JEntities {
         setCustomSpawn(event, SHATTERER_TYPE, Shatterer::checkSpawn);
         setCustomSpawn(event, CRYSTAL_CLUSTER_TYPE, CrystalCluster::checkSpawn);
         setCustomSpawn(event, SKY_EEL_TYPE, SkyEel::checkSpawn);
+        setCustomSpawn(event, OVERSEER_TYPE, Overseer::checkSpawn);
+        setCustomSpawn(event, OVERSEER_ELDER_TYPE, OverseerElder::checkSpawn);
+        setCustomSpawn(event, SURFACE_SEER_TYPE, SurfaceSeer::checkSpawn);
 
         setDefaultMonsterSpawn(event, FLORO_TYPE);
         setDefaultMonsterSpawn(event, BOOM_TYPE);
@@ -364,14 +383,14 @@ public class JEntities {
         setDefaultMonsterSpawn(event, HELL_SERPENT_TYPE);
         setDefaultMonsterSpawn(event, OKOLOO_TYPE);
 
-        setDefaultSpawn(event, FLAME_LOTUS_TYPE);
-        setDefaultSpawn(event, BURNING_LIGHT_TYPE);
-        setDefaultSpawn(event, MAGMA_BLAZE_TYPE);
-        setDefaultSpawn(event, FRIGHTENER_TYPE);
+        setDefaultMonsterSpawn(event, FLAME_LOTUS_TYPE);
+        setDefaultMonsterSpawn(event, BURNING_LIGHT_TYPE);
+        setDefaultMonsterSpawn(event, MAGMA_BLAZE_TYPE);
+        setDefaultMonsterSpawn(event, FRIGHTENER_TYPE);
         setDefaultSpawn(event, BOIL_TRADER_TYPE);
         setDefaultSpawn(event, ESCAPED_CONVICT_TYPE);
-        setDefaultSpawn(event, OBSERVER_TYPE);
-        setDefaultSpawn(event, SCREAMER_TYPE);
+        setDefaultMonsterSpawn(event, OBSERVER_TYPE);
+        setDefaultMonsterSpawn(event, SCREAMER_TYPE);
 
         setDefaultMonsterSpawn(event, EUCA_CHARGER_TYPE);
         setDefaultMonsterSpawn(event, DYNASTER_TYPE);
@@ -400,6 +419,18 @@ public class JEntities {
         setDefaultMonsterSpawn(event, STARLIGHT_WALKER_TYPE);
         setDefaultMonsterSpawn(event, AERO_LOTUS_TYPE);
 
+        setDefaultSpawn(event, GREEN_TORDO_TYPE);
+        setDefaultSpawn(event, RED_TORDO_TYPE);
+        setDefaultSpawn(event, HOODED_TYPE);
+        setDefaultSpawn(event, OVERGROWN_MERCHANT_TYPE);
+        setDefaultMonsterSpawn(event, CORBANIAN_MOLLUSK_TYPE);
+        setDefaultMonsterSpawn(event, LEAF_BLOWER_TYPE);
+        setDefaultMonsterSpawn(event, NATURE_MAGE_TYPE);
+        setDefaultMonsterSpawn(event, SMELLY_TYPE);
+        setDefaultMonsterSpawn(event, STINKY_TYPE);
+        setDefaultMonsterSpawn(event, TREE_GOLEM_TYPE);
+        setDefaultMonsterSpawn(event, WOOD_CREATURE_TYPE);
+
         setDefaultMonsterSpawn(event, BLAZIER_TYPE);
         setDefaultMonsterSpawn(event, CALCIA_TYPE);
         setDefaultSpawn(event, SOUL_WATCHER_TYPE);
@@ -412,9 +443,6 @@ public class JEntities {
         setDefaultMonsterSpawn(event, TERRANIAN_PROTECTOR_TYPE);
         setDefaultMonsterSpawn(event, SENTRY_KING_TYPE);
         setDefaultSpawn(event, SKY_STALKER_TYPE);
-
-        setDefaultSpawn(event, CORBANIAN_MOLLUSK_TYPE);
-
     }
 
     public static <T extends Entity> void setCustomSpawn(SpawnPlacementRegisterEvent event, RegistryObject<EntityType<T>> entity, SpawnPlacements.SpawnPredicate<T> spawn) {

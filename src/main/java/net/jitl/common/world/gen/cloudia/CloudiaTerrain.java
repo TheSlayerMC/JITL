@@ -15,7 +15,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 
 public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
 
-    public static CloudiaPiece[] TOP, BOTTOM, PATHS, TOP_PATHS;
+    public static CloudiaPiece[] TOP, BOTTOM, PATHS, TOP_PATHS, VILLAGE;
     public static BigRoom[] BIG_TOP;
 
     public static final StructurePlaceSettings defaultSettings = new StructurePlaceSettings().setIgnoreEntities(false).setFinalizeEntities(true).setKeepLiquids(true);
@@ -61,6 +61,10 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
                 new CloudiaPiece(manager, "cloudia/bottom/melon_farm"),
         };
 
+        VILLAGE = new CloudiaPiece[] {
+                new CloudiaPiece(manager, "cloudia/village/starlight_village"),
+                new CloudiaPiece(manager, "cloudia/village/starlight_village_2"),
+        };
 
         this.generate(level, random, pos);
         return true;
@@ -70,7 +74,7 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
         int bottomLayer = 100;
         int topLayer = bottomLayer + 12;//sits 12 blocks taller (structures can then be 16x16x16 but top of the bottom structure is reserved for pathing)
         int rarity = 2;
-        int big_rarity = 6;
+        int village_rarity = 30;
         int chunkX = pos.getX() / 16, chunkZ = pos.getZ() / 16;
 
         BlockPos topPos = pos.offset(0, topLayer, 0);
@@ -84,8 +88,8 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
         if(random.nextInt(rarity) == 0)
             BOTTOM[random.nextInt(BOTTOM.length)].gen(level, random, bottomPos, Rotation.getRandom(random));
 
-       // if(random.nextInt(big_rarity) == 0)
-        //    BIG_TOP[random.nextInt(BIG_TOP.length)].gen(level, random, topPos, chunkX % 2, chunkZ % 2);
+        if(random.nextInt(village_rarity) == 0)
+            VILLAGE[random.nextInt(VILLAGE.length)].gen(level, random, topPos, Rotation.getRandom(random));
     }
 
     public static void placePiece(StructureTemplate structure, WorldGenLevel level, RandomSource random, BlockPos pos, Rotation rotation) {

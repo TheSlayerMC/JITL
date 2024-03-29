@@ -204,6 +204,11 @@ public class LangRegistry {
         writeToFile("\"jitl.item.desc.frozen_key\" : \"Opens Locked Frozen Chest\",");
         writeToFile("\"jitl.item.desc.euca_key\" : \"Opens Locked Euca Chest\",");
         writeToFile("\"jitl.item.desc.boiling_key\" : \"Opens Locked Boil Chest\",");
+        writeToFile("\"jitl.item.desc.depths_key\" : \"Opens Locked Depths Chest\",");
+        writeToFile("\"jitl.item.desc.corba_key\" : \"Opens Locked Corba Chest\",");
+        writeToFile("\"jitl.item.desc.terranian_key\" : \"Opens Locked Terranian Chest\",");
+        writeToFile("\"jitl.item.desc.cloudia_key\" : \"Opens Locked Cloudia Chest\",");
+        writeToFile("\"jitl.item.desc.senterian_key\" : \"Opens Locked Senterian Chest\",");
         writeToFile("\"jitl.tooltip.eye_of_the_blizzard.0\" : \"Used to see in the Frozen Storm\",");
 
         writeToFile("\"jitl.item.desc.sentry_eye\" : \"Inserted into the Senterian Portal Frame\",");

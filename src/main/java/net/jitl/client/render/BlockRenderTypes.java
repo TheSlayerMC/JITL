@@ -86,6 +86,8 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.SCREAMER_SPAWNER.get());
         cutout.add(JBlocks.HELLBOT_SPAWNER.get());
         cutout.add(JBlocks.DARK_SORCERER_SPAWNER.get());
+        cutout.add(JBlocks.OVERSEER_ELDER_SPAWNER.get());
+        cutout.add(JBlocks.OVERSEER_SPAWNER.get());
 
         cutout.add(JBlocks.GLIMMER_ROOT.get());
         cutout.add(JBlocks.TALL_GREEN_GLOWSHROOM.get());

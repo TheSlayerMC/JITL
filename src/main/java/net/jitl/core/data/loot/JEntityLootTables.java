@@ -297,6 +297,33 @@ public class JEntityLootTables extends EntityLootSubProvider {
                 .add(LootItem.lootTableItem(JItems.CRYSTAL_FLAKE.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
 
+        this.add(JEntities.SKY_EEL_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(JItems.FLUFFY_FEATHER.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.STARLIGHT_GOLEM_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(JItems.GOLEM_CHUNK.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.STARLIGHT_TRANSPORTER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(JItems.GOLEM_CHUNK.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.STARLIGHT_WALKER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(JItems.GOLEM_CHUNK.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.AERO_LOTUS_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(JItems.FLUFFY_FEATHER.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.CLOUD_GHOST_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(JItems.FLUFFY_FEATHER.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(-1.0F, 1.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.STARLIGHT_BLACKSMITH_TYPE.get(), empty());
+        this.add(JEntities.STARLIGHT_VILLAGER_TYPE.get(), empty());
+
         this.add(JEntities.SHATTERER_TYPE.get(), empty());
         this.add(JEntities.CRYSTAL_CLUSTER_TYPE.get(), empty());
         this.add(JEntities.ICE_GOLEM_TYPE.get(), empty());
@@ -320,13 +347,62 @@ public class JEntityLootTables extends EntityLootSubProvider {
 
         this.add(JEntities.AURON_TYPE.get(), empty());
 
-        this.add(JEntities.CORBANIAN_MOLLUSK_TYPE.get(), empty());
-        this.add(JEntities.SMELLY_TYPE.get(), empty());
-        this.add(JEntities.STINKY_TYPE.get(), empty());
+        this.add(JEntities.OVERGROWN_MERCHANT_TYPE.get(), empty());
+        this.add(JEntities.HOODED_TYPE.get(), empty());
         this.add(JEntities.GREEN_TORDO_TYPE.get(), empty());
         this.add(JEntities.RED_TORDO_TYPE.get(), empty());
-        this.add(JEntities.WOOD_CREATURE_TYPE.get(), empty());
-        this.add(JEntities.TREE_GOLEM.get(), empty());
+
+        this.add(JEntities.CORBANIAN_MOLLUSK_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(JItems.SLIMY_FLESH.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.LEAF_BLOWER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(Items.STICK)).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+                .add(LootItem.lootTableItem(JItems.ENCHANTED_LEAF.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+                .add(LootItem.lootTableItem(JItems.NATURE_TABLET.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.OVERSEER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                 .add(LootItem.lootTableItem(JItems.COLLECTOR_ROCK.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+                .add(LootItem.lootTableItem(JItems.OVER_SEEING_EYE.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.OVERSEER_ELDER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(JItems.COLLECTOR_ROCK.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+                .add(LootItem.lootTableItem(JItems.OVER_SEEING_EYE.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+                .add(LootItem.lootTableItem(JItems.OVER_SEEING_TABLET.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.SURFACE_SEER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(JItems.NATURE_TABLET.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+                .add(LootItem.lootTableItem(JItems.OVER_SEEING_EYE.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.TREE_GOLEM_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(Items.STICK)).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+                .add(LootItem.lootTableItem(JItems.ENCHANTED_LEAF.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+                .add(LootItem.lootTableItem(JItems.OVERGROWN_NATURE_BALL.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+                .add(LootItem.lootTableItem(JItems.NATURE_TABLET.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.WOOD_CREATURE_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(Items.STICK)).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+                .add(LootItem.lootTableItem(JItems.ENCHANTED_LEAF.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.SMELLY_TYPE.get(), empty());
+        this.add(JEntities.STINKY_TYPE.get(), empty());
+        this.add(JEntities.NATURE_MAGE_TYPE.get(), empty());
     }
 
     private LootTable.Builder empty() {

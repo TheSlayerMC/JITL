@@ -35,6 +35,7 @@ public class RenderEntitys {
     public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(JEntities.CONJURING_PROJECTILE_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/conjuring.png")));
         event.registerEntityRenderer(JEntities.ESSENCIA_PROJECTILE_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/essencia.png")));
+        event.registerEntityRenderer(JEntities.FIREBALL_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/fireball.png")));
         event.registerEntityRenderer(JEntities.FLORO_MUD_TYPE.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(JEntities.DEMONIC_BOMB_TYPE.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(JEntities.FIRE_BOMB_TYPE.get(), ThrownItemRenderer::new);
@@ -176,7 +177,14 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.RED_TORDO_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("red_tordo", JDimension.CORBA)));
         EntityRenderers.register(JEntities.WOOD_CREATURE_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("wood_creature", JDimension.CORBA)));
         EntityRenderers.register(JEntities.GREEN_TORDO_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("green_tordo", JDimension.CORBA)));
-        EntityRenderers.register(JEntities.TREE_GOLEM.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("tree_golem", JDimension.CORBA)));
+        EntityRenderers.register(JEntities.TREE_GOLEM_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("tree_golem", JDimension.CORBA)));
+        EntityRenderers.register(JEntities.LEAF_BLOWER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("leaf_blower", JDimension.CORBA)));
+        EntityRenderers.register(JEntities.OVERSEER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("overseer", JDimension.CORBA)));
+        EntityRenderers.register(JEntities.OVERSEER_ELDER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("overseer_elder", JDimension.CORBA)));
+        EntityRenderers.register(JEntities.SURFACE_SEER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("surface_seer", JDimension.CORBA)));
+        EntityRenderers.register(JEntities.NATURE_MAGE_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("nature_mage", JDimension.CORBA)));
+        EntityRenderers.register(JEntities.OVERGROWN_MERCHANT_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("overgrown_merchant", JDimension.CORBA)));
+        EntityRenderers.register(JEntities.HOODED_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("hooded", JDimension.CORBA)));
 
         EntityRenderers.register(JEntities.CLOUD_GHOST_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("cloud_ghost", JDimension.CLOUDIA)));
         EntityRenderers.register(JEntities.SKY_EEL_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("sky_eel", JDimension.CLOUDIA)));

@@ -33,6 +33,7 @@ public class JFood {
     public static final FoodProperties GHAST_TENTACLE = (new FoodProperties.Builder()).nutrition(1).saturationMod(0.6F).meat().build();
 
     public static final FoodProperties SNAKE_FLESH = (new FoodProperties.Builder()).nutrition(5).saturationMod(1.2F).meat().effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 5, 1), 1.0F).build();
+    public static final FoodProperties SLIMY_FLESH = (new FoodProperties.Builder()).nutrition(5).saturationMod(1.2F).meat().effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 5, 1), 0.5F).build();
 
     public static final FoodProperties FRIED_EGG = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.6F).build();
 

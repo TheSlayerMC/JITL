@@ -1,0 +1,6 @@
+{
+    "parent": "jitl:item/mod_chest",
+  "textures": {
+    "0": "jitl:block/senterian_chest"
+  }
+}

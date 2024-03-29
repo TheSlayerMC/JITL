@@ -535,7 +535,9 @@ public class JBlocks {
     public static final RegistryObject<Block> CORBA_CRACKED_BRICKS = register("corba_cracked_bricks", "Corba Cracked Bricks", JBlockProperties.STONE);
     public static final RegistryObject<Block> CORBA_DARK_BRICKS = register("corba_dark_bricks", "Corba Dark Bricks", JBlockProperties.STONE);
     public static final RegistryObject<Block> CORBA_LIGHT_BRICKS = register("corba_light_bricks", "Corba Light Bricks", JBlockProperties.STONE);
-    public static final RegistryObject<Block> ELDER_BLOCK = register("elder_block", "Elder Block", JBlockProperties.STONE);
+    public static final RegistryObject<Block> OVERSEER_ELDER_SPAWNER = register("overseer_elder_spawner", "Overseer Elder Spawner", OverseerElderSpawnerBlock::new, JBlockProperties.SPAWNER);
+    public static final RegistryObject<Block> OVERSEER_SPAWNER = register("overseer_spawner", "Overseer Spawner", OverseerSpawnerBlock::new, JBlockProperties.SPAWNER);
+    public static final RegistryObject<Block> ELDER_BLOCK = register("elder_block", "Elder Block", ChangableBlock::new);
     public static final RegistryObject<Block> CORBA_SENTRY_BRICKS = register("corba_sentry_bricks", "Corba Sentry Bricks", JBlockProperties.STONE);
     public static final RegistryObject<Block> CORBA_LADDER = registerLadder("corba_ladder", "Corba Ladder", () -> new LadderBlock(JBlockProperties.LADDER));
     public static final RegistryObject<Block> CORBA_BLUE_FLOWER = registerCrossBlock("corba_blue_flower", "Corba Blue Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
@@ -616,11 +618,11 @@ public class JBlocks {
     public static final RegistryObject<Block> FROZEN_CHEST = registerChestBlock("frozen_chest", "Frozen Chest", JChestBlock::new);
     public static final RegistryObject<Block> EUCA_CHEST = registerChestBlock("euca_chest", "Euca Chest", JChestBlock::new);
     public static final RegistryObject<Block> BOIL_CHEST = registerChestBlock("boil_chest", "Boiling Chest", JChestBlock::new);
-    //ADD INTERACTION ITEMS
     public static final RegistryObject<Block> DEPTHS_CHEST = registerChestBlock("depths_chest", "Depths Chest", JChestBlock::new);
     public static final RegistryObject<Block> CORBA_CHEST = registerChestBlock("corba_chest", "Corba Chest", JChestBlock::new);
     public static final RegistryObject<Block> TERRANIAN_CHEST = registerChestBlock("terranian_chest", "Terranian Chest", JChestBlock::new);
     public static final RegistryObject<Block> CLOUDIA_CHEST = registerChestBlock("cloudia_chest", "Cloudia Chest", JChestBlock::new);
+    public static final RegistryObject<Block> SENTERIAN_CHEST = registerChestBlock("senterian_chest", "Senterian Chest", JChestBlock::new);
 
     public static final RegistryObject<Block> ROCKITE_SPAWNER = registerModeledBlock("rockite_spawner", "Rockite Spawner", () -> new RockiteBlock(JBlockProperties.ROCKITE_SPAWNER));
 

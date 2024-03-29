@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "jitl:block/overseer_elder_spawner"
+  }
+}

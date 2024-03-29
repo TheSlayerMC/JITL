@@ -1,0 +1,7 @@
+{
+  "variants": {
+  "": {
+      "model": "jitl:block/overseer_spawner"
+     }
+  }
+}

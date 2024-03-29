@@ -34,7 +34,8 @@ public class ChestInteractionItem extends JItem {
 
         if(blockstate.getBlock() instanceof JChestBlock) {
             //Sets the chest key to be the universal key
-            unlockChest(player, JItems.CHEST_KEY.get(), world, pos, JBlocks.BOIL_CHEST.get(), JBlocks.EUCA_CHEST.get(), JBlocks.FROZEN_CHEST.get(), JBlocks.NETHER_CHEST.get(), JBlocks.JOURNEY_CHEST.get());
+            unlockChest(player, JItems.CHEST_KEY.get(), world, pos, JBlocks.BOIL_CHEST.get(), JBlocks.EUCA_CHEST.get(), JBlocks.FROZEN_CHEST.get(), JBlocks.NETHER_CHEST.get(), JBlocks.JOURNEY_CHEST.get(),
+                    JBlocks.DEPTHS_CHEST.get(), JBlocks.CORBA_CHEST.get(), JBlocks.TERRANIAN_CHEST.get(), JBlocks.CLOUDIA_CHEST.get(), JBlocks.SENTERIAN_CHEST.get());
 
             //Sets specific keys to only open their respective chests
             unlockChest(player, JItems.BOILING_KEY.get(), world, pos, JBlocks.BOIL_CHEST.get());
@@ -42,8 +43,12 @@ public class ChestInteractionItem extends JItem {
             unlockChest(player, JItems.FROZEN_KEY.get(), world, pos, JBlocks.FROZEN_CHEST.get());
             unlockChest(player, JItems.NETHER_KEY.get(), world, pos, JBlocks.NETHER_CHEST.get());
             unlockChest(player, JItems.JOURNEY_KEY.get(), world, pos, JBlocks.JOURNEY_CHEST.get());
+            unlockChest(player, JItems.DEPTHS_CHEST_KEY.get(), world, pos, JBlocks.DEPTHS_CHEST.get());
+            unlockChest(player, JItems.CORBA_KEY.get(), world, pos, JBlocks.CORBA_CHEST.get());
+            unlockChest(player, JItems.TERRANIAN_KEY.get(), world, pos, JBlocks.TERRANIAN_CHEST.get());
+            unlockChest(player, JItems.CLOUDIA_KEY.get(), world, pos, JBlocks.CLOUDIA_CHEST.get());
+            unlockChest(player, JItems.SENTERIAN_KEY.get(), world, pos, JBlocks.SENTERIAN_CHEST.get());
 
-            //Locks the chest if the player wishes to do so
             if(heldItem.getItem() == JItems.PADLOCK.get()) {
                 lockChest(player, world, pos);
             }

@@ -566,7 +566,6 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.SENTERIAN_BRICK_STAIRS);
         this.dropSelf(JBlocks.SENTERIAN_CARVED_ROCK);
         this.dropSelf(JBlocks.SENTERIAN_FLOOR);
-        this.dropSelf(JBlocks.SENTERIAN_FLOOR);
         this.dropSelf(JBlocks.SENTERIAN_ROCK);
         this.dropSelf(JBlocks.SENTERIAN_GLASS);
         this.dropSelf(JBlocks.SENTERIAN_GUARDIAN_LAMP);
@@ -574,6 +573,10 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.SENTERIAN_MELLOW_LAMP);
         this.dropSelf(JBlocks.SENTERIAN_POST);
         this.dropSelf(JBlocks.SENTRY_LOCK);
+
+        this.add(JBlocks.OVERSEER_ELDER_SPAWNER, noDrop());
+        this.add(JBlocks.OVERSEER_SPAWNER, noDrop());
+        this.dropSelf(JBlocks.SENTERIAN_ALTAR);
 
     }
 

@@ -1,6 +1,8 @@
 package net.jitl.common.entity.corba;
 
 import net.jitl.common.entity.base.JMonsterEntity;
+import net.jitl.core.helper.MathHelper;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -49,5 +51,17 @@ public class TreeGolem extends JMonsterEntity {
                 return state.setAndContinue(IDLE);
             }
         }));
+    }
+
+    @Override
+    public boolean doHurtTarget(Entity entity) {
+        this.level().broadcastEntityEvent(this, (byte)1);
+        float damage = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
+        float f1 = (int)damage > 0 ? damage / 2.0F + (float)this.random.nextInt((int)damage) : damage;
+        boolean hurt = entity.hurt(this.damageSources().mobAttack(this), f1);
+        if(hurt) {
+            entity.setDeltaMovement(entity.getDeltaMovement().add((double) (-MathHelper.sin(yRotO * (float) Math.PI / 180.0F)) * 4, 0.1D, (double) (MathHelper.cos(yRotO * (float) Math.PI / 180.0F)) * 4));
+        }
+        return hurt;
     }
 }
