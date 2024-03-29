@@ -27,6 +27,7 @@ import net.jitl.common.entity.overworld.*;
 import net.jitl.common.entity.overworld.npc.Mage;
 import net.jitl.common.entity.overworld.npc.RockiteGolem;
 import net.jitl.common.entity.projectile.*;
+import net.jitl.common.entity.senterian.*;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.*;
@@ -209,6 +210,14 @@ public class JEntities {
     public static final RegistryObject<EntityType<StarlightWalker>> STARLIGHT_WALKER_TYPE = registerEntity(StarlightWalker::new, "starlight_walker", "Starlight Walker", 0.75F, 1.8F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
     public static final RegistryObject<EntityType<AeroLotus>> AERO_LOTUS_TYPE = registerEntity(AeroLotus::new, "aero_lotus", "Aero Lotus", 0.75F, 1.8F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
 
+    //SENTERIAN MOBS
+    public static final RegistryObject<EntityType<SentryLord>> SENTRY_LORD_TYPE = registerEntity(SentryLord::new, "sentry_lord", "Sentry Lord", 0.5F, 0.75F, SENTERIAN_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<SentryStalker>> SENTRY_STALKER_TYPE = registerEntity(SentryStalker::new, "sentry_stalker", "Sentry Stalker", 0.5F, 0.75F, SENTERIAN_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<SentryWalker>> SENTRY_WALKER_TYPE = registerEntity(SentryWalker::new, "sentry_walker", "Sentry Walker", 0.5F, 0.75F, SENTERIAN_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<MiniSentryLord>> MINI_SENTRY_LORD_TYPE = registerEntity(MiniSentryLord::new, "mini_sentry_lord", "Mini Sentry Lord", 0.5F, 0.75F, SENTERIAN_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<MiniSentryStalker>> MINI_SENTRY_STALKER_TYPE = registerEntity(MiniSentryStalker::new, "mini_sentry_stalker", "Mini Sentry Stalker", 0.5F, 0.75F, SENTERIAN_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<MiniSentryWalker>> MINI_SENTRY_WALKER_TYPE = registerEntity(MiniSentryWalker::new, "mini_sentry_walker", "Mini Sentry Walker", 0.5F, 0.75F, SENTERIAN_COLOR, HOSTILE_COLOR);
+
     private static <T extends Mob> RegistryObject<EntityType<T>> registerEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height, int backgroundColor, int highlightColor, MobCategory category) {
         RegistryObject<EntityType<T>> entity = REGISTRY.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).build(new ResourceLocation(JITL.MODID, name).toString()));
         JItems.register(name + "_spawn_egg" , lang + " Spawn Egg", () -> new ForgeSpawnEggItem(entity, backgroundColor, highlightColor, JItems.itemProps()), JItems.ItemType.SPAWN_EGG);
@@ -343,6 +352,13 @@ public class JEntities {
         event.put(STARLIGHT_TRANSPORTER_TYPE.get(), StarlightTransporter.createAttributes());
         event.put(STARLIGHT_WALKER_TYPE.get(), StarlightWalker.createAttributes());
         event.put(AERO_LOTUS_TYPE.get(), AeroLotus.createAttributes());
+
+        event.put(SENTRY_STALKER_TYPE.get(), SentryStalker.createAttributes());
+        event.put(SENTRY_LORD_TYPE.get(), SentryLord.createAttributes());
+        event.put(SENTRY_WALKER_TYPE.get(), SentryWalker.createAttributes());
+        event.put(MINI_SENTRY_STALKER_TYPE.get(), MiniSentryStalker.createAttributes());
+        event.put(MINI_SENTRY_LORD_TYPE.get(), MiniSentryLord.createAttributes());
+        event.put(MINI_SENTRY_WALKER_TYPE.get(), MiniSentryWalker.createAttributes());
     }
 
     @SubscribeEvent
@@ -443,6 +459,13 @@ public class JEntities {
         setDefaultMonsterSpawn(event, TERRANIAN_PROTECTOR_TYPE);
         setDefaultMonsterSpawn(event, SENTRY_KING_TYPE);
         setDefaultSpawn(event, SKY_STALKER_TYPE);
+
+        setDefaultMonsterSpawn(event, SENTRY_LORD_TYPE);
+        setDefaultMonsterSpawn(event, SENTRY_STALKER_TYPE);
+        setDefaultMonsterSpawn(event, SENTRY_WALKER_TYPE);
+        setDefaultMonsterSpawn(event, MINI_SENTRY_LORD_TYPE);
+        setDefaultMonsterSpawn(event, MINI_SENTRY_STALKER_TYPE);
+        setDefaultMonsterSpawn(event, MINI_SENTRY_WALKER_TYPE);
     }
 
     public static <T extends Entity> void setCustomSpawn(SpawnPlacementRegisterEvent event, RegistryObject<EntityType<T>> entity, SpawnPlacements.SpawnPredicate<T> spawn) {

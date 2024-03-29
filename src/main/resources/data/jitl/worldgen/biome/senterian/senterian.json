@@ -11,7 +11,27 @@
     "foliage_color": 61183,
     "grass_color_modifier": "none"
   },
-  "spawners": {},
+  "spawners": {    "monster": [
+    {
+      "type": "jitl:sentry_lord",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 1
+    },
+    {
+      "type": "jitl:sentry_stalker",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 1
+    },
+    {
+      "type": "jitl:sentry_walker",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 1
+    }
+  ]
+  },
   "spawn_costs": {},
   "carvers": {},
   "features": [

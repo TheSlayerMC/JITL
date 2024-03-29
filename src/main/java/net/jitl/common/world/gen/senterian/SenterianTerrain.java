@@ -25,7 +25,7 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
     public static final StructurePlaceSettings defaultSettings = new StructurePlaceSettings().setIgnoreEntities(false).setFinalizeEntities(true).setKeepLiquids(true);
     public static NormalNoise dungeonNoise;
     public static long seed;
-    public static Room[] rooms;
+    public static Room[] rooms, rareRooms;
     public static VerticalRoom[] verticalRooms;
     public static BigRoom[] bigRooms;
 
@@ -51,11 +51,17 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
                 new Room(manager, "senterian/hallways/corner_1"),
         };
 
+        rareRooms = new Room[] {
+                new Room(manager, "senterian/room/loot_1"),
+                new Room(manager, "senterian/room/loot_2")
+        };
+
         verticalRooms = new VerticalRoom[] {
                 new VerticalRoom(manager, "senterian/tall/staircase_hallway"),
                 new VerticalRoom(manager, "senterian/tall/staircase_1"),
                 new VerticalRoom(manager, "senterian/tall/tall_loot_1")
         };
+
         bigRooms = new BigRoom[] {
                 new BigRoom(manager, "senterian/big/altar_1")
         };
@@ -78,6 +84,8 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
         genRegular(level, random, pos);
 
         if(!topLayer) {
+            if(random.nextInt(10) == 0)
+                genRare(level, random, pos);
 
             if(random.nextInt(10) == 0)
                 genVertical(level, random, pos);
@@ -90,8 +98,13 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
     private void genVertical(WorldGenLevel level, RandomSource random, BlockPos pos) {
         verticalRooms[random.nextInt(verticalRooms.length)].gen(level, random, pos, Rotation.getRandom(random));
     }
+
     private void genRegular(WorldGenLevel level, RandomSource random, BlockPos pos) {
         rooms[random.nextInt(rooms.length)].gen(level, random, pos, Rotation.getRandom(random));
+    }
+
+    private void genRare(WorldGenLevel level, RandomSource random, BlockPos pos) {
+        rareRooms[random.nextInt(rareRooms.length)].gen(level, random, pos, Rotation.getRandom(random));
     }
 
     public static boolean wantsBigRoom(int chunkX, int y, int chunkZ) {

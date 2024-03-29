@@ -1,0 +1,52 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 5.5,
+				"visible_bounds_offset": [0, 2.25, 0]
+			},
+			"bones": [
+				{
+					"name": "head",
+					"pivot": [0, 48, 0],
+					"cubes": [
+						{"origin": [-8, 48, -8], "size": [16, 16, 16], "uv": [64, 0]}
+					]
+				},
+				{
+					"name": "leg2",
+					"pivot": [4, 32, 2],
+					"cubes": [
+						{"origin": [4, 0, -2], "size": [4, 32, 4], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "torso",
+					"pivot": [0, 48, 0],
+					"cubes": [
+						{"origin": [-4, 16, -4], "size": [8, 32, 8], "uv": [16, 0]}
+					]
+				},
+				{
+					"name": "leg1",
+					"pivot": [-4, 32, 2],
+					"cubes": [
+						{"origin": [-8, 0, -2], "size": [4, 32, 4], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "backpanel",
+					"pivot": [-12, 64, 4],
+					"cubes": [
+						{"origin": [-16, 16, 0], "size": [32, 48, 0], "uv": [0, 40]}
+					]
+				}
+			]
+		}
+	]
+}

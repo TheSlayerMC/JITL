@@ -1,7 +1,9 @@
 package net.jitl.common.block.entity;
 
 import net.jitl.common.block.SenterianAltar;
-import net.jitl.common.entity.frozen.Capybara;
+import net.jitl.common.entity.senterian.MiniSentryLord;
+import net.jitl.common.entity.senterian.MiniSentryStalker;
+import net.jitl.common.entity.senterian.MiniSentryWalker;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JEntities;
 import net.minecraft.core.BlockPos;
@@ -104,26 +106,19 @@ public class SenterianAltarTile extends BlockEntity implements GeoBlockEntity {
 
     private void spawnMob(BlockPos pos, Level level) {
         int x = pos.getX(), y = pos.getY(), z = pos.getZ();
-        LivingEntity mob = new Capybara(JEntities.CAPYBARA_TYPE.get(), getLevel());
+        LivingEntity mob = null;
+        RandomSource random = RandomSource.create();
+        mob = switch (random.nextInt(3)) {
+            case 0 -> new MiniSentryLord(JEntities.MINI_SENTRY_LORD_TYPE.get(), this.getLevel());
+            case 1 -> new MiniSentryStalker(JEntities.MINI_SENTRY_STALKER_TYPE.get(), this.getLevel());
+            case 2 -> new MiniSentryWalker(JEntities.MINI_SENTRY_WALKER_TYPE.get(), this.getLevel());
+            default -> new MiniSentryLord(JEntities.MINI_SENTRY_LORD_TYPE.get(), getLevel());
+        };
 
-//        switch (r.nextInt(3)) {
-//            case 0:
-//                mob = new EntityMiniSentryLord(world);
-//                break;
-//            case 1:
-//                mob = new EntityMiniSentryStalker(world);
-//                break;
-//            case 2:
-//                mob = new EntityMiniSentryWalker(world);
-//                break;
-//            default:
-//                mob = new EntityMiniSentryLord(world);
-//                break;
-//        }
-
-        mob.setPos(x + 0.5F, y + 1F, z + 0.5F);
-        if (!level.isClientSide)
+        if(!level.isClientSide) {
+            mob.setPos(x + 0.5F, y + 1F, z + 0.5F);
             level.addFreshEntity(mob);
+        }
     }
 
     @OnlyIn(Dist.CLIENT)

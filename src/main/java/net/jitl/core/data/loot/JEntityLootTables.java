@@ -400,9 +400,28 @@ public class JEntityLootTables extends EntityLootSubProvider {
                 .add(LootItem.lootTableItem(JItems.ENCHANTED_LEAF.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
 
+        this.add(JEntities.NATURE_MAGE_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(JItems.ENCHANTED_LEAF.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.SENTRY_LORD_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(JItems.SENTRY_OBSERVER.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(-1.0F, 1.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.SENTRY_STALKER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(JItems.SENTRY_OBSERVER.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(-1.0F, 1.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.SENTRY_WALKER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(JItems.SENTRY_OBSERVER.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(-1.0F, 1.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
+
         this.add(JEntities.SMELLY_TYPE.get(), empty());
         this.add(JEntities.STINKY_TYPE.get(), empty());
-        this.add(JEntities.NATURE_MAGE_TYPE.get(), empty());
+
+        this.add(JEntities.MINI_SENTRY_LORD_TYPE.get(), empty());
+        this.add(JEntities.MINI_SENTRY_STALKER_TYPE.get(), empty());
+        this.add(JEntities.MINI_SENTRY_WALKER_TYPE.get(), empty());
     }
 
     private LootTable.Builder empty() {

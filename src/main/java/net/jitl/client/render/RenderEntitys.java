@@ -195,5 +195,12 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.STARLIGHT_WALKER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("starlight_walker", JDimension.CLOUDIA)));
         EntityRenderers.register(JEntities.AERO_LOTUS_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("aero_lotus", JDimension.CLOUDIA)));
 
+        EntityRenderers.register(JEntities.SENTRY_LORD_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("sentry_lord", JDimension.SENTERIAN)));
+        EntityRenderers.register(JEntities.SENTRY_STALKER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("sentry_stalker", JDimension.SENTERIAN)));
+        EntityRenderers.register(JEntities.SENTRY_WALKER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("sentry_walker", JDimension.SENTERIAN)));
+        EntityRenderers.register(JEntities.MINI_SENTRY_LORD_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("mini_sentry_lord", JDimension.SENTERIAN), 0.25F, 0.4F));
+        EntityRenderers.register(JEntities.MINI_SENTRY_STALKER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("mini_sentry_stalker", JDimension.SENTERIAN), 0.25F, 0.4F));
+        EntityRenderers.register(JEntities.MINI_SENTRY_WALKER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("mini_sentry_walker", JDimension.SENTERIAN), 0.25F, 0.4F));
+
     }
 }
