@@ -210,7 +210,7 @@ public class BaseTeleporter implements ITeleporter {
         if (existingPortal.isPresent()) {
             return existingPortal;
         } else {
-            Direction.Axis portalAxis = this.level.getBlockState(entity.portalEntrancePos).getOptionalValue(JBasePortalBlock.AXIS).orElse(Direction.Axis.X);
+            Direction.Axis portalAxis = this.level.getBlockState(entity.blockPosition()).getOptionalValue(JBasePortalBlock.AXIS).orElse(Direction.Axis.X);
             return this.makePortal(pos, portalAxis);
         }
     }

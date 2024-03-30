@@ -138,6 +138,7 @@ public class JItems {
     public static final RegistryObject<Item> AIRROOT_SEEDS = registerNormalItem("airroot_seeds", "Airroot Seeds", () -> new ItemNameBlockItem(JBlocks.AIRROOT_CROP.get(), JItems.itemProps()));
     public static final RegistryObject<Item> SNAKE_FLESH = registerFoodItem("snake_flesh", "Snake Flesh", JFood.SNAKE_FLESH);
     public static final RegistryObject<Item> SLIMY_FLESH = registerFoodItem("slimy_flesh", "Slimy Flesh", JFood.SLIMY_FLESH);
+    public static final RegistryObject<Item> BREATHING_FUNGUS = registerFoodItem("breathing_fungus", "Freathing Fungus", JFood.BREATHING_FUNGUS);
 
     public static final RegistryObject<Item> OBSIDIAN_STICK = registerNormalItem("obsidian_stick", "Obsidian Rod");
     public static final RegistryObject<Item> STONE_STICK = registerNormalItem("stone_stick", "Stone Stick");
@@ -218,6 +219,7 @@ public class JItems {
     public static final RegistryObject<Item> ANCIENT_SHARD = registerNormalItem("ancient_shard", "Ancient Shard", AncientPieceItem::new);
     public static final RegistryObject<Item> ANCIENT_CHUNK = registerNormalItem("ancient_chunk", "Ancient Chunk", AncientPieceItem::new);
     public static final RegistryObject<Item> ANCIENT_FRAGMENT = registerNormalItem("ancient_fragment", "Ancient Fragment", AncientPieceItem::new);
+    public static final RegistryObject<Item> SENTRY_STONE = registerNormalItem("sentry_stone", "Sentry Stone");
     public static final RegistryObject<Item> ANCIENT_EYE_OF_OPENING = registerNormalItem("ancient_eye_of_opening", "Ancient Eye Of Opening");
     public static final RegistryObject<Item> ELDER_KEY = registerNormalItem("elder_key", "Elder Key");
 

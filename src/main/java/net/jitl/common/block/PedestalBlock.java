@@ -72,7 +72,7 @@ public class PedestalBlock extends JTileContainerBlock {
                         player.getMainHandItem().shrink(1);
                 }
 
-                if(this == JBlocks.ROYAL_PEDESTAL.get() && heldItem == JItems.EUCA_TABLET.get() || heldItem == JItems.ROYAL_DISK.get()) {
+                if(this == JBlocks.ROYAL_PEDESTAL.get() && heldItem == JItems.EUCA_TABLET.get() || heldItem == JItems.ROYAL_DISK.get() || heldItem == JItems.METAL_DISK.get()) {
                     pedestal.setItem(0, new ItemStack(heldItem));
                     worldIn.playSound(null, pos, SoundEvents.END_PORTAL_FRAME_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                     if(!player.isCreative())

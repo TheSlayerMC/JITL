@@ -577,6 +577,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.add(JBlocks.OVERSEER_ELDER_SPAWNER, noDrop());
         this.add(JBlocks.OVERSEER_SPAWNER, noDrop());
         this.dropSelf(JBlocks.SENTERIAN_ALTAR);
+        this.dropSelf(JBlocks.SENTERIAN_CHEST);
 
     }
 

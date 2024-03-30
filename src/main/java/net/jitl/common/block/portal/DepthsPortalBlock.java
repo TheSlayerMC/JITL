@@ -5,10 +5,13 @@ import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -31,6 +34,14 @@ public class DepthsPortalBlock extends Block {
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
         return SHAPE;
+    }
+
+    @Override
+    public void animateTick(@NotNull BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
+        double d0 = (double)pPos.getX() + pRandom.nextDouble();
+        double d1 = (double)pPos.getY() + 0.8D;
+        double d2 = (double)pPos.getZ() + pRandom.nextDouble();
+        pLevel.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
     }
 
     @Override
@@ -58,9 +69,11 @@ public class DepthsPortalBlock extends Block {
         if(minecraftserver != null) {
             ResourceKey<Level> destination = entity.level().dimension() == Dimensions.DEPTHS ? Level.OVERWORLD : Dimensions.DEPTHS;
             ServerLevel destinationWorld = minecraftserver.getLevel(destination);
-            if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
+            ResourceKey<PoiType> poi = Dimensions.DEPTHS_PORTAL.getKey();
+
+            if(destinationWorld != null && !entity.isPassenger()) {
                 entity.setPortalCooldown();
-                entity.changeDimension(destinationWorld, new DepthsTeleporter(destinationWorld, this, JBlocks.DEPTHS_PORTAL_FRAME.get()));
+                entity.changeDimension(destinationWorld, new DepthsTeleporter(destinationWorld, this, JBlocks.DEPTHS_PORTAL_FRAME.get(), poi, destination));
             }
         }
     }

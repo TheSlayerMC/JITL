@@ -17,19 +17,22 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlac
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
 public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
 
     public static final StructurePlaceSettings defaultSettings = new StructurePlaceSettings().setIgnoreEntities(false).setFinalizeEntities(true).setKeepLiquids(true);
-    public static NormalNoise dungeonNoise;
+    public static NormalNoise senterianNoise;
     public static long seed;
     public static Room[] rooms, rareRooms;
     public static VerticalRoom[] verticalRooms;
     public static BigRoom[] bigRooms;
 
-    public SenterianTerrain() {super(NoneFeatureConfiguration.CODEC);}
+    public SenterianTerrain() {
+        super(NoneFeatureConfiguration.CODEC);
+    }
 
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
@@ -37,9 +40,8 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
     }
 
     @Override
-    public boolean place(NoneFeatureConfiguration c, WorldGenLevel level, ChunkGenerator g, RandomSource random, BlockPos pos) {
+    public boolean place(@NotNull NoneFeatureConfiguration c, WorldGenLevel level, @NotNull ChunkGenerator g, @NotNull RandomSource random, @NotNull BlockPos pos) {
         StructureTemplateManager manager = level.getLevel().getServer().getStructureManager();
-
 
         rooms = new Room[]{
                 new Room(manager, "senterian/room/room_1"),
@@ -67,7 +69,7 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
         };
         long newSeed = level.getSeed();
         if(seed != newSeed) {
-            dungeonNoise = NormalNoise.create(new XoroshiroRandomSource(newSeed), 1, 1.5);
+            senterianNoise = NormalNoise.create(new XoroshiroRandomSource(newSeed), 1, 1.5);
             seed = newSeed;
         }
         for(int x = 0; x < 16; x++) for(int z = 0; z < 16; z++) {
@@ -110,7 +112,7 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
     public static boolean wantsBigRoom(int chunkX, int y, int chunkZ) {
         int xPart = chunkX % 2, zPart = chunkZ % 2;
         Random rand = new Random();
-        return rand.nextInt(10) == 0 && getDoorAmount(chunkX, y, chunkZ) == 0
+        return rand.nextInt(15) == 0 && getDoorAmount(chunkX, y, chunkZ) == 0
                 || getDoorAmount(chunkX + 1 + ((chunkX > -1 ? -2 : 2) * xPart), y, chunkZ) == 0
                 || getDoorAmount(chunkX, y, chunkZ + 1 + ((chunkZ > -1 ? -2 : 2) * zPart)) == 0
                 || getDoorAmount(chunkX + 1 + ((chunkX > -1 ? -2 : 2) * xPart), y, chunkZ + 1 + ((chunkZ > -1 ? -2 : 2) * zPart)) == 0;
@@ -124,7 +126,7 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
 
     public static byte getDoorValue(int chunkX, int y, int chunkZ) {
         byte value = 0;
-        for(byte steps = 0; value == 0 && steps < 16; steps++) value = (byte) (Math.abs(dungeonNoise.getValue(chunkX - (111 * steps), y + (112 * steps), chunkZ - (113 * steps))) * 15.7);
+        for(byte steps = 0; value == 0 && steps < 16; steps++) value = (byte) (Math.abs(senterianNoise.getValue(chunkX - (111 * steps), y + (112 * steps), chunkZ - (113 * steps))) * 15.7);
         return value;
     }
 
@@ -135,11 +137,7 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
     }
     public static void setBlock(WorldGenLevel level, BlockPos pos, BlockState block) {level.setBlock(pos, block, 3);}
 
-    public static void placeStructure(StructureTemplate structure, WorldGenLevel level, RandomSource random, BlockPos pos, Rotation rotation) {
-        structure.placeInWorld(level, pos, pos, defaultSettings.copy().setRotation(rotation), random, 2);
-    }
-
-    class Room {
+    static class Room {
         public final StructureTemplate room;
         public Room(StructureTemplateManager manager, String location) {
             room = manager.getOrCreate(new ResourceLocation(JITL.MODID, location));
@@ -148,7 +146,8 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
             placeRoom(room, level, random, pos, rotation);
         }
     }
-    class VerticalRoom {
+
+    static class VerticalRoom {
         public final StructureTemplate room;
         public VerticalRoom(StructureTemplateManager manager, String location) {
             room = manager.getOrCreate(new ResourceLocation(JITL.MODID, location));
@@ -158,7 +157,8 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
             placeRoom(room, level, random, pos, rotation);
         }
     }
-    class BigRoom {
+
+    static class BigRoom {
         public final StructureTemplate room;
         public BigRoom(StructureTemplateManager manager, String room) {
             this.room = manager.getOrCreate(new ResourceLocation(JITL.MODID, room));

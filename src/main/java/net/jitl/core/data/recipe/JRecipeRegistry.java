@@ -73,11 +73,11 @@ public class JRecipeRegistry extends JRecipeProvider {
         addOreDefaultItems(recipeConsumer, RecipePrefix.ORBADITE, JBlocks.ORBADITE_BLOCK.get(), JBlocks.ORBADITE_ORE.get(), null, JItems.RAW_ORBADITE.get(), JItems.ORBADITE_INGOT.get(), Items.STICK);
         addOreNoArmorItems(recipeConsumer, RecipePrefix.SOULSTONE, JBlocks.SOULSTONE_BLOCK.get(), null, null, null, JItems.SOULSTONE.get(), JItems.OBSIDIAN_STICK.get());
 
-        add3x3Recipe(recipeConsumer, JItems.EUCA_PORTAL_GEM.get(), JBlocks.EUCA_PORTAL_FRAME.get(), 9);
-        add3x3Recipe(recipeConsumer, JBlocks.DEPTHS_PORTAL_FRAME.get(), JItems.DEPTHS_PORTAL_GEM.get(), 12);
-        add3x3Recipe(recipeConsumer, JBlocks.CORBA_PORTAL_FRAME.get(), JItems.CORBA_PORTAL_GEM.get(), 12);
-        add3x3Recipe(recipeConsumer, JBlocks.TERRANIAN_PORTAL_FRAME.get(), JItems.TERRANIA_PORTAL_GEM.get(), 9);
-        add3x3Recipe(recipeConsumer, JBlocks.CLOUDIA_PORTAL_FRAME.get(), JItems.CLOUDIA_PORTAL_GEM.get(), 9);
+        add3x3Recipe(recipeConsumer, JItems.EUCA_PORTAL_GEM.get(), JBlocks.EUCA_PORTAL_FRAME.get(), 10);
+        add3x3Recipe(recipeConsumer, JItems.DEPTHS_PORTAL_GEM.get(), JBlocks.DEPTHS_PORTAL_FRAME.get(), 12);
+        add3x3Recipe(recipeConsumer, JItems.CORBA_PORTAL_GEM.get(), JBlocks.CORBA_PORTAL_FRAME.get(), 12);
+        add3x3Recipe(recipeConsumer, JItems.TERRANIA_PORTAL_GEM.get(), JBlocks.TERRANIAN_PORTAL_FRAME.get(), 10);
+        add3x3Recipe(recipeConsumer, JItems.CLOUDIA_PORTAL_GEM.get(), JBlocks.CLOUDIA_PORTAL_FRAME.get(), 10);
         addShapedRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, "iii", "idi", "iii", 'i', Items.SNOWBALL, 'd', Items.DIAMOND, JBlocks.FROZEN_PORTAL_FRAME.get(), 10);
 
         add2x2Recipe(recipeConsumer, JItems.SMITHSTONE.get(), JBlocks.SMITHSTONE_BLOCK.get(), true);
@@ -107,10 +107,11 @@ public class JRecipeRegistry extends JRecipeProvider {
         addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "ddd", 'd', JItems.SHADIUM_INGOT.get(), JItems.SHADIUM_CLUMP.get(), 1);
         addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "ddd", 'd', JItems.LUNIUM_INGOT.get(), JItems.LUNIUM_CLUMP.get(), 1);
         addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.BLOODCRUST_CLUMP.get(), JItems.SHADIUM_CLUMP.get(), JItems.LUNIUM_CLUMP.get(), JItems.SPAWNER_CLUMP.get(), 1);
-        addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.EUCA_PORTAL_PIECE_1.get(), JItems.EUCA_PORTAL_PIECE_2.get(), JItems.EUCA_PORTAL_PIECE_3.get(), JItems.EUCA_PORTAL_GEM.get(), 10);
+        addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.EUCA_PORTAL_PIECE_1.get(), JItems.EUCA_PORTAL_PIECE_2.get(), JItems.EUCA_PORTAL_PIECE_3.get(), JItems.EUCA_PORTAL_GEM.get(), 9);
 
-        addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "ddd", "ddd", "ddd",  'd', JItems.TERRANIA_PORTAL_GEM.get(), JBlocks.TERRANIAN_PORTAL_FRAME.get(), 10);
-        addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "ddd", "ddd", "ddd",  'd', JItems.CLOUDIA_PORTAL_GEM.get(), JBlocks.CLOUDIA_PORTAL_FRAME.get(), 10);
+        addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, Items.ENDER_EYE, JItems.DEMONIC_DUST.get(), JItems.DEMONIC_EYE.get(), 1);
+        addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, Items.ENDER_EYE, JItems.SENTRY_STONE.get(), JItems.SENTRY_EYE.get(), 1);
+        addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.FLAME_COIN.get(), Items.BOOK, JItems.RECIPE_BOOK.get(), 1);
 
         addSwordRecipe(recipeConsumer, JItems.BLOODCRUST_INGOT.get(), JItems.WITHIC_DUST.get(), JItems.WITHIC_BLADE.get());
         addSwordRecipe(recipeConsumer, JItems.STONE_STICK.get(), JItems.REINFORCED_STONE_INGOT.get(), JItems.REINFORCED_STONE_SWORD.get());

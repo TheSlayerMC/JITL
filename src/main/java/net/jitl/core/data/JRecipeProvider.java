@@ -114,7 +114,7 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
     }
 
     protected void addShapelessRecipe(RecipeOutput recipeConsumer, RecipeCategory cat, ItemLike input, ItemLike input2, ItemLike output, int count) {
-        addShapelessRecipe(recipeConsumer, cat, input, input2, output, count, "");
+        addShapelessRecipe(recipeConsumer, cat, input, input2, output, count, getItemFromRegistryName(output.toString()).toString());
     }
 
     protected void addShapelessRecipe(RecipeOutput recipeConsumer, RecipeCategory cat, ItemLike input, ItemLike input2, ItemLike input3, ItemLike output, int count) {

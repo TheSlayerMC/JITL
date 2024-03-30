@@ -11,9 +11,54 @@
     "grass_color": 16711927,
     "foliage_color": 15597823,
     "grass_color_modifier": "none",
-    "ambient_sound": "jitl:music.terrania.ambience"
+    "ambient_sound": "jitl:music.terrania.ambience",
+    "particle": {
+      "options": {
+        "type": "jitl:terrania"
+      },
+      "probability": 0.001428
+    }
   },
-  "spawners": {},
+  "spawners": {
+    "monster": [
+      {
+        "type": "jitl:purplian",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "jitl:terragrow",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "jitl:terrascatterer",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "jitl:terrashroom",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "jitl:terraslug",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "jitl:flungas",
+        "weight": 3,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ]
+  },
   "spawn_costs": {},
   "carvers": {
     "air": [

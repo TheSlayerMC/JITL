@@ -19,7 +19,6 @@ public class JItem extends Item {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
-        addItemDesc(JItems.SENTRY_EYE.get(), tooltip, "jitl.item.desc.sentry_eye");
         addItemDesc(JItems.FLAME_COIN.get(), tooltip, "jitl.item.desc.flame_coin");
 
         addItemDesc(JItems.PADLOCK.get(), tooltip, "jitl.item.desc.padlock");

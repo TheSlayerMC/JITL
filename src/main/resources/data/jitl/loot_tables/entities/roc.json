@@ -6,11 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "jitl:dark_crystal"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:feather"
+          "name": "jitl:roc_feather"
         }
       ],
       "functions": [
@@ -20,23 +16,6 @@
             "type": "minecraft:uniform",
             "max": 2.0,
             "min": 0.0
-          },
-          "function": "minecraft:set_count"
-        },
-        {
-          "count": {
-            "type": "minecraft:uniform",
-            "max": 1.0,
-            "min": 0.0
-          },
-          "function": "minecraft:looting_enchant"
-        },
-        {
-          "add": false,
-          "count": {
-            "type": "minecraft:uniform",
-            "max": 2.0,
-            "min": 1.0
           },
           "function": "minecraft:set_count"
         },

@@ -9,7 +9,13 @@
     "water_fog_color": 61183,
     "grass_color": 61183,
     "foliage_color": 61183,
-    "grass_color_modifier": "none"
+    "grass_color_modifier": "none",
+    "particle": {
+      "options": {
+        "type": "jitl:cloudia"
+      },
+      "probability": 0.001428
+    }
   },
   "spawners": {
     "monster": [

@@ -5,9 +5,11 @@ import net.jitl.common.world.dimension.SenterianTeleporter;
 import net.jitl.common.world.dimension.SenterianToOverworldTeleporter;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -31,6 +33,14 @@ public class SenterianPortalBlock extends Block {
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
         return SHAPE;
+    }
+
+    @Override
+    public void animateTick(@NotNull BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
+        double d0 = (double)pPos.getX() + pRandom.nextDouble();
+        double d1 = (double)pPos.getY() + 0.8D;
+        double d2 = (double)pPos.getZ() + pRandom.nextDouble();
+        pLevel.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
     }
 
     @Override
