@@ -21,7 +21,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.portal.PortalInfo;
 import net.minecraft.world.phys.Vec3;
 
@@ -53,7 +52,7 @@ public class DepthsTeleporter extends BaseTeleporter {
         entity.setPortalCooldown();
 
         if(destWorld.dimension() == Dimensions.DEPTHS) {
-            PortalInfo ruinedPortal = repairPortal(destWorld, destWorld.findNearestMapStructure(StructureTags.RUINED_PORTAL, entity.blockPosition(), SEARCH_RADIUS, false), entity);
+            PortalInfo ruinedPortal = repairPortal(destWorld, destWorld.findNearestMapStructure(StructureTags.RUINED_PORTAL, getHeight(level, entity.portalEntrancePos.getX(), entity.portalEntrancePos.getZ()), SEARCH_RADIUS, false), entity);
             if(ruinedPortal != null) return ruinedPortal;
         }
 
@@ -100,7 +99,7 @@ public class DepthsTeleporter extends BaseTeleporter {
 
     @Override
     public Optional<BlockUtil.FoundRectangle> makePortal(BlockPos pos, Direction.Axis axis) {
-        pos = new BlockPos(pos.getX(), getHeight(level, pos.getX(), pos.getZ()), pos.getZ());
+        pos = getHeight(level, pos.getX(), pos.getZ());
         for (int x = -2; x < 3; x++)
             for (int z = -2; z < 3; z++) {
                 if (Math.abs(x) < 2 && Math.abs(z) < 2)
@@ -133,13 +132,14 @@ public class DepthsTeleporter extends BaseTeleporter {
         return Optional.of(new BlockUtil.FoundRectangle(pos, 5, 5));
     }
 
-    protected int getHeight(ServerLevel level, int posX, int posZ) {
-        for (int y = level.getHeight(); y > 32; y--) {
+    protected BlockPos getHeight(ServerLevel level, int posX, int posZ) {
+        int limit = 32;
+        for(int y = limit; y > 0; y--) {
             BlockState block = level.getBlockState(new BlockPos(posX, y, posZ));
-            if(block.is(JBlocks.DEPTHS_GRASS.get()))
-                return y;
+            if(!block.is(Blocks.AIR))
+                return new BlockPos(posX, y + 1, posZ);
         }
-        return level.getHeight(Heightmap.Types.MOTION_BLOCKING, posX, posZ);
+        return new BlockPos(posX, limit, posZ);
     }
 
 }

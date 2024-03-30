@@ -2,8 +2,8 @@ package net.jitl.common.block.portal;
 
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.common.world.dimension.SenterianTeleporter;
-import net.jitl.common.world.dimension.SenterianToOverworldTeleporter;
 import net.jitl.core.init.internal.JBlockProperties;
+import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceKey;
@@ -11,6 +11,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -57,25 +58,22 @@ public class SenterianPortalBlock extends Block {
                 if(!entity.level().isClientSide && !pos.equals(entity.portalEntrancePos)) {
                     entity.portalEntrancePos = pos.immutable();
                 }
-                teleport(entity, entity.portalEntrancePos);
+                teleport(entity);
             }
         }
     }
 
-    public void teleport(Entity entity, BlockPos pos) {
+    public void teleport(Entity entity) {
         Level entityWorld = entity.level();
         MinecraftServer minecraftserver = entityWorld.getServer();
         if(minecraftserver != null) {
             ResourceKey<Level> destination = entity.level().dimension() == Dimensions.SENTERIAN ? Level.OVERWORLD : Dimensions.SENTERIAN;
             ServerLevel destinationWorld = minecraftserver.getLevel(destination);
-            if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
-                entity.setPortalCooldown();
+            ResourceKey<PoiType> poi = Dimensions.SENTERIAN_PORTAL.getKey();
 
-                if(destination == Level.OVERWORLD) {
-                    entity.changeDimension(destinationWorld, new SenterianToOverworldTeleporter(destinationWorld, destination, pos));
-                } else {
-                    entity.changeDimension(destinationWorld, new SenterianTeleporter(destinationWorld, destination));
-                }
+            if(destinationWorld != null && !entity.isPassenger()) {
+                entity.setPortalCooldown();
+                entity.changeDimension(destinationWorld, new SenterianTeleporter(destinationWorld, this, JBlocks.SENTERIAN_PORTAL_FRAME.get(), poi, destination));
             }
         }
     }

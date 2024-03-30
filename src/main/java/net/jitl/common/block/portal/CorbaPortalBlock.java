@@ -11,6 +11,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -68,9 +69,12 @@ public class CorbaPortalBlock extends Block {
         if(minecraftserver != null) {
             ResourceKey<Level> destination = entity.level().dimension() == Dimensions.CORBA ? Level.OVERWORLD : Dimensions.CORBA;
             ServerLevel destinationWorld = minecraftserver.getLevel(destination);
+            ResourceKey<PoiType> poi = Dimensions.CORBA_PORTAL.getKey();
+
             if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
                 entity.setPortalCooldown();
-                entity.changeDimension(destinationWorld, new CorbaTeleporter(destinationWorld, this, JBlocks.CORBA_PORTAL_FRAME.get()));
+                entity.changeDimension(destinationWorld, new CorbaTeleporter(destinationWorld, this, JBlocks.CORBA_PORTAL_FRAME.get(), poi, destination));
+
             }
         }
     }
