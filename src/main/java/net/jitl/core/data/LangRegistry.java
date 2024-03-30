@@ -228,6 +228,7 @@ public class LangRegistry {
         writeToFile("\"jitl.item.desc.demonic_eye\" : \"Inserted into the Corba Portal Frame\",");
         writeToFile("\"jitl.item.desc.dark_gem\" : \"Inserted into the Depths Portal Frame\",");
         writeToFile("\"jitl.item.desc.sentry_observer\" : \"Inserted into the Senterian Altar\",");
+        writeToFile("\"jitl.item.desc.bile\" : \"Very Vile!\",");
 
         /* --------------------- Finish manual lines --------------------- */
 

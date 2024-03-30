@@ -354,6 +354,8 @@ public class JEntityLootTables extends EntityLootSubProvider {
 
         this.add(JEntities.CORBANIAN_MOLLUSK_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                 .add(LootItem.lootTableItem(JItems.SLIMY_FLESH.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+                .add(LootItem.lootTableItem(JItems.SLUG_SLIME.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
 
         this.add(JEntities.LEAF_BLOWER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))

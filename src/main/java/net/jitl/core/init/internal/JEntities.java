@@ -28,6 +28,9 @@ import net.jitl.common.entity.overworld.npc.Mage;
 import net.jitl.common.entity.overworld.npc.RockiteGolem;
 import net.jitl.common.entity.projectile.*;
 import net.jitl.common.entity.senterian.*;
+import net.jitl.common.entity.terrania.*;
+import net.jitl.common.entity.terrania.npc.TerranianEnchanter;
+import net.jitl.common.entity.terrania.npc.TerranianTrader;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.*;
@@ -183,40 +186,49 @@ public class JEntities {
     public static final RegistryObject<EntityType<Auron>> AURON_TYPE = registerEntity(Auron::new, "auron", "Auron", 0.5F, 1.1F, DEPTHS_COLOR, TRADER_COLOR);
 
     //CORBA MOBS
-    public static final RegistryObject<EntityType<CorbanianMollusk>> CORBANIAN_MOLLUSK_TYPE = registerEntity(CorbanianMollusk::new, "corbanian_mollusk", "Corbanian Mollusk", 0.75F, 1.8F, CORBA_COLOR, NEUTRAL_COLOR, MobCategory.MONSTER);
-    public static final RegistryObject<EntityType<Smelly>> SMELLY_TYPE = registerEntity(Smelly::new, "smelly", "Smelly", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
-    public static final RegistryObject<EntityType<Stinky>> STINKY_TYPE = registerEntity(Stinky::new, "stinky", "Stinky", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
-    public static final RegistryObject<EntityType<GreenTordo>> GREEN_TORDO_TYPE = registerEntity(GreenTordo::new, "green_tordo", "Green Tordo", 0.75F, 1.8F, CORBA_COLOR, TRADER_COLOR, MobCategory.MONSTER);
-    public static final RegistryObject<EntityType<RedTordo>> RED_TORDO_TYPE = registerEntity(RedTordo::new, "red_tordo", "Red Tordo", 0.75F, 1.8F, CORBA_COLOR, TRADER_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<CorbanianMollusk>> CORBANIAN_MOLLUSK_TYPE = registerEntity(CorbanianMollusk::new, "corbanian_mollusk", "Corbanian Mollusk", 0.75F, 1F, CORBA_COLOR, NEUTRAL_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<Smelly>> SMELLY_TYPE = registerEntity(Smelly::new, "smelly", "Smelly", 1.5F, 3F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<Stinky>> STINKY_TYPE = registerEntity(Stinky::new, "stinky", "Stinky", 0.75F, 1.75F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<GreenTordo>> GREEN_TORDO_TYPE = registerEntity(GreenTordo::new, "green_tordo", "Green Tordo", 0.75F, 2.5F, CORBA_COLOR, TRADER_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<RedTordo>> RED_TORDO_TYPE = registerEntity(RedTordo::new, "red_tordo", "Red Tordo", 0.75F, 2.5F, CORBA_COLOR, TRADER_COLOR, MobCategory.MONSTER);
     public static final RegistryObject<EntityType<WoodCreature>> WOOD_CREATURE_TYPE = registerEntity(WoodCreature::new, "wood_creature", "Wood Creature", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
     public static final RegistryObject<EntityType<TreeGolem>> TREE_GOLEM_TYPE = registerEntity(TreeGolem::new, "tree_golem", "Tree Golem", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
     public static final RegistryObject<EntityType<LeafBlower>> LEAF_BLOWER_TYPE = registerEntity(LeafBlower::new, "leaf_blower", "Leaf Blower", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
-    public static final RegistryObject<EntityType<Overseer>> OVERSEER_TYPE = registerEntity(Overseer::new, "overseer", "Overseer", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
-    public static final RegistryObject<EntityType<OverseerElder>> OVERSEER_ELDER_TYPE = registerEntity(OverseerElder::new, "overseer_elder", "Overseer Elder", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
-    public static final RegistryObject<EntityType<SurfaceSeer>> SURFACE_SEER_TYPE = registerEntity(SurfaceSeer::new, "surface_seer", "Surface Seer", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
-    public static final RegistryObject<EntityType<NatureMage>> NATURE_MAGE_TYPE = registerEntity(NatureMage::new, "nature_mage", "Nature Mage", 0.75F, 1.8F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
-    public static final RegistryObject<EntityType<OvergrownMerchant>> OVERGROWN_MERCHANT_TYPE = registerEntity(OvergrownMerchant::new, "overgrown_merchant", "Overgrown Merchant", 0.75F, 1.8F, CORBA_COLOR, TRADER_COLOR, MobCategory.MONSTER);
-    public static final RegistryObject<EntityType<Hooded>> HOODED_TYPE = registerEntity(Hooded::new, "hooded", "The Hooded", 0.75F, 1.8F, CORBA_COLOR, TRADER_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<Overseer>> OVERSEER_TYPE = registerEntity(Overseer::new, "overseer", "Overseer", 1F, 1.25F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<OverseerElder>> OVERSEER_ELDER_TYPE = registerEntity(OverseerElder::new, "overseer_elder", "Overseer Elder", 2F, 4F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<SurfaceSeer>> SURFACE_SEER_TYPE = registerEntity(SurfaceSeer::new, "surface_seer", "Surface Seer", 1F, 1.5F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<NatureMage>> NATURE_MAGE_TYPE = registerEntity(NatureMage::new, "nature_mage", "Nature Mage", 0.75F, 2F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<OvergrownMerchant>> OVERGROWN_MERCHANT_TYPE = registerEntity(OvergrownMerchant::new, "overgrown_merchant", "Overgrown Merchant", 0.75F, 2F, CORBA_COLOR, TRADER_COLOR, MobCategory.MONSTER);
+    public static final RegistryObject<EntityType<Hooded>> HOODED_TYPE = registerEntity(Hooded::new, "hooded", "The Hooded", 0.75F, 2F, CORBA_COLOR, TRADER_COLOR, MobCategory.MONSTER);
 
     //TERRANIAN MOBS
+    public static final RegistryObject<EntityType<AranaKing>> ARANA_KING_TYPE = registerEntity(AranaKing::new, "arana_king", "Arana King", 1F, 1.25F, TERRANIA_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Purplian>> PURPLIAN_TYPE = registerEntity(Purplian::new, "purplian", "Purplian", 0.8F, 1.75F, TERRANIA_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Terragrow>> TERRAGROW_TYPE = registerEntity(Terragrow::new, "terragrow", "Terragrow", 0.9F, 1.1F, TERRANIA_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Terrascatterer>> TERRASCATTERER_TYPE = registerEntity(Terrascatterer::new, "terrascatterer", "Terrascatterer", 0.9F, 1.5F, TERRANIA_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Terrashroom>> TERRASHROOM_TYPE = registerEntity(Terrashroom::new, "terrashroom", "terrashroom", 1F, 2F, TERRANIA_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Terraslug>> TERRASLUG_TYPE = registerEntity(Terraslug::new, "terraslug", "Terraslug", 0.5F, 0.5F, TERRANIA_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<Flungas>> FLUNGAS_TYPE = registerEntity(Flungas::new, "flungas", "Flungas", 0.75F, 0.4F, TERRANIA_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<TerranianEnchanter>> TERRANIAN_ENCHANTER_TYPE = registerEntity(TerranianEnchanter::new, "terranian_enchanter", "Terranian Enchanter", 1.25F, 3.5F, TERRANIA_COLOR, TRADER_COLOR);
+    public static final RegistryObject<EntityType<TerranianTrader>> TERRANIAN_TRADER_TYPE = registerEntity(TerranianTrader::new, "terranian_trader", "Terranian Trader", 1.25F, 3.5F, TERRANIA_COLOR, TRADER_COLOR);
 
     //CLOUDIA MOBS
-    public static final RegistryObject<EntityType<CloudGhost>> CLOUD_GHOST_TYPE = registerEntity(CloudGhost::new, "cloud_ghost", "Cloud Ghost", 0.75F, 1.8F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final RegistryObject<EntityType<SkyEel>> SKY_EEL_TYPE = registerEntity(SkyEel::new, "sky_eel", "Sky Eel", 0.75F, 1.8F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final RegistryObject<EntityType<StarlightBlacksmith>> STARLIGHT_BLACKSMITH_TYPE = registerEntity(StarlightBlacksmith::new, "starlight_blacksmith", "Starlight Blacksmith", 0.75F, 1.8F, TRADER_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final RegistryObject<EntityType<StarlightVillager>> STARLIGHT_VILLAGER_TYPE = registerEntity(StarlightVillager::new, "starlight_villager", "Starlight Villager", 0.75F, 1.8F, TRADER_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final RegistryObject<EntityType<StarlightGolem>> STARLIGHT_GOLEM_TYPE = registerEntity(StarlightGolem::new, "starlight_golem", "Starlight Golem", 0.75F, 1.8F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final RegistryObject<EntityType<StarlightTransporter>> STARLIGHT_TRANSPORTER_TYPE = registerEntity(StarlightTransporter::new, "starlight_transporter", "Starlight Transporter", 0.75F, 1.8F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final RegistryObject<EntityType<StarlightWalker>> STARLIGHT_WALKER_TYPE = registerEntity(StarlightWalker::new, "starlight_walker", "Starlight Walker", 0.75F, 1.8F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final RegistryObject<EntityType<AeroLotus>> AERO_LOTUS_TYPE = registerEntity(AeroLotus::new, "aero_lotus", "Aero Lotus", 0.75F, 1.8F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<CloudGhost>> CLOUD_GHOST_TYPE = registerEntity(CloudGhost::new, "cloud_ghost", "Cloud Ghost", 0.75F, 1.9F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<SkyEel>> SKY_EEL_TYPE = registerEntity(SkyEel::new, "sky_eel", "Sky Eel", 1F, 1.8F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<StarlightBlacksmith>> STARLIGHT_BLACKSMITH_TYPE = registerEntity(StarlightBlacksmith::new, "starlight_blacksmith", "Starlight Blacksmith", 1.5F, 2.2F, TRADER_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<StarlightVillager>> STARLIGHT_VILLAGER_TYPE = registerEntity(StarlightVillager::new, "starlight_villager", "Starlight Villager", 1.5F, 2.2F, TRADER_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<StarlightGolem>> STARLIGHT_GOLEM_TYPE = registerEntity(StarlightGolem::new, "starlight_golem", "Starlight Golem", 1.5F, 3F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<StarlightTransporter>> STARLIGHT_TRANSPORTER_TYPE = registerEntity(StarlightTransporter::new, "starlight_transporter", "Starlight Transporter", 0.75F, 1.75F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<StarlightWalker>> STARLIGHT_WALKER_TYPE = registerEntity(StarlightWalker::new, "starlight_walker", "Starlight Walker", 0.75F, 1F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final RegistryObject<EntityType<AeroLotus>> AERO_LOTUS_TYPE = registerEntity(AeroLotus::new, "aero_lotus", "Aero Lotus", 1F, 0.25F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
 
     //SENTERIAN MOBS
-    public static final RegistryObject<EntityType<SentryLord>> SENTRY_LORD_TYPE = registerEntity(SentryLord::new, "sentry_lord", "Sentry Lord", 0.5F, 0.75F, SENTERIAN_COLOR, HOSTILE_COLOR);
-    public static final RegistryObject<EntityType<SentryStalker>> SENTRY_STALKER_TYPE = registerEntity(SentryStalker::new, "sentry_stalker", "Sentry Stalker", 0.5F, 0.75F, SENTERIAN_COLOR, HOSTILE_COLOR);
-    public static final RegistryObject<EntityType<SentryWalker>> SENTRY_WALKER_TYPE = registerEntity(SentryWalker::new, "sentry_walker", "Sentry Walker", 0.5F, 0.75F, SENTERIAN_COLOR, HOSTILE_COLOR);
-    public static final RegistryObject<EntityType<MiniSentryLord>> MINI_SENTRY_LORD_TYPE = registerEntity(MiniSentryLord::new, "mini_sentry_lord", "Mini Sentry Lord", 0.5F, 0.75F, SENTERIAN_COLOR, HOSTILE_COLOR);
-    public static final RegistryObject<EntityType<MiniSentryStalker>> MINI_SENTRY_STALKER_TYPE = registerEntity(MiniSentryStalker::new, "mini_sentry_stalker", "Mini Sentry Stalker", 0.5F, 0.75F, SENTERIAN_COLOR, HOSTILE_COLOR);
-    public static final RegistryObject<EntityType<MiniSentryWalker>> MINI_SENTRY_WALKER_TYPE = registerEntity(MiniSentryWalker::new, "mini_sentry_walker", "Mini Sentry Walker", 0.5F, 0.75F, SENTERIAN_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<SentryLord>> SENTRY_LORD_TYPE = registerEntity(SentryLord::new, "sentry_lord", "Sentry Lord", 1F, 2.9F, SENTERIAN_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<SentryStalker>> SENTRY_STALKER_TYPE = registerEntity(SentryStalker::new, "sentry_stalker", "Sentry Stalker", 1F, 3.9F, SENTERIAN_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<SentryWalker>> SENTRY_WALKER_TYPE = registerEntity(SentryWalker::new, "sentry_walker", "Sentry Walker", 1F, 3.9F, SENTERIAN_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<MiniSentryLord>> MINI_SENTRY_LORD_TYPE = registerEntity(MiniSentryLord::new, "mini_sentry_lord", "Mini Sentry Lord", 0.8F, 2.9F, SENTERIAN_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<MiniSentryStalker>> MINI_SENTRY_STALKER_TYPE = registerEntity(MiniSentryStalker::new, "mini_sentry_stalker", "Mini Sentry Stalker", 0.8F, 3.9F, SENTERIAN_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<MiniSentryWalker>> MINI_SENTRY_WALKER_TYPE = registerEntity(MiniSentryWalker::new, "mini_sentry_walker", "Mini Sentry Walker", 0.8F, 3.9F, SENTERIAN_COLOR, HOSTILE_COLOR);
 
     private static <T extends Mob> RegistryObject<EntityType<T>> registerEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height, int backgroundColor, int highlightColor, MobCategory category) {
         RegistryObject<EntityType<T>> entity = REGISTRY.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).build(new ResourceLocation(JITL.MODID, name).toString()));
@@ -353,6 +365,16 @@ public class JEntities {
         event.put(STARLIGHT_WALKER_TYPE.get(), StarlightWalker.createAttributes());
         event.put(AERO_LOTUS_TYPE.get(), AeroLotus.createAttributes());
 
+        event.put(ARANA_KING_TYPE.get(), AranaKing.createAttributes());
+        event.put(PURPLIAN_TYPE.get(), Purplian.createAttributes());
+        event.put(TERRAGROW_TYPE.get(), Terragrow.createAttributes());
+        event.put(TERRASCATTERER_TYPE.get(), Terrascatterer.createAttributes());
+        event.put(TERRASHROOM_TYPE.get(), Terrashroom.createAttributes());
+        event.put(TERRASLUG_TYPE.get(), Terraslug.createAttributes());
+        event.put(FLUNGAS_TYPE.get(), Flungas.createAttributes());
+        event.put(TERRANIAN_ENCHANTER_TYPE.get(), TerranianEnchanter.createAttributes());
+        event.put(TERRANIAN_TRADER_TYPE.get(), TerranianTrader.createAttributes());
+
         event.put(SENTRY_STALKER_TYPE.get(), SentryStalker.createAttributes());
         event.put(SENTRY_LORD_TYPE.get(), SentryLord.createAttributes());
         event.put(SENTRY_WALKER_TYPE.get(), SentryWalker.createAttributes());
@@ -459,6 +481,16 @@ public class JEntities {
         setDefaultMonsterSpawn(event, TERRANIAN_PROTECTOR_TYPE);
         setDefaultMonsterSpawn(event, SENTRY_KING_TYPE);
         setDefaultSpawn(event, SKY_STALKER_TYPE);
+
+        setDefaultMonsterSpawn(event, ARANA_KING_TYPE);
+        setDefaultMonsterSpawn(event, PURPLIAN_TYPE);
+        setDefaultMonsterSpawn(event, TERRAGROW_TYPE);
+        setDefaultMonsterSpawn(event, TERRASCATTERER_TYPE);
+        setDefaultMonsterSpawn(event, TERRASHROOM_TYPE);
+        setDefaultMonsterSpawn(event, TERRASLUG_TYPE);
+        setDefaultSpawn(event, FLUNGAS_TYPE);
+        setDefaultSpawn(event, TERRANIAN_ENCHANTER_TYPE);
+        setDefaultSpawn(event, TERRANIAN_TRADER_TYPE);
 
         setDefaultMonsterSpawn(event, SENTRY_LORD_TYPE);
         setDefaultMonsterSpawn(event, SENTRY_STALKER_TYPE);

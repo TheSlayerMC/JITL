@@ -71,9 +71,9 @@ public class Smelly extends JMonsterEntity {
             BlockState state = this.level().getBlockState(new BlockPos(x, y, z));
 
             if(this.random.nextInt(5) == 0) {
-                this.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK_MARKER, state),
+                this.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, state),
                         x + ((double) this.random.nextFloat() - 0.5D) * (double)this.getBbWidth(),
-                        this.getBbHeight() + 0.1D,
+                        this.position().y + 0.1F,
                         z + ((double) this.random.nextFloat() - 0.5D) * (double)this.getBbWidth(),
                         0.0D,
                         0.0D,

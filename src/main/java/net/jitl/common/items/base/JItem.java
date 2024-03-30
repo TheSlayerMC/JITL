@@ -40,6 +40,7 @@ public class JItem extends Item {
         addItemDesc(JItems.DARK_GEM.get(), tooltip, "jitl.item.desc.dark_gem");
         addItemDesc(JItems.SENTRY_EYE.get(), tooltip, "jitl.item.desc.sentry_eye");
         addItemDesc(JItems.SENTRY_OBSERVER.get(), tooltip, "jitl.item.desc.sentry_observer");
+        addItemDesc(JItems.BILE_VIAL.get(), tooltip, "jitl.item.desc.bile");
 
         addItemDesc(JItems.ANCIENT_CHUNK.get(), tooltip, "jitl.item.desc.ancient_socket");
         addItemDesc(JItems.ANCIENT_FRAGMENT.get(), tooltip, "jitl.item.desc.ancient_socket");

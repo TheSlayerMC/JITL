@@ -195,6 +195,16 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.STARLIGHT_WALKER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("starlight_walker", JDimension.CLOUDIA)));
         EntityRenderers.register(JEntities.AERO_LOTUS_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("aero_lotus", JDimension.CLOUDIA)));
 
+        EntityRenderers.register(JEntities.ARANA_KING_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("arana_king", JDimension.TERRAINIA)));
+        EntityRenderers.register(JEntities.PURPLIAN_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("purplian", JDimension.TERRAINIA)));
+        EntityRenderers.register(JEntities.TERRAGROW_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("terragrow", JDimension.TERRAINIA)));
+        EntityRenderers.register(JEntities.TERRASCATTERER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("terrascatterer", JDimension.TERRAINIA)));
+        EntityRenderers.register(JEntities.TERRASHROOM_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("terrashroom", JDimension.TERRAINIA)));
+        EntityRenderers.register(JEntities.TERRASLUG_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("terraslug", JDimension.TERRAINIA)));
+        EntityRenderers.register(JEntities.FLUNGAS_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("flungas", JDimension.TERRAINIA), 0.5F, 2));
+        EntityRenderers.register(JEntities.TERRANIAN_ENCHANTER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("terranian_enchanter", JDimension.TERRAINIA)));
+        EntityRenderers.register(JEntities.TERRANIAN_TRADER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("terranian_trader", JDimension.TERRAINIA)));
+
         EntityRenderers.register(JEntities.SENTRY_LORD_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("sentry_lord", JDimension.SENTERIAN)));
         EntityRenderers.register(JEntities.SENTRY_STALKER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("sentry_stalker", JDimension.SENTERIAN)));
         EntityRenderers.register(JEntities.SENTRY_WALKER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("sentry_walker", JDimension.SENTERIAN)));

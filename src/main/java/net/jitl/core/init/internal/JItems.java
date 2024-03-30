@@ -189,6 +189,10 @@ public class JItems {
     public static final RegistryObject<Item> BLEEDSTONE_DUST = registerNormalItem("bleedstone_dust", "Bleedstone Dust");
     public static final RegistryObject<Item> CRYSTAL_FLAKE = registerNormalItem("crystal_flake", "Crystal Flake");
     public static final RegistryObject<Item> FREEZING_TABLET = registerNormalItem("freezing_tablet", "Freezing Tablet");
+    public static final RegistryObject<Item> SLUG_SLIME = registerNormalItem("slug_slime", "Slug Slime");
+    public static final RegistryObject<Item> LIGHT_TERRANIAN_SOIL = registerNormalItem("light_terranian_soil", "Light Terranian Soil");
+    public static final RegistryObject<Item> DARK_TERRANIAN_SOIL = registerNormalItem("dark_terranian_soil", "Dark Terranian Soil");
+    public static final RegistryObject<Item> BILE_VIAL = registerNormalItem("bile_vial", "Bile Vial");
 
     public static final RegistryObject<Item> SIZZLING_EYE = registerNormalItem("sizzling_eye", "Sizzling Eye");
     public static final RegistryObject<Item> SNAKE_SKIN = registerNormalItem("snake_skin", "Snake Skin");

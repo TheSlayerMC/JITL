@@ -1,0 +1,77 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 128,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "leg1",
+					"pivot": [-4, 9, 0],
+					"rotation": [0, -22.5, -33.3],
+					"cubes": [
+						{"origin": [-19, 8, -1], "size": [16, 2, 2], "uv": [64, 20]}
+					]
+				},
+				{
+					"name": "head",
+					"pivot": [0, 6, 1],
+					"cubes": [
+						{"origin": [-6, 4, -5], "size": [12, 6, 12], "uv": [0, 46]}
+					]
+				},
+				{
+					"name": "leg3",
+					"pivot": [4, 9, 1],
+					"rotation": [0, -22.5, 33.3],
+					"cubes": [
+						{"origin": [3, 8, 0], "size": [16, 2, 2], "uv": [64, 20]}
+					]
+				},
+				{
+					"name": "leg2",
+					"pivot": [4, 9, 0],
+					"rotation": [0, 22.5, 33.3],
+					"cubes": [
+						{"origin": [3, 8, -1], "size": [16, 2, 2], "uv": [64, 20]}
+					]
+				},
+				{
+					"name": "leg4",
+					"pivot": [-4, 9, 1],
+					"rotation": [0, 22.5, -33.3],
+					"cubes": [
+						{"origin": [-19, 8, 0], "size": [16, 2, 2], "uv": [64, 20]}
+					]
+				},
+				{
+					"name": "fungalcap",
+					"pivot": [0, 10, 1],
+					"cubes": [
+						{"origin": [-8, 10, -7], "size": [16, 4, 16], "uv": [0, 24]}
+					]
+				},
+				{
+					"name": "fungalcap2",
+					"pivot": [0, 10, 1],
+					"cubes": [
+						{"origin": [-6, 14, -5], "size": [12, 8, 12], "uv": [0, 2]}
+					]
+				},
+				{
+					"name": "fungalcap3",
+					"pivot": [0, 10, 1],
+					"cubes": [
+						{"origin": [-4, 22, -3], "size": [8, 2, 8], "uv": [64, 4]}
+					]
+				}
+			]
+		}
+	]
+}

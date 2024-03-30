@@ -1,0 +1,82 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "leg1",
+					"pivot": [4, 8, -4],
+					"cubes": [
+						{"origin": [2, 0, -6], "size": [4, 8, 4], "uv": [0, 26]}
+					]
+				},
+				{
+					"name": "leg2",
+					"pivot": [-4, 8, -4],
+					"cubes": [
+						{"origin": [-6, 0, -6], "size": [4, 8, 4], "uv": [0, 26]}
+					]
+				},
+				{
+					"name": "leg3",
+					"pivot": [-4, 8, 4],
+					"cubes": [
+						{"origin": [-6, 0, 2], "size": [4, 8, 4], "uv": [0, 26]}
+					]
+				},
+				{
+					"name": "leg4",
+					"pivot": [4, 8, 4],
+					"cubes": [
+						{"origin": [2, 0, 2], "size": [4, 8, 4], "uv": [0, 26]}
+					]
+				},
+				{
+					"name": "body",
+					"pivot": [-4, 13, -5],
+					"cubes": [
+						{"origin": [-4, 5, -5], "size": [8, 8, 10], "uv": [0, 40]}
+					]
+				},
+				{
+					"name": "neck",
+					"pivot": [-3.5, 16, -7.5],
+					"cubes": [
+						{"origin": [-3.5, 10, -7.5], "size": [7, 6, 4], "uv": [40, 40]}
+					]
+				},
+				{
+					"name": "head",
+					"pivot": [0, 12, -7],
+					"cubes": [
+						{"origin": [-3, 12, -12], "size": [6, 6, 6], "uv": [32, 0]}
+					]
+				},
+				{
+					"name": "flower1",
+					"pivot": [-2.5, 21, 3.5],
+					"rotation": [0, 50, 0],
+					"cubes": [
+						{"origin": [-2.5, 13, 3.5], "size": [8, 8, 0], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "flower2",
+					"pivot": [-2.5, 21, -2.3],
+					"rotation": [0, -50.1, 0],
+					"cubes": [
+						{"origin": [-2.5, 13, -2.3], "size": [8, 8, 0], "uv": [0, 0]}
+					]
+				}
+			]
+		}
+	]
+}
