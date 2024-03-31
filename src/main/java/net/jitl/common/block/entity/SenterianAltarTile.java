@@ -6,9 +6,11 @@ import net.jitl.common.entity.senterian.MiniSentryStalker;
 import net.jitl.common.entity.senterian.MiniSentryWalker;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JEntities;
+import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -78,11 +80,11 @@ public class SenterianAltarTile extends BlockEntity implements GeoBlockEntity {
 
         if (entity.spawnTimer == 0) {
             entity.spawnTimer = 50;
-            //world.playSound(x, y, z, JourneySounds.SENTRY_ALTAR_ACTIVATE, SoundCategory.BLOCKS, 1.0f, 1.0f, false);
+            level.playSound(null, pos, JSounds.SENTRY_ALTAR_ACTIVATE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
         }
 
         if (entity.spawnTimer == 5) {
-            //world.playSound(x, y, z, JourneySounds.SENTRY_AMBIENT_1, SoundCategory.BLOCKS, 1.0f, 1.0f, false);
+            level.playSound(null, pos, JSounds.SENTRY_ALTAR_DEACTIVATE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
         }
 
         if(entity.spawnTimer >= 0)
