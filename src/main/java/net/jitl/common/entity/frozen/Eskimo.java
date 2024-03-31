@@ -29,6 +29,8 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 public class Eskimo extends JVillagerEntity {
 
     private static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
+            new CurrencyForItemsTrade(JItems.CRYSTAL_FLAKE.get(), 16, JItems.SOULSTONE.get(), 16, JItems.FROSTBORN_SOUL.get(), 1, 12, 5),
+
             new CurrencyForItemsTrade(JItems.CRYSTAL_FLAKE.get(), 16, JItems.FROST_GEM.get(), 16, JItems.FROSTY_SWORD.get(), 1, 12, 5),
             new CurrencyForItemsTrade(JItems.CRYSTAL_FLAKE.get(), 16, JItems.FROST_GEM.get(), 16, JItems.FROSTY_BOW.get(), 1, 12, 5),
             new CurrencyForItemsTrade(JItems.CRYSTAL_FLAKE.get(), 16, JItems.FROST_GEM.get(), 10, JItems.FROSTY_PIERCER.get(), 16, 12, 5),
