@@ -1072,3 +1072,10 @@ java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent
 [31Mar2024 16:58:09.163] [main/INFO] [jitl/]: has_block.jitl.warped_quartz_slab
 [31Mar2024 16:58:09.163] [main/INFO] [jitl/]: has_block.jitl.warped_quartz_block
 [31Mar2024 16:58:09.164] [main/INFO] [jitl/]: has_block.jitl.warped_quartz_block
+[31Mar2024 16:58:09.299] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 633 ms
+[31Mar2024 16:58:09.299] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[31Mar2024 16:58:09.492] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 193 ms
+[31Mar2024 16:58:09.492] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
+[31Mar2024 16:58:09.538] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 45 ms
+[31Mar2024 16:58:09.538] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 872 ms
+[31Mar2024 16:58:09.559] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 1490, old count: 0, new count: 1491, removed stale: 0, written: 1490
