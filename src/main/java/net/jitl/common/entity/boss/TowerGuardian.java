@@ -2,6 +2,7 @@ package net.jitl.common.entity.boss;
 
 import net.jitl.client.gui.BossBarRenderer;
 import net.jitl.common.entity.base.JBossEntity;
+import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
 import net.jitl.common.entity.goal.IdleHealGoal;
 import net.jitl.core.helper.JMusic;
@@ -14,10 +15,12 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -32,6 +35,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
@@ -59,6 +63,17 @@ public class TowerGuardian extends JBossEntity {
         this.targetSelector.addGoal(1, new AttackWhenDifficultGoal(this, this));
         this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, null));
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return SoundEvents.WITHER_AMBIENT;
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(@NotNull DamageSource pDamageSource) {
+        return JSounds.ROCK.get();
     }
 
     @Override
@@ -105,9 +120,11 @@ public class TowerGuardian extends JBossEntity {
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 100)
-                .add(Attributes.FOLLOW_RANGE, 25)
-                .add(Attributes.MOVEMENT_SPEED, 0.26).build();
+                .add(Attributes.MAX_HEALTH, MobStats.TEMPLE_GUARDIAN_HEALTH)
+                .add(Attributes.ATTACK_DAMAGE, MobStats.TEMPLE_GUARDIAN_DAMAGE)
+                .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.TEMPLE_GUARDIAN_KNOCKBACK_RESISTANCE)
+                .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
+                .add(Attributes.MOVEMENT_SPEED, MobStats.TEMPLE_GUARDIAN_SPEED).build();
     }
 
     @Override

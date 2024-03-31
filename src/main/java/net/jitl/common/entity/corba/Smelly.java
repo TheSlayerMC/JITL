@@ -1,10 +1,13 @@
 package net.jitl.common.entity.corba;
 
 import net.jitl.common.entity.base.JMonsterEntity;
+import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.helper.MathHelper;
+import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -41,11 +44,28 @@ public class Smelly extends JMonsterEntity {
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
     }
 
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return JSounds.STINKY.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(@NotNull DamageSource pDamageSource) {
+        return JSounds.STINKY_HURT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return JSounds.STINKY_DEATH.get();
+    }
+
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 25)
-                .add(Attributes.FOLLOW_RANGE, 10)
-                .add(Attributes.MOVEMENT_SPEED, 0.26).build();
+                .add(Attributes.MAX_HEALTH, MobStats.SMELLY_HEALTH)
+                .add(Attributes.ATTACK_DAMAGE, MobStats.SMELLY_DAMAGE)
+                .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.STANDARD_KNOCKBACK_RESISTANCE)
+                .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
+                .add(Attributes.MOVEMENT_SPEED, MobStats.SMELLY_SPEED).build();
     }
 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.smelly.walk");

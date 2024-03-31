@@ -1,6 +1,7 @@
 package net.jitl.common.entity.nether;
 
 import net.jitl.common.entity.base.JFlyingEntity;
+import net.jitl.common.entity.base.MobStats;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -109,9 +110,10 @@ public class MiniGhast extends JFlyingEntity {
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 25)
-                .add(Attributes.FOLLOW_RANGE, 10)
-                .add(Attributes.MOVEMENT_SPEED, 0.26).build();
+                .add(Attributes.MAX_HEALTH, MobStats.MINI_GHAST_HEALTH)
+                .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.STANDARD_KNOCKBACK_RESISTANCE)
+                .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
+                .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
     }
 
     private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.mini_ghast.idle");

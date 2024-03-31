@@ -1,9 +1,13 @@
 package net.jitl.common.entity.corba;
 
 import net.jitl.common.entity.base.JMonsterEntity;
+import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JBlocks;
+import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -14,6 +18,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
@@ -27,7 +32,6 @@ public class CorbanianMollusk extends JMonsterEntity {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(0, new AnimatedAttackGoal(this, 1.0D, false));
         this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(1, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
         this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
@@ -37,9 +41,25 @@ public class CorbanianMollusk extends JMonsterEntity {
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 25)
-                .add(Attributes.FOLLOW_RANGE, 10)
-                .add(Attributes.MOVEMENT_SPEED, 0.26).build();
+                .add(Attributes.MAX_HEALTH, MobStats.CORBANIAN_MOLLUSK_HEALTH)
+                .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.STANDARD_KNOCKBACK_RESISTANCE)
+                .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
+                .add(Attributes.MOVEMENT_SPEED, MobStats.CORBANIAN_MOLLUSK_SPEED).build();
+    }
+
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return JSounds.TERRA_SLUG.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(@NotNull DamageSource pDamageSource) {
+        return JSounds.TERRA_SLUG_HURT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return JSounds.TERRA_SLUG_DEATH.get();
     }
 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.corbanian_mollusk.walking");

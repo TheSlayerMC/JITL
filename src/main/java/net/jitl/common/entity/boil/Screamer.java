@@ -1,6 +1,7 @@
 package net.jitl.common.entity.boil;
 
 import net.jitl.common.entity.base.JBlazeStyleEntity;
+import net.jitl.common.entity.base.MobStats;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -18,9 +19,11 @@ public class Screamer extends JBlazeStyleEntity {
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 40)
-                .add(Attributes.FOLLOW_RANGE, 10)
-                .add(Attributes.MOVEMENT_SPEED, 0.26).build();
+                .add(Attributes.MAX_HEALTH, MobStats.SCREAMER_HEALTH)
+                .add(Attributes.ATTACK_DAMAGE, MobStats.SCREAMER_DAMAGE)
+                .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.STANDARD_KNOCKBACK_RESISTANCE)
+                .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
+                .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
     }
 
     private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.screamer.idle");

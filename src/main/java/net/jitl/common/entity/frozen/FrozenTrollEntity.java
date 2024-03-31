@@ -3,6 +3,7 @@ package net.jitl.common.entity.frozen;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
 import net.jitl.common.entity.JEntityAction;
+import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.frozen.tasks.FrozenTrollTasks;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
@@ -81,10 +82,12 @@ public class FrozenTrollEntity extends Monster {
     }
 
     public static AttributeSupplier createAttributes() {
-        return Monster.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 20.0D)
-                .add(Attributes.ATTACK_DAMAGE, 3.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.25D).build();
+        return Monster.createMonsterAttributes()
+                .add(Attributes.MAX_HEALTH, MobStats.FROZEN_TROLL_HEALTH)
+                .add(Attributes.ATTACK_DAMAGE, MobStats.FROZEN_TROLL_DAMAGE)
+                .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.FROZEN_TROLL_KNOCKBACK_RESISTANCE)
+                .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
+                .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
     }
 
     public void addAdditionalSaveData(CompoundTag compound) {

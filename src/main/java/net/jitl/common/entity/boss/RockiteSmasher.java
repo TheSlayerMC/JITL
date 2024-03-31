@@ -2,12 +2,14 @@ package net.jitl.common.entity.boss;
 
 import net.jitl.client.gui.BossBarRenderer;
 import net.jitl.common.entity.base.JBossEntity;
+import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
 import net.jitl.common.entity.goal.IdleHealGoal;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JLootTables;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
@@ -54,6 +56,16 @@ public class RockiteSmasher extends JBossEntity {
     }
 
     @Override
+    protected SoundEvent getAmbientSound() {
+        return SoundEvents.IRON_GOLEM_HURT;
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
+        return SoundEvents.IRON_GOLEM_DAMAGE;
+    }
+
+    @Override
     public boolean hurt(@NotNull DamageSource source, float amount) {
         if(source.getEntity() instanceof Player player) {
             if(player.getMainHandItem().getItem() instanceof PickaxeItem) {
@@ -92,9 +104,11 @@ public class RockiteSmasher extends JBossEntity {
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 100)
-                .add(Attributes.FOLLOW_RANGE, 25)
-                .add(Attributes.MOVEMENT_SPEED, 0.26).build();
+                .add(Attributes.MAX_HEALTH, MobStats.ROCKITE_SMASHER_HEALTH)
+                .add(Attributes.ATTACK_DAMAGE, MobStats.ROCKITE_SMASHER_DAMAGE)
+                .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.ROCKITE_SMASHER_KNOCKBACK_RESISTANCE)
+                .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_BOSS_FOLLOW_RANGE)
+                .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
     }
 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.rockite_smasher.walk");

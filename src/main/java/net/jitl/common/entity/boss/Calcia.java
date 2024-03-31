@@ -2,10 +2,12 @@ package net.jitl.common.entity.boss;
 
 import net.jitl.client.gui.BossBarRenderer;
 import net.jitl.common.entity.base.JBossEntity;
+import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
 import net.jitl.common.entity.goal.IdleHealGoal;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JLootTables;
+import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -13,8 +15,10 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
@@ -124,9 +128,11 @@ public class Calcia extends JBossEntity {
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 400)
-                .add(Attributes.FOLLOW_RANGE, 25)
-                .add(Attributes.MOVEMENT_SPEED, 0.26).build();
+                .add(Attributes.MAX_HEALTH, MobStats.CALCIA_HEALTH)
+                .add(Attributes.ATTACK_DAMAGE, MobStats.CALCIA_DAMAGE)
+                .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.CALCIA_KNOCKBACK_RESISTANCE)
+                .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_BOSS_FOLLOW_RANGE)
+                .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
     }
 
     @Override
@@ -157,6 +163,17 @@ public class Calcia extends JBossEntity {
     @Override
     public boolean wantsToAttack(LivingEntity target, LivingEntity living) {
         return level().getDifficulty() != Difficulty.PEACEFUL;
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return JSounds.CALCIA_IDLE.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
+        return JSounds.CALCIA_HURT.get();
     }
 
     @Override

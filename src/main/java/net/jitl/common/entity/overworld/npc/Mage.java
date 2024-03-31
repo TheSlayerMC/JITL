@@ -6,16 +6,17 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.jitl.client.ChatUtils;
 import net.jitl.common.entity.base.CurrencyForItemsTrade;
 import net.jitl.common.entity.base.JVillagerEntity;
+import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
@@ -68,9 +69,11 @@ public class Mage extends JVillagerEntity {
     }
 
     public static AttributeSupplier createAttributes() {
-        return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 60.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.25D).build();
+        return Monster.createMonsterAttributes()
+                .add(Attributes.MAX_HEALTH, MobStats.NPC_HEALTH)
+                .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.STANDARD_KNOCKBACK_RESISTANCE)
+                .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
+                .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
     }
 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.mage.walk");

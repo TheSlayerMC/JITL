@@ -1,6 +1,10 @@
 package net.jitl.common.entity.overworld;
 
 import net.jitl.common.entity.base.JMonsterEntity;
+import net.jitl.common.entity.base.MobStats;
+import net.jitl.core.init.internal.JSounds;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -10,6 +14,7 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
@@ -34,9 +39,26 @@ public class JungleGolem extends JMonsterEntity {
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 30)
-                .add(Attributes.FOLLOW_RANGE, 10)
-                .add(Attributes.MOVEMENT_SPEED, 0.26).build();
+                .add(Attributes.MAX_HEALTH, MobStats.JUNGLE_GOLEM_HEALTH)
+                .add(Attributes.ATTACK_DAMAGE, MobStats.JUNGLE_GOLEM_DAMAGE)
+                .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.JUNGLE_GOLEM_KNOCKBACK_RESISTANCE)
+                .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
+                .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
+    }
+
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return JSounds.BUSH.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(@NotNull DamageSource pDamageSource) {
+        return JSounds.BUSH_HURT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return JSounds.BUSH_DEATH.get();
     }
 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.jungle_golem.walk");

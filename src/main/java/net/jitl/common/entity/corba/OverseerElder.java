@@ -1,9 +1,13 @@
 package net.jitl.common.entity.corba;
 
 import net.jitl.common.entity.base.JFlyingEntity;
+import net.jitl.common.entity.base.MobStats;
+import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
@@ -20,6 +24,7 @@ import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
@@ -39,11 +44,27 @@ public class OverseerElder extends JFlyingEntity {
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, (e) -> Math.abs(e.getY() - this.getY()) <= 4.0D));
     }
 
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return JSounds.OVERSEER.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(@NotNull DamageSource pDamageSource) {
+        return JSounds.OVERSEER_HURT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return JSounds.OVERSEER_DEATH.get();
+    }
+
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 25)
-                .add(Attributes.FOLLOW_RANGE, 10)
-                .add(Attributes.MOVEMENT_SPEED, 0.26).build();
+                .add(Attributes.MAX_HEALTH, MobStats.OVERSEER_ELDER_HEALTH)
+                .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.STANDARD_KNOCKBACK_RESISTANCE)
+                .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
+                .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
     }
 
     private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.overseer_elder.idle");

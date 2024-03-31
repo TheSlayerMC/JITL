@@ -1,6 +1,7 @@
 package net.jitl.common.entity.overworld;
 
 import net.jitl.common.entity.base.JMonsterEntity;
+import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.goal.BoomSwellGoal;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -66,9 +67,10 @@ public class BoomBoom extends JMonsterEntity implements PowerableMob {
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 25)
-                .add(Attributes.FOLLOW_RANGE, 10)
-                .add(Attributes.MOVEMENT_SPEED, 0.26).build();
+                .add(Attributes.MAX_HEALTH, MobStats.BOOM_HEALTH)
+                .add(Attributes.ATTACK_DAMAGE, MobStats.BIG_HONGO_DAMAGE)
+                .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
+                .add(Attributes.MOVEMENT_SPEED, MobStats.BOOM_MOVEMENT_SPEED).build();
     }
 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.boomboom.walk");

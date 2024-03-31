@@ -38,7 +38,7 @@ import top.theillusivec4.curios.api.SlotTypePreset;
 public class JITL {
     public static final String MODID = "jitl", PREFIX = MODID + ":";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
-    public static final boolean DEV_MODE = true;
+    public static final boolean DEV_MODE = false;
 
     public JITL() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();

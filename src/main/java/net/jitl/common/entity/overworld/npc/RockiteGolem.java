@@ -6,19 +6,20 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.jitl.client.ChatUtils;
 import net.jitl.common.entity.base.CurrencyForItemsTrade;
 import net.jitl.common.entity.base.JVillagerEntity;
+import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
@@ -46,6 +47,14 @@ public class RockiteGolem extends JVillagerEntity {
         this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
     }
 
+    public static AttributeSupplier createAttributes() {
+        return Monster.createMonsterAttributes()
+                .add(Attributes.MAX_HEALTH, MobStats.NPC_HEALTH)
+                .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.STANDARD_KNOCKBACK_RESISTANCE)
+                .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
+                .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
+    }
+
     public static boolean checkSpawn(EntityType<RockiteGolem> entity, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
         return pos.getY() < 40.0D && checkMobSpawnRules(entity, level, spawnType, pos, random);
     }
@@ -59,12 +68,6 @@ public class RockiteGolem extends JVillagerEntity {
     @Override
     protected Int2ObjectMap<VillagerTrades.ItemListing[]> getVillagerTrades() {
         return TRADES;
-    }
-
-    public static AttributeSupplier createAttributes() {
-        return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 60.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.25D).build();
     }
 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.rockite_golem.walk");

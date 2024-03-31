@@ -1,6 +1,9 @@
 package net.jitl.common.entity.overworld;
 
 import net.jitl.common.entity.base.JMonsterEntity;
+import net.jitl.common.entity.base.MobStats;
+import net.jitl.core.init.internal.JSounds;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -34,14 +37,21 @@ public class SandCrawler extends JMonsterEntity {
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 30)
-                .add(Attributes.FOLLOW_RANGE, 10)
-                .add(Attributes.MOVEMENT_SPEED, 0.26).build();
+                .add(Attributes.MAX_HEALTH, MobStats.SAND_CRAWLER_HEALTH)
+                .add(Attributes.ATTACK_DAMAGE, MobStats.SAND_CRAWLER_DAMAGE)
+                .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.STANDARD_KNOCKBACK_RESISTANCE)
+                .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
+                .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
     }
 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.sand_crawler.walk");
     private final RawAnimation ATTACK = RawAnimation.begin().thenLoop("animation.sand_crawler.attack");
     private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.sand_crawler.idle");
+
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return JSounds.SAND_CRAWLER.get();
+    }
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {

@@ -2,6 +2,7 @@ package net.jitl.common.entity.euca.npc;
 
 import net.jitl.client.ChatUtils;
 import net.jitl.common.block.entity.PedestalTile;
+import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
@@ -16,11 +17,11 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -54,13 +55,17 @@ public class RoyalKing extends PathfinderMob implements GeoEntity {
         controllers.add(new AnimationController<>(this, "controller", 5, state -> state.setAndContinue(IDLE)));
     }
 
+    public static AttributeSupplier createAttributes() {
+        return Monster.createMonsterAttributes()
+                .add(Attributes.MAX_HEALTH, MobStats.NPC_HEALTH)
+                .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.STANDARD_KNOCKBACK_RESISTANCE)
+                .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
+                .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
+    }
+
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.cache;
-    }
-
-    public static AttributeSupplier createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 100.0D).build();
     }
 
     @Override

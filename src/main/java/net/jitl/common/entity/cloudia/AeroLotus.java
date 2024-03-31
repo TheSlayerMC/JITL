@@ -2,6 +2,7 @@ package net.jitl.common.entity.cloudia;
 
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
+import net.jitl.common.entity.base.MobStats;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -31,9 +32,10 @@ public class AeroLotus extends JMonsterEntity {
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 30)
-                .add(Attributes.MOVEMENT_SPEED, 0F)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 1F).build();
+                .add(Attributes.MAX_HEALTH, MobStats.AERO_LOTUS_HEALTH)
+                .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.STANDARD_KNOCKBACK_RESISTANCE)
+                .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
+                .add(Attributes.MOVEMENT_SPEED, MobStats.AERO_LOTUS_MOVEMENT_SPEED).build();
     }
 
     @Override

@@ -292,6 +292,16 @@
       "jitl:entities/hongo_hurt"
     ]
   },
+  "entities.small_hongo": {
+    "sounds": [
+      "jitl:entities/small_hongo"
+    ]
+  },
+  "entities.small_hongo_hurt": {
+    "sounds": [
+      "jitl:entities/small_hongo_hurt"
+    ]
+  },
   "entities.hongo_death": {
     "sounds": [
       "jitl:entities/hongo_death"
@@ -302,6 +312,279 @@
       "jitl:entities/hongo_spore_release"
     ]
   },
+
+  "entities.terraslug": {
+    "sounds": [
+      "jitl:entities/terraslug"
+    ]
+  },
+  "entities.terraslug_hurt": {
+    "sounds": [
+      "jitl:entities/terraslug_hurt"
+    ]
+  },
+  "entities.terraslug_death": {
+    "sounds": [
+      "jitl:entities/terraslug_death"
+    ]
+  },
+
+  "entities.sorcerer_death": {
+    "sounds": [
+      "jitl:entities/sorcerer_death"
+    ]
+  },
+  "entities.sorcerer_hurt": {
+    "sounds": [
+      "jitl:entities/sorcerer_hurt"
+    ]
+  },
+  "entities.sorcerer": {
+    "sounds": [
+      "jitl:entities/sorcerer"
+    ]
+  },
+
+  "entities.robot": {
+    "sounds": [
+      "jitl:entities/robot"
+    ]
+  },
+  "entities.robot_hurt": {
+    "sounds": [
+      "jitl:entities/robot_hurt"
+    ]
+  },
+  "entities.robot_death": {
+    "sounds": [
+      "jitl:entities/robot_death"
+    ]
+  },
+
+  "entities.spiked_beast": {
+    "sounds": [
+      "jitl:entities/spiked_beast"
+    ]
+  },
+  "entities.spiked_beast_hurt": {
+    "sounds": [
+      "jitl:entities/spiked_beast_hurt"
+    ]
+  },
+
+  "entities.spyclops": {
+    "sounds": [
+      "jitl:entities/spyclops"
+    ]
+  },
+  "entities.spyclops_hurt": {
+    "sounds": [
+      "jitl:entities/spyclops_hurt"
+    ]
+  },
+
+  "entities.turtle": {
+    "sounds": [
+      "jitl:entities/turtle"
+    ]
+  },
+  "entities.turtle_hurt": {
+    "sounds": [
+      "jitl:entities/turtle_hurt"
+    ]
+  },
+
+  "entities.reaper": {
+    "sounds": [
+      "jitl:entities/reaper"
+    ]
+  },
+  "entities.reaper_hurt": {
+    "sounds": [
+      "jitl:entities/reaper_hurt"
+    ]
+  },
+
+
+  "entities.sand_crawler": {
+    "sounds": [
+      "jitl:entities/sand_crawler"
+    ]
+  },
+  "entities.depths_hunter": {
+    "sounds": [
+      "jitl:entities/depths_hunter"
+    ]
+  },
+  "entities.depths_hunter_hurt": {
+    "sounds": [
+      "jitl:entities/depths_hunter_hurt"
+    ]
+  },
+  "entities.okoloo_hurt": {
+    "sounds": [
+      "jitl:entities/okoloo_hurt"
+    ]
+  },
+  "entities.okoloo": {
+    "sounds": [
+      "jitl:entities/okoloo"
+    ]
+  },
+
+  "entities.calcia": {
+    "sounds": [
+      "jitl:entities/calcia"
+    ]
+  },
+  "entities.dynaster": {
+    "sounds": [
+      "jitl:entities/dynaster"
+    ]
+  },
+
+  "entities.dynaster_hurt": {
+    "sounds": [
+      "jitl:entities/dynaster_hurt"
+    ]
+  },
+
+  "entities.dynaster_death": {
+    "sounds": [
+      "jitl:entities/dynaster_death"
+    ]
+  },
+  "entities.shimmerer": {
+    "sounds": [
+      "jitl:entities/shimmerer"
+    ]
+  },
+
+  "entities.shimmerer_hurt": {
+    "sounds": [
+      "jitl:entities/shimmerer_hurt"
+    ]
+  },
+
+  "entities.shimmerer_death": {
+    "sounds": [
+      "jitl:entities/shimmerer_death"
+    ]
+  },
+  "entities.bush": {
+    "sounds": [
+      "jitl:entities/bush"
+    ]
+  },
+
+  "entities.bush_hurt": {
+    "sounds": [
+      "jitl:entities/bush_hurt"
+    ]
+  },
+  "entities.bush_death": {
+    "sounds": [
+      "jitl:entities/bush_death"
+    ]
+  },
+
+  "entities.wraith": {
+    "sounds": [
+      "jitl:entities/wraith"
+    ]
+  },
+
+  "entities.wraith_death": {
+    "sounds": [
+      "jitl:entities/wraith_death"
+    ]
+  },
+  "entities.wraith_hurt": {
+    "sounds": [
+      "jitl:entities/wraith_hurt"
+    ]
+  },
+
+  "entities.overseer": {
+    "sounds": [
+      "jitl:entities/overseer"
+    ]
+  },
+
+  "entities.overseer_hurt": {
+    "sounds": [
+      "jitl:entities/overseer_hurt"
+    ]
+  },
+  "entities.overseer_death": {
+    "sounds": [
+      "jitl:entities/overseer_death"
+    ]
+  },
+
+  "entities.stinky": {
+    "sounds": [
+      "jitl:entities/stinky"
+    ]
+  },
+
+  "entities.stinky_hurt": {
+    "sounds": [
+      "jitl:entities/stinky_hurt"
+    ]
+  },
+  "entities.stinky_death": {
+    "sounds": [
+      "jitl:entities/stinky_death"
+    ]
+  },
+
+  "entities.bird": {
+    "sounds": [
+      "jitl:entities/bird"
+    ]
+  },
+
+  "entities.bird_hurt": {
+    "sounds": [
+      "jitl:entities/bird_hurt"
+    ]
+  },
+  "entities.bird_death": {
+    "sounds": [
+      "jitl:entities/bird_death"
+    ]
+  },
+
+  "entities.rock": {
+    "sounds": [
+      "jitl:entities/rock"
+    ]
+  },
+
+  "entities.cave_mob": {
+    "sounds": [
+      "jitl:entities/cave_mob"
+    ]
+  },
+  "entities.base_mob_hurt": {
+    "sounds": [
+      "jitl:entities/base_mob_hurt"
+    ]
+  },
+
+  "entities.lavasnake_idle": {
+    "sounds": [
+      "jitl:entities/lavasnake_idle"
+    ]
+  },
+
+  "entities.lavasnake_hurt": {
+    "sounds": [
+      "jitl:entities/lavasnake_hurt"
+    ]
+  },
+
   "entities.calcia_idle": {
     "sounds": [
       "jitl:entities/calcia"
@@ -324,6 +607,12 @@
       "jitl:entities/blazier_hit_1",
       "jitl:entities/blazier_hit_2",
       "jitl:entities/blazier_hit_3"
+    ]},
+  "entities.sentry_ambient":{
+    "sounds": [
+      "jitl:entities/sentry_ambient_1",
+      "jitl:entities/sentry_ambient_2",
+      "jitl:entities/sentry_ambient_3"
     ]},
   "entities.blazier_death":{
     "sounds": [
@@ -449,6 +738,31 @@
       "jitl:misc/crystal_error"
     ]
   },
+
+  "misc.sentry_altar_activate": {
+    "sounds": [
+      "jitl:misc/sentry_altar_activate"
+    ]
+  },
+
+  "misc.sentry_altar_deactivate": {
+    "sounds": [
+      "jitl:misc/sentry_altar_deactivate"
+    ]
+  },
+
+  "misc.obelisk_idle": {
+    "sounds": [
+      "jitl:misc/obelisk_idle"
+    ]
+  },
+
+  "misc.obelisk_open": {
+    "sounds": [
+      "jitl:misc/obelisk_open"
+    ]
+  },
+
   "music.menu": {
     "replace": false,
     "sounds": [

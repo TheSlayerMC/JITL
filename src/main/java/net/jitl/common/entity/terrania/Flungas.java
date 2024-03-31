@@ -1,17 +1,20 @@
 package net.jitl.common.entity.terrania;
 
+import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -41,17 +44,27 @@ public class Flungas extends PathfinderMob implements GeoEntity {
     }
 
     @Override
+    protected SoundEvent getAmbientSound() {
+        return JSounds.TERRA_SLUG.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(@NotNull DamageSource pDamageSource) {
+        return JSounds.TERRA_SLUG_HURT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return JSounds.TERRA_SLUG_DEATH.get();
+    }
+
+    @Override
     public boolean canBeCollidedWith() {
         return false;
     }
 
     @Override
     public boolean canBeLeashed(Player player) {
-        return false;
-    }
-
-    @Override
-    public boolean isAttackable() {
         return false;
     }
 
@@ -77,7 +90,11 @@ public class Flungas extends PathfinderMob implements GeoEntity {
     }
 
     public static AttributeSupplier createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0D).add(Attributes.KNOCKBACK_RESISTANCE, 1000D).build();
+        return Monster.createMonsterAttributes()
+                .add(Attributes.MAX_HEALTH, MobStats.FLUNGUS_HEALTH)
+                .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.FLUNGUS_KNOCKBACK_RESISTANCE)
+                .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
+                .add(Attributes.MOVEMENT_SPEED, MobStats.FLUNGUS_MOVEMENT_SPEED).build();
     }
 
     @Override
