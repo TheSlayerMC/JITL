@@ -6,9 +6,11 @@ import net.jitl.common.entity.senterian.MiniSentryStalker;
 import net.jitl.common.entity.senterian.MiniSentryWalker;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JEntities;
+import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -76,31 +78,32 @@ public class SenterianAltarTile extends BlockEntity implements GeoBlockEntity {
     public static void serverTick(Level level, BlockPos pos, BlockState state, SenterianAltarTile entity) {
         boolean isFull = state.getValue(SenterianAltar.IS_ACTIVE);
 
-        if (entity.spawnTimer == 0) {
-            entity.spawnTimer = 50;
-            //level.playSound(null, pos, JSounds.SENTRY_ALTAR_ACTIVATE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-        }
+        if(isFull) {
+            if (entity.spawnTimer == 0) {
+                entity.spawnTimer = 50;
+                level.playSound(null, pos, JSounds.SENTRY_ALTAR_ACTIVATE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+            }
 
-        if (entity.spawnTimer == 5) {
-            //level.playSound(null, pos, JSounds.SENTRY_ALTAR_DEACTIVATE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-        }
+            if(entity.spawnTimer == 5) {
+                level.playSound(null, pos, JSounds.SENTRY_ALTAR_DEACTIVATE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+            }
 
-        if(entity.spawnTimer >= 0)
-            entity.spawnTimer--;
+            if (entity.spawnTimer >= 0)
+                entity.spawnTimer--;
 
-        if(entity.spawnTimer <= 0)
-            entity.spawnTimer = 0;
+            if (entity.spawnTimer <= 0)
+                entity.spawnTimer = 0;
 
-        if(isFull && entity.spawnTimer == 0) {
-            entity.spawnMob(pos, level);
-            entity.addParticles();
-            entity.spawnCount++;
-        }
+            if (entity.spawnTimer == 0) {
+                entity.spawnMob(pos, level);
+                entity.addParticles();
+                entity.spawnCount++;
+            }
 
-        if(entity.spawnCount == 5) {
-            //world.playSound(x, y, z, JourneySounds.SENTRY_ALTAR_DEACTIVATE, SoundCategory.BLOCKS, 1.0f, 1.0f, false);
-            entity.spawnCount = 0;
-            level.setBlock(pos, state.setValue(SenterianAltar.IS_ACTIVE, false), 2);
+            if (entity.spawnCount == 5) {
+                entity.spawnCount = 0;
+                level.setBlock(pos, state.setValue(SenterianAltar.IS_ACTIVE, false), 2);
+            }
         }
     }
 
