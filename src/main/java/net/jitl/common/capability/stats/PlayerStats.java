@@ -5,7 +5,7 @@ import net.jitl.core.data.JNetworkRegistry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.network.PacketDistributor;
+import net.minecraftforge.network.NetworkDirection;
 
 public class PlayerStats {
 
@@ -46,7 +46,7 @@ public class PlayerStats {
 
     public void sendPacket(Player player) {
         if(player != null && player instanceof ServerPlayer) {
-            JNetworkRegistry.INSTANCE.send(new PacketPlayerStats(this), PacketDistributor.PLAYER.with((ServerPlayer)player));
+            JNetworkRegistry.INSTANCE.sendTo(new PacketPlayerStats(this), ((ServerPlayer) player).connection.connection, NetworkDirection.PLAY_TO_CLIENT);
         }
     }
 

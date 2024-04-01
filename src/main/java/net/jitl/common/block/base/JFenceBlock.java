@@ -1,6 +1,5 @@
 package net.jitl.common.block.base;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
@@ -32,7 +31,6 @@ import java.util.Objects;
 
 public class JFenceBlock extends CrossCollisionBlock {
 
-    public static final MapCodec<JFenceBlock> CODEC = simpleCodec(JFenceBlock::new);
     private final VoxelShape[] occlusionByIndex;
 
     public JFenceBlock(BlockBehaviour.Properties p) {
@@ -49,11 +47,6 @@ public class JFenceBlock extends CrossCollisionBlock {
     @Override
     public @NotNull VoxelShape getVisualShape(BlockState pState, BlockGetter pReader, BlockPos pPos, CollisionContext pContext) {
         return this.getShape(pState, pReader, pPos, pContext);
-    }
-
-    @Override
-    protected MapCodec<? extends CrossCollisionBlock> codec() {
-        return CODEC;
     }
 
     @Override

@@ -1,6 +1,5 @@
 package net.jitl.common.block.crop.bushs;
 
-import com.mojang.serialization.MapCodec;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -28,6 +27,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -35,7 +35,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class RedcurrantBushBlock extends BushBlock implements BonemealableBlock {
 
-    public static final MapCodec<RedcurrantBushBlock> CODEC = simpleCodec(RedcurrantBushBlock::new);
 
     private static final double HURT_SPEED_THRESHOLD = 0.003F;
     public static final int MAX_AGE = 3;
@@ -49,13 +48,8 @@ public class RedcurrantBushBlock extends BushBlock implements BonemealableBlock 
     }
 
     @Override
-    public @NotNull ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
         return new ItemStack(JItems.REDCURRANT_BERRY.get());
-    }
-
-    @Override
-    protected MapCodec<? extends BushBlock> codec() {
-        return CODEC;
     }
 
     @Override
@@ -123,7 +117,7 @@ public class RedcurrantBushBlock extends BushBlock implements BonemealableBlock 
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
+    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean isC) {
         return pState.getValue(AGE) < MAX_AGE;
     }
 

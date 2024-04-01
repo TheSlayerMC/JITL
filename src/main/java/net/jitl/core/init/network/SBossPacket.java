@@ -5,9 +5,10 @@ import net.jitl.common.entity.base.JBossInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.Entity;
-import net.minecraftforge.event.network.CustomPayloadEvent;
+import net.minecraftforge.network.NetworkEvent;
 
 import java.util.UUID;
+import java.util.function.Supplier;
 
 public class SBossPacket {
 
@@ -33,7 +34,7 @@ public class SBossPacket {
         buffer.writeInt(bossNum);
     }
 
-    public void handle(CustomPayloadEvent.Context ctx) {
+    public void handle(Supplier<NetworkEvent.Context> ctx) {
             switch(this.addOrRemove) {
                 case ADD -> {
                     assert Minecraft.getInstance().level != null;
@@ -48,7 +49,7 @@ public class SBossPacket {
                 case REMOVE -> JBossInfo.map.remove(barUUID);
                 default -> throw new IllegalStateException();
             }
-        ctx.setPacketHandled(true);
+        ctx.get().setPacketHandled(true);
     }
 
     public enum Operation {

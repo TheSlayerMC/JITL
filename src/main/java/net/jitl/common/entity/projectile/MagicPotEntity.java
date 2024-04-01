@@ -43,10 +43,9 @@ public class MagicPotEntity extends AbstractArrow implements ItemSupplier {
     private int currentBounces;
     private int maxBounces;
     public int soundTickCount;
-    private static final ItemStack DEFAULT_ARROW_STACK = new ItemStack(JItems.ESSENCE_ARROW.get());
 
     public MagicPotEntity(LivingEntity shooter, Level worldIn, int maxBounces, float damage) {
-        super(JEntities.MAGIC_POT_TYPE.get(), shooter, worldIn, DEFAULT_ARROW_STACK);
+        super(JEntities.MAGIC_POT_TYPE.get(), shooter, worldIn);
         setStack(new ItemStack(JItems.MAGIC_POT_OF_DESTRUCTION.get()));
         this.setSoundEvent(JSounds.BOTTLE_PLUG.get());
         this.maxBounces = maxBounces;
@@ -54,7 +53,7 @@ public class MagicPotEntity extends AbstractArrow implements ItemSupplier {
     }
 
     public MagicPotEntity(EntityType<MagicPotEntity> eucaPiercerEntityEntityType, Level world) {
-        super(eucaPiercerEntityEntityType, world, DEFAULT_ARROW_STACK);
+        super(eucaPiercerEntityEntityType, world);
         this.setSoundEvent(JSounds.BOTTLE_PLUG.get());
     }
 

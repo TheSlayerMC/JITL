@@ -1,6 +1,5 @@
 package net.jitl.common.block.base;
 
-import com.mojang.serialization.MapCodec;
 import net.jitl.common.block.entity.JFurnaceTile;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -22,15 +21,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class JFurnaceBlock extends AbstractFurnaceBlock {
 
-    public static final MapCodec<JFurnaceBlock> CODEC = simpleCodec(JFurnaceBlock::new);
 
     public JFurnaceBlock(Properties properties) {
         super(properties);
-    }
-
-    @Override
-    protected MapCodec<? extends AbstractFurnaceBlock> codec() {
-        return CODEC;
     }
 
     @Override

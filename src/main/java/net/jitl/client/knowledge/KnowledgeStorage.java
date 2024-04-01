@@ -6,7 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.network.PacketDistributor;
+import net.minecraftforge.network.NetworkDirection;
 
 public class KnowledgeStorage {
 
@@ -109,7 +109,7 @@ public class KnowledgeStorage {
 
     public void sendPacket(EnumKnowledge k, Player player) {
         if(player != null && player instanceof ServerPlayer) {
-            JNetworkRegistry.INSTANCE.send(new PacketKnowledge(k,this), PacketDistributor.PLAYER.with(((ServerPlayer)player)));
+            JNetworkRegistry.INSTANCE.sendTo(new PacketKnowledge(k,this), ((ServerPlayer) player).connection.connection, NetworkDirection.PLAY_TO_CLIENT);
         }
     }
 

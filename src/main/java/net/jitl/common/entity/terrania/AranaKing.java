@@ -33,7 +33,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
-import org.joml.Vector3f;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
@@ -96,11 +95,6 @@ public class AranaKing extends JMonsterEntity {
                 return state.setAndContinue(IDLE);
             }
         }));
-    }
-
-    @Override
-    protected @NotNull Vector3f getPassengerAttachmentPoint(@NotNull Entity pEntity, EntityDimensions pDimensions, float pScale) {
-        return new Vector3f(0.0F, pDimensions.height * 0.85F, 0.0F);
     }
 
     @Override
@@ -187,11 +181,6 @@ public class AranaKing extends JMonsterEntity {
         }
 
         return pSpawnData;
-    }
-
-    @Override
-    protected float ridingOffset(Entity pEntity) {
-        return pEntity.getBbWidth() <= this.getBbWidth() ? -0.3125F : 0.0F;
     }
 
     static class AranaAttackGoal extends MeleeAttackGoal {

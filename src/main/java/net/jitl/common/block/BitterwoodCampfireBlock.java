@@ -14,7 +14,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CampfireCookingRecipe;
-import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.CampfireBlock;
@@ -42,9 +41,9 @@ public class BitterwoodCampfireBlock extends CampfireBlock {
         BlockEntity blockentity = pLevel.getBlockEntity(pPos);
         if(blockentity instanceof BitterwoodCampfireBlockEntity campfireblockentity) {
             ItemStack itemstack = pPlayer.getItemInHand(pHand);
-            Optional<RecipeHolder<CampfireCookingRecipe>> optional = campfireblockentity.getCookableRecipe(itemstack);
+            Optional<CampfireCookingRecipe> optional = campfireblockentity.getCookableRecipe(itemstack);
             if(optional.isPresent()) {
-                if(!pLevel.isClientSide && campfireblockentity.placeFood(pPlayer, pPlayer.getAbilities().instabuild ? itemstack.copy() : itemstack, optional.get().value().getCookingTime())) {
+                if(!pLevel.isClientSide && campfireblockentity.placeFood(pPlayer, pPlayer.getAbilities().instabuild ? itemstack.copy() : itemstack, optional.get().getCookingTime())) {
                     pPlayer.awardStat(Stats.INTERACT_WITH_CAMPFIRE);
                     return InteractionResult.SUCCESS;
                 }

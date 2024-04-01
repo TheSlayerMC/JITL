@@ -1,11 +1,12 @@
 package net.jitl.core.network;
 
-import io.netty.buffer.ByteBuf;
 import net.jitl.client.essence.ClientEssence;
 import net.jitl.common.capability.essence.PlayerEssence;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.event.network.CustomPayloadEvent;
+import net.minecraftforge.network.NetworkEvent;
+
+import java.util.function.Supplier;
 
 public class PacketEssenceBar {
 
@@ -28,16 +29,16 @@ public class PacketEssenceBar {
         return new PacketEssenceBar(buffer.readFloat(), buffer.readFloat());
     }
 
-    public void encode(ByteBuf buf) {
+    public void encode(FriendlyByteBuf buf) {
         buf.writeFloat(essence);
         buf.writeFloat(burnout);
     }
 
-    public void handle(CustomPayloadEvent.Context context) {
+    public void handle(Supplier<NetworkEvent.Context> ctx) {
         if(Minecraft.getInstance().player != null) {
             ClientEssence.setClientEssence(this.essence);
             ClientEssence.setClientBurnout(this.burnout);
-            context.setPacketHandled(true);
+            ctx.get().setPacketHandled(true);
         }
     }
 }

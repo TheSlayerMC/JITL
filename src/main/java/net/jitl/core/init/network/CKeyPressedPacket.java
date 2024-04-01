@@ -4,7 +4,9 @@ import net.jitl.common.capability.keypressed.PressedKeyCapProvider;
 import net.jitl.common.event.GearAbilityHandler;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.event.network.CustomPayloadEvent;
+import net.minecraftforge.network.NetworkEvent;
+
+import java.util.function.Supplier;
 
 public class CKeyPressedPacket {
 
@@ -26,8 +28,8 @@ public class CKeyPressedPacket {
         buffer.writeBoolean(isDown);
     }
 
-    public void handle(CustomPayloadEvent.Context context) {
-            ServerPlayer player = context.getSender();
+    public void handle(Supplier<NetworkEvent.Context> ctx) {
+            ServerPlayer player = ctx.get().getSender();
             assert player != null;
             player.getCapability(PressedKeyCapProvider.PRESSED_KEY_CAP).ifPresent(keys -> {
                 if (isAmulet) {
@@ -39,6 +41,6 @@ public class CKeyPressedPacket {
                 }
             });
             System.out.println(player.getScoreboardName() + " " + (isDown ? "pressed" : "released") + " " + (isAmulet ? "amulet" : "armor") + " ability key.");
-        context.setPacketHandled(true);
+        ctx.get().setPacketHandled(true);
     }
 }

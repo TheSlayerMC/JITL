@@ -1,6 +1,5 @@
 package net.jitl.common.block;
 
-import com.mojang.serialization.MapCodec;
 import net.jitl.common.block.entity.SummoningTableTile;
 import net.jitl.core.config.JCommonConfig;
 import net.jitl.core.init.internal.JBlockEntities;
@@ -36,7 +35,6 @@ import javax.annotation.Nullable;
 
 public class SummoningTableBlock extends BaseEntityBlock {
 
-    public static final MapCodec<SummoningTableBlock> CODEC = simpleCodec(SummoningTableBlock::new);
 
     public static final BooleanProperty IS_ACTIVE = BooleanProperty.create("is_active");
 
@@ -46,11 +44,6 @@ public class SummoningTableBlock extends BaseEntityBlock {
         super(p);
         getOrCreateStructurePattern();
         this.registerDefaultState(this.stateDefinition.any().setValue(IS_ACTIVE, Boolean.FALSE));
-    }
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        return null;
     }
 
     @Override

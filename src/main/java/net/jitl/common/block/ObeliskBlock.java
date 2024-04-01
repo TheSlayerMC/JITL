@@ -1,6 +1,5 @@
 package net.jitl.common.block;
 
-import com.mojang.serialization.MapCodec;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -21,7 +20,6 @@ import org.jetbrains.annotations.Nullable;
 
 public class ObeliskBlock extends BaseEntityBlock {
 
-    public static final MapCodec<ObeliskBlock> CODEC = simpleCodec(ObeliskBlock::new);
 
     private static final VoxelShape BASE = Block.box(0D, 0D, 0D, 16.0D, 32.0D, 16.0D);
 
@@ -51,11 +49,6 @@ public class ObeliskBlock extends BaseEntityBlock {
                 pLevel.addParticle(new BlockParticleOption(ParticleTypes.FALLING_DUST, pState), d0, d1, d2, 0.0D, 0.0D, 0.0D);
             }
         }
-    }
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        return CODEC;
     }
 
     @Override

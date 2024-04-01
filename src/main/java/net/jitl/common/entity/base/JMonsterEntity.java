@@ -110,8 +110,9 @@ public abstract class JMonsterEntity extends Monster implements GeoEntity {
         }
 
         @Override
-        protected void checkAndPerformAttack(LivingEntity enemy) {
-            if (this.canPerformAttack(enemy)) {
+        protected void checkAndPerformAttack(LivingEntity enemy, double pDistToEnemySqr) {
+            double d0 = this.getAttackReachSqr(enemy);
+            if (pDistToEnemySqr <= d0 && this.getTicksUntilNextAttack() <= 0) {
                 this.resetAttackCooldown();
                 setAttacking(true);
                 this.mob.swing(InteractionHand.MAIN_HAND);

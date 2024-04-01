@@ -2,7 +2,9 @@ package net.jitl.client.knowledge;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.event.network.CustomPayloadEvent;
+import net.minecraftforge.network.NetworkEvent;
+
+import java.util.function.Supplier;
 
 public class PacketKnowledge {
 
@@ -30,11 +32,11 @@ public class PacketKnowledge {
         buf.writeEnum(knowledge);
     }
 
-    public void handle(CustomPayloadEvent.Context ctx) {
+    public void handle(Supplier<NetworkEvent.Context> ctx) {
         if(Minecraft.getInstance().player != null) {
             ClientKnowledge.setClientKnowledgeXP(knowledge, this.knowledgeXP);
             ClientKnowledge.setClientKnowledgeLevel(knowledge, this.level);
-            ctx.setPacketHandled(true);
+            ctx.get().setPacketHandled(true);
         }
     }
 }

@@ -40,7 +40,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
     @Override
     public void render(GuiGraphics graphics, int pMouseX, int pMouseY, float pPartialTick) {
         super.render(graphics, pMouseX, pMouseY, pPartialTick);
-        this.renderBackground(graphics, pMouseX, pMouseY, pPartialTick);//Dims around the GUI for a more vanilla look
+        this.renderBackground(graphics);//Dims around the GUI for a more vanilla look
         this.updateButtonVisibility();
     }
 

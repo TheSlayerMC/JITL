@@ -6,7 +6,7 @@ import net.jitl.core.init.network.SBossPacket;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.network.PacketDistributor;
+import net.minecraftforge.network.NetworkDirection;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -16,11 +16,11 @@ public class JBossInfo {
 
     public static void addInfo(ServerPlayer player, ServerBossEvent info, IJourneyBoss boss) {
         info.addPlayer(player);
-        JNetworkRegistry.INSTANCE.send(new SBossPacket(SBossPacket.Operation.ADD, info.getId(), (LivingEntity) boss), PacketDistributor.PLAYER.with(player));
+        JNetworkRegistry.INSTANCE.sendTo(new SBossPacket(SBossPacket.Operation.ADD, info.getId(), (LivingEntity) boss), ((ServerPlayer) player).connection.connection, NetworkDirection.PLAY_TO_CLIENT);
     }
 
     public static void removeInfo(ServerPlayer player, ServerBossEvent info, IJourneyBoss boss) {
         info.removePlayer(player);
-        JNetworkRegistry.INSTANCE.send(new SBossPacket(SBossPacket.Operation.REMOVE, info.getId(), (LivingEntity) boss), PacketDistributor.PLAYER.with(player));
+        JNetworkRegistry.INSTANCE.sendTo(new SBossPacket(SBossPacket.Operation.REMOVE, info.getId(), (LivingEntity) boss), ((ServerPlayer) player).connection.connection, NetworkDirection.PLAY_TO_CLIENT);
     }
 }

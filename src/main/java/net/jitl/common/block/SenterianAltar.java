@@ -1,6 +1,5 @@
 package net.jitl.common.block;
 
-import com.mojang.serialization.MapCodec;
 import net.jitl.common.block.entity.SenterianAltarTile;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JItems;
@@ -25,7 +24,6 @@ import org.jetbrains.annotations.Nullable;
 
 public class SenterianAltar extends BaseEntityBlock {
 
-    public static final MapCodec<SenterianAltar> CODEC = simpleCodec(SenterianAltar::new);
     public static final BooleanProperty IS_ACTIVE = BooleanProperty.create("is_active");
 
     public SenterianAltar(Properties p) {
@@ -73,11 +71,6 @@ public class SenterianAltar extends BaseEntityBlock {
     @Override
     public BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state) {
         return JBlockEntities.SENTERIAN_ALTAR.get().create(pos, state);
-    }
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        return CODEC;
     }
 
     @Override

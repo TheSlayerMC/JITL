@@ -1,6 +1,5 @@
 package net.jitl.common.block;
 
-import com.mojang.serialization.MapCodec;
 import net.jitl.common.entity.boss.RockiteSmasher;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JEntities;
@@ -27,9 +26,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class RockiteBlock extends BaseEntityBlock {
-
-    public static final MapCodec<RockiteBlock> CODEC = simpleCodec(RockiteBlock::new);
-
 
     private static final VoxelShape BASE = Block.box(-16.0D, 0.0D, -16.0D, 32.0D, 40.0D, 16.0D);
 
@@ -74,11 +70,6 @@ public class RockiteBlock extends BaseEntityBlock {
             }
         }
         return false;
-    }
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        return null;
     }
 
     @Override

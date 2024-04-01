@@ -14,7 +14,6 @@ import net.minecraft.world.*;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CampfireCookingRecipe;
-import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
@@ -48,7 +47,7 @@ public class BitterwoodCampfireBlockEntity extends BlockEntity implements Cleara
             if (pBlockEntity.cookingProgress[i] >= pBlockEntity.cookingTime[i]) {
                Container container = new SimpleContainer(itemstack);
                ItemStack itemstack1 = pBlockEntity.quickCheck.getRecipeFor(container, pLevel).map((p_296955_) -> {
-                  return p_296955_.value().assemble(container, pLevel.registryAccess());
+                  return p_296955_.assemble(container, pLevel.registryAccess());
                }).orElse(itemstack);
                if (itemstack1.isItemEnabled(pLevel.enabledFeatures())) {
                   Containers.dropItemStack(pLevel, (double)pPos.getX(), (double)pPos.getY(), (double)pPos.getZ(), itemstack1);
@@ -148,7 +147,7 @@ public class BitterwoodCampfireBlockEntity extends BlockEntity implements Cleara
       return compoundtag;
    }
 
-   public Optional<RecipeHolder<CampfireCookingRecipe>> getCookableRecipe(ItemStack pStack) {
+   public Optional<CampfireCookingRecipe> getCookableRecipe(ItemStack pStack) {
       return this.items.stream().noneMatch(ItemStack::isEmpty) ? Optional.empty() : this.quickCheck.getRecipeFor(new SimpleContainer(pStack), this.level);
    }
 

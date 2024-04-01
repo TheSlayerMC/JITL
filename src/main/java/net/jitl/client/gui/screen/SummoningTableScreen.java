@@ -24,7 +24,7 @@ public class SummoningTableScreen extends AbstractContainerScreen<SummoningTable
     @Override
     public void render(@NotNull GuiGraphics matrixStack, int x, int y, float partialTicks) {
         super.render(matrixStack, x, y, partialTicks);
-        this.renderBackground(matrixStack, x, y, partialTicks);//Dims around the GUI for a more vanilla look
+        this.renderBackground(matrixStack);//Dims around the GUI for a more vanilla look
         renderTooltip(matrixStack, x, y);
     }
 

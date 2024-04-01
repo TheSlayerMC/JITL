@@ -480,7 +480,7 @@ public class JBlocks {
     public static final RegistryObject<Block> DEPTHS_DARK_SHINGLE = register("depths_dark_shingle", "Depths Dark Shingle", JBlockProperties.STONE);
     public static final RegistryObject<Block> DEPTHS_COBBLESTONE = register("depths_cobblestone", "Depths Cobblestone", JBlockProperties.STONE);
     public static final RegistryObject<Block> DEPTHS_TILE = register("depths_tile", "Depths Tile", JBlockProperties.STONE);
-    public static final RegistryObject<Block> DEPTHS_GLASS = register("depths_glass", "Depths Glass", () -> new TransparentBlock(JBlockProperties.GLASS), JBlockProperties.GLASS);
+    public static final RegistryObject<Block> DEPTHS_GLASS = register("depths_glass", "Depths Glass", () -> new GlassBlock(JBlockProperties.GLASS), JBlockProperties.GLASS);
     public static final RegistryObject<RotatedPillarBlock> DEPTHS_PILLAR = registerPillar("depths_pillar", "Depths Pillar", false, JBlockProperties.STONE);
     public static final RegistryObject<Block> DARKLY_LOCK = registerRotatableBlock("darkly_lock", "Darkly Lock", LockBlock::new, false);
     public static final RegistryObject<Block> DEPTHS_LOCK = registerRotatableBlock("depths_lock", "Depths Lock", LockBlock::new, false);
@@ -596,7 +596,7 @@ public class JBlocks {
     public static final RegistryObject<Block> SENTERIAN_CARVED_ROCK = register("senterian_carved_rock", "Senterian Carved Rock", JBlockProperties.STONE);
     public static final RegistryObject<Block> SENTERIAN_FLOOR = register("senterian_floor", "Senterian Floor", JBlockProperties.STONE);
     public static final RegistryObject<Block> SENTERIAN_ROCK = register("senterian_rock", "Senterian Rock", JBlockProperties.STONE);
-    public static final RegistryObject<Block> SENTERIAN_GLASS = register("senterian_glass", "Senterian Glass", () -> new TransparentBlock(JBlockProperties.GLASS), JBlockProperties.GLASS);
+    public static final RegistryObject<Block> SENTERIAN_GLASS = register("senterian_glass", "Senterian Glass", () -> new GlassBlock(JBlockProperties.GLASS), JBlockProperties.GLASS);
     public static final RegistryObject<Block> SENTERIAN_ALTAR = registerModeledBlock("senterian_altar", "Senterian Altar", () -> new SenterianAltar(JBlockProperties.STONE.lightLevel((l) -> 2).noOcclusion()));
 
     public static final RegistryObject<JFenceBlock> SENTERIAN_POST = registerFence("senterian_post", "Senterian Post", false, JBlockProperties.STONE);
@@ -1026,7 +1026,7 @@ public class JBlocks {
         }
         doorBlockName.add(name);
         doorLangName.add(translatedName);
-        RegistryObject<DoorBlock> block1 = BLOCKS.register(name, () -> new DoorBlock(BlockSetType.OAK, p));
+        RegistryObject<DoorBlock> block1 = BLOCKS.register(name, () -> new DoorBlock(p, BlockSetType.OAK));
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
@@ -1044,7 +1044,7 @@ public class JBlocks {
         }
         trapDoorBlockName.add(name);
         trapDoorLangName.add(translatedName);
-        RegistryObject<TrapDoorBlock> block1 = BLOCKS.register(name, () -> new TrapDoorBlock(BlockSetType.OAK, p));
+        RegistryObject<TrapDoorBlock> block1 = BLOCKS.register(name, () -> new TrapDoorBlock(p, BlockSetType.OAK));
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
@@ -1098,7 +1098,7 @@ public class JBlocks {
         }
         buttonBlockName.add(name);
         buttonLangName.add(translatedName);
-        RegistryObject<ButtonBlock> block1 = BLOCKS.register(name, () -> new ButtonBlock(BlockSetType.OAK, sensitive ? 20 : 30, p) {
+        RegistryObject<ButtonBlock> block1 = BLOCKS.register(name, () -> new ButtonBlock(p, BlockSetType.OAK, sensitive ? 20 : 30, true) {
             @Override
             protected @NotNull SoundEvent getSound(boolean pIsOn) {
                 return SoundEvents.WOODEN_BUTTON_CLICK_ON;
@@ -1121,7 +1121,7 @@ public class JBlocks {
         }
         pressurePlateBlockName.add(name);
         pressurePlateLangName.add(translatedName);
-        RegistryObject<PressurePlateBlock> block1 = BLOCKS.register(name, () -> new PressurePlateBlock(BlockSetType.OAK, p));
+        RegistryObject<PressurePlateBlock> block1 = BLOCKS.register(name, () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, p, BlockSetType.OAK));
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
@@ -1139,7 +1139,7 @@ public class JBlocks {
         }
         gateBlockName.add(name);
         gateLangName.add(translatedName);
-        RegistryObject<FenceGateBlock> block1 = BLOCKS.register(name, () -> new FenceGateBlock(WoodType.OAK, p));
+        RegistryObject<FenceGateBlock> block1 = BLOCKS.register(name, () -> new FenceGateBlock(p, WoodType.OAK));
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
