@@ -33,6 +33,7 @@ public class Blizzard extends JMonsterEntity {
 
     public Blizzard(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        //setKnowledge(EnumKnowledge.OVERWORLD, 55F);
     }
 
     @Override

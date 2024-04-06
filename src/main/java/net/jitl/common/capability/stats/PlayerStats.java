@@ -30,10 +30,6 @@ public class PlayerStats {
         this.hasBlizzard = blizzard;
     }
 
-    public void removeBlizzard() {
-        this.hasBlizzard = false;
-    }
-
     public int getSentacoins(){
         return sentacoins;
     }

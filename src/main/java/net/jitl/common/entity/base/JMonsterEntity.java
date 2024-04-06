@@ -44,10 +44,9 @@ public abstract class JMonsterEntity extends Monster implements GeoEntity {
         return this.cache;
     }
 
-    public JMonsterEntity setKnowledge(EnumKnowledge knowledge, float amount) {
+    public void setKnowledge(EnumKnowledge knowledge, float amount) {
         this.knowledge = knowledge;
         this.knowledgeAmount = amount;
-        return this;
     }
 
     @Override
@@ -55,7 +54,7 @@ public abstract class JMonsterEntity extends Monster implements GeoEntity {
         super.die(cause);
         if(cause.getEntity() instanceof Player player && knowledge != null) {
             player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(knowledge -> {
-                knowledge.addXP(this.knowledge, this.knowledgeAmount, player, false);
+                knowledge.addXP(this.knowledge, this.knowledgeAmount, player);
             });
         }
     }
