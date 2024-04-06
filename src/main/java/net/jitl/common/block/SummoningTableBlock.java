@@ -8,6 +8,7 @@ import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
@@ -39,6 +40,7 @@ public class SummoningTableBlock extends BaseEntityBlock {
     public static final MapCodec<SummoningTableBlock> CODEC = simpleCodec(SummoningTableBlock::new);
 
     public static final BooleanProperty IS_ACTIVE = BooleanProperty.create("is_active");
+    public static final BooleanProperty SUMMON = BooleanProperty.create("summon");
 
     public static BlockPattern STRUCTURE_PATTERN;
 
@@ -46,6 +48,7 @@ public class SummoningTableBlock extends BaseEntityBlock {
         super(p);
         getOrCreateStructurePattern();
         this.registerDefaultState(this.stateDefinition.any().setValue(IS_ACTIVE, Boolean.FALSE));
+        this.registerDefaultState(this.stateDefinition.any().setValue(SUMMON, Boolean.FALSE));
     }
 
     @Override
@@ -55,12 +58,13 @@ public class SummoningTableBlock extends BaseEntityBlock {
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(IS_ACTIVE, Boolean.FALSE);
+        return this.defaultBlockState().setValue(IS_ACTIVE, Boolean.FALSE).setValue(SUMMON, Boolean.FALSE);
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(IS_ACTIVE);
+        builder.add(SUMMON);
     }
 
     @Nullable
@@ -92,21 +96,32 @@ public class SummoningTableBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
+    public void animateTick(BlockState pState, Level pLevel, BlockPos pos, RandomSource pRandom) {
         for(int i = 0; i < 10; i++) {
             if (pRandom.nextInt(5) == 0) {
-                double d0 = (double) pPos.getX() + pRandom.nextFloat();
-                double d1 = (double) pPos.getY() + 1.0D;
-                double d2 = (double) pPos.getZ() + pRandom.nextFloat();
-                if(isUsable(pLevel, pPos)) {
+                double d0 = (double) pos.getX() + pRandom.nextFloat();
+                double d1 = (double) pos.getY() + 1.0D;
+                double d2 = (double) pos.getZ() + pRandom.nextFloat();
+                if(isUsable(pLevel, pos)) {
                     pLevel.addParticle(ParticleTypes.ENCHANT, d0, d1, d2, 0.0D, 0.0D, 0.0D);
                     if (pState.getValue(IS_ACTIVE)) {
                         pLevel.addParticle(ParticleTypes.ENCHANT, d0, d1 + 0.2D, d2, 0.0D, 0.0D, 0.0D);
                         pLevel.addParticle(ParticleTypes.CRIT, d0, d1 + 0.2D, d2, 0.0D, 0.0D, 0.0D);
                     }
+                    if(getIsSummoning(pState)) {
+                        pLevel.addParticle(ParticleTypes.CLOUD,
+                                pos.getX() - Mth.nextDouble(pRandom, -0.45D, 0.75D),
+                                pos.getY() + Mth.nextDouble(pRandom, 0.5D, 2.0D),
+                                pos.getZ() - Mth.nextDouble(pRandom, -0.45D, 0.75D),
+                                pRandom.nextGaussian() * 0.05D, 0.15D, pRandom.nextGaussian() * 0.05D);
+                    }
                 }
             }
         }
+    }
+
+    public boolean getIsSummoning(BlockState state) {
+        return state.getValue(SUMMON);
     }
 
     public boolean isUsable(Level level, BlockPos pos) {

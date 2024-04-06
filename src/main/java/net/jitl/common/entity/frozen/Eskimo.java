@@ -44,10 +44,10 @@ public class Eskimo extends JVillagerEntity {
             new CurrencyForItemsTrade(JItems.CRYSTAL_FLAKE.get(), 4, JItems.FROST_GEM.get(), 16, JItems.CRYSTAL_FLAKE_LEGS.get(), 1, 12, 5),
             new CurrencyForItemsTrade(JItems.CRYSTAL_FLAKE.get(), 4, JItems.FROST_GEM.get(), 16, JItems.CRYSTAL_FLAKE_BOOTS.get(), 1, 12, 5),
 
-            new CurrencyForItemsTrade(JItems.FROST_FLAKE.get(), 15, JItems.CRYSTAL_FLAKE_HELMET.get(), 15, JItems.FROSTBITTEN_HELMET.get(), 1, 12, 5),
-            new CurrencyForItemsTrade(JItems.FROST_FLAKE.get(), 15, JItems.CRYSTAL_FLAKE_CHEST.get(), 15, JItems.FROSTBITTEN_CHEST.get(), 1, 12, 5),
-            new CurrencyForItemsTrade(JItems.FROST_FLAKE.get(), 15, JItems.CRYSTAL_FLAKE_LEGS.get(), 15, JItems.FROSTBITTEN_LEGS.get(), 1, 12, 5),
-            new CurrencyForItemsTrade(JItems.FROST_FLAKE.get(), 15, JItems.CRYSTAL_FLAKE_BOOTS.get(), 15, JItems.FROSTBITTEN_BOOTS.get(), 1, 12, 5)
+            new CurrencyForItemsTrade(JItems.FROST_FLAKE.get(), 15, JItems.CRYSTAL_FLAKE_HELMET.get(), 1, JItems.FROSTBITTEN_HELMET.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.FROST_FLAKE.get(), 15, JItems.CRYSTAL_FLAKE_CHEST.get(), 1, JItems.FROSTBITTEN_CHEST.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.FROST_FLAKE.get(), 15, JItems.CRYSTAL_FLAKE_LEGS.get(), 1, JItems.FROSTBITTEN_LEGS.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.FROST_FLAKE.get(), 15, JItems.CRYSTAL_FLAKE_BOOTS.get(), 1, JItems.FROSTBITTEN_BOOTS.get(), 1, 12, 5)
     }));
 
     public Eskimo(EntityType<? extends PathfinderMob> type, Level worldIn) {

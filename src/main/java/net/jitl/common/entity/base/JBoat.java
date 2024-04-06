@@ -156,7 +156,7 @@ public class JBoat extends Boat {
                 f += 0.2F;
             }
         }
-        return new Vector3f(0.0F, this.getVariant() == Boat.Type.BAMBOO ? pDimensions.height * 0.8888889F : pDimensions.height / 3.0F, f);
+        return new Vector3f(0.0F, pDimensions.height / 3.0F, f);
     }
 
     @Override
