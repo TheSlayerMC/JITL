@@ -18,7 +18,7 @@ public class PlayerStatsProvider implements ICapabilityProvider, INBTSerializabl
     private PlayerStats stats = null;
     private final LazyOptional<PlayerStats> optional = LazyOptional.of(this::createPlayerStats);
 
-    private @NotNull PlayerStats createPlayerStats() {
+    private PlayerStats createPlayerStats() {
         if(this.stats == null) {
             this.stats = new PlayerStats();
         }
@@ -27,6 +27,11 @@ public class PlayerStatsProvider implements ICapabilityProvider, INBTSerializabl
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+        return getCapability(cap);
+    }
+
+    @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap) {
         if(cap == PLAYER_STATS) {
             return optional.cast();
         }

@@ -1,11 +1,14 @@
 package net.jitl.client.gui;
 
 import com.mojang.blaze3d.platform.InputConstants;
+import net.jitl.client.gui.overlay.PlayerStats;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.language.I18n;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -66,7 +69,7 @@ public class KeyBindEvents {
             if (action == GLFW.GLFW_PRESS) {
                 if (key == keyStats.getKey()) {
                     assert Minecraft.getInstance().player != null;
-                   // Minecraft.getInstance().setScreen(new PlayerStats(Minecraft.getInstance().player.getInventory()));
+                    displayPlayerStats(Minecraft.getInstance().player);
 
                 } else {
                     //handleIsometricCameraKeys(key);
@@ -77,6 +80,11 @@ public class KeyBindEvents {
                 handleAbilityKeys(key, action);
             }
         }
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static void displayPlayerStats(Player player) {
+        Minecraft.getInstance().setScreen(new PlayerStats(player));
     }
 
     public static void handleAbilityKeys(InputConstants.Key input, int action) {

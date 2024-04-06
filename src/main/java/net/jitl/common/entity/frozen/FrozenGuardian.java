@@ -2,7 +2,6 @@ package net.jitl.common.entity.frozen;
 
 import net.jitl.client.ChatUtils;
 import net.jitl.client.knowledge.EnumKnowledge;
-import net.jitl.client.knowledge.PlayerKnowledgeProvider;
 import net.jitl.common.block.entity.PedestalTile;
 import net.jitl.common.capability.stats.PlayerStatsProvider;
 import net.jitl.common.entity.projectile.EssenciaBoltEntity;
@@ -233,8 +232,8 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
             player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
                 stats.setBlizzard(true);
             });
-            player.getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(knowledge -> {
-                knowledge.addXP(player, EnumKnowledge.FROZEN, 15F);
+            player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(knowledge -> {
+                knowledge.addXP(EnumKnowledge.FROZEN, 15F);
             });
         }
     }

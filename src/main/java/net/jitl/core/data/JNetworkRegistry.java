@@ -1,6 +1,5 @@
 package net.jitl.core.data;
 
-import net.jitl.client.knowledge.PacketKnowledge;
 import net.jitl.client.stats.PacketPlayerStats;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.network.CKeyPressedPacket;
@@ -36,13 +35,6 @@ public class JNetworkRegistry {
                 .decoder(SBossPacket::new)
                 .consumerNetworkThread(SBossPacket::handle)
                 .add();
-
-        INSTANCE.messageBuilder(PacketKnowledge.class, NetworkDirection.PLAY_TO_CLIENT)
-                .encoder(PacketKnowledge::encode)
-                .decoder(PacketKnowledge::new)
-                .consumerNetworkThread(PacketKnowledge::handle)
-                .add();
-
 
         INSTANCE.messageBuilder(PacketPlayerStats.class, NetworkDirection.PLAY_TO_CLIENT)
                 .encoder(PacketPlayerStats::encode)
