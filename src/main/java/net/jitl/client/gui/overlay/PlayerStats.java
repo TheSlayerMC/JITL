@@ -131,12 +131,10 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
     public void drawSprite(GuiGraphics matrixStack, int x, int y, int spriteX, int spriteY, String s) {
         int k = (width - imageWidth) / 2;
         int l = (height - imageHeight) / 2;
-//        matrixStack.pose().pushPose();
         RenderSystem.setShader(GameRenderer::getPositionTexColorNormalShader);
         RenderSystem.setShaderTexture(0, this.BACKGROUND);
 
         matrixStack.blit(BACKGROUND, k + x - 4, l + y - 4, 0, 216, 115, 40);//Draws the rectangle bg for the sprites
-        //matrixStack.pose().popPose();
 
         RenderSystem.setShader(GameRenderer::getPositionTexColorNormalShader);
         RenderSystem.setShaderTexture(0, this.KNOWLEDGE_SPRITE);
@@ -147,7 +145,6 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         if(s.contains("Sentacoins"))
             matrixStack.drawString(font, "" + ClientPlayerStats.getSentacoins(), k + x + 35, l + y + 15, ArgbColor.from(ChatFormatting.WHITE));
 
-       //matrixStack.pose().popPose();
         RenderSystem.enableDepthTest();
     }
 

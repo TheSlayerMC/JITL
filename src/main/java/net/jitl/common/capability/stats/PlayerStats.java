@@ -1,10 +1,8 @@
 package net.jitl.common.capability.stats;
 
-import net.jitl.client.gui.overlay.KnowledgeToast;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.client.stats.PacketPlayerStats;
 import net.jitl.core.data.JNetworkRegistry;
-import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -139,7 +137,7 @@ public class PlayerStats {
         return XP;
     }
 
-    public void addXP(EnumKnowledge knowledge, float amount, Player player, boolean showXPToast) {
+    public void addXP(EnumKnowledge knowledge, float amount, Player player) {
         if(getXP(knowledge) + amount >= getLevelCapacity(getLevel(knowledge))) {
             setXP(knowledge, getXP(knowledge) + amount - getLevelCapacity(getLevel(knowledge)));
             addLevel(knowledge, 1);
@@ -147,17 +145,13 @@ public class PlayerStats {
             setXP(knowledge, getXP(knowledge) + amount);
         }
         sendPacket(knowledge, player);
-
-        if(showXPToast)
-            Minecraft.getInstance().getToasts().addToast(new KnowledgeToast(knowledge, false));
     }
 
     public float getTotal(EnumKnowledge knowledge) {
         float amount = 0;
-
-        for(int i = 0; i < getLevel(knowledge); i++) {
+        for(int i = 0; i < getLevel(knowledge); i++)
             amount += getLevelCapacity(getLevel(knowledge));
-        }
+
         return amount + getXP(knowledge);
     }
 
@@ -215,10 +209,6 @@ public class PlayerStats {
 
     public float getLevelCapacity(int level) {
         return level >= 5 ? 50 : level >= 10 ? 70 : level >= 15 ? 90 : level >= 20 ? 110 : level >= 30 ? 130 : level >= 40 ? 150 : 30;
-    }
-
-    public void addXP(EnumKnowledge type, Player player, float xp) {
-        this.addXP(type, xp, player, true);
     }
 
     public void saveNBT(CompoundTag tag) {
