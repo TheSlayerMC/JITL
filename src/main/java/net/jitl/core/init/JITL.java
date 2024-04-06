@@ -3,6 +3,7 @@ package net.jitl.core.init;
 import net.jitl.client.ClientEventHandler;
 import net.jitl.client.render.ModelPropertyRegistry;
 import net.jitl.client.render.RenderEntitys;
+import net.jitl.common.world.ModEvents;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.common.world.dimension.JCarver;
 import net.jitl.common.world.gen.JFeatures;
@@ -14,6 +15,7 @@ import net.jitl.core.data.*;
 import net.jitl.core.data.block_generation.*;
 import net.jitl.core.init.internal.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -56,6 +58,9 @@ public class JITL {
         JTreeDecorators.REGISTRY.register(modEventBus);
         JSounds.REGISTRY.register(modEventBus);
         JTabs.REGISTRY.register(modEventBus);
+
+        MinecraftForge.EVENT_BUS.addGenericListener(Entity.class, ModEvents::onPlayerAttachCapabilities);
+        MinecraftForge.EVENT_BUS.addListener(ModEvents::onRegisterCapabilities);
 
         if(DEV_MODE) {
             new BlockBreakingGenerator().generate();
@@ -107,7 +112,7 @@ public class JITL {
         modEventBus.addListener(this::clientSetup);
         modEventBus.addListener(this::enqueue);
 
-        JNetworkRegistry.init();
+
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, JClientConfig.SPEC, "jitl-client.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, JCommonConfig.SPEC, "jitl-common.toml");
@@ -116,7 +121,7 @@ public class JITL {
     }
 
     private void commonInit(final FMLCommonSetupEvent event) {
-
+        JNetworkRegistry.init();
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
@@ -127,9 +132,7 @@ public class JITL {
         ClientEventHandler.regToBus(forgeEventBus);
     }
 
-    private void enqueue(InterModEnqueueEvent event) {
-
-    }
+    private void enqueue(InterModEnqueueEvent event) { }
 
     public static ResourceLocation rl(String r) {
         return new ResourceLocation(MODID, r);

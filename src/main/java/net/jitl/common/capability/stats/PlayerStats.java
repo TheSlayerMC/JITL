@@ -139,13 +139,15 @@ public class PlayerStats {
         return XP;
     }
 
-    public void addXP(EnumKnowledge knowledge, float amount, boolean showXPToast) {
+    public void addXP(EnumKnowledge knowledge, float amount, Player player, boolean showXPToast) {
         if(getXP(knowledge) + amount >= getLevelCapacity(getLevel(knowledge))) {
             setXP(knowledge, getXP(knowledge) + amount - getLevelCapacity(getLevel(knowledge)));
             addLevel(knowledge, 1);
         } else {
             setXP(knowledge, getXP(knowledge) + amount);
         }
+        sendPacket(knowledge, player);
+
         if(showXPToast)
             Minecraft.getInstance().getToasts().addToast(new KnowledgeToast(knowledge, false));
     }
@@ -215,8 +217,8 @@ public class PlayerStats {
         return level >= 5 ? 50 : level >= 10 ? 70 : level >= 15 ? 90 : level >= 20 ? 110 : level >= 30 ? 130 : level >= 40 ? 150 : 30;
     }
 
-    public void addXP(EnumKnowledge type, float xp) {
-        this.addXP(type, xp, true);
+    public void addXP(EnumKnowledge type, Player player, float xp) {
+        this.addXP(type, xp, player, true);
     }
 
     public void saveNBT(CompoundTag tag) {

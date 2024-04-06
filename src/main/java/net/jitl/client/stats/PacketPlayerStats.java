@@ -2,7 +2,6 @@ package net.jitl.client.stats;
 
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.capability.stats.PlayerStats;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.event.network.CustomPayloadEvent;
 
@@ -45,13 +44,14 @@ public class PacketPlayerStats {
     }
 
     public void handle(CustomPayloadEvent.Context ctx) {
-        if(Minecraft.getInstance().player != null) {
+        ctx.enqueueWork(() -> {
+
             ClientPlayerStats.setHasBlizzard(this.hasBlizzard);
             ClientPlayerStats.setSentacoins(this.sentacoins);
 
             ClientPlayerStats.setClientKnowledgeLevel(knowledge, this.level);
             ClientPlayerStats.setClientKnowledgeXP(knowledge, this.knowledgeXP);
-            ctx.setPacketHandled(true);
-        }
+        });
+        ctx.setPacketHandled(true);
     }
 }
