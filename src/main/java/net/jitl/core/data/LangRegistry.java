@@ -95,6 +95,9 @@ public class LangRegistry {
         writeToFile("\"jitl.stats\" : \"Player Stats\",");
         writeToFile("\"jitl.king.hero\" : \"Good Luck... Hero\",");
 
+        writeToFile("\"curios.identifier.heart_container\" : \"Heart\",");
+        writeToFile("\"curios.identifier.catalyst\" : \"Catalyst\",");
+
         writeToFile("\"jitl.trader.boil_trader1\" : \"Boil Trader: It's not often that newcomers arrive here. Can you stand the heat?\",");
         writeToFile("\"jitl.trader.boil_trader2\" : \"Boil Trader: I'm an unusual collector, but I have the best deals of any realm!\",");
         writeToFile("\"jitl.trader.boil_trader3\" : \"Boil Trader: I can see that you're having a tough time getting around. An armor upgrade, perhaps?\",");

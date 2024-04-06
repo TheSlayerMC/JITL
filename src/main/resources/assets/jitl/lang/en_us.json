@@ -15,6 +15,8 @@
 "death.attack.redcurrant" : "%1$s was poked to death by a Redcurrant bush",
 "jitl.stats" : "Player Stats",
 "jitl.king.hero" : "Good Luck... Hero",
+"curios.identifier.heart_container" : "Heart",
+"curios.identifier.catalyst" : "Catalyst",
 "jitl.trader.boil_trader1" : "Boil Trader: It's not often that newcomers arrive here. Can you stand the heat?",
 "jitl.trader.boil_trader2" : "Boil Trader: I'm an unusual collector, but I have the best deals of any realm!",
 "jitl.trader.boil_trader3" : "Boil Trader: I can see that you're having a tough time getting around. An armor upgrade, perhaps?",
