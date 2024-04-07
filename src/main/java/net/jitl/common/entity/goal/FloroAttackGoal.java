@@ -1,5 +1,6 @@
-package net.jitl.common.entity.overworld;
+package net.jitl.common.entity.goal;
 
+import net.jitl.common.entity.overworld.Floro;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;

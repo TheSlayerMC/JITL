@@ -1,7 +1,9 @@
 package net.jitl.common.entity.overworld;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
+import net.jitl.common.entity.goal.FloroAttackGoal;
 import net.jitl.common.entity.projectile.FloroMudEntity;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.nbt.CompoundTag;
@@ -43,6 +45,7 @@ public class Floro extends JMonsterEntity implements RangedAttackMob {
 
     public Floro(EntityType<? extends Monster> type, Level world) {
         super(type, world);
+        setKnowledge(EnumKnowledge.OVERWORLD, 5F);
     }
 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.floro.walk");

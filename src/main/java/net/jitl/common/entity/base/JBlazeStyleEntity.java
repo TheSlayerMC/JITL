@@ -18,6 +18,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.EnumSet;
 
@@ -72,13 +73,13 @@ public abstract class JBlazeStyleEntity extends JMonsterEntity {
         }
 
         if (this.level().isClientSide) {
-            if (this.random.nextInt(24) == 0 && !this.isSilent()) {
-                this.level().playLocalSound(this.getX() + 0.5D, this.getY() + 0.5D, this.getZ() + 0.5D, SoundEvents.BLAZE_BURN, this.getSoundSource(), 1.0F + this.random.nextFloat(), this.random.nextFloat() * 0.7F + 0.3F, false);
-            }
             if(canSpawnSmoke) {
-                for (int i = 0; i < 1; i++) {
+                if(this.random.nextInt(24) == 0 && !this.isSilent())
+                    this.level().playLocalSound(this.getX() + 0.5D, this.getY() + 0.5D, this.getZ() + 0.5D, SoundEvents.BLAZE_BURN, this.getSoundSource(), 1.0F + this.random.nextFloat(), this.random.nextFloat() * 0.7F + 0.3F, false);
+
+                for(int i = 0; i < 1; i++)
                     this.level().addParticle(ParticleTypes.LARGE_SMOKE, this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
-                }
+
             }
         }
 
@@ -96,7 +97,7 @@ public abstract class JBlazeStyleEntity extends JMonsterEntity {
     }
 
     @Override
-    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
+    protected SoundEvent getHurtSound(@NotNull DamageSource pDamageSource) {
         return SoundEvents.BLAZE_HURT;
     }
 
@@ -106,7 +107,7 @@ public abstract class JBlazeStyleEntity extends JMonsterEntity {
     }
 
     @Override
-    public boolean causeFallDamage(float pFallDistance, float pMultiplier, DamageSource pSource) {
+    public boolean causeFallDamage(float pFallDistance, float pMultiplier, @NotNull DamageSource pSource) {
         return false;
     }
 

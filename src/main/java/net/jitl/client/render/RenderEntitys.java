@@ -105,9 +105,11 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.STONEWALKER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("stonewalker", JDimension.OVERWORLD), 0.5F));
         EntityRenderers.register(JEntities.CAVELING_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("caveling", JDimension.OVERWORLD), 0.5F));
         EntityRenderers.register(JEntities.CAVURN_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("cavurn", JDimension.OVERWORLD), 0.5F));
+        EntityRenderers.register(JEntities.NEUTRAL_SENTRY_STALKER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("neutral_sentry_stalker", JDimension.OVERWORLD), 0.25F, 0.7F));
 
         EntityRenderers.register(JEntities.TOWER_GUARDIAN_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("tower_guardian", JDimension.BOSS), 1F, 1.15F));
         EntityRenderers.register(JEntities.ROCKITE_SMASHER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("rockite_smasher", JDimension.BOSS), 1F, 2F));
+        EntityRenderers.register(JEntities.FROST_GOLEM_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("frost_golem", JDimension.BOSS), 1F, 2F));
         EntityRenderers.register(JEntities.OKOLOO_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("okoloo", JDimension.BOSS), 0.8F, 1.5F));
         EntityRenderers.register(JEntities.BLAZIER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("blazier", JDimension.BOSS), 0.6F, 2.5F));
         EntityRenderers.register(JEntities.CALCIA_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("calcia", JDimension.BOSS), 0.6F, 1.2F));

@@ -1,5 +1,6 @@
 package net.jitl.common.entity.overworld;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JSounds;
@@ -27,6 +28,7 @@ public class Stonewalker extends JMonsterEntity {
 
     public Stonewalker(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.OVERWORLD, 5F);
     }
 
     @Override
@@ -42,6 +44,7 @@ public class Stonewalker extends JMonsterEntity {
     }
 
     public static boolean checkSpawn(EntityType<Stonewalker> entity, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+
         return pos.getY() < 40.0D && checkMobSpawnRules(entity, level, spawnType, pos, random);
     }
 

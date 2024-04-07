@@ -39,12 +39,6 @@
         "maxCount": 1
       },
       {
-        "type": "jitl:frozen_frostbiter",
-        "weight": 5,
-        "minCount": 1,
-        "maxCount": 1
-      },
-      {
         "type": "jitl:shivering_bushwalker",
         "weight": 5,
         "minCount": 1,

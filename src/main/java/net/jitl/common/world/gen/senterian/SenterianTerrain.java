@@ -48,7 +48,6 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
                 new Room(manager, "senterian/room/maze_1"),
                 new Room(manager, "senterian/hallways/cross_1"),
                 new Room(manager, "senterian/hallways/cross_2"),
-                new Room(manager, "senterian/ends/deadend_1"),
                 new Room(manager, "senterian/hallways/hallway_straight"),
                 new Room(manager, "senterian/hallways/corner_1"),
         };

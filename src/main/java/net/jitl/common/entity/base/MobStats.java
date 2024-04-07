@@ -255,6 +255,10 @@ public class MobStats {
     public static final double ROCKITE_SMASHER_DAMAGE = 10;
     public static final double ROCKITE_SMASHER_KNOCKBACK_RESISTANCE = 3;
 
+    public static final double FROST_GOLEM_HEALTH = 350;
+    public static final double FROST_GOLEM_DAMAGE = 10;
+    public static final double FROST_GOLEM_KNOCKBACK_RESISTANCE = 3;
+
     public static final double STONEWALKER_HEALTH = 30;
     public static final double STONEWALKER_DAMAGE = 3;
 

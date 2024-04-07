@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:spike_dungeon",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 684154678426,
+
+    "spacing": 20,
+
+    "separation": 6,
+
+    "type": "minecraft:random_spread"
+  }
+}

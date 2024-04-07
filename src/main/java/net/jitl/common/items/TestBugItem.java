@@ -1,6 +1,7 @@
 package net.jitl.common.items;
 
 import net.jitl.client.gui.overlay.PlayerStats;
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.capability.essence.PlayerEssenceProvider;
 import net.jitl.common.capability.stats.PlayerStatsProvider;
 import net.jitl.common.items.base.JItem;
@@ -30,8 +31,7 @@ public class TestBugItem extends JItem implements IEssenceItem {
 
             });
             player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
-                //stats.setBlizzard(!stats.hasBlizzard());
-                stats.addSentacoins(10);
+                stats.setLevel(EnumKnowledge.OVERWORLD, 100);
             });
         } else {
             displayPlayerStats(player);

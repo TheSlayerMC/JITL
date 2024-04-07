@@ -104,6 +104,8 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.PURPLE_GEM_BLOCK);
         this.dropSelf(JBlocks.GREEN_GEM_BLOCK);
         this.dropSelf(JBlocks.BLUE_GEM_BLOCK);
+        this.dropSelf(JBlocks.ICE_STONE);
+        this.add(JBlocks.FROSTBITER_SPAWNER, noDrop());
 
         this.add(JBlocks.WARPED_QUARTZ_ORE, (block) -> createRandomAmount(block, JItems.WARPED_QUARTZ.get(), 1, 3));
         this.dropSelf(JBlocks.WARPED_QUARTZ_BLOCK);

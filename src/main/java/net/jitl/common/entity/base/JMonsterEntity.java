@@ -52,7 +52,7 @@ public abstract class JMonsterEntity extends Monster implements GeoEntity {
     @Override
     public void die(@NotNull DamageSource cause) {
         super.die(cause);
-        if(cause.getEntity() instanceof Player player && knowledge != null) {
+        if(cause.getEntity() instanceof Player player && this.knowledge != null) {
             player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(knowledge -> {
                 knowledge.addXP(this.knowledge, this.knowledgeAmount, player);
             });

@@ -25,6 +25,7 @@ import net.jitl.common.entity.misc.Sentacoin;
 import net.jitl.common.entity.nether.*;
 import net.jitl.common.entity.overworld.*;
 import net.jitl.common.entity.overworld.npc.Mage;
+import net.jitl.common.entity.overworld.npc.OverworldSentryStalker;
 import net.jitl.common.entity.overworld.npc.RockiteGolem;
 import net.jitl.common.entity.projectile.*;
 import net.jitl.common.entity.senterian.*;
@@ -101,10 +102,10 @@ public class JEntities {
     public static final RegistryObject<EntityType<Calcia>> CALCIA_TYPE = registerEntity(Calcia::new, "calcia", "Calcia", 1.2F, 2.8F, NETHER_COLOR, BOSS_COLOR);
     public static final RegistryObject<EntityType<SoulWatcher>> SOUL_WATCHER_TYPE = registerEntity(SoulWatcher::new, "soul_watcher", "Soul Watcher", 1.5F, 1F, NETHER_COLOR, BOSS_COLOR);
     public static final RegistryObject<EntityType<WitheringBeast>> WITHERING_BEAST_TYPE = registerEntity(WitheringBeast::new, "withering_beast", "Withering Beast", 1.2F, 3F, NETHER_COLOR, BOSS_COLOR);
+    public static final RegistryObject<EntityType<FrostGolem>> FROST_GOLEM_TYPE = registerEntity(FrostGolem::new, "frost_golem", "Frost Golem", 2F, 3.25F, FROZEN_COLOR, BOSS_COLOR);
     public static final RegistryObject<EntityType<Eudor>> EUDOR_TYPE = registerEntity(Eudor::new, "eudor", "Eudor", 1.6F, 3.5F, EUCA_COLOR, BOSS_COLOR);
     public static final RegistryObject<EntityType<Corallator>> CORALLATOR_TYPE = registerEntity(Corallator::new, "corallator", "Corallator", 1.2F, 1.8F, EUCA_COLOR, BOSS_COLOR);
     public static final RegistryObject<EntityType<ThunderBird>> THUNDER_BIRD_TYPE = registerEntity(ThunderBird::new, "thunder_bird", "Thunder Bird", 0.9F, 1.3F, DEPTHS_COLOR, BOSS_COLOR);
-
     public static final RegistryObject<EntityType<Scale>> SCALE_TYPE = registerEntity(Scale::new, "scale", "Scale", 1.5F, 1F, DEPTHS_COLOR, BOSS_COLOR);
     public static final RegistryObject<EntityType<Logger>> LOGGER_TYPE = registerEntity(Logger::new, "logger", "Logger", 1.2F, 1.8F, CORBA_COLOR, BOSS_COLOR);
     public static final RegistryObject<EntityType<SentryKing>> SENTRY_KING_TYPE = registerEntity(SentryKing::new, "sentry_king", "Sentry King", 2F, 4F, CORBA_COLOR, BOSS_COLOR);
@@ -129,6 +130,7 @@ public class JEntities {
     public static final RegistryObject<EntityType<Caveling>> CAVELING_TYPE = registerEntity(Caveling::new, "caveling", "Caveling", 1F, 1.1F, OVERWORLD_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<Cavurn>> CAVURN_TYPE = registerEntity(Cavurn::new, "cavurn", "Cavurn", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
     public static final RegistryObject<EntityType<Stonewalker>> STONEWALKER_TYPE = registerEntity(Stonewalker::new, "stonewalker", "Stonewalker", 1F, 1.2F, OVERWORLD_COLOR, HOSTILE_COLOR);
+    public static final RegistryObject<EntityType<OverworldSentryStalker>> NEUTRAL_SENTRY_STALKER_TYPE = registerEntity(OverworldSentryStalker::new, "neutral_sentry_stalker", "Neutral Sentry Stalker", 1F, 2.75F, OVERWORLD_COLOR, NEUTRAL_COLOR);
 
     //NETHER MOBS
     public static final RegistryObject<EntityType<Witherspine>> WITHERSPINE_TYPE = registerEntity(Witherspine::new, "witherspine", "Witherspine", 1F, 3.75F, NETHER_COLOR, HOSTILE_COLOR);
@@ -272,6 +274,7 @@ public class JEntities {
         event.put(JUNGLE_GOLEM_TYPE.get(), JungleGolem.createAttributes());
         event.put(SAND_CRAWLER_TYPE.get(), SandCrawler.createAttributes());
         event.put(ROCKITE_GOLEM_TYPE.get(), RockiteGolem.createAttributes());
+        event.put(FROST_GOLEM_TYPE.get(), FrostGolem.createAttributes());
         event.put(CAVURN_TYPE.get(), Cavurn.createAttributes());
         event.put(CAVELING_TYPE.get(), Caveling.createAttributes());
         event.put(STONEWALKER_TYPE.get(), Stonewalker.createAttributes());
@@ -381,6 +384,7 @@ public class JEntities {
         event.put(MINI_SENTRY_STALKER_TYPE.get(), MiniSentryStalker.createAttributes());
         event.put(MINI_SENTRY_LORD_TYPE.get(), MiniSentryLord.createAttributes());
         event.put(MINI_SENTRY_WALKER_TYPE.get(), MiniSentryWalker.createAttributes());
+        event.put(NEUTRAL_SENTRY_STALKER_TYPE.get(), OverworldSentryStalker.createAttributes());
     }
 
     @SubscribeEvent
@@ -411,6 +415,7 @@ public class JEntities {
         setDefaultMonsterSpawn(event, JUNGLE_GOLEM_TYPE);
         setDefaultMonsterSpawn(event, SAND_CRAWLER_TYPE);
         setDefaultSpawn(event, JUNGLE_TURTLE_TYPE);
+        setDefaultSpawn(event, NEUTRAL_SENTRY_STALKER_TYPE);
 
         setDefaultMonsterSpawn(event, WITHERSPINE_TYPE);
         setDefaultMonsterSpawn(event, HELL_TURTLE_TYPE);
@@ -481,6 +486,7 @@ public class JEntities {
         setDefaultMonsterSpawn(event, TERRANIAN_PROTECTOR_TYPE);
         setDefaultMonsterSpawn(event, SENTRY_KING_TYPE);
         setDefaultSpawn(event, SKY_STALKER_TYPE);
+        setDefaultSpawn(event, FROST_GOLEM_TYPE);
 
         setDefaultMonsterSpawn(event, ARANA_KING_TYPE);
         setDefaultMonsterSpawn(event, PURPLIAN_TYPE);
