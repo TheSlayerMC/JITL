@@ -60,7 +60,7 @@ public class JEntityLootTables extends EntityLootSubProvider {
 
         this.add(JEntities.TOWER_GUARDIAN_TYPE.get(), empty());
         this.add(JEntities.ROCKITE_SMASHER_TYPE.get(), empty());
-
+        this.add(JEntities.FROST_GOLEM_TYPE.get(), empty());
         this.add(JEntities.CRYPIAN_TYPE.get(), empty());
         this.add(JEntities.ALLOY_MENDER_TYPE.get(), empty());
         this.add(JEntities.ROYAL_KING_TYPE.get(), empty());
@@ -288,7 +288,7 @@ public class JEntityLootTables extends EntityLootSubProvider {
                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
 
         this.add(JEntities.FROZEN_FROSTBITER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                .add(LootItem.lootTableItem(JItems.CRYSTAL_FLAKE.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                .add(LootItem.lootTableItem(JItems.FROST_FLAKE.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))));
 
         this.add(JEntities.PERMAFRAUST_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
@@ -465,6 +465,7 @@ public class JEntityLootTables extends EntityLootSubProvider {
         this.add(JEntities.MINI_SENTRY_LORD_TYPE.get(), empty());
         this.add(JEntities.MINI_SENTRY_STALKER_TYPE.get(), empty());
         this.add(JEntities.MINI_SENTRY_WALKER_TYPE.get(), empty());
+        this.add(JEntities.NEUTRAL_SENTRY_STALKER_TYPE.get(), empty());
     }
 
     private LootTable.Builder empty() {

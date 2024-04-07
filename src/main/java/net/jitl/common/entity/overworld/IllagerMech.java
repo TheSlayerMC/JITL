@@ -1,5 +1,6 @@
 package net.jitl.common.entity.overworld;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -18,6 +19,8 @@ public class IllagerMech extends JMonsterEntity {
 
     public IllagerMech(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.OVERWORLD, 5F);
+
     }
 
     @Override

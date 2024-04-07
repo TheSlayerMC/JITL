@@ -17,8 +17,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 public class KnifeEntity extends AbstractKnifeEntity implements ItemSupplier {
@@ -40,7 +38,6 @@ public class KnifeEntity extends AbstractKnifeEntity implements ItemSupplier {
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public void onClientTick() {
         super.onClientTick();
         if(isFireKnife(getStack().getItem())) {

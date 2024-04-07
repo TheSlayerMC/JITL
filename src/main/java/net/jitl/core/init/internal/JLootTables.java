@@ -7,6 +7,7 @@ public class JLootTables {
 
     public static ResourceLocation TOWER_GUARDIAN_CRYSTAL = addBossCrystalLootTable("temple_guardian");
     public static ResourceLocation ROCKITE_SMASHER_CRYSTAL = addBossCrystalLootTable("rockite_smasher");
+    public static ResourceLocation FROST_GOLEM_CRYSTAL = addBossCrystalLootTable("frost_golem");
     public static ResourceLocation OKOLOO_CRYSTAL = addBossCrystalLootTable("okoloo");
     public static ResourceLocation BLAZIER_CRYSTAL = addBossCrystalLootTable("blazier");
     public static ResourceLocation CALCIA_CRYSTAL = addBossCrystalLootTable("calcia");

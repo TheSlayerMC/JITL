@@ -14,8 +14,6 @@ import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 public class ConjuringProjectileEntity extends ThrowableProjectile {
@@ -30,7 +28,6 @@ public class ConjuringProjectileEntity extends ThrowableProjectile {
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public void handleEntityEvent(byte pId) {
         if (pId == 3) {
             for(int i = 0; i < 8; ++i) {

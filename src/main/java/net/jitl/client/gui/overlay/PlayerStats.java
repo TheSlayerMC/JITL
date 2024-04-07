@@ -1,22 +1,19 @@
 package net.jitl.client.gui.overlay;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.jitl.client.knowledge.ClientKnowledge;
 import net.jitl.client.knowledge.EnumKnowledge;
-import net.jitl.client.knowledge.PlayerKnowledgeProvider;
 import net.jitl.client.stats.ClientPlayerStats;
+import net.jitl.common.capability.stats.PlayerStatsProvider;
 import net.jitl.core.helper.internal.ArgbColor;
 import net.jitl.core.helper.internal.EmptyContainer;
 import net.jitl.core.init.JITL;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.PageButton;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -30,17 +27,18 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
     private final ResourceLocation KNOWLEDGE_SPRITE = JITL.rl("textures/gui/knowledge/knowledge_sprites.png");
     private final ResourceLocation BACKGROUND = JITL.rl("textures/gui/stats.png");
     public int pageNumber = 0;
+    public Player player;
 
-    public PlayerStats(Inventory playerInventory) {
-        super(new EmptyContainer(), playerInventory, Component.translatable("jitl.stats"));
+    public PlayerStats(Player player) {
+        super(new EmptyContainer(), player.getInventory(), Component.translatable("jitl.stats"));
         this.imageWidth = 242;
         this.imageHeight = 197;
+        this.player = player;
     }
 
     @Override
     public void render(GuiGraphics graphics, int pMouseX, int pMouseY, float pPartialTick) {
         super.render(graphics, pMouseX, pMouseY, pPartialTick);
-        this.renderBackground(graphics);//Dims around the GUI for a more vanilla look
         this.updateButtonVisibility();
     }
 
@@ -132,12 +130,10 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
     public void drawSprite(GuiGraphics matrixStack, int x, int y, int spriteX, int spriteY, String s) {
         int k = (width - imageWidth) / 2;
         int l = (height - imageHeight) / 2;
-        matrixStack.pose().pushPose();
         RenderSystem.setShader(GameRenderer::getPositionTexColorNormalShader);
         RenderSystem.setShaderTexture(0, this.BACKGROUND);
 
         matrixStack.blit(BACKGROUND, k + x - 4, l + y - 4, 0, 216, 115, 40);//Draws the rectangle bg for the sprites
-        matrixStack.pose().popPose();
 
         RenderSystem.setShader(GameRenderer::getPositionTexColorNormalShader);
         RenderSystem.setShaderTexture(0, this.KNOWLEDGE_SPRITE);
@@ -148,7 +144,6 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         if(s.contains("Sentacoins"))
             matrixStack.drawString(font, "" + ClientPlayerStats.getSentacoins(), k + x + 35, l + y + 15, ArgbColor.from(ChatFormatting.WHITE));
 
-        matrixStack.pose().popPose();
         RenderSystem.enableDepthTest();
     }
 
@@ -159,11 +154,10 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         int l = (height - imageHeight) / 2;
         RenderSystem.setShader(GameRenderer::getPositionTexColorNormalShader);
         RenderSystem.setShaderTexture(0, this.KNOWLEDGE_SPRITE);
-        Player player = Minecraft.getInstance().player;
         if(player != null) {
-            player.getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(knowledge -> {
+            player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(knowledge -> {
                 boolean completed = knowledge.isCompleted(type);
-                float percents = ClientKnowledge.getClientKnowledgeXP(type) / knowledge.getLevelCapacity(knowledge.getLevel(type));
+                float percents = knowledge.getXP(type) / knowledge.getLevelCapacity(knowledge.getLevel(type));
                 int width = (int) (percents * progressBarSize);
 
                 int progressBarX = k + x + 35, progressBarY = l + y + 19;
@@ -176,7 +170,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
 
                 int lvX = progressBarX + 29, lvY = progressBarY - 1;
 
-                int getLevelCount = ClientKnowledge.getClientKnowledgeLevel(type);
+                int getLevelCount = knowledge.getLevel(type);
                 String level = "" + getLevelCount;
 
                 matrixStack.drawString(font, "" + (getLevelCount), lvX - this.font.width(level) / 2 + 4, lvY, ArgbColor.from(ChatFormatting.WHITE), true);

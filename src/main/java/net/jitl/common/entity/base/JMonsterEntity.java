@@ -1,7 +1,7 @@
 package net.jitl.common.entity.base;
 
 import net.jitl.client.knowledge.EnumKnowledge;
-import net.jitl.client.knowledge.PlayerKnowledgeProvider;
+import net.jitl.common.capability.stats.PlayerStatsProvider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -44,18 +44,17 @@ public abstract class JMonsterEntity extends Monster implements GeoEntity {
         return this.cache;
     }
 
-    public JMonsterEntity setKnowledge(EnumKnowledge knowledge, float amount) {
+    public void setKnowledge(EnumKnowledge knowledge, float amount) {
         this.knowledge = knowledge;
         this.knowledgeAmount = amount;
-        return this;
     }
 
     @Override
     public void die(@NotNull DamageSource cause) {
         super.die(cause);
-        if(cause.getEntity() instanceof Player player && knowledge != null) {
-            player.getCapability(PlayerKnowledgeProvider.PLAYER_KNOWLEDGE).ifPresent(knowledge -> {
-                knowledge.addXP(this.knowledge, player, this.knowledgeAmount, false);
+        if(cause.getEntity() instanceof Player player && this.knowledge != null) {
+            player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(knowledge -> {
+                knowledge.addXP(this.knowledge, this.knowledgeAmount, player);
             });
         }
     }

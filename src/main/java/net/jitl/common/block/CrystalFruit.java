@@ -11,8 +11,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class CrystalFruit extends Block {
 
@@ -21,7 +19,6 @@ public class CrystalFruit extends Block {
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState state, Level worldIn, BlockPos pos, RandomSource rand) {
         if (rand.nextInt(2) == 0) {
             double d0 = (double) pos.getX() + rand.nextDouble();

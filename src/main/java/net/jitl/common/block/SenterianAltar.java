@@ -4,6 +4,9 @@ import net.jitl.common.block.entity.SenterianAltarTile;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -25,26 +28,41 @@ import org.jetbrains.annotations.Nullable;
 public class SenterianAltar extends BaseEntityBlock {
 
     public static final BooleanProperty IS_ACTIVE = BooleanProperty.create("is_active");
+    public static final BooleanProperty IS_SPAWNING = BooleanProperty.create("is_spawning");
 
     public SenterianAltar(Properties p) {
         super(p);
         this.registerDefaultState(this.stateDefinition.any().setValue(IS_ACTIVE, Boolean.FALSE));
+        this.registerDefaultState(this.stateDefinition.any().setValue(IS_SPAWNING, Boolean.FALSE));
     }
 
     @Override
     public BlockState getStateForPlacement(@NotNull BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(IS_ACTIVE, Boolean.FALSE);
+        return this.defaultBlockState().setValue(IS_ACTIVE, Boolean.FALSE).setValue(IS_SPAWNING, Boolean.FALSE);
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(IS_ACTIVE);
+        builder.add(IS_SPAWNING);
     }
 
     @javax.annotation.Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(@NotNull Level level, @NotNull BlockState state, @NotNull BlockEntityType<T> entity) {
         return level.isClientSide ? null : createTickerHelper(entity, JBlockEntities.SENTERIAN_ALTAR.get(), SenterianAltarTile::serverTick);
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource r) {
+        if(getIsSpawning(state)) {
+            for (int i = 0; i < 20; i++)
+                level.addParticle(ParticleTypes.CLOUD,
+                        pos.getX() + 0.5F - Mth.nextDouble(r, -0.45D, 0.75D),
+                        pos.getY() + Mth.nextDouble(r, 0.5D, 2.0D),
+                        pos.getZ() + 0.5F  - Mth.nextDouble(r, -0.45D, 0.75D),
+                        r.nextGaussian() * 0.05D, 0.15D, r.nextGaussian() * 0.05D);
+        }
     }
 
     @Override
@@ -65,6 +83,10 @@ public class SenterianAltar extends BaseEntityBlock {
 
     public boolean getIsActive(BlockState state) {
         return state.getValue(IS_ACTIVE);
+    }
+
+    public boolean getIsSpawning(BlockState state) {
+        return state.getValue(IS_SPAWNING);
     }
 
     @Nullable

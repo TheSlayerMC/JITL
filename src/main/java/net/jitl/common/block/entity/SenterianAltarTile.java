@@ -8,17 +8,13 @@ import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -77,9 +73,10 @@ public class SenterianAltarTile extends BlockEntity implements GeoBlockEntity {
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, SenterianAltarTile entity) {
         boolean isFull = state.getValue(SenterianAltar.IS_ACTIVE);
+        boolean isSpawning = state.getValue(SenterianAltar.IS_SPAWNING);
 
         if(isFull) {
-            if (entity.spawnTimer == 0) {
+            if(entity.spawnTimer == 0) {
                 entity.spawnTimer = 50;
                 level.playSound(null, pos, JSounds.SENTRY_ALTAR_ACTIVATE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
             }
@@ -88,21 +85,21 @@ public class SenterianAltarTile extends BlockEntity implements GeoBlockEntity {
                 level.playSound(null, pos, JSounds.SENTRY_ALTAR_DEACTIVATE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
             }
 
-            if (entity.spawnTimer >= 0)
+            if(entity.spawnTimer >= 0)
                 entity.spawnTimer--;
 
-            if (entity.spawnTimer <= 0)
+            if(entity.spawnTimer <= 0)
                 entity.spawnTimer = 0;
 
-            if (entity.spawnTimer == 0) {
+            if(entity.spawnTimer == 0) {
                 entity.spawnMob(pos, level);
-                entity.addParticles();
+                level.setBlock(pos, state.setValue(SenterianAltar.IS_SPAWNING, true), 2);
                 entity.spawnCount++;
             }
 
             if (entity.spawnCount == 5) {
                 entity.spawnCount = 0;
-                level.setBlock(pos, state.setValue(SenterianAltar.IS_ACTIVE, false), 2);
+                level.setBlock(pos, state.setValue(SenterianAltar.IS_ACTIVE, false).setValue(SenterianAltar.IS_SPAWNING, false), 2);
             }
         }
     }
@@ -121,20 +118,6 @@ public class SenterianAltarTile extends BlockEntity implements GeoBlockEntity {
         if(!level.isClientSide) {
             mob.setPos(x + 0.5F, y + 1F, z + 0.5F);
             level.addFreshEntity(mob);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public void addParticles() {
-        RandomSource r = RandomSource.create();
-        assert this.level != null;
-        if (!this.level.isClientSide) {
-            for (int i = 0; i < 20; i++)
-                this.level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE,
-                        this.getBlockPos().getX() - Mth.nextDouble(r, -0.45D, 0.75D),
-                        this.getBlockPos().getY() + Mth.nextDouble(r, 0.5D, 2.0D),
-                        this.getBlockPos().getZ() - Mth.nextDouble(r, -0.45D, 0.75D),
-                        r.nextGaussian() * 0.05D, 0.15D, r.nextGaussian() * 0.05D);
         }
     }
 }

@@ -10,8 +10,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 public class EssenciaProjectileEntity extends ThrowableProjectile {
@@ -25,7 +23,6 @@ public class EssenciaProjectileEntity extends ThrowableProjectile {
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public void handleEntityEvent(byte pId) {
         if (pId == 3) {
             for(int i = 0; i < 8; ++i) {

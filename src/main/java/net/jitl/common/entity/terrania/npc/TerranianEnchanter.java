@@ -26,7 +26,9 @@ public class TerranianEnchanter extends JVillagerEntity {
 
     private static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
             new CurrencyForItemsTrade(JItems.SLUG_SLIME.get(), 64, JItems.EARTHEN_CRYSTAL.get(), 8, JItems.TERROLICA_SWORD.get(), 1, 12, 5),
-            new CurrencyForItemsTrade(JItems.PURPLE_POWDER.get(), 16, JItems.EARTHEN_CRYSTAL.get(), 8, JItems.TERRALIGHT_BLADE.get(), 1, 12, 5)
+            new CurrencyForItemsTrade(JItems.PURPLE_POWDER.get(), 16, JItems.EARTHEN_CRYSTAL.get(), 8, JItems.TERRALIGHT_BLADE.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.PURPLE_POWDER.get(), 16, JItems.BILE_VIAL.get(), 8, JItems.ANCIENT_PIECE.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.PURPLE_POWDER.get(), 16, JItems.YELLOW_GEM.get(), 16, JItems.ANCIENT_FRAGMENT.get(), 1, 12, 5),
     }));
 
     public TerranianEnchanter(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {

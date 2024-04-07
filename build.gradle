@@ -121,6 +121,10 @@ repositories {
     }
 
     maven {
+        url = "https://maven.blamejared.com"
+    }
+
+    maven {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
@@ -155,6 +159,10 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:worldedit-225608:${buildProps["worldedit.file"]}")
 
     implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${buildProps["gekolib.version"]}")
+//
+//    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${buildProps["patchouli.version"]}:api")
+//    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${buildProps["patchouli.version"]}")
+
 }
 
 jar {

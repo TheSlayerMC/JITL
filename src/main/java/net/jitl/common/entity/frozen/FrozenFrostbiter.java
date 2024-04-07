@@ -1,37 +1,38 @@
 package net.jitl.common.entity.frozen;
 
-import net.jitl.common.entity.base.JMonsterEntity;
+import net.jitl.common.entity.base.JBlazeStyleEntity;
 import net.jitl.common.entity.base.MobStats;
-import net.minecraft.sounds.SoundEvent;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.*;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
-public class FrozenFrostbiter extends JMonsterEntity {
+public class FrozenFrostbiter extends JBlazeStyleEntity {
 
     public FrozenFrostbiter(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        canSpawnSmoke(false);
+
     }
 
     @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(0, new AnimatedAttackGoal(this, 1.0D, false));
-        this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(1, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
-        this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+    public void aiStep() {
+        if(this.level().isClientSide) {
+            if(this.random.nextInt(24) == 0 && !this.isSilent()) {
+                this.level().playLocalSound(this.getX() + 0.5D, this.getY() + 0.5D, this.getZ() + 0.5D, SoundEvents.GLASS_BREAK, this.getSoundSource(), 1.0F + this.random.nextFloat(), this.random.nextFloat() * 0.7F + 0.3F, false);
+            }
+
+            for(int i = 0; i < 1; i++) {
+                this.level().addParticle(ParticleTypes.ITEM_SNOWBALL, this.getRandomX(0.7D), this.getRandomY(), this.getRandomZ(0.7D), 0.0D, 0.0D, 0.0D);
+            }
+        }
+        super.aiStep();
     }
 
     public static AttributeSupplier createAttributes() {
@@ -41,21 +42,6 @@ public class FrozenFrostbiter extends JMonsterEntity {
                 .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.STANDARD_KNOCKBACK_RESISTANCE)
                 .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
                 .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return SoundEvents.BLAZE_AMBIENT;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
-        return SoundEvents.BLAZE_HURT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.BLAZE_DEATH;
     }
 
     private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.frozen_frostbiter.idle");

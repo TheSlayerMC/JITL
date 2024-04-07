@@ -293,6 +293,7 @@ public enum JToolTiers {
         public static final JArmorMaterial HOLLOW = new JArmorMaterial("hollow", 33, new int[] {8, 9, 10, 8}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, null);
         public static final JArmorMaterial CRYSTAL_FLAKE = new JArmorMaterial("crystal_flake", 33, new int[] {8, 9, 10, 8}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, null);
         public static final JArmorMaterial FROSTBITTEN = new JArmorMaterial("frostbitten", 33, new int[] {8, 9, 10, 8}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, null);
+        public static final JArmorMaterial HELLMETAL = new JArmorMaterial("hellmetal", 33, new int[] {8, 9, 10, 8}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, null);
 
     }
 }

@@ -42,6 +42,9 @@ public class JBlockEntities {
     public static final RegistryObject<BlockEntityType<DarkSorcererSpawnerEntity>> DARK_SORCERER_SPAWNER = REGISTRY.register("ds_spawner",
             () -> BlockEntityType.Builder.of(DarkSorcererSpawnerEntity::new, JBlocks.DARK_SORCERER_SPAWNER.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<FrostbiterSpawnerEntity>> FROSTBITER_SPAWNER = REGISTRY.register("fb_spawner",
+            () -> BlockEntityType.Builder.of(FrostbiterSpawnerEntity::new, JBlocks.FROSTBITER_SPAWNER.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<MiniGhastSpawnerEntity>> MINI_GHAST_SPAWNER = REGISTRY.register("mg_spawner",
             () -> BlockEntityType.Builder.of(MiniGhastSpawnerEntity::new, JBlocks.MINI_GHAST_SPAWNER.get()).build(null));
 

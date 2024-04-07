@@ -94,6 +94,12 @@ public class LangRegistry {
         writeToFile("\"death.attack.redcurrant\" : \"%1$s was poked to death by a Redcurrant bush\",");
         writeToFile("\"jitl.stats\" : \"Player Stats\",");
         writeToFile("\"jitl.king.hero\" : \"Good Luck... Hero\",");
+        writeToFile("\"jitl.sen.knowledge_0\" : \"Ill trade you Overworld knowledge to get in there\",");
+        writeToFile("\"jitl.sen.knowledge_1\" : \"See me when you have at least 75 Overworld Knowledge\",");
+        writeToFile("\"jitl.sen.unlocked\" : \"I locked it for a reason but goodluck...\",");
+
+        writeToFile("\"curios.identifier.heart_container\" : \"Heart\",");
+        writeToFile("\"curios.identifier.catalyst\" : \"Catalyst\",");
 
         writeToFile("\"jitl.trader.boil_trader1\" : \"Boil Trader: It's not often that newcomers arrive here. Can you stand the heat?\",");
         writeToFile("\"jitl.trader.boil_trader2\" : \"Boil Trader: I'm an unusual collector, but I have the best deals of any realm!\",");

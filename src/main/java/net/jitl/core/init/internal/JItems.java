@@ -433,6 +433,7 @@ public class JItems {
     public static final RegistryObject<Item> FROSTBITTEN_LEGS = registerNormalItem("frostbitten_leggings", "Frostbitten Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.FROSTBITTEN, ArmorItem.Type.LEGGINGS, null));
     public static final RegistryObject<Item> FROSTBITTEN_BOOTS = registerNormalItem("frostbitten_boots", "Frostbitten Boots", () -> new JArmorItem(JToolTiers.JArmorTier.FROSTBITTEN, ArmorItem.Type.BOOTS, null));
 
+    public static final RegistryObject<Item> HELLMETAL_HELMET = registerNormalItem("hellmetal_helmet", "Mask of Hellmetal", () -> new JArmorItem(JToolTiers.JArmorTier.HELLMETAL, ArmorItem.Type.HELMET, null));
 
     public static final RegistryObject<Item> STAFF_OF_CONJURING = registerToolItem("staff_of_conjuring", "Staff of Conjuring", () -> new StaffItem(1, ConjuringProjectileEntity::new));
     public static final RegistryObject<Item> STAFF_OF_ESSENCIA = registerToolItem("staff_of_essencia", "Staff of Essencia", () -> new StaffItem(4, EssenciaProjectileEntity::new));
@@ -472,6 +473,9 @@ public class JItems {
             new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
 
     public static final RegistryObject<Item> SKY_PIERCER = registerToolItem("sky_piercer", "Sky Piercer", () ->
+            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+
+    public static final RegistryObject<Item> CLOUD_PIERCER = registerToolItem("cloud_piercer", "Cloud Piercer", () ->
             new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
 
     public static final RegistryObject<Item> PIERCER = registerToolItem("piercer", "Piercer", () ->
@@ -679,7 +683,7 @@ public class JItems {
     public static final RegistryObject<Item> EUCA_RECORD_2 = registerRecord("euca_record_2", "Euca", JSounds.EUCA_DISC_2, 620);
     public static final RegistryObject<Item> EUCA_RECORD_3 = registerRecord("euca_record_3", "Euca", JSounds.EUCA_DISC_3, 3500);
     public static final RegistryObject<Item> FROZEN_RECORD_1 = registerRecord("frozen_record_1", "Frozen", JSounds.FROZEN_DISC_1, 3480);
-    public static final RegistryObject<Item> BOIL_RECORD_1 = registerRecord("boil_record_1", "Boiling Point", JSounds.BOIL_DISC_1, 3140);
+    public static final RegistryObject<Item> BOIL_RECORD_1 = registerRecord("boil_record_1", "Sizzle Record", JSounds.BOIL_DISC_1, 3140);
 
     public static RegistryObject<Item> registerNormalItem(String name, String translatedName) {
         return register(name, translatedName, () -> new JItem(new Item.Properties()), ItemType.ITEM);

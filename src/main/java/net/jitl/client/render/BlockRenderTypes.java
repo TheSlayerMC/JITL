@@ -69,6 +69,7 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.ICY_BRUSH.get());
         cutout.add(JBlocks.GOLD_BOT_SPAWNER.get());
         cutout.add(JBlocks.MINI_GHAST_SPAWNER.get());
+        cutout.add(JBlocks.FROSTBITER_SPAWNER.get());
         cutout.add(JBlocks.BITTERWOOD_CAMPFIRE.get());
         cutout.add(JBlocks.DEPTHS_LEAVES.get());
         cutout.add(JBlocks.DEPTHS_CRYSTAL.get());

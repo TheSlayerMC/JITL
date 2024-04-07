@@ -3,6 +3,7 @@ package net.jitl.core.init;
 import net.jitl.client.ClientEventHandler;
 import net.jitl.client.render.ModelPropertyRegistry;
 import net.jitl.client.render.RenderEntitys;
+import net.jitl.common.world.ModEvents;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.common.world.dimension.JCarver;
 import net.jitl.common.world.gen.JFeatures;
@@ -14,12 +15,12 @@ import net.jitl.core.data.*;
 import net.jitl.core.data.block_generation.*;
 import net.jitl.core.init.internal.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -30,9 +31,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.SlotTypeMessage;
-import top.theillusivec4.curios.api.SlotTypePreset;
 
 @Mod(JITL.MODID)
 public class JITL {
@@ -60,6 +58,9 @@ public class JITL {
         JTreeDecorators.REGISTRY.register(modEventBus);
         JSounds.REGISTRY.register(modEventBus);
         JTabs.REGISTRY.register(modEventBus);
+
+        MinecraftForge.EVENT_BUS.addGenericListener(Entity.class, ModEvents::onPlayerAttachCapabilities);
+        MinecraftForge.EVENT_BUS.addListener(ModEvents::onRegisterCapabilities);
 
         if(DEV_MODE) {
             new BlockBreakingGenerator().generate();
@@ -111,7 +112,7 @@ public class JITL {
         modEventBus.addListener(this::clientSetup);
         modEventBus.addListener(this::enqueue);
 
-        JNetworkRegistry.init();
+
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, JClientConfig.SPEC, "jitl-client.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, JCommonConfig.SPEC, "jitl-common.toml");
@@ -120,7 +121,7 @@ public class JITL {
     }
 
     private void commonInit(final FMLCommonSetupEvent event) {
-
+        JNetworkRegistry.init();
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
@@ -131,13 +132,7 @@ public class JITL {
         ClientEventHandler.regToBus(forgeEventBus);
     }
 
-    private void enqueue(InterModEnqueueEvent event) {
-        InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("heart_container").icon(rl("gui/curios/heart_container")).priority(1).size(2).build());
-        InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("catalyst").icon(rl("gui/curios/catalyst")).priority(1).size(2).build());
-        InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.RING.getMessageBuilder().size(2).build());
-        InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.NECKLACE.getMessageBuilder().build());
-        InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.HEAD.getMessageBuilder().build());
-    }
+    private void enqueue(InterModEnqueueEvent event) { }
 
     public static ResourceLocation rl(String r) {
         return new ResourceLocation(MODID, r);

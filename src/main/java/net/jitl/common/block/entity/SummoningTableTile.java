@@ -7,13 +7,10 @@ import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.MenuProvider;
@@ -26,8 +23,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -41,18 +36,18 @@ public class SummoningTableTile extends RandomizableContainerBlockEntity impleme
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, SummoningTableTile entity) {
         for(EnumSummoningRecipes summoningRecipes : EnumSummoningRecipes.values())
-            entity.checkRecipeAndSummon(entity, summoningRecipes);
+            entity.checkRecipeAndSummon(entity, summoningRecipes, state, level, pos);
 
         if(entity.startedSummon()) {
             BlockState active_state = state.setValue(SummoningTableBlock.IS_ACTIVE, Boolean.TRUE);
             level.setBlock(pos, active_state, 2);
         } else {
-            BlockState active_state = state.setValue(SummoningTableBlock.IS_ACTIVE, Boolean.FALSE);
+            BlockState active_state = state.setValue(SummoningTableBlock.IS_ACTIVE, Boolean.FALSE).setValue(SummoningTableBlock.SUMMON, Boolean.FALSE);
             level.setBlock(pos, active_state, 2);
         }
     }
 
-    public void checkRecipeAndSummon(SummoningTableTile entity, EnumSummoningRecipes recipe) {
+    public void checkRecipeAndSummon(SummoningTableTile entity, EnumSummoningRecipes recipe, BlockState state, Level level, BlockPos pos) {
         if(entity.areItemsInSlots(
                 recipe.getItem(0),
                 recipe.getItem(1),
@@ -64,6 +59,7 @@ public class SummoningTableTile extends RandomizableContainerBlockEntity impleme
                 recipe.getItem(5),
                 recipe.getItem(6))) {
             entity.summonItem(new ItemStack(recipe.getItem(7)));
+            level.setBlock(pos, state.setValue(SummoningTableBlock.SUMMON, true).setValue(SummoningTableBlock.IS_ACTIVE, false), 2);
         }
     }
 
@@ -75,27 +71,10 @@ public class SummoningTableTile extends RandomizableContainerBlockEntity impleme
         this.inventory.get(4).shrink(1);
         this.inventory.get(5).shrink(1);
         this.inventory.get(6).shrink(1);
-
         this.inventory.set(3, orb);
 
         assert this.level != null;
         this.level.playSound(null, this.getBlockPos(), JSounds.EUCA_DISC_1.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-
-        addParticles();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public void addParticles() {
-        RandomSource r = RandomSource.create();
-        assert this.level != null;
-        if (!this.level.isClientSide) {
-            for (int i = 0; i < 20; i++)
-                this.level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE,
-                        this.getBlockPos().getX() - Mth.nextDouble(r, -0.45D, 0.75D),
-                        this.getBlockPos().getY() + Mth.nextDouble(r, 0.5D, 2.0D),
-                        this.getBlockPos().getZ() - Mth.nextDouble(r, -0.45D, 0.75D),
-                        r.nextGaussian() * 0.05D, 0.15D, r.nextGaussian() * 0.05D);
-        }
     }
 
     @Override
