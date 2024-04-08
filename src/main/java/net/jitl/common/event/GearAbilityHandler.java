@@ -24,6 +24,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = JITL.MODID)
 public class GearAbilityHandler {
@@ -48,7 +49,8 @@ public class GearAbilityHandler {
                 ArrayList<ItemStack> stacks = armor.getArmor();
                 if (stacks != null) {
                     for (ItemStack stack : stacks) {
-                        ((JArmorItem) stack.getItem()).getAbility().tick(player, player.level(), stack);
+                        if(stack.getItem() instanceof JArmorItem)
+                            Objects.requireNonNull(((JArmorItem) stack.getItem()).getAbility()).tick(player, player.level(), stack);
                     }
                 }
                 FullArmorAbility fullSet = armor.getFullArmor();
