@@ -75,6 +75,8 @@ public class JRecipeRegistry extends JRecipeProvider {
         addOreDefaultItems(recipeConsumer, RecipePrefix.ORBADITE, JBlocks.ORBADITE_BLOCK.get(), JBlocks.ORBADITE_ORE.get(), null, JItems.RAW_ORBADITE.get(), JItems.ORBADITE_INGOT.get(), Items.STICK);
         addOreNoArmorItems(recipeConsumer, RecipePrefix.SOULSTONE, JBlocks.SOULSTONE_BLOCK.get(), null, null, null, JItems.SOULSTONE.get(), JItems.OBSIDIAN_STICK.get());
 
+        addShapedRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, "dsd", "iii", 'i', JBlocks.BLOOD_ROCK.get(), 'd', JItems.BLOODCRUST_INGOT.get(), 's', JItems.BLEEDSTONE.get(), JBlocks.SUMMONING_TABLE.get(), 1);
+
         add3x3Recipe(recipeConsumer, JItems.EUCA_PORTAL_GEM.get(), JBlocks.EUCA_PORTAL_FRAME.get(), 10);
         add3x3Recipe(recipeConsumer, JItems.DEPTHS_PORTAL_GEM.get(), JBlocks.DEPTHS_PORTAL_FRAME.get(), 12);
         add3x3Recipe(recipeConsumer, JItems.CORBA_PORTAL_GEM.get(), JBlocks.CORBA_PORTAL_FRAME.get(), 12);
