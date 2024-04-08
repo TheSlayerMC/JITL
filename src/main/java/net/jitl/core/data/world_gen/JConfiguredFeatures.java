@@ -84,7 +84,8 @@ public class JConfiguredFeatures {
             BLEEDSTONE = registerKey("bleedstone"),
             WARPED_QUARTZ_ORE = registerKey("warped_quartz_ore"),
             CRIMSON_QUARTZ_ORE = registerKey("crimson_quartz_ore"),
-            BLOODCRUST_ORE = registerKey("bloodcrust_ore");
+            BLOODCRUST_ORE = registerKey("bloodcrust_ore"),
+            BLOOD_ROCK = registerKey("blood_rock");
 
     //END
     public static final ResourceKey<ConfiguredFeature<?, ?>> ENDERILLIUM_ORE = registerKey("enderillium_ore");
@@ -202,6 +203,7 @@ public class JConfiguredFeatures {
         register(context, WARPED_QUARTZ_ORE, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(NETHER_ORE_REPLACEABLES, JBlocks.WARPED_QUARTZ_ORE.get().defaultBlockState()))).get(), 12));
         register(context, CRIMSON_QUARTZ_ORE, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(NETHER_ORE_REPLACEABLES, JBlocks.CRIMSON_QUARTZ_ORE.get().defaultBlockState()))).get(), 12));
         register(context, BLOODCRUST_ORE, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(NETHER_ORE_REPLACEABLES, JBlocks.BLOODCRUST_ORE.get().defaultBlockState()))).get(), 7));
+        register(context, BLOOD_ROCK, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(NETHER_ORE_REPLACEABLES, JBlocks.BLOOD_ROCK.get().defaultBlockState()))).get(), 10));
 
         //END
         register(context, ENDERILLIUM_ORE, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(END_REPLACEABLES, JBlocks.ENDERILLIUM_ORE.get().defaultBlockState()))).get(), 7));

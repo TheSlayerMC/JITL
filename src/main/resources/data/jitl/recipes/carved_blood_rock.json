@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "d": {
+      "item": "jitl:blood_bricks"
+    }
+  },
+  "pattern": [
+    "dd",
+    "dd"
+  ],
+  "result": {
+    "count": 4,
+    "item": "jitl:carved_blood_rock"
+  }
+}
