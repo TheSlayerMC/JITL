@@ -74,6 +74,12 @@ public class JRecipeRegistry extends JRecipeProvider {
         addOreNoArmorItems(recipeConsumer, RecipePrefix.SOULSTONE, JBlocks.SOULSTONE_BLOCK.get(), null, null, null, JItems.SOULSTONE.get(), JItems.OBSIDIAN_STICK.get());
 
         addShapedRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, "dsd", "iii", 'i', JBlocks.BLOOD_ROCK.get(), 'd', JItems.BLOODCRUST_INGOT.get(), 's', JItems.BLEEDSTONE.get(), JBlocks.SUMMONING_TABLE.get(), 1);
+        addShapedRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, "dd", "dd", 'd', JBlocks.BLOOD_ROCK.get(), JBlocks.BLOOD_BRICKS.get(), 4);
+        addShapedRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, "dd", "dd", 'd', JBlocks.BLOOD_BRICKS.get(), JBlocks.CARVED_BLOOD_ROCK.get(), 4);
+        addShapedRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, "ddd", "did", "ddd", 'i', Blocks.GLOWSTONE, 'd', JBlocks.BLOOD_ROCK.get(), JBlocks.BLOOD_LAMP.get(), 4);
+        addShapedRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, "ddd", "did", "ddd", 'i', JBlocks.BLOOD_ROCK.get(), 'd', JItems.BOIL_POWDER.get(), JBlocks.OBELISK.get(), 1);
+        addShapedRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, "ddd", "did", "ddd", 'd', JBlocks.BLOOD_ROCK.get(), 'i', JItems.BALMY_TEARDROP.get(), JBlocks.BLOOD_RUNE.get(), 4);
+        addShapedRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, "dd", "dd", 'd', JBlocks.CARVED_BLOOD_ROCK.get(), JBlocks.BLOOD_PILLAR.get(), 4);
 
         add3x3Recipe(recipeConsumer, JItems.EUCA_PORTAL_GEM.get(), JBlocks.EUCA_PORTAL_FRAME.get(), 10);
         add3x3Recipe(recipeConsumer, JItems.DEPTHS_PORTAL_GEM.get(), JBlocks.DEPTHS_PORTAL_FRAME.get(), 12);

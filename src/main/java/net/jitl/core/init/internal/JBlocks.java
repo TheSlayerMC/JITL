@@ -627,6 +627,7 @@ public class JBlocks {
     public static final RegistryObject<Block> BLOOD_BRICKS = register("blood_bricks", "Blood Bricks", JBlockProperties.STONE);
     public static final RegistryObject<Block> CARVED_BLOOD_ROCK = register("carved_blood_rock", "Carved Blood Rock", JBlockProperties.STONE);
     public static final RegistryObject<Block> OBELISK = register("obelisk", "Obelisk", JBlockProperties.BREAKABLE_DUNGEON_LAMP);
+    public static final RegistryObject<Block> BLOOD_LAMP = register("blood_lamp", "Blood Lamp", JBlockProperties.GLOW_BLOCK);
     public static final RegistryObject<Block> SUMMONING_TABLE = registerModeledBlock("summoning_table", "Summoning Table", () -> new SummoningTableBlock(JBlockProperties.GRINDSTONE));
 
     public static final RegistryObject<Block> OKOLOO_TROPHY = registerTrophyBlock("okoloo_trophy", "Okoloo Trophy");

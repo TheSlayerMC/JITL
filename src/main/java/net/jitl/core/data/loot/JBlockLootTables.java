@@ -500,6 +500,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.CARVED_BLOOD_ROCK);
         this.dropSelf(JBlocks.OBELISK);
         this.dropSelf(JBlocks.SUMMONING_TABLE);
+        this.dropSelf(JBlocks.BLOOD_LAMP);
 
         this.dropSelf(JBlocks.OKOLOO_TROPHY);
         this.dropSelf(JBlocks.WITHERING_BEAST_TROPHY);

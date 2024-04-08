@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "d": {
+      "item": "jitl:blood_rock"
+    },
+    "i": {
+      "item": "minecraft:glowstone"
+    }
+  },
+  "pattern": [
+    "ddd",
+    "did",
+    "ddd"
+  ],
+  "result": {
+    "count": 4,
+    "item": "jitl:blood_lamp"
+  }
+}
