@@ -60,6 +60,12 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
                 .pattern(b).unlockedBy(inputToKey(input), has(input)).save(recipeConsumer, "jitl:" + getItemFromRegistryName(input.toString()) + name);
     }
 
+    protected void addShapedRecipe(Consumer<FinishedRecipe> recipeConsumer, RecipeCategory cat, String m, String b, char s, ItemLike input, char s2, ItemLike input2, char s3, ItemLike input3, ItemLike output, int count) {
+        ShapedRecipeBuilder.shaped(cat, output, count).define(s, input).define(s2, input2).define(s3, input3)
+                .pattern(m)
+                .pattern(b).unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
+    }
+
     protected void addShapedRecipe(Consumer<FinishedRecipe> recipeConsumer, RecipeCategory cat, String t, String m, String b, char s, ItemLike input, ItemLike output, int count) {
         ShapedRecipeBuilder.shaped(cat, output, count).define(s, input)
                 .pattern(t)
