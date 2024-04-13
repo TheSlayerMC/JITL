@@ -4,7 +4,7 @@ import net.jitl.common.items.gear.IAbility;
 import net.jitl.core.init.JITL;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.neoforged.neoforge.event.entity.living.LivingHurtEvent;
 
 public class MekyumSwordAbility implements IAbility {
 

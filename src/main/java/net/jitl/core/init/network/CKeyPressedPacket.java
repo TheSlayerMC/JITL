@@ -1,44 +1,48 @@
 package net.jitl.core.init.network;
 
-import net.jitl.common.capability.keypressed.PressedKeyCapProvider;
 import net.jitl.common.event.GearAbilityHandler;
+import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.JDataAttachments;
+import net.jitl.core.network.PacketEssenceBar;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.event.network.CustomPayloadEvent;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
+import net.neoforged.neoforge.network.handling.PlayPayloadContext;
+import org.jetbrains.annotations.NotNull;
 
-public class CKeyPressedPacket {
+public record CKeyPressedPacket(boolean isAmulet, boolean isDown) implements CustomPacketPayload {
 
-    private final boolean isAmulet;
-    private final boolean isDown;
+    public static final ResourceLocation ID = JITL.rl("key_pressed");
 
-    public CKeyPressedPacket(FriendlyByteBuf buf) {
-        this.isAmulet = buf.readBoolean();
-        this.isDown = buf.readBoolean();
+    public static CKeyPressedPacket decode(FriendlyByteBuf buffer) {
+        return new CKeyPressedPacket(buffer.readBoolean(), buffer.readBoolean());
     }
 
-    public CKeyPressedPacket(boolean key, boolean isDown) {
-        isAmulet = key;
-        this.isDown = isDown;
-    }
-
-    public void encode(FriendlyByteBuf buffer) {
+    @Override
+    public void write(FriendlyByteBuf buffer) {
         buffer.writeBoolean(isAmulet);
         buffer.writeBoolean(isDown);
     }
 
-    public void handle(CustomPayloadEvent.Context context) {
-            ServerPlayer player = context.getSender();
-            assert player != null;
-            player.getCapability(PressedKeyCapProvider.PRESSED_KEY_CAP).ifPresent(keys -> {
+    public void handle(PlayPayloadContext context) {
+        context.workHandler().submitAsync(() -> {
+
+            Player player = context.player().get();
                 if (isAmulet) {
-                    keys.setAmuletPressed(isDown);
+                    player.getData(JDataAttachments.KEY_PRESSED).setAmuletPressed(isDown);
                     //CurioEventHandler.onKeyPressed(player);
                 } else {
-                    keys.setArmorPressed(isDown);
+                    player.getData(JDataAttachments.KEY_PRESSED).setArmorPressed(isDown);
                     GearAbilityHandler.onKeyPressed(player);
                 }
-            });
+
             System.out.println(player.getScoreboardName() + " " + (isDown ? "pressed" : "released") + " " + (isAmulet ? "amulet" : "armor") + " ability key.");
-        context.setPacketHandled(true);
+        });
+    }
+
+    @Override
+    public @NotNull ResourceLocation id() {
+        return ID;
     }
 }

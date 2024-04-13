@@ -6,11 +6,14 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.neoforge.common.util.INBTSerializable;
+import org.jetbrains.annotations.UnknownNullability;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class PlayerArmor {
+public class PlayerArmor implements INBTSerializable<CompoundTag> {
+
     private ArrayList<ItemStack> armorPieces;
     private FullArmorAbility fullSet;
     private CompoundTag nbt = new CompoundTag();
@@ -61,11 +64,15 @@ public class PlayerArmor {
         return fullSet;
     }
 
-    public void saveNBT(CompoundTag nbt) {
+    @Override
+    public @UnknownNullability CompoundTag serializeNBT() {
+        CompoundTag nbt = new CompoundTag();
         nbt.put("armor ability", this.nbt);
+        return nbt;
     }
 
-    public void readNBT(CompoundTag nbt) {
+    @Override
+    public void deserializeNBT(CompoundTag nbt) {
         this.nbt = nbt.getCompound("armor ability");
     }
 }

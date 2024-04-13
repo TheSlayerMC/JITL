@@ -1,7 +1,7 @@
 package net.jitl.common.entity.base;
 
 import net.jitl.client.knowledge.EnumKnowledge;
-import net.jitl.common.capability.stats.PlayerStatsProvider;
+import net.jitl.core.init.internal.JDataAttachments;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -53,9 +53,7 @@ public abstract class JMonsterEntity extends Monster implements GeoEntity {
     public void die(@NotNull DamageSource cause) {
         super.die(cause);
         if(cause.getEntity() instanceof Player player && this.knowledge != null) {
-            player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(knowledge -> {
-                knowledge.addXP(this.knowledge, this.knowledgeAmount, player);
-            });
+            player.getData(JDataAttachments.PLAYER_STATS).addXP(this.knowledge, this.knowledgeAmount, player);
         }
     }
 

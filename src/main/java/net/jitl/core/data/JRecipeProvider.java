@@ -1,6 +1,7 @@
 package net.jitl.core.data;
 
 import net.jitl.core.init.JITL;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
@@ -10,9 +11,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.conditions.IConditionBuilder;
+import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredItem;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -211,7 +212,7 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
         addBootsRecipe(recipeConsumer, materialItem, getItemFromRegistryName((recipePrefix.getString() + "boots")));
     }
 
-    public void addWoodType(RecipeOutput recipeConsumer, RegistryObject<? extends Block> log, RegistryObject<? extends Block> plank, RegistryObject<? extends Block> stairs, RegistryObject<? extends Block> slab, RegistryObject<? extends Block> fence, RegistryObject<? extends Block> gate, RegistryObject<? extends Block> trapdoor, RegistryObject<? extends Block> pressureplate, RegistryObject<? extends Block> door, RegistryObject<? extends Block> button, RegistryObject<Item> boat) {
+    public void addWoodType(RecipeOutput recipeConsumer, DeferredBlock<? extends Block> log, DeferredBlock<? extends Block> plank, DeferredBlock<? extends Block> stairs, DeferredBlock<? extends Block> slab, DeferredBlock<? extends Block> fence, DeferredBlock<? extends Block> gate, DeferredBlock<? extends Block> trapdoor, DeferredBlock<? extends Block> pressureplate, DeferredBlock<? extends Block> door, DeferredBlock<? extends Block> button, DeferredItem<Item> boat) {
         addAxeRecipe(recipeConsumer, Items.STICK, plank.get(), Items.WOODEN_AXE, plank.get().getDescriptionId());
         addPickaxeRecipe(recipeConsumer, Items.STICK, plank.get(), Items.WOODEN_PICKAXE, plank.get().getDescriptionId());
         addShovelRecipe(recipeConsumer, Items.STICK, plank.get(), Items.WOODEN_SHOVEL, plank.get().getDescriptionId());
@@ -230,8 +231,8 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
         buttonBuilder(recipeConsumer, button.get(), plank.get());
     }
 
-    public void addQuartzType(RecipeOutput recipeConsumer, RegistryObject<? extends Item> quartz, RegistryObject<? extends Block> quartzOre, RegistryObject<? extends Block> quartzBlock, RegistryObject<? extends Block> smoothQuartzBlock, RegistryObject<? extends Block> quartzStairs, RegistryObject<? extends Block> smoothQuartzStairs, RegistryObject<? extends Block> quartzSlab, RegistryObject<? extends Block> smoothQuartzSlab
-            , RegistryObject<? extends Block> quartzBricks, RegistryObject<? extends Block> chiseledQuartzBlock, RegistryObject<? extends Block> quartzPillar) {
+    public void addQuartzType(RecipeOutput recipeConsumer, DeferredItem<? extends Item> quartz, DeferredBlock<? extends Block> quartzOre, DeferredBlock<? extends Block> quartzBlock, DeferredBlock<? extends Block> smoothQuartzBlock, DeferredBlock<? extends Block> quartzStairs, DeferredBlock<? extends Block> smoothQuartzStairs, DeferredBlock<? extends Block> quartzSlab, DeferredBlock<? extends Block> smoothQuartzSlab
+            , DeferredBlock<? extends Block> quartzBricks, DeferredBlock<? extends Block> chiseledQuartzBlock, DeferredBlock<? extends Block> quartzPillar) {
 
         addSmeltingAndBlastingRecipe(recipeConsumer, quartzBlock.get(), smoothQuartzBlock.get());
         addSmeltingAndBlastingRecipe(recipeConsumer, quartzOre.get(), quartz.get());
@@ -474,7 +475,7 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
     }
 
     public ItemLike getItemFromRegistryName(String registryName) {
-        return ForgeRegistries.ITEMS.getValue(new ResourceLocation(JITL.MODID, registryName));
+        return BuiltInRegistries.ITEM.get(new ResourceLocation(JITL.MODID, registryName));
     }
 
     public enum RecipePrefix {

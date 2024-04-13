@@ -1,10 +1,9 @@
 plugins {
+    id 'java-library'
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
-    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
-    id 'org.spongepowered.mixin' version '0.7.+'
+    id 'net.neoforged.gradle.userdev' version '7.0.97'
 }
 
 file "build.properties" withReader {
@@ -13,122 +12,120 @@ file "build.properties" withReader {
     ext.buildProps = prop
 }
 
-version = minecraft_version-mod_version
+version = mod_version
 group = mod_group_id
 
+repositories {
+    mavenLocal()
+}
+
 base {
-    archivesName = "Journey-Into-The-Light"
+    archivesName = mod_id
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
-minecraft {
+//minecraft.accessTransformers.entry //public net.minecraft.client.Minecraft textureManager # textureManager
 
-    mappings channel: 'parchment', version: "${buildProps["parchment.version"]}"
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-    runs {
+runs {
+    minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
 
-        configureEach {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
+    configureEach {
 
-            mods {
-                "${mod_id}" {
-                    source sourceSets.main
-                }
-            }
-        }
+        systemProperty 'forge.logging.markers', 'REGISTRIES'
 
-        client {
-            workingDirectory project.file('run')
+        systemProperty 'forge.logging.console.level', 'debug'
 
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'jitl'
+        modSource project.sourceSets.main
+    }
 
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
-            mods {
-                jitl {
-                    source sourceSets.main
-                }
-            }
-        }
+    client {
+        systemProperty 'forge.enabledGameTestNamespaces', "jitl"
 
-        server {
-            args '--nogui'
+        systemProperty 'mixin.env.remapRefMap', 'true'
+        systemProperty 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
+    }
 
-            workingDirectory project.file('run')
+    server {
+        systemProperty 'forge.enabledGameTestNamespaces', "jitl"
+        systemProperty 'mixin.env.remapRefMap', 'true'
+        systemProperty 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
+        programArgument '--nogui'
+    }
 
-            property 'forge.logging.markers', 'REGISTRIES'
+    gameTestServer {
+        systemProperty 'forge.enabledGameTestNamespaces', "jitl"
+    }
 
-            property 'forge.logging.console.level', 'debug'
-
-            property 'forge.enabledGameTestNamespaces', 'jitl'
-
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
-            mods {
-                jitl {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        // This run config launches GameTestServer and runs all registered gametests, then exits.
-        // By default, the server will crash when no gametests are provided.
-        // The gametest system is also enabled by default for other run configs under the /test command.
-        gameTestServer {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'jitl'
-
-            mods {
-                jitl {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        data {
-            // example of overriding the workingDirectory set in configureEach above
-            workingDirectory project.file('run-data')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-
-            args '--mod', 'jitl', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
-            mods {
-                jitl {
-                    source sourceSets.main
-                }
-            }
-        }
+    data {
+        programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
     }
 }
 
-// Include resources generated by data generators.
+
 sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+
+dependencies {
+    implementation "net.neoforged:neoforge:${neo_version}"
+
+    compileOnly "mezz.jei:jei-" + minecraft_version + "-common-api:" + jei_version
+    compileOnly "mezz.jei:jei-" + minecraft_version + "-forge-api:" + jei_version
+    runtimeOnly "mezz.jei:jei-" + minecraft_version + "-forge:" + jei_version
+
+    runtimeOnly "top.theillusivec4.curios:curios-neoforge:" + curios_version
+    compileOnly "top.theillusivec4.curios:curios-neoforge:" + curios_version + ":api"
+
+    implementation "software.bernie.geckolib:geckolib-neoforge-" + gekolib_version
+//
+//    compileOnly "vazkii.patchouli:Patchouli:${buildProps["patchouli.version"]}:api"
+//    runtimeOnly "vazkii.patchouli:Patchouli:${buildProps["patchouli.version"]}"
+}
+
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neo_version            : neo_version,
+            neo_version_range      : neo_version_range,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_license            : mod_license,
+            mod_version            : mod_version,
+            mod_authors            : mod_authors,
+            mod_description        : mod_description
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml']) {
+        expand replaceProperties
+    }
+}
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            url "file://${project.projectDir}/repo"
+        }
+    }
+}
 
 repositories {
     maven {
         name = "Progwml6 maven"
         url = "https://dvs1.progwml6.com/files/maven/"
     }
-
-    maven {
-        url = "https://maven.blamejared.com"
-    }
-
     maven {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
-
     maven {
         url = "https://maven.theillusivec4.top/"
     }
@@ -136,101 +133,8 @@ repositories {
     maven {
         url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
     }
-
-    maven {
-        url "https://cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
-}
-
-dependencies {
-
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-
-    compileOnly(fg.deobf("mezz.jei:jei-" + minecraft_version + "-common-api:${buildProps["jei_version"]}"))
-    compileOnly(fg.deobf("mezz.jei:jei-" + minecraft_version + "-forge-api:${buildProps["jei_version"]}"))
-    runtimeOnly(fg.deobf("mezz.jei:jei-" + minecraft_version + "-forge:${buildProps["jei_version"]}"))
-
-    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${buildProps["curios.version"]}")
-    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${buildProps["curios.version"]}:api")
-
-    runtimeOnly fg.deobf("curse.maven:worldedit-225608:${buildProps["worldedit.file"]}")
-
-    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${buildProps["gekolib.version"]}")
-//
-//    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${buildProps["patchouli.version"]}:api")
-//    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${buildProps["patchouli.version"]}")
-
-}
-
-jar {
-    manifest {
-        attributes([
-                "Specification-Title"     : "journey",
-                "Specification-Vendor"    : "Journey",
-                "Specification-Version"   : "1",
-                "Implementation-Title"    : project.name,
-                "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "Journey",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
-    }
-}
-
-jar.finalizedBy('reobfJar')
-
-tasks.named('processResources', ProcessResources).configure {
-    var replaceProperties = [
-            minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
-            forge_version: forge_version, forge_version_range: forge_version_range,
-            loader_version_range: loader_version_range,
-            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
-            mod_authors: mod_authors, mod_description: mod_description,
-    ]
-    inputs.properties replaceProperties
-
-    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
-        expand replaceProperties + [project: project]
-    }
-}
-
-tasks.named('jar', Jar).configure {
-    manifest {
-        attributes([
-                'Specification-Title'     : mod_id,
-                'Specification-Vendor'    : mod_authors,
-                'Specification-Version'   : '1', // We are version 1 of ourselves
-                'Implementation-Title'    : project.name,
-                'Implementation-Version'  : project.jar.archiveVersion,
-                'Implementation-Vendor'   : mod_authors
-        ])
-    }
-
-    // This is the preferred method to reobfuscate your jar file
-    finalizedBy 'reobfJar'
-}
-
-publishing {
-    publications {
-        register('mavenJava', MavenPublication) {
-            artifact jar
-        }
-    }
-    repositories {
-        maven {
-            url "file://${project.projectDir}/mcmodsrepo"
-        }
-    }
 }
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
-}
-
-sourceSets.each {
-    def dir = layout.buildDirectory.dir("sourcesSets/$it.name")
-    it.output.resourcesDir = dir
-    it.java.destinationDirectory = dir
 }

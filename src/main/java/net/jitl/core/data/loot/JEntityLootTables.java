@@ -3,7 +3,6 @@ package net.jitl.core.data.loot;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.data.loot.EntityLootSubProvider;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
@@ -14,10 +13,6 @@ import net.minecraft.world.level.storage.loot.functions.LootingEnchantFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.minecraftforge.registries.RegistryObject;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.stream.Stream;
 
 public class JEntityLootTables extends EntityLootSubProvider {
 
@@ -472,9 +467,9 @@ public class JEntityLootTables extends EntityLootSubProvider {
         return LootTable.lootTable();
     }
 
-
-    @Override
-    protected @NotNull Stream<EntityType<?>> getKnownEntityTypes() {
-        return JEntities.REGISTRY.getEntries().stream().map(RegistryObject::get);
-    }
+//
+//    @Override
+//    protected @NotNull Stream<EntityType<?>> getKnownEntityTypes() {
+//        return JEntities.REGISTRY.getEntries().stream().map(RegistryObject::get);
+//    }
 }

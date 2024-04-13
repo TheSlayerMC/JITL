@@ -1,13 +1,12 @@
 package net.jitl.core.helper;
 
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraftforge.common.util.ForgeSoundType;
+import net.neoforged.neoforge.common.util.DeferredSoundType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
-public class JourneySoundType extends ForgeSoundType {
+public class JourneySoundType extends DeferredSoundType {
     private final Supplier<SoundEvent> breakSound;
     private final Supplier<SoundEvent> stepSound;
     private final Supplier<SoundEvent> placeSound;

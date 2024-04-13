@@ -1,7 +1,7 @@
 package net.jitl.core.helper.internal;
 
 import com.google.common.base.Joiner;
-import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
+import net.neoforged.fml.util.ObfuscationReflectionHelper;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Constructor;

@@ -1,10 +1,10 @@
 package net.jitl.common.event;
 
-import net.jitl.common.capability.gear.PlayerArmorProvider;
+import net.jitl.common.capability.gear.PlayerArmor;
 import net.jitl.common.items.base.JArmorItem;
 import net.jitl.common.items.gear.FullArmorAbility;
 import net.jitl.common.items.gear.JGear;
-import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.JDataAttachments;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -15,23 +15,20 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEvent;
+import net.neoforged.neoforge.event.entity.living.LivingHurtEvent;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-@Mod.EventBusSubscriber(modid = JITL.MODID)
+//@Mod.EventBusSubscriber(modid = JITL.MODID)
 public class GearAbilityHandler {
 
     @SubscribeEvent
     public static void handleTick(LivingEvent event) {
-        event.setPhase(EventPriority.LOW);
         if(event.getEntity() instanceof Player player) {
             if(player.getInventory() != null) {
                 ItemStack hand = player.getMainHandItem();
@@ -45,7 +42,7 @@ public class GearAbilityHandler {
                     ((JGear) hand.getItem()).getAbility().tick(player, player.level(), hand);
                 }
             }
-            event.getEntity().getCapability(PlayerArmorProvider.PLAYER_ARMOR).ifPresent(armor -> {
+            PlayerArmor armor = event.getEntity().getData(JDataAttachments.PLAYER_ARMOR);
                 ArrayList<ItemStack> stacks = armor.getArmor();
                 if (stacks != null) {
                     for (ItemStack stack : stacks) {
@@ -57,7 +54,7 @@ public class GearAbilityHandler {
                 if (fullSet != null) {
                     fullSet.tick(player);
                 }
-            });
+
         }
     }
 
@@ -95,19 +92,19 @@ public class GearAbilityHandler {
                 ((JGear) item).getAbility().damageTarget(living, stack, event);
             }
         }
-        event.getEntity().getCapability(PlayerArmorProvider.PLAYER_ARMOR).ifPresent(armor -> {
+        PlayerArmor armor = event.getEntity().getData(JDataAttachments.PLAYER_ARMOR);
             if (armor.getFullArmor() != null) {
                 armor.getFullArmor().hit(event);
             }
-        });
+
     }
 
     public static void onKeyPressed(Player player) {
         if(player != null) {
-            player.getCapability(PlayerArmorProvider.PLAYER_ARMOR).ifPresent(playerArmor -> {
+            PlayerArmor playerArmor = player.getData(JDataAttachments.PLAYER_ARMOR);
                 FullArmorAbility armor = playerArmor.getFullArmor();
                 if (armor != null) armor.keyPressed(player);
-            });
+
         }
     }
 
@@ -188,8 +185,9 @@ public class GearAbilityHandler {
         if (item instanceof JGear) {
             ((JGear) item).getAbility().equip(entity, slot, event.getTo());
         }
-        if (slot.getType() == EquipmentSlot.Type.ARMOR) {
-            entity.getCapability(PlayerArmorProvider.PLAYER_ARMOR).ifPresent(playerArmor -> playerArmor.setArmor(entity.getArmorSlots().iterator()));
+        if(slot.getType() == EquipmentSlot.Type.ARMOR) {
+            PlayerArmor armor = event.getEntity().getData(JDataAttachments.PLAYER_ARMOR);
+            armor.setArmor(entity.getArmorSlots().iterator());
         }
     }
 }

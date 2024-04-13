@@ -15,17 +15,17 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class StructureRegistry {
 	public static final StructurePlaceSettings defaultSettings = new StructurePlaceSettings().setIgnoreEntities(false).setFinalizeEntities(true).setKeepLiquids(true);
     public static final DeferredRegister<StructureType<?>> REGISTRY = DeferredRegister.create(Registries.STRUCTURE_TYPE, JITL.MODID);
 
-    public static final RegistryObject<StructureType<?>> HIGHEST_GROUND = REGISTRY.register("highest_ground", () -> codecConv(HighestGroundType.CODEC));
-	public static final RegistryObject<StructureType<?>> LOWEST_GROUND = REGISTRY.register("lowest_ground", () -> codecConv(LowestGroundType.CODEC));
-	public static final RegistryObject<StructureType<?>> HIGHEST_CEILING = REGISTRY.register("highest_ceiling", () -> codecConv(HighestCeilingType.CODEC));
-	public static final RegistryObject<StructureType<?>> LOWEST_CEILING = REGISTRY.register("lowest_ceiling", () -> codecConv(LowestCeilingType.CODEC));
+    public static final DeferredHolder<StructureType<?>, StructureType<?>> HIGHEST_GROUND = REGISTRY.register("highest_ground", () -> codecConv(HighestGroundType.CODEC));
+	public static final DeferredHolder<StructureType<?>, StructureType<?>> LOWEST_GROUND = REGISTRY.register("lowest_ground", () -> codecConv(LowestGroundType.CODEC));
+	public static final DeferredHolder<StructureType<?>, StructureType<?>> HIGHEST_CEILING = REGISTRY.register("highest_ceiling", () -> codecConv(HighestCeilingType.CODEC));
+	public static final DeferredHolder<StructureType<?>, StructureType<?>> LOWEST_CEILING = REGISTRY.register("lowest_ceiling", () -> codecConv(LowestCeilingType.CODEC));
 
     private static <S extends Structure> StructureType<S> codecConv(Codec<S> codec) {
         return () -> codec;

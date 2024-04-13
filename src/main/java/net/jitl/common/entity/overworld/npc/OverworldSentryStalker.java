@@ -2,8 +2,9 @@ package net.jitl.common.entity.overworld.npc;
 
 import net.jitl.client.ChatUtils;
 import net.jitl.client.knowledge.EnumKnowledge;
-import net.jitl.common.capability.stats.PlayerStatsProvider;
+import net.jitl.common.capability.stats.PlayerStats;
 import net.jitl.common.entity.base.MobStats;
+import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.nbt.CompoundTag;
@@ -149,7 +150,7 @@ public class OverworldSentryStalker extends PathfinderMob implements GeoEntity {
 
     @Override
     protected @NotNull InteractionResult mobInteract(Player player, @NotNull InteractionHand hand) {
-        player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
+        PlayerStats stats = player.getData(JDataAttachments.PLAYER_STATS);
             if(stats.getLevel(EnumKnowledge.OVERWORLD) >= 75)
                 setActivated(true);
 
@@ -159,7 +160,6 @@ public class OverworldSentryStalker extends PathfinderMob implements GeoEntity {
             if(!hasKey())
                 ChatUtils.addDialogStyleChat(player, "jitl.sen.unlocked");
 
-        });
         return super.mobInteract(player, hand);
     }
 }

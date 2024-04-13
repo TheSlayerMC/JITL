@@ -3,7 +3,7 @@ package net.jitl.common.items.gear.bloodcrust;
 import net.jitl.common.items.gear.FullArmorAbility;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
 public class BloodcrustFullAbility extends FullArmorAbility {
     BloodcrustFullAbility(CompoundTag nbt) {

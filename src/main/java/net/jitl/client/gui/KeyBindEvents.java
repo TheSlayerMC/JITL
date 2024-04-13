@@ -1,21 +1,14 @@
 package net.jitl.client.gui;
 
-import com.mojang.blaze3d.platform.InputConstants;
-import net.jitl.client.gui.overlay.PlayerStats;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.KeyMapping;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.language.I18n;
-import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import org.lwjgl.glfw.GLFW;
-
-@Mod.EventBusSubscriber(modid = JITL.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = JITL.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class KeyBindEvents {
 
     public static KeyMapping keyStats = new KeyMapping("Open Journey Stats", GLFW.GLFW_KEY_J, I18n.get("jitl.key"));
@@ -35,8 +28,6 @@ public class KeyBindEvents {
     public static KeyMapping keyResetAll = new KeyMapping("Reset All Isometric Camera Settings", GLFW.GLFW_KEY_BACKSLASH, I18n.get("jitl.key"));
     public static KeyMapping keyCycleSnapAngle = new KeyMapping("Cycle Through Isometric Angles", GLFW.GLFW_KEY_MINUS, I18n.get("jitl.key"));
     public static KeyMapping keyBigScreenshot = new KeyMapping("Take Big Screenshot", GLFW.GLFW_KEY_F9, I18n.get("jitl.key"));
-
-    private static final Minecraft MINECRAFT = Minecraft.getInstance();
 
     @SubscribeEvent
     public static void onKeyRegister(RegisterKeyMappingsEvent event) {
@@ -58,39 +49,5 @@ public class KeyBindEvents {
         event.register(keyBigScreenshot);
     }
 
-    @SubscribeEvent
-    public static void onKeyInput(InputEvent.Key event) {
-        InputConstants.Key key = InputConstants.getKey(event.getKey(), event.getScanCode());
-        if (MINECRAFT.screen == null) {
 
-            assert MINECRAFT.player != null;
-            int action = event.getAction();
-
-            if (action == GLFW.GLFW_PRESS) {
-                if (key == keyStats.getKey()) {
-                    assert Minecraft.getInstance().player != null;
-                    displayPlayerStats(Minecraft.getInstance().player);
-
-                } else {
-                    //handleIsometricCameraKeys(key);
-                    //handleBigScreenshotKeys(key);
-                    handleAbilityKeys(key, action);
-                }
-            } else if (action == GLFW.GLFW_RELEASE) {
-                handleAbilityKeys(key, action);
-            }
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static void displayPlayerStats(Player player) {
-        Minecraft.getInstance().setScreen(new PlayerStats(player));
-    }
-
-    public static void handleAbilityKeys(InputConstants.Key input, int action) {
-        boolean key = input == keyAmulet.getKey();
-        if (key || input == keyArmor.getKey()) {
-            //JNetworkRegistry.INSTANCE.send(new CKeyPressedPacket(key, action == GLFW.GLFW_PRESS));
-        }
-    }
 }

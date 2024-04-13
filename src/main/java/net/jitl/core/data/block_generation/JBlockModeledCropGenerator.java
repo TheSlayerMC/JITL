@@ -30,10 +30,12 @@ public class JBlockModeledCropGenerator {
             e.printStackTrace();
         }
 
-        getBlockItem(JITL.MODID, name, maxStages);
-        getBlockstate(JITL.MODID, name, maxStages);
+        if(itemModelWriter != null) {
+            getBlockItem(JITL.MODID, name, maxStages);
+            getBlockstate(JITL.MODID, name, maxStages);
 
-        writerInit();
+            writerInit();
+        }
     }
 
     public void getBlockItem(String modID, String name, int maxStages) {

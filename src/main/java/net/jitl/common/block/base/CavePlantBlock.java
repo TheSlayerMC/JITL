@@ -5,7 +5,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.TallGrassBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.Tags;
+import net.neoforged.neoforge.common.Tags;
 
 public class CavePlantBlock extends TallGrassBlock {
 

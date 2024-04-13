@@ -3,12 +3,9 @@ package net.jitl.common.entity.frozen;
 import net.jitl.client.ChatUtils;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.block.entity.PedestalTile;
-import net.jitl.common.capability.stats.PlayerStatsProvider;
+import net.jitl.common.capability.stats.PlayerStats;
 import net.jitl.common.entity.projectile.EssenciaBoltEntity;
-import net.jitl.core.init.internal.JBlocks;
-import net.jitl.core.init.internal.JEntities;
-import net.jitl.core.init.internal.JItems;
-import net.jitl.core.init.internal.JSounds;
+import net.jitl.core.init.internal.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -229,12 +226,9 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
         int playerArea = 10;
         AABB axisalignedbb = AABB.unitCubeFromLowerCorner(this.position()).inflate(playerArea);
         for (Player player : this.level().getEntitiesOfClass(Player.class, axisalignedbb)) {
-            player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
-                stats.setBlizzard(true);
-            });
-            player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(knowledge -> {
-                knowledge.addXP(EnumKnowledge.FROZEN, 15F, player);
-            });
+            PlayerStats stats = player.getData(JDataAttachments.PLAYER_STATS);
+            stats.setBlizzard(true);
+            stats.addXP(EnumKnowledge.FROZEN, 15F, player);
         }
     }
 }

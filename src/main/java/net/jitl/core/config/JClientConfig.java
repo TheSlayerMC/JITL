@@ -3,23 +3,23 @@ package net.jitl.core.config;
 import net.jitl.core.config.enums.EssencePosition;
 import net.jitl.core.config.enums.HealthBarRendering;
 import net.jitl.core.config.enums.IsometricAngleSnap;
-import net.minecraftforge.common.ForgeConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class JClientConfig {
 
-	public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
-	public static final ForgeConfigSpec SPEC;
+	public static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
+	public static final ModConfigSpec SPEC;
 
-	public static final ForgeConfigSpec.BooleanValue ENABLE_ISOMETRIC_CAMERA;
-	public static final ForgeConfigSpec.BooleanValue LOCK_ISOMETRIC_PERSPECTIVE;
-	public static final ForgeConfigSpec.EnumValue<IsometricAngleSnap> ISOMETRIC_ANGLE_SNAP;
+	public static final ModConfigSpec.BooleanValue ENABLE_ISOMETRIC_CAMERA;
+	public static final ModConfigSpec.BooleanValue LOCK_ISOMETRIC_PERSPECTIVE;
+	public static final ModConfigSpec.EnumValue<IsometricAngleSnap> ISOMETRIC_ANGLE_SNAP;
 
-	public static final ForgeConfigSpec.BooleanValue ENABLE_JITL_MENU_TOGGLE_BUTTON;
-	public static final ForgeConfigSpec.BooleanValue ENABLE_JITL_MENU_SCREEN;
-	public static final ForgeConfigSpec.EnumValue<HealthBarRendering> RENDER_ENTITY_HEALTH;
-	public static final ForgeConfigSpec.EnumValue<EssencePosition> ESSENCE_POSITION;
-	public static final ForgeConfigSpec.IntValue BIG_SCREENSHOT_WIDTH;
-	public static final ForgeConfigSpec.IntValue BIG_SCREENSHOT_HEIGHT;
+	public static final ModConfigSpec.BooleanValue ENABLE_JITL_MENU_TOGGLE_BUTTON;
+	public static final ModConfigSpec.BooleanValue ENABLE_JITL_MENU_SCREEN;
+	public static final ModConfigSpec.EnumValue<HealthBarRendering> RENDER_ENTITY_HEALTH;
+	public static final ModConfigSpec.EnumValue<EssencePosition> ESSENCE_POSITION;
+	public static final ModConfigSpec.IntValue BIG_SCREENSHOT_WIDTH;
+	public static final ModConfigSpec.IntValue BIG_SCREENSHOT_HEIGHT;
 
 	static {
 		BUILDER.push("Client configs for JITL");

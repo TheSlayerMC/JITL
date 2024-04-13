@@ -1,22 +1,22 @@
 package net.jitl.core.config;
 
-import net.minecraftforge.common.ForgeConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class JCommonConfig {
 
-	private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
-	public static final ForgeConfigSpec SPEC;
+	private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
+	public static final ModConfigSpec SPEC;
 //
-//	public static final ForgeConfigSpec.ConfigValue<Integer> IRIDIUM_ORE_MAX_SIZE;
-//	public static final ForgeConfigSpec.ConfigValue<Integer> IRIDIUM_SPAWN_COUNT;
-//	public static final ForgeConfigSpec.ConfigValue<Integer> IRIDIUM_ORE_MIN_Y;
-//	public static final ForgeConfigSpec.ConfigValue<Integer> IRIDIUM_ORE_MAX_Y;
+//	public static final ModConfigSpec.ConfigValue<Integer> IRIDIUM_ORE_MAX_SIZE;
+//	public static final ModConfigSpec.ConfigValue<Integer> IRIDIUM_SPAWN_COUNT;
+//	public static final ModConfigSpec.ConfigValue<Integer> IRIDIUM_ORE_MIN_Y;
+//	public static final ModConfigSpec.ConfigValue<Integer> IRIDIUM_ORE_MAX_Y;
 
-	public static final ForgeConfigSpec.BooleanValue NEED_SUMMONING_STRUCTURE;
-	public static final ForgeConfigSpec.BooleanValue ENABLE_LOOT_POUCH_DROP;
-	public static final ForgeConfigSpec.ConfigValue<Integer> COMMON_LOOT_CHANCE;
-	public static final ForgeConfigSpec.ConfigValue<Integer> GOLD_LOOT_CHANCE;
-	public static final ForgeConfigSpec.ConfigValue<Integer> DIAMOND_LOOT_CHANCE;
+	public static final ModConfigSpec.BooleanValue NEED_SUMMONING_STRUCTURE;
+	public static final ModConfigSpec.BooleanValue ENABLE_LOOT_POUCH_DROP;
+	public static final ModConfigSpec.ConfigValue<Integer> COMMON_LOOT_CHANCE;
+	public static final ModConfigSpec.ConfigValue<Integer> GOLD_LOOT_CHANCE;
+	public static final ModConfigSpec.ConfigValue<Integer> DIAMOND_LOOT_CHANCE;
 
 	static {
 		BUILDER.push("Common configs for JITL");

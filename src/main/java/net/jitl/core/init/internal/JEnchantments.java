@@ -1,15 +1,17 @@
 package net.jitl.core.init.internal;
 
-import net.jitl.common.enchantment.*;
+import net.jitl.common.enchantment.AmbitEnchantment;
+import net.jitl.common.enchantment.FaithfulEnchantment;
+import net.jitl.common.enchantment.LightweightEnchantment;
+import net.jitl.common.enchantment.ScorchingEnchantment;
 import net.jitl.common.items.PiercerItem;
 import net.jitl.core.init.JITL;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.enchantment.DamageEnchantment;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class JEnchantments {
 
@@ -17,18 +19,18 @@ public class JEnchantments {
        item instanceof PiercerItem
     );
 
-    public static DeferredRegister<Enchantment> REGISTRY = DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, JITL.MODID);
+    public static DeferredRegister<Enchantment> REGISTRY = DeferredRegister.create(Registries.ENCHANTMENT, JITL.MODID);
 
-    public static final RegistryObject<Enchantment> LIGHTWEIGHT =
+    public static final DeferredHolder<Enchantment, LightweightEnchantment> LIGHTWEIGHT =
             REGISTRY.register("lightweight", () -> new LightweightEnchantment(Enchantment.Rarity.COMMON, PIERCER, EquipmentSlot.MAINHAND));
 
-    public static final RegistryObject<Enchantment> AMBIT =
+    public static final DeferredHolder<Enchantment, AmbitEnchantment> AMBIT =
             REGISTRY.register("ambit", () -> new AmbitEnchantment(Enchantment.Rarity.COMMON, PIERCER, EquipmentSlot.MAINHAND));
 
-    public static final RegistryObject<Enchantment> SCORCHING =
+    public static final DeferredHolder<Enchantment, ScorchingEnchantment> SCORCHING =
             REGISTRY.register("scorching", () -> new ScorchingEnchantment(Enchantment.Rarity.COMMON, PIERCER, EquipmentSlot.MAINHAND));
 
-    public static final RegistryObject<Enchantment> FAITHFUL =
+    public static final DeferredHolder<Enchantment, FaithfulEnchantment> FAITHFUL =
             REGISTRY.register("faithful", () -> new FaithfulEnchantment(Enchantment.Rarity.COMMON, PIERCER, EquipmentSlot.MAINHAND));
 
     //public static final RegistryObject<Enchantment> HOT_TOUCH =

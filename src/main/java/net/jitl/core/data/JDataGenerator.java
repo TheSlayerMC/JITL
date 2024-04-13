@@ -5,9 +5,9 @@ import net.jitl.core.data.recipe.JRecipeRegistry;
 import net.jitl.core.data.world_gen.ConfiguredFeaturesGenerator;
 import net.jitl.core.init.JITL;
 import net.minecraft.data.DataGenerator;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 @Mod.EventBusSubscriber(modid = JITL.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class JDataGenerator {

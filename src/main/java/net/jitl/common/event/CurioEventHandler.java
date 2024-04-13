@@ -1,9 +1,6 @@
 package net.jitl.common.event;
 
-import net.jitl.core.init.JITL;
-import net.minecraftforge.fml.common.Mod;
-
-@Mod.EventBusSubscriber(modid = JITL.MODID)
+//@Mod.EventBusSubscriber(modid = JITL.MODID)
 public class CurioEventHandler {
 
    /* @SubscribeEvent

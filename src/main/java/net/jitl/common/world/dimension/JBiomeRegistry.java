@@ -1,42 +1,22 @@
 package net.jitl.common.world.dimension;
 
 import net.jitl.core.init.JITL;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegisterEvent;
 
-@Mod.EventBusSubscriber
+
 public class JBiomeRegistry {
 
-    public static Biome EUCA_PLAINS;
-    public static Biome EUCA_GOLDITE_GRAINS;
+    public static ResourceKey<Biome> EUCA_PLAINS = ResourceKey.create(Registries.BIOME, JITL.rl("euca/euca_plains"));
+    public static ResourceKey<Biome> EUCA_GOLDITE_GRAINS = ResourceKey.create(Registries.BIOME, JITL.rl("euca/euca_goldite_grains"));
 
-    public static Biome FROZEN_WASTES;
-    public static Biome FROZEN_DYING_FOREST;
-    public static Biome FROZEN_BITTERWOOD_FOREST;
+    public static ResourceKey<Biome> FROZEN_WASTES = ResourceKey.create(Registries.BIOME, JITL.rl("frozen/frozen_wastes"));
+    public static ResourceKey<Biome> FROZEN_DYING_FOREST = ResourceKey.create(Registries.BIOME, JITL.rl("frozen/dying_forest"));
+    public static ResourceKey<Biome> FROZEN_BITTERWOOD_FOREST = ResourceKey.create(Registries.BIOME, JITL.rl("frozen/bitterwood_forest"));
 
-    public static Biome BOILING_PLAINS;
-    public static Biome BOILING_SANDS;
-    public static Biome CHARRED_FIELDS;
-    public static Biome SCORCHED_WASTELANDS;
-
-
-    @SubscribeEvent
-    public static void registerBiomes(RegisterEvent event) {
-        event.register(ForgeRegistries.Keys.BIOMES, (helper) -> {
-            helper.register(JITL.rl("frozen/frozen_wastes"), FROZEN_WASTES);
-            helper.register(JITL.rl("frozen/dying_forest"), FROZEN_DYING_FOREST);
-            helper.register(JITL.rl("frozen/bitterwood_forest"), FROZEN_BITTERWOOD_FOREST);
-
-            helper.register(JITL.rl("euca/euca_plains"), EUCA_PLAINS);
-            helper.register(JITL.rl("euca/euca_goldite_grains"), EUCA_GOLDITE_GRAINS);
-
-            helper.register(JITL.rl("boil/boiling_plains"), BOILING_PLAINS);
-            helper.register(JITL.rl("boil/boiling_sands"), BOILING_SANDS);
-            helper.register(JITL.rl("boil/charred_fields"), CHARRED_FIELDS);
-            helper.register(JITL.rl("boil/scorched_wastelands"), SCORCHED_WASTELANDS);
-        });
-    }
+    public static ResourceKey<Biome> BOILING_PLAINS = ResourceKey.create(Registries.BIOME, JITL.rl("boil/boiling_plains"));
+    public static ResourceKey<Biome> BOILING_SANDS = ResourceKey.create(Registries.BIOME, JITL.rl("boil/boiling_sands"));
+    public static ResourceKey<Biome> CHARRED_FIELDS = ResourceKey.create(Registries.BIOME, JITL.rl("boil/charred_fields"));
+    public static ResourceKey<Biome> SCORCHED_WASTELANDS = ResourceKey.create(Registries.BIOME, JITL.rl("boil/scorched_wastelands"));
 }

@@ -5,41 +5,30 @@ import net.jitl.core.init.JITL;
 import net.jitl.core.init.network.CKeyPressedPacket;
 import net.jitl.core.init.network.SBossPacket;
 import net.jitl.core.network.PacketEssenceBar;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.network.ChannelBuilder;
-import net.minecraftforge.network.NetworkDirection;
-import net.minecraftforge.network.SimpleChannel;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.server.level.ServerPlayer;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlerEvent;
+import net.neoforged.neoforge.network.registration.IPayloadRegistrar;
 
 public class JNetworkRegistry {
 
-    public static SimpleChannel INSTANCE = ChannelBuilder
-            .named(new ResourceLocation(JITL.MODID, "main"))
-            .networkProtocolVersion(1)
-            .simpleChannel();
+    public static void init(IEventBus eventBus) {
+        eventBus.addListener(JNetworkRegistry::registerPackets);
+    }
 
-    public static void init() {
-        INSTANCE.messageBuilder(PacketEssenceBar.class, NetworkDirection.PLAY_TO_CLIENT)
-                .encoder(PacketEssenceBar::encode)
-                .decoder(PacketEssenceBar::decode)
-                .consumerNetworkThread(PacketEssenceBar::handle)
-                .add();
+    private static void registerPackets(final RegisterPayloadHandlerEvent ev) {
+        final IPayloadRegistrar registry = ev.registrar(JITL.MODID);
 
-        INSTANCE.messageBuilder(CKeyPressedPacket.class, NetworkDirection.PLAY_TO_SERVER)
-                .encoder(CKeyPressedPacket::encode)
-                .decoder(CKeyPressedPacket::new)
-                .consumerNetworkThread(CKeyPressedPacket::handle)
-                .add();
+        registry.play(PacketPlayerStats.ID, PacketPlayerStats::decode, PacketPlayerStats::handle);
+        registry.play(PacketEssenceBar.ID, PacketEssenceBar::decode, PacketEssenceBar::handle);
+        registry.play(SBossPacket.ID, SBossPacket::decode, SBossPacket::handle);
+        registry.play(CKeyPressedPacket.ID, CKeyPressedPacket::decode, CKeyPressedPacket::handle);
+    }
 
-        INSTANCE.messageBuilder(SBossPacket.class, NetworkDirection.PLAY_TO_CLIENT)
-                .encoder(SBossPacket::encode)
-                .decoder(SBossPacket::new)
-                .consumerNetworkThread(SBossPacket::handle)
-                .add();
-
-        INSTANCE.messageBuilder(PacketPlayerStats.class, NetworkDirection.PLAY_TO_CLIENT)
-                .encoder(PacketPlayerStats::encode)
-                .decoder(PacketPlayerStats::new)
-                .consumerNetworkThread(PacketPlayerStats::handle)
-                .add();
+    public static void sendToPlayer(ServerPlayer player, CustomPacketPayload packet) {
+        if(player.connection != null)
+            PacketDistributor.PLAYER.with(player).send(packet);
     }
 }

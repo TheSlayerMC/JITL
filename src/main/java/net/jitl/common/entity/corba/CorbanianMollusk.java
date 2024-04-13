@@ -18,6 +18,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
@@ -80,7 +81,7 @@ public class CorbanianMollusk extends JMonsterEntity {
     public void aiStep() {
         super.aiStep();
         if(!this.level().isClientSide) {
-            if(!net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level(), this))
+            if(!EventHooks.getMobGriefingEvent(this.level(), this))
                 return;
             BlockState slime = JBlocks.SLIME.get().defaultBlockState();
             for(int i = 0; i < 4; ++i) {

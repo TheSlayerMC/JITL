@@ -10,7 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.client.event.CustomizeGuiOverlayEvent;
+import net.neoforged.neoforge.client.event.CustomizeGuiOverlayEvent;
 
 public class BossBarRenderer {
     protected LivingEntity boss;

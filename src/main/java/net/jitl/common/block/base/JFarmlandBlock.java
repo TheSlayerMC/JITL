@@ -21,9 +21,9 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.FarmlandWaterManager;
-import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.common.IPlantable;
+import net.neoforged.neoforge.common.CommonHooks;
+import net.neoforged.neoforge.common.FarmlandWaterManager;
+import net.neoforged.neoforge.common.IPlantable;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class JFarmlandBlock extends Block {
@@ -89,7 +89,7 @@ public abstract class JFarmlandBlock extends Block {
 
     @Override
     public void fallOn(Level pLevel, @NotNull BlockState pState, @NotNull BlockPos pPos, @NotNull Entity pEntity, float pFallDistance) {
-        if(!pLevel.isClientSide && ForgeHooks.onFarmlandTrample(pLevel, pPos, setDirt().defaultBlockState(), pFallDistance, pEntity))
+        if(!pLevel.isClientSide && CommonHooks.onFarmlandTrample(pLevel, pPos, setDirt().defaultBlockState(), pFallDistance, pEntity))
             turnToDirt(pState, pLevel, pPos);
 
         super.fallOn(pLevel, pState, pPos, pEntity, pFallDistance);

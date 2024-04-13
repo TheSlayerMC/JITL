@@ -2,44 +2,42 @@ package net.jitl.core.init.network;
 
 import net.jitl.common.entity.IJourneyBoss;
 import net.jitl.common.entity.base.JBossInfo;
+import net.jitl.core.init.JITL;
+import net.jitl.core.network.PacketEssenceBar;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import net.minecraftforge.event.network.CustomPayloadEvent;
+import net.neoforged.neoforge.network.handling.PlayPayloadContext;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
-public class SBossPacket {
+public record SBossPacket(Operation addOrRemove, UUID barUUID, int bossNum) implements CustomPacketPayload {
 
-    private final Operation addOrRemove;
-    private final UUID barUUID;
-    private final int bossNum;
+    public static final ResourceLocation ID = JITL.rl("boss_bar");
 
-    public SBossPacket(FriendlyByteBuf buf) {
-        this.addOrRemove = buf.readEnum(Operation.class);
-        this.barUUID = buf.readUUID();
-        this.bossNum = buf.readInt();
-    }
-
-    public SBossPacket(Operation aor, UUID uuid, Entity boss) {
-        this.addOrRemove = aor;
-        this.barUUID = uuid;
-        this.bossNum = boss.getId();
-    }
-
-    public void encode(FriendlyByteBuf buffer) {
+    @Override
+    public void write(FriendlyByteBuf buffer) {
         buffer.writeEnum(addOrRemove);
         buffer.writeUUID(barUUID);
         buffer.writeInt(bossNum);
     }
 
-    public void handle(CustomPayloadEvent.Context ctx) {
+
+    public static SBossPacket decode(FriendlyByteBuf buffer) {
+        return new SBossPacket(buffer.readEnum(Operation.class), buffer.readUUID(), buffer.readInt());
+    }
+
+    public void handle(PlayPayloadContext ctx) {
+        ctx.workHandler().submitAsync(() -> {
             switch(this.addOrRemove) {
                 case ADD -> {
                     assert Minecraft.getInstance().level != null;
                     Entity boss = Minecraft.getInstance().level.getEntity(this.bossNum);
-                    if(boss instanceof IJourneyBoss) {
-                        JBossInfo.map.put(this.barUUID, (IJourneyBoss)boss);
+                    if (boss instanceof IJourneyBoss) {
+                        JBossInfo.map.put(this.barUUID, boss.getId());
                     } else {
                         assert boss != null;
                         throw new IllegalStateException("Attempted to add boss info to " + boss.getClass().getName());
@@ -48,7 +46,12 @@ public class SBossPacket {
                 case REMOVE -> JBossInfo.map.remove(barUUID);
                 default -> throw new IllegalStateException();
             }
-        ctx.setPacketHandled(true);
+        });
+    }
+
+    @Override
+    public ResourceLocation id() {
+        return ID;
     }
 
     public enum Operation {

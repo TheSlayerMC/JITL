@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.ForgeHooks;
+import net.neoforged.neoforge.common.CommonHooks;
 import org.jetbrains.annotations.NotNull;
 
 public class AirrootCropBlock extends JCropBlock {
@@ -81,13 +81,13 @@ public class AirrootCropBlock extends JCropBlock {
             int i = this.getAge(pState);
             if (i < this.getMaxAge()) {
                 float f = getGrowthSpeed(this, pLevel, pPos);
-                if (ForgeHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextInt((int)(25.0F / f) + 1) == 0)) {
+                if (CommonHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextInt((int)(25.0F / f) + 1) == 0)) {
                     if(i == 3) {
                         pLevel.setBlock(pPos, JBlocks.AIRROOT_MELON.get().defaultBlockState(), 2);
                     } else {
                         pLevel.setBlock(pPos, this.getStateForAge(i + 1), 2);
                     }
-                    ForgeHooks.onCropsGrowPost(pLevel, pPos, pState);
+                    CommonHooks.onCropsGrowPost(pLevel, pPos, pState);
                 }
             }
         }

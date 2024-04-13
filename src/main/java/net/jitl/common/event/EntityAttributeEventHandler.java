@@ -3,9 +3,9 @@ package net.jitl.common.event;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JAttributes;
 import net.minecraft.world.entity.EntityType;
-import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 
 @Mod.EventBusSubscriber(modid = JITL.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class EntityAttributeEventHandler {

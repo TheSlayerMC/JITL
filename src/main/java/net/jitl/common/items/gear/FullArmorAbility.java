@@ -2,7 +2,7 @@ package net.jitl.common.items.gear;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
 public abstract class FullArmorAbility {
     protected CompoundTag tag;

@@ -25,11 +25,8 @@ import net.minecraft.world.level.block.entity.ChestLidController;
 import net.minecraft.world.level.block.entity.ContainerOpenersCounter;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.ChestType;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.items.wrapper.InvWrapper;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.wrapper.InvWrapper;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -37,7 +34,6 @@ import java.util.Objects;
 public class JChestBlockEntity extends ChestBlockEntity {
     
     private final ChestLidController chestLidController = new ChestLidController();
-    private LazyOptional<IItemHandlerModifiable> chestHandler;
 
     private final ContainerOpenersCounter openersCounter = new ContainerOpenersCounter() {
 
@@ -129,45 +125,6 @@ public class JChestBlockEntity extends ChestBlockEntity {
     @Override
     protected AbstractContainerMenu createMenu(int id, @NotNull Inventory player) {
         return ChestMenu.threeRows(id, player, this);
-    }
-
-    @Override
-    public void setBlockState(@NotNull BlockState blockState) {
-        super.setBlockState(blockState);
-        if (this.chestHandler != null) {
-            net.minecraftforge.common.util.LazyOptional<?> oldHandler = this.chestHandler;
-            this.chestHandler = null;
-            oldHandler.invalidate();
-        }
-    }
-
-    @NotNull
-    @Override
-    public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, Direction side) {
-        if (!this.remove && cap == ForgeCapabilities.ITEM_HANDLER) {
-            if (this.chestHandler == null)
-                this.chestHandler = net.minecraftforge.common.util.LazyOptional.of(this::createHandler);
-            return this.chestHandler.cast();
-        }
-        return super.getCapability(cap, side);
-    }
-
-    private @NotNull IItemHandlerModifiable createHandler() {
-        BlockState state = this.getBlockState();
-        if (!(state.getBlock() instanceof JChestBlock)) {
-            return new net.minecraftforge.items.wrapper.InvWrapper(this);
-        }
-        Container inv = JChestBlock.getContainer((JChestBlock) state.getBlock(), state, getLevel(), getBlockPos(), true);
-        return new InvWrapper(inv == null ? this : inv);
-    }
-
-    @Override
-    public void invalidateCaps() {
-        super.invalidateCaps();
-        if (chestHandler != null) {
-            chestHandler.invalidate();
-            chestHandler = null;
-        }
     }
 
     @Override

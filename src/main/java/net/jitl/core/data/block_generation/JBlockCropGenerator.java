@@ -89,11 +89,12 @@ public class JBlockCropGenerator {
             e.printStackTrace();
         }
 
-        getBlockItem(JITL.MODID, name, maxStages);
-        getBlockModel(JITL.MODID, name, maxStages);
-        getBlockstate(JITL.MODID, name, maxStages);
-
-        writerInit(maxStages);
+        if(itemModelWriter != null) {
+            getBlockItem(JITL.MODID, name, maxStages);
+            getBlockModel(JITL.MODID, name, maxStages);
+            getBlockstate(JITL.MODID, name, maxStages);
+            writerInit(maxStages);
+        }
     }
 
     public void getBlockItem(String modID, String name, int maxStages) {

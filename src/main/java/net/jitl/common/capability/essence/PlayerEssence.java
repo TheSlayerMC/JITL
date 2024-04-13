@@ -6,11 +6,12 @@ import net.jitl.core.network.PacketEssenceBar;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.network.PacketDistributor;
+import net.neoforged.neoforge.common.util.INBTSerializable;
+import org.jetbrains.annotations.UnknownNullability;
 
 import java.util.Objects;
 
-public class PlayerEssence {
+public class PlayerEssence implements INBTSerializable<CompoundTag> {
     private float currentEssence;
     private float burnoutTime;
     private int timeout;
@@ -84,13 +85,17 @@ public class PlayerEssence {
         return consumeEssence(player, price);
     }
 
-    public void saveNBT(CompoundTag nbt) {
+    @Override
+    public @UnknownNullability CompoundTag serializeNBT() {
+        CompoundTag nbt = new CompoundTag();
         nbt.putFloat("essence", this.currentEssence);
         nbt.putFloat("burnoutTime", this.burnoutTime);
         nbt.putInt("timeout", this.timeout);
+        return nbt;
     }
 
-    public void readNBT(CompoundTag nbt) {
+    @Override
+    public void deserializeNBT(CompoundTag nbt) {
         currentEssence = nbt.getFloat("essence");
         burnoutTime = nbt.getFloat("burnoutTime");
         timeout = nbt.getInt("timeout");
@@ -98,7 +103,7 @@ public class PlayerEssence {
 
     public void sendPacket(Player player) {
         if(player != null && player instanceof ServerPlayer) {
-            JNetworkRegistry.INSTANCE.send(new PacketEssenceBar(this), PacketDistributor.PLAYER.with((ServerPlayer)player));
+            JNetworkRegistry.sendToPlayer((ServerPlayer)player, new PacketEssenceBar(getCurrentEssence(), getBurnout()));
         }
     }
 }

@@ -1,8 +1,9 @@
 package net.jitl.common.items;
 
-import net.jitl.common.capability.essence.PlayerEssenceProvider;
+import net.jitl.common.capability.essence.PlayerEssence;
 import net.jitl.common.items.base.JItem;
 import net.jitl.core.helper.IEssenceItem;
+import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
@@ -10,7 +11,9 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.NotNull;
@@ -33,9 +36,8 @@ public class BottleEssenciaItem extends JItem implements IEssenceItem {
 
         if(player != null) {
             if(!pLevel.isClientSide) {
-                player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
+                PlayerEssence essence = player.getData(JDataAttachments.ESSENCE);
                     essence.addEssence(player, strong ? 8 : 4);
-                });
             }
 
             if (!player.getAbilities().instabuild) {

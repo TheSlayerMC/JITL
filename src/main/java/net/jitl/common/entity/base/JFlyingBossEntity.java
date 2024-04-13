@@ -55,7 +55,7 @@ public abstract class JFlyingBossEntity extends JFlyingEntity implements IJourne
     @Override
     public void stopSeenByPlayer(ServerPlayer player) {
         super.stopSeenByPlayer(player);
-        JBossInfo.removeInfo(player, getEvent(), this);
+        JBossInfo.removeInfo(player, getEvent(), this.getId());
     }
 //
 //    @Override
@@ -74,7 +74,7 @@ public abstract class JFlyingBossEntity extends JFlyingEntity implements IJourne
                 if (d.getEntity() instanceof Player) {
                     AABB axisalignedbb = AABB.unitCubeFromLowerCorner(this.position()).inflate(10);
                     for (Player player : this.level().getEntitiesOfClass(Player.class, axisalignedbb)) {
-                        JBossInfo.addInfo((ServerPlayer) player, getEvent(), this);
+                        JBossInfo.addInfo((ServerPlayer) player, getEvent(), this.getId());
                     }
                 }
             }

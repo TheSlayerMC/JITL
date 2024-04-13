@@ -1,29 +1,18 @@
 package net.jitl.client.music;
 
-import net.jitl.common.world.dimension.Dimensions;
-import net.jitl.common.world.dimension.JBiomeRegistry;
 import net.jitl.core.helper.JMusic;
 import net.jitl.core.init.JITL;
-import net.jitl.core.init.internal.JSounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.client.resources.sounds.SoundInstance;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.Music;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-
-import java.util.Objects;
-import java.util.Random;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.event.TickEvent;
 
 @Mod.EventBusSubscriber(modid = JITL.MODID, value = Dist.CLIENT)
 public class JMusicTicker {
@@ -46,7 +35,7 @@ public class JMusicTicker {
                 if (currentTrack.getLocation() != shouldPlayTrack.getEvent().getLocation()) { //make sure the music that is playing is actually the correct one
                     switchTracks();
                 }
-                MINECRAFT.getMusicManager().nextSongDelay = 100; //freeze vanilla music counter so only jitl music will play. Sorry, C418! :D
+                //MINECRAFT.getMusicManager().nextSongDelay = 100; //freeze vanilla music counter so only jitl music will play. Sorry, C418! :D
                 if (!MINECRAFT.getSoundManager().isActive(currentTrack)) { //music loop
                     if (timeToNext <= 0) {
                         MINECRAFT.getSoundManager().play(currentTrack);
@@ -73,7 +62,7 @@ public class JMusicTicker {
         } else {
             currentTrack = null;
             Music vanillaMusic = MINECRAFT.getSituationalMusic();
-            MINECRAFT.getMusicManager().nextSongDelay = (Mth.nextInt(RANDOM, 0, vanillaMusic.getMinDelay() / 2)); //recreates a vanilla music swap
+            //MINECRAFT.getMusicManager().nextSongDelay = (Mth.nextInt(RANDOM, 0, vanillaMusic.getMinDelay() / 2)); //recreates a vanilla music swap
         }
     }
 

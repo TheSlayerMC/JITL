@@ -1,8 +1,9 @@
 package net.jitl.common.items.gear.korite;
 
-import net.jitl.common.capability.essence.PlayerEssenceProvider;
+import net.jitl.common.capability.essence.PlayerEssence;
 import net.jitl.common.items.gear.IAbility;
 import net.jitl.core.helper.TooltipFiller;
+import net.jitl.core.init.internal.JDataAttachments;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -14,7 +15,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.neoforged.neoforge.event.entity.living.LivingHurtEvent;
 
 import java.util.List;
 import java.util.Objects;
@@ -38,14 +39,14 @@ public class KoriteSwordAbility implements IAbility {
             ItemStack stack = player.getMainHandItem();
             if (!stack.hasTag()) stack.setTag(new CompoundTag());
             CompoundTag nbt = stack.getTag();
-            player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
+            PlayerEssence essence = player.getData(JDataAttachments.ESSENCE);
                 float bonus = Math.min(essence.getCurrentEssence(), 5.0F);
                 if (nbt != null)
                 if (nbt.getFloat("bonus") < bonus && essence.consumeEssence(player, bonus)) {
                     nbt.putFloat("bonus", bonus);
                     addModifier(player, bonus);
                 }
-            });
+
         }
     }
 

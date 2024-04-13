@@ -1,8 +1,8 @@
 package net.jitl.common.items;
 
-import net.jitl.common.capability.essence.PlayerEssenceProvider;
 import net.jitl.common.items.base.JItem;
 import net.jitl.core.helper.IEssenceItem;
+import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.sounds.SoundSource;
@@ -32,14 +32,12 @@ public class StaffItem extends JItem implements IEssenceItem {
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand usedHand) {
         ItemStack stack = player.getItemInHand(usedHand);
         if(!level.isClientSide()) {
-            player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
-                if(essence.consumeEssence(player, this.essenceUsage)) {
+                if(player.getData(JDataAttachments.ESSENCE).consumeEssence(player, this.essenceUsage)) {
                     ThrowableProjectile projectile = projectileFactory.apply(level, player);
                     projectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
                     level.addFreshEntity(projectile);
                     level.playSound(null, player.getX(), player.getY(), player.getZ(), JSounds.STAFF_0.get(), SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
                 }
-            });
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
     }

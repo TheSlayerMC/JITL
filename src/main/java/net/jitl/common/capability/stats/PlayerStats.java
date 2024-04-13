@@ -6,9 +6,10 @@ import net.jitl.core.data.JNetworkRegistry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.network.PacketDistributor;
+import net.neoforged.neoforge.common.util.INBTSerializable;
+import org.jetbrains.annotations.UnknownNullability;
 
-public class PlayerStats {
+public class PlayerStats implements INBTSerializable<CompoundTag> {
 
     private boolean hasBlizzard;
     private int sentacoins;
@@ -185,7 +186,7 @@ public class PlayerStats {
 
     public void sendPacket(EnumKnowledge k, Player player) {
         if(player instanceof ServerPlayer) {
-            JNetworkRegistry.INSTANCE.send(new PacketPlayerStats(k, this), PacketDistributor.PLAYER.with((ServerPlayer)player));
+            JNetworkRegistry.sendToPlayer((ServerPlayer) player, new PacketPlayerStats(hasBlizzard(), getSentacoins(), getXP(k), getLevel(k), k));
         }
     }
 
@@ -207,7 +208,9 @@ public class PlayerStats {
         return level >= 5 ? 50 : level >= 10 ? 70 : level >= 15 ? 90 : level >= 20 ? 110 : level >= 30 ? 130 : level >= 40 ? 150 : 30;
     }
 
-    public void saveNBT(CompoundTag tag) {
+    @Override
+    public @UnknownNullability CompoundTag serializeNBT() {
+        CompoundTag tag = new CompoundTag();
         tag.putBoolean("hasBlizzard", this.hasBlizzard);
         tag.putInt("sentacoins", this.sentacoins);
 
@@ -234,9 +237,11 @@ public class PlayerStats {
         tag.putFloat("cloudia_xp", cloudiaXP);
         tag.putFloat("terrania_xp", terraniaXP);
         tag.putFloat("senterian_xp", senterianXP);
+        return tag;
     }
 
-    public void readNBT(CompoundTag tag) {
+    @Override
+    public void deserializeNBT(CompoundTag tag) {
         hasBlizzard = tag.getBoolean("hasBlizzard");
         sentacoins = tag.getInt("sentacoins");
 

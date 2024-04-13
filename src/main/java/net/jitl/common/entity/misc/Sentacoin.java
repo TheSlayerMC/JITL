@@ -1,6 +1,6 @@
 package net.jitl.common.entity.misc;
 
-import net.jitl.common.capability.stats.PlayerStatsProvider;
+import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
@@ -112,9 +112,8 @@ public class Sentacoin extends Entity {
                 case COIN -> amount = 1 + coinRand;
             }
             final int finalAmount = amount;
-            player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
                 player.take(this, 1);
-                stats.addSentacoins(finalAmount);
+            player.getData(JDataAttachments.PLAYER_STATS).addSentacoins(finalAmount);
                 if(this.type == Type.BAG) {
                     for(int i = 0; i < 5; i++) {
                         this.playSound(JSounds.COIN_PICKUP.get(), 1.0F, 1.0F + random.nextFloat());
@@ -123,7 +122,6 @@ public class Sentacoin extends Entity {
                     this.playSound(JSounds.COIN_PICKUP.get(), 1.0F, 1.0F + random.nextFloat());
                 }
                 this.discard();
-            });
         }
     }
 

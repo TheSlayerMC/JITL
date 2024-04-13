@@ -3,17 +3,17 @@ package net.jitl.client;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.client.render.world.*;
 import net.jitl.client.util.ClientGetter;
-import net.jitl.common.capability.stats.PlayerStatsProvider;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterDimensionSpecialEffectsEvent;
-import net.minecraftforge.client.event.ViewportEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.client.event.RegisterDimensionSpecialEffectsEvent;
+import net.neoforged.neoforge.client.event.ViewportEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
@@ -28,17 +28,15 @@ public class ClientEventHandler {
         float farPlaneDistance = event.getFarPlaneDistance();
         Player player = ClientGetter.player();
         if (ClientGetter.level().dimension() == Dimensions.FROZEN_LANDS) {
-            player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(stats -> {
                 float density;
-                ICuriosItemHandler curios = CuriosApi.getCuriosInventory(player).resolve().get();
-                if(stats.hasBlizzard() || curios.findFirstCurio(JItems.EYE_OF_THE_BLIZZARD.get()).isPresent()) {
+                ICuriosItemHandler curios = CuriosApi.getCuriosInventory(player).get();
+                if(player.getData(JDataAttachments.PLAYER_STATS).hasBlizzard() || curios.findFirstCurio(JItems.EYE_OF_THE_BLIZZARD.get()).isPresent()) {
                     density = 0.55F;
                 } else {
                     density = 0.1F;
                 }
                 RenderSystem.setShaderFogStart(density);
                 RenderSystem.setShaderFogEnd(density * farPlaneDistance);
-            });
         }
 
         if(ClientGetter.level().dimension() == Dimensions.CLOUDIA) {

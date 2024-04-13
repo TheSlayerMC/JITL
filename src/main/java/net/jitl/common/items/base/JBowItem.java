@@ -1,7 +1,7 @@
 package net.jitl.common.items.base;
 
-import net.jitl.common.capability.essence.PlayerEssenceProvider;
 import net.jitl.common.entity.projectile.EssenceArrowEntity;
+import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JTags;
 import net.minecraft.ChatFormatting;
@@ -20,7 +20,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.ForgeEventFactory;
+import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -74,7 +74,7 @@ public class JBowItem extends BowItem {
             ItemStack itemstack = this.findAmmo(player);
 
             int i = this.maxUseDuration - timeLeft;
-            i = ForgeEventFactory.onArrowLoose(stack, worldIn, player, i, !itemstack.isEmpty() || emptyPickup);
+            i = EventHooks.onArrowLoose(stack, worldIn, player, i, !itemstack.isEmpty() || emptyPickup);
             if (i < 0) return;
 
             if (!itemstack.isEmpty() || emptyPickup) {
@@ -168,11 +168,9 @@ public class JBowItem extends BowItem {
 
                             if(effect.contains(EssenceArrowEntity.BowEffects.CONSUMES_ESSENCE)) {
                                 EssenceArrowEntity finalEntityarrow = entityarrow;
-                                player.getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(essence -> {
-                                    if(essence.consumeEssence(player, essence_use)) {
+                                    if(player.getData(JDataAttachments.ESSENCE).consumeEssence(player, essence_use)) {
                                         worldIn.addFreshEntity(finalEntityarrow);
                                     }
-                                });
                             }
 
                             if(!effect.contains(EssenceArrowEntity.BowEffects.CONSUMES_ESSENCE)) {

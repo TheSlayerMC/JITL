@@ -20,8 +20,8 @@ import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.minecraftforge.registries.RegistryObject;
-import org.jetbrains.annotations.NotNull;
+import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredItem;
 
 import java.util.Collections;
 import java.util.function.Function;
@@ -32,10 +32,10 @@ public class JBlockLootTables extends BlockLootSubProvider {
         super(Collections.emptySet(), FeatureFlags.REGISTRY.allFlags());
     }
 
-    @Override
-    protected @NotNull Iterable<Block> getKnownBlocks() {
-        return JBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
-    }
+//    @Override
+//    protected @NotNull Iterable<Block> getKnownBlocks() {
+//        return JBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
+//    }
 
     @Override
     protected void generate() {
@@ -610,19 +610,19 @@ public class JBlockLootTables extends BlockLootSubProvider {
         return createSilkTouchDispatchTable(pBlock, this.applyExplosionDecay(pBlock, LootItem.lootTableItem(drop).apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))));
     }
 
-    protected void add(RegistryObject<? extends Block> block, Function<Block, LootTable.Builder> factory) {
+    protected void add(DeferredBlock<? extends Block> block, Function<Block, LootTable.Builder> factory) {
         this.add(block.get(), factory.apply(block.get()));
     }
 
-    public void dropSelf(RegistryObject<? extends Block> block) {
+    public void dropSelf(DeferredBlock<? extends Block> block) {
         this.dropSelf(block.get());
     }
 
-    public void dropOther(RegistryObject<? extends Block> block, RegistryObject<? extends Item> item) {
+    public void dropOther(DeferredBlock<? extends Block> block, DeferredItem<? extends Item> item) {
         this.dropOther(block.get(), item.get());
     }
 
-    protected void add(RegistryObject<? extends Block> block, LootTable.Builder builder) {
+    protected void add(DeferredBlock<? extends Block> block, LootTable.Builder builder) {
         add(block.get(), builder);
     }
 }

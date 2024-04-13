@@ -1,26 +1,32 @@
 package net.jitl.core.init.internal;
 
+import net.jitl.client.gui.screen.JFurnaceScreen;
 import net.jitl.client.gui.screen.SummoningTableScreen;
 import net.jitl.common.block.entity.container.JFurnaceMenu;
-import net.jitl.client.gui.screen.JFurnaceScreen;
 import net.jitl.common.block.entity.container.SummoningTableContainer;
 import net.jitl.core.helper.internal.EmptyContainer;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
-import net.minecraftforge.common.extensions.IForgeMenuType;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
+import net.neoforged.neoforge.network.IContainerFactory;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class JContainers {
-    public static final DeferredRegister<MenuType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.MENU_TYPES, JITL.MODID);
+    public static final DeferredRegister<MenuType<?>> REGISTRY = DeferredRegister.create(Registries.MENU, JITL.MODID);
 
-    public static RegistryObject<MenuType<EmptyContainer>> EMPTY_CONTAINER = REGISTRY.register("empty", () -> IForgeMenuType.create(EmptyContainer::createContainerClientSide));
+    public static DeferredHolder<MenuType<?>, MenuType<EmptyContainer>> EMPTY_CONTAINER = registerContainer("empty", (s, in, buf) -> new EmptyContainer().create(s, in, buf));
 
-    public static final RegistryObject<MenuType<JFurnaceMenu>> JFURNACE = REGISTRY.register("jfurnace", () -> IForgeMenuType.create((id, inv, data) -> new JFurnaceMenu(id, inv)));
+    public static final DeferredHolder<MenuType<?>, MenuType<JFurnaceMenu>> JFURNACE = registerContainer("jfurnace", (id, inv, data) -> new JFurnaceMenu(id, inv));
 
-    public static final RegistryObject<MenuType<SummoningTableContainer>> SUMMONING_TABLE = REGISTRY.register("summoning_table", () -> IForgeMenuType.create(SummoningTableContainer::new));
+    public static final DeferredHolder<MenuType<?>, MenuType<SummoningTableContainer>> SUMMONING_TABLE = registerContainer("summoning_table", SummoningTableContainer::new);
+
+    private static <T extends AbstractContainerMenu> DeferredHolder<MenuType<?>, MenuType<T>> registerContainer(String id, IContainerFactory<T> factory) {
+        return JContainers.REGISTRY.register(id, () -> IMenuTypeExtension.create(factory));
+    }
 
     public static void register() {
         MenuScreens.register(JFURNACE.get(), JFurnaceScreen::new);

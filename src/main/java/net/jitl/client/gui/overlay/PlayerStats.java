@@ -3,10 +3,10 @@ package net.jitl.client.gui.overlay;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.client.stats.ClientPlayerStats;
-import net.jitl.common.capability.stats.PlayerStatsProvider;
 import net.jitl.core.helper.internal.ArgbColor;
 import net.jitl.core.helper.internal.EmptyContainer;
 import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.JDataAttachments;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -15,8 +15,8 @@ import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(Dist.CLIENT)
@@ -156,8 +156,8 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         RenderSystem.setShader(GameRenderer::getPositionTexColorNormalShader);
         RenderSystem.setShaderTexture(0, this.KNOWLEDGE_SPRITE);
         if(player != null) {
-            player.getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(knowledge -> {
-                boolean completed = knowledge.isCompleted(type);
+            net.jitl.common.capability.stats.PlayerStats knowledge = player.getData(JDataAttachments.PLAYER_STATS);
+            boolean completed = knowledge.isCompleted(type);
                 float percents = knowledge.getXP(type) / knowledge.getLevelCapacity(knowledge.getLevel(type));
                 int width = (int) (percents * progressBarSize);
 
@@ -175,7 +175,6 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
                 String level = "" + getLevelCount;
 
                 matrixStack.drawString(font, "" + (getLevelCount), lvX - this.font.width(level) / 2 + 4, lvY, ArgbColor.from(ChatFormatting.WHITE), true);
-            });
         }
     }
 
