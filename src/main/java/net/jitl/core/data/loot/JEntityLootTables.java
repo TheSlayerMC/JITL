@@ -1,8 +1,11 @@
 package net.jitl.core.data.loot;
 
+import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.EntityLootSubProvider;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
@@ -13,11 +16,22 @@ import net.minecraft.world.level.storage.loot.functions.LootingEnchantFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.stream.Stream;
 
 public class JEntityLootTables extends EntityLootSubProvider {
 
     protected JEntityLootTables() {
         super(FeatureFlags.REGISTRY.allFlags());
+    }
+
+    @Override
+    protected @NotNull Stream<EntityType<?>> getKnownEntityTypes() {
+        return BuiltInRegistries.ENTITY_TYPE.stream()
+                .filter(block -> BuiltInRegistries.ENTITY_TYPE.getKey(block)
+                        .getNamespace()
+                        .equals(JITL.MODID));
     }
 
     @Override
@@ -466,10 +480,4 @@ public class JEntityLootTables extends EntityLootSubProvider {
     private LootTable.Builder empty() {
         return LootTable.lootTable();
     }
-
-//
-//    @Override
-//    protected @NotNull Stream<EntityType<?>> getKnownEntityTypes() {
-//        return JEntities.REGISTRY.getEntries().stream().map(RegistryObject::get);
-//    }
 }

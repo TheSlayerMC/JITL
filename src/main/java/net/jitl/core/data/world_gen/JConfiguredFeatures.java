@@ -62,6 +62,7 @@ public class JConfiguredFeatures {
     public static final RuleTest NETHER_ORE_REPLACEABLES = new TagMatchTest(JTags.NETHER_ORE_REPLACEABLES);
     public static final RuleTest OVERWORLD_REPLACEABLES = new TagMatchTest(JTags.OVERWORLD_ORE_REPLACEABLES);
     public static final RuleTest OVERWORLD_DEEPSLATE_REPLACEABLES = new TagMatchTest(JTags.DEEPSLATE_ORE_REPLACEABLES);
+    public static final RuleTest BASALT_REPLACEABLES = new TagMatchTest(JTags.BASALT_ORE_REPLACEABLES);
     public static final RuleTest END_REPLACEABLES = new TagMatchTest(JTags.END_STONE);
     public static final RuleTest EUCA_REPLACEABLES = new TagMatchTest(JTags.EUCA_STONE_ORE_REPLACEABLES);
     public static final RuleTest FROZEN_REPLACEABLES = new TagMatchTest(JTags.FROZEN_STONE_ORE_REPLACEABLES);
@@ -85,6 +86,7 @@ public class JConfiguredFeatures {
             WARPED_QUARTZ_ORE = registerKey("warped_quartz_ore"),
             CRIMSON_QUARTZ_ORE = registerKey("crimson_quartz_ore"),
             BLOODCRUST_ORE = registerKey("bloodcrust_ore"),
+            FIRESTONE_ORE = registerKey("firestone_ore"),
             BLOOD_ROCK = registerKey("blood_rock");
 
     //END
@@ -202,6 +204,7 @@ public class JConfiguredFeatures {
         register(context, BLEEDSTONE, JFeatures.BLEEDSTONE.get(), new NoneFeatureConfiguration());
         register(context, WARPED_QUARTZ_ORE, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(NETHER_ORE_REPLACEABLES, JBlocks.WARPED_QUARTZ_ORE.get().defaultBlockState()))).get(), 12));
         register(context, CRIMSON_QUARTZ_ORE, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(NETHER_ORE_REPLACEABLES, JBlocks.CRIMSON_QUARTZ_ORE.get().defaultBlockState()))).get(), 12));
+        register(context, FIRESTONE_ORE, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(BASALT_REPLACEABLES, JBlocks.FIRESTONE_ORE.get().defaultBlockState()))).get(), 7));
         register(context, BLOODCRUST_ORE, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(NETHER_ORE_REPLACEABLES, JBlocks.BLOODCRUST_ORE.get().defaultBlockState()))).get(), 7));
         register(context, BLOOD_ROCK, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(NETHER_ORE_REPLACEABLES, JBlocks.BLOOD_ROCK.get().defaultBlockState()))).get(), 10));
 

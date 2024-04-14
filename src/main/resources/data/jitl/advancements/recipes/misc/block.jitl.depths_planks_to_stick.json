@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_block.jitl.depths_planks": {
+    "has_item": {
       "conditions": {
         "items": [
           {
@@ -15,21 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "jitl:block.jitl.depths_planks_to_stick"
+        "recipe": "minecraft:block.jitl.depths_planks_to_stick"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_block.jitl.depths_planks",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_item"
     ]
   ],
   "rewards": {
     "recipes": [
-      "jitl:block.jitl.depths_planks_to_stick"
+      "minecraft:block.jitl.depths_planks_to_stick"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

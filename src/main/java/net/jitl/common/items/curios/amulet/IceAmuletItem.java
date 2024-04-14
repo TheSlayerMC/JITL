@@ -59,9 +59,9 @@ public class IceAmuletItem extends JCurioItem {
 
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
-        AttributeInstance attribMovementSpeed = slotContext.getWearer().getAttribute(Attributes.MOVEMENT_SPEED);
-        AttributeInstance attribAttackDamage = slotContext.getWearer().getAttribute(Attributes.ATTACK_DAMAGE);
-        AttributeInstance attribAttackSpeed = slotContext.getWearer().getAttribute(Attributes.ATTACK_SPEED);
+        AttributeInstance attribMovementSpeed = slotContext.entity().getAttribute(Attributes.MOVEMENT_SPEED);
+        AttributeInstance attribAttackDamage = slotContext.entity().getAttribute(Attributes.ATTACK_DAMAGE);
+        AttributeInstance attribAttackSpeed = slotContext.entity().getAttribute(Attributes.ATTACK_SPEED);
 
         if (attribMovementSpeed.hasModifier(SPEED_MOD)) {
             attribMovementSpeed.removeModifier(SPEED_MOD.getId());

@@ -1,0 +1,13 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_nether",
+  "features": [
+    "jitl:bloodcrust_ore",
+    "jitl:bleedstone",
+    "jitl:smithstone",
+    "jitl:crimson_quartz_ore",
+    "jitl:blood_rock",
+    "jitl:firestone_ore"
+  ],
+  "step": "underground_ores"
+}

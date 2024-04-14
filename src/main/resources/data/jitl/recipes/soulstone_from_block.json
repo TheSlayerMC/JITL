@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "building",
-  "group": "soulstone",
+  "group": "jitl:soulstone",
   "ingredients": [
     {
       "item": "jitl:soulstone_block"

@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item.minecraft.snowball": {
+    "has_item": {
       "conditions": {
         "items": [
           {
@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_item.minecraft.snowball",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_item"
     ]
   ],
   "rewards": {
     "recipes": [
       "jitl:frozen_portal_frame"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

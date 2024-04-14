@@ -70,16 +70,16 @@ dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
 
     compileOnly "mezz.jei:jei-" + minecraft_version + "-common-api:" + jei_version
-    compileOnly "mezz.jei:jei-" + minecraft_version + "-forge-api:" + jei_version
-    runtimeOnly "mezz.jei:jei-" + minecraft_version + "-forge:" + jei_version
+    compileOnly "mezz.jei:jei-" + minecraft_version + "-neoforge-api:" + jei_version
+    runtimeOnly "mezz.jei:jei-" + minecraft_version + "-neoforge:" + jei_version
 
     runtimeOnly "top.theillusivec4.curios:curios-neoforge:" + curios_version
     compileOnly "top.theillusivec4.curios:curios-neoforge:" + curios_version + ":api"
 
     implementation "software.bernie.geckolib:geckolib-neoforge-" + gekolib_version
-//
-//    compileOnly "vazkii.patchouli:Patchouli:${buildProps["patchouli.version"]}:api"
-//    runtimeOnly "vazkii.patchouli:Patchouli:${buildProps["patchouli.version"]}"
+
+    compileOnly "vazkii.patchouli:Patchouli:" + patchouli_version + ":api"
+    runtimeOnly "vazkii.patchouli:Patchouli:" + patchouli_version
 }
 
 tasks.withType(ProcessResources).configureEach {

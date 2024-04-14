@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item.minecraft.gold_ingot": {
+    "has_item": {
       "conditions": {
         "items": [
           {
@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_item.minecraft.gold_ingot",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_item"
     ]
   ],
   "rewards": {
     "recipes": [
       "jitl:flame_coin"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

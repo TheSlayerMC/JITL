@@ -101,6 +101,91 @@ public class LangRegistry {
         writeToFile("\"curios.identifier.heart_container\" : \"Heart\",");
         writeToFile("\"curios.identifier.catalyst\" : \"Catalyst\",");
 
+        writeToFile("\"book.jitl.landing_text\" : " + "\"Welcome to Journey Into The Light\",");
+        writeToFile("\"book.jitl.book_name\" : " + "\"Essentia Bible\",");
+
+        writeToFile("\"book.jitl.category.getting_started\" : " + "\"Getting Started\",");
+        writeToFile("\"book.jitl.category.getting_started.desc\" : " + "\"This should give you the tips and hints on getting started.\",");
+        writeToFile("\"book.jitl.entries.getting_started.ores\" : " + "\"Ores\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.iridium_ore.title\" : " + "\"Iridium Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.iridium_ore.1\" : " + "\"Ore that generates in the Overworld between Y -80 and 48\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.sapphire_ore.title\" : " + "\"Sapphire Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.sapphire_ore.1\" : " + "\"Ore that generates in the Overworld between Y -80 and 48\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.shadium_ore.title\" : " + "\"Shadium Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.shadium_ore.1\" : " + "\"Ore that generates in the Overworld between Y -80 and 48\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.lunium_ore.title\" : " + "\"Lunium Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.lunium_ore.1\" : " + "\"Ore that generates in the Overworld between Y -80 and 48\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.verdite_ore.title\" : " + "\"Verdite Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.verdite_ore.1\" : " + "\"Ore that generates in the Overworld between Y -80 and 48\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.blood_rock.title\" : " + "\"Blood Rock\",");
+        writeToFile("\"book.jitl.entry.getting_started.blood_rock.1\" : " + "\"Stone that generates in the Nether between Y -64 and 256. This is used for Summoning Blocks and the Summoning Shrine\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.bloodcrust_ore.title\" : " + "\"Bloodcrust Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.bloodcrust_ore.1\" : " + "\"Ore that generates in the Nether Y -64 and 256\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.bleedstone_block.title\" : " + "\"Bleedstone\",");
+        writeToFile("\"book.jitl.entry.getting_started.bleedstone_block.1\" : " + "\"Ore that generates in the Nether on the roof\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.smithstone_block.title\" : " + "\"Smithstone\",");
+        writeToFile("\"book.jitl.entry.getting_started.smithstone_block.1\" : " + "\"Ore that generates in the Nether on the roof\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.warped_quartz_ore.title\" : " + "\"Warped Quartz Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.warped_quartz_ore.1\" : " + "\"Ore that generates in the Nether Biome Warped Forest\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.crimson_quartz_ore.title\" : " + "\"Crimson Quartz Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.crimson_quartz_ore.1\" : " + "\"Ore that generates in the Nether Biome Crimson Forest\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.firestone_ore.title\" : " + "\"Firestone Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.firestone_ore.1\" : " + "\"Ore that generates in the Nether in Basalt\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.enderillium_ore.title\" : " + "\"Enderillium Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.enderillium_ore.1\" : " + "\"Ore that generates in the End Islands\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.ashual_ore.title\" : " + "\"Ashual Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.ashual_ore.1\" : " + "\"Ore that generates in the Boiling Point\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.blazium_ore.title\" : " + "\"Blazium Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.blazium_ore.1\" : " + "\"Ore that generates in the Boiling Point\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.mekyum_ore.title\" : " + "\"Mekyum Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.mekyum_ore.1\" : " + "\"Ore that generates in Euca Biome Goldite Grains\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.celestium_ore.title\" : " + "\"Celestium Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.celestium_ore.1\" : " + "\"Ore that generates in Euca Biome Euca Plains\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.storon_ore.title\" : " + "\"Storon Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.storon_ore.1\" : " + "\"Ore that generates in Euca Biome Goldite Grains\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.korite_ore.title\" : " + "\"Korite Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.korite_ore.1\" : " + "\"Ore that generates in Euca Biome Euca Plains\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.rimestone_ore.title\" : " + "\"Rimestone Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.rimestone_ore.1\" : " + "\"Ore that generates in Frozen Lands\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.peridot_ore.title\" : " + "\"Peridot Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.peridot_ore.1\" : " + "\"Ore that generates in Frozen Lands\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.des_ore.title\" : " + "\"Des Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.des_ore.1\" : " + "\"Ore that generates in The Depths\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.flairium_ore.title\" : " + "\"Flairium Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.flairium_ore.1\" : " + "\"Ore that generates in The Depths\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.orbadite_ore.title\" : " + "\"Orbadite Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.orbadite_ore.1\" : " + "\"Ore that generates in Corba\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.gorbite_ore.title\" : " + "\"Gorbite Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.gorbite_ore.1\" : " + "\"Ore that generates in Corba\",");
+
+        writeToFile("\"book.jitl.entry.getting_started.lunite_ore.title\" : " + "\"Lunite Ore\",");
+        writeToFile("\"book.jitl.entry.getting_started.lunite_ore.1\" : " + "\"Ore that generates in Cloudia\",");
+
         writeToFile("\"jitl.trader.boil_trader1\" : \"Boil Trader: It's not often that newcomers arrive here. Can you stand the heat?\",");
         writeToFile("\"jitl.trader.boil_trader2\" : \"Boil Trader: I'm an unusual collector, but I have the best deals of any realm!\",");
         writeToFile("\"jitl.trader.boil_trader3\" : \"Boil Trader: I can see that you're having a tough time getting around. An armor upgrade, perhaps?\",");

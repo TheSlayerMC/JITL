@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item.jitl.yellow_gem": {
+    "has_item": {
       "conditions": {
         "items": [
           {
@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_item.jitl.yellow_gem",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_item"
     ]
   ],
   "rewards": {
     "recipes": [
       "jitl:yellow_gem_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

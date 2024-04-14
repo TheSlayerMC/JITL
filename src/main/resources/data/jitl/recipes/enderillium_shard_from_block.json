@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "building",
-  "group": "enderillium_shard",
+  "group": "jitl:enderillium_shard",
   "ingredients": [
     {
       "item": "jitl:enderillium_block"

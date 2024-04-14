@@ -109,8 +109,8 @@ public class JRecipeRegistry extends JRecipeProvider {
         addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.DEMONIC_BONE.get(), JItems.DEMONIC_DUST.get(), 5);
         addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.SMITHSTONE.get(), JItems.SMITHSTONE_DUST.get(), 4);
         addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.BLEEDSTONE.get(), JItems.BLEEDSTONE_DUST.get(), 4);
-        addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.BLEEDSTONE_DUST.get(), JItems.SMITHSTONE_DUST.get(), JItems.SOULSTONE.get(), 1, "_2");
-        addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.SHADIUM_INGOT.get(), Items.DIAMOND, JItems.DARK_GEM.get(), 1, "_2");
+        addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.BLEEDSTONE_DUST.get(), JItems.SMITHSTONE_DUST.get(), JItems.SOULSTONE.get(), 1);
+        addShapelessRecipe(recipeConsumer, RecipeCategory.MISC, JItems.SHADIUM_INGOT.get(), Items.DIAMOND, JItems.DARK_GEM.get(), 1);
         addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "ddd", 'd', JItems.BLOODCRUST_INGOT.get(), JItems.BLOODCRUST_CLUMP.get(), 1);
         addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "ddd", 'd', JItems.SHADIUM_INGOT.get(), JItems.SHADIUM_CLUMP.get(), 1);
         addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "ddd", 'd', JItems.LUNIUM_INGOT.get(), JItems.LUNIUM_CLUMP.get(), 1);

@@ -1,8 +1,10 @@
 package net.jitl.core.data.loot;
 
+import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
@@ -22,6 +24,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCon
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.function.Function;
@@ -32,10 +35,14 @@ public class JBlockLootTables extends BlockLootSubProvider {
         super(Collections.emptySet(), FeatureFlags.REGISTRY.allFlags());
     }
 
-//    @Override
-//    protected @NotNull Iterable<Block> getKnownBlocks() {
-//        return JBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
-//    }
+    @Override
+    protected @NotNull Iterable<Block> getKnownBlocks() {
+        return BuiltInRegistries.BLOCK.stream()
+                .filter(block -> BuiltInRegistries.BLOCK.getKey(block)
+                        .getNamespace()
+                        .equals(JITL.MODID))
+                .toList();
+    }
 
     @Override
     protected void generate() {

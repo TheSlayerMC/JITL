@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "building",
-  "group": "bloodcrust_ingot",
+  "group": "jitl:bloodcrust_ingot",
   "ingredients": [
     {
       "item": "jitl:bloodcrust_block"

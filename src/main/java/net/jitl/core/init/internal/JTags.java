@@ -24,6 +24,7 @@ public class JTags {
     public static final TagKey<Block> NETHER_ORE_REPLACEABLES = tagBlock("nether_ore_replaceables");
     public static final TagKey<Block> OVERWORLD_ORE_REPLACEABLES = tagBlock("overworld_ore_replaceables");
     public static final TagKey<Block> DEEPSLATE_ORE_REPLACEABLES = tagBlock("deepslate_ore_replaceables");
+    public static final TagKey<Block> BASALT_ORE_REPLACEABLES = tagBlock("basalt_replaceables");
     public static final TagKey<Block> END_STONE = tagBlock("end_stone");
     public static final TagKey<Block> JLOGS = tagBlock("jlogs");
     public static final TagKey<Block> JPLANKS = tagBlock("planks");

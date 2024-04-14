@@ -16,13 +16,15 @@ import java.util.Set;
 public class JLootTableSubProvider extends LootTableProvider {
 
     public JLootTableSubProvider(PackOutput pOutput) {
-        super(pOutput, Set.of(), ImmutableList.of(new SubProviderEntry(JBlockLootTables::new, LootContextParamSets.BLOCK)
+        super(pOutput, Set.of(), ImmutableList.of(
+                new SubProviderEntry(JBlockLootTables::new, LootContextParamSets.BLOCK)
                 , new SubProviderEntry(JEntityLootTables::new, LootContextParamSets.ENTITY)));
     }
 
     @Override
     public @NotNull List<SubProviderEntry> getTables() {
-        return ImmutableList.of(new SubProviderEntry(JBlockLootTables::new, LootContextParamSets.BLOCK)
+        return ImmutableList.of(
+                new SubProviderEntry(JBlockLootTables::new, LootContextParamSets.BLOCK)
                 , new SubProviderEntry(JEntityLootTables::new, LootContextParamSets.ENTITY));
     }
 

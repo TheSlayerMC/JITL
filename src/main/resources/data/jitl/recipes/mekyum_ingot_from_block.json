@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "building",
-  "group": "mekyum_ingot",
+  "group": "jitl:mekyum_ingot",
   "ingredients": [
     {
       "item": "jitl:mekyum_block"

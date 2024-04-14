@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item.jitl.mekyum_gemstone": {
+    "has_item": {
       "conditions": {
         "items": [
           {
@@ -15,21 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "jitl:item.jitl.mekyum_ingot_raw_blasting"
+        "recipe": "minecraft:item.jitl.mekyum_ingot_raw_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_item.jitl.mekyum_gemstone",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_item"
     ]
   ],
   "rewards": {
     "recipes": [
-      "jitl:item.jitl.mekyum_ingot_raw_blasting"
+      "minecraft:item.jitl.mekyum_ingot_raw_blasting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_block.jitl.euca_brown_planks": {
+    "has_item": {
       "conditions": {
         "items": [
           {
@@ -15,21 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "jitl:block.jitl.euca_brown_planks_to_hoe"
+        "recipe": "minecraft:block.jitl.euca_brown_planks_to_hoe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_block.jitl.euca_brown_planks",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_item"
     ]
   ],
   "rewards": {
     "recipes": [
-      "jitl:block.jitl.euca_brown_planks_to_hoe"
+      "minecraft:block.jitl.euca_brown_planks_to_hoe"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

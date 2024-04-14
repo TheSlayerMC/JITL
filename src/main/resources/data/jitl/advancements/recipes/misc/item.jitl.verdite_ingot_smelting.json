@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_block.jitl.verdite_ore": {
+    "has_item": {
       "conditions": {
         "items": [
           {
@@ -15,21 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "jitl:item.jitl.verdite_ingot_smelting"
+        "recipe": "minecraft:item.jitl.verdite_ingot_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_block.jitl.verdite_ore",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_item"
     ]
   ],
   "rewards": {
     "recipes": [
-      "jitl:item.jitl.verdite_ingot_smelting"
+      "minecraft:item.jitl.verdite_ingot_smelting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

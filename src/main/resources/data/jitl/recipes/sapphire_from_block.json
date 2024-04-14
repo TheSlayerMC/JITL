@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "building",
-  "group": "sapphire",
+  "group": "jitl:sapphire",
   "ingredients": [
     {
       "item": "jitl:sapphire_block"

@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_block.jitl.warped_quartz_ore": {
+    "has_item": {
       "conditions": {
         "items": [
           {
@@ -15,21 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "jitl:item.jitl.warped_quartz_smelting"
+        "recipe": "minecraft:item.jitl.warped_quartz_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_block.jitl.warped_quartz_ore",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_item"
     ]
   ],
   "rewards": {
     "recipes": [
-      "jitl:item.jitl.warped_quartz_smelting"
+      "minecraft:item.jitl.warped_quartz_smelting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "building",
-  "group": "firestone_clump",
+  "group": "jitl:firestone_clump",
   "ingredients": [
     {
       "item": "jitl:firestone_block"

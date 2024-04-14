@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "building",
-  "group": "celestium_ingot",
+  "group": "jitl:celestium_ingot",
   "ingredients": [
     {
       "item": "jitl:celestium_block"

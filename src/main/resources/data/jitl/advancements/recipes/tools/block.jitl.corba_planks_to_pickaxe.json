@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_block.jitl.corba_planks": {
+    "has_item": {
       "conditions": {
         "items": [
           {
@@ -15,21 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "jitl:block.jitl.corba_planks_to_pickaxe"
+        "recipe": "minecraft:block.jitl.corba_planks_to_pickaxe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_block.jitl.corba_planks",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_item"
     ]
   ],
   "rewards": {
     "recipes": [
-      "jitl:block.jitl.corba_planks_to_pickaxe"
+      "minecraft:block.jitl.corba_planks_to_pickaxe"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

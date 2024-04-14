@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "minecraft:warped_forest",
-  "features": "jitl:warped_quartz_ore",
-  "step": "underground_ores"
-}

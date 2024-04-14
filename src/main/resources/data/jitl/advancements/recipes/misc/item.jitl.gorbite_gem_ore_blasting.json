@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_block.jitl.gorbite_ore": {
+    "has_item": {
       "conditions": {
         "items": [
           {
@@ -15,21 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "jitl:item.jitl.gorbite_gem_ore_blasting"
+        "recipe": "minecraft:item.jitl.gorbite_gem_ore_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_block.jitl.gorbite_ore",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_item"
     ]
   ],
   "rewards": {
     "recipes": [
-      "jitl:item.jitl.gorbite_gem_ore_blasting"
+      "minecraft:item.jitl.gorbite_gem_ore_blasting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

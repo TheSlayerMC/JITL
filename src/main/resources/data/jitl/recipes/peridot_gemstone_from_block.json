@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "building",
-  "group": "peridot_gemstone",
+  "group": "jitl:peridot_gemstone",
   "ingredients": [
     {
       "item": "jitl:peridot_block"

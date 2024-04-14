@@ -265,7 +265,7 @@ public class JBlockProperties {
     public static BlockBehaviour.Properties PORTAL = BlockBehaviour.Properties.of()
             .strength(100F)
             .sound(SoundType.GLASS)
-            .lightLevel((state) -> 4)
+            .lightLevel((state) -> 6)
             .noOcclusion()
             .noCollission();
 

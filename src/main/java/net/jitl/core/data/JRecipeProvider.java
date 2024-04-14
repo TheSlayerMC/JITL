@@ -1,6 +1,5 @@
 package net.jitl.core.data;
 
-import net.jitl.core.init.JITL;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -57,7 +56,7 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
         ShapedRecipeBuilder.shaped(cat, output, count).define(s, input)
                 .pattern(t)
                 .pattern(m)
-                .pattern(b).unlockedBy(inputToKey(input), has(input)).save(recipeConsumer, "jitl:" + getItemFromRegistryName(input.toString()) + name);
+                .pattern(b).unlockedBy(inputToKey(input), has(input)).save(recipeConsumer, getItemFromRegistryName(input.toString()) + name);
     }
 
     protected void addShapedRecipe(RecipeOutput recipeConsumer, RecipeCategory cat, String m, String b, char s, ItemLike input, char s2, ItemLike input2, char s3, ItemLike input3, ItemLike output, int count) {
@@ -117,11 +116,21 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
     }
 
     protected void addShapelessRecipe(RecipeOutput recipeConsumer, RecipeCategory cat, ItemLike input, ItemLike input2, ItemLike output, int count, String name) {
-        ShapelessRecipeBuilder.shapeless(cat, output, count).requires(input).requires(input2).unlockedBy(inputToKey(input), has(input)).unlockedBy(inputToKey(input2), has(input2)).save(recipeConsumer, "jitl:" + getItemFromRegistryName(output.toString()) + name);
+        ShapelessRecipeBuilder.shapeless(cat, output, count)
+                .requires(input)
+                .requires(input2)
+                .unlockedBy(inputToKey(input), has(input))
+                .unlockedBy(inputToKey(input2), has(input2))
+                .save(recipeConsumer, getItemFromRegistryName(output.toString()).toString() + name);
     }
 
     protected void addShapelessRecipe(RecipeOutput recipeConsumer, RecipeCategory cat, ItemLike input, ItemLike input2, ItemLike output, int count) {
-        addShapelessRecipe(recipeConsumer, cat, input, input2, output, count, getItemFromRegistryName(output.toString()).toString());
+        ShapelessRecipeBuilder.shapeless(cat, output, count)
+                .requires(input)
+                .requires(input2)
+                .unlockedBy(inputToKey(input), has(input))
+                .unlockedBy(inputToKey(input2), has(input2))
+                .save(recipeConsumer);
     }
 
     protected void addShapelessRecipe(RecipeOutput recipeConsumer, RecipeCategory cat, ItemLike input, ItemLike input2, ItemLike input3, ItemLike output, int count) {
@@ -135,9 +144,8 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
                 .pattern("###").unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, input, 9).requires(output)
-                .unlockedBy(inputToKey(output), has(output)).group(input.asItem().toString()).save(recipeConsumer, "jitl:" + getItemFromRegistryName(input.toString()) + "_from_block");
-
-        JITL.LOGGER.info(input.asItem().getDescriptionId());
+                .unlockedBy(inputToKey(output), has(output)).group(input.asItem().toString())
+                .save(recipeConsumer, getItemFromRegistryName(input.toString()) + "_from_block");
     }
 
     protected void add2x2Recipe(RecipeOutput recipeConsumer, ItemLike input, ItemLike output, int count, boolean addReverse) {
@@ -155,7 +163,7 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
 
     public void addOreDefaultItems(RecipeOutput recipeConsumer, RecipePrefix name, ItemLike block, ItemLike oreBlock, ItemLike deepslateOre, ItemLike raw, ItemLike ingot, ItemLike stickItem) {
         addToolsetAndArmorRecipes(recipeConsumer, stickItem, ingot, name);
-        addShieldRecipe(recipeConsumer, ingot,  getItemFromRegistryName(name.getString() + "shield"));
+        addShieldRecipe(recipeConsumer, ingot,  getItemFromRegistryName("jitl:" + name.getString() + "shield"));
         addOreBlockRecipe(recipeConsumer, ingot, block);
         addBlastingRecipe(recipeConsumer, oreBlock, ingot, 1.0F, 100, "_ore_blasting");
         addSmeltingRecipe(recipeConsumer, oreBlock, ingot, 1.0F, 200,  "_ore_smelting");
@@ -171,7 +179,7 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
 
     public void addOreNoArmorItems(RecipeOutput recipeConsumer, RecipePrefix name, ItemLike block, ItemLike oreBlock, ItemLike deepslateOre, ItemLike raw, ItemLike ingot, ItemLike stickItem) {
         addToolsetRecipes(recipeConsumer, stickItem, ingot, name);
-        addShieldRecipe(recipeConsumer, ingot,  getItemFromRegistryName(name.getString() + "shield"));
+        addShieldRecipe(recipeConsumer, ingot,  getItemFromRegistryName("jitl:" + name.getString() + "shield"));
         addOreBlockRecipe(recipeConsumer, ingot, block);
         if(oreBlock != null) {
             addBlastingRecipe(recipeConsumer, oreBlock, ingot, 1.0F, 100, "_ore_blasting");
@@ -193,23 +201,23 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
     }
 
     protected void addToolsetRecipes(RecipeOutput recipeConsumer, ItemLike stickItem, ItemLike materialItem, RecipePrefix recipePrefix) {
-        addAxeRecipe(recipeConsumer, stickItem, materialItem, getItemFromRegistryName((recipePrefix.getString() + "axe")));
-        addPickaxeRecipe(recipeConsumer, stickItem, materialItem, getItemFromRegistryName(recipePrefix.getString() + "pickaxe"));
-        addShovelRecipe(recipeConsumer, stickItem, materialItem, getItemFromRegistryName(recipePrefix.getString() + "shovel"));
-        addSwordRecipe(recipeConsumer, stickItem, materialItem, getItemFromRegistryName(recipePrefix.getString() + "sword"));
-        addHoeRecipe(recipeConsumer, stickItem, materialItem, getItemFromRegistryName(recipePrefix.getString() + "hoe"));
+        addAxeRecipe(recipeConsumer, stickItem, materialItem, getItemFromRegistryName("jitl:" + (recipePrefix.getString() + "axe")));
+        addPickaxeRecipe(recipeConsumer, stickItem, materialItem, getItemFromRegistryName("jitl:" + recipePrefix.getString() + "pickaxe"));
+        addShovelRecipe(recipeConsumer, stickItem, materialItem, getItemFromRegistryName("jitl:" + recipePrefix.getString() + "shovel"));
+        addSwordRecipe(recipeConsumer, stickItem, materialItem, getItemFromRegistryName("jitl:" + recipePrefix.getString() + "sword"));
+        addHoeRecipe(recipeConsumer, stickItem, materialItem, getItemFromRegistryName("jitl:" + recipePrefix.getString() + "hoe"));
         addMultitoolRecipe(recipeConsumer,
-                getItemFromRegistryName((recipePrefix.getString() + "axe")), getItemFromRegistryName(recipePrefix.getString() + "pickaxe")
-                , getItemFromRegistryName(recipePrefix.getString() + "shovel"), getItemFromRegistryName(recipePrefix.getString() + "hoe")
-                , getItemFromRegistryName(recipePrefix.getString() + "multitool"));
+                getItemFromRegistryName(("jitl:" + recipePrefix.getString() + "axe")), getItemFromRegistryName("jitl:" + recipePrefix.getString() + "pickaxe")
+                , getItemFromRegistryName("jitl:" + recipePrefix.getString() + "shovel"), getItemFromRegistryName("jitl:" + recipePrefix.getString() + "hoe")
+                , getItemFromRegistryName("jitl:" + recipePrefix.getString() + "multitool"));
 
     }
 
     public void addArmorRecipes(RecipeOutput recipeConsumer, ItemLike materialItem, RecipePrefix recipePrefix) {
-        addHelmetRecipe(recipeConsumer, materialItem, getItemFromRegistryName((recipePrefix.getString() + "helmet")));
-        addChestplateRecipe(recipeConsumer, materialItem, getItemFromRegistryName((recipePrefix.getString() + "chestplate")));
-        addLeggingsRecipe(recipeConsumer, materialItem, getItemFromRegistryName((recipePrefix.getString() + "leggings")));
-        addBootsRecipe(recipeConsumer, materialItem, getItemFromRegistryName((recipePrefix.getString() + "boots")));
+        addHelmetRecipe(recipeConsumer, materialItem, getItemFromRegistryName("jitl:" + (recipePrefix.getString() + "helmet")));
+        addChestplateRecipe(recipeConsumer, materialItem, getItemFromRegistryName("jitl:" + (recipePrefix.getString() + "chestplate")));
+        addLeggingsRecipe(recipeConsumer, materialItem, getItemFromRegistryName("jitl:" + (recipePrefix.getString() + "leggings")));
+        addBootsRecipe(recipeConsumer, materialItem, getItemFromRegistryName("jitl:" + (recipePrefix.getString() + "boots")));
     }
 
     public void addWoodType(RecipeOutput recipeConsumer, DeferredBlock<? extends Block> log, DeferredBlock<? extends Block> plank, DeferredBlock<? extends Block> stairs, DeferredBlock<? extends Block> slab, DeferredBlock<? extends Block> fence, DeferredBlock<? extends Block> gate, DeferredBlock<? extends Block> trapdoor, DeferredBlock<? extends Block> pressureplate, DeferredBlock<? extends Block> door, DeferredBlock<? extends Block> button, DeferredItem<Item> boat) {
@@ -258,7 +266,7 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
     protected void addStick(RecipeOutput recipeConsumer, ItemLike materialItem) {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.STICK, 4).define('#', materialItem)
                 .pattern("#")
-                .pattern("#").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer, "jitl:" + materialItem.asItem().getDescriptionId() + "_to_stick");
+                .pattern("#").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer, materialItem.asItem().getDescriptionId() + "_to_stick");
     }
 
     protected void addDoorRecipe(RecipeOutput recipeConsumer, ItemLike materialItem, ItemLike output) {
@@ -314,7 +322,7 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
             ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
                     .pattern("###")
                     .pattern(" I ")
-                    .pattern(" I ").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer, "jitl:" + materialItem.asItem().getDescriptionId() + "_to_pickaxe");
+                    .pattern(" I ").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer, materialItem.asItem().getDescriptionId() + "_to_pickaxe");
         } else {
             ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
                     .pattern("###")
@@ -328,7 +336,7 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
             ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
                     .pattern("#")
                     .pattern("I")
-                    .pattern("I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer, "jitl:" + materialItem.asItem().getDescriptionId() + "_to_shovel");
+                    .pattern("I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer, materialItem.asItem().getDescriptionId() + "_to_shovel");
         } else {
             ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
                     .pattern("#")
@@ -342,7 +350,7 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
             ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
                     .pattern("##")
                     .pattern("#I")
-                    .pattern(" I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer, "jitl:" + materialItem.asItem().getDescriptionId() + "_to_axe");
+                    .pattern(" I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer, materialItem.asItem().getDescriptionId() + "_to_axe");
         } else {
             ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
                     .pattern("##")
@@ -356,7 +364,7 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
             ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
                     .pattern("##")
                     .pattern(" I")
-                    .pattern(" I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer, "jitl:" + materialItem.asItem().getDescriptionId() + "_to_hoe");
+                    .pattern(" I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer, materialItem.asItem().getDescriptionId() + "_to_hoe");
         } else {
             ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1).define('#', materialItem).define('I', stickItem)
                     .pattern("##")
@@ -366,7 +374,13 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
     }
 
     protected void addMultitoolRecipe(RecipeOutput recipeConsumer, ItemLike axe, ItemLike pick, ItemLike shovel, ItemLike hoe, ItemLike output) {
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, output).requires(axe).requires(pick).requires(shovel).requires(hoe).unlockedBy(inputToKey(axe), has(axe)).save(recipeConsumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, output)
+                .requires(axe)
+                .requires(pick)
+                .requires(shovel)
+                .requires(hoe)
+                .unlockedBy(inputToKey(axe), has(axe))
+                .save(recipeConsumer);
     }
 
     protected void addSwordRecipe(RecipeOutput recipeConsumer, ItemLike stickItem, ItemLike materialItem, ItemLike output, String name) {
@@ -374,12 +388,14 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
             ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, output, 1).define('#', materialItem).define('I', stickItem)
                     .pattern("#")
                     .pattern("#")
-                    .pattern("I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer, "jitl:" + materialItem.asItem().getDescriptionId() + "_to_sword");
+                    .pattern("I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer, materialItem.asItem().getDescriptionId() + "_to_sword");
         } else {
             ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, output, 1).define('#', materialItem).define('I', stickItem)
                     .pattern("#")
                     .pattern("#")
-                    .pattern("I").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+                    .pattern("I")
+                    .unlockedBy(inputToKey(materialItem), has(materialItem))
+                    .save(recipeConsumer);
         }
     }
 
@@ -443,11 +459,11 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
     }
 
     protected void addSmeltingRecipe(RecipeOutput consumer, ItemLike input, ItemLike output, float xpGiven, int time, String name) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(input), RecipeCategory.MISC, output, xpGiven, time).unlockedBy(inputToKey(input), has(input)).save(consumer, "jitl:" + output.asItem().getDescriptionId() + name);
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(input), RecipeCategory.MISC, output, xpGiven, time).unlockedBy(inputToKey(input), has(input)).save(consumer, output.asItem().getDescriptionId() + name);
     }
 
     protected void addBlastingRecipe(RecipeOutput consumer, ItemLike input, ItemLike output, float xpGiven, int time, String name) {
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(input), RecipeCategory.MISC, output, xpGiven, time).unlockedBy(inputToKey(input), has(input)).save(consumer, "jitl:" + output.asItem().getDescriptionId() + name);
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(input), RecipeCategory.MISC, output, xpGiven, time).unlockedBy(inputToKey(input), has(input)).save(consumer, output.asItem().getDescriptionId() + name);
     }
 
     protected void addSmeltingRecipe(RecipeOutput consumer, ItemLike input, ItemLike output, float xpGiven, int time) {
@@ -469,13 +485,13 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
     }
 
     protected String inputToKey(ItemLike input) {
-        String key = "has_" + Objects.requireNonNull(input.asItem().getDescriptionId());
-        JITL.LOGGER.info(key);
-        return key;
+        return "has_item";
     }
 
     public ItemLike getItemFromRegistryName(String registryName) {
-        return BuiltInRegistries.ITEM.get(new ResourceLocation(JITL.MODID, registryName));
+        ItemLike item = BuiltInRegistries.ITEM.get(new ResourceLocation(registryName));
+        System.out.println(item);
+        return item;
     }
 
     public enum RecipePrefix {

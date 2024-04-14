@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "building",
-  "group": "verdite_ingot",
+  "group": "jitl:verdite_ingot",
   "ingredients": [
     {
       "item": "jitl:verdite_block"

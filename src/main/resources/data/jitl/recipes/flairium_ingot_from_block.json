@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "building",
-  "group": "flairium_ingot",
+  "group": "jitl:flairium_ingot",
   "ingredients": [
     {
       "item": "jitl:flairium_block"

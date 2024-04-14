@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item.jitl.raw_orbadite": {
+    "has_item": {
       "conditions": {
         "items": [
           {
@@ -15,21 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "jitl:item.jitl.orbadite_ingot_raw_smelting"
+        "recipe": "minecraft:item.jitl.orbadite_ingot_raw_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_item.jitl.raw_orbadite",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_item"
     ]
   ],
   "rewards": {
     "recipes": [
-      "jitl:item.jitl.orbadite_ingot_raw_smelting"
+      "minecraft:item.jitl.orbadite_ingot_raw_smelting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

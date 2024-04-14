@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "building",
-  "group": "shadium_ingot",
+  "group": "jitl:shadium_ingot",
   "ingredients": [
     {
       "item": "jitl:shadium_block"

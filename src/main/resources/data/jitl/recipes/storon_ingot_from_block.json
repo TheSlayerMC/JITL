@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "building",
-  "group": "storon_ingot",
+  "group": "jitl:storon_ingot",
   "ingredients": [
     {
       "item": "jitl:storon_block"

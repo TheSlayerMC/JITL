@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_block.jitl.frozen_planks": {
+    "has_item": {
       "conditions": {
         "items": [
           {
@@ -15,21 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "jitl:block.jitl.frozen_planks_to_shovel"
+        "recipe": "minecraft:block.jitl.frozen_planks_to_shovel"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_block.jitl.frozen_planks",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_item"
     ]
   ],
   "rewards": {
     "recipes": [
-      "jitl:block.jitl.frozen_planks_to_shovel"
+      "minecraft:block.jitl.frozen_planks_to_shovel"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

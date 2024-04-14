@@ -1,0 +1,14 @@
+{
+  "name": "book.jitl.book_name",
+  "landing_text": "book.jitl.landing_text",
+  "version": 1,
+  "texture": "patchouli:textures/gui/book_cyan.png",
+  "model": "patchouli:book_cyan",
+  "open_sound": "patchouli:patchouli_open",
+  "flip_sound": "patchouli:patchouli_flip",
+  "creative_tab": "jitl:items",
+  "show_progress": false,
+  "show_toasts": false,
+  "i18n": true,
+  "use_resource_pack": true
+}

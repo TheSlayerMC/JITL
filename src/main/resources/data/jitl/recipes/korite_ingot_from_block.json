@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "building",
-  "group": "korite_ingot",
+  "group": "jitl:korite_ingot",
   "ingredients": [
     {
       "item": "jitl:korite_block"

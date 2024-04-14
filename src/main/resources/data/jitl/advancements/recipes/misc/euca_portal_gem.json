@@ -1,19 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item.jitl.euca_portal_piece_1": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jitl:euca_portal_piece_1"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_item.jitl.euca_portal_piece_2": {
+    "has_item": {
       "conditions": {
         "items": [
           {
@@ -34,15 +22,13 @@
   },
   "requirements": [
     [
-      "has_item.jitl.euca_portal_piece_1",
-      "has_item.jitl.euca_portal_piece_2",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_item"
     ]
   ],
   "rewards": {
     "recipes": [
       "jitl:euca_portal_gem"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }
