@@ -11,10 +11,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.BaseSpawner;
 import net.minecraft.world.level.Level;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class JSpawnerRenderer implements BlockEntityRenderer<JSpawnerEntity> {
 
    private final EntityRenderDispatcher entityRenderer;
@@ -28,10 +25,10 @@ public class JSpawnerRenderer implements BlockEntityRenderer<JSpawnerEntity> {
       Level level = pBlockEntity.getLevel();
       if (level != null) {
          BaseSpawner basespawner = pBlockEntity.getSpawner();
-         //Entity entity = basespawner.getOrCreateDisplayEntity(level, pBlockEntity.getBlockPos());
-         //if (entity != null) {
-         //   renderEntityInSpawner(pPartialTick, pPoseStack, pBufferSource, pPackedLight, entity, this.entityRenderer, basespawner.getoSpin(), basespawner.getSpin());
-         //}
+         Entity entity = basespawner.getOrCreateDisplayEntity(level, pBlockEntity.getBlockPos());
+         if (entity != null) {
+            renderEntityInSpawner(pPartialTick, pPoseStack, pBufferSource, pPackedLight, entity, this.entityRenderer, basespawner.getoSpin(), basespawner.getSpin());
+         }
       }
    }
 
