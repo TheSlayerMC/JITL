@@ -14,11 +14,11 @@ public class JBlockTrapDoorGenerator {
 
     public void generate() {
         for(String name : JBlocks.trapDoorBlockName) {
-            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
-            String blockBottomModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_bottom.json";
-            String blockTopModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_top.json";
-            String blockOpenModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_open.json";
-            String blockstateDir = "../src/main/resources/assets/jitl/blockstates/" + name + ".json";
+            String itemModelDir = "../../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            String blockBottomModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_bottom.json";
+            String blockTopModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_top.json";
+            String blockOpenModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_open.json";
+            String blockstateDir = "../../src/main/resources/assets/jitl/blockstates/" + name + ".json";
 
             File itemModel = new File(itemModelDir);
             File blockBottomModel = new File(blockBottomModelDir);

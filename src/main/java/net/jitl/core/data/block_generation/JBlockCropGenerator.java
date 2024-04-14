@@ -13,16 +13,16 @@ public class JBlockCropGenerator {
             blockstateWriter, itemModelWriter;
 
     public void generate(String name, int maxStages) {
-        String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
-        String blockModelDir0 = "../src/main/resources/assets/jitl/models/block/" + name + "_0.json";
-        String blockModelDir1 = "../src/main/resources/assets/jitl/models/block/" + name + "_1.json";
-        String blockModelDir2 = "../src/main/resources/assets/jitl/models/block/" + name + "_2.json";
-        String blockModelDir3 = "../src/main/resources/assets/jitl/models/block/" + name + "_3.json";
-        String blockModelDir4 = "../src/main/resources/assets/jitl/models/block/" + name + "_4.json";
-        String blockModelDir5 = "../src/main/resources/assets/jitl/models/block/" + name + "_5.json";
-        String blockModelDir6 = "../src/main/resources/assets/jitl/models/block/" + name + "_6.json";
-        String blockModelDir7 = "../src/main/resources/assets/jitl/models/block/" + name + "_7.json";
-        String blockstateDir = "../src/main/resources/assets/jitl/blockstates/" + name + ".json";
+        String itemModelDir = "../../src/main/resources/assets/jitl/models/item/" + name + ".json";
+        String blockModelDir0 = "../../src/main/resources/assets/jitl/models/block/" + name + "_0.json";
+        String blockModelDir1 = "../../src/main/resources/assets/jitl/models/block/" + name + "_1.json";
+        String blockModelDir2 = "../../src/main/resources/assets/jitl/models/block/" + name + "_2.json";
+        String blockModelDir3 = "../../src/main/resources/assets/jitl/models/block/" + name + "_3.json";
+        String blockModelDir4 = "../../src/main/resources/assets/jitl/models/block/" + name + "_4.json";
+        String blockModelDir5 = "../../src/main/resources/assets/jitl/models/block/" + name + "_5.json";
+        String blockModelDir6 = "../../src/main/resources/assets/jitl/models/block/" + name + "_6.json";
+        String blockModelDir7 = "../../src/main/resources/assets/jitl/models/block/" + name + "_7.json";
+        String blockstateDir = "../../src/main/resources/assets/jitl/blockstates/" + name + ".json";
 
         File itemModel = new File(itemModelDir);
         File blockModel0 = new File(blockModelDir0);

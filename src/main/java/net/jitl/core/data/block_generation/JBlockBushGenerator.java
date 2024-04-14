@@ -14,12 +14,12 @@ public class JBlockBushGenerator {
 
     public void generate() {
         for(String name : JBlocks.bushBlockName) {
-            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
-            String blockModelDir0 = "../src/main/resources/assets/jitl/models/block/" + name + "_0.json";
-            String blockModelDir1 = "../src/main/resources/assets/jitl/models/block/" + name + "_1.json";
-            String blockModelDir2 = "../src/main/resources/assets/jitl/models/block/" + name + "_2.json";
-            String blockModelDir3 = "../src/main/resources/assets/jitl/models/block/" + name + "_3.json";
-            String blockstateDir = "../src/main/resources/assets/jitl/blockstates/" + name + ".json";
+            String itemModelDir = "../../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            String blockModelDir0 = "../../src/main/resources/assets/jitl/models/block/" + name + "_0.json";
+            String blockModelDir1 = "../../src/main/resources/assets/jitl/models/block/" + name + "_1.json";
+            String blockModelDir2 = "../../src/main/resources/assets/jitl/models/block/" + name + "_2.json";
+            String blockModelDir3 = "../../src/main/resources/assets/jitl/models/block/" + name + "_3.json";
+            String blockstateDir = "../../src/main/resources/assets/jitl/blockstates/" + name + ".json";
 
             File itemModel = new File(itemModelDir);
             File blockModel0 = new File(blockModelDir0);

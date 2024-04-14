@@ -14,10 +14,10 @@ public class JBlockCampfireGenerator {
 
     public void generate() {
         for(String name : JBlocks.campfireBlockName) {
-            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
-            String blockModelDir = "../src/main/resources/assets/jitl/models/block/" + name + ".json";
-            String blockOffModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_off.json";
-            String blockstateDir = "../src/main/resources/assets/jitl/blockstates/" + name + ".json";
+            String itemModelDir = "../../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            String blockModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + ".json";
+            String blockOffModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_off.json";
+            String blockstateDir = "../../src/main/resources/assets/jitl/blockstates/" + name + ".json";
 
             File itemModel = new File(itemModelDir);
             File blockModel = new File(blockModelDir);

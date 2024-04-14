@@ -15,12 +15,12 @@ public class JBlockGateGenerator {
 
     public void generate() {
         for(String name : JBlocks.gateBlockName) {
-            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
-            String blockModelDir = "../src/main/resources/assets/jitl/models/block/" + name + ".json";
-            String blockOpenModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_open.json";
-            String blockWallModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_wall.json";
-            String blockWallOpenModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_wall_open.json";
-            String blockstateDir = "../src/main/resources/assets/jitl/blockstates/" + name + ".json";
+            String itemModelDir = "../../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            String blockModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + ".json";
+            String blockOpenModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_open.json";
+            String blockWallModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_wall.json";
+            String blockWallOpenModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_wall_open.json";
+            String blockstateDir = "../../src/main/resources/assets/jitl/blockstates/" + name + ".json";
 
             File itemModel = new File(itemModelDir);
             File blockModel = new File(blockModelDir);

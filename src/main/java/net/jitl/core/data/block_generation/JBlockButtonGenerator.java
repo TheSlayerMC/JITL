@@ -15,11 +15,11 @@ public class JBlockButtonGenerator {
 
     public void generate() {
         for(String name : JBlocks.buttonBlockName) {
-            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
-            String blockModelDir = "../src/main/resources/assets/jitl/models/block/" + name + ".json";
-            String blockPressedModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_pressed.json";
-            String blockInventoryModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_inventory.json";
-            String blockstateDir = "../src/main/resources/assets/jitl/blockstates/" + name + ".json";
+            String itemModelDir = "../../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            String blockModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + ".json";
+            String blockPressedModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_pressed.json";
+            String blockInventoryModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_inventory.json";
+            String blockstateDir = "../../src/main/resources/assets/jitl/blockstates/" + name + ".json";
 
             File itemModel = new File(itemModelDir);
             File blockModel = new File(blockModelDir);

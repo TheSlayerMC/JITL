@@ -1,7 +1,6 @@
 package net.jitl.core.data.block_generation;
 
 import net.jitl.core.init.JITL;
-import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 
 import java.io.BufferedWriter;
@@ -15,10 +14,10 @@ public class JBlockEndFrameGenerator {
 
     public void generate() {
         for(String name : JBlocks.basePortalFrameBlockName) {
-            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
-            String blockModelDir = "../src/main/resources/assets/jitl/models/block/" + name + ".json";
-            String blockFilledModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_filled.json";
-            String blockstateDir = "../src/main/resources/assets/jitl/blockstates/" + name + ".json";
+            String itemModelDir = "../../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            String blockModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + ".json";
+            String blockFilledModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_filled.json";
+            String blockstateDir = "../../src/main/resources/assets/jitl/blockstates/" + name + ".json";
 
             File itemModel = new File(itemModelDir);
             File blockModel = new File(blockModelDir);

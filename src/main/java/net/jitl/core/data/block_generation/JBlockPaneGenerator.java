@@ -14,15 +14,15 @@ public class JBlockPaneGenerator {
 
     public void generate() {
         for(String name : JBlocks.paneBlockName) {
-            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
-            String blockstateDir = "../src/main/resources/assets/jitl/blockstates/" + name + ".json";
+            String itemModelDir = "../../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            String blockstateDir = "../../src/main/resources/assets/jitl/blockstates/" + name + ".json";
 
-            String blockPostModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_post.json";
-            String blockPostEndsModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_post_ends.json";
-            String blockPostCapModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_cap.json";
-            String blockSideModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_side.json";
-            String blockPostAltCapModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_cap_alt.json";
-            String blockSideAltModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_side_alt.json";
+            String blockPostModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_post.json";
+            String blockPostEndsModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_post_ends.json";
+            String blockPostCapModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_cap.json";
+            String blockSideModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_side.json";
+            String blockPostAltCapModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_cap_alt.json";
+            String blockSideAltModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_side_alt.json";
 
             File itemModel = new File(itemModelDir);
             File blockPostModel = new File(blockPostModelDir);

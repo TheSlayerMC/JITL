@@ -15,16 +15,16 @@ public class JBlockDoorGenerator {
 
     public void generate() {
         for(String name : JBlocks.doorBlockName) {
-            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
-            String blockBLModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_bottom_left.json";
-            String blockBRModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_bottom_right.json";
-            String blockTLModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_top_left.json";
-            String blockTRModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_top_right.json";
-            String blockBLOModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_bottom_left_open.json";
-            String blockBROModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_bottom_right_open.json";
-            String blockTLOModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_top_left_open.json";
-            String blockTROModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_top_right_open.json";
-            String blockstateDir = "../src/main/resources/assets/jitl/blockstates/" + name + ".json";
+            String itemModelDir = "../../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            String blockBLModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_bottom_left.json";
+            String blockBRModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_bottom_right.json";
+            String blockTLModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_top_left.json";
+            String blockTRModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_top_right.json";
+            String blockBLOModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_bottom_left_open.json";
+            String blockBROModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_bottom_right_open.json";
+            String blockTLOModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_top_left_open.json";
+            String blockTROModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_top_right_open.json";
+            String blockstateDir = "../../src/main/resources/assets/jitl/blockstates/" + name + ".json";
 
             File itemModel = new File(itemModelDir);
             File blockBLModel = new File(blockBLModelDir);

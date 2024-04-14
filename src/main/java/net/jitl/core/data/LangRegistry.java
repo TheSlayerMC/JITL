@@ -12,7 +12,7 @@ public class LangRegistry {
     protected BufferedWriter langWriter;
 
     public void generate() {
-        String langDir = "../src/main/resources/assets/jitl/lang/en_us.json";
+        String langDir = "../../src/main/resources/assets/jitl/lang/en_us.json";
 
         File en_us = new File(langDir);
 

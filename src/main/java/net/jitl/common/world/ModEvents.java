@@ -18,21 +18,10 @@ public class ModEvents {
     @SubscribeEvent
     public static void onPlayerCloned(PlayerEvent.Clone event) {
         if(event.isWasDeath()) {
-//            event.getOriginal().getData(JDataAttachments.ESSENCE)(oldStore ->
-//                    event.getOriginal().getCapability(PlayerEssenceProvider.PLAYER_ESSENCE).ifPresent(newStore ->
-//                            newStore.copyFrom(oldStore)));
-//
-//            event.getOriginal().getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(oldStore ->
-//                    event.getOriginal().getCapability(PlayerStatsProvider.PLAYER_STATS).ifPresent(newStore ->
-//                            newStore.copyFrom(oldStore)));
-//
-//            event.getOriginal().getCapability(PressedKeyCapProvider.PRESSED_KEY_CAP).ifPresent(oldStore ->
-//                    event.getOriginal().getCapability(PressedKeyCapProvider.PRESSED_KEY_CAP).ifPresent(newStore ->
-//                            newStore.copyFrom(oldStore)));
-//
-//            event.getOriginal().getCapability(PlayerArmorProvider.PLAYER_ARMOR).ifPresent(oldStore ->
-//                    event.getOriginal().getCapability(PlayerArmorProvider.PLAYER_ARMOR).ifPresent(newStore ->
-//                            newStore.copyFrom(oldStore)));
+            event.getEntity().getData(JDataAttachments.PLAYER_STATS).copyFrom(event.getOriginal().getData(JDataAttachments.PLAYER_STATS));
+            event.getEntity().getData(JDataAttachments.ESSENCE).copyFrom(event.getOriginal().getData(JDataAttachments.ESSENCE));
+            event.getEntity().getData(JDataAttachments.KEY_PRESSED).copyFrom(event.getOriginal().getData(JDataAttachments.KEY_PRESSED));
+            event.getEntity().getData(JDataAttachments.PLAYER_ARMOR).copyFrom(event.getOriginal().getData(JDataAttachments.PLAYER_ARMOR));
         }
     }
 
