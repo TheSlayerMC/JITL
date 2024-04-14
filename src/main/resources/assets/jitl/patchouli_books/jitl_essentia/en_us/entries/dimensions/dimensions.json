@@ -1,0 +1,199 @@
+{
+  "name": "book.jitl.entries.dimensions",
+  "category": "jitl:dimensions",
+  "icon": "jitl:flame_coin",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "text": "book.jitl.entry.portals.start"
+    },
+    {
+      "type": "crafting",
+      "recipe": "jitl:flame_coin",
+      "text": "book.jitl.entry.portals.flame_coin"
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          [ "_0__" ],
+          [ "FFFF" ],
+          [ "FPPF" ],
+          [ "FPPF" ],
+          [ "FPPF" ],
+          [ "FFFF" ]
+        ],
+        "mapping": {
+          "F": "jitl:boil_portal_frame",
+          "P": "jitl:boil_portal[axis=z]"
+        }
+      },
+      "name": "Boiling Point Portal"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.portals.boil"
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          [ "_0__" ],
+          [ "FFFF" ],
+          [ "FPPF" ],
+          [ "FPPF" ],
+          [ "FPPF" ],
+          [ "FFFF" ]
+        ],
+        "mapping": {
+          "F": "jitl:frozen_portal_frame",
+          "P": "jitl:frozen_portal[axis=z]"
+        }
+      },
+      "name": "Frozen Lands Portal"
+    },
+    {
+      "type": "crafting",
+      "recipe": "jitl:frozen_portal_frame",
+      "text": "book.jitl.entry.portals.frozen"
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          [ "_0__" ],
+          [ "FFFF" ],
+          [ "FPPF" ],
+          [ "FPPF" ],
+          [ "FPPF" ],
+          [ "FFFF" ]
+        ],
+        "mapping": {
+          "F": "jitl:euca_portal_frame",
+          "P": "jitl:euca_portal[axis=z]"
+        }
+      },
+      "name": "Euca Portal"
+    },
+    {
+      "type": "crafting",
+      "recipe": "jitl:euca_portal_frame",
+      "text": "book.jitl.entry.portals.euca"
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          [ "_EEE_", "SPPPN", "SP0PN", "SPPPN", "_WWW_" ]
+        ],
+        "mapping": {
+          "N": "jitl:corba_portal_frame[facing=north, eye=true]",
+          "S": "jitl:corba_portal_frame[facing=south, eye=true]",
+          "W": "jitl:corba_portal_frame[facing=west, eye=true]",
+          "E": "jitl:corba_portal_frame[facing=east, eye=true]",
+          "P": "jitl:corba_portal",
+          "0": "jitl:corba_portal"
+        },
+        "symmetrical": true
+      },
+      "name": "Corba Portal"
+    },
+    {
+      "type": "crafting",
+      "recipe": "jitl:corba_portal_frame",
+      "text": "book.jitl.entry.portals.corba"
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          [ "_EEE_", "SPPPN", "SP0PN", "SPPPN", "_WWW_" ]
+        ],
+        "mapping": {
+          "N": "jitl:depths_portal_frame[facing=north, eye=true]",
+          "S": "jitl:depths_portal_frame[facing=south, eye=true]",
+          "W": "jitl:depths_portal_frame[facing=west, eye=true]",
+          "E": "jitl:depths_portal_frame[facing=east, eye=true]",
+          "P": "jitl:depths_portal",
+          "0": "jitl:depths_portal"
+        },
+        "symmetrical": true
+      },
+      "name": "Depths Portal"
+    },
+    {
+      "type": "crafting",
+      "recipe": "jitl:depths_portal_frame",
+      "text": "book.jitl.entry.portals.depths"
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          [ "_0__" ],
+          [ "FFFF" ],
+          [ "FPPF" ],
+          [ "FPPF" ],
+          [ "FPPF" ],
+          [ "FFFF" ]
+        ],
+        "mapping": {
+          "F": "jitl:terranian_portal_frame",
+          "P": "jitl:terranian_portal[axis=z]"
+        }
+      },
+      "name": "Terrania Portal"
+    },
+    {
+      "type": "crafting",
+      "recipe": "jitl:terranian_portal_frame",
+      "text": "book.jitl.entry.portals.terrania"
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          [ "_0__" ],
+          [ "FFFF" ],
+          [ "FPPF" ],
+          [ "FPPF" ],
+          [ "FPPF" ],
+          [ "FFFF" ]
+        ],
+        "mapping": {
+          "F": "jitl:cloudia_portal_frame",
+          "P": "jitl:cloudia_portal[axis=z]"
+        }
+      },
+      "name": "Cloudia Portal"
+    },
+    {
+      "type": "crafting",
+      "recipe": "jitl:cloudia_portal_frame",
+      "text": "book.jitl.entry.portals.cloudia"
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          [ "_EEE_", "SPPPN", "SP0PN", "SPPPN", "_WWW_" ]
+        ],
+        "mapping": {
+          "N": "jitl:senterian_portal_frame[facing=north, eye=true]",
+          "S": "jitl:senterian_portal_frame[facing=south, eye=true]",
+          "W": "jitl:senterian_portal_frame[facing=west, eye=true]",
+          "E": "jitl:senterian_portal_frame[facing=east, eye=true]",
+          "P": "jitl:senterian_portal",
+          "0": "jitl:senterian_portal"
+        },
+        "symmetrical": true
+      },
+      "name": "Senterian Portal"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.portals.senterian"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "book.jitl.entries.summoning",
+  "category": "jitl:summoning",
+  "icon": "jitl:summoning_table",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+
+            ["_____", "_BBB_", "_BBB_", "_BBB_", "_____"],
+            ["CB_BC", "BB_BB", "__O__", "BB_BB", "CB_BC"],
+            ["P___P", "_____", "__0__", "_____", "P___P"],
+            ["P___P", "_____", "__T__", "_____", "P___P"],
+            ["_RSR_", "R_R_R", "SRRRS", "R_R_R", "_RSR_"]
+
+        ],
+        "mapping": {
+          "R": "jitl:blood_rock",
+          "S": "jitl:blood_rune",
+          "P": "jitl:blood_pillar",
+          "T": "jitl:summoning_table",
+          "C": "jitl:carved_blood_rock",
+          "B": "jitl:blood_bricks",
+          "O": "jitl:obelisk"
+        },
+        "symmetrical": true
+      },
+      "name": "Summoning Shrine",
+      "text": "book.jitl.entry.summoning.structure.1"
+    }
+  ]
+}

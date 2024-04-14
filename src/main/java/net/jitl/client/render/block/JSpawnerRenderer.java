@@ -25,10 +25,10 @@ public class JSpawnerRenderer implements BlockEntityRenderer<JSpawnerEntity> {
       Level level = pBlockEntity.getLevel();
       if (level != null) {
          BaseSpawner basespawner = pBlockEntity.getSpawner();
-         Entity entity = basespawner.getOrCreateDisplayEntity(level, pBlockEntity.getBlockPos());
-         if (entity != null) {
-            renderEntityInSpawner(pPartialTick, pPoseStack, pBufferSource, pPackedLight, entity, this.entityRenderer, basespawner.getoSpin(), basespawner.getSpin());
-         }
+//         Entity entity = basespawner.getOrCreateDisplayEntity(level, pBlockEntity.getBlockPos());
+//         if (entity != null) {
+//            renderEntityInSpawner(pPartialTick, pPoseStack, pBufferSource, pPackedLight, entity, this.entityRenderer, basespawner.getoSpin(), basespawner.getSpin());
+//         }
       }
    }
 

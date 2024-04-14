@@ -186,6 +186,21 @@ public class LangRegistry {
         writeToFile("\"book.jitl.entry.getting_started.lunite_ore.title\" : " + "\"Lunite Ore\",");
         writeToFile("\"book.jitl.entry.getting_started.lunite_ore.1\" : " + "\"Ore that generates in Cloudia\",");
 
+        writeToFile("\"book.jitl.entry.portals.boil\" : " + "\"You find the Portal Frame blocks inside the Nether Ghast Tower\",");
+        writeToFile("\"book.jitl.entry.portals.frozen\" : " + "\"You can craft the Frozen Portal Frame blocks to gain access\",");
+        writeToFile("\"book.jitl.entry.portals.euca\" : " + "\"You can craft the Euca Portal Frame blocks with Euca Portal Pieces dropped by Nether Bosses\",");
+        writeToFile("\"book.jitl.entry.portals.corba\" : " + "\"You can craft the Corba Portal Frame blocks with Corba Portal Pieces dropped by Euca Bosses\",");
+        writeToFile("\"book.jitl.entry.portals.depths\" : " + "\"You can craft the Depths Portal Frame blocks with Depths Portal Pieces dropped by Corba Bosses\",");
+        writeToFile("\"book.jitl.entry.portals.terrania\" : " + "\"You can craft the Terranian Portal Frame blocks with Terrania Portal Pieces dropped by Depths Bosses\",");
+        writeToFile("\"book.jitl.entry.portals.cloudia\" : " + "\"You can craft the Cloudia Portal Frame blocks with Cloudia Portal Pieces dropped by Terrania Bosses\",");
+        writeToFile("\"book.jitl.entry.portals.senterian\" : " + "\"Found in the $(l:jitl:dimensions/ancient_structure)Ancient Structure\",");
+
+        writeToFile("\"book.jitl.entry.portals.flame_coin\" : " + "\"The Flame Coin is what is used to light all the JITL Portals\",");
+        writeToFile("\"book.jitl.entries.dimensions\" : " + "\"Dimensions\",");
+        writeToFile("\"book.jitl.entry.portals.start\" : " + "\"What to do and how to get into Dimensions\",");
+        writeToFile("\"book.jitl.category.dimensions.desc\" : " + "\"A rundown of how to get access to all Portals\",");
+
+
         writeToFile("\"jitl.trader.boil_trader1\" : \"Boil Trader: It's not often that newcomers arrive here. Can you stand the heat?\",");
         writeToFile("\"jitl.trader.boil_trader2\" : \"Boil Trader: I'm an unusual collector, but I have the best deals of any realm!\",");
         writeToFile("\"jitl.trader.boil_trader3\" : \"Boil Trader: I can see that you're having a tough time getting around. An armor upgrade, perhaps?\",");
