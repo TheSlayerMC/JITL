@@ -1,0 +1,20 @@
+{
+  "name": "book.jitl.entries.bosses",
+  "category": "jitl:cloudia",
+  "icon": "jitl:cloudia_key",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:sky_stalker",
+      "scale": 0.75,
+      "name": "Sky Stalker",
+      "offset": 0,
+      "anchor": "sky_stalker"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.cloudia.sky_stalker.desc"
+    }
+  ]
+}

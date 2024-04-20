@@ -1,0 +1,92 @@
+{
+  "name": "book.jitl.entries.mobs",
+  "category": "jitl:terrania",
+  "icon": "jitl:dark_terranian_soil",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:arana_king",
+      "scale": 0.6,
+      "name": "Arana King",
+      "offset": 0.5,
+      "anchor": "arana_king"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.terrania.mobs.arana_king.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:flungas",
+      "scale": 0.5,
+      "name": "Flungas",
+      "offset": 0.1,
+      "anchor": "flungas"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.terrania.mobs.flungas.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:purplian",
+      "scale": 1,
+      "name": "Purplian",
+      "offset": 0.2,
+      "anchor": "purplian"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.terrania.mobs.purplian.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:terragrow",
+      "scale": 0.75,
+      "name": "Terragrow",
+      "offset": 0.0,
+      "anchor": "terragrow"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.terrania.mobs.terragrow.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:terrascatterer",
+      "scale": 0.95,
+      "name": "Terrascatterer",
+      "offset": 0.0,
+      "anchor": "terrascatterer"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.terrania.mobs.terrascatterer.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:terrashroom",
+      "scale": 0.75,
+      "name": "Terrashroom",
+      "offset": 0.5,
+      "anchor": "terrashroom"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.terrania.mobs.terrashroom.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:terraslug",
+      "scale": 1,
+      "name": "Terraslug",
+      "offset": 0.0,
+      "anchor": "terraslug"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.terrania.mobs.terraslug.desc"
+    }
+  ]
+}

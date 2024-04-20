@@ -1,0 +1,20 @@
+{
+  "name": "book.jitl.entries.structures",
+  "category": "jitl:senterian",
+  "icon": "jitl:senterian_altar",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "image",
+      "title": "structure.senterian.jitl.senterian_altar",
+      "images": [
+        "jitl:textures/gui/patchouli/senterian_altar.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.senterian.senterian_altar.desc"
+    }
+  ]
+}

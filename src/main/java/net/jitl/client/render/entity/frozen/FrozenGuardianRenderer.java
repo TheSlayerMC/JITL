@@ -1,6 +1,6 @@
 package net.jitl.client.render.entity.frozen;
 
-import net.jitl.common.entity.frozen.FrozenGuardian;
+import net.jitl.common.entity.frozen.npc.FrozenGuardian;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;

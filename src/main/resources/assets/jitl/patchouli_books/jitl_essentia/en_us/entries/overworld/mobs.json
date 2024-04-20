@@ -1,0 +1,176 @@
+{
+  "name": "book.jitl.entries.mobs",
+  "category": "jitl:overworld",
+  "icon": "jitl:hongoshroom",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:big_hongo",
+      "scale": 1,
+      "name": "Big Hongo",
+      "offset": 0.1,
+      "anchor": "big_hongo"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.big_hongo.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:blizzard",
+      "scale": 1,
+      "name": "Blizzard",
+      "offset": 0.2,
+      "anchor": "blizzard"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.blizzard.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:boomboom",
+      "scale": 0.75,
+      "name": "Boom Boom",
+      "offset": 0.3,
+      "anchor": "boomboom"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.boom_boom.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:brown_hongo",
+      "scale": 0.75,
+      "name": "Brown Hongo",
+      "offset": 0.3,
+      "anchor": "brown_hongo"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.brown_hongo.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:caveling",
+      "scale": 0.75,
+      "name": "Caveling",
+      "offset": 0.2,
+      "anchor": "caveling"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.caveling.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:cavurn",
+      "scale": 1,
+      "name": "Cavurn",
+      "offset": 0.2,
+      "anchor": "cavurn"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.cavurn.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:floro",
+      "scale": 1,
+      "name": "Floro",
+      "offset": 0.0,
+      "anchor": "floro"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.floro.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:illager_mech",
+      "scale": 1,
+      "name": "Illager Mech",
+      "offset": 0.4,
+      "anchor": "illager_mech"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.illager_mech.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:jungle_turtle",
+      "scale": 0.75,
+      "name": "Jungle Turtle",
+      "offset": 0.2,
+      "anchor": "floro"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.jungle_turtle.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:medium_hongo",
+      "scale": 1,
+      "name": "Medium Hongo",
+      "offset": 0.0,
+      "anchor": "medium_hongo"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.medium_hongo.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:sand_crawler",
+      "scale": 0.5,
+      "name": "Sand Crawler",
+      "offset": 0.1,
+      "anchor": "sand_crawler"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.sand_crawler.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:small_hongo",
+      "scale": 1,
+      "name": "Small Hongo",
+      "offset": 0.0,
+      "anchor": "small_hongo"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.small_hongo.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:spyclopse",
+      "scale": 1,
+      "name": "Spyclopse",
+      "offset": 0.1,
+      "anchor": "spyclopse"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.Spyclopse.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:stonewalker",
+      "scale": 0.75,
+      "name": "Stonewalker",
+      "offset": 0.3,
+      "anchor": "stonewalker"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.stonewalker.desc"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "name": "book.jitl.entries.ores",
+  "category": "jitl:overworld",
+  "icon": "jitl:shadium_ore",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "jitl:iridium_ore",
+      "title": "book.jitl.entry.getting_started.iridium_ore.title",
+      "text": "book.jitl.entry.getting_started.iridium_ore.1"
+    },
+    {
+      "type": "spotlight",
+      "item": "jitl:sapphire_ore",
+      "title": "book.jitl.entry.getting_started.sapphire_ore.title",
+      "text": "book.jitl.entry.getting_started.sapphire_ore.1"
+    },
+    {
+      "type": "spotlight",
+      "item": "jitl:shadium_ore",
+      "title": "book.jitl.entry.getting_started.shadium_ore.title",
+      "text": "book.jitl.entry.getting_started.shadium_ore.1"
+    },
+    {
+      "type": "spotlight",
+      "item": "jitl:lunium_ore",
+      "title": "book.jitl.entry.getting_started.lunium_ore.title",
+      "text": "book.jitl.entry.getting_started.lunium_ore.1"
+    },
+    {
+      "type": "spotlight",
+      "item": "jitl:verdite_ore",
+      "title": "book.jitl.entry.getting_started.verdite_ore.title",
+      "text": "book.jitl.entry.getting_started.verdite_ore.1"
+    }
+  ]
+}

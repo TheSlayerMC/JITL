@@ -1,0 +1,32 @@
+{
+  "name": "book.jitl.entries.traders",
+  "category": "jitl:terrania",
+  "icon": "jitl:purple_gem",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:terranian_enchanter",
+      "scale": 0.9,
+      "name": "Terranian Enchanter",
+      "offset": 0.2,
+      "anchor": "terranian_enchanter"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.terrania.mobs.terranian_enchanter.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:terranian_trader",
+      "scale": 0.9,
+      "name": "Terranian Trader",
+      "offset": 0.2,
+      "anchor": "terranian_trader"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.terrania.mobs.terranian_trader.desc"
+    }
+  ]
+}

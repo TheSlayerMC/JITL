@@ -21,6 +21,8 @@ import net.jitl.common.entity.euca.npc.AlloyMender;
 import net.jitl.common.entity.euca.npc.Crypian;
 import net.jitl.common.entity.euca.npc.RoyalKing;
 import net.jitl.common.entity.frozen.*;
+import net.jitl.common.entity.frozen.npc.Eskimo;
+import net.jitl.common.entity.frozen.npc.FrozenGuardian;
 import net.jitl.common.entity.misc.Sentacoin;
 import net.jitl.common.entity.nether.*;
 import net.jitl.common.entity.overworld.*;

@@ -1,0 +1,32 @@
+{
+  "name": "book.jitl.entries.traders",
+  "category": "jitl:frozen",
+  "icon": "jitl:blue_gem",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:eskimo",
+      "scale": 1,
+      "name": "Eskimo",
+      "offset": 0.2,
+      "anchor": "eskimo"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.frozen.mobs.eskimo.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:frozen_guardian",
+      "scale": 1,
+      "name": "Frozen Guardian",
+      "offset": 0.5,
+      "anchor": "frozen_guardian"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.frozen.mobs.frozen_guardian.desc"
+    }
+  ]
+}

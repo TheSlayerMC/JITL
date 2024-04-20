@@ -1,0 +1,50 @@
+{
+  "name": "book.jitl.entries.ores",
+  "category": "jitl:nether",
+  "icon": "jitl:bloodcrust_ore",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "jitl:blood_rock",
+      "title": "book.jitl.entry.getting_started.blood_rock.title",
+      "text": "book.jitl.entry.getting_started.blood_rock.1"
+    },
+    {
+      "type": "spotlight",
+      "item": "jitl:bloodcrust_ore",
+      "title": "book.jitl.entry.getting_started.bloodcrust_ore.title",
+      "text": "book.jitl.entry.getting_started.bloodcrust_ore.1"
+    },
+    {
+      "type": "spotlight",
+      "item": "jitl:bleedstone_block",
+      "title": "book.jitl.entry.getting_started.bleedstone_block.title",
+      "text": "book.jitl.entry.getting_started.bleedstone_block.1"
+    },
+    {
+      "type": "spotlight",
+      "item": "jitl:smithstone_block",
+      "title": "book.jitl.entry.getting_started.smithstone_block.title",
+      "text": "book.jitl.entry.getting_started.smithstone_block.1"
+    },
+    {
+      "type": "spotlight",
+      "item": "jitl:warped_quartz_ore",
+      "title": "book.jitl.entry.getting_started.warped_quartz_ore.title",
+      "text": "book.jitl.entry.getting_started.warped_quartz_ore.1"
+    },
+    {
+      "type": "spotlight",
+      "item": "jitl:crimson_quartz_ore",
+      "title": "book.jitl.entry.getting_started.crimson_quartz_ore.title",
+      "text": "book.jitl.entry.getting_started.crimson_quartz_ore.1"
+    },
+    {
+      "type": "spotlight",
+      "item": "jitl:firestone_ore",
+      "title": "book.jitl.entry.getting_started.firestone_ore.title",
+      "text": "book.jitl.entry.getting_started.firestone_ore.1"
+    }
+  ]
+}

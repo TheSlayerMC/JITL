@@ -1,0 +1,92 @@
+{
+  "name": "book.jitl.entries.mobs",
+  "category": "jitl:depths",
+  "icon": "jitl:beastly_stomach",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:darkener",
+      "scale": 0.6,
+      "name": "Darkener",
+      "offset": 0.7,
+      "anchor": "darkener"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.depths.mobs.darkener.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:darkness_crawler",
+      "scale": 0.75,
+      "name": "Darkness Crawler",
+      "offset": 0.1,
+      "anchor": "darkness_crawler"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.depths.mobs.darkness_crawler.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:dark_sorcerer",
+      "scale": 1,
+      "name": "Dark Sorcerer",
+      "offset": 0.2,
+      "anchor": "dark_sorcerer"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.depths.mobs.dark_sorcerer.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:depths_beast",
+      "scale": 0.65,
+      "name": "Depths Beast",
+      "offset": 0.5,
+      "anchor": "depths_beast"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.depths.mobs.depths_beast.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:depths_hunter",
+      "scale": 0.75,
+      "name": "Depths Hunter",
+      "offset": 0.5,
+      "anchor": "depths_hunter"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.depths.mobs.depths_hunter.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:roc",
+      "scale": 0.5,
+      "name": "Roc",
+      "offset": 0.5,
+      "anchor": "roc"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.depths.mobs.roc.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:spiked_beast",
+      "scale": 1,
+      "name": "Spiked Beast",
+      "offset": 0.0,
+      "anchor": "spiked_beast"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.depths.mobs.spiked_beast.desc"
+    }
+  ]
+}

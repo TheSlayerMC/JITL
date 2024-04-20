@@ -1,0 +1,32 @@
+{
+  "name": "book.jitl.entries.structures",
+  "category": "jitl:corba",
+  "icon": "jitl:corba_pillar",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "image",
+      "title": "structure.corba.jitl.corba_village",
+      "images": [
+        "jitl:textures/gui/patchouli/corba_village.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.corba.corba_village.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.corba.jitl.seer_tree",
+      "images": [
+        "jitl:textures/gui/patchouli/seer_tree.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.corba.seer_tree.desc"
+    }
+  ]
+}

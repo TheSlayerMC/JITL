@@ -1,0 +1,32 @@
+{
+  "name": "book.jitl.entries.bosses",
+  "category": "jitl:depths",
+  "icon": "jitl:depths_key",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:scale",
+      "scale": 0.5,
+      "name": "Scale",
+      "offset": 0,
+      "anchor": "scale"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.depths.scale.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:thunder_bird",
+      "scale": 0.25,
+      "name": "Thunder Bird",
+      "offset": 2,
+      "anchor": "thunder_bird"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.depths.thunder_bird.desc"
+    }
+  ]
+}

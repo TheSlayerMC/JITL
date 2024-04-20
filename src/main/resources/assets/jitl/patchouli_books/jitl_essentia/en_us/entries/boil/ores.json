@@ -1,0 +1,20 @@
+{
+  "name": "book.jitl.entries.ores",
+  "category": "jitl:boil",
+  "icon": "jitl:blazium_ore",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "jitl:ashual_ore",
+      "title": "book.jitl.entry.getting_started.ashual_ore.title",
+      "text": "book.jitl.entry.getting_started.ashual_ore.1"
+    },
+    {
+      "type": "spotlight",
+      "item": "jitl:blazium_ore",
+      "title": "book.jitl.entry.getting_started.blazium_ore.title",
+      "text": "book.jitl.entry.getting_started.blazium_ore.1"
+    }
+  ]
+}

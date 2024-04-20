@@ -1,0 +1,68 @@
+{
+  "name": "book.jitl.entries.bosses",
+  "category": "jitl:nether",
+  "icon": "jitl:nether_key",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:blazier",
+      "scale": 0.4,
+      "name": "Blazier",
+      "offset": 1.8,
+      "anchor": "blazier"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.nether.blazier.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:calcia",
+      "scale": 0.9,
+      "name": "Calcia",
+      "offset": 0.5,
+      "anchor": "calcia"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.nether.calcia.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:okoloo",
+      "scale": 0.75,
+      "name": "Okoloo",
+      "offset": 0.7,
+      "anchor": "okoloo"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.nether.okoloo.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:soul_watcher",
+      "scale": 0.5,
+      "name": "Soul Watcher",
+      "offset": 0.5,
+      "anchor": "soul_watcher"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.nether.soul_watcher.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:withering_beast",
+      "scale": 0.9,
+      "name": "Withering Beast",
+      "offset": 0.5,
+      "anchor": "withering_beast"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.nether.withering_beast.desc"
+    }
+  ]
+}

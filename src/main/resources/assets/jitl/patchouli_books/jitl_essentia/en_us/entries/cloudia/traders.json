@@ -1,0 +1,32 @@
+{
+  "name": "book.jitl.entries.traders",
+  "category": "jitl:cloudia",
+  "icon": "jitl:purple_gem",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:starlight_blacksmith",
+      "scale": 0.9,
+      "name": "Starlight Blacksmith",
+      "offset": 0.2,
+      "anchor": "starlight_blacksmith"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.cloudia.mobs.starlight_blacksmith.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:starlight_villager",
+      "scale": 0.9,
+      "name": "Starlight Villager",
+      "offset": 0.2,
+      "anchor": "starlight_villager"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.cloudia.mobs.starlight_villager.desc"
+    }
+  ]
+}

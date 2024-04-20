@@ -1,4 +1,4 @@
-package net.jitl.common.entity.frozen;
+package net.jitl.common.entity.frozen.npc;
 
 import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;

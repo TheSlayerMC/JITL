@@ -28,7 +28,7 @@ public enum EnumKnowledge {
     CORBA("corba", 0, 42, new KnowledgeXPDisplay("corba", false)
             , new KnowledgeXPDisplay("corba", true)),
 
-    CLOUDIA("cloudia", 64, 42,new KnowledgeXPDisplay("cloudia", false)
+    CLOUDIA("cloudia", 64, 42, new KnowledgeXPDisplay("cloudia", false)
             , new KnowledgeXPDisplay("cloudia", true)),
 
     TERRANIA("terrania", 32, 42, new KnowledgeXPDisplay("terrania", false)

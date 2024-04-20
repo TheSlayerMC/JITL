@@ -1,0 +1,68 @@
+{
+  "name": "book.jitl.entries.mobs",
+  "category": "jitl:euca",
+  "icon": "jitl:euca_tablet",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:dynaster",
+      "scale": 0.7,
+      "name": "Dynaster",
+      "offset": 0.1,
+      "anchor": "dynaster"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.euca.mobs.dynaster.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:euca_charger",
+      "scale": 1,
+      "name": "Euca Charger",
+      "offset": 0.1,
+      "anchor": "euca_charger"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.euca.mobs.euca_charger.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:goldbot",
+      "scale": 0.7,
+      "name": "Goldbot",
+      "offset": 0.2,
+      "anchor": "goldbot"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.euca.mobs.goldbot.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:golder",
+      "scale": 0.75,
+      "name": "Golder",
+      "offset": 0.1,
+      "anchor": "golder"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.euca.mobs.golder.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:shimmerer",
+      "scale": 0.5,
+      "name": "Shimmerer",
+      "offset": 0.5,
+      "anchor": "shimmerer"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.euca.mobs.shimmerer.desc"
+    }
+  ]
+}

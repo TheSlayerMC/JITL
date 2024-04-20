@@ -1,0 +1,32 @@
+{
+  "name": "book.jitl.entries.structures",
+  "category": "jitl:terrania",
+  "icon": "jitl:terranian_panels",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "image",
+      "title": "structure.terrania.jitl.mega_mushroom",
+      "images": [
+        "jitl:textures/gui/patchouli/mega_mushroom.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.terrania.mega_mushroom.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.terrania.jitl.mega_tree",
+      "images": [
+        "jitl:textures/gui/patchouli/mega_tree.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.terrania.mega_tree.desc"
+    }
+  ]
+}

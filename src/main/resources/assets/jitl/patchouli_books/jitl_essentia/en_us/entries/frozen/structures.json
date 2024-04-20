@@ -1,0 +1,56 @@
+{
+  "name": "book.jitl.entries.structures",
+  "category": "jitl:frozen",
+  "icon": "jitl:frozen_bricks",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "image",
+      "title": "structure.frozen.jitl.eskimo_camp",
+      "images": [
+        "jitl:textures/gui/patchouli/eskimo_camp.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.frozen.eskimo_camp.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.frozen.jitl.frozen_dungeon",
+      "images": [
+        "jitl:textures/gui/patchouli/frozen_dungeon.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.frozen.frozen_dungeon.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.frozen.jitl.guardian_ruins",
+      "images": [
+        "jitl:textures/gui/patchouli/guardian_ruins.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.frozen.guardian_ruins.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.frozen.jitl.spike_dungeon",
+      "images": [
+        "jitl:textures/gui/patchouli/spike_dungeon.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.frozen.spike_dungeon.desc"
+    }
+  ]
+}

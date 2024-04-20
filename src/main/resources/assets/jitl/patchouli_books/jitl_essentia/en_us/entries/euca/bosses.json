@@ -1,0 +1,32 @@
+{
+  "name": "book.jitl.entries.bosses",
+  "category": "jitl:euca",
+  "icon": "jitl:euca_key",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:corallator",
+      "scale": 0.5,
+      "name": "Corallator",
+      "offset": 1.8,
+      "anchor": "corallator"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.euca.corallator.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:eudor",
+      "scale": 0.6,
+      "name": "Eudor",
+      "offset": 1,
+      "anchor": "eudor"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.euca.eudor.desc"
+    }
+  ]
+}

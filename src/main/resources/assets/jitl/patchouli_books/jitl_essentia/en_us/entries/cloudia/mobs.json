@@ -1,0 +1,80 @@
+{
+  "name": "book.jitl.entries.mobs",
+  "category": "jitl:cloudia",
+  "icon": "jitl:cloudia_orb",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:aero_lotus",
+      "scale": 0.6,
+      "name": "Aero Lotus",
+      "offset": 0.5,
+      "anchor": "aero_lotus"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.cloudia.mobs.aero_lotus.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:cloud_ghost",
+      "scale": 0.75,
+      "name": "Cloud Ghost",
+      "offset": 0.3,
+      "anchor": "cloud_ghost"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.cloudia.mobs.cloud_ghost.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:sky_eel",
+      "scale": 1,
+      "name": "Sky Eel",
+      "offset": 0.2,
+      "anchor": "sky_eel"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.cloudia.mobs.sky_eel.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:starlight_golem",
+      "scale": 1,
+      "name": "Starlight Golem",
+      "offset": 0.0,
+      "anchor": "starlight_golem"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.cloudia.mobs.starlight_golem.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:starlight_transporter",
+      "scale": 0.95,
+      "name": "Starlight Transporter",
+      "offset": 0.2,
+      "anchor": "starlight_transporter"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.cloudia.mobs.starlight_transporter.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:starlight_walker",
+      "scale": 0.6,
+      "name": "Starlight Walker",
+      "offset": 0.3,
+      "anchor": "starlight_walker"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.cloudia.mobs.starlight_walker.desc"
+    }
+  ]
+}

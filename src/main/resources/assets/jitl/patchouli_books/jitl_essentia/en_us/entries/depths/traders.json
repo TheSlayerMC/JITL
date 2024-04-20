@@ -1,0 +1,32 @@
+{
+  "name": "book.jitl.entries.traders",
+  "category": "jitl:depths",
+  "icon": "jitl:purple_gem",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:auron",
+      "scale": 0.75,
+      "name": "Auron",
+      "offset": 0.5,
+      "anchor": "auron"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.depths.mobs.auron.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:staring_guardian",
+      "scale": 0.9,
+      "name": "Staring Guardian",
+      "offset": 0.2,
+      "anchor": "staring_guardian"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.depths.mobs.staring_guardian.desc"
+    }
+  ]
+}

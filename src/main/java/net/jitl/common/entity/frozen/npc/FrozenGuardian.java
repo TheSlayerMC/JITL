@@ -1,4 +1,4 @@
-package net.jitl.common.entity.frozen;
+package net.jitl.common.entity.frozen.npc;
 
 import net.jitl.client.ChatUtils;
 import net.jitl.client.knowledge.EnumKnowledge;

@@ -1,0 +1,68 @@
+{
+  "name": "book.jitl.entries.structures",
+  "category": "jitl:euca",
+  "icon": "jitl:euca_dungeon_tile",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "image",
+      "title": "structure.euca.jitl.alloy_mender_hut",
+      "images": [
+        "jitl:textures/gui/patchouli/alloy_mender_hut.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.euca.alloy_mender_hut.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.euca.jitl.euca_palace",
+      "images": [
+        "jitl:textures/gui/patchouli/euca_palace.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.euca.euca_palace.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.euca.jitl.euca_sphere",
+      "images": [
+        "jitl:textures/gui/patchouli/euca_sphere.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.euca.euca_sphere.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.euca.jitl.euca_village",
+      "images": [
+        "jitl:textures/gui/patchouli/euca_village.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.euca.euca_village.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.euca.jitl.gold_bot_spawner",
+      "images": [
+        "jitl:textures/gui/patchouli/gold_bot_spawner.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.euca.gold_bot_spawner.desc"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "name": "book.jitl.entries.mobs",
+  "category": "jitl:senterian",
+  "icon": "jitl:sentacoin",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:sentry_lord",
+      "scale": 1,
+      "name": "Sentry Lord",
+      "offset": 0.2,
+      "anchor": "sentry_lord"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.senterian.mobs.sentry_lord.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:sentry_stalker",
+      "scale": 1,
+      "name": "Sentry Stalker",
+      "offset": 0.2,
+      "anchor": "sentry_stalker"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.senterian.mobs.sentry_stalker.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:sentry_walker",
+      "scale": 1,
+      "name": "Sentry Walker",
+      "offset": 0.2,
+      "anchor": "sentry_walker"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.senterian.mobs.sentry_walker.desc"
+    },
+
+    {
+      "type": "entity",
+      "entity": "jitl:mini_sentry_lord",
+      "scale": 1,
+      "name": "Mini Sentry Lord",
+      "offset": 0.2,
+      "anchor": "mini_sentry_lord"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.senterian.mobs.mini_sentry_lord.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:mini_sentry_stalker",
+      "scale": 1,
+      "name": "Mini Sentry Stalker",
+      "offset": 0.2,
+      "anchor": "mini_sentry_stalker"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.senterian.mobs.mini_sentry_stalker.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:mini_sentry_walker",
+      "scale": 1,
+      "name": "Mini Sentry Walker",
+      "offset": 0.2,
+      "anchor": "mini_sentry_walker"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.senterian.mobs.mini_sentry_walker.desc"
+    }
+  ]
+}

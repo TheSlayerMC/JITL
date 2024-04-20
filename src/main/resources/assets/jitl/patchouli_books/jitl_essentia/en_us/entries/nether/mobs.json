@@ -1,0 +1,104 @@
+{
+  "name": "book.jitl.entries.mobs",
+  "category": "jitl:nether",
+  "icon": "minecraft:blaze_powder",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:hellbot",
+      "scale": 0.75,
+      "name": "Hellbot",
+      "offset": 0.3,
+      "anchor": "hellbot"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.nether.mobs.hellbot.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:hell_cow",
+      "scale": 1,
+      "name": "Hell Cow",
+      "offset": 0.1,
+      "anchor": "hell_cow"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.nether.mobs.hell_cow.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:hell_serpent",
+      "scale": 0.5,
+      "name": "Hell Serpent",
+      "offset": 0.1,
+      "anchor": "hell_serpent"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.nether.mobs.hell_serpent.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:hell_turtle",
+      "scale": 0.75,
+      "name": "Hell Turtle",
+      "offset": 0.1,
+      "anchor": "hell_turtle"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.nether.mobs.hell_turtle.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:inferno_blaze",
+      "scale": 1,
+      "name": "Inferno Blaze",
+      "offset": 0.2,
+      "anchor": "inferno_blaze"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.nether.mobs.inferno_blaze.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:mini_ghast",
+      "scale": 0.5,
+      "name": "mini_ghast",
+      "offset": -0.2,
+      "anchor": "mini_ghast"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.nether.mobs.mini_ghast.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:reaper",
+      "scale": 1,
+      "name": "Reaper",
+      "offset": 0.2,
+      "anchor": "reaper"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.nether.mobs.reaper.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:witherspine",
+      "scale": 1,
+      "name": "Witherspine",
+      "offset": 0.1,
+      "anchor": "witherspine"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.nether.mobs.witherspine.desc"
+    }
+  ]
+}

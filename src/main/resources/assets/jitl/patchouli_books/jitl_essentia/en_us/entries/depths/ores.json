@@ -1,0 +1,20 @@
+{
+  "name": "book.jitl.entries.ores",
+  "category": "jitl:depths",
+  "icon": "jitl:flairium_ore",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "jitl:des_ore",
+      "title": "book.jitl.entry.getting_started.des_ore.title",
+      "text": "book.jitl.entry.getting_started.des_ore.1"
+    },
+    {
+      "type": "spotlight",
+      "item": "jitl:flairium_ore",
+      "title": "book.jitl.entry.getting_started.flairium_ore.title",
+      "text": "book.jitl.entry.getting_started.flairium_ore.1"
+    }
+  ]
+}

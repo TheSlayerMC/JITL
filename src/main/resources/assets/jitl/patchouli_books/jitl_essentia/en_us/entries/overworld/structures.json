@@ -1,9 +1,45 @@
 {
-  "name": "book.jitl.entries.ancient_structure",
-  "category": "jitl:dimensions",
-  "icon": "jitl:ancient_stone_runic_3",
-  "sortnum": 1,
+  "name": "book.jitl.entries.structures",
+  "category": "jitl:overworld",
+  "icon": "jitl:gilded_dungeon_bricks",
+  "sortnum": 4,
   "pages": [
+    {
+      "type": "image",
+      "title": "structure.overworld.jitl.tower_guardian",
+      "images": [
+        "jitl:textures/gui/patchouli/ancient_tower.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.tower_structure.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.overworld.jitl.mage_hut",
+      "images": [
+        "jitl:textures/gui/patchouli/mage_hut.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mage_hut.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.overworld.jitl.rockite_dungeon",
+      "images": [
+        "jitl:textures/gui/patchouli/rockite_dungeon.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.rockite_dungeon.desc"
+    },
     {
       "type": "multiblock",
       "multiblock": {
@@ -34,7 +70,16 @@
         "symmetrical": true
       },
       "name": "Ancient Structure",
-      "text": "book.jitl.entry.ancient.structure.1"
+      "anchor": "ancient_structure",
+      "text": "book.jitl.entry.overworld.ancient_structure.desc.1"
+    },
+    {
+      "type": "image",
+      "images": [
+        "jitl:textures/gui/patchouli/open_ancient_structure.png"
+      ],
+      "border": true,
+      "text": "book.jitl.entry.overworld.ancient_structure.desc.2"
     }
   ]
 }

@@ -7,26 +7,32 @@ import net.minecraft.client.Minecraft;
 public class ClientPlayerStats {
 
     public static void setHasBlizzard(boolean value) {
+        assert Minecraft.getInstance().player != null;
         Minecraft.getInstance().player.getData(JDataAttachments.PLAYER_STATS.get()).setBlizzard(value);
     }
 
     public static boolean getHasBlizzard() {
+        assert Minecraft.getInstance().player != null;
         return Minecraft.getInstance().player.getData(JDataAttachments.PLAYER_STATS.get()).hasBlizzard();
     }
 
     public static void addSentacoins(int value) {
+        assert Minecraft.getInstance().player != null;
         Minecraft.getInstance().player.getData(JDataAttachments.PLAYER_STATS.get()).addSentacoins(value);
     }
 
     public static void useSentacoins(int value) {
+        assert Minecraft.getInstance().player != null;
         Minecraft.getInstance().player.getData(JDataAttachments.PLAYER_STATS.get()).useSentacoins(value);
     }
 
     public static int getSentacoins() {
+        assert Minecraft.getInstance().player != null;
         return Minecraft.getInstance().player.getData(JDataAttachments.PLAYER_STATS.get()).getSentacoins();
     }
 
     public static void setSentacoins(int value) {
+        assert Minecraft.getInstance().player != null;
         Minecraft.getInstance().player.getData(JDataAttachments.PLAYER_STATS.get()).setSentacoins(value);
     }
 

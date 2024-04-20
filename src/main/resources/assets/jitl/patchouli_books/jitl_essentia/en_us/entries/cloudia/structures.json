@@ -1,0 +1,32 @@
+{
+  "name": "book.jitl.entries.structures",
+  "category": "jitl:cloudia",
+  "icon": "jitl:cloudia_pillar",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "image",
+      "title": "structure.cloudia.jitl.cloudia_village_1",
+      "images": [
+        "jitl:textures/gui/patchouli/cloudia_village_1.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.cloudia.cloudia_village_1.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.cloudia.jitl.cloudia_village_2",
+      "images": [
+        "jitl:textures/gui/patchouli/cloudia_village_2.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.cloudia.cloudia_village_2.desc"
+    }
+  ]
+}

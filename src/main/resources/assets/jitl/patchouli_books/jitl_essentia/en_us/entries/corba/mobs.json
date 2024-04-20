@@ -1,0 +1,128 @@
+{
+  "name": "book.jitl.entries.mobs",
+  "category": "jitl:corba",
+  "icon": "jitl:overgrown_nature_ball",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:corbanian_mollusk",
+      "scale": 0.6,
+      "name": "Corbanian Mollusk",
+      "offset": 0.5,
+      "anchor": "corbanian_mollusk"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.corba.mobs.corbanian_mollusk.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:leaf_blower",
+      "scale": 0.75,
+      "name": "Leaf Blower",
+      "offset": 0.1,
+      "anchor": "leaf_blower"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.corba.mobs.leaf_blower.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:nature_mage",
+      "scale": 1,
+      "name": "Nature Mage",
+      "offset": 0.2,
+      "anchor": "nature_mage"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.corba.mobs.nature_mage.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:overseer",
+      "scale": 1,
+      "name": "Overseer",
+      "offset": 0.0,
+      "anchor": "overseer"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.corba.mobs.overseer.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:overseer_elder",
+      "scale": 0.95,
+      "name": "Overseer Elder",
+      "offset": 0.5,
+      "anchor": "overseer_elder"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.corba.mobs.overseer_elder.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:smelly",
+      "scale": 0.6,
+      "name": "Smelly",
+      "offset": 0.5,
+      "anchor": "smelly"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.corba.mobs.smelly.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:stinky",
+      "scale": 1,
+      "name": "Stinky",
+      "offset": 0.0,
+      "anchor": "stinky"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.corba.mobs.stinky.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:surface_seer",
+      "scale": 1,
+      "name": "Surface Seer",
+      "offset": 0.0,
+      "anchor": "surface_seer"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.corba.mobs.surface_seer.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:tree_golem",
+      "scale": 1,
+      "name": "Tree Golem",
+      "offset": 0.0,
+      "anchor": "tree_golem"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.corba.mobs.tree_golem.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:wood_creature",
+      "scale": 1,
+      "name": "Wood Creature",
+      "offset": 0.0,
+      "anchor": "wood_creature"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.corba.mobs.wood_creature.desc"
+    }
+  ]
+}

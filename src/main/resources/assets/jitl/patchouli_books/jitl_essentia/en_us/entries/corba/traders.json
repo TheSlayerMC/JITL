@@ -1,0 +1,56 @@
+{
+  "name": "book.jitl.entries.traders",
+  "category": "jitl:corba",
+  "icon": "jitl:green_gem",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:green_tordo",
+      "scale": 0.9,
+      "name": "Green Tordo",
+      "offset": 0.2,
+      "anchor": "green_tordo"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.corba.mobs.green_tordo.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:hooded",
+      "scale": 0.9,
+      "name": "Hooded",
+      "offset": 0.2,
+      "anchor": "hooded"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.corba.mobs.hooded.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:overgrown_merchant",
+      "scale": 0.9,
+      "name": "Overgrown Merchant",
+      "offset": 0.2,
+      "anchor": "overgrown_merchant"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.corba.mobs.overgrown_merchant.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:red_tordo",
+      "scale": 0.9,
+      "name": "Red Tordo",
+      "offset": 0.2,
+      "anchor": "red_tordo"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.corba.mobs.red_tordo.desc"
+    }
+  ]
+}

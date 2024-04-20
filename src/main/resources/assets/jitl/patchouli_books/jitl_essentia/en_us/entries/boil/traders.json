@@ -1,0 +1,32 @@
+{
+  "name": "book.jitl.entries.traders",
+  "category": "jitl:boil",
+  "icon": "jitl:yellow_gem",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:boil_trader",
+      "scale": 1,
+      "name": "Boil Trader",
+      "offset": 0.1,
+      "anchor": "boil_trader"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.boil.mobs.boil_trader.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:escaped_convict",
+      "scale": 0.70,
+      "name": "Escaped Convict",
+      "offset": 0.4,
+      "anchor": "escaped_convict"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.boil.mobs.escaped_convict.desc"
+    }
+  ]
+}

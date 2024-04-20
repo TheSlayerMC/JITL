@@ -1,0 +1,20 @@
+{
+  "name": "book.jitl.entries.ores",
+  "category": "jitl:frozen",
+  "icon": "jitl:rimestone_ore",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "jitl:rimestone_ore",
+      "title": "book.jitl.entry.getting_started.rimestone_ore.title",
+      "text": "book.jitl.entry.getting_started.rimestone_ore.1"
+    },
+    {
+      "type": "spotlight",
+      "item": "jitl:peridot_ore",
+      "title": "book.jitl.entry.getting_started.peridot_ore.title",
+      "text": "book.jitl.entry.getting_started.peridot_ore.1"
+    }
+  ]
+}

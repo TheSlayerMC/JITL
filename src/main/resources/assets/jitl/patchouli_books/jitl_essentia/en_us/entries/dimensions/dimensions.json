@@ -88,29 +88,6 @@
           [ "_EEE_", "SPPPN", "SP0PN", "SPPPN", "_WWW_" ]
         ],
         "mapping": {
-          "N": "jitl:corba_portal_frame[facing=north, eye=true]",
-          "S": "jitl:corba_portal_frame[facing=south, eye=true]",
-          "W": "jitl:corba_portal_frame[facing=west, eye=true]",
-          "E": "jitl:corba_portal_frame[facing=east, eye=true]",
-          "P": "jitl:corba_portal",
-          "0": "jitl:corba_portal"
-        },
-        "symmetrical": true
-      },
-      "name": "Corba Portal"
-    },
-    {
-      "type": "crafting",
-      "recipe": "jitl:corba_portal_frame",
-      "text": "book.jitl.entry.portals.corba"
-    },
-    {
-      "type": "multiblock",
-      "multiblock": {
-        "pattern": [
-          [ "_EEE_", "SPPPN", "SP0PN", "SPPPN", "_WWW_" ]
-        ],
-        "mapping": {
           "N": "jitl:depths_portal_frame[facing=north, eye=true]",
           "S": "jitl:depths_portal_frame[facing=south, eye=true]",
           "W": "jitl:depths_portal_frame[facing=west, eye=true]",
@@ -126,6 +103,29 @@
       "type": "crafting",
       "recipe": "jitl:depths_portal_frame",
       "text": "book.jitl.entry.portals.depths"
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          [ "_EEE_", "SPPPN", "SP0PN", "SPPPN", "_WWW_" ]
+        ],
+        "mapping": {
+          "N": "jitl:corba_portal_frame[facing=north, eye=true]",
+          "S": "jitl:corba_portal_frame[facing=south, eye=true]",
+          "W": "jitl:corba_portal_frame[facing=west, eye=true]",
+          "E": "jitl:corba_portal_frame[facing=east, eye=true]",
+          "P": "jitl:corba_portal",
+          "0": "jitl:corba_portal"
+        },
+        "symmetrical": true
+      },
+      "name": "Corba Portal"
+    },
+    {
+      "type": "crafting",
+      "recipe": "jitl:corba_portal_frame",
+      "text": "book.jitl.entry.portals.corba"
     },
     {
       "type": "multiblock",

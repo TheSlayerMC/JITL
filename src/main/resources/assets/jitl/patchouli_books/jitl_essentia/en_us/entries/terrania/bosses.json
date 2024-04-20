@@ -1,0 +1,20 @@
+{
+  "name": "book.jitl.entries.bosses",
+  "category": "jitl:terrania",
+  "icon": "jitl:terranian_key",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:terranian_protector",
+      "scale": 0.75,
+      "name": "Terranian Protector",
+      "offset": 1.5,
+      "anchor": "terranian_protector"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.terrania.terranian_protector.desc"
+    }
+  ]
+}

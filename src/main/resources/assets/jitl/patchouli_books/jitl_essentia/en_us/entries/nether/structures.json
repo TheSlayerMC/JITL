@@ -1,0 +1,56 @@
+{
+  "name": "book.jitl.entries.structures",
+  "category": "jitl:nether",
+  "icon": "jitl:nether_dungeon_bricks",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "image",
+      "title": "structure.nether.jitl.boil_lock",
+      "images": [
+        "jitl:textures/gui/patchouli/boil_lock.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.nether.boil_lock.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.nether.jitl.nether_tower",
+      "images": [
+        "jitl:textures/gui/patchouli/nether_tower.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.nether.nether_tower.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.nether.jitl.hellbot",
+      "images": [
+        "jitl:textures/gui/patchouli/hellbot.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.nether.hellbot.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.nether.jitl.okoloo_crypt",
+      "images": [
+        "jitl:textures/gui/patchouli/okoloo_crypt.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.nether.okoloo_crypt.desc"
+    }
+  ]
+}

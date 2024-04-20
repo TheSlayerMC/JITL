@@ -1,0 +1,56 @@
+{
+  "name": "book.jitl.entries.structures",
+  "category": "jitl:boil",
+  "icon": "jitl:gilded_dungeon_bricks",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "image",
+      "title": "structure.boil.jitl.brison",
+      "images": [
+        "jitl:textures/gui/patchouli/brison.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.boil.brison.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.boil.jitl.hellwing_tower",
+      "images": [
+        "jitl:textures/gui/patchouli/hellwing_tower.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.boil.hellwing_tower.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.boil.jitl.observer_hut",
+      "images": [
+        "jitl:textures/gui/patchouli/observer_hut.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.boil.observer_hut.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.boil.jitl.trader_hut",
+      "images": [
+        "jitl:textures/gui/patchouli/trader_hut.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.boil.trader_hut.desc"
+    }
+  ]
+}

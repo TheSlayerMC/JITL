@@ -1,0 +1,44 @@
+{
+  "name": "book.jitl.entries.traders",
+  "category": "jitl:euca",
+  "icon": "jitl:purple_gem",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:alloy_mender",
+      "scale": 1,
+      "name": "Alloy Mender",
+      "offset": 0.2,
+      "anchor": "alloy_mender"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.euca.mobs.alloy_mender.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:crypian",
+      "scale": 1,
+      "name": "Crypian",
+      "offset": 0.0,
+      "anchor": "crypian"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.euca.mobs.crypian.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:royal_king",
+      "scale": 1,
+      "name": "Royal King",
+      "offset": 0.0,
+      "anchor": "royal_king"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.euca.mobs.royal_king.desc"
+    }
+  ]
+}

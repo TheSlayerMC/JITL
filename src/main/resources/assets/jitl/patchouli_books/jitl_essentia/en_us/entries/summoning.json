@@ -27,8 +27,12 @@
         },
         "symmetrical": true
       },
-      "name": "Summoning Shrine",
-      "text": "book.jitl.entry.summoning.structure.1"
+      "name": "Summoning Shrine"
+    },
+    {
+      "type": "crafting",
+      "recipe": "jitl:recipe_book",
+      "text": "book.jitl.entry.summoning.book.desc"
     }
   ]
 }

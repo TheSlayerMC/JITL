@@ -1,0 +1,14 @@
+{
+  "name": "book.jitl.entries.ores",
+  "category": "jitl:end",
+  "icon": "jitl:enderillium_ore",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "jitl:enderillium_ore",
+      "title": "book.jitl.entry.getting_started.enderillium_ore.title",
+      "text": "book.jitl.entry.getting_started.enderillium_ore.1"
+    }
+  ]
+}

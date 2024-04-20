@@ -1,0 +1,14 @@
+{
+  "name": "book.jitl.entries.ores",
+  "category": "jitl:cloudia",
+  "icon": "jitl:lunite_ore",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "jitl:lunite_ore",
+      "title": "book.jitl.entry.getting_started.lunite_ore.title",
+      "text": "book.jitl.entry.getting_started.lunite_ore.1"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "name": "book.jitl.entries.mobs",
+  "category": "jitl:frozen",
+  "icon": "jitl:ice_flake",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:capybara",
+      "scale": 1,
+      "name": "Capybara",
+      "offset": 0.1,
+      "anchor": "capybara"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.frozen.mobs.capybara.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:crystal_cluster",
+      "scale": 1,
+      "name": "Crystal Cluster",
+      "offset": 0.1,
+      "anchor": "crystal_cluster"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.frozen.mobs.crystal_cluster.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:frozen_frostbiter",
+      "scale": 1,
+      "name": "Frozen Frostbiter",
+      "offset": 0.1,
+      "anchor": "frozen_frostbiter"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.frozen.mobs.frozen_frostbiter.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:frozen_troll",
+      "scale": 1,
+      "name": "Frozen Troll",
+      "offset": 0.1,
+      "anchor": "frozen_troll"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.frozen.mobs.frozen_troll.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:ice_golem",
+      "scale": 0.5,
+      "name": "Ice Golem",
+      "offset": 0.5,
+      "anchor": "ice_golem"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.frozen.mobs.ice_golem.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:permafraust",
+      "scale": 1,
+      "name": "Permafraust",
+      "offset": 0.1,
+      "anchor": "permafraust"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.frozen.mobs.permafraust.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:shatterer",
+      "scale": 0.75,
+      "name": "Shatterer",
+      "offset": 0.4,
+      "anchor": "shatterer"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.frozen.mobs.shatterer.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:shivering_bushwalker",
+      "scale": 1,
+      "name": "Shivering Bushwalker",
+      "offset": 0.1,
+      "anchor": "shivering_bushwalker"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.frozen.mobs.shivering_bushwalker.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:shivering_shrieker",
+      "scale": 1,
+      "name": "Shivering Shrieker",
+      "offset": 0.1,
+      "anchor": "shivering_shrieker"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.frozen.mobs.shivering_shrieker.desc"
+    }
+  ]
+}

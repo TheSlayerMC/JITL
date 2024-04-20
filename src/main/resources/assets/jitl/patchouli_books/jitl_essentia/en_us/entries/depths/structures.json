@@ -1,0 +1,44 @@
+{
+  "name": "book.jitl.entries.structures",
+  "category": "jitl:depths",
+  "icon": "jitl:depths_book_shelf",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "image",
+      "title": "structure.depths.jitl.dark_sorcerers_dungeon",
+      "images": [
+        "jitl:textures/gui/patchouli/dark_sorcerers_dungeon.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.depths.dark_sorcerers_dungeon.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.depths.jitl.depths_village",
+      "images": [
+        "jitl:textures/gui/patchouli/depths_village.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.depths.depths_village.desc"
+    },
+    {
+      "type": "image",
+      "title": "structure.depths.jitl.depths_watchtower",
+      "images": [
+        "jitl:textures/gui/patchouli/depths_watchtower.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.depths.depths_watchtower.desc"
+    }
+  ]
+}

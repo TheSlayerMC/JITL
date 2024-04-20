@@ -1,0 +1,32 @@
+{
+  "name": "book.jitl.entries.ores",
+  "category": "jitl:euca",
+  "icon": "jitl:korite_ore",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "jitl:celestium_ore",
+      "title": "book.jitl.entry.getting_started.celestium_ore.title",
+      "text": "book.jitl.entry.getting_started.celestium_ore.1"
+    },
+    {
+      "type": "spotlight",
+      "item": "jitl:mekyum_ore",
+      "title": "book.jitl.entry.getting_started.mekyum_ore.title",
+      "text": "book.jitl.entry.getting_started.mekyum_ore.1"
+    },
+    {
+      "type": "spotlight",
+      "item": "jitl:storon_ore",
+      "title": "book.jitl.entry.getting_started.storon_ore.title",
+      "text": "book.jitl.entry.getting_started.storon_ore.1"
+    },
+    {
+      "type": "spotlight",
+      "item": "jitl:korite_ore",
+      "title": "book.jitl.entry.getting_started.korite_ore.title",
+      "text": "book.jitl.entry.getting_started.korite_ore.1"
+    }
+  ]
+}

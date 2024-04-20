@@ -1,0 +1,32 @@
+{
+  "name": "book.jitl.entries.bosses",
+  "category": "jitl:overworld",
+  "icon": "jitl:journey_key",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:tower_guardian",
+      "scale": 0.75,
+      "name": "Tower Guardian",
+      "offset": 0.6,
+      "anchor": "tower_guardian"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.tower_guardian.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:rockite_smasher",
+      "scale": 0.75,
+      "name": "Rockite Smasher",
+      "offset": 0.4,
+      "anchor": "rockite_smasher"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.rockite_smasher.desc"
+    }
+  ]
+}

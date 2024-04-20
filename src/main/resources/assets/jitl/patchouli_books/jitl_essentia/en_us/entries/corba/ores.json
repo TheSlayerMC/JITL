@@ -1,0 +1,20 @@
+{
+  "name": "book.jitl.entries.ores",
+  "category": "jitl:corba",
+  "icon": "jitl:gorbite_ore",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "jitl:orbadite_ore",
+      "title": "book.jitl.entry.getting_started.orbadite_ore.title",
+      "text": "book.jitl.entry.getting_started.orbadite_ore.1"
+    },
+    {
+      "type": "spotlight",
+      "item": "jitl:gorbite_ore",
+      "title": "book.jitl.entry.getting_started.gorbite_ore.title",
+      "text": "book.jitl.entry.getting_started.gorbite_ore.1"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "book.jitl.entries.traders",
+  "category": "jitl:overworld",
+  "icon": "jitl:yellow_gem",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:mage",
+      "scale": 0.75,
+      "name": "Mage",
+      "offset": 0.5,
+      "anchor": "mage"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.mage.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:neutral_sentry_stalker",
+      "scale": 1,
+      "name": "Neutral Sentry Stalker",
+      "offset": 0.2,
+      "anchor": "neutral_sentry_stalker"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.neutral_sentry_stalker.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:rockite_golem",
+      "scale": 0.75,
+      "name": "Rockite Golem",
+      "offset": 0.4,
+      "anchor": "rockite_golem"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.rockite_golem.desc"
+    }
+  ]
+}

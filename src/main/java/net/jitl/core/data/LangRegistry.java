@@ -101,105 +101,176 @@ public class LangRegistry {
         writeToFile("\"curios.identifier.heart_container\" : \"Heart\",");
         writeToFile("\"curios.identifier.catalyst\" : \"Catalyst\",");
 
-        writeToFile("\"book.jitl.landing_text\" : " + "\"Welcome to Journey Into The Light\",");
+        writeToFile("\"book.jitl.landing_text\" : " + "\"Welcome $(playername) to Journey Into The Light, This book is a WIP, any other info needed head over to the $(l:https://discord.com/invite/WhXvz5b)Discord\",");
         writeToFile("\"book.jitl.book_name\" : " + "\"Essentia Bible\",");
 
         writeToFile("\"book.jitl.category.getting_started\" : " + "\"Getting Started\",");
         writeToFile("\"book.jitl.category.getting_started.desc\" : " + "\"This should give you the tips and hints on getting started.\",");
         writeToFile("\"book.jitl.entries.getting_started.ores\" : " + "\"Ores\",");
+        writeToFile("\"book.jitl.category.dimensions\" : " + "\"Dimensions\",");
 
         writeToFile("\"book.jitl.entry.getting_started.iridium_ore.title\" : " + "\"Iridium Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.iridium_ore.1\" : " + "\"Ore that generates in the Overworld between Y -80 and 48\",");
+        writeToFile("\"book.jitl.entry.getting_started.iridium_ore.1\" : " + "\"Ore that generates in the Overworld between Y -80 and 48, drops Iridium Nugget\",");
 
         writeToFile("\"book.jitl.entry.getting_started.sapphire_ore.title\" : " + "\"Sapphire Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.sapphire_ore.1\" : " + "\"Ore that generates in the Overworld between Y -80 and 48\",");
+        writeToFile("\"book.jitl.entry.getting_started.sapphire_ore.1\" : " + "\"Ore that generates in the Overworld between Y -80 and 48, drops Sapphire Gem\",");
 
         writeToFile("\"book.jitl.entry.getting_started.shadium_ore.title\" : " + "\"Shadium Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.shadium_ore.1\" : " + "\"Ore that generates in the Overworld between Y -80 and 48\",");
+        writeToFile("\"book.jitl.entry.getting_started.shadium_ore.1\" : " + "\"Ore that generates in the Overworld between Y -80 and 48, drops Raw Shadium\",");
 
         writeToFile("\"book.jitl.entry.getting_started.lunium_ore.title\" : " + "\"Lunium Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.lunium_ore.1\" : " + "\"Ore that generates in the Overworld between Y -80 and 48\",");
+        writeToFile("\"book.jitl.entry.getting_started.lunium_ore.1\" : " + "\"Ore that generates in the Overworld between Y -80 and 48, drops Lunium Powder\",");
 
         writeToFile("\"book.jitl.entry.getting_started.verdite_ore.title\" : " + "\"Verdite Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.verdite_ore.1\" : " + "\"Ore that generates in the Overworld between Y -80 and 48\",");
+        writeToFile("\"book.jitl.entry.getting_started.verdite_ore.1\" : " + "\"Ore that generates in the Overworld between Y -80 and 48, drops itself\",");
 
         writeToFile("\"book.jitl.entry.getting_started.blood_rock.title\" : " + "\"Blood Rock\",");
         writeToFile("\"book.jitl.entry.getting_started.blood_rock.1\" : " + "\"Stone that generates in the Nether between Y -64 and 256. This is used for Summoning Blocks and the Summoning Shrine\",");
 
         writeToFile("\"book.jitl.entry.getting_started.bloodcrust_ore.title\" : " + "\"Bloodcrust Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.bloodcrust_ore.1\" : " + "\"Ore that generates in the Nether Y -64 and 256\",");
+        writeToFile("\"book.jitl.entry.getting_started.bloodcrust_ore.1\" : " + "\"Ore that generates in the Nether Y -64 and 256, drops Raw Bloodcrust\",");
 
         writeToFile("\"book.jitl.entry.getting_started.bleedstone_block.title\" : " + "\"Bleedstone\",");
-        writeToFile("\"book.jitl.entry.getting_started.bleedstone_block.1\" : " + "\"Ore that generates in the Nether on the roof\",");
+        writeToFile("\"book.jitl.entry.getting_started.bleedstone_block.1\" : " + "\"Ore that generates in the Nether on the roof, drops Bleedstone Gem\",");
 
         writeToFile("\"book.jitl.entry.getting_started.smithstone_block.title\" : " + "\"Smithstone\",");
-        writeToFile("\"book.jitl.entry.getting_started.smithstone_block.1\" : " + "\"Ore that generates in the Nether on the roof\",");
+        writeToFile("\"book.jitl.entry.getting_started.smithstone_block.1\" : " + "\"Ore that generates in the Nether on the roof, drops Smithstone Gem\",");
 
         writeToFile("\"book.jitl.entry.getting_started.warped_quartz_ore.title\" : " + "\"Warped Quartz Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.warped_quartz_ore.1\" : " + "\"Ore that generates in the Nether Biome Warped Forest\",");
+        writeToFile("\"book.jitl.entry.getting_started.warped_quartz_ore.1\" : " + "\"Ore that generates in the Nether Biome Warped Forest, drops Warped Quartz\",");
 
         writeToFile("\"book.jitl.entry.getting_started.crimson_quartz_ore.title\" : " + "\"Crimson Quartz Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.crimson_quartz_ore.1\" : " + "\"Ore that generates in the Nether Biome Crimson Forest\",");
+        writeToFile("\"book.jitl.entry.getting_started.crimson_quartz_ore.1\" : " + "\"Ore that generates in the Nether Biome Crimson Forest, drops Crimson Quartz\",");
 
         writeToFile("\"book.jitl.entry.getting_started.firestone_ore.title\" : " + "\"Firestone Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.firestone_ore.1\" : " + "\"Ore that generates in the Nether in Basalt\",");
+        writeToFile("\"book.jitl.entry.getting_started.firestone_ore.1\" : " + "\"Ore that generates in the Nether in Basalt, drops Firestone\",");
 
         writeToFile("\"book.jitl.entry.getting_started.enderillium_ore.title\" : " + "\"Enderillium Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.enderillium_ore.1\" : " + "\"Ore that generates in the End Islands\",");
+        writeToFile("\"book.jitl.entry.getting_started.enderillium_ore.1\" : " + "\"Ore that generates in the End Islands, drops Enderillium Shard\",");
 
         writeToFile("\"book.jitl.entry.getting_started.ashual_ore.title\" : " + "\"Ashual Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.ashual_ore.1\" : " + "\"Ore that generates in the Boiling Point\",");
+        writeToFile("\"book.jitl.entry.getting_started.ashual_ore.1\" : " + "\"Ore that generates in the Boiling Point, drops Ash\",");
 
         writeToFile("\"book.jitl.entry.getting_started.blazium_ore.title\" : " + "\"Blazium Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.blazium_ore.1\" : " + "\"Ore that generates in the Boiling Point\",");
+        writeToFile("\"book.jitl.entry.getting_started.blazium_ore.1\" : " + "\"Ore that generates in the Boiling Point, drops Raw Blazium\",");
 
         writeToFile("\"book.jitl.entry.getting_started.mekyum_ore.title\" : " + "\"Mekyum Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.mekyum_ore.1\" : " + "\"Ore that generates in Euca Biome Goldite Grains\",");
+        writeToFile("\"book.jitl.entry.getting_started.mekyum_ore.1\" : " + "\"Ore that generates in Euca Biome Goldite Grains, drops Mekyum Gem\",");
 
         writeToFile("\"book.jitl.entry.getting_started.celestium_ore.title\" : " + "\"Celestium Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.celestium_ore.1\" : " + "\"Ore that generates in Euca Biome Euca Plains\",");
+        writeToFile("\"book.jitl.entry.getting_started.celestium_ore.1\" : " + "\"Ore that generates in Euca Biome Euca Plains, drops Celestium Gem\",");
 
         writeToFile("\"book.jitl.entry.getting_started.storon_ore.title\" : " + "\"Storon Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.storon_ore.1\" : " + "\"Ore that generates in Euca Biome Goldite Grains\",");
+        writeToFile("\"book.jitl.entry.getting_started.storon_ore.1\" : " + "\"Ore that generates in Euca Biome Goldite Grains, drops Storon Gem\",");
 
         writeToFile("\"book.jitl.entry.getting_started.korite_ore.title\" : " + "\"Korite Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.korite_ore.1\" : " + "\"Ore that generates in Euca Biome Euca Plains\",");
+        writeToFile("\"book.jitl.entry.getting_started.korite_ore.1\" : " + "\"Ore that generates in Euca Biome Euca Plains, drops Korite Gem\",");
 
         writeToFile("\"book.jitl.entry.getting_started.rimestone_ore.title\" : " + "\"Rimestone Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.rimestone_ore.1\" : " + "\"Ore that generates in Frozen Lands\",");
+        writeToFile("\"book.jitl.entry.getting_started.rimestone_ore.1\" : " + "\"Ore that generates in Frozen Lands, drops Rimestone\",");
 
         writeToFile("\"book.jitl.entry.getting_started.peridot_ore.title\" : " + "\"Peridot Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.peridot_ore.1\" : " + "\"Ore that generates in Frozen Lands\",");
+        writeToFile("\"book.jitl.entry.getting_started.peridot_ore.1\" : " + "\"Ore that generates in Frozen Lands, drops Peridot Gem\",");
 
         writeToFile("\"book.jitl.entry.getting_started.des_ore.title\" : " + "\"Des Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.des_ore.1\" : " + "\"Ore that generates in The Depths\",");
+        writeToFile("\"book.jitl.entry.getting_started.des_ore.1\" : " + "\"Ore that generates in The Depths, drops itself\",");
 
         writeToFile("\"book.jitl.entry.getting_started.flairium_ore.title\" : " + "\"Flairium Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.flairium_ore.1\" : " + "\"Ore that generates in The Depths\",");
+        writeToFile("\"book.jitl.entry.getting_started.flairium_ore.1\" : " + "\"Ore that generates in The Depths, drops itself\",");
 
         writeToFile("\"book.jitl.entry.getting_started.orbadite_ore.title\" : " + "\"Orbadite Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.orbadite_ore.1\" : " + "\"Ore that generates in Corba\",");
+        writeToFile("\"book.jitl.entry.getting_started.orbadite_ore.1\" : " + "\"Ore that generates in Corba, drops Raw Orbadite\",");
 
         writeToFile("\"book.jitl.entry.getting_started.gorbite_ore.title\" : " + "\"Gorbite Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.gorbite_ore.1\" : " + "\"Ore that generates in Corba\",");
+        writeToFile("\"book.jitl.entry.getting_started.gorbite_ore.1\" : " + "\"Ore that generates in Corba, drops Gorbite Gem\",");
 
         writeToFile("\"book.jitl.entry.getting_started.lunite_ore.title\" : " + "\"Lunite Ore\",");
-        writeToFile("\"book.jitl.entry.getting_started.lunite_ore.1\" : " + "\"Ore that generates in Cloudia\",");
+        writeToFile("\"book.jitl.entry.getting_started.lunite_ore.1\" : " + "\"Ore that generates in Cloudia, drops Lunite Chunk\",");
 
-        writeToFile("\"book.jitl.entry.portals.boil\" : " + "\"You find the Portal Frame blocks inside the Nether Ghast Tower\",");
+        writeToFile("\"book.jitl.entry.portals.boil\" : " + "\"You find the Portal Frame blocks inside the $(l:jitl:structures/boil_lock_structure)Boil Lock structure\",");
         writeToFile("\"book.jitl.entry.portals.frozen\" : " + "\"You can craft the Frozen Portal Frame blocks to gain access\",");
-        writeToFile("\"book.jitl.entry.portals.euca\" : " + "\"You can craft the Euca Portal Frame blocks with Euca Portal Pieces dropped by Nether Bosses\",");
-        writeToFile("\"book.jitl.entry.portals.corba\" : " + "\"You can craft the Corba Portal Frame blocks with Corba Portal Pieces dropped by Euca Bosses\",");
-        writeToFile("\"book.jitl.entry.portals.depths\" : " + "\"You can craft the Depths Portal Frame blocks with Depths Portal Pieces dropped by Corba Bosses\",");
-        writeToFile("\"book.jitl.entry.portals.terrania\" : " + "\"You can craft the Terranian Portal Frame blocks with Terrania Portal Pieces dropped by Depths Bosses\",");
-        writeToFile("\"book.jitl.entry.portals.cloudia\" : " + "\"You can craft the Cloudia Portal Frame blocks with Cloudia Portal Pieces dropped by Terrania Bosses\",");
-        writeToFile("\"book.jitl.entry.portals.senterian\" : " + "\"Found in the $(l:jitl:dimensions/ancient_structure)Ancient Structure\",");
+        writeToFile("\"book.jitl.entry.portals.euca\" : " + "\"You can craft the Euca Portal Frame blocks with Euca Portal Pieces dropped by Nether Bosses ($(l:jitl:nether/bosses#okoloo)Okoloo$(/l), $(l:jitl:nether/bosses#withering_beast)Withering Beast$(/l), $(l:jitl:nether/bosses#soul_watcher)Soul Watcher$(/l))\",");
+        writeToFile("\"book.jitl.entry.portals.depths\" : " + "\"You can craft the Depths Portal Frame blocks with Depths Portal Pieces dropped by Euca Bosses ($(l:jitl:euca/bosses#eudor)Eudor$(/l), $(l:jitl:euca/bosses#corallator$)Corallator$(/l))\",");
+        writeToFile("\"book.jitl.entry.portals.corba\" : " + "\"You can craft the Corba Portal Frame blocks with Corba Portal Pieces dropped by Depths Bosses ($(l:jitl:depths/bosses#scale)Scale$(/l), $(l:jitl:depths/bosses#thunder_bird)Thunder Bird$(/l))\",");
+        writeToFile("\"book.jitl.entry.portals.terrania\" : " + "\"You can craft the Terranian Portal Frame blocks with Terrania Portal Pieces dropped by Corba Bosses ($(l:jitl:corba/bosses#logger)Logger$(/l), $(l:jitl:corba/bosses#sentry_king)Sentry King$(/l))\",");
+        writeToFile("\"book.jitl.entry.portals.cloudia\" : " + "\"You can craft the Cloudia Portal Frame blocks with Cloudia Portal Pieces dropped by a Terrania Boss ($(l:jitl:terrania/bosses#terranian_protector)Terranian Protector$(/l))\",");
+        writeToFile("\"book.jitl.entry.portals.senterian\" : " + "\"Found in the $(l:jitl:overworld/structures#ancient_structure)Ancient Structure\",");
+
+        writeToFile("\"book.jitl.entries.structures\" : " + "\"Structures\",");
+        writeToFile("\"book.jitl.entries.ores\" : " + "\"Ores\",");
+        writeToFile("\"book.jitl.entries.mobs\" : " + "\"Mobs\",");
+        writeToFile("\"book.jitl.entries.bosses\" : " + "\"Bosses\",");
+        writeToFile("\"book.jitl.entries.traders\" : " + "\"NPC's\",");
+
+        writeToFile("\"book.jitl.category.summoning\" : " + "\"Summoning\",");
+        writeToFile("\"book.jitl.entries.summoning\" : " + "\"Summoning Shrine\",");
+        writeToFile("\"book.jitl.category.summoning.desc\" : " + "\"Information needed on creating the Summoning Shrine\",");
+        writeToFile("\"book.jitl.entry.summoning.book.desc\" : " + "\"Craft the book needed to find the recipes to summon all the JITL bosses\",");
+
+        writeToFile("\"book.jitl.category.overworld\" : " + "\"Overworld\",");
+        writeToFile("\"book.jitl.category.overworld.desc\" : " + "\"Information on added features to the Overworld\",");
+
+        writeToFile("\"book.jitl.category.nether\" : " + "\"Nether\",");
+        writeToFile("\"book.jitl.category.nether.desc\" : " + "\"Information on added features to the Nether\",");
+
+        writeToFile("\"book.jitl.category.end\" : " + "\"The End\",");
+        writeToFile("\"book.jitl.category.end.desc\" : " + "\"Information on added features to The End\",");
+
+        writeToFile("\"book.jitl.category.boil\" : " + "\"Boiling Point\",");
+        writeToFile("\"book.jitl.category.boil.desc\" : " + "\"Information on features in the Boiling Point\",");
+
+        writeToFile("\"book.jitl.category.frozen\" : " + "\"Frozen Lands\",");
+        writeToFile("\"book.jitl.category.frozen.desc\" : " + "\"Information on features in the Frozen Lands\",");
+
+        writeToFile("\"book.jitl.category.euca\" : " + "\"Euca\",");
+        writeToFile("\"book.jitl.category.euca.desc\" : " + "\"Information on features in Euca\",");
+
+        writeToFile("\"book.jitl.category.depths\" : " + "\"The Depths\",");
+        writeToFile("\"book.jitl.category.depths.desc\" : " + "\"Information on features in The Depths\",");
+
+        writeToFile("\"book.jitl.category.corba\" : " + "\"Corba\",");
+        writeToFile("\"book.jitl.category.corba.desc\" : " + "\"Information on features in Corba\",");
+
+        writeToFile("\"book.jitl.category.terrania\" : " + "\"Terrania\",");
+        writeToFile("\"book.jitl.category.terrania.desc\" : " + "\"Information on features in Terrania\",");
+
+        writeToFile("\"book.jitl.category.cloudia\" : " + "\"Cloudia\",");
+        writeToFile("\"book.jitl.category.cloudia.desc\" : " + "\"Information on features in Cloudia\",");
+
+        writeToFile("\"book.jitl.category.senterian\" : " + "\"Senterian\",");
+        writeToFile("\"book.jitl.category.senterian.desc\" : " + "\"Information on features in Senterian\",");
+
+        writeToFile("\"structure.overworld.jitl.tower_guardian\" : " + "\"Guardian Tower\",");
+        writeToFile("\"book.jitl.entry.overworld.tower_structure.desc\" : " + "\"Found randomly in any Overworld Biomes, climb your way to the top to find $(l:jitl:overworld/bosses#tower_guardian)Tower Guardian$(/l), Kill him if you can and open his Boss Crystal to receive keys to unlock the loot chests\",");
+        writeToFile("\"book.jitl.entry.overworld.tower_guardian.desc\" : " + "\"Tower Guardian is one of the starting bosses, he has 275 Health and 5 Attack Damage, he can smash down on you which occasionally causes an explosion.\",");
+
+        writeToFile("\"structure.overworld.jitl.rockite_dungeon\" : " + "\"Rockite Dungeon\",");
+        writeToFile("\"book.jitl.entry.overworld.rockite_dungeon.desc\" : " + "\"Found randomly in any Overworld Biomes underground between -Y32 and -Y56, Break the stone Rockite Smasher with any Pickaxe to spawn in the $(l:jitl:overworld/bosses#rockite_smasher)Rockite Smasher$(/l) boss, Kill him if you can and open his Boss Crystal to receive keys to unlock the loot chests\",");
+        writeToFile("\"book.jitl.entry.overworld.rockite_smasher.desc\" : " + "\"Rockite Smasher is one of the starting bosses, he can only be damaged with any Pickaxe. He has 175 Health and 10 Attack Damage, he can throw you up to damage you.\",");
+
+        writeToFile("\"book.jitl.entry.overworld.ancient_structure.desc.1\" : " + "\"The Ancient Structure holds the Portal for Senterian, you can open this up by going to the top of the structure and \",");
+        writeToFile("\"book.jitl.entry.overworld.ancient_structure.desc.2\" : " + "\"filling each corner with an Ancient piece (shard or chunk as well) and clicking the middle block with an Ancient Eye of Opening\",");
+
+        writeToFile("\"structure.overworld.jitl.mage_hut\" : " + "\"Mage Hut\",");
+        writeToFile("\"book.jitl.entry.overworld.mage_hut.desc\" : " + "\"Found randomly in any Dark Forest Biome, Climb up the top to find and meet the $(l:jitl:overworld/traders#mage)Mage\",");
+
+        writeToFile("\"structure.nether.jitl.boil_lock\" : " + "\"Boil Lock\",");
+        writeToFile("\"book.jitl.entry.nether.boil_lock.desc\" : " + "\"Unbreakable structure which you need to unlock with a Boiling Lock Key which is found in the Nether Tower. This structure contains the Boiling Point Portal Frames\",");
+
+        writeToFile("\"structure.nether.jitl.nether_tower\" : " + "\"Nether Tower\",");
+        writeToFile("\"book.jitl.entry.nether.nether_tower.desc\" : " + "\"Loot Tower which has locked chests (unlocked with a crafted Nether Chest Key) which may hold a Boiling Lock Key which is used on the Boil Lock structure, also contains Mini Ghast spawners and extra loot\",");
+
+        writeToFile("\"structure.nether.jitl.hellbot\" : " + "\"Hellbot Spawner\",");
+        writeToFile("\"book.jitl.entry.nether.hellbot.desc\" : " + "\"Spawns Hellbots which drops items that is used to craft Nether Chest Keys\",");
+
+        writeToFile("\"structure.nether.jitl.okoloo_crypt\" : " + "\"Okoloo Crypt\",");
+        writeToFile("\"book.jitl.entry.nether.okoloo_crypt.desc\" : " + "\"A structure that you place the Broken Okoloo Club into the Pedestal to spawn $(l:jitl:nether/bosses#okoloo)Okoloo\",");
+
 
         writeToFile("\"book.jitl.entry.portals.flame_coin\" : " + "\"The Flame Coin is what is used to light all the JITL Portals\",");
         writeToFile("\"book.jitl.entries.dimensions\" : " + "\"Dimensions\",");
         writeToFile("\"book.jitl.entry.portals.start\" : " + "\"What to do and how to get into Dimensions\",");
         writeToFile("\"book.jitl.category.dimensions.desc\" : " + "\"A rundown of how to get access to all Portals\",");
-
 
         writeToFile("\"jitl.trader.boil_trader1\" : \"Boil Trader: It's not often that newcomers arrive here. Can you stand the heat?\",");
         writeToFile("\"jitl.trader.boil_trader2\" : \"Boil Trader: I'm an unusual collector, but I have the best deals of any realm!\",");

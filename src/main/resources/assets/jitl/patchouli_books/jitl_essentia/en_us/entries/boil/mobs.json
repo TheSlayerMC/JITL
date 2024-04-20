@@ -1,0 +1,92 @@
+{
+  "name": "book.jitl.entries.mobs",
+  "category": "jitl:boil",
+  "icon": "jitl:boiling_skull",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:burning_light",
+      "scale": 1,
+      "name": "Burning Light",
+      "offset": 0.1,
+      "anchor": "burning_light"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.boil.mobs.burning_light.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:flame_lotus",
+      "scale": 0.75,
+      "name": "Flame Lotus",
+      "offset": 0.1,
+      "anchor": "flame_lotus"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.boil.mobs.flame_lotus.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:frightener",
+      "scale": 0.75,
+      "name": "Frightener",
+      "offset": 0.1,
+      "anchor": "frightener"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.boil.mobs.frightener.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:hellwing",
+      "scale": 0.5,
+      "name": "Hellwing",
+      "offset": 0.8,
+      "anchor": "hellwing"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.boil.mobs.hellwing.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:magma_blaze",
+      "scale": 1,
+      "name": "Magma Blaze",
+      "offset": 0.4,
+      "anchor": "magma_blaze"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.boil.mobs.magma_blaze.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:observer",
+      "scale": 0.9,
+      "name": "observer",
+      "offset": 0.5,
+      "anchor": "observer"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.boil.mobs.observer.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:screamer",
+      "scale": 1,
+      "name": "Screamer",
+      "offset": 0.1,
+      "anchor": "screamer"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.boil.mobs.screamer.desc"
+    }
+  ]
+}
