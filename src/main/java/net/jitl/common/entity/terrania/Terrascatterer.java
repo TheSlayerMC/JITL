@@ -1,5 +1,6 @@
 package net.jitl.common.entity.terrania;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JSounds;
@@ -22,6 +23,7 @@ public class Terrascatterer extends JMonsterEntity {
 
     public Terrascatterer(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.TERRANIA, 5F);
     }
 
     @Override

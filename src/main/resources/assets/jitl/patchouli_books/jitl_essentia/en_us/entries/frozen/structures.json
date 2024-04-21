@@ -10,7 +10,8 @@
       "images": [
         "jitl:textures/gui/patchouli/eskimo_camp.png"
       ],
-      "border": true
+      "border": true,
+      "anchor": "eskimo_camp"
     },
     {
       "type": "text",
@@ -22,7 +23,8 @@
       "images": [
         "jitl:textures/gui/patchouli/frozen_dungeon.png"
       ],
-      "border": true
+      "border": true,
+      "anchor": "frozen_dungeon"
     },
     {
       "type": "text",
@@ -34,7 +36,8 @@
       "images": [
         "jitl:textures/gui/patchouli/guardian_ruins.png"
       ],
-      "border": true
+      "border": true,
+      "anchor": "guardian_ruins"
     },
     {
       "type": "text",
@@ -46,7 +49,8 @@
       "images": [
         "jitl:textures/gui/patchouli/spike_dungeon.png"
       ],
-      "border": true
+      "border": true,
+      "anchor": "spike_dungeon"
     },
     {
       "type": "text",

@@ -22,7 +22,7 @@ public class FlameLotus extends JMonsterEntity {
 
     public FlameLotus(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        setKnowledge(EnumKnowledge.BOIL, 1F);
+        setKnowledge(EnumKnowledge.BOIL, 5F);
     }
 
     @Override

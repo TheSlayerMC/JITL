@@ -1,5 +1,6 @@
 package net.jitl.common.entity.boss;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JBossEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
@@ -34,6 +35,7 @@ public class SentryKing extends JBossEntity implements RangedAttackMob {
 
     public SentryKing(EntityType<? extends SentryKing> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.CORBA, 10);
     }
 
     @Override
@@ -100,7 +102,7 @@ public class SentryKing extends JBossEntity implements RangedAttackMob {
         double d1 = this.getHeadY(pHead);
         double d2 = this.getHeadZ(pHead);
 
-        FloroMudEntity projectile = new FloroMudEntity(this.level(), this, 5);
+        FloroMudEntity projectile = new FloroMudEntity(this.level(), this, 15);
         projectile.setPosRaw(d0, d1, d2);
 
         this.level().addFreshEntity(projectile);

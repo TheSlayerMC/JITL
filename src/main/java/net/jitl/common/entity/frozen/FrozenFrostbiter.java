@@ -1,5 +1,6 @@
 package net.jitl.common.entity.frozen;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JBlazeStyleEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.minecraft.core.particles.ParticleTypes;
@@ -18,7 +19,7 @@ public class FrozenFrostbiter extends JBlazeStyleEntity {
     public FrozenFrostbiter(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         canSpawnSmoke(false);
-
+        setKnowledge(EnumKnowledge.FROZEN, 5F);
     }
 
     @Override

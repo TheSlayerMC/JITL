@@ -228,7 +228,7 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
         for (Player player : this.level().getEntitiesOfClass(Player.class, axisalignedbb)) {
             PlayerStats stats = player.getData(JDataAttachments.PLAYER_STATS);
             stats.setBlizzard(true);
-            stats.addXP(EnumKnowledge.FROZEN, 15F, player);
+            stats.setLevel(EnumKnowledge.FROZEN, 100);
         }
     }
 }

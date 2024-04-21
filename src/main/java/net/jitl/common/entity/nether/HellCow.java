@@ -1,5 +1,6 @@
 package net.jitl.common.entity.nether;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.minecraft.sounds.SoundEvent;
@@ -22,6 +23,7 @@ public class HellCow extends JMonsterEntity {
 
     public HellCow(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.NETHER, 5F);
     }
 
     @Override

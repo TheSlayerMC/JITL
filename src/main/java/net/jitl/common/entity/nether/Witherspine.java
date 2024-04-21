@@ -1,5 +1,6 @@
 package net.jitl.common.entity.nether;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.minecraft.sounds.SoundEvent;
@@ -23,6 +24,7 @@ public class Witherspine extends JMonsterEntity {
 
     public Witherspine(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.NETHER, 5F);
     }
 
     @Override

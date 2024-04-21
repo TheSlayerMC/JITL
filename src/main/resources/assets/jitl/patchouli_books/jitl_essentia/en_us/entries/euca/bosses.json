@@ -9,7 +9,7 @@
       "entity": "jitl:corallator",
       "scale": 0.5,
       "name": "Corallator",
-      "offset": 1.8,
+      "offset": 2.2,
       "anchor": "corallator"
     },
     {
@@ -21,7 +21,7 @@
       "entity": "jitl:eudor",
       "scale": 0.6,
       "name": "Eudor",
-      "offset": 1,
+      "offset": 1.8,
       "anchor": "eudor"
     },
     {

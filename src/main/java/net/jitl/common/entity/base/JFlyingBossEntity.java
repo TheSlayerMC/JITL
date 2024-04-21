@@ -1,6 +1,8 @@
 package net.jitl.common.entity.base;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.boss.BossCrystal;
+import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.nbt.CompoundTag;
@@ -23,7 +25,7 @@ import java.util.Objects;
 
 public abstract class JFlyingBossEntity extends JFlyingEntity implements IDontAttackWhenPeaceful {
 
-    private final ServerBossEvent BOSS_INFO = (ServerBossEvent)new ServerBossEvent(Objects.requireNonNull(getDisplayName()), BossEvent.BossBarColor.GREEN, BossEvent.BossBarOverlay.NOTCHED_20).setDarkenScreen(false).setCreateWorldFog(false);
+    private final ServerBossEvent BOSS_INFO = (ServerBossEvent)new ServerBossEvent(Objects.requireNonNull(getDisplayName()), BossEvent.BossBarColor.PINK, BossEvent.BossBarOverlay.NOTCHED_20).setDarkenScreen(false).setCreateWorldFog(false);
 
     public JFlyingBossEntity(EntityType<? extends JFlyingEntity> type, Level worldIn) {
         super(type, worldIn);
@@ -110,9 +112,21 @@ public abstract class JFlyingBossEntity extends JFlyingEntity implements IDontAt
         return super.hurt(d, f);
     }
 
+    protected EnumKnowledge knowledge;
+    protected int knowledgeLevel = 0;
+
+    public void setKnowledge(EnumKnowledge knowledge, int level) {
+        this.knowledge = knowledge;
+        this.knowledgeLevel = level;
+    }
+
     @Override
     public void die(@NotNull DamageSource s) {
         super.die(s);
+        if(s.getEntity() instanceof Player player && this.knowledge != null) {
+            player.getData(JDataAttachments.PLAYER_STATS).addLevel(this.knowledge, this.knowledgeLevel);
+        }
+
         if(!level().isClientSide()) {
             BossCrystal crystal = new BossCrystal(JEntities.BOSS_CRYSTAL_TYPE.get(), level(), getDeathCrystalType(), lootTable());
             crystal.setPos(position().add(0, 1, 0));

@@ -1,5 +1,6 @@
 package net.jitl.common.entity.corba;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JBlocks;
@@ -28,6 +29,7 @@ public class CorbanianMollusk extends JMonsterEntity {
 
     public CorbanianMollusk(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.CORBA, 5F);
     }
 
     @Override

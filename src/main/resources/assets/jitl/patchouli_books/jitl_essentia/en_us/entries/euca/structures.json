@@ -10,7 +10,8 @@
       "images": [
         "jitl:textures/gui/patchouli/alloy_mender_hut.png"
       ],
-      "border": true
+      "border": true,
+      "anchor": "alloy_mender_hut"
     },
     {
       "type": "text",
@@ -22,7 +23,8 @@
       "images": [
         "jitl:textures/gui/patchouli/euca_palace.png"
       ],
-      "border": true
+      "border": true,
+      "anchor": "euca_palace"
     },
     {
       "type": "text",
@@ -34,7 +36,8 @@
       "images": [
         "jitl:textures/gui/patchouli/euca_sphere.png"
       ],
-      "border": true
+      "border": true,
+      "anchor": "euca_sphere"
     },
     {
       "type": "text",
@@ -46,7 +49,8 @@
       "images": [
         "jitl:textures/gui/patchouli/euca_village.png"
       ],
-      "border": true
+      "border": true,
+      "anchor": "euca_village"
     },
     {
       "type": "text",
@@ -58,7 +62,8 @@
       "images": [
         "jitl:textures/gui/patchouli/gold_bot_spawner.png"
       ],
-      "border": true
+      "border": true,
+      "anchor": "gold_bot_spawner"
     },
     {
       "type": "text",

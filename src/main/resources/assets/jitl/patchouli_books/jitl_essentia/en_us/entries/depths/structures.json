@@ -10,7 +10,8 @@
       "images": [
         "jitl:textures/gui/patchouli/dark_sorcerers_dungeon.png"
       ],
-      "border": true
+      "border": true,
+      "anchor": "dark_sorcerers_dungeon"
     },
     {
       "type": "text",
@@ -22,7 +23,8 @@
       "images": [
         "jitl:textures/gui/patchouli/depths_village.png"
       ],
-      "border": true
+      "border": true,
+      "anchor": "depths_village"
     },
     {
       "type": "text",
@@ -34,7 +36,8 @@
       "images": [
         "jitl:textures/gui/patchouli/depths_watchtower.png"
       ],
-      "border": true
+      "border": true,
+      "anchor": "depths_watchtower"
     },
     {
       "type": "text",

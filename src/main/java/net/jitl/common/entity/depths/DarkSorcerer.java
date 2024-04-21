@@ -1,5 +1,6 @@
 package net.jitl.common.entity.depths;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.minecraft.world.entity.EntityType;
@@ -18,6 +19,7 @@ public class DarkSorcerer extends JMonsterEntity {
 
     public DarkSorcerer(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.CORBA, 5F);
     }
 
     @Override

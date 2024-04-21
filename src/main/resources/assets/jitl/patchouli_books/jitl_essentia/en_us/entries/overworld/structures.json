@@ -8,7 +8,7 @@
       "type": "image",
       "title": "structure.overworld.jitl.tower_guardian",
       "images": [
-        "jitl:textures/gui/patchouli/ancient_tower.png"
+        "jitl:textures/gui/patchouli/tower_guardian.png"
       ],
       "border": true
     },
@@ -80,6 +80,22 @@
       ],
       "border": true,
       "text": "book.jitl.entry.overworld.ancient_structure.desc.2"
+    },
+    {
+      "type": "image",
+      "images": [
+        "jitl:textures/gui/patchouli/inside_ancient_structure.png"
+      ],
+      "border": true,
+      "text": "book.jitl.entry.overworld.ancient_structure.desc.3"
+    },
+    {
+      "type": "image",
+      "images": [
+        "jitl:textures/gui/patchouli/inside_ancient_room.png"
+      ],
+      "border": true,
+      "text": "book.jitl.entry.overworld.ancient_structure.desc.4"
     }
   ]
 }

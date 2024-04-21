@@ -22,7 +22,7 @@ public class AeroLotus extends JMonsterEntity {
 
     public AeroLotus(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        setKnowledge(EnumKnowledge.BOIL, 1F);
+        setKnowledge(EnumKnowledge.CLOUDIA, 5F);
     }
 
     @Override

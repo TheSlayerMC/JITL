@@ -225,9 +225,9 @@ public class JBlocks {
     public static final DeferredBlock<Block> TERRANIAN_LAMP = register("terrania_lamp", "Terrania Lamp", JBlockProperties.GLOW_BLOCK);
     public static final DeferredBlock<Block> CORBA_LAMP = register("corba_lamp", "Corba Lamp", JBlockProperties.GLOW_BLOCK);
     public static final DeferredBlock<Block> CLOUDIA_LAMP = register("cloudia_lamp", "Cloudia Lamp", JBlockProperties.GLOW_BLOCK);
-    public static final DeferredBlock<Block> SENTERIAN_GUARDIAN_LAMP = register("senterian_guardian_lamp", "Senterian Guardian Lamp", JBlockProperties.GLOW_BLOCK);
-    public static final DeferredBlock<Block> SENTERIAN_LIGHT_LAMP = register("senterian_light_lamp", "Senterian Light Lamp", JBlockProperties.GLOW_BLOCK);
-    public static final DeferredBlock<Block> SENTERIAN_MELLOW_LAMP = register("senterian_mellow_lamp", "Senterian Mellow Lamp", JBlockProperties.GLOW_BLOCK);
+    public static final DeferredBlock<Block> SENTERIAN_GUARDIAN_LAMP = register("senterian_guardian_lamp", "Senterian Guardian Lamp", JBlockProperties.GLOW_DUNGEON_BLOCK);
+    public static final DeferredBlock<Block> SENTERIAN_LIGHT_LAMP = register("senterian_light_lamp", "Senterian Light Lamp", JBlockProperties.GLOW_DUNGEON_BLOCK);
+    public static final DeferredBlock<Block> SENTERIAN_MELLOW_LAMP = register("senterian_mellow_lamp", "Senterian Mellow Lamp", JBlockProperties.GLOW_DUNGEON_BLOCK);
 
     public static final DeferredBlock<Block> TALL_GREEN_GLOWSHROOM = registerDoublePlant("tall_green_glowshroom", "Tall Green Glowshroom", () -> new TallGlowshroomBlock(JBlockProperties.CAVE_GLOW_PLANT));
     public static final DeferredBlock<Block> TALL_BLUE_GLOWSHROOM = registerDoublePlant("tall_blue_glowshroom", "Tall Blue Glowshroom", () -> new TallGlowshroomBlock(JBlockProperties.CAVE_GLOW_PLANT));
@@ -589,19 +589,31 @@ public class JBlocks {
     public static final DeferredBlock<Block> LIGHT_BLUE_CLOUDIA_CLOUD = register("light_blue_cloudia_cloud", "Light Blue Cloudia Cloud", JBlockProperties.CLOUD);
     public static final DeferredBlock<SlabBlock> CLOUDIA_TILE_SLAB = registerSlab("cloudia_tile_slab", "Cloudia Tile Slab", false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> CLOUDIA_BRICK_SLAB = registerSlab("cloudia_brick_slab", "Cloudia Brick Slab", false, JBlockProperties.STONE);
+
     public static final DeferredBlock<Block> SENTERIAN_PORTAL_FRAME = registerEndPortalFrameStyleBlock("senterian_portal_frame", "Senterian Portal Frame", SenterianPortalFrameBlock::new);
     public static final DeferredBlock<Block> SENTERIAN_PORTAL = registerEndPortalStyleBlock("senterian_portal", "Senterian Portal", SenterianPortalBlock::new);
-    public static final DeferredBlock<IronBarsBlock> SENTERIAN_BARS = registerPaneBlock("senterian_bars", "Senterian Bars", JBlockProperties.STONE);
-    public static final DeferredBlock<Block> SENTERIAN_BRICKS = register("senterian_bricks", "Senterian Bricks", JBlockProperties.STONE);
-    public static final DeferredBlock<StairBlock> SENTERIAN_BRICK_STAIRS = registerStairs("senterian_brick_stairs", "Senterian Brick Stairs", SENTERIAN_BRICKS, false, JBlockProperties.STONE);
-    public static final DeferredBlock<Block> SENTERIAN_CARVED_ROCK = register("senterian_carved_rock", "Senterian Carved Rock", JBlockProperties.STONE);
-    public static final DeferredBlock<Block> SENTERIAN_FLOOR = register("senterian_floor", "Senterian Floor", JBlockProperties.STONE);
-    public static final DeferredBlock<Block> SENTERIAN_ROCK = register("senterian_rock", "Senterian Rock", JBlockProperties.STONE);
-    public static final DeferredBlock<Block> SENTERIAN_GLASS = register("senterian_glass", "Senterian Glass", () -> new JTransparentBlock(JBlockProperties.GLASS), JBlockProperties.GLASS);
+    public static final DeferredBlock<IronBarsBlock> SENTERIAN_BARS = registerPaneBlock("senterian_bars", "Senterian Bars", JBlockProperties.DUNGEON_BLOCK);
+    public static final DeferredBlock<Block> SENTERIAN_BRICKS = register("senterian_bricks", "Senterian Bricks", JBlockProperties.DUNGEON_BLOCK);
+    public static final DeferredBlock<StairBlock> SENTERIAN_BRICK_STAIRS = registerStairs("senterian_brick_stairs", "Senterian Brick Stairs", SENTERIAN_BRICKS, false, JBlockProperties.DUNGEON_BLOCK);
+    public static final DeferredBlock<Block> SENTERIAN_CARVED_ROCK = register("senterian_carved_rock", "Senterian Carved Rock", JBlockProperties.DUNGEON_BLOCK);
+    public static final DeferredBlock<Block> SENTERIAN_FLOOR = register("senterian_floor", "Senterian Floor", JBlockProperties.DUNGEON_BLOCK);
+    public static final DeferredBlock<Block> SENTERIAN_ROCK = register("senterian_rock", "Senterian Rock", JBlockProperties.DUNGEON_BLOCK);
+    public static final DeferredBlock<Block> SENTERIAN_GLASS = register("senterian_glass", "Senterian Glass", () -> new JTransparentBlock(JBlockProperties.GLASS), JBlockProperties.DUNGEON_BLOCK);
     public static final DeferredBlock<Block> SENTERIAN_ALTAR = registerModeledBlock("senterian_altar", "Senterian Altar", () -> new SenterianAltar(JBlockProperties.STONE.lightLevel((l) -> 2).noOcclusion()));
-
-    public static final DeferredBlock<JFenceBlock> SENTERIAN_POST = registerFence("senterian_post", "Senterian Post", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JFenceBlock> SENTERIAN_POST = registerFence("senterian_post", "Senterian Post", false, JBlockProperties.DUNGEON_BLOCK);
     public static final DeferredBlock<Block> SENTRY_LOCK = registerRotatableBlock("sentry_lock", "Sentry Lock", LockBlock::new, false);
+
+    public static final DeferredBlock<IronBarsBlock> BREAKABLE_SENTERIAN_BARS = registerPaneBlock("breakable_senterian_bars", "Senterian Bars", JBlockProperties.STONE);
+    public static final DeferredBlock<Block> BREAKABLE_SENTERIAN_BRICKS = register("breakable_senterian_bricks", "Senterian Bricks", JBlockProperties.STONE);
+    public static final DeferredBlock<StairBlock> BREAKABLE_SENTERIAN_BRICK_STAIRS = registerStairs("breakable_senterian_brick_stairs", "Senterian Brick Stairs", BREAKABLE_SENTERIAN_BRICKS, false, JBlockProperties.STONE);
+    public static final DeferredBlock<Block> BREAKABLE_SENTERIAN_CARVED_ROCK = register("breakable_senterian_carved_rock", "Senterian Carved Rock", JBlockProperties.STONE);
+    public static final DeferredBlock<Block> BREAKABLE_SENTERIAN_FLOOR = register("breakable_senterian_floor", "Senterian Floor", JBlockProperties.STONE);
+    public static final DeferredBlock<Block> BREAKABLE_SENTERIAN_ROCK = register("breakable_senterian_rock", "Senterian Rock", JBlockProperties.STONE);
+    public static final DeferredBlock<Block> BREAKABLE_SENTERIAN_GLASS = register("breakable_senterian_glass", "Senterian Glass", () -> new JTransparentBlock(JBlockProperties.GLASS), JBlockProperties.GLASS);
+    public static final DeferredBlock<JFenceBlock> BREAKABLE_SENTERIAN_POST = registerFence("breakable_senterian_post", "Senterian Post", false, JBlockProperties.STONE);
+    public static final DeferredBlock<Block> BREAKABLE_SENTERIAN_GUARDIAN_LAMP = register("breakable_senterian_guardian_lamp", "Senterian Guardian Lamp", JBlockProperties.GLOW_BLOCK);
+    public static final DeferredBlock<Block> BREAKABLE_SENTERIAN_LIGHT_LAMP = register("breakable_senterian_light_lamp", "Senterian Light Lamp", JBlockProperties.GLOW_BLOCK);
+    public static final DeferredBlock<Block> BREAKABLE_SENTERIAN_MELLOW_LAMP = register("breakable_senterian_mellow_lamp", "Senterian Mellow Lamp", JBlockProperties.GLOW_BLOCK);
 
     public static final DeferredBlock<Block> JOURNEY_CHEST = registerChestBlock("journey_chest", "Journey Chest", JChestBlock::new);
     public static final DeferredBlock<Block> NETHER_CHEST = registerChestBlock("nether_chest", "Nether Chest", JChestBlock::new);

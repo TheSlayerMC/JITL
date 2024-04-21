@@ -376,10 +376,10 @@ public class MobStats {
     // ======================= BOSSES ========================
     // =======================================================
 
-    public static final double SOUL_WATCHER_HEALTH = 700.0D;
+    public static final double SOUL_WATCHER_HEALTH = 650.0D;
     public static final double SOUL_WATCHER_KNOCKBACK_RESISTANCE = 1.0D;
 
-    public static final double SCALE_HEALTH = 1560.0D;
+    public static final double SCALE_HEALTH = 1550.0D;
     public static final double SCALE_KNOCKBACK_RESISTANCE = 1.0D;
 
     public static final double SKY_STALKER_HEALTH = 3500.0D;
@@ -432,7 +432,7 @@ public class MobStats {
     public static final double TEMPLE_GUARDIAN_SPEED = 0.1;
     public static final int TEMPLE_GUARDIAN_KNOCKBACK_RESISTANCE = 2;
 
-    public static final int THUNDERBIRD_HEALTH = 2000;
+    public static final int THUNDERBIRD_HEALTH = 1550;
     public static final int THUNDERBIRD_DAMAGE = 10;
     public static final int WITHERING_BEAST_HEALTH = 750;
     public static final int WITHERING_BEAST_DAMAGE = 10;

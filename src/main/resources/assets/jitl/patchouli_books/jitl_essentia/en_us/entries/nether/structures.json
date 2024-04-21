@@ -46,6 +46,7 @@
       "images": [
         "jitl:textures/gui/patchouli/okoloo_crypt.png"
       ],
+      "anchor": "okoloo_crypt",
       "border": true
     },
     {

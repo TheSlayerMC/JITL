@@ -1,5 +1,6 @@
 package net.jitl.common.entity.senterian;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.misc.Sentacoin;
@@ -21,6 +22,7 @@ public class MiniSentryStalker extends JMonsterEntity {
 
     public MiniSentryStalker(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.SENTERIAN, 2.5F);
     }
 
     @Override

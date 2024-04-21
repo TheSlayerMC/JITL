@@ -1,5 +1,6 @@
 package net.jitl.common.entity.nether;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JBlazeStyleEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.minecraft.world.entity.EntityType;
@@ -15,6 +16,7 @@ public class InfernoBlaze extends JBlazeStyleEntity {
 
     public InfernoBlaze(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.NETHER, 5F);
     }
 
     public static AttributeSupplier createAttributes() {

@@ -10,7 +10,8 @@
       "images": [
         "jitl:textures/gui/patchouli/corba_village.png"
       ],
-      "border": true
+      "border": true,
+      "anchor": "corba_village"
     },
     {
       "type": "text",
@@ -22,7 +23,8 @@
       "images": [
         "jitl:textures/gui/patchouli/seer_tree.png"
       ],
-      "border": true
+      "border": true,
+      "anchor": "seer_tree"
     },
     {
       "type": "text",

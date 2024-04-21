@@ -1,5 +1,6 @@
 package net.jitl.common.entity.euca;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JSounds;
@@ -22,6 +23,7 @@ public class Golder extends JMonsterEntity {
 
     public Golder(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.EUCA, 5F);
     }
 
     @Override

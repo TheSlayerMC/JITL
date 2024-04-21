@@ -1,5 +1,6 @@
 package net.jitl.common.entity.cloudia;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JSounds;
@@ -22,6 +23,8 @@ public class StarlightTransporter extends JMonsterEntity {
 
     public StarlightTransporter(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.CLOUDIA, 5F);
+
     }
 
     @Override

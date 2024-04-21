@@ -1,5 +1,6 @@
 package net.jitl.common.entity.boss;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JFlyingBossEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
@@ -32,9 +33,9 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 
 public class Corallator extends JFlyingBossEntity implements RangedAttackMob {
 
-
     public Corallator(EntityType<? extends Corallator> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.EUCA, 10);
     }
 
     @Override

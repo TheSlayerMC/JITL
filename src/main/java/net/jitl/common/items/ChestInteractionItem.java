@@ -1,8 +1,10 @@
 package net.jitl.common.items;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.block.JChestBlock;
 import net.jitl.common.items.base.JItem;
 import net.jitl.core.init.internal.JBlocks;
+import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -34,20 +36,20 @@ public class ChestInteractionItem extends JItem {
 
         if(blockstate.getBlock() instanceof JChestBlock) {
             //Sets the chest key to be the universal key
-            unlockChest(player, JItems.CHEST_KEY.get(), world, pos, JBlocks.BOIL_CHEST.get(), JBlocks.EUCA_CHEST.get(), JBlocks.FROZEN_CHEST.get(), JBlocks.NETHER_CHEST.get(), JBlocks.JOURNEY_CHEST.get(),
+            unlockChest(player, EnumKnowledge.OVERWORLD, JItems.CHEST_KEY.get(), world, pos, JBlocks.BOIL_CHEST.get(), JBlocks.EUCA_CHEST.get(), JBlocks.FROZEN_CHEST.get(), JBlocks.NETHER_CHEST.get(), JBlocks.JOURNEY_CHEST.get(),
                     JBlocks.DEPTHS_CHEST.get(), JBlocks.CORBA_CHEST.get(), JBlocks.TERRANIAN_CHEST.get(), JBlocks.CLOUDIA_CHEST.get(), JBlocks.SENTERIAN_CHEST.get());
 
             //Sets specific keys to only open their respective chests
-            unlockChest(player, JItems.BOILING_KEY.get(), world, pos, JBlocks.BOIL_CHEST.get());
-            unlockChest(player, JItems.EUCA_KEY.get(), world, pos, JBlocks.EUCA_CHEST.get());
-            unlockChest(player, JItems.FROZEN_KEY.get(), world, pos, JBlocks.FROZEN_CHEST.get());
-            unlockChest(player, JItems.NETHER_KEY.get(), world, pos, JBlocks.NETHER_CHEST.get());
-            unlockChest(player, JItems.JOURNEY_KEY.get(), world, pos, JBlocks.JOURNEY_CHEST.get());
-            unlockChest(player, JItems.DEPTHS_CHEST_KEY.get(), world, pos, JBlocks.DEPTHS_CHEST.get());
-            unlockChest(player, JItems.CORBA_KEY.get(), world, pos, JBlocks.CORBA_CHEST.get());
-            unlockChest(player, JItems.TERRANIAN_KEY.get(), world, pos, JBlocks.TERRANIAN_CHEST.get());
-            unlockChest(player, JItems.CLOUDIA_KEY.get(), world, pos, JBlocks.CLOUDIA_CHEST.get());
-            unlockChest(player, JItems.SENTERIAN_KEY.get(), world, pos, JBlocks.SENTERIAN_CHEST.get());
+            unlockChest(player, EnumKnowledge.BOIL, JItems.BOILING_KEY.get(), world, pos, JBlocks.BOIL_CHEST.get());
+            unlockChest(player, EnumKnowledge.EUCA, JItems.EUCA_KEY.get(), world, pos, JBlocks.EUCA_CHEST.get());
+            unlockChest(player, EnumKnowledge.FROZEN, JItems.FROZEN_KEY.get(), world, pos, JBlocks.FROZEN_CHEST.get());
+            unlockChest(player, EnumKnowledge.NETHER, JItems.NETHER_KEY.get(), world, pos, JBlocks.NETHER_CHEST.get());
+            unlockChest(player, EnumKnowledge.OVERWORLD, JItems.JOURNEY_KEY.get(), world, pos, JBlocks.JOURNEY_CHEST.get());
+            unlockChest(player, EnumKnowledge.DEPTHS, JItems.DEPTHS_CHEST_KEY.get(), world, pos, JBlocks.DEPTHS_CHEST.get());
+            unlockChest(player, EnumKnowledge.CORBA, JItems.CORBA_KEY.get(), world, pos, JBlocks.CORBA_CHEST.get());
+            unlockChest(player, EnumKnowledge.TERRANIA, JItems.TERRANIAN_KEY.get(), world, pos, JBlocks.TERRANIAN_CHEST.get());
+            unlockChest(player, EnumKnowledge.CLOUDIA, JItems.CLOUDIA_KEY.get(), world, pos, JBlocks.CLOUDIA_CHEST.get());
+            unlockChest(player, EnumKnowledge.SENTERIAN, JItems.SENTERIAN_KEY.get(), world, pos, JBlocks.SENTERIAN_CHEST.get());
 
             if(heldItem.getItem() == JItems.PADLOCK.get()) {
                 lockChest(player, world, pos);
@@ -90,7 +92,7 @@ public class ChestInteractionItem extends JItem {
         }
     }
 
-    public void unlockChest(Player player, Item key, Level world, BlockPos pos, Block...c) {
+    public void unlockChest(Player player, EnumKnowledge knowledge, Item key, Level world, BlockPos pos, Block...c) {
         for(Block chest : c) {
             if (player.getMainHandItem().getItem() == key && world.getBlockState(pos).getBlock() == chest) {
                 BlockState n = world.getBlockState(pos.north());
@@ -120,6 +122,7 @@ public class ChestInteractionItem extends JItem {
                     }
                     player.getMainHandItem().shrink(1);
                     world.playSound(null, pos, SoundEvents.IRON_DOOR_OPEN, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    player.getData(JDataAttachments.PLAYER_STATS).addXP(knowledge, 10F, player);
                 }
             }
         }

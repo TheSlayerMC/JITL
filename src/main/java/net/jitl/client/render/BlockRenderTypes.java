@@ -142,7 +142,9 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.TERRANIAN_PORTAL.get());
         cutout.add(JBlocks.CLOUDIA_LEAVES.get());
         cutout.add(JBlocks.SENTERIAN_GLASS.get());
+        cutout.add(JBlocks.BREAKABLE_SENTERIAN_GLASS.get());
         cutout.add(JBlocks.SENTERIAN_BARS.get());
+        cutout.add(JBlocks.BREAKABLE_SENTERIAN_BARS.get());
         cutout.add(JBlocks.SUMMONING_TABLE.get());
 
         translucent.add(JBlocks.EUCA_PORTAL.get());

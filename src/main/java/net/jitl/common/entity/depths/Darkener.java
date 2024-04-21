@@ -1,5 +1,6 @@
 package net.jitl.common.entity.depths;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JFlyingEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.minecraft.core.BlockPos;
@@ -28,6 +29,7 @@ public class Darkener extends JFlyingEntity {
 
     public Darkener(EntityType<? extends JFlyingEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.DEPTHS, 5F);
     }
 
     @Override

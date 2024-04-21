@@ -102,6 +102,12 @@ public class JBlockProperties {
             .lightLevel((level) -> 15)
             .sound(SoundType.GLASS);
 
+    public static BlockBehaviour.Properties GLOW_DUNGEON_BLOCK = BlockBehaviour.Properties.of()
+            .strength(-1F, 3600000.0F)
+            .lightLevel((level) -> 15)
+            .sound(SoundType.GLASS);
+
+
     public static BlockBehaviour.Properties DIRT = BlockBehaviour.Properties.of()
             .strength(1F)
             .sound(SoundType.GRAVEL);
@@ -263,7 +269,7 @@ public class JBlockProperties {
             .sound(SoundType.WOOD);
 
     public static BlockBehaviour.Properties PORTAL = BlockBehaviour.Properties.of()
-            .strength(100F)
+            .strength(3F)
             .sound(SoundType.GLASS)
             .lightLevel((state) -> 6)
             .noOcclusion()

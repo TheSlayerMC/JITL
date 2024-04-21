@@ -10,7 +10,8 @@
       "images": [
         "jitl:textures/gui/patchouli/mega_mushroom.png"
       ],
-      "border": true
+      "border": true,
+      "anchor": "mega_mushroom"
     },
     {
       "type": "text",
@@ -22,7 +23,8 @@
       "images": [
         "jitl:textures/gui/patchouli/mega_tree.png"
       ],
-      "border": true
+      "border": true,
+      "anchor": "mega_tree"
     },
     {
       "type": "text",

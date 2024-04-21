@@ -1,5 +1,6 @@
 package net.jitl.common.entity.boss;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JBossEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
@@ -39,6 +40,7 @@ public class Eudor extends JBossEntity {
 
     public Eudor(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.EUCA, 10);
     }
 
     @Override
@@ -107,7 +109,7 @@ public class Eudor extends JBossEntity {
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new AnimatedAttackGoal(this, 1.0D, false));
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new IdleHealGoal(this, 1200));
+        this.goalSelector.addGoal(1, new IdleHealGoal(this, 4800));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0D));

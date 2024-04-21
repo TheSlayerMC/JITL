@@ -1,5 +1,6 @@
 package net.jitl.common.entity.nether;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JFlyingEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.minecraft.core.BlockPos;
@@ -39,6 +40,7 @@ public class MiniGhast extends JFlyingEntity {
 
     public MiniGhast(EntityType<? extends JFlyingEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.NETHER, 5F);
     }
 
     @Override

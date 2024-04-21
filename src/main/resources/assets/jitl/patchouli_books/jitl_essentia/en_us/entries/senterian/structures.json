@@ -10,7 +10,8 @@
       "images": [
         "jitl:textures/gui/patchouli/senterian_altar.png"
       ],
-      "border": true
+      "border": true,
+      "anchor": "senterian_altar"
     },
     {
       "type": "text",

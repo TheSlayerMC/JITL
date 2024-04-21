@@ -1,5 +1,6 @@
 package net.jitl.common.entity.boss;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JFlyingBossEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
@@ -40,6 +41,7 @@ public class Scale extends JFlyingBossEntity {
     public Scale(EntityType<? extends Scale> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.setFlyingSpeed(0.2D);
+        setKnowledge(EnumKnowledge.DEPTHS, 10);
     }
 
     @Override

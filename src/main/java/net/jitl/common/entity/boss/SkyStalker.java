@@ -1,5 +1,6 @@
 package net.jitl.common.entity.boss;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JFlyingBossEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
@@ -40,6 +41,7 @@ public class SkyStalker extends JFlyingBossEntity {
     public SkyStalker(EntityType<? extends SkyStalker> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.setFlyingSpeed(0.2D);
+        setKnowledge(EnumKnowledge.CLOUDIA, 10);
     }
 
     @Override

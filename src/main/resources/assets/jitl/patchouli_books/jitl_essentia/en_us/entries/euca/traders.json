@@ -9,7 +9,7 @@
       "entity": "jitl:alloy_mender",
       "scale": 1,
       "name": "Alloy Mender",
-      "offset": 0.2,
+      "offset": -0.1,
       "anchor": "alloy_mender"
     },
     {

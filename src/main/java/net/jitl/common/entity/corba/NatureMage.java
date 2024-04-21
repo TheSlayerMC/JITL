@@ -1,5 +1,6 @@
 package net.jitl.common.entity.corba;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.projectile.FireballEntity;
@@ -26,6 +27,7 @@ public class NatureMage extends JMonsterEntity implements RangedAttackMob {
 
     public NatureMage(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.CORBA, 5F);
     }
 
     @Override

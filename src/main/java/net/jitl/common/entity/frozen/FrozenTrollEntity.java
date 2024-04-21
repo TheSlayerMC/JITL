@@ -2,7 +2,9 @@ package net.jitl.common.entity.frozen;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.JEntityAction;
+import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.frozen.tasks.FrozenTrollTasks;
 import net.jitl.core.init.internal.JItems;
@@ -38,10 +40,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.NotNull;
+import software.bernie.geckolib.core.animation.AnimatableManager;
 
 import javax.annotation.Nullable;
 
-public class FrozenTrollEntity extends Monster {
+public class FrozenTrollEntity extends JMonsterEntity {
 
     private static final EntityDataAccessor<Boolean> IS_ANGRY_ID = SynchedEntityData.defineId(FrozenTrollEntity.class, EntityDataSerializers.BOOLEAN);
 
@@ -82,6 +85,7 @@ public class FrozenTrollEntity extends Monster {
     public FrozenTrollEntity(EntityType<? extends FrozenTrollEntity> entityType, Level world) {
         super(entityType, world);
         this.setCanPickUpLoot(true);
+        setKnowledge(EnumKnowledge.FROZEN, 5F);
     }
 
     public static AttributeSupplier createAttributes() {
@@ -103,6 +107,11 @@ public class FrozenTrollEntity extends Monster {
         super.readAdditionalSaveData(compound);
         this.inventory.fromTag(compound.getList("Inventory", 10));
         setAngry(compound.getBoolean("angry"));
+    }
+
+    @Override
+    protected void controller(AnimatableManager.ControllerRegistrar controllers) {
+
     }
 
     @Override

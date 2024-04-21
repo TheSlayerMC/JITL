@@ -1,5 +1,7 @@
 package net.jitl.common.entity.terrania;
 
+import net.jitl.client.knowledge.EnumKnowledge;
+import net.jitl.common.entity.base.JPathfinderMob;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
@@ -10,7 +12,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -20,28 +21,17 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class Flungas extends PathfinderMob implements GeoEntity {
-
-    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+public class Flungas extends JPathfinderMob {
 
     public Flungas(EntityType<? extends Flungas> entityType, Level world) {
         super(entityType, world);
+        setKnowledge(EnumKnowledge.TERRANIA, 5F);
     }
 
     @Override
-    protected void registerGoals() {
-
-    }
-
-    @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-
-    }
+    protected void registerGoals() { }
 
     @Override
     protected SoundEvent getAmbientSound() {
@@ -69,14 +59,10 @@ public class Flungas extends PathfinderMob implements GeoEntity {
     }
 
     @Override
-    public void push(Entity entity) {
-
-    }
+    public void push(Entity entity) { }
 
     @Override
-    protected void doPush(Entity entityIn) {
-
-    }
+    protected void doPush(Entity entityIn) { }
 
     @Override
     public boolean isPushable() {
@@ -85,9 +71,7 @@ public class Flungas extends PathfinderMob implements GeoEntity {
 
 
     @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return this.cache;
-    }
+    protected void controller(AnimatableManager.ControllerRegistrar controllers) { }
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()

@@ -1,5 +1,6 @@
 package net.jitl.common.entity.senterian;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.minecraft.world.entity.EntityType;
@@ -18,6 +19,7 @@ public class SentryLord extends JMonsterEntity {
 
     public SentryLord(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.SENTERIAN, 5F);
     }
 
     @Override

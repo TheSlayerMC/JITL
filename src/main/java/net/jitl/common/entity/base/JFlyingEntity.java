@@ -1,15 +1,20 @@
 package net.jitl.common.entity.base;
 
+import net.jitl.client.knowledge.EnumKnowledge;
+import net.jitl.core.init.internal.JDataAttachments;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.FlyingMob;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -21,10 +26,17 @@ public abstract class JFlyingEntity extends FlyingMob implements Enemy, GeoEntit
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private double speed = 0.3D;
+    protected EnumKnowledge knowledge;
+    protected float knowledgeAmount = 0.0F;
 
     public JFlyingEntity(EntityType<? extends JFlyingEntity> type, Level worldIn) {
         super(type, worldIn);
         this.moveControl = new JFlyingEntity.MoveHelperController(this);
+    }
+
+    public void setKnowledge(EnumKnowledge knowledge, float amount) {
+        this.knowledge = knowledge;
+        this.knowledgeAmount = amount;
     }
 
     protected abstract void controller(AnimatableManager.ControllerRegistrar controllers);
@@ -41,6 +53,14 @@ public abstract class JFlyingEntity extends FlyingMob implements Enemy, GeoEntit
 
     public void setFlyingSpeed(double speed) {
         this.speed = speed;
+    }
+
+    @Override
+    public void die(@NotNull DamageSource cause) {
+        super.die(cause);
+        if(cause.getEntity() instanceof Player player && this.knowledge != null) {
+            player.getData(JDataAttachments.PLAYER_STATS).addXP(this.knowledge, this.knowledgeAmount, player);
+        }
     }
 
     @Override

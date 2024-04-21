@@ -1,5 +1,6 @@
 package net.jitl.common.entity.depths;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JSounds;
@@ -22,6 +23,7 @@ public class Roc extends JMonsterEntity {
 
     public Roc(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.CORBA, 5F);
     }
 
     @Override

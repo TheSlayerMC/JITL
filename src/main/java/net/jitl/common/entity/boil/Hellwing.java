@@ -1,5 +1,6 @@
 package net.jitl.common.entity.boil;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JFlyingEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JSounds;
@@ -28,6 +29,7 @@ public class Hellwing extends JFlyingEntity {
 
     public Hellwing(EntityType<? extends JFlyingEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.BOIL, 5F);
     }
 
     @Override

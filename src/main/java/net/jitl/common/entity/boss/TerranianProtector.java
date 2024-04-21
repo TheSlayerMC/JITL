@@ -1,5 +1,6 @@
 package net.jitl.common.entity.boss;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JBossEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
@@ -34,6 +35,7 @@ public class TerranianProtector extends JBossEntity implements RangedAttackMob {
 
     public TerranianProtector(EntityType<? extends TerranianProtector> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.TERRANIA, 10);
     }
 
     @Override

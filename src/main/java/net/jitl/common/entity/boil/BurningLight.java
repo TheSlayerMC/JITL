@@ -1,5 +1,6 @@
 package net.jitl.common.entity.boil;
 
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.minecraft.sounds.SoundEvent;
@@ -21,6 +22,7 @@ public class BurningLight extends JMonsterEntity {
 
     public BurningLight(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        setKnowledge(EnumKnowledge.BOIL, 5F);
     }
 
     @Override

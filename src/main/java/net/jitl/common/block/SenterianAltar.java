@@ -1,8 +1,10 @@
 package net.jitl.common.block;
 
 import com.mojang.serialization.MapCodec;
+import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.block.entity.SenterianAltarTile;
 import net.jitl.core.init.internal.JBlockEntities;
+import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -72,11 +74,14 @@ public class SenterianAltar extends BaseEntityBlock {
         if(level.isClientSide) {
             return InteractionResult.SUCCESS;
         } else {
-            if(player.getMainHandItem().is(JItems.SENTRY_OBSERVER.get())) {
-                if(!getIsActive(state)) {
-                    level.setBlock(pos, state.setValue(IS_ACTIVE, true), 2);
-                    if(!player.isCreative())
-                        player.getMainHandItem().shrink(1);
+            if(!getIsActive(state)) {
+                if(player.getMainHandItem().is(JItems.SENTRY_OBSERVER.get())) {
+                    player.getData(JDataAttachments.PLAYER_STATS).addXP(EnumKnowledge.SENTERIAN, 15F, player);
+                    if (!getIsActive(state)) {
+                        level.setBlock(pos, state.setValue(IS_ACTIVE, true), 2);
+                        if (!player.isCreative())
+                            player.getMainHandItem().shrink(1);
+                    }
                 }
             }
         }

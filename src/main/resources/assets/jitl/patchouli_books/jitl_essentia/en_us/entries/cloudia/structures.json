@@ -10,7 +10,8 @@
       "images": [
         "jitl:textures/gui/patchouli/cloudia_village_1.png"
       ],
-      "border": true
+      "border": true,
+      "anchor": "cloudia_village"
     },
     {
       "type": "text",
