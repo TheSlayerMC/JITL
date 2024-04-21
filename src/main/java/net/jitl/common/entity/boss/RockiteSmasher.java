@@ -1,17 +1,13 @@
 package net.jitl.common.entity.boss;
 
-import net.jitl.client.gui.BossBarRenderer;
 import net.jitl.common.entity.base.JBossEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
 import net.jitl.common.entity.goal.IdleHealGoal;
-import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JLootTables;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -30,12 +26,7 @@ import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
-import java.util.Objects;
-
 public class RockiteSmasher extends JBossEntity {
-
-    private final ServerBossEvent BOSS_INFO = new ServerBossEvent(Objects.requireNonNull(this.getDisplayName()), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS);
-    private final BossBarRenderer BOSS_BAR = new BossBarRenderer(this, JITL.rl("textures/gui/bossbars/rockite_smasher.png"));
 
     public RockiteSmasher(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -144,13 +135,4 @@ public class RockiteSmasher extends JBossEntity {
         return false;
     }
 
-    @Override
-    public BossBarRenderer getBossBar() {
-        return BOSS_BAR;
-    }
-
-    @Override
-    public ServerBossEvent getEvent() {
-        return BOSS_INFO;
-    }
 }

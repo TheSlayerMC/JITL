@@ -20,7 +20,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.portal.PortalInfo;
 import net.minecraft.world.phys.Vec3;
@@ -133,14 +132,6 @@ public class CorbaTeleporter extends BaseTeleporter {
     }
 
     protected int getHeight(ServerLevel level, int posX, int posZ) {
-        for (int y = level.getHeight(); y > 32; y--) {
-            BlockState block = level.getBlockState(new BlockPos(posX, y, posZ));
-            if (block.is(JBlocks.CORBA_GRASS.get()))
-                return y;
-            if (block.is(JBlocks.CORBA_GRASS.get()))
-                return ++y;
-        }
         return level.getHeight(Heightmap.Types.MOTION_BLOCKING, posX, posZ);
     }
-
 }

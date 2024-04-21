@@ -1,11 +1,9 @@
 package net.jitl.common.entity.boss;
 
-import net.jitl.client.gui.BossBarRenderer;
 import net.jitl.common.entity.base.JBossEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
 import net.jitl.common.entity.goal.IdleHealGoal;
-import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JLootTables;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.particles.ParticleTypes;
@@ -13,10 +11,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerBossEvent;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -37,9 +32,6 @@ import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
 public class Calcia extends JBossEntity {
-
-    private final ServerBossEvent BOSS_INFO = new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
-    private final BossBarRenderer BOSS_BAR = new BossBarRenderer(this, JITL.rl("textures/gui/bossbars/calcia.png"));
 
     private int FIRE_TICK = 0;
     private static final EntityDataAccessor<Boolean> IS_INVISIBLE = SynchedEntityData.defineId(Calcia.class, EntityDataSerializers.BOOLEAN);
@@ -115,17 +107,6 @@ public class Calcia extends JBossEntity {
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, null));
     }
 
-    @Override
-    public void stopSeenByPlayer(ServerPlayer player) {
-        this.BOSS_INFO.removePlayer(player);
-    }
-
-    @Override
-    public void startSeenByPlayer(ServerPlayer player) {
-        if(showBarWhenSpawned())
-            this.BOSS_INFO.addPlayer(player);
-    }
-
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, MobStats.CALCIA_HEALTH)
@@ -133,16 +114,6 @@ public class Calcia extends JBossEntity {
                 .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.CALCIA_KNOCKBACK_RESISTANCE)
                 .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_BOSS_FOLLOW_RANGE)
                 .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
-    }
-
-    @Override
-    public BossBarRenderer getBossBar() {
-        return BOSS_BAR;
-    }
-
-    @Override
-    public ServerBossEvent getEvent() {
-        return BOSS_INFO;
     }
 
     private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.calcia.idle");
@@ -188,6 +159,6 @@ public class Calcia extends JBossEntity {
 
     @Override
     public boolean showBarWhenSpawned() {
-        return false;
+        return true;
     }
 }

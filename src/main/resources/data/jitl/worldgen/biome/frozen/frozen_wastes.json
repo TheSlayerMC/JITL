@@ -55,12 +55,6 @@
         "weight": 5,
         "minCount": 1,
         "maxCount": 1
-      },
-      {
-        "type": "jitl:frozen_troll",
-        "weight": 12,
-        "minCount": 1,
-        "maxCount": 4
       }
     ],
     "creature": [
@@ -69,6 +63,30 @@
         "weight": 26,
         "minCount": 1,
         "maxCount": 4
+      },
+      {
+        "type": "jitl:frozen_troll",
+        "weight": 12,
+        "minCount": 1,
+        "maxCount": 4
+      },
+      {
+        "type": "jitl:shivering_bushwalker",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "jitl:shivering_shrieker",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "jitl:permafraust",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
       }
     ]
   },

@@ -1,13 +1,15 @@
 package net.jitl.common.entity.base;
 
-import net.jitl.common.entity.IJourneyBoss;
 import net.jitl.common.entity.boss.BossCrystal;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JSounds;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
@@ -17,10 +19,15 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class JFlyingBossEntity extends JFlyingEntity implements IJourneyBoss, IDontAttackWhenPeaceful {
+import java.util.Objects;
+
+public abstract class JFlyingBossEntity extends JFlyingEntity implements IDontAttackWhenPeaceful {
+
+    private final ServerBossEvent BOSS_INFO = (ServerBossEvent)new ServerBossEvent(Objects.requireNonNull(getDisplayName()), BossEvent.BossBarColor.GREEN, BossEvent.BossBarOverlay.NOTCHED_20).setDarkenScreen(false).setCreateWorldFog(false);
 
     public JFlyingBossEntity(EntityType<? extends JFlyingEntity> type, Level worldIn) {
         super(type, worldIn);
+        this.BOSS_INFO.id = this.getUUID();
     }
 
     @Override
@@ -50,20 +57,41 @@ public abstract class JFlyingBossEntity extends JFlyingEntity implements IJourne
 
     protected abstract BossCrystal.Type getDeathCrystalType();
     public abstract ResourceLocation lootTable();
-    public abstract ServerBossEvent getEvent();
 
     @Override
-    public void stopSeenByPlayer(ServerPlayer player) {
-        super.stopSeenByPlayer(player);
-        JBossInfo.removeInfo(player, getEvent(), this.getId());
+    public void readAdditionalSaveData(CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        if(hasCustomName())
+            this.BOSS_INFO.setName(Objects.requireNonNull(getDisplayName()));
+
+        this.BOSS_INFO.id = getUUID();
     }
-//
-//    @Override
-//    public void startSeenByPlayer(ServerPlayer player) {
-//        super.stopSeenByPlayer(player);
-//        if(showBarWhenSpawned())
-//            JBossInfo.addInfo(player, getEvent(), this);
-//    }
+
+    @Override
+    public void setCustomName(@org.jetbrains.annotations.Nullable Component name) {
+        super.setCustomName(name);
+        this.BOSS_INFO.setName(Objects.requireNonNull(getDisplayName()));
+    }
+
+    @Override
+    protected void customServerAiStep() {
+        super.customServerAiStep();
+        this.BOSS_INFO.setProgress(getHealth() / getMaxHealth());
+    }
+
+    @Override
+    public void startSeenByPlayer(@NotNull ServerPlayer player) {
+        super.startSeenByPlayer(player);
+
+        if(showBarWhenSpawned())
+            this.BOSS_INFO.addPlayer(player);
+    }
+
+    @Override
+    public void stopSeenByPlayer(@NotNull ServerPlayer player) {
+        super.stopSeenByPlayer(player);
+        this.BOSS_INFO.removePlayer(player);
+    }
 
     public abstract boolean showBarWhenSpawned();
 
@@ -74,7 +102,7 @@ public abstract class JFlyingBossEntity extends JFlyingEntity implements IJourne
                 if (d.getEntity() instanceof Player) {
                     AABB axisalignedbb = AABB.unitCubeFromLowerCorner(this.position()).inflate(10);
                     for (Player player : this.level().getEntitiesOfClass(Player.class, axisalignedbb)) {
-                        JBossInfo.addInfo((ServerPlayer) player, getEvent(), this.getId());
+                        this.BOSS_INFO.addPlayer((ServerPlayer)player);
                     }
                 }
             }

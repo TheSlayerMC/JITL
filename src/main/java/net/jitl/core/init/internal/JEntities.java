@@ -171,7 +171,7 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<FrozenGuardian>> FROZEN_GUARDIAN_TYPE = registerEntity(FrozenGuardian::new, "frozen_guardian", "Frozen Guardian", 0.75F, 2F, FROZEN_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
     public static final DeferredHolder<EntityType<?>, EntityType<CrystalCluster>> CRYSTAL_CLUSTER_TYPE = registerEntity(CrystalCluster::new, "crystal_cluster", "Crystal Cluster", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<FrozenFrostbiter>> FROZEN_FROSTBITER_TYPE = registerEntity(FrozenFrostbiter::new, "frozen_frostbiter", "Frozen Frostbiter", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
-    public static final DeferredHolder<EntityType<?>, EntityType<IceGolem>> ICE_GOLEM_TYPE = registerEntity(IceGolem::new, "ice_golem", "Ice Golem", 1F, 2F,FROZEN_COLOR, HOSTILE_COLOR);
+    public static final DeferredHolder<EntityType<?>, EntityType<IceGolem>> ICE_GOLEM_TYPE = registerEntity(IceGolem::new, "ice_golem", "Ice Golem", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
     public static final DeferredHolder<EntityType<?>, EntityType<Permafraust>> PERMAFRAUST_TYPE = registerEntity(Permafraust::new, "permafraust", "Permafraust", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<Shatterer>> SHATTERER_TYPE = registerEntity(Shatterer::new, "shatterer", "Shatterer", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<ShiveringBushwalker>> SHIVERING_BUSHWALKER_TYPE = registerEntity(ShiveringBushwalker::new, "shivering_bushwalker", "Shivering Bushwalker", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);

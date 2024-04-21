@@ -1,23 +1,9 @@
 package net.jitl.client.music;
 
-import net.jitl.core.helper.JMusic;
-import net.jitl.core.init.JITL;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.client.resources.sounds.SoundInstance;
-import net.minecraft.sounds.Music;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.event.TickEvent;
-
-@Mod.EventBusSubscriber(modid = JITL.MODID, value = Dist.CLIENT)
+//@Mod.EventBusSubscriber(modid = JITL.MODID, value = Dist.CLIENT)
 public class JMusicTicker {
 
-    private static final Minecraft MINECRAFT = Minecraft.getInstance();
+    /*private static final Minecraft MINECRAFT = Minecraft.getInstance();
     private static SoundInstance currentTrack;
     private static JMusic shouldPlayTrack;
     private static int timeToNext;
@@ -68,5 +54,5 @@ public class JMusicTicker {
 
     public static boolean isMusicPlaying(SoundEvent event) {
         return (currentTrack != null && event.getLocation() == currentTrack.getLocation() && MINECRAFT.getSoundManager().isActive(currentTrack));
-    }
+    }*/
 }

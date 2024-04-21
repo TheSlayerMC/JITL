@@ -1,6 +1,7 @@
 package net.jitl.core.init;
 
 import net.jitl.client.ClientEventHandler;
+import net.jitl.client.gui.BossBarRenderer;
 import net.jitl.client.gui.KeyUsedEvent;
 import net.jitl.client.render.ModelPropertyRegistry;
 import net.jitl.client.render.RenderEntitys;
@@ -121,6 +122,7 @@ public class JITL {
         RenderEntitys.registerAnimationRenderers();
         ModelPropertyRegistry.init();
         JContainers.register();
+        BossBarRenderer.init();
         NeoForge.EVENT_BUS.register(KeyUsedEvent.class);
         IEventBus forgeEventBus = NeoForge.EVENT_BUS;
         ClientEventHandler.regToBus(forgeEventBus);

@@ -1,21 +1,16 @@
 package net.jitl.common.entity.boss;
 
-import net.jitl.client.gui.BossBarRenderer;
 import net.jitl.common.entity.base.JFlyingBossEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
-import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JLootTables;
 import net.jitl.core.init.internal.JParticleManager;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerBossEvent;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
@@ -38,12 +33,8 @@ import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
-import java.util.Objects;
-
 public class SkyStalker extends JFlyingBossEntity {
 
-    private final ServerBossEvent BOSS_INFO = new ServerBossEvent(Objects.requireNonNull(this.getDisplayName()), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
-    private final BossBarRenderer BOSS_BAR = new BossBarRenderer(this, JITL.rl("textures/gui/bossbars/sky_stalker.png"));
     private static final EntityDataAccessor<Boolean> DATA_IS_CHARGING = SynchedEntityData.defineId(SkyStalker.class, EntityDataSerializers.BOOLEAN);
 
     public SkyStalker(EntityType<? extends SkyStalker> pEntityType, Level pLevel) {
@@ -83,16 +74,6 @@ public class SkyStalker extends JFlyingBossEntity {
         return false;
     }
 
-    @Override
-    public void stopSeenByPlayer(ServerPlayer player) {
-        this.BOSS_INFO.removePlayer(player);
-    }
-
-    @Override
-    public void startSeenByPlayer(@NotNull ServerPlayer player) {
-        if(showBarWhenSpawned())
-            this.BOSS_INFO.addPlayer(player);
-    }
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
@@ -105,21 +86,10 @@ public class SkyStalker extends JFlyingBossEntity {
     @Override
     public void tick() {
         super.tick();
-
         if(this.level().isClientSide()) {
             for (int i = 0; i < 6; i++)
                 this.level().addParticle(JParticleManager.HELLSTONE.get(), this.position().x + (this.random.nextDouble() - 0.5D), this.position().y + this.random.nextDouble(), this.position().z + (this.random.nextDouble() - 0.5D), (this.random.nextDouble() - 0.5D) * 2.0D, -this.random.nextDouble(), (this.random.nextDouble() - 0.5D) * 2.0D);
         }
-    }
-
-    @Override
-    public BossBarRenderer getBossBar() {
-        return BOSS_BAR;
-    }
-
-    @Override
-    public ServerBossEvent getEvent() {
-        return BOSS_INFO;
     }
 
     private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.sky_stalker.idle");
@@ -146,7 +116,7 @@ public class SkyStalker extends JFlyingBossEntity {
 
     @Override
     public boolean showBarWhenSpawned() {
-        return false;
+        return true;
     }
 
 
