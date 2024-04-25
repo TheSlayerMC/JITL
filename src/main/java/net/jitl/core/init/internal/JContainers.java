@@ -4,6 +4,8 @@ import net.jitl.client.gui.screen.JFurnaceScreen;
 import net.jitl.client.gui.screen.SummoningTableScreen;
 import net.jitl.common.block.entity.container.JFurnaceMenu;
 import net.jitl.common.block.entity.container.SummoningTableContainer;
+import net.jitl.common.entity.jmerchent.SentacoinMerchantScreen;
+import net.jitl.common.world.menu.SentacoinMerchantMenu;
 import net.jitl.core.helper.internal.EmptyContainer;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -24,6 +26,8 @@ public class JContainers {
 
     public static final DeferredHolder<MenuType<?>, MenuType<SummoningTableContainer>> SUMMONING_TABLE = registerContainer("summoning_table", SummoningTableContainer::new);
 
+    public static final DeferredHolder<MenuType<?>, MenuType<SentacoinMerchantMenu>> SENTACOIN_MERCHANT = registerContainer("sentacoin_merchant", SentacoinMerchantMenu::new);
+
     private static <T extends AbstractContainerMenu> DeferredHolder<MenuType<?>, MenuType<T>> registerContainer(String id, IContainerFactory<T> factory) {
         return JContainers.REGISTRY.register(id, () -> IMenuTypeExtension.create(factory));
     }
@@ -31,5 +35,6 @@ public class JContainers {
     public static void register() {
         MenuScreens.register(JFURNACE.get(), JFurnaceScreen::new);
         MenuScreens.register(SUMMONING_TABLE.get(), SummoningTableScreen::new);
+        MenuScreens.register(SENTACOIN_MERCHANT.get(), SentacoinMerchantScreen::new);
     }
 }

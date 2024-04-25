@@ -1,6 +1,7 @@
 package net.jitl.core.data;
 
 import net.jitl.client.stats.PacketPlayerStats;
+import net.jitl.common.entity.jmerchent.ClientBoundSentacoinMerchantOffersPacket;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.network.CKeyPressedPacket;
 import net.jitl.core.network.PacketEssenceBar;
@@ -19,10 +20,10 @@ public class JNetworkRegistry {
 
     private static void registerPackets(final RegisterPayloadHandlerEvent ev) {
         final IPayloadRegistrar registry = ev.registrar(JITL.MODID);
-
         registry.play(PacketPlayerStats.ID, PacketPlayerStats::decode, PacketPlayerStats::handle);
         registry.play(PacketEssenceBar.ID, PacketEssenceBar::decode, PacketEssenceBar::handle);
         registry.play(CKeyPressedPacket.ID, CKeyPressedPacket::decode, CKeyPressedPacket::handle);
+        registry.play(ClientBoundSentacoinMerchantOffersPacket.ID, ClientBoundSentacoinMerchantOffersPacket::decode, ClientBoundSentacoinMerchantOffersPacket::handle);
     }
 
     public static void sendToPlayer(ServerPlayer player, CustomPacketPayload packet) {
