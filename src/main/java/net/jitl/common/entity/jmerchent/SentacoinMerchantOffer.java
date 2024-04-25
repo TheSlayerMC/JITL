@@ -5,7 +5,6 @@ import net.jitl.common.capability.stats.PlayerStats;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.BeaconMenu;
 import net.minecraft.world.item.ItemStack;
 
 public class SentacoinMerchantOffer {
@@ -56,7 +55,6 @@ public class SentacoinMerchantOffer {
     }
 
     public boolean take(Player player) {
-        BeaconMenu
         PlayerStats stats = player.getData(JDataAttachments.PLAYER_STATS);
         if(stats.getSentacoins() >= this.sentacoin_cost) {
             stats.useSentacoins(this.sentacoin_cost);
