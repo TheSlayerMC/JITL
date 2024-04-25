@@ -33,7 +33,7 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(JITL.MODID)
 public class JITL {
-    public static final String MODID = "jitl", PREFIX = MODID + ":";
+    public static final String MODID = "jitl", PREFIX = MODID + ":", MOD_VERSION = "2.1.4";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
     public static final boolean DEV_MODE = true;
 
