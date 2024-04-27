@@ -69,12 +69,9 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
 
-    compileOnly "mezz.jei:jei-" + minecraft_version + "-common-api:" + jei_version
-    compileOnly "mezz.jei:jei-" + minecraft_version + "-neoforge-api:" + jei_version
-    runtimeOnly "mezz.jei:jei-" + minecraft_version + "-neoforge:" + jei_version
+    implementation "mezz.jei:jei-" + minecraft_version + "-neoforge:" + jei_version
 
-//    compileOnly "curse.maven:just-enough-resources-jer-240630:" + jer_version
-//    runtimeOnly "curse.maven:just-enough-resources-jer-240630:" + jer_version
+    implementation "maven.modrinth:just-enough-resources-jer:" + jer_version
 
     runtimeOnly "top.theillusivec4.curios:curios-neoforge:" + curios_version
     compileOnly "top.theillusivec4.curios:curios-neoforge:" + curios_version + ":api"
@@ -135,6 +132,13 @@ repositories {
 
     maven {
         url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+    }
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+        content {
+            includeGroup "maven.modrinth"
+        }
     }
 }
 

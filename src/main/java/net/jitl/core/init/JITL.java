@@ -14,6 +14,7 @@ import net.jitl.core.config.JClientConfig;
 import net.jitl.core.config.JCommonConfig;
 import net.jitl.core.data.*;
 import net.jitl.core.data.block_generation.*;
+import net.jitl.core.init.compat.ModCompat;
 import net.jitl.core.init.internal.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -115,7 +116,7 @@ public class JITL {
     }
 
     private void commonInit(final FMLCommonSetupEvent event) {
-
+        ModCompat.init(event);
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
