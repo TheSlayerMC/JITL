@@ -23,6 +23,7 @@ public class JLootTables {
     public static ResourceLocation SKY_STALKER_CRYSTAL = addBossCrystalLootTable("sky_stalker");
 
     public static ResourceLocation FROZEN_TROLL_TRADES = addBossCrystalLootTable("temple_guardian");
+    public static ResourceLocation SPIRIT_CRYSTAL = addLootTable("loot/spirit_crystal");
 
     public static ResourceLocation addLootTable(String name) {
         return JITL.rl(name);

@@ -119,7 +119,7 @@ public class SpiritCrystal extends PathfinderMob implements GeoEntity {
         }
         if(totalAwakeTotems >= 4) {
             if(!this.level().isClientSide) {
-                LootTable table = Objects.requireNonNull(level().getServer()).getLootData().getLootTable(JLootTables.BLAZIER_CRYSTAL);
+                LootTable table = Objects.requireNonNull(level().getServer()).getLootData().getLootTable(JLootTables.SPIRIT_CRYSTAL);
                 List<ItemStack> itemList = table.getRandomItems(new LootParams.Builder((ServerLevel)level()).withParameter(LootContextParams.THIS_ENTITY, playerEntity)
                         .withParameter(LootContextParams.ORIGIN, playerEntity.position()).create(LootContextParamSets.GIFT));
                 storedItems.addAll(itemList);
