@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:corba_church",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 35198641521564,
+    "spacing": 20,
+    "separation": 6,
+    "type": "minecraft:random_spread"
+  }
+}

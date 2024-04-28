@@ -72,7 +72,7 @@ public class CorbaTeleporter extends BaseTeleporter {
     @Override
     public Optional<BlockUtil.FoundRectangle> makePortal(BlockPos pos, Direction.Axis axis) {
         pos = getHeight(level, pos.getX(), pos.getZ());
-        for (int x = -2; x < 3; x++)
+        for (int x = -2; x < 3; x++) {
             for (int z = -2; z < 3; z++) {
                 if (Math.abs(x) < 2 && Math.abs(z) < 2)
                     level.setBlock(pos.offset(x, 0, z), portal_block.defaultBlockState(), 3);
@@ -87,10 +87,6 @@ public class CorbaTeleporter extends BaseTeleporter {
                     else
                         level.setBlock(pos.offset(x, 0, z), portal_frame.defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH).setValue(CorbaPortalFrameBlock.HAS_EYE, true), 3);
                 }
-            }
-
-        for(int x = -2; x < 3; x++) {
-            for(int z = -2; z < 3; z++) {
                 level.setBlock(pos.offset(x, 1, z), Blocks.AIR.defaultBlockState(), 3);
                 level.setBlock(pos.offset(x, 2, z), Blocks.AIR.defaultBlockState(), 3);
             }
@@ -100,7 +96,7 @@ public class CorbaTeleporter extends BaseTeleporter {
 
     protected BlockPos getHeight(ServerLevel level, int posX, int posZ) {
         int limit = 128;
-        for(int y = limit; y > 0; y--) {
+        for(int y = limit; y > 50; y--) {
             BlockState block = level.getBlockState(new BlockPos(posX, y, posZ));
             if(block.is(JBlocks.CORBA_GRASS.get()) || block.is(JBlocks.DRIED_MUD.get()) || block.is(JBlocks.TAINTED_MUD.get()))
                 return new BlockPos(posX, y + 1, posZ);
