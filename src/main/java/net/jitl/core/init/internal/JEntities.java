@@ -157,14 +157,14 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<EscapedConvict>> ESCAPED_CONVICT_TYPE = registerEntity(EscapedConvict::new, "escaped_convict", "Escaped Convict", 1F, 1.9F, NETHER_COLOR, TRADER_COLOR, MobCategory.CREATURE);
 
     //EUCA MOBS
-    public static final DeferredHolder<EntityType<?>, EntityType<EucaCharger>> EUCA_CHARGER_TYPE = registerEntity(EucaCharger::new, "euca_charger", "Euca Charger", 0.5F, 0.75F, EUCA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final DeferredHolder<EntityType<?>, EntityType<Dynaster>> DYNASTER_TYPE = registerEntity(Dynaster::new, "dynaster", "Dynaster", 1F, 1F, EUCA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final DeferredHolder<EntityType<?>, EntityType<Goldbot>> GOLDBOT_TYPE = registerEntity(Goldbot::new, "goldbot", "Goldbot", 0.5F, 0.75F, EUCA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final DeferredHolder<EntityType<?>, EntityType<Crypian>> CRYPIAN_TYPE = registerEntity(Crypian::new, "crypian", "Crypian", 0.75F, 1.8F, EUCA_COLOR, TRADER_COLOR, MobCategory.CREATURE);
-    public static final DeferredHolder<EntityType<?>, EntityType<AlloyMender>> ALLOY_MENDER_TYPE = registerEntity(AlloyMender::new, "alloy_mender", "Alloy Mender", 0.75F, 1.8F, EUCA_COLOR, TRADER_COLOR, MobCategory.CREATURE);
-    public static final DeferredHolder<EntityType<?>, EntityType<Shimmerer>> SHIMMERER_TYPE = registerEntity(Shimmerer::new, "shimmerer", "Shimmerer", 0.5F, 0.75F, EUCA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final DeferredHolder<EntityType<?>, EntityType<Golder>> GOLDER_TYPE = registerEntity(Golder::new, "golder", "Golder", 1F, 2F, EUCA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final DeferredHolder<EntityType<?>, EntityType<RoyalKing>> ROYAL_KING_TYPE = registerEntity(RoyalKing::new, "royal_king", "Royal King", 1F, 2F, EUCA_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
+    public static final DeferredHolder<EntityType<?>, EntityType<EucaCharger>> EUCA_CHARGER_TYPE = registerEntity(EucaCharger::new, "euca_charger", "Euca Charger", 0.5F, 0.75F, EUCA_COLOR, HOSTILE_COLOR);
+    public static final DeferredHolder<EntityType<?>, EntityType<Dynaster>> DYNASTER_TYPE = registerEntity(Dynaster::new, "dynaster", "Dynaster", 1F, 1F, EUCA_COLOR, HOSTILE_COLOR);
+    public static final DeferredHolder<EntityType<?>, EntityType<Goldbot>> GOLDBOT_TYPE = registerEntity(Goldbot::new, "goldbot", "Goldbot", 0.5F, 0.75F, EUCA_COLOR, HOSTILE_COLOR);
+    public static final DeferredHolder<EntityType<?>, EntityType<Crypian>> CRYPIAN_TYPE = registerEntity(Crypian::new, "crypian", "Crypian", 0.75F, 1.8F, EUCA_COLOR, TRADER_COLOR);
+    public static final DeferredHolder<EntityType<?>, EntityType<AlloyMender>> ALLOY_MENDER_TYPE = registerEntity(AlloyMender::new, "alloy_mender", "Alloy Mender", 0.75F, 1.8F, EUCA_COLOR, TRADER_COLOR);
+    public static final DeferredHolder<EntityType<?>, EntityType<Shimmerer>> SHIMMERER_TYPE = registerEntity(Shimmerer::new, "shimmerer", "Shimmerer", 0.5F, 0.75F, EUCA_COLOR, HOSTILE_COLOR);
+    public static final DeferredHolder<EntityType<?>, EntityType<Golder>> GOLDER_TYPE = registerEntity(Golder::new, "golder", "Golder", 1F, 2F, EUCA_COLOR, HOSTILE_COLOR);
+    public static final DeferredHolder<EntityType<?>, EntityType<RoyalKing>> ROYAL_KING_TYPE = registerEntity(RoyalKing::new, "royal_king", "Royal King", 1F, 2F, EUCA_COLOR, PASSIVE_COLOR);
 
     //FROZEN MOBS
     public static final DeferredHolder<EntityType<?>, EntityType<Eskimo>> ESKIMO_TYPE = registerEntity(Eskimo::new, "eskimo", "Eskimo", 1F, 2F, FROZEN_COLOR, TRADER_COLOR, MobCategory.CREATURE);
@@ -511,21 +511,21 @@ public class JEntities {
     }
 
     public static <T extends Entity> void setCustomSpawn(SpawnPlacementRegisterEvent event, DeferredHolder<EntityType<?>, EntityType<T>> entity, SpawnPlacements.SpawnPredicate<T> spawn) {
-        event.register(entity.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, spawn, SpawnPlacementRegisterEvent.Operation.AND);
+        event.register(entity.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, spawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 
     //For normal mob spawns (animals / NPC's)
     public static <T extends Mob> void setDefaultSpawn(SpawnPlacementRegisterEvent event, DeferredHolder<EntityType<?>, EntityType<T>> entity) {
-        event.register(entity.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.AND);
+        event.register(entity.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 
     //For monsters to spawn anywhere
     public static <T extends Monster> void setDefaultMonsterSpawn(SpawnPlacementRegisterEvent event, DeferredHolder<EntityType<?>, EntityType<T>> entity) {
-        event.register(entity.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.AND);
+        event.register(entity.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 
     //For monsters in only dark spots
     public static  <T extends Monster> void setDarkMonsterSpawn(SpawnPlacementRegisterEvent event, DeferredHolder<EntityType<?>, EntityType<T>> entity) {
-        event.register(entity.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.AND);
+        event.register(entity.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 }
