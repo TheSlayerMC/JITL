@@ -115,6 +115,9 @@ public class JBlocks {
     public static final ArrayList<String> trophyBlockName = new ArrayList<>();
     public static final ArrayList<String> trophyLangName = new ArrayList<>();
 
+    public static final ArrayList<String> totemBlockName = new ArrayList<>();
+    public static final ArrayList<String> totemLangName = new ArrayList<>();
+
     public static final ArrayList<String> PICKAXE_BLOCKS = new ArrayList<>();
     public static final ArrayList<String> AXE_BLOCKS = new ArrayList<>();
     public static final ArrayList<String> SHOVEL_BLOCKS = new ArrayList<>();
@@ -667,6 +670,12 @@ public class JBlocks {
     public static final DeferredBlock<RotatedPillarBlock> ANCIENT_RUNIC_STONE_2 = registerPillar("ancient_stone_runic_2", "Ancient Runic Stone", false, JBlockProperties.ANCIENT_STONE);
     public static final DeferredBlock<RotatedPillarBlock> ANCIENT_RUNIC_STONE_3 = registerPillar("ancient_stone_runic_3", "Ancient Runic Stone", false, JBlockProperties.ANCIENT_STONE);
 
+    public static final DeferredBlock<Block> TOTEM_BASE = registerTotemBlock("totem_base", "Totem");
+    public static final DeferredBlock<Block> TOTEM_ANGRY = registerTotemBlock("totem_angry", "Angry Totem");
+    public static final DeferredBlock<Block> TOTEM_HAPPY = registerTotemBlock("totem_happy", "Happy Totem");
+    public static final DeferredBlock<Block> TOTEM_SAD = registerTotemBlock("totem_sad", "Sad Totem");
+    public static final DeferredBlock<Block> TOTEM_SCARED = registerTotemBlock("totem_scared", "Scared Totem");
+
     //OVERWORLD
     public static final DeferredBlock<Block> TOMATO_CROP = registerCropBlock("tomato_crop", "Tomato", 8, TomatoCropBlock::new);
     public static final DeferredBlock<Block> FLORO_PEDAL_CROP = registerCropBlock("floro_pedal_crop", "Floro Pedal", 8, FloroCropBlock::new);
@@ -929,6 +938,15 @@ public class JBlocks {
         trophyBlockName.add(name);
         trophyLangName.add(translatedName);
         DeferredBlock<Block> block1 = BLOCKS.register(name, TrophyBlock::new);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
+        return block1;
+    }
+
+    public static DeferredBlock<Block> registerTotemBlock(String name, String translatedName) {
+        addPickaxeableBlocks(name);
+        totemBlockName.add(name);
+        totemLangName.add(translatedName);
+        DeferredBlock<Block> block1 = BLOCKS.register(name, TotemBlock::new);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }

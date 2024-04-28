@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "awake=true": {
+        "model": "jitl:block/totem_scared_awake"
+      },
+    "awake=false": {
+        "model": "jitl:block/totem_scared"
+      }
+  }
+}

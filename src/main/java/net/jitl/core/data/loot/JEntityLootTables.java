@@ -74,6 +74,7 @@ public class JEntityLootTables extends EntityLootSubProvider {
         this.add(JEntities.ALLOY_MENDER_TYPE.get(), empty());
         this.add(JEntities.ROYAL_KING_TYPE.get(), empty());
         this.add(JEntities.BOSS_CRYSTAL_TYPE.get(), empty());
+        this.add(JEntities.SPIRIT_CRYSTAL_TYPE.get(), empty());
 
         this.add(JEntities.HELLBOT_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                 .add(LootItem.lootTableItem(JItems.FLAMING_SPROCKET.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(-2.0F, 1.0F)))

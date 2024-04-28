@@ -103,6 +103,7 @@ public class JITL {
             new JBlockEndPortalGenerator().generate();
             new JBlockEndFrameGenerator().generate();
             new JBlockMushroomGenerator().generate();
+            new BlockTotemGenerator().generate();
             new LangRegistry().generate();
         }
 

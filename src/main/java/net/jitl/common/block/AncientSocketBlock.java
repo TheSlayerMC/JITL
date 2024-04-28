@@ -21,7 +21,7 @@ public class AncientSocketBlock extends Block {
 
     public AncientSocketBlock() {
         super(JBlockProperties.ANCIENT_STONE);
-        this.registerDefaultState(this.stateDefinition.any().setValue(INSERTED, Boolean.valueOf(false)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(INSERTED, Boolean.FALSE));
     }
 
     @Override
@@ -31,7 +31,7 @@ public class AncientSocketBlock extends Block {
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(INSERTED, Boolean.valueOf(false));
+        return this.defaultBlockState().setValue(INSERTED, Boolean.FALSE);
     }
 
     @Override

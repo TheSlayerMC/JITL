@@ -39,8 +39,14 @@ public class PlayerStats implements INBTSerializable<CompoundTag> {
         sentacoins = value;
     }
 
-    public void useSentacoins(int amount) {
+    public boolean useSentacoins(int amount) {
         sentacoins -= amount;
+        if(sentacoins >= amount) {
+            sentacoins -= amount;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void addSentacoins(int amount) {

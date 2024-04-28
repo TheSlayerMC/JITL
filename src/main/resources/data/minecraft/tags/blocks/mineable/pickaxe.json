@@ -308,6 +308,11 @@
     "jitl:ancient_stone_runic_1",
     "jitl:ancient_stone_runic_2",
     "jitl:ancient_stone_runic_3",
+    "jitl:totem_base",
+    "jitl:totem_angry",
+    "jitl:totem_happy",
+    "jitl:totem_sad",
+    "jitl:totem_scared",
     "jitl:airroot_melon"
   ]
 }

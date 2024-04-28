@@ -1,10 +1,10 @@
 package net.jitl.core.data;
 
 import net.jitl.client.stats.PacketPlayerStats;
-import net.jitl.common.entity.jmerchent.ClientBoundSentacoinMerchantOffersPacket;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.network.CKeyPressedPacket;
-import net.jitl.core.network.PacketEssenceBar;
+import net.jitl.core.init.network.PacketEssenceBar;
+import net.jitl.core.init.network.PacketSentacoinPurchase;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.IEventBus;
@@ -23,7 +23,7 @@ public class JNetworkRegistry {
         registry.play(PacketPlayerStats.ID, PacketPlayerStats::decode, PacketPlayerStats::handle);
         registry.play(PacketEssenceBar.ID, PacketEssenceBar::decode, PacketEssenceBar::handle);
         registry.play(CKeyPressedPacket.ID, CKeyPressedPacket::decode, CKeyPressedPacket::handle);
-        registry.play(ClientBoundSentacoinMerchantOffersPacket.ID, ClientBoundSentacoinMerchantOffersPacket::decode, ClientBoundSentacoinMerchantOffersPacket::handle);
+        registry.play(PacketSentacoinPurchase.ID, PacketSentacoinPurchase::decode, PacketSentacoinPurchase::handle);
     }
 
     public static void sendToPlayer(ServerPlayer player, CustomPacketPayload packet) {

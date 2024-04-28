@@ -58,6 +58,7 @@ public class LangRegistry {
         ArrayList<String> basePortalBlockList = new ArrayList<>(JBlocks.basePortalBlockName);
         ArrayList<String> basePortalFrameBlockList = new ArrayList<>(JBlocks.basePortalFrameBlockName);
         ArrayList<String> topBottomBlockList = new ArrayList<>(JBlocks.topBottomBlockName);
+        ArrayList<String> totemBlockList = new ArrayList<>(JBlocks.totemBlockName);
 
         ArrayList<String> toolItemList = new ArrayList<>(JItems.toolName);
         ArrayList<String> itemList = new ArrayList<>(JItems.itemName);
@@ -586,6 +587,9 @@ public class LangRegistry {
 
         for(int i = 0; i < paneList.size(); i++)
             writeToFile("\"block.jitl." + paneList.get(i) + "\": \"" + JBlocks.paneLangName.get(i) + "\"" + ",");
+
+        for(int i = 0; i < totemBlockList.size(); i++)
+            writeToFile("\"block.jitl." + totemBlockList.get(i) + "\": \"" + JBlocks.totemLangName.get(i) + "\"" + ",");
 
         for(int i = 0; i < terrainBlockList.size(); i++)
             writeToFile("\"block.jitl." + terrainBlockList.get(i) + "\": \"" + JBlocks.terrainLangName.get(i) + "\"" + ",");

@@ -11,6 +11,7 @@ import net.jitl.client.render.entity.frozen.FrozenGuardianRenderer;
 import net.jitl.client.render.entity.frozen.FrozenTrollRenderer;
 import net.jitl.client.render.entity.misc.BossCrystalRenderer;
 import net.jitl.client.render.entity.misc.SentacoinRender;
+import net.jitl.client.render.entity.misc.SpiritCrystalRenderer;
 import net.jitl.client.render.entity.nether.MiniGhastRenderer;
 import net.jitl.client.render.entity.overworld.BoomBoomRenderer;
 import net.jitl.client.render.projectile.*;
@@ -46,6 +47,7 @@ public class RenderEntitys {
         event.registerEntityRenderer(JEntities.ESSENCIA_BOLT_TYPE.get(), EssenciaBoltRenderer::new);
 
         event.registerEntityRenderer(JEntities.BOSS_CRYSTAL_TYPE.get(), BossCrystalRenderer::new);
+        event.registerEntityRenderer(JEntities.SPIRIT_CRYSTAL_TYPE.get(), SpiritCrystalRenderer::new);
 
         event.registerEntityRenderer(JEntities.PIERCER_TYPE.get(), manager -> new PiercerRenderer(manager, Minecraft.getInstance().getItemRenderer()));
         event.registerEntityRenderer(JEntities.KNIFE_TYPE.get(), manager -> new KnifeRenderer(manager, Minecraft.getInstance().getItemRenderer()));

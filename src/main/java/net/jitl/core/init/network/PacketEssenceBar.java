@@ -1,6 +1,5 @@
-package net.jitl.core.network;
+package net.jitl.core.init.network;
 
-import io.netty.buffer.ByteBuf;
 import net.jitl.client.essence.ClientEssence;
 import net.jitl.core.init.JITL;
 import net.minecraft.network.FriendlyByteBuf;

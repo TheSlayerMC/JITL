@@ -3,7 +3,6 @@ package net.jitl.core.init.network;
 import net.jitl.common.event.GearAbilityHandler;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JDataAttachments;
-import net.jitl.core.network.PacketEssenceBar;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;

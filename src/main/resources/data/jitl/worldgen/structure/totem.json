@@ -1,0 +1,20 @@
+{
+  "type": "jitl:highest_ground",
+  "start_pool": "jitl:corba/totem/start_pool",
+  "biomes": "#jitl:has_structure/corba",
+  "max_distance_from_center": 80,
+  "step": "surface_structures",
+  "terrain_adaptation": "beard_thin",
+  "min_height": 63,
+  "max_height": 128,
+  "bury": 0,
+  "size": 7,
+  "spawn_overrides": {
+    "creature": {
+      "bounding_box": "piece",
+      "spawns": [
+
+      ]
+    }
+  }
+}

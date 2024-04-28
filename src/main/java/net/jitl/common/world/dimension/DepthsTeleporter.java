@@ -36,7 +36,6 @@ public class DepthsTeleporter extends BaseTeleporter {
     protected final ResourceKey<PoiType> poi;
     protected final ResourceKey<Level> destination;
     private static final int SEARCH_RADIUS = 256;
-    private static final int hardcodedDepthsPortalLimit = 41;
 
     public DepthsTeleporter(ServerLevel worldIn, DepthsPortalBlock portal, Block frame, ResourceKey<PoiType> poi, ResourceKey<Level> destination) {
         super(worldIn, portal, frame, poi, destination);
