@@ -523,6 +523,17 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.TERRANIAN_PROTECTOR_TROPHY);
         this.dropSelf(JBlocks.SKY_STALKER_TROPHY);
 
+        this.dropSelf(JBlocks.STRIPPED_EUCA_BROWN_LOG);
+        this.dropSelf(JBlocks.STRIPPED_EUCA_GOLD_LOG);
+        this.dropSelf(JBlocks.STRIPPED_FROZEN_LOG);
+        this.dropSelf(JBlocks.STRIPPED_BURNED_BARK);
+        this.dropSelf(JBlocks.STRIPPED_DEPTHS_LOG);
+        this.dropSelf(JBlocks.STRIPPED_BOGWOOD_LOG);
+        this.dropSelf(JBlocks.STRIPPED_CORBA_LOG);
+        this.dropSelf(JBlocks.STRIPPED_TERRANIAN_LOG);
+        this.dropSelf(JBlocks.STRIPPED_CLOUDIA_LOG);
+
+
         this.addCrop(JBlocks.FLORO_PEDAL_CROP.get(), JItems.FLORO_PEDAL.get(), JItems.FLORO_SEEDS.get(), 7);
         this.addCrop(JBlocks.CORVEGGIES_CROP.get(), JItems.CORVEGGIES.get(), JItems.CORVEGGIES.get(), 2);
         this.addCrop(JBlocks.CRAKEBULB_CROP.get(), JItems.CRAKEBULB.get(), JItems.CRAKEBULB.get(), 3);

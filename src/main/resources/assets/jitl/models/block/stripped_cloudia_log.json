@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "jitl:block/stripped_cloudia_log_top",
+    "side": "jitl:block/stripped_cloudia_log_side"
+  }
+}
