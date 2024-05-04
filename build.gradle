@@ -70,7 +70,6 @@ dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
 
     implementation "mezz.jei:jei-" + minecraft_version + "-neoforge:" + jei_version
-
     implementation "maven.modrinth:just-enough-resources-jer:" + jer_version
 
     runtimeOnly "top.theillusivec4.curios:curios-neoforge:" + curios_version

@@ -95,7 +95,7 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<Sentacoin>> SENTACOIN_TYPE = registerRawEntity(Sentacoin::new, "sentacoin", "Sentacoin", 0.1F, 0.1F);
     public static final DeferredHolder<EntityType<?>, EntityType<Sentacoin>> SENTACOIN_BAG_TYPE = registerRawEntity(Sentacoin::new, "sentacoin_bag", "Sentacoin Bag", 0.375F, 0.375F);
     public static final DeferredHolder<EntityType<?>, EntityType<BossCrystal>> BOSS_CRYSTAL_TYPE = registerEntity(BossCrystal::new, "boss_crystal", "Boss Crystal", 0.5F, 0.5F, OVERWORLD_COLOR, HOSTILE_COLOR);
-    public static final DeferredHolder<EntityType<?>, EntityType<SpiritCrystal>> SPIRIT_CRYSTAL_TYPE = registerEntity(SpiritCrystal::new, "spirit_crystal", "Spirit Crystal", 1F, 2F, EUCA_COLOR, PASSIVE_COLOR);
+    public static final DeferredHolder<EntityType<?>, EntityType<SpiritCrystal>> SPIRIT_CRYSTAL_TYPE = registerEntity(SpiritCrystal::new, "spirit_crystal", "Spirit Crystal", 1F, 2F, CORBA_COLOR, PASSIVE_COLOR);
 
     //BOSS MOBS
     public static final DeferredHolder<EntityType<?>, EntityType<TowerGuardian>> TOWER_GUARDIAN_TYPE = registerEntity(TowerGuardian::new, "tower_guardian", "Tower Guardian", 2F, 3.5F, OVERWORLD_COLOR, BOSS_COLOR);

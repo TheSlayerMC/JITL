@@ -533,7 +533,6 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.STRIPPED_TERRANIAN_LOG);
         this.dropSelf(JBlocks.STRIPPED_CLOUDIA_LOG);
 
-
         this.addCrop(JBlocks.FLORO_PEDAL_CROP.get(), JItems.FLORO_PEDAL.get(), JItems.FLORO_SEEDS.get(), 7);
         this.addCrop(JBlocks.CORVEGGIES_CROP.get(), JItems.CORVEGGIES.get(), JItems.CORVEGGIES.get(), 2);
         this.addCrop(JBlocks.CRAKEBULB_CROP.get(), JItems.CRAKEBULB.get(), JItems.CRAKEBULB.get(), 3);
@@ -612,6 +611,11 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.SENTERIAN_ALTAR);
         this.dropSelf(JBlocks.SENTERIAN_CHEST);
 
+        this.dropSelf(JBlocks.TOTEM_BASE);
+        this.dropSelf(JBlocks.TOTEM_ANGRY);
+        this.dropSelf(JBlocks.TOTEM_HAPPY);
+        this.dropSelf(JBlocks.TOTEM_SAD);
+        this.dropSelf(JBlocks.TOTEM_SCARED);
     }
 
     protected void addCrop(Block cropBlock, Item crop, Item seeds, int maxAge) {

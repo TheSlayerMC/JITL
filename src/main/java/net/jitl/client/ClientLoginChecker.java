@@ -23,6 +23,11 @@ public class ClientLoginChecker {
         Player player = event.getEntity();
         if(JClientConfig.UPDATE_MESSAGE.get()) {
             if(!player.level().isClientSide) {
+                sendColouredMessage(player, ChatFormatting.GOLD, "[|---------------------------------------------------|]");
+                sendColouredMessage(player, ChatFormatting.GOLD, "[" + JITL.MOD_NAME + "]");
+                sendColouredTranslatedMessage(player, ChatFormatting.LIGHT_PURPLE, "jitl.message.thank_you", player.getDisplayName());
+                sendColouredTranslatedMessage(player, ChatFormatting.BLUE, "jitl.message.current_version", JITL.MOD_VERSION);
+
                 try {
                     if(!InternetHandler.isOnline()) {
                         MutableComponent msg = Component.translatable("jitl.message.no_internet");
@@ -31,30 +36,10 @@ public class ClientLoginChecker {
                     }
                     try {
                         if(InternetHandler.isUpdateAvailable() && InternetHandler.isOnline()) {
-                            MutableComponent msg1 = Component.translatable("jitl.message.update_available1", player.getDisplayName());
-                            msg1.withStyle(ChatFormatting.AQUA);
-                            MutableComponent msg2 = Component.translatable("jitl.message.update_available2", JITL.MOD_VERSION);
-                            msg2.withStyle(ChatFormatting.RED);
-                            MutableComponent msg3 = Component.translatable("jitl.message.update_available3");
-                            msg3.withStyle(ChatFormatting.YELLOW);
-                            MutableComponent msg4 = Component.translatable("jitl.message.update_available4", InternetHandler.getUpdateVersion());
-                            msg4.withStyle(ChatFormatting.YELLOW);
-
-                            player.sendSystemMessage(msg1);
-                            player.sendSystemMessage(msg2);
-                            player.sendSystemMessage(msg3);
-                            player.sendSystemMessage(msg4);
+                            sendColouredTranslatedMessage(player, ChatFormatting.GREEN, "jitl.message.update_available", InternetHandler.getUpdateVersion());
                         }
                         if(!InternetHandler.isUpdateAvailable() && InternetHandler.isOnline()) {
-                            MutableComponent msg1 = Component.translatable("jitl.message.no_update1", player.getDisplayName());
-                            msg1.withStyle(ChatFormatting.AQUA);
-                            MutableComponent msg2 = Component.translatable("jitl.message.no_update2", JITL.MOD_VERSION);
-                            msg2.withStyle(ChatFormatting.LIGHT_PURPLE);
-                            MutableComponent msg3 = Component.translatable("jitl.message.no_update3");
-                            msg3.withStyle(ChatFormatting.GREEN);
-                            player.sendSystemMessage(msg1);
-                            player.sendSystemMessage(msg2);
-                            player.sendSystemMessage(msg3);
+                            sendColouredTranslatedMessage(player, ChatFormatting.AQUA, "jitl.message.up_to_date");
                         }
                     } catch(IOException e) {
                         throw new RuntimeException(e);
@@ -62,7 +47,20 @@ public class ClientLoginChecker {
                 } catch(SocketException e) {
                     throw new RuntimeException(e);
                 }
+                sendColouredMessage(player, ChatFormatting.GOLD, "[|---------------------------------------------------|]");
             }
         }
+    }
+
+    public static void sendColouredTranslatedMessage(Player player, ChatFormatting colour, String translationKey, Object... args) {
+        MutableComponent msg = Component.translatable(translationKey, args);
+        msg.withStyle(colour);
+        player.sendSystemMessage(msg);
+    }
+
+    public static void sendColouredMessage(Player player, ChatFormatting colour, String key) {
+        MutableComponent msg = Component.literal(key);
+        msg.withStyle(colour);
+        player.sendSystemMessage(msg);
     }
 }

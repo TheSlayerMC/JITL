@@ -114,7 +114,6 @@ public class JBlocks {
     public static final ArrayList<String> slimeLangName = new ArrayList<>();
     public static final ArrayList<String> trophyBlockName = new ArrayList<>();
     public static final ArrayList<String> trophyLangName = new ArrayList<>();
-
     public static final ArrayList<String> totemBlockName = new ArrayList<>();
     public static final ArrayList<String> totemLangName = new ArrayList<>();
 

@@ -527,16 +527,11 @@ public class LangRegistry {
         writeToFile("\"jitl.item.desc.sentry_observer\" : \"Inserted into the Senterian Altar\",");
         writeToFile("\"jitl.item.desc.bile\" : \"Very Vile!\",");
 
-        writeToFile("\"jitl.message.no_internet\" : \"[JITL] Update checker failed, Please check your internet connection.\",");
-
-        writeToFile("\"jitl.message.update_available1\" : \"[JITL] Thank you %s, for downloading and playing!\",");
-        writeToFile("\"jitl.message.update_available2\" : \"[JITL] [Version: %s]\",");
-        writeToFile("\"jitl.message.update_available3\" : \"[JITL] A update is available.\",");
-        writeToFile("\"jitl.message.update_available4\" : \"[JITL] [New Version: %s]\",");
-
-        writeToFile("\"jitl.message.no_update1\" : \"[JITL] Thank you %s, for downloading and playing!\",");
-        writeToFile("\"jitl.message.no_update2\" : \"[JITL] [Version: %s]\",");
-        writeToFile("\"jitl.message.no_update3\" : \"[JITL] JITL is up to date. Enjoy!\",");
+        writeToFile("\"jitl.message.no_internet\" : \"Update checker failed, Please check your internet connection.\",");
+        writeToFile("\"jitl.message.thank_you\" : \"Thank you %s, for downloading and playing!\",");
+        writeToFile("\"jitl.message.update_available\" : \"Update available! Latest version: %s\",");
+        writeToFile("\"jitl.message.current_version\" : \"Current Version: %s\",");
+        writeToFile("\"jitl.message.up_to_date\" : \"Your version is up to date. Enjoy!\",");
 
         /* --------------------- Finish manual lines --------------------- */
 
