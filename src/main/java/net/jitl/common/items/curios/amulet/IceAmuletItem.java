@@ -16,9 +16,9 @@ public class IceAmuletItem extends JCurioItem {
     protected static final UUID DAMAGE_MODIFIER = UUID.fromString("b0d292cf-74cd-4c6e-925f-eb81e78e3582");
     protected static final UUID ATTACK_MODIFIER = UUID.fromString("c0d86a67-553d-4c53-9f68-d8df3a891d38");
 
-    protected static final AttributeModifier SPEED_MOD = new AttributeModifier(SPEED_MODIFIER, "speed_modifier", 0.1F, AttributeModifier.Operation.ADDITION);
-    protected static final AttributeModifier DAMAGE_MOD = new AttributeModifier(DAMAGE_MODIFIER, "damage_modifier", 1.0F, AttributeModifier.Operation.ADDITION);
-    protected static final AttributeModifier ATTACK_MOD = new AttributeModifier(ATTACK_MODIFIER, "attack_speed_modifier", 0.5F, AttributeModifier.Operation.ADDITION);
+    protected static final AttributeModifier SPEED_MOD = new AttributeModifier(SPEED_MODIFIER, "speed_modifier", 0.1F, AttributeModifier.Operation.ADD_VALUE);
+    protected static final AttributeModifier DAMAGE_MOD = new AttributeModifier(DAMAGE_MODIFIER, "damage_modifier", 1.0F, AttributeModifier.Operation.ADD_VALUE);
+    protected static final AttributeModifier ATTACK_MOD = new AttributeModifier(ATTACK_MODIFIER, "attack_speed_modifier", 0.5F, AttributeModifier.Operation.ADD_VALUE);
 
     public IceAmuletItem(Item.Properties properties) {
         super(properties);
@@ -45,13 +45,13 @@ public class IceAmuletItem extends JCurioItem {
                 }
             } else {
                 if (attribMovementSpeed.hasModifier(SPEED_MOD)) {
-                    attribMovementSpeed.removeModifier(SPEED_MOD.getId());
+                    attribMovementSpeed.removeModifier(SPEED_MOD.id());
                 }
                 if (attribAttackDamage.hasModifier(DAMAGE_MOD)) {
-                    attribAttackDamage.removeModifier(DAMAGE_MOD.getId());
+                    attribAttackDamage.removeModifier(DAMAGE_MOD.id());
                 }
                 if (attribAttackSpeed.hasModifier(ATTACK_MOD)) {
-                    attribAttackSpeed.removeModifier(ATTACK_MOD.getId());
+                    attribAttackSpeed.removeModifier(ATTACK_MOD.id());
                 }
             }
         }
@@ -64,13 +64,13 @@ public class IceAmuletItem extends JCurioItem {
         AttributeInstance attribAttackSpeed = slotContext.entity().getAttribute(Attributes.ATTACK_SPEED);
 
         if (attribMovementSpeed.hasModifier(SPEED_MOD)) {
-            attribMovementSpeed.removeModifier(SPEED_MOD.getId());
+            attribMovementSpeed.removeModifier(SPEED_MOD.id());
         }
         if (attribAttackDamage.hasModifier(DAMAGE_MOD)) {
-            attribAttackDamage.removeModifier(DAMAGE_MOD.getId());
+            attribAttackDamage.removeModifier(DAMAGE_MOD.id());
         }
         if (attribAttackSpeed.hasModifier(ATTACK_MOD)) {
-            attribAttackSpeed.removeModifier(ATTACK_MOD.getId());
+            attribAttackSpeed.removeModifier(ATTACK_MOD.id());
         }
     }
 }

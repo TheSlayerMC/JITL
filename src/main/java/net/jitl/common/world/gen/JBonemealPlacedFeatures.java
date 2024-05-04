@@ -5,7 +5,7 @@ import net.jitl.core.init.JITL;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -18,7 +18,7 @@ public class JBonemealPlacedFeatures {
             GOLDITE_GRASS_BONEMEAL = registerKey("goldite_grass_bonemeal"),
             EUCA_GOLD_GRASS_BONEMEAL = registerKey("euca_gold_grass_bonemeal");
 
-    public static void bootstrap(BootstapContext<PlacedFeature> context) {
+    public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> holder = context.lookup(Registries.CONFIGURED_FEATURE);
         Holder<ConfiguredFeature<?, ?>> goldite_stalks = holder.getOrThrow(JConfiguredFeatures.SINGLE_GOLDITE_STALKS);
         Holder<ConfiguredFeature<?, ?>> gold_grass = holder.getOrThrow(JConfiguredFeatures.SINGLE_GOLDITE_STALKS);

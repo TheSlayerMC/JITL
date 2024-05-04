@@ -3,13 +3,12 @@ package net.jitl.client.model.misc;
 import net.jitl.common.entity.boss.BossCrystal;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib.GeckoLib;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 
 public class BossCrystalModel extends DefaultedEntityGeoModel<BossCrystal> {
 
     public BossCrystalModel() {
-        super(new ResourceLocation(GeckoLib.MOD_ID, "bosscrystal"));
+        super(new ResourceLocation(JITL.MODID, "bosscrystal"));
     }
 
     @Override

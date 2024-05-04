@@ -1,5 +1,6 @@
 package net.jitl.core.data;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -16,11 +17,12 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 
 public class JRecipeProvider extends RecipeProvider implements IConditionBuilder {
 
-    public JRecipeProvider(PackOutput pOutput) {
-        super(pOutput);
+    public JRecipeProvider(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pRegistries) {
+        super(pOutput, pRegistries);
     }
 
     @Override

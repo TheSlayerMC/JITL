@@ -14,10 +14,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.ItemSupplier;
@@ -158,14 +155,14 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
         if(entity instanceof LivingEntity && entity != this.getOwner()) {
             if(!level().isClientSide()) {
                 if(getOwner() instanceof ServerPlayer player) {
-                    getStack().hurtAndBreak(1, player, (context) -> context.broadcastBreakEvent(player.getUsedItemHand()));
+                    getStack().hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                 }
 
                 if(entity.hurt(this.damageSources().thrown(this, this.getOwner()), (float) getBaseDamage())) {
                     if (getFlameAddend() > 0) {
-                        entity.setSecondsOnFire(getFlameAddend() * 4);
+                        entity.setRemainingFireTicks(getFlameAddend() * 4 * 20);
                     }
-                    launch = true; //piercer can clip through nearby targets if movement is different than expected, so it'll wait until its position has been updated
+                    launch = true;
                 }
                 this.playSound(JSounds.PIERCER.get(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
             }
@@ -196,7 +193,7 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
     @Override
     public void addAdditionalSaveData(@NotNull CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
-        nbt.put("stack", getStack().save(new CompoundTag()));
+        nbt.put("stack", getStack().save(this.registryAccess()));
         nbt.putInt("bounces", currentBounces);
         nbt.putInt("maxBounces", maxBounces);
         nbt.putFloat("velocityMultiplier", velocityMultiplier);
@@ -207,7 +204,7 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
     @Override
     public void readAdditionalSaveData(@NotNull CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
-        setStack(ItemStack.of(nbt.getCompound("stack")));
+        setStack(ItemStack.parse(this.registryAccess(), nbt.getCompound("stack")).orElse(this.getDefaultPickupItem()));
         if (getStack().isEmpty()) remove(RemovalReason.DISCARDED);
         currentBounces = nbt.getInt("bounces");
         maxBounces = nbt.getInt("maxBounces");
@@ -230,6 +227,11 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
     }
 
     @Override
+    protected ItemStack getDefaultPickupItem() {
+        return getPickupItem();
+    }
+
+    @Override
     public @NotNull ItemStack getItem() {
         ItemStack stack = getStack();
         return stack.isEmpty() ? new ItemStack(JItems.PIERCER.get()) : stack;
@@ -241,9 +243,9 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
     }
 
     @Override
-    protected void defineSynchedData() {
-        this.getEntityData().define(STACK, ItemStack.EMPTY);
-        super.defineSynchedData();
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+        super.defineSynchedData(pBuilder);
+        this.getEntityData().set(STACK, ItemStack.EMPTY);
     }
 
     @Override

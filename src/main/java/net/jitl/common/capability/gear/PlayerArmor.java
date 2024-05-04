@@ -2,6 +2,7 @@ package net.jitl.common.capability.gear;
 
 import net.jitl.common.items.base.JArmorItem;
 import net.jitl.common.items.gear.FullArmorAbility;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
@@ -11,6 +12,7 @@ import org.jetbrains.annotations.UnknownNullability;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Objects;
 
 public class PlayerArmor implements INBTSerializable<CompoundTag> {
 
@@ -32,16 +34,16 @@ public class PlayerArmor implements INBTSerializable<CompoundTag> {
         FullArmorAbility fullArmorAbility = null;
         if (item instanceof JArmorItem) {
             stacks.add(currentStack);
-            fullArmorAbility = ((JArmorItem) item).getAbility().getFullAbility(nbt);
+            fullArmorAbility = Objects.requireNonNull(((JArmorItem) item).getAbility()).getFullAbility(nbt);
             if (fullArmorAbility != null) {
-                material = ((JArmorItem) item).getMaterial();
+                material = ((JArmorItem) item).getMaterial().value();
             }
         }
         while (iterator.hasNext()) {
             currentStack = iterator.next();
             item = currentStack.getItem();
             if (item instanceof JArmorItem) {
-                if (((JArmorItem) item).getMaterial() != material) {
+                if (((JArmorItem) item).getMaterial().value() != material) {
                     fullArmorAbility = null;
                     material = null;
                 }
@@ -65,14 +67,14 @@ public class PlayerArmor implements INBTSerializable<CompoundTag> {
     }
 
     @Override
-    public @UnknownNullability CompoundTag serializeNBT() {
+    public @UnknownNullability CompoundTag serializeNBT(HolderLookup.Provider provider) {
         CompoundTag nbt = new CompoundTag();
         nbt.put("armor ability", this.nbt);
         return nbt;
     }
 
     @Override
-    public void deserializeNBT(CompoundTag nbt) {
+    public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
         this.nbt = nbt.getCompound("armor ability");
     }
 }

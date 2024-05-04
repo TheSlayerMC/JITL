@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:firestone_ore"
   },
-  "result": "jitl:firestone_clump"
+  "result": {
+    "count": 1,
+    "id": "jitl:firestone_clump"
+  }
 }

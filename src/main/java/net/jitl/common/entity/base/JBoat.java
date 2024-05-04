@@ -46,7 +46,6 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.joml.Vector3f;
 
 import java.util.List;
 
@@ -97,24 +96,20 @@ public class JBoat extends Boat {
     }
 
     @Override
-    protected float getEyeHeight(@NotNull Pose pose, EntityDimensions size) {
-        return size.height;
-    }
-
-    @Override
     protected Entity.@NotNull MovementEmission getMovementEmission() {
         return Entity.MovementEmission.NONE;
     }
 
     @Override
-    protected void defineSynchedData() {
-        this.entityData.define(DATAIDHURT, 0);
-        this.entityData.define(DATAIDHURTDIR, 1);
-        this.entityData.define(DATAIDDAMAGE, 0.0F);
-        this.entityData.define(DATAIDTYPE, Type.GOLD_EUCA.ordinal());
-        this.entityData.define(DATAIDPADDLELEFT, false);
-        this.entityData.define(DATAIDPADDLERIGHT, false);
-        this.entityData.define(DATAIDBUBBLETIME, 0);
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+        super.defineSynchedData(pBuilder);
+        pBuilder.define(DATAIDHURT, 0);
+        pBuilder.define(DATAIDHURTDIR, 1);
+        pBuilder.define(DATAIDDAMAGE, 0.0F);
+        pBuilder.define(DATAIDTYPE, Type.GOLD_EUCA.ordinal());
+        pBuilder.define(DATAIDPADDLELEFT, false);
+        pBuilder.define(DATAIDPADDLERIGHT, false);
+        pBuilder.define(DATAIDBUBBLETIME, 0);
     }
 
     @Override
@@ -142,7 +137,7 @@ public class JBoat extends Boat {
     }
 
     @Override
-    protected Vector3f getPassengerAttachmentPoint(Entity pEntity, EntityDimensions pDimensions, float pScale) {
+    protected Vec3 getPassengerAttachmentPoint(Entity pEntity, EntityDimensions pDimensions, float pPartialTick) {
         float f = this.getSinglePassengerXOffset();
         if (this.getPassengers().size() > 1) {
             int i = this.getPassengers().indexOf(pEntity);
@@ -156,7 +151,9 @@ public class JBoat extends Boat {
                 f += 0.2F;
             }
         }
-        return new Vector3f(0.0F, pDimensions.height / 3.0F, f);
+
+        return new Vec3(0.0, this.getVariant() == Boat.Type.BAMBOO ? (double)(pDimensions.height() * 0.8888889F) : (double)(pDimensions.height() / 3.0F), (double)f)
+                .yRot(-this.getYRot() * (float) (Math.PI / 180.0));
     }
 
     @Override
@@ -245,18 +242,18 @@ public class JBoat extends Boat {
     public void tick() {
         this.oldStatus = this.status;
         this.status = this.getStatus();
-        if(this.status != JBoat.Status.UNDERWATER && this.status != JBoat.Status.UNDER_FLOWING_WATER) 
+        if(this.status != JBoat.Status.UNDERWATER && this.status != JBoat.Status.UNDER_FLOWING_WATER)
             this.outOfControlTicks = 0.0F;
-         else 
+         else
             this.outOfControlTicks++;
-        
-        if(!this.level().isClientSide && this.outOfControlTicks >= 60.0F) 
+
+        if(!this.level().isClientSide && this.outOfControlTicks >= 60.0F)
             this.ejectPassengers();
 
-        if(this.getHurtTime() > 0) 
+        if(this.getHurtTime() > 0)
             this.setHurtTime(this.getHurtTime() - 1);
 
-        if(this.getDamage() > 0.0F) 
+        if(this.getDamage() > 0.0F)
             this.setDamage(this.getDamage() - 1.0F);
 
         this.tickLerp();
@@ -577,7 +574,7 @@ public class JBoat extends Boat {
                 this.deltaRotation--;
             if(this.inputRight)
                 this.deltaRotation++;
-            if(this.inputRight != this.inputLeft && !this.inputUp && !this.inputDown) 
+            if(this.inputRight != this.inputLeft && !this.inputUp && !this.inputDown)
                 f += 0.005F;
             this.setYRot(this.getYRot() + this.deltaRotation);
             if(this.inputUp)
@@ -677,7 +674,7 @@ public class JBoat extends Boat {
             return InteractionResult.PASS;
         }
     }
-    
+
     @Override
     protected void checkFallDamage(double y, boolean onGround, @Nullable BlockState state, @Nullable BlockPos pos) {
         this.lastYd = this.getDeltaMovement().y;

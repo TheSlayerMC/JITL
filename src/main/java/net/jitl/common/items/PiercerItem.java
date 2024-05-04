@@ -4,7 +4,6 @@ import com.mojang.datafixers.util.Function3;
 import net.jitl.common.entity.projectile.PiercerEntity;
 import net.jitl.common.items.base.JItem;
 import net.jitl.core.init.internal.JEnchantments;
-import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -14,15 +13,11 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 public class PiercerItem extends JItem {
     protected Function3<Level, LivingEntity, ItemStack, PiercerEntity> projectileFactory;
@@ -39,27 +34,27 @@ public class PiercerItem extends JItem {
         if (!worldIn.isClientSide()) {
             PiercerEntity entity = projectileFactory.apply(worldIn, playerIn, stack);
 
-            int sharpnessLevel = EnchantmentHelper.getTagEnchantmentLevel(Enchantments.SHARPNESS, stack);
+            int sharpnessLevel = EnchantmentHelper.getEnchantmentLevel(Enchantments.SHARPNESS, playerIn);
             if (sharpnessLevel > 0) {
                 entity.setBaseDamage(entity.getBaseDamage() + (double) sharpnessLevel * 0.5D + 0.5D);
             }
 
-            int lightweightLevel = EnchantmentHelper.getTagEnchantmentLevel(JEnchantments.LIGHTWEIGHT.get(), stack);
+            int lightweightLevel = EnchantmentHelper.getEnchantmentLevel(JEnchantments.LIGHTWEIGHT.get(), playerIn);
             if (lightweightLevel > 0) {
                 entity.setVelocityMultiplier(lightweightLevel);
             }
 
-            double ambitLevel = EnchantmentHelper.getTagEnchantmentLevel(JEnchantments.AMBIT.get(), stack);
+            double ambitLevel = EnchantmentHelper.getEnchantmentLevel(JEnchantments.AMBIT.get(), playerIn);
             if (ambitLevel > 0) {
                 entity.setRangeAddend(ambitLevel * 4);
             }
 
-            int scorchingLevel = EnchantmentHelper.getTagEnchantmentLevel(JEnchantments.SCORCHING.get(), stack);
+            int scorchingLevel = EnchantmentHelper.getEnchantmentLevel(JEnchantments.SCORCHING.get(), playerIn);
             if (scorchingLevel > 0) {
                 entity.setFlameAddend(scorchingLevel);
             }
 
-            int faithfulLevel = EnchantmentHelper.getTagEnchantmentLevel(JEnchantments.FAITHFUL.get(), stack);
+            int faithfulLevel = EnchantmentHelper.getEnchantmentLevel(JEnchantments.FAITHFUL.get(), playerIn);
             if (faithfulLevel > 0) {
                 entity.setFaithfulLevel(faithfulLevel);
             }
@@ -96,10 +91,5 @@ public class PiercerItem extends JItem {
                 enchantment == JEnchantments.AMBIT.get() ||
                 enchantment == JEnchantments.FAITHFUL.get() ||
                 enchantment == JEnchantments.SCORCHING.get();
-    }
-
-    @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flagIn) {
-        super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
 }

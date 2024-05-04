@@ -5,6 +5,7 @@ import net.jitl.core.init.internal.JParticleManager;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -41,7 +42,7 @@ public class FireballEntity extends ThrowableProjectile {
         super.onHitEntity(pResult);
         Entity entity = pResult.getEntity();
         if(entity instanceof LivingEntity && entity.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage())) {
-            entity.setSecondsOnFire(2);
+            entity.setRemainingFireTicks(20);
             entity.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage());
         }
     }
@@ -61,13 +62,13 @@ public class FireballEntity extends ThrowableProjectile {
     }
 
     @Override
-    protected float getGravity() {
-        return 0.003F;
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+
     }
 
     @Override
-    protected void defineSynchedData() {
-
+    protected double getDefaultGravity() {
+        return 0.003F;
     }
 
     @Override

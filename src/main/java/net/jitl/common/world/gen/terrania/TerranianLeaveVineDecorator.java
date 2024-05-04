@@ -1,11 +1,11 @@
 package net.jitl.common.world.gen.terrania;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.jitl.common.world.gen.JTreeDecorators;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.VineBlock;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class TerranianLeaveVineDecorator extends TreeDecorator {
 
-   public static final Codec<TerranianLeaveVineDecorator> CODEC = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(TerranianLeaveVineDecorator::new, (dec) -> dec.probability).codec();
+   public static final MapCodec<TerranianLeaveVineDecorator> CODEC = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(TerranianLeaveVineDecorator::new, (dec) -> dec.probability);
    private final float probability;
 
    @Override

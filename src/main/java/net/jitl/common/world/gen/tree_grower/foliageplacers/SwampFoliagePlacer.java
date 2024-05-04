@@ -1,6 +1,6 @@
 package net.jitl.common.world.gen.tree_grower.foliageplacers;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.jitl.common.world.gen.JFoliagePlacers;
 import net.minecraft.core.BlockPos;
@@ -8,18 +8,15 @@ import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.level.LevelSimulatedReader;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.function.BiConsumer;
-
 public class SwampFoliagePlacer extends BlobFoliagePlacer {
 
-    public static final Codec<SwampFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) -> blobParts(instance).apply(instance, SwampFoliagePlacer::new));
+    public static final MapCodec<SwampFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> blobParts(instance).apply(instance, SwampFoliagePlacer::new));
     
     public SwampFoliagePlacer(IntProvider featureSpread, IntProvider featureSpread1, int i) {
         super(featureSpread, featureSpread1, i);

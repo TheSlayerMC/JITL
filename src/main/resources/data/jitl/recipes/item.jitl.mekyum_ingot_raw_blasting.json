@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:mekyum_gemstone"
   },
-  "result": "jitl:mekyum_ingot"
+  "result": {
+    "count": 1,
+    "id": "jitl:mekyum_ingot"
+  }
 }

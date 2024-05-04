@@ -60,7 +60,7 @@ public interface IAbility {
                 if (state.isToolEffective(type)) return true;
             }
         }*/
-        return item.isCorrectToolForDrops(state);
+        return item.isCorrectToolForDrops(stack, state);
     }
 
     default void equip(LivingEntity entity, EquipmentSlot slot, ItemStack stack) {
@@ -111,7 +111,7 @@ public interface IAbility {
 
         @Override
         default void equip(LivingEntity entity, EquipmentSlot slot, ItemStack stack) {
-            if (!stack.hasTag()) stack.setTag(new CompoundTag());
+
         }
     }
 }

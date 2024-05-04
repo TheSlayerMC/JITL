@@ -1,6 +1,6 @@
 package net.jitl.common.world.gen.tree_grower.decorators;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.jitl.common.world.gen.JTreeDecorators;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
@@ -12,7 +12,7 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorTy
 
 public class IcyBrushTreeDecorator extends TreeDecorator {
 
-    public static final Codec<IcyBrushTreeDecorator> CODEC;
+    public static final MapCodec<IcyBrushTreeDecorator> CODEC;
     public static final IcyBrushTreeDecorator INSTANCE = new IcyBrushTreeDecorator(0.20F);
     private final float probability;
 
@@ -69,6 +69,6 @@ public class IcyBrushTreeDecorator extends TreeDecorator {
     }
 
     static {
-        CODEC = Codec.unit(() -> INSTANCE);
+        CODEC = MapCodec.unit(() -> INSTANCE);
     }
 }

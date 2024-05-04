@@ -11,9 +11,9 @@ import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -33,10 +33,10 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
@@ -45,10 +45,10 @@ import java.util.Objects;
 public class BossCrystal extends Mob implements GeoEntity {
     
     private final NonNullList<ItemStack> storedItems = NonNullList.create();
-    private ResourceLocation loot_table;
+    private ResourceKey<LootTable> loot_table;
     private static final EntityDataAccessor<String> TYPE = SynchedEntityData.defineId(BossCrystal.class, EntityDataSerializers.STRING);
 
-    public BossCrystal(EntityType<? extends BossCrystal> pEntityType, Level pLevel, Type t, ResourceLocation loot) {
+    public BossCrystal(EntityType<? extends BossCrystal> pEntityType, Level pLevel, Type t, ResourceKey<LootTable> loot) {
         this(pEntityType, pLevel);
         setType(t.getName());
         setLootTable(loot);
@@ -75,9 +75,9 @@ public class BossCrystal extends Mob implements GeoEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(TYPE, "type");
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+        super.defineSynchedData(pBuilder);
+        pBuilder.define(TYPE, "type");
     }
 
     public String getCrystalType() {
@@ -88,19 +88,19 @@ public class BossCrystal extends Mob implements GeoEntity {
         this.entityData.set(TYPE, t);
     }
 
-    public void setLootTable(ResourceLocation table) {
+    public void setLootTable(ResourceKey<LootTable> table) {
         this.loot_table = table;
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
-        ContainerHelper.loadAllItems(compound, storedItems);
+       // ContainerHelper.loadAllItems(compound, storedItems);
         setType(compound.getString("type"));
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag compound) {
-        ContainerHelper.saveAllItems(compound, storedItems);
+        //ContainerHelper.saveAllItems(compound, storedItems);
         compound.putString("type", getCrystalType());
     }
 
@@ -112,7 +112,7 @@ public class BossCrystal extends Mob implements GeoEntity {
     @Override
     public @NotNull InteractionResult mobInteract(@NotNull Player player, @NotNull InteractionHand hand) {
         if(!this.level().isClientSide) {
-            LootTable table = Objects.requireNonNull(level().getServer()).getLootData().getLootTable(loot_table);
+            LootTable table = Objects.requireNonNull(level().getServer()).reloadableRegistries().getLootTable(loot_table);
             List<ItemStack> itemList = table.getRandomItems(new LootParams.Builder((ServerLevel)level()).withParameter(LootContextParams.THIS_ENTITY, player).withParameter(LootContextParams.ORIGIN, player.position()).create(LootContextParamSets.GIFT));
             storedItems.addAll(itemList);
             for(ItemStack storedItem : storedItems) {

@@ -1,7 +1,6 @@
 package net.jitl.common.items.base;
 
 import net.jitl.client.render.item.JShieldRenderer;
-import net.jitl.core.helper.JArmorMaterial;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.client.Minecraft;
@@ -20,12 +19,6 @@ public class JShieldItem extends ShieldItem {
 
     public final ResourceLocation texture;
     private final Ingredient repairItem;
-
-    public JShieldItem(JArmorMaterial name, int uses, Item repairItem) {
-        super(JItems.itemProps().durability(uses));
-        this.repairItem = Ingredient.of(repairItem);
-        this.texture = JITL.rl("textures/shield/" + name.getRawName() + "_shield.png");
-    }
 
     public JShieldItem(String name, int uses, Item repairItem) {
         super(JItems.itemProps().durability(uses));

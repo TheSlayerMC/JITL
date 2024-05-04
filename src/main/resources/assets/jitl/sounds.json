@@ -597,9 +597,9 @@
   },
   "entities.blazier_idle":{
     "sounds": [
-      "jitl:blazier_idle_0",
-      "jitl:blazier_idle_1",
-      "jitl:blazier_idle_2"
+      "jitl:entities/blazier_idle_0",
+      "jitl:entities/blazier_idle_1",
+      "jitl:entities/blazier_idle_2"
     ]},
   "entities.blazier_hurt":{
     "sounds": [

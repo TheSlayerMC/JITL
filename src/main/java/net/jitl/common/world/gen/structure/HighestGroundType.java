@@ -1,6 +1,7 @@
 package net.jitl.common.world.gen.structure;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.jitl.core.init.internal.StructureRegistry;
 import net.minecraft.core.BlockPos;
@@ -17,7 +18,7 @@ import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup;
 import java.util.Optional;
 
 public final class HighestGroundType extends Structure {
-    public static final Codec<HighestGroundType> CODEC = RecordCodecBuilder.<HighestGroundType>mapCodec(instance ->
+    public static final MapCodec<HighestGroundType> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(HighestGroundType.settingsCodec(instance),
                     StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(structure -> structure.startPool),
                     ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name").forGetter(structure -> structure.startJigsawName),
@@ -27,7 +28,7 @@ public final class HighestGroundType extends Structure {
                     Codec.INT.fieldOf("bury").forGetter(structure -> structure.bury),
                     Codec.STRING.optionalFieldOf("mode", "full").forGetter(structure -> structure.mode),
                     Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter(structure -> structure.maxDistanceFromCenter)
-            ).apply(instance, HighestGroundType::new)).codec();
+            ).apply(instance, HighestGroundType::new));
 
     private final Holder<StructureTemplatePool> startPool;
     private final Optional<ResourceLocation> startJigsawName;

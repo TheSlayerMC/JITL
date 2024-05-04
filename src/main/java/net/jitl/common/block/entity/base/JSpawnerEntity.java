@@ -1,6 +1,7 @@
 package net.jitl.common.block.entity.base;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
@@ -12,7 +13,6 @@ import net.minecraft.world.level.Spawner;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.NotNull;
 
 public abstract class JSpawnerEntity extends BlockEntity implements Spawner {
 
@@ -23,14 +23,14 @@ public abstract class JSpawnerEntity extends BlockEntity implements Spawner {
     }
 
     @Override
-    public void load(@NotNull CompoundTag pTag) {
-        super.load(pTag);
+    protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
+        super.loadAdditional(pTag, pRegistries);
         this.getBaseSpawner().load(this.level, this.worldPosition, pTag);
     }
 
     @Override
-    protected void saveAdditional(@NotNull CompoundTag pTag) {
-        super.saveAdditional(pTag);
+    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
+        super.saveAdditional(pTag, pRegistries);
         this.getBaseSpawner().save(pTag);
     }
 
@@ -48,8 +48,8 @@ public abstract class JSpawnerEntity extends BlockEntity implements Spawner {
     }
 
     @Override
-    public @NotNull CompoundTag getUpdateTag() {
-        CompoundTag compoundtag = this.saveWithoutMetadata();
+    public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
+        CompoundTag compoundtag = this.saveCustomOnly(pRegistries);
         compoundtag.remove("SpawnPotentials");
         return compoundtag;
     }

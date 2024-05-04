@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:ashual_ore"
   },
-  "result": "jitl:ash"
+  "result": {
+    "count": 1,
+    "id": "jitl:ash"
+  }
 }

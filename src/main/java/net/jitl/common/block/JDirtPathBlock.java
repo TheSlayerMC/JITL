@@ -78,7 +78,7 @@ public class JDirtPathBlock extends Block {
     }
 
     @Override
-    public boolean isPathfindable(BlockState s, BlockGetter b, BlockPos p, PathComputationType c) {
+    protected boolean isPathfindable(BlockState pState, PathComputationType pPathComputationType) {
         return false;
     }
 }

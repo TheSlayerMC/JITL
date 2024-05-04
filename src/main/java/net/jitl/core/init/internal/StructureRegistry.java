@@ -1,6 +1,6 @@
 package net.jitl.core.init.internal;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.jitl.common.world.gen.structure.HighestCeilingType;
 import net.jitl.common.world.gen.structure.HighestGroundType;
 import net.jitl.common.world.gen.structure.LowestCeilingType;
@@ -27,7 +27,7 @@ public class StructureRegistry {
 	public static final DeferredHolder<StructureType<?>, StructureType<?>> HIGHEST_CEILING = REGISTRY.register("highest_ceiling", () -> codecConv(HighestCeilingType.CODEC));
 	public static final DeferredHolder<StructureType<?>, StructureType<?>> LOWEST_CEILING = REGISTRY.register("lowest_ceiling", () -> codecConv(LowestCeilingType.CODEC));
 
-    private static <S extends Structure> StructureType<S> codecConv(Codec<S> codec) {
+    private static <S extends Structure> StructureType<S> codecConv(MapCodec<S> codec) {
         return () -> codec;
     }
     public static void placeStructure(StructureTemplate structure, WorldGenLevel level, RandomSource random, BlockPos pos) {

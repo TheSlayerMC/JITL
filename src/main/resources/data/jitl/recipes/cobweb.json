@@ -12,6 +12,7 @@
     "s s"
   ],
   "result": {
-    "item": "minecraft:cobweb"
+    "count": 1,
+    "id": "minecraft:cobweb"
   }
 }

@@ -3,31 +3,30 @@ package net.jitl.common.block;
 import com.mojang.serialization.MapCodec;
 import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
 import net.jitl.common.block.entity.JChestBlockEntity;
-import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlockEntities;
-import net.jitl.core.init.internal.JItems;
+import net.jitl.core.init.internal.JBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.*;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Cat;
+import net.minecraft.world.entity.monster.piglin.PiglinAi;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ChestMenu;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.entity.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.LidBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
@@ -211,16 +210,6 @@ public class JChestBlock extends AbstractChestBlock<JChestBlockEntity> implement
     }
 
     @Override
-    public void setPlacedBy(@NotNull Level level, @NotNull BlockPos pos, @NotNull BlockState state, LivingEntity placer, ItemStack stack) {
-        if(stack.hasCustomHoverName()) {
-            BlockEntity blockentity = level.getBlockEntity(pos);
-            if(blockentity instanceof JChestBlockEntity) {
-                ((JChestBlockEntity)blockentity).setCustomName(stack.getHoverName());
-            }
-        }
-    }
-
-    @Override
     public void onRemove(BlockState state, @NotNull Level level, @NotNull BlockPos pos, BlockState newState, boolean isMoving) {
         if (!state.is(newState.getBlock())) {
             BlockEntity blockentity = level.getBlockEntity(pos);
@@ -234,21 +223,17 @@ public class JChestBlock extends AbstractChestBlock<JChestBlockEntity> implement
     }
 
     @Override
-    public InteractionResult use(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hit) {
-        Item heldItem = player.getMainHandItem().getItem();
-        MenuProvider menuprovider = this.getMenuProvider(state, level, pos);
-
-        if(state.getValue(IS_LOCKED)) {
-            return InteractionResult.FAIL;
-        }
-        if(!state.getValue(IS_LOCKED) && heldItem != JItems.PADLOCK.get()) {
-            if(menuprovider != null) {
-                player.openMenu(menuprovider);
-                player.awardStat(Stats.CUSTOM.get(Stats.OPEN_CHEST));
+    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
+        if (pLevel.isClientSide) {
+            return InteractionResult.SUCCESS;
+        } else {
+            MenuProvider menuprovider = this.getMenuProvider(pState, pLevel, pPos);
+            if (menuprovider != null) {
+                pPlayer.openMenu(menuprovider);
+                PiglinAi.angerNearbyPiglins(pPlayer, true);
             }
-
+            return InteractionResult.CONSUME;
         }
-        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
     @Nullable
@@ -355,7 +340,7 @@ public class JChestBlock extends AbstractChestBlock<JChestBlockEntity> implement
     }
 
     @Override
-    public boolean isPathfindable(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull PathComputationType type) {
+    protected boolean isPathfindable(BlockState pState, PathComputationType pPathComputationType) {
         return false;
     }
 

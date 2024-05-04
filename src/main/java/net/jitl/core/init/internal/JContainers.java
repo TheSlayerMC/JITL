@@ -8,15 +8,18 @@ import net.jitl.common.entity.jmerchant.SentacoinMerchantMenu;
 import net.jitl.common.entity.jmerchant.SentacoinMerchantScreen;
 import net.jitl.core.helper.internal.EmptyContainer;
 import net.jitl.core.init.JITL;
-import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
 import net.neoforged.neoforge.network.IContainerFactory;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+@EventBusSubscriber(modid = JITL.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class JContainers {
     public static final DeferredRegister<MenuType<?>> REGISTRY = DeferredRegister.create(Registries.MENU, JITL.MODID);
 
@@ -32,9 +35,10 @@ public class JContainers {
         return JContainers.REGISTRY.register(id, () -> IMenuTypeExtension.create(factory));
     }
 
-    public static void register() {
-        MenuScreens.register(JFURNACE.get(), JFurnaceScreen::new);
-        MenuScreens.register(SUMMONING_TABLE.get(), SummoningTableScreen::new);
-        MenuScreens.register(SENTACOIN_MERCHANT.get(), SentacoinMerchantScreen::new);
+    @SubscribeEvent
+    public static void register(RegisterMenuScreensEvent event) {
+        event.register(JFURNACE.get(), JFurnaceScreen::new);
+        event.register(SUMMONING_TABLE.get(), SummoningTableScreen::new);
+        event.register(SENTACOIN_MERCHANT.get(), SentacoinMerchantScreen::new);
     }
 }

@@ -3,6 +3,7 @@ package net.jitl.common.capability.stats;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.client.stats.PacketPlayerStats;
 import net.jitl.core.data.JNetworkRegistry;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -215,7 +216,7 @@ public class PlayerStats implements INBTSerializable<CompoundTag> {
     }
 
     @Override
-    public @UnknownNullability CompoundTag serializeNBT() {
+    public @UnknownNullability CompoundTag serializeNBT(HolderLookup.Provider provider) {
         CompoundTag tag = new CompoundTag();
         tag.putBoolean("hasBlizzard", this.hasBlizzard);
         tag.putInt("sentacoins", this.sentacoins);
@@ -247,7 +248,7 @@ public class PlayerStats implements INBTSerializable<CompoundTag> {
     }
 
     @Override
-    public void deserializeNBT(CompoundTag tag) {
+    public void deserializeNBT(HolderLookup.Provider provider, CompoundTag tag) {
         hasBlizzard = tag.getBoolean("hasBlizzard");
         sentacoins = tag.getInt("sentacoins");
 

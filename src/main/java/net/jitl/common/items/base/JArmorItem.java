@@ -2,15 +2,9 @@ package net.jitl.common.items.base;
 
 import net.jitl.common.items.gear.IAbility;
 import net.jitl.common.items.gear.JGear;
-import net.jitl.core.helper.JArmorMaterial;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.NotNull;
+import net.minecraft.world.item.*;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -19,7 +13,7 @@ public class JArmorItem extends ArmorItem implements JGear {
 
     private final IAbility ability;
 
-    public JArmorItem(JArmorMaterial pMaterial, ArmorItem.Type pSlot, IAbility ability) {
+    public JArmorItem(Holder<ArmorMaterial> pMaterial, ArmorItem.Type pSlot, IAbility ability) {
         super(pMaterial, pSlot, new Item.Properties());
         this.ability = ability;
     }
@@ -34,8 +28,8 @@ public class JArmorItem extends ArmorItem implements JGear {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
-        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+    public void appendHoverText(ItemStack stack, TooltipContext pContext, List<Component> tooltip, TooltipFlag pTooltipFlag) {
+        super.appendHoverText(stack, pContext, tooltip, pTooltipFlag);
         if(ability != null)
             ability.fillTooltips(stack, tooltip);
     }

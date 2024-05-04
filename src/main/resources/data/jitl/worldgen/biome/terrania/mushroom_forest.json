@@ -11,7 +11,6 @@
     "grass_color": 16711927,
     "foliage_color": 15597823,
     "grass_color_modifier": "none",
-    "ambient_sound": "jitl:music.terrania.ambience",
     "particle": {
       "options": {
         "type": "jitl:terrania"

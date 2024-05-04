@@ -20,7 +20,6 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
-@OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)
 public class FloroMudEntity extends DamagingProjectileEntity implements ItemSupplier {
 
     public FloroMudEntity(EntityType<FloroMudEntity> type, Level world) {
@@ -76,7 +75,7 @@ public class FloroMudEntity extends DamagingProjectileEntity implements ItemSupp
     }
 
     @Override
-    protected float getGravity() {
+    protected double getDefaultGravity() {
         return 0.03F;
     }
 

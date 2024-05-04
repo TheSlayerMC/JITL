@@ -5,9 +5,12 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class CurrencyForItemsTrade implements VillagerTrades.ItemListing {
 
@@ -46,12 +49,12 @@ public class CurrencyForItemsTrade implements VillagerTrades.ItemListing {
     @Nullable
     @Override
     public MerchantOffer getOffer(Entity entity, RandomSource random) {
-        ItemStack currencyStack = new ItemStack(this.currency, this.cost);
+        ItemCost currencyStack = new ItemCost(this.currency, this.cost);
         ItemStack tradeStack = new ItemStack(this.item, this.count);
         MerchantOffer offer = new MerchantOffer(currencyStack, tradeStack, this.maxUses, this.villagerXp, this.priceMultiplier);
         if(currency2 != null) {
-            ItemStack currencyStack2 = new ItemStack(this.currency2, this.cost2);
-            offer = new MerchantOffer(currencyStack, currencyStack2, tradeStack, this.maxUses, this.villagerXp, this.priceMultiplier);
+            ItemCost currencyStack2 = new ItemCost(this.currency2, this.cost2);
+            offer = new MerchantOffer(currencyStack, Optional.of(currencyStack2), tradeStack, this.maxUses, this.villagerXp, this.priceMultiplier);
         }
         return offer;
     }

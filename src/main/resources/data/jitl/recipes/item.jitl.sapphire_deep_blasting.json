@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:deepslate_sapphire_ore"
   },
-  "result": "jitl:sapphire"
+  "result": {
+    "count": 1,
+    "id": "jitl:sapphire"
+  }
 }

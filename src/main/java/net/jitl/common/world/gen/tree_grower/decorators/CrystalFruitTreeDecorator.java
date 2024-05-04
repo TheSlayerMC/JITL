@@ -1,6 +1,7 @@
 package net.jitl.common.world.gen.tree_grower.decorators;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.jitl.common.world.gen.JTreeDecorators;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
@@ -11,8 +12,8 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorTy
 
 public class CrystalFruitTreeDecorator extends TreeDecorator {
 
-    public static final Codec<CrystalFruitTreeDecorator> CODEC = Codec.intRange(0, 10).fieldOf("height").xmap(CrystalFruitTreeDecorator::new,
-            (decorator) -> decorator.height).codec();
+    public static final MapCodec<CrystalFruitTreeDecorator> CODEC = Codec.intRange(0, 10).fieldOf("height").xmap(CrystalFruitTreeDecorator::new,
+            (decorator) -> decorator.height);
 
     private final int height;
 

@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:crimson_quartz_ore"
   },
-  "result": "jitl:crimson_quartz"
+  "result": {
+    "count": 1,
+    "id": "jitl:crimson_quartz"
+  }
 }

@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:orbadite_ore"
   },
-  "result": "jitl:orbadite_ingot"
+  "result": {
+    "count": 1,
+    "id": "jitl:orbadite_ingot"
+  }
 }

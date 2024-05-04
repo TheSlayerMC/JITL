@@ -1,7 +1,7 @@
 package net.jitl.core.helper.internal;
 
 import net.jitl.core.init.internal.JContainers;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -23,18 +23,14 @@ public class EmptyContainer extends AbstractContainerMenu implements IContainerF
     public boolean stillValid(Player playerIn) {
         return false;
     }
-
-    public static EmptyContainer createContainerClientSide(int windowID, Inventory playerInventory, FriendlyByteBuf extraData) {
+    
+    @Override
+    public EmptyContainer create(int windowId, Inventory inv, RegistryFriendlyByteBuf data) {
         try {
             return new EmptyContainer();
         } catch (IllegalArgumentException iae) {
 
         }
         return null;
-    }
-
-    @Override
-    public EmptyContainer create(int windowId, Inventory inv, FriendlyByteBuf data) {
-        return new EmptyContainer();
     }
 }

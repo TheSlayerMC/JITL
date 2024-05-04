@@ -34,17 +34,18 @@ import net.minecraft.world.entity.ai.sensing.Sensor;
 import net.minecraft.world.entity.ai.sensing.SensorType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.npc.InventoryCarrier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.animation.AnimatableManager;
 
 import javax.annotation.Nullable;
 
-public class FrozenTrollEntity extends JMonsterEntity {
+public class FrozenTrollEntity extends JMonsterEntity implements InventoryCarrier {
 
     private static final EntityDataAccessor<Boolean> IS_ANGRY_ID = SynchedEntityData.defineId(FrozenTrollEntity.class, EntityDataSerializers.BOOLEAN);
 
@@ -97,27 +98,27 @@ public class FrozenTrollEntity extends JMonsterEntity {
                 .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
     }
 
-    public void addAdditionalSaveData(CompoundTag compound) {
-        super.addAdditionalSaveData(compound);
-        compound.put("Inventory", this.inventory.createTag());
-        compound.putBoolean("angry", this.entityData.get(IS_ANGRY_ID));
-    }
-
-    public void readAdditionalSaveData(CompoundTag compound) {
-        super.readAdditionalSaveData(compound);
-        this.inventory.fromTag(compound.getList("Inventory", 10));
-        setAngry(compound.getBoolean("angry"));
-    }
-
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
 
     }
 
+    public void addAdditionalSaveData(CompoundTag compound) {
+        super.addAdditionalSaveData(compound);
+        this.writeInventoryToTag(compound, this.registryAccess());
+        compound.putBoolean("angry", this.entityData.get(IS_ANGRY_ID));
+    }
+
+    public void readAdditionalSaveData(CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        this.readInventoryFromTag(compound, this.registryAccess());
+        setAngry(compound.getBoolean("angry"));
+    }
+
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(IS_ANGRY_ID, false);
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+        super.defineSynchedData(pBuilder);
+        pBuilder.define(IS_ANGRY_ID, false);
     }
 
     public boolean isAngry() {
@@ -262,5 +263,15 @@ public class FrozenTrollEntity extends JMonsterEntity {
     @Override
     protected void playStepSound(@NotNull BlockPos pos, @NotNull BlockState blockIn) {
         this.playSound(SoundEvents.WOLF_STEP, 0.15F, 1.0F);
+    }
+
+    @Override
+    public SimpleContainer getInventory() {
+        return this.inventory;
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+
     }
 }

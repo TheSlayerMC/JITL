@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:celestium_ore"
   },
-  "result": "jitl:celestium_ingot"
+  "result": {
+    "count": 1,
+    "id": "jitl:celestium_ingot"
+  }
 }

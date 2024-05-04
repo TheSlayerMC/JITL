@@ -2,6 +2,7 @@ package net.jitl.common.world.gen.ruins;
 
 import com.mojang.serialization.Codec;
 import net.jitl.common.block.JChestBlock;
+import net.jitl.core.init.internal.JLootTables;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -51,7 +52,7 @@ public class RuinsFeature extends Feature<RuinsFeatureConfig> {
 						BlockState chestState = config.chest.getState(rand, chestPos).setValue(JChestBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(rand));
 						reader.setBlock(chestPos, chestState, 2);
 						if(reader.getBlockEntity(chestPos) instanceof ChestBlockEntity) {
-							((ChestBlockEntity)Objects.requireNonNull(reader.getBlockEntity(chestPos))).setLootTable(config.resourceLocation);
+							((ChestBlockEntity)Objects.requireNonNull(reader.getBlockEntity(chestPos))).setLootTable(JLootTables.addNormalLootTable(config.resourceLocation.toString()));
 						}
 					}
                 }

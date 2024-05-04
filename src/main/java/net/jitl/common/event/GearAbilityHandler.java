@@ -69,8 +69,8 @@ public class GearAbilityHandler {
                     ((JGear) item).getAbility().attackTarget(living, stack, event);
                 }
             } else if (entity.getType() == EntityType.ARROW) {
-                if (((Arrow) entity).getOwner() instanceof LivingEntity) {
-                    for (ItemStack itemStack : ((Arrow) entity).getOwner().getArmorSlots()) {
+                if (((Arrow) entity).getOwner() instanceof LivingEntity owner) {
+                    for (ItemStack itemStack : owner.getArmorSlots()) {
                         Item current = itemStack.getItem();
                         if (!(current instanceof ArmorItem && ((ArmorItem) current).getMaterial() == ArmorMaterials.LEATHER))
                             return;

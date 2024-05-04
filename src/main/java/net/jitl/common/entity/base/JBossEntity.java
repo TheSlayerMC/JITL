@@ -7,7 +7,7 @@ import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -19,6 +19,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 
@@ -59,7 +60,7 @@ public abstract class JBossEntity extends JMonsterEntity implements IDontAttackW
     }
 
     protected abstract BossCrystal.Type getDeathCrystalType();
-    public abstract ResourceLocation lootTable();
+    public abstract ResourceKey<LootTable> lootTable();
 
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {

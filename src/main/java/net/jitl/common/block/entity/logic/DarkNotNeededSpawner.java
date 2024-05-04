@@ -103,7 +103,7 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
                     double d0 = j >= 1 ? listtag.getDouble(0) : (double)pPos.getX() + (randomsource.nextDouble() - randomsource.nextDouble()) * (double)this.spawnRange + 0.5D;
                     double d1 = j >= 2 ? listtag.getDouble(1) : (double)(pPos.getY() + randomsource.nextInt(3) - 1);
                     double d2 = j >= 3 ? listtag.getDouble(2) : (double)pPos.getZ() + (randomsource.nextDouble() - randomsource.nextDouble()) * (double)this.spawnRange + 0.5D;
-                    if (pServerLevel.noCollision(optional.get().getAABB(d0, d1, d2))) {
+                    if (pServerLevel.noCollision(optional.get().getSpawnAABB(d0, d1, d2))) {
                         BlockPos blockpos = BlockPos.containing(d0, d1, d2);
                         if (spawndata.getCustomSpawnRules().isPresent()) {
                             if (!optional.get().getCategory().isFriendly() && pServerLevel.getDifficulty() == Difficulty.PEACEFUL) {
@@ -131,9 +131,9 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
                                 continue;
                             }
 
-                            var event = EventHooks.onFinalizeSpawnSpawner(mob, pServerLevel, pServerLevel.getCurrentDifficultyAt(entity.blockPosition()), null, compoundtag, this);
+                            var event = net.neoforged.neoforge.event.EventHooks.onFinalizeSpawnSpawner(mob, pServerLevel, pServerLevel.getCurrentDifficultyAt(entity.blockPosition()), null, this);
                             if (event != null && spawndata.getEntityToSpawn().size() == 1 && spawndata.getEntityToSpawn().contains("id", 8)) {
-                                ((Mob)entity).finalizeSpawn(pServerLevel, event.getDifficulty(), event.getSpawnType(), event.getSpawnData(), event.getSpawnTag());
+                                ((Mob)entity).finalizeSpawn(pServerLevel, event.getDifficulty(), event.getSpawnType(), event.getSpawnData());
                             }
                         }
 
@@ -169,7 +169,7 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
         }
 
         this.spawnPotentials.getRandom(randomsource).ifPresent((p_186386_) -> {
-            this.setNextSpawnData(pLevel, pPos, p_186386_.getData());
+            this.setNextSpawnData(pLevel, pPos, p_186386_.data());
         });
         this.broadcastEvent(pLevel, pPos, 1);
     }
@@ -267,7 +267,7 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
 
     private SpawnData getOrCreateNextSpawnData(@Nullable Level pLevel, RandomSource pRandom, BlockPos pPos) {
         if(this.nextSpawnData == null) {
-            this.setNextSpawnData(pLevel, pPos, this.spawnPotentials.getRandom(pRandom).map(WeightedEntry.Wrapper::getData).orElseGet(SpawnData::new));
+            this.setNextSpawnData(pLevel, pPos, this.spawnPotentials.getRandom(pRandom).map(WeightedEntry.Wrapper::data).orElseGet(SpawnData::new));
         }
         return this.nextSpawnData;
     }

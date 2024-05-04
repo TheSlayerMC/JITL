@@ -31,7 +31,7 @@ public class FireBombEntity extends DamagingProjectileEntity implements ItemSupp
             //target.hurt(JDamageSources.FIRE_BOMB, this.getDamage());//TODO
             target.hurt(this.damageSources().cactus(), this.getDamage());
 
-            target.setSecondsOnFire(3);
+            target.setRemainingFireTicks(60);
             if(!this.level().isClientSide) {
                 this.level().broadcastEntityEvent(this, (byte)1);
                 this.discard();

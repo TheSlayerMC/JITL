@@ -1,22 +1,17 @@
 package net.jitl.common.block.entity;
 
-import net.jitl.common.block.JChestBlock;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.CompoundContainer;
 import net.minecraft.world.Container;
-import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ChestMenu;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -25,8 +20,6 @@ import net.minecraft.world.level.block.entity.ChestLidController;
 import net.minecraft.world.level.block.entity.ContainerOpenersCounter;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.ChestType;
-import net.neoforged.neoforge.items.IItemHandlerModifiable;
-import net.neoforged.neoforge.items.wrapper.InvWrapper;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -69,23 +62,6 @@ public class JChestBlockEntity extends ChestBlockEntity {
 
     public JChestBlockEntity(BlockPos worldPosition, BlockState blockState) {
         this(JBlockEntities.JCHEST.get(), worldPosition, blockState);
-    }
-
-    @Override
-    public void load(@NotNull CompoundTag tag) {
-        super.load(tag);
-        this.setItems(NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY));
-        if (!this.tryLoadLootTable(tag)) {
-            ContainerHelper.loadAllItems(tag, this.getItems());
-        }
-    }
-
-    @Override
-    protected void saveAdditional(@NotNull CompoundTag tag) {
-        super.saveAdditional(tag);
-        if(!this.trySaveLootTable(tag)) {
-            ContainerHelper.saveAllItems(tag, this.getItems());
-        }
     }
 
     public static void lidAnimateTick(Level level, BlockPos pos, BlockState state, JChestBlockEntity blockEntity) {

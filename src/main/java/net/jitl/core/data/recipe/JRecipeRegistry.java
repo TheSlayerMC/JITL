@@ -3,16 +3,19 @@ package net.jitl.core.data.recipe;
 import net.jitl.core.data.JRecipeProvider;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 
+import java.util.concurrent.CompletableFuture;
+
 public class JRecipeRegistry extends JRecipeProvider {
 
-    public JRecipeRegistry(PackOutput pOutput) {
-        super(pOutput);
+    public JRecipeRegistry(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pRegistries) {
+        super(pOutput, pRegistries);
     }
 
     @Override

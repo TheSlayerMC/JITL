@@ -87,6 +87,11 @@ public class MagicBombEntity extends AbstractArrow implements ItemSupplier {
     }
 
     @Override
+    protected ItemStack getDefaultPickupItem() {
+        return getPickupItem();
+    }
+
+    @Override
     public @NotNull ItemStack getItem() {
         return new ItemStack(JItems.MAGIC_BOMB.get());
     }

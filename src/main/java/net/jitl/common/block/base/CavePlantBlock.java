@@ -16,6 +16,6 @@ public class CavePlantBlock extends TallGrassBlock {
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         BlockState groundState = level.getBlockState(pos.below());
-        return groundState.is(Tags.Blocks.STONE);
+        return groundState.is(Tags.Blocks.STONES);
     }
 }

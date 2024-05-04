@@ -1,10 +1,24 @@
 package net.jitl.core.helper;
 
+import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JItems;
+import net.minecraft.Util;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.common.SimpleTier;
+
+import java.util.EnumMap;
+import java.util.List;
+import java.util.function.Supplier;
 
 public enum JToolTiers {
 
@@ -203,97 +217,240 @@ public enum JToolTiers {
 
     public static class JToolTier {
 
-        public static final Tier SAPPHIRE = new SimpleTier(2, 900, 8F, 1F, 15, null, () -> Ingredient.of(JItems.SAPPHIRE.get()));
-        public static final Tier LUNIUM = new SimpleTier(2, 1056, 8F, 2F, 15, null, () -> Ingredient.of(JItems.LUNIUM_INGOT.get()));
-        public static final Tier SHADIUM = new SimpleTier(3, 1056, 8F, 2F, 15, null, () -> Ingredient.of(JItems.SHADIUM_INGOT.get()));
-        public static final Tier BLOODCRUST = new SimpleTier(3, 1056, 8F, 2F, 15, null, () -> Ingredient.of(JItems.BLOODCRUST_INGOT.get()));
+        public static final Tier SAPPHIRE = new SimpleTier(BlockTags.INCORRECT_FOR_IRON_TOOL, 900, 8F, 1F, 15, () -> Ingredient.of(JItems.SAPPHIRE.get()));
+        public static final Tier LUNIUM = new SimpleTier(BlockTags.INCORRECT_FOR_IRON_TOOL, 1056, 8F, 2F, 15, () -> Ingredient.of(JItems.LUNIUM_INGOT.get()));
+        public static final Tier SHADIUM = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1056, 8F, 2F, 15, () -> Ingredient.of(JItems.SHADIUM_INGOT.get()));
+        public static final Tier BLOODCRUST = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1056, 8F, 2F, 15, () -> Ingredient.of(JItems.BLOODCRUST_INGOT.get()));
 
         //SORT BELOW
-        public static final Tier CELESTIUM = new SimpleTier(3, 1342, 11F, 5F, 15, null, () -> Ingredient.of(JItems.CELESTIUM_INGOT.get()));
-        public static final Tier KORITE = new SimpleTier(3, 1342, 10F, 5F, 15, null, () -> Ingredient.of(JItems.KORITE_INGOT.get()));
-        public static final Tier STORON = new SimpleTier(3, 1342, 11F, 5F, 15, null, () -> Ingredient.of(JItems.STORON_INGOT.get()));
-        public static final Tier MEKYUM = new SimpleTier(3, 1342, 10F, 5F, 15, null, () -> Ingredient.of(JItems.MEKYUM_INGOT.get()));
+        public static final Tier CELESTIUM = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1342, 11F, 5F, 15, () -> Ingredient.of(JItems.CELESTIUM_INGOT.get()));
+        public static final Tier KORITE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1342, 10F, 5F, 15, () -> Ingredient.of(JItems.KORITE_INGOT.get()));
+        public static final Tier STORON = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1342, 11F, 5F, 15, () -> Ingredient.of(JItems.STORON_INGOT.get()));
+        public static final Tier MEKYUM = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1342, 10F, 5F, 15, () -> Ingredient.of(JItems.MEKYUM_INGOT.get()));
 
-        public static final Tier FLAIRIUM = new SimpleTier(4, 1883, 12F, 7F, 15, null, () -> Ingredient.of(JItems.MEKYUM_INGOT.get()));
-        public static final Tier DES = new SimpleTier(4, 1883, 12F, 7F, 15, null, () -> Ingredient.of(JItems.DES_INGOT.get()));
+        public static final Tier FLAIRIUM = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1883, 12F, 7F, 15, () -> Ingredient.of(JItems.MEKYUM_INGOT.get()));
+        public static final Tier DES = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1883, 12F, 7F, 15, () -> Ingredient.of(JItems.DES_INGOT.get()));
 
-        public static final Tier GORBITE = new SimpleTier(5, 2056, 15F, 8F, 15, null, () -> Ingredient.of(JItems.GORBITE_GEM.get()));
-        public static final Tier ORBADITE = new SimpleTier(5, 2056, 15F, 8F, 15, null, () -> Ingredient.of(JItems.ORBADITE_INGOT.get()));
+        public static final Tier GORBITE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 2056, 15F, 8F, 15, () -> Ingredient.of(JItems.GORBITE_GEM.get()));
+        public static final Tier ORBADITE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 2056, 15F, 8F, 15, () -> Ingredient.of(JItems.ORBADITE_INGOT.get()));
 
-        public static final Tier SOULSTONE = new SimpleTier(3, 1883, 8F, 5F, 15, null, () -> Ingredient.of(JItems.SOULSTONE.get()));
+        public static final Tier SOULSTONE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1883, 8F, 5F, 15, () -> Ingredient.of(JItems.SOULSTONE.get()));
 
-        public static final Tier CHAMPIONS_SWORD = new SimpleTier(3, 1883, 8F, 5F, 25, null, () -> null);
-        public static final Tier THE_WRAITH = new SimpleTier(3, 1883, 8F, 5F, 25, null, () -> null);
-        public static final Tier POISON_SWORD = new SimpleTier(3, 1883, 8F, 5F, 25, null, () -> null);
-        public static final Tier CLOUD_SLICER = new SimpleTier(3, 1883, 8F, 5F, 25, null, () -> null);
-        public static final Tier DRAGONS_TOOTH = new SimpleTier(3, 3000, 8F, 3F, 25, null, () -> null);
-        public static final Tier DEMONIC_SWORD = new SimpleTier(3, 3000, 8F, 3F, 25, null, () -> null);
-        public static final Tier PEDAL_SWORD = new SimpleTier(3, 3000, 8F, 3F, 25, null, () -> null);
-        public static final Tier RE_CRYSTAL_SWORD = new SimpleTier(3, 3000, 8F, 3F, 25, null, () -> null);
-        public static final Tier RE_STONE_SWORD = new SimpleTier(3, 3000, 8F, 3F, 25, null, () -> null);
-        public static final Tier CRYSTAL_BLADE = new SimpleTier(3, 3000, 8F, 3F, 25, null, () -> null);
-        public static final Tier SNOW_SHOVELER = new SimpleTier(3, 3000, 8F, 3F, 25, null, () -> null);
-        public static final Tier FROSTBITTEN_SWORD = new SimpleTier(3, 3000, 8F, 3F, 25, null, () -> null);
-        public static final Tier FROSTY_SWORD = new SimpleTier(3, 3000, 8F, 3F, 25, null, () -> null);
-        public static final Tier WITHIC_BLADE = new SimpleTier(3, 3000, 8F, 5F, 25, null, () -> null);
-        public static final Tier CALCIA_SWORD = new SimpleTier(3, 3000, 8F, 5F, 25, null, () -> null);
-        public static final Tier NETHER_BEAST_SWORD = new SimpleTier(3, 3000, 8F, 5F, 25, null, () -> null);
-        public static final Tier WITHERING_BEAST_SWORD = new SimpleTier(3, 3000, 8F, 5F, 25, null, () -> null);
-        public static final Tier BOILING_BLADE = new SimpleTier(3, 3000, 8F, 3F, 25, null, () -> null);
-        public static final Tier SIZZLER_SWORD = new SimpleTier(3, 3000, 8F, 3F, 25, null, () -> null);
-        public static final Tier BLOODWIELD_SWORD = new SimpleTier(3, 3000, 8F, 3F, 25, null, () -> null);
-        public static final Tier CHARRED_BLADE = new SimpleTier(3, 3000, 8F, 5F, 25, null, () -> null);
-        public static final Tier MOLTEN_KNIFE = new SimpleTier(3, 3000, 8F, 3F, 25, null, () -> null);
-        public static final Tier CORE_MENDER = new SimpleTier(3, 3000, 8F, 5F, 25, null, () -> null);
-        public static final Tier ROYAL_BLADE = new SimpleTier(3, 3000, 8F, 8F, 25, null, () -> null);
-        public static final Tier ROYAL_STABBER = new SimpleTier(3, 3000, 8F, 3F, 25, null, () -> null);
-        public static final Tier KINGS_SWORD = new SimpleTier(3, 3000, 8F, 5F, 25, null, () -> null);
-        public static final Tier DEPTHS_DARKSWORD = new SimpleTier(3, 3000, 8F, 5, 25, null, () -> null);
-        public static final Tier DEPTHS_SLAYER = new SimpleTier(3, 3000, 8F, 5F, 25, null, () -> null);
-        public static final Tier ROC_SWORD = new SimpleTier(3, 3000, 8F, 10F, 25, null, () -> null);
-        public static final Tier SWORD_THUNDERBIRD = new SimpleTier(3, 3000, 8F, 10F, 25, null, () -> null);
-        public static final Tier THUNDERBLADE = new SimpleTier(3, 3000, 8F, 10F, 25, null, () -> null);
-        public static final Tier BUBBLE_SWORD = new SimpleTier(3, 3000, 8F, 10F, 25, null, () -> null);
-        public static final Tier VINESTRAND_BLADE = new SimpleTier(3, 3000, 8F, 8F, 25, null, () -> null);
-        public static final Tier DARK_PINE_SWORD = new SimpleTier(3, 3000, 8F, 7.5F, 25, null, () -> null);
-        public static final Tier NATURES_BLADE = new SimpleTier(3, 3000, 8F, 7.5F, 25, null, () -> null);
-        public static final Tier TREE_HUGGER = new SimpleTier(3, 3000, 8F, 8F, 25, null, () -> null);
-        public static final Tier HEALERS_BLADE = new SimpleTier(3, 3000, 8F, 8F, 25, null, () -> null);
-        public static final Tier LOGGERS_SWORD = new SimpleTier(3, 3000, 8F, 12F, 25, null, () -> null);
-        public static final Tier SENTRY_SWORD = new SimpleTier(3, 3000, 8F, 12F, 25, null, () -> null);
-        public static final Tier TERRALIGHT_BLADE = new SimpleTier(3, 3000, 8F, 12F, 25, null, () -> null);
-        public static final Tier TERRANA_SWORD = new SimpleTier(3, 3000, 8F, 12F, 25, null, () -> null);
-        public static final Tier TERROLICA_SWORD = new SimpleTier(3, 3000, 8F, 7.5F, 25, null, () -> null);
-        public static final Tier VOLITE_SWORD = new SimpleTier(3, 3000, 8F, 7.5F, 25, null, () -> null);
-        public static final Tier TERRONIC_BLADE = new SimpleTier(3, 3000, 8F, 7F, 25, null, () -> null);
-        public static final Tier GOLEM_SWORD = new SimpleTier(3, 3000, 8F, 9F, 25, null, () -> null);
-        public static final Tier STARLIGHT_BLADE = new SimpleTier(3, 3000, 8F, 12F, 25, null, () -> null);
-        public static final Tier FLUFFY_BLADE = new SimpleTier(3, 3000, 8F, 15F, 25, null, () -> null);
-        public static final Tier DARK_KEEPER = new SimpleTier(3, 3000, 8F, 10F, 25, null, () -> null);
+        public static final Tier CHAMPIONS_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1883, 8F, 5F, 25, () -> null);
+        public static final Tier THE_WRAITH = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1883, 8F, 5F, 25, () -> null);
+        public static final Tier POISON_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1883, 8F, 5F, 25, () -> null);
+        public static final Tier CLOUD_SLICER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1883, 8F, 5F, 25, () -> null);
+        public static final Tier DRAGONS_TOOTH = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
+        public static final Tier DEMONIC_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
+        public static final Tier PEDAL_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
+        public static final Tier RE_CRYSTAL_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
+        public static final Tier RE_STONE_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
+        public static final Tier CRYSTAL_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
+        public static final Tier SNOW_SHOVELER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
+        public static final Tier FROSTBITTEN_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
+        public static final Tier FROSTY_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
+        public static final Tier WITHIC_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> null);
+        public static final Tier CALCIA_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> null);
+        public static final Tier NETHER_BEAST_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> null);
+        public static final Tier WITHERING_BEAST_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> null);
+        public static final Tier BOILING_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
+        public static final Tier SIZZLER_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
+        public static final Tier BLOODWIELD_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
+        public static final Tier CHARRED_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> null);
+        public static final Tier MOLTEN_KNIFE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
+        public static final Tier CORE_MENDER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> null);
+        public static final Tier ROYAL_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 8F, 25, () -> null);
+        public static final Tier ROYAL_STABBER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
+        public static final Tier KINGS_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> null);
+        public static final Tier DEPTHS_DARKSWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5, 25, () -> null);
+        public static final Tier DEPTHS_SLAYER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> null);
+        public static final Tier ROC_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 10F, 25, () -> null);
+        public static final Tier SWORD_THUNDERBIRD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 10F, 25, () -> null);
+        public static final Tier THUNDERBLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 10F, 25, () -> null);
+        public static final Tier BUBBLE_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 10F, 25, () -> null);
+        public static final Tier VINESTRAND_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 8F, 25, () -> null);
+        public static final Tier DARK_PINE_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 7.5F, 25, () -> null);
+        public static final Tier NATURES_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 7.5F, 25, () -> null);
+        public static final Tier TREE_HUGGER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 8F, 25, () -> null);
+        public static final Tier HEALERS_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 8F, 25, () -> null);
+        public static final Tier LOGGERS_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 12F, 25, () -> null);
+        public static final Tier SENTRY_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 12F, 25, () -> null);
+        public static final Tier TERRALIGHT_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 12F, 25, () -> null);
+        public static final Tier TERRANA_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 12F, 25, () -> null);
+        public static final Tier TERROLICA_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 7.5F, 25, () -> null);
+        public static final Tier VOLITE_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 7.5F, 25, () -> null);
+        public static final Tier TERRONIC_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 7F, 25, () -> null);
+        public static final Tier GOLEM_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 9F, 25, () -> null);
+        public static final Tier STARLIGHT_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 12F, 25, () -> null);
+        public static final Tier FLUFFY_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 15F, 25, () -> null);
+        public static final Tier DARK_KEEPER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 10F, 25, () -> null);
 
-        public static final Tier DEVELOPER_SWORD = new SimpleTier(3, 3000, 8F, 1000F, 25, null, () -> null);
-        public static final Tier THROWING_KNIFE = new SimpleTier(2, -1, 3F, 2F, 25, null, () -> null);
+        public static final Tier DEVELOPER_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 1000F, 25, () -> null);
+        public static final Tier THROWING_KNIFE = new SimpleTier(BlockTags.INCORRECT_FOR_IRON_TOOL, -1, 3F, 2F, 25, () -> null);
     }
 
     public static class JArmorTier {
 
-        public static final JArmorMaterial SAPPHIRE = new JArmorMaterial("sapphire", 20, new int[] {2, 5, 6, 2}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(JItems.SAPPHIRE.get()));
-        public static final JArmorMaterial LUNIUM = new JArmorMaterial("lunium", 23, new int[] {2, 5, 6, 2}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(JItems.LUNIUM_INGOT.get()));
-        public static final JArmorMaterial SHADIUM = new JArmorMaterial("shadium", 33, new int[] {3, 6, 8, 3}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, () -> Ingredient.of(JItems.SHADIUM_INGOT.get()));
-        public static final JArmorMaterial BLOODCRUST = new JArmorMaterial("bloodcrust", 33, new int[] {3, 5, 7, 3}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, () -> Ingredient.of(JItems.BLOODCRUST_INGOT.get()));
-        public static final JArmorMaterial CELESTIUM = new JArmorMaterial("celestium", 33, new int[] {5, 7, 8, 5}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, () -> Ingredient.of(JItems.CELESTIUM_INGOT.get()));
+        public static final Holder<ArmorMaterial> SAPPHIRE = register("sapphire", Util.make(new EnumMap<>(ArmorItem.Type.class),
+                armor -> {
+                    armor.put(ArmorItem.Type.BOOTS, 2);
+                    armor.put(ArmorItem.Type.LEGGINGS, 5);
+                    armor.put(ArmorItem.Type.CHESTPLATE, 6);
+                    armor.put(ArmorItem.Type.HELMET, 2);
+                    armor.put(ArmorItem.Type.BODY, 5);
+                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(JItems.SAPPHIRE.get()));
 
-        public static final JArmorMaterial FLAIRIUM = new JArmorMaterial("flairium", 33, new int[] {5, 7, 8, 5}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, () -> Ingredient.of(JItems.FLAIRIUM_INGOT.get()));
+        public static final Holder<ArmorMaterial> LUNIUM = register("lunium", Util.make(new EnumMap<>(ArmorItem.Type.class),
+                armor -> {
+                    armor.put(ArmorItem.Type.BOOTS, 2);
+                    armor.put(ArmorItem.Type.LEGGINGS, 5);
+                    armor.put(ArmorItem.Type.CHESTPLATE, 6);
+                    armor.put(ArmorItem.Type.HELMET, 2);
+                    armor.put(ArmorItem.Type.BODY, 5);
+                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(JItems.LUNIUM_INGOT.get()));
 
-        public static final JArmorMaterial GORBITE = new JArmorMaterial("gorbite", 33, new int[] {8, 9, 10, 8}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, () -> Ingredient.of(JItems.GORBITE_GEM.get()));
-        public static final JArmorMaterial ORBADITE = new JArmorMaterial("orbadite", 33, new int[] {8, 9, 10, 8}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, () -> Ingredient.of(JItems.ORBADITE_INGOT.get()));
+        public static final Holder<ArmorMaterial> SHADIUM = register("shadium", Util.make(new EnumMap<>(ArmorItem.Type.class),
+                armor -> {
+                    armor.put(ArmorItem.Type.BOOTS, 3);
+                    armor.put(ArmorItem.Type.LEGGINGS, 6);
+                    armor.put(ArmorItem.Type.CHESTPLATE, 8);
+                    armor.put(ArmorItem.Type.HELMET, 3);
+                    armor.put(ArmorItem.Type.BODY, 5);
+                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(JItems.SHADIUM_INGOT.get()));
 
-        public static final JArmorMaterial TWILIGHT = new JArmorMaterial("twilight", 33, new int[] {8, 9, 10, 8}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, null);
-        public static final JArmorMaterial FLAME = new JArmorMaterial("flame", 33, new int[] {8, 9, 10, 8}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, null);
-        public static final JArmorMaterial HOLLOW = new JArmorMaterial("hollow", 33, new int[] {8, 9, 10, 8}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, null);
-        public static final JArmorMaterial CRYSTAL_FLAKE = new JArmorMaterial("crystal_flake", 33, new int[] {8, 9, 10, 8}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, null);
-        public static final JArmorMaterial FROSTBITTEN = new JArmorMaterial("frostbitten", 33, new int[] {8, 9, 10, 8}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, null);
-        public static final JArmorMaterial HELLMETAL = new JArmorMaterial("hellmetal", 33, new int[] {8, 9, 10, 8}, 25, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, null);
+        public static final Holder<ArmorMaterial> BLOODCRUST = register("bloodcrust", Util.make(new EnumMap<>(ArmorItem.Type.class),
+                armor -> {
+                    armor.put(ArmorItem.Type.BOOTS, 3);
+                    armor.put(ArmorItem.Type.LEGGINGS, 5);
+                    armor.put(ArmorItem.Type.CHESTPLATE, 7);
+                    armor.put(ArmorItem.Type.HELMET, 3);
+                    armor.put(ArmorItem.Type.BODY, 5);
+                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(JItems.BLOODCRUST_INGOT.get()));
 
+        public static final Holder<ArmorMaterial> CELESTIUM = register("celestium", Util.make(new EnumMap<>(ArmorItem.Type.class),
+                armor -> {
+                    armor.put(ArmorItem.Type.BOOTS, 5);
+                    armor.put(ArmorItem.Type.LEGGINGS, 7);
+                    armor.put(ArmorItem.Type.CHESTPLATE, 8);
+                    armor.put(ArmorItem.Type.HELMET, 5);
+                    armor.put(ArmorItem.Type.BODY, 5);
+                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(JItems.CELESTIUM_INGOT.get()));
+
+        public static final Holder<ArmorMaterial> FLAIRIUM = register("flairium", Util.make(new EnumMap<>(ArmorItem.Type.class),
+                armor -> {
+                    armor.put(ArmorItem.Type.BOOTS, 5);
+                    armor.put(ArmorItem.Type.LEGGINGS, 7);
+                    armor.put(ArmorItem.Type.CHESTPLATE, 8);
+                    armor.put(ArmorItem.Type.HELMET, 5);
+                    armor.put(ArmorItem.Type.BODY, 5);
+                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(JItems.FLAIRIUM_INGOT.get()));
+
+        public static final Holder<ArmorMaterial> GORBITE = register("gorbite", Util.make(new EnumMap<>(ArmorItem.Type.class),
+                armor -> {
+                    armor.put(ArmorItem.Type.BOOTS, 8);
+                    armor.put(ArmorItem.Type.LEGGINGS, 9);
+                    armor.put(ArmorItem.Type.CHESTPLATE, 10);
+                    armor.put(ArmorItem.Type.HELMET, 8);
+                    armor.put(ArmorItem.Type.BODY, 5);
+                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(JItems.GORBITE_GEM.get()));
+
+        public static final Holder<ArmorMaterial> ORBADITE = register("orbadite", Util.make(new EnumMap<>(ArmorItem.Type.class),
+                armor -> {
+                    armor.put(ArmorItem.Type.BOOTS, 8);
+                    armor.put(ArmorItem.Type.LEGGINGS, 9);
+                    armor.put(ArmorItem.Type.CHESTPLATE, 10);
+                    armor.put(ArmorItem.Type.HELMET, 8);
+                    armor.put(ArmorItem.Type.BODY, 5);
+                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(JItems.ORBADITE_INGOT.get()));
+
+        public static final Holder<ArmorMaterial> TWILIGHT = register("twilight", Util.make(new EnumMap<>(ArmorItem.Type.class),
+                armor -> {
+                    armor.put(ArmorItem.Type.BOOTS, 8);
+                    armor.put(ArmorItem.Type.LEGGINGS, 9);
+                    armor.put(ArmorItem.Type.CHESTPLATE, 10);
+                    armor.put(ArmorItem.Type.HELMET, 8);
+                    armor.put(ArmorItem.Type.BODY, 5);
+                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, null);
+
+        public static final Holder<ArmorMaterial> FLAME = register("flame", Util.make(new EnumMap<>(ArmorItem.Type.class),
+                armor -> {
+                    armor.put(ArmorItem.Type.BOOTS, 8);
+                    armor.put(ArmorItem.Type.LEGGINGS, 9);
+                    armor.put(ArmorItem.Type.CHESTPLATE, 10);
+                    armor.put(ArmorItem.Type.HELMET, 8);
+                    armor.put(ArmorItem.Type.BODY, 5);
+                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, null);
+
+        public static final Holder<ArmorMaterial> HOLLOW = register("hollow", Util.make(new EnumMap<>(ArmorItem.Type.class),
+                armor -> {
+                    armor.put(ArmorItem.Type.BOOTS, 8);
+                    armor.put(ArmorItem.Type.LEGGINGS, 9);
+                    armor.put(ArmorItem.Type.CHESTPLATE, 10);
+                    armor.put(ArmorItem.Type.HELMET, 8);
+                    armor.put(ArmorItem.Type.BODY, 5);
+                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, null);
+
+        public static final Holder<ArmorMaterial> CRYSTAL_FLAKE = register("crystal_flake", Util.make(new EnumMap<>(ArmorItem.Type.class),
+                armor -> {
+                    armor.put(ArmorItem.Type.BOOTS, 8);
+                    armor.put(ArmorItem.Type.LEGGINGS, 9);
+                    armor.put(ArmorItem.Type.CHESTPLATE, 10);
+                    armor.put(ArmorItem.Type.HELMET, 8);
+                    armor.put(ArmorItem.Type.BODY, 5);
+                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, null);
+
+        public static final Holder<ArmorMaterial> FROSTBITTEN = register("frostbitten", Util.make(new EnumMap<>(ArmorItem.Type.class),
+                armor -> {
+                    armor.put(ArmorItem.Type.BOOTS, 8);
+                    armor.put(ArmorItem.Type.LEGGINGS, 9);
+                    armor.put(ArmorItem.Type.CHESTPLATE, 10);
+                    armor.put(ArmorItem.Type.HELMET, 8);
+                    armor.put(ArmorItem.Type.BODY, 5);
+                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, null);
+
+        public static final Holder<ArmorMaterial> HELLMETAL = register("hellmetal", Util.make(new EnumMap<>(ArmorItem.Type.class),
+                armor -> {
+                    armor.put(ArmorItem.Type.BOOTS, 8);
+                    armor.put(ArmorItem.Type.LEGGINGS, 9);
+                    armor.put(ArmorItem.Type.CHESTPLATE, 10);
+                    armor.put(ArmorItem.Type.HELMET, 8);
+                    armor.put(ArmorItem.Type.BODY, 5);
+                }), 25, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, null);
+
+        private static Holder<ArmorMaterial> register(
+                String pName,
+                EnumMap<ArmorItem.Type, Integer> pDefense,
+                int pEnchantmentValue,
+                Holder<SoundEvent> pEquipSound,
+                float pToughness,
+                float pKnockbackResistance,
+                Supplier<Ingredient> pRepairIngredient
+        ) {
+            List<ArmorMaterial.Layer> list = List.of(new ArmorMaterial.Layer(JITL.rl(pName)));
+            return register(pName, pDefense, pEnchantmentValue, pEquipSound, pToughness, pKnockbackResistance, pRepairIngredient, list);
+        }
+
+        private static Holder<ArmorMaterial> register(
+                String pName,
+                EnumMap<ArmorItem.Type, Integer> pDefense,
+                int pEnchantmentValue,
+                Holder<SoundEvent> pEquipSound,
+                float pToughness,
+                float pKnockbackResistance,
+                Supplier<Ingredient> pRepairIngridient,
+                List<ArmorMaterial.Layer> pLayers
+        ) {
+            EnumMap<ArmorItem.Type, Integer> enummap = new EnumMap<>(ArmorItem.Type.class);
+
+            for (ArmorItem.Type armoritem$type : ArmorItem.Type.values()) {
+                enummap.put(armoritem$type, pDefense.get(armoritem$type));
+            }
+
+            return Registry.registerForHolder(
+                    BuiltInRegistries.ARMOR_MATERIAL,
+                    new ResourceLocation(pName),
+                    new ArmorMaterial(enummap, pEnchantmentValue, pEquipSound, pRepairIngridient, pLayers, pToughness, pKnockbackResistance)
+            );
+        }
     }
 }

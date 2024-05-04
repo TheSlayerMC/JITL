@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:peridot_ore"
   },
-  "result": "jitl:peridot_gemstone"
+  "result": {
+    "count": 1,
+    "id": "jitl:peridot_gemstone"
+  }
 }

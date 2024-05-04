@@ -1,13 +1,10 @@
 package net.jitl.common.capability.keypressed;
 
-import net.jitl.client.gui.KeyBindEvents;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.common.util.INBTSerializable;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.UnknownNullability;
-
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PressedKeyCap implements INBTSerializable<CompoundTag> {
     private boolean armor;
@@ -45,7 +42,7 @@ public class PressedKeyCap implements INBTSerializable<CompoundTag> {
 
 
     @Override
-    public @UnknownNullability CompoundTag serializeNBT() {
+    public @UnknownNullability CompoundTag serializeNBT(HolderLookup.Provider provider) {
         CompoundTag nbt = new CompoundTag();
         nbt.putBoolean("armor pressed", armor);
         nbt.putBoolean("amulet pressed", amulet);
@@ -53,7 +50,7 @@ public class PressedKeyCap implements INBTSerializable<CompoundTag> {
     }
 
     @Override
-    public void deserializeNBT(CompoundTag nbt) {
+    public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
         this.armor = nbt.getBoolean("armor pressed");
         this.amulet = nbt.getBoolean("amulet pressed");
     }

@@ -5,14 +5,15 @@ import net.jitl.common.capability.stats.PlayerStats;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JAttributes;
 import net.jitl.core.init.internal.JDataAttachments;
+import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.event.TickEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import java.util.Objects;
 
-@Mod.EventBusSubscriber(modid = JITL.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = JITL.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class ModEvents {
 
     @SubscribeEvent
@@ -26,19 +27,18 @@ public class ModEvents {
     }
 
     @SubscribeEvent
-    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if(event.phase == TickEvent.Phase.END) {
+    public static void onPlayerTick(PlayerTickEvent.Post event) {
+        if(event.getEntity() instanceof Player player) {
+            PlayerStats stats = player.getData(JDataAttachments.PLAYER_STATS);
+            stats.update(player);
 
-            PlayerStats stats = event.player.getData(JDataAttachments.PLAYER_STATS);
-            stats.update(event.player);
-
-            PlayerEssence essence = event.player.getData(JDataAttachments.ESSENCE);
-            if(essence.isRegenReady()) {
-                essence.addEssence(event.player, (float) Objects.requireNonNull(event.player.getAttribute(JAttributes.ESSENCE_REGEN_SPEED.get())).getValue());
+            PlayerEssence essence = player.getData(JDataAttachments.ESSENCE);
+            if (essence.isRegenReady()) {
+                essence.addEssence(player, (float) Objects.requireNonNull(player.getAttribute(JAttributes.ESSENCE_REGEN_SPEED)).getValue());
             } else {
                 essence.setBurnout(essence.getBurnout() - 0.1F);
             }
-            essence.sendPacket(event.player);
+            essence.sendPacket(player);
         }
     }
 }

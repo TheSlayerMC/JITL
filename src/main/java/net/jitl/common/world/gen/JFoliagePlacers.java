@@ -8,6 +8,8 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerTy
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.lang.reflect.Constructor;
+
 public class JFoliagePlacers {
 
     public static final DeferredRegister<FoliagePlacerType<?>> REGISTRY = DeferredRegister.create(Registries.FOLIAGE_PLACER_TYPE, JITL.MODID);

@@ -106,7 +106,7 @@ public class BossSpawnerItem extends JItem {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level level, @NotNull List<Component> pTooltip, @NotNull TooltipFlag pFlag) {
+    public void appendHoverText(@NotNull ItemStack pStack, @Nullable TooltipContext con, @NotNull List<Component> pTooltip, @NotNull TooltipFlag pFlag) {
         if(this == JItems.BROKEN_OKOLOO_CLUB.get()) {
             pTooltip.add(Component.translatable("jitl.tooltip.okoloo"));
         }

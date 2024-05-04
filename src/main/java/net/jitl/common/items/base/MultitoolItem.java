@@ -21,7 +21,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.neoforged.neoforge.common.TierSortingRegistry;
 import net.neoforged.neoforge.common.ToolAction;
 import net.neoforged.neoforge.common.ToolActions;
 import org.jetbrains.annotations.NotNull;
@@ -34,7 +33,7 @@ public class MultitoolItem extends DiggerItem {
     private final TagKey<Block> shovel, axe, pick, hoe;
 
     public MultitoolItem(JToolTiers tier) {
-        super(tier.getDamage() - 2, tier.getSpeedModifier(), tier.getTier(), BlockTags.MINEABLE_WITH_AXE, JItems.itemProps());
+        super(tier.getTier(), BlockTags.MINEABLE_WITH_AXE, JItems.itemProps());
         this.shovel = BlockTags.MINEABLE_WITH_SHOVEL;
         this.axe = BlockTags.MINEABLE_WITH_AXE;
         this.pick = BlockTags.MINEABLE_WITH_PICKAXE;
@@ -74,9 +73,8 @@ public class MultitoolItem extends DiggerItem {
                     level.setBlock(blockpos, blockstate2, 11);
                     level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(player, blockstate2));
                     if (player != null) {
-                        pContext.getItemInHand().hurtAndBreak(1, player, (p_43122_) -> {
-                            p_43122_.broadcastBreakEvent(pContext.getHand());
-                        });
+                        pContext.getItemInHand().hurtAndBreak(1, player, LivingEntity.getSlotForHand(pContext.getHand()));
+
                     }
                 }
                 return InteractionResult.sidedSuccess(level.isClientSide);
@@ -94,9 +92,8 @@ public class MultitoolItem extends DiggerItem {
                     if (!level.isClientSide) {
                         consumer.accept(pContext);
                         if (player != null) {
-                            pContext.getItemInHand().hurtAndBreak(1, player, (l) -> {
-                                l.broadcastBreakEvent(pContext.getHand());
-                            });
+                            pContext.getItemInHand().hurtAndBreak(1, player, LivingEntity.getSlotForHand(pContext.getHand()));
+
                         }
                     }
                     return InteractionResult.sidedSuccess(level.isClientSide);
@@ -119,40 +116,24 @@ public class MultitoolItem extends DiggerItem {
 
     @Override
     public float getDestroySpeed(@NotNull ItemStack pStack, @NotNull BlockState pState) {
-        return isMineable(pState) ? this.speed : 1.0F;
+        return isMineable(pState) ? this.getTier().getSpeed() : 1.0F;
     }
 
     @Override
-    public boolean hurtEnemy(ItemStack pStack, @NotNull LivingEntity pTarget, @NotNull LivingEntity pAttacker) {
-        pStack.hurtAndBreak(1, pAttacker, (l) -> l.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+    public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
+        pStack.hurtAndBreak(2, pAttacker, EquipmentSlot.MAINHAND);
         return true;
     }
 
     @Override
     public boolean mineBlock(@NotNull ItemStack pStack, Level pLevel, @NotNull BlockState pState, @NotNull BlockPos pPos, @NotNull LivingEntity pEntityLiving) {
-        if (!pLevel.isClientSide && pState.getDestroySpeed(pLevel, pPos) != 0.0F) {
-            pStack.hurtAndBreak(1, pEntityLiving, (l) -> l.broadcastBreakEvent(EquipmentSlot.MAINHAND));
-        }
+        if (!pLevel.isClientSide && pState.getDestroySpeed(pLevel, pPos) != 0.0F)
+            pStack.hurtAndBreak(1, pEntityLiving, EquipmentSlot.MAINHAND);
         return true;
     }
 
     @Override
-    public boolean isCorrectToolForDrops(@NotNull BlockState pBlock) {
-        if (TierSortingRegistry.isTierSorted(getTier())) {
-            return TierSortingRegistry.isCorrectTierForDrops(getTier(), pBlock) && isMineable(pBlock);
-        }
-        int i = this.getTier().getLevel();
-        if (i < 3 && pBlock.is(BlockTags.NEEDS_DIAMOND_TOOL)) {
-            return false;
-        } else if (i < 2 && pBlock.is(BlockTags.NEEDS_IRON_TOOL)) {
-            return false;
-        } else {
-            return (i >= 1 || !pBlock.is(BlockTags.NEEDS_STONE_TOOL)) && isMineable(pBlock);
-        }
-    }
-
-    @Override
     public boolean isCorrectToolForDrops(@NotNull ItemStack stack, @NotNull BlockState state) {
-        return isMineable(state) && TierSortingRegistry.isCorrectTierForDrops(getTier(), state);
+        return isMineable(state) || super.isCorrectToolForDrops(stack, state);
     }
 }

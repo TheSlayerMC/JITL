@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:raw_blazium"
   },
-  "result": "jitl:blazium_ingot"
+  "result": {
+    "count": 1,
+    "id": "jitl:blazium_ingot"
+  }
 }

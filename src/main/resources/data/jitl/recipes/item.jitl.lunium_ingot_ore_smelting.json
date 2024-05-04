@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:lunium_ore"
   },
-  "result": "jitl:lunium_ingot"
+  "result": {
+    "count": 1,
+    "id": "jitl:lunium_ingot"
+  }
 }

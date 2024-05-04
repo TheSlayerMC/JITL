@@ -31,9 +31,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.RawAnimation;
 
 import javax.annotation.Nullable;
 import java.util.Collection;
@@ -105,11 +105,11 @@ public class BoomBoom extends JMonsterEntity implements PowerableMob {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DATA_SWELL_DIR, -1);
-        this.entityData.define(DATA_IS_POWERED, false);
-        this.entityData.define(DATA_IS_IGNITED, false);
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+        super.defineSynchedData(pBuilder);
+        pBuilder.define(DATA_SWELL_DIR, -1);
+        pBuilder.define(DATA_IS_POWERED, false);
+        pBuilder.define(DATA_IS_IGNITED, false);
     }
 
     @Override
@@ -212,9 +212,11 @@ public class BoomBoom extends JMonsterEntity implements PowerableMob {
             this.level().playSound(pPlayer, this.getX(), this.getY(), this.getZ(), SoundEvents.FLINTANDSTEEL_USE, this.getSoundSource(), 1.0F, this.random.nextFloat() * 0.4F + 0.8F);
             if (!this.level().isClientSide) {
                 this.ignite();
-                itemstack.hurtAndBreak(1, pPlayer, (p_32290_) -> {
-                    p_32290_.broadcastBreakEvent(pHand);
-                });
+                if (!itemstack.isDamageableItem()) {
+                    itemstack.shrink(1);
+                } else {
+                    itemstack.hurtAndBreak(1, pPlayer, getSlotForHand(pHand));
+                }
             }
             return InteractionResult.sidedSuccess(this.level().isClientSide);
         } else {

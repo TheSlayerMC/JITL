@@ -11,7 +11,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -19,12 +18,12 @@ public class JSwordItem extends SwordItem implements JGear {
     IAbility ability;
 
     public JSwordItem(JToolTiers tier, IAbility swordAbility) {
-        super(tier.getTier(), tier.getDamage(), tier.getSpeedModifier(), new Properties());
+        super(tier.getTier(), new Properties());
         ability = swordAbility;
     }
 
     public JSwordItem(JToolTiers tier, IAbility swordAbility, Properties p) {
-        super(tier.getTier(), tier.getDamage(), tier.getSpeedModifier(), p);
+        super(tier.getTier(), p);
         ability = swordAbility;
     }
 
@@ -40,9 +39,9 @@ public class JSwordItem extends SwordItem implements JGear {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
-        super.appendHoverText(stack, worldIn, tooltip, flagIn);
-        ability.fillTooltips(stack, tooltip);
+    public void appendHoverText(ItemStack stack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+        super.appendHoverText(stack, pContext, pTooltipComponents, pTooltipFlag);
+        ability.fillTooltips(stack, pTooltipComponents);
     }
 
     @Override

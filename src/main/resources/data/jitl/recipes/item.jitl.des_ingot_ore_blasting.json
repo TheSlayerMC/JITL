@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:des_ore"
   },
-  "result": "jitl:des_ingot"
+  "result": {
+    "count": 1,
+    "id": "jitl:des_ingot"
+  }
 }

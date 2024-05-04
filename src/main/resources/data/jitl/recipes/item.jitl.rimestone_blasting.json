@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:rimestone_ore"
   },
-  "result": "jitl:rimestone"
+  "result": {
+    "count": 1,
+    "id": "jitl:rimestone"
+  }
 }

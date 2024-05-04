@@ -1,17 +1,7 @@
 package net.jitl.common.items.gear;
 
-import net.jitl.core.helper.TooltipFiller;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
-
-import java.util.List;
-
 public class LuniumAbility implements IAbility.INBTUpdateAbility {
-    @Override
+   /* @Override
     public void tick(LivingEntity entity, Level world, ItemStack stack) {
         if (!world.isClientSide()) {
             CompoundTag tag = stack.getTag();
@@ -36,5 +26,5 @@ public class LuniumAbility implements IAbility.INBTUpdateAbility {
             filler.addBreak();
             filler.addValue((int) (100 - stack.getTag().getFloat("cooldown")));
         }
-    }
+    }*/
 }

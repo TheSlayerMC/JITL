@@ -1,6 +1,7 @@
 package net.jitl.common.world.gen.tree_grower.decorators;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.jitl.common.block.base.AttachedBlock;
 import net.jitl.common.world.gen.JTreeDecorators;
 import net.jitl.core.init.internal.JBlocks;
@@ -14,8 +15,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class CorbaSwampTreeDecorator extends TreeDecorator {
 
-    public static final Codec<CorbaSwampTreeDecorator> CODEC = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(CorbaSwampTreeDecorator::new,
-            (decorator) -> decorator.probability).codec();
+    public static final MapCodec<CorbaSwampTreeDecorator> CODEC = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(CorbaSwampTreeDecorator::new,
+            (decorator) -> decorator.probability);
     private final float probability;
 
     public CorbaSwampTreeDecorator(float float_) {

@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:raw_bloodcrust"
   },
-  "result": "jitl:bloodcrust_ingot"
+  "result": {
+    "count": 1,
+    "id": "jitl:bloodcrust_ingot"
+  }
 }

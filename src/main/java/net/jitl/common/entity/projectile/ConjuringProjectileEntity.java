@@ -5,6 +5,7 @@ import net.jitl.core.init.internal.JParticleManager;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -62,13 +63,13 @@ public class ConjuringProjectileEntity extends ThrowableProjectile {
     }
 
     @Override
-    protected float getGravity() {
-        return 0.003F;
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+
     }
 
     @Override
-    protected void defineSynchedData() {
-
+    protected double getDefaultGravity() {
+        return 0.003F;
     }
 
     @Override

@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:enderillium_ore"
   },
-  "result": "jitl:enderillium_shard"
+  "result": {
+    "count": 1,
+    "id": "jitl:enderillium_shard"
+  }
 }

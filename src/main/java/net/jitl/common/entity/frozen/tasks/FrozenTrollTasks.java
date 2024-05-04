@@ -176,7 +176,7 @@ public class FrozenTrollTasks {
     }
 
     private static List<ItemStack> getBarterResponseItems(FrozenTrollEntity frozenTrollEntity) {
-        LootTable loottable = Objects.requireNonNull(frozenTrollEntity.level().getServer()).getLootData().getLootTable(JLootTables.FROZEN_TROLL_TRADES);
+        LootTable loottable = Objects.requireNonNull(frozenTrollEntity.level().getServer()).reloadableRegistries().getLootTable(JLootTables.FROZEN_TROLL_TRADES);
         List<ItemStack> list = loottable.getRandomItems((new LootParams.Builder((ServerLevel)frozenTrollEntity.level())).withParameter(LootContextParams.THIS_ENTITY, frozenTrollEntity).create(LootContextParamSets.PIGLIN_BARTER));
         return list;
     }

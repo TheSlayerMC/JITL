@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:deepslate_shadium_ore"
   },
-  "result": "jitl:shadium_ingot"
+  "result": {
+    "count": 1,
+    "id": "jitl:shadium_ingot"
+  }
 }

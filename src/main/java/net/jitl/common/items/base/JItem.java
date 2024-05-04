@@ -5,10 +5,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class JItem extends Item {
@@ -18,7 +15,7 @@ public class JItem extends Item {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
+    public void appendHoverText(ItemStack stack, TooltipContext pContext, List<Component> tooltip, TooltipFlag pTooltipFlag) {
         addItemDesc(JItems.FLAME_COIN.get(), tooltip, "jitl.item.desc.flame_coin");
 
         addItemDesc(JItems.PADLOCK.get(), tooltip, "jitl.item.desc.padlock");

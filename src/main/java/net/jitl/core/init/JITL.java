@@ -34,7 +34,7 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(JITL.MODID)
 public class JITL {
-    public static final String MODID = "jitl", PREFIX = MODID + ":", MOD_VERSION = "2.1.4", MOD_NAME = "Journey Into the Light";
+    public static final String MODID = "jitl", PREFIX = MODID + ":", MOD_VERSION = "2.1.5", MOD_NAME = "Journey Into the Light";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
     public static final boolean DEV_MODE = true;
 
@@ -123,7 +123,6 @@ public class JITL {
     private void clientSetup(final FMLClientSetupEvent event) {
         RenderEntitys.registerAnimationRenderers();
         ModelPropertyRegistry.init();
-        JContainers.register();
         BossBarRenderer.init();
         LogStripper.init();
         NeoForge.EVENT_BUS.register(KeyUsedEvent.class);

@@ -5,6 +5,7 @@ import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.damagesource.DamageSource;
@@ -131,7 +132,7 @@ public class Sentacoin extends Entity {
     }
 
     @Override
-    protected void defineSynchedData() { }
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) { }
 
     @Override
     protected void readAdditionalSaveData(CompoundTag compound) {

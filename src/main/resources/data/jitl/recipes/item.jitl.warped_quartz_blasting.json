@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:warped_quartz_ore"
   },
-  "result": "jitl:warped_quartz"
+  "result": {
+    "count": 1,
+    "id": "jitl:warped_quartz"
+  }
 }

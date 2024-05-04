@@ -5,6 +5,7 @@ import com.google.common.collect.Multimap;
 import net.jitl.common.items.curios.JCurioItem;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JAttributes;
+import net.minecraft.core.Holder;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
@@ -26,9 +27,9 @@ public class EssenceCatalystItem extends JCurioItem {
     }
 
     @Override
-    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
-        Multimap<Attribute, AttributeModifier> modifierMultimap = LinkedHashMultimap.create();
-        modifierMultimap.put(JAttributes.MAX_ESSENCE.get(), new AttributeModifier(uuid, JITL.MODID + ":max_essence_modifier", maxEssence, AttributeModifier.Operation.ADDITION));
+    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
+        Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = LinkedHashMultimap.create();
+        modifierMultimap.put(JAttributes.MAX_ESSENCE, new AttributeModifier(uuid, JITL.MODID + ":max_essence_modifier", maxEssence, AttributeModifier.Operation.ADD_VALUE));
         return modifierMultimap;
     }
 }

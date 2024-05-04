@@ -6,7 +6,6 @@ import net.jitl.core.init.JITL;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
@@ -48,7 +47,7 @@ public class JCurioItem extends JItem implements ICurioItem {
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level world, @NotNull List<Component> text, @NotNull TooltipFlag flag) {
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable TooltipContext world, @NotNull List<Component> text, @NotNull TooltipFlag flag) {
         TooltipFiller tooltipFiller = new TooltipFiller(text, Objects.requireNonNull(JITL.getRegistryName(this)).getPath());
         if (hasOverview) {
             tooltipFiller.addOverview();

@@ -3,34 +3,34 @@ package net.jitl.core.init.network;
 import net.jitl.client.essence.ClientEssence;
 import net.jitl.core.init.JITL;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
-import net.neoforged.neoforge.network.handling.PlayPayloadContext;
-import org.jetbrains.annotations.NotNull;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 public record PacketEssenceBar(float essence, float burnout) implements CustomPacketPayload {
 
-    public static final ResourceLocation ID = JITL.rl("essence");
+    public static final Type<PacketEssenceBar> TYPE = new Type<>(JITL.rl("essence"));
 
     public static PacketEssenceBar decode(FriendlyByteBuf buffer) {
         return new PacketEssenceBar(buffer.readFloat(), buffer.readFloat());
     }
+    public static final StreamCodec<RegistryFriendlyByteBuf, PacketEssenceBar> STREAM_CODEC = CustomPacketPayload.codec(PacketEssenceBar::write, PacketEssenceBar::decode);
 
-    @Override
     public void write(FriendlyByteBuf buf) {
         buf.writeFloat(essence);
         buf.writeFloat(burnout);
     }
 
-    public void handle(PlayPayloadContext ctx) {
-        ctx.workHandler().submitAsync(() -> {
-            ClientEssence.setClientEssence(this.essence);
-            ClientEssence.setClientBurnout(this.burnout);
+    public static void handle(PacketEssenceBar payload, IPayloadContext ctx) {
+        ctx.enqueueWork(() -> {
+            ClientEssence.setClientEssence(payload.essence);
+            ClientEssence.setClientBurnout(payload.burnout);
         });
     }
 
     @Override
-    public @NotNull ResourceLocation id() {
-        return ID;
+    public Type<? extends CustomPacketPayload> type() {
+        return TYPE;
     }
 }

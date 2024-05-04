@@ -60,7 +60,7 @@ public class KnifeEntity extends AbstractKnifeEntity implements ItemSupplier {
             if(!level().isClientSide()) {
                 if(entity.hurt(this.damageSources().thrown(this, this.getOwner()), (float) getBaseDamage())) {
                     if(isFireKnife(getStack().getItem())) {
-                        entity.setSecondsOnFire(10);
+                        entity.setRemainingFireTicks(200);
                     }
                 }
                 this.playSound(JSounds.KNIFE.get(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
@@ -78,15 +78,20 @@ public class KnifeEntity extends AbstractKnifeEntity implements ItemSupplier {
     public void addAdditionalSaveData(@NotNull CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
         nbt.putInt("dur", getStack().getDamageValue());
-        nbt.put("stack", getStack().save(new CompoundTag()));
+        nbt.put("stack", getStack().save(this.registryAccess()));
     }
 
     @Override
     public void readAdditionalSaveData(@NotNull CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
         durability = nbt.getInt("dur");
-        setStack(ItemStack.of(nbt.getCompound("stack")));
+        setStack(ItemStack.parse(this.registryAccess(), nbt.getCompound("stack")).orElse(this.getDefaultPickupItem()));
         if(getStack().isEmpty()) remove(RemovalReason.DISCARDED);
+    }
+
+    @Override
+    protected ItemStack getDefaultPickupItem() {
+        return this.getPickupItem();
     }
 
     private void setStack(ItemStack stack) {
@@ -111,9 +116,9 @@ public class KnifeEntity extends AbstractKnifeEntity implements ItemSupplier {
     }
 
     @Override
-    protected void defineSynchedData() {
-        this.getEntityData().define(STACK, ItemStack.EMPTY);
-        super.defineSynchedData();
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+        super.defineSynchedData(pBuilder);
+        this.getEntityData().set(STACK, ItemStack.EMPTY);
     }
 
     @Override

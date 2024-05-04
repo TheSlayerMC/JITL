@@ -112,9 +112,9 @@ public abstract class JBlazeStyleEntity extends JMonsterEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DATA_FLAGS_ID, (byte)0);
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+        super.defineSynchedData(pBuilder);
+        pBuilder.define(DATA_FLAGS_ID, (byte)0);
     }
 
     void setCharged(boolean pCharged) {

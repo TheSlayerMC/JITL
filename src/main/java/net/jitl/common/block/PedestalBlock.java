@@ -7,10 +7,7 @@ import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.Container;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -56,7 +53,7 @@ public class PedestalBlock extends JTileContainerBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
+    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
         Item heldItem = player.getMainHandItem().getItem();
         if(worldIn.getBlockEntity(pos) instanceof PedestalTile) {
             PedestalTile pedestal = (PedestalTile) worldIn.getBlockEntity(pos);
@@ -80,6 +77,6 @@ public class PedestalBlock extends JTileContainerBlock {
                 }
             }
         }
-        return InteractionResult.sidedSuccess(worldIn.isClientSide);
+        return ItemInteractionResult.sidedSuccess(worldIn.isClientSide);
     }
 }

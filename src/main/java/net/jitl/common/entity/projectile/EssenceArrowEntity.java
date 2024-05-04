@@ -2,6 +2,7 @@ package net.jitl.common.entity.projectile;
 
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
+import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -44,7 +45,7 @@ public class EssenceArrowEntity extends AbstractArrow implements ItemSupplier {
                     applyPotionEffect(entity, MobEffects.MOVEMENT_SLOWDOWN, 100, 2);
                 }
                 if(effects.contains(BowEffects.FLAME)) {
-                    entity.setSecondsOnFire(3);
+                    entity.setRemainingFireTicks(60);
                 }
                 if(effects.contains(BowEffects.POISON)) {
                     applyPotionEffect(entity, MobEffects.POISON, 100, 2);
@@ -58,7 +59,12 @@ public class EssenceArrowEntity extends AbstractArrow implements ItemSupplier {
         return getItem();
     }
 
-    private void applyPotionEffect(LivingEntity effectedEntity, MobEffect potionEffect, int duration, int amplifier) {
+    @Override
+    protected ItemStack getDefaultPickupItem() {
+        return DEFAULT_ARROW_STACK;
+    }
+
+    private void applyPotionEffect(LivingEntity effectedEntity, Holder<MobEffect> potionEffect, int duration, int amplifier) {
         effectedEntity.addEffect(new MobEffectInstance(potionEffect, duration, amplifier));
     }
 

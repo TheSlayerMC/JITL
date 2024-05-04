@@ -1,11 +1,10 @@
 package net.jitl.common.world.gen.terrania;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.jitl.common.world.gen.JTreeDecorators;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.VineBlock;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
@@ -14,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class TerranianTrunkVineDecorator extends TreeDecorator {
 
-   public static final Codec<TerranianTrunkVineDecorator> CODEC = Codec.unit(() -> TerranianTrunkVineDecorator.INSTANCE);
+   public static final MapCodec<TerranianTrunkVineDecorator> CODEC = MapCodec.unit(() -> TerranianTrunkVineDecorator.INSTANCE);
    public static final TerranianTrunkVineDecorator INSTANCE = new TerranianTrunkVineDecorator();
 
    @Override

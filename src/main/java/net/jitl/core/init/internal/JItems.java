@@ -248,7 +248,7 @@ public class JItems {
     public static final DeferredItem<Item> SENTERIAN_KEY = registerNormalItem("senterian_key", "Senterian Chest Key", ChestInteractionItem::new);
 
     public static final DeferredItem<Item> SAPPHIRE = registerNormalItem("sapphire", "Sapphire");
-    public static final DeferredItem<Item> SAPPHIRE_SHIELD = registerShieldItem("sapphire_shield", "Sapphire Shield", () -> new JShieldItem(JToolTiers.JArmorTier.SAPPHIRE, 1200, SAPPHIRE.get()));
+    public static final DeferredItem<Item> SAPPHIRE_SHIELD = registerShieldItem("sapphire_shield", "Sapphire Shield", () -> new JShieldItem("sapphire", 1200, SAPPHIRE.get()));
     public static final DeferredItem<Item> SAPPHIRE_SHOVEL = registerToolItem("sapphire_shovel", "Sapphire Shovel", () -> new JShovelItem(JToolTiers.SAPPHIRE_SHOVEL));
     public static final DeferredItem<Item> SAPPHIRE_PICKAXE = registerToolItem("sapphire_pickaxe", "Sapphire Pickaxe", () -> new JPickaxeItem(JToolTiers.SAPPHIRE_PICKAXE));
     public static final DeferredItem<Item> SAPPHIRE_AXE = registerToolItem("sapphire_axe", "Sapphire Axe", () -> new JAxeItem(JToolTiers.SAPPHIRE_AXE));
@@ -261,7 +261,7 @@ public class JItems {
     public static final DeferredItem<Item> SAPPHIRE_BOOTS = registerNormalItem("sapphire_boots", "Sapphire Boots", () -> new JArmorItem(JToolTiers.JArmorTier.SAPPHIRE, ArmorItem.Type.BOOTS, null));
 
     public static final DeferredItem<Item> LUNIUM_POWDER = registerNormalItem("lunium_powder", "Lunium Powder");
-    public static final DeferredItem<Item> LUNIUM_SHIELD = registerShieldItem("lunium_shield", "Lunium Shield", () -> new JShieldItem(JToolTiers.JArmorTier.LUNIUM, 1200, LUNIUM_POWDER.get()));
+    public static final DeferredItem<Item> LUNIUM_SHIELD = registerShieldItem("lunium_shield", "Lunium Shield", () -> new JShieldItem("lunium", 1200, LUNIUM_POWDER.get()));
     public static final DeferredItem<Item> LUNIUM_INGOT = registerNormalItem("lunium_ingot", "Lunium Ingot");
     public static final DeferredItem<Item> LUNIUM_CLUMP = registerNormalItem("lunium_clump", "Lunium Clump");
     public static final DeferredItem<Item> LUNIUM_SHOVEL = registerToolItem("lunium_shovel", "Lunium Shovel", () -> new JShovelItem(JToolTiers.LUNIUM_SHOVEL));
@@ -278,7 +278,7 @@ public class JItems {
     public static final DeferredItem<Item> RAW_SHADIUM = registerNormalItem("raw_shadium", "Raw Shadium");
     public static final DeferredItem<Item> SHADIUM_INGOT = registerNormalItem("shadium_ingot", "Shadium Ingot");
     public static final DeferredItem<Item> SHADIUM_CLUMP = registerNormalItem("shadium_clump", "Shadium Clump");
-    public static final DeferredItem<Item> SHADIUM_SHIELD = registerShieldItem("shadium_shield", "Shadium Shield", () -> new JShieldItem(JToolTiers.JArmorTier.SHADIUM, 1200, SHADIUM_INGOT.get()));
+    public static final DeferredItem<Item> SHADIUM_SHIELD = registerShieldItem("shadium_shield", "Shadium Shield", () -> new JShieldItem("shadium", 1200, SHADIUM_INGOT.get()));
     public static final DeferredItem<Item> SHADIUM_SHOVEL = registerToolItem("shadium_shovel", "Shadium Shovel", () -> new JShovelItem(JToolTiers.SHADIUM_SHOVEL));
     public static final DeferredItem<Item> SHADIUM_PICKAXE = registerToolItem("shadium_pickaxe", "Shadium Pickaxe", () -> new JPickaxeItem(JToolTiers.SHADIUM_PICKAXE));
     public static final DeferredItem<Item> SHADIUM_AXE = registerToolItem("shadium_axe", "Shadium Axe", () -> new JAxeItem(JToolTiers.SHADIUM_AXE));
@@ -293,7 +293,7 @@ public class JItems {
     public static final DeferredItem<Item> RAW_BLOODCRUST = registerNormalItem("raw_bloodcrust", "Raw Bloodcrust");
     public static final DeferredItem<Item> BLOODCRUST_INGOT = registerNormalItem("bloodcrust_ingot", "Bloodcrust Ingot");
     public static final DeferredItem<Item> BLOODCRUST_CLUMP = registerNormalItem("bloodcrust_clump", "Bloodcrust Clump");
-    public static final DeferredItem<Item> BLOODCRUST_SHIELD = registerShieldItem("bloodcrust_shield", "Bloodcrust Shield", () -> new JShieldItem(JToolTiers.JArmorTier.BLOODCRUST, 1200, BLOODCRUST_INGOT.get()));
+    public static final DeferredItem<Item> BLOODCRUST_SHIELD = registerShieldItem("bloodcrust_shield", "Bloodcrust Shield", () -> new JShieldItem("bloodcrust", 1200, BLOODCRUST_INGOT.get()));
     public static final DeferredItem<Item> BLOODCRUST_SHOVEL = registerToolItem("bloodcrust_shovel", "Bloodcrust Shovel", () -> new JShovelItem(JToolTiers.BLOODCRUST_SHOVEL));
     public static final DeferredItem<Item> BLOODCRUST_PICKAXE = registerToolItem("bloodcrust_pickaxe", "Bloodcrust Pickaxe", () -> new JPickaxeItem(JToolTiers.BLOODCRUST_PICKAXE));
     public static final DeferredItem<Item> BLOODCRUST_AXE = registerToolItem("bloodcrust_axe", "Bloodcrust Axe", () -> new JAxeItem(JToolTiers.BLOODCRUST_AXE));
@@ -307,7 +307,7 @@ public class JItems {
 
     public static final DeferredItem<Item> CELESTIUM_INGOT = registerNormalItem("celestium_ingot", "Celestium Ingot");
     public static final DeferredItem<Item> CELESTIUM_GEMSTONE = registerNormalItem("celestium_gemstone", "Celestium Gemstone");
-    public static final DeferredItem<Item> CELESTIUM_SHIELD = registerShieldItem("celestium_shield", "Celestium Shield", () -> new JShieldItem(JToolTiers.JArmorTier.CELESTIUM, 1200, CELESTIUM_INGOT.get()));
+    public static final DeferredItem<Item> CELESTIUM_SHIELD = registerShieldItem("celestium_shield", "Celestium Shield", () -> new JShieldItem("celestium", 1200, CELESTIUM_INGOT.get()));
     public static final DeferredItem<Item> CELESTIUM_SHOVEL = registerToolItem("celestium_shovel", "Celestium Shovel", () -> new JShovelItem(JToolTiers.CELESTIUM_SHOVEL));
     public static final DeferredItem<Item> CELESTIUM_PICKAXE = registerToolItem("celestium_pickaxe", "Celestium Pickaxe", () -> new JPickaxeItem(JToolTiers.CELESTIUM_PICKAXE));
     public static final DeferredItem<Item> CELESTIUM_AXE = registerToolItem("celestium_axe", "Celestium Axe", () -> new JAxeItem(JToolTiers.CELESTIUM_AXE));
@@ -350,7 +350,7 @@ public class JItems {
     public static final DeferredItem<Item> KORITE_SWORD = registerToolItem("korite_sword", "korite Sword", () -> new JSwordItem(JToolTiers.KORITE_SWORD, KORITE_SWORD_ABILITY));
 
     public static final DeferredItem<Item> FLAIRIUM_INGOT = registerNormalItem("flairium_ingot", "Flairium Ingot");
-    public static final DeferredItem<Item> FLAIRIUM_SHIELD = registerShieldItem("flairium_shield", "Flairium Shield", () -> new JShieldItem(JToolTiers.JArmorTier.FLAIRIUM, 1200, FLAIRIUM_INGOT.get()));
+    public static final DeferredItem<Item> FLAIRIUM_SHIELD = registerShieldItem("flairium_shield", "Flairium Shield", () -> new JShieldItem("flairium", 1200, FLAIRIUM_INGOT.get()));
     public static final DeferredItem<Item> FLAIRIUM_SHOVEL = registerToolItem("flairium_shovel", "Flairium Shovel", () -> new JShovelItem(JToolTiers.FLAIRIUM_SHOVEL));
     public static final DeferredItem<Item> FLAIRIUM_PICKAXE = registerToolItem("flairium_pickaxe", "Flairium Pickaxe", () -> new JPickaxeItem(JToolTiers.FLAIRIUM_PICKAXE));
     public static final DeferredItem<Item> FLAIRIUM_AXE = registerToolItem("flairium_axe", "Flairium Axe", () -> new JAxeItem(JToolTiers.FLAIRIUM_AXE));
@@ -372,7 +372,7 @@ public class JItems {
     public static final DeferredItem<Item> DES_SWORD = registerToolItem("des_sword", "Des Sword", () -> new JSwordItem(JToolTiers.DES_SWORD, BASIC));
 
     public static final DeferredItem<Item> GORBITE_GEM = registerNormalItem("gorbite_gem", "Gorbite Gem");
-    public static final DeferredItem<Item> GORBITE_SHIELD = registerShieldItem("gorbite_shield", "Gorbite Shield", () -> new JShieldItem(JToolTiers.JArmorTier.GORBITE, 1200, GORBITE_GEM.get()));
+    public static final DeferredItem<Item> GORBITE_SHIELD = registerShieldItem("gorbite_shield", "Gorbite Shield", () -> new JShieldItem("gorbite", 1200, GORBITE_GEM.get()));
     public static final DeferredItem<Item> GORBITE_SHOVEL = registerToolItem("gorbite_shovel", "Gorbite Shovel", () -> new JShovelItem(JToolTiers.GORBITE_SHOVEL));
     public static final DeferredItem<Item> GORBITE_PICKAXE = registerToolItem("gorbite_pickaxe", "Gorbite Pickaxe", () -> new JPickaxeItem(JToolTiers.GORBITE_PICKAXE));
     public static final DeferredItem<Item> GORBITE_AXE = registerToolItem("gorbite_axe", "Gorbite Axe", () -> new JAxeItem(JToolTiers.GORBITE_AXE));
@@ -386,7 +386,7 @@ public class JItems {
 
     public static final DeferredItem<Item> RAW_ORBADITE = registerNormalItem("raw_orbadite", "Raw Orbadite");
     public static final DeferredItem<Item> ORBADITE_INGOT = registerNormalItem("orbadite_ingot", "Orbadite Ingot");
-    public static final DeferredItem<Item> ORBADITE_SHIELD = registerShieldItem("orbadite_shield", "Orbadite Shield", () -> new JShieldItem(JToolTiers.JArmorTier.ORBADITE, 1200, ORBADITE_INGOT.get()));
+    public static final DeferredItem<Item> ORBADITE_SHIELD = registerShieldItem("orbadite_shield", "Orbadite Shield", () -> new JShieldItem("orbadite", 1200, ORBADITE_INGOT.get()));
     public static final DeferredItem<Item> ORBADITE_SHOVEL = registerToolItem("orbadite_shovel", "Orbadite Shovel", () -> new JShovelItem(JToolTiers.ORBADITE_SHOVEL));
     public static final DeferredItem<Item> ORBADITE_PICKAXE = registerToolItem("orbadite_pickaxe", "Orbadite Pickaxe", () -> new JPickaxeItem(JToolTiers.ORBADITE_PICKAXE));
     public static final DeferredItem<Item> ORBADITE_AXE = registerToolItem("orbadite_axe", "Orbadite Axe", () -> new JAxeItem(JToolTiers.ORBADITE_AXE));
@@ -632,13 +632,13 @@ public class JItems {
     public static final DeferredItem<Item> HEART_CONTAINER_LARGE = registerNormalItem("heart_container_large", "Heart Container", () -> new HeartContainerItem(itemProps().stacksTo(1)).health(8));
     public static final DeferredItem<Item> HEART_CONTAINER_ULTIMATE = registerNormalItem("heart_container_ultimate", "Heart Container", () -> new HeartContainerItem(itemProps().stacksTo(1)).health(16));
 
-    public static final DeferredItem<Item> RING_OF_POISON = registerNormalItem("ring_of_poison", "Ring of Poison", () -> new JRingItem(itemProps().stacksTo(1)).effect(() -> MobEffects.POISON));
-    public static final DeferredItem<Item> RING_OF_BLINDNESS = registerNormalItem("ring_of_blindness", "Ring of Blindness", () -> new JRingItem(itemProps().stacksTo(1)).effect(() -> MobEffects.BLINDNESS));
-    public static final DeferredItem<Item> RING_OF_HARMING = registerNormalItem("ring_of_harming", "Ring of Harming", () -> new JRingItem(itemProps().stacksTo(1)).effect(() -> MobEffects.HARM));
-    public static final DeferredItem<Item> RING_OF_MINING_FATIGUE = registerNormalItem("ring_of_mining_fatigue", "Ring of Mining Fatigue", () -> new JRingItem(itemProps().stacksTo(1)).effect(() -> MobEffects.DIG_SLOWDOWN));
-    public static final DeferredItem<Item> RING_OF_NAUSEA = registerNormalItem("ring_of_nausea", "Ring of Nausea", () -> new JRingItem(itemProps().stacksTo(1)).effect(() -> MobEffects.CONFUSION));
-    public static final DeferredItem<Item> RING_OF_SLOWNESS = registerNormalItem("ring_of_slowness", "Ring of Slowness", () -> new JRingItem(itemProps().stacksTo(1)).effect(() -> MobEffects.MOVEMENT_SLOWDOWN));
-    public static final DeferredItem<Item> RING_OF_WITHERING = registerNormalItem("ring_of_withering", "Ring of Withering", () -> new JRingItem(itemProps().stacksTo(1)).effect(() -> MobEffects.WITHER));
+    public static final DeferredItem<Item> RING_OF_POISON = registerNormalItem("ring_of_poison", "Ring of Poison", () -> new JRingItem(itemProps().stacksTo(1)).effect(MobEffects.POISON::value));
+    public static final DeferredItem<Item> RING_OF_BLINDNESS = registerNormalItem("ring_of_blindness", "Ring of Blindness", () -> new JRingItem(itemProps().stacksTo(1)).effect(MobEffects.BLINDNESS::value));
+    public static final DeferredItem<Item> RING_OF_HARMING = registerNormalItem("ring_of_harming", "Ring of Harming", () -> new JRingItem(itemProps().stacksTo(1)).effect(MobEffects.HARM::value));
+    public static final DeferredItem<Item> RING_OF_MINING_FATIGUE = registerNormalItem("ring_of_mining_fatigue", "Ring of Mining Fatigue", () -> new JRingItem(itemProps().stacksTo(1)).effect(MobEffects.DIG_SLOWDOWN::value));
+    public static final DeferredItem<Item> RING_OF_NAUSEA = registerNormalItem("ring_of_nausea", "Ring of Nausea", () -> new JRingItem(itemProps().stacksTo(1)).effect(MobEffects.CONFUSION::value));
+    public static final DeferredItem<Item> RING_OF_SLOWNESS = registerNormalItem("ring_of_slowness", "Ring of Slowness", () -> new JRingItem(itemProps().stacksTo(1)).effect(MobEffects.MOVEMENT_SLOWDOWN::value));
+    public static final DeferredItem<Item> RING_OF_WITHERING = registerNormalItem("ring_of_withering", "Ring of Withering", () -> new JRingItem(itemProps().stacksTo(1)).effect(MobEffects.WITHER::value));
 
     public static final DeferredItem<Item> LOOT_POUCH = registerNormalItem("loot_pouch", "Loot Pouch", () -> new LootItem(LootItem.LootTier.NORMAL));
     public static final DeferredItem<Item> GOLD_LOOT_POUCH = registerNormalItem("gold_loot_pouch", "Loot Pouch", () -> new LootItem(LootItem.LootTier.GOLD));

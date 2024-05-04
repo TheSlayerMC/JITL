@@ -1,10 +1,7 @@
 package net.jitl.common.items.curios.ring;
 
 import net.jitl.common.items.curios.JCurioItem;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.SlotContext;
@@ -25,7 +22,7 @@ public class JRingItem extends JCurioItem {
 
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
-        LivingEntity livingEntity = slotContext.entity();
+        /*LivingEntity livingEntity = slotContext.entity();
         if (!(livingEntity instanceof Player)) return;
 
         if (!livingEntity.level().isClientSide()) {
@@ -41,6 +38,6 @@ public class JRingItem extends JCurioItem {
                 tag.putInt("cooldown", Math.max(0, cooldown - (livingEntity.hasEffect(potion) ? 1 : 4)));
             }
             System.out.println(cooldown);
-        }
+        }*/
     }
 }

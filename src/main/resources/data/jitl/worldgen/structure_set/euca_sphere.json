@@ -10,7 +10,7 @@
     "salt": 16421364715478,
     "locate_offset": [
       0,
-      50,
+      5,
       0
     ],
     "spread_type": "linear",

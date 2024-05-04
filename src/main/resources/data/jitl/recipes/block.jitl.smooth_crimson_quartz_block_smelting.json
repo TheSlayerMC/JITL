@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:crimson_quartz_block"
   },
-  "result": "jitl:smooth_crimson_quartz_block"
+  "result": {
+    "count": 1,
+    "id": "jitl:smooth_crimson_quartz_block"
+  }
 }

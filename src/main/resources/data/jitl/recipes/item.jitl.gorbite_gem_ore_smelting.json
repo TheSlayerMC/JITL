@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:gorbite_ore"
   },
-  "result": "jitl:gorbite_gem"
+  "result": {
+    "count": 1,
+    "id": "jitl:gorbite_gem"
+  }
 }

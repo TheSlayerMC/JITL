@@ -3,6 +3,7 @@ package net.jitl.common.capability.essence;
 import net.jitl.core.data.JNetworkRegistry;
 import net.jitl.core.init.internal.JAttributes;
 import net.jitl.core.init.network.PacketEssenceBar;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -25,7 +26,7 @@ public class PlayerEssence implements INBTSerializable<CompoundTag> {
     }
 
     public static float getMaxEssence(Player player) {
-        return (float) Objects.requireNonNull(player.getAttribute(JAttributes.MAX_ESSENCE.get())).getValue();
+        return (float) Objects.requireNonNull(player.getAttribute(JAttributes.MAX_ESSENCE)).getValue();
     }
 
     public void setBurnout(float value) {
@@ -67,7 +68,7 @@ public class PlayerEssence implements INBTSerializable<CompoundTag> {
                 setTimeout(20);
                 return true;
             }
-            float attributeValue = (float) player.getAttribute(JAttributes.ESSENCE_BURNOUT.get()).getValue();
+            float attributeValue = (float) player.getAttribute(JAttributes.ESSENCE_BURNOUT).getValue();
             setBurnout(Math.min(getBurnout() + attributeValue, attributeValue * 5));
             return false;
         }
@@ -86,7 +87,7 @@ public class PlayerEssence implements INBTSerializable<CompoundTag> {
     }
 
     @Override
-    public @UnknownNullability CompoundTag serializeNBT() {
+    public @UnknownNullability CompoundTag serializeNBT(HolderLookup.Provider provider) {
         CompoundTag nbt = new CompoundTag();
         nbt.putFloat("essence", this.currentEssence);
         nbt.putFloat("burnoutTime", this.burnoutTime);
@@ -95,7 +96,7 @@ public class PlayerEssence implements INBTSerializable<CompoundTag> {
     }
 
     @Override
-    public void deserializeNBT(CompoundTag nbt) {
+    public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
         currentEssence = nbt.getFloat("essence");
         burnoutTime = nbt.getFloat("burnoutTime");
         timeout = nbt.getInt("timeout");

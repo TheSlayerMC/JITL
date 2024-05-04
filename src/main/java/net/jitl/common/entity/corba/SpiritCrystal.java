@@ -12,7 +12,6 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -33,10 +32,10 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
@@ -88,13 +87,13 @@ public class SpiritCrystal extends PathfinderMob implements GeoEntity {
     @Override
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
-        ContainerHelper.saveAllItems(compound, storedItems);
+        //ContainerHelper.saveAllItems(compound, storedItems);
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        ContainerHelper.loadAllItems(compound, storedItems);
+        //ContainerHelper.loadAllItems(compound, storedItems);
     }
 
     @Override
@@ -119,7 +118,7 @@ public class SpiritCrystal extends PathfinderMob implements GeoEntity {
         }
         if(totalAwakeTotems >= 4) {
             if(!this.level().isClientSide) {
-                LootTable table = Objects.requireNonNull(level().getServer()).getLootData().getLootTable(JLootTables.SPIRIT_CRYSTAL);
+                LootTable table = Objects.requireNonNull(level().getServer()).reloadableRegistries().getLootTable(JLootTables.SPIRIT_CRYSTAL);
                 List<ItemStack> itemList = table.getRandomItems(new LootParams.Builder((ServerLevel)level()).withParameter(LootContextParams.THIS_ENTITY, playerEntity)
                         .withParameter(LootContextParams.ORIGIN, playerEntity.position()).create(LootContextParamSets.GIFT));
                 storedItems.addAll(itemList);

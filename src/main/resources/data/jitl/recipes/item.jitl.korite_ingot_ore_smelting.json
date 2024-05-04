@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:korite_ore"
   },
-  "result": "jitl:korite_ingot"
+  "result": {
+    "count": 1,
+    "id": "jitl:korite_ingot"
+  }
 }

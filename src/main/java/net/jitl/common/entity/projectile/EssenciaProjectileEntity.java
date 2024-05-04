@@ -5,6 +5,7 @@ import net.jitl.core.init.internal.JParticleManager;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
@@ -41,12 +42,15 @@ public class EssenciaProjectileEntity extends ThrowableProjectile {
     }
 
     @Override
-    protected float getGravity() {
-        return 0.003F;
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+
     }
 
     @Override
-    protected void defineSynchedData() { }
+    protected double getDefaultGravity() {
+        return 0.003F;
+    }
+
 
     @Override
     public @NotNull Packet<ClientGamePacketListener> getAddEntityPacket() {

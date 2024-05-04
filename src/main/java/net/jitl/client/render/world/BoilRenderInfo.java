@@ -35,8 +35,8 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
     }
 
     @Override
-    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f projectionMatrix) {
-        new JCloudRenderer(JITL.rl("textures/environment/boil_clouds.png")).render(level, ticks, partialTick, poseStack, Minecraft.getInstance(), camX, camY, camZ, projectionMatrix);
+    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f modelViewMatrix, Matrix4f projectionMatrix) {
+        new JCloudRenderer(JITL.rl("textures/environment/boil_clouds.png")).render(level, ticks, poseStack, projectionMatrix, modelViewMatrix, partialTick, camX, camY, camZ);
         return true;
     }
 
@@ -52,11 +52,13 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
     }
 
     @Override
-    public boolean renderSky(@NotNull ClientLevel level, int ticks, float partialTick, @NotNull PoseStack poseStack, @NotNull Camera camera, @NotNull Matrix4f projectionMatrix, boolean isFoggy, Runnable setupFog) {
+    public boolean renderSky(ClientLevel level, int ticks, float partialTick, Matrix4f mat, Camera camera, Matrix4f projectionMatrix, boolean isFoggy, Runnable setupFog) {
         Minecraft mc = Minecraft.getInstance();
         setupFog.run();
         FogType fogtype = camera.getFluidInCamera();
         if(fogtype != FogType.POWDER_SNOW && fogtype != FogType.LAVA && !doesMobEffectBlockSky(camera)) {
+            PoseStack poseStack = new PoseStack();
+            poseStack.mulPose(projectionMatrix);
             Vec3 vec3 = level.getSkyColor(mc.gameRenderer.getMainCamera().getPosition(), partialTick);
             float f = (float)vec3.x;
             float f1 = (float)vec3.y;

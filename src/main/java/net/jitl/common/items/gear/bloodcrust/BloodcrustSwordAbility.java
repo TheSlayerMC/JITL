@@ -1,14 +1,9 @@
 package net.jitl.common.items.gear.bloodcrust;
 
 import net.jitl.common.items.gear.IAbility;
-import net.jitl.core.helper.TooltipFiller;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
@@ -21,17 +16,17 @@ public class BloodcrustSwordAbility implements IAbility {
 
     @Override
     public void damageTarget(LivingEntity holder, ItemStack stack, LivingDamageEvent event) {
-        System.out.println("Bloodcrust attack");
+       /* System.out.println("Bloodcrust attack");
         System.out.println("Original damage is " + event.getAmount());
         Entity entity = event.getEntity();
         if (!stack.hasTag()) stack.setTag(new CompoundTag());
         stack.getTag().putInt("Fire boost", entity.getRemainingFireTicks() / 20);
-        entity.clearFire();
+        entity.clearFire();*/
     }
 
     @Override
     public void equip(LivingEntity entity, EquipmentSlot slot, ItemStack stack) {
-        if (slot == EquipmentSlot.MAINHAND) {
+        /*if (slot == EquipmentSlot.MAINHAND) {
             if (stack.hasTag()) {
                 AttributeInstance attribute = entity.getAttribute(Attributes.ATTACK_DAMAGE);
                 attribute.removeModifier(ID);
@@ -44,7 +39,7 @@ public class BloodcrustSwordAbility implements IAbility {
                             AttributeModifier.Operation.ADDITION));
                 }
             }
-        }
+        }*/
     }
 
     @Override
@@ -54,10 +49,10 @@ public class BloodcrustSwordAbility implements IAbility {
 
     @Override
     public void fillTooltips(ItemStack stack, List<Component> tooltip) {
-        TooltipFiller filler = new TooltipFiller(tooltip, "bloodcrust_sword");
+        /*TooltipFiller filler = new TooltipFiller(tooltip, "bloodcrust_sword");
         filler.addOverview();
         filler.addDetail();
         filler.addBreak();
-        filler.addValue(stack.getTag().getInt("Fire boost"));
+        filler.addValue(stack.getTag().getInt("Fire boost"));*/
     }
 }

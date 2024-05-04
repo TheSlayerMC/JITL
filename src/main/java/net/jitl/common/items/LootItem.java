@@ -1,8 +1,8 @@
 package net.jitl.common.items;
 
 import net.jitl.common.items.base.JItem;
-import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JItems;
+import net.jitl.core.init.internal.JLootTables;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
@@ -11,7 +11,6 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -43,7 +42,7 @@ public class LootItem extends JItem {
             case FROSTY_GIFT -> lootName = "frosty_gift";
         }
         if(!world.isClientSide) {
-            LootTable table = Objects.requireNonNull(world.getServer()).getLootData().getLootTable(JITL.rl("loot/loot_" + lootName));
+            LootTable table = Objects.requireNonNull(world.getServer()).reloadableRegistries().getLootTable(JLootTables.addLootTable("loot/loot_" + lootName));
             List<ItemStack> itemList = table.getRandomItems(new LootParams.Builder((ServerLevel)world).withParameter(LootContextParams.THIS_ENTITY, player).withParameter(LootContextParams.ORIGIN, player.position()).create(LootContextParamSets.GIFT));
             ItemStack spawn = itemList.get(rand.nextInt(itemList.size()));
 
@@ -55,17 +54,6 @@ public class LootItem extends JItem {
             return InteractionResultHolder.consume(itemstack);
         }
         return InteractionResultHolder.fail(itemstack);
-    }
-
-    @Override
-    public Rarity getRarity(ItemStack p_41461_) {
-        Rarity r = Rarity.COMMON;
-        switch(this.tier) {
-            case NORMAL, FROSTY_GIFT -> r = Rarity.UNCOMMON;
-            case GOLD -> r = Rarity.RARE;
-            case DIAMOND -> r = Rarity.EPIC;
-        }
-        return r;
     }
 
     @Override

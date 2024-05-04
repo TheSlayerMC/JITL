@@ -23,6 +23,6 @@ public class TallGlowshroomBlock extends JDoublePlantBlock {
 
     @Override
     public boolean canPlace(BlockState ground) {
-        return ground.is(Tags.Blocks.STONE);
+        return ground.is(Tags.Blocks.STONES);
     }
 }

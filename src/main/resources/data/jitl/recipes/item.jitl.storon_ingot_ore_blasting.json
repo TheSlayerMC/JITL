@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "jitl:storon_ore"
   },
-  "result": "jitl:storon_ingot"
+  "result": {
+    "count": 1,
+    "id": "jitl:storon_ingot"
+  }
 }

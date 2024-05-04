@@ -4,16 +4,16 @@ import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JAttributes;
 import net.minecraft.world.entity.EntityType;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 
-@Mod.EventBusSubscriber(modid = JITL.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = JITL.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class EntityAttributeEventHandler {
 
     @SubscribeEvent
     public static void addAttributes(EntityAttributeModificationEvent event) {
-        event.add(EntityType.PLAYER, JAttributes.MAX_ESSENCE.get());
-        event.add(EntityType.PLAYER, JAttributes.ESSENCE_REGEN_SPEED.get());
-        event.add(EntityType.PLAYER, JAttributes.ESSENCE_BURNOUT.get());
+        event.add(EntityType.PLAYER, JAttributes.MAX_ESSENCE);
+        event.add(EntityType.PLAYER, JAttributes.ESSENCE_REGEN_SPEED);
+        event.add(EntityType.PLAYER, JAttributes.ESSENCE_BURNOUT);
     }
 }

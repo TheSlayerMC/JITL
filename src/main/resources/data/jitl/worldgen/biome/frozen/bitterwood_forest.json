@@ -10,7 +10,6 @@
     "water_fog_color": 25855,
     "grass_color": 3145727,
     "foliage_color": 25855,
-    "ambient_sound": "jitl:music.frozen.ambience",
     "music": {
       "sound": "jitl:music.haunt_muskie_2",
       "min_delay": 10,

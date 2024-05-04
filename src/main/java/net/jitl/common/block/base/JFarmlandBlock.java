@@ -120,8 +120,10 @@ public abstract class JFarmlandBlock extends Block {
         pBuilder.add(MOISTURE);
     }
 
+
+
     @Override
-    public boolean isPathfindable(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull PathComputationType pType) {
+    protected boolean isPathfindable(BlockState pState, PathComputationType pPathComputationType) {
         return false;
     }
 }

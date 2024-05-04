@@ -4,7 +4,7 @@ import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.Holder;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -34,10 +34,9 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
-import org.joml.Vector3f;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.RawAnimation;
 
 import javax.annotation.Nullable;
 
@@ -101,8 +100,8 @@ public class AranaKing extends JMonsterEntity {
     }
 
     @Override
-    protected @NotNull Vector3f getPassengerAttachmentPoint(@NotNull Entity pEntity, EntityDimensions pDimensions, float pScale) {
-        return new Vector3f(0.0F, pDimensions.height * 0.85F, 0.0F);
+    protected @NotNull Vec3 getPassengerAttachmentPoint(@NotNull Entity pEntity, EntityDimensions pDimensions, float pScale) {
+        return new Vec3(0.0F, pDimensions.height() * 0.85F, 0.0F);
     }
 
     @Override
@@ -111,9 +110,9 @@ public class AranaKing extends JMonsterEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DATA_FLAGS_ID, (byte)0);
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+        super.defineSynchedData(pBuilder);
+        pBuilder.define(DATA_FLAGS_ID, (byte)0);
     }
 
     @Override
@@ -141,11 +140,6 @@ public class AranaKing extends JMonsterEntity {
         return this.isClimbing();
     }
 
-    @Override
-    public @NotNull MobType getMobType() {
-        return MobType.ARTHROPOD;
-    }
-
     public boolean isClimbing() {
         return (this.entityData.get(DATA_FLAGS_ID) & 1) != 0;
     }
@@ -162,38 +156,39 @@ public class AranaKing extends JMonsterEntity {
     }
 
     @Nullable
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
-        pSpawnData = super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
+    @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pSpawnType, @Nullable SpawnGroupData pSpawnGroupData) {
+        pSpawnGroupData = super.finalizeSpawn(pLevel, pDifficulty, pSpawnType, pSpawnGroupData);
         RandomSource randomsource = pLevel.getRandom();
-        if(randomsource.nextInt(100) == 0) {
+        if (randomsource.nextInt(100) == 0) {
             Skeleton skeleton = EntityType.SKELETON.create(this.level());
-            if(skeleton != null) {
+            if (skeleton != null) {
                 skeleton.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
-                skeleton.finalizeSpawn(pLevel, pDifficulty, pReason, null, null);
+                skeleton.finalizeSpawn(pLevel, pDifficulty, pSpawnType, null);
                 skeleton.startRiding(this);
             }
         }
 
-        if (pSpawnData == null) {
-            pSpawnData = new AranaKing.AranaEffectsGroupData();
+        if (pSpawnGroupData == null) {
+            pSpawnGroupData = new AranaKing.AranaEffectsGroupData();
             if (pLevel.getDifficulty() == Difficulty.HARD && randomsource.nextFloat() < 0.1F * pDifficulty.getSpecialMultiplier()) {
-                ((AranaKing.AranaEffectsGroupData)pSpawnData).setRandomEffect(randomsource);
+                ((AranaKing.AranaEffectsGroupData)pSpawnGroupData).setRandomEffect(randomsource);
             }
         }
 
-        if(pSpawnData instanceof AranaKing.AranaEffectsGroupData e) {
-            MobEffect mobeffect = e.effect;
-            if(mobeffect != null) {
-                this.addEffect(new MobEffectInstance(mobeffect, -1));
+        if(pSpawnGroupData instanceof AranaKing.AranaEffectsGroupData e) {
+            Holder<MobEffect> holder = e.effect;
+            if(holder != null) {
+                this.addEffect(new MobEffectInstance(holder, -1));
             }
         }
 
-        return pSpawnData;
+        return pSpawnGroupData;
     }
 
     @Override
-    protected float ridingOffset(Entity pEntity) {
-        return pEntity.getBbWidth() <= this.getBbWidth() ? -0.3125F : 0.0F;
+    public Vec3 getVehicleAttachmentPoint(Entity pEntity) {
+        return pEntity.getBbWidth() <= this.getBbWidth() ? new Vec3(0.0, 0.3125 * (double)this.getScale(), 0.0) : super.getVehicleAttachmentPoint(pEntity);
     }
 
     static class AranaAttackGoal extends MeleeAttackGoal {
@@ -222,7 +217,7 @@ public class AranaKing extends JMonsterEntity {
     public static class AranaEffectsGroupData implements SpawnGroupData {
 
         @Nullable
-        public MobEffect effect;
+        public Holder<MobEffect> effect;
 
         public void setRandomEffect(RandomSource pRandom) {
             int i = pRandom.nextInt(5);
@@ -247,7 +242,7 @@ public class AranaKing extends JMonsterEntity {
         @Override
         public boolean canUse() {
             float f = this.mob.getLightLevelDependentMagicValue();
-            return !(f >= 0.5F) && super.canUse();
+            return f >= 0.5F ? false : super.canUse();
         }
     }
 }
