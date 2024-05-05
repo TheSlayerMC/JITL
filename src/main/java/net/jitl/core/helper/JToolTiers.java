@@ -185,19 +185,19 @@ public enum JToolTiers {
     }
 
     JToolTiers(Tier tier, int type) {
-        int d = 1;//hoe
+        int d = 0;//hoe
         this.tier = tier;
         if(type == 1){ //sword
-            d = 5;
-        }
-        if(type == 2){//pickaxe
             d = 2;
         }
+        if(type == 2){//pickaxe
+            d = 0;
+        }
         if(type == 3){//axe
-            d = 7;
+            d = 3;
         }
         if(type == 4){//shovel
-            d = 3;
+            d = -1;
         }
         damage = d;
         this.speedModifier = 0;

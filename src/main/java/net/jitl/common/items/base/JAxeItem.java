@@ -5,7 +5,8 @@ import net.jitl.core.init.internal.JItems;
 import net.minecraft.world.item.AxeItem;
 
 public class JAxeItem extends AxeItem {
+
     public JAxeItem(JToolTiers tier) {
-        super(tier.getTier(), JItems.itemProps());
+        super(tier.getTier(), JItems.itemProps().attributes(createAttributes(tier.getTier(), tier.getDamage(), tier.getSpeedModifier())));
     }
 }

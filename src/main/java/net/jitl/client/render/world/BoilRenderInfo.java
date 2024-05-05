@@ -36,8 +36,9 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
 
     @Override
     public boolean renderClouds(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f modelViewMatrix, Matrix4f projectionMatrix) {
-        new JCloudRenderer(JITL.rl("textures/environment/boil_clouds.png")).render(level, ticks, poseStack, projectionMatrix, modelViewMatrix, partialTick, camX, camY, camZ);
-        return true;
+//        new JCloudRenderer(JITL.rl("textures/environment/boil_clouds.png")).render(level, ticks, poseStack, projectionMatrix, modelViewMatrix, partialTick, camX, camY, camZ);
+//        return true;
+        return false;
     }
 
     @Override

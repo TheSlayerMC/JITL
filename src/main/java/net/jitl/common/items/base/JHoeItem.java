@@ -7,6 +7,6 @@ import net.minecraft.world.item.HoeItem;
 public class JHoeItem extends HoeItem {
 
     public JHoeItem(JToolTiers tier) {
-        super(tier.getTier(), JItems.itemProps());
+        super(tier.getTier(), JItems.itemProps().attributes(createAttributes(tier.getTier(), tier.getDamage(), tier.getSpeedModifier())));
     }
 }

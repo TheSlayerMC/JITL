@@ -54,6 +54,7 @@ public class ClientEventHandler {
 
     @SubscribeEvent
     public static void registerDimensionSpecialEffects(RegisterDimensionSpecialEffectsEvent event) {
+        //TODO
         event.register(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
         event.register(Dimensions.BOIL_EFFECTS, new BoilRenderInfo());
         event.register(Dimensions.FROZEN_EFFECTS, new FrozenRenderInfo());
