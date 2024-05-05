@@ -11,6 +11,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -25,8 +26,8 @@ public class LootItem extends JItem {
 
     public LootTier tier;
 
-    public LootItem(LootTier tier) {
-        super(JItems.itemProps().stacksTo(4));
+    public LootItem(LootTier tier, Rarity r) {
+        super(JItems.itemProps().rarity(r).stacksTo(4));
         this.tier = tier;
     }
 
@@ -57,7 +58,7 @@ public class LootItem extends JItem {
     }
 
     @Override
-    public boolean isFoil(ItemStack p_41453_) {
+    public boolean isFoil(ItemStack f) {
         return this.tier == LootTier.DIAMOND;
     }
 

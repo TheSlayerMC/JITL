@@ -13,7 +13,7 @@ public class ObeliskModel extends DefaultedBlockGeoModel<ObeliskTile> {
 
     @Override
     public ResourceLocation getModelResource(ObeliskTile object) {
-        return new ResourceLocation(JITL.MODID, "geo/obelisk.json");
+        return new ResourceLocation(JITL.MODID, "geo/obelisk.geo.json");
     }
 
     @Override

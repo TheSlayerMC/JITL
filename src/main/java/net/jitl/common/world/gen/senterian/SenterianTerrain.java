@@ -35,8 +35,8 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
-        return place(null, context.level(), null, context.random(), context.origin());
+    public boolean place(@NotNull FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
+        return false;
     }
 
     @Override
@@ -136,7 +136,7 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
     }
     public static void setBlock(WorldGenLevel level, BlockPos pos, BlockState block) {level.setBlock(pos, block, 3);}
 
-    static class Room {
+    public static class Room {
         public final StructureTemplate room;
         public Room(StructureTemplateManager manager, String location) {
             room = manager.getOrCreate(new ResourceLocation(JITL.MODID, location));
@@ -146,7 +146,7 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    static class VerticalRoom {
+    public static class VerticalRoom {
         public final StructureTemplate room;
         public VerticalRoom(StructureTemplateManager manager, String location) {
             room = manager.getOrCreate(new ResourceLocation(JITL.MODID, location));
@@ -157,7 +157,7 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    static class BigRoom {
+    public static class BigRoom {
         public final StructureTemplate room;
         public BigRoom(StructureTemplateManager manager, String room) {
             this.room = manager.getOrCreate(new ResourceLocation(JITL.MODID, room));

@@ -13,7 +13,7 @@ public class SenterianAltarModel extends DefaultedBlockGeoModel<SenterianAltarTi
 
     @Override
     public ResourceLocation getModelResource(SenterianAltarTile object) {
-        return new ResourceLocation(JITL.MODID, "geo/senterian_altar.json");
+        return new ResourceLocation(JITL.MODID, "geo/senterian_altar.geo.json");
     }
 
     @Override

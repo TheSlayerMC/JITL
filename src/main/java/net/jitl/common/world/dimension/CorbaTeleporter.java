@@ -98,7 +98,7 @@ public class CorbaTeleporter extends BaseTeleporter {
         int limit = 128;
         for(int y = limit; y > 50; y--) {
             BlockState block = level.getBlockState(new BlockPos(posX, y, posZ));
-            if(block.is(JBlocks.CORBA_GRASS.get()) || block.is(JBlocks.DRIED_MUD.get()) || block.is(JBlocks.TAINTED_MUD.get()))
+            if(block.is(JBlocks.CORBA_GRASS.get()) || block.is(JBlocks.DRIED_MUD.get()) || block.is(JBlocks.TAINTED_MUD.get()) || block.is(Blocks.WATER))
                 return new BlockPos(posX, y + 1, posZ);
         }
         return new BlockPos(posX, limit, posZ);

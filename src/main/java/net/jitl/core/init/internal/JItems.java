@@ -640,10 +640,10 @@ public class JItems {
     public static final DeferredItem<Item> RING_OF_SLOWNESS = registerNormalItem("ring_of_slowness", "Ring of Slowness", () -> new JRingItem(itemProps().stacksTo(1)).effect(MobEffects.MOVEMENT_SLOWDOWN::value));
     public static final DeferredItem<Item> RING_OF_WITHERING = registerNormalItem("ring_of_withering", "Ring of Withering", () -> new JRingItem(itemProps().stacksTo(1)).effect(MobEffects.WITHER::value));
 
-    public static final DeferredItem<Item> LOOT_POUCH = registerNormalItem("loot_pouch", "Loot Pouch", () -> new LootItem(LootItem.LootTier.NORMAL));
-    public static final DeferredItem<Item> GOLD_LOOT_POUCH = registerNormalItem("gold_loot_pouch", "Loot Pouch", () -> new LootItem(LootItem.LootTier.GOLD));
-    public static final DeferredItem<Item> DIAMOND_LOOT_POUCH = registerNormalItem("diamond_loot_pouch", "Loot Pouch", () -> new LootItem(LootItem.LootTier.DIAMOND));
-    public static final DeferredItem<Item> FROSTY_GIFT = registerNormalItem("frosty_gift", "Frosty Gift", () -> new LootItem(LootItem.LootTier.FROSTY_GIFT));
+    public static final DeferredItem<Item> LOOT_POUCH = registerNormalItem("loot_pouch", "Loot Pouch", () -> new LootItem(LootItem.LootTier.NORMAL, Rarity.COMMON));
+    public static final DeferredItem<Item> GOLD_LOOT_POUCH = registerNormalItem("gold_loot_pouch", "Loot Pouch", () -> new LootItem(LootItem.LootTier.GOLD, Rarity.UNCOMMON));
+    public static final DeferredItem<Item> DIAMOND_LOOT_POUCH = registerNormalItem("diamond_loot_pouch", "Loot Pouch", () -> new LootItem(LootItem.LootTier.DIAMOND, Rarity.RARE));
+    public static final DeferredItem<Item> FROSTY_GIFT = registerNormalItem("frosty_gift", "Frosty Gift", () -> new LootItem(LootItem.LootTier.FROSTY_GIFT, Rarity.COMMON));
 
     public static final DeferredItem<Item> CLOUDWALKER_AMULET = registerNormalItem("cloudwalker_amulet", "Cloudwalker Amulet", () -> new CloudwalkingAmuletItem(itemProps()));
     public static final DeferredItem<Item> DYNASTER_AMULET = registerNormalItem("dynaster_amulet", "Amulet of the Dynaster", () -> new DynasterAmuletItem(itemProps().stacksTo(1)));

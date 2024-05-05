@@ -13,7 +13,7 @@ public class RockiteSpawnerModel extends DefaultedEntityGeoModel<RockiteSpawnerE
 
     @Override
     public ResourceLocation getModelResource(RockiteSpawnerEntity object) {
-        return new ResourceLocation(JITL.MODID, "geo/rockite_spawner.json");
+        return new ResourceLocation(JITL.MODID, "geo/rockite_spawner.geo.json");
     }
 
     @Override
