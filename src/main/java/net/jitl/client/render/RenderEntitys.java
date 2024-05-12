@@ -6,6 +6,7 @@ import net.jitl.client.model.FrozenTrollModel;
 import net.jitl.client.model.JBoatModel;
 import net.jitl.client.render.block.*;
 import net.jitl.client.render.entity.euca.CrypianRenderer;
+import net.jitl.client.render.entity.euca.EucaHopperRenderer;
 import net.jitl.client.render.entity.euca.RoyalKingRenderer;
 import net.jitl.client.render.entity.frozen.FrozenGuardianRenderer;
 import net.jitl.client.render.entity.frozen.FrozenTrollRenderer;
@@ -153,6 +154,7 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.ROYAL_KING_TYPE.get(), renderer -> new RoyalKingRenderer<>(renderer, new AnimatedMonsterModel<>("royal_king", JDimension.EUCA)));
         EntityRenderers.register(JEntities.CRYPIAN_TYPE.get(), renderer -> new CrypianRenderer<>(renderer, new AnimatedMonsterModel<>("crypian", JDimension.EUCA)));
         EntityRenderers.register(JEntities.ALLOY_MENDER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("alloy_mender", JDimension.EUCA)));
+        EntityRenderers.register(JEntities.EUCA_HOPPER.get(), renderer -> new EucaHopperRenderer<>(renderer, new AnimatedMonsterModel<>("euca_hopper", JDimension.EUCA)));
 
         EntityRenderers.register(JEntities.ESKIMO_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("eskimo", JDimension.FROZEN), 0.5F));
         EntityRenderers.register(JEntities.FROZEN_GUARDIAN_TYPE.get(), renderer -> new FrozenGuardianRenderer<>(renderer, new AnimatedMonsterModel<>("frozen_guardian", JDimension.FROZEN)));

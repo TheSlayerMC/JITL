@@ -15,10 +15,10 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.level.BaseSpawner;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.SpawnData;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.event.EventHooks;
@@ -127,14 +127,14 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
 
                         entity.moveTo(entity.getX(), entity.getY(), entity.getZ(), randomsource.nextFloat() * 360.0F, 0.0F);
                         if (entity instanceof Mob mob) {
-                            if (!mob.checkSpawnObstruction(pServerLevel)) {
+                            if (!EventHooks.checkSpawnPositionSpawner(mob, pServerLevel, MobSpawnType.SPAWNER, spawndata, this)) {
                                 continue;
                             }
 
-                            var event = net.neoforged.neoforge.event.EventHooks.onFinalizeSpawnSpawner(mob, pServerLevel, pServerLevel.getCurrentDifficultyAt(entity.blockPosition()), null, this);
-                            if (event != null && spawndata.getEntityToSpawn().size() == 1 && spawndata.getEntityToSpawn().contains("id", 8)) {
-                                ((Mob)entity).finalizeSpawn(pServerLevel, event.getDifficulty(), event.getSpawnType(), event.getSpawnData());
-                            }
+                            boolean flag1 = spawndata.getEntityToSpawn().size() == 1 && spawndata.getEntityToSpawn().contains("id", 8);
+                            net.neoforged.neoforge.event.EventHooks.finalizeMobSpawnSpawner(mob, pServerLevel, pServerLevel.getCurrentDifficultyAt(entity.blockPosition()), MobSpawnType.SPAWNER, null, this, flag1);
+
+                            spawndata.getEquipment().ifPresent(mob::equip);
                         }
 
                         if (!pServerLevel.tryAddFreshEntityWithPassengers(entity)) {
@@ -284,14 +284,4 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
     public double getoSpin() {
         return this.oSpin;
     }
-
-    @Nullable
-    @Override
-    public Entity getSpawnerEntity() {
-        return null;
-    }
-
-    @Nullable
-    @Override
-    public BlockEntity getSpawnerBlockEntity() { return null; }
 }

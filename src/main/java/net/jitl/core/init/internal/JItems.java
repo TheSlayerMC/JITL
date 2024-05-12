@@ -31,6 +31,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -684,48 +685,48 @@ public class JItems {
     public static final DeferredItem<Item> FROZEN_RECORD_1 = registerRecord("frozen_record_1", "Frozen", JSounds.FROZEN_DISC_1, 3480);
     public static final DeferredItem<Item> BOIL_RECORD_1 = registerRecord("boil_record_1", "Sizzle Record", JSounds.BOIL_DISC_1, 3140);
 
-    public static DeferredItem<Item> registerNormalItem(String name, String translatedName) {
+    private static DeferredItem<Item> registerNormalItem(String name, String translatedName) {
         return register(name, translatedName, () -> new JItem(new Item.Properties()), ItemType.ITEM);
     }
 
-    public static DeferredItem<Item> registerFoodItem(String name, String translatedName, boolean foil, FoodProperties props) {
+    private static DeferredItem<Item> registerFoodItem(String name, String translatedName, boolean foil, FoodProperties props) {
         return register(name, translatedName, foil ? () -> new FoilItem(JItems.foodProps(props)) : () -> new JItem(JItems.foodProps(props)), ItemType.ITEM);
     }
 
-    public static DeferredItem<Item> registerFoodItem(String name, String translatedName, FoodProperties props) {
+    private static DeferredItem<Item> registerFoodItem(String name, String translatedName, FoodProperties props) {
         return registerFoodItem(name, translatedName, false, props);
     }
 
-    public static DeferredItem<Item> registerFuelItem(String name, String translatedName, int burnTime /* 200 ticks per item */) {
+    private static DeferredItem<Item> registerFuelItem(String name, String translatedName, int burnTime /* 200 ticks per item */) {
         return register(name, translatedName, () -> new JItem(new Item.Properties()) {
             @Override
-            public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
+            public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
                 return burnTime;
             }
         }, ItemType.ITEM);
     }
 
-    public static DeferredItem<Item> registerNormalItem(String name, String translatedName, Supplier<Item> item) {
+    private static DeferredItem<Item> registerNormalItem(String name, String translatedName, Supplier<Item> item) {
         return register(name, translatedName, item, ItemType.ITEM);
     }
 
-    public static DeferredItem<Item> registerToolItem(String name, String translatedName, Supplier<Item> tool) {
+    private static DeferredItem<Item> registerToolItem(String name, String translatedName, Supplier<Item> tool) {
         return register(name, translatedName, tool, ItemType.TOOL);
     }
 
-    public static DeferredItem<Item> registerBowItem(String name, String translatedName, Supplier<Item> bow) {
+    private static DeferredItem<Item> registerBowItem(String name, String translatedName, Supplier<Item> bow) {
         return register(name, translatedName, bow, ItemType.BOW);
     }
 
-    public static DeferredItem<Item> registerShieldItem(String name, String translatedName, Supplier<Item> item) {
+    private static DeferredItem<Item> registerShieldItem(String name, String translatedName, Supplier<Item> item) {
         return register(name, translatedName, item, ItemType.SHIELD);
     }
 
-    public static DeferredItem<Item> register(String name, String translatedName) {
+    private static DeferredItem<Item> register(String name, String translatedName) {
         return register(name, translatedName, () -> new Item(new Item.Properties()), ItemType.ITEM);
     }
 
-    public static DeferredItem<Item> registerRecord(String name, String descTranslated, Supplier<SoundEvent> sound, int tickLengths) {
+    private static DeferredItem<Item> registerRecord(String name, String descTranslated, Supplier<SoundEvent> sound, int tickLengths) {
         recordDescName.add("item.jitl." + name + ".desc");
         recordDescLangName.add(descTranslated);
         return register(name, "Journey Record", () -> new RecordItem(4, sound, itemProps().stacksTo(1), tickLengths), ItemType.RECORD);
@@ -763,7 +764,7 @@ public class JItems {
         return register(name, item);
     }
 
-    public static DeferredItem<Item> register(String name, Supplier<Item> item) {
+    private static DeferredItem<Item> register(String name, Supplier<Item> item) {
         return ITEMS.register(name, item);
     }
 
@@ -775,10 +776,9 @@ public class JItems {
         return new Item.Properties();
     }
 
-    public static Item.Properties foodProps(FoodProperties props) {
+    private static Item.Properties foodProps(FoodProperties props) {
         return new Item.Properties().food(props);
     }
-
 
     public enum ItemType {
         ITEM,

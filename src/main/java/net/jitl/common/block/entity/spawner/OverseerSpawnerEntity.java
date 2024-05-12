@@ -1,10 +1,12 @@
 package net.jitl.common.block.entity.spawner;
 
+import com.mojang.datafixers.util.Either;
 import net.jitl.common.block.entity.base.JSpawnerEntity;
 import net.jitl.common.block.entity.logic.DarkNotNeededSpawner;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.BaseSpawner;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.SpawnData;
@@ -19,12 +21,12 @@ public class OverseerSpawnerEntity extends JSpawnerEntity {
     private final DarkNotNeededSpawner spawner = new DarkNotNeededSpawner() {
 
         @Override
-        public void broadcastEvent(Level l, BlockPos pos, int id) {
+        public void broadcastEvent(@NotNull Level l, @NotNull BlockPos pos, int id) {
             l.blockEvent(pos, JBlocks.OVERSEER_SPAWNER.get(), id, 0);
         }
 
         @Override
-        public void setNextSpawnData(@Nullable Level l, BlockPos p, SpawnData s) {
+        public void setNextSpawnData(@Nullable Level l, @NotNull BlockPos p, @NotNull SpawnData s) {
             super.setNextSpawnData(l, p, s);
             if(l != null) {
                 BlockState blockstate = l.getBlockState(p);
@@ -33,8 +35,8 @@ public class OverseerSpawnerEntity extends JSpawnerEntity {
         }
 
         @Override
-        public @NotNull BlockEntity getSpawnerBlockEntity(){
-            return OverseerSpawnerEntity.this;
+        public Either<BlockEntity, Entity> getOwner() {
+            return Either.left(OverseerSpawnerEntity.this);
         }
     };
 

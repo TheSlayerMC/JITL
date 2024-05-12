@@ -1,9 +1,11 @@
 package net.jitl.common.block.entity.spawner;
 
+import com.mojang.datafixers.util.Either;
 import net.jitl.common.block.entity.base.JSpawnerEntity;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.BaseSpawner;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.SpawnData;
@@ -32,8 +34,8 @@ public class DarkSorcererSpawnerEntity extends JSpawnerEntity {
         }
 
         @Override
-        public @NotNull BlockEntity getSpawnerBlockEntity(){
-            return DarkSorcererSpawnerEntity.this;
+        public Either<BlockEntity, Entity> getOwner() {
+            return Either.left(DarkSorcererSpawnerEntity.this);
         }
     };
 

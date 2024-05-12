@@ -165,6 +165,7 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<Shimmerer>> SHIMMERER_TYPE = registerEntity(Shimmerer::new, "shimmerer", "Shimmerer", 0.5F, 0.75F, EUCA_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<Golder>> GOLDER_TYPE = registerEntity(Golder::new, "golder", "Golder", 1F, 2F, EUCA_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<RoyalKing>> ROYAL_KING_TYPE = registerEntity(RoyalKing::new, "royal_king", "Royal King", 1F, 2F, EUCA_COLOR, PASSIVE_COLOR);
+    public static final DeferredHolder<EntityType<?>, EntityType<EucaHopper>> EUCA_HOPPER = registerEntity(EucaHopper::new, "euca_hopper", "Euca Hopper", 1F, 1F, EUCA_COLOR, NEUTRAL_COLOR);
 
     //FROZEN MOBS
     public static final DeferredHolder<EntityType<?>, EntityType<Eskimo>> ESKIMO_TYPE = registerEntity(Eskimo::new, "eskimo", "Eskimo", 1F, 2F, FROZEN_COLOR, TRADER_COLOR, MobCategory.CREATURE);
@@ -325,6 +326,7 @@ public class JEntities {
         event.put(ROYAL_KING_TYPE.get(), RoyalKing.createAttributes());
         event.put(CRYPIAN_TYPE.get(), Crypian.createAttributes());
         event.put(ALLOY_MENDER_TYPE.get(), AlloyMender.createAttributes());
+        event.put(EUCA_HOPPER.get(), EucaHopper.createAttributes());
 
         event.put(DARKENER_TYPE.get(), Darkener.createAttributes());
         event.put(DARKNESS_CRAWLER_TYPE.get(), DarknessCrawler.createAttributes());
@@ -508,6 +510,8 @@ public class JEntities {
         setDefaultMonsterSpawn(event, MINI_SENTRY_LORD_TYPE);
         setDefaultMonsterSpawn(event, MINI_SENTRY_STALKER_TYPE);
         setDefaultMonsterSpawn(event, MINI_SENTRY_WALKER_TYPE);
+
+        setDefaultSpawn(event, EUCA_HOPPER);
     }
 
     public static <T extends Entity> void setCustomSpawn(SpawnPlacementRegisterEvent event, DeferredHolder<EntityType<?>, EntityType<T>> entity, SpawnPlacements.SpawnPredicate<T> spawn) {
