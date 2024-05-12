@@ -1,5 +1,6 @@
 package net.jitl.common.block.entity.logic;
 
+import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -19,6 +20,7 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.level.BaseSpawner;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.SpawnData;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.event.EventHooks;
@@ -27,6 +29,7 @@ import org.slf4j.Logger;
 
 import javax.annotation.Nullable;
 import java.util.Optional;
+import java.util.function.Function;
 
 public abstract class DarkNotNeededSpawner extends BaseSpawner {
 
@@ -47,33 +50,31 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
     private int spawnRange = 4;
 
     @Override
-    public void setEntityId(@NotNull EntityType<?> pType, @Nullable Level pLevel, @NotNull RandomSource pRandom, @NotNull BlockPos pPos) {
+    public void setEntityId(EntityType<?> pType, @Nullable Level pLevel, RandomSource pRandom, BlockPos pPos) {
         this.getOrCreateNextSpawnData(pLevel, pRandom, pPos).getEntityToSpawn().putString("id", BuiltInRegistries.ENTITY_TYPE.getKey(pType).toString());
     }
 
     private boolean isNearPlayer(Level pLevel, BlockPos pPos) {
-        return pLevel.hasNearbyAlivePlayer((double)pPos.getX() + 0.5D, (double)pPos.getY() + 0.5D, (double)pPos.getZ() + 0.5D, (double)this.requiredPlayerRange);
+        return pLevel.hasNearbyAlivePlayer((double)pPos.getX() + 0.5D, (double)pPos.getY() + 0.5D, (double)pPos.getZ() + 0.5D, this.requiredPlayerRange);
     }
 
     @Override
     public void clientTick(@NotNull Level pLevel, @NotNull BlockPos pPos) {
-        if (!this.isNearPlayer(pLevel, pPos)) {
+        if(!this.isNearPlayer(pLevel, pPos)) {
             this.oSpin = this.spin;
         } else if (this.displayEntity != null) {
             RandomSource randomsource = pLevel.getRandom();
             double d0 = (double)pPos.getX() + randomsource.nextDouble();
             double d1 = (double)pPos.getY() + randomsource.nextDouble();
             double d2 = (double)pPos.getZ() + randomsource.nextDouble();
-            pLevel.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-            pLevel.addParticle(ParticleTypes.FLAME, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-            if (this.spawnDelay > 0) {
-                --this.spawnDelay;
-            }
+            pLevel.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0, 0.0, 0.0);
+            pLevel.addParticle(ParticleTypes.FLAME, d0, d1, d2, 0.0, 0.0, 0.0);
+            if(this.spawnDelay > 0)
+                this.spawnDelay--;
 
             this.oSpin = this.spin;
-            this.spin = (this.spin + (double)(1000.0F / ((float)this.spawnDelay + 200.0F))) % 360.0D;
+            this.spin = (this.spin + (double)(1000.0F / ((float)this.spawnDelay + 200.0F))) % 360.0;
         }
-
     }
 
     @Override
@@ -119,7 +120,7 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
                             return;
                         }
 
-                        int k = pServerLevel.getEntitiesOfClass(entity.getClass(), (new AABB((double)pPos.getX(), (double)pPos.getY(), (double)pPos.getZ(), (double)(pPos.getX() + 1), (double)(pPos.getY() + 1), (double)(pPos.getZ() + 1))).inflate((double)this.spawnRange)).size();
+                        int k = pServerLevel.getEntitiesOfClass(entity.getClass(), (new AABB(pPos.getX(), pPos.getY(), pPos.getZ(), pPos.getX() + 1, pPos.getY() + 1, pPos.getZ() + 1)).inflate(this.spawnRange)).size();
                         if (k >= this.maxNearbyEntities) {
                             this.delay(pServerLevel, pPos);
                             return;
@@ -132,7 +133,7 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
                             }
 
                             boolean flag1 = spawndata.getEntityToSpawn().size() == 1 && spawndata.getEntityToSpawn().contains("id", 8);
-                            net.neoforged.neoforge.event.EventHooks.finalizeMobSpawnSpawner(mob, pServerLevel, pServerLevel.getCurrentDifficultyAt(entity.blockPosition()), MobSpawnType.SPAWNER, null, this, flag1);
+                            EventHooks.finalizeMobSpawnSpawner(mob, pServerLevel, pServerLevel.getCurrentDifficultyAt(entity.blockPosition()), MobSpawnType.SPAWNER, null, this, flag1);
 
                             spawndata.getEquipment().ifPresent(mob::equip);
                         }
@@ -168,29 +169,29 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
             this.spawnDelay = this.minSpawnDelay + randomsource.nextInt(this.maxSpawnDelay - this.minSpawnDelay);
         }
 
-        this.spawnPotentials.getRandom(randomsource).ifPresent((p_186386_) -> {
-            this.setNextSpawnData(pLevel, pPos, p_186386_.data());
-        });
+        this.spawnPotentials.getRandom(randomsource).ifPresent(p -> this.setNextSpawnData(pLevel, pPos, p.data()));
         this.broadcastEvent(pLevel, pPos, 1);
     }
 
     @Override
-    public void load(@Nullable Level pLevel, @NotNull BlockPos pPos, CompoundTag pTag) {
+    public void load(@Nullable Level pLevel, BlockPos pPos, CompoundTag pTag) {
         this.spawnDelay = pTag.getShort("Delay");
         boolean flag = pTag.contains("SpawnData", 10);
         if (flag) {
-            SpawnData spawndata = SpawnData.CODEC.parse(NbtOps.INSTANCE, pTag.getCompound("SpawnData")).resultOrPartial((p_186391_) -> {
-                LOGGER.warn("Invalid SpawnData: {}", (Object)p_186391_);
-            }).orElseGet(SpawnData::new);
+            SpawnData spawndata = SpawnData.CODEC
+                    .parse(NbtOps.INSTANCE, pTag.getCompound("SpawnData"))
+                    .resultOrPartial(p_186391_ -> LOGGER.warn("Invalid SpawnData: {}", p_186391_))
+                    .orElseGet(SpawnData::new);
             this.setNextSpawnData(pLevel, pPos, spawndata);
         }
 
         boolean flag1 = pTag.contains("SpawnPotentials", 9);
         if (flag1) {
             ListTag listtag = pTag.getList("SpawnPotentials", 10);
-            this.spawnPotentials = SpawnData.LIST_CODEC.parse(NbtOps.INSTANCE, listtag).resultOrPartial((p_186388_) -> {
-                LOGGER.warn("Invalid SpawnPotentials list: {}", (Object)p_186388_);
-            }).orElseGet(SimpleWeightedRandomList::empty);
+            this.spawnPotentials = SpawnData.LIST_CODEC
+                    .parse(NbtOps.INSTANCE, listtag)
+                    .resultOrPartial(p_186388_ -> LOGGER.warn("Invalid SpawnPotentials list: {}", p_186388_))
+                    .orElseGet(SimpleWeightedRandomList::empty);
         } else {
             this.spawnPotentials = SimpleWeightedRandomList.single(this.nextSpawnData != null ? this.nextSpawnData : new SpawnData());
         }
@@ -223,37 +224,39 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
         pTag.putShort("RequiredPlayerRange", (short)this.requiredPlayerRange);
         pTag.putShort("SpawnRange", (short)this.spawnRange);
         if (this.nextSpawnData != null) {
-            pTag.put("SpawnData", SpawnData.CODEC.encodeStart(NbtOps.INSTANCE, this.nextSpawnData).result().orElseThrow(() -> {
-                return new IllegalStateException("Invalid SpawnData");
-            }));
+            pTag.put(
+                    "SpawnData",
+                    SpawnData.CODEC
+                            .encodeStart(NbtOps.INSTANCE, this.nextSpawnData)
+                            .getOrThrow(p_337966_ -> new IllegalStateException("Invalid SpawnData: " + p_337966_))
+            );
         }
 
         pTag.put("SpawnPotentials", SpawnData.LIST_CODEC.encodeStart(NbtOps.INSTANCE, this.spawnPotentials).result().orElseThrow());
         return pTag;
     }
 
-//    @Nullable
-//    @Override
-//    public Entity getOrCreateDisplayEntity(@NotNull Level pLevel, @NotNull RandomSource pRandom, @NotNull BlockPos pPos) {
-//        if (this.displayEntity == null) {
-//            CompoundTag compoundtag = this.getOrCreateNextSpawnData(pLevel, pRandom, pPos).getEntityToSpawn();
-//            if (!compoundtag.contains("id", 8)) {
-//                return null;
-//            }
-//
-//            this.displayEntity = EntityType.loadEntityRecursive(compoundtag, pLevel, Function.identity());
-//        }
-//
-//        return this.displayEntity;
-//    }
+    @Nullable
+    public Entity getOrCreateDisplayEntity(Level pLevel, BlockPos pPos) {
+        if (this.displayEntity == null) {
+            CompoundTag compoundtag = this.getOrCreateNextSpawnData(pLevel, pLevel.getRandom(), pPos).getEntityToSpawn();
+            if (!compoundtag.contains("id", 8)) {
+                return null;
+            }
+
+            this.displayEntity = EntityType.loadEntityRecursive(compoundtag, pLevel, Function.identity());
+            if (compoundtag.size() == 1 && this.displayEntity instanceof Mob) {
+            }
+        }
+
+        return this.displayEntity;
+    }
 
     @Override
     public boolean onEventTriggered(@NotNull Level pLevel, int pId) {
-        if (pId == 1) {
-            if (pLevel.isClientSide) {
+        if(pId == 1) {
+            if(pLevel.isClientSide)
                 this.spawnDelay = this.minSpawnDelay;
-            }
-
             return true;
         } else {
             return false;
@@ -283,5 +286,11 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
     @Override
     public double getoSpin() {
         return this.oSpin;
+    }
+
+    @Override
+    @Nullable
+    public Either<BlockEntity, Entity> getOwner() {
+        return null;
     }
 }

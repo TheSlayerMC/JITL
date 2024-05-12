@@ -71,6 +71,9 @@ public class RenderEntitys {
         event.registerBlockEntityRenderer(JBlockEntities.OBSERVER_SPAWNER.get(), JSpawnerRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.HELLWING_SPAWNER.get(), JSpawnerRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.HELLBOT_SPAWNER.get(), JSpawnerRenderer::new);
+        event.registerBlockEntityRenderer(JBlockEntities.FROSTBITER_SPAWNER.get(), JSpawnerRenderer::new);
+        event.registerBlockEntityRenderer(JBlockEntities.OVERSEER_SPAWNER.get(), JSpawnerRenderer::new);
+        event.registerBlockEntityRenderer(JBlockEntities.OVERSEER_ELDER_SPAWNER.get(), JSpawnerRenderer::new);
 
         event.registerBlockEntityRenderer(JBlockEntities.SUMMONING_TABLE.get(), SummoningTableRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.BITTERWOOD_CAMPFIRE.get(), BitterwoodCampfireRenderer::new);

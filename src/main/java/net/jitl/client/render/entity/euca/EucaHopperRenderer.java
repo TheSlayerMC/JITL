@@ -23,6 +23,5 @@ public class EucaHopperRenderer<T extends LivingEntity & GeoEntity> extends Anim
         } else {
             return new ResourceLocation(JITL.MODID, "textures/entity/euca/euca_hopper.png");
         }
-
     }
 }
