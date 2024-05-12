@@ -22,12 +22,6 @@
   "spawners": {
     "monster": [
       {
-        "type": "jitl:euca_hopper",
-        "weight": 2,
-        "minCount": 1,
-        "maxCount": 2
-      },
-      {
         "type": "jitl:euca_charger",
         "weight": 20,
         "minCount": 1,
