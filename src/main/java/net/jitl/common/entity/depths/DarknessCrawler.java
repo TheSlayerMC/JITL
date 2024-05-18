@@ -48,7 +48,7 @@ public class DarknessCrawler extends JMonsterEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return JSounds.SPIKED_BEAST.get();
+        return JSounds.DEPTHS_HUNTER.get();
     }
 
     @Override

@@ -60,7 +60,8 @@
       "jitl:depths_lamp_roof",
       "jitl:depths_tree",
       "jitl:depths_crystal",
-      "jitl:depths_veg"
+      "jitl:depths_veg",
+      "jitl:depths_geode"
     ]
   ]
 }

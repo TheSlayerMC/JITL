@@ -10,7 +10,7 @@
     },
     {
       "type": "jitl:hell_turtle",
-      "weight": 5,
+      "weight": 9,
       "minCount": 1,
       "maxCount": 3
     },
@@ -28,7 +28,7 @@
     },
     {
       "type": "jitl:hell_cow",
-      "weight": 5,
+      "weight": 9,
       "minCount": 1,
       "maxCount": 3
     },

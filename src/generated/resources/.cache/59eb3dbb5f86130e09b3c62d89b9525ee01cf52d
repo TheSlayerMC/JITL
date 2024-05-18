@@ -1,4 +1,4 @@
-// 1.20.6	2024-05-04T19:12:13.0771646	Loot Tables
+// 1.20.6	2024-05-18T14:34:04.4405438	Loot Tables
 eb2a6c12fb5418fb0379d12edf6fe5ac551aacce data/jitl/loot_tables/blocks/airroot.json
 7808e70e726e05873c6b520d0b2b1400eeccb0ad data/jitl/loot_tables/blocks/airroot_melon.json
 870b5aabcb3228bd0597a4e243ae983b4718cfd7 data/jitl/loot_tables/blocks/ancient_catalyst.json
@@ -59,6 +59,7 @@ f9cf95d66d4137ce17fee8eeddc8ffbc1519d94c data/jitl/loot_tables/blocks/breakable_
 c14c015b9bbf9124ac07b0b3a298975f5ff27f1c data/jitl/loot_tables/blocks/breakable_senterian_rock.json
 a1416c870b6be4dfe4c80b8875282277d6ed1b11 data/jitl/loot_tables/blocks/brison_bars.json
 a47ab4da4a8e9bb347716aa12333a496a51e4f9d data/jitl/loot_tables/blocks/brison_stone.json
+e2eaedba64760db6d19ae33dd7d32224c91c7eb8 data/jitl/loot_tables/blocks/budding_depths_crystal.json
 f12ad5095535f19ad090ebb16f2abce5704b2775 data/jitl/loot_tables/blocks/burned_bark.json
 b127142bf8eb660d4d89b5ba717cf29528490295 data/jitl/loot_tables/blocks/burned_bark_planks.json
 aa6c345e8cce724b069ae07952a015cfd60805d0 data/jitl/loot_tables/blocks/burned_button.json
@@ -184,6 +185,7 @@ ad2040ec244627192da051977913af30644572c3 data/jitl/loot_tables/blocks/depths_but
 415edbc340ead498c54b9f85e29c846dfb113717 data/jitl/loot_tables/blocks/depths_chest.json
 ee91a037307d706e5aac3e6fa31fffba9813e64b data/jitl/loot_tables/blocks/depths_cobblestone.json
 f1d46d657ebcd5a2c5d18d14bf9a91c374715bb3 data/jitl/loot_tables/blocks/depths_crystal.json
+042e7ef8648c74a15ab33ffecf32f6c92380c75b data/jitl/loot_tables/blocks/depths_crystal_block.json
 6bb82ec205cf7f597a7483c2fc7168dc9bb96649 data/jitl/loot_tables/blocks/depths_dark_shingle.json
 05bf5a4b9e2c73225e10430ca8ca12701c4c1339 data/jitl/loot_tables/blocks/depths_dirt.json
 b777a5da9347a0881610a3634e6afa39394ac2b7 data/jitl/loot_tables/blocks/depths_door.json
@@ -555,6 +557,7 @@ ed324fe4b3e95f993fdef6b8ecf5cad0221a8c2b data/jitl/loot_tables/entities/depths_h
 245b7165402ace4cd7c734d805f548a389a5da8e data/jitl/loot_tables/entities/escaped_convict.json
 7ad4473aa8367b5fe427f90d3081869851f9fc34 data/jitl/loot_tables/entities/eskimo.json
 937cb2be19c0ea3ffe89dcd9dc3d3a63363bafd3 data/jitl/loot_tables/entities/euca_charger.json
+d2f704b9406d5b74e56d85591364bd38dc2bd8d1 data/jitl/loot_tables/entities/euca_hopper.json
 f696cd2e5b7261d7efa024b9a616c1f731c30b1e data/jitl/loot_tables/entities/eudor.json
 b83a5a4e96bfa2fcee6c7e768fc87dc6a0671cc6 data/jitl/loot_tables/entities/flame_lotus.json
 6069658427bf793b665b6b101ccbf8c47eb43d8d data/jitl/loot_tables/entities/floro.json

@@ -48,7 +48,7 @@ public class DepthsBeast extends JMonsterEntity {
 
     @Override
     protected SoundEvent getHurtSound(@NotNull DamageSource pDamageSource) {
-        return JSounds.SPYCLOPS_HURT.get();
+        return JSounds.DEPTHS_HUNTER_HURT.get();
     }
 
     @Override

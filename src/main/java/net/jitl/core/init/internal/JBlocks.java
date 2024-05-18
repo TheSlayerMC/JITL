@@ -480,6 +480,8 @@ public class JBlocks {
     public static final DeferredBlock<FenceGateBlock> DEPTHS_FENCE_GATE = registerFenceGate("depths_fence_gate", "Depths Fence Gate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<JFenceBlock> DEPTHS_FENCE = registerFence("depths_fence", "Depths Fence", true, JBlockProperties.WOOD);
     public static final DeferredBlock<Block> DEPTHS_CRYSTAL = registerAttachedCrossBlock("depths_crystal", "Depths Crystal", () -> new AttachedBlock(JBlockProperties.GLOW_BLOCK.noCollission().noOcclusion()));
+    public static final DeferredBlock<Block> DEPTHS_CRYSTAL_BLOCK = register("depths_crystal_block", "Depths Crystal Block", JBlockProperties.STONE);
+    public static final DeferredBlock<Block> BUDDING_DEPTHS_CRYSTAL = register("budding_depths_crystal", "Budding Depths Crystal", JBlockProperties.STONE);
     public static final DeferredBlock<Block> DARK_BRICK = register("dark_brick", "Dark Brick", JBlockProperties.STONE);
     public static final DeferredBlock<Block> DARK_FLOOR = register("dark_floor", "Dark Floor", JBlockProperties.STONE);
     public static final DeferredBlock<Block> DARK_SHINGLE = register("dark_shingle", "Dark Shingle", JBlockProperties.STONE);

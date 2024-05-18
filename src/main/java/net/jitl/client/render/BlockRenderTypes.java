@@ -108,6 +108,8 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.CORBA_DOOR.get());
         cutout.add(JBlocks.CORBA_TRAP_DOOR.get());
         cutout.add(JBlocks.BOGWOOD_LEAVES.get());
+        cutout.add(JBlocks.BOGWOOD_SAPLING.get());
+        cutout.add(JBlocks.CRYSTAL_FRUIT.get());
         cutout.add(JBlocks.CORBA_BLUE_FLOWER.get());
         cutout.add(JBlocks.CORBA_RED_FLOWER.get());
         cutout.add(JBlocks.CORBA_SPECKLED_FLOWER.get());

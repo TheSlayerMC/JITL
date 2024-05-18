@@ -48,17 +48,17 @@ public class SpikedBeast extends JMonsterEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return JSounds.SPIKED_BEAST.get();
+        return JSounds.DEPTHS_HUNTER.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(@NotNull DamageSource pDamageSource) {
-        return JSounds.SPIKED_BEAST_HURT.get();
+        return JSounds.DEPTHS_HUNTER_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return JSounds.SPIKED_BEAST_HURT.get();
+        return JSounds.DEPTHS_HUNTER_HURT.get();
     }
 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.spiked_beast.walk");

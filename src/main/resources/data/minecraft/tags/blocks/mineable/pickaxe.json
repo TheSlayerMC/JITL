@@ -187,6 +187,8 @@
     "jitl:boil_lock",
     "jitl:depths_portal_frame",
     "jitl:depths_stone",
+    "jitl:depths_crystal_block",
+    "jitl:budding_depths_crystal",
     "jitl:dark_brick",
     "jitl:dark_floor",
     "jitl:dark_shingle",

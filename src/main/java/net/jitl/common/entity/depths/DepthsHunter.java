@@ -48,17 +48,17 @@ public class DepthsHunter extends JMonsterEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return JSounds.DEPTHS_HUNTER.get();
+        return JSounds.SPIKED_BEAST.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(@NotNull DamageSource pDamageSource) {
-        return JSounds.DEPTHS_HUNTER_HURT.get();
+        return JSounds.SPIKED_BEAST_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return JSounds.DEPTHS_HUNTER_HURT.get();
+        return JSounds.SPIKED_BEAST_HURT.get();
     }
 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.depths_hunter.walk");

@@ -379,6 +379,8 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.DEPTHS_LAMP);
         this.dropSelf(JBlocks.DEPTHS_LIGHT);
         this.dropSelf(JBlocks.DEPTHS_CRYSTAL);
+        this.dropSelf(JBlocks.DEPTHS_CRYSTAL_BLOCK);
+        this.dropSelf(JBlocks.BUDDING_DEPTHS_CRYSTAL);
         this.dropSelf(JBlocks.DARK_BRICK);
         this.dropSelf(JBlocks.DARK_FLOOR);
         this.dropSelf(JBlocks.DARK_SHINGLE);
