@@ -4,11 +4,11 @@ import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.jitl.common.entity.base.CurrencyForItemsTrade;
+import net.jitl.common.entity.base.JPathfinderMob;
 import net.jitl.common.entity.base.JVillagerEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
@@ -34,7 +34,7 @@ public class RedTordo extends JVillagerEntity {
             new CurrencyForItemsTrade(JItems.NATURE_TABLET.get(), 16, JItems.COLLECTOR_ROCK.get(), 16, JItems.ZATPEDAL_SEEDS.get(), 16, 12, 5)
     }));
 
-    public RedTordo(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
+    public RedTordo(EntityType<? extends JPathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 

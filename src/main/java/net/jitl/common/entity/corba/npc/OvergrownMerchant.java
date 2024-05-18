@@ -4,11 +4,11 @@ import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.jitl.common.entity.base.CurrencyForItemsTrade;
+import net.jitl.common.entity.base.JPathfinderMob;
 import net.jitl.common.entity.base.JVillagerEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
@@ -29,7 +29,7 @@ public class OvergrownMerchant extends JVillagerEntity {
             new CurrencyForItemsTrade(JItems.ENCHANTED_LEAF.get(), 64, JItems.GORBITE_GEM.get(), 16, JItems.DARK_PINE_SWORD.get(), 1, 12, 5),
     }));
 
-    public OvergrownMerchant(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
+    public OvergrownMerchant(EntityType<? extends JPathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 

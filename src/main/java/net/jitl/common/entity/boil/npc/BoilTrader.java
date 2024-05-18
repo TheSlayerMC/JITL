@@ -5,13 +5,13 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.jitl.client.ChatUtils;
 import net.jitl.common.entity.base.CurrencyForItemsTrade;
+import net.jitl.common.entity.base.JPathfinderMob;
 import net.jitl.common.entity.base.JVillagerEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
@@ -34,7 +34,7 @@ public class BoilTrader extends JVillagerEntity {
             new CurrencyForItemsTrade(JItems.ASH.get(), 15, JItems.BOIL_POWDER.get(), 64, JItems.FLAMING_BOW.get(), 1, 12, 5)
     }));
 
-    public BoilTrader(EntityType<? extends PathfinderMob> type, Level worldIn) {
+    public BoilTrader(EntityType<? extends JPathfinderMob> type, Level worldIn) {
         super(type, worldIn);
     }
 

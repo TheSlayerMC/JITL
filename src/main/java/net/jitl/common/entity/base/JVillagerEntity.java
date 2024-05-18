@@ -7,7 +7,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ExperienceOrb;
-import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.npc.Npc;
 import net.minecraft.world.entity.npc.VillagerTrades;
@@ -27,13 +26,13 @@ import javax.annotation.Nullable;
 import java.util.Objects;
 import java.util.Set;
 
-public abstract class JVillagerEntity extends PathfinderMob implements Npc, Merchant, Enemy, GeoEntity {
+public abstract class JVillagerEntity extends JPathfinderMob implements Npc, Merchant, Enemy, GeoEntity {
 
     private Player playerEntity;
     protected MerchantOffers offers;
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    public JVillagerEntity(EntityType<? extends PathfinderMob> type, Level worldIn) {
+    public JVillagerEntity(EntityType<? extends JPathfinderMob> type, Level worldIn) {
         super(type, worldIn);
     }
 

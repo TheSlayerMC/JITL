@@ -23,25 +23,25 @@
     "monster": [
       {
         "type": "jitl:euca_charger",
-        "weight": 20,
+        "weight": 15,
         "minCount": 1,
-        "maxCount": 3
+        "maxCount": 2
       },
       {
         "type": "jitl:golder",
-        "weight": 20,
+        "weight": 15,
         "minCount": 1,
-        "maxCount": 3
+        "maxCount": 2
       },
       {
         "type": "jitl:dynaster",
-        "weight": 20,
+        "weight": 15,
         "minCount": 1,
         "maxCount": 1
       },
       {
         "type": "jitl:shimmerer",
-        "weight": 10,
+        "weight": 5,
         "minCount": 1,
         "maxCount": 1
       }

@@ -1,6 +1,7 @@
 package net.jitl.core.init.internal;
 
 import net.jitl.common.entity.base.JBoat;
+import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.boil.*;
 import net.jitl.common.entity.boil.npc.BoilTrader;
 import net.jitl.common.entity.boil.npc.EscapedConvict;
@@ -138,10 +139,10 @@ public class JEntities {
     //NETHER MOBS
     public static final DeferredHolder<EntityType<?>, EntityType<Witherspine>> WITHERSPINE_TYPE = registerEntity(Witherspine::new, "witherspine", "Witherspine", 1F, 3.75F, NETHER_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<MiniGhast>> MINI_GHAST_TYPE = registerEntity(MiniGhast::new, "mini_ghast", "Mini Ghast", 1F, 1F, NETHER_COLOR, HOSTILE_COLOR);
-    public static final DeferredHolder<EntityType<?>, EntityType<HellTurtle>> HELL_TURTLE_TYPE = registerEntity(HellTurtle::new, "hell_turtle", "Hell Turtle", 2F, 2F, NETHER_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
+    public static final DeferredHolder<EntityType<?>, EntityType<HellTurtle>> HELL_TURTLE_TYPE = registerEntity(HellTurtle::new, "hell_turtle", "Hell Turtle", 2F, 2F, NETHER_COLOR, NEUTRAL_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<Reaper>> REAPER_TYPE = registerEntity(Reaper::new, "reaper", "Reaper", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<InfernoBlaze>> INFERNO_BLAZE_TYPE = registerEntity(InfernoBlaze::new, "inferno_blaze", "Inferno Blaze", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
-    public static final DeferredHolder<EntityType<?>, EntityType<HellCow>> HELL_COW_TYPE = registerEntity(HellCow::new, "hell_cow", "Hell Cow", 1.5F, 1.75F, NETHER_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
+    public static final DeferredHolder<EntityType<?>, EntityType<HellCow>> HELL_COW_TYPE = registerEntity(HellCow::new, "hell_cow", "Hell Cow", 1.5F, 1.75F, NETHER_COLOR, PASSIVE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<Hellbot>> HELLBOT_TYPE = registerEntity(Hellbot::new, "hellbot", "Hellbot", 0.5F, 0.75F, NETHER_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<HellSerpent>> HELL_SERPENT_TYPE = registerEntity(HellSerpent::new, "hell_serpent", "Hell Serpent", 0.5F, 0.25F, NETHER_COLOR, HOSTILE_COLOR);
 
@@ -424,10 +425,10 @@ public class JEntities {
         setDefaultSpawn(event, NEUTRAL_SENTRY_STALKER_TYPE);
 
         setDefaultMonsterSpawn(event, WITHERSPINE_TYPE);
-        setDefaultMonsterSpawn(event, HELL_TURTLE_TYPE);
+        setDefaultSpawn(event, HELL_TURTLE_TYPE);
         setDefaultMonsterSpawn(event, REAPER_TYPE);
         setDefaultMonsterSpawn(event, INFERNO_BLAZE_TYPE);
-        setDefaultMonsterSpawn(event, HELL_COW_TYPE);
+        setDefaultSpawn(event, HELL_COW_TYPE);
         setDefaultMonsterSpawn(event, HELLBOT_TYPE);
         setDefaultMonsterSpawn(event, HELL_SERPENT_TYPE);
         setDefaultMonsterSpawn(event, OKOLOO_TYPE);
@@ -444,6 +445,7 @@ public class JEntities {
         setDefaultMonsterSpawn(event, EUCA_CHARGER_TYPE);
         setDefaultMonsterSpawn(event, DYNASTER_TYPE);
         setDefaultMonsterSpawn(event, GOLDER_TYPE);
+        setDefaultSpawn(event, EUCA_HOPPER);
 
         setDefaultMonsterSpawn(event, DARKNESS_CRAWLER_TYPE);
         setDefaultMonsterSpawn(event, DEPTHS_BEAST_TYPE);
@@ -511,7 +513,6 @@ public class JEntities {
         setDefaultMonsterSpawn(event, MINI_SENTRY_STALKER_TYPE);
         setDefaultMonsterSpawn(event, MINI_SENTRY_WALKER_TYPE);
 
-        setDefaultSpawn(event, EUCA_HOPPER);
     }
 
     public static <T extends Entity> void setCustomSpawn(SpawnPlacementRegisterEvent event, DeferredHolder<EntityType<?>, EntityType<T>> entity, SpawnPlacements.SpawnPredicate<T> spawn) {
@@ -524,12 +525,14 @@ public class JEntities {
     }
 
     //For monsters to spawn anywhere
-    public static <T extends Monster> void setDefaultMonsterSpawn(SpawnPlacementRegisterEvent event, DeferredHolder<EntityType<?>, EntityType<T>> entity) {
-        event.register(entity.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+    public static <T extends JMonsterEntity> void setDefaultMonsterSpawn(SpawnPlacementRegisterEvent event, DeferredHolder<EntityType<?>, EntityType<T>> entity) {
+        event.register(entity.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, JMonsterEntity::checkAnyLightMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 
     //For monsters in only dark spots
-    public static  <T extends Monster> void setDarkMonsterSpawn(SpawnPlacementRegisterEvent event, DeferredHolder<EntityType<?>, EntityType<T>> entity) {
+    public static <T extends Monster> void setDarkMonsterSpawn(SpawnPlacementRegisterEvent event, DeferredHolder<EntityType<?>, EntityType<T>> entity) {
         event.register(entity.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
+
+
 }

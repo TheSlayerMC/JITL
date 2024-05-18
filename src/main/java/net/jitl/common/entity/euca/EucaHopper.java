@@ -21,6 +21,11 @@ public class EucaHopper extends JTamableEntity {
         setKnowledge(EnumKnowledge.EUCA, 2.5F);
     }
 
+    @Override
+    protected boolean shouldDespawnInPeaceful() {
+        return !isTame();
+    }
+
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, MobStats.EUCA_HOPPER_HEALTH)
