@@ -238,7 +238,7 @@ public class JConfiguredFeatures {
         register(context, DEPTHS_LAMP_ROOF, JFeatures.ROOF_DEPTHS_LAMP.get(), new NoneFeatureConfiguration());
         register(context, DEPTHS_LAMP_FLOOR, JFeatures.FLOOR_DEPTHS_LAMP.get(), new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(DEPTHS_LAMP_REPLACEABLES, JBlocks.DEPTHS_LIGHT.get().defaultBlockState()))).get(), 32));
         register(context, DEPTHS_CRYSTAL, JFeatures.DEPTHS_CRYSTAL.get(), new NoneFeatureConfiguration());
-        register(context, DEPTHS_GEODE, Feature.GEODE, new GeodeConfiguration(new GeodeBlockSettings(BlockStateProvider.simple(Blocks.AIR), BlockStateProvider.simple(JBlocks.DEPTHS_CRYSTAL_BLOCK.get()), BlockStateProvider.simple(JBlocks.BUDDING_DEPTHS_CRYSTAL.get()), BlockStateProvider.simple(JBlocks.DEPTHS_CRYSTAL_BLOCK.get()), BlockStateProvider.simple(JBlocks.DEPTHS_CRYSTAL_BLOCK.get()), List.of(JBlocks.DEPTHS_CRYSTAL.get().defaultBlockState()), BlockTags.FEATURES_CANNOT_REPLACE, BlockTags.GEODE_INVALID_BLOCKS), new GeodeLayerSettings(1.7, 2.2, 3.2, 4.2),
+        register(context, DEPTHS_GEODE, Feature.GEODE, new GeodeConfiguration(new GeodeBlockSettings(BlockStateProvider.simple(Blocks.AIR), BlockStateProvider.simple(JBlocks.DEPTHS_CRYSTAL_BLOCK.get()), BlockStateProvider.simple(JBlocks.BUDDING_DEPTHS_CRYSTAL.get()), BlockStateProvider.simple(JBlocks.DEPTHS_LIGHT.get()), BlockStateProvider.simple(JBlocks.DEPTHS_CRYSTAL_BLOCK.get()), List.of(JBlocks.DEPTHS_CRYSTAL.get().defaultBlockState()), BlockTags.FEATURES_CANNOT_REPLACE, BlockTags.GEODE_INVALID_BLOCKS), new GeodeLayerSettings(1.7, 2.2, 3.2, 4.2),
                 new GeodeCrackSettings(0.95, 2.0, 2), 0.35, 0.083, true,
                 UniformInt.of(4, 6),
                 UniformInt.of(3, 4),

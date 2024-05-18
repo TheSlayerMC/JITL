@@ -1,4 +1,4 @@
-// 1.20.6	2024-05-18T14:34:04.4520505	Registries
+// 1.20.6	2024-05-18T14:54:57.2522496	Registries
 8c70fa6d7bad9f068bbed8b5108b4c27cca6790a data/jitl/worldgen/configured_feature/ashual_ore.json
 35ceda35b88ed900f31fbf436afe609e7c098c9b data/jitl/worldgen/configured_feature/blazium_ore.json
 72887bb6672c20e1157f6e214ba881c6ff320820 data/jitl/worldgen/configured_feature/bleedstone.json
@@ -26,7 +26,7 @@ d37fa15591ae4605d30089feacbf1c0e56b6fdd5 data/jitl/worldgen/configured_feature/c
 2fac7a8a6fb30e91884aa9d7c1f3b4dd4c1bd041 data/jitl/worldgen/configured_feature/crimson_quartz_ore.json
 d70d03933f0fb01d05b279bfe23b552b3e595f19 data/jitl/worldgen/configured_feature/default_overworld_ruins.json
 f6731519d73bb00f8ee12854b34cb00f2924f9bb data/jitl/worldgen/configured_feature/depths_crystal.json
-39c699e414bfe668d6cc9246d265ca9c952903f3 data/jitl/worldgen/configured_feature/depths_geode.json
+f75df6abfde7b6a41d076b599bbb4b5372d85947 data/jitl/worldgen/configured_feature/depths_geode.json
 c8eff0a92235eb396e0828a78db3ff5573cb2286 data/jitl/worldgen/configured_feature/depths_lamp_floor.json
 d9718c4c48c3b8fad2f30bbf385f27119ba05130 data/jitl/worldgen/configured_feature/depths_lamp_roof.json
 01d6a575a713aeead262a1a0d1ad4b007f5c621b data/jitl/worldgen/configured_feature/depths_tree.json

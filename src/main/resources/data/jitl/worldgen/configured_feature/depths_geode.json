@@ -33,7 +33,7 @@
       "middle_layer_provider": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "jitl:depths_crystal_block"
+          "Name": "jitl:depths_light"
         }
       },
       "outer_layer_provider": {
