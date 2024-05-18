@@ -23,126 +23,125 @@ import java.util.function.Supplier;
 public enum JToolTiers {
 
 
-    SAPPHIRE_SWORD(JToolTier.SAPPHIRE, 1),
-    SAPPHIRE_PICKAXE(JToolTier.SAPPHIRE, 2),
-    SAPPHIRE_AXE(JToolTier.SAPPHIRE, 3),
-    SAPPHIRE_SHOVEL(JToolTier.SAPPHIRE, 4),
+    SAPPHIRE_SWORD(JToolTier.SAPPHIRE, 4, 0F),
+    SAPPHIRE_PICKAXE(JToolTier.SAPPHIRE, 2, 0F),
+    SAPPHIRE_AXE(JToolTier.SAPPHIRE, 7, 0F),
+    SAPPHIRE_SHOVEL(JToolTier.SAPPHIRE, 2, 0F),
     SAPPHIRE_HOE(JToolTier.SAPPHIRE, 0),
 
-    LUNIUM_SWORD(JToolTier.LUNIUM, 1),
-    LUNIUM_PICKAXE(JToolTier.LUNIUM, 2),
-    LUNIUM_AXE(JToolTier.LUNIUM, 3),
-    LUNIUM_SHOVEL(JToolTier.LUNIUM, 4),
+    LUNIUM_SWORD(JToolTier.LUNIUM, 5, 0F),
+    LUNIUM_PICKAXE(JToolTier.LUNIUM, 1, 0F),
+    LUNIUM_AXE(JToolTier.LUNIUM, 7, 0F),
+    LUNIUM_SHOVEL(JToolTier.LUNIUM, 1, 0F),
     LUNIUM_HOE(JToolTier.LUNIUM, 0),
 
-    SHADIUM_SWORD(JToolTier.SHADIUM, 1),
-    SHADIUM_PICKAXE(JToolTier.SHADIUM, 2),
-    SHADIUM_AXE(JToolTier.SHADIUM, 3),
-    SHADIUM_SHOVEL(JToolTier.SHADIUM, 4),
+    SHADIUM_SWORD(JToolTier.SHADIUM, 5, 0F),
+    SHADIUM_PICKAXE(JToolTier.SHADIUM, 1, 0F),
+    SHADIUM_AXE(JToolTier.SHADIUM, 7, 0F),
+    SHADIUM_SHOVEL(JToolTier.SHADIUM, 1, 0F),
     SHADIUM_HOE(JToolTier.SHADIUM, 0),
 
-    BLOODCRUST_SWORD(JToolTier.BLOODCRUST, 1),
-    BLOODCRUST_PICKAXE(JToolTier.BLOODCRUST, 2),
-    BLOODCRUST_AXE(JToolTier.BLOODCRUST, 3),
-    BLOODCRUST_SHOVEL(JToolTier.BLOODCRUST, 4),
+    BLOODCRUST_SWORD(JToolTier.BLOODCRUST, 5, 0F),
+    BLOODCRUST_PICKAXE(JToolTier.BLOODCRUST, 2, 0F),
+    BLOODCRUST_AXE(JToolTier.BLOODCRUST, 8, 0F),
+    BLOODCRUST_SHOVEL(JToolTier.BLOODCRUST, 1, 0F),
     BLOODCRUST_HOE(JToolTier.BLOODCRUST, 0),
 
-    CELESTIUM_SWORD(JToolTier.CELESTIUM, 1),
-    CELESTIUM_PICKAXE(JToolTier.CELESTIUM, 2),
-    CELESTIUM_AXE(JToolTier.CELESTIUM, 3),
-    CELESTIUM_SHOVEL(JToolTier.CELESTIUM, 4),
+    SOULSTONE_SWORD(JToolTier.SOULSTONE, 2, 0F),
+    SOULSTONE_PICKAXE(JToolTier.SOULSTONE, 0, 0F),
+    SOULSTONE_AXE(JToolTier.SOULSTONE, 6, 0F),
+    SOULSTONE_SHOVEL(JToolTier.SOULSTONE, 0, 0F),
+    SOULSTONE_HOE(JToolTier.SOULSTONE, 0),
+
+    CELESTIUM_SWORD(JToolTier.CELESTIUM, 4, 0F),
+    CELESTIUM_PICKAXE(JToolTier.CELESTIUM, 0, 0F),
+    CELESTIUM_AXE(JToolTier.CELESTIUM, 6, 0F),
+    CELESTIUM_SHOVEL(JToolTier.CELESTIUM, 0, 0F),
     CELESTIUM_HOE(JToolTier.CELESTIUM, 0),
 
-    KORITE_SWORD(JToolTier.KORITE, 1),
-    KORITE_PICKAXE(JToolTier.KORITE, 2),
-    KORITE_AXE(JToolTier.KORITE, 3),
-    KORITE_SHOVEL(JToolTier.KORITE, 4),
+    KORITE_SWORD(JToolTier.KORITE, 4, 0F),
+    KORITE_PICKAXE(JToolTier.KORITE, 0, 0F),
+    KORITE_AXE(JToolTier.KORITE, 6, 0F),
+    KORITE_SHOVEL(JToolTier.KORITE, 0, 0F),
     KORITE_HOE(JToolTier.KORITE, 0),
 
-    STORON_SWORD(JToolTier.STORON, 1),
-    STORON_PICKAXE(JToolTier.STORON, 2),
-    STORON_AXE(JToolTier.STORON, 3),
-    STORON_SHOVEL(JToolTier.STORON, 4),
+    STORON_SWORD(JToolTier.STORON, 4, 0F),
+    STORON_PICKAXE(JToolTier.STORON, 0, 0F),
+    STORON_AXE(JToolTier.STORON, 6, 0F),
+    STORON_SHOVEL(JToolTier.STORON, 0, 0F),
     STORON_HOE(JToolTier.STORON, 0),
 
-    MEKYUM_SWORD(JToolTier.MEKYUM, 1),
-    MEKYUM_PICKAXE(JToolTier.MEKYUM, 2),
-    MEKYUM_AXE(JToolTier.MEKYUM, 3),
-    MEKYUM_SHOVEL(JToolTier.MEKYUM, 4),
+    MEKYUM_SWORD(JToolTier.MEKYUM, 4, 0F),
+    MEKYUM_PICKAXE(JToolTier.MEKYUM, 0, 0F),
+    MEKYUM_AXE(JToolTier.MEKYUM, 6, 0F),
+    MEKYUM_SHOVEL(JToolTier.MEKYUM, 0, 0F),
     MEKYUM_HOE(JToolTier.MEKYUM, 0),
 
-    FLAIRIUM_SWORD(JToolTier.FLAIRIUM, 1),
-    FLAIRIUM_PICKAXE(JToolTier.FLAIRIUM, 2),
-    FLAIRIUM_AXE(JToolTier.FLAIRIUM, 3),
-    FLAIRIUM_SHOVEL(JToolTier.FLAIRIUM, 4),
+    FLAIRIUM_SWORD(JToolTier.FLAIRIUM, 3, 0F),
+    FLAIRIUM_PICKAXE(JToolTier.FLAIRIUM, 0, 0F),
+    FLAIRIUM_AXE(JToolTier.FLAIRIUM, 5, 0F),
+    FLAIRIUM_SHOVEL(JToolTier.FLAIRIUM, 0, 0F),
     FLAIRIUM_HOE(JToolTier.FLAIRIUM, 0),
 
-    DES_SWORD(JToolTier.DES, 1),
-    DES_PICKAXE(JToolTier.DES, 2),
-    DES_AXE(JToolTier.DES, 3),
-    DES_SHOVEL(JToolTier.DES, 4),
-    DES_HOE(JToolTier.DES, 0),
+    DES_SWORD(JToolTier.DES, 3, 0F),
+    DES_PICKAXE(JToolTier.DES, 0, 0F),
+    DES_AXE(JToolTier.DES, 5, 0F),
+    DES_SHOVEL(JToolTier.DES, 0, 0F),
+    DES_HOE(JToolTier.DES, 0, 0F),
 
-    GORBITE_SWORD(JToolTier.GORBITE, 1),
-    GORBITE_PICKAXE(JToolTier.GORBITE, 2),
-    GORBITE_AXE(JToolTier.GORBITE, 3),
-    GORBITE_SHOVEL(JToolTier.GORBITE, 4),
-    GORBITE_HOE(JToolTier.GORBITE, 0),
+    GORBITE_SWORD(JToolTier.GORBITE, 3, 0F),
+    GORBITE_PICKAXE(JToolTier.GORBITE, 0, 0F),
+    GORBITE_AXE(JToolTier.GORBITE, 4, 0F),
+    GORBITE_SHOVEL(JToolTier.GORBITE, 0, 0F),
+    GORBITE_HOE(JToolTier.GORBITE, 0, 0F),
 
-    ORBADITE_SWORD(JToolTier.ORBADITE, 1),
-    ORBADITE_PICKAXE(JToolTier.ORBADITE, 2),
-    ORBADITE_AXE(JToolTier.ORBADITE, 3),
-    ORBADITE_SHOVEL(JToolTier.ORBADITE, 4),
-    ORBADITE_HOE(JToolTier.ORBADITE, 0),
-
-    SOULSTONE_SWORD(JToolTier.SOULSTONE, 1),
-    SOULSTONE_PICKAXE(JToolTier.SOULSTONE, 2),
-    SOULSTONE_AXE(JToolTier.SOULSTONE, 3),
-    SOULSTONE_SHOVEL(JToolTier.SOULSTONE, 4),
-    SOULSTONE_HOE(JToolTier.SOULSTONE, 0),
+    ORBADITE_SWORD(JToolTier.ORBADITE, 3, 0F),
+    ORBADITE_PICKAXE(JToolTier.ORBADITE, 0, 0F),
+    ORBADITE_AXE(JToolTier.ORBADITE, 4, 0F),
+    ORBADITE_SHOVEL(JToolTier.ORBADITE, 0, 0F),
+    ORBADITE_HOE(JToolTier.ORBADITE, 0, 0F),
 
 
     CHAMPIONS_SWORD(JToolTier.CHAMPIONS_SWORD, 0, 0),
     THE_WRAITH(JToolTier.THE_WRAITH, 0, 0),
 
     //overworld
-    POISON_SWORD(JToolTier.POISON_SWORD, 0, 0),
-    CLOUD_SLICER(JToolTier.CLOUD_SLICER, 0, 0),
-    DRAGONS_TOOTH(JToolTier.DRAGONS_TOOTH, 0, 0),
-    DEMONIC_SWORD(JToolTier.DEMONIC_SWORD, 0, 0),
-    PEDAL_SWORD(JToolTier.PEDAL_SWORD, 0, 0),
-    RE_CRYSTAL_SWORD(JToolTier.RE_CRYSTAL_SWORD, 0, 0),
-    RE_STONE_SWORD(JToolTier.RE_STONE_SWORD, 0, 0),
-    CRYSTAL_BLADE(JToolTier.CRYSTAL_BLADE, 0, 0),
+    POISON_SWORD(JToolTier.POISON_SWORD, 2, 0),
+    CLOUD_SLICER(JToolTier.CLOUD_SLICER, 2, 0),
+    DRAGONS_TOOTH(JToolTier.DRAGONS_TOOTH, 5, 0),
+    DEMONIC_SWORD(JToolTier.DEMONIC_SWORD, 4, 0),
+    PEDAL_SWORD(JToolTier.PEDAL_SWORD, 4, 0),
+    RE_CRYSTAL_SWORD(JToolTier.RE_CRYSTAL_SWORD, 5, 0),
+    RE_STONE_SWORD(JToolTier.RE_STONE_SWORD, 4, 0),
+    CRYSTAL_BLADE(JToolTier.CRYSTAL_BLADE, 5, 0),
 
     //frozen
-    SNOW_SHOVELER(JToolTier.SNOW_SHOVELER, 0, 0),
-    FROSTBITTEN_SWORD(JToolTier.FROSTBITTEN_SWORD, 0, 0),
-    FROSTY_SWORD(JToolTier.FROSTY_SWORD, 0, 0),
+    SNOW_SHOVELER(JToolTier.SNOW_SHOVELER, 6, 0),
+    FROSTBITTEN_SWORD(JToolTier.FROSTBITTEN_SWORD, 6, 0),
+    FROSTY_SWORD(JToolTier.FROSTY_SWORD, 7, 0),
 
     //nether
-    WITHIC_BLADE(JToolTier.WITHIC_BLADE, 0, 0),
-    CALCIA_SWORD(JToolTier.CALCIA_SWORD, 0, 0),
-    NETHER_BEAST_SWORD(JToolTier.NETHER_BEAST_SWORD, 0, 0),
-    WITHERING_BEAST_SWORD(JToolTier.WITHERING_BEAST_SWORD, 0, 0),
+    WITHIC_BLADE(JToolTier.WITHIC_BLADE, 7, 0),
+    CALCIA_SWORD(JToolTier.CALCIA_SWORD, 9, 0),
+    WITHERING_BEAST_SWORD(JToolTier.WITHERING_BEAST_SWORD, 9, 0),
 
     //boil
-    BOILING_BLADE(JToolTier.BOILING_BLADE, 0, 0),
-    SIZZLER_SWORD(JToolTier.SIZZLER_SWORD, 0, 0),
-    BLOODWIELD_SWORD(JToolTier.BLOODWIELD_SWORD, 0, 0),
-    CHARRED_BLADE(JToolTier.CHARRED_BLADE, 0, 0),
-    MOLTEN_KNIFE(JToolTier.MOLTEN_KNIFE, 0, 0),
+    BOILING_BLADE(JToolTier.BOILING_BLADE, 7, 0),
+    SIZZLER_SWORD(JToolTier.SIZZLER_SWORD, 6, 0),
+    BLOODWIELD_SWORD(JToolTier.BLOODWIELD_SWORD, 6, 0),
+    CHARRED_BLADE(JToolTier.CHARRED_BLADE, 7, 0),
+    MOLTEN_KNIFE(JToolTier.MOLTEN_KNIFE, 3, 0),
 
     //euca
-    CORE_MENDER(JToolTier.CORE_MENDER, 0, 0),
-    ROYAL_BLADE(JToolTier.ROYAL_BLADE, 0, 0),
-    ROYAL_STABBER(JToolTier.ROYAL_STABBER, 0, 0),
-    KINGS_SWORD(JToolTier.KINGS_SWORD, 0, 0),
+    CORE_MENDER(JToolTier.CORE_MENDER, 7, 0),
+    ROYAL_BLADE(JToolTier.ROYAL_BLADE, 7, 0),
+    ROYAL_STABBER(JToolTier.ROYAL_STABBER, 7, 0),
+    KINGS_SWORD(JToolTier.KINGS_SWORD, 5, 0),
 
     //depths
-    DEPTHS_DARKSWORD(JToolTier.DEPTHS_DARKSWORD, 0, 0),
-    DEPTHS_SLAYER(JToolTier.DEPTHS_SLAYER, 0, 0),
-    ROC_SWORD(JToolTier.ROC_SWORD, 0, 0),
+    DEPTHS_DARKSWORD(JToolTier.DEPTHS_DARKSWORD, 9, 0),
+    DEPTHS_SLAYER(JToolTier.DEPTHS_SLAYER, 9, 0),
+    ROC_SWORD(JToolTier.ROC_SWORD, 13, 0),
     SWORD_THUNDERBIRD(JToolTier.SWORD_THUNDERBIRD, 0, 0),
     THUNDERBLADE(JToolTier.THUNDERBLADE, 0, 0),
     BUBBLE_SWORD(JToolTier.BUBBLE_SWORD, 0, 0),
@@ -150,26 +149,26 @@ public enum JToolTiers {
     //corba
     VINESTRAND_BLADE(JToolTier.VINESTRAND_BLADE, 0, 0),
     DARK_PINE_SWORD(JToolTier.DARK_PINE_SWORD, 0, 0),
-    NATURES_BLADE(JToolTier.NATURES_BLADE, 0, 0),
-    TREE_HUGGER(JToolTier.TREE_HUGGER, 0, 0),
+    NATURES_BLADE(JToolTier.NATURES_BLADE, 7, 0),
+    TREE_HUGGER(JToolTier.TREE_HUGGER, 10, 0),
     HEALERS_BLADE(JToolTier.HEALERS_BLADE, 0, 0),
-    LOGGERS_SWORD(JToolTier.LOGGERS_SWORD, 0, 0),
-    SENTRY_SWORD(JToolTier.SENTRY_SWORD, 0, 0),
+    LOGGERS_SWORD(JToolTier.LOGGERS_SWORD, 5, 0),
+    SENTRY_SWORD(JToolTier.SENTRY_SWORD, 5, 0),
 
     //terrania
     TERRALIGHT_BLADE(JToolTier.TERRALIGHT_BLADE, 0, 0),
     TERRANA_SWORD(JToolTier.TERRANA_SWORD, 0, 0),
-    TERROLICA_SWORD(JToolTier.TERROLICA_SWORD, 0, 0),
-    VOLITE_SWORD(JToolTier.VOLITE_SWORD, 0, 0),
+    TERROLICA_SWORD(JToolTier.TERROLICA_SWORD, 7, 0),
+    VOLITE_SWORD(JToolTier.VOLITE_SWORD, 11, 0),
     TERRONIC_BLADE(JToolTier.TERRONIC_BLADE, 0, 0),
 
     //cloudia
-    GOLEM_SWORD(JToolTier.GOLEM_SWORD, 0, 0),
+    GOLEM_SWORD(JToolTier.GOLEM_SWORD, 3, 0),
     STARLIGHT_BLADE(JToolTier.STARLIGHT_BLADE, 0, 0),
     FLUFFY_BLADE(JToolTier.FLUFFY_BLADE, 0, 0),
     DARK_KEEPER(JToolTier.DARK_KEEPER, 0, 0),
 
-    DEVELOPER_SWORD(JToolTier.DEVELOPER_SWORD, 1000, 0),
+    DEVELOPER_SWORD(JToolTier.DEVELOPER_SWORD, 1000, 10000),
 
     THROWING_KNIFE(JToolTier.THROWING_KNIFE, 0, 0)
     ;
@@ -236,22 +235,21 @@ public enum JToolTiers {
 
         public static final Tier SOULSTONE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1883, 8F, 5F, 15, () -> Ingredient.of(JItems.SOULSTONE.get()));
 
-        public static final Tier CHAMPIONS_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1883, 8F, 5F, 25, () -> null);
-        public static final Tier THE_WRAITH = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1883, 8F, 5F, 25, () -> null);
-        public static final Tier POISON_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1883, 8F, 5F, 25, () -> null);
-        public static final Tier CLOUD_SLICER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1883, 8F, 5F, 25, () -> null);
-        public static final Tier DRAGONS_TOOTH = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
-        public static final Tier DEMONIC_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
-        public static final Tier PEDAL_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
-        public static final Tier RE_CRYSTAL_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
-        public static final Tier RE_STONE_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
-        public static final Tier CRYSTAL_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
-        public static final Tier SNOW_SHOVELER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
-        public static final Tier FROSTBITTEN_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
-        public static final Tier FROSTY_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
+        public static final Tier CHAMPIONS_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1483, 8F, 5F, 25, () -> null);
+        public static final Tier THE_WRAITH = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1483, 8F, 5F, 25, () -> null);
+        public static final Tier POISON_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1483, 8F, 5F, 25, () -> null);
+        public static final Tier CLOUD_SLICER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1483, 8F, 5F, 25, () -> null);
+        public static final Tier DRAGONS_TOOTH = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1056, 8F, 3F, 25, () -> null);
+        public static final Tier DEMONIC_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1056, 8F, 3F, 25, () -> null);
+        public static final Tier PEDAL_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1056, 8F, 3F, 25, () -> null);
+        public static final Tier RE_CRYSTAL_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 2015, 8F, 3F, 25, () -> null);
+        public static final Tier RE_STONE_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 2015, 8F, 3F, 25, () -> null);
+        public static final Tier CRYSTAL_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1056, 8F, 3F, 25, () -> null);
+        public static final Tier SNOW_SHOVELER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1883, 8F, 3F, 25, () -> null);
+        public static final Tier FROSTBITTEN_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 2056, 8F, 3F, 25, () -> null);
+        public static final Tier FROSTY_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1681, 8F, 3F, 25, () -> null);
         public static final Tier WITHIC_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> null);
         public static final Tier CALCIA_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> null);
-        public static final Tier NETHER_BEAST_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> null);
         public static final Tier WITHERING_BEAST_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> null);
         public static final Tier BOILING_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);
         public static final Tier SIZZLER_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> null);

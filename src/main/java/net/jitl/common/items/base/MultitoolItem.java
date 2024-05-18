@@ -33,7 +33,7 @@ public class MultitoolItem extends DiggerItem {
     private final TagKey<Block> shovel, axe, pick, hoe;
 
     public MultitoolItem(JToolTiers tier) {
-        super(tier.getTier(), BlockTags.MINEABLE_WITH_AXE, JItems.itemProps());
+        super(tier.getTier(), BlockTags.MINEABLE_WITH_AXE, JItems.itemProps().attributes(createAttributes(tier.getTier(), tier.getDamage(), tier.getSpeedModifier())));
         this.shovel = BlockTags.MINEABLE_WITH_SHOVEL;
         this.axe = BlockTags.MINEABLE_WITH_AXE;
         this.pick = BlockTags.MINEABLE_WITH_PICKAXE;
