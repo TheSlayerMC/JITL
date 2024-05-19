@@ -44,7 +44,7 @@ public abstract class JMonsterEntity extends Monster implements GeoEntity {
     }
 
     @Override
-    public boolean checkSpawnRules(LevelAccessor level, MobSpawnType type) {
+    public boolean checkSpawnRules(LevelAccessor level, @NotNull MobSpawnType type) {
         return !(level.getBiome(blockPosition()).is(Tags.Biomes.IS_MUSHROOM) || level.getBiome(blockPosition()).is(Biomes.DEEP_DARK));
     }
 
