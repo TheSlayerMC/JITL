@@ -69,6 +69,8 @@ public class JItems {
     public static final ArrayList<String> recordDescLangName = new ArrayList<>();
 
     public static final DeferredItem<Item> TEST_BUG = registerNormalItem("test_bug", "Test Bug", TestBugItem::new);
+    public static final DeferredItem<Item> LORE_SCROLL = registerNormalItem("lore_scroll", "Lore Scroll", LoreScrollItem::new);
+
 
     public static final DeferredItem<Item> IRIDIUM_NUGGET = registerFuelItem("iridium_nugget", "Iridium Nugget", 1600);
     public static final DeferredItem<Item> ENDERILLIUM_SHARD = registerNormalItem("enderillium_shard", "Enderillium Shard");

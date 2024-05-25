@@ -8,8 +8,15 @@
     "water_color": 3496974,
     "water_fog_color": 3496974,
     "grass_color": 800769,
-    "foliage_color": 800769
+    "foliage_color": 800769,
+    "music": {
+      "sound": "jitl:music.dim.corba",
+      "min_delay": 0,
+      "max_delay": 0,
+      "replace_current_music": true
+    }
   },
+
   "spawners": {
     "monster": [
       {

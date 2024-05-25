@@ -34,7 +34,7 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(JITL.MODID)
 public class JITL {
-    public static final String MODID = "jitl", PREFIX = MODID + ":", MOD_VERSION = "2.1.5", MOD_NAME = "Journey Into the Light";
+    public static final String MODID = "jitl", PREFIX = MODID + ":", MOD_VERSION = "2.1.6", MOD_NAME = "Journey Into the Light";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
     public static final boolean DEV_MODE = true;
 
@@ -58,6 +58,7 @@ public class JITL {
         JSounds.REGISTRY.register(modEventBus);
         JTabs.REGISTRY.register(modEventBus);
         JDataAttachments.REGISTRY.register(modEventBus);
+        JDataComponents.REGISTRY.register(modEventBus);
         JNetworkRegistry.init(modEventBus);
 
         if(DEV_MODE) {
@@ -118,6 +119,7 @@ public class JITL {
 
     private void commonInit(final FMLCommonSetupEvent event) {
         ModCompat.init(event);
+        ScrollEntries.register();
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {

@@ -11,9 +11,9 @@
     "grass_color": 3145727,
     "foliage_color": 25855,
     "music": {
-      "sound": "jitl:music.haunt_muskie_2",
-      "min_delay": 10,
-      "max_delay": 1000,
+      "sound": "jitl:music.dim.frozen",
+      "min_delay": 0,
+      "max_delay": 0,
       "replace_current_music": true
     },
     "particle": {

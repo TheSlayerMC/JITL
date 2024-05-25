@@ -7,7 +7,13 @@
     "sky_color": 4262144,
     "fog_color": 4262144,
     "water_color": 4262144,
-    "water_fog_color": 4262144
+    "water_fog_color": 4262144,
+    "music": {
+      "sound": "jitl:music.dim.boil",
+      "min_delay": 0,
+      "max_delay": 0,
+      "replace_current_music": true
+    }
   },
   "spawners": {
     "monster": [

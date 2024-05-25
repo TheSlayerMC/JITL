@@ -763,6 +763,90 @@
     ]
   },
 
+  "music.dim.euca": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "jitl:music/dimensions/euca/euca_1",
+        "stream": true
+      },
+      {
+        "name": "jitl:music/dimensions/euca/euca_2",
+        "stream": true
+      },
+      {
+        "name": "jitl:music/dimensions/euca/euca_3",
+        "stream": true
+      }
+    ]
+  },
+  "music.dim.boil": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "jitl:music/dimensions/boil/boil_1",
+        "stream": true
+      }
+    ]
+  },
+  "music.dim.cloudia": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "jitl:music/dimensions/cloudia/cloudia_1",
+        "stream": true
+      },
+      {
+        "name": "jitl:music/dimensions/cloudia/cloudia_2",
+        "stream": true
+      }
+    ]
+  },
+  "music.dim.corba": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "jitl:music/dimensions/corba/corba_1",
+        "stream": true
+      }
+    ]
+  },
+  "music.dim.depths": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "jitl:music/dimensions/depths/depths_1",
+        "stream": true
+      },
+      {
+        "name": "jitl:music/dimensions/depths/depths_2",
+        "stream": true
+      }
+    ]
+  },
+  "music.dim.frozen": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "jitl:music/dimensions/frozen/frozen_1",
+        "stream": true
+      },
+      {
+        "name": "jitl:music/dimensions/frozen/frozen_2",
+        "stream": true
+      }
+    ]
+  },
+  "music.dim.terrania": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "jitl:music/dimensions/terrania/terrania_1",
+        "stream": true
+      }
+    ]
+  },
+
   "music.menu": {
     "replace": false,
     "sounds": [

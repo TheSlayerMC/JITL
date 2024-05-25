@@ -13,9 +13,9 @@
     "foliage_color": 5660928,
     "ambient_sound": "jitl:music.euca.ambience",
     "music": {
-      "sound": "jitl:music.biome.gold_plains",
-      "min_delay": 10,
-      "max_delay": 1000,
+      "sound": "jitl:music.dim.euca",
+      "min_delay": 0,
+      "max_delay": 0,
       "replace_current_music": true
     }
   },

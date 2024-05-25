@@ -103,6 +103,15 @@ public class JSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> EUCA_AMBIENCE = registerSound("music.euca.ambience");
     public static final DeferredHolder<SoundEvent, SoundEvent> GOLD_PLAINS_MUSIC = registerSound("music.biome.gold_plains");
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> EUCA_MUSIC = registerSound("music.dim.euca");
+    public static final DeferredHolder<SoundEvent, SoundEvent> BOIL_MUSIC = registerSound("music.dim.boil");
+    public static final DeferredHolder<SoundEvent, SoundEvent> CLOUDIA_MUSIC = registerSound("music.dim.cloudia");
+    public static final DeferredHolder<SoundEvent, SoundEvent> CORBA_MUSIC = registerSound("music.dim.corba");
+    public static final DeferredHolder<SoundEvent, SoundEvent> DEPTHS_MUSIC = registerSound("music.dim.depths");
+    public static final DeferredHolder<SoundEvent, SoundEvent> FROZEN_MUSIC = registerSound("music.dim.frozen");
+    public static final DeferredHolder<SoundEvent, SoundEvent> TERRANIA_MUSIC = registerSound("music.dim.terrania");
+
+
     public static final DeferredHolder<SoundEvent, SoundEvent> HAUNT_MUSKIE_2 = registerSound("music.haunt_muskie_2");
     public static final DeferredHolder<SoundEvent, SoundEvent> SNOWFLAKESSS = registerSound("music.snowflakesss");
 

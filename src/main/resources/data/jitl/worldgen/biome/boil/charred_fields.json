@@ -13,6 +13,12 @@
         "type": "jitl:flame_pollen"
       },
       "probability": 0.001428
+    },
+    "music": {
+      "sound": "jitl:music.dim.boil",
+      "min_delay": 0,
+      "max_delay": 0,
+      "replace_current_music": true
     }
   },
   "spawners": {

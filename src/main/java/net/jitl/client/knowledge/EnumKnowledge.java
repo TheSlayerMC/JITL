@@ -1,6 +1,8 @@
 package net.jitl.client.knowledge;
 
 import net.jitl.client.gui.overlay.helper.JDisplayInfo;
+import net.jitl.core.helper.internal.EnumLookup;
+import net.minecraft.network.FriendlyByteBuf;
 
 public enum EnumKnowledge {
 
@@ -42,6 +44,7 @@ public enum EnumKnowledge {
     private final JDisplayInfo level;
     private final int spriteX;
     private final int spriteY;
+    public static final EnumLookup<EnumKnowledge, String> LOOKUP = EnumLookup.make(EnumKnowledge.class, EnumKnowledge::getName);
 
     EnumKnowledge(String name, int spriteX, int spriteY, JDisplayInfo xp, JDisplayInfo level) {
         this.name = name;
@@ -61,6 +64,18 @@ public enum EnumKnowledge {
 
     public String getName() {
         return name;
+    }
+
+    public static EnumKnowledge byName(String name) {
+        return LOOKUP.by(name);
+    }
+
+    public static void writeToBuffer(EnumKnowledge type, FriendlyByteBuf buf) {
+        buf.writeUtf(LOOKUP.from(type));
+    }
+
+    public static EnumKnowledge readFromBuffer(FriendlyByteBuf buf) {
+        return LOOKUP.by(buf.readUtf());
     }
 
     public JDisplayInfo getXPDisplay() {

@@ -15,6 +15,12 @@
         "type": "jitl:cloudia"
       },
       "probability": 0.001428
+    },
+    "music": {
+      "sound": "jitl:music.dim.cloudia",
+      "min_delay": 0,
+      "max_delay": 0,
+      "replace_current_music": true
     }
   },
   "spawners": {

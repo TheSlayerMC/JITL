@@ -305,7 +305,7 @@ public enum JToolTiers {
                     armor.put(ArmorItem.Type.CHESTPLATE, 6);
                     armor.put(ArmorItem.Type.HELMET, 2);
                     armor.put(ArmorItem.Type.BODY, 5);
-                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(JItems.LUNIUM_INGOT.get()));
+                }), 30, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(JItems.LUNIUM_INGOT.get()));
 
         public static final Holder<ArmorMaterial> SHADIUM = register("shadium", Util.make(new EnumMap<>(ArmorItem.Type.class),
                 armor -> {
