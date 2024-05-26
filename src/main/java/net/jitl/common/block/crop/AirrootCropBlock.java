@@ -81,13 +81,13 @@ public class AirrootCropBlock extends JCropBlock {
             int i = this.getAge(pState);
             if (i < this.getMaxAge()) {
                 float f = getGrowthSpeed(this, pLevel, pPos);
-                if (CommonHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextInt((int)(25.0F / f) + 1) == 0)) {
+                if (CommonHooks.canCropGrow(pLevel, pPos, pState, pRandom.nextInt((int)(25.0F / f) + 1) == 0)) {
                     if(i == 3) {
                         pLevel.setBlock(pPos, JBlocks.AIRROOT_MELON.get().defaultBlockState(), 2);
                     } else {
                         pLevel.setBlock(pPos, this.getStateForAge(i + 1), 2);
                     }
-                    CommonHooks.onCropsGrowPost(pLevel, pPos, pState);
+                    CommonHooks.fireCropGrowPost(pLevel, pPos, pState);
                 }
             }
         }

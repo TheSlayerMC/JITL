@@ -1,6 +1,7 @@
 package net.jitl.common.world;
 
 import net.jitl.common.capability.essence.PlayerEssence;
+import net.jitl.common.capability.player.Portal;
 import net.jitl.common.capability.stats.PlayerStats;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JAttributes;
@@ -23,6 +24,7 @@ public class ModEvents {
             event.getEntity().getData(JDataAttachments.ESSENCE).copyFrom(event.getOriginal().getData(JDataAttachments.ESSENCE));
             event.getEntity().getData(JDataAttachments.KEY_PRESSED).copyFrom(event.getOriginal().getData(JDataAttachments.KEY_PRESSED));
             event.getEntity().getData(JDataAttachments.PLAYER_ARMOR).copyFrom(event.getOriginal().getData(JDataAttachments.PLAYER_ARMOR));
+            event.getEntity().getData(JDataAttachments.PORTAL_OVERLAY).copyFrom(event.getOriginal().getData(JDataAttachments.PORTAL_OVERLAY));
         }
     }
 
@@ -31,6 +33,9 @@ public class ModEvents {
         if(event.getEntity() instanceof Player player) {
             PlayerStats stats = player.getData(JDataAttachments.PLAYER_STATS);
             stats.update(player);
+
+            Portal portal = player.getData(JDataAttachments.PORTAL_OVERLAY);
+            portal.serverTick();
 
             PlayerEssence essence = player.getData(JDataAttachments.ESSENCE);
             if (essence.isRegenReady()) {

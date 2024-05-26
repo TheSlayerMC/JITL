@@ -76,11 +76,11 @@ public class BradberryBushBlock extends BushBlock implements BonemealableBlock {
     @Override
     public void randomTick(BlockState pState, @NotNull ServerLevel pLevel, @NotNull BlockPos pPos, @NotNull RandomSource pRandom) {
         int i = pState.getValue(AGE);
-        if (i < MAX_AGE && pLevel.getRawBrightness(pPos.above(), 0) >= 9 && CommonHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextInt(5) == 0)) {
+        if (i < MAX_AGE && pLevel.getRawBrightness(pPos.above(), 0) >= 9 && CommonHooks.canCropGrow(pLevel, pPos, pState, pRandom.nextInt(5) == 0)) {
             BlockState blockstate = pState.setValue(AGE, i + 1);
             pLevel.setBlock(pPos, blockstate, 2);
             pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(blockstate));
-            CommonHooks.onCropsGrowPost(pLevel, pPos, pState);
+            CommonHooks.fireCropGrowPost(pLevel, pPos, pState);
         }
 
     }

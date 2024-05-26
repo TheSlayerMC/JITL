@@ -1,6 +1,6 @@
 package net.jitl.core.init.internal;
 
-import net.jitl.common.capability.LoreScroll;
+import net.jitl.common.capability.player.LoreScroll;
 import net.jitl.core.init.JITL;
 import net.minecraft.core.component.DataComponentType;
 import net.neoforged.neoforge.registries.DeferredRegister;

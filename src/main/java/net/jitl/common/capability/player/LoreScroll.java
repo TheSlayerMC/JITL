@@ -1,4 +1,4 @@
-package net.jitl.common.capability;
+package net.jitl.common.capability.player;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -8,13 +8,13 @@ import net.minecraft.network.codec.StreamCodec;
 
 import java.util.Objects;
 
-public record LoreScroll(String entry, String knowledge, float xp, boolean openedBefore) {
+public record LoreScroll(String entry, String knowledge, int level, boolean openedBefore) {
 
     public static final Codec<LoreScroll> LORE_CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
                     Codec.STRING.fieldOf("entry").forGetter(LoreScroll::entry),
                     Codec.STRING.fieldOf("knowledge").forGetter(LoreScroll::knowledge),
-                    Codec.FLOAT.fieldOf("xp").forGetter(LoreScroll::xp),
+                    Codec.INT.fieldOf("xp").forGetter(LoreScroll::level),
                     Codec.BOOL.fieldOf("openedBefore").forGetter(LoreScroll::openedBefore)
             ).apply(instance, LoreScroll::new)
     );
@@ -22,21 +22,21 @@ public record LoreScroll(String entry, String knowledge, float xp, boolean opene
     public static final StreamCodec<ByteBuf, LoreScroll> LORE_STREAM_CODEC = StreamCodec.composite(
             ByteBufCodecs.STRING_UTF8, LoreScroll::entry,
             ByteBufCodecs.STRING_UTF8, LoreScroll::knowledge,
-            ByteBufCodecs.FLOAT, LoreScroll::xp,
+            ByteBufCodecs.INT, LoreScroll::level,
             ByteBufCodecs.BOOL, LoreScroll::openedBefore,
             LoreScroll::new
     );
 
-    public LoreScroll(String entry, String knowledge, float xp, boolean openedBefore) {
+    public LoreScroll(String entry, String knowledge, int level, boolean openedBefore) {
         this.entry = entry;
         this.knowledge = knowledge;
-        this.xp = xp;
+        this.level = level;
         this.openedBefore = openedBefore;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.entry, this.entry, this.xp, this.openedBefore);
+        return Objects.hash(this.entry, this.entry, this.level, this.openedBefore);
     }
 
     @Override
@@ -47,7 +47,7 @@ public record LoreScroll(String entry, String knowledge, float xp, boolean opene
             return obj instanceof LoreScroll s &&
                     this.entry == s.entry &&
                     this.knowledge == s.knowledge &&
-                    this.xp == s.xp &&
+                    this.level == s.level &&
                     this.openedBefore == s.openedBefore;
         }
     }

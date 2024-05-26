@@ -83,7 +83,7 @@ public class CorbanianMollusk extends JMonsterEntity {
     public void aiStep() {
         super.aiStep();
         if(!this.level().isClientSide) {
-            if(!EventHooks.getMobGriefingEvent(this.level(), this))
+            if(!EventHooks.canEntityGrief(this.level(), this))
                 return;
             BlockState slime = JBlocks.SLIME.get().defaultBlockState();
             for(int i = 0; i < 4; ++i) {

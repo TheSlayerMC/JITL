@@ -1,9 +1,11 @@
 package net.jitl.common.block.portal;
 
+import net.jitl.common.capability.player.Portal;
 import net.jitl.common.world.dimension.BaseTeleporter;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
+import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JParticleManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -14,6 +16,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -154,7 +157,17 @@ public class JBasePortalBlock extends Block {
                 if(!entity.level().isClientSide && !pos.equals(entity.portalEntrancePos)) {
                     entity.portalEntrancePos = pos.immutable();
                 }
-                teleport(entity);
+                if(entity instanceof Player player) {
+                    Portal portal = player.getData(JDataAttachments.PORTAL_OVERLAY);
+                    portal.setInPortal(this, true);
+                    int cooldownTime = portal.getPortalTimer();
+                    if(cooldownTime >= player.getPortalWaitTime()) {
+                        teleport(entity);
+                        portal.setPortalTimer(0);
+                    }
+                } else {
+                    teleport(entity);
+                }
             }
         }
     }

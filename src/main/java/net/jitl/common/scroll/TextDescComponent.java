@@ -1,5 +1,6 @@
 package net.jitl.common.scroll;
 
+import net.jitl.client.util.EnumHexColor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
@@ -7,9 +8,6 @@ import net.minecraft.util.FormattedCharSequence;
 
 import java.util.List;
 
-/*
- * Code by TimeConqueror
- */
 public class TextDescComponent implements IDescComponent {
     private final String langKey;
     private int contentHeight;
@@ -27,9 +25,8 @@ public class TextDescComponent implements IDescComponent {
     @Override
     public void drawContentPart(GuiGraphics matrixStack, int x0, int y0, int width) {
         int i = y0;
-
-        for (FormattedCharSequence s : wrappedText) {
-            matrixStack.drawString(Minecraft.getInstance().font, s, x0, i, 0x0000F);
+        for(FormattedCharSequence s : wrappedText) {
+            matrixStack.drawString(Minecraft.getInstance().font, s, x0, i, EnumHexColor.DARK_BROWN.getInt(), false);
             i += Minecraft.getInstance().font.lineHeight;
         }
     }

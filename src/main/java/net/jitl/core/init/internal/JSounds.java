@@ -127,7 +127,14 @@ public class JSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> CRYSTAL_ERROR = registerSound("misc.crystal_error");
     public static final DeferredHolder<SoundEvent, SoundEvent> CRYSTAL_PICKUP = registerSound("misc.crystal_pickup");
 
-    //BELOW
+    public static final DeferredHolder<SoundEvent, SoundEvent> EUCA_PORTAL = registerSound("misc.portal.euca");
+    public static final DeferredHolder<SoundEvent, SoundEvent> FROZEN_PORTAL = registerSound("misc.portal.frozen");
+    public static final DeferredHolder<SoundEvent, SoundEvent> BOIL_PORTAL = registerSound("misc.portal.boil");
+    public static final DeferredHolder<SoundEvent, SoundEvent> DEPTHS_PORTAL = registerSound("misc.portal.depths");
+    public static final DeferredHolder<SoundEvent, SoundEvent> CORBA_PORTAL = registerSound("misc.portal.corba");
+    public static final DeferredHolder<SoundEvent, SoundEvent> TERRANIA_PORTAL = registerSound("misc.portal.terrania");
+    public static final DeferredHolder<SoundEvent, SoundEvent> CLOUDIA_PORTAL = registerSound("misc.portal.cloudia");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SENTERIAN_PORTAL = registerSound("misc.portal.senterian");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> ROCK = registerSound("rock");
     public static final DeferredHolder<SoundEvent, SoundEvent> CAVE_MOB = registerSound("cave_mob");

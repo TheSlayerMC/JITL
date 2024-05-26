@@ -6,30 +6,15 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * Code by TimeConqueror
- */
 public class ScrollEntry {
-    /**
-     * Item that will be displayed on Entry Button in Tablet
-     */
+
     private final ItemStack displayedItem;
-    /**
-     * Id of Entry
-     */
     private final String id;
-    /**
-     * Name of Entry
-     */
     private final String titleKey;
-    /**
-     * Commentary that will be displayed under the title.
-     */
+
     @Nullable
     private final String commentKey;
-    /**
-     * Information that will be displayed when you open selected entry
-     */
+
     private final List<IDescComponent> desc = new ArrayList<>();
     private final int x;
     private final int y;
@@ -67,9 +52,6 @@ public class ScrollEntry {
         return desc;
     }
 
-    /**
-     * Adds IDescComponent object to the Description array
-     */
     public void addDescComponent(IDescComponent descComponent) {
         desc.add(descComponent);
     }

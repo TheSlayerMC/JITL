@@ -67,7 +67,7 @@ public enum EnumKnowledge {
     }
 
     public static EnumKnowledge byName(String name) {
-        return LOOKUP.by(name);
+        return LOOKUP.by(name.toLowerCase());
     }
 
     public static void writeToBuffer(EnumKnowledge type, FriendlyByteBuf buf) {

@@ -28,6 +28,49 @@
       "jitl:misc/dialog_basic"
     ]
   },
+
+  "misc.portal.euca": {
+    "sounds": [
+      "jitl:misc/portal/euca_portal"
+    ]
+  },
+
+  "misc.portal.frozen": {
+    "sounds": [
+      "jitl:misc/portal/frozen_portal"
+    ]
+  },
+
+  "misc.portal.boil": {
+    "sounds": [
+      "jitl:misc/portal/boil_portal"
+    ]
+  },
+
+  "misc.portal.depths": {
+    "sounds": [
+      "jitl:misc/portal/depths_portal"
+    ]
+  },
+
+  "misc.portal.corba": {
+    "sounds": [
+      "jitl:misc/portal/corba_portal"
+    ]
+  },
+
+  "misc.portal.cloudia": {
+    "sounds": [
+      "jitl:misc/portal/cloudia_portal"
+    ]
+  },
+
+  "misc.portal.senterian": {
+    "sounds": [
+      "jitl:misc/portal/senterian_portal"
+    ]
+  },
+
   "block.icicle.break": {
     "sounds": [
       "jitl:blocks/break/icicle_1",

@@ -27,7 +27,7 @@ public class TestBugItem extends JItem implements IEssenceItem {
         if(!level.isClientSide()) {
 
             ItemStack scrollStack = new ItemStack(JItems.LORE_SCROLL.asItem());
-            LoreScrollItem.bindScrollEntry(scrollStack, ScrollEntries.SENTERIAN_GOSPEL, EnumKnowledge.SENTERIAN, 50F);
+            LoreScrollItem.bindScrollEntry(scrollStack, ScrollEntries.TEST, EnumKnowledge.END, 25);
             player.addItem(scrollStack);
 
             PlayerEssence essence = player.getData(JDataAttachments.ESSENCE);

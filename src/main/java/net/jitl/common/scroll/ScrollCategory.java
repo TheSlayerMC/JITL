@@ -4,29 +4,21 @@ import net.minecraft.resources.ResourceLocation;
 
 import java.util.LinkedHashMap;
 
-/*
- * Code by TimeConqueror
- */
 public class ScrollCategory {
 
-    /**
-     * Size of Category. The real size will be multiplied by 256.
-     */
     private final int categorySize;
     private final String categoryKey;
     private final ResourceLocation backgroundTexture;
     private final String id;
-    /**
-     * The list of the entries that are binded to the category
-     */
+
     private final LinkedHashMap<String, ScrollEntry> entryList = new LinkedHashMap<>();
 
-    public ScrollCategory(String categoryKey, /*@NotNull*/ ResourceLocation backgroundTexture) {
+    public ScrollCategory(String categoryKey, ResourceLocation backgroundTexture) {
         this(categoryKey, backgroundTexture, 2);
     }
 
 
-    public ScrollCategory(String categoryKey, /*@NotNull*/ ResourceLocation backgroundTexture, int categorySize) {
+    public ScrollCategory(String categoryKey, ResourceLocation backgroundTexture, int categorySize) {
         this.categorySize = categorySize;
         this.categoryKey = categoryKey;
         this.backgroundTexture = backgroundTexture;

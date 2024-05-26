@@ -39,7 +39,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animation.AnimatableManager;
 
@@ -173,7 +172,7 @@ public class FrozenTrollEntity extends JMonsterEntity implements InventoryCarrie
 
     @Override
     public boolean wantsToPickUp(ItemStack itemStack_) {
-        return EventHooks.getMobGriefingEvent(this.level(), this) && this.canPickUpLoot() && FrozenTrollTasks.wantsToPickup(this, itemStack_);
+        return this.canPickUpLoot() && FrozenTrollTasks.wantsToPickup(this, itemStack_);
     }
 
     @Override

@@ -99,6 +99,26 @@ public class LangRegistry {
         writeToFile("\"jitl.sen.knowledge_1\" : \"See me when you have at least 75 Overworld Knowledge\",");
         writeToFile("\"jitl.sen.unlocked\" : \"I locked it for a reason but goodluck...\",");
 
+        writeToFile("\"scroll.jitl.fail\" : \"Can't retrieve entry from scroll, report in Discord (unless this item came from creative tab)\",");
+
+        writeToFile("\"scroll.jitl.sentry_gospel\" : \"We never saw it, but we know it - the Divine land Corba was birthed by the o' powerful Rock and Eye. Never forget the day, the hour, the second he - The True One - the all powerful Rock and Eye - cometh unto the great world he created, to seek his revenge on the wrong-doers who dare disrespect his land.\",");
+        writeToFile("\"scroll.jitl.chap1.my_last_words\" : \"I have to make this quick Clancy... I'm not sure how much time I have left... I'm not sure how much time our reality has left. These horrid machines... they're evil. They've pioneered an art form of killing. These Sentries... I'm certain they will destroy reality as we know it if they become too powerful. They - I think they've found me... I hope this reaches you. Please take all of the other contents of my Ender Chest I've left you. They're yours now. Goodbye, my friend.\",");
+
+        writeToFile("\"scroll.jitl.name.sentry_gospel\" : \"The Senterian Gospel\",");
+        writeToFile("\"scroll.jitl.name.my_last_words\" : \"My Last Words\",");
+
+        writeToFile("\"scroll.jitl.chapter.one\" : \"Chapter 1\",");
+        writeToFile("\"scroll.jitl.chapter.two\" : \"Chapter 2\",");
+        writeToFile("\"scroll.jitl.chapter.three\" : \"Chapter 3\",");
+        writeToFile("\"scroll.jitl.chapter.four\" : \"Chapter 4\",");
+        writeToFile("\"scroll.jitl.chapter.five\" : \"Chapter 5\",");
+        writeToFile("\"scroll.jitl.chapter.six\" : \"Chapter 6\",");
+        writeToFile("\"scroll.jitl.chapter.seven\" : \"Chapter 7\",");
+        writeToFile("\"scroll.jitl.chapter.eight\" : \"Chapter 8\",");
+        writeToFile("\"scroll.jitl.chapter.nine\" : \"Chapter 9\",");
+        writeToFile("\"scroll.jitl.chapter.ten\" : \"Chapter 10\",");
+
+
         writeToFile("\"curios.identifier.heart_container\" : \"Heart\",");
         writeToFile("\"curios.identifier.catalyst\" : \"Catalyst\",");
 
