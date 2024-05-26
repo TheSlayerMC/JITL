@@ -49,13 +49,14 @@ public class LoreScrollItem extends JItem {
         if(entry != null && scroll != null) {
             if(!worldIn.isClientSide) {
                 if(!scroll.openedBefore()) {
-                    stats.addLevel(EnumKnowledge.byName(scroll.knowledge()), scroll.level());
+                    if(scroll.knowledge() != null)
+                        stats.addLevel(EnumKnowledge.byName(scroll.knowledge()), scroll.level());
                     heldItem.set(JDataComponents.SCROLL, new LoreScroll(scroll.entry(), scroll.knowledge(), scroll.level(), true));
                 }
             } else {
                 ClientTools.playLocalSound(SoundEvents.BOOK_PAGE_TURN, 1.0F, 1.0F);
                 displayScrollGui(entry);
-                if(!scroll.openedBefore())
+                if(!scroll.openedBefore() && scroll.knowledge() != null)
                     displayToast(scroll);
             }
         } else {
@@ -81,6 +82,14 @@ public class LoreScrollItem extends JItem {
     public static void bindScrollEntry(ItemStack stack, ScrollEntry entry, EnumKnowledge knowledge, int level) {
         if(stack.getItem() instanceof LoreScrollItem) {
             stack.set(JDataComponents.SCROLL, new LoreScroll(entry.getId(), knowledge.getName(), level, false));
+        } else {
+            JITL.LOGGER.error("Provided stack param is not of {}", LoreScrollItem.class, new IllegalArgumentException());
+        }
+    }
+
+    public static void bindScrollEntry(ItemStack stack, ScrollEntry entry) {
+        if(stack.getItem() instanceof LoreScrollItem) {
+            stack.set(JDataComponents.SCROLL, new LoreScroll(entry.getId(), null, 0, false));
         } else {
             JITL.LOGGER.error("Provided stack param is not of {}", LoreScrollItem.class, new IllegalArgumentException());
         }

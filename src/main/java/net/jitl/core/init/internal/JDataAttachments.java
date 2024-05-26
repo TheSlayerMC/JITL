@@ -29,6 +29,8 @@ public class JDataAttachments {
 
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<Portal>> PORTAL_OVERLAY = REGISTRY.register(
             "portal_overlay", () -> AttachmentType.serializable(Portal::new).build());
+
+
 }
 
 
