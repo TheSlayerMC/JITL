@@ -17,7 +17,6 @@ group = mod_group_id
 
 repositories {
     mavenLocal()
-    mavenCentral()
 }
 
 base {
@@ -75,9 +74,7 @@ dependencies {
 
     //compileOnly "vazkii.patchouli:Patchouli:" + patchouli_version + ":api"
     //runtimeOnly "vazkii.patchouli:Patchouli:" + patchouli_version
-
 }
-
 
 tasks.withType(ProcessResources).configureEach {
     var replaceProperties = [
