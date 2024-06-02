@@ -6,17 +6,16 @@ import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import net.jitl.client.util.EnumHexColor;
+import net.jitl.client.util.RenderUtils;
 import net.jitl.common.scroll.IDescComponent;
 import net.jitl.common.scroll.ScrollEntry;
 import net.jitl.core.helper.internal.DrawHelper;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.MouseHandler;
-import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FormattedText;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
@@ -81,20 +80,12 @@ public class LoreScrollEntryScreen extends Screen {
     private void drawHeader(GuiGraphics poseStack, int maxX, int y0, Tesselator tess) {
         float zLevel = this.getContentHeight();
         if (scrollEntry.hasComment()) {
-            drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getTitleKey()), left + (maxX - left) / 2 + 1, y0, (int) zLevel, EnumHexColor.BLACK, 1.5F, headerHeight - 5);
+            RenderUtils.drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getTitleKey()), left + (maxX - left) / 2 + 1, y0, (int) zLevel, EnumHexColor.BLACK, 1.5F, headerHeight - 5);
             if (scrollEntry.getCommentKey() != null)
-                drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getCommentKey()), left + (maxX - left) / 2 + 1, y0 + (int) ((float) font.lineHeight * 0.7), (int) zLevel, EnumHexColor.DARK_BROWN, 1F, headerHeight + 5);
+                RenderUtils.drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getCommentKey()), left + (maxX - left) / 2 + 1, y0 + (int) ((float) font.lineHeight * 0.7), (int) zLevel, EnumHexColor.DARK_BROWN, 1F, headerHeight + 5);
         } else {
-            drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getTitleKey()), left + (maxX - left) / 2 + 1, y0, (int) zLevel, EnumHexColor.BLACK, 1.2F, headerHeight);
+            RenderUtils.drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getTitleKey()), left + (maxX - left) / 2 + 1, y0, (int) zLevel, EnumHexColor.BLACK, 1.2F, headerHeight);
         }
-    }
-
-    public void drawCenteredStringWithCustomScale(GuiGraphics gui, Font f, FormattedText comp, int x, int y, int z, EnumHexColor colour, float size, int avaliableHeight) {
-        gui.pose().pushPose();
-        gui.pose().translate(x - (double)f.width(comp) / 2 * size, y + ((double)avaliableHeight / 2) + (f.lineHeight * size > 1 ? -1 * f.lineHeight * size : f.lineHeight * size) * 0.5, z);
-        gui.pose().scale(size, size, size);
-        gui.drawString(f, comp.getString(), 0, 0, colour.getInt(), false);
-        gui.pose().popPose();
     }
 
     private void drawContentPart(GuiGraphics poseStack, int partIdx, int contentRight, int partTop, int partBuffer, Tesselator tess) {
