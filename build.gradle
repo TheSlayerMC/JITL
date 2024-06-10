@@ -3,17 +3,17 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.109'
+    id 'net.neoforged.gradle.userdev' version '7.0.142'
 }
+
+version = mod_version
+group = mod_group_id
 
 file "build.properties" withReader {
     def prop = new Properties()
     prop.load(it)
     ext.buildProps = prop
 }
-
-version = mod_version
-group = mod_group_id
 
 repositories {
     mavenLocal()
@@ -25,13 +25,11 @@ base {
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
-//minecraft.accessTransformers.entry //public net.minecraft.client.Minecraft textureManager # textureManager
+minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
 
 runs {
-    minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
 
     configureEach {
-
         systemProperty 'forge.logging.markers', 'REGISTRIES'
 
         systemProperty 'forge.logging.console.level', 'debug'
@@ -41,11 +39,15 @@ runs {
 
     client {
         systemProperty 'forge.enabledGameTestNamespaces', "jitl"
+        systemProperty 'mixin.env.remapRefMap', 'true'
+        systemProperty 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
     }
 
     server {
         systemProperty 'forge.enabledGameTestNamespaces', "jitl"
         programArgument '--nogui'
+        systemProperty 'mixin.env.remapRefMap', 'true'
+        systemProperty 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
     }
 
     gameTestServer {
@@ -57,9 +59,11 @@ runs {
     }
 }
 
-
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+}
 
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
@@ -67,15 +71,19 @@ dependencies {
     //implementation "mezz.jei:jei-" + minecraft_version + "-neoforge:" + jei_version
    // implementation "maven.modrinth:just-enough-resources-jer:" + jer_version
 
-    runtimeOnly "top.theillusivec4.curios:curios-neoforge:" + curios_version
     compileOnly "top.theillusivec4.curios:curios-neoforge:" + curios_version + ":api"
+    runtimeOnly "top.theillusivec4.curios:curios-neoforge:" + curios_version
 
     implementation "software.bernie.geckolib:geckolib-neoforge-" + gekolib_version
 
-    //compileOnly "vazkii.patchouli:Patchouli:" + patchouli_version + ":api"
-    //runtimeOnly "vazkii.patchouli:Patchouli:" + patchouli_version
+//    compileOnly "vazkii.patchouli:Patchouli:" + patchouli_version + ":api"
+//    runtimeOnly "vazkii.patchouli:Patchouli:" + patchouli_version
 }
 
+// This block of code expands all declared replace properties in the specified resource targets.
+// A missing property will result in an error. Properties are expanded using ${} Groovy notation.
+// When "copyIdeResources" is enabled, this will also run before the game launches in IDE environments.
+// See https://docs.gradle.org/current/dsl/org.gradle.language.jvm.tasks.ProcessResources.html
 tasks.withType(ProcessResources).configureEach {
     var replaceProperties = [
             minecraft_version      : minecraft_version,
@@ -103,7 +111,6 @@ publishing {
             from components.java
         }
     }
-
     repositories {
         maven {
             url "file://${project.projectDir}/repo"
@@ -121,12 +128,18 @@ repositories {
         url = "https://modmaven.dev"
     }
     maven {
+        name = "Illusive Soulworks maven"
         url = "https://maven.theillusivec4.top/"
     }
 
     maven {
         url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
     }
+
+    maven {
+        url 'https://maven.blamejared.com'
+    }
+
     maven {
         name = "Modrinth"
         url = "https://api.modrinth.com/maven"
@@ -137,7 +150,7 @@ repositories {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+    options.encoding = 'UTF-8'
 }
 
 idea {

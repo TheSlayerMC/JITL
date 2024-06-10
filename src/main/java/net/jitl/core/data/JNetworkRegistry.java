@@ -5,7 +5,6 @@ import net.jitl.common.JManagers;
 import net.jitl.common.dialogue.DialogueNetHandler;
 import net.jitl.common.network.dialogue.C2SChosenOptionMsg;
 import net.jitl.common.network.dialogue.S2CCloseDialogueGuiMsg;
-import net.jitl.common.network.dialogue.S2COpenDialogueGuiMsg;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.network.CKeyPressedPacket;
 import net.jitl.core.init.network.PacketEssenceBar;
@@ -31,10 +30,9 @@ public class JNetworkRegistry {
         registry.playBidirectional(PacketEssenceBar.TYPE, PacketEssenceBar.STREAM_CODEC, PacketEssenceBar::handle);
         registry.playBidirectional(CKeyPressedPacket.TYPE, CKeyPressedPacket.STREAM_CODEC, CKeyPressedPacket::handle);
 
-        registry.playBidirectional(S2COpenDialogueGuiMsg.TYPE, S2COpenDialogueGuiMsg.STREAM_CODEC, dialogueNetHandler::handleDialogueOpenPacket);
+        //registry.playBidirectional(S2COpenDialogueGuiMsg.TYPE, S2COpenDialogueGuiMsg.STREAM_CODEC, dialogueNetHandler::handleDialogueOpenPacket);
         registry.playBidirectional(C2SChosenOptionMsg.TYPE, C2SChosenOptionMsg.STREAM_CODEC, dialogueNetHandler::handlePressOptionPacket);
         registry.playBidirectional(S2CCloseDialogueGuiMsg.TYPE, S2CCloseDialogueGuiMsg.STREAM_CODEC, dialogueNetHandler::handleDialogueClosePacket);
-
     }
 
     public static void sendToPlayer(ServerPlayer player, CustomPacketPayload packet) {

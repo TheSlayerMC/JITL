@@ -21,6 +21,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(Dist.CLIENT)
 public class EssenceBar implements LayeredDraw.Layer {
@@ -33,7 +34,7 @@ public class EssenceBar implements LayeredDraw.Layer {
     private static final ResourceLocation ABOVE_HUNGER_TEXTURE = new ResourceLocation(JITL.MODID, "textures/gui/essence_over_hunger.png");
 
     @Override
-    public void render(GuiGraphics gui, float partialTick) {
+    public void render(@NotNull GuiGraphics gui, float partialTick) {
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
@@ -50,9 +51,9 @@ public class EssenceBar implements LayeredDraw.Layer {
              * Handles the transparency of the Essence bar
              */
             if ((instanceOfEssenceItem(player.getMainHandItem().getItem()) || isEssenceUsed) && transparency <= 1.0) {
-                transparency += .02;
+                transparency += .02F;
             } else if (transparency > 0) {
-                transparency -= .02;
+                transparency -= .02F;
             }
 
             boolean cooldownActive = cooldown > 1.0F;
@@ -61,9 +62,9 @@ public class EssenceBar implements LayeredDraw.Layer {
              * Handles the transparency of the burnout overlay
              */
             if (cooldownActive && burnoutTransparency < 1) {
-                burnoutTransparency += .02;
+                burnoutTransparency += .02F;
             } else if (burnoutTransparency > 0) {
-                burnoutTransparency -= .02;
+                burnoutTransparency -= .02F;
             }
 
             /*
