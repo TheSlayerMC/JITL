@@ -33,7 +33,7 @@ public class JLootTables {
     }
 
     public static ResourceKey<LootTable> addNormalLootTable(String name) {
-        return ResourceKey.create(Registries.LOOT_TABLE, new ResourceLocation(name));
+        return ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.withDefaultNamespace(name));
     }
 
     public static ResourceKey<LootTable> addBossCrystalLootTable(String name) {

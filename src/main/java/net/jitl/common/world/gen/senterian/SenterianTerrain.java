@@ -13,6 +13,7 @@ import net.minecraft.world.level.levelgen.XoroshiroRandomSource;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
@@ -23,7 +24,7 @@ import java.util.Random;
 
 public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
 
-    public static final StructurePlaceSettings defaultSettings = new StructurePlaceSettings().setIgnoreEntities(false).setFinalizeEntities(true).setKeepLiquids(true);
+    public static final StructurePlaceSettings defaultSettings = new StructurePlaceSettings().setIgnoreEntities(false).setFinalizeEntities(true).setLiquidSettings(LiquidSettings.APPLY_WATERLOGGING);
     public static NormalNoise senterianNoise;
     public static long seed;
     public static Room[] rooms, rareRooms;
@@ -139,7 +140,7 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
     public static class Room {
         public final StructureTemplate room;
         public Room(StructureTemplateManager manager, String location) {
-            room = manager.getOrCreate(new ResourceLocation(JITL.MODID, location));
+            room = manager.getOrCreate(ResourceLocation.fromNamespaceAndPath(JITL.MODID, location));
         }
         public void gen(WorldGenLevel level, RandomSource random, BlockPos pos, Rotation rotation) {
             placeRoom(room, level, random, pos, rotation);
@@ -149,7 +150,7 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
     public static class VerticalRoom {
         public final StructureTemplate room;
         public VerticalRoom(StructureTemplateManager manager, String location) {
-            room = manager.getOrCreate(new ResourceLocation(JITL.MODID, location));
+            room = manager.getOrCreate(ResourceLocation.fromNamespaceAndPath(JITL.MODID, location));
         }
         public void gen(WorldGenLevel level, RandomSource random, BlockPos pos, Rotation rotation) {
 
@@ -160,7 +161,7 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
     public static class BigRoom {
         public final StructureTemplate room;
         public BigRoom(StructureTemplateManager manager, String room) {
-            this.room = manager.getOrCreate(new ResourceLocation(JITL.MODID, room));
+            this.room = manager.getOrCreate(ResourceLocation.fromNamespaceAndPath(JITL.MODID, room));
         }
         public void gen(WorldGenLevel level, RandomSource random, BlockPos pos, int xPart, int zPart) {
             if(xPart == 0) {

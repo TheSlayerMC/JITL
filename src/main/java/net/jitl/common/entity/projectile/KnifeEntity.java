@@ -19,6 +19,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nullable;
+
 public class KnifeEntity extends AbstractKnifeEntity implements ItemSupplier {
     private static final EntityDataAccessor<ItemStack> STACK = SynchedEntityData.defineId(KnifeEntity.class, EntityDataSerializers.ITEM_STACK);
     private int durability;
@@ -26,8 +28,8 @@ public class KnifeEntity extends AbstractKnifeEntity implements ItemSupplier {
         super(type, world);
     }
 
-    public KnifeEntity(LivingEntity owner, Level worldIn, ItemStack stack, float damage) {
-        super(JEntities.KNIFE_TYPE.get(), worldIn, owner);
+    public KnifeEntity(LivingEntity owner, Level worldIn, ItemStack stack, float damage, @Nullable ItemStack weapon) {
+        super(JEntities.KNIFE_TYPE.get(), worldIn, owner, weapon);
         setBaseDamage(damage);
         setStack(stack.copy());
     }

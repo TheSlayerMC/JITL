@@ -39,7 +39,7 @@ public class FlameLotus extends JMonsterEntity {
     }
 
     @Override
-    public boolean canBeLeashed(Player player) {
+    public boolean canBeLeashed() {
         return false;
     }
 

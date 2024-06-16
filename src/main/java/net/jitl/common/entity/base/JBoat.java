@@ -781,11 +781,6 @@ public class JBoat extends Boat {
     }
 
     @Override
-    public @NotNull Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return new ClientboundAddEntityPacket(this);
-    }
-
-    @Override
     public boolean isUnderWater() {
         return this.status == JBoat.Status.UNDERWATER || this.status == JBoat.Status.UNDER_FLOWING_WATER;
     }

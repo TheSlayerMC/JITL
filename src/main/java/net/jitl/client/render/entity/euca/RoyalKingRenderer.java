@@ -22,9 +22,9 @@ public class RoyalKingRenderer<T extends LivingEntity & GeoEntity> extends GeoEn
         RoyalKing e = (RoyalKing)entity;
         boolean isActivated = e.isActivated();
         if (isActivated) {
-            return new ResourceLocation(JITL.MODID, "textures/entity/euca/royal_king_no_crown.png");
+            return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/entity/euca/royal_king_no_crown.png");
         } else {
-            return new ResourceLocation(JITL.MODID, "textures/entity/euca/royal_king.png");
+            return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/entity/euca/royal_king.png");
         }
     }
 }

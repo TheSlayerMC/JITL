@@ -76,8 +76,8 @@ dependencies {
 
     implementation "software.bernie.geckolib:geckolib-neoforge-" + gekolib_version
 
-//    compileOnly "vazkii.patchouli:Patchouli:" + patchouli_version + ":api"
-//    runtimeOnly "vazkii.patchouli:Patchouli:" + patchouli_version
+    //    compileOnly "vazkii.patchouli:Patchouli:" + patchouli_version + ":api"
+    //    runtimeOnly "vazkii.patchouli:Patchouli:" + patchouli_version
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

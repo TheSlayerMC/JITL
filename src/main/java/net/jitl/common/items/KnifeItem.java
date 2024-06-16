@@ -2,6 +2,7 @@ package net.jitl.common.items;
 
 import com.mojang.datafixers.util.Function3;
 import net.jitl.common.entity.projectile.KnifeEntity;
+import net.jitl.common.entity.projectile.PiercerEntity;
 import net.jitl.common.items.base.JSwordItem;
 import net.jitl.core.helper.JToolTiers;
 import net.jitl.core.init.internal.JItems;
@@ -21,9 +22,9 @@ public class KnifeItem extends JSwordItem {
 
     protected Function3<LivingEntity, Level, ItemStack, KnifeEntity> projectileFactory;
 
-    public KnifeItem(Properties properties, Function3<LivingEntity, Level, ItemStack, KnifeEntity> projectileFactory) {
+    public KnifeItem(Properties properties, float damage) {
         super(JToolTiers.THROWING_KNIFE, JItems.BASIC, properties);
-        this.projectileFactory = projectileFactory;
+        this.projectileFactory = (world, owner, stack) -> new KnifeEntity(world, owner, stack, damage, new ItemStack(this));
     }
 
     @Override

@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
@@ -18,7 +19,7 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
     public static CloudiaPiece[] TOP, BOTTOM, PATHS, TOP_PATHS, VILLAGE;
     public static BigRoom[] BIG_TOP;
 
-    public static final StructurePlaceSettings defaultSettings = new StructurePlaceSettings().setIgnoreEntities(false).setFinalizeEntities(true).setKeepLiquids(true);
+    public static final StructurePlaceSettings defaultSettings = new StructurePlaceSettings().setIgnoreEntities(false).setFinalizeEntities(true).setLiquidSettings(LiquidSettings.APPLY_WATERLOGGING);
 
     public CloudiaTerrain() {
         super(NoneFeatureConfiguration.CODEC);
@@ -114,7 +115,7 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
     static class BigRoom {
         public final StructureTemplate room;
         public BigRoom(StructureTemplateManager manager, String room) {
-            this.room = manager.getOrCreate(new ResourceLocation(JITL.MODID, room));
+            this.room = manager.getOrCreate(ResourceLocation.fromNamespaceAndPath(JITL.MODID, room));
         }
         public void gen(WorldGenLevel level, RandomSource random, BlockPos pos, int xPart, int zPart) {
             if(xPart == 0) {

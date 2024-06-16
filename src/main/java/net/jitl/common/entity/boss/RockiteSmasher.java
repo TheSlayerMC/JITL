@@ -7,6 +7,7 @@ import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
 import net.jitl.common.entity.goal.IdleHealGoal;
 import net.jitl.core.init.internal.JLootTables;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -20,6 +21,7 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootTable;
 import org.jetbrains.annotations.NotNull;
@@ -74,10 +76,13 @@ public class RockiteSmasher extends JBossEntity {
         this.level().broadcastEntityEvent(this, (byte)1);
         float damage = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
         float f1 = (int)damage > 0 ? damage / 2.0F + (float)this.random.nextInt((int)damage) : damage;
-        boolean hurt = entity.hurt(this.damageSources().mobAttack(this), f1);
+        DamageSource damagesource = this.damageSources().mobAttack(this);
+        boolean hurt = entity.hurt(damagesource, f1);
         if(hurt) {
             entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, 0.4F, 0.0D));
-            this.doEnchantDamageEffects(this, entity);
+            if (this.level() instanceof ServerLevel serverlevel) {
+                EnchantmentHelper.doPostAttackEffects(serverlevel, entity, damagesource);
+            }
         }
         this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
         return hurt;

@@ -28,6 +28,6 @@ public class JBonemealPlacedFeatures {
     }
 
     public static ResourceKey<PlacedFeature> registerKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(JITL.MODID, name));
+        return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(JITL.MODID, name));
     }
 }

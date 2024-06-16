@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 @OnlyIn(Dist.CLIENT)
 public class SummoningTableScreen extends AbstractContainerScreen<SummoningTableContainer> {
 
-    private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(JITL.MODID, "textures/gui/summoning_table.png");
+    private static final ResourceLocation GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/gui/summoning_table.png");
 
     public SummoningTableScreen(SummoningTableContainer menu, Inventory inventory, Component title) {
         super(menu, inventory, title);

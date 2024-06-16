@@ -1,5 +1,6 @@
 package net.jitl.common.block.portal;
 
+import com.mojang.logging.LogUtils;
 import net.jitl.common.capability.player.Portal;
 import net.jitl.common.world.dimension.BaseTeleporter;
 import net.jitl.common.world.dimension.Dimensions;
@@ -7,6 +8,7 @@ import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JParticleManager;
+import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -15,13 +17,11 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
@@ -29,14 +29,21 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.border.WorldBorder;
+import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.level.portal.DimensionTransition;
+import net.minecraft.world.level.portal.PortalShape;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Optional;
 import java.util.function.Supplier;
 
-public class JBasePortalBlock extends Block {
+public class JBasePortalBlock extends Block implements net.minecraft.world.level.block.Portal {
+
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
     protected static final VoxelShape X_AABB = Block.box(0.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);
     protected static final VoxelShape Z_AABB = Block.box(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 16.0D);
@@ -112,22 +119,24 @@ public class JBasePortalBlock extends Block {
                 pLevel.addParticle(particle2, d0, d1, d2, d3, d4, d5);
         }
     }
-    
+
     @Override
-    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
-        Direction.Axis direction$axis = facing.getAxis();
-        Direction.Axis direction$axis1 = stateIn.getValue(AXIS);
+    protected @NotNull BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
+        Direction.Axis direction$axis = pFacing.getAxis();
+        Direction.Axis direction$axis1 = pState.getValue(AXIS);
         boolean flag = direction$axis1 != direction$axis && direction$axis.isHorizontal();
-        return !flag && facingState.getBlock() != this && !(new Size(worldIn, currentPos, direction$axis1, this)).validatePortal() ? Blocks.AIR.defaultBlockState() : super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+        return !flag && !pFacingState.is(this) && !new PortalShape(pLevel, pCurrentPos, direction$axis1).isComplete()
+                ? Blocks.AIR.defaultBlockState()
+                : super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
     }
 
     @Override
-    public ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
+    public @NotNull ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return ItemStack.EMPTY;
     }
 
     @Override
-    public BlockState rotate(BlockState state, Rotation rot) {
+    public @NotNull BlockState rotate(BlockState state, Rotation rot) {
         switch (rot) {
             case COUNTERCLOCKWISE_90, CLOCKWISE_90 -> {
                 return switch (state.getValue(AXIS)) {
@@ -150,216 +159,159 @@ public class JBasePortalBlock extends Block {
 
     @Override
     public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entity) {
-        if (!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions()) {
-            if (entity.isOnPortalCooldown()) {
-                entity.setPortalCooldown();
+        if(entity.canUsePortal(false)) {
+            if(entity instanceof Player player) {
+                Portal portal = player.getData(JDataAttachments.PORTAL_OVERLAY);
+                portal.setInPortal(this, true);
+                int cooldownTime = portal.getPortalTimer();
+                assert player.portalProcess != null;
+                if(cooldownTime >= player.portalProcess.getPortalTime()) {
+                    entity.setAsInsidePortal(this, pos);
+                    portal.setPortalTimer(0);
+                }
             } else {
-                if(!entity.level().isClientSide && !pos.equals(entity.portalEntrancePos)) {
-                    entity.portalEntrancePos = pos.immutable();
-                }
-                if(entity instanceof Player player) {
-                    Portal portal = player.getData(JDataAttachments.PORTAL_OVERLAY);
-                    portal.setInPortal(this, true);
-                    int cooldownTime = portal.getPortalTimer();
-                    if(cooldownTime >= player.getPortalWaitTime()) {
-                        teleport(entity);
-                        portal.setPortalTimer(0);
-                    }
-                } else {
-                    teleport(entity);
-                }
+                entity.setAsInsidePortal(this, pos);
             }
         }
     }
 
-    public void teleport(Entity entity) {
-        Level entityWorld = entity.level();
-        MinecraftServer minecraftserver = entityWorld.getServer();
-        if(minecraftserver != null) {
-            ResourceKey<Level> destination = entity.level().dimension() == dimensionID ? Level.OVERWORLD : dimensionID;
-            ServerLevel destinationWorld = minecraftserver.getLevel(destination);
-            ResourceKey<PoiType> poi = Dimensions.FROZEN_PORTAL.getKey();
+    @Override
+    public int getPortalTransitionTime(ServerLevel level, Entity entity) {
+        return entity instanceof Player player
+                ? Math.max(
+                1,
+                level.getGameRules()
+                        .getInt(
+                                player.getAbilities().invulnerable
+                                        ? GameRules.RULE_PLAYERS_NETHER_PORTAL_CREATIVE_DELAY
+                                        : GameRules.RULE_PLAYERS_NETHER_PORTAL_DEFAULT_DELAY
+                        )
+        ) : 0;
+    }
 
-            if(this == JBlocks.EUCA_PORTAL.get())
-                poi = Dimensions.EUCA_PORTAL.getKey();
-
-            if(this == JBlocks.FROZEN_PORTAL.get())
-                poi = Dimensions.FROZEN_PORTAL.getKey();
-
-            if(this == JBlocks.BOIL_PORTAL.get())
-                poi = Dimensions.BOIL_PORTAL.getKey();
-
-            if(this == JBlocks.DEPTHS_PORTAL.get())
-                poi = Dimensions.DEPTHS_PORTAL.getKey();
-
-            if(this == JBlocks.CORBA_PORTAL.get())
-                poi = Dimensions.CORBA_PORTAL.getKey();
-
-            if(this == JBlocks.TERRANIAN_PORTAL.get())
-                poi = Dimensions.TERRANIAN_PORTAL.getKey();
-
-            if(this == JBlocks.CLOUDIA_PORTAL.get())
-                poi = Dimensions.CLOUDIA_PORTAL.getKey();
-
-            if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
-                entity.setPortalCooldown();
-                entity.changeDimension(destinationWorld, new BaseTeleporter(destinationWorld, this, frame.get(), poi, destination));
-            }
+    @Nullable
+    @Override
+    public DimensionTransition getPortalDestination(ServerLevel level, Entity entity, BlockPos pos) {
+        ResourceKey<Level> destination = entity.level().dimension() == dimensionID ? Level.OVERWORLD : dimensionID;
+        ServerLevel destinationWorld = level.getServer().getLevel(destination);
+        
+        if (destinationWorld == null) {
+            return null;
+        } else {
+            boolean flag = destinationWorld.dimension() == dimensionID;
+            WorldBorder worldborder = level.getWorldBorder();
+            double d0 = DimensionType.getTeleportationScale(level.dimensionType(), destinationWorld.dimensionType());
+            BlockPos blockpos = worldborder.clampToBounds(entity.getX() * d0, entity.getY(), entity.getZ() * d0);
+            return this.getExitPortal(destinationWorld, entity, pos, blockpos, flag, worldborder);
         }
+    }
+
+    @Nullable
+    private DimensionTransition getExitPortal(ServerLevel level, Entity entity, BlockPos pos1, BlockPos pos2, boolean isDim, WorldBorder border) {
+        JPortalForcer forcer = new JPortalForcer(level, this, this.frame.get(), getPoi());
+        Optional<BlockPos> optional = forcer.findClosestPortalPosition(pos2, isDim, border);
+        BlockUtil.FoundRectangle rec;
+        DimensionTransition.PostDimensionTransition dimTrans;
+        if(optional.isPresent()) {
+            BlockPos blockpos = optional.get();
+            BlockState blockstate = level.getBlockState(blockpos);
+            rec = BlockUtil.getLargestRectangleAround(
+                    blockpos,
+                    blockstate.getValue(BlockStateProperties.HORIZONTAL_AXIS),
+                    21,
+                    Direction.Axis.Y,
+                    21,
+                    p_351970_ -> level.getBlockState(p_351970_) == blockstate
+            );
+            dimTrans = DimensionTransition.PLAY_PORTAL_SOUND.then(p_351967_ -> p_351967_.placePortalTicket(blockpos));
+        } else {
+            Direction.Axis axis = entity.level().getBlockState(pos1).getOptionalValue(AXIS).orElse(Direction.Axis.X);
+            Optional<BlockUtil.FoundRectangle> optional1 = forcer.createPortal(pos2, axis);
+            if (optional1.isEmpty()) {
+                LogUtils.getLogger().error("Unable to create a portal, likely target out of worldborder");
+                return null;
+            }
+
+            rec = optional1.get();
+            dimTrans = DimensionTransition.PLAY_PORTAL_SOUND.then(DimensionTransition.PLACE_PORTAL_TICKET);
+        }
+        return getDimensionTransitionFromExit(entity, pos1, rec, level, dimTrans);
+    }
+
+    public ResourceKey<PoiType> getPoi() {
+        ResourceKey<PoiType> poi = Dimensions.FROZEN_PORTAL.getKey();
+
+        if(this == JBlocks.EUCA_PORTAL.get())
+            poi = Dimensions.EUCA_PORTAL.getKey();
+
+        if(this == JBlocks.FROZEN_PORTAL.get())
+            poi = Dimensions.FROZEN_PORTAL.getKey();
+
+        if(this == JBlocks.BOIL_PORTAL.get())
+            poi = Dimensions.BOIL_PORTAL.getKey();
+
+        if(this == JBlocks.DEPTHS_PORTAL.get())
+            poi = Dimensions.DEPTHS_PORTAL.getKey();
+
+        if(this == JBlocks.CORBA_PORTAL.get())
+            poi = Dimensions.CORBA_PORTAL.getKey();
+
+        if(this == JBlocks.TERRANIAN_PORTAL.get())
+            poi = Dimensions.TERRANIAN_PORTAL.getKey();
+
+        if(this == JBlocks.CLOUDIA_PORTAL.get())
+            poi = Dimensions.CLOUDIA_PORTAL.getKey();
+        return poi;
+    }
+
+    private static DimensionTransition getDimensionTransitionFromExit(Entity entity, BlockPos pos, BlockUtil.FoundRectangle rect, ServerLevel level, DimensionTransition.PostDimensionTransition dimTrans) {
+        BlockState blockstate = entity.level().getBlockState(pos);
+        Direction.Axis axis;
+        Vec3 vec3;
+        if(blockstate.hasProperty(BlockStateProperties.HORIZONTAL_AXIS)) {
+            axis = blockstate.getValue(BlockStateProperties.HORIZONTAL_AXIS);
+            BlockUtil.FoundRectangle r = BlockUtil.getLargestRectangleAround(
+                    pos, axis, 21, Direction.Axis.Y, 21, 
+                    p -> entity.level().getBlockState(p) == blockstate
+            );
+            vec3 = entity.getRelativePortalPosition(axis, r);
+        } else {
+            axis = Direction.Axis.X;
+            vec3 = new Vec3(0.5, 0.0, 0.0);
+        }
+        return createDimensionTransition(level, rect, axis, vec3, entity, entity.getDeltaMovement(), entity.getYRot(), entity.getXRot(), dimTrans);
+    }
+
+    private static DimensionTransition createDimensionTransition(ServerLevel level, BlockUtil.FoundRectangle rect, Direction.Axis axis, Vec3 vec, Entity entity, Vec3 movement, float yRot, float xRot, DimensionTransition.PostDimensionTransition dimTrans) {
+        BlockPos blockpos = rect.minCorner;
+        BlockState blockstate = level.getBlockState(blockpos);
+        Direction.Axis direction$axis = blockstate.getOptionalValue(BlockStateProperties.HORIZONTAL_AXIS).orElse(Direction.Axis.X);
+        double d0 = rect.axis1Size;
+        double d1 = rect.axis2Size;
+        EntityDimensions entitydimensions = entity.getDimensions(entity.getPose());
+        int i = axis == direction$axis ? 0 : 90;
+        Vec3 vec3 = axis == direction$axis ? movement : new Vec3(movement.z, movement.y, -movement.x);
+        double d2 = (double)entitydimensions.width() / 2.0 + (d0 - (double)entitydimensions.width()) * vec.x();
+        double d3 = (d1 - (double)entitydimensions.height()) * vec.y();
+        double d4 = 0.5 + vec.z();
+        boolean flag = direction$axis == Direction.Axis.X;
+        Vec3 vec31 = new Vec3((double)blockpos.getX() + (flag ? d2 : d4), (double)blockpos.getY() + d3, (double)blockpos.getZ() + (flag ? d4 : d2));
+        Vec3 vec32 = PortalShape.findCollisionFreePosition(vec31, level, entity, entitydimensions);
+        return new DimensionTransition(level, vec32, vec3, yRot + (float)i, xRot, dimTrans);
+    }
+
+    @Override
+    public @NotNull Transition getLocalTransition() {
+        return net.minecraft.world.level.block.Portal.Transition.CONFUSION;
     }
 
     public boolean makePortal(LevelAccessor worldIn, BlockPos pos) {
-        Size portal = this.isPortal(worldIn, pos);
-        if(portal != null) {
-            portal.createPortalBlocks();
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public Size isPortal(LevelAccessor worldIn, BlockPos pos) {
-        Size portalX = new Size(worldIn, pos, Direction.Axis.X, this);
-        if (portalX.isValid() && portalX.portalBlockCount == 0) {
-            return portalX;
-        } else {
-            Size portalZ = new Size(worldIn, pos, Direction.Axis.Z, this);
-            return portalZ.isValid() && portalZ.portalBlockCount == 0 ? portalZ : null;
-        }
-    }
-
-    public static class Size {
-        private final LevelAccessor world;
-        private final Direction.Axis axis;
-        private final Direction rightDir;
-        private final Direction leftDir;
-        private int portalBlockCount;
-        @Nullable
-        private BlockPos bottomLeft;
-        private int height;
-        private int width;
-        private final Block portal;
-
-        public Size(LevelAccessor worldIn, BlockPos pos, Direction.Axis axisIn, Block portal) {
-            this.world = worldIn;
-            this.axis = axisIn;
-            this.portal = portal;
-            if (axisIn == Direction.Axis.X) {
-                this.leftDir = Direction.EAST;
-                this.rightDir = Direction.WEST;
-            } else {
-                this.leftDir = Direction.NORTH;
-                this.rightDir = Direction.SOUTH;
-            }
-
-            int i = this.getDistanceUntilEdge(pos, this.leftDir) - 1;
-            if (i >= 0) {
-                this.bottomLeft = pos.relative(this.leftDir, i);
-                this.width = this.getDistanceUntilEdge(this.bottomLeft, this.rightDir);
-                if (this.width < 2 || this.width > 21) {
-                    this.bottomLeft = null;
-                    this.width = 0;
-                }
-            }
-
-            if (this.bottomLeft != null) {
-                this.height = this.calculatePortalHeight();
-            }
-
-        }
-
-        protected int getDistanceUntilEdge(BlockPos pos, Direction directionIn) {
-            int i;
-            for(i = 0; i < 22; ++i) {
-                BlockPos blockpos = pos.relative(directionIn, i);
-                if (!this.canConnect(this.world.getBlockState(blockpos)) || !(this.world.getBlockState(blockpos.below()).getBlock() == this.world.getBlockState(pos.below()).getBlock())) {
-                    break;
-                }
-            }
-
-            BlockPos framePos = pos.relative(directionIn, i);
-            return this.world.getBlockState(framePos).getBlock() == this.world.getBlockState(pos.below()).getBlock() ? i : 0;
-        }
-
-        public int getHeight() {
-            return this.height;
-        }
-
-        public int getWidth() {
-            return this.width;
-        }
-
-        protected int calculatePortalHeight() {
-            label56:
-            for(this.height = 0; this.height < 21; ++this.height) {
-                for(int i = 0; i < this.width; ++i) {
-                    assert this.bottomLeft != null;
-                    BlockPos blockpos = this.bottomLeft.relative(this.rightDir, i).above(this.height);
-                    BlockState blockstate = this.world.getBlockState(blockpos);
-                    if(!this.canConnect(blockstate)) {
-                        break label56;
-                    }
-
-                    Block block = blockstate.getBlock();
-                    if(block == this.portal) {
-                        this.portalBlockCount++;
-                    }
-
-                    if(i == 0) {
-                        BlockPos framePos = blockpos.relative(this.leftDir);
-                        if(!(this.world.getBlockState(framePos).getBlock() == this.world.getBlockState(framePos).getBlock())) {
-                            break label56;
-                        }
-                    } else if(i == this.width - 1) {
-                        BlockPos framePos = blockpos.relative(this.rightDir);
-                        if (!(this.world.getBlockState(framePos).getBlock() == this.world.getBlockState(framePos).getBlock())) {
-                            break label56;
-                        }
-                    }
-                }
-            }
-
-            for(int j = 0; j < this.width; ++j) {
-                BlockPos framePos = this.bottomLeft.relative(this.rightDir, j).above(this.height);
-                if (!(this.world.getBlockState(framePos).getBlock() == this.world.getBlockState(framePos).getBlock())) {
-                    this.height = 0;
-                    break;
-                }
-            }
-
-            if(this.height <= 21 && this.height >= 3) {
-                return this.height;
-            } else {
-                this.bottomLeft = null;
-                this.width = 0;
-                this.height = 0;
-                return 0;
-            }
-        }
-
-        protected boolean canConnect(BlockState pos) {
-            Block block = pos.getBlock();
-            return pos.isAir() || block == this.portal;
-        }
-
-        public boolean isValid() {
-            return this.bottomLeft != null && this.width >= 2 && this.width <= 21 && this.height >= 3 && this.height <= 21;
-        }
-
-        public void createPortalBlocks() {
-            BlockState blockstate = this.portal.defaultBlockState().setValue(JBasePortalBlock.AXIS, this.axis);
-            assert this.bottomLeft != null;
-            BlockPos.betweenClosed(this.bottomLeft, this.bottomLeft.relative(Direction.UP, this.height - 1).relative(this.rightDir, this.width - 1)).forEach((pos) -> {
-                this.world.setBlock(pos, blockstate, 18);
-            });
-        }
-
-        private boolean isPortalCountValidForSize() {
-            return this.portalBlockCount >= this.width * this.height;
-        }
-
-        public boolean validatePortal() {
-            return this.isValid() && this.isPortalCountValidForSize();
-        }
+//        if(portal != null) {
+//            portal.createPortalBlocks();
+//            return true;
+//        } else {
+//            return false;
+//        }
+        return false;
     }
 }

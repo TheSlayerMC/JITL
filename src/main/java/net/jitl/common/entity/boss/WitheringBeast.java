@@ -25,6 +25,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.WitherSkull;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animation.AnimatableManager;
@@ -108,7 +109,9 @@ public class WitheringBeast extends JBossEntity implements RangedAttackMob {
         double d3 = pX - d0;
         double d4 = pY - d1;
         double d5 = pZ - d2;
-        WitherSkull witherskull = new WitherSkull(this.level(), this, d3, d4, d5);
+        Vec3 vec3 = new Vec3(d3, d4, d5);
+
+        WitherSkull witherskull = new WitherSkull(this.level(), this, vec3.normalize());
         witherskull.setOwner(this);
         if(pIsDangerous) {
             witherskull.setDangerous(true);

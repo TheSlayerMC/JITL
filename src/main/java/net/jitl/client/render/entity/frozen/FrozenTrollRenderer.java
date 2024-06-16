@@ -21,9 +21,9 @@ public class FrozenTrollRenderer extends MobRenderer<FrozenTrollEntity, FrozenTr
     public @NotNull ResourceLocation getTextureLocation(@NotNull FrozenTrollEntity entity) {
         boolean isAngry = entity.isAngry();
         if (isAngry) {
-            return new ResourceLocation(JITL.MODID, "textures/entity/frozen/frozen_troll_angry.png");
+            return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/entity/frozen/frozen_troll_angry.png");
         } else {
-            return new ResourceLocation(JITL.MODID, "textures/entity/frozen/frozen_troll_lookin_cute.png");
+            return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/entity/frozen/frozen_troll_lookin_cute.png");
         }
     }
 }

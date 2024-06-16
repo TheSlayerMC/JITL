@@ -61,7 +61,7 @@ public class JBoatRenderer extends EntityRenderer<JBoat> {
         matrixStack.mulPose(Axis.YP.rotationDegrees(90.0F));
         JBoatmodel.setupAnim(entity, partialTicks_, 0.0F, -0.1F, 0.0F, 0.0F);
         VertexConsumer vertexconsumer = buffer.getBuffer(JBoatmodel.renderType(resourcelocation));
-        JBoatmodel.renderToBuffer(matrixStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+        JBoatmodel.renderToBuffer(matrixStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY);
         if (!entity.isUnderWater()) {
             VertexConsumer v = buffer.getBuffer(RenderType.waterMask());
             JBoatmodel.waterPatch().render(matrixStack, v, packedLight, OverlayTexture.NO_OVERLAY);

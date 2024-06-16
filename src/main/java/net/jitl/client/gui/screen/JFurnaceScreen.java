@@ -12,7 +12,7 @@ import net.neoforged.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class JFurnaceScreen extends AbstractFurnaceScreen<JFurnaceMenu> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation("textures/gui/container/furnace.png");
+    private static final ResourceLocation TEXTURE = ResourceLocation.withDefaultNamespace("textures/gui/container/furnace.png");
 
     public JFurnaceScreen(JFurnaceMenu menu, Inventory playerInventory, Component title) {
         super(menu, new SmeltingRecipeBookComponent(), playerInventory, title, TEXTURE, TEXTURE, TEXTURE);

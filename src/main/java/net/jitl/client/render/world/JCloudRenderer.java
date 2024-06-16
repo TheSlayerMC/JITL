@@ -12,8 +12,11 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Matrix4f;
+
+import javax.annotation.Nullable;
 
 public class JCloudRenderer {
 
@@ -63,15 +66,13 @@ public class JCloudRenderer {
 
             if (this.generateClouds) {
                 this.generateClouds = false;
-                BufferBuilder bufferbuilder = Tesselator.getInstance().getBuilder();
                 if (this.cloudBuffer != null) {
                     this.cloudBuffer.close();
                 }
 
                 this.cloudBuffer = new VertexBuffer(VertexBuffer.Usage.STATIC);
-                BufferBuilder.RenderedBuffer buffer = this.buildClouds(bufferbuilder, d2, d3, d4, vector3d);
                 this.cloudBuffer.bind();
-                this.cloudBuffer.upload(buffer);
+                this.cloudBuffer.upload(this.buildClouds(Tesselator.getInstance(), d2, d3, d4, vector3d));
                 VertexBuffer.unbind();
             }
             RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
@@ -110,7 +111,7 @@ public class JCloudRenderer {
         }
     }
 
-    private BufferBuilder.RenderedBuffer buildClouds(BufferBuilder bufferIn, double cloudsX, double cloudsY, double cloudsZ, Vec3 cloudsColor) {
+    private MeshData buildClouds(Tesselator t, double cloudsX, double cloudsY, double cloudsZ, Vec3 cloudsColor) {
         float f3 = (float) Mth.floor(cloudsX) * 0.00390625F;
         float f4 = (float) Mth.floor(cloudsZ) * 0.00390625F;
         float f5 = (float) cloudsColor.x;
@@ -125,8 +126,8 @@ public class JCloudRenderer {
         float f14 = f5 * 0.8F;
         float f15 = f6 * 0.8F;
         float f16 = f7 * 0.8F;
+        BufferBuilder bufferIn = t.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR_NORMAL);
         RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
-        bufferIn.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR_NORMAL);
         float f17 = (float) Math.floor(cloudsY / 4.0D) * 4.0F;
         if (prevCloudsType == CloudStatus.FANCY) {
             for (int k = -3; k <= 4; ++k) {
@@ -134,52 +135,52 @@ public class JCloudRenderer {
                     float f18 = (float) (k * 8);
                     float f19 = (float) (l * 8);
                     if (f17 > -5.0F) {
-                        bufferIn.vertex((f18 + 0.0F), (f17 + 0.0F), (f19 + 8.0F)).uv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).color(f11, f12, f13, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
-                        bufferIn.vertex((f18 + 8.0F), (f17 + 0.0F), (f19 + 8.0F)).uv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).color(f11, f12, f13, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
-                        bufferIn.vertex((f18 + 8.0F), (f17 + 0.0F), (f19 + 0.0F)).uv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).color(f11, f12, f13, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
-                        bufferIn.vertex((f18 + 0.0F), (f17 + 0.0F), (f19 + 0.0F)).uv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).color(f11, f12, f13, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
+                        bufferIn.addVertex((f18 + 0.0F), (f17 + 0.0F), (f19 + 8.0F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f11, f12, f13, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
+                        bufferIn.addVertex((f18 + 8.0F), (f17 + 0.0F), (f19 + 8.0F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f11, f12, f13, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
+                        bufferIn.addVertex((f18 + 8.0F), (f17 + 0.0F), (f19 + 0.0F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f11, f12, f13, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
+                        bufferIn.addVertex((f18 + 0.0F), (f17 + 0.0F), (f19 + 0.0F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f11, f12, f13, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
                     }
 
                     if (f17 <= 5.0F) {
-                        bufferIn.vertex((f18 + 0.0F), (f17 + 4.0F - 9.765625E-4F), (f19 + 8.0F)).uv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, 1.0F, 0.0F).endVertex();
-                        bufferIn.vertex((f18 + 8.0F), (f17 + 4.0F - 9.765625E-4F), (f19 + 8.0F)).uv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, 1.0F, 0.0F).endVertex();
-                        bufferIn.vertex((f18 + 8.0F), (f17 + 4.0F - 9.765625E-4F), (f19 + 0.0F)).uv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, 1.0F, 0.0F).endVertex();
-                        bufferIn.vertex((f18 + 0.0F), (f17 + 4.0F - 9.765625E-4F), (f19 + 0.0F)).uv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, 1.0F, 0.0F).endVertex();
+                        bufferIn.addVertex((f18 + 0.0F), (f17 + 4.0F - 9.765625E-4F), (f19 + 8.0F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, 1.0F, 0.0F);
+                        bufferIn.addVertex((f18 + 8.0F), (f17 + 4.0F - 9.765625E-4F), (f19 + 8.0F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, 1.0F, 0.0F);
+                        bufferIn.addVertex((f18 + 8.0F), (f17 + 4.0F - 9.765625E-4F), (f19 + 0.0F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, 1.0F, 0.0F);
+                        bufferIn.addVertex((f18 + 0.0F), (f17 + 4.0F - 9.765625E-4F), (f19 + 0.0F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, 1.0F, 0.0F);
                     }
 
                     if (k > -1) {
                         for (int i1 = 0; i1 < 8; ++i1) {
-                            bufferIn.vertex((f18 + (float) i1 + 0.0F), (f17 + 0.0F), (f19 + 8.0F)).uv((f18 + (float) i1 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).color(f8, f9, f10, 0.8F).normal(-1.0F, 0.0F, 0.0F).endVertex();
-                            bufferIn.vertex((f18 + (float) i1 + 0.0F), (f17 + 4.0F), (f19 + 8.0F)).uv((f18 + (float) i1 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).color(f8, f9, f10, 0.8F).normal(-1.0F, 0.0F, 0.0F).endVertex();
-                            bufferIn.vertex((f18 + (float) i1 + 0.0F), (f17 + 4.0F), (f19 + 0.0F)).uv((f18 + (float) i1 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).color(f8, f9, f10, 0.8F).normal(-1.0F, 0.0F, 0.0F).endVertex();
-                            bufferIn.vertex((f18 + (float) i1 + 0.0F), (f17 + 0.0F), (f19 + 0.0F)).uv((f18 + (float) i1 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).color(f8, f9, f10, 0.8F).normal(-1.0F, 0.0F, 0.0F).endVertex();
+                            bufferIn.addVertex((f18 + (float) i1 + 0.0F), (f17 + 0.0F), (f19 + 8.0F)).setUv((f18 + (float) i1 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(-1.0F, 0.0F, 0.0F);
+                            bufferIn.addVertex((f18 + (float) i1 + 0.0F), (f17 + 4.0F), (f19 + 8.0F)).setUv((f18 + (float) i1 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(-1.0F, 0.0F, 0.0F);
+                            bufferIn.addVertex((f18 + (float) i1 + 0.0F), (f17 + 4.0F), (f19 + 0.0F)).setUv((f18 + (float) i1 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(-1.0F, 0.0F, 0.0F);
+                            bufferIn.addVertex((f18 + (float) i1 + 0.0F), (f17 + 0.0F), (f19 + 0.0F)).setUv((f18 + (float) i1 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(-1.0F, 0.0F, 0.0F);
                         }
                     }
 
                     if (k <= 1) {
                         for (int j2 = 0; j2 < 8; ++j2) {
-                            bufferIn.vertex((f18 + (float) j2 + 1.0F - 9.765625E-4F), (f17 + 0.0F), (f19 + 8.0F)).uv((f18 + (float) j2 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).color(f8, f9, f10, 0.8F).normal(1.0F, 0.0F, 0.0F).endVertex();
-                            bufferIn.vertex((f18 + (float) j2 + 1.0F - 9.765625E-4F), (f17 + 4.0F), (f19 + 8.0F)).uv((f18 + (float) j2 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).color(f8, f9, f10, 0.8F).normal(1.0F, 0.0F, 0.0F).endVertex();
-                            bufferIn.vertex((f18 + (float) j2 + 1.0F - 9.765625E-4F), (f17 + 4.0F), (f19 + 0.0F)).uv((f18 + (float) j2 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).color(f8, f9, f10, 0.8F).normal(1.0F, 0.0F, 0.0F).endVertex();
-                            bufferIn.vertex((f18 + (float) j2 + 1.0F - 9.765625E-4F), (f17 + 0.0F), (f19 + 0.0F)).uv((f18 + (float) j2 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).color(f8, f9, f10, 0.8F).normal(1.0F, 0.0F, 0.0F).endVertex();
+                            bufferIn.addVertex((f18 + (float) j2 + 1.0F - 9.765625E-4F), (f17 + 0.0F), (f19 + 8.0F)).setUv((f18 + (float) j2 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(1.0F, 0.0F, 0.0F);
+                            bufferIn.addVertex((f18 + (float) j2 + 1.0F - 9.765625E-4F), (f17 + 4.0F), (f19 + 8.0F)).setUv((f18 + (float) j2 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(1.0F, 0.0F, 0.0F);
+                            bufferIn.addVertex((f18 + (float) j2 + 1.0F - 9.765625E-4F), (f17 + 4.0F), (f19 + 0.0F)).setUv((f18 + (float) j2 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(1.0F, 0.0F, 0.0F);
+                            bufferIn.addVertex((f18 + (float) j2 + 1.0F - 9.765625E-4F), (f17 + 0.0F), (f19 + 0.0F)).setUv((f18 + (float) j2 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(1.0F, 0.0F, 0.0F);
                         }
                     }
 
                     if (l > -1) {
                         for (int k2 = 0; k2 < 8; ++k2) {
-                            bufferIn.vertex((f18 + 0.0F), (f17 + 4.0F), (f19 + (float) k2 + 0.0F)).uv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float) k2 + 0.5F) * 0.00390625F + f4).color(f14, f15, f16, 0.8F).normal(0.0F, 0.0F, -1.0F).endVertex();
-                            bufferIn.vertex((f18 + 8.0F), (f17 + 4.0F), (f19 + (float) k2 + 0.0F)).uv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float) k2 + 0.5F) * 0.00390625F + f4).color(f14, f15, f16, 0.8F).normal(0.0F, 0.0F, -1.0F).endVertex();
-                            bufferIn.vertex((f18 + 8.0F), (f17 + 0.0F), (f19 + (float) k2 + 0.0F)).uv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float) k2 + 0.5F) * 0.00390625F + f4).color(f14, f15, f16, 0.8F).normal(0.0F, 0.0F, -1.0F).endVertex();
-                            bufferIn.vertex((f18 + 0.0F), (f17 + 0.0F), (f19 + (float) k2 + 0.0F)).uv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float) k2 + 0.5F) * 0.00390625F + f4).color(f14, f15, f16, 0.8F).normal(0.0F, 0.0F, -1.0F).endVertex();
+                            bufferIn.addVertex((f18 + 0.0F), (f17 + 4.0F), (f19 + (float) k2 + 0.0F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float) k2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, -1.0F);
+                            bufferIn.addVertex((f18 + 8.0F), (f17 + 4.0F), (f19 + (float) k2 + 0.0F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float) k2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, -1.0F);
+                            bufferIn.addVertex((f18 + 8.0F), (f17 + 0.0F), (f19 + (float) k2 + 0.0F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float) k2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, -1.0F);
+                            bufferIn.addVertex((f18 + 0.0F), (f17 + 0.0F), (f19 + (float) k2 + 0.0F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float) k2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, -1.0F);
                         }
                     }
 
                     if (l <= 1) {
                         for (int l2 = 0; l2 < 8; ++l2) {
-                            bufferIn.vertex((f18 + 0.0F), (f17 + 4.0F), (f19 + (float) l2 + 1.0F - 9.765625E-4F)).uv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float) l2 + 0.5F) * 0.00390625F + f4).color(f14, f15, f16, 0.8F).normal(0.0F, 0.0F, 1.0F).endVertex();
-                            bufferIn.vertex((f18 + 8.0F), (f17 + 4.0F), (f19 + (float) l2 + 1.0F - 9.765625E-4F)).uv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float) l2 + 0.5F) * 0.00390625F + f4).color(f14, f15, f16, 0.8F).normal(0.0F, 0.0F, 1.0F).endVertex();
-                            bufferIn.vertex((f18 + 8.0F), (f17 + 0.0F), (f19 + (float) l2 + 1.0F - 9.765625E-4F)).uv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float) l2 + 0.5F) * 0.00390625F + f4).color(f14, f15, f16, 0.8F).normal(0.0F, 0.0F, 1.0F).endVertex();
-                            bufferIn.vertex((f18 + 0.0F), (f17 + 0.0F), (f19 + (float) l2 + 1.0F - 9.765625E-4F)).uv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float) l2 + 0.5F) * 0.00390625F + f4).color(f14, f15, f16, 0.8F).normal(0.0F, 0.0F, 1.0F).endVertex();
+                            bufferIn.addVertex((f18 + 0.0F), (f17 + 4.0F), (f19 + (float) l2 + 1.0F - 9.765625E-4F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float) l2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, 1.0F);
+                            bufferIn.addVertex((f18 + 8.0F), (f17 + 4.0F), (f19 + (float) l2 + 1.0F - 9.765625E-4F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float) l2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, 1.0F);
+                            bufferIn.addVertex((f18 + 8.0F), (f17 + 0.0F), (f19 + (float) l2 + 1.0F - 9.765625E-4F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float) l2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, 1.0F);
+                            bufferIn.addVertex((f18 + 0.0F), (f17 + 0.0F), (f19 + (float) l2 + 1.0F - 9.765625E-4F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float) l2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, 1.0F);
                         }
                     }
                 }
@@ -187,13 +188,13 @@ public class JCloudRenderer {
         } else {
             for (int l1 = -32; l1 < 32; l1 += 32) {
                 for (int i2 = -32; i2 < 32; i2 += 32) {
-                    bufferIn.vertex((l1), f17, (i2 + 32)).uv((float) (l1) * 0.00390625F + f3, (float) (i2 + 32) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
-                    bufferIn.vertex((l1 + 32), f17, (i2 + 32)).uv((float) (l1 + 32) * 0.00390625F + f3, (float) (i2 + 32) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
-                    bufferIn.vertex((l1 + 32), f17, (i2)).uv((float) (l1 + 32) * 0.00390625F + f3, (float) (i2) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
-                    bufferIn.vertex((l1), f17, (i2)).uv((float) (l1) * 0.00390625F + f3, (float) (i2) * 0.00390625F + f4).color(f5, f6, f7, 0.8F).normal(0.0F, -1.0F, 0.0F).endVertex();
+                    bufferIn.addVertex((l1), f17, (i2 + 32)).setUv((float) (l1) * 0.00390625F + f3, (float) (i2 + 32) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
+                    bufferIn.addVertex((l1 + 32), f17, (i2 + 32)).setUv((float) (l1 + 32) * 0.00390625F + f3, (float) (i2 + 32) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
+                    bufferIn.addVertex((l1 + 32), f17, (i2)).setUv((float) (l1 + 32) * 0.00390625F + f3, (float) (i2) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
+                    bufferIn.addVertex((l1), f17, (i2)).setUv((float) (l1) * 0.00390625F + f3, (float) (i2) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
                 }
             }
         }
-        return bufferIn.end();
+        return bufferIn.buildOrThrow();
     }
 }

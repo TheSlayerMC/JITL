@@ -185,7 +185,7 @@ public class GearAbilityHandler {
         if (item instanceof JGear) {
             ((JGear) item).getAbility().equip(entity, slot, event.getTo());
         }
-        if(slot.getType() == EquipmentSlot.Type.ARMOR) {
+        if(slot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR) {
             PlayerArmor armor = event.getEntity().getData(JDataAttachments.PLAYER_ARMOR);
             armor.setArmor(entity.getArmorSlots().iterator());
         }

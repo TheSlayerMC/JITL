@@ -133,17 +133,12 @@ public class BossCrystal extends Mob implements GeoEntity {
     }
 
     @Override
-    public @NotNull Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return new ClientboundAddEntityPacket(this);
-    }
-
-    @Override
     public boolean canCollideWith(Entity e) {
         return false;
     }
 
     @Override
-    public boolean canBeLeashed(Player player) {
+    public boolean canBeLeashed() {
         return false;
     }
 

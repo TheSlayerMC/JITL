@@ -67,15 +67,15 @@ public class ModelPropertyRegistry {
     }
 
     public static void registerBow(Item item){
-        ItemProperties.register(item, new ResourceLocation("pull"), (stack, level, entity, i) -> {
+        ItemProperties.register(item, ResourceLocation.withDefaultNamespace("pull"), (stack, level, entity, i) -> {
             if (entity == null) {
                 return 0.0F;
             } else {
-                return entity.getUseItem() != stack ? 0.0F : ((stack.getUseDuration() - entity.getUseItemRemainingTicks()) / 20.0F)
-                        * (JBowItem.DEFAULT_DURATION / stack.getUseDuration());
+                return entity.getUseItem() != stack ? 0.0F : ((stack.getUseDuration(entity) - entity.getUseItemRemainingTicks()) / 20.0F)
+                        * (JBowItem.DEFAULT_DURATION / stack.getUseDuration(entity));
             }
         });
-        ItemProperties.register(item, new ResourceLocation("pulling"), (stack, level, entity, i) ->
+        ItemProperties.register(item, ResourceLocation.withDefaultNamespace("pulling"), (stack, level, entity, i) ->
                 entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
     }
 }

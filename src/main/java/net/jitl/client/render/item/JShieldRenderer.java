@@ -32,7 +32,7 @@ public class JShieldRenderer extends BlockEntityWithoutLevelRenderer {
             matrixStack.pushPose();
             matrixStack.scale(1.0F, -1.0F, -1.0F);
             VertexConsumer builder = buffer.getBuffer(RenderType.entityCutout(((JShieldItem) item).texture));
-            this.model.renderToBuffer(matrixStack, builder, combinedLight, combinedOverlay, 1.0F, 1.0F, 1.0F, 1.0F);
+            this.model.renderToBuffer(matrixStack, builder, combinedLight, combinedOverlay, 1);
             matrixStack.popPose();
         }
     }

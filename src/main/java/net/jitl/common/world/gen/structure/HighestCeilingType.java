@@ -11,9 +11,11 @@ import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
+import net.minecraft.world.level.levelgen.structure.pools.DimensionPadding;
 import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup;
+import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
 
 import java.util.Optional;
 
@@ -75,7 +77,9 @@ public final class HighestCeilingType extends Structure {
                         false,
                         Optional.empty(),
                         this.maxDistanceFromCenter,
-                        PoolAliasLookup.EMPTY);
+                        PoolAliasLookup.EMPTY,
+                        DimensionPadding.ZERO,
+                        LiquidSettings.APPLY_WATERLOGGING);
 
         return structurePiecesGenerator;
     }

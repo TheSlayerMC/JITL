@@ -22,9 +22,9 @@ import org.jetbrains.annotations.NotNull;
 public class PiercerItem extends JItem {
     protected Function3<Level, LivingEntity, ItemStack, PiercerEntity> projectileFactory;
 
-    public PiercerItem(Properties properties, Function3<Level, LivingEntity, ItemStack, PiercerEntity> projectileFactory) {
+    public PiercerItem(Properties properties, int maxBounces, float damage) {
         super(properties);
-        this.projectileFactory = projectileFactory;
+        this.projectileFactory = (world, owner, stack) -> new PiercerEntity(owner, world, stack, maxBounces, damage, new ItemStack(this));
     }
 
     @Override
@@ -34,30 +34,30 @@ public class PiercerItem extends JItem {
         if (!worldIn.isClientSide()) {
             PiercerEntity entity = projectileFactory.apply(worldIn, playerIn, stack);
 
-            int sharpnessLevel = EnchantmentHelper.getEnchantmentLevel(Enchantments.SHARPNESS, playerIn);
-            if (sharpnessLevel > 0) {
-                entity.setBaseDamage(entity.getBaseDamage() + (double) sharpnessLevel * 0.5D + 0.5D);
-            }
-
-            int lightweightLevel = EnchantmentHelper.getEnchantmentLevel(JEnchantments.LIGHTWEIGHT.get(), playerIn);
-            if (lightweightLevel > 0) {
-                entity.setVelocityMultiplier(lightweightLevel);
-            }
-
-            double ambitLevel = EnchantmentHelper.getEnchantmentLevel(JEnchantments.AMBIT.get(), playerIn);
-            if (ambitLevel > 0) {
-                entity.setRangeAddend(ambitLevel * 4);
-            }
-
-            int scorchingLevel = EnchantmentHelper.getEnchantmentLevel(JEnchantments.SCORCHING.get(), playerIn);
-            if (scorchingLevel > 0) {
-                entity.setFlameAddend(scorchingLevel);
-            }
-
-            int faithfulLevel = EnchantmentHelper.getEnchantmentLevel(JEnchantments.FAITHFUL.get(), playerIn);
-            if (faithfulLevel > 0) {
-                entity.setFaithfulLevel(faithfulLevel);
-            }
+//            int sharpnessLevel = EnchantmentHelper.getEnchantmentLevel(Enchantments.SHARPNESS, playerIn);
+//            if (sharpnessLevel > 0) {
+//                entity.setBaseDamage(entity.getBaseDamage() + (double) sharpnessLevel * 0.5D + 0.5D);
+//            }
+//
+//            int lightweightLevel = EnchantmentHelper.getEnchantmentLevel(JEnchantments.LIGHTWEIGHT.get(), playerIn);
+//            if (lightweightLevel > 0) {
+//                entity.setVelocityMultiplier(lightweightLevel);
+//            }
+//
+//            double ambitLevel = EnchantmentHelper.getEnchantmentLevel(JEnchantments.AMBIT.get(), playerIn);
+//            if (ambitLevel > 0) {
+//                entity.setRangeAddend(ambitLevel * 4);
+//            }
+//
+//            int scorchingLevel = EnchantmentHelper.getEnchantmentLevel(JEnchantments.SCORCHING.get(), playerIn);
+//            if (scorchingLevel > 0) {
+//                entity.setFlameAddend(scorchingLevel);
+//            }
+//
+//            int faithfulLevel = EnchantmentHelper.getEnchantmentLevel(JEnchantments.FAITHFUL.get(), playerIn);
+//            if (faithfulLevel > 0) {
+//                entity.setFaithfulLevel(faithfulLevel);
+//            }//TODO
 
             entity.setPos(playerIn.getX(), playerIn.getEyeY(), playerIn.getZ());
             entity.shootFromRotation(playerIn, playerIn.getXRot(), playerIn.getYRot(), 0.0F, 1.5F, 1.0F);
@@ -82,14 +82,14 @@ public class PiercerItem extends JItem {
         return true;
     }
 
-    @Override
-    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        return enchantment == Enchantments.MENDING ||
-                enchantment == Enchantments.UNBREAKING ||
-                enchantment == Enchantments.SHARPNESS ||
-                enchantment == JEnchantments.LIGHTWEIGHT.get() ||
-                enchantment == JEnchantments.AMBIT.get() ||
-                enchantment == JEnchantments.FAITHFUL.get() ||
-                enchantment == JEnchantments.SCORCHING.get();
-    }
+//    @Override
+//    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+//        return enchantment == Enchantments.MENDING ||
+//                enchantment == Enchantments.UNBREAKING ||
+//                enchantment == Enchantments.SHARPNESS ||
+//                enchantment == JEnchantments.LIGHTWEIGHT.get() ||
+//                enchantment == JEnchantments.AMBIT.get() ||
+//                enchantment == JEnchantments.FAITHFUL.get() ||
+//                enchantment == JEnchantments.SCORCHING.get();
+//    }TODO
 }

@@ -20,19 +20,12 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.border.WorldBorder;
-import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.portal.PortalInfo;
-import net.minecraft.world.level.portal.PortalShape;
-import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.common.util.ITeleporter;
 
-import javax.annotation.Nullable;
 import java.util.Comparator;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class BaseTeleporter implements ITeleporter {
+public class BaseTeleporter {
 
     protected final ServerLevel level;
     protected final Block portal_block;
@@ -173,38 +166,6 @@ public class BaseTeleporter implements ITeleporter {
         return true;
     }
 
-    @Nullable
-    @Override
-    public PortalInfo getPortalInfo(Entity entity, ServerLevel destWorld, Function<ServerLevel, PortalInfo> defaultPortalInfo) {
-        boolean destinationIsDim = destWorld.dimension() == destination;
-        if (entity.level().dimension() != destination && !destinationIsDim) {
-            return null;
-        } else {
-            WorldBorder border = destWorld.getWorldBorder();
-            double minX = Math.max(-2.9999872E7D, border.getMinX() + 16.0D);
-            double minZ = Math.max(-2.9999872E7D, border.getMinZ() + 16.0D);
-            double maxX = Math.min(2.9999872E7D, border.getMaxX() - 16.0D);
-            double maxZ = Math.min(2.9999872E7D, border.getMaxZ() - 16.0D);
-            double coordinateDifference = DimensionType.getTeleportationScale(entity.level().dimensionType(), destWorld.dimensionType());
-            BlockPos blockpos = BlockPos.containing(Mth.clamp(entity.getX() * coordinateDifference, minX, maxX), entity.getY(), Mth.clamp(entity.getZ() * coordinateDifference, minZ, maxZ));
-            return this.getOrMakePortal(entity, blockpos).map((result) -> {
-                BlockState blockstate = entity.level().getBlockState(entity.portalEntrancePos);
-                Direction.Axis axis;
-                Vec3 vector3d;
-                if (blockstate.hasProperty(BlockStateProperties.HORIZONTAL_AXIS)) {
-                    axis = blockstate.getValue(BlockStateProperties.HORIZONTAL_AXIS);
-                    BlockUtil.FoundRectangle rectangle = BlockUtil.getLargestRectangleAround(entity.portalEntrancePos, axis, 21, Direction.Axis.Y, 21, (pos) -> entity.level().getBlockState(pos) == blockstate);
-                    vector3d = entity.getRelativePortalPosition(axis, rectangle);
-                } else {
-                    axis = Direction.Axis.X;
-                    vector3d = new Vec3(0.5D, 0.0D, 0.0D);
-                }
-
-                return PortalShape.createPortalInfo(destWorld, result, axis, vector3d, entity, entity.getDeltaMovement(), entity.getYRot(), entity.getXRot());
-            }).orElse(null);
-        }
-    }
-
     protected Optional<BlockUtil.FoundRectangle> getOrMakePortal(Entity entity, BlockPos pos) {
         Optional<BlockUtil.FoundRectangle> existingPortal = this.getExistingPortal(pos);
         if (existingPortal.isPresent()) {
@@ -213,10 +174,5 @@ public class BaseTeleporter implements ITeleporter {
             Direction.Axis portalAxis = this.level.getBlockState(entity.blockPosition()).getOptionalValue(JBasePortalBlock.AXIS).orElse(Direction.Axis.X);
             return this.makePortal(pos, portalAxis);
         }
-    }
-
-    @Override
-    public boolean playTeleportSound(ServerPlayer player, ServerLevel sourceWorld, ServerLevel destWorld) {
-        return true;
     }
 }

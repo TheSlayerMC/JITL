@@ -171,11 +171,13 @@ public class MiniGhast extends JFlyingEntity {
                         double d2 = livingentity.getX() - (this.ghast.getX() + vec3.x * 4.0D);
                         double d3 = livingentity.getY(0.5D) - (0.5D + this.ghast.getY(0.5D));
                         double d4 = livingentity.getZ() - (this.ghast.getZ() + vec3.z * 4.0D);
+                        Vec3 vec31 = new Vec3(d2, d3, d4);
+
                         if (!this.ghast.isSilent()) {
                             level.levelEvent((Player)null, 1016, this.ghast.blockPosition(), 0);
                         }
 
-                        SmallFireball fireball = new SmallFireball(level, this.ghast, d2, d3, d4);
+                        SmallFireball fireball = new SmallFireball(level, this.ghast, vec31.normalize());
                         fireball.setPos(this.ghast.getX() + vec3.x * 4.0D, this.ghast.getY(0.5D) + 0.5D, fireball.getZ() + vec3.z * 4.0D);
                         level.addFreshEntity(fireball);
                         this.chargeTime = -40;

@@ -1,14 +1,20 @@
 package net.jitl.core.init.internal;
 
 import net.jitl.core.init.JITL;
+import net.minecraft.Util;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.item.JukeboxSong;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class JSounds {
 
     public static final DeferredRegister<SoundEvent> REGISTRY = DeferredRegister.create(Registries.SOUND_EVENT, JITL.MODID);
+    public static final DeferredRegister<JukeboxSong> JUKEBOX_SONG = DeferredRegister.create(Registries.JUKEBOX_SONG, JITL.MODID);
 
     public static final DeferredHolder<SoundEvent, SoundEvent> ICE_CRYSTAL_BREAK = registerSound("block.ice_crystal.break");
     public static final DeferredHolder<SoundEvent, SoundEvent> TOAST = registerSound("music.toast");
@@ -206,11 +212,24 @@ public class JSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> OBELISK_IDLE = registerSound("misc.obelisk_idle");
     public static final DeferredHolder<SoundEvent, SoundEvent> OBELISK_OPEN = registerSound("misc.obelisk_open");
 
+    public static final DeferredHolder<JukeboxSong, JukeboxSong> UNDERWATER_WORLD_JUKEBOX = registerJukeboxSound("record.underwater_world", UNDERWATER_WORLD, 132);
+    public static final DeferredHolder<JukeboxSong, JukeboxSong> GOLD_PLAINS_JUKEBOX = registerJukeboxSound("record.gold_plains", GOLD_PLAINS_MUSIC, 132);
+    public static final DeferredHolder<JukeboxSong, JukeboxSong> EUCA_DISC_1_JUKEBOX = registerJukeboxSound("record.euca_1", EUCA_DISC_1, 56);
+    public static final DeferredHolder<JukeboxSong, JukeboxSong> EUCA_DISC_2_JUKEBOX = registerJukeboxSound("record.euca_2", EUCA_DISC_2, 60);
+    public static final DeferredHolder<JukeboxSong, JukeboxSong> EUCA_DISC_3_JUKEBOX = registerJukeboxSound("record.euca_3", EUCA_DISC_3, 60);
+    public static final DeferredHolder<JukeboxSong, JukeboxSong> FROZEN_DISC_1_JUKEBOX = registerJukeboxSound("record.frozen_1", FROZEN_DISC_1, 174);
+    public static final DeferredHolder<JukeboxSong, JukeboxSong> BOIL_DISC_1_JUKEBOX = registerJukeboxSound("record.boil_1", BOIL_DISC_1, 157);
+
     private static DeferredHolder<SoundEvent, SoundEvent> registerSound(String name) {
         return REGISTRY.register(name, () -> createSoundEvent(name));
     }
 
     private static SoundEvent createSoundEvent(String soundPath) {
         return SoundEvent.createVariableRangeEvent(JITL.rl(soundPath));
+    }
+
+    private static DeferredHolder<JukeboxSong, JukeboxSong> registerJukeboxSound(String name, DeferredHolder<SoundEvent, SoundEvent> song, int seconds) {
+        int output = 13;
+        return JUKEBOX_SONG.register(name, () -> new JukeboxSong(song, Component.translatable(Util.makeDescriptionId("jukebox_song", song.getKey().location())), seconds, output));
     }
 }

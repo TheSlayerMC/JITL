@@ -77,11 +77,6 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
     }
 
     @Override
-    public @NotNull Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return new ClientboundAddEntityPacket(this);
-    }
-
-    @Override
     public void tick() {
         super.tick();
         if(isActivated()) {
@@ -146,7 +141,7 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
     }
 
     @Override
-    public boolean canBeLeashed(Player player) {
+    public boolean canBeLeashed() {
         return false;
     }
 

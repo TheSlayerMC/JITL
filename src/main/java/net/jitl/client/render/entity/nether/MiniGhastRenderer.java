@@ -21,6 +21,6 @@ public class MiniGhastRenderer<T extends LivingEntity & GeoEntity> extends GeoEn
     public @NotNull ResourceLocation getTextureLocation(@NotNull T entity) {
         MiniGhast e = (MiniGhast)entity;
         String name = e.isCharging() ? "mini_ghast_shooting" : "mini_ghast";
-        return new ResourceLocation(JITL.MODID, "textures/entity/nether/" + name + ".png");
+        return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/entity/nether/" + name + ".png");
     }
 }

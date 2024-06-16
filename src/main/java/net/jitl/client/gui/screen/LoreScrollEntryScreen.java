@@ -199,7 +199,7 @@ public class LoreScrollEntryScreen extends Screen {
         this.applyScrollLimits();
 
         Tesselator tess = Tesselator.getInstance();
-        BufferBuilder worldr = tess.getBuilder();
+        BufferBuilder worldr = tess.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR_NORMAL);
 
         double scaleW = minecraft.getWindow().getScreenWidth() / (double) minecraft.getWindow().getGuiScaledWidth();
         double scaleH = minecraft.getWindow().getScreenHeight() / (double) minecraft.getWindow().getGuiScaledHeight();
@@ -253,32 +253,30 @@ public class LoreScrollEntryScreen extends Screen {
             red = DrawHelper.getRed(SLIDER_PATH_COLOR);
             green = DrawHelper.getGreen(SLIDER_PATH_COLOR);
             blue = DrawHelper.getBlue(SLIDER_PATH_COLOR);
-            worldr.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
-            worldr.vertex(scrollButtonLeftTop, this.bottom, 0.0D).uv(0.0F, 1.0F).color(red, green, blue, alpha).endVertex();
-            worldr.vertex(scrollButtonRightTop, this.bottom, 0.0D).uv(1.0F, 1.0F).color(red, green, blue, alpha).endVertex();
-            worldr.vertex(scrollButtonRightTop, this.top, 0.0D).uv(1.0F, 0.0F).color(red, green, blue, alpha).endVertex();
-            worldr.vertex(scrollButtonLeftTop, this.top, 0.0D).uv(0.0F, 0.0F).color(red, green, blue, alpha).endVertex();
+            worldr.addVertex(scrollButtonLeftTop, this.bottom, 0.0F).setUv(0.0F, 1.0F).setColor(red, green, blue, alpha);
+            worldr.addVertex(scrollButtonRightTop, this.bottom, 0.0F).setUv(1.0F, 1.0F).setColor(red, green, blue, alpha);
+            worldr.addVertex(scrollButtonRightTop, this.top, 0.0F).setUv(1.0F, 0.0F).setColor(red, green, blue, alpha);
+            worldr.addVertex(scrollButtonLeftTop, this.top, 0.0F).setUv(0.0F, 0.0F).setColor(red, green, blue, alpha);
 
             // Dark slider part
             alpha = DrawHelper.getAlpha(SLIDER_DARK_COLOR);
             red = DrawHelper.getRed(SLIDER_DARK_COLOR);
             green = DrawHelper.getGreen(SLIDER_DARK_COLOR);
             blue = DrawHelper.getBlue(SLIDER_DARK_COLOR);
-            worldr.vertex(scrollButtonLeftTop, barTop + height, 0.0D).uv(0.0F, 1.0F).color(red, green, blue, alpha).endVertex();
-            worldr.vertex(scrollButtonRightTop, barTop + height, 0.0D).uv(1.0F, 1.0F).color(red, green, blue, alpha).endVertex();
-            worldr.vertex(scrollButtonRightTop, barTop, 0.0D).uv(1.0F, 0.0F).color(red, green, blue, alpha).endVertex();
-            worldr.vertex(scrollButtonLeftTop, barTop, 0.0D).uv(0.0F, 0.0F).color(red, green, blue, alpha).endVertex();
+            worldr.addVertex(scrollButtonLeftTop, barTop + height, 0.0F).setUv(0.0F, 1.0F).setColor(red, green, blue, alpha);
+            worldr.addVertex(scrollButtonRightTop, barTop + height, 0.0F).setUv(1.0F, 1.0F).setColor(red, green, blue, alpha);
+            worldr.addVertex(scrollButtonRightTop, barTop, 0.0F).setUv(1.0F, 0.0F).setColor(red, green, blue, alpha);
+            worldr.addVertex(scrollButtonLeftTop, barTop, 0.0F).setUv(0.0F, 0.0F).setColor(red, green, blue, alpha);
 
             // Light slider part
             alpha = DrawHelper.getAlpha(SLIDER_LIGHT_COLOR);
             red = DrawHelper.getRed(SLIDER_LIGHT_COLOR);
             green = DrawHelper.getGreen(SLIDER_LIGHT_COLOR);
             blue = DrawHelper.getBlue(SLIDER_LIGHT_COLOR);
-            worldr.vertex(scrollButtonLeftTop, barTop + height - 1, 0.0D).uv(0.0F, 1.0F).color(red, green, blue, alpha).endVertex();
-            worldr.vertex(scrollButtonRightTop - 1, barTop + height - 1, 0.0D).uv(1.0F, 1.0F).color(red, green, blue, alpha).endVertex();
-            worldr.vertex(scrollButtonRightTop - 1, barTop, 0.0D).uv(1.0F, 0.0F).color(red, green, blue, alpha).endVertex();
-            worldr.vertex(scrollButtonLeftTop, barTop, 0.0D).uv(0.0F, 0.0F).color(red, green, blue, alpha).endVertex();
-            tess.end();
+            worldr.addVertex(scrollButtonLeftTop, barTop + height - 1, 0.0F).setUv(0.0F, 1.0F).setColor(red, green, blue, alpha);
+            worldr.addVertex(scrollButtonRightTop - 1, barTop + height - 1, 0.0F).setUv(1.0F, 1.0F).setColor(red, green, blue, alpha);
+            worldr.addVertex(scrollButtonRightTop - 1, barTop, 0.0F).setUv(1.0F, 0.0F).setColor(red, green, blue, alpha);
+            worldr.addVertex(scrollButtonLeftTop, barTop, 0.0F).setUv(0.0F, 0.0F).setColor(red, green, blue, alpha);
 
             RenderSystem.disableBlend();
         }

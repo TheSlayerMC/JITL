@@ -29,6 +29,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.NotNull;
@@ -447,61 +448,61 @@ public class JItems {
     public static final DeferredItem<Item> CORBA_BOAT = registerNormalItem("corba_boat", "Corba Boat", () -> new JBoatItem(JBoat.Type.CORBA));
 
     public static final DeferredItem<Item> EUCA_PIERCER = registerToolItem("euca_piercer", "Euca Piercer", () ->
-            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+            new PiercerItem(itemProps().durability(50), 3, 10.0F));
 
     public static final DeferredItem<Item> SUNSET_PIERCER = registerToolItem("sunset_piercer", "Sunset Piercer", () ->
-            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+            new PiercerItem(itemProps().durability(50),  3, 10.0F));
 
     public static final DeferredItem<Item> NETHIC_PIERCER = registerToolItem("nethic_piercer", "Nethic Piercer", () ->
-            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+            new PiercerItem(itemProps().durability(50),  3, 10.0F));
 
     public static final DeferredItem<Item> FROSTBITTEN_PIERCER = registerToolItem("frostbitten_piercer", "Frostbitten Piercer", () ->
-            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+            new PiercerItem(itemProps().durability(50),  3, 10.0F));
 
     public static final DeferredItem<Item> FROZEN_PIERCER = registerToolItem("frozen_piercer", "Frozen Piercer", () ->
-            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+            new PiercerItem(itemProps().durability(50),  3, 10.0F));
 
     public static final DeferredItem<Item> FROSTY_PIERCER = registerToolItem("frosty_piercer", "Frosty Piercer", () ->
-            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+            new PiercerItem(itemProps().durability(50), 3, 10.0F));
 
     public static final DeferredItem<Item> BOILING_PIERCER = registerToolItem("boiling_piercer", "Boiling Piercer", () ->
-            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+            new PiercerItem(itemProps().durability(50),  3, 10.0F));
 
     public static final DeferredItem<Item> DEPTHS_PIERCER = registerToolItem("depths_piercer", "Depths Piercer", () ->
-            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+            new PiercerItem(itemProps().durability(50),  3, 10.0F));
 
     public static final DeferredItem<Item> CORBA_PIERCER = registerToolItem("corba_piercer", "Corba Piercer", () ->
-            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+            new PiercerItem(itemProps().durability(50),  3, 10.0F));
 
     public static final DeferredItem<Item> SKY_PIERCER = registerToolItem("sky_piercer", "Sky Piercer", () ->
-            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+            new PiercerItem(itemProps().durability(50),  3, 10.0F));
 
     public static final DeferredItem<Item> CLOUD_PIERCER = registerToolItem("cloud_piercer", "Cloud Piercer", () ->
-            new PiercerItem(itemProps().durability(50), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 10.0F)));
+            new PiercerItem(itemProps().durability(50),  3, 10.0F));
 
     public static final DeferredItem<Item> PIERCER = registerToolItem("piercer", "Piercer", () ->
-            new PiercerItem(itemProps().durability(128), (worldIn, owner, stack) -> new PiercerEntity(owner, worldIn, stack, 3, 3.0F)));
+            new PiercerItem(itemProps().durability(128),  3, 3.0F));
 
     public static final DeferredItem<Item> MOLTEN_KNIFE = registerToolItem("molten_knife", "Molten Knife", () ->
-            new KnifeItem(itemProps(), (worldIn, owner, stack) ->  new KnifeEntity(worldIn, owner, stack, 4.0F)));
+            new KnifeItem(itemProps(),  4.0F));
 
     public static final DeferredItem<Item> SIZZLING_KNIFE = registerToolItem("sizzling_knife", "Sizzling Knife", () ->
-            new KnifeItem(itemProps(), (worldIn, owner, stack) ->  new KnifeEntity(worldIn, owner, stack, 4.0F)));
+            new KnifeItem(itemProps(), 4.0F));
 
     public static final DeferredItem<Item> IRON_THROWING_KNIFE = registerToolItem("iron_throwing_knife", "Iron Throwing Knife", () ->
-            new KnifeItem(itemProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
+            new KnifeItem(itemProps(),  3.0F));
 
     public static final DeferredItem<Item> ROYAL_KNIFE = registerToolItem("royal_knife", "Royal Knife", () ->
-            new KnifeItem(itemProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
+            new KnifeItem(itemProps(),  3.0F));
 
     public static final DeferredItem<Item> AQUATIC_KNIFE = registerToolItem("aquatic_knife", "Aquatic Knife", () ->
-            new KnifeItem(itemProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
+            new KnifeItem(itemProps(),  3.0F));
 
     public static final DeferredItem<Item> CHARRED_KNIFE = registerToolItem("charred_knife", "Charred Knife", () ->
-            new KnifeItem(itemProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
+            new KnifeItem(itemProps(),  3.0F));
 
     public static final DeferredItem<Item> BLOOD_KNIFE = registerToolItem("blood_knife", "Blood Knife", () ->
-            new KnifeItem(itemProps(), (worldIn, owner, stack) -> new KnifeEntity(worldIn, owner, stack, 3.0F)));
+            new KnifeItem(itemProps(),  3.0F));
 
     public static final DeferredItem<Item> MUD_BALL = registerNormalItem("mud_ball", "Mud Ball", () -> new ThrowableItem(itemProps(),
             (world, thrower) -> new FloroMudEntity(JEntities.FLORO_MUD_TYPE.get(), world, thrower, 0.0F)).setSound(() -> SoundEvents.SNOWBALL_THROW));
@@ -512,11 +513,9 @@ public class JItems {
     public static final DeferredItem<Item> FIRE_BOMB = registerNormalItem("fire_bomb", "Fire Bomb", () -> new ThrowableItem(itemProps(),
             (w, thrower) -> new FireBombEntity(JEntities.FIRE_BOMB_TYPE.get(), w, thrower, 6F)).setSound(() -> SoundEvents.SNOWBALL_THROW));
 
-    public static final DeferredItem<Item> MAGIC_BOMB = registerNormalItem("magic_bomb", "Magic Bomb", () -> new ThrowableItem(itemProps(),
-            (w, thrower) -> new MagicBombEntity(w, thrower, 1F)).setSound(() -> SoundEvents.SNOWBALL_THROW));
+    public static final DeferredItem<Item> MAGIC_BOMB = registerNormalItem("magic_bomb", "Magic Bomb", () -> new MagicBombItem(itemProps()).setSound(() -> SoundEvents.SNOWBALL_THROW));
 
-    public static final DeferredItem<Item> MAGIC_POT_OF_DESTRUCTION = registerNormalItem("magic_pot_of_destruction", "Magic Pot of Destruction", () -> new ThrowableItem(itemProps().durability(128),
-            (worldIn, owner) -> new MagicPotEntity(owner, worldIn, 3, 4.0F)));
+    public static final DeferredItem<Item> MAGIC_POT_OF_DESTRUCTION = registerNormalItem("magic_pot_of_destruction", "Magic Pot of Destruction", () -> new MagicPotItem(itemProps().durability(128)));
 
     public static final DeferredItem<Item> ESSENCE_ARROW = registerNormalItem("essence_arrow", "Essence Arrow", EssenceArrowItem::new);
 
@@ -677,13 +676,13 @@ public class JItems {
 
     public static final DeferredItem<Item> RECIPE_BOOK = registerNormalItem("recipe_book", "Recipe Book", JRecipeBook::new);
 
-    public static final DeferredItem<Item> UNDERWATER_WORLD_RECORD = registerRecord("underwater_world_record", "Blue Water", JSounds.UNDERWATER_WORLD, 2640);
-    public static final DeferredItem<Item> GOLD_PLAINS_RECORD = registerRecord("gold_plains_record", "Gold Plains", JSounds.GOLD_PLAINS_MUSIC, 1120);
-    public static final DeferredItem<Item> EUCA_RECORD_1 = registerRecord("euca_record_1", "Euca", JSounds.EUCA_DISC_1, 1200);
-    public static final DeferredItem<Item> EUCA_RECORD_2 = registerRecord("euca_record_2", "Euca", JSounds.EUCA_DISC_2, 620);
-    public static final DeferredItem<Item> EUCA_RECORD_3 = registerRecord("euca_record_3", "Euca", JSounds.EUCA_DISC_3, 3500);
-    public static final DeferredItem<Item> FROZEN_RECORD_1 = registerRecord("frozen_record_1", "Frozen", JSounds.FROZEN_DISC_1, 3480);
-    public static final DeferredItem<Item> BOIL_RECORD_1 = registerRecord("boil_record_1", "Sizzle Record", JSounds.BOIL_DISC_1, 3140);
+    public static final DeferredItem<Item> UNDERWATER_WORLD_RECORD = registerRecord("underwater_world_record", "Blue Water", JSounds.UNDERWATER_WORLD_JUKEBOX);
+    public static final DeferredItem<Item> GOLD_PLAINS_RECORD = registerRecord("gold_plains_record", "Gold Plains", JSounds.GOLD_PLAINS_JUKEBOX);
+    public static final DeferredItem<Item> EUCA_RECORD_1 = registerRecord("euca_record_1", "Euca", JSounds.EUCA_DISC_1_JUKEBOX);
+    public static final DeferredItem<Item> EUCA_RECORD_2 = registerRecord("euca_record_2", "Euca", JSounds.EUCA_DISC_2_JUKEBOX);
+    public static final DeferredItem<Item> EUCA_RECORD_3 = registerRecord("euca_record_3", "Euca", JSounds.EUCA_DISC_3_JUKEBOX);
+    public static final DeferredItem<Item> FROZEN_RECORD_1 = registerRecord("frozen_record_1", "Frozen", JSounds.FROZEN_DISC_1_JUKEBOX);
+    public static final DeferredItem<Item> BOIL_RECORD_1 = registerRecord("boil_record_1", "Sizzle Record", JSounds.BOIL_DISC_1_JUKEBOX);
 
     private static DeferredItem<Item> registerNormalItem(String name, String translatedName) {
         return register(name, translatedName, () -> new JItem(new Item.Properties()), ItemType.ITEM);
@@ -726,10 +725,10 @@ public class JItems {
         return register(name, translatedName, () -> new Item(new Item.Properties()), ItemType.ITEM);
     }
 
-    private static DeferredItem<Item> registerRecord(String name, String descTranslated, Supplier<SoundEvent> sound, int tickLengths) {
+    private static DeferredItem<Item> registerRecord(String name, String descTranslated, DeferredHolder<JukeboxSong, JukeboxSong> sound) {
         recordDescName.add("item.jitl." + name + ".desc");
         recordDescLangName.add(descTranslated);
-        return register(name, "Journey Record", () -> new RecordItem(4, sound, itemProps().stacksTo(1), tickLengths), ItemType.RECORD);
+        return register(name, "Journey Record", () -> new Item(itemProps().stacksTo(1).jukeboxPlayable(sound.getKey())), ItemType.RECORD);
     }
 
     public static DeferredItem<Item> register(String name, String translatedName, Supplier<Item> item, ItemType type) {

@@ -9,6 +9,7 @@ import net.jitl.core.config.JClientConfig;
 import net.jitl.core.config.enums.EssencePosition;
 import net.jitl.core.helper.IEssenceItem;
 import net.jitl.core.init.JITL;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.LayeredDraw;
@@ -29,12 +30,12 @@ public class EssenceBar implements LayeredDraw.Layer {
     private static float transparency;
     private static float burnoutTransparency;
 
-    private static final ResourceLocation UNDER_CROSSHAIR_TEXTURE = new ResourceLocation(JITL.MODID, "textures/gui/essence_under_crosshair.png");
-    private static final ResourceLocation OVER_EXP_TEXTURE = new ResourceLocation(JITL.MODID, "textures/gui/essence_over_exp.png");
-    private static final ResourceLocation ABOVE_HUNGER_TEXTURE = new ResourceLocation(JITL.MODID, "textures/gui/essence_over_hunger.png");
+    private static final ResourceLocation UNDER_CROSSHAIR_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/gui/essence_under_crosshair.png");
+    private static final ResourceLocation OVER_EXP_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/gui/essence_over_exp.png");
+    private static final ResourceLocation ABOVE_HUNGER_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/gui/essence_over_hunger.png");
 
     @Override
-    public void render(@NotNull GuiGraphics gui, float partialTick) {
+    public void render(@NotNull GuiGraphics gui, DeltaTracker tracker) {
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);

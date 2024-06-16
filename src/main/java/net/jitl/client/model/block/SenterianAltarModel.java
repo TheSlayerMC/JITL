@@ -8,21 +8,21 @@ import software.bernie.geckolib.model.DefaultedBlockGeoModel;
 public class SenterianAltarModel extends DefaultedBlockGeoModel<SenterianAltarTile> {
 
     public SenterianAltarModel() {
-        super(new ResourceLocation(JITL.MODID, "geo/senterian_altar"));
+        super(ResourceLocation.fromNamespaceAndPath(JITL.MODID, "geo/senterian_altar"));
     }
 
     @Override
     public ResourceLocation getModelResource(SenterianAltarTile object) {
-        return new ResourceLocation(JITL.MODID, "geo/senterian_altar.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "geo/senterian_altar.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(SenterianAltarTile object) {
-        return new ResourceLocation(JITL.MODID, "textures/models/block/senterian_altar.png");
+        return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/models/block/senterian_altar.png");
     }
 
     @Override
     public ResourceLocation getAnimationResource(SenterianAltarTile animatable) {
-        return new ResourceLocation(JITL.MODID, "animations/senterian_altar.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "animations/senterian_altar.animation.json");
     }
 }

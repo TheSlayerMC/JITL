@@ -26,7 +26,7 @@ public class JDamageSources {
     }
 
     private ResourceKey<DamageType> makeSource(String name) {
-        return ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(name));
+        return ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.withDefaultNamespace(name));
     }
 
     private DamageSource source(ResourceKey<DamageType> r) {

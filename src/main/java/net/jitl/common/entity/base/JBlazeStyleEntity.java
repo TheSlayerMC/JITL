@@ -206,7 +206,8 @@ public abstract class JBlazeStyleEntity extends JMonsterEntity {
                                 this.blaze.level().levelEvent(null, 1018, this.blaze.blockPosition(), 0);
                             }
                             for(int i = 0; i < 1; ++i) {
-                                SmallFireball smallfireball = new SmallFireball(this.blaze.level(), this.blaze, this.blaze.getRandom().triangle(d1, 2.297D * d4), d2, this.blaze.getRandom().triangle(d3, 2.297D * d4));
+                                Vec3 vec3 = new Vec3(this.blaze.getRandom().triangle(d1, 2.297 * d4), d2, this.blaze.getRandom().triangle(d3, 2.297 * d4));
+                                SmallFireball smallfireball = new SmallFireball(this.blaze.level(), this.blaze, vec3.normalize());
                                 smallfireball.setPos(smallfireball.getX(), this.blaze.getY(0.5D) + 0.5D, smallfireball.getZ());
                                 this.blaze.level().addFreshEntity(smallfireball);
                             }

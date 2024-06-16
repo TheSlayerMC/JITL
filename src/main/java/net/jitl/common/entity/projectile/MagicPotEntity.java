@@ -26,6 +26,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class MagicPotEntity extends AbstractArrow implements ItemSupplier {
@@ -42,8 +43,8 @@ public class MagicPotEntity extends AbstractArrow implements ItemSupplier {
     public int soundTickCount;
     private static final ItemStack DEFAULT_ARROW_STACK = new ItemStack(JItems.ESSENCE_ARROW.get());
 
-    public MagicPotEntity(LivingEntity shooter, Level worldIn, int maxBounces, float damage) {
-        super(JEntities.MAGIC_POT_TYPE.get(), shooter, worldIn, DEFAULT_ARROW_STACK);
+    public MagicPotEntity(LivingEntity shooter, Level worldIn, int maxBounces, float damage, @Nullable ItemStack weapon) {
+        super(JEntities.MAGIC_POT_TYPE.get(), shooter, worldIn, DEFAULT_ARROW_STACK, weapon);
         setStack(new ItemStack(JItems.MAGIC_POT_OF_DESTRUCTION.get()));
         this.setSoundEvent(JSounds.BOTTLE_PLUG.get());
         this.maxBounces = maxBounces;
@@ -51,7 +52,7 @@ public class MagicPotEntity extends AbstractArrow implements ItemSupplier {
     }
 
     public MagicPotEntity(EntityType<MagicPotEntity> eucaPiercerEntityEntityType, Level world) {
-        super(eucaPiercerEntityEntityType, world, DEFAULT_ARROW_STACK);
+        super(eucaPiercerEntityEntityType, world);
         this.setSoundEvent(JSounds.BOTTLE_PLUG.get());
     }
 
@@ -236,11 +237,6 @@ public class MagicPotEntity extends AbstractArrow implements ItemSupplier {
     public @NotNull ItemStack getItem() {
         ItemStack stack = getStack();
         return stack.isEmpty() ? new ItemStack(JItems.PIERCER.get()) : stack;
-    }
-
-    @Override
-    public @NotNull Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return new ClientboundAddEntityPacket(this);
     }
 
     @Override

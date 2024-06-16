@@ -446,7 +446,7 @@ public enum JToolTiers {
 
             return Registry.registerForHolder(
                     BuiltInRegistries.ARMOR_MATERIAL,
-                    new ResourceLocation(pName),
+                    ResourceLocation.withDefaultNamespace(pName),
                     new ArmorMaterial(enummap, pEnchantmentValue, pEquipSound, pRepairIngridient, pLayers, pToughness, pKnockbackResistance)
             );
         }

@@ -12,6 +12,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
@@ -27,6 +28,7 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
@@ -95,7 +97,11 @@ public class TowerGuardian extends JBossEntity {
                     this.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, blockstate).setPos(blockpos), this.getX() + (this.random.nextDouble() - 0.5D) * particleWidth, this.getY() + 0.1D, this.getZ() + (this.random.nextDouble() - 0.5D) * particleWidth, vec3.x * -4.0D, 1.5D, vec3.z * -4.0D);
                 }
             }
-            this.doEnchantDamageEffects(this, entity);
+            DamageSource damagesource = this.damageSources().mobAttack(this);
+
+            if (this.level() instanceof ServerLevel serverlevel) {
+                EnchantmentHelper.doPostAttackEffects(serverlevel, entity, damagesource);
+            }
         }
         this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
         return hurt;

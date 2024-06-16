@@ -17,17 +17,19 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nullable;
+
 public abstract class AbstractKnifeEntity extends AbstractArrow {
 
     private boolean dealtDamage;
     private static final ItemStack DEFAULT_ARROW_STACK = new ItemStack(JItems.ESSENCE_ARROW.get());
 
     public AbstractKnifeEntity(EntityType<? extends AbstractArrow> type, Level world) {
-        super(type, world, DEFAULT_ARROW_STACK);
+        super(type, world);
     }
 
-    public AbstractKnifeEntity(EntityType<? extends AbstractArrow> entityType, Level worldIn, LivingEntity player) {
-        super(entityType, player, worldIn, DEFAULT_ARROW_STACK);
+    public AbstractKnifeEntity(EntityType<? extends AbstractArrow> entityType, Level worldIn, LivingEntity player, @Nullable ItemStack weapon) {
+        super(entityType, player, worldIn, DEFAULT_ARROW_STACK, weapon);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -60,11 +62,6 @@ public abstract class AbstractKnifeEntity extends AbstractArrow {
         } else {
             return false;
         }
-    }
-
-    @Override
-    public @NotNull Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return new ClientboundAddEntityPacket(this);
     }
 
     @Override

@@ -22,11 +22,6 @@ public class EssenciaBoltEntity extends LightningBolt {
         super(entityType, worldIn);
     }
 
-    @Override
-    public @NotNull Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return new ClientboundAddEntityPacket(this);
-    }
-
     public void setARGB(int argb) {
         this.entityData.set(DATA_COLOR_ID, argb);
     }

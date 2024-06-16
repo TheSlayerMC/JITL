@@ -42,7 +42,7 @@ public class BossBarRenderer {
             return;
 
         ResourceLocation texture = BAR_ID_CACHE.computeIfAbsent(
-                JITL.getRegistryName(entity.getType()), key -> new ResourceLocation(key.getNamespace(), "textures/gui/bossbars/" + key.getPath() + ".png"));
+                JITL.getRegistryName(entity.getType()), key -> ResourceLocation.fromNamespaceAndPath(key.getNamespace(), "textures/gui/bossbars/" + key.getPath() + ".png"));
 
         double healthWidth = entity.getHealth() / entity.getMaxHealth();
 

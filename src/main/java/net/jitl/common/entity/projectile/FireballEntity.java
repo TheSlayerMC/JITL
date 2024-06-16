@@ -71,8 +71,4 @@ public class FireballEntity extends ThrowableProjectile {
         return 0.003F;
     }
 
-    @Override
-    public @NotNull Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return new ClientboundAddEntityPacket(this);
-    }
 }

@@ -54,7 +54,7 @@ public class Flungas extends JPathfinderMob {
     }
 
     @Override
-    public boolean canBeLeashed(Player player) {
+    public boolean canBeLeashed() {
         return false;
     }
 

@@ -25,6 +25,7 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.LargeFireball;
 import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -177,10 +178,11 @@ public class SkyStalker extends JFlyingBossEntity {
                         double d2 = livingentity.getX() - (this.soul.getX() + vec3.x * 4.0D);
                         double d3 = livingentity.getY(0.5D) - (0.5D + this.soul.getY(0.5D));
                         double d4 = livingentity.getZ() - (this.soul.getZ() + vec3.z * 4.0D);
+                        Vec3 vec31 = new Vec3(d2, d3, d4);
                         if(!this.soul.isSilent()) {
                             level.levelEvent(null, 1016, this.soul.blockPosition(), 0);
                         }
-                        SmallFireball fireball = new SmallFireball(level, this.soul, d2, d3, d4);
+                        LargeFireball fireball = new LargeFireball(level, this.soul, vec31.normalize(), 1);
                         fireball.setPos(this.soul.getX() + vec3.x * 4.0D, this.soul.getY(0.5D) + 0.5D, fireball.getZ() + vec3.z * 4.0D);
                         level.addFreshEntity(fireball);
                         this.chargeTime = -40;

@@ -128,8 +128,9 @@ public class FrozenTrollEntity extends JMonsterEntity implements InventoryCarrie
         this.entityData.set(IS_ANGRY_ID, angry);
     }
 
-    protected void dropCustomDeathLoot(DamageSource source, int looting, boolean recentlyHitIn) {
-        super.dropCustomDeathLoot(source, looting, recentlyHitIn);
+    @Override
+    protected void dropCustomDeathLoot(ServerLevel p_348683_, DamageSource p_21385_, boolean p_21387_) {
+        super.dropCustomDeathLoot(p_348683_, p_21385_, p_21387_);
         this.inventory.removeAllItems().forEach(this::spawnAtLocation);
     }
 

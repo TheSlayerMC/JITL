@@ -8,21 +8,21 @@ import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 public class RockiteSpawnerModel extends DefaultedEntityGeoModel<RockiteSpawnerEntity> {
 
     public RockiteSpawnerModel() {
-        super(new ResourceLocation(JITL.MODID, "geo/rockite_smasher"));
+        super(ResourceLocation.fromNamespaceAndPath(JITL.MODID, "geo/rockite_smasher"));
     }
 
     @Override
     public ResourceLocation getModelResource(RockiteSpawnerEntity object) {
-        return new ResourceLocation(JITL.MODID, "geo/rockite_spawner.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "geo/rockite_spawner.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(RockiteSpawnerEntity object) {
-        return new ResourceLocation(JITL.MODID, "textures/models/block/rockite.png");
+        return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/models/block/rockite.png");
     }
 
     @Override
     public ResourceLocation getAnimationResource(RockiteSpawnerEntity animatable) {
-        return new ResourceLocation(JITL.MODID, "");
+        return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "");
     }
 }

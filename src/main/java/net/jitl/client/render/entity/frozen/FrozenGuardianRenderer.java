@@ -23,9 +23,9 @@ public class FrozenGuardianRenderer<T extends LivingEntity & GeoEntity> extends 
         FrozenGuardian e = (FrozenGuardian)entity;
         boolean isActivated = e.isActivated();
         if (isActivated) {
-            return new ResourceLocation(JITL.MODID, "textures/entity/frozen/frozen_guardian_awake.png");
+            return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/entity/frozen/frozen_guardian_awake.png");
         } else {
-            return new ResourceLocation(JITL.MODID, "textures/entity/frozen/frozen_guardian_asleep.png");
+            return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/entity/frozen/frozen_guardian_asleep.png");
         }
     }
 }

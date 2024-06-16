@@ -4,10 +4,13 @@ import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
@@ -31,8 +34,8 @@ import java.util.function.Function;
 
 public class JBlockLootTables extends BlockLootSubProvider {
 
-    public JBlockLootTables() {
-        super(Collections.emptySet(), FeatureFlags.REGISTRY.allFlags());
+    public JBlockLootTables(HolderLookup.Provider p) {
+        super(Collections.emptySet(), FeatureFlags.REGISTRY.allFlags(), p);
     }
 
     @Override
@@ -46,6 +49,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
         this.add(JBlocks.IRIDIUM_ORE, (block) -> createOreDrop(block, JItems.IRIDIUM_NUGGET.get()));
         this.add(JBlocks.DEEPSLATE_IRIDIUM_ORE, (block) -> createOreDrop(block, JItems.IRIDIUM_NUGGET.get()));
         this.dropSelf(JBlocks.IRIDIUM_BLOCK);
@@ -544,7 +548,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.addCrop(JBlocks.ZATPEDAL_CROP.get(), JItems.ZATPEDAL.get(), JItems.ZATPEDAL_SEEDS.get(), 7);
         this.addCrop(JBlocks.TOMATO_CROP.get(), JItems.TOMATO.get(), JItems.TOMATO_SEEDS.get(), 7);
 
-        this.add(JBlocks.AIRROOT_MELON, (block) -> createSilkTouchDispatchTable(block, this.applyExplosionDecay(block, LootItem.lootTableItem(JItems.AIRMELON.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 7.0F))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.FORTUNE)).apply(LimitCount.limitCount(IntRange.upperBound(9))))));
+        this.add(JBlocks.AIRROOT_MELON, (block) -> createSilkTouchDispatchTable(block, this.applyExplosionDecay(block, LootItem.lootTableItem(JItems.AIRMELON.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 7.0F))).apply(ApplyBonusCount.addUniformBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE))).apply(LimitCount.limitCount(IntRange.upperBound(9))))));
 
         this.addBerryBush(JBlocks.REDCURRANT_BUSH.get(), JItems.REDCURRANT_BERRY.get());
         this.addBerryBush(JBlocks.BRADBERRY_BUSH.get(), JItems.BRADBERRY.get());
@@ -625,9 +629,10 @@ public class JBlockLootTables extends BlockLootSubProvider {
     }
 
     protected void addBerryBush(Block bush, Item berry) {
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
         this.add(bush, this.applyExplosionDecay(bush, LootTable.lootTable().withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(bush).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 3)))
-                .add(LootItem.lootTableItem(berry)).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.FORTUNE))).withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(bush).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 2)))
-                .add(LootItem.lootTableItem(berry)).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.FORTUNE)))));
+                .add(LootItem.lootTableItem(berry)).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F))).apply(ApplyBonusCount.addUniformBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))).withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(bush).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 2)))
+                .add(LootItem.lootTableItem(berry)).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyBonusCount.addUniformBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE))))));
     }
 
     protected LootTable.Builder createGemBlockDrops(Block block, boolean rare) {
@@ -643,7 +648,8 @@ public class JBlockLootTables extends BlockLootSubProvider {
 
 
     protected LootTable.Builder createRandomAmount(Block pBlock, Item drop, int min, int max) {
-        return createSilkTouchDispatchTable(pBlock, this.applyExplosionDecay(pBlock, LootItem.lootTableItem(drop).apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.FORTUNE))));
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        return createSilkTouchDispatchTable(pBlock, this.applyExplosionDecay(pBlock, LootItem.lootTableItem(drop).apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max))).apply(ApplyBonusCount.addUniformBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))));
     }
 
     protected void add(DeferredBlock<? extends Block> block, Function<Block, LootTable.Builder> factory) {

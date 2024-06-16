@@ -52,45 +52,45 @@ public class CorbaPortalBlock extends Block {
         return ItemStack.EMPTY;
     }
 
-    @Override
-    public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entity) {
-        if (!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions()) {
-            if (entity.isOnPortalCooldown()) {
-                entity.setPortalCooldown();
-            } else {
-                if(!entity.level().isClientSide && !pos.equals(entity.portalEntrancePos)) {
-                    entity.portalEntrancePos = pos.immutable();
-                }
-                if(entity instanceof Player player) {
-                    Portal portal = player.getData(JDataAttachments.PORTAL_OVERLAY);
-                    portal.setInPortal(this, true);
-                    int cooldownTime = portal.getPortalTimer();
-                    if(cooldownTime >= player.getPortalWaitTime()) {
-                        teleport(entity);
-                        portal.setPortalTimer(0);
-                    }
-                } else {
-                    teleport(entity);
-                }
-            }
-        }
-    }
-
-    public void teleport(Entity entity) {
-        Level entityWorld = entity.level();
-        MinecraftServer minecraftserver = entityWorld.getServer();
-        if(minecraftserver != null) {
-            ResourceKey<Level> destination = entity.level().dimension() == Dimensions.CORBA ? Level.OVERWORLD : Dimensions.CORBA;
-            ServerLevel destinationWorld = minecraftserver.getLevel(destination);
-            ResourceKey<PoiType> poi = Dimensions.CORBA_PORTAL.getKey();
-
-            if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
-                entity.setPortalCooldown();
-                entity.changeDimension(destinationWorld, new CorbaTeleporter(destinationWorld, this, JBlocks.CORBA_PORTAL_FRAME.get(), poi, destination));
-
-            }
-        }
-    }
+//    @Override
+//    public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entity) {
+//        if (!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions()) {
+//            if (entity.isOnPortalCooldown()) {
+//                entity.setPortalCooldown();
+//            } else {
+//                if(!entity.level().isClientSide && !pos.equals(entity.portalEntrancePos)) {
+//                    entity.portalEntrancePos = pos.immutable();
+//                }
+//                if(entity instanceof Player player) {
+//                    Portal portal = player.getData(JDataAttachments.PORTAL_OVERLAY);
+//                    portal.setInPortal(this, true);
+//                    int cooldownTime = portal.getPortalTimer();
+//                    if(cooldownTime >= player.getPortalWaitTime()) {
+//                        teleport(entity);
+//                        portal.setPortalTimer(0);
+//                    }
+//                } else {
+//                    teleport(entity);
+//                }
+//            }
+//        }
+//    }
+//
+//    public void teleport(Entity entity) {
+//        Level entityWorld = entity.level();
+//        MinecraftServer minecraftserver = entityWorld.getServer();
+//        if(minecraftserver != null) {
+//            ResourceKey<Level> destination = entity.level().dimension() == Dimensions.CORBA ? Level.OVERWORLD : Dimensions.CORBA;
+//            ServerLevel destinationWorld = minecraftserver.getLevel(destination);
+//            ResourceKey<PoiType> poi = Dimensions.CORBA_PORTAL.getKey();
+//
+//            if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
+//                entity.setPortalCooldown();
+//                entity.changeDimension(destinationWorld, new CorbaTeleporter(destinationWorld, this, JBlocks.CORBA_PORTAL_FRAME.get(), poi, destination));
+//
+//            }
+//        }
+//    }
 
     @Override
     public boolean canBeReplaced(@NotNull BlockState pState, @NotNull Fluid pFluid) {

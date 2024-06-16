@@ -16,6 +16,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nullable;
 import java.util.EnumSet;
 
 public class EssenceArrowEntity extends AbstractArrow implements ItemSupplier {
@@ -24,11 +25,11 @@ public class EssenceArrowEntity extends AbstractArrow implements ItemSupplier {
     private static final ItemStack DEFAULT_ARROW_STACK = new ItemStack(JItems.ESSENCE_ARROW.get());
 
     public EssenceArrowEntity(EntityType<? extends AbstractArrow> type, Level level) {
-        super(type, level, DEFAULT_ARROW_STACK);
+        super(type, level);
     }
 
-    public EssenceArrowEntity(Level level, LivingEntity player, EnumSet<BowEffects> effects, float damage) {
-        super(JEntities.ESSENCE_ARROW_TYPE.get(), player, level, DEFAULT_ARROW_STACK);
+    public EssenceArrowEntity(Level level, LivingEntity player, EnumSet<BowEffects> effects, float damage, @Nullable ItemStack weapon) {
+        super(JEntities.ESSENCE_ARROW_TYPE.get(), player, level, DEFAULT_ARROW_STACK, weapon);
         this.effects = effects;
         this.setBaseDamage(damage);
     }

@@ -74,11 +74,6 @@ public class RoyalKing extends PathfinderMob implements GeoEntity {
     }
 
     @Override
-    public @NotNull Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return new ClientboundAddEntityPacket(this);
-    }
-
-    @Override
     public void tick() {
         super.tick();
         if(isActivated()) {

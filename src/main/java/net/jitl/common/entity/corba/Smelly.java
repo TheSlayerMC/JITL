@@ -8,6 +8,7 @@ import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -21,6 +22,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
@@ -112,8 +114,12 @@ public class Smelly extends JMonsterEntity {
         float f1 = (int)damage > 0 ? damage / 2.0F + (float)this.random.nextInt((int)damage) : damage;
         boolean hurt = entity.hurt(this.damageSources().mobAttack(this), f1);
         if(hurt) {
+            DamageSource damagesource = this.damageSources().mobAttack(this);
+
             entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, 0.4F, 0.0D));
-            this.doEnchantDamageEffects(this, entity);
+            if (this.level() instanceof ServerLevel serverlevel) {
+                EnchantmentHelper.doPostAttackEffects(serverlevel, entity, damagesource);
+            }
         }
         this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
         return hurt;

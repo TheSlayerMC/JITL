@@ -138,10 +138,13 @@ public class Overseer extends JFlyingEntity {
                         double d2 = livingentity.getX() - (this.seer.getX() + vec3.x * 4.0D);
                         double d3 = livingentity.getY(0.5D) - (0.5D + this.seer.getY(0.5D));
                         double d4 = livingentity.getZ() - (this.seer.getZ() + vec3.z * 4.0D);
+                        Vec3 vec31 = new Vec3(d2, d3, d4);
+
                         if(!this.seer.isSilent())
                             level.levelEvent(null, 1016, this.seer.blockPosition(), 0);
 
-                        SmallFireball fireball = new SmallFireball(level, this.seer, d2, d3, d4);
+                        SmallFireball fireball = new SmallFireball(level, this.seer, vec31.normalize());
+
                         fireball.setPos(this.seer.getX() + vec3.x * 4.0D, this.seer.getY(0.5D) + 0.5D, fireball.getZ() + vec3.z * 4.0D);
                         level.addFreshEntity(fireball);
                         this.chargeTime = -40;

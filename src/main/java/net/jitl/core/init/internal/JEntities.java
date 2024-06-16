@@ -238,7 +238,7 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<MiniSentryWalker>> MINI_SENTRY_WALKER_TYPE = registerEntity(MiniSentryWalker::new, "mini_sentry_walker", "Mini Sentry Walker", 0.8F, 3.9F, SENTERIAN_COLOR, HOSTILE_COLOR);
 
     private static <T extends Mob> DeferredHolder<EntityType<?>, EntityType<T>> registerEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height, int backgroundColor, int highlightColor, MobCategory category) {
-        DeferredHolder<EntityType<?>, EntityType<T>> entity = REGISTRY.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).build(new ResourceLocation(JITL.MODID, name).toString()));
+        DeferredHolder<EntityType<?>, EntityType<T>> entity = REGISTRY.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).build(ResourceLocation.fromNamespaceAndPath(JITL.MODID, name).toString()));
         JItems.register(name + "_spawn_egg" , lang + " Spawn Egg", () -> new DeferredSpawnEggItem(entity, backgroundColor, highlightColor, JItems.itemProps()), JItems.ItemType.SPAWN_EGG);
         entityName.add(name);
         entityLangName.add(lang);
@@ -252,13 +252,13 @@ public class JEntities {
     private static <T extends Entity> DeferredHolder<EntityType<?>, EntityType<T>> registerRawEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height) {
         entityName.add(name);
         entityLangName.add(lang);
-        return REGISTRY.register(name, () -> EntityType.Builder.of(factory, MobCategory.MISC).sized(width, height).setShouldReceiveVelocityUpdates(true).setTrackingRange(80).build(new ResourceLocation(JITL.MODID, name).toString()));
+        return REGISTRY.register(name, () -> EntityType.Builder.of(factory, MobCategory.MISC).sized(width, height).setShouldReceiveVelocityUpdates(true).setTrackingRange(80).build(ResourceLocation.fromNamespaceAndPath(JITL.MODID, name).toString()));
     }
 
     private static <T extends Projectile> DeferredHolder<EntityType<?>, EntityType<T>> registerProjectile(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height) {
         entityName.add(name);
         entityLangName.add(lang);
-        return REGISTRY.register(name, () -> EntityType.Builder.of(factory, MobCategory.MISC).sized(width, height).setShouldReceiveVelocityUpdates(true).setTrackingRange(120).setUpdateInterval(20).build(new ResourceLocation(JITL.MODID, name).getPath()));
+        return REGISTRY.register(name, () -> EntityType.Builder.of(factory, MobCategory.MISC).sized(width, height).setShouldReceiveVelocityUpdates(true).setTrackingRange(120).setUpdateInterval(20).build(ResourceLocation.fromNamespaceAndPath(JITL.MODID, name).getPath()));
     }
 
     @SubscribeEvent

@@ -23,9 +23,11 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.LargeFireball;
+import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.animation.AnimationController;
@@ -225,7 +227,8 @@ public class Blazier extends JBossEntity {
                             }
 
                             for(int i = 0; i < 1; ++i) {
-                                LargeFireball fireball = new LargeFireball(this.blazier.level(), this.blazier, this.blazier.getRandom().triangle(d1, 2.297D * d4), d2, this.blazier.getRandom().triangle(d3, 2.297D * d4), 1);
+                                Vec3 vec3 = new Vec3(this.blazier.getRandom().triangle(d1, 2.297 * d4), d2, this.blazier.getRandom().triangle(d3, 2.297 * d4));
+                                LargeFireball fireball = new LargeFireball(this.blazier.level(), this.blazier, vec3.normalize(), 1);
                                 fireball.setPos(fireball.getX(), this.blazier.getY(0.5D) + 0.5D, fireball.getZ());
                                 this.blazier.level().addFreshEntity(fireball);
                             }

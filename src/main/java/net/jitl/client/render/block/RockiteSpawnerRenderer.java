@@ -24,10 +24,10 @@ public class RockiteSpawnerRenderer extends GeoBlockRenderer<RockiteSpawnerEntit
     }
 
     @Override
-    public void preRender(PoseStack poseStack, RockiteSpawnerEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+    public void preRender(PoseStack poseStack, RockiteSpawnerEntity animatable, BakedGeoModel model, @Nullable MultiBufferSource bufferSource, @Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
         float size = 2.0F;
         poseStack.scale(size, size, size);
         poseStack.translate(-0.5F, 0, -0.5F);
-        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 }

@@ -127,7 +127,7 @@ public class Sentacoin extends Entity {
     }
 
     @Override
-    protected @NotNull BlockPos getBlockPosBelowThatAffectsMyMovement() {
+    public @NotNull BlockPos getBlockPosBelowThatAffectsMyMovement() {
         return this.getOnPos(0.999999F);
     }
 

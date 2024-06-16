@@ -22,6 +22,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
@@ -38,7 +39,7 @@ public class JITL {
     public static final Logger LOGGER = LogManager.getLogger(MODID);
     public static final boolean DEV_MODE = true;
 
-    public JITL(IEventBus modEventBus) {
+    public JITL(IEventBus modEventBus, ModContainer container) {
         modEventBus.addListener(JTabs::registerTabs);
         JItems.ITEMS.register(modEventBus);
         JBlocks.BLOCKS.register(modEventBus);
@@ -56,6 +57,7 @@ public class JITL {
         JParticleManager.REGISTRY.register(modEventBus);
         JTreeDecorators.REGISTRY.register(modEventBus);
         JSounds.REGISTRY.register(modEventBus);
+        JSounds.JUKEBOX_SONG.register(modEventBus);
         JTabs.REGISTRY.register(modEventBus);
         JDataAttachments.REGISTRY.register(modEventBus);
         JDataComponents.REGISTRY.register(modEventBus);
@@ -112,9 +114,8 @@ public class JITL {
         modEventBus.addListener(this::clientSetup);
         modEventBus.addListener(this::enqueue);
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, JClientConfig.SPEC, "jitl-client.toml");
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, JCommonConfig.SPEC, "jitl-common.toml");
-
+        container.registerConfig(ModConfig.Type.CLIENT, JClientConfig.SPEC, "jitl-client.toml");
+        container.registerConfig(ModConfig.Type.COMMON, JCommonConfig.SPEC, "jitl-common.toml");
     }
 
     private void commonInit(final FMLCommonSetupEvent event) {
@@ -135,11 +136,11 @@ public class JITL {
     private void enqueue(InterModEnqueueEvent event) { }
 
     public static ResourceLocation rl(String r) {
-        return new ResourceLocation(MODID, r);
+        return ResourceLocation.fromNamespaceAndPath(MODID, r);
     }
 
     public static ResourceLocation tl(String r) {
-        return new ResourceLocation(MODID, "textures/" + r);
+        return ResourceLocation.fromNamespaceAndPath(MODID, "textures/" + r);
     }
 
     public static ResourceLocation getRegistryName(Item item) {

@@ -1,7 +1,9 @@
 package net.jitl.common.items.gear.bloodcrust;
 
 import net.jitl.common.items.gear.IAbility;
+import net.jitl.core.init.JITL;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -12,7 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class BloodcrustSwordAbility implements IAbility {
-    private static final UUID ID = UUID.fromString("4fe9a512-63c8-400a-90b2-afa53d4fa66a");
+    private static final ResourceLocation ID = ResourceLocation.fromNamespaceAndPath(JITL.MODID, "bloodcrust_ability");
 
     @Override
     public void damageTarget(LivingEntity holder, ItemStack stack, LivingDamageEvent event) {

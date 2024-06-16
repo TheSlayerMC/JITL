@@ -17,10 +17,7 @@ import net.minecraft.world.*;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemContainerContents;
-import net.minecraft.world.item.crafting.CampfireCookingRecipe;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -34,7 +31,7 @@ public class BitterwoodCampfireBlockEntity extends BlockEntity implements Cleara
    private final NonNullList<ItemStack> items = NonNullList.withSize(4, ItemStack.EMPTY);
    private final int[] cookingProgress = new int[4];
    private final int[] cookingTime = new int[4];
-   private final RecipeManager.CachedCheck<Container, CampfireCookingRecipe> quickCheck = RecipeManager.createCheck(RecipeType.CAMPFIRE_COOKING);
+   private final RecipeManager.CachedCheck<SingleRecipeInput, CampfireCookingRecipe> quickCheck = RecipeManager.createCheck(RecipeType.CAMPFIRE_COOKING);
 
    public BitterwoodCampfireBlockEntity(BlockPos pPos, BlockState pBlockState) {
       super(JBlockEntities.BITTERWOOD_CAMPFIRE.get(), pPos, pBlockState);
@@ -49,10 +46,10 @@ public class BitterwoodCampfireBlockEntity extends BlockEntity implements Cleara
             flag = true;
             pBlockEntity.cookingProgress[i]++;
             if (pBlockEntity.cookingProgress[i] >= pBlockEntity.cookingTime[i]) {
-               Container container = new SimpleContainer(itemstack);
+               SingleRecipeInput singlerecipeinput = new SingleRecipeInput(itemstack);
                ItemStack itemstack1 = pBlockEntity.quickCheck
-                       .getRecipeFor(container, pLevel)
-                       .map(p_335297_ -> p_335297_.value().assemble(container, pLevel.registryAccess()))
+                       .getRecipeFor(singlerecipeinput, pLevel)
+                       .map(p_335297_ -> p_335297_.value().assemble(singlerecipeinput, pLevel.registryAccess()))
                        .orElse(itemstack);
                if (itemstack1.isItemEnabled(pLevel.enabledFeatures())) {
                   Containers.dropItemStack(pLevel, (double)pPos.getX(), (double)pPos.getY(), (double)pPos.getZ(), itemstack1);
@@ -156,7 +153,7 @@ public class BitterwoodCampfireBlockEntity extends BlockEntity implements Cleara
    }
 
    public Optional<RecipeHolder<CampfireCookingRecipe>> getCookableRecipe(ItemStack pStack) {
-      return this.items.stream().noneMatch(ItemStack::isEmpty) ? Optional.empty() : this.quickCheck.getRecipeFor(new SimpleContainer(pStack), this.level);
+      return this.items.stream().noneMatch(ItemStack::isEmpty) ? Optional.empty() : this.quickCheck.getRecipeFor(new SingleRecipeInput(pStack), this.level);
    }
 
    public boolean placeFood(@Nullable Entity pEntity, ItemStack pStack, int pCookTime) {
