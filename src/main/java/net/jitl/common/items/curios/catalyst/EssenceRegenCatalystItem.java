@@ -11,7 +11,6 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.UUID;
 
@@ -27,11 +26,11 @@ public class EssenceRegenCatalystItem extends JCurioItem {
         return this;
     }
 
-    @Override
-    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
-        Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = LinkedHashMultimap.create();
-        modifierMultimap.put(JAttributes.ESSENCE_REGEN_SPEED, new AttributeModifier(ResourceLocation.fromNamespaceAndPath(JITL.MODID, "essence_regen_speed_modifier"), regenSpeed, AttributeModifier.Operation.ADD_VALUE));
-        return modifierMultimap;
-    }
+//    @Override
+//    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
+//        Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = LinkedHashMultimap.create();
+//        modifierMultimap.put(JAttributes.ESSENCE_REGEN_SPEED, new AttributeModifier(ResourceLocation.fromNamespaceAndPath(JITL.MODID, "essence_regen_speed_modifier"), regenSpeed, AttributeModifier.Operation.ADD_VALUE));
+//        return modifierMultimap;
+//    }
 
 }

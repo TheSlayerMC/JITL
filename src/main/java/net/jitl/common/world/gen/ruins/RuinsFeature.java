@@ -52,7 +52,7 @@ public class RuinsFeature extends Feature<RuinsFeatureConfig> {
 						BlockState chestState = config.chest.getState(rand, chestPos).setValue(JChestBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(rand));
 						reader.setBlock(chestPos, chestState, 2);
 						if(reader.getBlockEntity(chestPos) instanceof ChestBlockEntity) {
-							((ChestBlockEntity)Objects.requireNonNull(reader.getBlockEntity(chestPos))).setLootTable(JLootTables.addNormalLootTable(config.resourceLocation.toString()));
+							//((ChestBlockEntity)Objects.requireNonNull(reader.getBlockEntity(chestPos))).setLootTable(JLootTables.addNormalLootTable(config.resourceLocation.toString()));
 						}
 					}
                 }

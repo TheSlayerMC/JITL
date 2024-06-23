@@ -165,10 +165,10 @@ public class JBasePortalBlock extends Block implements net.minecraft.world.level
                 portal.setInPortal(this, true);
                 int cooldownTime = portal.getPortalTimer();
                 assert player.portalProcess != null;
-                if(cooldownTime >= player.portalProcess.getPortalTime()) {
+                //if(cooldownTime >= player.portalProcess.getPortalTime()) {
                     entity.setAsInsidePortal(this, pos);
-                    portal.setPortalTimer(0);
-                }
+                //    portal.setPortalTimer(0);
+                //}
             } else {
                 entity.setAsInsidePortal(this, pos);
             }
