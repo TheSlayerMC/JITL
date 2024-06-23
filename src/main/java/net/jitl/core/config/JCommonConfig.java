@@ -12,6 +12,7 @@ public class JCommonConfig {
 	public static final ModConfigSpec.ConfigValue<Integer> COMMON_LOOT_CHANCE;
 	public static final ModConfigSpec.ConfigValue<Integer> GOLD_LOOT_CHANCE;
 	public static final ModConfigSpec.ConfigValue<Integer> DIAMOND_LOOT_CHANCE;
+	public static final ModConfigSpec.IntValue PORTAL_SEARCH_RADIUS;
 
 	static {
 		BUILDER.push("Common configs for JITL");
@@ -22,6 +23,7 @@ public class JCommonConfig {
 		COMMON_LOOT_CHANCE = BUILDER.comment("Common Loot Chance").define("Common Loot Chance 1 out of: ", 100);
 		GOLD_LOOT_CHANCE = BUILDER.comment("Gold Loot Chance").define("Gold Loot Chance 1 out of: ", 150);
 		DIAMOND_LOOT_CHANCE = BUILDER.comment("Diamond Loot Chance").define("Diamond Loot Chance 1 out of: ", 200);
+		PORTAL_SEARCH_RADIUS = BUILDER.comment("how far to look for portal locations.").defineInRange("Portal Search Radius", 24, 1, 128);
 
 		BUILDER.pop();
 		SPEC = BUILDER.build();

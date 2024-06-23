@@ -16,6 +16,10 @@ public class Dimensions {
 
     public static final DeferredRegister<PoiType> REGISTRY = DeferredRegister.create(Registries.POINT_OF_INTEREST_TYPE, JITL.MODID);
 
+    public static final ResourceKey<Level> OVERWORLD = Level.OVERWORLD;
+    public static final ResourceKey<Level> NETHER = Level.NETHER;
+    public static final ResourceKey<Level> THE_END = Level.END;
+
     public static final ResourceKey<Level> FROZEN_LANDS = ResourceKey.create(Registries.DIMENSION, JITL.rl("frozen"));
     public static final ResourceKey<DimensionType> FROZEN_LANDS_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, JITL.rl("frozen"));
     public static final ResourceLocation FROZEN_EFFECTS = JITL.rl("frozen");
@@ -45,27 +49,4 @@ public class Dimensions {
     public static final ResourceKey<Level> SENTERIAN = ResourceKey.create(Registries.DIMENSION, JITL.rl("senterian"));
     public static final ResourceKey<DimensionType> SENTERIAN_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, JITL.rl("senterian"));
 
-    public static final DeferredHolder<PoiType, PoiType> FROZEN_PORTAL = REGISTRY.register("frozen_portal",
-            () -> new PoiType(ImmutableSet.copyOf(JBlocks.FROZEN_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
-
-    public static final DeferredHolder<PoiType, PoiType> DEPTHS_PORTAL = REGISTRY.register("depths_portal",
-            () -> new PoiType(ImmutableSet.copyOf(JBlocks.DEPTHS_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
-
-    public static final DeferredHolder<PoiType, PoiType> EUCA_PORTAL = REGISTRY.register("euca_portal",
-            () -> new PoiType(ImmutableSet.copyOf(JBlocks.EUCA_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
-
-    public static final DeferredHolder<PoiType, PoiType> BOIL_PORTAL = REGISTRY.register("boil_portal",
-            () -> new PoiType(ImmutableSet.copyOf(JBlocks.BOIL_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
-
-    public static final DeferredHolder<PoiType, PoiType> CORBA_PORTAL = REGISTRY.register("corba_portal",
-            () -> new PoiType(ImmutableSet.copyOf(JBlocks.CORBA_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
-
-    public static final DeferredHolder<PoiType, PoiType> TERRANIAN_PORTAL = REGISTRY.register("terranian_portal",
-            () -> new PoiType(ImmutableSet.copyOf(JBlocks.TERRANIAN_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
-
-    public static final DeferredHolder<PoiType, PoiType> CLOUDIA_PORTAL = REGISTRY.register("cloudia_portal",
-            () -> new PoiType(ImmutableSet.copyOf(JBlocks.CLOUDIA_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
-
-    public static final DeferredHolder<PoiType, PoiType> SENTERIAN_PORTAL = REGISTRY.register("senterian_portal",
-            () -> new PoiType(ImmutableSet.copyOf(JBlocks.SENTERIAN_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
 }

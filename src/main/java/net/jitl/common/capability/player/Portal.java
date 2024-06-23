@@ -1,15 +1,26 @@
 package net.jitl.common.capability.player;
 
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.jitl.client.util.ClientTools;
+import net.jitl.common.block.portal.logic.PortalCoordinatesContainer;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JSounds;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtUtils;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.util.INBTSerializable;
 import org.jetbrains.annotations.UnknownNullability;
+
+import javax.annotation.Nullable;
+import java.util.Map;
 
 public class Portal implements INBTSerializable<CompoundTag> {
 
@@ -18,6 +29,7 @@ public class Portal implements INBTSerializable<CompoundTag> {
     private Block portalBlockToRender = Blocks.AIR;
     private int portalTimer = 0;
     private boolean inPortal = false;
+    private Object2ObjectOpenHashMap<ResourceKey<Level>, PortalCoordinatesContainer> portalCoordinatesMap = new Object2ObjectOpenHashMap<>();
 
     public void copyFrom(Portal source) {
         this.portalOverlayTime = source.portalOverlayTime;
@@ -25,6 +37,7 @@ public class Portal implements INBTSerializable<CompoundTag> {
         this.portalBlockToRender = source.portalBlockToRender;
         this.portalTimer = source.portalTimer;
         this.inPortal = source.inPortal;
+        this.portalCoordinatesMap = source.portalCoordinatesMap;
     }
 
     public void setInPortal(Block portal, boolean inPortal) {
@@ -104,6 +117,19 @@ public class Portal implements INBTSerializable<CompoundTag> {
         nbt.putFloat("oldPortalOverlayTime", this.oldPortalOverlayTime);
         nbt.putInt("portalTimer", this.portalTimer);
         nbt.putBoolean("inPortal", this.inPortal);
+
+        if (nbt.contains("PortalMap")) {
+            CompoundTag portalMapTag = nbt.getCompound("PortalMap");
+
+            for (String s : portalMapTag.getAllKeys()) {
+                CompoundTag portalReturnTag = portalMapTag.getCompound(s);
+                ResourceLocation fromDim = ResourceLocation.read(portalReturnTag.getString("FromDim")).getOrThrow();
+                BlockPos portalPos = NbtUtils.readBlockPos(portalReturnTag, "PortalPos").get();
+                ResourceKey<Level> toDimKey = ResourceKey.create(Registries.DIMENSION, ResourceLocation.read(s).getOrThrow());
+                ResourceKey<Level> fromDimKey = ResourceKey.create(Registries.DIMENSION, fromDim);
+                portalCoordinatesMap.put(toDimKey, new PortalCoordinatesContainer(fromDimKey, portalPos));
+            }
+        }
         return nbt;
     }
 
@@ -113,5 +139,37 @@ public class Portal implements INBTSerializable<CompoundTag> {
         this.oldPortalOverlayTime = nbt.getFloat("oldPortalOverlayTime");
         this.portalTimer = nbt.getInt("portalTimer");
         this.inPortal = nbt.getBoolean("inPortal");
+
+        if (!portalCoordinatesMap.isEmpty()) {
+            CompoundTag portalCoordinatesNBT = new CompoundTag();
+
+            for(Map.Entry<ResourceKey<Level>, PortalCoordinatesContainer> entry : portalCoordinatesMap.entrySet()) {
+                CompoundTag portalReturnTag = new CompoundTag();
+                PortalCoordinatesContainer container = entry.getValue();
+
+                portalReturnTag.putString("FromDim", container.fromDim().location().toString());
+                portalReturnTag.put("PortalPos", NbtUtils.writeBlockPos(container.portalPos()));
+
+                portalCoordinatesNBT.put(entry.getKey().location().toString(), portalReturnTag);
+            }
+            nbt.put("PortalMap", portalCoordinatesNBT);
+        }
+    }
+
+    public void setPortalReturnLocation(ResourceKey<Level> toDim, PortalCoordinatesContainer coords) {
+        portalCoordinatesMap.put(toDim, coords);
+    }
+
+    public void removePortalReturnLocation(ResourceKey<Level> toDim) {
+        portalCoordinatesMap.remove(toDim);
+    }
+
+    public void flushPortalReturnLocations() {
+        portalCoordinatesMap.clear();
+    }
+
+    @Nullable
+    public PortalCoordinatesContainer getPortalReturnLocation(ResourceKey<Level> toDim) {
+        return portalCoordinatesMap.get(toDim);
     }
 }

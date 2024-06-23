@@ -1,26 +1,24 @@
 package net.jitl.common.block.portal;
 
-import com.mojang.logging.LogUtils;
+import net.jitl.common.block.portal.logic.JPortal;
+import net.jitl.common.block.portal.logic.PortalCoordinatesContainer;
 import net.jitl.common.capability.player.Portal;
-import net.jitl.common.world.dimension.BaseTeleporter;
-import net.jitl.common.world.dimension.Dimensions;
+import net.jitl.common.entity.EntityUtil;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JParticleManager;
-import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -28,12 +26,7 @@ import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.border.WorldBorder;
-import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.portal.DimensionTransition;
-import net.minecraft.world.level.portal.PortalShape;
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
@@ -42,9 +35,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-public class JBasePortalBlock extends Block implements net.minecraft.world.level.block.Portal {
+public class JBasePortalBlock extends Block implements JPortal {
 
-    public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
     protected static final VoxelShape X_AABB = Block.box(0.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);
     protected static final VoxelShape Z_AABB = Block.box(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 16.0D);
 
@@ -55,17 +47,111 @@ public class JBasePortalBlock extends Block implements net.minecraft.world.level
         super(JBlockProperties.PORTAL);
         this.dimensionID = dimID;
         this.frame = frame;
-        registerDefaultState(stateDefinition.any().setValue(AXIS, Direction.Axis.X));
+        registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.HORIZONTAL_AXIS, Direction.Axis.X));
+    }
+
+    @Override
+    public JBasePortalBlock getPortalBlock() {
+        return this;
+    }
+
+    @Override
+    public Block getPortalFrame() {
+        return this.frame.get();
+    }
+
+    public ResourceKey<Level> getDimension() {
+        return this.dimensionID;
     }
 
     @Override
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
-        switch (state.getValue(AXIS)) {
+        if(state.getValue(BlockStateProperties.HORIZONTAL_AXIS) == Direction.Axis.Z)
+            return Z_AABB;
+
+        return X_AABB;
+    }
+
+    @Override
+    public boolean skipRendering(BlockState state, BlockState adjacent, Direction side) {
+        if (adjacent.getBlock() == this) {
+            Direction.Axis axis;
+
+            switch (state.getValue(BlockStateProperties.HORIZONTAL_AXIS)) {
+                case X -> {
+                    axis = adjacent.getValue(BlockStateProperties.HORIZONTAL_AXIS);
+                    if (axis == Direction.Axis.X)
+                        return true;
+                }
+                case Z -> {
+                    axis = adjacent.getValue(BlockStateProperties.HORIZONTAL_AXIS);
+                    if (axis == Direction.Axis.Z)
+                        return true;
+                }
+                default -> {
+                }
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public BlockState rotate(BlockState state, Rotation rot) {
+        return switch (rot) {
+            case COUNTERCLOCKWISE_90, CLOCKWISE_90 -> switch (state.getValue(BlockStateProperties.HORIZONTAL_AXIS)) {
+                case Z -> state.setValue(BlockStateProperties.HORIZONTAL_AXIS, Direction.Axis.X);
+                case X -> state.setValue(BlockStateProperties.HORIZONTAL_AXIS, Direction.Axis.Z);
+                default -> state;
+            };
+            default -> state;
+        };
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(BlockStateProperties.HORIZONTAL_AXIS);
+    }
+
+    @Override
+    public void attack(BlockState state, Level world, BlockPos pos, Player player) {
+        if (world.isEmptyBlock(pos.above()) || world.isEmptyBlock(pos.below())) {
+            world.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+
+            return;
+        }
+
+        switch (world.getBlockState(pos).getValue(BlockStateProperties.HORIZONTAL_AXIS)) {
             case Z:
-                return Z_AABB;
+                if (world.isEmptyBlock(pos.east()) || world.isEmptyBlock(pos.west()))
+                    world.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+                break;
             case X:
-            default:
-                return X_AABB;
+                if (world.isEmptyBlock(pos.north()) || world.isEmptyBlock(pos.south()))
+                    world.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+                break;
+        }
+    }
+
+    private boolean isCompatibleNeighbour(Level world, BlockPos pos) {
+        BlockState block = world.getBlockState(pos);
+
+        return block.getBlock() == this || !block.isAir();
+    }
+
+    @Override
+    public void neighborChanged(BlockState state, Level world, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
+        Direction.Axis facing = state.getValue(BlockStateProperties.HORIZONTAL_AXIS);
+
+        switch (facing) {
+            case Z:
+                if (!isCompatibleNeighbour(world, pos.above()) || !isCompatibleNeighbour(world, pos.below()) || !isCompatibleNeighbour(world, pos.east()) || !isCompatibleNeighbour(world, pos.west()))
+                    world.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+                break;
+            case X:
+                if (!isCompatibleNeighbour(world, pos.above()) || !isCompatibleNeighbour(world, pos.below()) || !isCompatibleNeighbour(world, pos.north()) || !isCompatibleNeighbour(world, pos.south()))
+                    world.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+                break;
         }
     }
 
@@ -120,42 +206,11 @@ public class JBasePortalBlock extends Block implements net.minecraft.world.level
         }
     }
 
+    @Nullable
     @Override
-    protected @NotNull BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
-        Direction.Axis direction$axis = pFacing.getAxis();
-        Direction.Axis direction$axis1 = pState.getValue(AXIS);
-        boolean flag = direction$axis1 != direction$axis && direction$axis.isHorizontal();
-        return !flag && !pFacingState.is(this) && !new PortalShape(pLevel, pCurrentPos, direction$axis1).isComplete()
-                ? Blocks.AIR.defaultBlockState()
-                : super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_AXIS, EntityUtil.getDirectionFacing(context.getPlayer(), true).getAxis());
     }
-
-    @Override
-    public @NotNull ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
-        return ItemStack.EMPTY;
-    }
-
-    @Override
-    public @NotNull BlockState rotate(BlockState state, Rotation rot) {
-        switch (rot) {
-            case COUNTERCLOCKWISE_90, CLOCKWISE_90 -> {
-                return switch (state.getValue(AXIS)) {
-                    case Z -> state.setValue(AXIS, Direction.Axis.X);
-                    case X -> state.setValue(AXIS, Direction.Axis.Z);
-                    default -> state;
-                };
-            }
-            default -> {
-                return state;
-            }
-        }
-    }
-
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(AXIS);
-    }
-
 
     @Override
     public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entity) {
@@ -166,7 +221,7 @@ public class JBasePortalBlock extends Block implements net.minecraft.world.level
                 int cooldownTime = portal.getPortalTimer();
                 assert player.portalProcess != null;
                 //if(cooldownTime >= player.portalProcess.getPortalTime()) {
-                    entity.setAsInsidePortal(this, pos);
+                entity.setAsInsidePortal(this, pos);
                 //    portal.setPortalTimer(0);
                 //}
             } else {
@@ -175,134 +230,28 @@ public class JBasePortalBlock extends Block implements net.minecraft.world.level
         }
     }
 
-    @Override
-    public int getPortalTransitionTime(ServerLevel level, Entity entity) {
-        return entity instanceof Player player
-                ? Math.max(
-                1,
-                level.getGameRules()
-                        .getInt(
-                                player.getAbilities().invulnerable
-                                        ? GameRules.RULE_PLAYERS_NETHER_PORTAL_CREATIVE_DELAY
-                                        : GameRules.RULE_PLAYERS_NETHER_PORTAL_DEFAULT_DELAY
-                        )
-        ) : 0;
-    }
-
     @Nullable
     @Override
     public DimensionTransition getPortalDestination(ServerLevel level, Entity entity, BlockPos pos) {
-        ResourceKey<Level> destination = entity.level().dimension() == dimensionID ? Level.OVERWORLD : dimensionID;
-        ServerLevel destinationWorld = level.getServer().getLevel(destination);
-        
-        if (destinationWorld == null) {
+        if (!(entity instanceof ServerPlayer))
             return null;
-        } else {
-            boolean flag = destinationWorld.dimension() == dimensionID;
-            WorldBorder worldborder = level.getWorldBorder();
-            double d0 = DimensionType.getTeleportationScale(level.dimensionType(), destinationWorld.dimensionType());
-            BlockPos blockpos = worldborder.clampToBounds(entity.getX() * d0, entity.getY(), entity.getZ() * d0);
-            return this.getExitPortal(destinationWorld, entity, pos, blockpos, flag, worldborder);
-        }
-    }
 
-    @Nullable
-    private DimensionTransition getExitPortal(ServerLevel level, Entity entity, BlockPos pos1, BlockPos pos2, boolean isDim, WorldBorder border) {
-        JPortalForcer forcer = new JPortalForcer(level, this, this.frame.get(), getPoi());
-        Optional<BlockPos> optional = forcer.findClosestPortalPosition(pos2, isDim, border);
-        BlockUtil.FoundRectangle rec;
-        DimensionTransition.PostDimensionTransition dimTrans;
-        if(optional.isPresent()) {
-            BlockPos blockpos = optional.get();
-            BlockState blockstate = level.getBlockState(blockpos);
-            rec = BlockUtil.getLargestRectangleAround(
-                    blockpos,
-                    blockstate.getValue(BlockStateProperties.HORIZONTAL_AXIS),
-                    21,
-                    Direction.Axis.Y,
-                    21,
-                    p_351970_ -> level.getBlockState(p_351970_) == blockstate
-            );
-            dimTrans = DimensionTransition.PLAY_PORTAL_SOUND.then(p_351967_ -> p_351967_.placePortalTicket(blockpos));
-        } else {
-            Direction.Axis axis = entity.level().getBlockState(pos1).getOptionalValue(AXIS).orElse(Direction.Axis.X);
-            Optional<BlockUtil.FoundRectangle> optional1 = forcer.createPortal(pos2, axis);
-            if (optional1.isEmpty()) {
-                LogUtils.getLogger().error("Unable to create a portal, likely target out of worldborder");
+        final ResourceKey<Level> currentDimension = level.dimension();
+        final ResourceKey<Level> portalTargetDimension = getDimension();
+        final MinecraftServer server = level.getServer();
+        final Optional<PortalCoordinatesContainer> existingLink = Optional.ofNullable(entity instanceof ServerPlayer pl ? pl.getData(JDataAttachments.PORTAL_OVERLAY).getPortalReturnLocation(currentDimension) : null);
+        ServerLevel targetLevel = existingLink
+                .map(link -> server.getLevel(currentDimension != portalTargetDimension ? portalTargetDimension : link.fromDim()))
+                .orElseGet(() -> server.getLevel(currentDimension == portalTargetDimension ? Level.OVERWORLD : portalTargetDimension));
+
+        if (targetLevel == null) {
+            if (currentDimension == Level.OVERWORLD)
                 return null;
-            }
 
-            rec = optional1.get();
-            dimTrans = DimensionTransition.PLAY_PORTAL_SOUND.then(DimensionTransition.PLACE_PORTAL_TICKET);
+            targetLevel = server.overworld();
         }
-        return getDimensionTransitionFromExit(entity, pos1, rec, level, dimTrans);
-    }
 
-    public ResourceKey<PoiType> getPoi() {
-        ResourceKey<PoiType> poi = Dimensions.FROZEN_PORTAL.getKey();
-
-        if(this == JBlocks.EUCA_PORTAL.get())
-            poi = Dimensions.EUCA_PORTAL.getKey();
-
-        if(this == JBlocks.FROZEN_PORTAL.get())
-            poi = Dimensions.FROZEN_PORTAL.getKey();
-
-        if(this == JBlocks.BOIL_PORTAL.get())
-            poi = Dimensions.BOIL_PORTAL.getKey();
-
-        if(this == JBlocks.DEPTHS_PORTAL.get())
-            poi = Dimensions.DEPTHS_PORTAL.getKey();
-
-        if(this == JBlocks.CORBA_PORTAL.get())
-            poi = Dimensions.CORBA_PORTAL.getKey();
-
-        if(this == JBlocks.TERRANIAN_PORTAL.get())
-            poi = Dimensions.TERRANIAN_PORTAL.getKey();
-
-        if(this == JBlocks.CLOUDIA_PORTAL.get())
-            poi = Dimensions.CLOUDIA_PORTAL.getKey();
-        return poi;
-    }
-
-    private static DimensionTransition getDimensionTransitionFromExit(Entity entity, BlockPos pos, BlockUtil.FoundRectangle rect, ServerLevel level, DimensionTransition.PostDimensionTransition dimTrans) {
-        BlockState blockstate = entity.level().getBlockState(pos);
-        Direction.Axis axis;
-        Vec3 vec3;
-        if(blockstate.hasProperty(BlockStateProperties.HORIZONTAL_AXIS)) {
-            axis = blockstate.getValue(BlockStateProperties.HORIZONTAL_AXIS);
-            BlockUtil.FoundRectangle r = BlockUtil.getLargestRectangleAround(
-                    pos, axis, 21, Direction.Axis.Y, 21, 
-                    p -> entity.level().getBlockState(p) == blockstate
-            );
-            vec3 = entity.getRelativePortalPosition(axis, r);
-        } else {
-            axis = Direction.Axis.X;
-            vec3 = new Vec3(0.5, 0.0, 0.0);
-        }
-        return createDimensionTransition(level, rect, axis, vec3, entity, entity.getDeltaMovement(), entity.getYRot(), entity.getXRot(), dimTrans);
-    }
-
-    private static DimensionTransition createDimensionTransition(ServerLevel level, BlockUtil.FoundRectangle rect, Direction.Axis axis, Vec3 vec, Entity entity, Vec3 movement, float yRot, float xRot, DimensionTransition.PostDimensionTransition dimTrans) {
-        BlockPos blockpos = rect.minCorner;
-        BlockState blockstate = level.getBlockState(blockpos);
-        Direction.Axis direction$axis = blockstate.getOptionalValue(BlockStateProperties.HORIZONTAL_AXIS).orElse(Direction.Axis.X);
-        double d0 = rect.axis1Size;
-        double d1 = rect.axis2Size;
-        EntityDimensions entitydimensions = entity.getDimensions(entity.getPose());
-        int i = axis == direction$axis ? 0 : 90;
-        Vec3 vec3 = axis == direction$axis ? movement : new Vec3(movement.z, movement.y, -movement.x);
-        double d2 = (double)entitydimensions.width() / 2.0 + (d0 - (double)entitydimensions.width()) * vec.x();
-        double d3 = (d1 - (double)entitydimensions.height()) * vec.y();
-        double d4 = 0.5 + vec.z();
-        boolean flag = direction$axis == Direction.Axis.X;
-        Vec3 vec31 = new Vec3((double)blockpos.getX() + (flag ? d2 : d4), (double)blockpos.getY() + d3, (double)blockpos.getZ() + (flag ? d4 : d2));
-        Vec3 vec32 = PortalShape.findCollisionFreePosition(vec31, level, entity, entitydimensions);
-        return new DimensionTransition(level, vec32, vec3, yRot + (float)i, xRot, dimTrans);
-    }
-
-    @Override
-    public @NotNull Transition getLocalTransition() {
-        return net.minecraft.world.level.block.Portal.Transition.CONFUSION;
+        return JPortal.getTransitionForLevel(targetLevel, entity, Optional.of(pos), JPortal.makeSafeCoords(level, targetLevel, entity.position()), this, existingLink);
     }
 
     public boolean makePortal(LevelAccessor worldIn, BlockPos pos) {

@@ -491,7 +491,7 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
     }
 
     public ItemLike getItemFromRegistryName(String registryName) {
-        ItemLike item = BuiltInRegistries.ITEM.get(ResourceLocation.withDefaultNamespace(registryName));
+        ItemLike item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(registryName));
         System.out.println(item);
         return item;
     }

@@ -1052,7 +1052,7 @@ public class JBlocks {
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
-                return wood ? 300 : -1;
+                return wood ? 300 : 0;
             }
         });
         return block1;
@@ -1070,7 +1070,7 @@ public class JBlocks {
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
-                return wood ? 300 : -1;
+                return wood ? 300 : 0;
             }
         });
         return block1;
@@ -1088,7 +1088,7 @@ public class JBlocks {
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
-                return wood ? 300 : -1;
+                return wood ? 300 : 0;
             }
         });
         return block1;
@@ -1106,7 +1106,7 @@ public class JBlocks {
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
-                return wood ? 300 : -1;
+                return wood ? 300 : 0;
             }
         });
         return block1;
@@ -1124,7 +1124,7 @@ public class JBlocks {
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
-                return wood ? 300 : -1;
+                return wood ? 300 : 0;
             }
         });
         return block1;
@@ -1147,7 +1147,7 @@ public class JBlocks {
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
-                return wood ? 300 : -1;
+                return wood ? 300 : 0;
             }
         });
         return block1;
@@ -1165,7 +1165,7 @@ public class JBlocks {
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
-                return wood ? 300 : -1;
+                return wood ? 300 : 0;
             }
         });
         return block1;
@@ -1183,7 +1183,7 @@ public class JBlocks {
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
-                return wood ? 300 : -1;
+                return wood ? 300 : 0;
             }
         });
         return block1;
@@ -1201,7 +1201,7 @@ public class JBlocks {
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
-                return wood ? 300 : -1;
+                return wood ? 300 : 0;
             }
         });
         return block1;

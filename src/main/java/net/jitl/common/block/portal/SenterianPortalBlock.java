@@ -1,8 +1,9 @@
 package net.jitl.common.block.portal;
 
+import net.jitl.common.block.portal.logic.PortalCoordinatesContainer;
+import net.jitl.common.block.portal.logic.SenterianPortal;
 import net.jitl.common.capability.player.Portal;
 import net.jitl.common.world.dimension.Dimensions;
-import net.jitl.common.world.dimension.SenterianTeleporter;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JDataAttachments;
@@ -11,9 +12,9 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -22,11 +23,15 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.portal.DimensionTransition;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class SenterianPortalBlock extends Block {
+import java.util.Optional;
+
+public class SenterianPortalBlock extends Block implements SenterianPortal {
 
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 11.0D, 16.0D);
 
@@ -37,6 +42,16 @@ public class SenterianPortalBlock extends Block {
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
         return SHAPE;
+    }
+
+    @Override
+    public Block getPortalBlock() {
+        return this;
+    }
+
+    @Override
+    public Block getPortalFrame() {
+        return JBlocks.SENTERIAN_PORTAL_FRAME.get();
     }
 
     @Override
@@ -52,44 +67,47 @@ public class SenterianPortalBlock extends Block {
         return ItemStack.EMPTY;
     }
 
-//    @Override
-//    public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entity) {
-//        if (!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions()) {
-//            if (entity.isOnPortalCooldown()) {
-//                entity.setPortalCooldown();
-//            } else {
-//                if(!entity.level().isClientSide && !pos.equals(entity.portalEntrancePos)) {
-//                    entity.portalEntrancePos = pos.immutable();
-//                }
-//                if(entity instanceof Player player) {
-//                    Portal portal = player.getData(JDataAttachments.PORTAL_OVERLAY);
-//                    portal.setInPortal(this, true);
-//                    int cooldownTime = portal.getPortalTimer();
-//                    if(cooldownTime >= player.getPortalWaitTime()) {
-//                        teleport(entity);
-//                        portal.setPortalTimer(0);
-//                    }
-//                } else {
-//                    teleport(entity);
-//                }
-//            }
-//        }
-//    }
-//
-//    public void teleport(Entity entity) {
-//        Level entityWorld = entity.level();
-//        MinecraftServer minecraftserver = entityWorld.getServer();
-//        if(minecraftserver != null) {
-//            ResourceKey<Level> destination = entity.level().dimension() == Dimensions.SENTERIAN ? Level.OVERWORLD : Dimensions.SENTERIAN;
-//            ServerLevel destinationWorld = minecraftserver.getLevel(destination);
-//            ResourceKey<PoiType> poi = Dimensions.SENTERIAN_PORTAL.getKey();
-//
-//            if(destinationWorld != null && !entity.isPassenger()) {
-//                entity.setPortalCooldown();
-//                entity.changeDimension(destinationWorld, new SenterianTeleporter(destinationWorld, this, JBlocks.SENTERIAN_PORTAL_FRAME.get(), poi, destination));
-//            }
-//        }
-//    }
+    @Override
+    public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entity) {
+        if(entity.canUsePortal(false)) {
+            if(entity instanceof Player player) {
+                Portal portal = player.getData(JDataAttachments.PORTAL_OVERLAY);
+                portal.setInPortal(this, true);
+                int cooldownTime = portal.getPortalTimer();
+                assert player.portalProcess != null;
+                //if(cooldownTime >= player.portalProcess.getPortalTime()) {
+                entity.setAsInsidePortal(this, pos);
+                //    portal.setPortalTimer(0);
+                //}
+            } else {
+                entity.setAsInsidePortal(this, pos);
+            }
+        }
+    }
+
+    @Nullable
+    @Override
+    public DimensionTransition getPortalDestination(ServerLevel level, Entity entity, BlockPos pos) {
+        if (!(entity instanceof ServerPlayer))
+            return null;
+
+        final ResourceKey<Level> currentDimension = level.dimension();
+        final ResourceKey<Level> portalTargetDimension = Dimensions.SENTERIAN;
+        final MinecraftServer server = level.getServer();
+        final Optional<PortalCoordinatesContainer> existingLink = Optional.ofNullable(entity instanceof ServerPlayer pl ? pl.getData(JDataAttachments.PORTAL_OVERLAY).getPortalReturnLocation(currentDimension) : null);
+        ServerLevel targetLevel = existingLink
+                .map(link -> server.getLevel(currentDimension != portalTargetDimension ? portalTargetDimension : link.fromDim()))
+                .orElseGet(() -> server.getLevel(currentDimension == portalTargetDimension ? Level.OVERWORLD : portalTargetDimension));
+
+        if (targetLevel == null) {
+            if (currentDimension == Level.OVERWORLD)
+                return null;
+
+            targetLevel = server.overworld();
+        }
+
+        return SenterianPortal.getTransitionForLevel(targetLevel, entity, Optional.of(pos), SenterianPortal.makeSafeCoords(level, targetLevel, entity.position()), this, existingLink);
+    }
 
     @Override
     public boolean canBeReplaced(@NotNull BlockState pState, @NotNull Fluid pFluid) {

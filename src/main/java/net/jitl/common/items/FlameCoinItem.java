@@ -1,10 +1,12 @@
 package net.jitl.common.items;
 
+import net.jitl.common.block.portal.logic.JPortalShape;
 import net.jitl.common.items.base.JItem;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.UseOnContext;
@@ -27,30 +29,36 @@ public class FlameCoinItem extends JItem {
                 for (Direction direction : Direction.Plane.VERTICAL) {
                     BlockPos blockpos = context.getClickedPos();
                     BlockState blockstate = world.getBlockState(blockpos);
+
                     if (blockstate.getBlock() == JBlocks.EUCA_PORTAL_FRAME.get() && context.getClickedFace() == Direction.UP) {
-                        if (JBlocks.EUCA_PORTAL.get().makePortal(context.getLevel(), blockpos.relative(direction))) {
-                            return InteractionResult.CONSUME;
-                        }
+                        JPortalShape.PortalDirection facing = JPortalShape.testFrameForActivation(world, blockpos, direction, JBlocks.EUCA_PORTAL.get(), JBlocks.EUCA_PORTAL_FRAME.get());
+                        if(world instanceof ServerLevel level)
+                            JPortalShape.lightPortalFrame(level, blockpos, facing, JBlocks.EUCA_PORTAL.get());
+                        return InteractionResult.CONSUME;
                     }
                     if (blockstate.getBlock() == JBlocks.FROZEN_PORTAL_FRAME.get() && context.getClickedFace() == Direction.UP) {
-                        if (JBlocks.FROZEN_PORTAL.get().makePortal(context.getLevel(), blockpos.relative(direction))) {
-                            return InteractionResult.CONSUME;
-                        }
+                        JPortalShape.PortalDirection facing = JPortalShape.testFrameForActivation(world, blockpos, direction, JBlocks.FROZEN_PORTAL.get(), JBlocks.FROZEN_PORTAL_FRAME.get());
+                        if(world instanceof ServerLevel level)
+                            JPortalShape.lightPortalFrame(level, blockpos, facing, JBlocks.FROZEN_PORTAL.get());
+                        return InteractionResult.CONSUME;
                     }
                     if (blockstate.getBlock() == JBlocks.BOIL_PORTAL_FRAME.get() && context.getClickedFace() == Direction.UP) {
-                        if (JBlocks.BOIL_PORTAL.get().makePortal(context.getLevel(), blockpos.relative(direction))) {
-                            return InteractionResult.CONSUME;
-                        }
+                        JPortalShape.PortalDirection facing = JPortalShape.testFrameForActivation(world, blockpos, direction, JBlocks.BOIL_PORTAL.get(), JBlocks.BOIL_PORTAL_FRAME.get());
+                        if(world instanceof ServerLevel level)
+                            JPortalShape.lightPortalFrame(level, blockpos, facing, JBlocks.BOIL_PORTAL.get());
+                        return InteractionResult.CONSUME;
                     }
                     if (blockstate.getBlock() == JBlocks.TERRANIAN_PORTAL_FRAME.get() && context.getClickedFace() == Direction.UP) {
-                        if (JBlocks.TERRANIAN_PORTAL.get().makePortal(context.getLevel(), blockpos.relative(direction))) {
-                            return InteractionResult.CONSUME;
-                        }
+                        JPortalShape.PortalDirection facing = JPortalShape.testFrameForActivation(world, blockpos, direction, JBlocks.TERRANIAN_PORTAL.get(), JBlocks.TERRANIAN_PORTAL_FRAME.get());
+                        if(world instanceof ServerLevel level)
+                            JPortalShape.lightPortalFrame(level, blockpos, facing, JBlocks.TERRANIAN_PORTAL.get());
+                        return InteractionResult.CONSUME;
                     }
                     if (blockstate.getBlock() == JBlocks.CLOUDIA_PORTAL_FRAME.get() && context.getClickedFace() == Direction.UP) {
-                        if (JBlocks.CLOUDIA_PORTAL.get().makePortal(context.getLevel(), blockpos.relative(direction))) {
-                            return InteractionResult.CONSUME;
-                        }
+                        JPortalShape.PortalDirection facing = JPortalShape.testFrameForActivation(world, blockpos, direction, JBlocks.CLOUDIA_PORTAL.get(), JBlocks.CLOUDIA_PORTAL_FRAME.get());
+                        if(world instanceof ServerLevel level)
+                            JPortalShape.lightPortalFrame(level, blockpos, facing, JBlocks.CLOUDIA_PORTAL.get());
+                        return InteractionResult.CONSUME;
                     }
                 }
                 if (!player.isCreative()) context.getItemInHand().shrink(1);
