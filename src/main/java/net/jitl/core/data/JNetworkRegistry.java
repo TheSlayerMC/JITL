@@ -5,6 +5,7 @@ import net.jitl.common.JManagers;
 import net.jitl.common.dialogue.DialogueNetHandler;
 import net.jitl.common.network.dialogue.C2SChosenOptionMsg;
 import net.jitl.common.network.dialogue.S2CCloseDialogueGuiMsg;
+import net.jitl.common.network.dialogue.S2COpenDialogueGuiMsg;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.network.CKeyPressedPacket;
 import net.jitl.core.init.network.PacketEssenceBar;

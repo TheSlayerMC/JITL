@@ -12,9 +12,6 @@ public class DialogueNode {
 	public static final Action EMPTY_ACTION = (world, player) -> {
 	};
 
-	/**
-	 * Will be shown when there is no option added to the node.
-	 */
 	private static final List<Option> STANDBY_END_OPTION_LIST = Collections.singletonList(new Option("dialogue.jitl.standby_end_option"));
 
 	private final String text;

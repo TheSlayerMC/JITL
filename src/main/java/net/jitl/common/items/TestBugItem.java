@@ -3,11 +3,16 @@ package net.jitl.common.items;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.capability.essence.PlayerEssence;
 import net.jitl.common.capability.stats.PlayerStats;
+import net.jitl.common.dialogue.DialogueManager;
 import net.jitl.common.items.base.JItem;
 import net.jitl.core.helper.IEssenceItem;
+import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JDataAttachments;
+import net.jitl.core.init.internal.JDialogues;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.ScrollEntries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -26,10 +31,10 @@ public class TestBugItem extends JItem implements IEssenceItem {
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand usedHand) {
         ItemStack stack = player.getItemInHand(usedHand);
         if(!level.isClientSide()) {
-            //new DialogueManager().startDialogue((ServerPlayer)player, new ResourceLocation("jitl:aero_lotus"), JDialogues.THE_HOODED);
+            new DialogueManager().startDialogue((ServerPlayer)player, JITL.rl("aero_lotus"), JDialogues.THE_HOODED);
 
             ItemStack scrollStack = new ItemStack(JItems.LORE_SCROLL.asItem());
-            LoreScrollItem.bindScrollEntry(scrollStack, ScrollEntries.TEST, EnumKnowledge.END, 25);
+            LoreScrollItem.bindScrollEntry(scrollStack, ScrollEntries.SENTERIAN_GOSPEL, EnumKnowledge.CLOUDIA, 25);
             player.addItem(scrollStack);
 
             PlayerEssence essence = player.getData(JDataAttachments.ESSENCE);

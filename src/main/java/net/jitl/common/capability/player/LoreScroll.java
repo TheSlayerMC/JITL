@@ -27,13 +27,6 @@ public record LoreScroll(String entry, String knowledge, int level, boolean open
             LoreScroll::new
     );
 
-    public LoreScroll(String entry, String knowledge, int level, boolean openedBefore) {
-        this.entry = entry;
-        this.knowledge = knowledge;
-        this.level = level;
-        this.openedBefore = openedBefore;
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.entry, this.entry, this.level, this.openedBefore);
