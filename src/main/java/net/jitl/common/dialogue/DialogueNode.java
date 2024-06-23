@@ -1,5 +1,7 @@
 package net.jitl.common.dialogue;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
 
@@ -16,6 +18,12 @@ public class DialogueNode {
 
 	private final String text;
 	private List<Option> options;
+
+	public static final Codec<DialogueNode> CODEC = RecordCodecBuilder.create(instance ->
+			instance.group(
+					Codec.STRING.fieldOf("text").forGetter(DialogueNode::getTextKey)
+			).apply(instance, DialogueNode::new)
+	);
 
 	public DialogueNode(String text) {
 		this.text = text;
@@ -46,6 +54,12 @@ public class DialogueNode {
 		private final String text;
 		private DialogueNode nextNode = END;
 		private Action onClickAction = EMPTY_ACTION;
+
+		public static final Codec<Option> CODEC = RecordCodecBuilder.create(instance ->
+				instance.group(
+						Codec.STRING.fieldOf("text").forGetter(Option::getText)
+				).apply(instance, Option::new)
+		);
 
 		public Option(String text) {
 			this.text = text;

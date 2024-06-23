@@ -98,7 +98,7 @@ public class GuiDialogue extends Screen {
 
 		drawMobText();
 		drawEntity(width / (INDENT_OFFSET) * 6, (int) (mobIconRect.bottom() - mobIconRect.height() * -3.75F), mouseX, mouseY, node.getNpc(), poseStack);
-
+		System.out.println(node.getOptionTextKeys());
 	}
 
 	private void drawMobText() {

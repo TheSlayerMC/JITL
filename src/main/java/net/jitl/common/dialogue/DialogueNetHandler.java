@@ -7,6 +7,8 @@ import net.jitl.common.network.dialogue.S2CCloseDialogueGuiMsg;
 import net.jitl.common.network.dialogue.S2COpenDialogueGuiMsg;
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.level.ServerPlayer;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ import java.util.List;
 
 public class DialogueNetHandler {
 
+    @OnlyIn(Dist.CLIENT)
     public void handleDialogueClosePacket(S2CCloseDialogueGuiMsg message, IPayloadContext ctx) {
         Minecraft mc = Minecraft.getInstance();
         if(mc.screen instanceof GuiDialogue) {
@@ -21,6 +24,7 @@ public class DialogueNetHandler {
         }
     }
 
+    @OnlyIn(Dist.CLIENT)
     public void handleDialogueOpenPacket(S2COpenDialogueGuiMsg message, IPayloadContext ctx) {
         int size = message.options().size();
         List<String> optionKeys = new ArrayList<>(size);

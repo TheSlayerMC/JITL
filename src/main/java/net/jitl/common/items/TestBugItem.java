@@ -31,7 +31,7 @@ public class TestBugItem extends JItem implements IEssenceItem {
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand usedHand) {
         ItemStack stack = player.getItemInHand(usedHand);
         if(!level.isClientSide()) {
-            new DialogueManager().startDialogue((ServerPlayer)player, JITL.rl("aero_lotus"), JDialogues.THE_HOODED);
+            //new DialogueManager().startDialogue((ServerPlayer)player, JITL.rl("aero_lotus"), JDialogues.THE_HOODED);
 
             ItemStack scrollStack = new ItemStack(JItems.LORE_SCROLL.asItem());
             LoreScrollItem.bindScrollEntry(scrollStack, ScrollEntries.SENTERIAN_GOSPEL, EnumKnowledge.CLOUDIA, 25);

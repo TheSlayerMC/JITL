@@ -9,7 +9,7 @@ public record S2CCloseDialogueGuiMsg() implements CustomPacketPayload {
 
     public static final CustomPacketPayload.Type<S2CCloseDialogueGuiMsg> TYPE = new CustomPacketPayload.Type<>(JITL.rl("close_dialogue"));
 
-    public static final StreamCodec<RegistryFriendlyByteBuf, S2CCloseDialogueGuiMsg> STREAM_CODEC = CustomPacketPayload.codec(S2CCloseDialogueGuiMsg::write, S2CCloseDialogueGuiMsg::decode);
+    public static final StreamCodec<FriendlyByteBuf, S2CCloseDialogueGuiMsg> STREAM_CODEC = CustomPacketPayload.codec(S2CCloseDialogueGuiMsg::write, S2CCloseDialogueGuiMsg::decode);
 
 
     public static S2CCloseDialogueGuiMsg decode(FriendlyByteBuf buffer) {
