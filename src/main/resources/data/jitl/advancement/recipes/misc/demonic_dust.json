@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:demonic_bone"
-            ]
+            "items": "jitl:demonic_bone"
           }
         ]
       },

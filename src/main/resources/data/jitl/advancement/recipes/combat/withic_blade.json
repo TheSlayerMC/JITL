@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:withic_dust"
-            ]
+            "items": "jitl:withic_dust"
           }
         ]
       },

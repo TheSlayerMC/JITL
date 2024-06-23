@@ -564,6 +564,13 @@ public interface SenterianPortal extends Portal {
 
         for(int x = -2; x < 3; x++) {
             for(int z = -2; z < 3; z++) {
+                if (Math.abs(x) < 2 && Math.abs(z) < 2)
+                    level.setBlock(pos.offset(x, -1, z), JBlocks.SENTERIAN_FLOOR.get().defaultBlockState(), 3);
+            }
+        }
+
+        for(int x = -2; x < 3; x++) {
+            for(int z = -2; z < 3; z++) {
                 level.setBlock(pos.offset(x, 1, z), Blocks.AIR.defaultBlockState(), 3);
                 level.setBlock(pos.offset(x, 2, z), Blocks.AIR.defaultBlockState(), 3);
             }

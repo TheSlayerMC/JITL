@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:des_axe"
-            ]
+            "items": "jitl:des_axe"
           }
         ]
       },

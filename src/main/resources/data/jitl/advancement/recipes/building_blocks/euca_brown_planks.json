@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:euca_brown_log"
-            ]
+            "items": "jitl:euca_brown_log"
           }
         ]
       },

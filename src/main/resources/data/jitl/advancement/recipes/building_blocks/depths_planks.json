@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:depths_log"
-            ]
+            "items": "jitl:depths_log"
           }
         ]
       },

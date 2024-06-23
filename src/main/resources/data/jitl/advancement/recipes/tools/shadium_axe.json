@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:shadium_ingot"
-            ]
+            "items": "jitl:shadium_ingot"
           }
         ]
       },

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:smooth_warped_quartz_block"
-            ]
+            "items": "jitl:smooth_warped_quartz_block"
           }
         ]
       },

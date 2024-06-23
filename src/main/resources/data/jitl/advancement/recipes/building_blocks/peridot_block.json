@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:peridot_gemstone"
-            ]
+            "items": "jitl:peridot_gemstone"
           }
         ]
       },

@@ -13,7 +13,7 @@ public class BlockBreakingGenerator {
     protected BufferedWriter pickaxeWriter, axeWriter, shovelWriter, hoeWriter;
 
     public void generate() {
-        String baseDir = "../../src/main/resources/data/minecraft/tags/blocks/mineable/";
+        String baseDir = "../../src/main/resources/data/minecraft/tags/block/mineable/";
 
         File pickaxe = new File(baseDir + "pickaxe.json");
         File axe = new File(baseDir + "axe.json");

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:korite_axe"
-            ]
+            "items": "jitl:korite_axe"
           }
         ]
       },

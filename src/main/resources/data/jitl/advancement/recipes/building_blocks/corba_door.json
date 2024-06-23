@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:corba_planks"
-            ]
+            "items": "jitl:corba_planks"
           }
         ]
       },

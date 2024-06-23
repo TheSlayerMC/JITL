@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:flairium_ingot"
-            ]
+            "items": "jitl:flairium_ingot"
           }
         ]
       },

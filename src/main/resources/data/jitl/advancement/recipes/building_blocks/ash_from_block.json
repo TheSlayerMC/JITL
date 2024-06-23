@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:ashual_block"
-            ]
+            "items": "jitl:ashual_block"
           }
         ]
       },

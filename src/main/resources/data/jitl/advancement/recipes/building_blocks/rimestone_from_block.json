@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:rimestone_block"
-            ]
+            "items": "jitl:rimestone_block"
           }
         ]
       },

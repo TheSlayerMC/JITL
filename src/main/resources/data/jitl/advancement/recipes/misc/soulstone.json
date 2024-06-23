@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:smithstone_dust"
-            ]
+            "items": "jitl:smithstone_dust"
           }
         ]
       },

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:shadium_clump"
-            ]
+            "items": "jitl:shadium_clump"
           }
         ]
       },

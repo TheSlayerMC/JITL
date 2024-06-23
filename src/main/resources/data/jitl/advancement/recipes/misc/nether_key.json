@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:flaming_spring"
-            ]
+            "items": "jitl:flaming_spring"
           }
         ]
       },

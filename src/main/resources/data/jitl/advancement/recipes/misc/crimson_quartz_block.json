@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:crimson_quartz"
-            ]
+            "items": "jitl:crimson_quartz"
           }
         ]
       },

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:orbadite_ingot"
-            ]
+            "items": "jitl:orbadite_ingot"
           }
         ]
       },

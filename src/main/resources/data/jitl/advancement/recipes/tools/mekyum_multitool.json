@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:mekyum_axe"
-            ]
+            "items": "jitl:mekyum_axe"
           }
         ]
       },

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:storon_ingot"
-            ]
+            "items": "jitl:storon_ingot"
           }
         ]
       },

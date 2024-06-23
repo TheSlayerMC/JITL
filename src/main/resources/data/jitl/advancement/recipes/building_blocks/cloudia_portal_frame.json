@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:cloudia_portal_gem"
-            ]
+            "items": "jitl:cloudia_portal_gem"
           }
         ]
       },

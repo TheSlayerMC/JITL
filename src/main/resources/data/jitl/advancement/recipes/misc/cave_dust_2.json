@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:cave_dust"
-            ]
+            "items": "jitl:cave_dust"
           }
         ]
       },

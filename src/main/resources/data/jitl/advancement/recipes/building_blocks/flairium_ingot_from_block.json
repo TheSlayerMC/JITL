@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:flairium_block"
-            ]
+            "items": "jitl:flairium_block"
           }
         ]
       },

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:corba_portal_gem"
-            ]
+            "items": "jitl:corba_portal_gem"
           }
         ]
       },

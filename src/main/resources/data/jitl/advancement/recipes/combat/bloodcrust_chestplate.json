@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:bloodcrust_ingot"
-            ]
+            "items": "jitl:bloodcrust_ingot"
           }
         ]
       },

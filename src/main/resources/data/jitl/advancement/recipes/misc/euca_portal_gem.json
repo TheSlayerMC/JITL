@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:euca_portal_piece_2"
-            ]
+            "items": "jitl:euca_portal_piece_2"
           }
         ]
       },

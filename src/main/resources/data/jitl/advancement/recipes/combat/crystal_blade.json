@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:cave_crystal"
-            ]
+            "items": "jitl:cave_crystal"
           }
         ]
       },

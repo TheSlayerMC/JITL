@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:green_gem"
-            ]
+            "items": "jitl:green_gem"
           }
         ]
       },

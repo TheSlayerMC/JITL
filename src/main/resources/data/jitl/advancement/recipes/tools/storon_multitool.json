@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:storon_axe"
-            ]
+            "items": "jitl:storon_axe"
           }
         ]
       },

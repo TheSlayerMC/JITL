@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:celestium_axe"
-            ]
+            "items": "jitl:celestium_axe"
           }
         ]
       },

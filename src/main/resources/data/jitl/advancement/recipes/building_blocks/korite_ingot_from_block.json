@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:korite_block"
-            ]
+            "items": "jitl:korite_block"
           }
         ]
       },

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:ash"
-            ]
+            "items": "jitl:ash"
           }
         ]
       },

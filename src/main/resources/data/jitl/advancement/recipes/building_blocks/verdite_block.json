@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:verdite_ingot"
-            ]
+            "items": "jitl:verdite_ingot"
           }
         ]
       },

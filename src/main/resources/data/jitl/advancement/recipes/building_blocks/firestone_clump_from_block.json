@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:firestone_block"
-            ]
+            "items": "jitl:firestone_block"
           }
         ]
       },

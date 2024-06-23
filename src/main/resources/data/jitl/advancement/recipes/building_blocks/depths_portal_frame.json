@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:depths_portal_gem"
-            ]
+            "items": "jitl:depths_portal_gem"
           }
         ]
       },

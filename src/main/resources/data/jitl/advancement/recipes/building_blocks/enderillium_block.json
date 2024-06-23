@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:enderillium_shard"
-            ]
+            "items": "jitl:enderillium_shard"
           }
         ]
       },

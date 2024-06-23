@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:des_ingot"
-            ]
+            "items": "jitl:des_ingot"
           }
         ]
       },

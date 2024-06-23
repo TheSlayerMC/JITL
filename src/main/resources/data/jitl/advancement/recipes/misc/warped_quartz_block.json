@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "jitl:warped_quartz"
-            ]
+            "items": "jitl:warped_quartz"
           }
         ]
       },
