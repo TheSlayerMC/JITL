@@ -34,7 +34,8 @@ public class TestBugItem extends JItem implements IEssenceItem {
             //new DialogueManager().startDialogue((ServerPlayer)player, JITL.rl("aero_lotus"), JDialogues.THE_HOODED);
 
             ItemStack scrollStack = new ItemStack(JItems.LORE_SCROLL.asItem());
-            LoreScrollItem.bindScrollEntry(scrollStack, ScrollEntries.SENTERIAN_GOSPEL, EnumKnowledge.CLOUDIA, 25);
+            LoreScrollItem.bindScrollEntry(scrollStack, ScrollEntries.BEYOND_BOILING, EnumKnowledge.BOIL, 25);
+            System.out.println(scrollStack.getComponents());
             player.addItem(scrollStack);
 
             PlayerEssence essence = player.getData(JDataAttachments.ESSENCE);

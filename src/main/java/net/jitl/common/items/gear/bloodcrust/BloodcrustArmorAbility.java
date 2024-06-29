@@ -11,6 +11,7 @@ import java.util.List;
 
 public class BloodcrustArmorAbility implements IAbility {
     @Override
+
     public FullArmorAbility getFullAbility(CompoundTag nbt) {
         return new BloodcrustFullAbility(nbt);
     }

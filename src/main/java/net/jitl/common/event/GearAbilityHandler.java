@@ -4,6 +4,8 @@ import net.jitl.common.capability.gear.PlayerArmor;
 import net.jitl.common.items.base.JArmorItem;
 import net.jitl.common.items.gear.FullArmorAbility;
 import net.jitl.common.items.gear.JGear;
+import net.jitl.core.helper.TooltipFiller;
+import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -11,25 +13,28 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterials;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.*;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHurtEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-//@Mod.EventBusSubscriber(modid = JITL.MODID)
+@EventBusSubscriber(modid = JITL.MODID)
 public class GearAbilityHandler {
 
     @SubscribeEvent
-    public static void handleTick(LivingEvent event) {
-        if(event.getEntity() instanceof Player player) {
+    public static void handleTick(PlayerTickEvent.Post event) {
+        Player player = event.getEntity();
             if(player.getInventory() != null) {
                 ItemStack hand = player.getMainHandItem();
                 Item item = hand.getItem();
@@ -56,9 +61,8 @@ public class GearAbilityHandler {
                 }
 
         }
-    }
 
-    @SubscribeEvent()
+    @SubscribeEvent
     public static void handleIncomingAttack(LivingHurtEvent event) {
         Entity entity = event.getSource().getDirectEntity();
         if (entity != null) {
@@ -81,7 +85,7 @@ public class GearAbilityHandler {
         }
     }
 
-    @SubscribeEvent()
+    @SubscribeEvent
     public static void handleDamageDealt(LivingDamageEvent event) {
         Entity entity = event.getSource().getDirectEntity();
         if (entity instanceof LivingEntity) {
@@ -93,37 +97,50 @@ public class GearAbilityHandler {
             }
         }
         PlayerArmor armor = event.getEntity().getData(JDataAttachments.PLAYER_ARMOR);
-            if (armor.getFullArmor() != null) {
-                armor.getFullArmor().hit(event);
-            }
-
+        if(armor.getFullArmor() != null) {
+            armor.getFullArmor().hit(event);
+        }
     }
 
-    public static void onKeyPressed(Player player) {
-        if(player != null) {
-            PlayerArmor playerArmor = player.getData(JDataAttachments.PLAYER_ARMOR);
-                FullArmorAbility armor = playerArmor.getFullArmor();
-                if (armor != null) armor.keyPressed(player);
+    @SubscribeEvent
+    public static void handleInteraction(PlayerInteractEvent.LeftClickBlock event) {
+        if(event.getItemStack().getItem() instanceof JGear item) {
+            item.getAbility().playerInteract(event);
+        }
+    }
 
+    @SubscribeEvent
+    public static void breakBlock(BlockEvent.BreakEvent event) {
+        if(event.getPlayer().getMainHandItem().getItem() instanceof JGear item) {
+            item.getAbility().breakBlock(event.getPlayer().getMainHandItem(), event.getPlayer().level(), event.getState(), event.getPos(), event.getPlayer());
+        }
+    }
+
+    @SubscribeEvent
+    public static void breakSpeed(PlayerEvent.BreakSpeed event) {
+        if(event.getEntity().getMainHandItem().getItem() instanceof JGear item) {
+            event.setNewSpeed(item.getAbility().blockBreakSpeed(event.getEntity().getMainHandItem(), event.getState(), event.getOriginalSpeed()));
         }
     }
 
     //TODO: reimplement vanilla tooltips
 
-    /*@SubscribeEvent()
+    @SubscribeEvent
     public static void addVanillaTooptips(ItemTooltipEvent event) {
         Item item = event.getItemStack().getItem();
         if (item instanceof ArmorItem) {
-            ArmorMaterial material = ((ArmorItem) item).getMaterial();
-            if (material == ArmorMaterials.LEATHER) {
+            ArmorMaterial material = ((ArmorItem) item).getMaterial().value();
+            if (material.equals(ArmorMaterials.LEATHER)) {
                 TooltipFiller filler = new TooltipFiller(event.getToolTip(), "leather_gear", 1);
                 filler.addOverview();
-            } else if (material == ArmorMaterials.CHAIN) {
+            } else if (material.equals(ArmorMaterials.CHAIN)) {
                 TooltipFiller filler = new TooltipFiller(event.getToolTip(), "chain_gear");
                 filler.addOverview();
             }
         }
     }
+
+    /*
 
     /*@SubscribeEvent()
     public static void handlePlayerSwing(AttackEntityEvent event) {
@@ -158,22 +175,32 @@ public class GearAbilityHandler {
         event.setAmount(event.getAmount() + damageModifier);
     }
 
-    @SubscribeEvent
-    public static void handlePostHurt(LivingDamageEvent event) {
-        System.out.println("Post damage: " + event.getAmount());
-        float damageModifier = 0;
-        Optional<IArmorSetCapability> optional = event.getEntityLiving().getCapability(JCapabilityProvider.ARMOR).resolve();
-        if (optional.isPresent()) {
-            PieceArmorAbilities gear = optional.get().getArmor();
-            if (gear != null) {
-                damageModifier += gear.getArmorReduction(event);
-            }
-        }
-        event.setAmount(event.getAmount() + damageModifier);
-        System.out.println("Post effect: " + event.getAmount());
-    }*/
+*/
 
-    @SubscribeEvent()
+    public static void onKeyPressed(Player player) {
+        if(player != null) {
+            PlayerArmor playerArmor = player.getData(JDataAttachments.PLAYER_ARMOR);
+            FullArmorAbility armor = playerArmor.getFullArmor();
+            if (armor != null) armor.keyPressed(player);
+        }
+    }
+
+//    @SubscribeEvent
+//    public static void handlePostHurt(LivingDamageEvent event) {
+//        if(event.getEntity() instanceof Player player) {
+//            System.out.println("Post damage: " + event.getAmount());
+//            float damageModifier = 0;
+//            PlayerArmor playerArmor = player.getData(JDataAttachments.PLAYER_ARMOR);
+//            PieceArmorAbilities gear = optional.get().getArmor();
+//            if (gear != null) {
+//                damageModifier += gear.getArmorReduction(event);
+//            }
+//            event.setAmount(event.getAmount() + damageModifier);
+//            System.out.println("Post effect: " + event.getAmount());
+//        }
+//    }
+
+    @SubscribeEvent
     public static void equipmentChange(LivingEquipmentChangeEvent event) {
         Item item = event.getFrom().getItem();
         LivingEntity entity = event.getEntity();

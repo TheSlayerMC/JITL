@@ -1,45 +1,62 @@
 package net.jitl.common.items.gear.bloodcrust;
 
+import net.jitl.common.capability.player.BloodcrustAbility;
 import net.jitl.common.items.gear.IAbility;
+import net.jitl.core.helper.TooltipFiller;
+import net.jitl.core.init.internal.JDataAttachments;
+import net.jitl.core.init.internal.JDataComponents;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseFireBlock;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+
+import java.util.List;
 
 public class BloodcrustToolAbility implements IAbility {
+
     @Override
-    public void breakBlock(ItemStack stack, Level world, BlockState state, BlockPos pos, LivingEntity entity) {
-       /* CompoundTag tag = stack.getTag();
-        if (state.getBlock() instanceof BaseFireBlock) {
-            tag.putInt("Fire boost", 16);
+    public void breakBlock(ItemStack stack, Level world, BlockState state, BlockPos pos, Player entity) {
+        BloodcrustAbility bloodcrust = stack.get(JDataComponents.BLOODCRUST.get());
+        if(stack.has(JDataComponents.BLOODCRUST)) {
+            if (bloodcrust.fire_boost() >= 1)
+                stack.set(JDataComponents.BLOODCRUST, new BloodcrustAbility(bloodcrust.fire_boost() - 1));
+            System.out.println(bloodcrust.fire_boost());
+        }
+    }
+
+    @Override
+    public void playerInteract(PlayerInteractEvent event) {
+        if(event.getLevel().getBlockState(event.getPos()).is(Blocks.FIRE)) {
+            event.getItemStack().set(JDataComponents.BLOODCRUST, new BloodcrustAbility(16));
             System.out.println("boost");
-        } else {
-            tag.putInt("Fire boost", Math.max(0, tag.getInt("Fire boost") - 1));
         }
-        System.out.println(tag.getInt("Fire boost"));*/
     }
 
-    @Override
-    public void equip(LivingEntity entity, EquipmentSlot slot, ItemStack stack) {
-        //if (!stack.hasTag()) stack.setTag(new CompoundTag());
-    }
-
-   /*@Override
+   @Override
     public float blockBreakSpeed(ItemStack stack, BlockState state, float original) {
-        if (isCorrectTool(stack, state)) {
-            original += (original * 2) * (((float) stack.getTag().getInt("Fire boost")) / 16);
-        }
+       if(stack.has(JDataComponents.BLOODCRUST)) {
+           if (isCorrectTool(stack, state)) {
+               original += (float) stack.get(JDataComponents.BLOODCRUST).fire_boost();
+           }
+       }
         return original;
     }
 
-/*    @Override
+    @Override
     public void fillTooltips(ItemStack stack, List<Component> tooltip) {
         TooltipFiller filler = new TooltipFiller(tooltip, "bloodcrust_tool");
         filler.addOverview();
         filler.addDrawback();
         filler.addBreak();
-        filler.addValue((200 * (float) stack.getTag().getInt("Fire boost") / 16));
-    }*/
+        if(stack.has(JDataComponents.BLOODCRUST.get()))
+            filler.addValue(stack.get(JDataComponents.BLOODCRUST).fire_boost());
+    }
 }

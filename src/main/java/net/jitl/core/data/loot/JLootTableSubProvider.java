@@ -16,13 +16,15 @@ public class JLootTableSubProvider extends LootTableProvider {
     public JLootTableSubProvider(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pRegistries) {
         super(pOutput, Set.of(), ImmutableList.of(
                 new SubProviderEntry(JBlockLootTables::new, LootContextParamSets.BLOCK)
-                , new SubProviderEntry(JEntityLootTables::new, LootContextParamSets.ENTITY)), pRegistries);
+                , new SubProviderEntry(JEntityLootTables::new, LootContextParamSets.ENTITY)
+                , new SubProviderEntry(JItemLoot::new, LootContextParamSets.ADVANCEMENT_REWARD)), pRegistries);
     }
 
     @Override
     public @NotNull List<SubProviderEntry> getTables() {
         return ImmutableList.of(
                 new SubProviderEntry(JBlockLootTables::new, LootContextParamSets.BLOCK)
-                , new SubProviderEntry(JEntityLootTables::new, LootContextParamSets.ENTITY));
+                , new SubProviderEntry(JEntityLootTables::new, LootContextParamSets.ENTITY)
+                , new SubProviderEntry(JItemLoot::new, LootContextParamSets.ADVANCEMENT_REWARD));
     }
 }

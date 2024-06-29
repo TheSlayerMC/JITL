@@ -86,11 +86,16 @@ public class LangRegistry {
         writeToFile("\"jitl.knowledge.level\" : \"Level Up!\",");
         writeToFile("\"jitl.knowledge.experience\" : \"XP Gain!\",");
         writeToFile("\"jitl.knowledge.overworld\" : \"Overworld Knowledge\",");
-        writeToFile("\"jitl.knowledge.nether\" : \"Nether Knowledge\",");
-        writeToFile("\"jitl.knowledge.end\" : \"End Knowledge\",");
+        writeToFile("\"jitl.knowledge.the_nether\" : \"Nether Knowledge\",");
+        writeToFile("\"jitl.knowledge.the_end\" : \"End Knowledge\",");
         writeToFile("\"jitl.knowledge.euca\" : \"Euca Knowledge\",");
         writeToFile("\"jitl.knowledge.boil\" : \"Boiling Knowledge\",");
         writeToFile("\"jitl.knowledge.frozen\" : \"Frozen Knowledge\",");
+        writeToFile("\"jitl.knowledge.the_depths\" : \"Depths Knowledge\",");
+        writeToFile("\"jitl.knowledge.corba\" : \"Corba Knowledge\",");
+        writeToFile("\"jitl.knowledge.terrania\" : \"Terranian Knowledge\",");
+        writeToFile("\"jitl.knowledge.cloudia\" : \"Cloudia Knowledge\",");
+        writeToFile("\"jitl.knowledge.senterian\" : \"Senterian Knowledge\",");
         writeToFile("\"death.attack.bradberryBush\" : \"%1$s was poked to death by a Bradberry bush\",");
         writeToFile("\"death.attack.redcurrant\" : \"%1$s was poked to death by a Redcurrant bush\",");
         writeToFile("\"jitl.stats\" : \"Player Stats\",");
@@ -103,9 +108,27 @@ public class LangRegistry {
 
         writeToFile("\"scroll.jitl.sentry_gospel\" : \"We never saw it, but we know it - the Divine land Corba was birthed by the o' powerful Rock and Eye. Never forget the day, the hour, the second he - The True One - the all powerful Rock and Eye - cometh unto the great world he created, to seek his revenge on the wrong-doers who dare disrespect his land.\",");
         writeToFile("\"scroll.jitl.chap1.my_last_words\" : \"I have to make this quick Clancy... I'm not sure how much time I have left... I'm not sure how much time our reality has left. These horrid machines... they're evil. They've pioneered an art form of killing. These Sentries... I'm certain they will destroy reality as we know it if they become too powerful. They - I think they've found me... I hope this reaches you. Please take all of the other contents of my Ender Chest I've left you. They're yours now. Goodbye, my friend.\",");
+        writeToFile("\"scroll.jitl.chap1.netheric_status\" : \"  nether\",");
+        writeToFile("\"scroll.jitl.chap1.the_end\" : \"  end\",");
+        writeToFile("\"scroll.jitl.chap1.beyond_boiling\" : \" boiling \",");
+        writeToFile("\"scroll.jitl.chap1.frozen_despair\" : \" frozen \",");
+        writeToFile("\"scroll.jitl.chap1.the_royals\" : \" euca \",");
+        writeToFile("\"scroll.jitl.chap1.darkness\" : \" depths \",");
+        writeToFile("\"scroll.jitl.chap1.fungi\" : \" terrania \",");
+        writeToFile("\"scroll.jitl.chap1.mist\" : \" cloudia \",");
+        writeToFile("\"scroll.jitl.chap1.this_is_it\" : \" senterian \",");
 
         writeToFile("\"scroll.jitl.name.sentry_gospel\" : \"The Senterian Gospel\",");
         writeToFile("\"scroll.jitl.name.my_last_words\" : \"My Last Words\",");
+        writeToFile("\"scroll.jitl.name.netheric_status\" : \"Netheric Status\",");
+        writeToFile("\"scroll.jitl.name.the_end\" : \"Netheric Status\",");
+        writeToFile("\"scroll.jitl.name.beyond_boiling\" : \"Beyond Boiling\",");
+        writeToFile("\"scroll.jitl.name.frozen_despair\" : \"Frozen Despair\",");
+        writeToFile("\"scroll.jitl.name.the_royals\" : \"The Royals\",");
+        writeToFile("\"scroll.jitl.name.darkness\" : \"Darkness\",");
+        writeToFile("\"scroll.jitl.name.fungi\" : \"Fungi Everywhere\",");
+        writeToFile("\"scroll.jitl.name.mist\" : \"Mist In The Distance\",");
+        writeToFile("\"scroll.jitl.name.this_is_it\" : \"This Is IT\",");
 
         writeToFile("\"scroll.jitl.chapter.one\" : \"Chapter 1\",");
         writeToFile("\"scroll.jitl.chapter.two\" : \"Chapter 2\",");
@@ -117,7 +140,7 @@ public class LangRegistry {
         writeToFile("\"scroll.jitl.chapter.eight\" : \"Chapter 8\",");
         writeToFile("\"scroll.jitl.chapter.nine\" : \"Chapter 9\",");
         writeToFile("\"scroll.jitl.chapter.ten\" : \"Chapter 10\",");
-
+        writeToFile("\"scroll.jitl.chapter.eleven\" : \"Chapter 11\",");
 
         writeToFile("\"curios.identifier.heart_container\" : \"Heart\",");
         writeToFile("\"curios.identifier.catalyst\" : \"Catalyst\",");

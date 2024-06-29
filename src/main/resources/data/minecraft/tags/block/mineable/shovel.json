@@ -7,9 +7,12 @@
     "jitl:corba_farmland",
     "jitl:cloudia_farmland",
     "jitl:goldite_dirt",
+    "jitl:euca_gold_grass",
+    "jitl:goldite_grass",
     "jitl:euca_gold_leaves",
     "jitl:goldite_path",
     "jitl:fumice",
+    "jitl:grassy_permafrost",
     "jitl:permafrost",
     "jitl:crumbled_permafrost",
     "jitl:frozen_leaves",
@@ -20,7 +23,9 @@
     "jitl:volcanic_sand",
     "jitl:volcanic_soil",
     "jitl:hot_ground",
+    "jitl:charred_grass",
     "jitl:charred_leaves",
+    "jitl:depths_grass",
     "jitl:depths_path",
     "jitl:depths_dirt",
     "jitl:depths_leaves",
@@ -30,7 +35,9 @@
     "jitl:tainted_mud",
     "jitl:dried_mud",
     "jitl:slime",
+    "jitl:terranian_grass",
     "jitl:terranian_dirt",
-    "jitl:cloudia_dirt"
+    "jitl:cloudia_dirt",
+    "jitl:cloudia_grass"
   ]
 }

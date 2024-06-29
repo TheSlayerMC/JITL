@@ -49,9 +49,9 @@ public class EssenciaBoltEntity extends LightningBolt {
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
         super.defineSynchedData(pBuilder);
-        this.entityData.set(DATA_COLOR_ID, 0);
-        this.entityData.set(DATA_STRIKE_SOUND_VOL, 2.0F);
-        this.entityData.set(DATA_THUNDER_SOUND_VOL, 10000.0F);
+        pBuilder.define(DATA_COLOR_ID, 0);
+        pBuilder.define(DATA_STRIKE_SOUND_VOL, 2.0F);
+        pBuilder.define(DATA_THUNDER_SOUND_VOL, 10000.0F);
     }
 
     @Override

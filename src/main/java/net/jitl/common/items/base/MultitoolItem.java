@@ -1,20 +1,26 @@
 package net.jitl.common.items.base;
 
 import com.mojang.datafixers.util.Pair;
+import net.jitl.common.items.gear.IAbility;
+import net.jitl.common.items.gear.JGear;
 import net.jitl.core.helper.JToolTiers;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -25,19 +31,49 @@ import net.neoforged.neoforge.common.ToolAction;
 import net.neoforged.neoforge.common.ToolActions;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class MultitoolItem extends DiggerItem {
+public class MultitoolItem extends DiggerItem implements JGear {
 
     private final TagKey<Block> shovel, axe, pick, hoe;
+    private final IAbility ability;
 
-    public MultitoolItem(JToolTiers tier) {
+    public MultitoolItem(JToolTiers tier, IAbility ability) {
         super(tier.getTier(), BlockTags.MINEABLE_WITH_AXE, JItems.itemProps().attributes(createAttributes(tier.getTier(), tier.getDamage(), tier.getSpeedModifier())));
         this.shovel = BlockTags.MINEABLE_WITH_SHOVEL;
         this.axe = BlockTags.MINEABLE_WITH_AXE;
         this.pick = BlockTags.MINEABLE_WITH_PICKAXE;
         this.hoe = BlockTags.MINEABLE_WITH_HOE;
+        this.ability = ability;
+    }
+
+    @Override
+    public IAbility getAbility() {
+        return this.ability;
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
+        ability.rightClick(playerIn, handIn, worldIn);
+        return super.use(worldIn, playerIn, handIn);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+        super.appendHoverText(stack, pContext, pTooltipComponents, pTooltipFlag);
+        ability.fillTooltips(stack, pTooltipComponents);
+    }
+
+    @Override
+    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+        return ability.animate(super.shouldCauseReequipAnimation(oldStack, newStack, slotChanged), oldStack, newStack, slotChanged);
+    }
+
+    @Override
+    public boolean shouldCauseBlockBreakReset(ItemStack oldStack, ItemStack newStack) {
+        return ability.resetBreak(super.shouldCauseBlockBreakReset(oldStack, newStack), oldStack, newStack);
     }
 
     public static Consumer<UseOnContext> changeIntoState(BlockState pState) {
@@ -106,17 +142,12 @@ public class MultitoolItem extends DiggerItem {
 
     @Override
     public boolean canPerformAction(ItemStack stack, ToolAction toolAction) {
-        return ToolActions.DEFAULT_SHOVEL_ACTIONS.contains(toolAction) || ToolActions.DEFAULT_PICKAXE_ACTIONS.contains(toolAction) ||
-                ToolActions.DEFAULT_AXE_ACTIONS.contains(toolAction) || ToolActions.DEFAULT_HOE_ACTIONS.contains(toolAction);
-    }
-
-    private boolean isMineable(BlockState s) {
-        return s.is(shovel) || s.is(axe) || s.is(pick) || s.is(hoe);
+        return true;
     }
 
     @Override
     public float getDestroySpeed(@NotNull ItemStack pStack, @NotNull BlockState pState) {
-        return isMineable(pState) ? this.getTier().getSpeed() : 1.0F;
+        return this.getTier().getSpeed();
     }
 
     @Override
@@ -134,6 +165,6 @@ public class MultitoolItem extends DiggerItem {
 
     @Override
     public boolean isCorrectToolForDrops(@NotNull ItemStack stack, @NotNull BlockState state) {
-        return isMineable(state) || super.isCorrectToolForDrops(stack, state);
+        return true;
     }
 }

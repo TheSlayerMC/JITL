@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:advancement_reward",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "jitl:lore_scroll"
+        }
+      ],
+      "functions": [
+        {
+          "components": {
+            "jitl:lore_scroll": {
+              "entry": "beyond_boiling",
+              "knowledge": "boil",
+              "openedBefore": false,
+              "xp": 10
+            }
+          },
+          "function": "minecraft:set_components"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "minecraft:empty"
+}

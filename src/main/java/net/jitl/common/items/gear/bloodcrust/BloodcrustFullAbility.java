@@ -6,15 +6,15 @@ import net.minecraft.world.entity.Entity;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
 public class BloodcrustFullAbility extends FullArmorAbility {
+
     BloodcrustFullAbility(CompoundTag nbt) {
         super(nbt);
     }
 
     @Override
     public void hit(LivingDamageEvent event) {
-        System.out.println("Bloodcrust armor hit");
-        Entity entity = event.getSource().getDirectEntity();
-        if (entity != null) {
+        Entity entity = event.getSource().getEntity();
+        if(entity != null) {
             int duration = entity.getRemainingFireTicks();
             System.out.println(duration);
             System.out.println(event.getAmount());

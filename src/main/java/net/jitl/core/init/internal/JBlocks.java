@@ -726,7 +726,7 @@ public class JBlocks {
     }
 
     private static void checkForShovelableBlocks(BlockBehaviour.Properties props, String name) {
-        if(props == JBlockProperties.SAND || props == JBlockProperties.FIRE_SAND || props == JBlockProperties.PATH || props == JBlockProperties.DIRT || props == JBlockProperties.FARMLAND || props == JBlockProperties.FIRE_DIRT) {
+        if(props == JBlockProperties.SAND || props == JBlockProperties.FIRE_SAND || props == JBlockProperties.PATH || props == JBlockProperties.DIRT || props == JBlockProperties.GRASS || props == JBlockProperties.FARMLAND || props == JBlockProperties.FIRE_DIRT) {
             addShovelableBlocks(name);
         }
     }

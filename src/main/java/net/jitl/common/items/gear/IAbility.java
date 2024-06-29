@@ -15,6 +15,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHurtEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 import java.util.List;
 
@@ -31,6 +32,10 @@ public interface IAbility {
 
     }
 
+    default void playerInteract(PlayerInteractEvent event) {
+
+    }
+
     default void attackTarget(LivingEntity attacker, ItemStack stack, LivingHurtEvent event) {
 
     }
@@ -43,7 +48,7 @@ public interface IAbility {
 
     }
 
-    default void breakBlock(ItemStack stack, Level world, BlockState state, BlockPos pos, LivingEntity entity) {
+    default void breakBlock(ItemStack stack, Level world, BlockState state, BlockPos pos, Player entity) {
 
     }
 

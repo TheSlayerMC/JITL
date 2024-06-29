@@ -16,16 +16,16 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 
 public class JSwordItem extends SwordItem implements JGear {
-    IAbility ability;
+    private final IAbility ability;
 
     public JSwordItem(JToolTiers tier, IAbility swordAbility) {
         super(tier.getTier(), JItems.itemProps().attributes(createAttributes(tier.getTier(), tier.getDamage(), tier.getSpeedModifier())));
-        ability = swordAbility;
+        this.ability = swordAbility;
     }
 
     public JSwordItem(JToolTiers tier, IAbility swordAbility, Properties p) {
         super(tier.getTier(), p.attributes(createAttributes(tier.getTier(), tier.getDamage(), tier.getSpeedModifier())));
-        ability = swordAbility;
+        this.ability = swordAbility;
     }
 
     @Override

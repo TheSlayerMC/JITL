@@ -5,6 +5,7 @@ import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.block.entity.PedestalTile;
 import net.jitl.common.capability.stats.PlayerStats;
 import net.jitl.common.entity.projectile.EssenciaBoltEntity;
+import net.jitl.common.items.LoreScrollItem;
 import net.jitl.core.init.internal.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -101,8 +102,10 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
                 this.playSound(SoundEvents.FIRE_EXTINGUISH, 1.0F, 1.0F);
                 this.remove(RemovalReason.DISCARDED);
                 
-                if (!level().isClientSide) {
-                    this.level().addFreshEntity(new ItemEntity(level(), this.position().x + 0.5F, this.position().y + 1.4F, this.position().z + 0.5F, new ItemStack(JItems.STAFF_OF_CONJURING.get(), 1)));
+                if(!level().isClientSide) {
+                    ItemStack scrollStack = new ItemStack(JItems.LORE_SCROLL.asItem());
+                    LoreScrollItem.bindScrollEntry(scrollStack, ScrollEntries.FROZEN_DESPAIR, EnumKnowledge.FROZEN, 25);
+                    this.level().addFreshEntity(new ItemEntity(level(), this.position().x + 0.5F, this.position().y + 1.4F, this.position().z + 0.5F, scrollStack));
                 }
                 this.death_timer = 100;
             }

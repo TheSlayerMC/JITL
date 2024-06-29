@@ -4,11 +4,13 @@ import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.jitl.client.ChatUtils;
-import net.jitl.common.entity.base.CurrencyForItemsTrade;
-import net.jitl.common.entity.base.JPathfinderMob;
-import net.jitl.common.entity.base.JVillagerEntity;
-import net.jitl.common.entity.base.MobStats;
+import net.jitl.client.knowledge.EnumKnowledge;
+import net.jitl.common.capability.player.LoreScroll;
+import net.jitl.common.entity.base.*;
+import net.jitl.common.items.LoreScrollItem;
+import net.jitl.core.init.internal.JDataComponents;
 import net.jitl.core.init.internal.JItems;
+import net.jitl.core.init.internal.ScrollEntries;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
@@ -20,6 +22,7 @@ import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animation.AnimatableManager;
@@ -27,13 +30,6 @@ import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 
 public class StarlightBlacksmith extends JVillagerEntity {
-
-    private static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
-            new CurrencyForItemsTrade(JItems.FLUFFY_FEATHER.get(), 16, JItems.GOLEM_CHUNK.get(), 8, JItems.GOLEM_SWORD.get(), 1, 12, 5),
-            new CurrencyForItemsTrade(JItems.FLUFFY_FEATHER.get(), 16, JItems.GOLEM_CHUNK.get(), 8, JItems.GOLEM_BOW.get(), 1, 12, 5),
-            new CurrencyForItemsTrade(JItems.LUNITE_CHUNK.get(), 16, JItems.GOLEM_CHUNK.get(), 8, JItems.STARLIGHT_BLADE.get(), 1, 12, 5),
-            new CurrencyForItemsTrade(JItems.LUNITE_CHUNK.get(), 16, JItems.GOLEM_CHUNK.get(), 8, JItems.STARLIGHT_BOW.get(), 1, 12, 5)
-    }));
 
     public StarlightBlacksmith(EntityType<? extends JPathfinderMob> type, Level worldIn) {
         super(type, worldIn);
@@ -58,7 +54,23 @@ public class StarlightBlacksmith extends JVillagerEntity {
 
     @Override
     protected Int2ObjectMap<VillagerTrades.ItemListing[]> getVillagerTrades() {
-        return TRADES;
+        return new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
+                new CurrencyForItemsTrade(JItems.FLUFFY_FEATHER.get(), 16, JItems.GOLEM_CHUNK.get(), 8, JItems.GOLEM_SWORD.get(), 1, 12, 5),
+                new CurrencyForItemsTrade(JItems.FLUFFY_FEATHER.get(), 16, JItems.GOLEM_CHUNK.get(), 8, JItems.GOLEM_BOW.get(), 1, 12, 5),
+                new CurrencyForItemsTrade(JItems.LUNITE_CHUNK.get(), 16, JItems.GOLEM_CHUNK.get(), 8, JItems.STARLIGHT_BLADE.get(), 1, 12, 5),
+                new CurrencyForItemsTrade(JItems.LUNITE_CHUNK.get(), 16, JItems.GOLEM_CHUNK.get(), 8, JItems.STARLIGHT_BOW.get(), 1, 12, 5),
+
+                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.MY_LAST_WORDS, EnumKnowledge.OVERWORLD, 10),
+                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.NETHERIC_STATUS, EnumKnowledge.NETHER, 10),
+                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.THE_END, EnumKnowledge.END, 10),
+                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.BEYOND_BOILING, EnumKnowledge.BOIL, 10),
+                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.THE_ROYALS, EnumKnowledge.EUCA, 10),
+                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.DARKNESS, EnumKnowledge.DEPTHS, 10),
+                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.SENTERIAN_GOSPEL, EnumKnowledge.CORBA, 10),
+                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.FUNGI, EnumKnowledge.TERRANIA, 10),
+                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.MIST, EnumKnowledge.CLOUDIA, 10),
+                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.THIS_IS_IT, EnumKnowledge.SENTERIAN, 10),
+        }));
     }
 
     public static AttributeSupplier createAttributes() {
