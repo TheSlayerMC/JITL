@@ -35,7 +35,6 @@ public record CKeyPressedPacket(boolean isAmulet, boolean isDown) implements Cus
                     player.getData(JDataAttachments.KEY_PRESSED).setArmorPressed(payload.isDown);
                     GearAbilityHandler.onKeyPressed(player);
                 }
-
             System.out.println(player.getScoreboardName() + " " + (payload.isDown ? "pressed" : "released") + " " + (payload.isAmulet ? "amulet" : "armor") + " ability key.");
         });
     }

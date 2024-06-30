@@ -2,6 +2,8 @@ package net.jitl.client.gui;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import net.jitl.client.gui.overlay.PlayerStats;
+import net.jitl.core.data.JNetworkRegistry;
+import net.jitl.core.init.network.CKeyPressedPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
@@ -46,7 +48,7 @@ public class KeyUsedEvent {
     public static void handleAbilityKeys(InputConstants.Key input, int action) {
         boolean key = input == KeyBindEvents.keyAmulet.getKey();
         if (key || input == KeyBindEvents.keyArmor.getKey()) {
-            //JNetworkRegistry.INSTANCE.send(new CKeyPressedPacket(key, action == GLFW.GLFW_PRESS));
+            //JNetworkRegistry.sendToPlayer(new CKeyPressedPacket(key, action == GLFW.GLFW_PRESS));
         }
     }
 }

@@ -25,6 +25,7 @@ public class ModEvents {
             event.getEntity().getData(JDataAttachments.KEY_PRESSED).copyFrom(event.getOriginal().getData(JDataAttachments.KEY_PRESSED));
             event.getEntity().getData(JDataAttachments.PLAYER_ARMOR).copyFrom(event.getOriginal().getData(JDataAttachments.PLAYER_ARMOR));
             event.getEntity().getData(JDataAttachments.PORTAL_OVERLAY).copyFrom(event.getOriginal().getData(JDataAttachments.PORTAL_OVERLAY));
+            event.getEntity().getData(JDataAttachments.CELESTIUM_ARMOR).copyFrom(event.getOriginal().getData(JDataAttachments.CELESTIUM_ARMOR));
         }
     }
 

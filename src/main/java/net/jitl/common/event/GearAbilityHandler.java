@@ -35,32 +35,31 @@ public class GearAbilityHandler {
     @SubscribeEvent
     public static void handleTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
-            if(player.getInventory() != null) {
-                ItemStack hand = player.getMainHandItem();
-                Item item = hand.getItem();
-                if (item instanceof JGear && !(item instanceof JArmorItem)) {
-                    ((JGear) hand.getItem()).getAbility().tick(player, player.level(), hand);
-                }
-                hand = player.getOffhandItem();
-                item = hand.getItem();
-                if (item instanceof JGear && !(item instanceof JArmorItem)) {
-                    ((JGear) hand.getItem()).getAbility().tick(player, player.level(), hand);
-                }
+        if(player.getInventory() != null) {
+            ItemStack hand = player.getMainHandItem();
+            Item item = hand.getItem();
+            if (item instanceof JGear && !(item instanceof JArmorItem)) {
+                ((JGear) hand.getItem()).getAbility().tick(player, player.level(), hand);
             }
-            PlayerArmor armor = event.getEntity().getData(JDataAttachments.PLAYER_ARMOR);
-                ArrayList<ItemStack> stacks = armor.getArmor();
-                if (stacks != null) {
-                    for (ItemStack stack : stacks) {
-                        if(stack.getItem() instanceof JArmorItem)
-                            Objects.requireNonNull(((JArmorItem) stack.getItem()).getAbility()).tick(player, player.level(), stack);
-                    }
-                }
-                FullArmorAbility fullSet = armor.getFullArmor();
-                if (fullSet != null) {
-                    fullSet.tick(player);
-                }
-
+            hand = player.getOffhandItem();
+            item = hand.getItem();
+            if (item instanceof JGear && !(item instanceof JArmorItem)) {
+                ((JGear) hand.getItem()).getAbility().tick(player, player.level(), hand);
+            }
         }
+        PlayerArmor armor = event.getEntity().getData(JDataAttachments.PLAYER_ARMOR);
+        ArrayList<ItemStack> stacks = armor.getArmor();
+        if (stacks != null) {
+            for (ItemStack stack : stacks) {
+                if(stack.getItem() instanceof JArmorItem)
+                    Objects.requireNonNull(((JArmorItem) stack.getItem()).getAbility()).tick(player, player.level(), stack);
+            }
+        }
+        FullArmorAbility fullSet = armor.getFullArmor();
+        if(fullSet != null) {
+            fullSet.tick(player);
+        }
+    }
 
     @SubscribeEvent
     public static void handleIncomingAttack(LivingHurtEvent event) {

@@ -15,7 +15,7 @@ public class JArmorItem extends ArmorItem implements JGear {
     private final IAbility ability;
 
     public JArmorItem(Holder<ArmorMaterial> pMaterial, ArmorItem.Type pSlot, IAbility ability) {
-        super(pMaterial, pSlot, JItems.itemProps());
+        super(pMaterial, pSlot, JItems.itemProps().stacksTo(1));
         this.ability = ability;
     }
 

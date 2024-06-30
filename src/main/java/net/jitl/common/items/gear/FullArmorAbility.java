@@ -2,6 +2,7 @@ package net.jitl.common.items.gear;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
 public abstract class FullArmorAbility {
@@ -11,9 +12,9 @@ public abstract class FullArmorAbility {
         tag = nbt;
     }
 
-    public void tick(LivingEntity entity) {}
+    public void tick(Player player) { }
 
-    public void hit(LivingDamageEvent event) {}
+    public void hit(LivingDamageEvent event) { }
 
-    public void keyPressed(LivingEntity entity) {}
+    public void keyPressed(Player player) { }
 }

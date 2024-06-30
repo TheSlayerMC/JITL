@@ -3,6 +3,7 @@ package net.jitl.core.init.internal;
 import net.jitl.common.capability.essence.PlayerEssence;
 import net.jitl.common.capability.gear.PlayerArmor;
 import net.jitl.common.capability.keypressed.PressedKeyCap;
+import net.jitl.common.capability.player.CelestiumArmorAbility;
 import net.jitl.common.capability.player.Portal;
 import net.jitl.common.capability.stats.PlayerStats;
 import net.jitl.core.init.JITL;
@@ -29,6 +30,9 @@ public class JDataAttachments {
 
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<Portal>> PORTAL_OVERLAY = REGISTRY.register(
             "portal_overlay", () -> AttachmentType.serializable(Portal::new).build());
+
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<CelestiumArmorAbility>> CELESTIUM_ARMOR = REGISTRY.register(
+            "celestium_armor", () -> AttachmentType.serializable(CelestiumArmorAbility::new).build());
 
 
 }
