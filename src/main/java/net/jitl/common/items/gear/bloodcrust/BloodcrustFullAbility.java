@@ -3,6 +3,7 @@ package net.jitl.common.items.gear.bloodcrust;
 import net.jitl.common.items.gear.FullArmorAbility;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
 public class BloodcrustFullAbility extends FullArmorAbility {
@@ -12,14 +13,12 @@ public class BloodcrustFullAbility extends FullArmorAbility {
     }
 
     @Override
-    public void hit(LivingDamageEvent event) {
-        Entity entity = event.getSource().getEntity();
-        if(entity != null) {
-            int duration = entity.getRemainingFireTicks();
-            System.out.println(duration);
-            System.out.println(event.getAmount());
-            if (duration < 600) entity.setRemainingFireTicks(Math.min(600, duration + (int) event.getAmount() * 20));
-            System.out.println(entity.getRemainingFireTicks());
-        }
+    public void hit(LivingDamageEvent.Pre event) {
+        LivingEntity entity = event.getEntity();
+        int duration = entity.getRemainingFireTicks();
+        System.out.println(duration);
+        System.out.println(event.getOriginalDamage());
+        if (duration < 600) entity.setRemainingFireTicks(Math.min(600, duration + (int) event.getOriginalDamage() * 20));
+        System.out.println(entity.getRemainingFireTicks());
     }
 }

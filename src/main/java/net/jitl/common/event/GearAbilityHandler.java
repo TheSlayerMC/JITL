@@ -18,8 +18,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
-import net.neoforged.neoforge.event.entity.living.LivingEvent;
-import net.neoforged.neoforge.event.entity.living.LivingHurtEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
@@ -62,7 +60,7 @@ public class GearAbilityHandler {
     }
 
     @SubscribeEvent
-    public static void handleIncomingAttack(LivingHurtEvent event) {
+    public static void handleIncomingAttack(LivingDamageEvent.Post event) {
         Entity entity = event.getSource().getDirectEntity();
         if (entity != null) {
             if (entity instanceof LivingEntity living) {
@@ -78,22 +76,19 @@ public class GearAbilityHandler {
                         if (!(current instanceof ArmorItem && ((ArmorItem) current).getMaterial() == ArmorMaterials.LEATHER))
                             return;
                     }
-                    event.setAmount(event.getAmount() + 5F);
+                    //event.setAmount(event.getAmount() + 5F);TODO
                 }
             }
         }
     }
 
     @SubscribeEvent
-    public static void handleDamageDealt(LivingDamageEvent event) {
-        Entity entity = event.getSource().getDirectEntity();
-        if (entity instanceof LivingEntity) {
-            LivingEntity living = (LivingEntity) entity;
-            ItemStack stack = living.getMainHandItem();
-            Item item = stack.getItem();
-            if (item instanceof JGear) {
-                ((JGear) item).getAbility().damageTarget(living, stack, event);
-            }
+    public static void handleDamageDealt(LivingDamageEvent.Pre event) {
+        LivingEntity entity = event.getEntity();
+        ItemStack stack = entity.getMainHandItem();
+        Item item = stack.getItem();
+        if (item instanceof JGear) {
+            ((JGear) item).getAbility().damageTarget(entity, stack, event);
         }
         PlayerArmor armor = event.getEntity().getData(JDataAttachments.PLAYER_ARMOR);
         if(armor.getFullArmor() != null) {

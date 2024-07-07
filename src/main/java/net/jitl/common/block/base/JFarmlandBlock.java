@@ -4,6 +4,7 @@ import net.jitl.core.init.internal.JBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -23,7 +24,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.CommonHooks;
 import net.neoforged.neoforge.common.FarmlandWaterManager;
-import net.neoforged.neoforge.common.IPlantable;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class JFarmlandBlock extends Block {
@@ -100,9 +100,7 @@ public abstract class JFarmlandBlock extends Block {
     }
 
     private static boolean isUnderCrops(BlockGetter pLevel, BlockPos pPos) {
-        BlockState plant = pLevel.getBlockState(pPos.above());
-        BlockState state = pLevel.getBlockState(pPos);
-        return plant.getBlock() instanceof IPlantable && state.canSustainPlant(pLevel, pPos, Direction.UP, (IPlantable)plant.getBlock());
+        return pLevel.getBlockState(pPos.above()).is(BlockTags.MAINTAINS_FARMLAND);
     }
 
     private static boolean isNearWater(LevelReader pLevel, BlockPos pPos) {

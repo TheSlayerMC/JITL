@@ -72,15 +72,15 @@ public class FrozenTrollModel<T extends Entity> extends ListModel<T> implements 
         this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
         this.head.xRot = headPitch * ((float) Math.PI / 180F);
         if (entityIn instanceof FrozenTrollEntity frozenTrollEntity) {
-            JEntityAction entityAction = frozenTrollEntity.getArmPose();
-            if (entityAction == JEntityAction.ADMIRING_ITEM) {
-                this.head.xRot = 0.5F;
-                this.head.yRot = 0.0F;
-                this.arm1.yRot = 0.3F;
-                this.arm1.xRot = -0.9F;
-                this.arm2.yRot = -0.3F;
-                this.arm2.xRot = -0.9F;
-            }
+//            JEntityAction entityAction = frozenTrollEntity.getArmPose();
+//            if (entityAction == JEntityAction.ADMIRING_ITEM) {
+//                this.head.xRot = 0.5F;
+//                this.head.yRot = 0.0F;
+//                this.arm1.yRot = 0.3F;
+//                this.arm1.xRot = -0.9F;
+//                this.arm2.yRot = -0.3F;
+//                this.arm2.xRot = -0.9F;
+//            }
         }
     }
 

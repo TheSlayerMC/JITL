@@ -216,10 +216,10 @@ public class Floro extends JMonsterEntity implements RangedAttackMob {
         return JSounds.HONGO_DEATH.get();
     }
 
-    @Override
-    public float getEyeHeightAccess(Pose pose) {
-        return this.getDimensions(pose).height() * 0.78F;
-    }
+//    @Override
+//    public float getEyeHeightAccess(Pose pose) {
+//        return this.getDimensions(pose).height() * 0.78F;
+//    }
 
     @Override
     public void performRangedAttack(LivingEntity pTarget, float pVelocity) {

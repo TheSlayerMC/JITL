@@ -6,7 +6,6 @@ import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.JEntityAction;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
-import net.jitl.common.entity.frozen.tasks.FrozenTrollTasks;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
@@ -44,43 +43,9 @@ import software.bernie.geckolib.animation.AnimatableManager;
 
 import javax.annotation.Nullable;
 
-public class FrozenTrollEntity extends JMonsterEntity implements InventoryCarrier {
+public class FrozenTrollEntity extends JMonsterEntity {
 
     private static final EntityDataAccessor<Boolean> IS_ANGRY_ID = SynchedEntityData.defineId(FrozenTrollEntity.class, EntityDataSerializers.BOOLEAN);
-
-    private final SimpleContainer inventory = new SimpleContainer(8);
-
-    protected static final ImmutableList<SensorType<? extends Sensor<? super FrozenTrollEntity>>> SENSOR_TYPES = ImmutableList.of(
-            SensorType.NEAREST_LIVING_ENTITIES,
-            SensorType.NEAREST_PLAYERS,
-            SensorType.NEAREST_ITEMS,
-            SensorType.HURT_BY);
-    protected static final ImmutableList<MemoryModuleType<?>> MEMORY_TYPES = ImmutableList.of(
-            MemoryModuleType.LOOK_TARGET,
-            MemoryModuleType.NEAREST_LIVING_ENTITIES,
-            MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES,
-            MemoryModuleType.NEAREST_VISIBLE_PLAYER,
-            MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYER,
-            MemoryModuleType.NEAREST_VISIBLE_WANTED_ITEM,
-            MemoryModuleType.HURT_BY,
-            MemoryModuleType.HURT_BY_ENTITY,
-            MemoryModuleType.WALK_TARGET,
-            MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE,
-            MemoryModuleType.ATTACK_TARGET,
-            MemoryModuleType.ATTACK_COOLING_DOWN,
-            MemoryModuleType.INTERACTION_TARGET,
-            MemoryModuleType.PATH,
-            MemoryModuleType.ANGRY_AT,
-            MemoryModuleType.UNIVERSAL_ANGER,
-            MemoryModuleType.AVOID_TARGET,
-            MemoryModuleType.ADMIRING_ITEM,
-            MemoryModuleType.TIME_TRYING_TO_REACH_ADMIRE_ITEM,
-            MemoryModuleType.ADMIRING_DISABLED,
-            MemoryModuleType.DISABLE_WALK_TO_ADMIRE_ITEM,
-            MemoryModuleType.NEAREST_VISIBLE_NEMESIS,
-            MemoryModuleType.NEAREST_PLAYER_HOLDING_WANTED_ITEM
-    );
-
 
     public FrozenTrollEntity(EntityType<? extends FrozenTrollEntity> entityType, Level world) {
         super(entityType, world);
@@ -104,13 +69,11 @@ public class FrozenTrollEntity extends JMonsterEntity implements InventoryCarrie
 
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
-        this.writeInventoryToTag(compound, this.registryAccess());
         compound.putBoolean("angry", this.entityData.get(IS_ANGRY_ID));
     }
 
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        this.readInventoryFromTag(compound, this.registryAccess());
         setAngry(compound.getBoolean("angry"));
     }
 
@@ -128,18 +91,7 @@ public class FrozenTrollEntity extends JMonsterEntity implements InventoryCarrie
         this.entityData.set(IS_ANGRY_ID, angry);
     }
 
-    @Override
-    protected void dropCustomDeathLoot(ServerLevel p_348683_, DamageSource p_21385_, boolean p_21387_) {
-        super.dropCustomDeathLoot(p_348683_, p_21385_, p_21387_);
-        this.inventory.removeAllItems().forEach(this::spawnAtLocation);
-    }
-
     protected void customServerAiStep() {
-        this.level().getProfiler().push("frozenTrollBrain");
-        this.getBrain().tick((ServerLevel) this.level(), this);
-        this.level().getProfiler().pop();
-        FrozenTrollTasks.updateActivity(this);
-
         boolean isPresent = getTarget() != null;
         this.entityData.set(IS_ANGRY_ID, isPresent);
 
@@ -149,10 +101,6 @@ public class FrozenTrollEntity extends JMonsterEntity implements InventoryCarrie
     @Nullable
     public LivingEntity getTarget() {
         return this.brain.getMemory(MemoryModuleType.ATTACK_TARGET).orElse(null);
-    }
-
-    protected int getExperienceReward(Player player) {
-        return this.xpReward;
     }
 
     public void playSound(SoundEvent soundEvent_) {
@@ -168,70 +116,6 @@ public class FrozenTrollEntity extends JMonsterEntity implements InventoryCarrie
             return true;
         } else {
             return false;
-        }
-    }
-
-    @Override
-    public boolean wantsToPickUp(ItemStack itemStack_) {
-        return this.canPickUpLoot() && FrozenTrollTasks.wantsToPickup(this, itemStack_);
-    }
-
-    @Override
-    protected void pickUpItem(ItemEntity itemEntity) {
-        this.onItemPickup(itemEntity);
-        FrozenTrollTasks.pickUpItem(this, itemEntity);
-    }
-
-    public void holdInOffHand(ItemStack itemStack_) {
-        if (itemStack_.getItem() == FrozenTrollTasks.BARTERING_ITEM) {
-            this.setItemSlot(EquipmentSlot.OFFHAND, itemStack_);
-            this.setGuaranteedDrop(EquipmentSlot.OFFHAND);
-        } else {
-            this.setItemSlotAndDropWhenKilled(EquipmentSlot.OFFHAND, itemStack_);
-        }
-    }
-
-    public ItemStack addToInventory(ItemStack itemStack_) {
-        return this.inventory.addItem(itemStack_);
-    }
-
-    public boolean canAddToInventory(ItemStack itemStack_) {
-        return this.inventory.canAddItem(itemStack_);
-    }
-
-    @Override
-    protected @NotNull Provider<FrozenTrollEntity> brainProvider() {
-        return Brain.provider(MEMORY_TYPES, SENSOR_TYPES);
-    }
-
-    @Override
-    protected @NotNull Brain<?> makeBrain(@NotNull Dynamic<?> dynamicIn) {
-        return FrozenTrollTasks.makeBrain(this, this.brainProvider().makeBrain(dynamicIn));
-    }
-
-    @Override
-    public Brain<FrozenTrollEntity> getBrain() {
-        return (Brain<FrozenTrollEntity>) super.getBrain();
-    }
-
-    @Override
-    public InteractionResult mobInteract(Player playerEntity_, InteractionHand hand_) {
-        InteractionResult actionresulttype = super.mobInteract(playerEntity_, hand_);
-        if (actionresulttype.consumesAction()) {
-            return actionresulttype;
-        } else if (!this.level().isClientSide) {
-            return FrozenTrollTasks.mobInteract(this, playerEntity_, hand_);
-        } else {
-            boolean flag = FrozenTrollTasks.canAdmire(this, playerEntity_.getItemInHand(hand_)) && this.getArmPose() != JEntityAction.ADMIRING_ITEM;
-            return flag ? InteractionResult.SUCCESS : InteractionResult.PASS;
-        }
-    }
-
-    public JEntityAction getArmPose() {
-        if (this.getOffhandItem().is(JItems.RIMESTONE.get())) { //FIXME not detecting offhand item?
-            return JEntityAction.ADMIRING_ITEM;
-        } else {
-            return JEntityAction.DEFAULT;
         }
     }
 
@@ -263,11 +147,6 @@ public class FrozenTrollEntity extends JMonsterEntity implements InventoryCarrie
     @Override
     protected void playStepSound(@NotNull BlockPos pos, @NotNull BlockState blockIn) {
         this.playSound(SoundEvents.WOLF_STEP, 0.15F, 1.0F);
-    }
-
-    @Override
-    public SimpleContainer getInventory() {
-        return this.inventory;
     }
 
     @Override

@@ -14,10 +14,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.common.IPlantable;
 import org.jetbrains.annotations.NotNull;
 
-public class JBlockCactus extends Block implements IPlantable {
+public class JBlockCactus extends Block {
 
     protected static final VoxelShape BIG_SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 16.0D, 13.0D);
 
@@ -56,10 +55,5 @@ public class JBlockCactus extends Block implements IPlantable {
     @Override
     public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entityIn) {
         entityIn.hurt(worldIn.damageSources().cactus(), 1.0F);
-    }
-
-    @Override
-    public BlockState getPlant(BlockGetter world, BlockPos pos) {
-        return this.defaultBlockState();
     }
 }

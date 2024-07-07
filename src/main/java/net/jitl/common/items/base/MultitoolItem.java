@@ -27,8 +27,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.neoforged.neoforge.common.ToolAction;
-import net.neoforged.neoforge.common.ToolActions;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.ItemAbility;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -92,7 +92,7 @@ public class MultitoolItem extends DiggerItem implements JGear {
             return InteractionResult.PASS;
         } else {
             Player player = pContext.getPlayer();
-            BlockState blockstate1 = blockstate.getToolModifiedState(pContext, ToolActions.SHOVEL_FLATTEN, false);
+            BlockState blockstate1 = blockstate.getToolModifiedState(pContext, ItemAbilities.SHOVEL_FLATTEN, false);
             BlockState blockstate2 = null;
             if (blockstate1 != null && level.isEmptyBlock(blockpos.above())) {
                 level.playSound(player, blockpos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -116,7 +116,7 @@ public class MultitoolItem extends DiggerItem implements JGear {
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }
 
-            BlockState toolModifiedState = level.getBlockState(blockpos).getToolModifiedState(pContext, ToolActions.HOE_TILL, false);
+            BlockState toolModifiedState = level.getBlockState(blockpos).getToolModifiedState(pContext, ItemAbilities.HOE_TILL, false);
             Pair<Predicate<UseOnContext>, Consumer<UseOnContext>> pair = toolModifiedState == null ? null : Pair.of(ctx -> true, changeIntoState(toolModifiedState));
             if(pair == null) {
                 return InteractionResult.PASS;
@@ -139,9 +139,9 @@ public class MultitoolItem extends DiggerItem implements JGear {
             }
         }
     }
-
+    
     @Override
-    public boolean canPerformAction(ItemStack stack, ToolAction toolAction) {
+    public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility) {
         return true;
     }
 

@@ -14,7 +14,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.neoforged.neoforge.event.entity.living.LivingHurtEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 import java.util.List;
@@ -36,7 +35,7 @@ public interface IAbility {
 
     }
 
-    default void attackTarget(LivingEntity attacker, ItemStack stack, LivingHurtEvent event) {
+    default void attackTarget(LivingEntity attacker, ItemStack stack, LivingDamageEvent.Post event) {
 
     }
 

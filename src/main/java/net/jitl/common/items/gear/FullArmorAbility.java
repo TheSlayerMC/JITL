@@ -14,7 +14,7 @@ public abstract class FullArmorAbility {
 
     public void tick(Player player) { }
 
-    public void hit(LivingDamageEvent event) { }
+    public void hit(LivingDamageEvent.Pre event) { }
 
     public void keyPressed(Player player) { }
 }
