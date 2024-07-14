@@ -109,7 +109,7 @@ public class Floro extends JMonsterEntity implements RangedAttackMob {
     }
 
     @Override
-    public void onAddedToWorld() {
+    public void onAddedToLevel() {
         if(isEffectiveAi() && isHidden()) {
             setHidden(true);
         }

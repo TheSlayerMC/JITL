@@ -54,7 +54,7 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
     }
 
     @Override
-    public boolean renderSky(ClientLevel level, int ticks, float partialTick, Matrix4f mat, Camera camera, Matrix4f projectionMatrix, boolean isFoggy, Runnable setupFog) {
+    public boolean renderSky(@NotNull ClientLevel level, int ticks, float partialTick, @NotNull Matrix4f mat, Camera camera, @NotNull Matrix4f projectionMatrix, boolean isFoggy, Runnable setupFog) {
         Minecraft mc = Minecraft.getInstance();
         setupFog.run();
         FogType fogtype = camera.getFluidInCamera();
@@ -62,28 +62,26 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
             PoseStack poseStack = new PoseStack();
             poseStack.mulPose(projectionMatrix);
             Vec3 vec3 = level.getSkyColor(mc.gameRenderer.getMainCamera().getPosition(), partialTick);
+            //this.renderSkyTexture(poseStack);
             float f = (float)vec3.x;
             float f1 = (float)vec3.y;
             float f2 = (float)vec3.z;
             FogRenderer.levelFogColor();
-            BufferBuilder bufferbuilder = Tesselator.getInstance().begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR_NORMAL);
+            BufferBuilder bufferbuilder;
             RenderSystem.depthMask(false);
             RenderSystem.setShaderColor(f, f1, f2, 1.0F);
             VertexBuffer.unbind();
             RenderSystem.enableBlend();
-                RenderSystem.setShader(GameRenderer::getPositionColorShader);
-                RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-                poseStack.pushPose();
-                poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
-                float f3 = Mth.sin(level.getSunAngle(partialTick)) < 0.0F ? 180.0F : 0.0F;
-                poseStack.mulPose(Axis.ZP.rotationDegrees(f3));
-                poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
-                BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
-                poseStack.popPose();
+            RenderSystem.setShader(GameRenderer::getPositionColorShader);
+            RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+            poseStack.pushPose();
+            poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
+            float f3 = Mth.sin(level.getSunAngle(partialTick)) < 0.0F ? 180.0F : 0.0F;
+            poseStack.mulPose(Axis.ZP.rotationDegrees(f3));
+            poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
+            poseStack.popPose();
             RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
             poseStack.pushPose();
-
-            this.renderSkyTexture(poseStack);
 
             //START SUN
             poseStack.mulPose(Axis.YP.rotationDegrees(-90.0F));
@@ -134,7 +132,7 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
             RenderSystem.depthMask(true);
         }
-        return false;
+        return true;
     }
 
     @Nullable
@@ -142,39 +140,33 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
         return null;
     }
 
-    private void renderSkyTexture(PoseStack pPoseStack) {
+    private void renderSkyTexture(PoseStack poseStack) {
+        BufferBuilder bufferbuilder = Tesselator.getInstance().begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
         RenderSystem.enableBlend();
+        RenderSystem.defaultBlendFunc();
         RenderSystem.depthMask(false);
-        RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, BOIL_SKY_LOCATION);
-        Tesselator tesselator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tesselator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
+
         for(int i = 0; i < 6; ++i) {
-            pPoseStack.pushPose();
-            if(i == 1)
-                pPoseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
+            poseStack.pushPose();
+            switch(i) {
+                default -> { }
+                case 1 -> poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
+                case 2 -> poseStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
+                case 3 -> poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
+                case 4 -> poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
+                case 5 -> poseStack.mulPose(Axis.ZP.rotationDegrees(-90.0F));
+            }
 
-            if(i == 2)
-                pPoseStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
-
-            if(i == 3)
-                pPoseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
-
-            if(i == 4)
-                pPoseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
-
-            if(i == 5)
-                pPoseStack.mulPose(Axis.ZP.rotationDegrees(-90.0F));
-
-            Matrix4f matrix4f = pPoseStack.last().pose();
+            Matrix4f matrix4f = poseStack.last().pose();
             bufferbuilder.addVertex(matrix4f, -100.0F, -100.0F, -100.0F).setUv(0.0F, 0.0F).setColor(40, 40, 40, 255);
             bufferbuilder.addVertex(matrix4f, -100.0F, -100.0F, 100.0F).setUv(0.0F, 16.0F).setColor(40, 40, 40, 255);
             bufferbuilder.addVertex(matrix4f, 100.0F, -100.0F, 100.0F).setUv(16.0F, 16.0F).setColor(40, 40, 40, 255);
             bufferbuilder.addVertex(matrix4f, 100.0F, -100.0F, -100.0F).setUv(16.0F, 0.0F).setColor(40, 40, 40, 255);
             BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
-            pPoseStack.popPose();
+            poseStack.popPose();
         }
-
         RenderSystem.depthMask(true);
         RenderSystem.disableBlend();
     }

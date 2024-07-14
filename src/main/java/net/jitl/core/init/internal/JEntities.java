@@ -46,7 +46,8 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
-import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -395,7 +396,7 @@ public class JEntities {
     }
 
     @SubscribeEvent
-    public static void registerSpawnPlacement(SpawnPlacementRegisterEvent event) {
+    public static void registerSpawnPlacement(RegisterSpawnPlacementsEvent event) {
         setCustomSpawn(event, SHIMMERER_TYPE, Shimmerer::checkSpawn);
         setCustomSpawn(event, MINI_GHAST_TYPE, MiniGhast::checkSpawn);
         setCustomSpawn(event, DARKENER_TYPE, Darkener::checkSpawn);
@@ -515,23 +516,23 @@ public class JEntities {
 
     }
 
-    public static <T extends Entity> void setCustomSpawn(SpawnPlacementRegisterEvent event, DeferredHolder<EntityType<?>, EntityType<T>> entity, SpawnPlacements.SpawnPredicate<T> spawn) {
-        event.register(entity.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, spawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
+    public static <T extends Entity> void setCustomSpawn(RegisterSpawnPlacementsEvent event, DeferredHolder<EntityType<?>, EntityType<T>> entity, SpawnPlacements.SpawnPredicate<T> spawn) {
+        event.register(entity.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, spawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 
     //For normal mob spawns (animals / NPC's)
-    public static <T extends Mob> void setDefaultSpawn(SpawnPlacementRegisterEvent event, DeferredHolder<EntityType<?>, EntityType<T>> entity) {
-        event.register(entity.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+    public static <T extends Mob> void setDefaultSpawn(RegisterSpawnPlacementsEvent event, DeferredHolder<EntityType<?>, EntityType<T>> entity) {
+        event.register(entity.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 
     //For monsters to spawn anywhere
-    public static <T extends JMonsterEntity> void setDefaultMonsterSpawn(SpawnPlacementRegisterEvent event, DeferredHolder<EntityType<?>, EntityType<T>> entity) {
-        event.register(entity.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, JMonsterEntity::checkAnyLightMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+    public static <T extends JMonsterEntity> void setDefaultMonsterSpawn(RegisterSpawnPlacementsEvent event, DeferredHolder<EntityType<?>, EntityType<T>> entity) {
+        event.register(entity.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, JMonsterEntity::checkAnyLightMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 
     //For monsters in only dark spots
-    public static <T extends Monster> void setDarkMonsterSpawn(SpawnPlacementRegisterEvent event, DeferredHolder<EntityType<?>, EntityType<T>> entity) {
-        event.register(entity.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+    public static <T extends Monster> void setDarkMonsterSpawn(RegisterSpawnPlacementsEvent event, DeferredHolder<EntityType<?>, EntityType<T>> entity) {
+        event.register(entity.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 
 

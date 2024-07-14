@@ -54,7 +54,7 @@ public class ClientEventHandler {
     public static void registerDimensionSpecialEffects(RegisterDimensionSpecialEffectsEvent event) {
         //TODO
 //        event.register(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
-//        event.register(Dimensions.BOIL_EFFECTS, new BoilRenderInfo());
+        event.register(Dimensions.BOIL_EFFECTS, new BoilRenderInfo());
 //        event.register(Dimensions.FROZEN_EFFECTS, new FrozenRenderInfo());
 //        event.register(Dimensions.TERRANIA_EFFECTS, new TerraniaRenderInfo());
 //        event.register(Dimensions.CLOUDIA_EFFECTS, new CloudiaRenderInfo());
