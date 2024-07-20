@@ -35,9 +35,9 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(JITL.MODID)
 public class JITL {
-    public static final String MODID = "jitl", PREFIX = MODID + ":", MOD_VERSION = "2.1.6", MOD_NAME = "Journey Into the Light";
+    public static final String MODID = "jitl", PREFIX = MODID + ":", MOD_VERSION = "2.1.7", MOD_NAME = "Journey Into the Light";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
-    public static final boolean DEV_MODE = false;
+    public static final boolean DEV_MODE = true;
 
     public JITL(IEventBus modEventBus, ModContainer container) {
         modEventBus.addListener(JTabs::registerTabs);
