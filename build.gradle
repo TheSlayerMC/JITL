@@ -44,8 +44,6 @@ runs {
     server {
         systemProperty 'forge.enabledGameTestNamespaces', "jitl"
         programArgument '--nogui'
-        systemProperty 'mixin.env.remapRefMap', 'true'
-        systemProperty 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
     }
 
     gameTestServer {
