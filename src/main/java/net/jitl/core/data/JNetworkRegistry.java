@@ -9,6 +9,7 @@ import net.jitl.common.network.dialogue.S2COpenDialogueGuiMsg;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.network.CKeyPressedPacket;
 import net.jitl.core.init.network.PacketCelestiumArmor;
+import net.jitl.core.init.network.PacketCuriosCooldown;
 import net.jitl.core.init.network.PacketEssenceBar;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerPlayer;
@@ -31,6 +32,7 @@ public class JNetworkRegistry {
         registry.playBidirectional(PacketPlayerStats.TYPE, PacketPlayerStats.STREAM_CODEC, PacketPlayerStats::handle);
         registry.playBidirectional(PacketEssenceBar.TYPE, PacketEssenceBar.STREAM_CODEC, PacketEssenceBar::handle);
         registry.playBidirectional(PacketCelestiumArmor.TYPE, PacketCelestiumArmor.STREAM_CODEC, PacketCelestiumArmor::handle);
+        registry.playBidirectional(PacketCuriosCooldown.TYPE, PacketCuriosCooldown.STREAM_CODEC, PacketCuriosCooldown::handle);
         registry.playBidirectional(CKeyPressedPacket.TYPE, CKeyPressedPacket.STREAM_CODEC, CKeyPressedPacket::handle);
 
 //        registry.playToClient(S2COpenDialogueGuiMsg.TYPE, S2COpenDialogueGuiMsg.STREAM_CODEC, dialogueNetHandler::handleDialogueOpenPacket);

@@ -1,47 +1,31 @@
 package net.jitl.common.entity.frozen;
 
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Dynamic;
 import net.jitl.client.knowledge.EnumKnowledge;
-import net.jitl.common.entity.JEntityAction;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
-import net.jitl.core.init.internal.JItems;
+import net.jitl.core.helper.MathHelper;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.Brain.Provider;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.sensing.Sensor;
-import net.minecraft.world.entity.ai.sensing.SensorType;
-import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.npc.InventoryCarrier;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animation.AnimatableManager;
-
-import javax.annotation.Nullable;
 
 public class FrozenTrollEntity extends JMonsterEntity {
 
@@ -51,6 +35,17 @@ public class FrozenTrollEntity extends JMonsterEntity {
         super(entityType, world);
         this.setCanPickUpLoot(true);
         setKnowledge(EnumKnowledge.FROZEN, 5F);
+    }
+
+    @Override
+    protected void registerGoals() {
+        this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(0, new AnimatedAttackGoal(this, 1.0D, false));
+        this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(1, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
+        this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
     }
 
     public static AttributeSupplier createAttributes() {
@@ -94,13 +89,7 @@ public class FrozenTrollEntity extends JMonsterEntity {
     protected void customServerAiStep() {
         boolean isPresent = getTarget() != null;
         this.entityData.set(IS_ANGRY_ID, isPresent);
-
         super.customServerAiStep();
-    }
-
-    @Nullable
-    public LivingEntity getTarget() {
-        return this.brain.getMemory(MemoryModuleType.ATTACK_TARGET).orElse(null);
     }
 
     public void playSound(SoundEvent soundEvent_) {
@@ -110,8 +99,8 @@ public class FrozenTrollEntity extends JMonsterEntity {
     @Override
     public boolean doHurtTarget(@NotNull Entity entityIn) {
         if (super.doHurtTarget(entityIn)) {
-            if (entityIn instanceof LivingEntity) {
-                //entityIn.setDeltaMovement(entityIn.getDeltaMovement().add(-MathHelper.sin((float) (this.lerpYRot * Math.PI / 180.0F)) * 2, 0.1D, MathHelper.cos((float) (this.lerpYRot * Math.PI / 180.0F)) * 2));
+            if(entityIn instanceof LivingEntity) {
+                entityIn.setDeltaMovement(entityIn.getDeltaMovement().add(-MathHelper.sin((float) (this.lerpYRot * Math.PI / 180.0F)) * 2, 0.1D, MathHelper.cos((float) (this.lerpYRot * Math.PI / 180.0F)) * 2));
             }
             return true;
         } else {

@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
@@ -61,7 +62,7 @@ public class FlameCoinItem extends JItem {
                         return InteractionResult.CONSUME;
                     }
                 }
-                if (!player.isCreative()) context.getItemInHand().shrink(1);
+                if (!player.isCreative()) context.getItemInHand().hurtAndBreak(1, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
             }
         }
         return InteractionResult.sidedSuccess(context.getLevel().isClientSide);

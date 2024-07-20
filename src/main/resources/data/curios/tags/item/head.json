@@ -4,6 +4,10 @@
     {
       "id": "jitl:eye_of_the_blizzard",
       "required": false
+    },
+    {
+      "id": "jitl:skull_of_decay",
+      "required": false
     }
   ]
 }

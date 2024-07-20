@@ -39,8 +39,6 @@ runs {
 
     client {
         systemProperty 'forge.enabledGameTestNamespaces', "jitl"
-        systemProperty 'mixin.env.remapRefMap', 'true'
-        systemProperty 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
     }
 
     server {
@@ -71,8 +69,7 @@ dependencies {
     implementation "mezz.jei:jei-" + minecraft_version + "-neoforge:" + jei_version
    // implementation "maven.modrinth:just-enough-resources-jer:" + jer_version
 
-//    compileOnly "top.theillusivec4.curios:curios-neoforge:" + curios_version + ":api"
-//    runtimeOnly "top.theillusivec4.curios:curios-neoforge:" + curios_version
+    implementation  "top.theillusivec4.curios:curios-neoforge:" + curios_version
 
     implementation "software.bernie.geckolib:geckolib-neoforge-" + gekolib_version
 
@@ -80,10 +77,6 @@ dependencies {
     //    runtimeOnly "vazkii.patchouli:Patchouli:" + patchouli_version
 }
 
-// This block of code expands all declared replace properties in the specified resource targets.
-// A missing property will result in an error. Properties are expanded using ${} Groovy notation.
-// When "copyIdeResources" is enabled, this will also run before the game launches in IDE environments.
-// See https://docs.gradle.org/current/dsl/org.gradle.language.jvm.tasks.ProcessResources.html
 tasks.withType(ProcessResources).configureEach {
     var replaceProperties = [
             minecraft_version      : minecraft_version,
@@ -128,8 +121,8 @@ repositories {
         url = "https://modmaven.dev"
     }
     maven {
-        name = "Illusive Soulworks maven"
-        url = "https://maven.theillusivec4.top/"
+        name = "OctoStudios"
+        url = "https://maven.octo-studios.com/releases"
     }
 
     maven {
