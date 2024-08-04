@@ -411,7 +411,7 @@ public class JEntities {
         setCustomSpawn(event, OVERSEER_TYPE, Overseer::checkSpawn);
         setCustomSpawn(event, OVERSEER_ELDER_TYPE, OverseerElder::checkSpawn);
         setCustomSpawn(event, SURFACE_SEER_TYPE, SurfaceSeer::checkSpawn);
-        setCustomSpawn(event, BOOM_TYPE, BoomBoom:checkSpawn);
+        setCustomSpawn(event, BOOM_TYPE, BoomBoom::checkSpawn);
 
         setDefaultMonsterSpawn(event, FLORO_TYPE);
         setDefaultMonsterSpawn(event, BROWN_HONGO_TYPE);
