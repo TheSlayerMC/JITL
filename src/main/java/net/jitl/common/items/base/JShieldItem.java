@@ -35,13 +35,7 @@ public class JShieldItem extends ShieldItem {
         }
     }
 
-    @Override
-    public void initializeClient(@NotNull Consumer<IClientItemExtensions> consumer) {
-        super.initializeClient(consumer);
-        consumer.accept(RenderProps.INSTANCE);
-    }
-
-    static class RenderProps implements IClientItemExtensions {
+    public static class RenderProps implements IClientItemExtensions {
         public static RenderProps INSTANCE = new RenderProps();
 
         @Override

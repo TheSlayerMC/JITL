@@ -6,6 +6,10 @@ plugins {
     id 'net.neoforged.gradle.userdev' version '7.0.145'
 }
 
+tasks.named('wrapper', Wrapper).configure {
+    distributionType = Wrapper.DistributionType.BIN
+}
+
 version = mod_version
 group = mod_group_id
 
