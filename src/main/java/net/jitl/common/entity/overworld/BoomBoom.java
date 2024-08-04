@@ -4,6 +4,7 @@ import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.goal.BoomSwellGoal;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -12,6 +13,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -30,6 +33,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.gameevent.GameEvent;
 import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.animation.AnimationController;
@@ -51,7 +55,10 @@ public class BoomBoom extends JMonsterEntity implements PowerableMob {
     public BoomBoom(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         setKnowledge(EnumKnowledge.OVERWORLD, 5F);
+    }
 
+    public static boolean checkSpawn(EntityType<BoomBoom> entity, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+        return level.getDifficulty() != Difficulty.PEACEFUL && checkMobSpawnRules(entity, level, spawnType, pos, random) && level.canSeeSky(pos);
     }
 
     @Override
