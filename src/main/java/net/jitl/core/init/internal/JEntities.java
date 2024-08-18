@@ -413,6 +413,11 @@ public class JEntities {
         setCustomSpawn(event, SURFACE_SEER_TYPE, SurfaceSeer::checkSpawn);
         setCustomSpawn(event, BOOM_TYPE, BoomBoom::checkSpawn);
 
+        setCustomSpawn(event, CLOUD_GHOST_TYPE, CloudGhost::checkSpawn);
+        setCustomSpawn(event, STARLIGHT_GOLEM_TYPE, StarlightGolem::checkSpawn);
+        setCustomSpawn(event, STARLIGHT_TRANSPORTER_TYPE, StarlightTransporter::checkSpawn);
+        setCustomSpawn(event, STARLIGHT_WALKER_TYPE, StarlightWalker::checkSpawn);
+
         setDefaultMonsterSpawn(event, FLORO_TYPE);
         setDefaultMonsterSpawn(event, BROWN_HONGO_TYPE);
         setDefaultMonsterSpawn(event, SPYCLOPSE_TYPE);
@@ -463,12 +468,8 @@ public class JEntities {
         setDefaultMonsterSpawn(event, SHIVERING_SHRIEKER_TYPE);
         setDefaultMonsterSpawn(event, CAPYBARA_TYPE);
 
-        setDefaultMonsterSpawn(event, CLOUD_GHOST_TYPE);
         setDefaultSpawn(event, STARLIGHT_BLACKSMITH_TYPE);
         setDefaultSpawn(event, STARLIGHT_VILLAGER_TYPE);
-        setDefaultMonsterSpawn(event, STARLIGHT_GOLEM_TYPE);
-        setDefaultMonsterSpawn(event, STARLIGHT_TRANSPORTER_TYPE);
-        setDefaultMonsterSpawn(event, STARLIGHT_WALKER_TYPE);
         setDefaultMonsterSpawn(event, AERO_LOTUS_TYPE);
 
         setDefaultSpawn(event, GREEN_TORDO_TYPE);

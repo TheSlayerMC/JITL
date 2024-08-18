@@ -236,56 +236,56 @@ public enum JToolTiers {
 
         public static final Tier SOULSTONE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1883, 8F, 5F, 15, () -> Ingredient.of(JItems.SOULSTONE.get()));
 
-        public static final Tier CHAMPIONS_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1483, 8F, 5F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier THE_WRAITH = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1483, 8F, 5F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier POISON_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1483, 8F, 5F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier CLOUD_SLICER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1483, 8F, 5F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier DRAGONS_TOOTH = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1056, 8F, 3F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier DEMONIC_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1056, 8F, 3F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier PEDAL_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1056, 8F, 3F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier RE_CRYSTAL_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 2015, 8F, 3F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier RE_STONE_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 2015, 8F, 3F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier CRYSTAL_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1056, 8F, 3F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier SNOW_SHOVELER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1883, 8F, 3F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier FROSTBITTEN_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 2056, 8F, 3F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier FROSTY_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1681, 8F, 3F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier WITHIC_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier CALCIA_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier WITHERING_BEAST_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier BOILING_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier SIZZLER_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier BLOODWIELD_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier CHARRED_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier MOLTEN_KNIFE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier CORE_MENDER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier ROYAL_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 8F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier ROYAL_STABBER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier KINGS_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier DEPTHS_DARKSWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier DEPTHS_SLAYER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier ROC_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 10F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier SWORD_THUNDERBIRD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 10F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier THUNDERBLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 10F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier BUBBLE_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 10F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier VINESTRAND_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 8F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier DARK_PINE_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 7.5F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier NATURES_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 7.5F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier TREE_HUGGER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 8F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier HEALERS_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 8F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier LOGGERS_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 12F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier SENTRY_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 12F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier TERRALIGHT_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 12F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier TERRANA_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 12F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier TERROLICA_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 7.5F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier VOLITE_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 7.5F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier TERRONIC_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 7F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier GOLEM_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 9F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier STARLIGHT_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 12F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier FLUFFY_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 15F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier DARK_KEEPER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 10F, 25, () -> Ingredient.of(Blocks.AIR));
+        public static final Tier CHAMPIONS_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1483, 8F, 5F, 25, () -> Ingredient.EMPTY);
+        public static final Tier THE_WRAITH = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1483, 8F, 5F, 25, () -> Ingredient.EMPTY);
+        public static final Tier POISON_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1483, 8F, 5F, 25, () -> Ingredient.EMPTY);
+        public static final Tier CLOUD_SLICER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1483, 8F, 5F, 25, () -> Ingredient.EMPTY);
+        public static final Tier DRAGONS_TOOTH = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1056, 8F, 3F, 25, () -> Ingredient.EMPTY);
+        public static final Tier DEMONIC_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1056, 8F, 3F, 25, () -> Ingredient.EMPTY);
+        public static final Tier PEDAL_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1056, 8F, 3F, 25, () -> Ingredient.EMPTY);
+        public static final Tier RE_CRYSTAL_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 2015, 8F, 3F, 25, () -> Ingredient.EMPTY);
+        public static final Tier RE_STONE_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 2015, 8F, 3F, 25, () -> Ingredient.EMPTY);
+        public static final Tier CRYSTAL_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1056, 8F, 3F, 25, () -> Ingredient.EMPTY);
+        public static final Tier SNOW_SHOVELER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1883, 8F, 3F, 25, () -> Ingredient.EMPTY);
+        public static final Tier FROSTBITTEN_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 2056, 8F, 3F, 25, () -> Ingredient.EMPTY);
+        public static final Tier FROSTY_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1681, 8F, 3F, 25, () -> Ingredient.EMPTY);
+        public static final Tier WITHIC_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> Ingredient.EMPTY);
+        public static final Tier CALCIA_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> Ingredient.EMPTY);
+        public static final Tier WITHERING_BEAST_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> Ingredient.EMPTY);
+        public static final Tier BOILING_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> Ingredient.EMPTY);
+        public static final Tier SIZZLER_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> Ingredient.EMPTY);
+        public static final Tier BLOODWIELD_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> Ingredient.EMPTY);
+        public static final Tier CHARRED_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> Ingredient.EMPTY);
+        public static final Tier MOLTEN_KNIFE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> Ingredient.EMPTY);
+        public static final Tier CORE_MENDER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> Ingredient.EMPTY);
+        public static final Tier ROYAL_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 8F, 25, () -> Ingredient.EMPTY);
+        public static final Tier ROYAL_STABBER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 3F, 25, () -> Ingredient.EMPTY);
+        public static final Tier KINGS_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> Ingredient.EMPTY);
+        public static final Tier DEPTHS_DARKSWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5, 25, () -> Ingredient.EMPTY);
+        public static final Tier DEPTHS_SLAYER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 5F, 25, () -> Ingredient.EMPTY);
+        public static final Tier ROC_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 10F, 25, () -> Ingredient.EMPTY);
+        public static final Tier SWORD_THUNDERBIRD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 10F, 25, () -> Ingredient.EMPTY);
+        public static final Tier THUNDERBLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 10F, 25, () -> Ingredient.EMPTY);
+        public static final Tier BUBBLE_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 10F, 25, () -> Ingredient.EMPTY);
+        public static final Tier VINESTRAND_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 8F, 25, () -> Ingredient.EMPTY);
+        public static final Tier DARK_PINE_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 7.5F, 25, () -> Ingredient.EMPTY);
+        public static final Tier NATURES_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 7.5F, 25, () -> Ingredient.EMPTY);
+        public static final Tier TREE_HUGGER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 8F, 25, () -> Ingredient.EMPTY);
+        public static final Tier HEALERS_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 8F, 25, () -> Ingredient.EMPTY);
+        public static final Tier LOGGERS_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 12F, 25, () -> Ingredient.EMPTY);
+        public static final Tier SENTRY_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 12F, 25, () -> Ingredient.EMPTY);
+        public static final Tier TERRALIGHT_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 12F, 25, () -> Ingredient.EMPTY);
+        public static final Tier TERRANA_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 12F, 25, () -> Ingredient.EMPTY);
+        public static final Tier TERROLICA_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 7.5F, 25, () -> Ingredient.EMPTY);
+        public static final Tier VOLITE_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 7.5F, 25, () -> Ingredient.EMPTY);
+        public static final Tier TERRONIC_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 7F, 25, () -> Ingredient.EMPTY);
+        public static final Tier GOLEM_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 9F, 25, () -> Ingredient.EMPTY);
+        public static final Tier STARLIGHT_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 12F, 25, () -> Ingredient.EMPTY);
+        public static final Tier FLUFFY_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 15F, 25, () -> Ingredient.EMPTY);
+        public static final Tier DARK_KEEPER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 10F, 25, () -> Ingredient.EMPTY);
 
-        public static final Tier DEVELOPER_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 1000F, 25, () -> Ingredient.of(Blocks.AIR));
-        public static final Tier THROWING_KNIFE = new SimpleTier(BlockTags.INCORRECT_FOR_IRON_TOOL, -1, 3F, 2F, 25, () -> Ingredient.of(Blocks.AIR));
+        public static final Tier DEVELOPER_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 1000F, 25, () -> Ingredient.EMPTY);
+        public static final Tier THROWING_KNIFE = new SimpleTier(BlockTags.INCORRECT_FOR_IRON_TOOL, -1, 3F, 2F, 25, () -> Ingredient.EMPTY);
     }
 
     public static class JArmorTier {
@@ -369,7 +369,7 @@ public enum JToolTiers {
                     armor.put(ArmorItem.Type.CHESTPLATE, 10);
                     armor.put(ArmorItem.Type.HELMET, 8);
                     armor.put(ArmorItem.Type.BODY, 5);
-                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(Blocks.AIR));
+                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY);
 
         public static final Holder<ArmorMaterial> FLAME = register("flame", Util.make(new EnumMap<>(ArmorItem.Type.class),
                 armor -> {
@@ -378,7 +378,7 @@ public enum JToolTiers {
                     armor.put(ArmorItem.Type.CHESTPLATE, 10);
                     armor.put(ArmorItem.Type.HELMET, 8);
                     armor.put(ArmorItem.Type.BODY, 5);
-                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(Blocks.AIR));
+                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY);
 
         public static final Holder<ArmorMaterial> HOLLOW = register("hollow", Util.make(new EnumMap<>(ArmorItem.Type.class),
                 armor -> {
@@ -387,7 +387,7 @@ public enum JToolTiers {
                     armor.put(ArmorItem.Type.CHESTPLATE, 10);
                     armor.put(ArmorItem.Type.HELMET, 8);
                     armor.put(ArmorItem.Type.BODY, 5);
-                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(Blocks.AIR));
+                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY);
 
         public static final Holder<ArmorMaterial> CRYSTAL_FLAKE = register("crystal_flake", Util.make(new EnumMap<>(ArmorItem.Type.class),
                 armor -> {
@@ -396,7 +396,7 @@ public enum JToolTiers {
                     armor.put(ArmorItem.Type.CHESTPLATE, 10);
                     armor.put(ArmorItem.Type.HELMET, 8);
                     armor.put(ArmorItem.Type.BODY, 5);
-                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(Blocks.AIR));
+                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY);
 
         public static final Holder<ArmorMaterial> FROSTBITTEN = register("frostbitten", Util.make(new EnumMap<>(ArmorItem.Type.class),
                 armor -> {
@@ -405,7 +405,7 @@ public enum JToolTiers {
                     armor.put(ArmorItem.Type.CHESTPLATE, 10);
                     armor.put(ArmorItem.Type.HELMET, 8);
                     armor.put(ArmorItem.Type.BODY, 5);
-                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(Blocks.AIR));
+                }), 20, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY);
 
         public static final Holder<ArmorMaterial> HELLMETAL = register("hellmetal", Util.make(new EnumMap<>(ArmorItem.Type.class),
                 armor -> {
@@ -414,7 +414,7 @@ public enum JToolTiers {
                     armor.put(ArmorItem.Type.CHESTPLATE, 10);
                     armor.put(ArmorItem.Type.HELMET, 8);
                     armor.put(ArmorItem.Type.BODY, 5);
-                }), 25, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(Blocks.AIR));
+                }), 25, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.EMPTY);
 
         private static Holder<ArmorMaterial> register(
                 String pName,
