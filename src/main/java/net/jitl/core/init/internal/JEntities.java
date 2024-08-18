@@ -412,7 +412,6 @@ public class JEntities {
         setCustomSpawn(event, OVERSEER_ELDER_TYPE, OverseerElder::checkSpawn);
         setCustomSpawn(event, SURFACE_SEER_TYPE, SurfaceSeer::checkSpawn);
         setCustomSpawn(event, BOOM_TYPE, BoomBoom::checkSpawn);
-
         setCustomSpawn(event, CLOUD_GHOST_TYPE, CloudGhost::checkSpawn);
         setCustomSpawn(event, STARLIGHT_GOLEM_TYPE, StarlightGolem::checkSpawn);
         setCustomSpawn(event, STARLIGHT_TRANSPORTER_TYPE, StarlightTransporter::checkSpawn);
