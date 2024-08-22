@@ -2,6 +2,7 @@ package net.jitl.client;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 
 public class ChatUtils {
@@ -30,5 +31,17 @@ public class ChatUtils {
         if(!player.level().isClientSide) {
             player.displayClientMessage(comp, false);
         }
+    }
+
+    public static void sendColouredTranslatedMessage(Player player, ChatFormatting colour, String translationKey, Object... args) {
+        MutableComponent msg = Component.translatable(translationKey, args);
+        msg.withStyle(colour);
+        player.sendSystemMessage(msg);
+    }
+
+    public static void sendColouredMessage(Player player, ChatFormatting colour, String key) {
+        MutableComponent msg = Component.literal(key);
+        msg.withStyle(colour);
+        player.sendSystemMessage(msg);
     }
 }

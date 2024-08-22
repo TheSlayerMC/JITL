@@ -1,28 +1,39 @@
 package net.jitl.common.items;
 
+import net.jitl.client.ChatUtils;
 import net.jitl.common.block.OkolooPedestalBlock;
 import net.jitl.common.entity.boss.*;
 import net.jitl.common.items.base.JItem;
+import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.components.ChatComponent;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.dimension.DimensionType;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
+import java.lang.reflect.Constructor;
 import java.util.List;
+import java.util.function.Supplier;
 
 public class BossSpawnerItem extends JItem {
-
 
     public BossSpawnerItem() {
         super(JItems.itemProps());
@@ -44,65 +55,53 @@ public class BossSpawnerItem extends JItem {
                             player.getMainHandItem().shrink(1);
                     }
                 }
-            }
-            LivingEntity entity = null;
+            } else {
 
-            if(this == JItems.WITHERING_BEAST_ORB.get()) {
-                entity = new WitheringBeast(JEntities.WITHERING_BEAST_TYPE.get(), level);
-            }
+                if(!level.isClientSide()) {
+                    ServerLevel serverLevel = (ServerLevel)level;
 
-            if(this == JItems.CALCIA_ORB.get()) {
-                entity = new Calcia(JEntities.CALCIA_TYPE.get(), level);
-            }
+                    //NETHER
+                    bindSpawner(player, serverLevel, pos, JItems.WITHERING_BEAST_ORB.get(), Dimensions.NETHER, "The Nether", new WitheringBeast(JEntities.WITHERING_BEAST_TYPE.get(), level));
+                    bindSpawner(player, serverLevel, pos, JItems.CALCIA_ORB.get(), Dimensions.NETHER, "The Nether", new Calcia(JEntities.CALCIA_TYPE.get(), level));
+                    bindSpawner(player, serverLevel, pos, JItems.SOUL_WATCHER_ORB.get(), Dimensions.NETHER, "The Nether", new SoulWatcher(JEntities.SOUL_WATCHER_TYPE.get(), level));
+                    bindSpawner(player, serverLevel, pos, JItems.BLAZIER_ORB.get(), Dimensions.NETHER, "The Nether", new Blazier(JEntities.BLAZIER_TYPE.get(), level));
 
-            if(this == JItems.SOUL_WATCHER_ORB.get()) {
-                entity = new SoulWatcher(JEntities.SOUL_WATCHER_TYPE.get(), level);
-            }
+                    //EUCA
+                    bindSpawner(player, serverLevel, pos, JItems.EUDOR_CROWN.get(), Dimensions.EUCA, "Euca", new Eudor(JEntities.EUDOR_TYPE.get(), level));
+                    bindSpawner(player, serverLevel, pos, JItems.CORALLATOR_ORB.get(), Dimensions.EUCA, "Euca", new Corallator(JEntities.CORALLATOR_TYPE.get(), level));
 
-            if(this == JItems.EUDOR_CROWN.get()) {
-                entity = new Eudor(JEntities.EUDOR_TYPE.get(), level);
-            }
+                    //DEPTHS
+                    bindSpawner(player, serverLevel, pos, JItems.THUNDER_BIRD_ORB.get(), Dimensions.DEPTHS, "The Depths", new ThunderBird(JEntities.THUNDER_BIRD_TYPE.get(), level));
+                    bindSpawner(player, serverLevel, pos, JItems.SCALE_ORB.get(), Dimensions.DEPTHS, "The Depths", new Scale(JEntities.SCALE_TYPE.get(), level));
 
-            if(this == JItems.CORALLATOR_ORB.get()) {
-                entity = new Corallator(JEntities.CORALLATOR_TYPE.get(), level);
-            }
+                    //CORBA
+                    bindSpawner(player, serverLevel, pos, JItems.LOGGER_ORB.get(), Dimensions.CORBA, "Corba", new Logger(JEntities.LOGGER_TYPE.get(), level));
+                    bindSpawner(player, serverLevel, pos, JItems.SENTRY_KING_ORB.get(), Dimensions.CORBA, "Corba", new SentryKing(JEntities.SENTRY_KING_TYPE.get(), level));
 
-            if(this == JItems.BLAZIER_ORB.get()) {
-                entity = new Blazier(JEntities.BLAZIER_TYPE.get(), level);
-            }
+                    //TERRANIA
+                    bindSpawner(player, serverLevel, pos, JItems.ENCHANTED_TERRASTAR.get(), Dimensions.TERRANIA, "Terrania", new TerranianProtector(JEntities.TERRANIAN_PROTECTOR_TYPE.get(), level));
 
-            if(this == JItems.THUNDER_BIRD_ORB.get()) {
-                entity = new ThunderBird(JEntities.THUNDER_BIRD_TYPE.get(), level);
-            }
-
-            if(this == JItems.SCALE_ORB.get()) {
-                entity = new Scale(JEntities.SCALE_TYPE.get(), level);
-            }
-
-            if(this == JItems.LOGGER_ORB.get()) {
-                entity = new Logger(JEntities.LOGGER_TYPE.get(), level);
-            }
-
-            if(this == JItems.SENTRY_KING_ORB.get()) {
-                entity = new SentryKing(JEntities.SENTRY_KING_TYPE.get(), level);
-            }
-
-            if(this == JItems.MYSTERIOUS_DISK.get()) {
-                entity = new SkyStalker(JEntities.SKY_STALKER_TYPE.get(), level);
-            }
-
-            if(this == JItems.ENCHANTED_TERRASTAR.get()) {
-                entity = new TerranianProtector(JEntities.TERRANIAN_PROTECTOR_TYPE.get(), level);
-            }
-
-            if(entity != null) {
-                entity.setPos(pos.getX(), pos.getY() + 1, pos.getZ());
-                level.addFreshEntity(entity);
-                if(!player.isCreative())
-                    player.getMainHandItem().shrink(1);
+                    //CLOUDIA
+                    bindSpawner(player, serverLevel, pos, JItems.MYSTERIOUS_DISK.get(), Dimensions.CLOUDIA, "Cloudia", new SkyStalker(JEntities.SKY_STALKER_TYPE.get(), level));
+                }
             }
         }
         return InteractionResult.sidedSuccess(level.isClientSide());
+    }
+
+    public void bindSpawner(Player player, ServerLevel level, BlockPos pos, Item spawner, ResourceKey<Level> dimension, String dimensionName, LivingEntity boss) {
+         if(player.getMainHandItem().getItem() == spawner && level.getLevel() == level.getServer().getLevel(dimension)) {
+            if(boss != null) {
+                boss.setPos(pos.getX(), pos.getY() + 1, pos.getZ());
+                level.addFreshEntity(boss);
+                if (!player.isCreative())
+                    player.getMainHandItem().shrink(1);
+            }
+            assert boss != null;
+            ChatUtils.sendColouredTranslatedMessage(player, ChatFormatting.BLUE, "jitl.boss_spawn.success", boss.getName());
+        } else if(player.getMainHandItem().getItem() == spawner){
+            ChatUtils.sendColouredTranslatedMessage(player, ChatFormatting.RED, "jitl.boss_spawn.fail", boss.getName(), dimensionName);
+        }
     }
 
     @Override

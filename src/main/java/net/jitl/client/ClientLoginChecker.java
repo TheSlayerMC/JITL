@@ -23,10 +23,10 @@ public class ClientLoginChecker {
         Player player = event.getEntity();
         if(JClientConfig.UPDATE_MESSAGE.get()) {
             if(!player.level().isClientSide) {
-                sendColouredMessage(player, ChatFormatting.GOLD, "[|---------------------------------------------------|]");
-                sendColouredMessage(player, ChatFormatting.GOLD, "[" + JITL.MOD_NAME + "]");
-                sendColouredTranslatedMessage(player, ChatFormatting.LIGHT_PURPLE, "jitl.message.thank_you", player.getDisplayName());
-                sendColouredTranslatedMessage(player, ChatFormatting.BLUE, "jitl.message.current_version", JITL.MOD_VERSION);
+                ChatUtils.sendColouredMessage(player, ChatFormatting.GOLD, "[|---------------------------------------------------|]");
+                ChatUtils.sendColouredMessage(player, ChatFormatting.GOLD, "[" + JITL.MOD_NAME + "]");
+                ChatUtils.sendColouredTranslatedMessage(player, ChatFormatting.LIGHT_PURPLE, "jitl.message.thank_you", player.getDisplayName());
+                ChatUtils.sendColouredTranslatedMessage(player, ChatFormatting.BLUE, "jitl.message.current_version", JITL.MOD_VERSION);
 
                 try {
                     if(!InternetHandler.isOnline()) {
@@ -36,10 +36,10 @@ public class ClientLoginChecker {
                     }
                     try {
                         if(InternetHandler.isUpdateAvailable() && InternetHandler.isOnline()) {
-                            sendColouredTranslatedMessage(player, ChatFormatting.GREEN, "jitl.message.update_available", InternetHandler.getUpdateVersion());
+                            ChatUtils.sendColouredTranslatedMessage(player, ChatFormatting.GREEN, "jitl.message.update_available", InternetHandler.getUpdateVersion());
                         }
                         if(!InternetHandler.isUpdateAvailable() && InternetHandler.isOnline()) {
-                            sendColouredTranslatedMessage(player, ChatFormatting.AQUA, "jitl.message.up_to_date");
+                            ChatUtils.sendColouredTranslatedMessage(player, ChatFormatting.AQUA, "jitl.message.up_to_date");
                         }
                     } catch(IOException e) {
                         throw new RuntimeException(e);
@@ -47,20 +47,8 @@ public class ClientLoginChecker {
                 } catch(SocketException e) {
                     throw new RuntimeException(e);
                 }
-                sendColouredMessage(player, ChatFormatting.GOLD, "[|---------------------------------------------------|]");
+                ChatUtils.sendColouredMessage(player, ChatFormatting.GOLD, "[|---------------------------------------------------|]");
             }
         }
-    }
-
-    public static void sendColouredTranslatedMessage(Player player, ChatFormatting colour, String translationKey, Object... args) {
-        MutableComponent msg = Component.translatable(translationKey, args);
-        msg.withStyle(colour);
-        player.sendSystemMessage(msg);
-    }
-
-    public static void sendColouredMessage(Player player, ChatFormatting colour, String key) {
-        MutableComponent msg = Component.literal(key);
-        msg.withStyle(colour);
-        player.sendSystemMessage(msg);
     }
 }

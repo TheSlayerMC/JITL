@@ -568,13 +568,17 @@ public class LangRegistry {
         writeToFile("\"jitl.item.desc.demonic_eye\" : \"Inserted into the Corba Portal Frame\",");
         writeToFile("\"jitl.item.desc.dark_gem\" : \"Inserted into the Depths Portal Frame\",");
         writeToFile("\"jitl.item.desc.sentry_observer\" : \"Inserted into the Senterian Altar\",");
-        writeToFile("\"jitl.item.desc.bile\" : \"Very Vile!\",");
+        writeToFile("\"jitl.item.desc.bile\" : \"A very Bile Vile!\",");
 
         writeToFile("\"jitl.message.no_internet\" : \"Update checker failed, Please check your internet connection.\",");
         writeToFile("\"jitl.message.thank_you\" : \"Thank you %s, for downloading and playing!\",");
         writeToFile("\"jitl.message.update_available\" : \"Update available! Latest version: %s\",");
         writeToFile("\"jitl.message.current_version\" : \"Current Version: %s\",");
         writeToFile("\"jitl.message.up_to_date\" : \"Your version is up to date. Enjoy!\",");
+
+        writeToFile("\"jitl.boss_spawn.success\" : \"Successfully called upon %s\",");
+        writeToFile("\"jitl.boss_spawn.fail\" : \"To summon %s, you need to be in %s Dimension\",");
+
 
         /* --------------------- Finish manual lines --------------------- */
 
