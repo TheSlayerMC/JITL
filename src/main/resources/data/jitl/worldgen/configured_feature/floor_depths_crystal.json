@@ -1,0 +1,49 @@
+{
+  "type": "minecraft:flower",
+  "config": {
+    "feature": {
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:noise_provider",
+            "noise": {
+              "amplitudes": [
+                1.0
+              ],
+              "firstOctave": 0
+            },
+            "scale": 0.020833334,
+            "seed": 2345,
+            "states": [
+              {
+                "Name": "jitl:floor_depths_crystal_yellow"
+              },
+              {
+                "Name": "jitl:floor_depths_crystal_pink"
+              },
+              {
+                "Name": "jitl:floor_depths_crystal_green"
+              },
+              {
+                "Name": "jitl:floor_depths_crystal_blue"
+              }
+            ]
+          }
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          }
+        }
+      ]
+    },
+    "tries": 60,
+    "xz_spread": 4,
+    "y_spread": 2
+  }
+}

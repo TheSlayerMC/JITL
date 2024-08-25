@@ -576,8 +576,20 @@ public class LangRegistry {
         writeToFile("\"jitl.message.current_version\" : \"Current Version: %s\",");
         writeToFile("\"jitl.message.up_to_date\" : \"Your version is up to date. Enjoy!\",");
 
-        writeToFile("\"jitl.boss_spawn.success\" : \"Successfully called upon %s\",");
-        writeToFile("\"jitl.boss_spawn.fail\" : \"To summon %s, you need to be in %s Dimension\",");
+        writeToFile("\"jitl.boss_spawn.fail\" : \"%s cannot be called upon unless in the %s dimension.\",");
+        writeToFile("\"jitl.boss_spawn.okoloo\" : \"Time to get Clubbing\",");
+        writeToFile("\"jitl.boss_spawn.withering_beast\" : \"You can feel the Withering around you\",");
+        writeToFile("\"jitl.boss_spawn.calcia\" : \"Hide and seek?\",");
+        writeToFile("\"jitl.boss_spawn.soul_watcher\" : \"Your soul shouldn't be watched!\",");
+        writeToFile("\"jitl.boss_spawn.blazier\" : \"You're playing with the inferno. It's not too late to turn back...\",");
+        writeToFile("\"jitl.boss_spawn.eudor\" : \"Bow down The King of this land\",");
+        writeToFile("\"jitl.boss_spawn.corallator\" : \"You will regret this mistake for the rest of your life - if you'll still have one, that is...\",");
+        writeToFile("\"jitl.boss_spawn.thunderbird\" : \"The thunderbird is not pleased with its awakening...\",");
+        writeToFile("\"jitl.boss_spawn.scale\" : \"The blue blubby fish monster has been summoned!\",");
+        writeToFile("\"jitl.boss_spawn.logger\" : \"You'll get chopped to pieces with this one...\",");
+        writeToFile("\"jitl.boss_spawn.sentry_king\" : \"It sucked all the energy out of this world, don't let it suck the energy out of you...\",");
+        writeToFile("\"jitl.boss_spawn.terranian_protector\" : \"It's sole purpose was to protect this land. Why would you try to destroy it?\",");
+        writeToFile("\"jitl.boss_spawn.sky_stalker\" : \"Watch the Sky's...\",");
 
 
         /* --------------------- Finish manual lines --------------------- */

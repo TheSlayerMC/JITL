@@ -404,6 +404,10 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.DEPTHS_FURNACE);
         this.dropSelf(JBlocks.DEPTHS_GATE);
         this.add(JBlocks.DARK_SORCERER_SPAWNER, noDrop());
+        this.dropSelf(JBlocks.FLOOR_DEPTHS_CRYSTAL_BLUE);
+        this.dropSelf(JBlocks.FLOOR_DEPTHS_CRYSTAL_PINK);
+        this.dropSelf(JBlocks.FLOOR_DEPTHS_CRYSTAL_YELLOW);
+        this.dropSelf(JBlocks.FLOOR_DEPTHS_CRYSTAL_GREEN);
 
         this.dropSelf(JBlocks.CORBA_PORTAL_FRAME);
         this.add(JBlocks.CORBA_PORTAL, noDrop());

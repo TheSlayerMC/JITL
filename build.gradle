@@ -13,12 +13,6 @@ tasks.named('wrapper', Wrapper).configure {
 version = mod_version
 group = mod_group_id
 
-file "build.properties" withReader {
-    def prop = new Properties()
-    prop.load(it)
-    ext.buildProps = prop
-}
-
 repositories {
     mavenLocal()
 }

@@ -482,6 +482,10 @@ public class JBlocks {
     public static final DeferredBlock<Block> DEPTHS_CRYSTAL = registerAttachedCrossBlock("depths_crystal", "Depths Crystal", () -> new AttachedBlock(JBlockProperties.GLOW_BLOCK.noCollission().noOcclusion()));
     public static final DeferredBlock<Block> DEPTHS_CRYSTAL_BLOCK = register("depths_crystal_block", "Depths Crystal Block", JBlockProperties.STONE);
     public static final DeferredBlock<Block> BUDDING_DEPTHS_CRYSTAL = register("budding_depths_crystal", "Budding Depths Crystal", JBlockProperties.STONE);
+    public static final DeferredBlock<Block> FLOOR_DEPTHS_CRYSTAL_BLUE = registerModeledBlock("floor_depths_crystal_blue", "Depths Crystal", FloorDepthsCrystalBlock::new);
+    public static final DeferredBlock<Block> FLOOR_DEPTHS_CRYSTAL_PINK = registerModeledBlock("floor_depths_crystal_pink", "Depths Crystal", FloorDepthsCrystalBlock::new);
+    public static final DeferredBlock<Block> FLOOR_DEPTHS_CRYSTAL_YELLOW = registerModeledBlock("floor_depths_crystal_yellow", "Depths Crystal", FloorDepthsCrystalBlock::new);
+    public static final DeferredBlock<Block> FLOOR_DEPTHS_CRYSTAL_GREEN = registerModeledBlock("floor_depths_crystal_green", "Depths Crystal", FloorDepthsCrystalBlock::new);
     public static final DeferredBlock<Block> DARK_BRICK = register("dark_brick", "Dark Brick", JBlockProperties.STONE);
     public static final DeferredBlock<Block> DARK_FLOOR = register("dark_floor", "Dark Floor", JBlockProperties.STONE);
     public static final DeferredBlock<Block> DARK_SHINGLE = register("dark_shingle", "Dark Shingle", JBlockProperties.STONE);

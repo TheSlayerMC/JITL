@@ -67,7 +67,8 @@
       "jitl:depths_tree",
       "jitl:depths_crystal",
       "jitl:depths_veg",
-      "jitl:depths_geode"
+      "jitl:depths_geode",
+      "jitl:floor_depths_crystal"
     ]
   ]
 }

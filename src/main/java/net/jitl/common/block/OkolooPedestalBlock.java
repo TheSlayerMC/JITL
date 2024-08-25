@@ -1,8 +1,10 @@
 package net.jitl.common.block;
 
+import net.jitl.client.ChatUtils;
 import net.jitl.common.entity.boss.Okoloo;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JEntities;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
@@ -44,6 +46,7 @@ public class OkolooPedestalBlock extends Block {
                 worldIn.addFreshEntity(okoloo);
                 BlockState empty_state = state.setValue(OkolooPedestalBlock.HAS_CLUB, Boolean.FALSE);
                 worldIn.setBlock(pos, empty_state, 2);
+                ChatUtils.sendColouredTranslatedMessage(player, ChatFormatting.GOLD, "jitl.boss_spawn.okoloo");
                 return ItemInteractionResult.SUCCESS;
             }
         }
