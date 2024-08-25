@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "jitl:euca_piercer",
+    "jitl:sunset_piercer",
+    "jitl:nethic_piercer",
+    "jitl:frostbitten_piercer",
+    "jitl:frozen_piercer",
+    "jitl:frosty_piercer",
+    "jitl:boiling_piercer",
+    "jitl:depths_piercer",
+    "jitl:corba_piercer",
+    "jitl:sky_piercer",
+    "jitl:cloud_piercer",
+    "jitl:piercer"
+  ]
+}

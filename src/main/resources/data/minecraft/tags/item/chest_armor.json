@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "jitl:sapphire_chestplate",
+    "jitl:lunium_chestplate",
+    "jitl:shadium_chestplate",
+    "jitl:bloodcrust_chestplate",
+    "jitl:celestium_chestplate",
+    "jitl:flairium_chestplate",
+    "jitl:gorbite_chestplate",
+    "jitl:orbadite_chestplate",
+    "jitl:twilight_chestplate",
+    "jitl:flame_chestplate",
+    "jitl:hollow_chestplate",
+    "jitl:crystal_flake_chestplate",
+    "jitl:frostbitten_chestplate"
+  ]
+}

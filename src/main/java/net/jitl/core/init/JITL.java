@@ -14,6 +14,7 @@ import net.jitl.core.config.JClientConfig;
 import net.jitl.core.config.JCommonConfig;
 import net.jitl.core.data.*;
 import net.jitl.core.data.block_generation.*;
+import net.jitl.core.helper.JToolTiers;
 import net.jitl.core.init.compat.ModCompat;
 import net.jitl.core.init.internal.*;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -53,7 +54,6 @@ public class JITL {
         Dimensions.REGISTRY.register(modEventBus);
         JCarver.REGISTRY.register(modEventBus);
         StructureRegistry.REGISTRY.register(modEventBus);
-        JEnchantments.REGISTRY.register(modEventBus);
         JParticleManager.REGISTRY.register(modEventBus);
         JTreeDecorators.REGISTRY.register(modEventBus);
         JSounds.REGISTRY.register(modEventBus);
@@ -61,6 +61,7 @@ public class JITL {
         JTabs.REGISTRY.register(modEventBus);
         JDataAttachments.REGISTRY.register(modEventBus);
         JDataComponents.REGISTRY.register(modEventBus);
+        JToolTiers.JArmorTier.REGISTRY.register(modEventBus);
         JNetworkRegistry.init(modEventBus);
 
         if(DEV_MODE) {

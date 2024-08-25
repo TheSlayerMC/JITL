@@ -6,6 +6,7 @@ import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -16,6 +17,7 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.SimpleTier;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.EnumMap;
 import java.util.List;
@@ -290,6 +292,8 @@ public enum JToolTiers {
 
     public static class JArmorTier {
 
+        public static final DeferredRegister<ArmorMaterial> REGISTRY = DeferredRegister.create(Registries.ARMOR_MATERIAL, JITL.MODID);
+
         public static final Holder<ArmorMaterial> SAPPHIRE = register("sapphire", Util.make(new EnumMap<>(ArmorItem.Type.class),
                 armor -> {
                     armor.put(ArmorItem.Type.BOOTS, 2);
@@ -444,12 +448,7 @@ public enum JToolTiers {
             for (ArmorItem.Type armoritem$type : ArmorItem.Type.values()) {
                 enummap.put(armoritem$type, pDefense.get(armoritem$type));
             }
-
-            return Registry.registerForHolder(
-                    BuiltInRegistries.ARMOR_MATERIAL,
-                    ResourceLocation.withDefaultNamespace(pName),
-                    new ArmorMaterial(enummap, pEnchantmentValue, pEquipSound, pRepairIngridient, pLayers, pToughness, pKnockbackResistance)
-            );
+            return REGISTRY.register(pName, () -> new ArmorMaterial(enummap, pEnchantmentValue, pEquipSound, pRepairIngridient, pLayers, pToughness, pKnockbackResistance));
         }
     }
 }

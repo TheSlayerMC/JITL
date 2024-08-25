@@ -10,10 +10,14 @@ import java.util.ArrayList;
 
 public class ItemTypeGenerator {
 
-    protected BufferedWriter swordsWriter, pickaxeWriter, axeWriter, shovelWriter, hoeWriter, helmetWriter, chestWriter, legWriter, bootWriter;
+    protected BufferedWriter swordsWriter, pickaxeWriter, axeWriter, shovelWriter, hoeWriter, helmetWriter, chestWriter, legWriter, bootWriter, piercerWriter;
 
     public void generate() {
         String baseDir = "../../src/main/resources/data/minecraft/tags/item/";
+
+        String jDir = "../../src/main/resources/data/jitl/tags/item/";
+
+        File piercer = new File(jDir + "piercers.json");
 
         File swords = new File(baseDir + "swords.json");
         File pickaxe = new File(baseDir + "pickaxes.json");
@@ -37,7 +41,14 @@ public class ItemTypeGenerator {
         ArrayList<String> leggingList = new ArrayList<>(JItems.leggingsName);
         ArrayList<String> bootList = new ArrayList<>(JItems.bootsName);
 
+        ArrayList<String> piercerList = new ArrayList<>(JItems.piercerName);
+
+
         try {
+            if(piercer.exists()) piercer.delete();
+            piercer.createNewFile();
+            piercerWriter = new BufferedWriter(new FileWriter(piercer));
+
             if(helmet.exists()) helmet.delete();
             helmet.createNewFile();
             helmetWriter = new BufferedWriter(new FileWriter(helmet));
@@ -88,6 +99,8 @@ public class ItemTypeGenerator {
         writeFile(legWriter, leggingList);
         writeFile(bootWriter, bootList);
 
+        writeFile(piercerWriter, piercerList);
+
         writerInit();
     }
 
@@ -116,7 +129,7 @@ public class ItemTypeGenerator {
             chestWriter.close();
             legWriter.close();
             bootWriter.close();
-
+            piercerWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

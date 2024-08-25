@@ -3,9 +3,11 @@ package net.jitl.core.init.internal;
 import net.jitl.core.init.JITL;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 
@@ -31,10 +33,14 @@ public class JTags {
     public static final TagKey<Block> EUCA_GRASS = tagBlock("euca_grass");
     public static final TagKey<Block> CORBA_MUD = tagBlock("corba_mud");
     public static final TagKey<Item> ESSENCE_ARROW = tagItem("essence_arrows");
-    public static final TagKey<Item> PIERCER_ITEM = tagItem("piercer");
+    public static final TagKey<Item> PIERCER_ITEM = tagItem("piercers");
 
     private static TagKey<Item> tagItem(String name) {
         return ItemTags.create(JITL.rl(name));
+    }
+
+    private static TagKey<Enchantment> tagEnchantment(String name) {
+        return TagKey.create(Registries.ENCHANTMENT, JITL.rl(name));
     }
 
     private static TagKey<Block> tagBlock(String name) {

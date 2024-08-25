@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "jitl:sapphire_helmet",
+    "jitl:lunium_helmet",
+    "jitl:shadium_helmet",
+    "jitl:bloodcrust_helmet",
+    "jitl:celestium_helmet",
+    "jitl:flairium_helmet",
+    "jitl:gorbite_helmet",
+    "jitl:orbadite_helmet",
+    "jitl:twilight_helmet",
+    "jitl:flame_helmet",
+    "jitl:hollow_helmet",
+    "jitl:crystal_flake_helmet",
+    "jitl:frostbitten_helmet",
+    "jitl:hellmetal_helmet"
+  ]
+}
