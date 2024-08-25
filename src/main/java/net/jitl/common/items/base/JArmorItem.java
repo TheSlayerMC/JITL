@@ -29,11 +29,6 @@ public class JArmorItem extends ArmorItem implements JGear {
     }
 
     @Override
-    public int getEnchantmentValue() {
-        return 30;
-    }
-
-    @Override
     public void appendHoverText(ItemStack stack, TooltipContext pContext, List<Component> tooltip, TooltipFlag pTooltipFlag) {
         super.appendHoverText(stack, pContext, tooltip, pTooltipFlag);
         if(ability != null)

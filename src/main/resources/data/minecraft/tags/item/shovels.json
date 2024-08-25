@@ -1,0 +1,31 @@
+{
+  "replace": false,
+  "values": [
+    "jitl:sapphire_shovel",
+    "jitl:sapphire_multitool",
+    "jitl:lunium_shovel",
+    "jitl:lunium_multitool",
+    "jitl:shadium_shovel",
+    "jitl:shadium_multitool",
+    "jitl:bloodcrust_shovel",
+    "jitl:bloodcrust_multitool",
+    "jitl:celestium_shovel",
+    "jitl:celestium_multitool",
+    "jitl:mekyum_shovel",
+    "jitl:mekyum_multitool",
+    "jitl:storon_shovel",
+    "jitl:storon_multitool",
+    "jitl:korite_shovel",
+    "jitl:korite_multitool",
+    "jitl:flairium_shovel",
+    "jitl:flairium_multitool",
+    "jitl:des_shovel",
+    "jitl:des_multitool",
+    "jitl:gorbite_shovel",
+    "jitl:gorbite_multitool",
+    "jitl:orbadite_shovel",
+    "jitl:orbadite_multitool",
+    "jitl:soulstone_shovel",
+    "jitl:soulstone_multitool"
+  ]
+}

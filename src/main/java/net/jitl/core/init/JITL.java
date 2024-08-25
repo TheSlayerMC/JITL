@@ -65,6 +65,7 @@ public class JITL {
 
         if(DEV_MODE) {
             new BlockBreakingGenerator().generate();
+            new ItemTypeGenerator().generate();
             new JItemGenerator().generate();
             new JBowItemGenerator().generate();
             new JShieldItemGenerator().generate();

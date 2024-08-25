@@ -1,0 +1,31 @@
+{
+  "replace": false,
+  "values": [
+    "jitl:sapphire_hoe",
+    "jitl:sapphire_multitool",
+    "jitl:lunium_hoe",
+    "jitl:lunium_multitool",
+    "jitl:shadium_hoe",
+    "jitl:shadium_multitool",
+    "jitl:bloodcrust_multitool",
+    "jitl:bloodcrust_hoe",
+    "jitl:celestium_hoe",
+    "jitl:celestium_multitool",
+    "jitl:mekyum_hoe",
+    "jitl:mekyum_multitool",
+    "jitl:storon_hoe",
+    "jitl:storon_multitool",
+    "jitl:korite_hoe",
+    "jitl:korite_multitool",
+    "jitl:flairium_hoe",
+    "jitl:flairium_multitool",
+    "jitl:des_hoe",
+    "jitl:des_multitool",
+    "jitl:gorbite_hoe",
+    "jitl:gorbite_multitool",
+    "jitl:orbadite_hoe",
+    "jitl:orbadite_multitool",
+    "jitl:soulstone_hoe",
+    "jitl:soulstone_multitool"
+  ]
+}
