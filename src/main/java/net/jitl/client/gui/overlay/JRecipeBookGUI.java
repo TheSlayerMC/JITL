@@ -49,7 +49,6 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
         this.previousButton.visible = true;
         this.nextButton.active = pageNumber != maxPages;
         this.previousButton.active = pageNumber != 0;
-        System.out.println(pageNumber);
     }
 
     protected void flipPage(boolean forward) {
