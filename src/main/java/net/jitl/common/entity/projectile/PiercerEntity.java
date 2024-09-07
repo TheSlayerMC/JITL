@@ -111,7 +111,7 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
         }
         if(faithfulLevel > 0) {
             Entity entity = this.getOwner();
-            if(isInGround() && isAcceptibleReturnOwner() && entity != null) {
+            if(isInGround() && isAcceptableReturnOwner() && entity != null) {
                 this.setNoPhysics(true);
                 Vec3 vector3d = new Vec3(entity.getX() - this.getX(), entity.getEyeY() - this.getY(), entity.getZ() - this.getZ());
                 this.setPosRaw(this.getX(), this.getY() + vector3d.y * 0.015D * (double) faithfulLevel, this.getZ());
@@ -132,7 +132,7 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
         }
     }
 
-    private boolean isAcceptibleReturnOwner() {
+    private boolean isAcceptableReturnOwner() {
         Entity entity = this.getOwner();
         if(entity != null && entity.isAlive()) {
             return !(entity instanceof ServerPlayer) || !entity.isSpectator();
