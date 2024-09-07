@@ -15,6 +15,10 @@ import net.minecraft.world.level.block.Block;
 public class JEnchantments {
 
     public static final ResourceKey<Enchantment> FAITHFUL = registerKey("faithful");
+    public static final ResourceKey<Enchantment> LIGHTWEIGHT = registerKey("lightweight");
+    public static final ResourceKey<Enchantment> AMBIT = registerKey("ambit");
+    public static final ResourceKey<Enchantment> SCORCHING = registerKey("scorching");
+    public static final ResourceKey<Enchantment> RAZOR = registerKey("razor");
 
     public static void bootstrap(BootstrapContext<Enchantment> context) {
         HolderGetter<DamageType> damageGetter = context.lookup(Registries.DAMAGE_TYPE);
@@ -22,21 +26,45 @@ public class JEnchantments {
         HolderGetter<Item> itemGetter = context.lookup(Registries.ITEM);
         HolderGetter<Block> blockGetter = context.lookup(Registries.BLOCK);
 
-        register(
-                context,
-                FAITHFUL,
-                Enchantment.enchantment(
-                                Enchantment.definition(
-                                        itemGetter.getOrThrow(JTags.PIERCER_ITEM),
+        register(context, FAITHFUL, Enchantment.enchantment(Enchantment.definition(itemGetter.getOrThrow(JTags.PIERCER_ITEM),
                                         2,
                                         1,
                                         Enchantment.dynamicCost(12, 20),
                                         Enchantment.constantCost(50),
                                         4,
-                                        EquipmentSlotGroup.MAINHAND
-                                )
-                        )
-        );
+                                        EquipmentSlotGroup.MAINHAND)));
+
+        register(context, LIGHTWEIGHT, Enchantment.enchantment(Enchantment.definition(itemGetter.getOrThrow(JTags.PIERCER_ITEM),
+                2,
+                1,
+                Enchantment.dynamicCost(12, 20),
+                Enchantment.constantCost(50),
+                4,
+                EquipmentSlotGroup.MAINHAND)));
+
+        register(context, AMBIT, Enchantment.enchantment(Enchantment.definition(itemGetter.getOrThrow(JTags.PIERCER_ITEM),
+                2,
+                1,
+                Enchantment.dynamicCost(12, 20),
+                Enchantment.constantCost(50),
+                4,
+                EquipmentSlotGroup.MAINHAND)));
+
+        register(context, SCORCHING, Enchantment.enchantment(Enchantment.definition(itemGetter.getOrThrow(JTags.PIERCER_ITEM),
+                2,
+                1,
+                Enchantment.dynamicCost(12, 20),
+                Enchantment.constantCost(50),
+                4,
+                EquipmentSlotGroup.MAINHAND)));
+
+        register(context, RAZOR, Enchantment.enchantment(Enchantment.definition(itemGetter.getOrThrow(JTags.PIERCER_ITEM),
+                2,
+                1,
+                Enchantment.dynamicCost(12, 20),
+                Enchantment.constantCost(50),
+                4,
+                EquipmentSlotGroup.MAINHAND)));
     }
 
     private static void register(BootstrapContext<Enchantment> pContext, ResourceKey<Enchantment> pKey, Enchantment.Builder pBuilder) {
@@ -46,20 +74,6 @@ public class JEnchantments {
     public static ResourceKey<Enchantment> registerKey(String name) {
         return ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(JITL.MODID, name));
     }
-
-//    public static final DeferredHolder<Enchantment, Enchantment> LIGHTWEIGHT =
-//            REGISTRY.register("lightweight", () -> new Enchantment(Component.translatable("enchantment.jitl.lightweight"), Enchantment.definition(JTags.PIERCER_ITEM, 2, 1,
-//                    Enchantment.dynamicCost(12, 20), Enchantment.constantCost(50), 4, EquipmentSlot.MAINHAND)));
-//
-//    public static final DeferredHolder<Enchantment, Enchantment> AMBIT =
-//            REGISTRY.register("ambit", () -> new Enchantment(Enchantment.definition(JTags.PIERCER_ITEM, 2, 1,
-//                    Enchantment.dynamicCost(12, 20), Enchantment.constantCost(50), 4, EquipmentSlot.MAINHAND)));
-//
-//    public static final DeferredHolder<Enchantment, Enchantment> SCORCHING =
-//            REGISTRY.register("scorching", () -> new Enchantment(Enchantment.definition(JTags.PIERCER_ITEM, 2, 1,
-//                    Enchantment.dynamicCost(12, 20), Enchantment.constantCost(50), 4, EquipmentSlot.MAINHAND)));
-//
-
 
     //public static final RegistryObject<Enchantment> HOT_TOUCH =
      //       REGISTRY.register("hot_touch", () -> new HotTouchEnchantment(Enchantment.Rarity.UNCOMMON, EnchantmentCategory.DIGGER, EquipmentSlot.MAINHAND));

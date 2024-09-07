@@ -21,7 +21,7 @@ public class ItemTypeGenerator {
 
         File swords = new File(baseDir + "swords.json");
         File pickaxe = new File(baseDir + "pickaxes.json");
-        File axe = new File(baseDir + "axes.json");
+        File axe = new File(baseDir + "axe.json");
         File shovel = new File(baseDir + "shovels.json");
         File hoe = new File(baseDir + "hoes.json");
 
@@ -42,7 +42,6 @@ public class ItemTypeGenerator {
         ArrayList<String> bootList = new ArrayList<>(JItems.bootsName);
 
         ArrayList<String> piercerList = new ArrayList<>(JItems.piercerName);
-
 
         try {
             if(piercer.exists()) piercer.delete();

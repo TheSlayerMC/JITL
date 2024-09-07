@@ -1,0 +1,31 @@
+{
+  "replace": false,
+  "values": [
+    "jitl:sapphire_axe",
+    "jitl:sapphire_multitool",
+    "jitl:lunium_axe",
+    "jitl:lunium_multitool",
+    "jitl:shadium_axe",
+    "jitl:shadium_multitool",
+    "jitl:bloodcrust_axe",
+    "jitl:bloodcrust_multitool",
+    "jitl:celestium_axe",
+    "jitl:celestium_multitool",
+    "jitl:mekyum_axe",
+    "jitl:mekyum_multitool",
+    "jitl:storon_axe",
+    "jitl:storon_multitool",
+    "jitl:korite_axe",
+    "jitl:korite_multitool",
+    "jitl:flairium_axe",
+    "jitl:flairium_multitool",
+    "jitl:des_axe",
+    "jitl:des_multitool",
+    "jitl:gorbite_axe",
+    "jitl:gorbite_multitool",
+    "jitl:orbadite_axe",
+    "jitl:orbadite_multitool",
+    "jitl:soulstone_axe",
+    "jitl:soulstone_multitool"
+  ]
+}

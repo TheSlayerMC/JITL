@@ -5,6 +5,7 @@ import net.jitl.common.block.OkolooPedestalBlock;
 import net.jitl.common.entity.boss.*;
 import net.jitl.common.items.base.JItem;
 import net.jitl.common.world.dimension.Dimensions;
+import net.jitl.core.helper.LangHelper;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
@@ -18,6 +19,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
@@ -30,7 +32,7 @@ import java.util.List;
 public class BossSpawnerItem extends JItem {
 
     public BossSpawnerItem() {
-        super(JItems.itemProps().stacksTo(1));
+        super(JItems.itemProps().stacksTo(1).rarity(Rarity.EPIC));
     }
 
     @Override
@@ -87,8 +89,7 @@ public class BossSpawnerItem extends JItem {
             if(level.getLevel() == level.getServer().getLevel(dimension)) {
                 boss.setPos(pos.getX(), pos.getY() + 1, pos.getZ());
                 level.addFreshEntity(boss);
-                if(!player.isCreative())
-                    player.getMainHandItem().shrink(1);
+                if(!player.isCreative()) player.getMainHandItem().shrink(1);
                 ChatUtils.sendColouredTranslatedMessage(player, ChatFormatting.GOLD, langKey);
             } else {
                 ChatUtils.sendColouredTranslatedMessage(player, ChatFormatting.RED, "jitl.boss_spawn.fail", boss.getName(), dimensionName);
@@ -97,11 +98,25 @@ public class BossSpawnerItem extends JItem {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack pStack, @Nullable TooltipContext con, @NotNull List<Component> pTooltip, @NotNull TooltipFlag pFlag) {
-        if(this == JItems.BROKEN_OKOLOO_CLUB.get()) {
-            pTooltip.add(Component.translatable("jitl.tooltip.okoloo"));
-        }
+    public void appendHoverText(@NotNull ItemStack pStack, @Nullable TooltipContext con, @NotNull List<Component> tip, @NotNull TooltipFlag pFlag) {
+        if(this == JItems.BROKEN_OKOLOO_CLUB.get()) tip.add(Component.translatable("jitl.tooltip.okoloo"));
 
-        pTooltip.add(Component.translatable("jitl.tooltip.spawn"));
+        if(this == JItems.WITHERING_BEAST_ORB.get()) tip.add(LangHelper.setBossSpawner("Withering Beast"));
+        if(this == JItems.CALCIA_ORB.get()) tip.add(LangHelper.setBossSpawner("Calcia"));
+        if(this == JItems.SOUL_WATCHER_ORB.get()) tip.add(LangHelper.setBossSpawner("Soul Watcher"));
+        if(this == JItems.BLAZIER_ORB.get()) tip.add(LangHelper.setBossSpawner("Blazier"));
+
+        if(this == JItems.EUDOR_CROWN.get()) tip.add(LangHelper.setBossSpawner("Eudor"));
+        if(this == JItems.CORALLATOR_ORB.get()) tip.add(LangHelper.setBossSpawner("Corallator"));
+
+        if(this == JItems.THUNDER_BIRD_ORB.get()) tip.add(LangHelper.setBossSpawner("Thunderbird"));
+        if(this == JItems.SCALE_ORB.get()) tip.add(LangHelper.setBossSpawner("Scale"));
+
+        if(this == JItems.LOGGER_ORB.get()) tip.add(LangHelper.setBossSpawner("Logger"));
+        if(this == JItems.SENTRY_KING_ORB.get()) tip.add(LangHelper.setBossSpawner("Sentry King"));
+
+        if(this == JItems.ENCHANTED_TERRASTAR.get()) tip.add(LangHelper.setBossSpawner("Terranian Protector"));
+
+        if(this == JItems.MYSTERIOUS_DISK.get()) tip.add(LangHelper.setBossSpawner("Sky Stalker"));
     }
 }

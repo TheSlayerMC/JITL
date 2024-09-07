@@ -48,8 +48,8 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
         setBaseDamage(damage);
     }
 
-    public PiercerEntity(EntityType<PiercerEntity> eucaPiercerEntityEntityType, Level world) {
-        super(eucaPiercerEntityEntityType, world);
+    public PiercerEntity(EntityType<PiercerEntity> piercer, Level world) {
+        super(piercer, world);
         this.setSoundEvent(JSounds.PIERCER.get());
     }
 
@@ -238,7 +238,7 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
         super.defineSynchedData(pBuilder);
-        this.getEntityData().set(STACK, ItemStack.EMPTY);
+        pBuilder.define(STACK, ItemStack.EMPTY);
     }
 
     @Override

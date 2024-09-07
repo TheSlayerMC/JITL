@@ -120,7 +120,7 @@ public class KnifeEntity extends AbstractKnifeEntity implements ItemSupplier {
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
         super.defineSynchedData(pBuilder);
-        this.getEntityData().set(STACK, ItemStack.EMPTY);
+        pBuilder.define(STACK, ItemStack.EMPTY);
     }
 
     @Override

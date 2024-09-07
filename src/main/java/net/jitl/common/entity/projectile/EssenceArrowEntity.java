@@ -12,6 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.NotNull;
@@ -19,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.EnumSet;
 
-public class EssenceArrowEntity extends AbstractArrow implements ItemSupplier {
+public class EssenceArrowEntity extends AbstractArrow {
 
     private EnumSet<BowEffects> effects;
     private static final ItemStack DEFAULT_ARROW_STACK = new ItemStack(JItems.ESSENCE_ARROW.get());
@@ -28,10 +29,19 @@ public class EssenceArrowEntity extends AbstractArrow implements ItemSupplier {
         super(type, level);
     }
 
+    public EssenceArrowEntity(Level pLevel, LivingEntity pOwner, @Nullable ItemStack pFiredFromWeapon) {
+        super(JEntities.ESSENCE_ARROW_TYPE.get(), pOwner, pLevel, DEFAULT_ARROW_STACK, pFiredFromWeapon);
+    }
+
+    public EssenceArrowEntity(Level pLevel, double pX, double pY, double pZ, @Nullable ItemStack pFiredFromWeapon) {
+        super(JEntities.ESSENCE_ARROW_TYPE.get(), pX, pY, pZ, pLevel, DEFAULT_ARROW_STACK, pFiredFromWeapon);
+    }
+
     public EssenceArrowEntity(Level level, LivingEntity player, EnumSet<BowEffects> effects, float damage, @Nullable ItemStack weapon) {
         super(JEntities.ESSENCE_ARROW_TYPE.get(), player, level, DEFAULT_ARROW_STACK, weapon);
         this.effects = effects;
         this.setBaseDamage(damage);
+        this.setPickupItemStack(DEFAULT_ARROW_STACK);
     }
 
     @Override
@@ -56,13 +66,8 @@ public class EssenceArrowEntity extends AbstractArrow implements ItemSupplier {
     }
 
     @Override
-    protected @NotNull ItemStack getPickupItem() {
-        return getItem();
-    }
-
-    @Override
     protected ItemStack getDefaultPickupItem() {
-        return DEFAULT_ARROW_STACK;
+        return new ItemStack(JItems.ESSENCE_ARROW.get());
     }
 
     private void applyPotionEffect(LivingEntity effectedEntity, Holder<MobEffect> potionEffect, int duration, int amplifier) {
@@ -71,12 +76,7 @@ public class EssenceArrowEntity extends AbstractArrow implements ItemSupplier {
 
     @Override
     protected boolean tryPickup(Player pPlayer) {
-        return !(effects == null) && !effects.contains(BowEffects.CONSUMES_ESSENCE);
-    }
-
-    @Override
-    public @NotNull ItemStack getItem() {
-        return new ItemStack(JItems.ESSENCE_ARROW.get());
+        return !effects.contains(BowEffects.CONSUMES_ESSENCE);
     }
 
 

@@ -65,10 +65,10 @@ public class PlayerEssence implements INBTSerializable<CompoundTag> {
         if (!player.isCreative()) {
             if (hasEssence(price)) {
                 setEssence(getCurrentEssence() - price);
-                setTimeout(20);
+                setTimeout(15);
                 return true;
             }
-            float attributeValue = (float) player.getAttribute(JAttributes.ESSENCE_BURNOUT).getValue();
+            float attributeValue = (float)Objects.requireNonNull(player.getAttribute(JAttributes.ESSENCE_BURNOUT)).getValue();
             setBurnout(Math.min(getBurnout() + attributeValue, attributeValue * 5));
             return false;
         }

@@ -1,6 +1,6 @@
 {
   "description": {
-    "translate": "enchantment.jitl.faithful"
+    "translate": "enchantment.jitl.lightweight"
   },
   "primary_items": "#jitl:piercers",
   "supported_items": "#jitl:piercers",

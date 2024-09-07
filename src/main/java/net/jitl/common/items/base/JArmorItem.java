@@ -6,6 +6,7 @@ import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -33,5 +34,15 @@ public class JArmorItem extends ArmorItem implements JGear {
         super.appendHoverText(stack, pContext, tooltip, pTooltipFlag);
         if(ability != null)
             ability.fillTooltips(stack, tooltip);
+    }
+
+    @Override
+    public int getEnchantmentValue(@NotNull ItemStack stack) {
+        return 30;
+    }
+
+    @Override
+    public boolean isEnchantable(@NotNull ItemStack pStack) {
+        return true;
     }
 }

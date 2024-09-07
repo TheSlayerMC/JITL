@@ -462,61 +462,61 @@ public class JItems {
     public static final DeferredItem<Item> CORBA_BOAT = registerNormalItem("corba_boat", "Corba Boat", () -> new JBoatItem(JBoat.Type.CORBA));
 
     public static final DeferredItem<Item> EUCA_PIERCER = registerToolItem("euca_piercer", "Euca Piercer", () ->
-            new PiercerItem(itemProps().durability(50), 3, 10.0F), ItemType.PIERCER);
+            new PiercerItem(3, 10.0F), ItemType.PIERCER);
 
     public static final DeferredItem<Item> SUNSET_PIERCER = registerToolItem("sunset_piercer", "Sunset Piercer", () ->
-            new PiercerItem(itemProps().durability(50),  3, 10.0F), ItemType.PIERCER);
+            new PiercerItem( 3, 10.0F), ItemType.PIERCER);
 
     public static final DeferredItem<Item> NETHIC_PIERCER = registerToolItem("nethic_piercer", "Nethic Piercer", () ->
-            new PiercerItem(itemProps().durability(50),  3, 10.0F), ItemType.PIERCER);
+            new PiercerItem( 3, 10.0F), ItemType.PIERCER);
 
     public static final DeferredItem<Item> FROSTBITTEN_PIERCER = registerToolItem("frostbitten_piercer", "Frostbitten Piercer", () ->
-            new PiercerItem(itemProps().durability(50),  3, 10.0F), ItemType.PIERCER);
+            new PiercerItem( 3, 10.0F), ItemType.PIERCER);
 
     public static final DeferredItem<Item> FROZEN_PIERCER = registerToolItem("frozen_piercer", "Frozen Piercer", () ->
-            new PiercerItem(itemProps().durability(50),  3, 10.0F), ItemType.PIERCER);
+            new PiercerItem( 3, 10.0F), ItemType.PIERCER);
 
     public static final DeferredItem<Item> FROSTY_PIERCER = registerToolItem("frosty_piercer", "Frosty Piercer", () ->
-            new PiercerItem(itemProps().durability(50), 3, 10.0F), ItemType.PIERCER);
+            new PiercerItem(3, 10.0F), ItemType.PIERCER);
 
     public static final DeferredItem<Item> BOILING_PIERCER = registerToolItem("boiling_piercer", "Boiling Piercer", () ->
-            new PiercerItem(itemProps().durability(50),  3, 10.0F), ItemType.PIERCER);
+            new PiercerItem( 3, 10.0F), ItemType.PIERCER);
 
     public static final DeferredItem<Item> DEPTHS_PIERCER = registerToolItem("depths_piercer", "Depths Piercer", () ->
-            new PiercerItem(itemProps().durability(50),  3, 10.0F), ItemType.PIERCER);
+            new PiercerItem( 3, 10.0F), ItemType.PIERCER);
 
     public static final DeferredItem<Item> CORBA_PIERCER = registerToolItem("corba_piercer", "Corba Piercer", () ->
-            new PiercerItem(itemProps().durability(50),  3, 10.0F), ItemType.PIERCER);
+            new PiercerItem( 3, 10.0F), ItemType.PIERCER);
 
     public static final DeferredItem<Item> SKY_PIERCER = registerToolItem("sky_piercer", "Sky Piercer", () ->
-            new PiercerItem(itemProps().durability(50),  3, 10.0F), ItemType.PIERCER);
+            new PiercerItem( 3, 10.0F), ItemType.PIERCER);
 
     public static final DeferredItem<Item> CLOUD_PIERCER = registerToolItem("cloud_piercer", "Cloud Piercer", () ->
-            new PiercerItem(itemProps().durability(50),  3, 10.0F), ItemType.PIERCER);
+            new PiercerItem( 3, 10.0F), ItemType.PIERCER);
 
     public static final DeferredItem<Item> PIERCER = registerToolItem("piercer", "Piercer", () ->
-            new PiercerItem(itemProps().durability(128),  3, 3.0F), ItemType.PIERCER);
+            new PiercerItem(3, 3.0F), ItemType.PIERCER);
 
     public static final DeferredItem<Item> MOLTEN_KNIFE = registerToolItem("molten_knife", "Molten Knife", () ->
-            new KnifeItem(itemProps(),  4.0F));
+            new KnifeItem(itemProps(),  4.0F), ItemType.SWORD);
 
     public static final DeferredItem<Item> SIZZLING_KNIFE = registerToolItem("sizzling_knife", "Sizzling Knife", () ->
-            new KnifeItem(itemProps(), 4.0F));
+            new KnifeItem(itemProps(), 4.0F), ItemType.SWORD);
 
     public static final DeferredItem<Item> IRON_THROWING_KNIFE = registerToolItem("iron_throwing_knife", "Iron Throwing Knife", () ->
-            new KnifeItem(itemProps(),  3.0F));
+            new KnifeItem(itemProps(),  3.0F), ItemType.SWORD);
 
     public static final DeferredItem<Item> ROYAL_KNIFE = registerToolItem("royal_knife", "Royal Knife", () ->
-            new KnifeItem(itemProps(),  3.0F));
+            new KnifeItem(itemProps(),  3.0F), ItemType.SWORD);
 
     public static final DeferredItem<Item> AQUATIC_KNIFE = registerToolItem("aquatic_knife", "Aquatic Knife", () ->
-            new KnifeItem(itemProps(),  3.0F));
+            new KnifeItem(itemProps(),  3.0F), ItemType.SWORD);
 
     public static final DeferredItem<Item> CHARRED_KNIFE = registerToolItem("charred_knife", "Charred Knife", () ->
-            new KnifeItem(itemProps(),  3.0F));
+            new KnifeItem(itemProps(),  3.0F), ItemType.SWORD);
 
     public static final DeferredItem<Item> BLOOD_KNIFE = registerToolItem("blood_knife", "Blood Knife", () ->
-            new KnifeItem(itemProps(),  3.0F));
+            new KnifeItem(itemProps(),  3.0F), ItemType.SWORD);
 
     public static final DeferredItem<Item> MUD_BALL = registerNormalItem("mud_ball", "Mud Ball", () -> new ThrowableItem(itemProps(),
             (world, thrower) -> new FloroMudEntity(JEntities.FLORO_MUD_TYPE.get(), world, thrower, 0.0F)).setSound(() -> SoundEvents.SNOWBALL_THROW));
@@ -747,7 +747,6 @@ public class JItems {
                 shovelName.add(name);
                 hoeName.add(name);
             }
-
             case PIERCER -> piercerName.add(name);
         }
         return registerToolItem(name, translatedName, tool);

@@ -529,9 +529,10 @@ public class LangRegistry {
 
         writeToFile("\"jitl.tooltip.uses_remaining\" : \"Uses Remaining\",");
         writeToFile("\"jitl.tooltip.okoloo\" : \"Placed in Okoloo Pedestal\",");
-        writeToFile("\"jitl.tooltip.spawn\" : \"Used to spawn a Boss\",");
+        writeToFile("\"jitl.boss.spawn\" : \"Used to spawn the boss %s\",");
 
         writeToFile("\"enchantment.jitl.lightweight\" : \"Lightweight\",");
+        writeToFile("\"enchantment.jitl.razor\" : \"Razor Sharp\",");
         writeToFile("\"enchantment.jitl.ambit\" : \"Ambit\",");
         writeToFile("\"enchantment.jitl.scorching\" : \"Scorching\",");
         writeToFile("\"enchantment.jitl.faithful\" : \"Faithful\",");

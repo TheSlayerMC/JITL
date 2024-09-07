@@ -1,11 +1,13 @@
 package net.jitl.common.items.base;
 
 import net.jitl.common.entity.projectile.EssenceArrowEntity;
+import net.jitl.core.helper.JEnchantmentHelper;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -14,10 +16,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.item.BowItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
@@ -68,129 +67,121 @@ public class JBowItem extends BowItem {
 
     @Override
     public void releaseUsing(@NotNull ItemStack stack, @NotNull Level worldIn, @NotNull LivingEntity entityLiving, int timeLeft) {
-//        if (entityLiving instanceof Player player) {
-//            boolean emptyPickup = player.isCreative() || EnchantmentHelper.getTagEnchantmentLevel(Enchantments.INFINITY, stack) > 0
-//                    || effect.contains(EssenceArrowEntity.BowEffects.CONSUMES_ESSENCE);
-//
-//            ItemStack itemstack = this.findAmmo(player);
-//
-//            int i = this.maxUseDuration - timeLeft;
-//            i = EventHooks.onArrowLoose(stack, worldIn, player, i, !itemstack.isEmpty() || emptyPickup);
-//            if (i < 0) return;
-//
-//            if (!itemstack.isEmpty() || emptyPickup) {
-//                if (itemstack.isEmpty()) {
-//                    itemstack = new ItemStack(arrow_item);
-//                }
-//
-//                float f = getScaledArrowVelocity(i);
-//                if ((double) f >= 0.1D) {
-//                    if(!worldIn.isClientSide) {
-//                        EssenceArrowEntity entityarrow = null;
-//                        EssenceArrowEntity entityarrow2 = null;
-//                        try {
-//                            entityarrow = new EssenceArrowEntity(worldIn, player, this.effect, this.damage, stack);
-//                            entityarrow2 = new EssenceArrowEntity(worldIn, player, this.effect, this.damage, stack);
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
-//
-//                        /*
-//                         * shoot 2 arrows if bow is Wasteful Bow
-//                         */
-//                        if (effect.contains(EssenceArrowEntity.BowEffects.DOUBLE_ARROW)) {
-//                            assert entityarrow != null;
-//                            entityarrow.shootFromRotation(player, player.getXRot(), player.getYRot() + 3.25F, 0.0F, f * 3.0F, 1.0F);
-//                            assert entityarrow2 != null;
-//                            entityarrow2.shootFromRotation(player, player.getXRot(), player.getYRot() - 3.25F, 0.0F, f * 3.0F, 1.0F);
-//
-//                            int j = EnchantmentHelper.getTagEnchantmentLevel(Enchantments.POWER, stack);
-//                            if(j == 1.0F) {
-//                                entityarrow.setCritArrow(true);
-//                                entityarrow2.setCritArrow(true);
-//                            }
-//
-//                            int k = EnchantmentHelper.getTagEnchantmentLevel(Enchantments.PUNCH, stack);
-//                            if(k > 0) {
+        if (entityLiving instanceof Player player && worldIn instanceof ServerLevel level) {
+            boolean emptyPickup = player.isCreative()
+                    || JEnchantmentHelper.getEnchantmentAmount(player, level, Enchantments.INFINITY) > 0
+                    || effect.contains(EssenceArrowEntity.BowEffects.CONSUMES_ESSENCE);
+
+            ItemStack itemstack = this.findAmmo(player);
+            if(!worldIn.isClientSide) {
+
+                int i = this.maxUseDuration - timeLeft;
+                i = EventHooks.onArrowLoose(stack, worldIn, player, i, !itemstack.isEmpty() || emptyPickup);
+                if (i < 0) return;
+
+                if (!itemstack.isEmpty() || emptyPickup) {
+                    if (itemstack.isEmpty()) {
+                        itemstack = new ItemStack(arrow_item);
+                    }
+
+                    float f = getScaledArrowVelocity(i);
+                    if ((double) f >= 0.1D) {
+                        EssenceArrowEntity entityarrow = new EssenceArrowEntity(worldIn, player, this.effect, this.damage, stack);
+                        EssenceArrowEntity entityarrow2 = new EssenceArrowEntity(worldIn, player, this.effect, this.damage, stack);
+
+                        /*
+                         * shoot 2 arrows if bow is Wasteful Bow
+                         */
+                        if (effect.contains(EssenceArrowEntity.BowEffects.DOUBLE_ARROW)) {
+
+                            entityarrow.shootFromRotation(player, player.getXRot(), player.getYRot() + 3.25F, 0.0F, f * 3.0F, 1.0F);
+                            entityarrow2.shootFromRotation(player, player.getXRot(), player.getYRot() - 3.25F, 0.0F, f * 3.0F, 1.0F);
+
+                            int j = JEnchantmentHelper.getEnchantmentAmount(player, level, Enchantments.POWER);
+                            if(j == 1.0F) {
+                                entityarrow.setCritArrow(true);
+                                entityarrow2.setCritArrow(true);
+                            }
+
+                            int k = JEnchantmentHelper.getEnchantmentAmount(player, level, Enchantments.PUNCH);
+                            if(k > 0) {
 //                                entityarrow.setKnockback(k);
 //                                entityarrow2.setKnockback(k);
-//                            }
-//
-//                            if(EnchantmentHelper.getTagEnchantmentLevel(Enchantments.FLAME, stack) > 0) {
-//                                entityarrow.setRemainingFireTicks(100 * 20);
-//                                entityarrow2.setRemainingFireTicks(100 * 20);
-//                            }
-//
-//                            entityarrow.setBaseDamage(this.damage);
-//                            entityarrow2.setBaseDamage(this.damage);
-//
-//                            stack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
-//
-//                            if(!emptyPickup) {
-//                                entityarrow.pickup = AbstractArrow.Pickup.ALLOWED;
-//                                entityarrow2.pickup = AbstractArrow.Pickup.ALLOWED;
-//                            } else {
-//                                entityarrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-//                                entityarrow2.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-//                            }
-//
-//                            worldIn.addFreshEntity(entityarrow);
-//                            worldIn.addFreshEntity(entityarrow2);
-//                        }
-//                        /*
-//                         * shoot 1 arrow if bow isn't Wasteful Bow
-//                         */
-//                        else {
-//                            assert entityarrow != null;
-//                            entityarrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, f * 3.0F, 1.0F);
-//
-//                            int j = EnchantmentHelper.getTagEnchantmentLevel(Enchantments.POWER, stack);
-//                            if(j == 1.0F)
-//                                entityarrow.setCritArrow(true);
-//
-//                            int k = EnchantmentHelper.getTagEnchantmentLevel(Enchantments.PUNCH, stack);
-//                            if(k > 0)
-//                                entityarrow.setKnockback(k);
-//
-//                            if(EnchantmentHelper.getTagEnchantmentLevel(Enchantments.FLAME, stack) > 0)
-//                                entityarrow.setRemainingFireTicks(100 * 20);
-//
-//                            entityarrow.setBaseDamage(this.damage);
-//
-//                            stack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
-//
-//                            if(!emptyPickup) {
-//                                entityarrow.pickup = AbstractArrow.Pickup.ALLOWED;
-//                            } else {
-//                                entityarrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-//                            }
-//
-//                            if(effect.contains(EssenceArrowEntity.BowEffects.CONSUMES_ESSENCE)) {
-//                                EssenceArrowEntity finalEntityarrow = entityarrow;
-//                                    if(player.getData(JDataAttachments.ESSENCE).consumeEssence(player, essence_use)) {
-//                                        worldIn.addFreshEntity(finalEntityarrow);
-//                                    }
-//                            }
-//
-//                            if(!effect.contains(EssenceArrowEntity.BowEffects.CONSUMES_ESSENCE)) {
-//                                worldIn.addFreshEntity(entityarrow);
-//                            }
-//                        }
-//                    }
-//
-//                    worldIn.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (worldIn.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
-//
-//                    if(!emptyPickup) {
-//                        if(effect.contains(EssenceArrowEntity.BowEffects.DOUBLE_ARROW)) {
-//                            itemstack.shrink(2);
-//                        } else {
-//                            itemstack.shrink(1);
-//                        }
-//                    }
-//                    player.awardStat(Stats.ITEM_USED.get(this));
-//                }
-//            }
-//        }//TODO
+                            }
+
+                            if(JEnchantmentHelper.getEnchantmentAmount(player, level, Enchantments.FLAME) > 0) {
+                                entityarrow.setRemainingFireTicks(100 * 20);
+                                entityarrow2.setRemainingFireTicks(100 * 20);
+                            }
+
+                            entityarrow.setBaseDamage(this.damage);
+                            entityarrow2.setBaseDamage(this.damage);
+
+                            stack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+
+                            if(!emptyPickup) {
+                                entityarrow.pickup = AbstractArrow.Pickup.ALLOWED;
+                                entityarrow2.pickup = AbstractArrow.Pickup.ALLOWED;
+                            } else {
+                                entityarrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+                                entityarrow2.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+                            }
+
+                            worldIn.addFreshEntity(entityarrow);
+                            worldIn.addFreshEntity(entityarrow2);
+                        }
+                        /*
+                         * shoot 1 arrow if bow isn't Wasteful Bow
+                         */
+                        else {
+                            entityarrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, f * 3.0F, 1.0F);
+
+                            int j = JEnchantmentHelper.getEnchantmentAmount(player, level, Enchantments.POWER);
+                            if(j == 1.0F)
+                                entityarrow.setCritArrow(true);
+
+                            int k = JEnchantmentHelper.getEnchantmentAmount(player, level, Enchantments.PUNCH);
+                            //if(k > 0)
+                            //entityarrow.setKnockback(k);
+
+                            if(JEnchantmentHelper.getEnchantmentAmount(player, level, Enchantments.FLAME) > 0)
+                                entityarrow.setRemainingFireTicks(100 * 20);
+
+                            entityarrow.setBaseDamage(this.damage);
+
+                            stack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+
+                            if(!emptyPickup) {
+                                entityarrow.pickup = AbstractArrow.Pickup.ALLOWED;
+                            } else {
+                                entityarrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+                            }
+
+                            if(effect.contains(EssenceArrowEntity.BowEffects.CONSUMES_ESSENCE)) {
+                                if(player.getData(JDataAttachments.ESSENCE).consumeEssence(player, essence_use)) {
+                                    worldIn.addFreshEntity(entityarrow);
+                                }
+                            }
+
+                            if(!effect.contains(EssenceArrowEntity.BowEffects.CONSUMES_ESSENCE)) {
+                                worldIn.addFreshEntity(entityarrow);
+                            }
+                        }
+                    }
+
+                    worldIn.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (worldIn.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+
+                    if(!emptyPickup) {
+                        if(effect.contains(EssenceArrowEntity.BowEffects.DOUBLE_ARROW)) {
+                            itemstack.shrink(2);
+                        } else {
+                            itemstack.shrink(1);
+                        }
+                    }
+                    player.awardStat(Stats.ITEM_USED.get(this));
+                }
+            }
+        }
     }
 
     public ItemStack findAmmo(Player player) {
@@ -246,6 +237,10 @@ public class JBowItem extends BowItem {
         comp.add(Component.translatable("Uses remaining: " + ChatFormatting.GRAY + uses));
     }
 
+    @Override
+    public @NotNull UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.BOW;
+    }
 
     @Override
     public @NotNull Predicate<ItemStack> getAllSupportedProjectiles() {
