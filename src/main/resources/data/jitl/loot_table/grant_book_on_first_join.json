@@ -9,8 +9,10 @@
           "name": "patchouli:guide_book",
           "functions": [
             {
-              "function": "minecraft:set_custom_data",
-              "tag": "{\"patchouli:book\": \"jitl:jitl_essentia\"}"
+              "function": "minecraft:set_components",
+              "components": {
+                "patchouli:book": "jitl:jitl_essentia"
+              }
             }
           ]
         }
