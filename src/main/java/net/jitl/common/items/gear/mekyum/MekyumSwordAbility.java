@@ -9,7 +9,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 public class MekyumSwordAbility implements IAbility {
 
     @Override
-    public void attackTarget(LivingEntity attacker, ItemStack stack, LivingDamageEvent.Post event) {
+    public void attackTarget(LivingEntity attacker, ItemStack stack, LivingDamageEvent.Pre event) {
         LivingEntity entity = event.getEntity();
         int time = entity.invulnerableTime;
         entity.invulnerableTime = 0;

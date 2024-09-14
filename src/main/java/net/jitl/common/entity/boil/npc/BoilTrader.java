@@ -34,6 +34,11 @@ public class BoilTrader extends JVillagerEntity {
             new CurrencyForItemsTrade(JItems.ASH.get(), 15, JItems.BOIL_POWDER.get(), 64, JItems.FLAMING_BOW.get(), 1, 12, 5)
     }));
 
+    @Override
+    public boolean fireImmune() {
+        return true;
+    }
+
     public BoilTrader(EntityType<? extends JPathfinderMob> type, Level worldIn) {
         super(type, worldIn);
     }

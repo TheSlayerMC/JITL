@@ -4,7 +4,7 @@ import net.jitl.common.capability.essence.PlayerEssence;
 import net.jitl.common.capability.gear.PlayerArmor;
 import net.jitl.common.capability.keypressed.PressedKeyCap;
 import net.jitl.common.capability.player.CelestiumArmorAbility;
-import net.jitl.common.capability.player.CurioCooldown;
+import net.jitl.common.capability.player.ItemCooldown;
 import net.jitl.common.capability.player.Portal;
 import net.jitl.common.capability.stats.PlayerStats;
 import net.jitl.core.init.JITL;
@@ -35,8 +35,8 @@ public class JDataAttachments {
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<CelestiumArmorAbility>> CELESTIUM_ARMOR = REGISTRY.register(
             "celestium_armor", () -> AttachmentType.serializable(CelestiumArmorAbility::new).build());
 
-    public static final DeferredHolder<AttachmentType<?>, AttachmentType<CurioCooldown>> CURIOS_COOLDOWN = REGISTRY.register(
-            "curio_cooldown", () -> AttachmentType.serializable(CurioCooldown::new).build());
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<ItemCooldown>> ITEM_COOLDOWN = REGISTRY.register(
+            "item_cooldown", () -> AttachmentType.serializable(ItemCooldown::new).build());
 }
 
 

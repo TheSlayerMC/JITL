@@ -2,6 +2,7 @@ package net.jitl.common.entity.overworld;
 
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
+import net.jitl.common.entity.base.JNeutralMonster;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.sounds.SoundEvent;
@@ -11,6 +12,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -19,22 +21,11 @@ import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 
-public class BigHongo extends JMonsterEntity {
+public class BigHongo extends JNeutralMonster {
 
     public BigHongo(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         setKnowledge(EnumKnowledge.OVERWORLD, 5F);
-
-    }
-
-    @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(1, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
-        this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
     }
 
     public static AttributeSupplier createAttributes() {
@@ -68,7 +59,7 @@ public class BigHongo extends JMonsterEntity {
         controllers.add(new AnimationController<>(this, "controller", 5, state -> {
             if(state.isMoving()) {
                 return state.setAndContinue(MOVING);
-            }else {
+            } else {
                 return state.setAndContinue(IDLE);
             }
         }));

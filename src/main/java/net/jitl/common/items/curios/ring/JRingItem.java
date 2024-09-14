@@ -1,6 +1,6 @@
 package net.jitl.common.items.curios.ring;
 
-import net.jitl.common.capability.player.CurioCooldown;
+import net.jitl.common.capability.player.ItemCooldown;
 import net.jitl.common.items.curios.JCurioItem;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.minecraft.core.Holder;
@@ -25,7 +25,7 @@ public class JRingItem extends JCurioItem {
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         if(slotContext.entity() instanceof Player player) {
-            CurioCooldown curios = slotContext.entity().getData(JDataAttachments.CURIOS_COOLDOWN);
+            ItemCooldown curios = slotContext.entity().getData(JDataAttachments.ITEM_COOLDOWN);
             if(!player.level().isClientSide()) {
                 int cooldown = curios.getCooldown();
                 if(cooldown == 0) {

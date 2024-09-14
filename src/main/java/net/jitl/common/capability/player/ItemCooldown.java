@@ -1,8 +1,7 @@
 package net.jitl.common.capability.player;
 
 import net.jitl.core.data.JNetworkRegistry;
-import net.jitl.core.init.network.PacketCelestiumArmor;
-import net.jitl.core.init.network.PacketCuriosCooldown;
+import net.jitl.core.init.network.PacketItemCooldown;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
@@ -10,11 +9,11 @@ import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.common.util.INBTSerializable;
 import org.jetbrains.annotations.UnknownNullability;
 
-public class CurioCooldown implements INBTSerializable<CompoundTag> {
+public class ItemCooldown implements INBTSerializable<CompoundTag> {
 
     private int cooldown;
 
-    public void copyFrom(CurioCooldown source) {
+    public void copyFrom(ItemCooldown source) {
         this.cooldown = source.cooldown;
     }
     
@@ -39,8 +38,8 @@ public class CurioCooldown implements INBTSerializable<CompoundTag> {
     }
 
     public void sendPacket(Player player) {
-        if(player != null && player instanceof ServerPlayer) {
-            JNetworkRegistry.sendToPlayer((ServerPlayer)player, new PacketCuriosCooldown(getCooldown()));
+        if(player instanceof ServerPlayer) {
+            JNetworkRegistry.sendToPlayer((ServerPlayer)player, new PacketItemCooldown(getCooldown()));
         }
     }
 }

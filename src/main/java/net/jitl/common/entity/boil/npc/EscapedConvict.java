@@ -34,6 +34,11 @@ public class EscapedConvict extends JVillagerEntity {
             new CurrencyForItemsTrade(JItems.BOILING_SKULL.get(), 32, JItems.BOIL_POWDER.get(), 64, JItems.BLOODWIELD_SWORD.get(), 1, 12, 5)
     }));
 
+    @Override
+    public boolean fireImmune() {
+        return true;
+    }
+
     public EscapedConvict(EntityType<? extends JPathfinderMob> type, Level worldIn) {
         super(type, worldIn);
     }

@@ -260,7 +260,7 @@ public class MobStats {
     public static final double FROST_GOLEM_KNOCKBACK_RESISTANCE = 3;
 
     public static final double STONEWALKER_HEALTH = 30;
-    public static final double STONEWALKER_DAMAGE = 3;
+    public static final double STONEWALKER_DAMAGE = 4;
 
     public static final double BIG_HONGO_HEALTH = 40;
     public static final double BIG_HONGO_DAMAGE = 8.5;
@@ -351,7 +351,6 @@ public class MobStats {
     public static final int ARANA_KING_HEALTH = 45;
     public static final int ARANA_KING_DAMAGE = 13;
 
-    //TODO change
     public static final int FLUNGUS_HEALTH = 50;
     public static final int FLUNGUS_MOVEMENT_SPEED = 0;
     public static final int FLUNGUS_KNOCKBACK_RESISTANCE = 1;
@@ -418,10 +417,6 @@ public class MobStats {
 
     public static final int OKOLOO_HEALTH = 600;
     public static final int OKOLOO_DAMAGE = 8;
-
-    public static final int SENTRY_HEART_HEALTH = 5000;//TODO CHANGE
-    public static final int SENTRY_HEART_MOVEMENT_SPEED = 0;
-    public static final int SENTRY_HEART_KNOCKBACK_RESISTANCE = 1;
 
     public static final int SENTRY_KING_HEALTH = 2500;
     public static final int SENTRY_KING_DAMAGE = 20;

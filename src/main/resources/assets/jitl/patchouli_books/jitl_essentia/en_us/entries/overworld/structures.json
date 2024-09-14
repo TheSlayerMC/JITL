@@ -19,6 +19,7 @@
     {
       "type": "image",
       "title": "structure.overworld.jitl.mage_hut",
+      "anchor": "mage_hut",
       "images": [
         "jitl:textures/gui/patchouli/mage_hut.png"
       ],

@@ -47,7 +47,7 @@ public class KeyUsedEvent {
 
     public static void handleAbilityKeys(InputConstants.Key input, int action) {
         boolean key = input == KeyBindEvents.keyAmulet.getKey();
-        if (key || input == KeyBindEvents.keyArmor.getKey()) {
+        if(key || input == KeyBindEvents.keyArmor.getKey()) {
             //JNetworkRegistry.sendToPlayer(new CKeyPressedPacket(key, action == GLFW.GLFW_PRESS));
         }
     }

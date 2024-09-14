@@ -430,6 +430,25 @@ public class LangRegistry {
         writeToFile("\"book.jitl.entry.senterian.mobs.mini_sentry_stalker.desc\" : " + "\"Mini Sentry Stalker is a mob that spawns from inside the Senterian Altar when activated, they will drop Sentacoins\",");
         writeToFile("\"book.jitl.entry.senterian.mobs.mini_sentry_lord.desc\" : " + "\"Mini Sentry Lord is a mob that spawns from inside the Senterian Altar when activated, they will drop Sentacoins\",");
 
+        writeToFile("\"book.jitl.entry.overworld.mobs.brown_hongo.desc\" : " + "\"Spawns in Forest like Biomes, Peaceful unless provoked, It has 40HP and does x4 Damage, Chance to drop Hongoshrooms\",");
+        writeToFile("\"book.jitl.entry.overworld.mobs.big_hongo.desc\" : " + "\"Spawns in Forest like Biomes, Peaceful unless provoked, It has 40HP and does x4 Damage, Chance to drop Hongoshrooms\",");
+        writeToFile("\"book.jitl.entry.overworld.mobs.medium_hongo.desc\" : " + "\"Spawns in Forest like Biomes, Peaceful unless provoked, It has 30HP and does x2.5 Damage, Chance to drop Hongoshrooms\",");
+        writeToFile("\"book.jitl.entry.overworld.mobs.small_hongo.desc\" : " + "\"Spawns in Forest like Biomes, Peaceful unless provoked, It has 20HP and does x1.5 Damage, Chance to drop Hongoshrooms\",");
+        writeToFile("\"book.jitl.entry.overworld.mobs.blizzard.desc\" : " + "\"Spawns in Snow Biomes, Will attack on sight, Will throw fire balls at you, It has 20HP, Chance to drop Snowballs\",");
+        writeToFile("\"book.jitl.entry.overworld.mobs.boom_boom.desc\" : " + "\"Spawns in any Overworld Biomes, Will attack on sight, Will create a medium explosion, It has 20HP, Chance to drop Gunpowder and TNT blocks\",");
+        writeToFile("\"book.jitl.entry.overworld.mobs.caveling.desc\" : " + "\"Spawns in any Overworld Biomes Underground, Will attack on sight, It has 25HP and does 2x Damage, Chance to drop Stone Clump, Cave Dust and Cave Crystal\",");
+        writeToFile("\"book.jitl.entry.overworld.mobs.cavurn.desc\" : " + "\"Spawns in any Overworld Biomes Underground, Will attack on sight, It has 30HP and does 2x Damage, Chance to drop Cave Dust and Cave Crystal\",");
+        writeToFile("\"book.jitl.entry.overworld.mobs.stonewalker.desc\" : " + "\"Spawns in any Overworld Biomes Underground, Will attack on sight, It has 30HP and does 2x Damage, Chance to drop Cave Dust, Stone Clump, Shadium Ingot, Lunium Ingot, Sapphire and Cave Crystal\",");
+        writeToFile("\"book.jitl.entry.overworld.mobs.floro.desc\" : " + "\"Spawns in Forest like Biomes, Will attack once not hiding away, Will shoot projectiles, It has 25HP, Chance to drop Floro Pedal and Floro Seeds\",");
+        writeToFile("\"book.jitl.entry.overworld.mobs.illager_mech.desc\" : " + "\"Spawns in Illager Bunker, Peaceful unless provoked, It has 100HP and does 4x Damage, Drops nothing\",");
+        writeToFile("\"book.jitl.entry.overworld.mobs.jungle_turtle.desc\" : " + "\"Spawns in Jungle Biomes, Peaceful unless provoked, It has 30HP and does 4x Damage, Drops nothing\",");
+        writeToFile("\"book.jitl.entry.overworld.mobs.sand_crawler.desc\" : " + "\"Spawns in Desert Biomes, Will attack on Sight, It has 20HP and does 2x Damage, Drops Sand\",");
+        writeToFile("\"book.jitl.entry.overworld.mobs.spyclopse.desc\" : " + "\"Spawns in Desert Biomes, Will attack on Sight, It has 30HP and does 1.5x Damage, Drops Spyclopse Eye\",");
+        writeToFile("\"book.jitl.entry.overworld.mobs.rockite_golem.desc\" : " + "\"Spawns in any Overworld Biomes Underground, NPC Mob, Will trade with you\",");
+        writeToFile("\"book.jitl.entry.overworld.mobs.neutral_sentry_stalker.desc\" : " + "\"Spawns in the $(l:jitl:overworld/structures#ancient_structure)Ancient Structure$(/l), NPC Mob, Will trade with you once you reach 100 Overworld Knowledge\",");
+        writeToFile("\"book.jitl.entry.overworld.mobs.mage.desc\" : " + "\"Spawns in $(l:jitl:overworld/structures#mage_hut)Mage Hut$(/l), NPC Mob, Will trade with you\",");
+
+
         writeToFile("\"book.jitl.entry.portals.flame_coin\" : " + "\"The Flame Coin is what is used to light all the JITL Portals\",");
         writeToFile("\"book.jitl.entries.dimensions\" : " + "\"Dimensions\",");
         writeToFile("\"book.jitl.entry.portals.start\" : " + "\"What to do and how to get into Dimensions\",");

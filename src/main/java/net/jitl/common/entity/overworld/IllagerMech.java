@@ -38,6 +38,7 @@ public class IllagerMech extends JMonsterEntity {
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, 100)
+                .add(Attributes.ATTACK_DAMAGE, 8)
                 .add(Attributes.FOLLOW_RANGE, 10)
                 .add(Attributes.MOVEMENT_SPEED, 0.26).build();
     }

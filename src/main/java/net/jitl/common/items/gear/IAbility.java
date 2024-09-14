@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -31,11 +32,15 @@ public interface IAbility {
 
     }
 
+    default void onSweep(ItemStack stack, Entity target, Player player) {
+
+    }
+
     default void playerInteract(PlayerInteractEvent event) {
 
     }
 
-    default void attackTarget(LivingEntity attacker, ItemStack stack, LivingDamageEvent.Post event) {
+    default void attackTarget(LivingEntity attacker, ItemStack stack, LivingDamageEvent.Pre event) {
 
     }
 

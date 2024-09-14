@@ -28,7 +28,7 @@ public record CKeyPressedPacket(boolean isAmulet, boolean isDown) implements Cus
     public static void handle(CKeyPressedPacket payload, IPayloadContext context) {
         context.enqueueWork(() -> {
             Player player = context.player();
-                if (payload.isAmulet) {
+                if(payload.isAmulet) {
                     player.getData(JDataAttachments.KEY_PRESSED).setAmuletPressed(payload.isDown);
                     //CurioEventHandler.onKeyPressed(player);
                 } else {

@@ -10,6 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import java.util.List;
 
 public class CelestiumArmorAbility implements IAbility {
+
     @Override
     public FullArmorAbility getFullAbility(CompoundTag nbt) {
         return new CelestiumFullAbility(nbt);
