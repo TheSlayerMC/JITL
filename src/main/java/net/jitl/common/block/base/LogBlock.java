@@ -3,6 +3,7 @@ package net.jitl.common.block.base;
 import net.jitl.common.items.base.MultitoolItem;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.RotatedPillarBlock;
@@ -19,7 +20,8 @@ public class LogBlock extends RotatedPillarBlock {
 
     @Override
     public @Nullable BlockState getToolModifiedState(@NotNull BlockState state, @NotNull UseOnContext context, @NotNull ItemAbility itemAbility, boolean simulate) {
-        if(context.getItemInHand().getItem() instanceof AxeItem || context.getItemInHand().getItem() instanceof MultitoolItem) {
+        if(context.getItemInHand().getItem() instanceof AxeItem || context.getItemInHand().getItem() instanceof MultitoolItem
+                || context.getItemInHand().getItem().getName(context.getItemInHand()).contains(Component.literal("shickaxe"))) {
             if(state.is(JBlocks.EUCA_BROWN_LOG.get()))
                 return JBlocks.STRIPPED_EUCA_BROWN_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
 
