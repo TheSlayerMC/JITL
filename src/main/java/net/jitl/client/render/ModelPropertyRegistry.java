@@ -72,7 +72,7 @@ public class ModelPropertyRegistry {
                 return 0.0F;
             } else {
                 return entity.getUseItem() != stack ? 0.0F : ((stack.getUseDuration(entity) - entity.getUseItemRemainingTicks()) / 20.0F)
-                        * (JBowItem.DEFAULT_DURATION / stack.getUseDuration(entity));
+                        * ((float)JBowItem.DEFAULT_DURATION / stack.getUseDuration(entity));
             }
         });
         ItemProperties.register(item, ResourceLocation.withDefaultNamespace("pulling"), (stack, level, entity, i) ->

@@ -128,7 +128,6 @@ public class JITL {
         RenderEntitys.registerAnimationRenderers();
         ModelPropertyRegistry.init();
         BossBarRenderer.init();
-        LogStripper.init();
         NeoForge.EVENT_BUS.register(KeyUsedEvent.class);
         IEventBus forgeEventBus = NeoForge.EVENT_BUS;
         ClientEventHandler.regToBus(forgeEventBus);
