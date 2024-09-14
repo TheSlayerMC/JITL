@@ -14,10 +14,10 @@ public class JBlockPortalGenerator {
 
     public void generate() {
         for(String name : JBlocks.portalBlockName) {
-            String itemModelDir = "../../src/main/resources/assets/jitl/models/item/" + name + ".json";
-            String blockNSModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_ns.json";
-            String blockEWModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_ew.json";
-            String blockstateDir = "../../src/main/resources/assets/jitl/blockstates/" + name + ".json";
+            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            String blockNSModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_ns.json";
+            String blockEWModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_ew.json";
+            String blockstateDir = "../src/main/resources/assets/jitl/blockstates/" + name + ".json";
 
             File itemModel = new File(itemModelDir);
             File blockNSModel = new File(blockNSModelDir);

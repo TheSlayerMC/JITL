@@ -15,11 +15,11 @@ public class JBlockFenceGenerator {
 
     public void generate() {
         for(String name : JBlocks.fenceBlockName) {
-            String itemModelDir = "../../src/main/resources/assets/jitl/models/item/" + name + ".json";
-            String blockModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_inventory.json";
-            String blockPostModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_post.json";
-            String blockSideModelDir = "../../src/main/resources/assets/jitl/models/block/" + name + "_side.json";
-            String blockstateDir = "../../src/main/resources/assets/jitl/blockstates/" + name + ".json";
+            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            String blockModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_inventory.json";
+            String blockPostModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_post.json";
+            String blockSideModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_side.json";
+            String blockstateDir = "../src/main/resources/assets/jitl/blockstates/" + name + ".json";
 
             File itemModel = new File(itemModelDir);
             File blockModel = new File(blockModelDir);

@@ -14,10 +14,10 @@ public class JBowItemGenerator {
 
     public void generate(){
         for(String name : JItems.bowName) {
-            String itemModelDir = "../../src/main/resources/assets/jitl/models/item/" + name + ".json";
-            String itemModel0Dir = "../../src/main/resources/assets/jitl/models/item/" + name + "_0.json";
-            String itemModel1Dir = "../../src/main/resources/assets/jitl/models/item/" + name + "_1.json";
-            String itemModel2Dir = "../../src/main/resources/assets/jitl/models/item/" + name + "_2.json";
+            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            String itemModel0Dir = "../src/main/resources/assets/jitl/models/item/" + name + "_0.json";
+            String itemModel1Dir = "../src/main/resources/assets/jitl/models/item/" + name + "_1.json";
+            String itemModel2Dir = "../src/main/resources/assets/jitl/models/item/" + name + "_2.json";
 
             File itemModel = new File(itemModelDir);
             try {

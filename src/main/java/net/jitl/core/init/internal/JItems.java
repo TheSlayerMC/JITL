@@ -460,6 +460,8 @@ public class JItems {
     public static final DeferredItem<Item> DEPTHS_BOAT = registerNormalItem("depths_boat", "Depths Boat", () -> new JBoatItem(JBoat.Type.DEPTHS));
     public static final DeferredItem<Item> BURNED_BOAT = registerNormalItem("burned_boat", "Burned Boat", () -> new JBoatItem(JBoat.Type.BURNED));
     public static final DeferredItem<Item> CORBA_BOAT = registerNormalItem("corba_boat", "Corba Boat", () -> new JBoatItem(JBoat.Type.CORBA));
+    public static final DeferredItem<Item> TERRANIAN_BOAT = registerNormalItem("terranian_boat", "Terranian Boat", () -> new JBoatItem(JBoat.Type.TERRANIA));
+    public static final DeferredItem<Item> CLOUDIA_BOAT = registerNormalItem("cloudia_boat", "Cloudia Boat", () -> new JBoatItem(JBoat.Type.CLOUDIA));
 
     public static final DeferredItem<Item> EUCA_PIERCER = registerToolItem("euca_piercer", "Euca Piercer", () ->
             new PiercerItem(3, 10.0F), ItemType.PIERCER);

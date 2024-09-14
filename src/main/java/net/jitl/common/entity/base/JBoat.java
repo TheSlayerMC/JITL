@@ -215,6 +215,8 @@ public class JBoat extends Boat {
             case DEPTHS -> JItems.DEPTHS_BOAT.get();
             case BURNED -> JItems.BURNED_BOAT.get();
             case CORBA -> JItems.CORBA_BOAT.get();
+            case TERRANIA -> JItems.TERRANIAN_BOAT.get();
+            case CLOUDIA -> JItems.CLOUDIA_BOAT.get();
         };
     }
 
@@ -223,6 +225,41 @@ public class JBoat extends Boat {
         this.setHurtDir(-this.getHurtDir());
         this.setHurtTime(10);
         this.setDamage(this.getDamage() * 11.0F);
+    }
+
+    @Override
+    public void lerpTo(double x, double y, double z, float yRot, float xRot, int steps) {
+        this.lerpX = x;
+        this.lerpY = y;
+        this.lerpZ = z;
+        this.lerpYRot = (double)yRot;
+        this.lerpXRot = (double)xRot;
+        this.lerpSteps = 10;
+    }
+
+    @Override
+    public double lerpTargetX() {
+        return this.lerpSteps > 0 ? this.lerpX : this.getX();
+    }
+
+    @Override
+    public double lerpTargetY() {
+        return this.lerpSteps > 0 ? this.lerpY : this.getY();
+    }
+
+    @Override
+    public double lerpTargetZ() {
+        return this.lerpSteps > 0 ? this.lerpZ : this.getZ();
+    }
+
+    @Override
+    public float lerpTargetXRot() {
+        return this.lerpSteps > 0 ? (float)this.lerpXRot : this.getXRot();
+    }
+
+    @Override
+    public float lerpTargetYRot() {
+        return this.lerpSteps > 0 ? (float)this.lerpYRot : this.getYRot();
     }
 
     @Override
@@ -349,21 +386,14 @@ public class JBoat extends Boat {
     }
 
     private void tickLerp() {
-        if(this.isControlledByLocalInstance()) {
+        if (this.isControlledByLocalInstance()) {
             this.lerpSteps = 0;
             this.syncPacketPositionCodec(this.getX(), this.getY(), this.getZ());
         }
 
-        if(this.lerpSteps > 0) {
-            double d0 = this.getX() + (this.lerpX - this.getX()) / (double)this.lerpSteps;
-            double d1 = this.getY() + (this.lerpY - this.getY()) / (double)this.lerpSteps;
-            double d2 = this.getZ() + (this.lerpZ - this.getZ()) / (double)this.lerpSteps;
-            double d3 = Mth.wrapDegrees(this.lerpYRot - (double)this.getYRot());
-            this.setYRot(this.getYRot() + (float)d3 / (float)this.lerpSteps);
-            this.setXRot(this.getXRot() + (float)(this.lerpXRot - (double)this.getXRot()) / (float)this.lerpSteps);
+        if (this.lerpSteps > 0) {
+            this.lerpPositionAndRotationStep(this.lerpSteps, this.lerpX, this.lerpY, this.lerpZ, this.lerpYRot, this.lerpXRot);
             --this.lerpSteps;
-            this.setPos(d0, d1, d2);
-            this.setRot(this.getYRot(), this.getXRot());
         }
     }
 
@@ -373,7 +403,7 @@ public class JBoat extends Boat {
     }
 
     public float getRowingTime(int side, float limbSwing) {
-        return this.getPaddleState(side) ? (float)Mth.clampedLerp((double)this.paddlePositions[side] - (double)((float)Math.PI / 8F), this.paddlePositions[side], limbSwing) : 0.0F;
+        return this.getPaddleState(side) ? Mth.clampedLerp(this.paddlePositions[side] - 0.3926991F, this.paddlePositions[side], limbSwing) : 0.0F;
     }
 
     private JBoat.Status getStatus() {
@@ -810,8 +840,9 @@ public class JBoat extends Boat {
         FROZEN(JBlocks.FROZEN_PLANKS.get(), "frozen"),
         DEPTHS(JBlocks.DEPTHS_PLANKS.get(), "depths"),
         BURNED(JBlocks.BURNED_PLANKS.get(), "burned"),
-        CORBA(JBlocks.CORBA_PLANKS.get(), "corba")
-
+        CORBA(JBlocks.CORBA_PLANKS.get(), "corba"),
+        TERRANIA(JBlocks.TERRANIAN_PLANKS.get(), "terranian"),
+        CLOUDIA(JBlocks.CLOUDIA_PLANKS.get(), "cloudia")
         ;
 
         private final String name;

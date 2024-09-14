@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+        "model": "jitl:block/terranian_slab"
+      },
+    "type=double": {
+        "model": "jitl:block/terranian_planks"
+      },
+    "type=top": {
+        "model": "jitl:block/terranian_slab_top"
+      }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "jitl:cloudia_planks"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "#I#",
+    "#I#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jitl:cloudia_fence_gate"
+  }
+}

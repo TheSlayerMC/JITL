@@ -13,9 +13,9 @@ public class ItemTypeGenerator {
     protected BufferedWriter swordsWriter, pickaxeWriter, axeWriter, shovelWriter, hoeWriter, helmetWriter, chestWriter, legWriter, bootWriter, piercerWriter;
 
     public void generate() {
-        String baseDir = "../../src/main/resources/data/minecraft/tags/item/";
+        String baseDir = "../src/main/resources/data/minecraft/tags/item/";
 
-        String jDir = "../../src/main/resources/data/jitl/tags/item/";
+        String jDir = "../src/main/resources/data/jitl/tags/item/";
 
         File piercer = new File(jDir + "piercers.json");
 

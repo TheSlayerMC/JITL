@@ -12,8 +12,8 @@ public class JBlockModeledCropGenerator {
     protected BufferedWriter blockstateWriter, itemModelWriter;
 
     public void generate(String name, int maxStages) {
-        String itemModelDir = "../../src/main/resources/assets/jitl/models/item/" + name + ".json";
-        String blockstateDir = "../../src/main/resources/assets/jitl/blockstates/" + name + ".json";
+        String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
+        String blockstateDir = "../src/main/resources/assets/jitl/blockstates/" + name + ".json";
 
         File itemModel = new File(itemModelDir);
         File blockstateModel = new File(blockstateDir);

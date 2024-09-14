@@ -128,7 +128,7 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<BigHongo>> BIG_HONGO_TYPE = registerEntity(BigHongo::new, "big_hongo", "Big Hongo", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<MediumHongo>> MEDIUM_HONGO_TYPE = registerEntity(MediumHongo::new, "medium_hongo", "Medium Hongo", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<SmallHongo>> SMALL_HONGO_TYPE = registerEntity(SmallHongo::new, "small_hongo", "Small Hongo", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
-    public static final DeferredHolder<EntityType<?>, EntityType<JungleTurtle>> JUNGLE_TURTLE_TYPE = registerEntity(JungleTurtle::new, "jungle_turtle", "Jungle Turtle", 2F, 2F, OVERWORLD_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
+    public static final DeferredHolder<EntityType<?>, EntityType<JungleTurtle>> JUNGLE_TURTLE_TYPE = registerEntity(JungleTurtle::new, "jungle_turtle", "Jungle Turtle", 2F, 2F, OVERWORLD_COLOR, PASSIVE_COLOR, MobCategory.MONSTER);
     public static final DeferredHolder<EntityType<?>, EntityType<JungleGolem>> JUNGLE_GOLEM_TYPE = registerEntity(JungleGolem::new, "jungle_golem", "Jungle Golem", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<SandCrawler>> SAND_CRAWLER_TYPE = registerEntity(SandCrawler::new, "sand_crawler", "Sand Crawler", 1.3F, 1F, OVERWORLD_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<RockiteGolem>> ROCKITE_GOLEM_TYPE = registerEntity(RockiteGolem::new, "rockite_golem", "Rockite Golem", 1.3F, 1.5F, OVERWORLD_COLOR, TRADER_COLOR, MobCategory.CREATURE);
@@ -148,7 +148,7 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<HellSerpent>> HELL_SERPENT_TYPE = registerEntity(HellSerpent::new, "hell_serpent", "Hell Serpent", 0.5F, 0.25F, NETHER_COLOR, HOSTILE_COLOR);
 
     //BOIL MOBS
-    public static final DeferredHolder<EntityType<?>, EntityType<FlameLotus>> FLAME_LOTUS_TYPE = registerEntity(FlameLotus::new, "flame_lotus", "Flame Lotus", 1F, 0.25F, BOILING_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
+    public static final DeferredHolder<EntityType<?>, EntityType<FlameLotus>> FLAME_LOTUS_TYPE = registerEntity(FlameLotus::new, "flame_lotus", "Flame Lotus", 1F, 0.25F, BOILING_COLOR, PASSIVE_COLOR, MobCategory.MONSTER);
     public static final DeferredHolder<EntityType<?>, EntityType<BurningLight>> BURNING_LIGHT_TYPE = registerEntity(BurningLight::new, "burning_light", "Burning Light", 0.5F, 2F, BOILING_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<Frightener>> FRIGHTENER_TYPE = registerEntity(Frightener::new, "frightener", "Frightener", 0.5F, 2F, BOILING_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<Hellwing>> HELLWING_TYPE = registerEntity(Hellwing::new, "hellwing", "Hellwing", 1F, 1F, NETHER_COLOR, HOSTILE_COLOR);
@@ -171,7 +171,7 @@ public class JEntities {
 
     //FROZEN MOBS
     public static final DeferredHolder<EntityType<?>, EntityType<Eskimo>> ESKIMO_TYPE = registerEntity(Eskimo::new, "eskimo", "Eskimo", 1F, 2F, FROZEN_COLOR, TRADER_COLOR, MobCategory.CREATURE);
-    public static final DeferredHolder<EntityType<?>, EntityType<FrozenTrollEntity>> FROZEN_TROLL_TYPE = registerEntity(FrozenTrollEntity::new, "frozen_troll", "Frozen Troll", 1F, 2F, FROZEN_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
+    public static final DeferredHolder<EntityType<?>, EntityType<FrozenTrollEntity>> FROZEN_TROLL_TYPE = registerEntity(FrozenTrollEntity::new, "frozen_troll", "Frozen Troll", 1F, 2F, FROZEN_COLOR, NEUTRAL_COLOR, MobCategory.MONSTER);
     public static final DeferredHolder<EntityType<?>, EntityType<FrozenGuardian>> FROZEN_GUARDIAN_TYPE = registerEntity(FrozenGuardian::new, "frozen_guardian", "Frozen Guardian", 0.75F, 2F, FROZEN_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
     public static final DeferredHolder<EntityType<?>, EntityType<CrystalCluster>> CRYSTAL_CLUSTER_TYPE = registerEntity(CrystalCluster::new, "crystal_cluster", "Crystal Cluster", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<FrozenFrostbiter>> FROZEN_FROSTBITER_TYPE = registerEntity(FrozenFrostbiter::new, "frozen_frostbiter", "Frozen Frostbiter", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
@@ -180,7 +180,7 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<Shatterer>> SHATTERER_TYPE = registerEntity(Shatterer::new, "shatterer", "Shatterer", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<ShiveringBushwalker>> SHIVERING_BUSHWALKER_TYPE = registerEntity(ShiveringBushwalker::new, "shivering_bushwalker", "Shivering Bushwalker", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<ShiveringShrieker>> SHIVERING_SHRIEKER_TYPE = registerEntity(ShiveringShrieker::new, "shivering_shrieker", "Shivering Shrieker", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
-    public static final DeferredHolder<EntityType<?>, EntityType<Capybara>> CAPYBARA_TYPE = registerEntity(Capybara::new, "capybara", "Capybara", 1F, 2F, FROZEN_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
+    public static final DeferredHolder<EntityType<?>, EntityType<Capybara>> CAPYBARA_TYPE = registerEntity(Capybara::new, "capybara", "Capybara", 1F, 2F, FROZEN_COLOR, NEUTRAL_COLOR, MobCategory.MONSTER);
 
     //DEPTHS MOBS
     public static final DeferredHolder<EntityType<?>, EntityType<Darkener>> DARKENER_TYPE = registerEntity(Darkener::new, "darkener", "Darkener", 1F, 1F, DEPTHS_COLOR, NEUTRAL_COLOR);
@@ -221,14 +221,14 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<TerranianTrader>> TERRANIAN_TRADER_TYPE = registerEntity(TerranianTrader::new, "terranian_trader", "Terranian Trader", 1.25F, 3.5F, TERRANIA_COLOR, TRADER_COLOR);
 
     //CLOUDIA MOBS
-    public static final DeferredHolder<EntityType<?>, EntityType<CloudGhost>> CLOUD_GHOST_TYPE = registerEntity(CloudGhost::new, "cloud_ghost", "Cloud Ghost", 0.75F, 1.9F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final DeferredHolder<EntityType<?>, EntityType<SkyEel>> SKY_EEL_TYPE = registerEntity(SkyEel::new, "sky_eel", "Sky Eel", 1F, 1.8F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final DeferredHolder<EntityType<?>, EntityType<CloudGhost>> CLOUD_GHOST_TYPE = registerEntity(CloudGhost::new, "cloud_ghost", "Cloud Ghost", 0.75F, 1.9F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final DeferredHolder<EntityType<?>, EntityType<SkyEel>> SKY_EEL_TYPE = registerEntity(SkyEel::new, "sky_eel", "Sky Eel", 1F, 1.8F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
     public static final DeferredHolder<EntityType<?>, EntityType<StarlightBlacksmith>> STARLIGHT_BLACKSMITH_TYPE = registerEntity(StarlightBlacksmith::new, "starlight_blacksmith", "Starlight Blacksmith", 1.5F, 2.2F, TRADER_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
     public static final DeferredHolder<EntityType<?>, EntityType<StarlightVillager>> STARLIGHT_VILLAGER_TYPE = registerEntity(StarlightVillager::new, "starlight_villager", "Starlight Villager", 1.5F, 2.2F, TRADER_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final DeferredHolder<EntityType<?>, EntityType<StarlightGolem>> STARLIGHT_GOLEM_TYPE = registerEntity(StarlightGolem::new, "starlight_golem", "Starlight Golem", 1.5F, 3F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final DeferredHolder<EntityType<?>, EntityType<StarlightTransporter>> STARLIGHT_TRANSPORTER_TYPE = registerEntity(StarlightTransporter::new, "starlight_transporter", "Starlight Transporter", 0.75F, 1.75F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final DeferredHolder<EntityType<?>, EntityType<StarlightWalker>> STARLIGHT_WALKER_TYPE = registerEntity(StarlightWalker::new, "starlight_walker", "Starlight Walker", 0.75F, 1F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
-    public static final DeferredHolder<EntityType<?>, EntityType<AeroLotus>> AERO_LOTUS_TYPE = registerEntity(AeroLotus::new, "aero_lotus", "Aero Lotus", 1F, 0.25F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
+    public static final DeferredHolder<EntityType<?>, EntityType<StarlightGolem>> STARLIGHT_GOLEM_TYPE = registerEntity(StarlightGolem::new, "starlight_golem", "Starlight Golem", 1.5F, 3F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final DeferredHolder<EntityType<?>, EntityType<StarlightTransporter>> STARLIGHT_TRANSPORTER_TYPE = registerEntity(StarlightTransporter::new, "starlight_transporter", "Starlight Transporter", 0.75F, 1.75F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final DeferredHolder<EntityType<?>, EntityType<StarlightWalker>> STARLIGHT_WALKER_TYPE = registerEntity(StarlightWalker::new, "starlight_walker", "Starlight Walker", 0.75F, 1F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final DeferredHolder<EntityType<?>, EntityType<AeroLotus>> AERO_LOTUS_TYPE = registerEntity(AeroLotus::new, "aero_lotus", "Aero Lotus", 1F, 0.25F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
 
     //SENTERIAN MOBS
     public static final DeferredHolder<EntityType<?>, EntityType<SentryLord>> SENTRY_LORD_TYPE = registerEntity(SentryLord::new, "sentry_lord", "Sentry Lord", 1F, 2.9F, SENTERIAN_COLOR, HOSTILE_COLOR);

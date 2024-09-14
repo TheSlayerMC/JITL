@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_right_open",
+  "textures": {
+    "bottom": "jitl:block/terranian_door_bottom",
+    "top": "jitl:block/terranian_door_top"
+  }
+}

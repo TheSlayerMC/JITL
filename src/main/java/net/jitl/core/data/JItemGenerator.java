@@ -14,7 +14,7 @@ public class JItemGenerator {
 
     public void generate(){
         for(String name : JItems.itemName) {
-            String itemModelDir = "../../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
             File itemModel = new File(itemModelDir);
             itemModel.mkdirs();
             try {
@@ -30,7 +30,7 @@ public class JItemGenerator {
         }
 
         for(String name : JItems.toolName) {
-            String itemModelDir = "../../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
             File itemModel = new File(itemModelDir);
             itemModel.mkdirs();
             try {
@@ -46,7 +46,7 @@ public class JItemGenerator {
         }
 
         for(String name : JItems.recordName) {
-            String itemModelDir = "../../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
             File itemModel = new File(itemModelDir);
             itemModel.mkdirs();
             try {
@@ -62,7 +62,7 @@ public class JItemGenerator {
         }
 
         for(String name : JItems.spawnName) {
-            String itemModelDir = "../../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
             File itemModel = new File(itemModelDir);
             itemModel.mkdirs();
             try {

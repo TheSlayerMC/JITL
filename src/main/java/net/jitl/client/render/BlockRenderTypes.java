@@ -138,11 +138,16 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.TERRANIAN_SAPLING.get());
         cutout.add(JBlocks.TERRANIAN_LEAVES.get());
         cutout.add(JBlocks.TERRANIAN_TALL_GRASS.get());
+        cutout.add(JBlocks.TERRANIAN_DOOR.get());
+        cutout.add(JBlocks.TERRANIAN_TRAP_DOOR.get());
+        cutout.add(JBlocks.TERRANIAN_LEAVES.get());
         cutout.add(JBlocks.TERRANIAN_BARS.get());
         cutout.add(JBlocks.TALL_TERRAMUSHROOM.get());
         cutout.add(JBlocks.TERRANIAN_VINE.get());
         cutout.add(JBlocks.TERRANIAN_PORTAL.get());
         cutout.add(JBlocks.CLOUDIA_LEAVES.get());
+        cutout.add(JBlocks.CLOUDIA_DOOR.get());
+        cutout.add(JBlocks.CLOUDIA_TRAP_DOOR.get());
         cutout.add(JBlocks.SENTERIAN_GLASS.get());
         cutout.add(JBlocks.BREAKABLE_SENTERIAN_GLASS.get());
         cutout.add(JBlocks.SENTERIAN_BARS.get());

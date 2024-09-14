@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_right",
+  "textures": {
+    "bottom": "jitl:block/cloudia_door_bottom",
+    "top": "jitl:block/cloudia_door_top"
+  }
+}

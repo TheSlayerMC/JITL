@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+        "model": "jitl:block/cloudia_slab"
+      },
+    "type=double": {
+        "model": "jitl:block/cloudia_planks"
+      },
+    "type=top": {
+        "model": "jitl:block/cloudia_slab_top"
+      }
+  }
+}

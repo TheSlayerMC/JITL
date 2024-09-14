@@ -14,8 +14,8 @@ public class JShieldItemGenerator {
 
     public void generate(){
         for(String name : JItems.shieldName) {
-            String itemModelDir = "../../src/main/resources/assets/jitl/models/item/" + name + ".json";
-            String itemModelBlockingDir = "../../src/main/resources/assets/jitl/models/item/" + name + "_blocking.json";
+            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            String itemModelBlockingDir = "../src/main/resources/assets/jitl/models/item/" + name + "_blocking.json";
 
             File itemModel = new File(itemModelDir);
             try {
