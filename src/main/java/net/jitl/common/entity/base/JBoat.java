@@ -149,7 +149,7 @@ public class JBoat extends Boat {
             }
         }
 
-        return new Vec3(0.0, this.getVariant() == Boat.Type.BAMBOO ? (double)(pDimensions.height() * 0.8888889F) : (double)(pDimensions.height() / 3.0F), (double)f)
+        return new Vec3(0.0, (double)(pDimensions.height() / 3.0F), (double)f)
                 .yRot(-this.getYRot() * (float) (Math.PI / 180.0));
     }
 
