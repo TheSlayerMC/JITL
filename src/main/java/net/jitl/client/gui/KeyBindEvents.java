@@ -32,21 +32,21 @@ public class KeyBindEvents {
     @SubscribeEvent
     public static void onKeyRegister(RegisterKeyMappingsEvent event) {
         event.register(keyStats);
-        event.register(keyArmor);
+        //event.register(keyArmor);
         event.register(keyAmulet);
 
-        event.register(keyIsometricView);
-        event.register(keyLockPerspective);
-        event.register(keyMoveCameraUp);
-        event.register(keyMoveCameraDown);
-        event.register(keyMoveCameraLeft);
-        event.register(keyMoveCameraRight);
-        event.register(keyRotateCameraClockwise);
-        event.register(keyRotateCameraCounterClockwise);
-        event.register(keyResetRotation);
-        event.register(keyResetAll);
-        event.register(keyCycleSnapAngle);
-        event.register(keyBigScreenshot);
+//        event.register(keyIsometricView);
+//        event.register(keyLockPerspective);
+//        event.register(keyMoveCameraUp);
+//        event.register(keyMoveCameraDown);
+//        event.register(keyMoveCameraLeft);
+//        event.register(keyMoveCameraRight);
+//        event.register(keyRotateCameraClockwise);
+//        event.register(keyRotateCameraCounterClockwise);
+//        event.register(keyResetRotation);
+//        event.register(keyResetAll);
+//        event.register(keyCycleSnapAngle);
+//        event.register(keyBigScreenshot);
     }
 
 
