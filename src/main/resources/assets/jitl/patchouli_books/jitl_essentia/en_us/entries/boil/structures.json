@@ -24,7 +24,7 @@
         "jitl:textures/gui/patchouli/hellwing_tower.png"
       ],
       "border": true,
-      "anchor": "hellwing_tower"
+      "anchor": "hellwing"
     },
     {
       "type": "text",
