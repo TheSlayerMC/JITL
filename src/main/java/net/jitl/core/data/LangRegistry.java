@@ -442,12 +442,20 @@ public class LangRegistry {
         writeToFile("\"book.jitl.entry.overworld.mobs.floro.desc\" : " + "\"Spawns in Forest like Biomes, Will attack once not hiding away, Will shoot projectiles, It has 25HP, Chance to drop Floro Pedal and Floro Seeds\",");
         writeToFile("\"book.jitl.entry.overworld.mobs.illager_mech.desc\" : " + "\"Spawns in Illager Bunker, Peaceful unless provoked, It has 100HP and does 4x Damage, Drops nothing\",");
         writeToFile("\"book.jitl.entry.overworld.mobs.jungle_turtle.desc\" : " + "\"Spawns in Jungle Biomes, Peaceful unless provoked, It has 30HP and does 4x Damage, Drops nothing\",");
-        writeToFile("\"book.jitl.entry.overworld.mobs.sand_crawler.desc\" : " + "\"Spawns in Desert Biomes, Will attack on Sight, It has 20HP and does 2x Damage, Drops Sand\",");
-        writeToFile("\"book.jitl.entry.overworld.mobs.spyclopse.desc\" : " + "\"Spawns in Desert Biomes, Will attack on Sight, It has 30HP and does 1.5x Damage, Drops Spyclopse Eye\",");
+        writeToFile("\"book.jitl.entry.overworld.mobs.sand_crawler.desc\" : " + "\"Spawns in Desert Biomes, Will attack on sight, It has 20HP and does 2x Damage, Drops Sand\",");
+        writeToFile("\"book.jitl.entry.overworld.mobs.spyclopse.desc\" : " + "\"Spawns in Desert Biomes, Will attack on sight, It has 30HP and does 1.5x Damage, Drops Spyclopse Eye\",");
         writeToFile("\"book.jitl.entry.overworld.mobs.rockite_golem.desc\" : " + "\"Spawns in any Overworld Biomes Underground, NPC Mob, Will trade with you\",");
         writeToFile("\"book.jitl.entry.overworld.mobs.neutral_sentry_stalker.desc\" : " + "\"Spawns in the $(l:jitl:overworld/structures#ancient_structure)Ancient Structure$(/l), NPC Mob, Will trade with you once you reach 100 Overworld Knowledge\",");
         writeToFile("\"book.jitl.entry.overworld.mobs.mage.desc\" : " + "\"Spawns in $(l:jitl:overworld/structures#mage_hut)Mage Hut$(/l), NPC Mob, Will trade with you\",");
 
+        writeToFile("\"book.jitl.entry.nether.mobs.hellbot.desc\" : " + "\"Spawns in $(l:jitl:nether/structures#hellbot)Hellbot Structure$(/l), Will attack on sight, It has 30HP and does 4x Damage, Chance to drop Flaming Sprocket, Hell Shards and Flaming Spring\",");
+        writeToFile("\"book.jitl.entry.nether.mobs.hell_cow.desc\" : " + "\"Spawns in any Nether Biomes, Breedable with HellShards, It has 35HP, Can be used to get Lava with a Bucket\",");
+        writeToFile("\"book.jitl.entry.nether.mobs.hell_serpent.desc\" : " + "\"Spawns in any Nether Biomes, Will attack on sight, It has 30HP and 4x Damage, Chance to drop Snake Skin, Hell Shards, Snake Flesh and Blood\",");
+        writeToFile("\"book.jitl.entry.nether.mobs.hell_turtle.desc\" : " + "\"Spawns in any Nether Biomes, Peaceful unless provoked, It has 40HP and 3.5x Damage, Chance to drop Hell Turtle Shell, Hell Shards and Blood\",");
+        writeToFile("\"book.jitl.entry.nether.mobs.inferno_blaze.desc\" : " + "\"Spawns in any Nether Biomes, Will attack on sight, It has 30HP and shoots Fireballs, Chance to drop Blaze Powder, Hell Shards, Blaze Rod\",");
+        writeToFile("\"book.jitl.entry.nether.mobs.mini_ghast.desc\" : " + "\"Spawns in $(l:jitl:nether/structures#nether_tower)Nether Tower$(/l), Will attack on sight, It has 20HP and shoots Fireballs, Chance to drop Flaming Ghast Tentacle, Hell Shards and Balmy Teardrop\",");
+        writeToFile("\"book.jitl.entry.nether.mobs.reaper.desc\" : " + "\"Spawns in any Nether Biomes, Will attack on sight, It has 35HP and 3.5x Damage, Chance to drop Withic Dust, Hell Shards and Lost Soul\",");
+        writeToFile("\"book.jitl.entry.nether.mobs.witherspine.desc\" : " + "\"Spawns in any Nether Biomes, Will attack on sight, It has 40HP and 4x Damage, Chance to drop Withic Dust and Withicspine\",");
 
         writeToFile("\"book.jitl.entry.portals.flame_coin\" : " + "\"The Flame Coin is what is used to light all the JITL Portals\",");
         writeToFile("\"book.jitl.entries.dimensions\" : " + "\"Dimensions\",");

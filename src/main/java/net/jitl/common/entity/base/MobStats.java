@@ -206,6 +206,7 @@ public class MobStats {
     public static final double INFERNO_BLAZE_DAMAGE = 8;
 
     public static final double LAVASNAKE_HEALTH = 30;
+    public static final double LAVASNAKE_DAMAGE = 8;
 
     public static final double MINI_GHAST_HEALTH = 20;
 

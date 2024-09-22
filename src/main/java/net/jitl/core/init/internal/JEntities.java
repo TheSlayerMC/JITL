@@ -143,7 +143,7 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<HellTurtle>> HELL_TURTLE_TYPE = registerEntity(HellTurtle::new, "hell_turtle", "Hell Turtle", 2F, 2F, NETHER_COLOR, NEUTRAL_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<Reaper>> REAPER_TYPE = registerEntity(Reaper::new, "reaper", "Reaper", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<InfernoBlaze>> INFERNO_BLAZE_TYPE = registerEntity(InfernoBlaze::new, "inferno_blaze", "Inferno Blaze", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
-    public static final DeferredHolder<EntityType<?>, EntityType<HellCow>> HELL_COW_TYPE = registerEntity(HellCow::new, "hell_cow", "Hell Cow", 1.5F, 1.75F, NETHER_COLOR, PASSIVE_COLOR);
+    public static final DeferredHolder<EntityType<?>, EntityType<HellCow>> HELL_COW_TYPE = registerEntity(HellCow::new, "hell_cow", "Hell Cow", 1.5F, 1.75F, 1.36875F, NETHER_COLOR, PASSIVE_COLOR, MobCategory.MONSTER);
     public static final DeferredHolder<EntityType<?>, EntityType<Hellbot>> HELLBOT_TYPE = registerEntity(Hellbot::new, "hellbot", "Hellbot", 0.5F, 0.75F, NETHER_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<HellSerpent>> HELL_SERPENT_TYPE = registerEntity(HellSerpent::new, "hell_serpent", "Hell Serpent", 0.5F, 0.25F, NETHER_COLOR, HOSTILE_COLOR);
 
@@ -237,6 +237,14 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<MiniSentryLord>> MINI_SENTRY_LORD_TYPE = registerEntity(MiniSentryLord::new, "mini_sentry_lord", "Mini Sentry Lord", 0.8F, 2.9F, SENTERIAN_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<MiniSentryStalker>> MINI_SENTRY_STALKER_TYPE = registerEntity(MiniSentryStalker::new, "mini_sentry_stalker", "Mini Sentry Stalker", 0.8F, 3.9F, SENTERIAN_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<MiniSentryWalker>> MINI_SENTRY_WALKER_TYPE = registerEntity(MiniSentryWalker::new, "mini_sentry_walker", "Mini Sentry Walker", 0.8F, 3.9F, SENTERIAN_COLOR, HOSTILE_COLOR);
+
+    private static <T extends Mob> DeferredHolder<EntityType<?>, EntityType<T>> registerEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height, float passengerAttachment, int backgroundColor, int highlightColor, MobCategory category) {
+        DeferredHolder<EntityType<?>, EntityType<T>> entity = REGISTRY.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).passengerAttachments(passengerAttachment).clientTrackingRange(10).build(ResourceLocation.fromNamespaceAndPath(JITL.MODID, name).toString()));
+        JItems.register(name + "_spawn_egg" , lang + " Spawn Egg", () -> new DeferredSpawnEggItem(entity, backgroundColor, highlightColor, JItems.itemProps()), JItems.ItemType.SPAWN_EGG);
+        entityName.add(name);
+        entityLangName.add(lang);
+        return entity;
+    }
 
     private static <T extends Mob> DeferredHolder<EntityType<?>, EntityType<T>> registerEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height, int backgroundColor, int highlightColor, MobCategory category) {
         DeferredHolder<EntityType<?>, EntityType<T>> entity = REGISTRY.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).build(ResourceLocation.fromNamespaceAndPath(JITL.MODID, name).toString()));

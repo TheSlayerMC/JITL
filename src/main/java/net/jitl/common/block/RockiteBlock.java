@@ -2,13 +2,16 @@ package net.jitl.common.block;
 
 import com.mojang.serialization.MapCodec;
 import net.jitl.common.entity.boss.RockiteSmasher;
+import net.jitl.common.items.base.MultitoolItem;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -63,15 +66,15 @@ public class RockiteBlock extends BaseEntityBlock {
 
     @Override
     public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
-        if(player != null) {
-            if(player.getMainHandItem().getItem() instanceof PickaxeItem) {
-                level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 1F, Level.ExplosionInteraction.BLOCK);
-                RockiteSmasher entity = new RockiteSmasher(JEntities.ROCKITE_SMASHER_TYPE.get(), level);
-                entity.setPos(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F);
-                level.addFreshEntity(entity);
-                level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
-                return true;
-            }
+        if (player.getMainHandItem().getItem() instanceof AxeItem
+                || player.getMainHandItem().getItem() instanceof MultitoolItem
+                || player.getMainHandItem().getItem().getName(player.getMainHandItem()).contains(Component.literal("shickaxe"))) {
+            level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 1F, Level.ExplosionInteraction.BLOCK);
+            RockiteSmasher entity = new RockiteSmasher(JEntities.ROCKITE_SMASHER_TYPE.get(), level);
+            entity.setPos(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F);
+            level.addFreshEntity(entity);
+            level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
+            return true;
         }
         return false;
     }

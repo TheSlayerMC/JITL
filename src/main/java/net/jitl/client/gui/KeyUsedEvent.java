@@ -2,8 +2,6 @@ package net.jitl.client.gui;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import net.jitl.client.gui.overlay.PlayerStats;
-import net.jitl.core.data.JNetworkRegistry;
-import net.jitl.core.init.network.CKeyPressedPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;

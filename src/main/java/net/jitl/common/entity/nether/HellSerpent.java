@@ -42,6 +42,7 @@ public class HellSerpent extends JMonsterEntity {
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, MobStats.LAVASNAKE_HEALTH)
+                .add(Attributes.ATTACK_DAMAGE, MobStats.LAVASNAKE_DAMAGE)
                 .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.STANDARD_KNOCKBACK_RESISTANCE)
                 .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
                 .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
