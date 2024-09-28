@@ -69,8 +69,6 @@ public class AeroLotus extends JMonsterEntity {
         return false;
     }
 
-
-
     @Override
     public boolean canTrample(BlockState state, BlockPos pos, float fallDistance) {
         return false;

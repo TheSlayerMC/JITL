@@ -69,7 +69,6 @@ public class Flungas extends JPathfinderMob {
         return false;
     }
 
-
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) { }
 

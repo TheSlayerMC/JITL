@@ -23,7 +23,7 @@ public class Roc extends JMonsterEntity {
 
     public Roc(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        setKnowledge(EnumKnowledge.CORBA, 5F);
+        setKnowledge(EnumKnowledge.DEPTHS, 5F);
     }
 
     @Override
@@ -33,13 +33,11 @@ public class Roc extends JMonsterEntity {
         this.goalSelector.addGoal(1, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
         this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
     }
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, MobStats.TAMED_ROC_HEALTH)
-                .add(Attributes.ATTACK_DAMAGE, MobStats.TAMED_ROC_DAMAGE)
                 .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.STANDARD_KNOCKBACK_RESISTANCE)
                 .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
                 .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();

@@ -80,7 +80,6 @@ public interface IAbility {
 
     }
 
-    @OnlyIn(Dist.CLIENT)
     default void fillTooltips(ItemStack stack, List<Component> tooltip) {
 
     }

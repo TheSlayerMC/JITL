@@ -13,6 +13,7 @@ public class JCommonConfig {
 	public static final ModConfigSpec.ConfigValue<Integer> GOLD_LOOT_CHANCE;
 	public static final ModConfigSpec.ConfigValue<Integer> DIAMOND_LOOT_CHANCE;
 	public static final ModConfigSpec.IntValue PORTAL_SEARCH_RADIUS;
+	public static final ModConfigSpec.BooleanValue ENABLE_BOOM_SPAWN;
 
 	static {
 		BUILDER.push("Common configs for JITL");
@@ -24,6 +25,7 @@ public class JCommonConfig {
 		GOLD_LOOT_CHANCE = BUILDER.comment("Gold Loot Chance").define("Gold Loot Chance 1 out of: ", 150);
 		DIAMOND_LOOT_CHANCE = BUILDER.comment("Diamond Loot Chance").define("Diamond Loot Chance 1 out of: ", 200);
 		PORTAL_SEARCH_RADIUS = BUILDER.comment("how far to look for portal locations.").defineInRange("Portal Search Radius", 24, 1, 128);
+		ENABLE_BOOM_SPAWN = BUILDER.comment("Can BoomBoom spawn naturally").define("Value: ", true);
 
 		BUILDER.pop();
 		SPEC = BUILDER.build();

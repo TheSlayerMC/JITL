@@ -19,6 +19,12 @@
   "spawners": {
     "monster": [
       {
+        "type": "jitl:nature_mage",
+        "weight": 3,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
         "type": "jitl:leaf_blower",
         "weight": 3,
         "minCount": 1,

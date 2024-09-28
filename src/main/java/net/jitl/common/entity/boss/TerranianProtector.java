@@ -104,7 +104,7 @@ public class TerranianProtector extends JBossEntity implements RangedAttackMob {
         double d1 = this.getHeadY(pHead);
         double d2 = this.getHeadZ(pHead);
 
-        FloroMudEntity projectile = new FloroMudEntity(this.level(), this, 5);
+        FloroMudEntity projectile = new FloroMudEntity(this.level(), this, 15);
         projectile.setPosRaw(d0, d1, d2);
 
         this.level().addFreshEntity(projectile);

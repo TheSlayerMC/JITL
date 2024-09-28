@@ -4,6 +4,7 @@ import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.goal.BoomSwellGoal;
+import net.jitl.core.config.JCommonConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -58,7 +59,8 @@ public class BoomBoom extends JMonsterEntity implements PowerableMob {
     }
 
     public static boolean checkSpawn(EntityType<BoomBoom> entity, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
-        return level.getDifficulty() != Difficulty.PEACEFUL && checkMobSpawnRules(entity, level, spawnType, pos, random) && level.canSeeSky(pos);
+        return level.getDifficulty() != Difficulty.PEACEFUL && checkMobSpawnRules(entity, level, spawnType, pos, random) && level.canSeeSky(pos)
+                && JCommonConfig.ENABLE_BOOM_SPAWN.get();
     }
 
     @Override

@@ -14,7 +14,6 @@ public class FrozenTrollRenderer extends MobRenderer<FrozenTrollEntity, FrozenTr
 
     public FrozenTrollRenderer(EntityRendererProvider.Context context) {
         super(context, new FrozenTrollModel<>(context.bakeLayer(JModelLayers.FROZEN_TROLL_MODEL_LAYER)), 0.5F);
-        this.addLayer(new FrozenTrollHeldItemLayer(this, context.getItemInHandRenderer()));
     }
 
     @Override

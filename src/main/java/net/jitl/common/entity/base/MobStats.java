@@ -107,6 +107,7 @@ public class MobStats {
     public static final double DARKNESS_CRAWLER_DAMAGE = 11;
 
     public static final double DARK_SORCERER_HEALTH = 50;
+    public static final double DARK_SORCERER_DAMAGE = 10;
 
     public static final double DEPTHS_BEAST_HEALTH = 60;
     public static final double DEPTHS_BEAST_DAMAGE = 15;
@@ -132,7 +133,7 @@ public class MobStats {
     // =======================================================
 
     public static final double DYNASTER_HEALTH = 46;
-    public static final double DYNASTER_DAMAGE = 7;
+    public static final double DYNASTER_DAMAGE = 8;
 
     public static final double EUCA_CHARGER_HEALTH = 44;
     public static final double EUCA_CHARGER_DAMAGE = 8;
@@ -145,7 +146,7 @@ public class MobStats {
     public static final double GOLDBOT_DAMAGE = 7;
 
     public static final double GOLDER_HEALTH = 45;
-    public static final double GOLDER_DAMAGE = 8;
+    public static final double GOLDER_DAMAGE = 9;
 
     public static final double GOLDITE_MAGE_HEALTH = 40;
 
@@ -164,6 +165,7 @@ public class MobStats {
     public static final double CRYSTAL_CLUSTER_HEALTH = 44;
 
     public static final double CAPYBARA_HEALTH = 30;
+    public static final double CAPYBARA_DAMAGE = 6;
 
     public static final double FROZEN_FROSTBITER_HEALTH = 45;
     public static final double FROZEN_FROSTBITER_DAMAGE = 8;

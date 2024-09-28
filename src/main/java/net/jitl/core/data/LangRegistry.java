@@ -1,5 +1,7 @@
 package net.jitl.core.data;
 
+import net.jitl.client.knowledge.EnumKnowledge;
+import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
@@ -10,6 +12,9 @@ import java.util.ArrayList;
 public class LangRegistry {
 
     protected BufferedWriter langWriter;
+
+    public String FIREBALLS = "It shoots Fireballs";
+    public String FLYING_FIREBALLS = "It fly's and shoots Fireballs";
 
     public void generate() {
         String langDir = "../src/main/resources/assets/jitl/lang/en_us.json";
@@ -322,6 +327,8 @@ public class LangRegistry {
         writeToFile("\"book.jitl.entry.nether.soul_watcher.desc\" : " + "\"The Soul Watcher is spawned using the Soul Watcher Orb made inside the Summoning Table, he has 650 Health, make sure to contain him or he may fly away\",");
         writeToFile("\"book.jitl.entry.nether.withering_beast.desc\" : " + "\"Withering Beast is spawned using the Withering Beast Orb made inside the Summoning Table, he has 750 Health, deadly to the touch.\",");
 
+        writeToFile("\"book.jitl.entry.terrania.terranian_protector.desc\" : " + "\"Terranian Protector is spawned using the Enchanted Terrastar made inside the Summoning Table, he has 2500 Health it shoots heavy Mud which does 7.5x Hearts of damage per impact\",");
+
         writeToFile("\"structure.boil.jitl.brison\" : " + "\"Brison\",");
         writeToFile("\"book.jitl.entry.boil.brison.desc\" : " + "\"The Brison is found in the Charred Fields Biome and keeps the $(l:jitl:boil/traders#escaped_convict)Escaped Convict$(/l) with a few needed spawners attached\",");
         writeToFile("\"book.jitl.entry.boil.mobs.escaped_convict.desc\" : " + "\"Escaped Convict is a NPC that lives in the $(l:jitl:boil/structures#brison)Brison\",");
@@ -375,7 +382,7 @@ public class LangRegistry {
         writeToFile("\"book.jitl.entry.euca.gold_bot_spawner.desc\" : " + "\"Goldbot Spawner is found in any Euca Biomes and spawns $(l:jitl:euca/mobs#goldbot)Goldbots$(/l)\",");
 
         writeToFile("\"structure.depths.jitl.dark_sorcerers_dungeon\" : " + "\"Sorcerers Dungeon\",");
-        writeToFile("\"book.jitl.entry.depths.dark_sorcerers_dungeon.desc\" : " + "\"Dark Sorcerers Dungeon spawns $(l:jitl:depths/mobs#dark_sorcerer)Dark Sorcerers$(/l) when inside, it is unlocked with Depths Lock Key obtained from $(l:jitl:depths/traders#staring_guardian)Staring Guardian(/l)\",");
+        writeToFile("\"book.jitl.entry.depths.dark_sorcerers_dungeon.desc\" : " + "\"Dark Sorcerers Dungeon spawns $(l:jitl:depths/mobs#dark_sorcerer)Dark Sorcerers$(/l) when inside, it is unlocked with Depths Lock Key obtained from $(l:jitl:depths/traders#staring_guardian)Staring Guardian$(/l)\",");
 
         writeToFile("\"structure.depths.jitl.depths_watchtower\" : " + "\"Depths Watchtower\",");
         writeToFile("\"book.jitl.entry.depths.depths_watchtower.desc\" : " + "\"Depths Watchtower resides $(l:jitl:depths/traders#staring_guardian)Staring Guardian$(/l) up the top\",");
@@ -398,7 +405,7 @@ public class LangRegistry {
         writeToFile("\"book.jitl.entry.corba.mobs.red_tordo.desc\" : " + "\"Red Tordo is a trading NPC that lives in the $(l:jitl:corba/structures#corba_village)Corba Village$(/l)\",");
         writeToFile("\"book.jitl.entry.corba.mobs.overgrown_merchant.desc\" : " + "\"Overgrown Merchant is a trading NPC that lives in the $(l:jitl:corba/structures#corba_village)Corba Village$(/l)\",");
         writeToFile("\"book.jitl.entry.corba.logger.desc\" : " + "\"Logger is spawned using the Logger Orb made inside the Summoning Table, he has 2350 Health, he will throw you while he has a hard hit with 10 Damage\",");
-        writeToFile("\"book.jitl.entry.corba.sentry_king.desc\" : " + "\"Sentry King is spawned using the Sentry King Orb made inside the Summoning Table, he has 2500 Health, he will throw mud at you that hits hard with 15 Damage, his loot contains Ancient Eye of Opening which is used on the $(l:jitl:overworld/structures#ancient_tower)Ancient Tower$(/l)\",");
+        writeToFile("\"book.jitl.entry.corba.sentry_king.desc\" : " + "\"Sentry King is spawned using the Sentry King Orb made inside the Summoning Table, he has 2500 Health, he will throw mud at you that hits hard with 15 Damage, his loot contains Ancient Eye of Opening which is used on the $(l:jitl:overworld/structures#ancient)Ancient Tower$(/l)\",");
 
         writeToFile("\"structure.terrania.jitl.mega_mushroom\" : " + "\"Mega Mushroom\",");
         writeToFile("\"book.jitl.entry.terrania.mega_mushroom.desc\" : " + "\"Mega Mushroom is found in the Mushroom Biome and has 2 variants, each variant being Purple or Blue topped containing a different Trading NPC\",");
@@ -422,48 +429,98 @@ public class LangRegistry {
         writeToFile("\"structure.senterian.jitl.senterian_altar\" : " + "\"Senterian Altar\",");
         writeToFile("\"book.jitl.entry.senterian.senterian_altar.desc\" : " + "\"Senterian Altar Room is the biggest room in the dimension, in this room in the middle you will find the Senterian Altars, you can place a Sentry Observer item into them and they will spawn Mini Senterian Mobs, this is the only way to recieve Sentacoins.\",");
 
-        writeToFile("\"book.jitl.entry.senterian.mobs.sentry_lord.desc\" : " + "\"Sentry Lord is a mob that spawns inside the labyrinth, may drop a Sentry Observer which is used in $(l:jitl:senterian/structures#senterian_altar)Senterian Altar$(/l)\",");
-        writeToFile("\"book.jitl.entry.senterian.mobs.sentry_stalker.desc\" : " + "\"Sentry Stalker is a mob that spawns inside the labyrinth, may drop a Sentry Observer which is used in $(l:jitl:senterian/structures#senterian_altar)Senterian Altar$(/l)\",");
-        writeToFile("\"book.jitl.entry.senterian.mobs.sentry_walker.desc\" : " + "\"Sentry Walker is a mob that spawns inside the labyrinth, may drop a Sentry Observer which is used in $(l:jitl:senterian/structures#senterian_altar)Senterian Altar$(/l)\",");
+        addMob(EnumKnowledge.OVERWORLD, "brown_hongo", "Forest like", true, MobStats.BIG_HONGO_HEALTH, MobStats.BIG_HONGO_DAMAGE, "Hongoshrooms");
+        addMob(EnumKnowledge.OVERWORLD, "big_hongo", "Forest like", true, MobStats.BIG_HONGO_HEALTH, MobStats.BIG_HONGO_DAMAGE, "Hongoshrooms");
+        addMob(EnumKnowledge.OVERWORLD, "medium_hongo", "Forest like", true, MobStats.MEDIUM_HONGO_HEALTH, MobStats.MEDIUM_HONGO_DAMAGE, "Hongoshrooms");
+        addMob(EnumKnowledge.OVERWORLD, "small_hongo", "Forest like", true, MobStats.SMALL_HONGO_HEALTH, MobStats.SMALL_HONGO_DAMAGE, "Hongoshrooms");
+        addMob(EnumKnowledge.OVERWORLD, "blizzard", "Snow like", FIREBALLS,false, MobStats.BLIZZARD_HEALTH, 0,"Snowballs");
+        addMob(EnumKnowledge.OVERWORLD, "boom_boom", "Overworld", "Will create a medium explosion", false, MobStats.BOOM_HEALTH, 0, "Gunpowder and TNT blocks");
+        addMob(EnumKnowledge.OVERWORLD, "caveling", "Overworld Underground", false, MobStats.CAVELING_HEALTH, MobStats.CAVELING_DAMAGE, "Stone Clump, Cave Dust and Cave Crystal");
+        addMob(EnumKnowledge.OVERWORLD, "cavurn", "Overworld Underground", false, MobStats.CAVURN_HEALTH, MobStats.CAVELING_DAMAGE, "Cave Dust and Cave Crystal");
+        addMob(EnumKnowledge.OVERWORLD, "stonewalker", "Overworld Underground", false, MobStats.STONEWALKER_HEALTH, MobStats.STONEWALKER_DAMAGE, "Cave Dust, Stone Clump, Shadium Ingot, Lunium Ingot, Sapphire and Cave Crystal");
+        addMob(EnumKnowledge.OVERWORLD, "floro", "Forest like", "Once not hiding away it will shoot projectiles", false, MobStats.FLORO_HEALTH, 0, "Floro Pedal and Floro Seeds");
+        addStructureMob(EnumKnowledge.OVERWORLD, "illager_mech", "Illager Bunker", true, 100, 8, "");
+        addMob(EnumKnowledge.OVERWORLD, "jungle_turtle", "Jungle like", true, MobStats.JUNGLE_TURTLE_HEALTH, MobStats.JUNGLE_TURTLE_DAMAGE, "");
+        addMob(EnumKnowledge.OVERWORLD, "sand_crawler", "Desert like", false, MobStats.SAND_CRAWLER_HEALTH, MobStats.SAND_CRAWLER_DAMAGE, "Sand Blocks");
+        addMob(EnumKnowledge.OVERWORLD, "spyclopse", "Desert like", false, MobStats.SPYCLOPS_HEALTH, MobStats.SPYCLOPS_DAMAGE, "Spyclopse Eye");
+        addMob(EnumKnowledge.OVERWORLD, "rockite_golem", "Overworld Underground", "NPC Mob, Will trade with you", MobStats.NPC_HEALTH, "");
+        addStructureMob(EnumKnowledge.OVERWORLD, "neutral_sentry_stalker", "$(l:jitl:overworld/structures#ancient_structure)Ancient Structure$(/l)", "NPC Mob, Will trade with you once you reach 100 Overworld Knowledge", true, MobStats.NPC_HEALTH, 0, "");
+        addStructureMob(EnumKnowledge.OVERWORLD, "mage", "$(l:jitl:overworld/structures#mage_hut)Mage Hut$(/l)", "NPC Mob, Will trade with you", true, MobStats.NPC_HEALTH, 0, "");
 
-        writeToFile("\"book.jitl.entry.senterian.mobs.mini_sentry_walker.desc\" : " + "\"Mini Sentry Walker is a mob that spawns from inside the Senterian Altar when activated, they will drop Sentacoins\",");
-        writeToFile("\"book.jitl.entry.senterian.mobs.mini_sentry_stalker.desc\" : " + "\"Mini Sentry Stalker is a mob that spawns from inside the Senterian Altar when activated, they will drop Sentacoins\",");
-        writeToFile("\"book.jitl.entry.senterian.mobs.mini_sentry_lord.desc\" : " + "\"Mini Sentry Lord is a mob that spawns from inside the Senterian Altar when activated, they will drop Sentacoins\",");
+        addStructureMob(EnumKnowledge.NETHER, "hellbot", "$(l:jitl:nether/structures#hellbot)Hellbot Structure$(/l)", false, MobStats.HELLBOT_HEALTH, MobStats.HELLBOT_DAMAGE, "Flaming Sprocket, Hell Shards and Flaming Spring");
+        addMob(EnumKnowledge.NETHER, "hell_cow", "Nether", "Breedable with HellShards, Can be used to get Lava with a Bucket", MobStats.HELL_COW_HEALTH, "Blazing Fireball and Boil Powder");
+        addMob(EnumKnowledge.NETHER, "hell_serpent", "Nether", false, MobStats.LAVASNAKE_HEALTH, MobStats.LAVASNAKE_DAMAGE, "Snake Skin, Hell Shards, Snake Flesh and Blood");
+        addMob(EnumKnowledge.NETHER, "hell_turtle", "Nether", true, MobStats.HELL_TURTLE_HEALTH, MobStats.HELL_TURTLE_DAMAGE, "Hell Turtle Shell, Hell Shards and Blood");
+        addMob(EnumKnowledge.NETHER, "inferno_blaze", "Nether", FIREBALLS,false, MobStats.INFERNO_BLAZE_HEALTH, 0,"Blaze Powder, Hell Shards, Blaze Rod");
+        addStructureMob(EnumKnowledge.NETHER, "mini_ghast", "$(l:jitl:nether/structures#nether_tower)Nether Tower$(/l)", FIREBALLS, false, MobStats.MINI_GHAST_HEALTH, 0, "Flaming Ghast Tentacle, Hell Shards and Balmy Teardrop");
+        addMob(EnumKnowledge.NETHER, "reaper", "Nether", false, MobStats.REAPER_HEALTH, MobStats.REAPER_DAMAGE, "Withic Dust, Hell Shards and Lost Soul");
+        addMob(EnumKnowledge.NETHER, "witherspine", "Nether", false, MobStats.WITHERSPINE_HEALTH, MobStats.WITHERSPINE_DAMAGE, "Withic Dust and Withicspine");
 
-        writeToFile("\"book.jitl.entry.overworld.mobs.brown_hongo.desc\" : " + "\"Spawns in Forest like Biomes, Peaceful unless provoked, It has 40HP and does x4 Damage, Chance to drop Hongoshrooms\",");
-        writeToFile("\"book.jitl.entry.overworld.mobs.big_hongo.desc\" : " + "\"Spawns in Forest like Biomes, Peaceful unless provoked, It has 40HP and does x4 Damage, Chance to drop Hongoshrooms\",");
-        writeToFile("\"book.jitl.entry.overworld.mobs.medium_hongo.desc\" : " + "\"Spawns in Forest like Biomes, Peaceful unless provoked, It has 30HP and does x2.5 Damage, Chance to drop Hongoshrooms\",");
-        writeToFile("\"book.jitl.entry.overworld.mobs.small_hongo.desc\" : " + "\"Spawns in Forest like Biomes, Peaceful unless provoked, It has 20HP and does x1.5 Damage, Chance to drop Hongoshrooms\",");
-        writeToFile("\"book.jitl.entry.overworld.mobs.blizzard.desc\" : " + "\"Spawns in Snow Biomes, Will attack on sight, Will throw fire balls at you, It has 20HP, Chance to drop Snowballs\",");
-        writeToFile("\"book.jitl.entry.overworld.mobs.boom_boom.desc\" : " + "\"Spawns in any Overworld Biomes, Will attack on sight, Will create a medium explosion, It has 20HP, Chance to drop Gunpowder and TNT blocks\",");
-        writeToFile("\"book.jitl.entry.overworld.mobs.caveling.desc\" : " + "\"Spawns in any Overworld Biomes Underground, Will attack on sight, It has 25HP and does 2x Damage, Chance to drop Stone Clump, Cave Dust and Cave Crystal\",");
-        writeToFile("\"book.jitl.entry.overworld.mobs.cavurn.desc\" : " + "\"Spawns in any Overworld Biomes Underground, Will attack on sight, It has 30HP and does 2x Damage, Chance to drop Cave Dust and Cave Crystal\",");
-        writeToFile("\"book.jitl.entry.overworld.mobs.stonewalker.desc\" : " + "\"Spawns in any Overworld Biomes Underground, Will attack on sight, It has 30HP and does 2x Damage, Chance to drop Cave Dust, Stone Clump, Shadium Ingot, Lunium Ingot, Sapphire and Cave Crystal\",");
-        writeToFile("\"book.jitl.entry.overworld.mobs.floro.desc\" : " + "\"Spawns in Forest like Biomes, Will attack once not hiding away, Will shoot projectiles, It has 25HP, Chance to drop Floro Pedal and Floro Seeds\",");
-        writeToFile("\"book.jitl.entry.overworld.mobs.illager_mech.desc\" : " + "\"Spawns in Illager Bunker, Peaceful unless provoked, It has 100HP and does 4x Damage, Drops nothing\",");
-        writeToFile("\"book.jitl.entry.overworld.mobs.jungle_turtle.desc\" : " + "\"Spawns in Jungle Biomes, Peaceful unless provoked, It has 30HP and does 4x Damage, Drops nothing\",");
-        writeToFile("\"book.jitl.entry.overworld.mobs.sand_crawler.desc\" : " + "\"Spawns in Desert Biomes, Will attack on sight, It has 20HP and does 2x Damage, Drops Sand\",");
-        writeToFile("\"book.jitl.entry.overworld.mobs.spyclopse.desc\" : " + "\"Spawns in Desert Biomes, Will attack on sight, It has 30HP and does 1.5x Damage, Drops Spyclopse Eye\",");
-        writeToFile("\"book.jitl.entry.overworld.mobs.rockite_golem.desc\" : " + "\"Spawns in any Overworld Biomes Underground, NPC Mob, Will trade with you\",");
-        writeToFile("\"book.jitl.entry.overworld.mobs.neutral_sentry_stalker.desc\" : " + "\"Spawns in the $(l:jitl:overworld/structures#ancient_structure)Ancient Structure$(/l), NPC Mob, Will trade with you once you reach 100 Overworld Knowledge\",");
-        writeToFile("\"book.jitl.entry.overworld.mobs.mage.desc\" : " + "\"Spawns in $(l:jitl:overworld/structures#mage_hut)Mage Hut$(/l), NPC Mob, Will trade with you\",");
+        addMob(EnumKnowledge.BOIL, "burning_light", "Boiling Point", false, MobStats.BURNING_LIGHT_HEALTH, MobStats.BURNING_LIGHT_DAMAGE, "Blazing Fireball and Boil Powder");
+        addMob(EnumKnowledge.BOIL, "flame_lotus", "Boiling Point", "For aesthetics", MobStats.FLAME_LOTUS_HEALTH, "");
+        addMob(EnumKnowledge.BOIL, "frightener", "Boiling Point", false, MobStats.FRIGHTENER_HEALTH, MobStats.FRIGHTENER_DAMAGE, "Sand blocks");
+        addStructureMob(EnumKnowledge.BOIL, "hellwing", "$(l:jitl:boil/structures#hellwing)Hellwing Tower$(/l)", "Shoots Fireballs", false, MobStats.HELLWING_HEALTH, 0, "Boiling Skull and a Iron Sword");
+        addMob(EnumKnowledge.BOIL, "magma_blaze", "Boiling Point", FIREBALLS, false, MobStats.MAGMA_BLAZE_HEALTH, 0, "Blaze Powder and Boil Powder");
+        addStructureMob(EnumKnowledge.BOIL, "observer", "$(l:jitl:boil/structures#brison)Brison Network$(/l) and $(l:jitl:boil/structures#observer_hut)Observer Hut$(/l)", "Shoots Fireballs", false, MobStats.OBSERVER_HEALTH, 0, "Sizzling Eye and Boil Powder");
+        addStructureMob(EnumKnowledge.BOIL, "screamer", "$(l:jitl:boil/structures#brison)Brison Network$(/l)", "Shoots Fireballs", false, MobStats.SCREAMER_HEALTH, 0, "Sizzling Eye and Boil Powder");
 
-        writeToFile("\"book.jitl.entry.nether.mobs.hellbot.desc\" : " + "\"Spawns in $(l:jitl:nether/structures#hellbot)Hellbot Structure$(/l), Will attack on sight, It has 30HP and does 4x Damage, Chance to drop Flaming Sprocket, Hell Shards and Flaming Spring\",");
-        writeToFile("\"book.jitl.entry.nether.mobs.hell_cow.desc\" : " + "\"Spawns in any Nether Biomes, Breedable with HellShards, It has 35HP, Can be used to get Lava with a Bucket\",");
-        writeToFile("\"book.jitl.entry.nether.mobs.hell_serpent.desc\" : " + "\"Spawns in any Nether Biomes, Will attack on sight, It has 30HP and 4x Damage, Chance to drop Snake Skin, Hell Shards, Snake Flesh and Blood\",");
-        writeToFile("\"book.jitl.entry.nether.mobs.hell_turtle.desc\" : " + "\"Spawns in any Nether Biomes, Peaceful unless provoked, It has 40HP and 3.5x Damage, Chance to drop Hell Turtle Shell, Hell Shards and Blood\",");
-        writeToFile("\"book.jitl.entry.nether.mobs.inferno_blaze.desc\" : " + "\"Spawns in any Nether Biomes, Will attack on sight, It has 30HP and shoots Fireballs, Chance to drop Blaze Powder, Hell Shards, Blaze Rod\",");
-        writeToFile("\"book.jitl.entry.nether.mobs.mini_ghast.desc\" : " + "\"Spawns in $(l:jitl:nether/structures#nether_tower)Nether Tower$(/l), Will attack on sight, It has 20HP and shoots Fireballs, Chance to drop Flaming Ghast Tentacle, Hell Shards and Balmy Teardrop\",");
-        writeToFile("\"book.jitl.entry.nether.mobs.reaper.desc\" : " + "\"Spawns in any Nether Biomes, Will attack on sight, It has 35HP and 3.5x Damage, Chance to drop Withic Dust, Hell Shards and Lost Soul\",");
-        writeToFile("\"book.jitl.entry.nether.mobs.witherspine.desc\" : " + "\"Spawns in any Nether Biomes, Will attack on sight, It has 40HP and 4x Damage, Chance to drop Withic Dust and Withicspine\",");
+        addMob(EnumKnowledge.FROZEN, "capybara", "Frozen", true, MobStats.CAPYBARA_HEALTH, MobStats.CAPYBARA_DAMAGE, "");
+        addMob(EnumKnowledge.FROZEN, "crystal_cluster", "Frozen", "Fly's around", MobStats.CRYSTAL_CLUSTER_HEALTH, "");
+        addStructureMob(EnumKnowledge.FROZEN, "frozen_frostbiter", "$(l:jitl:frozen/structures#frozen_dungeon)Frozen Dungeon$(/l)", FIREBALLS, false, MobStats.FROZEN_FROSTBITER_HEALTH, 0, "Frost Flakes");
+        addMob(EnumKnowledge.FROZEN, "frozen_troll", "Frozen", "It has a hard straight hit", true, MobStats.FROZEN_TROLL_HEALTH, MobStats.FROZEN_TROLL_DAMAGE, "");
+        addStructureMob(EnumKnowledge.FROZEN, "ice_golem", "$(l:jitl:frozen/structures#eskimo_camp)Eskimo Camp$(/l)", true, MobStats.ICE_GOLEM_HEALTH, MobStats.ICE_GOLEM_DAMAGE, "");
+        addMob(EnumKnowledge.FROZEN, "permafraust", "Frozen", false, MobStats.PERMAFRAUST_HEALTH, MobStats.PERMAFRAUST_DAMAGE, "Crystal Flake");
+        addMob(EnumKnowledge.FROZEN, "shatterer", "Frozen", true, MobStats.SHATTERER_HEALTH, 0, "");
+        addMob(EnumKnowledge.FROZEN, "shivering_bushwalker", "Frozen", true, MobStats.SHIVERING_BUSHWALKER_HEALTH, MobStats.SHIVERING_BUSHWALKER_DAMAGE, "Crystal Flakes");
+        addMob(EnumKnowledge.FROZEN, "shivering_shrieker", "Frozen", true, MobStats.SHIVERING_SHRIEKER_HEALTH, MobStats.SHIVERING_SHRIEKER_DAMAGE, "Crystal Flakes");
 
-        writeToFile("\"book.jitl.entry.boil.mobs.burning_light.desc\" : " + "\"Spawns in any Boiling Point Biomes, Will attack on sight, It has 45HP and 4x Damage, Chance to drop Blazing Fireball and Boil Powder\",");
-        writeToFile("\"book.jitl.entry.boil.mobs.flame_lotus.desc\" : " + "\"Spawns in any Boiling Point Biomes, Harmless and only for aesthetics, It has 100HP, Has no loot drops\",");
-        writeToFile("\"book.jitl.entry.boil.mobs.frightener.desc\" : " + "\"Spawns in any Boiling Point, Will attack on sight, It has 40HP and 5.5x Damage, Chance to drop Sand blocks\",");
-        writeToFile("\"book.jitl.entry.boil.mobs.hellwing.desc\" : " + "\"Spawns in $(l:jitl:boil/structures#hellwing)Hellwing Tower$(/l), Will attack on sight, It has 40HP and shoots Fireballs, Chance to drop Boiling Skull and a Iron Sword\",");
-        writeToFile("\"book.jitl.entry.boil.mobs.magma_blaze.desc\" : " + "\"Spawns in any Boiling Point Biomes, Will attack on sight, It has 30HP and shoots Fireballs, Chance to drop Blaze Powder and Boil Powder\",");
-        writeToFile("\"book.jitl.entry.boil.mobs.observer.desc\" : " + "\"Spawns in $(l:jitl:boil/structures#brison)Brison Network$(/l) and $(l:jitl:boil/structures#observer_hut)Observer Hut$(/l), Will attack on sight, It has 58HP and shoots Fireballs, Chance to drop Sizzling Eye and Boil Powder\",");
-        writeToFile("\"book.jitl.entry.boil.mobs.screamer.desc\" : " + "\"Spawns in $(l:jitl:boil/structures#brison)Brison Network$(/l), Will attack on sight, It has 48HP and shoots Fireballs, Chance to drop Sizzling Eye and Boil Powder\",");
+        addMob(EnumKnowledge.EUCA, "dynaster", "Euca", true, MobStats.DYNASTER_HEALTH, MobStats.DYNASTER_DAMAGE, "Royal Disk and Shimmerer Dust");
+        addMob(EnumKnowledge.EUCA, "euca_charger", "Euca", "Very quick", false , MobStats.EUCA_CHARGER_HEALTH, MobStats.EUCA_CHARGER_DAMAGE, "Gate Keys and Shimmerer Dust");
+        addStructureMob(EnumKnowledge.EUCA, "goldbot", "$(l:jitl:euca/structures#euca_sphere)Euca Sphere$(/l)", false, MobStats.GOLDBOT_HEALTH, MobStats.GOLDBOT_DAMAGE, "Gate Keys and Metal Disk");
+        addMob(EnumKnowledge.EUCA, "golder", "Euca", false, MobStats.GOLDER_HEALTH, MobStats.GOLDER_DAMAGE, "Golder Dust");
+        addMob(EnumKnowledge.EUCA, "shimmerer", "Euca", "Fly's around", MobStats.SHIMMERER_HEALTH, "Gate Keys, Royal Disc and Shimmerer Dust");
+
+        writeToFile("\"book.jitl.entry.depths.mobs.darkener.desc\" : " + "\"Spawns in any Depths Biomes, Harmless, It has 55HP, Chance to drop Dark Crystal\",");
+        addMob(EnumKnowledge.DEPTHS, "darkness_crawler", "Depths", true, MobStats.DARKNESS_CRAWLER_HEALTH, MobStats.DARKNESS_CRAWLER_DAMAGE, "Scale");
+        addStructureMob(EnumKnowledge.DEPTHS, "dark_sorcerer", "$(l:jitl:depths/structures#dark_sorcerers_dungeon)Dark Sorcerers Dungeon$(/l)", false, MobStats.DARK_SORCERER_HEALTH, MobStats.DARK_SORCERER_DAMAGE, "Dark Orb");
+        addMob(EnumKnowledge.DEPTHS, "depths_beast", "Depths", false, MobStats.DEPTHS_BEAST_HEALTH, MobStats.DEPTHS_BEAST_DAMAGE, "Beastly Stomach");
+        addMob(EnumKnowledge.DEPTHS, "depths_hunter", "Depths", false, MobStats.DEPTHS_HUNTER_HEALTH, MobStats.DEPTHS_HUNTER_DAMAGE, "Dark Crystal");
+        addMob(EnumKnowledge.DEPTHS, "roc", "Depths", MobStats.TAMED_ROC_HEALTH, "Roc Feather");
+        addMob(EnumKnowledge.DEPTHS, "spiked_beast", "Depths", false, MobStats.SPIKED_BEAST_HEALTH, MobStats.SPIKED_BEAST_DAMAGE, "Beastly Stomach");
+
+        addMob(EnumKnowledge.CORBA, "corbanian_mollusk", "Corba", "A Slow slug that leaves a trail of Slime behind", MobStats.CORBANIAN_MOLLUSK_HEALTH, "Slimy Flesh and Slug Slime");
+        addMob(EnumKnowledge.CORBA, "leaf_blower", "Corba", false, MobStats.LEAF_BLOWER_HEALTH, MobStats.LEAF_BLOWER_DAMAGE, "Stick, Enchanted Leaf and Nature Tablet");
+        addMob(EnumKnowledge.CORBA, "nature_mage", "Tainted Swamp", FIREBALLS, false, MobStats.NATURE_MAGE_HEALTH, "Enchanted Leaf");
+        addStructureMob(EnumKnowledge.CORBA, "overseer", "$(l:jitl:corba/structures#seer_tree)Overseer Tree$(/l)", FLYING_FIREBALLS, false, MobStats.OVERSEER_HEALTH, 0, "Collector Rock, Sentry Stone and Over Seeing Eye");
+        addStructureMob(EnumKnowledge.CORBA, "overseer_elder", "$(l:jitl:corba/structures#seer_tree)Overseer Tree$(/l) up the very top", FLYING_FIREBALLS, false, MobStats.OVERSEER_ELDER_HEALTH, 0, "Collector Rock, Over Seeing Tablet, Sentry Stone and Over Seeing Eye");
+        addMob(EnumKnowledge.CORBA, "smelly", "Corba", false, MobStats.SMELLY_HEALTH, MobStats.SMELLY_DAMAGE, "");
+        addMob(EnumKnowledge.CORBA, "stinky", "Tainted Swamp", false, MobStats.STINKY_HEALTH, MobStats.STINKY_DAMAGE, "");
+        addMob(EnumKnowledge.CORBA, "surface_seer", "Tainted Swamp", FLYING_FIREBALLS, false, MobStats.SURFACE_SEER_HEALTH, 0, "Nature Tablet, Sentry Stone and Over Seeing Eye");
+        addMob(EnumKnowledge.CORBA, "tree_golem", "Tainted Forest", "When it's angry it has a hard hit", true, MobStats.TREE_GOLEM_HEALTH, MobStats.TREE_GOLEM_ATTACK, "Sticks, Enchanted Leaf, Overgrown Nature Ball and Nature Tablet");
+        addMob(EnumKnowledge.CORBA, "wood_creature", "Corba", true, MobStats.WOOD_CREATURE_HEALTH, MobStats.WOOD_CREATURE_DAMAGE, "Sticks and Enchanted Leaf");
+
+        addMob(EnumKnowledge.TERRANIA, "arana_king", "Terrania", false, MobStats.ARANA_KING_HEALTH, MobStats.ARANA_KING_DAMAGE, "Terrashroom");
+        addMob(EnumKnowledge.TERRANIA, "flungas", "Mushroom Forest", "Turns a Glass Bottle into a Bile Vile", MobStats.FLUNGUS_HEALTH, "Breathing Fungus");
+        addMob(EnumKnowledge.TERRANIA, "purplian", "Terrania", FIREBALLS, false, MobStats.PURPLIAN_HEALTH, 0, "Purple Powder and Terrastar");
+        addMob(EnumKnowledge.TERRANIA, "terragrow", "Terrania", true, MobStats.TERRAGROW_HEALTH, MobStats.TERRAGROW_DAMAGE, "Light Terranian Soil and Earthen Crystal");
+        addMob(EnumKnowledge.TERRANIA, "terrascatterer", "Terrania", false, MobStats.TERRA_SCATTERRER_HEALTH, MobStats.TERRA_SCATTERRER_DAMAGE, "Dark Terranian Soil and Earthen Crystal");
+        addMob(EnumKnowledge.TERRANIA, "terrashroom", "Mushroom Forest", false, MobStats.TERRASHROOM_HEALTH, MobStats.TERRASHROOM_DAMAGE, "Terrashroom");
+        addMob(EnumKnowledge.TERRANIA, "terraslug", "Terrania", false, MobStats.TERRASLUG_HEALTH, MobStats.TERRASLUG_DAMAGE, "Slug Slime");
+
+        addMob(EnumKnowledge.CLOUDIA, "aero_lotus", "Cloudia", MobStats.AERO_LOTUS_HEALTH, "Fluffy Feather");
+        addMob(EnumKnowledge.CLOUDIA, "cloud_ghost", "Cloudia", false, MobStats.CLOUD_GHOST_HEALTH, MobStats.CLOUD_GHOST_DAMAGE, "Fluffy Feather");
+        addMob(EnumKnowledge.CLOUDIA, "sky_eel", "Cloudia", "Fly's around", false, MobStats.SKY_EEL_HEALTH, 0, "Fluffy Feather");
+        addMob(EnumKnowledge.CLOUDIA, "starlight_golem", "Cloudia", true, MobStats.STARLIGHT_GOLEM_HEALTH, MobStats.STARLIGHT_GOLEM_DAMAGE, "Golem Chunk");
+        addMob(EnumKnowledge.CLOUDIA, "starlight_transporter", "Cloudia", false, MobStats.STARLIGHT_TRANSPORTER_HEALTH, MobStats.STARLIGHT_TRANSPORTER_DAMAGE, "Golem Chunk");
+        addMob(EnumKnowledge.CLOUDIA, "starlight_walker", "Cloudia", false, MobStats.STARLIGHT_WALKER_HEALTH, MobStats.STARLIGHT_WALKER_DAMAGE, "Golem Chunk");
+
+        addMob(EnumKnowledge.SENTERIAN, "sentry_lord", "Senterian labyrinth", false, MobStats.SENTRY_LORD_HEALTH, MobStats.SENTRY_LORD_DAMAGE, "Sentry Observer which is used in $(l:jitl:senterian/structures#senterian_altar)Senterian Altar$(/l)");
+        addMob(EnumKnowledge.SENTERIAN, "sentry_stalker", "Senterian labyrinth", false, MobStats.SENTRY_STALKER_HEALTH, MobStats.SENTRY_STALKER_DAMAGE, "Sentry Observer which is used in $(l:jitl:senterian/structures#senterian_altar)Senterian Altar$(/l)");
+        addMob(EnumKnowledge.SENTERIAN, "sentry_walker", "Senterian labyrinth", false, MobStats.SENTRY_WALKER_HEALTH, MobStats.SENTRY_WALKER_DAMAGE, "Sentry Observer which is used in $(l:jitl:senterian/structures#senterian_altar)Senterian Altar$(/l)");
+
+        addStructureMob(EnumKnowledge.SENTERIAN, "mini_sentry_walker", "$(l:jitl:senterian/structures#senterian_altar)Senterian Altar$(/l)", false, MobStats.MINI_SENTRY_WALKER_HEALTH, MobStats.MINI_SENTRY_WALKER_DAMAGE, "Sentacoins");
+        addStructureMob(EnumKnowledge.SENTERIAN, "mini_sentry_stalker", "$(l:jitl:senterian/structures#senterian_altar)Senterian Altar$(/l)", false, MobStats.MINI_SENTRY_STALKER_HEALTH, MobStats.MINI_SENTRY_STALKER_DAMAGE, "Sentacoins");
+        addStructureMob(EnumKnowledge.SENTERIAN, "mini_sentry_lord", "$(l:jitl:senterian/structures#senterian_altar)Senterian Altar$(/l)", false, MobStats.MINI_SENTRY_LORD_HEALTH, MobStats.MINI_SENTRY_LORD_DAMAGE, "Sentacoins");
 
         writeToFile("\"book.jitl.entry.portals.flame_coin\" : " + "\"The Flame Coin is what is used to light all the JITL Portals\",");
         writeToFile("\"book.jitl.entries.dimensions\" : " + "\"Dimensions\",");
@@ -787,6 +844,50 @@ public class LangRegistry {
         writeToFile("}");
 
         writerInit();
+    }
+
+    public void addMob(EnumKnowledge dim, String name, String biome, double health, String drops) {
+        writeToFile("\"book.jitl.entry." + dim.getName().toLowerCase() + ".mobs." + name + ".desc\" : " + "\"Spawns in " + biome + " Biomes, Harmless, " + getHealth(health, 0) + getDrops(drops) + "\",");
+    }
+
+    public void addMob(EnumKnowledge dim, String name, String biome, String extra, boolean neutral, double health, double damage, String drops) {
+        writeToFile("\"book.jitl.entry." + dim.getName().toLowerCase() + ".mobs." + name + ".desc\" : " + "\"Spawns in " + biome + " Biomes, " + getNeutral(neutral) + ", " + extra + ", " + getHealth(health, damage) + getDrops(drops) + "\",");
+    }
+
+    public void addMob(EnumKnowledge dim, String name, String biome, String extra, boolean harmless, double health, String drops) {
+        writeToFile("\"book.jitl.entry." + dim.getName().toLowerCase() + ".mobs." + name + ".desc\" : " + "\"Spawns in " + biome + " Biomes" + getHarmless(harmless) + ", " + extra + ", " + getHealth(health, 0) + getDrops(drops) + "\",");
+    }
+
+    public void addMob(EnumKnowledge dim, String name, String biome, String extra, double health, String drops) {
+        addMob(dim, name, biome, extra, true, health, drops);
+    }
+
+    public void addMob(EnumKnowledge dim, String name, String biome, boolean neutral, double health, double damage, String drops) {
+        writeToFile("\"book.jitl.entry." + dim.getName().toLowerCase() + ".mobs." + name + ".desc\" : " + "\"Spawns in " + biome + " Biomes, " + getNeutral(neutral) + ", " + getHealth(health, damage) + getDrops(drops) + "\",");
+    }
+
+    public void addStructureMob(EnumKnowledge dim, String name, String structure, String extra, boolean neutral, double health, double damage, String drops) {
+        writeToFile("\"book.jitl.entry." + dim.getName().toLowerCase() + ".mobs." + name + ".desc\" : " + "\"Spawns in " + structure + ", " + getNeutral(neutral) + ", " + extra + ", " + getHealth(health, damage) + getDrops(drops) + "\",");
+    }
+
+    public void addStructureMob(EnumKnowledge dim, String name, String structure, boolean neutral, double health, double damage, String drops) {
+        writeToFile("\"book.jitl.entry." + dim.getName().toLowerCase() + ".mobs." + name + ".desc\" : " + "\"Spawns in " + structure + ", " + getNeutral(neutral) + ", " + getHealth(health, damage) + getDrops(drops) + "\",");
+    }
+
+    public String getHarmless(boolean harmless) {
+        return harmless ? ", Harmless" : "";
+    }
+
+    public String getDrops(String drops) {
+        return !drops.isEmpty() ? ", Chance to drop " + drops : "";
+    }
+
+    public String getNeutral(boolean neutral) {
+        return neutral ? "Peaceful unless attacked" : "Will attack on sight";
+    }
+
+    public String getHealth(double health, double damage) {
+        return damage != 0 ? "It has " + (int)health + "HP and does " + damage / 2 + "x Hearts of Damage" : "It has " + (int)health + "HP";
     }
 
     public void writerInit() {

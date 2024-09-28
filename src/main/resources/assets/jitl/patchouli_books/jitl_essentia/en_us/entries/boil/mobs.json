@@ -68,7 +68,7 @@
       "type": "entity",
       "entity": "jitl:observer",
       "scale": 0.9,
-      "name": "observer",
+      "name": "Observer",
       "offset": 0.5,
       "anchor": "observer"
     },
