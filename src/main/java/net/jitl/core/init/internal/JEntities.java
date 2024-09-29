@@ -460,10 +460,10 @@ public class JEntities {
         setDefaultMonsterSpawn(event, GOLDER_TYPE);
         setDefaultSpawn(event, EUCA_HOPPER);
 
-        setDefaultMonsterSpawn(event, DARKNESS_CRAWLER_TYPE);
+        setDefaultSpawn(event, DARKNESS_CRAWLER_TYPE);
         setDefaultMonsterSpawn(event, DEPTHS_BEAST_TYPE);
         setDefaultMonsterSpawn(event, SPIKED_BEAST_TYPE);
-        setDefaultMonsterSpawn(event, ROC_TYPE);
+        setDefaultSpawn(event, ROC_TYPE);
         setDefaultMonsterSpawn(event, DEPTHS_HUNTER_TYPE);
 
         setDefaultSpawn(event, ESKIMO_TYPE);

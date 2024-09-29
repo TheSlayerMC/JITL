@@ -182,6 +182,7 @@ public class JItems {
     public static final DeferredItem<Item> DARK_CRYSTAL = registerNormalItem("dark_crystal", "Dark Crystal");
     public static final DeferredItem<Item> DARK_ORB = registerNormalItem("dark_orb", "Dark Orb");
     public static final DeferredItem<Item> GLOSSY_EYE = registerNormalItem("glossy_eye", "Glossy Eye");
+    public static final DeferredItem<Item> DEPTHS_MEAT = registerFoodItem("depths_meat", "Depths Meat", JFood.DEPTHS_MEAT);
 
     public static final DeferredItem<Item> FROST_GEM = registerNormalItem("frost_gem", "Frost Gem");
     public static final DeferredItem<Item> ROC_FEATHER = registerNormalItem("roc_feather", "Roc Feather");

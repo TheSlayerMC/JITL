@@ -18,17 +18,13 @@ public class EucaHopper extends JTamableEntity {
 
     public EucaHopper(EntityType<? extends EucaHopper> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        setKnowledge(EnumKnowledge.EUCA, 2.5F);
-    }
-
-    @Override
-    protected boolean shouldDespawnInPeaceful() {
-        return !isTame();
+        setKnowledge(EnumKnowledge.EUCA, 5F, true);
     }
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, MobStats.EUCA_HOPPER_HEALTH)
+                .add(Attributes.ATTACK_DAMAGE, MobStats.EUCA_HOPPER_DAMAGE)
                 .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.STANDARD_KNOCKBACK_RESISTANCE)
                 .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
                 .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
@@ -58,12 +54,12 @@ public class EucaHopper extends JTamableEntity {
 
     @Override
     public int setTameHealth() {
-        return MobStats.EUCA_HOPPER_HEALTH + 20;
+        return MobStats.EUCA_HOPPER_HEALTH;
     }
 
     @Override
     public Item getTameItem() {
-        return JItems.EUCA_MEAT.asItem();
+        return JItems.EUCA_MEAT.get();
     }
 
 }

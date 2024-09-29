@@ -150,6 +150,8 @@ public class JEntityLootTables extends EntityLootSubProvider {
                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))));
 
         this.add(JEntities.DEPTHS_BEAST_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                .add(LootItem.lootTableItem(JItems.DEPTHS_MEAT.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(-1.0F, 1.0F)))
+                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
                 .add(LootItem.lootTableItem(JItems.BEASTLY_STOMACH.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))));
 
@@ -162,6 +164,8 @@ public class JEntityLootTables extends EntityLootSubProvider {
                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))));
 
         this.add(JEntities.DEPTHS_HUNTER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                .add(LootItem.lootTableItem(JItems.DEPTHS_MEAT.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(-1.0F, 1.0F)))
+                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
                 .add(LootItem.lootTableItem(JItems.DARK_CRYSTAL.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(-1.0F, 1.0F)))
                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))));
 
@@ -192,7 +196,6 @@ public class JEntityLootTables extends EntityLootSubProvider {
         this.add(JEntities.JUNGLE_TURTLE_TYPE.get(), empty());
         this.add(JEntities.JUNGLE_GOLEM_TYPE.get(), empty());
         this.add(JEntities.ROCKITE_GOLEM_TYPE.get(), empty());
-        this.add(JEntities.EUCA_HOPPER.get(), empty());
 
         this.add(JEntities.CAVELING_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
                 .add(LootItem.lootTableItem(JItems.STONE_CLUMP.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
@@ -264,6 +267,8 @@ public class JEntityLootTables extends EntityLootSubProvider {
         this.add(JEntities.EUCA_CHARGER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                 .add(LootItem.lootTableItem(JItems.GATE_KEYS.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
+                .add(LootItem.lootTableItem(JItems.EUCA_MEAT.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(-10.0F, 1.0F)))
+                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
                 .add(LootItem.lootTableItem(JItems.SHIMMERER_DUST.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))));
 
@@ -274,6 +279,8 @@ public class JEntityLootTables extends EntityLootSubProvider {
                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))));
 
         this.add(JEntities.GOLDER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(JItems.EUCA_MEAT.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(-10.0F, 1.0F)))
+                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
                 .add(LootItem.lootTableItem(JItems.GOLDER_DUST.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))));
 
@@ -288,8 +295,12 @@ public class JEntityLootTables extends EntityLootSubProvider {
         this.add(JEntities.DYNASTER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                 .add(LootItem.lootTableItem(JItems.ROYAL_DISK.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
+                .add(LootItem.lootTableItem(JItems.EUCA_MEAT.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(-10.0F, 1.0F)))
+                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
                 .add(LootItem.lootTableItem(JItems.SHIMMERER_DUST.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))));
+
+        this.add(JEntities.EUCA_HOPPER.get(), empty());
 
         this.add(JEntities.SHIVERING_SHRIEKER_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                 .add(LootItem.lootTableItem(JItems.CRYSTAL_FLAKE.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 3.0F)))

@@ -18,18 +18,6 @@
     },
     {
       "type": "entity",
-      "entity": "jitl:darkness_crawler",
-      "scale": 0.75,
-      "name": "Darkness Crawler",
-      "offset": 0.1,
-      "anchor": "darkness_crawler"
-    },
-    {
-      "type": "text",
-      "text": "book.jitl.entry.depths.mobs.darkness_crawler.desc"
-    },
-    {
-      "type": "entity",
       "entity": "jitl:dark_sorcerer",
       "scale": 1,
       "name": "Dark Sorcerer",
@@ -63,18 +51,6 @@
     {
       "type": "text",
       "text": "book.jitl.entry.depths.mobs.depths_hunter.desc"
-    },
-    {
-      "type": "entity",
-      "entity": "jitl:roc",
-      "scale": 0.5,
-      "name": "Roc",
-      "offset": 0.5,
-      "anchor": "roc"
-    },
-    {
-      "type": "text",
-      "text": "book.jitl.entry.depths.mobs.roc.desc"
     },
     {
       "type": "entity",

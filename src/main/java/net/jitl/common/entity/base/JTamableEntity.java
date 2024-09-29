@@ -51,12 +51,18 @@ public abstract class JTamableEntity extends TamableAnimal implements NeutralMob
 
     protected EnumKnowledge knowledge;
     protected float knowledgeAmount = 0.0F;
+    protected boolean addKnowledgeWhenTame = false;
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     protected JTamableEntity(EntityType<? extends JTamableEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.setTame(false, false);
+    }
+
+    @Override
+    protected boolean shouldDespawnInPeaceful() {
+        return !isTame();
     }
 
     @Override
@@ -69,9 +75,16 @@ public abstract class JTamableEntity extends TamableAnimal implements NeutralMob
         return this.cache;
     }
 
+    public void setKnowledge(EnumKnowledge knowledge, float amount, boolean addKnowledgeWhenTame) {
+        this.knowledge = knowledge;
+        this.knowledgeAmount = amount;
+        this.addKnowledgeWhenTame = addKnowledgeWhenTame;
+    }
+
     public void setKnowledge(EnumKnowledge knowledge, float amount) {
         this.knowledge = knowledge;
         this.knowledgeAmount = amount;
+        this.addKnowledgeWhenTame = false;
     }
 
     @Override
@@ -199,6 +212,9 @@ public abstract class JTamableEntity extends TamableAnimal implements NeutralMob
             this.setTarget(null);
             this.setOrderedToSit(true);
             this.level().broadcastEntityEvent(this, (byte) 7);
+            if(this.knowledge != null) {
+                pPlayer.getData(JDataAttachments.PLAYER_STATS).addXP(this.knowledge, this.knowledgeAmount * 2, pPlayer);
+            }
         } else {
             this.level().broadcastEntityEvent(this, (byte) 6);
         }

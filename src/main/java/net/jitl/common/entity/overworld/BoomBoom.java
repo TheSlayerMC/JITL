@@ -36,6 +36,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.gameevent.GameEvent;
+import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
@@ -172,7 +173,7 @@ public class BoomBoom extends JMonsterEntity implements PowerableMob {
 
     @Override
     public void setTarget(@Nullable LivingEntity pTarget) {
-        if (!(pTarget instanceof Goat)) {
+        if(!(pTarget instanceof Goat)) {
             super.setTarget(pTarget);
         }
     }
@@ -215,7 +216,7 @@ public class BoomBoom extends JMonsterEntity implements PowerableMob {
     }
 
     @Override
-    protected InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
+    protected @NotNull InteractionResult mobInteract(Player pPlayer, @NotNull InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
         if (itemstack.is(Items.FLINT_AND_STEEL)) {
             this.level().playSound(pPlayer, this.getX(), this.getY(), this.getZ(), SoundEvents.FLINTANDSTEEL_USE, this.getSoundSource(), 1.0F, this.random.nextFloat() * 0.4F + 0.8F);

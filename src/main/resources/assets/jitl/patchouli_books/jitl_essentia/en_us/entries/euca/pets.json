@@ -1,0 +1,20 @@
+{
+  "name": "book.jitl.entries.pets",
+  "category": "jitl:euca",
+  "icon": "jitl:euca_meat",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:euca_hopper",
+      "scale": 0.8,
+      "name": "Euca Hopper",
+      "offset": 0.0,
+      "anchor": "euca_hopper"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.euca.mobs.euca_hopper.desc"
+    }
+  ]
+}

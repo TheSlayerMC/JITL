@@ -2,7 +2,7 @@
   "name": "book.jitl.entries.structures",
   "category": "jitl:euca",
   "icon": "jitl:euca_dungeon_tile",
-  "sortnum": 4,
+  "sortnum": 5,
   "pages": [
     {
       "type": "image",

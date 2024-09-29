@@ -2,7 +2,7 @@
   "name": "book.jitl.entries.structures",
   "category": "jitl:depths",
   "icon": "jitl:depths_book_shelf",
-  "sortnum": 4,
+  "sortnum": 5,
   "pages": [
     {
       "type": "image",

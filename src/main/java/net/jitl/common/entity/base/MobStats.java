@@ -104,6 +104,7 @@ public class MobStats {
     public static final double DARKFISH_HEALTH = 55;
 
     public static final double DARKNESS_CRAWLER_HEALTH = 58;
+    public static final double TAME_DARKNESS_CRAWLER_HEALTH = 68;
     public static final double DARKNESS_CRAWLER_DAMAGE = 11;
 
     public static final double DARK_SORCERER_HEALTH = 50;
@@ -310,8 +311,9 @@ public class MobStats {
     // ========================= PETS ========================
     // =======================================================
 
-    public static final int EUCA_HOPPER_HEALTH = 40;
-    public static final double EUCA_HOPPER_DAMAGE = 7.5;
+    public static final int EUCA_HOPPER_HEALTH = 35;
+    public static final int TAMED_EUCA_HOPPER_HEALTH = 50;
+    public static final double EUCA_HOPPER_DAMAGE = 7.5F;
 
     public static final int PET_ROBOT_HEALTH = 20;
     public static final int PET_ROBOT_DAMAGE = 5;
@@ -319,8 +321,9 @@ public class MobStats {
     public static final int SHIVERWOLF_HEALTH = 30;
     public static final int SHIVERWOLF_DAMAGE = 5;
 
-    public static final int TAMED_ROC_HEALTH = 60;
-    public static final int TAMED_ROC_DAMAGE = 7;
+    public static final int ROC_HEALTH = 40;
+    public static final int TAMED_ROC_HEALTH = 55;
+    public static final int ROC_DAMAGE = 8;
 
     // =======================================================
     // ==================== SENTERIAN MOBS ===================

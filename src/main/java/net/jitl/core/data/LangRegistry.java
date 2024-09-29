@@ -150,13 +150,14 @@ public class LangRegistry {
         writeToFile("\"curios.identifier.heart_container\" : \"Heart\",");
         writeToFile("\"curios.identifier.catalyst\" : \"Catalyst\",");
 
-        writeToFile("\"book.jitl.landing_text\" : " + "\"Welcome $(playername) to Journey Into The Light, This book is a WIP, any other info needed head over to the $(l:https://discord.com/invite/WhXvz5b)Discord\",");
+        writeToFile("\"book.jitl.landing_text\" : " + "\"Welcome $(playername) to Journey Into The Light, any other info needed head over to the $(l:https://discord.com/invite/WhXvz5b)Discord\",");
         writeToFile("\"book.jitl.book_name\" : " + "\"Essentia Bible\",");
 
         writeToFile("\"book.jitl.category.getting_started\" : " + "\"Getting Started\",");
         writeToFile("\"book.jitl.category.getting_started.desc\" : " + "\"This should give you the tips and hints on getting started.\",");
         writeToFile("\"book.jitl.entries.getting_started.ores\" : " + "\"Ores\",");
         writeToFile("\"book.jitl.category.dimensions\" : " + "\"Dimensions\",");
+        writeToFile("\"book.jitl.entries.pets\" : " + "\"Pets\",");
 
         writeToFile("\"book.jitl.entry.getting_started.iridium_ore.title\" : " + "\"Iridium Ore\",");
         writeToFile("\"book.jitl.entry.getting_started.iridium_ore.1\" : " + "\"Ore that generates in the Overworld between Y -80 and 48, drops Iridium Nugget\",");
@@ -474,18 +475,19 @@ public class LangRegistry {
         addMob(EnumKnowledge.FROZEN, "shivering_bushwalker", "Frozen", true, MobStats.SHIVERING_BUSHWALKER_HEALTH, MobStats.SHIVERING_BUSHWALKER_DAMAGE, "Crystal Flakes");
         addMob(EnumKnowledge.FROZEN, "shivering_shrieker", "Frozen", true, MobStats.SHIVERING_SHRIEKER_HEALTH, MobStats.SHIVERING_SHRIEKER_DAMAGE, "Crystal Flakes");
 
-        addMob(EnumKnowledge.EUCA, "dynaster", "Euca", true, MobStats.DYNASTER_HEALTH, MobStats.DYNASTER_DAMAGE, "Royal Disk and Shimmerer Dust");
-        addMob(EnumKnowledge.EUCA, "euca_charger", "Euca", "Very quick", false , MobStats.EUCA_CHARGER_HEALTH, MobStats.EUCA_CHARGER_DAMAGE, "Gate Keys and Shimmerer Dust");
+        addMob(EnumKnowledge.EUCA, "dynaster", "Euca", true, MobStats.DYNASTER_HEALTH, MobStats.DYNASTER_DAMAGE, "Euca Meat, Royal Disk and Shimmerer Dust");
+        addMob(EnumKnowledge.EUCA, "euca_charger", "Euca", "Very quick", false , MobStats.EUCA_CHARGER_HEALTH, MobStats.EUCA_CHARGER_DAMAGE, "Euca Meat, Gate Keys and Shimmerer Dust");
         addStructureMob(EnumKnowledge.EUCA, "goldbot", "$(l:jitl:euca/structures#euca_sphere)Euca Sphere$(/l)", false, MobStats.GOLDBOT_HEALTH, MobStats.GOLDBOT_DAMAGE, "Gate Keys and Metal Disk");
-        addMob(EnumKnowledge.EUCA, "golder", "Euca", false, MobStats.GOLDER_HEALTH, MobStats.GOLDER_DAMAGE, "Golder Dust");
+        addMob(EnumKnowledge.EUCA, "golder", "Euca", false, MobStats.GOLDER_HEALTH, MobStats.GOLDER_DAMAGE, "Euca Meat and Golder Dust");
         addMob(EnumKnowledge.EUCA, "shimmerer", "Euca", "Fly's around", MobStats.SHIMMERER_HEALTH, "Gate Keys, Royal Disc and Shimmerer Dust");
+        addPet(EnumKnowledge.EUCA, "euca_hopper", "Goldite Grains", "Euca Meat", MobStats.TAMED_EUCA_HOPPER_HEALTH, MobStats.EUCA_HOPPER_HEALTH, (float)MobStats.EUCA_HOPPER_DAMAGE, "");
 
-        writeToFile("\"book.jitl.entry.depths.mobs.darkener.desc\" : " + "\"Spawns in any Depths Biomes, Harmless, It has 55HP, Chance to drop Dark Crystal\",");
-        addMob(EnumKnowledge.DEPTHS, "darkness_crawler", "Depths", true, MobStats.DARKNESS_CRAWLER_HEALTH, MobStats.DARKNESS_CRAWLER_DAMAGE, "Scale");
+        addMob(EnumKnowledge.DEPTHS, "darkener", "Depths", "Fly's around", MobStats.DARKENER_HEALTH, 0, "Dark Crystal");
+        addPet(EnumKnowledge.DEPTHS, "darkness_crawler", "Depths", "Beastly Stomach", MobStats.TAME_DARKNESS_CRAWLER_HEALTH, MobStats.DARKNESS_CRAWLER_HEALTH, (float)MobStats.DARKNESS_CRAWLER_DAMAGE, "Scale");
         addStructureMob(EnumKnowledge.DEPTHS, "dark_sorcerer", "$(l:jitl:depths/structures#dark_sorcerers_dungeon)Dark Sorcerers Dungeon$(/l)", false, MobStats.DARK_SORCERER_HEALTH, MobStats.DARK_SORCERER_DAMAGE, "Dark Orb");
         addMob(EnumKnowledge.DEPTHS, "depths_beast", "Depths", false, MobStats.DEPTHS_BEAST_HEALTH, MobStats.DEPTHS_BEAST_DAMAGE, "Beastly Stomach");
-        addMob(EnumKnowledge.DEPTHS, "depths_hunter", "Depths", false, MobStats.DEPTHS_HUNTER_HEALTH, MobStats.DEPTHS_HUNTER_DAMAGE, "Dark Crystal");
-        addMob(EnumKnowledge.DEPTHS, "roc", "Depths", MobStats.TAMED_ROC_HEALTH, "Roc Feather");
+        addMob(EnumKnowledge.DEPTHS, "depths_hunter", "Depths", false, MobStats.DEPTHS_HUNTER_HEALTH, MobStats.DEPTHS_HUNTER_DAMAGE, "Depths Meat and Dark Crystal");
+        addPet(EnumKnowledge.DEPTHS, "roc", "Depths", "Depths Meat", MobStats.TAMED_ROC_HEALTH, MobStats.ROC_HEALTH, MobStats.ROC_DAMAGE, "Roc Feather");
         addMob(EnumKnowledge.DEPTHS, "spiked_beast", "Depths", false, MobStats.SPIKED_BEAST_HEALTH, MobStats.SPIKED_BEAST_DAMAGE, "Beastly Stomach");
 
         addMob(EnumKnowledge.CORBA, "corbanian_mollusk", "Corba", "A Slow slug that leaves a trail of Slime behind", MobStats.CORBANIAN_MOLLUSK_HEALTH, "Slimy Flesh and Slug Slime");
@@ -854,12 +856,21 @@ public class LangRegistry {
         writeToFile("\"book.jitl.entry." + dim.getName().toLowerCase() + ".mobs." + name + ".desc\" : " + "\"Spawns in " + biome + " Biomes, " + getNeutral(neutral) + ", " + extra + ", " + getHealth(health, damage) + getDrops(drops) + "\",");
     }
 
+    public void addPet(EnumKnowledge dim, String name, String biome, String tameItem, double tamedHealth, double health, double damage, String drops) {
+        writeToFile("\"book.jitl.entry." + dim.getName().toLowerCase() + ".mobs." + name + ".desc\" : " + "\"Spawns in " + biome + " Biomes, " + getNeutral(true) + ", " + "Tamable with " + tameItem + ", when tamed it goes to " + (int)tamedHealth + "HP" + ", " + getHealth(health, damage) + getDrops(drops) + "\",");
+    }
+
+
     public void addMob(EnumKnowledge dim, String name, String biome, String extra, boolean harmless, double health, String drops) {
         writeToFile("\"book.jitl.entry." + dim.getName().toLowerCase() + ".mobs." + name + ".desc\" : " + "\"Spawns in " + biome + " Biomes" + getHarmless(harmless) + ", " + extra + ", " + getHealth(health, 0) + getDrops(drops) + "\",");
     }
 
     public void addMob(EnumKnowledge dim, String name, String biome, String extra, double health, String drops) {
         addMob(dim, name, biome, extra, true, health, drops);
+    }
+
+    public void addMob(EnumKnowledge dim, String name, String biome, String extra, double health, float damage, String drops) {
+        addMob(dim, name, biome, extra, true, health, damage, drops);
     }
 
     public void addMob(EnumKnowledge dim, String name, String biome, boolean neutral, double health, double damage, String drops) {

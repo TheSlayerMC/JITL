@@ -2,7 +2,7 @@
   "name": "book.jitl.entries.bosses",
   "category": "jitl:euca",
   "icon": "jitl:euca_key",
-  "sortnum": 3,
+  "sortnum": 4,
   "pages": [
     {
       "type": "entity",
