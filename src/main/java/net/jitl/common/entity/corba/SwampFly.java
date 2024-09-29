@@ -1,92 +1,96 @@
-package net.jitl.common.entity.base;
+package net.jitl.common.entity.corba;
 
 import net.jitl.client.knowledge.EnumKnowledge;
-import net.jitl.core.init.internal.JDataAttachments;
+import net.jitl.common.entity.base.JFlyingEntity;
+import net.jitl.common.entity.base.MobStats;
+import net.jitl.common.entity.euca.Shimmerer;
+import net.jitl.core.init.internal.JBlocks;
+import net.jitl.core.init.internal.JSounds;
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.Difficulty;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.FlyingMob;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.MoveControl;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager;
-import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.EnumSet;
 
-public abstract class JFlyingEntity extends FlyingMob implements Enemy, GeoEntity {
+public class SwampFly extends JFlyingEntity {
 
-    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-    private double speed = 0.3D;
-    protected EnumKnowledge knowledge;
-    protected float knowledgeAmount = 0.0F;
-
-    public JFlyingEntity(EntityType<? extends JFlyingEntity> type, Level world) {
-        super(type, world);
-        this.moveControl = new JFlyingEntity.MoveHelperController(this);
+    public SwampFly(EntityType<? extends JFlyingEntity> type, Level worldIn) {
+        super(type, worldIn);
+        setKnowledge(EnumKnowledge.CORBA, 2F);
+        this.moveControl = new SwampFly.FlyMoveHelperController(this);
     }
 
     @Override
-    public boolean checkSpawnRules(LevelAccessor level, MobSpawnType type) {
-        return !(level.getBiome(blockPosition()).is(Tags.Biomes.IS_MUSHROOM) || level.getBiome(blockPosition()).is(Biomes.DEEP_DARK));
-    }
+    protected void controller(AnimatableManager.ControllerRegistrar controllers) { }
 
-    public void setKnowledge(EnumKnowledge knowledge, float amount) {
-        this.knowledge = knowledge;
-        this.knowledgeAmount = amount;
-    }
-
-    protected abstract void controller(AnimatableManager.ControllerRegistrar controllers);
-
-    @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controller(controllers);
+    public static AttributeSupplier createAttributes() {
+        return Monster.createMonsterAttributes()
+                .add(Attributes.MAX_HEALTH, MobStats.SWAMP_FLY_HEALTH)
+                .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.STANDARD_KNOCKBACK_RESISTANCE)
+                .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
+                .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
     }
 
     @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return this.cache;
-    }
-
-    public void setFlyingSpeed(double speed) {
-        this.speed = speed;
+    public int getMaxSpawnClusterSize() {
+        return 10;
     }
 
     @Override
-    public void die(@NotNull DamageSource cause) {
-        super.die(cause);
-        if(cause.getEntity() instanceof Player player && this.knowledge != null) {
-            player.getData(JDataAttachments.PLAYER_STATS).addXP(this.knowledge, this.knowledgeAmount, player);
+    public @NotNull InteractionResult mobInteract(Player player, @NotNull InteractionHand hand) {
+        ItemStack itemstack = player.getItemInHand(hand);
+        if(itemstack.is(Items.GLASS_BOTTLE)) {
+            player.playSound(JSounds.BOTTLE_PLUG.get(), 1.0F, 1.0F);
+            ItemStack itemstack1 = ItemUtils.createFilledResult(itemstack, player, JBlocks.SWAMP_LAMP.get().asItem().getDefaultInstance());
+            player.setItemInHand(hand, itemstack1);
+            return InteractionResult.sidedSuccess(this.level().isClientSide);
+        } else {
+            return super.mobInteract(player, hand);
         }
     }
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(5, new JFlyingEntity.RandomFlyGoal(this, this.speed));
-        this.goalSelector.addGoal(7, new JFlyingEntity.LookAroundGoal(this));
-        this.addGoals();
+        this.goalSelector.addGoal(5, new SwampFly.FlyRandomFlyGoal(this, 0.2D));
+        this.goalSelector.addGoal(7, new SwampFly.LookAroundGoal(this));
+        this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
     }
-
-    public abstract void addGoals();
 
     @Override
-    protected boolean shouldDespawnInPeaceful() {
-        return despawnInPeaceful();
+    public void addGoals() {
+
     }
 
-    public abstract boolean despawnInPeaceful();
+    @Override
+    public boolean despawnInPeaceful() {
+        return false;
+    }
 
     static class LookAroundGoal extends Goal {
         private final JFlyingEntity entity;
@@ -109,11 +113,11 @@ public abstract class JFlyingEntity extends FlyingMob implements Enemy, GeoEntit
         }
     }
 
-    static class MoveHelperController extends MoveControl {
+    static class FlyMoveHelperController extends MoveControl {
         private final JFlyingEntity entity;
         private int floatDuration;
 
-        public MoveHelperController(JFlyingEntity entity) {
+        public FlyMoveHelperController(JFlyingEntity entity) {
             super(entity);
             this.entity = entity;
         }
@@ -150,11 +154,11 @@ public abstract class JFlyingEntity extends FlyingMob implements Enemy, GeoEntit
         }
     }
 
-    static class RandomFlyGoal extends Goal {
+    static class FlyRandomFlyGoal extends Goal {
         private final JFlyingEntity entity;
         public final double speed;
 
-        public RandomFlyGoal(JFlyingEntity entity, double speed) {
+        public FlyRandomFlyGoal(JFlyingEntity entity, double speed) {
             this.entity = entity;
             this.speed = speed;
             this.setFlags(EnumSet.of(Flag.MOVE));
@@ -183,7 +187,7 @@ public abstract class JFlyingEntity extends FlyingMob implements Enemy, GeoEntit
         public void start() {
             RandomSource random = this.entity.getRandom();
             double d0 = this.entity.getX() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-            double d1 = this.entity.getY() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
+            double d1 = this.entity.getY() + (double)((random.nextFloat() * 2.0F - 1.0F) * 8.0F);
             double d2 = this.entity.getZ() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
             this.entity.getMoveControl().setWantedPosition(d0, d1, d2, this.speed);
         }

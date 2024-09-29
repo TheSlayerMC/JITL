@@ -35,6 +35,7 @@ public class Dimensions {
 
     public static final ResourceKey<Level> CORBA = ResourceKey.create(Registries.DIMENSION, JITL.rl("corba"));
     public static final ResourceKey<DimensionType> CORBA_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, JITL.rl("corba"));
+    public static final ResourceLocation CORBA_EFFECTS = JITL.rl("corba");
 
     public static final ResourceKey<Level> TERRANIA = ResourceKey.create(Registries.DIMENSION, JITL.rl("terrania"));
     public static final ResourceKey<DimensionType> TERRANIA_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, JITL.rl("terrania"));

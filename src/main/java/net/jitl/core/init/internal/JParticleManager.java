@@ -32,6 +32,7 @@ public class JParticleManager {
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> HELLSTONE = REGISTRY.register("hellstone", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> TERRANIA_PORTAL = REGISTRY.register("terrania", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> CLOUDIA_PORTAL = REGISTRY.register("cloudia", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SWAMP_FLY = REGISTRY.register("swamp_fly", () -> new SimpleParticleType(false));
 
     @SubscribeEvent
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
@@ -48,5 +49,6 @@ public class JParticleManager {
         event.registerSpriteSet(HELLSTONE.get(), HellstoneParticle.Factory::new);
         event.registerSpriteSet(TERRANIA_PORTAL.get(), TerraniaPortalParticle.Factory::new);
         event.registerSpriteSet(CLOUDIA_PORTAL.get(), CloudiaPortalParticle.Factory::new);
+        event.registerSpriteSet(SWAMP_FLY.get(), SwampFlyParticle.Factory::new);
     }
 }

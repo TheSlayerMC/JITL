@@ -1,5 +1,5 @@
 {
-  "name": "Frozen",
+  "name": "Corba",
   "ultrawarm": false,
   "natural": false,
   "piglin_safe": false,
@@ -13,7 +13,7 @@
   "fixed_time": 18000,
   "logical_height": 256,
   "infiniburn": "#minecraft:infiniburn_overworld",
-  "effects": "corba:corba",
+  "effects": "jitl:corba",
   "min_y": -64,
   "height": 384,
   "monster_spawn_light_level": {

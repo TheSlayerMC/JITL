@@ -58,6 +58,16 @@ public class JBlockProperties {
             .noOcclusion()
             .sound(SoundType.STONE);
 
+    public static BlockBehaviour.Properties BOTTLE = BlockBehaviour.Properties.of()
+            .strength(0.2F)
+            .mapColor(MapColor.COLOR_BLUE)
+            .isViewBlocking(JBlockProperties::never)
+            .isSuffocating(JBlockProperties::never)
+            .isValidSpawn(JBlockProperties::never)
+            .lightLevel((level) -> 3)
+            .noOcclusion()
+            .sound(JSoundTypes.VASE);
+
     public static final BlockBehaviour.Properties LUNIUM_ORE_PROPS = BlockBehaviour.Properties.of()
             .sound(JSoundTypes.LUNIUM_ORE)
             .requiresCorrectToolForDrops()
@@ -154,6 +164,7 @@ public class JBlockProperties {
             .strength(0.5F)
             .sound(SoundType.GRASS)
             .noOcclusion()
+            .isValidSpawn(JBlockProperties::never)
             .requiresCorrectToolForDrops();
 
     public static BlockBehaviour.Properties CLOUD = BlockBehaviour.Properties.of()

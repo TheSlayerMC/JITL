@@ -208,6 +208,7 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<NatureMage>> NATURE_MAGE_TYPE = registerEntity(NatureMage::new, "nature_mage", "Nature Mage", 0.75F, 2F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
     public static final DeferredHolder<EntityType<?>, EntityType<OvergrownMerchant>> OVERGROWN_MERCHANT_TYPE = registerEntity(OvergrownMerchant::new, "overgrown_merchant", "Overgrown Merchant", 0.75F, 2F, CORBA_COLOR, TRADER_COLOR, MobCategory.MONSTER);
     public static final DeferredHolder<EntityType<?>, EntityType<Hooded>> HOODED_TYPE = registerEntity(Hooded::new, "hooded", "The Hooded", 0.75F, 2F, CORBA_COLOR, TRADER_COLOR, MobCategory.MONSTER);
+    public static final DeferredHolder<EntityType<?>, EntityType<SwampFly>> SWAMP_FLY_TYPE = registerEntity(SwampFly::new, "swamp_fly", "Swamp Fly", 0.91F, 0.9F, CORBA_COLOR, NEUTRAL_COLOR, MobCategory.MONSTER);
 
     //TERRANIAN MOBS
     public static final DeferredHolder<EntityType<?>, EntityType<AranaKing>> ARANA_KING_TYPE = registerEntity(AranaKing::new, "arana_king", "Arana King", 1F, 1.25F, TERRANIA_COLOR, HOSTILE_COLOR);
@@ -294,6 +295,7 @@ public class JEntities {
         event.put(STONEWALKER_TYPE.get(), Stonewalker.createAttributes());
         event.put(BOSS_CRYSTAL_TYPE.get(), BossCrystal.createAttributes());
         event.put(SPIRIT_CRYSTAL_TYPE.get(), SpiritCrystal.createAttributes());
+        event.put(SWAMP_FLY_TYPE.get(), SwampFly.createAttributes());
 
         event.put(WITHERING_BEAST_TYPE.get(), WitheringBeast.createAttributes());
         event.put(CALCIA_TYPE.get(), Calcia.createAttributes());
@@ -424,6 +426,8 @@ public class JEntities {
         setCustomSpawn(event, STARLIGHT_GOLEM_TYPE, StarlightGolem::checkSpawn);
         setCustomSpawn(event, STARLIGHT_TRANSPORTER_TYPE, StarlightTransporter::checkSpawn);
         setCustomSpawn(event, STARLIGHT_WALKER_TYPE, StarlightWalker::checkSpawn);
+
+        setDefaultSpawn(event, SWAMP_FLY_TYPE);
 
         setDefaultMonsterSpawn(event, FLORO_TYPE);
         setDefaultMonsterSpawn(event, BROWN_HONGO_TYPE);

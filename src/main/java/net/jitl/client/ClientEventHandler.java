@@ -58,6 +58,7 @@ public class ClientEventHandler {
         event.register(Dimensions.DEPTHS_EFFECTS, new EucaRenderInfo());
         event.register(Dimensions.BOIL_EFFECTS, new BoilRenderInfo());
         event.register(Dimensions.FROZEN_EFFECTS, new FrozenRenderInfo());
+        event.register(Dimensions.CORBA_EFFECTS, new CorbaRenderInfo());
         event.register(Dimensions.TERRANIA_EFFECTS, new TerraniaRenderInfo());
         event.register(Dimensions.CLOUDIA_EFFECTS, new CloudiaRenderInfo());
     }

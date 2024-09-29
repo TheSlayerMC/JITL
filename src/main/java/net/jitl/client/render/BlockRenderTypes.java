@@ -153,6 +153,7 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.SENTERIAN_BARS.get());
         cutout.add(JBlocks.BREAKABLE_SENTERIAN_BARS.get());
         cutout.add(JBlocks.SUMMONING_TABLE.get());
+        cutout.add(JBlocks.SWAMP_LAMP.get());
 
         translucent.add(JBlocks.EUCA_PORTAL.get());
         translucent.add(JBlocks.FROZEN_PORTAL.get());

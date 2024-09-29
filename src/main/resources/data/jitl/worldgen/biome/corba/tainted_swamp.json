@@ -3,7 +3,7 @@
   "downfall": 0.4,
   "has_precipitation": false,
   "effects": {
-    "sky_color": 209664,
+    "sky_color": 23609,
     "fog_color": 1524224,
     "water_color": 800769,
     "water_fog_color": 800769,
@@ -32,19 +32,19 @@
       },
       {
         "type": "jitl:surface_seer",
-        "weight": 9,
+        "weight": 4,
         "minCount": 1,
         "maxCount": 1
       },
       {
         "type": "jitl:wood_creature",
-        "weight": 8,
+        "weight": 4,
         "minCount": 1,
         "maxCount": 1
       },
       {
         "type": "jitl:corbanian_mollusk",
-        "weight": 15,
+        "weight": 6,
         "minCount": 1,
         "maxCount": 2
       },
@@ -57,6 +57,12 @@
       {
         "type": "jitl:smelly",
         "weight": 4,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "jitl:swamp_fly",
+        "weight": 20,
         "minCount": 1,
         "maxCount": 1
       }

@@ -500,6 +500,7 @@ public class LangRegistry {
         addMob(EnumKnowledge.CORBA, "surface_seer", "Tainted Swamp", FLYING_FIREBALLS, false, MobStats.SURFACE_SEER_HEALTH, 0, "Nature Tablet, Sentry Stone and Over Seeing Eye");
         addMob(EnumKnowledge.CORBA, "tree_golem", "Tainted Forest", "When it's angry it has a hard hit", true, MobStats.TREE_GOLEM_HEALTH, MobStats.TREE_GOLEM_ATTACK, "Sticks, Enchanted Leaf, Overgrown Nature Ball and Nature Tablet");
         addMob(EnumKnowledge.CORBA, "wood_creature", "Corba", true, MobStats.WOOD_CREATURE_HEALTH, MobStats.WOOD_CREATURE_DAMAGE, "Sticks and Enchanted Leaf");
+        addMob(EnumKnowledge.CORBA, "swamp_fly", "Tainted Swamp", "Can be caught in a Glass Bottle", MobStats.SWAMP_FLY_HEALTH, "");
 
         addMob(EnumKnowledge.TERRANIA, "arana_king", "Terrania", false, MobStats.ARANA_KING_HEALTH, MobStats.ARANA_KING_DAMAGE, "Terrashroom");
         addMob(EnumKnowledge.TERRANIA, "flungas", "Mushroom Forest", "Turns a Glass Bottle into a Bile Vile", MobStats.FLUNGUS_HEALTH, "Breathing Fungus");

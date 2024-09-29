@@ -559,6 +559,7 @@ public class JBlocks {
     public static final DeferredBlock<Block> SWAMP_LILY = registerLilyPad("swamp_lily", "Swamp Lilly", () -> new WaterlilyBlock(JBlockProperties.LILY_PLANT));
     public static final DeferredBlock<Block> FUNGAL_SHELF = registerModeledBlock("fungal_shelf", "Fungal Shelf", JBlockFungalShelf::new);
     public static final DeferredBlock<Block> SLIME = registerSlimeStyleBlock("slime", "Slime", JSlimeBlock::new);
+    public static final DeferredBlock<Block> SWAMP_LAMP = registerModeledBlock("swamp_lamp", "Swamp Lamp", JBlockSwampLamp::new);
 
     public static final DeferredBlock<Block> TERRANIAN_PORTAL_FRAME = register("terranian_portal_frame", "Terranian Portal Frame", JBlockProperties.STONE);
     public static final DeferredBlock<JBasePortalBlock> TERRANIAN_PORTAL = registerPortalBlock("terranian_portal", "Terranian Portal", () -> new JBasePortalBlock(Dimensions.TERRANIA, TERRANIAN_PORTAL_FRAME));

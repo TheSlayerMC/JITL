@@ -156,7 +156,7 @@ public class JBasePortalBlock extends Block implements JPortal {
     }
 
     @Override
-    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
+    public void animateTick(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull RandomSource random) {
 
         SimpleParticleType particle = null;
         SimpleParticleType particle2 = null;
@@ -183,26 +183,26 @@ public class JBasePortalBlock extends Block implements JPortal {
         }
 
         for(int i = 0; i < 3; ++i) {
-            double d0 = (double)pPos.getX() + pRandom.nextDouble();
-            double d1 = (double)pPos.getY() + pRandom.nextDouble();
-            double d2 = (double)pPos.getZ() + pRandom.nextDouble();
-            double d3 = ((double)pRandom.nextFloat() - 0.5D) * 0.5D;
-            double d4 = ((double)pRandom.nextFloat() - 0.5D) * 0.5D;
-            double d5 = ((double)pRandom.nextFloat() - 0.5D) * 0.5D;
-            int j = pRandom.nextInt(2) * 2 - 1;
-            if (!pLevel.getBlockState(pPos.west()).is(this) && !pLevel.getBlockState(pPos.east()).is(this)) {
-                d0 = (double)pPos.getX() + 0.5D + 0.25D * (double)j;
-                d3 = pRandom.nextFloat() * 2.0F * (float)j;
+            double d0 = (double)pos.getX() + random.nextDouble();
+            double d1 = (double)pos.getY() + random.nextDouble();
+            double d2 = (double)pos.getZ() + random.nextDouble();
+            double d3 = ((double)random.nextFloat() - 0.5D) * 0.5D;
+            double d4 = ((double)random.nextFloat() - 0.5D) * 0.5D;
+            double d5 = ((double)random.nextFloat() - 0.5D) * 0.5D;
+            int j = random.nextInt(2) * 2 - 1;
+            if (!level.getBlockState(pos.west()).is(this) && !level.getBlockState(pos.east()).is(this)) {
+                d0 = (double)pos.getX() + 0.5D + 0.25D * (double)j;
+                d3 = random.nextFloat() * 2.0F * (float)j;
             } else {
-                d2 = (double)pPos.getZ() + 0.5D + 0.25D * (double)j;
-                d5 = pRandom.nextFloat() * 2.0F * (float)j;
+                d2 = (double)pos.getZ() + 0.5D + 0.25D * (double)j;
+                d5 = random.nextFloat() * 2.0F * (float)j;
             }
 
             if(particle != null)
-                pLevel.addParticle(particle, d0, d1, d2, d3, d4, d5);
+                level.addParticle(particle, d0, d1, d2, d3, d4, d5);
 
             if(particle2 != null)
-                pLevel.addParticle(particle2, d0, d1, d2, d3, d4, d5);
+                level.addParticle(particle2, d0, d1, d2, d3, d4, d5);
         }
     }
 

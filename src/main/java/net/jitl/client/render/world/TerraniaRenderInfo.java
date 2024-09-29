@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
 
 public class TerraniaRenderInfo extends DimensionSpecialEffects {
 
-    private static final ResourceLocation MOON_LOCATION = JITL.rl("textures/environment/terrania_moon.png");
+    private static final ResourceLocation MOON_LOCATION = JITL.rl("textures/environment/terrania_moon1.png");
     private static final ResourceLocation CLOUDIA_SKY_LOCATION = JITL.rl("textures/environment/cloudia_sky.png");
 
     public TerraniaRenderInfo() {

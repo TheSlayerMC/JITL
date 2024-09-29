@@ -7,7 +7,7 @@
     {
       "type": "entity",
       "entity": "jitl:corbanian_mollusk",
-      "scale": 0.6,
+      "scale": 0.3,
       "name": "Corbanian Mollusk",
       "offset": 0.5,
       "anchor": "corbanian_mollusk"
@@ -99,6 +99,18 @@
     {
       "type": "text",
       "text": "book.jitl.entry.corba.mobs.surface_seer.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:swamp_fly",
+      "scale": 1.5,
+      "name": "Swamp Fly",
+      "offset": -0.3,
+      "anchor": "swamp_fly"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.corba.mobs.swamp_fly.desc"
     },
     {
       "type": "entity",
