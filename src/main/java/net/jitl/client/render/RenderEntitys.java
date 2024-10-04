@@ -5,7 +5,7 @@ import net.jitl.client.model.AnimatedMonsterModel;
 import net.jitl.client.model.FrozenTrollModel;
 import net.jitl.client.model.JBoatModel;
 import net.jitl.client.render.block.*;
-import net.jitl.client.render.entity.RenderAnimated2D;
+import net.jitl.client.render.entity.misc.RenderAnimated2D;
 import net.jitl.client.render.entity.euca.CrypianRenderer;
 import net.jitl.client.render.entity.euca.EucaHopperRenderer;
 import net.jitl.client.render.entity.euca.RoyalKingRenderer;

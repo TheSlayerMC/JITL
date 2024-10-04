@@ -68,12 +68,12 @@ public class DarknessCrawler extends JTamableEntity {
 
     @Override
     public int setBaseHealth() {
-        return MobStats.ROC_HEALTH;
+        return MobStats.DARKNESS_CRAWLER_HEALTH;
     }
 
     @Override
     public int setTameHealth() {
-        return MobStats.TAMED_ROC_HEALTH;
+        return MobStats.TAME_DARKNESS_CRAWLER_HEALTH;
     }
 
     @Override

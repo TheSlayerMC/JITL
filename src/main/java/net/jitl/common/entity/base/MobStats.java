@@ -103,8 +103,8 @@ public class MobStats {
 
     public static final double DARKFISH_HEALTH = 55;
 
-    public static final double DARKNESS_CRAWLER_HEALTH = 58;
-    public static final double TAME_DARKNESS_CRAWLER_HEALTH = 68;
+    public static final int DARKNESS_CRAWLER_HEALTH = 58;
+    public static final int TAME_DARKNESS_CRAWLER_HEALTH = 68;
     public static final double DARKNESS_CRAWLER_DAMAGE = 11;
 
     public static final double DARK_SORCERER_HEALTH = 50;

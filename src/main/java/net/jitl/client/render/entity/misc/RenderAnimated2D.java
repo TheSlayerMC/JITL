@@ -1,9 +1,8 @@
-package net.jitl.client.render.entity;
+package net.jitl.client.render.entity.misc;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import net.jitl.client.render.projectile.RenderProjectile;
 import net.jitl.core.helper.RandHelper;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -75,13 +74,13 @@ public class RenderAnimated2D<T extends Entity> extends EntityRenderer<T> {
         RandomSource r = RandomSource.create();
         if(t.tickCount % animationSpeed == 0) {
             String name = RandHelper.chooseEqual(r, textures);
-            return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/entity/" + name + ".png");
+            return JITL.rl("textures/entity/" + name + ".png");
         }
         if(t.tickCount % (animationSpeed / 2) == 0) {
             String name = RandHelper.chooseEqual(r, textures);
-            return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/entity/" + name + ".png");
+            return JITL.rl("textures/entity/" + name + ".png");
         } else {
-            return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/entity/" + textures[0] + ".png");
+            return JITL.rl("textures/entity/" + textures[0] + ".png");
         }
     }
 }

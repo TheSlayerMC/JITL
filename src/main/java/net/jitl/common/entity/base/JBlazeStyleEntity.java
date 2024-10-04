@@ -13,6 +13,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.Blaze;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.SmallFireball;
@@ -35,14 +36,13 @@ public abstract class JBlazeStyleEntity extends JMonsterEntity {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(4, new JBlazeStyleEntity.JBlazeStyleEntityAttackGoal(this));
-        this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(1, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
-        this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, null));
+        this.goalSelector.addGoal(5, new MoveTowardsRestrictionGoal(this, 1.0));
+        this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0, 0.0F));
+        this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
+        this.targetSelector.addGoal(1, (new HurtByTargetGoal(this, new Class[0])).setAlertOthers(new Class[0]));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
 
     public boolean canSpawnSmoke(boolean smoke) {
@@ -164,58 +164,61 @@ public abstract class JBlazeStyleEntity extends JMonsterEntity {
         public void tick() {
             --this.attackTime;
             LivingEntity livingentity = this.blaze.getTarget();
-            if(livingentity != null) {
+            if (livingentity != null) {
                 boolean flag = this.blaze.getSensing().hasLineOfSight(livingentity);
-                if(flag) {
+                if (flag) {
                     this.lastSeen = 0;
                 } else {
                     ++this.lastSeen;
                 }
 
                 double d0 = this.blaze.distanceToSqr(livingentity);
-                if(d0 < 4.0D) {
-                    if(!flag) {
+                if (d0 < 4.0) {
+                    if (!flag) {
                         return;
                     }
 
-                    if(this.attackTime <= 0) {
+                    if (this.attackTime <= 0) {
                         this.attackTime = 20;
                         this.blaze.doHurtTarget(livingentity);
                     }
 
-                    this.blaze.getMoveControl().setWantedPosition(livingentity.getX(), livingentity.getY(), livingentity.getZ(), 1.0D);
-                } else if(d0 < this.getFollowDistance() * this.getFollowDistance() && flag) {
+                    this.blaze.getMoveControl().setWantedPosition(livingentity.getX(), livingentity.getY(), livingentity.getZ(), 1.0);
+                } else if (d0 < this.getFollowDistance() * this.getFollowDistance() && flag) {
                     double d1 = livingentity.getX() - this.blaze.getX();
-                    double d2 = livingentity.getY(0.5D) - this.blaze.getY(0.5D);
+                    double d2 = livingentity.getY(0.5) - this.blaze.getY(0.5);
                     double d3 = livingentity.getZ() - this.blaze.getZ();
-                    if(this.attackTime <= 0) {
+                    if (this.attackTime <= 0) {
                         ++this.attackStep;
-                        if(this.attackStep == 1) {
+                        if (this.attackStep == 1) {
                             this.attackTime = 60;
                             this.blaze.setCharged(true);
-                        } else if(this.attackStep <= 4) {
+                        } else if (this.attackStep <= 4) {
                             this.attackTime = 6;
                         } else {
                             this.attackTime = 100;
                             this.attackStep = 0;
                             this.blaze.setCharged(false);
                         }
-                        if(this.attackStep > 1) {
-                            double d4 = Math.sqrt(Math.sqrt(d0)) * 0.5D;
-                            if(!this.blaze.isSilent()) {
-                                this.blaze.level().levelEvent(null, 1018, this.blaze.blockPosition(), 0);
+
+                        if (this.attackStep > 1) {
+                            double d4 = Math.sqrt(Math.sqrt(d0)) * 0.5;
+                            if (!this.blaze.isSilent()) {
+                                this.blaze.level().levelEvent((Player)null, 1018, this.blaze.blockPosition(), 0);
                             }
+
                             for(int i = 0; i < 1; ++i) {
                                 Vec3 vec3 = new Vec3(this.blaze.getRandom().triangle(d1, 2.297 * d4), d2, this.blaze.getRandom().triangle(d3, 2.297 * d4));
                                 SmallFireball smallfireball = new SmallFireball(this.blaze.level(), this.blaze, vec3.normalize());
-                                smallfireball.setPos(smallfireball.getX(), this.blaze.getY(0.5D) + 0.5D, smallfireball.getZ());
+                                smallfireball.setPos(smallfireball.getX(), this.blaze.getY(0.5) + 0.5, smallfireball.getZ());
                                 this.blaze.level().addFreshEntity(smallfireball);
                             }
                         }
                     }
+
                     this.blaze.getLookControl().setLookAt(livingentity, 10.0F, 10.0F);
-                } else if(this.lastSeen < 5) {
-                    this.blaze.getMoveControl().setWantedPosition(livingentity.getX(), livingentity.getY(), livingentity.getZ(), 1.0D);
+                } else if (this.lastSeen < 5) {
+                    this.blaze.getMoveControl().setWantedPosition(livingentity.getX(), livingentity.getY(), livingentity.getZ(), 1.0);
                 }
 
                 super.tick();
