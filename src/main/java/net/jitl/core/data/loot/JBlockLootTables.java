@@ -79,6 +79,8 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.ASHUAL_BLOCK);
         this.dropSelf(JBlocks.FIRESTONE_ORE);
         this.dropSelf(JBlocks.FIRESTONE_BLOCK);
+        this.dropSelf(JBlocks.GLACIAL_ROCK);
+        this.dropSelf(JBlocks.SWAMP_LAMP);
 
         this.add(JBlocks.BLAZIUM_ORE, (block) -> createOreDrop(block, JItems.RAW_BLAZIUM.get()));
         this.dropSelf(JBlocks.BLAZIUM_BLOCK);

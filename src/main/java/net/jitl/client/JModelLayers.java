@@ -3,7 +3,10 @@ package net.jitl.client;
 import com.google.common.collect.Sets;
 import net.jitl.common.entity.base.JBoat;
 import net.jitl.core.init.JITL;
+import net.minecraft.client.model.WolfModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
 
 import java.util.Set;
 
@@ -15,7 +18,9 @@ public class JModelLayers {
     public static final ModelLayerLocation JDOUBLE_CHEST_LEFT = register("jdouble_chest_left");
     public static final ModelLayerLocation JDOUBLE_CHEST_RIGHT = register("jdouble_chest_right");
     public static final ModelLayerLocation FROZEN_TROLL_MODEL_LAYER = register("frozen_troll");
-    public static final ModelLayerLocation FROZEN_TROLL_HELD_ITEM_LAYER = register("frozen_troll", "held_item");
+    public static final ModelLayerLocation SHIVERWOLF_MODEL_LAYER = register("shiverwolf");
+    public static final ModelLayerLocation SHIVERWOLF_ARMOR_LAYER = register("shiverwolf_armor");
+
 
     private static ModelLayerLocation register(String path) {
         return register(path, "main");

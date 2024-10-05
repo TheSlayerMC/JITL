@@ -181,6 +181,7 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<ShiveringBushwalker>> SHIVERING_BUSHWALKER_TYPE = registerEntity(ShiveringBushwalker::new, "shivering_bushwalker", "Shivering Bushwalker", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<ShiveringShrieker>> SHIVERING_SHRIEKER_TYPE = registerEntity(ShiveringShrieker::new, "shivering_shrieker", "Shivering Shrieker", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<Capybara>> CAPYBARA_TYPE = registerEntity(Capybara::new, "capybara", "Capybara", 1F, 2F, FROZEN_COLOR, NEUTRAL_COLOR, MobCategory.MONSTER);
+    public static final DeferredHolder<EntityType<?>, EntityType<Shiverwolf>> SHIVERWOLF_TYPE = registerEntity(Shiverwolf::new, "shiverwolf", "Shiverwolf", 1F, 2F, FROZEN_COLOR, NEUTRAL_COLOR, MobCategory.MONSTER);
 
     //DEPTHS MOBS
     public static final DeferredHolder<EntityType<?>, EntityType<Darkener>> DARKENER_TYPE = registerEntity(Darkener::new, "darkener", "Darkener", 1F, 1F, DEPTHS_COLOR, NEUTRAL_COLOR);
@@ -361,6 +362,7 @@ public class JEntities {
         event.put(SHIVERING_SHRIEKER_TYPE.get(), ShiveringShrieker.createAttributes());
         event.put(FROZEN_TROLL_TYPE.get(), FrozenTrollEntity.createAttributes());
         event.put(CAPYBARA_TYPE.get(), Capybara.createAttributes());
+        event.put(SHIVERWOLF_TYPE.get(), Shiverwolf.createAttributes());
 
         event.put(CORBANIAN_MOLLUSK_TYPE.get(), CorbanianMollusk.createAttributes());
         event.put(SMELLY_TYPE.get(), Smelly.createAttributes());
@@ -478,6 +480,7 @@ public class JEntities {
         setDefaultMonsterSpawn(event, SHIVERING_BUSHWALKER_TYPE);
         setDefaultMonsterSpawn(event, SHIVERING_SHRIEKER_TYPE);
         setDefaultMonsterSpawn(event, CAPYBARA_TYPE);
+        setDefaultSpawn(event, SHIVERWOLF_TYPE);
 
         setDefaultSpawn(event, STARLIGHT_BLACKSMITH_TYPE);
         setDefaultSpawn(event, STARLIGHT_VILLAGER_TYPE);

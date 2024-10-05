@@ -1,0 +1,20 @@
+{
+  "name": "book.jitl.entries.pets",
+  "category": "jitl:frozen",
+  "icon": "jitl:frozen_ice_ball",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:shiverwolf",
+      "scale": 1,
+      "name": "Shiverwolf",
+      "offset": 0.0,
+      "anchor": "shiverwolf"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.frozen.mobs.shiverwolf.desc"
+    }
+  ]
+}

@@ -4,7 +4,9 @@ import net.jitl.client.JModelLayers;
 import net.jitl.client.model.AnimatedMonsterModel;
 import net.jitl.client.model.FrozenTrollModel;
 import net.jitl.client.model.JBoatModel;
+import net.jitl.client.model.ShiverwolfModel;
 import net.jitl.client.render.block.*;
+import net.jitl.client.render.entity.frozen.ShiverwolfRenderer;
 import net.jitl.client.render.entity.misc.RenderAnimated2D;
 import net.jitl.client.render.entity.euca.CrypianRenderer;
 import net.jitl.client.render.entity.euca.EucaHopperRenderer;
@@ -25,6 +27,10 @@ import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JDimension;
 import net.jitl.core.init.internal.JEntities;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.WolfModel;
+import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -59,6 +65,8 @@ public class RenderEntitys {
         event.registerEntityRenderer(JEntities.SENTACOIN_BAG_TYPE.get(), (context) -> new SentacoinRender(context, Sentacoin.Type.BAG));
 
         event.registerEntityRenderer(JEntities.FROZEN_TROLL_TYPE.get(), FrozenTrollRenderer::new);
+        event.registerEntityRenderer(JEntities.SHIVERWOLF_TYPE.get(), ShiverwolfRenderer::new);
+
         event.registerEntityRenderer(JEntities.SWAMP_FLY_TYPE.get(), manager -> new RenderAnimated2D<>(manager, 10,
                 "corba/swamp_fly_0",
                 "corba/swamp_fly_1",
@@ -92,7 +100,8 @@ public class RenderEntitys {
         }
 
         event.registerLayerDefinition(JModelLayers.FROZEN_TROLL_MODEL_LAYER, FrozenTrollModel::createBodyLayer);
-        event.registerLayerDefinition(JModelLayers.FROZEN_TROLL_HELD_ITEM_LAYER, FrozenTrollModel::createBodyLayer);
+        event.registerLayerDefinition(JModelLayers.SHIVERWOLF_MODEL_LAYER, () -> LayerDefinition.create(ShiverwolfModel.createMeshDefinition(CubeDeformation.NONE), 64, 32));
+        event.registerLayerDefinition(JModelLayers.SHIVERWOLF_ARMOR_LAYER, () -> LayerDefinition.create(ShiverwolfModel.createMeshDefinition(new CubeDeformation(0.2F)), 64, 32));
 
         event.registerLayerDefinition(JModelLayers.JCHEST, JChestRenderer::createSingleBodyLayer);
         event.registerLayerDefinition(JModelLayers.JDOUBLE_CHEST_RIGHT, JChestRenderer::createDoubleBodyRightLayer);

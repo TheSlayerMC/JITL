@@ -154,8 +154,8 @@ public class JConfiguredFeatures {
             LARGE_FROZEN_BITTERWOOD_TREE = registerKey("large_frozen_bitterwood_tree"),
             MEDIUM_FROZEN_BITTERWOOD_TREE = registerKey("medium_frozen_bitterwood_tree"),
             SMALL_FROZEN_BITTERWOOD_TREE = registerKey("small_frozen_bitterwood_tree"),
-            ICE_SPIKE = registerKey("frozen_ice_spike");
-
+            ICE_SPIKE = registerKey("frozen_ice_spike"),
+            GLACIAL_ROCK = registerKey("glacial_rock");
     //CORBA
     public static final ResourceKey<ConfiguredFeature<?, ?>>
             ORBADITE_ORE = registerKey("orbadite_ore"),
@@ -281,6 +281,7 @@ public class JConfiguredFeatures {
         register(context, PERIDOT_ORE, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(FROZEN_REPLACEABLES, JBlocks.PERIDOT_ORE.get().defaultBlockState()))).get(), 7));
         register(context, FROZEN_VEG , Feature.FLOWER, new RandomPatchConfiguration(60, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.ICE_BUSH.get().defaultBlockState(), JBlocks.FROSTBERRY_THORN.get().defaultBlockState()))))));
         register(context, FROZEN_FLOWERS, Feature.FLOWER, new RandomPatchConfiguration(60, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.FROZEN_BLOOM.get().defaultBlockState(), JBlocks.CICLEBLOOM.get().defaultBlockState(), JBlocks.ICE_BUD.get().defaultBlockState()))))));
+        register(context, GLACIAL_ROCK, JFeatures.BOULDER.get(), new BlockStateConfiguration(JBlocks.GLACIAL_ROCK.get().defaultBlockState()));
 
         //CORBA
         register(context, ORBADITE_ORE, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(CORBA_REPLACEABLES, JBlocks.ORBADITE_ORE.get().defaultBlockState()))).get(), 7));

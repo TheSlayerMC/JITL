@@ -64,6 +64,8 @@ public class JEntityLootTables extends EntityLootSubProvider {
                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))));
 
         this.add(JEntities.ILLAGER_MECH_TYPE.get(), empty());
+        this.add(JEntities.SHIVERWOLF_TYPE.get(), empty());
+        this.add(JEntities.SWAMP_FLY_TYPE.get(), empty());
 
         this.add(JEntities.ESKIMO_TYPE.get(), empty());
         this.add(JEntities.FROZEN_GUARDIAN_TYPE.get(), empty());

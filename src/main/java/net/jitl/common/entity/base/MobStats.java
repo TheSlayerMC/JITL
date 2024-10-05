@@ -319,11 +319,12 @@ public class MobStats {
     public static final int PET_ROBOT_DAMAGE = 5;
 
     public static final int SHIVERWOLF_HEALTH = 30;
-    public static final int SHIVERWOLF_DAMAGE = 5;
+    public static final int TAMED_SHIVERWOLF_HEALTH = 40;
+    public static final int SHIVERWOLF_DAMAGE = 8;
 
     public static final int ROC_HEALTH = 40;
     public static final int TAMED_ROC_HEALTH = 55;
-    public static final int ROC_DAMAGE = 8;
+    public static final int ROC_DAMAGE = 10;
 
     // =======================================================
     // ==================== SENTERIAN MOBS ===================

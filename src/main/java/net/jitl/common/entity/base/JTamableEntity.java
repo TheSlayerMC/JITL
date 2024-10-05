@@ -132,7 +132,6 @@ public abstract class JTamableEntity extends TamableAnimal implements NeutralMob
         } else {
             if(!this.level().isClientSide)
                 this.setOrderedToSit(false);
-
             return super.hurt(pSource, pAmount);
         }
     }
@@ -205,7 +204,7 @@ public abstract class JTamableEntity extends TamableAnimal implements NeutralMob
 
     public abstract Item getTameItem();
 
-    private void tryToTame(Player pPlayer) {
+    protected void tryToTame(Player pPlayer) {
         if (this.random.nextInt(3) == 0 && !EventHooks.onAnimalTame(this, pPlayer)) {
             this.tame(pPlayer);
             this.navigation.stop();

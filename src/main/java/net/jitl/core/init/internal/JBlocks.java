@@ -412,6 +412,7 @@ public class JBlocks {
     public static final DeferredBlock<Block> ICE_STONE = register("ice_stone", "Ice Stone", JBlockProperties.GLOW_BLOCK);
     public static final DeferredBlock<Block> FROST_GEM_BLOCK = register("frost_gem_block", "Frost Gem Block", JBlockProperties.STONE);
     public static final DeferredBlock<Block> FROSTBITER_SPAWNER = register("frostbiter_spawner", "Frostbiter Spawner", FrostbiterSpawnerBlock::new, JBlockProperties.SPAWNER);
+    public static final DeferredBlock<Block> GLACIAL_ROCK = register("glacial_rock", "Glacial Rock", JBlockProperties.STONE);
 
     public static final DeferredBlock<Block> BOIL_PORTAL_FRAME = register("boil_portal_frame", "Boiling Point Portal Frame", JBlockProperties.STONE);
     public static final DeferredBlock<JBasePortalBlock> BOIL_PORTAL = registerPortalBlock("boil_portal", "Boiling Point Portal", () -> new JBasePortalBlock(Dimensions.BOIL, BOIL_PORTAL_FRAME));

@@ -62,6 +62,12 @@
         "maxCount": 4
       },
       {
+        "type": "jitl:shiverwolf",
+        "weight": 4,
+        "minCount": 1,
+        "maxCount": 4
+      },
+      {
         "type": "jitl:frozen_troll",
         "weight": 4,
         "minCount": 1,
@@ -77,6 +83,7 @@
   "spawn_costs": {},
   "features": [
     [
+      "jitl:glacial_rock",
       "jitl:large_frozen_tree",
       "jitl:medium_frozen_tree",
       "jitl:small_frozen_tree",

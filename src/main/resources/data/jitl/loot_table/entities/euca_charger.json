@@ -10,6 +10,10 @@
         },
         {
           "type": "minecraft:item",
+          "name": "jitl:euca_meat"
+        },
+        {
+          "type": "minecraft:item",
           "name": "jitl:shimmerer_dust"
         }
       ],
@@ -20,6 +24,24 @@
             "type": "minecraft:uniform",
             "max": 2.0,
             "min": 1.0
+          },
+          "function": "minecraft:set_count"
+        },
+        {
+          "count": {
+            "type": "minecraft:uniform",
+            "max": 1.0,
+            "min": 0.0
+          },
+          "enchantment": "minecraft:looting",
+          "function": "minecraft:enchanted_count_increase"
+        },
+        {
+          "add": false,
+          "count": {
+            "type": "minecraft:uniform",
+            "max": 1.0,
+            "min": -10.0
           },
           "function": "minecraft:set_count"
         },

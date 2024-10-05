@@ -1,11 +1,9 @@
 {
-  "feature": "jitl:large_frozen_tree",
+  "feature": "jitl:glacial_rock",
   "placement": [
     {
-      "type": "minecraft:noise_based_count",
-      "noise_to_count_ratio": 8,
-      "noise_factor": 80,
-      "noise_offset": 1
+      "type": "minecraft:count",
+      "count": 1
     },
     {
       "type": "minecraft:in_square"

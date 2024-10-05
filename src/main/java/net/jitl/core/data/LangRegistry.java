@@ -474,6 +474,7 @@ public class LangRegistry {
         addMob(EnumKnowledge.FROZEN, "shatterer", "Frozen", true, MobStats.SHATTERER_HEALTH, 0, "");
         addMob(EnumKnowledge.FROZEN, "shivering_bushwalker", "Frozen", true, MobStats.SHIVERING_BUSHWALKER_HEALTH, MobStats.SHIVERING_BUSHWALKER_DAMAGE, "Crystal Flakes");
         addMob(EnumKnowledge.FROZEN, "shivering_shrieker", "Frozen", true, MobStats.SHIVERING_SHRIEKER_HEALTH, MobStats.SHIVERING_SHRIEKER_DAMAGE, "Crystal Flakes");
+        addPet(EnumKnowledge.FROZEN, "shiverwolf", "Dying Forest and Bitterwood Forest", "Frozen Ice Ball", MobStats.TAMED_SHIVERWOLF_HEALTH, MobStats.SHIVERWOLF_HEALTH, MobStats.SHIVERWOLF_DAMAGE, "");
 
         addMob(EnumKnowledge.EUCA, "dynaster", "Euca", true, MobStats.DYNASTER_HEALTH, MobStats.DYNASTER_DAMAGE, "Euca Meat, Royal Disk and Shimmerer Dust");
         addMob(EnumKnowledge.EUCA, "euca_charger", "Euca", "Very quick", false , MobStats.EUCA_CHARGER_HEALTH, MobStats.EUCA_CHARGER_DAMAGE, "Euca Meat, Gate Keys and Shimmerer Dust");

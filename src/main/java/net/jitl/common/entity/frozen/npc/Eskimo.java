@@ -30,6 +30,7 @@ public class Eskimo extends JVillagerEntity {
 
     private static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
             new CurrencyForItemsTrade(JItems.CRYSTAL_FLAKE.get(), 16, JItems.SOULSTONE.get(), 16, JItems.FROSTBORN_SOUL.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.FROST_FLAKE.get(), 4, JItems.FROZEN_ICE_BALL.get(), 1, 12, 5),
 
             new CurrencyForItemsTrade(JItems.CRYSTAL_FLAKE.get(), 16, JItems.FROST_GEM.get(), 16, JItems.FROSTY_SWORD.get(), 1, 12, 5),
             new CurrencyForItemsTrade(JItems.CRYSTAL_FLAKE.get(), 16, JItems.FROST_GEM.get(), 16, JItems.FROSTY_BOW.get(), 1, 12, 5),

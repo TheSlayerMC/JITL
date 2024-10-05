@@ -1,0 +1,8 @@
+{
+  "type": "jitl:boulder",
+  "config": {
+    "state": {
+      "Name": "jitl:glacial_rock"
+    }
+  }
+}
