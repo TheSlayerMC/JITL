@@ -171,6 +171,10 @@ public class JBlockProperties {
             .strength(0.5F)
             .sound(SoundType.WOOL)
             .noOcclusion()
+            .noCollission()
+            .isViewBlocking(JBlockProperties::never)
+            .isSuffocating(JBlockProperties::never)
+            .isValidSpawn(JBlockProperties::never)
             .requiresCorrectToolForDrops();
 
     public static BlockBehaviour.Properties CROP = BlockBehaviour.Properties.of()

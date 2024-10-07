@@ -3,6 +3,7 @@ package net.jitl.common.items;
 import net.jitl.common.items.base.JItem;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JLootTables;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
@@ -35,15 +36,14 @@ public class LootItem extends JItem {
     public @NotNull InteractionResultHolder<ItemStack> use(Level world, @NotNull Player player, InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
         RandomSource rand = world.random;
-        String lootName = "";
+        ResourceKey<LootTable> loot = JLootTables.LOOT_BASIC;
         switch(this.tier) {
-            case NORMAL -> lootName = "basic";
-            case GOLD -> lootName = "gold";
-            case DIAMOND -> lootName = "diamond";
-            case FROSTY_GIFT -> lootName = "frosty_gift";
+            case GOLD -> loot = JLootTables.LOOT_GOLD;
+            case DIAMOND -> loot = JLootTables.LOOT_DIAMOND;
+            case FROSTY_GIFT -> loot = JLootTables.LOOT_FROSTY;
         }
         if(!world.isClientSide) {
-            LootTable table = Objects.requireNonNull(world.getServer()).reloadableRegistries().getLootTable(JLootTables.addLootTable("loot/loot_" + lootName));
+            LootTable table = Objects.requireNonNull(world.getServer()).reloadableRegistries().getLootTable(loot);
             List<ItemStack> itemList = table.getRandomItems(new LootParams.Builder((ServerLevel)world).withParameter(LootContextParams.THIS_ENTITY, player).withParameter(LootContextParams.ORIGIN, player.position()).create(LootContextParamSets.GIFT));
             ItemStack spawn = itemList.get(rand.nextInt(itemList.size()));
 

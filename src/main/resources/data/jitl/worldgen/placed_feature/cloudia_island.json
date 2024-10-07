@@ -2,8 +2,8 @@
   "feature": "jitl:cloudia_island",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 20
+      "type": "minecraft:count",
+      "count": 1
     },
     {
       "type": "minecraft:in_square"
@@ -11,14 +11,18 @@
     {
       "type": "minecraft:height_range",
       "height": {
-        "type": "minecraft:trapezoid",
-        "min_inclusive": {
-          "absolute": 0
-        },
+        "type": "minecraft:uniform",
         "max_inclusive": {
-          "absolute": 256
+          "absolute": 180
+        },
+        "min_inclusive": {
+          "absolute": 64
         }
       }
+    },
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 20
     },
     {
       "type": "minecraft:biome"

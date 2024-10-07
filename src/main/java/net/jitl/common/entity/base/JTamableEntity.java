@@ -2,6 +2,7 @@ package net.jitl.common.entity.base;
 
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.core.init.internal.JDataAttachments;
+import net.jitl.core.init.internal.JItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -221,7 +222,7 @@ public abstract class JTamableEntity extends TamableAnimal implements NeutralMob
 
     @Override
     public boolean isFood(ItemStack s) {
-        return s.is(getTameItem());
+        return s.is(getTameItem()) || s.is(JItems.PET_FOOD);
     }
 
     @Override

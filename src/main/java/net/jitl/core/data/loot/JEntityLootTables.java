@@ -52,6 +52,11 @@ public class JEntityLootTables extends EntityLootSubProvider {
                 .add(LootItem.lootTableItem(JItems.WITHICSPINE.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))));
 
+        this.add(JEntities.ROBOT_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                .add(LootItem.lootTableItem(Items.IRON_INGOT)).apply(SetItemCountFunction.setCount(UniformGenerator.between(-1.0F, 1.0F)))
+                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
+                .add(LootItem.lootTableItem(Items.REDSTONE)).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))));
 
         this.add(JEntities.FLORO_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
                 .add(LootItem.lootTableItem(JItems.FLORO_PEDAL.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
@@ -65,6 +70,7 @@ public class JEntityLootTables extends EntityLootSubProvider {
 
         this.add(JEntities.ILLAGER_MECH_TYPE.get(), empty());
         this.add(JEntities.SHIVERWOLF_TYPE.get(), empty());
+        this.add(JEntities.PET_ROBOT_TYPE.get(), empty());
         this.add(JEntities.SWAMP_FLY_TYPE.get(), empty());
 
         this.add(JEntities.ESKIMO_TYPE.get(), empty());

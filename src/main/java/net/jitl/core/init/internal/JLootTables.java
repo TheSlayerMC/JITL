@@ -25,14 +25,17 @@ public class JLootTables {
     public static ResourceKey<LootTable> SENTRY_KING_CRYSTAL = addBossCrystalLootTable("sentry_king");
     public static ResourceKey<LootTable> SKY_STALKER_CRYSTAL = addBossCrystalLootTable("sky_stalker");
 
-    public static ResourceKey<LootTable> FROZEN_TROLL_TRADES = addBossCrystalLootTable("temple_guardian");
     public static ResourceKey<LootTable> SPIRIT_CRYSTAL = addLootTable("loot/spirit_crystal");
+    public static ResourceKey<LootTable> LOOT_BASIC = addLootTable("loot/loot_basic");
+    public static ResourceKey<LootTable> LOOT_GOLD = addLootTable("loot/loot_gold");
+    public static ResourceKey<LootTable> LOOT_DIAMOND = addLootTable("loot/loot_diamond");
+    public static ResourceKey<LootTable> LOOT_FROSTY = addLootTable("loot/loot_frosty_gift");
 
     public static ResourceKey<LootTable> addLootTable(String name) {
         return ResourceKey.create(Registries.LOOT_TABLE, JITL.rl(name));
     }
 
-    public static ResourceKey<LootTable> addNormalLootTable(String name) {
+    public static ResourceKey<LootTable> addVanillaLootTable(String name) {
         return ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.withDefaultNamespace(name));
     }
 

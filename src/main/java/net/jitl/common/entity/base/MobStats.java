@@ -2,6 +2,7 @@ package net.jitl.common.entity.base;
 
 public class MobStats {
     public static final double STANDARD_MOVEMENT_SPEED = 0.26D;
+    public static final double FAST_MOVEMENT_SPEED = 0.35D;
 
     public static final double STANDARD_FOLLOW_RANGE = 25D;
     public static final double STANDARD_FLYING_FOLLOW_RANGE = 50D;
@@ -138,7 +139,7 @@ public class MobStats {
 
     public static final double EUCA_CHARGER_HEALTH = 44;
     public static final double EUCA_CHARGER_DAMAGE = 8;
-    public static final double EUCA_CHARGER_MOVEMENT_SPEED = 0.5;
+    public static final double EUCA_CHARGER_MOVEMENT_SPEED = 0.4;
 
     public static final double EUCA_FIGHTER_HEALTH = 46;
     public static final double EUCA_FIGHTER_DAMAGE = 8;
@@ -285,7 +286,7 @@ public class MobStats {
     public static final double MEDIUM_HONGO_DAMAGE = 5;
 
     public static final double ROBOT_HEALTH = 20;
-    public static final double ROBOT_DAMAGE = 4;
+    public static final double ROBOT_DAMAGE = 5;
 
     public static final double SAND_CRAWLER_HEALTH = 20;
     public static final double SAND_CRAWLER_DAMAGE = 4;
@@ -315,8 +316,8 @@ public class MobStats {
     public static final int TAMED_EUCA_HOPPER_HEALTH = 50;
     public static final double EUCA_HOPPER_DAMAGE = 7.5F;
 
-    public static final int PET_ROBOT_HEALTH = 20;
-    public static final int PET_ROBOT_DAMAGE = 5;
+    public static final int PET_ROBOT_HEALTH = 40;
+    public static final double PET_ROBOT_DAMAGE = 6;
 
     public static final int SHIVERWOLF_HEALTH = 30;
     public static final int TAMED_SHIVERWOLF_HEALTH = 40;

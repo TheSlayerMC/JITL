@@ -8,6 +8,10 @@
     {
       "id": "jitl:skull_of_decay",
       "required": false
+    },
+    {
+      "id": "jitl:death_cap",
+      "required": false
     }
   ]
 }

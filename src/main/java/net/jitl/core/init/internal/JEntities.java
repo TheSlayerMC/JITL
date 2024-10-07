@@ -27,6 +27,7 @@ import net.jitl.common.entity.frozen.npc.FrozenGuardian;
 import net.jitl.common.entity.misc.Sentacoin;
 import net.jitl.common.entity.nether.*;
 import net.jitl.common.entity.overworld.*;
+import net.jitl.common.entity.overworld.Robot;
 import net.jitl.common.entity.overworld.npc.Mage;
 import net.jitl.common.entity.overworld.npc.OverworldSentryStalker;
 import net.jitl.common.entity.overworld.npc.RockiteGolem;
@@ -51,6 +52,7 @@ import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 @EventBusSubscriber(modid = JITL.MODID, bus = EventBusSubscriber.Bus.MOD)
@@ -136,6 +138,9 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<Cavurn>> CAVURN_TYPE = registerEntity(Cavurn::new, "cavurn", "Cavurn", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<Stonewalker>> STONEWALKER_TYPE = registerEntity(Stonewalker::new, "stonewalker", "Stonewalker", 1F, 1.2F, OVERWORLD_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<OverworldSentryStalker>> NEUTRAL_SENTRY_STALKER_TYPE = registerEntity(OverworldSentryStalker::new, "neutral_sentry_stalker", "Neutral Sentry Stalker", 1F, 2.75F, OVERWORLD_COLOR, NEUTRAL_COLOR);
+    public static final DeferredHolder<EntityType<?>, EntityType<Robot>> ROBOT_TYPE = registerEntity(Robot::new, "robot", "Robot", 1F, 2F, OVERWORLD_COLOR, HOSTILE_COLOR);
+    public static final DeferredHolder<EntityType<?>, EntityType<PetRobot>> PET_ROBOT_TYPE = registerEntity(PetRobot::new, "pet_robot", "Pet Robot", 0.5F, 1F, OVERWORLD_COLOR, NEUTRAL_COLOR);
+    public static final DeferredHolder<EntityType<?>, EntityType<Ferret>> FERRET_TYPE = registerEntity(Ferret::new, "ferret", "Ferret", 0.5F, 0.5F, OVERWORLD_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
 
     //NETHER MOBS
     public static final DeferredHolder<EntityType<?>, EntityType<Witherspine>> WITHERSPINE_TYPE = registerEntity(Witherspine::new, "witherspine", "Witherspine", 1F, 3.75F, NETHER_COLOR, HOSTILE_COLOR);
@@ -148,7 +153,7 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<HellSerpent>> HELL_SERPENT_TYPE = registerEntity(HellSerpent::new, "hell_serpent", "Hell Serpent", 0.5F, 0.25F, NETHER_COLOR, HOSTILE_COLOR);
 
     //BOIL MOBS
-    public static final DeferredHolder<EntityType<?>, EntityType<FlameLotus>> FLAME_LOTUS_TYPE = registerEntity(FlameLotus::new, "flame_lotus", "Flame Lotus", 1F, 0.25F, BOILING_COLOR, PASSIVE_COLOR, MobCategory.MONSTER);
+    public static final DeferredHolder<EntityType<?>, EntityType<FlameLotus>> FLAME_LOTUS_TYPE = registerEntity(FlameLotus::new, "flame_lotus", "Flame Lotus", 1F, 0.25F, BOILING_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
     public static final DeferredHolder<EntityType<?>, EntityType<BurningLight>> BURNING_LIGHT_TYPE = registerEntity(BurningLight::new, "burning_light", "Burning Light", 0.5F, 2F, BOILING_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<Frightener>> FRIGHTENER_TYPE = registerEntity(Frightener::new, "frightener", "Frightener", 0.5F, 2F, BOILING_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<Hellwing>> HELLWING_TYPE = registerEntity(Hellwing::new, "hellwing", "Hellwing", 1F, 1F, NETHER_COLOR, HOSTILE_COLOR);
@@ -167,11 +172,11 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<Shimmerer>> SHIMMERER_TYPE = registerEntity(Shimmerer::new, "shimmerer", "Shimmerer", 0.5F, 0.75F, EUCA_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<Golder>> GOLDER_TYPE = registerEntity(Golder::new, "golder", "Golder", 1F, 2F, EUCA_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<RoyalKing>> ROYAL_KING_TYPE = registerEntity(RoyalKing::new, "royal_king", "Royal King", 1F, 2F, EUCA_COLOR, PASSIVE_COLOR);
-    public static final DeferredHolder<EntityType<?>, EntityType<EucaHopper>> EUCA_HOPPER = registerEntity(EucaHopper::new, "euca_hopper", "Euca Hopper", 1F, 1F, EUCA_COLOR, NEUTRAL_COLOR);
+    public static final DeferredHolder<EntityType<?>, EntityType<EucaHopper>> EUCA_HOPPER = registerEntity(EucaHopper::new, "euca_hopper", "Euca Hopper", 1F, 1F, EUCA_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
 
     //FROZEN MOBS
     public static final DeferredHolder<EntityType<?>, EntityType<Eskimo>> ESKIMO_TYPE = registerEntity(Eskimo::new, "eskimo", "Eskimo", 1F, 2F, FROZEN_COLOR, TRADER_COLOR, MobCategory.CREATURE);
-    public static final DeferredHolder<EntityType<?>, EntityType<FrozenTrollEntity>> FROZEN_TROLL_TYPE = registerEntity(FrozenTrollEntity::new, "frozen_troll", "Frozen Troll", 1F, 2F, FROZEN_COLOR, NEUTRAL_COLOR, MobCategory.MONSTER);
+    public static final DeferredHolder<EntityType<?>, EntityType<FrozenTrollEntity>> FROZEN_TROLL_TYPE = registerEntity(FrozenTrollEntity::new, "frozen_troll", "Frozen Troll", 1F, 2F, FROZEN_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
     public static final DeferredHolder<EntityType<?>, EntityType<FrozenGuardian>> FROZEN_GUARDIAN_TYPE = registerEntity(FrozenGuardian::new, "frozen_guardian", "Frozen Guardian", 0.75F, 2F, FROZEN_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
     public static final DeferredHolder<EntityType<?>, EntityType<CrystalCluster>> CRYSTAL_CLUSTER_TYPE = registerEntity(CrystalCluster::new, "crystal_cluster", "Crystal Cluster", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<FrozenFrostbiter>> FROZEN_FROSTBITER_TYPE = registerEntity(FrozenFrostbiter::new, "frozen_frostbiter", "Frozen Frostbiter", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
@@ -180,12 +185,12 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<Shatterer>> SHATTERER_TYPE = registerEntity(Shatterer::new, "shatterer", "Shatterer", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<ShiveringBushwalker>> SHIVERING_BUSHWALKER_TYPE = registerEntity(ShiveringBushwalker::new, "shivering_bushwalker", "Shivering Bushwalker", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<ShiveringShrieker>> SHIVERING_SHRIEKER_TYPE = registerEntity(ShiveringShrieker::new, "shivering_shrieker", "Shivering Shrieker", 1F, 2F, FROZEN_COLOR, HOSTILE_COLOR);
-    public static final DeferredHolder<EntityType<?>, EntityType<Capybara>> CAPYBARA_TYPE = registerEntity(Capybara::new, "capybara", "Capybara", 1F, 2F, FROZEN_COLOR, NEUTRAL_COLOR, MobCategory.MONSTER);
-    public static final DeferredHolder<EntityType<?>, EntityType<Shiverwolf>> SHIVERWOLF_TYPE = registerEntity(Shiverwolf::new, "shiverwolf", "Shiverwolf", 1F, 2F, FROZEN_COLOR, NEUTRAL_COLOR, MobCategory.MONSTER);
+    public static final DeferredHolder<EntityType<?>, EntityType<Capybara>> CAPYBARA_TYPE = registerEntity(Capybara::new, "capybara", "Capybara", 1F, 2F, FROZEN_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
+    public static final DeferredHolder<EntityType<?>, EntityType<Shiverwolf>> SHIVERWOLF_TYPE = registerEntity(Shiverwolf::new, "shiverwolf", "Shiverwolf", 1F, 2F, FROZEN_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
 
     //DEPTHS MOBS
     public static final DeferredHolder<EntityType<?>, EntityType<Darkener>> DARKENER_TYPE = registerEntity(Darkener::new, "darkener", "Darkener", 1F, 1F, DEPTHS_COLOR, NEUTRAL_COLOR);
-    public static final DeferredHolder<EntityType<?>, EntityType<DarknessCrawler>> DARKNESS_CRAWLER_TYPE = registerEntity(DarknessCrawler::new, "darkness_crawler", "Darkness Crawler", 1F, 1F, DEPTHS_COLOR, HOSTILE_COLOR);
+    public static final DeferredHolder<EntityType<?>, EntityType<DarknessCrawler>> DARKNESS_CRAWLER_TYPE = registerEntity(DarknessCrawler::new, "darkness_crawler", "Darkness Crawler", 1F, 1F, DEPTHS_COLOR, NEUTRAL_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<DarkSorcerer>> DARK_SORCERER_TYPE = registerEntity(DarkSorcerer::new, "dark_sorcerer", "Dark Sorcerer", 0.75F, 3F, DEPTHS_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<DepthsBeast>> DEPTHS_BEAST_TYPE = registerEntity(DepthsBeast::new, "depths_beast", "Depths Beast", 1F, 2F, DEPTHS_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<StaringGuardian>> STARING_GUARDIAN_TYPE = registerEntity(StaringGuardian::new, "staring_guardian", "Staring Guardian", 1F, 2F, DEPTHS_COLOR, TRADER_COLOR);
@@ -195,7 +200,7 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<Auron>> AURON_TYPE = registerEntity(Auron::new, "auron", "Auron", 0.5F, 1.1F, DEPTHS_COLOR, TRADER_COLOR);
 
     //CORBA MOBS
-    public static final DeferredHolder<EntityType<?>, EntityType<CorbanianMollusk>> CORBANIAN_MOLLUSK_TYPE = registerEntity(CorbanianMollusk::new, "corbanian_mollusk", "Corbanian Mollusk", 0.75F, 1F, CORBA_COLOR, NEUTRAL_COLOR, MobCategory.MONSTER);
+    public static final DeferredHolder<EntityType<?>, EntityType<CorbanianMollusk>> CORBANIAN_MOLLUSK_TYPE = registerEntity(CorbanianMollusk::new, "corbanian_mollusk", "Corbanian Mollusk", 0.75F, 1F, CORBA_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
     public static final DeferredHolder<EntityType<?>, EntityType<Smelly>> SMELLY_TYPE = registerEntity(Smelly::new, "smelly", "Smelly", 1.5F, 3F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
     public static final DeferredHolder<EntityType<?>, EntityType<Stinky>> STINKY_TYPE = registerEntity(Stinky::new, "stinky", "Stinky", 0.75F, 1.75F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
     public static final DeferredHolder<EntityType<?>, EntityType<GreenTordo>> GREEN_TORDO_TYPE = registerEntity(GreenTordo::new, "green_tordo", "Green Tordo", 0.75F, 2.5F, CORBA_COLOR, TRADER_COLOR, MobCategory.MONSTER);
@@ -209,7 +214,7 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<NatureMage>> NATURE_MAGE_TYPE = registerEntity(NatureMage::new, "nature_mage", "Nature Mage", 0.75F, 2F, CORBA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
     public static final DeferredHolder<EntityType<?>, EntityType<OvergrownMerchant>> OVERGROWN_MERCHANT_TYPE = registerEntity(OvergrownMerchant::new, "overgrown_merchant", "Overgrown Merchant", 0.75F, 2F, CORBA_COLOR, TRADER_COLOR, MobCategory.MONSTER);
     public static final DeferredHolder<EntityType<?>, EntityType<Hooded>> HOODED_TYPE = registerEntity(Hooded::new, "hooded", "The Hooded", 0.75F, 2F, CORBA_COLOR, TRADER_COLOR, MobCategory.MONSTER);
-    public static final DeferredHolder<EntityType<?>, EntityType<SwampFly>> SWAMP_FLY_TYPE = registerEntity(SwampFly::new, "swamp_fly", "Swamp Fly", 0.91F, 0.9F, CORBA_COLOR, NEUTRAL_COLOR, MobCategory.MONSTER);
+    public static final DeferredHolder<EntityType<?>, EntityType<SwampFly>> SWAMP_FLY_TYPE = registerEntity(SwampFly::new, "swamp_fly", "Swamp Fly", 0.91F, 0.9F, CORBA_COLOR, NEUTRAL_COLOR, MobCategory.CREATURE);
 
     //TERRANIAN MOBS
     public static final DeferredHolder<EntityType<?>, EntityType<AranaKing>> ARANA_KING_TYPE = registerEntity(AranaKing::new, "arana_king", "Arana King", 1F, 1.25F, TERRANIA_COLOR, HOSTILE_COLOR);
@@ -230,7 +235,7 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<StarlightGolem>> STARLIGHT_GOLEM_TYPE = registerEntity(StarlightGolem::new, "starlight_golem", "Starlight Golem", 1.5F, 3F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
     public static final DeferredHolder<EntityType<?>, EntityType<StarlightTransporter>> STARLIGHT_TRANSPORTER_TYPE = registerEntity(StarlightTransporter::new, "starlight_transporter", "Starlight Transporter", 0.75F, 1.75F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
     public static final DeferredHolder<EntityType<?>, EntityType<StarlightWalker>> STARLIGHT_WALKER_TYPE = registerEntity(StarlightWalker::new, "starlight_walker", "Starlight Walker", 0.75F, 1F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
-    public static final DeferredHolder<EntityType<?>, EntityType<AeroLotus>> AERO_LOTUS_TYPE = registerEntity(AeroLotus::new, "aero_lotus", "Aero Lotus", 1F, 0.25F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.MONSTER);
+    public static final DeferredHolder<EntityType<?>, EntityType<AeroLotus>> AERO_LOTUS_TYPE = registerEntity(AeroLotus::new, "aero_lotus", "Aero Lotus", 1F, 0.25F, CLOUDIA_COLOR, HOSTILE_COLOR, MobCategory.CREATURE);
 
     //SENTERIAN MOBS
     public static final DeferredHolder<EntityType<?>, EntityType<SentryLord>> SENTRY_LORD_TYPE = registerEntity(SentryLord::new, "sentry_lord", "Sentry Lord", 1F, 2.9F, SENTERIAN_COLOR, HOSTILE_COLOR);
@@ -405,6 +410,9 @@ public class JEntities {
         event.put(MINI_SENTRY_LORD_TYPE.get(), MiniSentryLord.createAttributes());
         event.put(MINI_SENTRY_WALKER_TYPE.get(), MiniSentryWalker.createAttributes());
         event.put(NEUTRAL_SENTRY_STALKER_TYPE.get(), OverworldSentryStalker.createAttributes());
+        event.put(ROBOT_TYPE.get(), Robot.createAttributes());
+        event.put(PET_ROBOT_TYPE.get(), PetRobot.createAttributes());
+        event.put(FERRET_TYPE.get(), Ferret.createAttributes());
     }
 
     @SubscribeEvent
@@ -442,6 +450,9 @@ public class JEntities {
         setDefaultMonsterSpawn(event, SAND_CRAWLER_TYPE);
         setDefaultSpawn(event, JUNGLE_TURTLE_TYPE);
         setDefaultSpawn(event, NEUTRAL_SENTRY_STALKER_TYPE);
+        setDefaultSpawn(event, ROBOT_TYPE);
+        setDefaultSpawn(event, PET_ROBOT_TYPE);
+        setDefaultSpawn(event, FERRET_TYPE);
 
         setDefaultMonsterSpawn(event, WITHERSPINE_TYPE);
         setDefaultSpawn(event, HELL_TURTLE_TYPE);
@@ -452,7 +463,7 @@ public class JEntities {
         setDefaultMonsterSpawn(event, HELL_SERPENT_TYPE);
         setDefaultMonsterSpawn(event, OKOLOO_TYPE);
 
-        setDefaultMonsterSpawn(event, FLAME_LOTUS_TYPE);
+        setDefaultSpawn(event, FLAME_LOTUS_TYPE);
         setDefaultMonsterSpawn(event, BURNING_LIGHT_TYPE);
         setDefaultMonsterSpawn(event, MAGMA_BLAZE_TYPE);
         setDefaultMonsterSpawn(event, FRIGHTENER_TYPE);
@@ -474,23 +485,23 @@ public class JEntities {
 
         setDefaultSpawn(event, ESKIMO_TYPE);
         setDefaultMonsterSpawn(event, ICE_GOLEM_TYPE);
-        setDefaultMonsterSpawn(event, FROZEN_TROLL_TYPE);
+        setDefaultSpawn(event, FROZEN_TROLL_TYPE);
         setDefaultMonsterSpawn(event, FROZEN_FROSTBITER_TYPE);
         setDefaultMonsterSpawn(event, PERMAFRAUST_TYPE);
         setDefaultMonsterSpawn(event, SHIVERING_BUSHWALKER_TYPE);
         setDefaultMonsterSpawn(event, SHIVERING_SHRIEKER_TYPE);
-        setDefaultMonsterSpawn(event, CAPYBARA_TYPE);
+        setDefaultSpawn(event, CAPYBARA_TYPE);
         setDefaultSpawn(event, SHIVERWOLF_TYPE);
 
         setDefaultSpawn(event, STARLIGHT_BLACKSMITH_TYPE);
         setDefaultSpawn(event, STARLIGHT_VILLAGER_TYPE);
-        setDefaultMonsterSpawn(event, AERO_LOTUS_TYPE);
+        setDefaultSpawn(event, AERO_LOTUS_TYPE);
 
         setDefaultSpawn(event, GREEN_TORDO_TYPE);
         setDefaultSpawn(event, RED_TORDO_TYPE);
         setDefaultSpawn(event, HOODED_TYPE);
         setDefaultSpawn(event, OVERGROWN_MERCHANT_TYPE);
-        setDefaultMonsterSpawn(event, CORBANIAN_MOLLUSK_TYPE);
+        setDefaultSpawn(event, CORBANIAN_MOLLUSK_TYPE);
         setDefaultMonsterSpawn(event, LEAF_BLOWER_TYPE);
         setDefaultMonsterSpawn(event, NATURE_MAGE_TYPE);
         setDefaultMonsterSpawn(event, SMELLY_TYPE);

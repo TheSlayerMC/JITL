@@ -1,0 +1,105 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 64,
+				"texture_height": 32,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "head",
+					"pivot": [0, 26, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-4, 26, -4], "size": [8, 8, 8], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "body",
+					"pivot": [0, 24, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-4, 14, -2], "size": [8, 10, 4], "uv": [16, 16]}
+					]
+				},
+				{
+					"name": "rightarm",
+					"pivot": [-7, 22, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-10, 12, -2], "size": [4, 12, 4], "uv": [40, 16]}
+					]
+				},
+				{
+					"name": "leftarm",
+					"pivot": [7, 22, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [6, 12, -2], "size": [4, 12, 4], "uv": [40, 16]}
+					]
+				},
+				{
+					"name": "rightleg",
+					"pivot": [-2, 12, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-4, 0, -2], "size": [4, 12, 4], "uv": [0, 16]}
+					]
+				},
+				{
+					"name": "leftleg",
+					"pivot": [2, 12, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [0, 0, -2], "size": [4, 12, 4], "uv": [0, 16]}
+					]
+				},
+				{
+					"name": "leftHolder",
+					"pivot": [5, 21.92103, -0.08576],
+					"mirror": true,
+					"cubes": [
+						{"origin": [4, 20.92103, -1.08576], "size": [2, 2, 2], "uv": [34, 0]}
+					]
+				},
+				{
+					"name": "rightHolder",
+					"pivot": [-5, 21.94657, -0.05645],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-6, 20.94657, -1.05645], "size": [2, 2, 2], "uv": [34, 0]}
+					]
+				},
+				{
+					"name": "leftLegHolder",
+					"pivot": [2, 13, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [1, 12, -1], "size": [2, 2, 2], "uv": [34, 0]}
+					]
+				},
+				{
+					"name": "rightLegHolder",
+					"pivot": [-2, 13, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-3, 12, -1], "size": [2, 2, 2], "uv": [34, 0]}
+					]
+				},
+				{
+					"name": "headHolder",
+					"pivot": [-2, 26, -1],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-2, 24, -1], "size": [4, 2, 2], "uv": [50, 0]}
+					]
+				}
+			]
+		}
+	]
+}

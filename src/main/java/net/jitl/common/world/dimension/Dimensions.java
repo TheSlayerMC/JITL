@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -48,4 +49,33 @@ public class Dimensions {
     public static final ResourceKey<Level> SENTERIAN = ResourceKey.create(Registries.DIMENSION, JITL.rl("senterian"));
     public static final ResourceKey<DimensionType> SENTERIAN_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, JITL.rl("senterian"));
 
+    public static class JBiomes {
+
+        public static final ResourceKey<Biome> EUCA_GOLDITE_GRAINS = ResourceKey.create(Registries.BIOME, JITL.rl("euca/euca_goldite_grains"));
+        public static final ResourceKey<Biome> EUCA_PLAINS = ResourceKey.create(Registries.BIOME, JITL.rl("euca/euca_plains"));
+
+        public static final ResourceKey<Biome> BOIL = ResourceKey.create(Registries.BIOME, JITL.rl("boil/boil"));
+        public static final ResourceKey<Biome> BOILING_SANDS = ResourceKey.create(Registries.BIOME, JITL.rl("boil/boiling_sands"));
+        public static final ResourceKey<Biome> CHARRED_FIELDS = ResourceKey.create(Registries.BIOME, JITL.rl("boil/charred_fields"));
+        public static final ResourceKey<Biome> SCORCHED_WASTELANDS = ResourceKey.create(Registries.BIOME, JITL.rl("boil/scorched_wastelands"));
+
+        public static final ResourceKey<Biome> BITTERWOOD_FOREST = ResourceKey.create(Registries.BIOME, JITL.rl("frozen/bitterwood_forest"));
+        public static final ResourceKey<Biome> DYING_FOREST = ResourceKey.create(Registries.BIOME, JITL.rl("frozen/dying_forest"));
+        public static final ResourceKey<Biome> FROZEN_WASTES = ResourceKey.create(Registries.BIOME, JITL.rl("frozen/frozen_wastes"));
+
+        public static final ResourceKey<Biome> DEPTHS = ResourceKey.create(Registries.BIOME, JITL.rl("depths/depths"));
+
+        public static final ResourceKey<Biome> BOGWEED_FIELDS = ResourceKey.create(Registries.BIOME, JITL.rl("corba/bogweed_fields"));
+        public static final ResourceKey<Biome> CORBA_PLAINS = ResourceKey.create(Registries.BIOME, JITL.rl("corba/corba_plains"));
+        public static final ResourceKey<Biome> TAINTED_FOREST = ResourceKey.create(Registries.BIOME, JITL.rl("corba/tainted_forest"));
+        public static final ResourceKey<Biome> TAINTED_SWAMP = ResourceKey.create(Registries.BIOME, JITL.rl("corba/tainted_swamp"));
+
+        public static final ResourceKey<Biome> MUSHROOM_FOREST = ResourceKey.create(Registries.BIOME, JITL.rl("terrania/mushroom_forest"));
+        public static final ResourceKey<Biome> TERRANIA = ResourceKey.create(Registries.BIOME, JITL.rl("terrania/terrania"));
+
+        public static final ResourceKey<Biome> CLOUDIA = ResourceKey.create(Registries.BIOME, JITL.rl("cloudia/cloudia"));
+
+        public static final ResourceKey<Biome> SENTERIAN = ResourceKey.create(Registries.BIOME, JITL.rl("senterian/senterian"));
+
+    }
 }

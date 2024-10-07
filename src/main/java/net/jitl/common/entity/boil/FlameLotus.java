@@ -2,6 +2,7 @@ package net.jitl.common.entity.boil;
 
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JMonsterEntity;
+import net.jitl.common.entity.base.JPathfinderMob;
 import net.jitl.common.entity.base.MobStats;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
@@ -18,9 +19,9 @@ import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 
-public class FlameLotus extends JMonsterEntity {
+public class FlameLotus extends JPathfinderMob {
 
-    public FlameLotus(EntityType<? extends Monster> pEntityType, Level pLevel) {
+    public FlameLotus(EntityType<? extends JPathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         setKnowledge(EnumKnowledge.BOIL, 5F);
     }

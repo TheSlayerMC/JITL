@@ -2,17 +2,27 @@
   "feature": "jitl:euca_water",
   "placement": [
     {
-      "type": "minecraft:noise_based_count",
-      "noise_to_count_ratio": 7,
-      "noise_factor": 10,
-      "noise_offset": 2
+      "type": "minecraft:count",
+      "count": 100
     },
     {
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:heightmap",
-      "heightmap": "WORLD_SURFACE"
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": {
+          "below_top": 0
+        },
+        "min_inclusive": {
+          "above_bottom": 0
+        }
+      }
+    },
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 8
     },
     {
       "type": "minecraft:biome"

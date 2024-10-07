@@ -2,16 +2,31 @@
   "feature": "jitl:corba_swamp_tree",
   "placement": [
     {
-      "type": "minecraft:noise_based_count",
-      "noise_to_count_ratio": 12,
-      "noise_factor": 50
+      "type": "minecraft:count",
+      "count": {
+        "type": "minecraft:weighted_list",
+        "distribution": [
+          {
+            "data": 4,
+            "weight": 9
+          },
+          {
+            "data": 5,
+            "weight": 1
+          }
+        ]
+      }
     },
     {
       "type": "minecraft:in_square"
     },
     {
+      "type": "minecraft:surface_water_depth_filter",
+      "max_water_depth": 0
+    },
+    {
       "type": "minecraft:heightmap",
-      "heightmap": "WORLD_SURFACE"
+      "heightmap": "OCEAN_FLOOR"
     },
     {
       "type": "minecraft:biome"

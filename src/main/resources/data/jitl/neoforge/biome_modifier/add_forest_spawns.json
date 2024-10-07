@@ -31,6 +31,12 @@
       "weight": 3,
       "minCount": 1,
       "maxCount": 3
+    },
+    {
+      "type": "jitl:ferret",
+      "weight": 3,
+      "minCount": 1,
+      "maxCount": 2
     }
   ]
 }

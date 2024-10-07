@@ -8,8 +8,17 @@
     {
       "type": "minecraft:height_range",
       "height": {
-        "absolute": 0
+        "type": "minecraft:uniform",
+        "max_inclusive": {
+          "absolute": 0
+        },
+        "min_inclusive": {
+          "absolute": 0
+        }
       }
+    },
+    {
+      "type": "minecraft:biome"
     }
   ]
 }

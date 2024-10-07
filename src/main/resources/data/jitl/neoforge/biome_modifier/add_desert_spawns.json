@@ -13,6 +13,12 @@
       "weight": 3,
       "minCount": 1,
       "maxCount": 3
+    },
+    {
+      "type": "jitl:robot",
+      "weight": 3,
+      "minCount": 1,
+      "maxCount": 3
     }
   ]
 }

@@ -49,8 +49,8 @@ public class LangHelper {
 		return Component.translatable("jitl.boss.spawn", boss);
 	}
 
-	public static MutableComponent setPetSpawner(String pet) {
-		return Component.translatable(getFormattedText("jitl.petSpawn") + ": " + pet);
+	public static MutableComponent setPetSpawner(String boss) {
+		return Component.translatable("jitl.pet.spawn", boss);
 	}
 
 	public static MutableComponent nameToKey(String name) {

@@ -27,6 +27,11 @@ public abstract class JNeutralMonster extends JMonsterEntity implements NeutralM
         super(pEntityType, pLevel);
     }
 
+    @Override
+    protected boolean shouldDespawnInPeaceful() {
+        return isAngry();
+    }
+
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         this.addPersistentAngerSaveData(compound);

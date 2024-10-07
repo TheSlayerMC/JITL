@@ -1,0 +1,110 @@
+{
+  "carvers": {},
+  "downfall": 0.4,
+  "effects": {
+    "fog_color": 7112378,
+    "foliage_color": 25855,
+    "grass_color": 3145727,
+    "music": {
+      "max_delay": 24000,
+      "min_delay": 12000,
+      "replace_current_music": false,
+      "sound": "jitl:music.dim.frozen"
+    },
+    "particle": {
+      "options": {
+        "type": "jitl:snowflake"
+      },
+      "probability": 0.03428
+    },
+    "sky_color": 8625919,
+    "water_color": 3145727,
+    "water_fog_color": 25855
+  },
+  "features": [
+    [],
+    [],
+    [
+      "jitl:glacial_rock"
+    ],
+    [],
+    [],
+    [],
+    [
+      "jitl:rimestone_ore",
+      "jitl:peridot_ore"
+    ],
+    [],
+    [],
+    [
+      "jitl:large_frozen_bitterwood_tree",
+      "jitl:medium_frozen_bitterwood_tree",
+      "jitl:small_frozen_bitterwood_tree",
+      "jitl:frozen_veg",
+      "jitl:frozen_flowers"
+    ]
+  ],
+  "has_precipitation": true,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [
+      {
+        "type": "jitl:frozen_troll",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 20
+      },
+      {
+        "type": "jitl:shiverwolf",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 20
+      },
+      {
+        "type": "jitl:capybara",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 20
+      }
+    ],
+    "misc": [],
+    "monster": [
+      {
+        "type": "jitl:shivering_bushwalker",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 5
+      },
+      {
+        "type": "jitl:shivering_shrieker",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 5
+      },
+      {
+        "type": "jitl:permafraust",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 5
+      },
+      {
+        "type": "jitl:crystal_cluster",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 5
+      },
+      {
+        "type": "jitl:shatterer",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 5
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": -0.5
+}

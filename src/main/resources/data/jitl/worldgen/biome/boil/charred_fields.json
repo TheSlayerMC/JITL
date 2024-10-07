@@ -1,71 +1,90 @@
 {
-  "temperature": 0.8,
-  "downfall": 0.4,
-  "has_precipitation": false,
-  "category": "plains",
+  "carvers": {
+    "air": [
+      "jitl:boil_carver"
+    ]
+  },
+  "downfall": 0.0,
   "effects": {
-    "sky_color": 4262144,
     "fog_color": 4262144,
-    "water_color": 4262144,
-    "water_fog_color": 4262144,
+    "foliage_color": 4262144,
+    "grass_color": 4262144,
+    "music": {
+      "max_delay": 24000,
+      "min_delay": 12000,
+      "replace_current_music": false,
+      "sound": "jitl:music.dim.boil"
+    },
     "particle": {
       "options": {
         "type": "jitl:flame_pollen"
       },
       "probability": 0.001428
     },
-    "music": {
-      "sound": "jitl:music.dim.boil",
-      "min_delay": 0,
-      "max_delay": 0,
-      "replace_current_music": true
-    }
+    "sky_color": 7254527,
+    "water_color": 4262144,
+    "water_fog_color": 4262144
   },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "jitl:ashual_ore",
+      "jitl:blazium_ore"
+    ],
+    [],
+    [],
+    [
+      "jitl:boil_fire",
+      "jitl:charred_veg",
+      "jitl:boil_undergrowth",
+      "jitl:volcanic_rock",
+      "jitl:large_charred_tree",
+      "jitl:medium_burned_tree",
+      "jitl:small_burned_tree"
+    ]
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
   "spawners": {
-    "monster": [
+    "ambient": [],
+    "axolotls": [],
+    "creature": [
       {
         "type": "jitl:flame_lotus",
-        "weight": 1,
+        "maxCount": 50,
         "minCount": 1,
-        "maxCount": 3
-      },
+        "weight": 2
+      }
+    ],
+    "misc": [],
+    "monster": [
       {
-        "type": "jitl:burning_light",
-        "weight": 1,
+        "type": "jitl:magma_blaze",
+        "maxCount": 3,
         "minCount": 1,
-        "maxCount": 3
+        "weight": 2
       },
       {
         "type": "jitl:frightener",
-        "weight": 1,
+        "maxCount": 3,
         "minCount": 1,
-        "maxCount": 3
+        "weight": 2
       },
       {
-        "type": "jitl:magma_blaze",
-        "weight": 1,
+        "type": "jitl:burning_light",
+        "maxCount": 3,
         "minCount": 1,
-        "maxCount": 3
+        "weight": 2
       }
-    ]
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
   },
-  "carvers": {
-    "air": [
-      "jitl:boil_carver"
-    ]
-  },
-  "spawn_costs": {},
-  "features": [
-    [
-      "jitl:charred_veg",
-      "jitl:boil_fire",
-      "jitl:volcanic_rock",
-      "jitl:small_burned_tree",
-      "jitl:medium_burned_tree",
-      "jitl:large_charred_tree",
-      "jitl:ashual_ore",
-      "jitl:blazium_ore",
-      "jitl:boil_undergrowth"
-    ]
-  ]
+  "temperature": 2.0
 }

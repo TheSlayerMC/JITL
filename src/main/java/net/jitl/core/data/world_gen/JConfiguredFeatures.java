@@ -156,6 +156,7 @@ public class JConfiguredFeatures {
             SMALL_FROZEN_BITTERWOOD_TREE = registerKey("small_frozen_bitterwood_tree"),
             ICE_SPIKE = registerKey("frozen_ice_spike"),
             GLACIAL_ROCK = registerKey("glacial_rock");
+
     //CORBA
     public static final ResourceKey<ConfiguredFeature<?, ?>>
             ORBADITE_ORE = registerKey("orbadite_ore"),
@@ -181,8 +182,7 @@ public class JConfiguredFeatures {
             SMALL_TERRAMUSHROOM = registerKey("small_terramushroom"),
             HUGE_PINK_TERRASHROOM = registerKey("huge_pink_terrashroom"),
             HUGE_PURPLE_TERRASHROOM = registerKey("huge_purple_terrashroom"),
-            MEGA_TERRANIAN_TREE = registerKey("mega_terranian_tree")
-                    ;
+            MEGA_TERRANIAN_TREE = registerKey("mega_terranian_tree");
 
     //CLOUDIA
     public static final ResourceKey<ConfiguredFeature<?, ?>> CLOUDIA_TERRAIN = registerKey("cloudia_terrain"),

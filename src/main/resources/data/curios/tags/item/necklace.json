@@ -12,6 +12,10 @@
     {
       "id": "jitl:ice_amulet",
       "required": false
+    },
+    {
+      "id": "jitl:lucky_charm",
+      "required": false
     }
   ]
 }

@@ -55,6 +55,9 @@ public class JItem extends Item {
         addItemDesc(JItems.MINT_CANDY_CANE.get(), tooltip, "jitl.item.desc.mine");
         addItemDesc(JItems.FRUITY_CANDY_CANE.get(), tooltip, "jitl.item.desc.dam");
         addItemDesc(JItems.CHERRY_CANDY_CANE.get(), tooltip, "jitl.item.desc.regen");
+
+        addItemDesc(JItems.CHERRY_CANDY_CANE.get(), tooltip, "jitl.item.desc.regen");
+
     }
 
     public void addItemDesc(Item item, List<Component> tooltip, String descLoc) {

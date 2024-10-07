@@ -105,7 +105,6 @@ public class JItems {
     public static final DeferredItem<Item> GREEN_GEM = registerNormalItem("green_gem", "Green Gem");
     public static final DeferredItem<Item> BLUE_GEM = registerNormalItem("blue_gem", "Blue Gem");
     public static final DeferredItem<Item> AQUA_STONE = registerNormalItem("aqua_stone", "Aqua Stone");
-    public static final DeferredItem<Item> HEART_STONE = registerNormalItem("heart_stone", "Heart Stone");
     public static final DeferredItem<Item> HELL_TURTLE_SHELL = registerNormalItem("hell_turtle_shell", "Hell Turtle Shell");
     public static final DeferredItem<Item> OVER_SEEING_EYE = registerNormalItem("over_seeing_eye", "Over Seeing Eye");
     public static final DeferredItem<Item> OVER_SEEING_TABLET = registerNormalItem("over_seeing_tablet", "Over Seeing tablet");
@@ -656,7 +655,15 @@ public class JItems {
     public static final DeferredItem<Item> RING_OF_NAUSEA = registerNormalItem("ring_of_nausea", "Ring of Nausea", () -> new JRingItem(itemProps().stacksTo(1)).effect(MobEffects.CONFUSION));
     public static final DeferredItem<Item> RING_OF_SLOWNESS = registerNormalItem("ring_of_slowness", "Ring of Slowness", () -> new JRingItem(itemProps().stacksTo(1)).effect(MobEffects.MOVEMENT_SLOWDOWN));
     public static final DeferredItem<Item> RING_OF_WITHERING = registerNormalItem("ring_of_withering", "Ring of Withering", () -> new JRingItem(itemProps().stacksTo(1)).effect(MobEffects.WITHER));
-    public static final DeferredItem<Item> SKULL_OF_DECAY = registerNormalItem("skull_of_decay", "Skull Of Decay", () -> new JItem(JItems.itemProps().stacksTo(1).durability(100)));
+    public static final DeferredItem<Item> SKULL_OF_DECAY = registerNormalItem("skull_of_decay", "Skull Of Decay", () -> new JCurioItem(JItems.itemProps().stacksTo(1).durability(100)));
+    public static final DeferredItem<Item> DEATH_CAP = registerNormalItem("death_cap", "Death Cap", () -> new JCurioItem(JItems.itemProps().stacksTo(1).durability(100)));
+    public static final DeferredItem<Item> LUCKY_CHARM = registerNormalItem("lucky_charm", "Lucky Charm", () -> new JCurioItem(JItems.itemProps().stacksTo(1).durability(100)));
+
+    public static final DeferredItem<Item> MINERS_PEARL = registerNormalItem("miners_pearl", "Miner's Pearl", () -> new MinersPearl(JItems.itemProps().stacksTo(1).durability(10)));
+    public static final DeferredItem<Item> MOON_OF_ETERNAL_NIGHT = registerNormalItem("moon_of_eternal_night", "Moon of Eternal Night", () -> new EternalNight(JItems.itemProps().stacksTo(1).durability(10)));
+    public static final DeferredItem<Item> HEART_STONE = registerNormalItem("heart_stone", "Heart Stone", () -> new HealingItem(-1F));
+
+    public static final DeferredItem<Item> PET_FOOD = registerNormalItem("pet_food", "Pet Food");
 
     public static final DeferredItem<Item> LOOT_POUCH = registerNormalItem("loot_pouch", "Loot Pouch", () -> new LootItem(LootItem.LootTier.NORMAL, Rarity.COMMON));
     public static final DeferredItem<Item> GOLD_LOOT_POUCH = registerNormalItem("gold_loot_pouch", "Loot Pouch", () -> new LootItem(LootItem.LootTier.GOLD, Rarity.UNCOMMON));
@@ -687,6 +694,8 @@ public class JItems {
     public static final DeferredItem<Item> SENTRY_KING_ORB = registerNormalItem("sentry_king_orb", "Sentry King Orb", BossSpawnerItem::new);
     public static final DeferredItem<Item> MYSTERIOUS_DISK = registerNormalItem("mysterious_disk", "Mysterious Disk", BossSpawnerItem::new);
     public static final DeferredItem<Item> ENCHANTED_TERRASTAR = registerNormalItem("enchanted_terrastar", "Enchanted Terrastar", BossSpawnerItem::new);
+
+    public static final DeferredItem<Item> PET_ROBOT_SPAWNER = registerNormalItem("pet_robot_spawner", "Pet Robot Spawner", PetSpawnerItem::new);
 
     public static final DeferredItem<Item> SENTACOIN = registerNormalItem("sentacoin", "Sentacoin", () -> new SentacoinItem(Sentacoin.Type.COIN));
     public static final DeferredItem<Item> SENTACOIN_BAG = register("sentacoin_bag", "Sentacoin Bag", () -> new SentacoinItem(Sentacoin.Type.BAG), ItemType.MODEL);

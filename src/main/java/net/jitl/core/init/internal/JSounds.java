@@ -158,6 +158,10 @@ public class JSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> ROBOT_HURT = registerSound("entities.robot_hurt");
     public static final DeferredHolder<SoundEvent, SoundEvent> ROBOT_DEATH = registerSound("entities.robot_death");
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> FERRET = registerSound("entities.ferret");
+    public static final DeferredHolder<SoundEvent, SoundEvent> FERRET_HURT = registerSound("entities.ferret_hurt");
+    public static final DeferredHolder<SoundEvent, SoundEvent> FERRET_DEATH = registerSound("entities.ferret_death");
+
     public static final DeferredHolder<SoundEvent, SoundEvent> SPIKED_BEAST = registerSound("entities.spiked_beast");
     public static final DeferredHolder<SoundEvent, SoundEvent> SPIKED_BEAST_HURT = registerSound("entities.spiked_beast_hurt");
 

@@ -127,6 +127,9 @@ public class RenderEntitys {
         EntityRenderers.register(JEntities.CAVELING_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("caveling", JDimension.OVERWORLD), 0.5F));
         EntityRenderers.register(JEntities.CAVURN_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("cavurn", JDimension.OVERWORLD), 0.5F));
         EntityRenderers.register(JEntities.NEUTRAL_SENTRY_STALKER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("neutral_sentry_stalker", JDimension.OVERWORLD), 0.25F, 0.7F));
+        EntityRenderers.register(JEntities.ROBOT_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("robot", JDimension.OVERWORLD)));
+        EntityRenderers.register(JEntities.PET_ROBOT_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("pet_robot", JDimension.OVERWORLD), 0.25F, 0.5F));
+        EntityRenderers.register(JEntities.FERRET_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("ferret", JDimension.OVERWORLD), 0.25F, 1.0F));
 
         EntityRenderers.register(JEntities.TOWER_GUARDIAN_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("tower_guardian", JDimension.BOSS), 1F, 1.15F));
         EntityRenderers.register(JEntities.ROCKITE_SMASHER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("rockite_smasher", JDimension.BOSS), 1F, 2F));

@@ -626,6 +626,7 @@ public class LangRegistry {
         writeToFile("\"jitl.tooltip.uses_remaining\" : \"Uses Remaining\",");
         writeToFile("\"jitl.tooltip.okoloo\" : \"Placed in Okoloo Pedestal\",");
         writeToFile("\"jitl.boss.spawn\" : \"Used to spawn the boss %s\",");
+        writeToFile("\"jitl.pet.spawn\" : \"Used to spawn a pet %s\",");
 
         writeToFile("\"enchantment.jitl.lightweight\" : \"Lightweight\",");
         writeToFile("\"enchantment.jitl.razor\" : \"Razor Sharp\",");
@@ -672,6 +673,11 @@ public class LangRegistry {
         writeToFile("\"jitl.message.update_available\" : \"Update available! Latest version: %s\",");
         writeToFile("\"jitl.message.current_version\" : \"Current Version: %s\",");
         writeToFile("\"jitl.message.up_to_date\" : \"Your version is up to date. Enjoy!\",");
+
+        writeToFile("\"jitl.message.item.miners_pearl\" : \"The pearl doesn't feel safe enough to teleport.\",");
+        writeToFile("\"jitl.message.item.eternal_night\" : \"%s isn't scared of the dark...\",");
+        writeToFile("\"jitl.item.desc.full_health\" : \"Restores player to full health\",");
+        writeToFile("\"jitl.item.desc.health\" : \"Restores player to full health\",");
 
         writeToFile("\"jitl.boss_spawn.fail\" : \"%s cannot be called upon unless in the %s dimension.\",");
         writeToFile("\"jitl.boss_spawn.okoloo\" : \"Time to get Clubbing\",");

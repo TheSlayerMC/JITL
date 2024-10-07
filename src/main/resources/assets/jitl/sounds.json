@@ -404,6 +404,25 @@
     ]
   },
 
+  "entities.ferret": {
+    "sounds": [
+      "jitl:entities/ferret1",
+      "jitl:entities/ferret2",
+      "jitl:entities/ferret3"
+    ]
+  },
+  "entities.ferret_hurt": {
+    "sounds": [
+      "jitl:entities/ferret_hurt"
+    ]
+  },
+  "entities.ferret_death": {
+    "sounds": [
+      "jitl:entities/ferret_death"
+    ]
+  },
+
+
   "entities.spiked_beast": {
     "sounds": [
       "jitl:entities/spiked_beast"

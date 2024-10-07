@@ -1,42 +1,57 @@
 {
-  "temperature": 0.8,
-  "downfall": 0,
-  "has_precipitation": false,
-  "effects": {
-    "sky_color": 61183,
-    "fog_color": 61183,
-    "water_color": 61183,
-    "water_fog_color": 61183,
-    "grass_color": 61183,
-    "foliage_color": 61183,
-    "grass_color_modifier": "none"
-  },
-  "spawners": {    "monster": [
-    {
-      "type": "jitl:sentry_lord",
-      "weight": 1,
-      "minCount": 1,
-      "maxCount": 1
-    },
-    {
-      "type": "jitl:sentry_stalker",
-      "weight": 1,
-      "minCount": 1,
-      "maxCount": 1
-    },
-    {
-      "type": "jitl:sentry_walker",
-      "weight": 1,
-      "minCount": 1,
-      "maxCount": 1
-    }
-  ]
-  },
-  "spawn_costs": {},
   "carvers": {},
+  "downfall": 0.0,
+  "effects": {
+    "fog_color": 61183,
+    "foliage_color": 61183,
+    "grass_color": 61183,
+    "music": {
+      "max_delay": 24000,
+      "min_delay": 12000,
+      "replace_current_music": false,
+      "sound": "jitl:misc.portal.senterian"
+    },
+    "sky_color": 7776511,
+    "water_color": 61183,
+    "water_fog_color": 61183
+  },
   "features": [
+    [],
+    [],
     [
       "jitl:senterian_terrain"
     ]
-  ]
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "jitl:sentry_lord",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 2
+      },
+      {
+        "type": "jitl:sentry_walker",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 2
+      },
+      {
+        "type": "jitl:sentry_stalker",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 2
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 1.0
 }
