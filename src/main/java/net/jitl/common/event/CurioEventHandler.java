@@ -44,12 +44,12 @@ public class CurioEventHandler {
                 if(event.getSource().getEntity() instanceof LivingEntity attacker) {
                     if(SKULL.isPresent()) {
                         attacker.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 1));
-                        SKULL.get().stack().hurtAndBreak(1,  (ServerLevel)player.level(), player, item -> {});
+                        SKULL.get().stack().hurtAndBreak(1, (ServerLevel)player.level(), player, item -> {});
                     }
 
                     if(DEATH_CAP.isPresent()) {
                         attacker.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 1));
-                        DEATH_CAP.get().stack().hurtAndBreak(1,  (ServerLevel)player.level(), player, item -> {});
+                        DEATH_CAP.get().stack().hurtAndBreak(1, (ServerLevel)player.level(), player, item -> {});
                     }
                 }
             }
@@ -62,7 +62,7 @@ public class CurioEventHandler {
         RandomSource rand = RandomSource.create();
         if(!event.getLevel().isClientSide()) {
             if (event.getBreaker() instanceof Player player) {
-                Optional<SlotResult> LUCKY_CHARM = getEquippedCurio(player, JItems.DEATH_CAP.get());
+                Optional<SlotResult> LUCKY_CHARM = getEquippedCurio(player, JItems.LUCKY_CHARM.get());
                 if(LUCKY_CHARM.isPresent()) {
                     LootTable table = Objects.requireNonNull(world.getServer()).reloadableRegistries().getLootTable(JLootTables.LOOT_BASIC);
                     List<ItemStack> itemList = table.getRandomItems(new LootParams.Builder(world).withParameter(LootContextParams.THIS_ENTITY, player).withParameter(LootContextParams.ORIGIN, player.position()).create(LootContextParamSets.GIFT));

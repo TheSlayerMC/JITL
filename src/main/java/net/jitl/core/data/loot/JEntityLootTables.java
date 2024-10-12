@@ -72,6 +72,7 @@ public class JEntityLootTables extends EntityLootSubProvider {
         this.add(JEntities.SHIVERWOLF_TYPE.get(), empty());
         this.add(JEntities.PET_ROBOT_TYPE.get(), empty());
         this.add(JEntities.SWAMP_FLY_TYPE.get(), empty());
+        this.add(JEntities.FERRET_TYPE.get(), empty());
 
         this.add(JEntities.ESKIMO_TYPE.get(), empty());
         this.add(JEntities.FROZEN_GUARDIAN_TYPE.get(), empty());

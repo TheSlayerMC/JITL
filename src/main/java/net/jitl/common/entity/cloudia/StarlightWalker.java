@@ -44,10 +44,6 @@ public class StarlightWalker extends JMonsterEntity {
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
 
-    public static boolean checkSpawn(EntityType<? extends Monster> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
-        return level.getDifficulty() != Difficulty.PEACEFUL && checkMobSpawnRules(type, level, spawnType, pos, random) && random.nextInt(1) == 0;
-    }
-
     @Override
     protected SoundEvent getHurtSound(@NotNull DamageSource pDamageSource) {
         return SoundEvents.IRON_GOLEM_HURT;

@@ -126,6 +126,18 @@
     },
     {
       "type": "entity",
+      "entity": "jitl:robot",
+      "scale": 1,
+      "name": "Robot",
+      "offset": 0.0,
+      "anchor": "robot"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.robot.desc"
+    },
+    {
+      "type": "entity",
       "entity": "jitl:sand_crawler",
       "scale": 0.5,
       "name": "Sand Crawler",

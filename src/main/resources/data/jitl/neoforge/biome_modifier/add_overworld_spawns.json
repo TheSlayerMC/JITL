@@ -9,6 +9,12 @@
       "maxCount": 3
     },
     {
+      "type": "jitl:robot",
+      "weight": 2,
+      "minCount": 1,
+      "maxCount": 3
+    },
+    {
       "type": "jitl:rockite_golem",
       "weight": 3,
       "minCount": 1,

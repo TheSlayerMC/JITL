@@ -117,7 +117,6 @@ public class JSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> FROZEN_MUSIC = registerSound("music.dim.frozen");
     public static final DeferredHolder<SoundEvent, SoundEvent> TERRANIA_MUSIC = registerSound("music.dim.terrania");
 
-
     public static final DeferredHolder<SoundEvent, SoundEvent> HAUNT_MUSKIE_2 = registerSound("music.haunt_muskie_2");
     public static final DeferredHolder<SoundEvent, SoundEvent> SNOWFLAKESSS = registerSound("music.snowflakesss");
 

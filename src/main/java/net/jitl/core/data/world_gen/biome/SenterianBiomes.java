@@ -1,7 +1,6 @@
 package net.jitl.core.data.world_gen.biome;
 
 import net.jitl.core.data.world_gen.placed_features.SenterianPlacedFeatures;
-import net.jitl.core.data.world_gen.placed_features.TerranianPlacedFeatures;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.HolderGetter;

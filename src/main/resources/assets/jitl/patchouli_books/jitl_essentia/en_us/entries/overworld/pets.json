@@ -1,0 +1,32 @@
+{
+  "name": "book.jitl.entries.pets",
+  "category": "jitl:overworld",
+  "icon": "jitl:pet_food",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "entity",
+      "entity": "jitl:ferret",
+      "scale": 0.75,
+      "name": "Ferret",
+      "offset": 0.1,
+      "anchor": "ferret"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.ferret.desc"
+    },
+    {
+      "type": "entity",
+      "entity": "jitl:pet_robot",
+      "scale": 0.5,
+      "name": "Pet Robot",
+      "offset": 0.5,
+      "anchor": "pet_robot"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.pet_robot.desc"
+    }
+  ]
+}

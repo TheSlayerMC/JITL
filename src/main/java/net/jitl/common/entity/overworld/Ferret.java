@@ -41,8 +41,8 @@ public class Ferret extends JTamableEntity {
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, MobStats.PET_ROBOT_HEALTH)
-                .add(Attributes.ATTACK_DAMAGE, MobStats.PET_ROBOT_DAMAGE)
+                .add(Attributes.MAX_HEALTH, MobStats.FERRET_HEALTH)
+                .add(Attributes.ATTACK_DAMAGE, MobStats.FERRET_DAMAGE)
                 .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.STANDARD_KNOCKBACK_RESISTANCE)
                 .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
                 .add(Attributes.MOVEMENT_SPEED, MobStats.FAST_MOVEMENT_SPEED).build();

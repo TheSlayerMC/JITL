@@ -319,6 +319,9 @@ public class MobStats {
     public static final int PET_ROBOT_HEALTH = 40;
     public static final double PET_ROBOT_DAMAGE = 6;
 
+    public static final int FERRET_HEALTH = 20;
+    public static final double FERRET_DAMAGE = 5;
+
     public static final int SHIVERWOLF_HEALTH = 30;
     public static final int TAMED_SHIVERWOLF_HEALTH = 40;
     public static final int SHIVERWOLF_DAMAGE = 8;

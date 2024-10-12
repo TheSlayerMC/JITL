@@ -695,7 +695,7 @@ public class JItems {
     public static final DeferredItem<Item> MYSTERIOUS_DISK = registerNormalItem("mysterious_disk", "Mysterious Disk", BossSpawnerItem::new);
     public static final DeferredItem<Item> ENCHANTED_TERRASTAR = registerNormalItem("enchanted_terrastar", "Enchanted Terrastar", BossSpawnerItem::new);
 
-    public static final DeferredItem<Item> PET_ROBOT_SPAWNER = registerNormalItem("pet_robot_spawner", "Pet Robot Spawner", PetSpawnerItem::new);
+    public static final DeferredItem<Item> PET_ROBOT_SPAWNER = registerNormalItem("pet_robot_spawner", "Pet Robot Egg", PetSpawnerItem::new);
 
     public static final DeferredItem<Item> SENTACOIN = registerNormalItem("sentacoin", "Sentacoin", () -> new SentacoinItem(Sentacoin.Type.COIN));
     public static final DeferredItem<Item> SENTACOIN_BAG = register("sentacoin_bag", "Sentacoin Bag", () -> new SentacoinItem(Sentacoin.Type.BAG), ItemType.MODEL);
