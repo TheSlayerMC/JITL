@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "w": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "pattern": [
+    " w ",
+    "www",
+    " w "
+  ],
+  "result": {
+    "count": 4,
+    "id": "jitl:pet_food"
+  }
+}

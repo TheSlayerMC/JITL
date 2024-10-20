@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "e": {
+      "item": "jitl:dark_orb"
+    },
+    "p": {
+      "item": "jitl:light_terranian_soil"
+    },
+    "y": {
+      "item": "jitl:magic_dust"
+    }
+  },
+  "pattern": [
+    "pep",
+    "eye",
+    "pep"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jitl:moon_of_eternal_night"
+  }
+}

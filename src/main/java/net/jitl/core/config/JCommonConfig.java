@@ -9,6 +9,7 @@ public class JCommonConfig {
 
 	public static final ModConfigSpec.BooleanValue NEED_SUMMONING_STRUCTURE;
 	public static final ModConfigSpec.BooleanValue ENABLE_LOOT_POUCH_DROP;
+	public static final ModConfigSpec.BooleanValue ENABLE_ETERNAL_LIGHT;
 	public static final ModConfigSpec.ConfigValue<Integer> COMMON_LOOT_CHANCE;
 	public static final ModConfigSpec.ConfigValue<Integer> GOLD_LOOT_CHANCE;
 	public static final ModConfigSpec.ConfigValue<Integer> DIAMOND_LOOT_CHANCE;
@@ -26,6 +27,7 @@ public class JCommonConfig {
 		DIAMOND_LOOT_CHANCE = BUILDER.comment("Diamond Loot Chance").define("Diamond Loot Chance 1 out of: ", 200);
 		PORTAL_SEARCH_RADIUS = BUILDER.comment("how far to look for portal locations.").defineInRange("Portal Search Radius", 24, 1, 128);
 		ENABLE_BOOM_SPAWN = BUILDER.comment("Can BoomBoom spawn naturally").define("Value: ", true);
+		ENABLE_ETERNAL_LIGHT = BUILDER.comment("Can use Eternal Light to change time to night").define("Value: ", true);
 
 		BUILDER.pop();
 		SPEC = BUILDER.build();

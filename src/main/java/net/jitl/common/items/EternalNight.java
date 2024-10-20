@@ -3,6 +3,7 @@ package net.jitl.common.items;
 import net.jitl.client.ChatUtils;
 import net.jitl.common.capability.essence.PlayerEssence;
 import net.jitl.common.items.base.JItem;
+import net.jitl.core.config.JCommonConfig;
 import net.jitl.core.helper.IEssenceItem;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JSounds;
@@ -38,13 +39,16 @@ public class EternalNight extends JItem implements IEssenceItem {
         if(entity instanceof Player player) {
             PlayerEssence essence = player.getData(JDataAttachments.ESSENCE);
             if(!world.isClientSide) {
-                ServerLevel serverLevel = (ServerLevel)world;
-                player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 2));
-                if(essence.consumeEssence(player, 10)) {
-                    serverLevel.setDayTime(18000);
-                    stack.hurtAndBreak(1, serverLevel, player, item -> {});
-                    world.playSound(player, player.getX(), player.getY(), player.getZ(), JSounds.STAFF_0.get(), SoundSource.BLOCKS);
-                    ChatUtils.sendColouredTranslatedMessage(player, ChatFormatting.DARK_PURPLE, "jitl.message.item.eternal_night", player.getDisplayName());
+                if(JCommonConfig.ENABLE_ETERNAL_LIGHT.get()) {
+                    ServerLevel serverLevel = (ServerLevel) world;
+                    player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 2));
+                    if (essence.consumeEssence(player, 10)) {
+                        serverLevel.setDayTime(18000);
+                        stack.hurtAndBreak(1, serverLevel, player, item -> {
+                        });
+                        world.playSound(player, player.getX(), player.getY(), player.getZ(), JSounds.STAFF_0.get(), SoundSource.BLOCKS);
+                        ChatUtils.sendColouredTranslatedMessage(player, ChatFormatting.DARK_PURPLE, "jitl.message.item.eternal_night", player.getDisplayName());
+                    }
                 }
             }
         }

@@ -660,7 +660,7 @@ public class JItems {
     public static final DeferredItem<Item> LUCKY_CHARM = registerNormalItem("lucky_charm", "Lucky Charm", () -> new JCurioItem(JItems.itemProps().stacksTo(1).durability(100)));
 
     public static final DeferredItem<Item> MINERS_PEARL = registerNormalItem("miners_pearl", "Miner's Pearl", () -> new MinersPearl(JItems.itemProps().stacksTo(1).durability(10)));
-    public static final DeferredItem<Item> MOON_OF_ETERNAL_NIGHT = registerNormalItem("moon_of_eternal_night", "Moon of Eternal Night", () -> new EternalNight(JItems.itemProps().stacksTo(1).durability(10)));
+    public static final DeferredItem<Item> MOON_OF_ETERNAL_NIGHT = registerNormalItem("moon_of_eternal_night", "Moon of Eternal Night", () -> new EternalNight(JItems.itemProps().stacksTo(1).durability(4)));
     public static final DeferredItem<Item> HEART_STONE = registerNormalItem("heart_stone", "Heart Stone", () -> new HealingItem(-1F));
 
     public static final DeferredItem<Item> PET_FOOD = registerNormalItem("pet_food", "Pet Food");

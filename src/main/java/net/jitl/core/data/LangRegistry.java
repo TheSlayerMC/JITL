@@ -148,7 +148,9 @@ public class LangRegistry {
         writeToFile("\"scroll.jitl.chapter.eleven\" : \"Chapter 11\",");
 
         writeToFile("\"curios.identifier.heart_container\" : \"Heart\",");
+        writeToFile("\"curios.modifiers.heart_container\" : \"Adds hearts\",");
         writeToFile("\"curios.identifier.catalyst\" : \"Catalyst\",");
+        writeToFile("\"curios.modifiers.catalyst\" : \"Adds Essence Storage\",");
 
         writeToFile("\"book.jitl.landing_text\" : " + "\"Welcome $(playername) to Journey Into The Light, any other info needed head over to the $(l:https://discord.com/invite/WhXvz5b)Discord\",");
         writeToFile("\"book.jitl.book_name\" : " + "\"Essentia Bible\",");

@@ -136,6 +136,10 @@ public class JRecipeRegistry extends JRecipeProvider {
         threeByThreePacker(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, JBlocks.AIRROOT_MELON.get(), JItems.AIRMELON.get());
 
         addSmeltingAndBlastingRecipe(recipeConsumer, Items.ROTTEN_FLESH, Items.LEATHER);
+
+        addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "pep", "eye", "pep", 'e', JItems.ENDERILLIUM_SHARD, 'p', Items.ENDER_PEARL, 'y', Items.ENDER_EYE, JItems.MINERS_PEARL.get(), 1);
+        addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "pep", "eye", "pep", 'e', JItems.DARK_ORB, 'p', JItems.LIGHT_TERRANIAN_SOIL, 'y', JItems.MAGIC_DUST, JItems.MOON_OF_ETERNAL_NIGHT.get(), 1);
+        addShapedRecipe(recipeConsumer, RecipeCategory.MISC, " w ", "www", " w ", 'w', Items.WHEAT, JItems.PET_FOOD, 4);
     }
 
     public void buildWoodTypes(RecipeOutput consumer) {
