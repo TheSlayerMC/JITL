@@ -1,24 +1,18 @@
 package net.jitl.client.model;
 
-import net.minecraft.client.model.BabyModelTransform;
-import net.minecraft.client.model.EntityModel;
+import com.google.common.collect.ImmutableList;
+import net.jitl.common.entity.frozen.Shiverwolf;
+import net.minecraft.client.model.ColorableAgeableListModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.client.renderer.entity.state.WolfRenderState;
 import net.minecraft.util.Mth;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
-import java.util.Set;
-
 @OnlyIn(Dist.CLIENT)
-public class ShiverwolfModel extends EntityModel<WolfRenderState> {
+public class ShiverwolfModel<T extends Shiverwolf> extends ColorableAgeableListModel<T> {
 
-    public static final MeshTransformer BABY_TRANSFORMER = new BabyModelTransform(Set.of("head"));
-    private static final String REAL_HEAD = "real_head";
-    private static final String UPPER_BODY = "upper_body";
-    private static final String REAL_TAIL = "real_tail";
     private final ModelPart head;
     private final ModelPart realHead;
     private final ModelPart body;
@@ -29,10 +23,8 @@ public class ShiverwolfModel extends EntityModel<WolfRenderState> {
     private final ModelPart tail;
     private final ModelPart realTail;
     private final ModelPart upperBody;
-    private static final int LEG_SIZE = 8;
 
     public ShiverwolfModel(ModelPart root) {
-        super(root);
         this.head = root.getChild("head");
         this.realHead = this.head.getChild("real_head");
         this.body = root.getChild("body");
@@ -63,64 +55,65 @@ public class ShiverwolfModel extends EntityModel<WolfRenderState> {
         return meshdefinition;
     }
 
-    public void setupAnim(WolfRenderState p_365164_) {
-        super.setupAnim(p_365164_);
-        float f = p_365164_.walkAnimationPos;
-        float f1 = p_365164_.walkAnimationSpeed;
-        if (p_365164_.isAngry) {
+    @Override
+    protected Iterable<ModelPart> headParts() {
+        return ImmutableList.of(this.head);
+    }
+
+    @Override
+    protected Iterable<ModelPart> bodyParts() {
+        return ImmutableList.of(this.body, this.rightHindLeg, this.leftHindLeg, this.rightFrontLeg, this.leftFrontLeg, this.tail, this.upperBody);
+    }
+
+    @Override
+    public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTick) {
+        if (entity.isAngry()) {
             this.tail.yRot = 0.0F;
         } else {
-            this.tail.yRot = Mth.cos(f * 0.6662F) * 1.4F * f1;
+            this.tail.yRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         }
 
-        if (p_365164_.isSitting) {
-            float f2 = p_365164_.ageScale;
-            ModelPart var10000 = this.upperBody;
-            var10000.y += 2.0F * f2;
+        if (entity.isInSittingPose()) {
+            this.upperBody.setPos(-1.0F, 16.0F, -3.0F);
             this.upperBody.xRot = 1.2566371F;
             this.upperBody.yRot = 0.0F;
-            var10000 = this.body;
-            var10000.y += 4.0F * f2;
-            var10000 = this.body;
-            var10000.z -= 2.0F * f2;
+            this.body.setPos(0.0F, 18.0F, 0.0F);
             this.body.xRot = 0.7853982F;
-            var10000 = this.tail;
-            var10000.y += 9.0F * f2;
-            var10000 = this.tail;
-            var10000.z -= 2.0F * f2;
-            var10000 = this.rightHindLeg;
-            var10000.y += 6.7F * f2;
-            var10000 = this.rightHindLeg;
-            var10000.z -= 5.0F * f2;
+            this.tail.setPos(-1.0F, 21.0F, 6.0F);
+            this.rightHindLeg.setPos(-2.5F, 22.7F, 2.0F);
             this.rightHindLeg.xRot = 4.712389F;
-            var10000 = this.leftHindLeg;
-            var10000.y += 6.7F * f2;
-            var10000 = this.leftHindLeg;
-            var10000.z -= 5.0F * f2;
+            this.leftHindLeg.setPos(0.5F, 22.7F, 2.0F);
             this.leftHindLeg.xRot = 4.712389F;
             this.rightFrontLeg.xRot = 5.811947F;
-            var10000 = this.rightFrontLeg;
-            var10000.x += 0.01F * f2;
-            var10000 = this.rightFrontLeg;
-            var10000.y += 1.0F * f2;
+            this.rightFrontLeg.setPos(-2.49F, 17.0F, -4.0F);
             this.leftFrontLeg.xRot = 5.811947F;
-            var10000 = this.leftFrontLeg;
-            var10000.x -= 0.01F * f2;
-            var10000 = this.leftFrontLeg;
-            var10000.y += 1.0F * f2;
+            this.leftFrontLeg.setPos(0.51F, 17.0F, -4.0F);
         } else {
-            this.rightHindLeg.xRot = Mth.cos(f * 0.6662F) * 1.4F * f1;
-            this.leftHindLeg.xRot = Mth.cos(f * 0.6662F + 3.1415927F) * 1.4F * f1;
-            this.rightFrontLeg.xRot = Mth.cos(f * 0.6662F + 3.1415927F) * 1.4F * f1;
-            this.leftFrontLeg.xRot = Mth.cos(f * 0.6662F) * 1.4F * f1;
+            this.body.setPos(0.0F, 14.0F, 2.0F);
+            this.body.xRot = 1.5707964F;
+            this.upperBody.setPos(-1.0F, 14.0F, -3.0F);
+            this.upperBody.xRot = this.body.xRot;
+            this.tail.setPos(-1.0F, 12.0F, 8.0F);
+            this.rightHindLeg.setPos(-2.5F, 16.0F, 7.0F);
+            this.leftHindLeg.setPos(0.5F, 16.0F, 7.0F);
+            this.rightFrontLeg.setPos(-2.5F, 16.0F, -4.0F);
+            this.leftFrontLeg.setPos(0.5F, 16.0F, -4.0F);
+            this.rightHindLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+            this.leftHindLeg.xRot = Mth.cos(limbSwing * 0.6662F + 3.1415927F) * 1.4F * limbSwingAmount;
+            this.rightFrontLeg.xRot = Mth.cos(limbSwing * 0.6662F + 3.1415927F) * 1.4F * limbSwingAmount;
+            this.leftFrontLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         }
 
-        this.realHead.zRot = p_365164_.headRollAngle + p_365164_.getBodyRollAngle(0.0F);
-        this.upperBody.zRot = p_365164_.getBodyRollAngle(-0.08F);
-        this.body.zRot = p_365164_.getBodyRollAngle(-0.16F);
-        this.realTail.zRot = p_365164_.getBodyRollAngle(-0.2F);
-        this.head.xRot = p_365164_.xRot * 0.017453292F;
-        this.head.yRot = p_365164_.yRot * 0.017453292F;
-        this.tail.xRot = p_365164_.tailAngle;
+        this.realHead.zRot = entity.getHeadRollAngle(partialTick) + entity.getBodyRollAngle(partialTick, 0.0F);
+        this.upperBody.zRot = entity.getBodyRollAngle(partialTick, -0.08F);
+        this.body.zRot = entity.getBodyRollAngle(partialTick, -0.16F);
+        this.realTail.zRot = entity.getBodyRollAngle(partialTick, -0.2F);
+    }
+
+    @Override
+    public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+        this.head.xRot = headPitch * 0.017453292F;
+        this.head.yRot = netHeadYaw * 0.017453292F;
+        this.tail.xRot = ageInTicks;
     }
 }
