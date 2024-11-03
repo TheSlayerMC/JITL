@@ -4,6 +4,7 @@ import net.jitl.common.block.entity.ObeliskTile;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.DefaultedBlockGeoModel;
+import software.bernie.geckolib.renderer.GeoRenderer;
 
 public class ObeliskModel extends DefaultedBlockGeoModel<ObeliskTile> {
 
@@ -12,12 +13,12 @@ public class ObeliskModel extends DefaultedBlockGeoModel<ObeliskTile> {
     }
 
     @Override
-    public ResourceLocation getModelResource(ObeliskTile object) {
+    public ResourceLocation getModelResource(ObeliskTile object, GeoRenderer<ObeliskTile> renderer) {
         return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "geo/obelisk.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureResource(ObeliskTile object) {
+    public ResourceLocation getTextureResource(ObeliskTile object, GeoRenderer<ObeliskTile> renderer) {
         return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/models/block/obelisk.png");
     }
 

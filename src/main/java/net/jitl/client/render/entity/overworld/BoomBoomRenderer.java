@@ -6,6 +6,8 @@ import net.jitl.client.render.AnimatedMonsterRenderer;
 import net.jitl.common.entity.overworld.BoomBoom;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.state.EntityRenderState;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.NotNull;
@@ -27,12 +29,5 @@ public class BoomBoomRenderer<T extends LivingEntity & GeoEntity> extends Animat
         float f2 = (1.0F + f * 0.4F) * f1;
         float f3 = (1.0F + f * 0.1F) / f1;
         pMatrixStack.scale(f2, f3, f2);
-    }
-
-    @Override
-    public void render(@NotNull T entity, float entityYaw, float partialTick, PoseStack poseStack, @NotNull MultiBufferSource bufferSource, int packedLight) {
-        BoomBoom b = (BoomBoom)entity;
-        scale(b, poseStack, partialTick);
-        super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
     }
 }

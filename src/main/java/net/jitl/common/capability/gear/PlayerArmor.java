@@ -4,9 +4,9 @@ import net.jitl.common.items.base.JArmorItem;
 import net.jitl.common.items.gear.FullArmorAbility;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.neoforged.neoforge.common.util.INBTSerializable;
 import org.jetbrains.annotations.UnknownNullability;
 
@@ -36,14 +36,14 @@ public class PlayerArmor implements INBTSerializable<CompoundTag> {
             stacks.add(currentStack);
             fullArmorAbility = Objects.requireNonNull(((JArmorItem) item).getAbility()).getFullAbility(nbt);
             if (fullArmorAbility != null) {
-                material = ((JArmorItem) item).getMaterial().value();
+                material = ((JArmorItem) item).getMaterial();
             }
         }
         while (iterator.hasNext()) {
             currentStack = iterator.next();
             item = currentStack.getItem();
             if (item instanceof JArmorItem) {
-                if (((JArmorItem) item).getMaterial().value() != material) {
+                if (((JArmorItem) item).getMaterial() != material) {
                     fullArmorAbility = null;
                     material = null;
                 }

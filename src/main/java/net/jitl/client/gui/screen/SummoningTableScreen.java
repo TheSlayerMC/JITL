@@ -5,6 +5,7 @@ import net.jitl.common.block.entity.container.SummoningTableContainer;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -34,6 +35,6 @@ public class SummoningTableScreen extends AbstractContainerScreen<SummoningTable
         RenderSystem.setShaderTexture(0, GUI_TEXTURE);
         int i = this.leftPos;
         int j = this.topPos;
-        graphics.blit(GUI_TEXTURE, i, j, 0, 0, this.imageWidth, this.imageHeight);
+        graphics.blit(RenderType::guiTextured, GUI_TEXTURE, i, j, 0, 0, this.imageWidth, this.imageHeight, 32, 32);
     }
 }

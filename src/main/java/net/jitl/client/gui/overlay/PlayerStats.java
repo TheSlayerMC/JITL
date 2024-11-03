@@ -12,6 +12,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.PageButton;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
@@ -77,9 +78,9 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
         poseStack.pose().pushPose();
-        RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
+        //RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
         RenderSystem.setShaderTexture(0, this.BACKGROUND);
-        poseStack.blit(BACKGROUND, x, y, 0, 0, this.imageWidth, this.imageHeight);//Draws the main Background
+        poseStack.blitSprite(RenderType::guiTextured, BACKGROUND, x, y, this.imageWidth, this.imageHeight);//Draws the main Background
 
         switch(pageNumber) {
             case 0 -> page1(poseStack);
@@ -131,15 +132,15 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
     public void drawSprite(GuiGraphics matrixStack, int x, int y, int spriteX, int spriteY, String s) {
         int k = (width - imageWidth) / 2;
         int l = (height - imageHeight) / 2;
-        RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
+       // RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
         RenderSystem.setShaderTexture(0, this.BACKGROUND);
 
-        matrixStack.blit(BACKGROUND, k + x - 4, l + y - 4, 0, 216, 115, 40);//Draws the rectangle bg for the sprites
+        //matrixStack.blitSprite(RenderType::guiTextured, BACKGROUND, k + x - 4, l + y - 4, 0, 216, 115, 40);//Draws the rectangle bg for the sprites
 
-        RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
+        //RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
         RenderSystem.setShaderTexture(0, this.KNOWLEDGE_SPRITE);
 
-        matrixStack.blit(KNOWLEDGE_SPRITE, k + x, l + y, spriteX, spriteY, 32, 32); //Draws the knowledge sprite
+        //matrixStack.blit(RenderType::guiTextured, KNOWLEDGE_SPRITE, k + x, l + y, spriteX, spriteY, 32, 32); //Draws the knowledge sprite
         matrixStack.drawString(font, s, k + x + 35, l + y + 5, 4210752, false); //Draws the sprite name
 
         if(s.contains("Sentacoins"))
@@ -153,7 +154,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         int progressBarSize = 65;
         int k = (width - imageWidth) / 2;
         int l = (height - imageHeight) / 2;
-        RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
+        //TODO RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
         RenderSystem.setShaderTexture(0, this.KNOWLEDGE_SPRITE);
         if(player != null) {
             net.jitl.common.capability.stats.PlayerStats knowledge = player.getData(JDataAttachments.PLAYER_STATS);
@@ -162,11 +163,11 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
                 int width = (int) (percents * progressBarSize);
 
                 int progressBarX = k + x + 35, progressBarY = l + y + 19;
-                matrixStack.blit(KNOWLEDGE_SPRITE, progressBarX, progressBarY, 0, 5, progressBarSize, 5);
-                matrixStack.blit(KNOWLEDGE_SPRITE, progressBarX, progressBarY, 0, 0, width, 5);
+                //matrixStack.blit(KNOWLEDGE_SPRITE, progressBarX, progressBarY, 0, 5, progressBarSize, 5);
+                //matrixStack.blit(KNOWLEDGE_SPRITE, progressBarX, progressBarY, 0, 0, width, 5);
 
                 if(completed) {
-                    matrixStack.blit(KNOWLEDGE_SPRITE, k + x, l + y + 3, 130, 43, 32, 29);
+                //    matrixStack.blit(KNOWLEDGE_SPRITE, k + x, l + y + 3, 130, 43, 32, 29);
                 }
 
                 int lvX = progressBarX + 29, lvY = progressBarY - 1;

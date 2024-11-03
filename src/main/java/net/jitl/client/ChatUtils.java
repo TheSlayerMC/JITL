@@ -36,12 +36,16 @@ public class ChatUtils {
     public static void sendColouredTranslatedMessage(Player player, ChatFormatting colour, String translationKey, Object... args) {
         MutableComponent msg = Component.translatable(translationKey, args);
         msg.withStyle(colour);
-        player.sendSystemMessage(msg);
+        player.displayClientMessage(msg, false);
+    }
+
+    public static void addChatBarChat(Player player, MutableComponent msg) {
+        player.displayClientMessage(msg, false);
     }
 
     public static void sendColouredMessage(Player player, ChatFormatting colour, String key) {
         MutableComponent msg = Component.literal(key);
         msg.withStyle(colour);
-        player.sendSystemMessage(msg);
+        player.displayClientMessage(msg, false);
     }
 }

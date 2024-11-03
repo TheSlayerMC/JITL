@@ -32,7 +32,7 @@ public class ClientLoginChecker {
                     if(!InternetHandler.isOnline()) {
                         MutableComponent msg = Component.translatable("jitl.message.no_internet");
                         msg.withStyle(ChatFormatting.RED);
-                        player.sendSystemMessage(msg);
+                        ChatUtils.addChatBarChat(player, msg);
                     }
                     try {
                         if(InternetHandler.isUpdateAvailable() && InternetHandler.isOnline()) {

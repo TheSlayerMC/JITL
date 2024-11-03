@@ -6,13 +6,14 @@ import net.jitl.core.helper.JToolTiers;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class JHoeItem extends HoeItem implements JGear {
     private final IAbility ability;
 
     public JHoeItem(JToolTiers tier, int dam, IAbility ability) {
-        super(tier.getTier(), JItems.itemProps().attributes(createAttributes(tier.getTier(), dam, tier.getSpeedModifier())));
+        super(tier.getTier(), dam, tier.getSpeedModifier(), JItems.itemProps());
         this.ability = ability;
     }
 
@@ -31,7 +32,7 @@ public class JHoeItem extends HoeItem implements JGear {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
+    public @NotNull InteractionResult use(Level worldIn, Player playerIn, InteractionHand handIn) {
         ability.rightClick(playerIn, handIn, worldIn);
         return super.use(worldIn, playerIn, handIn);
     }

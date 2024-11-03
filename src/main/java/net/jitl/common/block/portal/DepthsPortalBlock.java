@@ -1,7 +1,6 @@
 package net.jitl.common.block.portal;
 
 import net.jitl.common.block.portal.logic.DepthsPortal;
-import net.jitl.common.block.portal.logic.JPortal;
 import net.jitl.common.block.portal.logic.PortalCoordinatesContainer;
 import net.jitl.common.capability.player.Portal;
 import net.jitl.common.world.dimension.Dimensions;
@@ -24,11 +23,10 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.portal.DimensionTransition;
+import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
@@ -86,9 +84,8 @@ public class DepthsPortalBlock extends Block implements DepthsPortal {
         }
     }
 
-    @Nullable
     @Override
-    public DimensionTransition getPortalDestination(ServerLevel level, Entity entity, BlockPos pos) {
+    public TeleportTransition getPortalDestination(ServerLevel level, Entity entity, BlockPos pos) {
         if (!(entity instanceof ServerPlayer))
             return null;
 

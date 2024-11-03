@@ -5,6 +5,7 @@ import net.jitl.core.init.internal.JDimension;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
+import software.bernie.geckolib.renderer.GeoRenderer;
 
 public class AnimatedMonsterModel<T extends GeoEntity> extends DefaultedEntityGeoModel<T> {
 
@@ -18,12 +19,12 @@ public class AnimatedMonsterModel<T extends GeoEntity> extends DefaultedEntityGe
     }
 
     @Override
-    public ResourceLocation getModelResource(T object) {
+    public ResourceLocation getModelResource(T object, GeoRenderer<T> renderer) {
         return JITL.rl("geo/" + this.name +".geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureResource(T object) {
+    public ResourceLocation getTextureResource(T object, GeoRenderer<T> renderer) {
         return JITL.rl("textures/entity/" + dim.getDim() + "/" + this.name +".png");
     }
 

@@ -5,9 +5,8 @@ import net.jitl.common.items.base.JItem;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
@@ -20,7 +19,7 @@ public class JRecipeBook extends JItem {
     }
 
     @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(Level level, @NotNull Player player, @NotNull InteractionHand hand) {
+    public InteractionResult use(Level level, @NotNull Player player, @NotNull InteractionHand hand) {
         if(level.isClientSide()) {
            displayBookGUI(player);
         }

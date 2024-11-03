@@ -2,14 +2,17 @@ package net.jitl.client.render.projectile;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.jitl.client.render.projectile.render_state.EssentiaLightningBoltRenderState;
 import net.jitl.common.entity.projectile.EssenciaBoltEntity;
 import net.jitl.core.helper.internal.DrawHelper;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.state.LightningBoltRenderState;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LightningBolt;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
@@ -18,14 +21,14 @@ import org.joml.Matrix4f;
 import java.util.Random;
 
 @OnlyIn(Dist.CLIENT)
-public class EssenciaBoltRenderer extends EntityRenderer<EssenciaBoltEntity> {
+public class EssenciaBoltRenderer extends EntityRenderer<EssenciaBoltEntity, EssentiaLightningBoltRenderState> {
 
     public EssenciaBoltRenderer(EntityRendererProvider.Context context) {
         super(context);
     }
 
     @Override
-    public void render(EssenciaBoltEntity entityIn, float entityYaw, float partialTicks, @NotNull PoseStack matrixStackIn, @NotNull MultiBufferSource bufferIn, int packedLightIn) {
+    public void render(EssentiaLightningBoltRenderState entityIn, @NotNull PoseStack matrixStackIn, @NotNull MultiBufferSource bufferIn, int packedLightIn) {
         float[] afloat = new float[8];
         float[] afloat1 = new float[8];
         float f = 0.0F;
@@ -85,7 +88,7 @@ public class EssenciaBoltRenderer extends EntityRenderer<EssenciaBoltEntity> {
                     oneDirectionExpansion *= 1F / 3;
                     anotherDirectionExpansion *= 1F / 3;
 
-                    int argb = entityIn.getARGB();
+                    int argb = entityIn.argb;
                     float alpha = 0.3F;
 
                     float red = DrawHelper.getRed(argb) / 255F;
@@ -109,8 +112,14 @@ public class EssenciaBoltRenderer extends EntityRenderer<EssenciaBoltEntity> {
         builder.addVertex(matrix, startCenterX + (boolean2_ ? anotherDirectionExpansion : -anotherDirectionExpansion) + 0.5F, (float) (startY * 16), startCenterZ + (boolean3_ ? anotherDirectionExpansion : -anotherDirectionExpansion) + 0.5F).setColor(r, g, b, alpha);
     }
 
+    public void extractRenderState(EssenciaBoltEntity e, EssentiaLightningBoltRenderState s, float f) {
+        super.extractRenderState(e, s, f);
+        s.seed = e.seed;
+        s.argb = e.getARGB();
+    }
+
     @Override
-    public @NotNull ResourceLocation getTextureLocation(@NotNull EssenciaBoltEntity entityIn) {
-        return TextureAtlas.LOCATION_BLOCKS;
+    public @NotNull EssentiaLightningBoltRenderState createRenderState() {
+        return new EssentiaLightningBoltRenderState();
     }
 }

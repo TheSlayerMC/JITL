@@ -22,7 +22,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.border.WorldBorder;
 import net.minecraft.world.level.chunk.BulkSectionAccess;
 import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.portal.DimensionTransition;
+import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
@@ -38,8 +38,8 @@ public interface JPortal extends Portal {
     JBasePortalBlock getPortalBlock();
     Block getPortalFrame();
 
-    default DimensionTransition.PostDimensionTransition playTransitSound(Entity entity) {
-        return DimensionTransition.PLAY_PORTAL_SOUND;
+    default TeleportTransition.PostTeleportTransition playTransitSound(Entity entity) {
+        return TeleportTransition.PLAY_PORTAL_SOUND;
     }
 
     static BlockPos makeSafeCoords(Level fromLevel, Level toLevel, Vec3 pos) {
@@ -49,12 +49,12 @@ public interface JPortal extends Portal {
         return border.clampToBounds(pos.x * relativeScale, pos.y, pos.z * relativeScale);
     }
 
-    static DimensionTransition getTransitionForLevel(ServerLevel destination, Entity entity, Block jPortalBlock) {
+    static TeleportTransition getTransitionForLevel(ServerLevel destination, Entity entity, Block jPortalBlock) {
 
         return getTransitionForLevel(destination, entity, Optional.empty(), entity.blockPosition(), (JBasePortalBlock)jPortalBlock, Optional.ofNullable(entity instanceof ServerPlayer pl ? pl.getData(JDataAttachments.PORTAL_OVERLAY).getPortalReturnLocation(entity.level().dimension()) : null));
     }
 
-    static DimensionTransition getTransitionForLevel(ServerLevel destination, Entity entity, Optional<BlockPos> fromPortal, BlockPos safeCoords, JPortal portal, Optional<PortalCoordinatesContainer> existingLink) {
+    static TeleportTransition getTransitionForLevel(ServerLevel destination, Entity entity, Optional<BlockPos> fromPortal, BlockPos safeCoords, JPortal portal, Optional<PortalCoordinatesContainer> existingLink) {
         final ServerLevel fromLevel = (ServerLevel)entity.level();
         final BlockPos portalPos = getOrCreatePortalLocation(destination, fromLevel, entity, safeCoords, portal, existingLink);
 
@@ -63,7 +63,7 @@ public interface JPortal extends Portal {
                 updatePlayerLink(pl, portalBlock, fromLevel.dimension(), destination.dimension());
         });
 
-        return new DimensionTransition(destination, Vec3.atCenterOf(portalPos), entity.getDeltaMovement(), entity.getYRot(), entity.getXRot(), portal.playTransitSound(entity).then(DimensionTransition.PLACE_PORTAL_TICKET));
+        return new TeleportTransition(destination, Vec3.atCenterOf(portalPos), entity.getDeltaMovement(), entity.getYRot(), entity.getXRot(), portal.playTransitSound(entity).then(TeleportTransition.PLACE_PORTAL_TICKET));
     }
 
     static BlockPos getOrCreatePortalLocation(ServerLevel destination, ServerLevel fromLevel, Entity entity, BlockPos safeCoords, JPortal portal, Optional<PortalCoordinatesContainer> existingLink) {
@@ -158,8 +158,8 @@ public interface JPortal extends Portal {
 
         final Block portalBlock = getPortalBlock();
         final int searchRadius = JCommonConfig.PORTAL_SEARCH_RADIUS.get();
-        final int worldHeight = targetLevel.getMaxBuildHeight();
-        final int worldFloor = targetLevel.getMinBuildHeight();
+        final int worldHeight = targetLevel.getMaxY();
+        final int worldFloor = targetLevel.getMinY();
         final int posX = Mth.floor(originPos.getX());
         final int posY = originPos.getY() >= worldHeight ? 65 : Mth.floor(originPos.getY());
         final int posZ = Mth.floor(originPos.getZ());
@@ -292,8 +292,8 @@ public interface JPortal extends Portal {
 
     default BlockPos findSuitablePortalLocation(Level level, Entity entity, BlockPos originPos) {
         final int searchRadius = JCommonConfig.PORTAL_SEARCH_RADIUS.get();
-        final int worldHeight = level.getMaxBuildHeight();
-        final int worldFloor = level.getMinBuildHeight();
+        final int worldHeight = level.getMaxY();
+        final int worldFloor = level.getMinY();
         final BlockPos.MutableBlockPos checkPos = new BlockPos.MutableBlockPos();
         final int posX = Mth.floor(originPos.getX());
         final int posY = originPos.getY() >= worldHeight ? 65 : Mth.floor(originPos.getY());

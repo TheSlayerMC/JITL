@@ -17,7 +17,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.event.EventHooks;
@@ -66,7 +65,7 @@ public class JBowItem extends BowItem {
     }
 
     @Override
-    public void releaseUsing(@NotNull ItemStack stack, @NotNull Level worldIn, @NotNull LivingEntity entityLiving, int timeLeft) {
+    public boolean releaseUsing(@NotNull ItemStack stack, @NotNull Level worldIn, @NotNull LivingEntity entityLiving, int timeLeft) {
         if (entityLiving instanceof Player player && worldIn instanceof ServerLevel level) {
             boolean emptyPickup = player.isCreative()
                     || JEnchantmentHelper.getEnchantmentAmount(player, level, Enchantments.INFINITY) > 0
@@ -77,7 +76,7 @@ public class JBowItem extends BowItem {
 
                 int i = this.maxUseDuration - timeLeft;
                 i = EventHooks.onArrowLoose(stack, worldIn, player, i, !itemstack.isEmpty() || emptyPickup);
-                if (i < 0) return;
+                if (i < 0) return emptyPickup;
 
                 if (!itemstack.isEmpty() || emptyPickup) {
                     if (itemstack.isEmpty()) {
@@ -182,6 +181,7 @@ public class JBowItem extends BowItem {
                 }
             }
         }
+        return true;
     }
 
     public ItemStack findAmmo(Player player) {
@@ -238,8 +238,8 @@ public class JBowItem extends BowItem {
     }
 
     @Override
-    public @NotNull UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.BOW;
+    public ItemUseAnimation getUseAnimation(ItemStack stack) {
+        return ItemUseAnimation.BOW;
     }
 
     @Override

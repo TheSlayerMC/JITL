@@ -9,14 +9,20 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.client.renderer.entity.state.EntityRenderState;
+import net.minecraft.client.renderer.entity.state.ItemEntityRenderState;
+import net.minecraft.client.renderer.entity.state.ThrownItemRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public class SentacoinRender extends EntityRenderer<Sentacoin> {
+public class SentacoinRender<T extends Sentacoin> extends EntityRenderer<T, ItemEntityRenderState> {
 
     private final ItemRenderer itemRenderer;
     private final Sentacoin.Type type;
@@ -30,8 +36,8 @@ public class SentacoinRender extends EntityRenderer<Sentacoin> {
     }
 
     @Override
-    public void render(@NotNull Sentacoin entity, float entityYaw, float partialTicks, @NotNull PoseStack matrixStack, @NotNull MultiBufferSource buffer, int packedLight) {
-        super.render(entity, entityYaw, partialTicks, matrixStack, buffer, packedLight);
+    public void render(@NotNull ItemEntityRenderState entity, @NotNull PoseStack matrixStack, @NotNull MultiBufferSource buffer, int packedLight) {
+        super.render(entity, matrixStack, buffer, packedLight);
         float angle = (float) (360.0 * (System.currentTimeMillis() & 0x3FFFL) / 0x3FFFL) / 16;
         float scale = 0.55F;
         ItemStack stack = new ItemStack(JItems.SENTACOIN.get());
@@ -45,13 +51,21 @@ public class SentacoinRender extends EntityRenderer<Sentacoin> {
         matrixStack.pushPose();
         matrixStack.scale(scale, scale, scale);
         matrixStack.mulPose(Axis.YP.rotation(angle));
-        this.itemRenderer.renderStatic(stack, ItemDisplayContext.GROUND, packedLight, OverlayTexture.NO_OVERLAY, matrixStack, buffer, entity.level(), entity.getId());
+        assert entity.itemModel != null;
+        this.itemRenderer.render(stack, ItemDisplayContext.GROUND, false, matrixStack, buffer, packedLight, OverlayTexture.NO_OVERLAY, entity.itemModel);
         matrixStack.popPose();
-        super.render(entity, entityYaw, partialTicks, matrixStack, buffer, packedLight);
+        super.render(entity, matrixStack, buffer, packedLight);
     }
 
     @Override
-    public @NotNull ResourceLocation getTextureLocation(Sentacoin e) {
-        return InventoryMenu.BLOCK_ATLAS;
+    public ItemEntityRenderState createRenderState() {
+        return new ItemEntityRenderState();
+    }
+
+    public void extractRenderState(@NotNull T entity, @NotNull ItemEntityRenderState item, float f) {
+        super.extractRenderState(entity, item, f);
+        ItemStack itemstack = ((ItemSupplier)item).getItem();
+        item.itemModel = !itemstack.isEmpty() ? this.itemRenderer.getModel(itemstack, entity.level(), null, entity.getId()) : null;
+        item.item = itemstack.copy();
     }
 }

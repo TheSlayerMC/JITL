@@ -34,8 +34,8 @@ public class CloudiaRenderInfo extends DimensionSpecialEffects {
     }
 
     @Override
-    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f modelViewMatrix, Matrix4f projectionMatrix) {
-        new CloudiaCloudRenderer().render(level, ticks, poseStack, projectionMatrix, modelViewMatrix, partialTick, camX, camY, camZ);
+    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, double camX, double camY, double camZ, Matrix4f modelViewMatrix, Matrix4f projectionMatrix) {
+        new CloudiaCloudRenderer().render(level, ticks, projectionMatrix, modelViewMatrix, partialTick, camX, camY, camZ);
         return true;
     }
 
@@ -51,7 +51,7 @@ public class CloudiaRenderInfo extends DimensionSpecialEffects {
     }
 
     @Override
-    public boolean renderSky(@NotNull ClientLevel level, int ticks, float partialTick, @NotNull Matrix4f frustumMatrix, @NotNull Camera camera, @NotNull Matrix4f projectionMatrix, boolean isFoggy, @NotNull Runnable setupFog) {
+    public boolean renderSky(@NotNull ClientLevel level, int ticks, float partialTick, @NotNull Matrix4f frustumMatrix, @NotNull Camera camera, @NotNull Matrix4f projectionMatrix, @NotNull Runnable setupFog) {
         Tesselator tesselator = Tesselator.getInstance();
         Minecraft mc = Minecraft.getInstance();
         setupFog.run();
@@ -60,17 +60,15 @@ public class CloudiaRenderInfo extends DimensionSpecialEffects {
             PoseStack poseStack = new PoseStack();
             poseStack.mulPose(frustumMatrix);
             this.renderSkyTexture(poseStack);
-            Vec3 vec3 = level.getSkyColor(mc.gameRenderer.getMainCamera().getPosition(), partialTick);
+            Vec3 vec3 = Vec3.fromRGB24(level.getSkyColor(mc.gameRenderer.getMainCamera().getPosition(), partialTick));
             float f = (float)vec3.x;
             float f1 = (float)vec3.y;
             float f2 = (float)vec3.z;
 
-            FogRenderer.levelFogColor();
             RenderSystem.depthMask(false);
             RenderSystem.setShaderColor(f, f1, f2, 1.0F);
             VertexBuffer.unbind();
             RenderSystem.enableBlend();
-            RenderSystem.setShader(GameRenderer::getPositionColorShader);
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
             poseStack.pushPose();
             poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
@@ -85,7 +83,6 @@ public class CloudiaRenderInfo extends DimensionSpecialEffects {
             float f12 = 14.0F;
             poseStack.mulPose(Axis.YP.rotationDegrees(90F));
             poseStack.mulPose(Axis.XP.rotationDegrees(level.getTimeOfDay(partialTick) * 360.0F));
-            RenderSystem.setShader(GameRenderer::getPositionTexShader);
             RenderSystem.setShaderTexture(0, SUN_LOCATION);
             BufferBuilder bufferbuilder = tesselator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
             bufferbuilder.addVertex(matrix4f1, -f12, 100.0F, -f12).setUv(0.0F, 0.0F);
@@ -112,7 +109,6 @@ public class CloudiaRenderInfo extends DimensionSpecialEffects {
     private void renderSkyTexture(PoseStack poseStack) {
         RenderSystem.enableBlend();
         RenderSystem.depthMask(false);
-        RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, CLOUDIA_SKY_LOCATION);
         Tesselator tesselator = Tesselator.getInstance();
 

@@ -5,9 +5,9 @@ import net.jitl.core.init.internal.JDataAttachments;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.FlyingMob;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.monster.Enemy;
@@ -39,7 +39,7 @@ public abstract class JFlyingEntity extends FlyingMob implements Enemy, GeoEntit
     }
 
     @Override
-    public boolean checkSpawnRules(LevelAccessor level, MobSpawnType type) {
+    public boolean checkSpawnRules(LevelAccessor level, EntitySpawnReason type) {
         return !(level.getBiome(blockPosition()).is(Tags.Biomes.IS_MUSHROOM) || level.getBiome(blockPosition()).is(Biomes.DEEP_DARK));
     }
 

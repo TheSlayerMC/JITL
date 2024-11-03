@@ -2,6 +2,7 @@ package net.jitl.client.model;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.jitl.client.render.entity.frozen.state.FrozenTrollState;
 import net.jitl.common.entity.frozen.FrozenTrollEntity;
 import net.minecraft.client.model.ArmedModel;
 import net.minecraft.client.model.EntityModel;
@@ -15,7 +16,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.HumanoidArm;
 import org.jetbrains.annotations.NotNull;
 
-public class FrozenTrollModel<S extends LivingEntityRenderState> extends EntityModel<S> implements ArmedModel, HeadedModel {
+public class FrozenTrollModel<S extends FrozenTrollState> extends EntityModel<S> implements ArmedModel, HeadedModel {
     private final ModelPart head;
     private final ModelPart leg1;
     private final ModelPart leg2;

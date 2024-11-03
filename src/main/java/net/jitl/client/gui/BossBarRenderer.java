@@ -9,6 +9,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.LerpingBossEvent;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
@@ -46,12 +47,12 @@ public class BossBarRenderer {
 
         double healthWidth = entity.getHealth() / entity.getMaxHealth();
 
-        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+//        RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, texture);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 
-        graphics.blit(texture, x, y, 182, 9, 0, 10, 182, 9, 182, 19);
-        graphics.blit(texture, x, y, (int)(182 * healthWidth), 9, 0, 0, (int)(182 * healthWidth), 9, 182, 19);
+        graphics.blit(RenderType::guiTextured, texture, x, y, 182, 9, 0, 10, 182, 9, 182, 19);
+        graphics.blit(RenderType::guiTextured, texture, x, y, (int)(182 * healthWidth), 9, 0, 0, (int)(182 * healthWidth), 9, 182, 19);
         drawCenteredString(graphics, mc.font, entity.getName(), x, y - 9, 255, 255, 255, 255);
 
         ev.setIncrement(ev.getIncrement() + 5);

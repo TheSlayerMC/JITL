@@ -1,8 +1,6 @@
 package net.jitl.core.data;
 
 import net.jitl.client.stats.PacketPlayerStats;
-import net.jitl.common.JManagers;
-import net.jitl.common.dialogue.DialogueNetHandler;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.network.CKeyPressedPacket;
 import net.jitl.core.init.network.PacketCelestiumArmor;
@@ -23,8 +21,6 @@ public class JNetworkRegistry {
 
     private static void registerPackets(final RegisterPayloadHandlersEvent ev) {
         PayloadRegistrar registry = ev.registrar(JITL.MODID);
-        DialogueNetHandler dialogueNetHandler = getDialogueNetHandler();
-
 
         registry.playBidirectional(PacketPlayerStats.TYPE, PacketPlayerStats.STREAM_CODEC, PacketPlayerStats::handle);
         registry.playBidirectional(PacketEssenceBar.TYPE, PacketEssenceBar.STREAM_CODEC, PacketEssenceBar::handle);
@@ -39,9 +35,5 @@ public class JNetworkRegistry {
 
     public static void sendToPlayer(ServerPlayer player, CustomPacketPayload packet) {
         PacketDistributor.sendToPlayer(player, packet);
-    }
-
-    public static DialogueNetHandler getDialogueNetHandler() {
-        return JManagers.DIALOGUE_MANAGER.getNetHandler();
     }
 }

@@ -29,6 +29,7 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.Cat;
 import net.minecraft.world.entity.animal.Ocelot;
 import net.minecraft.world.entity.animal.goat.Goat;
+import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -44,7 +45,7 @@ import software.bernie.geckolib.animation.RawAnimation;
 import javax.annotation.Nullable;
 import java.util.Collection;
 
-public class BoomBoom extends JMonsterEntity implements PowerableMob {
+public class BoomBoom extends JMonsterEntity {
 
     private static final EntityDataAccessor<Integer> DATA_SWELL_DIR = SynchedEntityData.defineId(BoomBoom.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> DATA_IS_POWERED = SynchedEntityData.defineId(BoomBoom.class, EntityDataSerializers.BOOLEAN);
@@ -59,7 +60,7 @@ public class BoomBoom extends JMonsterEntity implements PowerableMob {
         setKnowledge(EnumKnowledge.OVERWORLD, 5F);
     }
 
-    public static boolean checkSpawn(EntityType<BoomBoom> entity, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+    public static boolean checkSpawn(EntityType<BoomBoom> entity, ServerLevelAccessor level, EntitySpawnReason spawnType, BlockPos pos, RandomSource random) {
         return level.getDifficulty() != Difficulty.PEACEFUL && checkMobSpawnRules(entity, level, spawnType, pos, random) && level.canSeeSky(pos)
                 && JCommonConfig.ENABLE_BOOM_SPAWN.get();
     }
@@ -188,11 +189,6 @@ public class BoomBoom extends JMonsterEntity implements PowerableMob {
         return SoundEvents.CREEPER_DEATH;
     }
 
-    @Override
-    public boolean doHurtTarget(Entity pEntity) {
-        return true;
-    }
-
     public boolean isPowered() {
         return this.entityData.get(DATA_IS_POWERED);
     }
@@ -228,7 +224,7 @@ public class BoomBoom extends JMonsterEntity implements PowerableMob {
                     itemstack.hurtAndBreak(1, pPlayer, getSlotForHand(pHand));
                 }
             }
-            return InteractionResult.sidedSuccess(this.level().isClientSide);
+            return InteractionResult.SUCCESS;
         } else {
             return super.mobInteract(pPlayer, pHand);
         }

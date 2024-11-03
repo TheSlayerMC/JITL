@@ -1,5 +1,6 @@
 package net.jitl.common.items;
 
+import net.jitl.client.ChatUtils;
 import net.jitl.client.gui.overlay.KnowledgeToast;
 import net.jitl.client.gui.screen.LoreScrollEntryScreen;
 import net.jitl.client.knowledge.EnumKnowledge;
@@ -22,7 +23,6 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -41,7 +41,7 @@ public class LoreScrollItem extends JItem {
     }
 
     @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level worldIn, @NotNull Player playerIn, @NotNull InteractionHand handIn) {
+    public InteractionResult use(@NotNull Level worldIn, @NotNull Player playerIn, @NotNull InteractionHand handIn) {
         ItemStack heldItem = playerIn.getItemInHand(handIn);
         ScrollEntry entry = getScrollEntry(heldItem);
         LoreScroll scroll = heldItem.get(JDataComponents.SCROLL);
@@ -64,15 +64,15 @@ public class LoreScrollItem extends JItem {
             if(!worldIn.isClientSide) {
                 MutableComponent msg = Component.translatable("scroll.jitl.fail");
                 msg.withStyle(ChatFormatting.RED);
-                playerIn.sendSystemMessage(msg);
+                ChatUtils.addChatBarChat(playerIn, msg);
             }
         }
-        return new InteractionResultHolder<>(InteractionResult.SUCCESS, heldItem);
+        return InteractionResult.SUCCESS;
     }
 
     @OnlyIn(Dist.CLIENT)
     private static void displayToast(LoreScroll scroll) {
-        Minecraft.getInstance().getToasts().addToast(new KnowledgeToast(EnumKnowledge.byName(scroll.knowledge()), true));
+        Minecraft.getInstance().getToastManager().addToast(new KnowledgeToast(EnumKnowledge.byName(scroll.knowledge()), true));
     }
 
     @OnlyIn(Dist.CLIENT)

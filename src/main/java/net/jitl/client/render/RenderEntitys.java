@@ -60,7 +60,7 @@ public class RenderEntitys {
         event.registerEntityRenderer(JEntities.PIERCER_TYPE.get(), manager -> new PiercerRenderer(manager, Minecraft.getInstance().getItemRenderer()));
         event.registerEntityRenderer(JEntities.KNIFE_TYPE.get(), manager -> new KnifeRenderer(manager, Minecraft.getInstance().getItemRenderer()));
 
-        event.registerEntityRenderer(JEntities.JBOAT_TYPE.get(), JBoatRenderer::new);
+        event.registerEntityRenderer(JEntities.JBOAT_TYPE.get(), manager -> new JBoatRenderer(manager, ModelLayers.OAK_BOAT));
         event.registerEntityRenderer(JEntities.SENTACOIN_TYPE.get(), (context) -> new SentacoinRender(context, Sentacoin.Type.COIN));
         event.registerEntityRenderer(JEntities.SENTACOIN_BAG_TYPE.get(), (context) -> new SentacoinRender(context, Sentacoin.Type.BAG));
 
@@ -101,6 +101,7 @@ public class RenderEntitys {
 
         event.registerLayerDefinition(JModelLayers.FROZEN_TROLL_MODEL_LAYER, FrozenTrollModel::createBodyLayer);
         event.registerLayerDefinition(JModelLayers.SHIVERWOLF_MODEL_LAYER, () -> LayerDefinition.create(ShiverwolfModel.createMeshDefinition(CubeDeformation.NONE), 64, 32));
+        event.registerLayerDefinition(JModelLayers.SHIVERWOLF_BABY_MODEL_LAYER, () -> LayerDefinition.create(ShiverwolfModel.createMeshDefinition(CubeDeformation.NONE), 64, 32));
         event.registerLayerDefinition(JModelLayers.SHIVERWOLF_ARMOR_LAYER, () -> LayerDefinition.create(ShiverwolfModel.createMeshDefinition(new CubeDeformation(0.2F)), 64, 32));
 
         event.registerLayerDefinition(JModelLayers.JCHEST, JChestRenderer::createSingleBodyLayer);

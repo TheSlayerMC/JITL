@@ -3,7 +3,7 @@ package net.jitl.common.block;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -35,9 +35,9 @@ public class TotemBlock extends Block {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    protected InteractionResult useItemOn(ItemStack pStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         setIsAwake(level, pos, state, !getIsAwake(state));
-        return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        return InteractionResult.PASS;
     }
 
     public boolean getIsAwake(BlockState state) {

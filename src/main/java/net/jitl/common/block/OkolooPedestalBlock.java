@@ -7,7 +7,7 @@ import net.jitl.core.init.internal.JEntities;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -38,7 +38,7 @@ public class OkolooPedestalBlock extends Block {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
+    protected InteractionResult useItemOn(ItemStack pStack, BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
         if(state.getValue(HAS_CLUB)) {
             if(!worldIn.isClientSide()) {
                 Okoloo okoloo = new Okoloo(JEntities.OKOLOO_TYPE.get(), worldIn);
@@ -47,9 +47,9 @@ public class OkolooPedestalBlock extends Block {
                 BlockState empty_state = state.setValue(OkolooPedestalBlock.HAS_CLUB, Boolean.FALSE);
                 worldIn.setBlock(pos, empty_state, 2);
                 ChatUtils.sendColouredTranslatedMessage(player, ChatFormatting.GOLD, "jitl.boss_spawn.okoloo");
-                return ItemInteractionResult.SUCCESS;
+                return InteractionResult.SUCCESS;
             }
         }
-        return ItemInteractionResult.FAIL;
+        return InteractionResult.FAIL;
     }
 }

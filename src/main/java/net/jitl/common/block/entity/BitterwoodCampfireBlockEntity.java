@@ -11,6 +11,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.*;
@@ -37,7 +38,7 @@ public class BitterwoodCampfireBlockEntity extends BlockEntity implements Cleara
       super(JBlockEntities.BITTERWOOD_CAMPFIRE.get(), pPos, pBlockState);
    }
 
-   public static void cookTick(Level pLevel, BlockPos pPos, BlockState pState, BitterwoodCampfireBlockEntity pBlockEntity) {
+   public static void cookTick(ServerLevel pLevel, BlockPos pPos, BlockState pState, BitterwoodCampfireBlockEntity pBlockEntity) {
       boolean flag = false;
 
       for (int i = 0; i < pBlockEntity.items.size(); i++) {
@@ -153,7 +154,7 @@ public class BitterwoodCampfireBlockEntity extends BlockEntity implements Cleara
    }
 
    public Optional<RecipeHolder<CampfireCookingRecipe>> getCookableRecipe(ItemStack pStack) {
-      return this.items.stream().noneMatch(ItemStack::isEmpty) ? Optional.empty() : this.quickCheck.getRecipeFor(new SingleRecipeInput(pStack), this.level);
+      return this.items.stream().noneMatch(ItemStack::isEmpty) ? Optional.empty() : this.quickCheck.getRecipeFor(new SingleRecipeInput(pStack), (ServerLevel) this.level);
    }
 
    public boolean placeFood(@Nullable Entity pEntity, ItemStack pStack, int pCookTime) {

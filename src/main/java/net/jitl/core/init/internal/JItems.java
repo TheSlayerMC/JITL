@@ -30,6 +30,9 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.FuelValues;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -38,6 +41,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class JItems {
@@ -118,19 +122,19 @@ public class JItems {
     public static final DeferredItem<Item> CRYSTAL_EYE = registerNormalItem("crystal_eye", "Crystal Eye");
     public static final DeferredItem<Item> DARK_MATTER_GEMSTONE = registerNormalItem("dark_matter_gemstone", "Dark Matter Gemstone");
     public static final DeferredItem<Item> FLORO_PEDAL = registerFoodItem("floro_pedal", "Floro Pedal", JFood.FLORO_PEDAL);
-    public static final DeferredItem<Item> FLORO_SEEDS = registerNormalItem("floro_seeds", "Floro Seeds", () -> new ItemNameBlockItem(JBlocks.FLORO_PEDAL_CROP.get(), JItems.itemProps()));
-    public static final DeferredItem<Item> CORVEGGIES = registerNormalItem("corveggies", "Corveggies", () -> new ItemNameBlockItem(JBlocks.CORVEGGIES_CROP.get(), JItems.itemProps().food(Foods.CARROT)));
-    public static final DeferredItem<Item> CRACKENCANE_SEEDS = registerNormalItem("crackencane_seeds", "Crackencane Seeds", () -> new ItemNameBlockItem(JBlocks.CRACKENCANE_CROP.get(), JItems.itemProps()));
+    public static final DeferredItem<Item> FLORO_SEEDS = registerNormalItem("floro_seeds", "Floro Seeds", () -> new BlockItem(JBlocks.FLORO_PEDAL_CROP.get(), JItems.itemProps().useItemDescriptionPrefix()));
+    public static final DeferredItem<Item> CORVEGGIES = registerNormalItem("corveggies", "Corveggies", () -> new BlockItem(JBlocks.CORVEGGIES_CROP.get(), JItems.itemProps().useItemDescriptionPrefix().food(Foods.CARROT)));
+    public static final DeferredItem<Item> CRACKENCANE_SEEDS = registerNormalItem("crackencane_seeds", "Crackencane Seeds", () -> new BlockItem(JBlocks.CRACKENCANE_CROP.get(), JItems.itemProps().useItemDescriptionPrefix()));
     public static final DeferredItem<Item> CRACKENCANE = registerNormalItem("crackencane", "Crackencane");
-    public static final DeferredItem<Item> CRAKEBULB_SEEDS = registerNormalItem("crakebulb_seeds", "Crakebulb Seeds", () -> new ItemNameBlockItem(JBlocks.CRAKEBULB_CROP.get(), JItems.itemProps()));
+    public static final DeferredItem<Item> CRAKEBULB_SEEDS = registerNormalItem("crakebulb_seeds", "Crakebulb Seeds", () -> new BlockItem(JBlocks.CRAKEBULB_CROP.get(), JItems.itemProps().useItemDescriptionPrefix()));
     public static final DeferredItem<Item> CRAKEBULB = registerNormalItem("crakebulb", "Crakebulb");
-    public static final DeferredItem<Item> GLOWA_SEEDS = registerNormalItem("glowa_seeds", "Glowa Seeds", () -> new ItemNameBlockItem(JBlocks.GLOWA_CROP.get(), JItems.itemProps()));
+    public static final DeferredItem<Item> GLOWA_SEEDS = registerNormalItem("glowa_seeds", "Glowa Seeds", () -> new BlockItem(JBlocks.GLOWA_CROP.get(), JItems.itemProps().useItemDescriptionPrefix()));
     public static final DeferredItem<Item> GLOWA = registerNormalItem("glowa", "Glowa");
-    public static final DeferredItem<Item> SPINEBERRY_SEEDS = registerNormalItem("spineberry_seeds", "Spineberry Seeds", () -> new ItemNameBlockItem(JBlocks.SPINEBERRY_CROP.get(), JItems.itemProps()));
+    public static final DeferredItem<Item> SPINEBERRY_SEEDS = registerNormalItem("spineberry_seeds", "Spineberry Seeds", () -> new BlockItem(JBlocks.SPINEBERRY_CROP.get(), JItems.itemProps().useItemDescriptionPrefix()));
     public static final DeferredItem<Item> SPINEBERRIES = registerNormalItem("spineberries", "Spineberries");
-    public static final DeferredItem<Item> ZATPEDAL_SEEDS = registerNormalItem("zatpedal_seeds", "Zatpedal Seeds", () -> new ItemNameBlockItem(JBlocks.ZATPEDAL_CROP.get(), JItems.itemProps()));
+    public static final DeferredItem<Item> ZATPEDAL_SEEDS = registerNormalItem("zatpedal_seeds", "Zatpedal Seeds", () -> new BlockItem(JBlocks.ZATPEDAL_CROP.get(), JItems.itemProps().useItemDescriptionPrefix()));
     public static final DeferredItem<Item> ZATPEDAL = registerNormalItem("zatpedal", "Zatpedal");
-    public static final DeferredItem<Item> TOMATO_SEEDS = registerNormalItem("tomato_seeds", "Tomato Seeds", () -> new ItemNameBlockItem(JBlocks.TOMATO_CROP.get(), JItems.itemProps()));
+    public static final DeferredItem<Item> TOMATO_SEEDS = registerNormalItem("tomato_seeds", "Tomato Seeds", () -> new BlockItem(JBlocks.TOMATO_CROP.get(), JItems.itemProps().useItemDescriptionPrefix()));
     public static final DeferredItem<Item> TOMATO = registerFoodItem("tomato", "Tomato", JFood.TOMATO);
     public static final DeferredItem<Item> HONGOSHROOM = registerFoodItem("hongoshroom", "Hongoshroom", JFood.HONGOSROOM);
     public static final DeferredItem<Item> HONGLOWSHROOM = registerFoodItem("honglowshroom", "Honglowshroom", JFood.HONGLOWSROOM);
@@ -147,10 +151,10 @@ public class JItems {
     public static final DeferredItem<Item> JELLYBEANS = registerFoodItem("jellybeans", "Jellybeans", JFood.JELLYBEANS);
     public static final DeferredItem<Item> CHOCOLATE = registerFoodItem("chocolate", "Chocolate", JFood.CHOCOLATE);
     public static final DeferredItem<Item> VANILLA_WAFER = registerFoodItem("vanilla_wafer", "Vanilla Wafer", JFood.VANILLA_WAFER);
-    public static final DeferredItem<Item> REDCURRANT_BERRY = registerNormalItem("redcurrant_berry", "Redcurrant Berry", () -> new ItemNameBlockItem(JBlocks.REDCURRANT_BUSH.get(), JItems.itemProps().food(JFood.REDCURRANT)));
-    public static final DeferredItem<Item> BRADBERRY = registerNormalItem("bradberry", "bradberry", () -> new ItemNameBlockItem(JBlocks.BRADBERRY_BUSH.get(), JItems.itemProps().food(JFood.BRADBERRY)));
+    public static final DeferredItem<Item> REDCURRANT_BERRY = registerNormalItem("redcurrant_berry", "Redcurrant Berry", () -> new BlockItem(JBlocks.REDCURRANT_BUSH.get(), JItems.itemProps().useItemDescriptionPrefix().food(JFood.REDCURRANT)));
+    public static final DeferredItem<Item> BRADBERRY = registerNormalItem("bradberry", "bradberry", () -> new BlockItem(JBlocks.BRADBERRY_BUSH.get(), JItems.itemProps().useItemDescriptionPrefix().food(JFood.BRADBERRY)));
     public static final DeferredItem<Item> AIRMELON = registerFoodItem("airmelon", "Airmelon", JFood.AIRMELON);
-    public static final DeferredItem<Item> AIRROOT_SEEDS = registerNormalItem("airroot_seeds", "Airroot Seeds", () -> new ItemNameBlockItem(JBlocks.AIRROOT_CROP.get(), JItems.itemProps()));
+    public static final DeferredItem<Item> AIRROOT_SEEDS = registerNormalItem("airroot_seeds", "Airroot Seeds", () -> new BlockItem(JBlocks.AIRROOT_CROP.get(), JItems.itemProps().useItemDescriptionPrefix()));
     public static final DeferredItem<Item> SNAKE_FLESH = registerFoodItem("snake_flesh", "Snake Flesh", JFood.SNAKE_FLESH);
     public static final DeferredItem<Item> SLIMY_FLESH = registerFoodItem("slimy_flesh", "Slimy Flesh", JFood.SLIMY_FLESH);
     public static final DeferredItem<Item> BREATHING_FUNGUS = registerFoodItem("breathing_fungus", "Freathing Fungus", JFood.BREATHING_FUNGUS);
@@ -272,10 +276,10 @@ public class JItems {
     public static final DeferredItem<Item> SAPPHIRE_HOE = registerToolItem("sapphire_hoe", "Sapphire Hoe", () -> new JHoeItem(JToolTiers.SAPPHIRE_HOE, -1, BASIC), ItemType.HOE);
     public static final DeferredItem<Item> SAPPHIRE_MULTITOOL = registerToolItem("sapphire_multitool", "Sapphire Multitool", () -> new MultitoolItem(JToolTiers.SAPPHIRE_SWORD, BASIC), ItemType.MULTITOOL);
     public static final DeferredItem<Item> SAPPHIRE_SWORD = registerToolItem("sapphire_sword", "Sapphire Sword", () -> new JSwordItem(JToolTiers.SAPPHIRE_SWORD, BASIC), ItemType.SWORD);
-    public static final DeferredItem<Item> SAPPHIRE_HELMET = registerNormalItem("sapphire_helmet", "Sapphire Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.SAPPHIRE, ArmorItem.Type.HELMET, null), ItemType.HELMET);
-    public static final DeferredItem<Item> SAPPHIRE_CHEST = registerNormalItem("sapphire_chestplate", "Sapphire Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.SAPPHIRE, ArmorItem.Type.CHESTPLATE, null), ItemType.CHESTPLATE);
-    public static final DeferredItem<Item> SAPPHIRE_LEGS = registerNormalItem("sapphire_leggings", "Sapphire Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.SAPPHIRE, ArmorItem.Type.LEGGINGS, null), ItemType.LEGGINGS);
-    public static final DeferredItem<Item> SAPPHIRE_BOOTS = registerNormalItem("sapphire_boots", "Sapphire Boots", () -> new JArmorItem(JToolTiers.JArmorTier.SAPPHIRE, ArmorItem.Type.BOOTS, null), ItemType.BOOTS);
+    public static final DeferredItem<Item> SAPPHIRE_HELMET = registerNormalItem("sapphire_helmet", "Sapphire Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.SAPPHIRE, ArmorType.HELMET, null), ItemType.HELMET);
+    public static final DeferredItem<Item> SAPPHIRE_CHEST = registerNormalItem("sapphire_chestplate", "Sapphire Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.SAPPHIRE, ArmorType.CHESTPLATE, null), ItemType.CHESTPLATE);
+    public static final DeferredItem<Item> SAPPHIRE_LEGS = registerNormalItem("sapphire_leggings", "Sapphire Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.SAPPHIRE, ArmorType.LEGGINGS, null), ItemType.LEGGINGS);
+    public static final DeferredItem<Item> SAPPHIRE_BOOTS = registerNormalItem("sapphire_boots", "Sapphire Boots", () -> new JArmorItem(JToolTiers.JArmorTier.SAPPHIRE, ArmorType.BOOTS, null), ItemType.BOOTS);
 
     public static final DeferredItem<Item> LUNIUM_POWDER = registerNormalItem("lunium_powder", "Lunium Powder");
     public static final DeferredItem<Item> LUNIUM_SHIELD = registerShieldItem("lunium_shield", "Lunium Shield", () -> new JShieldItem("lunium", 1200, LUNIUM_POWDER.get()));
@@ -287,10 +291,10 @@ public class JItems {
     public static final DeferredItem<Item> LUNIUM_HOE = registerToolItem("lunium_hoe", "Lunium Hoe", () -> new JHoeItem(JToolTiers.LUNIUM_HOE, -2, BASIC), ItemType.HOE);
     public static final DeferredItem<Item> LUNIUM_MULTITOOL = registerToolItem("lunium_multitool", "Lunium Multitool", () -> new MultitoolItem(JToolTiers.LUNIUM_SWORD, BASIC), ItemType.MULTITOOL);
     public static final DeferredItem<Item> LUNIUM_SWORD = registerToolItem("lunium_sword", "Lunium Sword", () -> new JSwordItem(JToolTiers.LUNIUM_SWORD, LUNIUM_ABILITY), ItemType.SWORD);
-    public static final DeferredItem<Item> LUNIUM_HELMET = registerNormalItem("lunium_helmet", "Lunium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.LUNIUM, ArmorItem.Type.HELMET, LUNIUM_ABILITY), ItemType.HELMET);
-    public static final DeferredItem<Item> LUNIUM_CHEST = registerNormalItem("lunium_chestplate", "Lunium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.LUNIUM, ArmorItem.Type.CHESTPLATE, LUNIUM_ABILITY), ItemType.CHESTPLATE);
-    public static final DeferredItem<Item> LUNIUM_LEGS = registerNormalItem("lunium_leggings", "Lunium Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.LUNIUM, ArmorItem.Type.LEGGINGS, LUNIUM_ABILITY), ItemType.LEGGINGS);
-    public static final DeferredItem<Item> LUNIUM_BOOTS = registerNormalItem("lunium_boots", "Lunium Boots", () -> new JArmorItem(JToolTiers.JArmorTier.LUNIUM, ArmorItem.Type.BOOTS, LUNIUM_ABILITY), ItemType.BOOTS);
+    public static final DeferredItem<Item> LUNIUM_HELMET = registerNormalItem("lunium_helmet", "Lunium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.LUNIUM, ArmorType.HELMET, LUNIUM_ABILITY), ItemType.HELMET);
+    public static final DeferredItem<Item> LUNIUM_CHEST = registerNormalItem("lunium_chestplate", "Lunium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.LUNIUM, ArmorType.CHESTPLATE, LUNIUM_ABILITY), ItemType.CHESTPLATE);
+    public static final DeferredItem<Item> LUNIUM_LEGS = registerNormalItem("lunium_leggings", "Lunium Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.LUNIUM, ArmorType.LEGGINGS, LUNIUM_ABILITY), ItemType.LEGGINGS);
+    public static final DeferredItem<Item> LUNIUM_BOOTS = registerNormalItem("lunium_boots", "Lunium Boots", () -> new JArmorItem(JToolTiers.JArmorTier.LUNIUM, ArmorType.BOOTS, LUNIUM_ABILITY), ItemType.BOOTS);
 
     public static final DeferredItem<Item> RAW_SHADIUM = registerNormalItem("raw_shadium", "Raw Shadium");
     public static final DeferredItem<Item> SHADIUM_INGOT = registerNormalItem("shadium_ingot", "Shadium Ingot");
@@ -302,10 +306,10 @@ public class JItems {
     public static final DeferredItem<Item> SHADIUM_HOE = registerToolItem("shadium_hoe", "Shadium Hoe", () -> new JHoeItem(JToolTiers.SHADIUM_HOE, -2, BASIC), ItemType.HOE);
     public static final DeferredItem<Item> SHADIUM_MULTITOOL = registerToolItem("shadium_multitool", "Shadium Multitool", () -> new MultitoolItem(JToolTiers.SHADIUM_SWORD, BASIC), ItemType.MULTITOOL);
     public static final DeferredItem<Item> SHADIUM_SWORD = registerToolItem("shadium_sword", "Shadium Sword", () -> new JSwordItem(JToolTiers.SHADIUM_SWORD, BASIC), ItemType.SWORD);
-    public static final DeferredItem<Item> SHADIUM_HELMET = registerNormalItem("shadium_helmet", "Shadium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.SHADIUM, ArmorItem.Type.HELMET, null), ItemType.HELMET);
-    public static final DeferredItem<Item> SHADIUM_CHEST = registerNormalItem("shadium_chestplate", "Shadium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.SHADIUM, ArmorItem.Type.CHESTPLATE, null), ItemType.CHESTPLATE);
-    public static final DeferredItem<Item> SHADIUM_LEGS = registerNormalItem("shadium_leggings", "Shadium Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.SHADIUM, ArmorItem.Type.LEGGINGS, null), ItemType.LEGGINGS);
-    public static final DeferredItem<Item> SHADIUM_BOOTS = registerNormalItem("shadium_boots", "Shadium Boots", () -> new JArmorItem(JToolTiers.JArmorTier.SHADIUM, ArmorItem.Type.BOOTS, null), ItemType.BOOTS);
+    public static final DeferredItem<Item> SHADIUM_HELMET = registerNormalItem("shadium_helmet", "Shadium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.SHADIUM, ArmorType.HELMET, null), ItemType.HELMET);
+    public static final DeferredItem<Item> SHADIUM_CHEST = registerNormalItem("shadium_chestplate", "Shadium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.SHADIUM, ArmorType.CHESTPLATE, null), ItemType.CHESTPLATE);
+    public static final DeferredItem<Item> SHADIUM_LEGS = registerNormalItem("shadium_leggings", "Shadium Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.SHADIUM, ArmorType.LEGGINGS, null), ItemType.LEGGINGS);
+    public static final DeferredItem<Item> SHADIUM_BOOTS = registerNormalItem("shadium_boots", "Shadium Boots", () -> new JArmorItem(JToolTiers.JArmorTier.SHADIUM, ArmorType.BOOTS, null), ItemType.BOOTS);
 
     public static final DeferredItem<Item> RAW_BLOODCRUST = registerNormalItem("raw_bloodcrust", "Raw Bloodcrust");
     public static final DeferredItem<Item> BLOODCRUST_INGOT = registerNormalItem("bloodcrust_ingot", "Bloodcrust Ingot");
@@ -317,10 +321,10 @@ public class JItems {
     public static final DeferredItem<Item> BLOODCRUST_MULTITOOL = registerToolItem("bloodcrust_multitool", "Bloodcrust Multitool", () -> new MultitoolItem(JToolTiers.BLOODCRUST_SWORD, BLOODCRUST_TOOL_ABILITY), ItemType.MULTITOOL);
     public static final DeferredItem<Item> BLOODCRUST_HOE = registerToolItem("bloodcrust_hoe", "Bloodcrust Hoe", () -> new JHoeItem(JToolTiers.BLOODCRUST_HOE, -2, BLOODCRUST_TOOL_ABILITY), ItemType.HOE);
     public static final DeferredItem<Item> BLOODCRUST_SWORD = registerToolItem("bloodcrust_sword", "Bloodcrust Sword", () -> new JSwordItem(JToolTiers.BLOODCRUST_SWORD, BLOODCRUST_SWORD_ABILITY), ItemType.SWORD);
-    public static final DeferredItem<Item> BLOODCRUST_HELMET = registerNormalItem("bloodcrust_helmet", "Bloodcrust Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.BLOODCRUST, ArmorItem.Type.HELMET, BLOODCRUST_ARMOR_ABILITY), ItemType.HELMET);
-    public static final DeferredItem<Item> BLOODCRUST_CHEST = registerNormalItem("bloodcrust_chestplate", "Bloodcrust Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.BLOODCRUST, ArmorItem.Type.CHESTPLATE, BLOODCRUST_ARMOR_ABILITY), ItemType.CHESTPLATE);
-    public static final DeferredItem<Item> BLOODCRUST_LEGS = registerNormalItem("bloodcrust_leggings", "Bloodcrust Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.BLOODCRUST, ArmorItem.Type.LEGGINGS, BLOODCRUST_ARMOR_ABILITY), ItemType.LEGGINGS);
-    public static final DeferredItem<Item> BLOODCRUST_BOOTS = registerNormalItem("bloodcrust_boots", "Bloodcrust Boots", () -> new JArmorItem(JToolTiers.JArmorTier.BLOODCRUST, ArmorItem.Type.BOOTS, BLOODCRUST_ARMOR_ABILITY), ItemType.BOOTS);
+    public static final DeferredItem<Item> BLOODCRUST_HELMET = registerNormalItem("bloodcrust_helmet", "Bloodcrust Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.BLOODCRUST, ArmorType.HELMET, BLOODCRUST_ARMOR_ABILITY), ItemType.HELMET);
+    public static final DeferredItem<Item> BLOODCRUST_CHEST = registerNormalItem("bloodcrust_chestplate", "Bloodcrust Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.BLOODCRUST, ArmorType.CHESTPLATE, BLOODCRUST_ARMOR_ABILITY), ItemType.CHESTPLATE);
+    public static final DeferredItem<Item> BLOODCRUST_LEGS = registerNormalItem("bloodcrust_leggings", "Bloodcrust Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.BLOODCRUST, ArmorType.LEGGINGS, BLOODCRUST_ARMOR_ABILITY), ItemType.LEGGINGS);
+    public static final DeferredItem<Item> BLOODCRUST_BOOTS = registerNormalItem("bloodcrust_boots", "Bloodcrust Boots", () -> new JArmorItem(JToolTiers.JArmorTier.BLOODCRUST, ArmorType.BOOTS, BLOODCRUST_ARMOR_ABILITY), ItemType.BOOTS);
 
     public static final DeferredItem<Item> CELESTIUM_INGOT = registerNormalItem("celestium_ingot", "Celestium Ingot");
     public static final DeferredItem<Item> CELESTIUM_GEMSTONE = registerNormalItem("celestium_gemstone", "Celestium Gemstone");
@@ -331,10 +335,10 @@ public class JItems {
     public static final DeferredItem<Item> CELESTIUM_HOE = registerToolItem("celestium_hoe", "Celestium Hoe", () -> new JHoeItem(JToolTiers.CELESTIUM_HOE, -5, BASIC), ItemType.HOE);
     public static final DeferredItem<Item> CELESTIUM_MULTITOOL = registerToolItem("celestium_multitool", "Celestium Multitool", () -> new MultitoolItem(JToolTiers.CELESTIUM_SWORD, BASIC), ItemType.MULTITOOL);
     public static final DeferredItem<Item> CELESTIUM_SWORD = registerToolItem("celestium_sword", "Celestium Sword", () -> new JSwordItem(JToolTiers.CELESTIUM_SWORD, BASIC), ItemType.SWORD);
-    public static final DeferredItem<Item> CELESTIUM_HELMET = registerNormalItem("celestium_helmet", "Celestium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, ArmorItem.Type.HELMET, CELESTIUM_ARMOR_ABILITY), ItemType.HELMET);
-    public static final DeferredItem<Item> CELESTIUM_CHEST = registerNormalItem("celestium_chestplate", "Celestium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, ArmorItem.Type.CHESTPLATE, CELESTIUM_ARMOR_ABILITY), ItemType.CHESTPLATE);
-    public static final DeferredItem<Item> CELESTIUM_LEGS = registerNormalItem("celestium_leggings", "Celestium Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, ArmorItem.Type.LEGGINGS, CELESTIUM_ARMOR_ABILITY), ItemType.LEGGINGS);
-    public static final DeferredItem<Item> CELESTIUM_BOOTS = registerNormalItem("celestium_boots", "Celestium Boots", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, ArmorItem.Type.BOOTS, CELESTIUM_ARMOR_ABILITY), ItemType.BOOTS);
+    public static final DeferredItem<Item> CELESTIUM_HELMET = registerNormalItem("celestium_helmet", "Celestium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, ArmorType.HELMET, CELESTIUM_ARMOR_ABILITY), ItemType.HELMET);
+    public static final DeferredItem<Item> CELESTIUM_CHEST = registerNormalItem("celestium_chestplate", "Celestium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, ArmorType.CHESTPLATE, CELESTIUM_ARMOR_ABILITY), ItemType.CHESTPLATE);
+    public static final DeferredItem<Item> CELESTIUM_LEGS = registerNormalItem("celestium_leggings", "Celestium Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, ArmorType.LEGGINGS, CELESTIUM_ARMOR_ABILITY), ItemType.LEGGINGS);
+    public static final DeferredItem<Item> CELESTIUM_BOOTS = registerNormalItem("celestium_boots", "Celestium Boots", () -> new JArmorItem(JToolTiers.JArmorTier.CELESTIUM, ArmorType.BOOTS, CELESTIUM_ARMOR_ABILITY), ItemType.BOOTS);
 
     public static final DeferredItem<Item> MEKYUM_INGOT = registerNormalItem("mekyum_ingot", "Mekyum Ingot");
     public static final DeferredItem<Item> MEKYUM_GEMSTONE = registerNormalItem("mekyum_gemstone", "Mekyum Gemstone");
@@ -374,10 +378,10 @@ public class JItems {
     public static final DeferredItem<Item> FLAIRIUM_HOE = registerToolItem("flairium_hoe", "Flairium Hoe", () -> new JHoeItem(JToolTiers.FLAIRIUM_HOE, -7, BASIC), ItemType.HOE);
     public static final DeferredItem<Item> FLAIRIUM_MULTITOOL = registerToolItem("flairium_multitool", "Flairium Multitool", () -> new MultitoolItem(JToolTiers.FLAIRIUM_SWORD, BASIC), ItemType.MULTITOOL);
     public static final DeferredItem<Item> FLAIRIUM_SWORD = registerToolItem("flairium_sword", "Flairium Sword", () -> new JSwordItem(JToolTiers.FLAIRIUM_SWORD, BASIC), ItemType.SWORD);
-    public static final DeferredItem<Item> FLAIRIUM_HELMET = registerNormalItem("flairium_helmet", "Flairium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, ArmorItem.Type.HELMET, null), ItemType.HELMET);
-    public static final DeferredItem<Item> FLAIRIUM_CHEST = registerNormalItem("flairium_chestplate", "Flairium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, ArmorItem.Type.CHESTPLATE, null), ItemType.CHESTPLATE);
-    public static final DeferredItem<Item> FLAIRIUM_LEGS = registerNormalItem("flairium_leggings", "Flairium Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, ArmorItem.Type.LEGGINGS, null), ItemType.LEGGINGS);
-    public static final DeferredItem<Item> FLAIRIUM_BOOTS = registerNormalItem("flairium_boots", "Flairium Boots", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, ArmorItem.Type.BOOTS, null), ItemType.BOOTS);
+    public static final DeferredItem<Item> FLAIRIUM_HELMET = registerNormalItem("flairium_helmet", "Flairium Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, ArmorType.HELMET, null), ItemType.HELMET);
+    public static final DeferredItem<Item> FLAIRIUM_CHEST = registerNormalItem("flairium_chestplate", "Flairium Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, ArmorType.CHESTPLATE, null), ItemType.CHESTPLATE);
+    public static final DeferredItem<Item> FLAIRIUM_LEGS = registerNormalItem("flairium_leggings", "Flairium Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, ArmorType.LEGGINGS, null), ItemType.LEGGINGS);
+    public static final DeferredItem<Item> FLAIRIUM_BOOTS = registerNormalItem("flairium_boots", "Flairium Boots", () -> new JArmorItem(JToolTiers.JArmorTier.FLAIRIUM, ArmorType.BOOTS, null), ItemType.BOOTS);
 
     public static final DeferredItem<Item> DES_INGOT = registerNormalItem("des_ingot", "Des Ingot");
     public static final DeferredItem<Item> DES_SHIELD = registerShieldItem("des_shield", "Des Shield", () -> new JShieldItem("des", 1200, DES_INGOT.get()));
@@ -396,10 +400,10 @@ public class JItems {
     public static final DeferredItem<Item> GORBITE_HOE = registerToolItem("gorbite_hoe", "Gorbite Hoe", () -> new JHoeItem(JToolTiers.GORBITE_HOE, -8, BASIC), ItemType.HOE);
     public static final DeferredItem<Item> GORBITE_MULTITOOL = registerToolItem("gorbite_multitool", "Gorbite Multitool", () -> new MultitoolItem(JToolTiers.GORBITE_SWORD, BASIC), ItemType.MULTITOOL);
     public static final DeferredItem<Item> GORBITE_SWORD = registerToolItem("gorbite_sword", "Gorbite Sword", () -> new JSwordItem(JToolTiers.GORBITE_SWORD, BASIC), ItemType.SWORD);
-    public static final DeferredItem<Item> GORBITE_HELMET = registerNormalItem("gorbite_helmet", "Gorbite Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, ArmorItem.Type.HELMET, null), ItemType.HELMET);
-    public static final DeferredItem<Item> GORBITE_CHEST = registerNormalItem("gorbite_chestplate", "Gorbite Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, ArmorItem.Type.CHESTPLATE, null), ItemType.CHESTPLATE);
-    public static final DeferredItem<Item> GORBITE_LEGS = registerNormalItem("gorbite_leggings", "Gorbite Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, ArmorItem.Type.LEGGINGS, null), ItemType.LEGGINGS);
-    public static final DeferredItem<Item> GORBITE_BOOTS = registerNormalItem("gorbite_boots", "Gorbite Boots", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, ArmorItem.Type.BOOTS, null), ItemType.BOOTS);
+    public static final DeferredItem<Item> GORBITE_HELMET = registerNormalItem("gorbite_helmet", "Gorbite Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, ArmorType.HELMET, null), ItemType.HELMET);
+    public static final DeferredItem<Item> GORBITE_CHEST = registerNormalItem("gorbite_chestplate", "Gorbite Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, ArmorType.CHESTPLATE, null), ItemType.CHESTPLATE);
+    public static final DeferredItem<Item> GORBITE_LEGS = registerNormalItem("gorbite_leggings", "Gorbite Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, ArmorType.LEGGINGS, null), ItemType.LEGGINGS);
+    public static final DeferredItem<Item> GORBITE_BOOTS = registerNormalItem("gorbite_boots", "Gorbite Boots", () -> new JArmorItem(JToolTiers.JArmorTier.GORBITE, ArmorType.BOOTS, null), ItemType.BOOTS);
 
     public static final DeferredItem<Item> RAW_ORBADITE = registerNormalItem("raw_orbadite", "Raw Orbadite");
     public static final DeferredItem<Item> ORBADITE_INGOT = registerNormalItem("orbadite_ingot", "Orbadite Ingot");
@@ -410,10 +414,10 @@ public class JItems {
     public static final DeferredItem<Item> ORBADITE_HOE = registerToolItem("orbadite_hoe", "Orbadite Hoe", () -> new JHoeItem(JToolTiers.ORBADITE_HOE, -8, BASIC), ItemType.HOE);
     public static final DeferredItem<Item> ORBADITE_MULTITOOL = registerToolItem("orbadite_multitool", "Orbadite Multitool", () -> new MultitoolItem(JToolTiers.ORBADITE_SWORD, BASIC), ItemType.MULTITOOL);
     public static final DeferredItem<Item> ORBADITE_SWORD = registerToolItem("orbadite_sword", "Orbadite Sword", () -> new JSwordItem(JToolTiers.ORBADITE_SWORD, BASIC), ItemType.SWORD);
-    public static final DeferredItem<Item> ORBADITE_HELMET = registerNormalItem("orbadite_helmet", "Orbadite Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.HELMET, null), ItemType.HELMET);
-    public static final DeferredItem<Item> ORBADITE_CHEST = registerNormalItem("orbadite_chestplate", "Orbadite Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.CHESTPLATE, null), ItemType.CHESTPLATE);
-    public static final DeferredItem<Item> ORBADITE_LEGS = registerNormalItem("orbadite_leggings", "Orbadite Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.LEGGINGS, null), ItemType.LEGGINGS);
-    public static final DeferredItem<Item> ORBADITE_BOOTS = registerNormalItem("orbadite_boots", "Orbadite Boots", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorItem.Type.BOOTS, null), ItemType.BOOTS);
+    public static final DeferredItem<Item> ORBADITE_HELMET = registerNormalItem("orbadite_helmet", "Orbadite Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorType.HELMET, null), ItemType.HELMET);
+    public static final DeferredItem<Item> ORBADITE_CHEST = registerNormalItem("orbadite_chestplate", "Orbadite Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorType.CHESTPLATE, null), ItemType.CHESTPLATE);
+    public static final DeferredItem<Item> ORBADITE_LEGS = registerNormalItem("orbadite_leggings", "Orbadite Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorType.LEGGINGS, null), ItemType.LEGGINGS);
+    public static final DeferredItem<Item> ORBADITE_BOOTS = registerNormalItem("orbadite_boots", "Orbadite Boots", () -> new JArmorItem(JToolTiers.JArmorTier.ORBADITE, ArmorType.BOOTS, null), ItemType.BOOTS);
 
     public static final DeferredItem<Item> SOULSTONE = registerNormalItem("soulstone", "Soulstone");
     public static final DeferredItem<Item> SOULSTONE_SHIELD = registerShieldItem("soulstone_shield", "Soulstone Shield", () -> new JShieldItem("soulstone", 1200, SOULSTONE.get()));
@@ -424,32 +428,32 @@ public class JItems {
     public static final DeferredItem<Item> SOULSTONE_MULTITOOL = registerToolItem("soulstone_multitool", "Soulstone Multitool", () -> new MultitoolItem(JToolTiers.SOULSTONE_SWORD, BASIC), ItemType.MULTITOOL);
     public static final DeferredItem<Item> SOULSTONE_SWORD = registerToolItem("soulstone_sword", "Soulstone Sword", () -> new JSwordItem(JToolTiers.SOULSTONE_SWORD, BASIC), ItemType.SWORD);
 
-    public static final DeferredItem<Item> TWILIGHT_HELMET = registerNormalItem("twilight_helmet", "Twilight Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.TWILIGHT, ArmorItem.Type.HELMET, null), ItemType.HELMET);
-    public static final DeferredItem<Item> TWILIGHT_CHEST = registerNormalItem("twilight_chestplate", "Twilight Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.TWILIGHT, ArmorItem.Type.CHESTPLATE, null), ItemType.CHESTPLATE);
-    public static final DeferredItem<Item> TWILIGHT_LEGS = registerNormalItem("twilight_leggings", "Twilight Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.TWILIGHT, ArmorItem.Type.LEGGINGS, null), ItemType.LEGGINGS);
-    public static final DeferredItem<Item> TWILIGHT_BOOTS = registerNormalItem("twilight_boots", "Twilight Boots", () -> new JArmorItem(JToolTiers.JArmorTier.TWILIGHT, ArmorItem.Type.BOOTS, null), ItemType.BOOTS);
+    public static final DeferredItem<Item> TWILIGHT_HELMET = registerNormalItem("twilight_helmet", "Twilight Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.TWILIGHT, ArmorType.HELMET, null), ItemType.HELMET);
+    public static final DeferredItem<Item> TWILIGHT_CHEST = registerNormalItem("twilight_chestplate", "Twilight Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.TWILIGHT, ArmorType.CHESTPLATE, null), ItemType.CHESTPLATE);
+    public static final DeferredItem<Item> TWILIGHT_LEGS = registerNormalItem("twilight_leggings", "Twilight Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.TWILIGHT, ArmorType.LEGGINGS, null), ItemType.LEGGINGS);
+    public static final DeferredItem<Item> TWILIGHT_BOOTS = registerNormalItem("twilight_boots", "Twilight Boots", () -> new JArmorItem(JToolTiers.JArmorTier.TWILIGHT, ArmorType.BOOTS, null), ItemType.BOOTS);
 
-    public static final DeferredItem<Item> FLAME_HELMET = registerNormalItem("flame_helmet", "Flame Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.FLAME, ArmorItem.Type.HELMET, null), ItemType.HELMET);
-    public static final DeferredItem<Item> FLAME_CHEST = registerNormalItem("flame_chestplate", "Flame Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.FLAME, ArmorItem.Type.CHESTPLATE, null), ItemType.CHESTPLATE);
-    public static final DeferredItem<Item> FLAME_LEGS = registerNormalItem("flame_leggings", "Flame Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.FLAME, ArmorItem.Type.LEGGINGS, null), ItemType.LEGGINGS);
-    public static final DeferredItem<Item> FLAME_BOOTS = registerNormalItem("flame_boots", "Flame Boots", () -> new JArmorItem(JToolTiers.JArmorTier.FLAME, ArmorItem.Type.BOOTS, null), ItemType.BOOTS);
+    public static final DeferredItem<Item> FLAME_HELMET = registerNormalItem("flame_helmet", "Flame Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.FLAME, ArmorType.HELMET, null), ItemType.HELMET);
+    public static final DeferredItem<Item> FLAME_CHEST = registerNormalItem("flame_chestplate", "Flame Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.FLAME, ArmorType.CHESTPLATE, null), ItemType.CHESTPLATE);
+    public static final DeferredItem<Item> FLAME_LEGS = registerNormalItem("flame_leggings", "Flame Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.FLAME, ArmorType.LEGGINGS, null), ItemType.LEGGINGS);
+    public static final DeferredItem<Item> FLAME_BOOTS = registerNormalItem("flame_boots", "Flame Boots", () -> new JArmorItem(JToolTiers.JArmorTier.FLAME, ArmorType.BOOTS, null), ItemType.BOOTS);
 
-    public static final DeferredItem<Item> HOLLOW_HELMET = registerNormalItem("hollow_helmet", "Hollow Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.HOLLOW, ArmorItem.Type.HELMET, null), ItemType.HELMET);
-    public static final DeferredItem<Item> HOLLOW_CHEST = registerNormalItem("hollow_chestplate", "Hollow Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.HOLLOW, ArmorItem.Type.CHESTPLATE, null), ItemType.CHESTPLATE);
-    public static final DeferredItem<Item> HOLLOW_LEGS = registerNormalItem("hollow_leggings", "Hollow Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.HOLLOW, ArmorItem.Type.LEGGINGS, null), ItemType.LEGGINGS);
-    public static final DeferredItem<Item> HOLLOW_BOOTS = registerNormalItem("hollow_boots", "Hollow Boots", () -> new JArmorItem(JToolTiers.JArmorTier.HOLLOW, ArmorItem.Type.BOOTS, null), ItemType.BOOTS);
+    public static final DeferredItem<Item> HOLLOW_HELMET = registerNormalItem("hollow_helmet", "Hollow Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.HOLLOW, ArmorType.HELMET, null), ItemType.HELMET);
+    public static final DeferredItem<Item> HOLLOW_CHEST = registerNormalItem("hollow_chestplate", "Hollow Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.HOLLOW, ArmorType.CHESTPLATE, null), ItemType.CHESTPLATE);
+    public static final DeferredItem<Item> HOLLOW_LEGS = registerNormalItem("hollow_leggings", "Hollow Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.HOLLOW, ArmorType.LEGGINGS, null), ItemType.LEGGINGS);
+    public static final DeferredItem<Item> HOLLOW_BOOTS = registerNormalItem("hollow_boots", "Hollow Boots", () -> new JArmorItem(JToolTiers.JArmorTier.HOLLOW, ArmorType.BOOTS, null), ItemType.BOOTS);
 
-    public static final DeferredItem<Item> CRYSTAL_FLAKE_HELMET = registerNormalItem("crystal_flake_helmet", "Crystal Flake Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.CRYSTAL_FLAKE, ArmorItem.Type.HELMET, null), ItemType.HELMET);
-    public static final DeferredItem<Item> CRYSTAL_FLAKE_CHEST = registerNormalItem("crystal_flake_chestplate", "Crystal Flake Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.CRYSTAL_FLAKE, ArmorItem.Type.CHESTPLATE, null), ItemType.CHESTPLATE);
-    public static final DeferredItem<Item> CRYSTAL_FLAKE_LEGS = registerNormalItem("crystal_flake_leggings", "Crystal Flake Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.CRYSTAL_FLAKE, ArmorItem.Type.LEGGINGS, null), ItemType.LEGGINGS);
-    public static final DeferredItem<Item> CRYSTAL_FLAKE_BOOTS = registerNormalItem("crystal_flake_boots", "Crystal Flake Boots", () -> new JArmorItem(JToolTiers.JArmorTier.CRYSTAL_FLAKE, ArmorItem.Type.BOOTS, null), ItemType.BOOTS);
+    public static final DeferredItem<Item> CRYSTAL_FLAKE_HELMET = registerNormalItem("crystal_flake_helmet", "Crystal Flake Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.CRYSTAL_FLAKE, ArmorType.HELMET, null), ItemType.HELMET);
+    public static final DeferredItem<Item> CRYSTAL_FLAKE_CHEST = registerNormalItem("crystal_flake_chestplate", "Crystal Flake Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.CRYSTAL_FLAKE, ArmorType.CHESTPLATE, null), ItemType.CHESTPLATE);
+    public static final DeferredItem<Item> CRYSTAL_FLAKE_LEGS = registerNormalItem("crystal_flake_leggings", "Crystal Flake Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.CRYSTAL_FLAKE, ArmorType.LEGGINGS, null), ItemType.LEGGINGS);
+    public static final DeferredItem<Item> CRYSTAL_FLAKE_BOOTS = registerNormalItem("crystal_flake_boots", "Crystal Flake Boots", () -> new JArmorItem(JToolTiers.JArmorTier.CRYSTAL_FLAKE, ArmorType.BOOTS, null), ItemType.BOOTS);
 
-    public static final DeferredItem<Item> FROSTBITTEN_HELMET = registerNormalItem("frostbitten_helmet", "Frostbitten Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.FROSTBITTEN, ArmorItem.Type.HELMET, null), ItemType.HELMET);
-    public static final DeferredItem<Item> FROSTBITTEN_CHEST = registerNormalItem("frostbitten_chestplate", "Frostbitten Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.FROSTBITTEN, ArmorItem.Type.CHESTPLATE, null), ItemType.CHESTPLATE);
-    public static final DeferredItem<Item> FROSTBITTEN_LEGS = registerNormalItem("frostbitten_leggings", "Frostbitten Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.FROSTBITTEN, ArmorItem.Type.LEGGINGS, null), ItemType.LEGGINGS);
-    public static final DeferredItem<Item> FROSTBITTEN_BOOTS = registerNormalItem("frostbitten_boots", "Frostbitten Boots", () -> new JArmorItem(JToolTiers.JArmorTier.FROSTBITTEN, ArmorItem.Type.BOOTS, null), ItemType.BOOTS);
+    public static final DeferredItem<Item> FROSTBITTEN_HELMET = registerNormalItem("frostbitten_helmet", "Frostbitten Helmet", () -> new JArmorItem(JToolTiers.JArmorTier.FROSTBITTEN, ArmorType.HELMET, null), ItemType.HELMET);
+    public static final DeferredItem<Item> FROSTBITTEN_CHEST = registerNormalItem("frostbitten_chestplate", "Frostbitten Chestplate", () -> new JArmorItem(JToolTiers.JArmorTier.FROSTBITTEN, ArmorType.CHESTPLATE, null), ItemType.CHESTPLATE);
+    public static final DeferredItem<Item> FROSTBITTEN_LEGS = registerNormalItem("frostbitten_leggings", "Frostbitten Leggings", () -> new JArmorItem(JToolTiers.JArmorTier.FROSTBITTEN, ArmorType.LEGGINGS, null), ItemType.LEGGINGS);
+    public static final DeferredItem<Item> FROSTBITTEN_BOOTS = registerNormalItem("frostbitten_boots", "Frostbitten Boots", () -> new JArmorItem(JToolTiers.JArmorTier.FROSTBITTEN, ArmorType.BOOTS, null), ItemType.BOOTS);
 
-    public static final DeferredItem<Item> HELLMETAL_HELMET = registerNormalItem("hellmetal_helmet", "Mask of Hellmetal", () -> new JArmorItem(JToolTiers.JArmorTier.HELLMETAL, ArmorItem.Type.HELMET, null), ItemType.HELMET);
+    public static final DeferredItem<Item> HELLMETAL_HELMET = registerNormalItem("hellmetal_helmet", "Mask of Hellmetal", () -> new JArmorItem(JToolTiers.JArmorTier.HELLMETAL, ArmorType.HELMET, null), ItemType.HELMET);
 
     public static final DeferredItem<Item> STAFF_OF_CONJURING = registerToolItem("staff_of_conjuring", "Staff of Conjuring", () -> new StaffItem(1, ConjuringProjectileEntity::new));
     public static final DeferredItem<Item> STAFF_OF_ESSENCIA = registerToolItem("staff_of_essencia", "Staff of Essencia", () -> new StaffItem(4, EssenciaProjectileEntity::new));
@@ -726,7 +730,7 @@ public class JItems {
     private static DeferredItem<Item> registerFuelItem(String name, String translatedName, int burnTime /* 200 ticks per item */) {
         return register(name, translatedName, () -> new JItem(new Item.Properties()) {
             @Override
-            public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
+            public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType, FuelValues fuelValues) {
                 return burnTime;
             }
         }, ItemType.ITEM);
@@ -784,6 +788,10 @@ public class JItems {
         recordDescName.add("item.jitl." + name + ".desc");
         recordDescLangName.add(descTranslated);
         return register(name, "Journey Record", () -> new Item(itemProps().stacksTo(1).jukeboxPlayable(sound.getKey())), ItemType.RECORD);
+    }
+
+    private static Function<Item.Properties, Item> createBlockItemWithCustomItemName(Block block) {
+        return (b) -> new BlockItem(block, b.useItemDescriptionPrefix());
     }
 
     public static DeferredItem<Item> register(String name, String translatedName, Supplier<Item> item, ItemType type) {

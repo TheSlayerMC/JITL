@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.client.renderer.entity.state.ThrownItemRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
@@ -18,7 +19,7 @@ import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(Dist.CLIENT)
-public class ThrownItemRenderer<T extends Entity & ItemSupplier> extends EntityRenderer<T> {
+public class ThrownItemRenderer<T extends Entity & ItemSupplier> extends EntityRenderer<T, ThrownItemRenderState> {
 
    private final ItemRenderer itemRenderer;
    private final float scale;
@@ -41,20 +42,19 @@ public class ThrownItemRenderer<T extends Entity & ItemSupplier> extends EntityR
    }
 
    @Override
-   public void render(T entity, float entityYaw_, float partialTicks, @NotNull PoseStack matrixStack, MultiBufferSource buffer, int packedLight) {
-      if (entity.tickCount >= 2 || !(this.entityRenderDispatcher.camera.getEntity().distanceToSqr(entity) < 12.25D)) {
-         matrixStack.pushPose();
-         matrixStack.scale(this.scale, this.scale, this.scale);
-         matrixStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
-         matrixStack.mulPose(Axis.YP.rotationDegrees(180.0F));
-         this.itemRenderer.renderStatic(entity.getItem(), ItemDisplayContext.GROUND, packedLight, OverlayTexture.NO_OVERLAY, matrixStack, buffer, entity.level(), entity.getId());
-         matrixStack.popPose();
-         super.render(entity, entityYaw_, partialTicks, matrixStack, buffer, packedLight);
+   public void render(ThrownItemRenderState entity, @NotNull PoseStack matrixStack, MultiBufferSource buffer, int packedLight) {
+      matrixStack.pushPose();
+      matrixStack.scale(this.scale, this.scale, this.scale);
+      matrixStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
+      if (entity.itemModel != null) {
+         this.itemRenderer.render(entity.item, ItemDisplayContext.GROUND, false, matrixStack, buffer, packedLight, OverlayTexture.NO_OVERLAY, entity.itemModel);
       }
+      matrixStack.popPose();
+      super.render(entity, matrixStack, buffer, packedLight);
    }
 
    @Override
-   public @NotNull ResourceLocation getTextureLocation(@NotNull Entity entity) {
-      return InventoryMenu.BLOCK_ATLAS;
+   public ThrownItemRenderState createRenderState() {
+      return new ThrownItemRenderState();
    }
 }

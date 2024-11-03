@@ -4,15 +4,14 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CrossCollisionBlock;
 import net.minecraft.world.level.block.FenceGateBlock;
@@ -41,8 +40,8 @@ public class JFenceBlock extends CrossCollisionBlock {
     }
 
     @Override
-    public @NotNull VoxelShape getOcclusionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        return this.occlusionByIndex[this.getAABBIndex(pState)];
+    protected VoxelShape getOcclusionShape(BlockState s) {
+        return this.occlusionByIndex[this.getAABBIndex(s)];
     }
 
     @Override
@@ -72,11 +71,11 @@ public class JFenceBlock extends CrossCollisionBlock {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(
+    protected InteractionResult useItemOn(
             ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult
     ) {
         if (pLevel.isClientSide) {
-            return pStack.is(Items.LEAD) ? ItemInteractionResult.SUCCESS : ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
+            return pStack.is(Items.LEAD) ? InteractionResult.SUCCESS : InteractionResult.PASS;
         } else {
             return super.useItemOn(pStack, pState, pLevel, pPos, pPlayer, pHand, pHitResult);
         }
@@ -99,12 +98,12 @@ public class JFenceBlock extends CrossCollisionBlock {
     }
 
     @Override
-    public @NotNull BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
-        if (pState.getValue(WATERLOGGED)) {
-            pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+    protected BlockState updateShape(BlockState stateIn, LevelReader level, ScheduledTickAccess tick, BlockPos currentPos, Direction dir, BlockPos facingPos, BlockState state, RandomSource random) {
+        if (stateIn.getValue(WATERLOGGED)) {
+            tick.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
 
-        return pFacing.getAxis().getPlane() == Direction.Plane.HORIZONTAL ? pState.setValue(PROPERTY_BY_DIRECTION.get(pFacing), this.connectsTo(pFacingState, pFacingState.isFaceSturdy(pLevel, pFacingPos, pFacing.getOpposite()), pFacing.getOpposite())) : super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
+        return dir.getAxis().getPlane() == Direction.Plane.HORIZONTAL ? state.setValue(PROPERTY_BY_DIRECTION.get(dir), this.connectsTo(state, state.isFaceSturdy(level, facingPos, dir.getOpposite()), dir.getOpposite())) : super.updateShape(stateIn, level, tick, currentPos, dir, facingPos, state, random);
     }
 
     @Override
