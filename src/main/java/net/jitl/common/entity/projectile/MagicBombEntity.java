@@ -3,6 +3,7 @@ package net.jitl.common.entity.projectile;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -41,10 +42,11 @@ public class MagicBombEntity extends AbstractArrow implements ItemSupplier {
         Entity entity = entityRayTraceResult_.getEntity();
         if(entity instanceof LivingEntity && entity != this.getOwner()) {
             if(!level().isClientSide()) {
-                if(entity.hurt(this.damageSources().thrown(this, this.getOwner()), (float) getBaseDamage())) {
-                    level().explode(this, position().x, position().y, position().z, 2.0F, Level.ExplosionInteraction.BLOCK);
-                    this.remove(RemovalReason.DISCARDED);
-                }
+                if(level() instanceof ServerLevel level) {
+                    if(entity.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), (float) getBaseDamage())) {
+                        level().explode(this, position().x, position().y, position().z, 2.0F, Level.ExplosionInteraction.BLOCK);
+                        this.remove(RemovalReason.DISCARDED);
+                    }                }
             }
             this.playSound(JSounds.BOTTLE_PLUG.get(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
         } else {
@@ -75,7 +77,7 @@ public class MagicBombEntity extends AbstractArrow implements ItemSupplier {
     }
 
     public boolean isInGround() {
-        return this.inGround;
+        return this.onGround();
     }
 
     @Override

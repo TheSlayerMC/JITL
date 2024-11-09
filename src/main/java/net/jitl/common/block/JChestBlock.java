@@ -228,7 +228,7 @@ public class JChestBlock extends AbstractChestBlock<JChestBlockEntity> implement
                 PiglinAi.angerNearbyPiglins(serverlevel, player, true);
             }
         }
-        return InteractionResult.SUCCESS;
+        return InteractionResult.SUCCESS_SERVER;
     }
 
     @Nullable

@@ -7,6 +7,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -152,16 +153,19 @@ public class MagicPotEntity extends AbstractArrow implements ItemSupplier {
         Entity entity = entityRayTraceResult_.getEntity();
         if(entity instanceof LivingEntity && entity != this.getOwner()) {
             if(!level().isClientSide()) {
-                if(getOwner() instanceof ServerPlayer player) {
-                    getStack().hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
-                }
-                level().explode(this, position().x, position().y, position().z, 0.5F, Level.ExplosionInteraction.BLOCK);
+                if(level() instanceof ServerLevel level) {
 
-                if(entity.hurt(this.damageSources().thrown(this, this.getOwner()), (float) getBaseDamage())) {
-                    if (getFlameAddend() > 0) {
-                        entity.setRemainingFireTicks(getFlameAddend() * 80);
+                    if (getOwner() instanceof ServerPlayer player) {
+                        getStack().hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                     }
-                    launch = true;
+                    level().explode(this, position().x, position().y, position().z, 0.5F, Level.ExplosionInteraction.BLOCK);
+
+                    if (entity.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), (float) getBaseDamage())) {
+                        if (getFlameAddend() > 0) {
+                            entity.setRemainingFireTicks(getFlameAddend() * 80);
+                        }
+                        launch = true;
+                    }
                 }
                 this.playSound(JSounds.BOTTLE_PLUG.get(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
             }
@@ -172,7 +176,7 @@ public class MagicPotEntity extends AbstractArrow implements ItemSupplier {
     public void playerTouch(@NotNull Player entityIn) {
         if(!this.level().isClientSide) {
             boolean isOwner = this.getOwner().getUUID() == entityIn.getUUID();
-            if((isOwner && currentBounces > 0) || ((this.inGround || this.isNoPhysics()) && this.shakeTime <= 0)) {
+            if((isOwner && currentBounces > 0) || ((this.isInGround() || this.isNoPhysics()) && this.shakeTime <= 0)) {
                 boolean flag = this.pickup == Pickup.ALLOWED || this.pickup == Pickup.CREATIVE_ONLY && entityIn.canUseGameMasterBlocks() || this.isNoPhysics() && isOwner;
                 if(this.pickup == Pickup.ALLOWED && !entityIn.getInventory().add(this.getPickupItem()))
                     flag = false;
@@ -186,7 +190,7 @@ public class MagicPotEntity extends AbstractArrow implements ItemSupplier {
     }
 
     public boolean isInGround() {
-        return this.inGround;
+        return this.onGround();
     }
 
     @Override

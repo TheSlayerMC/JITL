@@ -25,8 +25,8 @@ public class DarkGemItem extends JItem {
         BlockPos blockpos = pContext.getClickedPos();
         BlockState blockstate = level.getBlockState(blockpos);
         if (blockstate.is(JBlocks.DEPTHS_PORTAL_FRAME.get()) && !blockstate.getValue(DepthsPortalFrameBlock.HAS_EYE)) {
-            if (level.isClientSide) {
-                return InteractionResult.SUCCESS;
+            if(!level.isClientSide) {
+                return InteractionResult.SUCCESS_SERVER;
             } else {
                 BlockState blockstate1 = blockstate.setValue(DepthsPortalFrameBlock.HAS_EYE, Boolean.TRUE);
                 Block.pushEntitiesUp(blockstate, blockstate1, level, blockpos);

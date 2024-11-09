@@ -4,6 +4,7 @@ import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.capability.player.LoreScroll;
 import net.jitl.core.init.internal.JDataComponents;
 import net.jitl.core.init.internal.JItems;
+import net.jitl.core.init.internal.JLootTables;
 import net.jitl.core.init.internal.ScrollEntries;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.LootTableSubProvider;
@@ -27,7 +28,7 @@ public class JItemLoot implements LootTableSubProvider {
     @Override
     public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer) {
         consumer.accept(
-                BuiltInLootTables.EMPTY,
+                JLootTables.EMPTY,
                 LootTable.lootTable()
                         .withPool(
                         LootPool.lootPool().setRolls(ConstantValue.exactly(1))

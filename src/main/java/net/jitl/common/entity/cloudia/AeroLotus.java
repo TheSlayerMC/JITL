@@ -5,6 +5,7 @@ import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.JPathfinderMob;
 import net.jitl.common.entity.base.MobStats;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -71,7 +72,7 @@ public class AeroLotus extends JPathfinderMob {
     }
 
     @Override
-    public boolean canTrample(BlockState state, BlockPos pos, float fallDistance) {
+    public boolean canTrample(ServerLevel level, BlockState state, BlockPos pos, float fallDistance) {
         return false;
     }
 

@@ -59,7 +59,7 @@ public class JDirt extends Block {
                     if(!pPlayer.isCreative())
                         pPlayer.getItemInHand(pHand).hurtAndBreak(1, pPlayer, EquipmentSlot.MAINHAND);
                 }
-                return InteractionResult.SUCCESS;
+                return InteractionResult.SUCCESS_SERVER;
             }
         }
         return  InteractionResult.PASS;

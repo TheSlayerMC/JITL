@@ -42,6 +42,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -54,6 +56,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.function.Supplier;
 
 @EventBusSubscriber(modid = JITL.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class JEntities {
@@ -95,11 +98,18 @@ public class JEntities {
 
     //RAW ENTITYS
     public static final DeferredHolder<EntityType<?>, EntityType<EssenciaBoltEntity>> ESSENCIA_BOLT_TYPE = registerRawEntity(EssenciaBoltEntity::new, "essencia_bolt", "Essencia Bolt", 0.25F, 0.25F);
-    public static final DeferredHolder<EntityType<?>, EntityType<JBoat>> JBOAT_TYPE = registerRawEntity(JBoat::new, "jboat", "Journey Boat", 1.375F, 0.5625F);
     public static final DeferredHolder<EntityType<?>, EntityType<Sentacoin>> SENTACOIN_TYPE = registerRawEntity(Sentacoin::new, "sentacoin", "Sentacoin", 0.1F, 0.1F);
     public static final DeferredHolder<EntityType<?>, EntityType<Sentacoin>> SENTACOIN_BAG_TYPE = registerRawEntity(Sentacoin::new, "sentacoin_bag", "Sentacoin Bag", 0.375F, 0.375F);
     public static final DeferredHolder<EntityType<?>, EntityType<BossCrystal>> BOSS_CRYSTAL_TYPE = registerEntity(BossCrystal::new, "boss_crystal", "Boss Crystal", 0.5F, 0.5F, OVERWORLD_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<SpiritCrystal>> SPIRIT_CRYSTAL_TYPE = registerEntity(SpiritCrystal::new, "spirit_crystal", "Spirit Crystal", 1F, 2F, CORBA_COLOR, PASSIVE_COLOR);
+    public static final DeferredHolder<EntityType<?>, EntityType<JBoat>> GOLD_EUCA_BOAT_TYPE = registerRawEntity(boatFactory(JItems.GOLDEN_EUCA_BOAT), "gold_euca_boat", "Journey Boat", 1.375F, 0.5625F);
+    public static final DeferredHolder<EntityType<?>, EntityType<JBoat>> BROWN_EUCA_BOAT_TYPE = registerRawEntity(boatFactory(JItems.BROWN_EUCA_BOAT), "brown_euca_boat", "Journey Boat", 1.375F, 0.5625F);
+    public static final DeferredHolder<EntityType<?>, EntityType<JBoat>> FROZEN_BOAT_TYPE = registerRawEntity(boatFactory(JItems.FROZEN_BOAT), "frozen_boat", "Journey Boat", 1.375F, 0.5625F);
+    public static final DeferredHolder<EntityType<?>, EntityType<JBoat>> DEPTHS_BOAT_TYPE = registerRawEntity(boatFactory(JItems.DEPTHS_BOAT), "depths_boat", "Journey Boat", 1.375F, 0.5625F);
+    public static final DeferredHolder<EntityType<?>, EntityType<JBoat>> BURNED_BOAT_TYPE = registerRawEntity(boatFactory(JItems.BURNED_BOAT), "burned_boat", "Journey Boat", 1.375F, 0.5625F);
+    public static final DeferredHolder<EntityType<?>, EntityType<JBoat>> CORBA_BOAT_TYPE = registerRawEntity(boatFactory(JItems.CORBA_BOAT), "corba_boat", "Journey Boat", 1.375F, 0.5625F);
+    public static final DeferredHolder<EntityType<?>, EntityType<JBoat>> TERRANIA_BOAT_TYPE = registerRawEntity(boatFactory(JItems.TERRANIAN_BOAT), "terrania_boat", "Journey Boat", 1.375F, 0.5625F);
+    public static final DeferredHolder<EntityType<?>, EntityType<JBoat>> CLOUDIA_BOAT_TYPE = registerRawEntity(boatFactory(JItems.CLOUDIA_BOAT), "cloudia_boat", "Journey Boat", 1.375F, 0.5625F);
 
     //BOSS MOBS
     public static final DeferredHolder<EntityType<?>, EntityType<TowerGuardian>> TOWER_GUARDIAN_TYPE = registerEntity(TowerGuardian::new, "tower_guardian", "Tower Guardian", 2F, 3.5F, OVERWORLD_COLOR, BOSS_COLOR);
@@ -562,5 +572,7 @@ public class JEntities {
         event.register(entity.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 
-
+    private static EntityType.EntityFactory<JBoat> boatFactory(Supplier<Item> item) {
+        return (e, l) -> new JBoat(e, l, item);
+    }
 }

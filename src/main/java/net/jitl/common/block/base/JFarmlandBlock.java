@@ -8,10 +8,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraft.world.level.block.piston.MovingPistonBlock;
@@ -39,10 +36,11 @@ public abstract class JFarmlandBlock extends Block {
     public abstract Block setDirt();
 
     @Override
-    public @NotNull BlockState updateShape(@NotNull BlockState pState, @NotNull Direction pFacing, @NotNull BlockState pFacingState, @NotNull LevelAccessor pLevel, @NotNull BlockPos pCurrentPos, @NotNull BlockPos pFacingPos) {
-        if(pFacing == Direction.UP && !pState.canSurvive(pLevel, pCurrentPos))
-            pLevel.scheduleTick(pCurrentPos, this, 1);
-        return super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
+    public BlockState updateShape(BlockState stateIn, LevelReader reader, ScheduledTickAccess tick, BlockPos currentPos, Direction dir, BlockPos facingPos, BlockState state, RandomSource source) {
+        if(dir == Direction.UP && !stateIn.canSurvive(reader, currentPos)) {
+            tick.scheduleTick(currentPos, this, 1);
+        }
+        return super.updateShape(stateIn, reader, tick,currentPos, dir, facingPos, state, source);
     }
 
     @Override
@@ -89,8 +87,10 @@ public abstract class JFarmlandBlock extends Block {
 
     @Override
     public void fallOn(Level pLevel, @NotNull BlockState pState, @NotNull BlockPos pPos, @NotNull Entity pEntity, float pFallDistance) {
-        if(!pLevel.isClientSide && CommonHooks.onFarmlandTrample(pLevel, pPos, setDirt().defaultBlockState(), pFallDistance, pEntity))
-            turnToDirt(pState, pLevel, pPos);
+        if(pLevel instanceof ServerLevel level) {
+            if (!pLevel.isClientSide && CommonHooks.onFarmlandTrample(level, pPos, setDirt().defaultBlockState(), pFallDistance, pEntity))
+                turnToDirt(pState, pLevel, pPos);
+        }
 
         super.fallOn(pLevel, pState, pPos, pEntity, pFallDistance);
     }

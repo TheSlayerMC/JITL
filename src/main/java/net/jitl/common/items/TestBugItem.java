@@ -39,6 +39,6 @@ public class TestBugItem extends JItem implements IEssenceItem {
                 stats.addSentacoins(1000);
 
         }
-        return InteractionResult.SUCCESS;
+        return InteractionResult.SUCCESS_SERVER;
     }
 }

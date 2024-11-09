@@ -55,7 +55,7 @@ public class ChestInteractionItem extends JItem {
                 lockChest(player, world, pos);
             }
         }
-        return InteractionResult.sidedSuccess(world.isClientSide);
+        return InteractionResult.SUCCESS_SERVER;
     }
 
     public void lockChest(Player player, Level world, BlockPos pos) {

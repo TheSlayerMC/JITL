@@ -24,7 +24,7 @@ public class DamagingProjectileEntity extends ThrowableProjectile {
     }
 
     public DamagingProjectileEntity(EntityType<? extends DamagingProjectileEntity> type, Level world, LivingEntity thrower, float damage) {
-        super(type, thrower, world);
+        super(type, world);
         this.damage = damage;
     }
 

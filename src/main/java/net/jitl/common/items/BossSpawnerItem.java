@@ -81,7 +81,7 @@ public class BossSpawnerItem extends JItem {
                 }
             }
         }
-        return InteractionResult.sidedSuccess(level.isClientSide());
+        return InteractionResult.SUCCESS_SERVER;
     }
 
     public void bindSpawner(Player player, ServerLevel level, BlockPos pos, Item spawner, String langKey, ResourceKey<Level> dimension, String dimensionName, LivingEntity boss) {

@@ -112,7 +112,7 @@ public class RedcurrantBushBlock extends BushBlock implements BonemealableBlock 
             BlockState blockstate = pState.setValue(AGE, 1);
             pLevel.setBlock(pPos, blockstate, 2);
             pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(pPlayer, blockstate));
-            return InteractionResult.SUCCESS;
+            return InteractionResult.SUCCESS_SERVER;
         } else {
             return super.useItemOn(pStack, pState, pLevel, pPos, pPlayer, pHand, pHit);
         }

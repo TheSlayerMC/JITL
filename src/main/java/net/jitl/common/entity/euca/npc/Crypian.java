@@ -126,7 +126,7 @@ public class Crypian extends JVillagerEntity {
                 }
             }
         }
-        return InteractionResult.SUCCESS;
+        return InteractionResult.SUCCESS_SERVER;
     }
 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.crypian.walk");

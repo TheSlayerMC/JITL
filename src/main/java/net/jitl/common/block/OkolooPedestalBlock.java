@@ -47,7 +47,7 @@ public class OkolooPedestalBlock extends Block {
                 BlockState empty_state = state.setValue(OkolooPedestalBlock.HAS_CLUB, Boolean.FALSE);
                 worldIn.setBlock(pos, empty_state, 2);
                 ChatUtils.sendColouredTranslatedMessage(player, ChatFormatting.GOLD, "jitl.boss_spawn.okoloo");
-                return InteractionResult.SUCCESS;
+                return InteractionResult.SUCCESS_SERVER;
             }
         }
         return InteractionResult.FAIL;

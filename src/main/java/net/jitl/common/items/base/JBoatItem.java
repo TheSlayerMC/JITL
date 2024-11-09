@@ -52,7 +52,7 @@ public class JBoatItem extends Item {
                 }
             }
             if(hitresult.getType() == HitResult.Type.BLOCK) {
-                JBoat boat = new JBoat(level, hitresult.getLocation().x, hitresult.getLocation().y, hitresult.getLocation().z);
+                JBoat boat = new JBoat(level, hitresult.getLocation().x, hitresult.getLocation().y, hitresult.getLocation().z, this::asItem);
                 boat.setType(this.type);
                 boat.setYRot(player.getYRot());
                 if(!level.noCollision(boat, boat.getBoundingBox())) {
@@ -66,7 +66,7 @@ public class JBoatItem extends Item {
                         }
                     }
                     player.awardStat(Stats.ITEM_USED.get(this));
-                    return InteractionResult.SUCCESS;
+                    return InteractionResult.SUCCESS_SERVER;
                 }
             } else {
                 return InteractionResult.PASS;

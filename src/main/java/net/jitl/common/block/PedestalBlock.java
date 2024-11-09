@@ -77,6 +77,6 @@ public class PedestalBlock extends JTileContainerBlock {
                 }
             }
         }
-        return InteractionResult.SUCCESS;
+        return InteractionResult.SUCCESS_SERVER;
     }
 }

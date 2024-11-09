@@ -62,22 +62,22 @@ public class RockiteSmasher extends JBossEntity {
     }
 
     @Override
-    public boolean hurt(@NotNull DamageSource source, float amount) {
+    public boolean hurtServer(ServerLevel level, @NotNull DamageSource source, float amount) {
         if(source.getEntity() instanceof Player player) {
             if(player.getMainHandItem().getItem() instanceof PickaxeItem) {
-                return super.hurt(source, amount);
+                return super.hurtServer(level, source, amount);
             }
         }
         return false;
     }
 
     @Override
-    public boolean doHurtTarget(Entity entity) {
+    public boolean doHurtTarget(ServerLevel level, Entity entity) {
         this.level().broadcastEntityEvent(this, (byte)1);
         float damage = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
         float f1 = (int)damage > 0 ? damage / 2.0F + (float)this.random.nextInt((int)damage) : damage;
         DamageSource damagesource = this.damageSources().mobAttack(this);
-        boolean hurt = entity.hurt(damagesource, f1);
+        boolean hurt = entity.hurtServer(level, damagesource, f1);
         if(hurt) {
             entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, 0.4F, 0.0D));
             if (this.level() instanceof ServerLevel serverlevel) {

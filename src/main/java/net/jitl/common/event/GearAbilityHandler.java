@@ -16,6 +16,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.equipment.ArmorMaterial;
+import net.minecraft.world.item.equipment.ArmorMaterials;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
@@ -75,7 +77,7 @@ public class GearAbilityHandler {
                 if (((Arrow) entity).getOwner() instanceof LivingEntity owner) {
                     for (ItemStack itemStack : owner.getArmorSlots()) {
                         Item current = itemStack.getItem();
-                        if (!(current instanceof ArmorItem && ((ArmorItem) current).getMaterial() == ArmorMaterials.LEATHER))
+                        if (!(current instanceof JArmorItem && ((JArmorItem)current).getMaterial() == ArmorMaterials.LEATHER))
                             return;
                     }
                     event.setNewDamage(event.getOriginalDamage() + 5F);
@@ -122,12 +124,12 @@ public class GearAbilityHandler {
     @SubscribeEvent
     public static void addVanillaTooptips(ItemTooltipEvent event) {
         Item item = event.getItemStack().getItem();
-        if (item instanceof ArmorItem) {
-            ArmorMaterial material = ((ArmorItem) item).getMaterial().value();
+        if (item instanceof JArmorItem) {
+            ArmorMaterial material = ((JArmorItem) item).getMaterial();
             if (material.equals(ArmorMaterials.LEATHER)) {
                 TooltipFiller filler = new TooltipFiller(event.getToolTip(), "leather_gear", 1);
                 filler.addOverview();
-            } else if (material.equals(ArmorMaterials.CHAIN)) {
+            } else if (material.equals(ArmorMaterials.CHAINMAIL)) {
                 TooltipFiller filler = new TooltipFiller(event.getToolTip(), "chain_gear");
                 filler.addOverview();
             }
@@ -140,7 +142,7 @@ public class GearAbilityHandler {
             ItemStack stack = player.getMainHandItem();
             if(stack.getItem() instanceof JSwordItem sword) {
                 if(player.getAttackStrengthScale(0.5F) > 0.9F && !player.isSprinting()) { //combines flag and flag1, since there's no reason not to
-                    if(player.onGround() && player.walkDist - player.walkDistO < player.getSpeed()) { //flag3. flag2 is ignored as the isOnGround() call in flag3 automatically means flag2 will be false
+                    if(player.onGround() ){//TODO&& player.walkDist - player.walkDistO < player.getSpeed()) { //flag3. flag2 is ignored as the isOnGround() call in flag3 automatically means flag2 will be false
                        sword.getAbility().onSweep(stack, event.getTarget(), player);
                     }
                 }

@@ -26,14 +26,14 @@ public class JShieldItem extends ShieldItem {
         this.texture = JITL.rl("textures/shield/" + name + "_shield.png");
     }
 
-    @Override
-    public boolean isValidRepairItem(@NotNull ItemStack shield, @NotNull ItemStack repair) {
-        if(repairItem != null) {
-            return repairItem.test(repair) || super.isValidRepairItem(shield, repair);
-        } else {
-            return false;
-        }
-    }
+//    @Override
+//    public boolean isValidRepairItem(@NotNull ItemStack shield, @NotNull ItemStack repair) {
+//        if(repairItem != null) {
+//            return repairItem.test(repair) || super.isValidRepairItem(shield, repair);
+//        } else {
+//            return false;
+//        }
+//    }
 
     public static class RenderProps implements IClientItemExtensions {
         public static RenderProps INSTANCE = new RenderProps();

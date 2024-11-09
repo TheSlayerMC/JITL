@@ -16,7 +16,7 @@ public class EssenciaProjectileEntity extends ThrowableProjectile {
     }
 
     public EssenciaProjectileEntity(Level world, LivingEntity thrower) {
-        super(JEntities.ESSENCIA_PROJECTILE_TYPE.get(), thrower, world);
+        super(JEntities.ESSENCIA_PROJECTILE_TYPE.get(), world);
     }
 
     @Override

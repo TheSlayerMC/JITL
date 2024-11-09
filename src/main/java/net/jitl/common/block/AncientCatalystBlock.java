@@ -49,6 +49,6 @@ public class AncientCatalystBlock extends Block {
                 player.getMainHandItem().shrink(1);
             }
         }
-        return InteractionResult.SUCCESS;
+        return InteractionResult.SUCCESS_SERVER;
     }
 }

@@ -8,17 +8,18 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.concurrent.CompletableFuture;
 
 public class JRecipeRegistry extends JRecipeProvider {
 
-    public JRecipeRegistry(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pRegistries) {
-        super(pOutput, pRegistries);
+    public JRecipeRegistry(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
+        super(provider, recipeOutput);
     }
 
-    @Override
+    /*Override
     public void buildRecipes(RecipeOutput recipeConsumer) {
         buildBlockRecipes(recipeConsumer);
         buildItemRecipes(recipeConsumer);
@@ -171,5 +172,5 @@ public class JRecipeRegistry extends JRecipeProvider {
         addSmithingRecipe(recipeConsumer, Items.DIAMOND_PICKAXE, JItems.LUNIUM_INGOT.get(), JItems.LUNIUM_PICKAXE.get());
         addSmithingRecipe(recipeConsumer, Items.DIAMOND_SHOVEL, JItems.LUNIUM_INGOT.get(), JItems.LUNIUM_SHOVEL.get());
         addSmithingRecipe(recipeConsumer, Items.DIAMOND_HOE, JItems.LUNIUM_INGOT.get(), JItems.LUNIUM_HOE.get());
-    }
+    }*/
 }

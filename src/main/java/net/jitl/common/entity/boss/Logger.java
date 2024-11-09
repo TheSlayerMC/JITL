@@ -9,6 +9,7 @@ import net.jitl.core.helper.MathHelper;
 import net.jitl.core.init.internal.JLootTables;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.Difficulty;
@@ -58,11 +59,11 @@ public class Logger extends JBossEntity {
     }
 
     @Override
-    public boolean doHurtTarget(Entity entity) {
+    public boolean doHurtTarget(ServerLevel level, Entity entity) {
         this.level().broadcastEntityEvent(this, (byte)1);
         float damage = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
         float f1 = (int)damage > 0 ? damage / 2.0F + (float)this.random.nextInt((int)damage) : damage;
-        boolean hurt = entity.hurt(this.damageSources().mobAttack(this), f1);
+        boolean hurt = entity.hurtServer(level, this.damageSources().mobAttack(this), f1);
         if(hurt)
             entity.setDeltaMovement((double)(-MathHelper.sin(this.yRotO * (float) Math.PI / 180.0F)) * 2, 0.1D, (double) (MathHelper.cos(this.yRotO * (float) Math.PI / 180.0F)) * 2);
         

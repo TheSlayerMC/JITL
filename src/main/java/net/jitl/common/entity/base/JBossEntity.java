@@ -9,6 +9,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerBossEvent;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.BossEvent;
@@ -78,8 +79,8 @@ public abstract class JBossEntity extends JMonsterEntity implements IDontAttackW
     }
 
     @Override
-    protected void customServerAiStep() {
-        super.customServerAiStep();
+    protected void customServerAiStep(ServerLevel level) {
+        super.customServerAiStep(level);
         this.BOSS_INFO.setProgress(getHealth() / getMaxHealth());
     }
 
@@ -100,18 +101,16 @@ public abstract class JBossEntity extends JMonsterEntity implements IDontAttackW
     public abstract boolean showBarWhenSpawned();
 
     @Override
-    public boolean hurt(@NotNull DamageSource d, float f) {
-        if(!level().isClientSide()) {
-            if(!showBarWhenSpawned()) {
-                if (d.getEntity() instanceof Player) {
-                    AABB axisalignedbb = AABB.unitCubeFromLowerCorner(this.position()).inflate(10);
-                    for (Player player : this.level().getEntitiesOfClass(Player.class, axisalignedbb)) {
-                        this.BOSS_INFO.addPlayer((ServerPlayer)player);
-                    }
+    public boolean hurtServer(ServerLevel level, DamageSource d, float f) {
+        if(!showBarWhenSpawned()) {
+            if (d.getEntity() instanceof Player) {
+                AABB axisalignedbb = AABB.unitCubeFromLowerCorner(this.position()).inflate(10);
+                for (Player player : this.level().getEntitiesOfClass(Player.class, axisalignedbb)) {
+                    this.BOSS_INFO.addPlayer((ServerPlayer)player);
                 }
             }
         }
-        return super.hurt(d, f);
+        return super.hurtServer(level, d, f);
     }
 
     protected EnumKnowledge knowledge;
