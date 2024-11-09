@@ -3,6 +3,8 @@ package net.jitl.core.helper;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.world.item.Item;
 
+import java.util.Arrays;
+
 public enum EnumSummoningRecipes {
     OKOLOO(new Item[]{
             JItems.BLOODCRUST_INGOT.get(),
@@ -158,7 +160,15 @@ public enum EnumSummoningRecipes {
         return items[index];
     }
 
+    public Item[] getInputs() {
+        return Arrays.copyOfRange(items, 0, items.length - 1);
+    }
+
+    public Item getOutput() {
+        return items[items.length - 1];
+    }
+
     public String getName() {
-        return getItem(7).asItem().toString();
+        return getOutput().asItem().toString();
     }
 }
