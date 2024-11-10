@@ -69,6 +69,7 @@ public class HellCow extends JAnimalEntity {
                 .add(Attributes.ATTACK_DAMAGE, MobStats.HELL_COW_DAMAGE)
                 .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.STANDARD_KNOCKBACK_RESISTANCE)
                 .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
+                .add(Attributes.TEMPT_RANGE, MobStats.STANDARD_TEMPT_RANGE)
                 .add(Attributes.MOVEMENT_SPEED, MobStats.HELL_COW_MOVEMENT_SPEED).build();
     }
 
