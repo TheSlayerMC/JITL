@@ -3,11 +3,13 @@ package net.jitl.core.init.internal;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 
 import java.util.function.ToIntFunction;
 
@@ -127,6 +129,19 @@ public class JBlockProperties {
             .lightLevel((level) -> 15)
             .sound(SoundType.GLASS);
 
+    public static BlockBehaviour.Properties TORCH = BlockBehaviour.Properties.of()
+            .noCollission()
+            .instabreak()
+            .lightLevel(l -> 14)
+            .sound(SoundType.WOOD)
+            .pushReaction(PushReaction.DESTROY);
+
+    public static BlockBehaviour.Properties wallVariant(Block torch, boolean block) {
+        BlockBehaviour.Properties p1 = BlockBehaviour.Properties.of().overrideLootTable(torch.getLootTable());
+        if(block)
+            p1 = p1.overrideDescription(torch.getDescriptionId());
+        return p1;
+    }
 
     public static BlockBehaviour.Properties DIRT = BlockBehaviour.Properties.of()
             .strength(1F)

@@ -1,0 +1,7 @@
+{
+  "variants": {
+  "": {
+      "model": "jitl:block/wall_iridium_torch"
+     }
+  }
+}
