@@ -13,6 +13,10 @@ group = mod_group_id
 
 repositories {
     mavenLocal()
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/"
+    }
 }
 
 base {
@@ -88,6 +92,8 @@ dependencies {
 
     //runtimeOnly "maven.modrinth:worldedit:7.3.6"
 
+    compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
+    runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
