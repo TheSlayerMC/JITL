@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "jitl:demonic_dust"
-    },
-    "I": {
-      "item": "jitl:demonic_bone"
-    }
+    "#": "jitl:demonic_dust",
+    "I": "jitl:demonic_bone"
   },
   "pattern": [
     "#",

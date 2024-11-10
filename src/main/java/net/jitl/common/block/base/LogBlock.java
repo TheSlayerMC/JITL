@@ -1,12 +1,16 @@
 package net.jitl.common.block.base;
 
 import net.jitl.common.items.base.MultitoolItem;
+import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.ItemAbility;
 import org.jetbrains.annotations.NotNull;
@@ -14,8 +18,8 @@ import org.jetbrains.annotations.Nullable;
 
 public class LogBlock extends RotatedPillarBlock {
 
-    public LogBlock() {
-        super(JBlockProperties.WOOD);
+    public LogBlock(BlockBehaviour.Properties props) {
+        super(props);
     }
 
     @Override

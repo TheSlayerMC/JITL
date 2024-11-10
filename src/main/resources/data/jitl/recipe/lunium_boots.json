@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "jitl:lunium_ingot"
-    }
+    "#": "jitl:lunium_ingot"
   },
   "pattern": [
     "# #",

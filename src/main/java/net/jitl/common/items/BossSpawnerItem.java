@@ -31,8 +31,8 @@ import java.util.List;
 
 public class BossSpawnerItem extends JItem {
 
-    public BossSpawnerItem() {
-        super(JItems.itemProps().stacksTo(1).rarity(Rarity.EPIC));
+    public BossSpawnerItem(Properties props) {
+        super(props.stacksTo(1).rarity(Rarity.EPIC));
     }
 
     @Override

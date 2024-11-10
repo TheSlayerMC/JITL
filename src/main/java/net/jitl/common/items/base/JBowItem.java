@@ -39,8 +39,8 @@ public class JBowItem extends BowItem {
     public EnumSet<EssenceArrowEntity.BowEffects> effect;
     public static final Predicate<ItemStack> ESSENCE_ARROW = (tag) -> tag.is(JTags.ESSENCE_ARROW);
 
-    public JBowItem(float damage, int uses, EnumSet<EssenceArrowEntity.BowEffects> effect, int pullbackSpeed) {
-        super(JItems.itemProps().stacksTo(1).durability(uses));
+    public JBowItem(Properties p, float damage, int uses, EnumSet<EssenceArrowEntity.BowEffects> effect, int pullbackSpeed) {
+        super(p.stacksTo(1).durability(uses));
         this.effect = effect;
         this.arrow_item = JItems.ESSENCE_ARROW.get();
         this.damage = damage;

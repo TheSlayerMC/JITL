@@ -86,8 +86,8 @@ public class JBoat extends Boat {
         this.blocksBuilding = true;
     }
 
-    public JBoat(Level world, double x, double y, double z, Supplier<Item> item) {
-        super(JEntities.JBOAT_TYPE.get(), world, item);
+    public JBoat(EntityType<? extends JBoat> entityType, Level world, double x, double y, double z, Supplier<Item> item) {
+        super(entityType, world, item);
         this.setPos(x, y, z);
         this.xo = x;
         this.yo = y;

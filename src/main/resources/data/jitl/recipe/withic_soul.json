@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": {
-      "item": "jitl:withic_dust"
-    },
-    "i": {
-      "item": "jitl:lost_soul"
-    }
+    "d": "jitl:withic_dust",
+    "i": "jitl:lost_soul"
   },
   "pattern": [
     "ddd",

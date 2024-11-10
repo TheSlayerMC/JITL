@@ -3,9 +3,7 @@
   "category": "building",
   "group": "jitl:rimestone",
   "ingredients": [
-    {
-      "item": "jitl:rimestone_block"
-    }
+    "jitl:rimestone_block"
   ],
   "result": {
     "count": 9,

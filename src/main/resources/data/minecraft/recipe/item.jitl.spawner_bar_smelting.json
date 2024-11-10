@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 1.0,
-  "ingredient": {
-    "item": "jitl:spawner_clump"
-  },
+  "ingredient": "jitl:spawner_clump",
   "result": {
     "count": 1,
     "id": "jitl:spawner_bar"

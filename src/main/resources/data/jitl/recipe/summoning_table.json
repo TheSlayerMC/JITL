@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "d": {
-      "item": "jitl:bloodcrust_ingot"
-    },
-    "i": {
-      "item": "jitl:blood_rock"
-    },
-    "s": {
-      "item": "jitl:bleedstone"
-    }
+    "d": "jitl:bloodcrust_ingot",
+    "i": "jitl:blood_rock",
+    "s": "jitl:bleedstone"
   },
   "pattern": [
     "dsd",

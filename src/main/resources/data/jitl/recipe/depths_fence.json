@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "I": {
-      "item": "jitl:depths_planks"
-    }
+    "#": "minecraft:stick",
+    "I": "jitl:depths_planks"
   },
   "pattern": [
     "#I#",

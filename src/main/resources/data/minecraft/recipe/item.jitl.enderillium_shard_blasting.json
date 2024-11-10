@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.0,
-  "ingredient": {
-    "item": "jitl:enderillium_ore"
-  },
+  "ingredient": "jitl:enderillium_ore",
   "result": {
     "count": 1,
     "id": "jitl:enderillium_shard"

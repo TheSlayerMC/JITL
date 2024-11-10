@@ -18,8 +18,8 @@ import org.jetbrains.annotations.NotNull;
 public class TestBugItem extends JItem implements IEssenceItem {
 
 
-    public TestBugItem() {
-        super(JItems.itemProps().stacksTo(1));
+    public TestBugItem(Properties p) {
+        super(p.stacksTo(1));
     }
 
     @Override

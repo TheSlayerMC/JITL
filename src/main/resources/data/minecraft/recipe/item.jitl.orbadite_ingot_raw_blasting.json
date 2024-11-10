@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.0,
-  "ingredient": {
-    "item": "jitl:raw_orbadite"
-  },
+  "ingredient": "jitl:raw_orbadite",
   "result": {
     "count": 1,
     "id": "jitl:orbadite_ingot"

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "jitl:sapphire",
   "ingredients": [
-    {
-      "item": "jitl:sapphire_block"
-    }
+    "jitl:sapphire_block"
   ],
   "result": {
     "count": 9,

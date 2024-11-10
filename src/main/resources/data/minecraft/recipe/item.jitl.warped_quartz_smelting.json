@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 1.0,
-  "ingredient": {
-    "item": "jitl:warped_quartz_ore"
-  },
+  "ingredient": "jitl:warped_quartz_ore",
   "result": {
     "count": 1,
     "id": "jitl:warped_quartz"

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "jitl:enderillium_shard"
-    }
+    "#": "jitl:enderillium_shard"
   },
   "pattern": [
     "###",

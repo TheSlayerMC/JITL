@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.0,
-  "ingredient": {
-    "item": "jitl:rimestone_ore"
-  },
+  "ingredient": "jitl:rimestone_ore",
   "result": {
     "count": 1,
     "id": "jitl:rimestone"

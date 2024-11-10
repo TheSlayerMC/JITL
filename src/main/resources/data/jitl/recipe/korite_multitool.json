@@ -2,18 +2,10 @@
   "type": "minecraft:crafting_shapeless",
   "category": "equipment",
   "ingredients": [
-    {
-      "item": "jitl:korite_axe"
-    },
-    {
-      "item": "jitl:korite_pickaxe"
-    },
-    {
-      "item": "jitl:korite_shovel"
-    },
-    {
-      "item": "jitl:korite_hoe"
-    }
+    "jitl:korite_axe",
+    "jitl:korite_pickaxe",
+    "jitl:korite_shovel",
+    "jitl:korite_hoe"
   ],
   "result": {
     "count": 1,

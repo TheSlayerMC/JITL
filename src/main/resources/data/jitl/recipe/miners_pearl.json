@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "e": {
-      "item": "jitl:enderillium_shard"
-    },
-    "p": {
-      "item": "minecraft:ender_pearl"
-    },
-    "y": {
-      "item": "minecraft:ender_eye"
-    }
+    "e": "jitl:enderillium_shard",
+    "p": "minecraft:ender_pearl",
+    "y": "minecraft:ender_eye"
   },
   "pattern": [
     "pep",

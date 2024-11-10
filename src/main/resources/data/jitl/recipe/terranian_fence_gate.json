@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "jitl:terranian_planks"
-    },
-    "I": {
-      "item": "minecraft:stick"
-    }
+    "#": "jitl:terranian_planks",
+    "I": "minecraft:stick"
   },
   "pattern": [
     "#I#",

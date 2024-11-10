@@ -3,9 +3,7 @@
   "category": "blocks",
   "cookingtime": 200,
   "experience": 1.0,
-  "ingredient": {
-    "item": "jitl:crimson_quartz_block"
-  },
+  "ingredient": "jitl:crimson_quartz_block",
   "result": {
     "count": 1,
     "id": "jitl:smooth_crimson_quartz_block"

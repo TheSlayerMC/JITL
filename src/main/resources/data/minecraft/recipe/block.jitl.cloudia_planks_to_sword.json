@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "jitl:cloudia_planks"
-    },
-    "I": {
-      "item": "minecraft:stick"
-    }
+    "#": "jitl:cloudia_planks",
+    "I": "minecraft:stick"
   },
   "pattern": [
     "#",

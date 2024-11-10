@@ -20,8 +20,8 @@ import java.util.Random;
 
 public class AncientPieceItem extends JItem {
 
-    public AncientPieceItem() {
-        super(JItems.itemProps());
+    public AncientPieceItem(Properties p) {
+        super(p);
     }
 
     @NotNull

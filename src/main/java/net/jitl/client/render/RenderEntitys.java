@@ -27,6 +27,7 @@ import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JDimension;
 import net.jitl.core.init.internal.JEntities;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.WolfModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
@@ -57,12 +58,19 @@ public class RenderEntitys {
         event.registerEntityRenderer(JEntities.BOSS_CRYSTAL_TYPE.get(), BossCrystalRenderer::new);
         event.registerEntityRenderer(JEntities.SPIRIT_CRYSTAL_TYPE.get(), SpiritCrystalRenderer::new);
 
-        event.registerEntityRenderer(JEntities.PIERCER_TYPE.get(), manager -> new PiercerRenderer(manager, Minecraft.getInstance().getItemRenderer()));
-        event.registerEntityRenderer(JEntities.KNIFE_TYPE.get(), manager -> new KnifeRenderer(manager, Minecraft.getInstance().getItemRenderer()));
+        event.registerEntityRenderer(JEntities.PIERCER_TYPE.get(), manager -> new PiercerRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
+        event.registerEntityRenderer(JEntities.KNIFE_TYPE.get(), manager -> new KnifeRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
 
-        event.registerEntityRenderer(JEntities.JBOAT_TYPE.get(), manager -> new JBoatRenderer(manager, ModelLayers.OAK_BOAT));
-        event.registerEntityRenderer(JEntities.SENTACOIN_TYPE.get(), (context) -> new SentacoinRender(context, Sentacoin.Type.COIN));
-        event.registerEntityRenderer(JEntities.SENTACOIN_BAG_TYPE.get(), (context) -> new SentacoinRender(context, Sentacoin.Type.BAG));
+        event.registerEntityRenderer(JEntities.BROWN_EUCA_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.BROWN_EUCA_BOAT, "brown_euca"));
+        event.registerEntityRenderer(JEntities.GOLD_EUCA_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.GOLD_EUCA_BOAT, "gold_euca"));
+        event.registerEntityRenderer(JEntities.CLOUDIA_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.CLOUDIA_BOAT, "cloudia"));
+        event.registerEntityRenderer(JEntities.CORBA_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.CORBA_BOAT, "corba"));
+        event.registerEntityRenderer(JEntities.DEPTHS_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.DEPTHS_BOAT, "depths"));
+        event.registerEntityRenderer(JEntities.FROZEN_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.FROZEN_BOAT, "frozen"));
+        event.registerEntityRenderer(JEntities.TERRANIA_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.TERRANIA_BOAT, "terranian"));
+
+        event.registerEntityRenderer(JEntities.SENTACOIN_TYPE.get(), (context) -> new SentacoinRender<>(context, Sentacoin.Type.COIN));
+        event.registerEntityRenderer(JEntities.SENTACOIN_BAG_TYPE.get(), (context) -> new SentacoinRender<>(context, Sentacoin.Type.BAG));
 
         event.registerEntityRenderer(JEntities.FROZEN_TROLL_TYPE.get(), FrozenTrollRenderer::new);
         event.registerEntityRenderer(JEntities.SHIVERWOLF_TYPE.get(), ShiverwolfRenderer::new);
@@ -107,6 +115,16 @@ public class RenderEntitys {
         event.registerLayerDefinition(JModelLayers.JCHEST, JChestRenderer::createSingleBodyLayer);
         event.registerLayerDefinition(JModelLayers.JDOUBLE_CHEST_RIGHT, JChestRenderer::createDoubleBodyRightLayer);
         event.registerLayerDefinition(JModelLayers.JDOUBLE_CHEST_LEFT, JChestRenderer::createDoubleBodyLeftLayer);
+
+        event.registerLayerDefinition(JModelLayers.SHIVERWOLF_MODEL_LAYER, () -> LayerDefinition.create(ShiverwolfModel.createMeshDefinition(CubeDeformation.NONE), 64, 32));
+
+        event.registerLayerDefinition(JModelLayers.GOLD_EUCA_BOAT, BoatModel::createBoatModel);
+        event.registerLayerDefinition(JModelLayers.BROWN_EUCA_BOAT, BoatModel::createBoatModel);
+        event.registerLayerDefinition(JModelLayers.CLOUDIA_BOAT, BoatModel::createBoatModel);
+        event.registerLayerDefinition(JModelLayers.CORBA_BOAT, BoatModel::createBoatModel);
+        event.registerLayerDefinition(JModelLayers.DEPTHS_BOAT, BoatModel::createBoatModel);
+        event.registerLayerDefinition(JModelLayers.FROZEN_BOAT, BoatModel::createBoatModel);
+        event.registerLayerDefinition(JModelLayers.TERRANIA_BOAT, BoatModel::createBoatModel);
     }
 
     public static void registerAnimationRenderers() {

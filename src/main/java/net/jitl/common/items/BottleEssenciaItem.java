@@ -22,8 +22,8 @@ public class BottleEssenciaItem extends JItem implements IEssenceItem {
 
     private boolean strong;
 
-    public BottleEssenciaItem(boolean strong) {
-        super(JItems.itemProps());
+    public BottleEssenciaItem(Properties p, boolean strong) {
+        super(p);
         this.strong = strong;
     }
 

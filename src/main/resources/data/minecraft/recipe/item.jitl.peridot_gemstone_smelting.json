@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 1.0,
-  "ingredient": {
-    "item": "jitl:peridot_ore"
-  },
+  "ingredient": "jitl:peridot_ore",
   "result": {
     "count": 1,
     "id": "jitl:peridot_gemstone"

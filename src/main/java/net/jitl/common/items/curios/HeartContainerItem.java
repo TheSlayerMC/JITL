@@ -9,7 +9,6 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
-import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.UUID;
 
@@ -25,10 +24,10 @@ public class HeartContainerItem extends JCurioItem {
         return this;
     }
 
-    @Override
-    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation uuid, ItemStack stack) {
-        Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = LinkedHashMultimap.create();
-        modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.fromNamespaceAndPath(JITL.MODID, "health_modifier"), hearts, AttributeModifier.Operation.ADD_VALUE));
-        return modifierMultimap;
-    }
+//TODO    @Override
+//    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation uuid, ItemStack stack) {
+//        Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = LinkedHashMultimap.create();
+//        modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.fromNamespaceAndPath(JITL.MODID, "health_modifier"), hearts, AttributeModifier.Operation.ADD_VALUE));
+//        return modifierMultimap;
+//    }
 }

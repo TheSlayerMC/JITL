@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "d": {
-      "item": "jitl:carved_blood_rock"
-    }
+    "d": "jitl:carved_blood_rock"
   },
   "pattern": [
     "dd",

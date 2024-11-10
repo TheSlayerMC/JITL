@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "d": {
-      "item": "jitl:magic_dust"
-    },
-    "i": {
-      "item": "jitl:crystal_ball"
-    }
+    "d": "jitl:magic_dust",
+    "i": "jitl:crystal_ball"
   },
   "pattern": [
     "ddd",

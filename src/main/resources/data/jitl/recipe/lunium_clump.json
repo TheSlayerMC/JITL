@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": {
-      "item": "jitl:lunium_ingot"
-    }
+    "d": "jitl:lunium_ingot"
   },
   "pattern": [
     "ddd"

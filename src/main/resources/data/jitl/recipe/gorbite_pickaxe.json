@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "jitl:gorbite_gem"
-    },
-    "I": {
-      "item": "minecraft:stick"
-    }
+    "#": "jitl:gorbite_gem",
+    "I": "minecraft:stick"
   },
   "pattern": [
     "###",

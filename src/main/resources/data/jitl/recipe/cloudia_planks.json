@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    {
-      "item": "jitl:cloudia_log"
-    }
+    "jitl:cloudia_log"
   ],
   "result": {
     "count": 4,

@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.0,
-  "ingredient": {
-    "item": "jitl:raw_shadium"
-  },
+  "ingredient": "jitl:raw_shadium",
   "result": {
     "count": 1,
     "id": "jitl:shadium_ingot"

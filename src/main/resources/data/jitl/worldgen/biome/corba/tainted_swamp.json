@@ -1,20 +1,83 @@
 {
-  "carvers": {},
+  "temperature": 0.8,
   "downfall": 0.4,
+  "has_precipitation": false,
   "effects": {
-    "fog_color": 1524224,
-    "foliage_color": 3496974,
-    "grass_color": 3496974,
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "jitl:music.dim.corba"
-    },
     "sky_color": 7907327,
+    "fog_color": 1524224,
     "water_color": 800769,
-    "water_fog_color": 800769
+    "water_fog_color": 800769,
+    "grass_color": 3496974,
+    "foliage_color": 3496974,
+    "music": {
+      "sound": "jitl:music.dim.corba",
+      "min_delay": 12000,
+      "max_delay": 24000,
+      "replace_current_music": false
+    }
   },
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [
+      {
+        "type": "jitl:corbanian_mollusk",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "jitl:swamp_fly",
+        "weight": 40,
+        "minCount": 1,
+        "maxCount": 3
+      }
+    ],
+    "misc": [],
+    "monster": [
+      {
+        "type": "jitl:nature_mage",
+        "weight": 3,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "jitl:leaf_blower",
+        "weight": 3,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "jitl:surface_seer",
+        "weight": 4,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "jitl:wood_creature",
+        "weight": 4,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "jitl:stinky",
+        "weight": 2,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "jitl:smelly",
+        "weight": 4,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "spawn_costs": {},
+  "carvers": [],
   "features": [
     [],
     [],
@@ -35,68 +98,5 @@
       "jitl:bogshrooms",
       "jitl:corba_lily_pad"
     ]
-  ],
-  "has_precipitation": false,
-  "spawn_costs": {},
-  "spawners": {
-    "ambient": [],
-    "axolotls": [],
-    "creature": [
-      {
-        "type": "jitl:corbanian_mollusk",
-        "maxCount": 2,
-        "minCount": 1,
-        "weight": 20
-      },
-      {
-        "type": "jitl:swamp_fly",
-        "maxCount": 3,
-        "minCount": 1,
-        "weight": 40
-      }
-    ],
-    "misc": [],
-    "monster": [
-      {
-        "type": "jitl:nature_mage",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 3
-      },
-      {
-        "type": "jitl:leaf_blower",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 3
-      },
-      {
-        "type": "jitl:surface_seer",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 4
-      },
-      {
-        "type": "jitl:wood_creature",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 4
-      },
-      {
-        "type": "jitl:stinky",
-        "maxCount": 3,
-        "minCount": 1,
-        "weight": 2
-      },
-      {
-        "type": "jitl:smelly",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 4
-      }
-    ],
-    "underground_water_creature": [],
-    "water_ambient": [],
-    "water_creature": []
-  },
-  "temperature": 0.8
+  ]
 }

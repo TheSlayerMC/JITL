@@ -17,8 +17,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class FlameCoinItem extends JItem {
 
-    public FlameCoinItem() {
-        super(JItems.itemProps().durability(100));
+    public FlameCoinItem(Properties p) {
+        super(p.durability(100));
     }
 
     @Override

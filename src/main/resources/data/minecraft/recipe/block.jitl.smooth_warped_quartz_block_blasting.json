@@ -3,9 +3,7 @@
   "category": "blocks",
   "cookingtime": 100,
   "experience": 1.0,
-  "ingredient": {
-    "item": "jitl:warped_quartz_block"
-  },
+  "ingredient": "jitl:warped_quartz_block",
   "result": {
     "count": 1,
     "id": "jitl:smooth_warped_quartz_block"

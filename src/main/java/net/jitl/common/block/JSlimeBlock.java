@@ -10,6 +10,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
@@ -22,8 +23,8 @@ public class JSlimeBlock extends Block {
     protected static final VoxelShape SLIME_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2D, 16.0D);
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 3);
 
-    public JSlimeBlock() {
-        super(JBlockProperties.SLIME);
+    public JSlimeBlock(BlockBehaviour.Properties props) {
+        super(props);
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 3));
     }
 

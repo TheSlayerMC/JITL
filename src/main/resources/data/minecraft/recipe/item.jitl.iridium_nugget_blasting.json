@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.0,
-  "ingredient": {
-    "item": "jitl:iridium_ore"
-  },
+  "ingredient": "jitl:iridium_ore",
   "result": {
     "count": 1,
     "id": "jitl:iridium_nugget"

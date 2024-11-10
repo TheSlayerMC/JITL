@@ -16,6 +16,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -30,8 +31,8 @@ public class PedestalBlock extends JTileContainerBlock {
     private static final VoxelShape TOP = Block.box(4.0D, 14.0D, 4.0D, 12.0D, 16D, 12.0D);
     private static final VoxelShape SHAPE = Shapes.or(PEDESTAL, BOTTOM, TOP);
 
-    public PedestalBlock() {
-        super(JBlockProperties.STONE, PedestalTile::new);
+    public PedestalBlock(BlockBehaviour.Properties props) {
+        super(props, PedestalTile::new);
     }
 
     @Override

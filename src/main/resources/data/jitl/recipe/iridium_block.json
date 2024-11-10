@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "jitl:iridium_nugget"
-    }
+    "#": "jitl:iridium_nugget"
   },
   "pattern": [
     "###",

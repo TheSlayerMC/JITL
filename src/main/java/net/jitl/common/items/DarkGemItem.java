@@ -15,8 +15,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class DarkGemItem extends JItem {
 
-    public DarkGemItem() {
-        super(JItems.itemProps());
+    public DarkGemItem(Properties p) {
+        super(p);
     }
 
     @Override

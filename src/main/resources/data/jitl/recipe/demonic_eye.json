@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:ender_eye"
-    },
-    {
-      "item": "jitl:demonic_dust"
-    }
+    "minecraft:ender_eye",
+    "jitl:demonic_dust"
   ],
   "result": {
     "count": 1,

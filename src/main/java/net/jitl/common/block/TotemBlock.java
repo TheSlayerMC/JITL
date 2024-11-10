@@ -1,7 +1,10 @@
 package net.jitl.common.block;
 
+import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -9,6 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -19,8 +23,8 @@ public class TotemBlock extends Block {
 
     public static final BooleanProperty AWAKE = BooleanProperty.create("awake");
 
-    public TotemBlock() {
-        super(JBlockProperties.STONE);
+    public TotemBlock(BlockBehaviour.Properties props) {
+        super(props);
         this.registerDefaultState(this.stateDefinition.any().setValue(AWAKE, Boolean.FALSE));
     }
 

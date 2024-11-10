@@ -3,9 +3,7 @@
   "category": "building",
   "group": "jitl:korite_ingot",
   "ingredients": [
-    {
-      "item": "jitl:korite_block"
-    }
+    "jitl:korite_block"
   ],
   "result": {
     "count": 9,

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "jitl:iridium_nugget",
   "ingredients": [
-    {
-      "item": "jitl:iridium_block"
-    }
+    "jitl:iridium_block"
   ],
   "result": {
     "count": 9,

@@ -21,8 +21,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class ChestInteractionItem extends JItem {
 
-    public ChestInteractionItem() {
-        super(JItems.itemProps().stacksTo(16));
+    public ChestInteractionItem(Properties p) {
+        super(p.stacksTo(16));
     }
 
     @Override

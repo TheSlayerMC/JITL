@@ -1,12 +1,16 @@
 package net.jitl.common.block.base;
 
+import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
@@ -14,8 +18,8 @@ public class JCropBlock extends CropBlock {
 
     private final Block farmBlock;
 
-    public JCropBlock(DimensionCrops farmBlock) {
-        super(JBlockProperties.CROP);
+    public JCropBlock(BlockBehaviour.Properties props, DimensionCrops farmBlock) {
+        super(props);
         this.farmBlock = farmBlock.getGrowBlock();
     }
 

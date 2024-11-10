@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    {
-      "item": "jitl:smithstone_block"
-    }
+    "jitl:smithstone_block"
   ],
   "result": {
     "count": 4,

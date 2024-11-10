@@ -13,14 +13,15 @@ import net.minecraft.world.level.block.SpawnerBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class HellwingSpawnerBlock extends SpawnerBlock {
 
-    public HellwingSpawnerBlock() {
-        super(JBlockProperties.SPAWNER);
+    public HellwingSpawnerBlock(BlockBehaviour.Properties props) {
+        super(props);
     }
 
     @Nullable

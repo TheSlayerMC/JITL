@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.0,
-  "ingredient": {
-    "item": "jitl:korite_gemstone"
-  },
+  "ingredient": "jitl:korite_gemstone",
   "result": {
     "count": 1,
     "id": "jitl:korite_ingot"

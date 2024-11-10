@@ -3,9 +3,7 @@
   "category": "building",
   "group": "jitl:celestium_ingot",
   "ingredients": [
-    {
-      "item": "jitl:celestium_block"
-    }
+    "jitl:celestium_block"
   ],
   "result": {
     "count": 9,

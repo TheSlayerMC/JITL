@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.0,
-  "ingredient": {
-    "item": "jitl:storon_gemstone"
-  },
+  "ingredient": "jitl:storon_gemstone",
   "result": {
     "count": 1,
     "id": "jitl:storon_ingot"

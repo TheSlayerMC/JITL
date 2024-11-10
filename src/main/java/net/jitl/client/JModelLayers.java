@@ -21,6 +21,13 @@ public class JModelLayers {
     public static final ModelLayerLocation SHIVERWOLF_MODEL_LAYER = register("shiverwolf");
     public static final ModelLayerLocation SHIVERWOLF_BABY_MODEL_LAYER = register("shiverwolf_baby");
     public static final ModelLayerLocation SHIVERWOLF_ARMOR_LAYER = register("shiverwolf_armor");
+    public static final ModelLayerLocation BROWN_EUCA_BOAT = createBoatModelName(JBoat.Type.BROWN_EUCA);
+    public static final ModelLayerLocation GOLD_EUCA_BOAT = createBoatModelName(JBoat.Type.GOLD_EUCA);
+    public static final ModelLayerLocation CLOUDIA_BOAT = createBoatModelName(JBoat.Type.CLOUDIA);
+    public static final ModelLayerLocation CORBA_BOAT = createBoatModelName(JBoat.Type.CORBA);
+    public static final ModelLayerLocation DEPTHS_BOAT = createBoatModelName(JBoat.Type.DEPTHS);
+    public static final ModelLayerLocation FROZEN_BOAT = createBoatModelName(JBoat.Type.FROZEN);
+    public static final ModelLayerLocation TERRANIA_BOAT = createBoatModelName(JBoat.Type.TERRANIA);
 
 
     private static ModelLayerLocation register(String path) {

@@ -98,6 +98,9 @@
     "jitl:cloudia_button",
     "jitl:cloudia_pressure_plate",
     "jitl:cloudia_fence_gate",
-    "jitl:cloudia_fence"
+    "jitl:cloudia_fence",
+    "jitl:pink_cloudia_cloud",
+    "jitl:blue_cloudia_cloud",
+    "jitl:light_blue_cloudia_cloud"
   ]
 }
