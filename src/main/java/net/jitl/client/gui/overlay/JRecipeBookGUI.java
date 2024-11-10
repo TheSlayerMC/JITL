@@ -63,7 +63,6 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
         poseStack.pose().pushPose();
-        //RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, this.BACKGROUND);
         poseStack.blit(RenderType::guiTextured, BACKGROUND, x, y, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
 

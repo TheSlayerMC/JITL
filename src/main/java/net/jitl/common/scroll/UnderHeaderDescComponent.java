@@ -4,7 +4,7 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 
 public class UnderHeaderDescComponent implements IDescComponent {
@@ -34,7 +34,7 @@ public class UnderHeaderDescComponent implements IDescComponent {
         RenderSystem.setShaderTexture(0, this.content);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         matrix.pose().pushPose();
-        //TODO matrix.blit(content, x, y, textureX, textureY, realWidth, realHeight);
+        matrix.blit(RenderType::guiTextured, content, x, y, textureX, textureY, realWidth, realHeight, 256, 256);
         matrix.pose().popPose();
     }
 

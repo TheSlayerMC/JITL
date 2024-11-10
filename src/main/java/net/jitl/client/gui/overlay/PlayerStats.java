@@ -153,7 +153,6 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         int progressBarSize = 65;
         int k = (width - imageWidth) / 2;
         int l = (height - imageHeight) / 2;
-        //TODO RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
         RenderSystem.setShaderTexture(0, this.KNOWLEDGE_SPRITE);
         if(player != null) {
             net.jitl.common.capability.stats.PlayerStats knowledge = player.getData(JDataAttachments.PLAYER_STATS);
