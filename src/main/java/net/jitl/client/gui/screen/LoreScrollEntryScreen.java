@@ -12,6 +12,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.resources.ResourceLocation;
@@ -114,7 +115,6 @@ public class LoreScrollEntryScreen extends Screen {
     @Override
     public void render(@NotNull GuiGraphics poseStack, int mouseX, int mouseY, float partialTicks) {
         renderBackground(poseStack, mouseX, mouseY, partialTicks);
-       // RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, BG);
 
         int heightRectCount = (height - (height <= 480 ? 12 : 48)) / 32;
@@ -131,6 +131,7 @@ public class LoreScrollEntryScreen extends Screen {
                 int textureX = x == 0 ? 0 : (x == widthRectCount - 1 ? 64 : 32);
                 int textureY = y == 0 ? 0 : (y == heightRectCount - 1 ? 64 : 32);
                 //TODO poseStack.blit(BG, guix0 + x * 32, guiy0 + y * 32, textureX, textureY, 32, 32);
+                poseStack.blit(RenderType::guiTextured, BG, guix0 + x * 32, guiy0 + y * 32, textureX, textureY, 0, 96, 256, 256);
             }
         }
         drawScrollingContent(poseStack, mouseX, mouseY);
@@ -205,7 +206,6 @@ public class LoreScrollEntryScreen extends Screen {
         int baseY = this.top + border - (int) this.scrollDistance;
         int indentY = 0;
 
-        //RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 
         for (int partIdx = 0; partIdx < entryLength; ++partIdx) {

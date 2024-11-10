@@ -35,6 +35,6 @@ public class SummoningTableScreen extends AbstractContainerScreen<SummoningTable
         RenderSystem.setShaderTexture(0, GUI_TEXTURE);
         int i = this.leftPos;
         int j = this.topPos;
-        graphics.blit(RenderType::guiTextured, GUI_TEXTURE, i, j, 0, 0, this.imageWidth, this.imageHeight, 32, 32);
+        graphics.blit(RenderType::guiTextured, GUI_TEXTURE, i, j, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
     }
 }

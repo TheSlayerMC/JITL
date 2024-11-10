@@ -10,6 +10,7 @@ import net.jitl.core.init.internal.JDataAttachments;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.screens.inventory.BookViewScreen;
 import net.minecraft.client.gui.screens.inventory.PageButton;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.RenderType;
@@ -40,7 +41,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
     @Override
     public void render(GuiGraphics graphics, int pMouseX, int pMouseY, float pPartialTick) {
         super.render(graphics, pMouseX, pMouseY, pPartialTick);
-       // this.renderBackground(graphics, pMouseX, pMouseY, pPartialTick);//Dims around the GUI for a more vanilla look
+        // this.renderBackground(graphics, pMouseX, pMouseY, pPartialTick);//Dims around the GUI for a more vanilla look
         this.updateButtonVisibility();
     }
 
@@ -80,7 +81,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         poseStack.pose().pushPose();
         //RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
         RenderSystem.setShaderTexture(0, this.BACKGROUND);
-        poseStack.blitSprite(RenderType::guiTextured, BACKGROUND, x, y, this.imageWidth, this.imageHeight);//Draws the main Background
+        poseStack.blit(RenderType::guiTextured, BACKGROUND, x, y, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
 
         switch(pageNumber) {
             case 0 -> page1(poseStack);
@@ -132,15 +133,13 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
     public void drawSprite(GuiGraphics matrixStack, int x, int y, int spriteX, int spriteY, String s) {
         int k = (width - imageWidth) / 2;
         int l = (height - imageHeight) / 2;
-       // RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
         RenderSystem.setShaderTexture(0, this.BACKGROUND);
 
-        //matrixStack.blitSprite(RenderType::guiTextured, BACKGROUND, k + x - 4, l + y - 4, 0, 216, 115, 40);//Draws the rectangle bg for the sprites
+        matrixStack.blit(RenderType::guiTextured, BACKGROUND, k + x - 4, l + y - 4, 0, 216, 115, 40, 256, 256);
 
-        //RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
         RenderSystem.setShaderTexture(0, this.KNOWLEDGE_SPRITE);
 
-        //matrixStack.blit(RenderType::guiTextured, KNOWLEDGE_SPRITE, k + x, l + y, spriteX, spriteY, 32, 32); //Draws the knowledge sprite
+        matrixStack.blit(RenderType::guiTextured, KNOWLEDGE_SPRITE, k + x, l + y, spriteX, spriteY, 32, 32, 256, 256);
         matrixStack.drawString(font, s, k + x + 35, l + y + 5, 4210752, false); //Draws the sprite name
 
         if(s.contains("Sentacoins"))
@@ -159,23 +158,25 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         if(player != null) {
             net.jitl.common.capability.stats.PlayerStats knowledge = player.getData(JDataAttachments.PLAYER_STATS);
             boolean completed = knowledge.isCompleted(type);
-                float percents = knowledge.getXP(type) / knowledge.getLevelCapacity(knowledge.getLevel(type));
-                int width = (int) (percents * progressBarSize);
+            float percents = knowledge.getXP(type) / knowledge.getLevelCapacity(knowledge.getLevel(type));
+            int width = (int) (percents * progressBarSize);
 
-                int progressBarX = k + x + 35, progressBarY = l + y + 19;
-                //matrixStack.blit(KNOWLEDGE_SPRITE, progressBarX, progressBarY, 0, 5, progressBarSize, 5);
-                //matrixStack.blit(KNOWLEDGE_SPRITE, progressBarX, progressBarY, 0, 0, width, 5);
+            int progressBarX = k + x + 35, progressBarY = l + y + 19;
 
-                if(completed) {
-                //    matrixStack.blit(KNOWLEDGE_SPRITE, k + x, l + y + 3, 130, 43, 32, 29);
-                }
 
-                int lvX = progressBarX + 29, lvY = progressBarY - 1;
+            matrixStack.blit(RenderType::guiTextured, KNOWLEDGE_SPRITE, progressBarX, progressBarY, 0, 5, progressBarSize, 5, 256, 256);
+            matrixStack.blit(RenderType::guiTextured, KNOWLEDGE_SPRITE, progressBarX, progressBarY, 0, 0, width, 5, 256, 256);
 
-                int getLevelCount = knowledge.getLevel(type);
-                String level = "" + getLevelCount;
+            if(completed) {
+                matrixStack.blit(RenderType::guiTextured, KNOWLEDGE_SPRITE, k + x, l + y + 3, 130, 43, 32, 29, 256, 256);
+            }
 
-                matrixStack.drawString(font, "" + (getLevelCount), lvX - this.font.width(level) / 2 + 4, lvY, ArgbColor.from(ChatFormatting.WHITE), true);
+            int lvX = progressBarX + 29, lvY = progressBarY - 1;
+
+            int getLevelCount = knowledge.getLevel(type);
+            String level = "" + getLevelCount;
+
+            matrixStack.drawString(font, "" + (getLevelCount), lvX - this.font.width(level) / 2 + 4, lvY, ArgbColor.from(ChatFormatting.WHITE), true);
         }
     }
 
