@@ -38,30 +38,30 @@ public class KnifeRenderer<T extends KnifeEntity> extends EntityRenderer<T, Knif
 
     @Override
     public void render(KnifeRenderState entityIn, PoseStack matrixStackIn, MultiBufferSource bufferIn, int packedLightIn) {
-        matrixStackIn.pushPose();
-        ItemStack itemstack = entityIn.item;
-        int i = itemstack.isEmpty() ? 187 : Item.getId(itemstack.getItem()) + itemstack.getDamageValue();
-        this.random.setSeed(i);
-        BakedModel ibakedmodel = this.itemRenderer.getModel(itemstack, entityIn.level, null, entityIn.id);
-
-        float f1 = ((float) entityIn.tick + entityIn.partialTick) / 10 * (float) (Math.PI * 2.0D);
-
-        matrixStackIn.mulPose(Axis.YP.rotationDegrees(Mth.lerp(entityIn.partialTick, entityIn.yRot, entityIn.yRot) - 90.0F));
-        matrixStackIn.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(entityIn.partialTick, entityIn.xRot, entityIn.xRot) + 90.0F));
-
-        if (!entityIn.inGround) {
-            matrixStackIn.mulPose(Axis.ZP.rotation(f1));
-        }
-        matrixStackIn.mulPose(Axis.ZP.rotationDegrees(120));
-        matrixStackIn.translate(0, -0.075, 0);
-
-        matrixStackIn.pushPose();
-
-        this.itemRenderer.render(itemstack, ItemDisplayContext.GROUND, false, matrixStackIn, bufferIn, packedLightIn, OverlayTexture.NO_OVERLAY, ibakedmodel);
-        matrixStackIn.popPose();
-        matrixStackIn.translate(0.0, 0.0, 0.09375F);
-
-        matrixStackIn.popPose();
+//        matrixStackIn.pushPose();
+//       // ItemStack itemstack = entityIn.item;
+//        int i = itemstack.isEmpty() ? 187 : Item.getId(itemstack.getItem()) + itemstack.getDamageValue();
+//        this.random.setSeed(i);
+//       // BakedModel ibakedmodel = this.itemRenderer.getModel(itemstack, entityIn.level, null, entityIn.id);
+//
+//        float f1 = ((float) entityIn.tick + entityIn.partialTick) / 10 * (float) (Math.PI * 2.0D);
+//
+//        matrixStackIn.mulPose(Axis.YP.rotationDegrees(Mth.lerp(entityIn.partialTick, entityIn.yRot, entityIn.yRot) - 90.0F));
+//        matrixStackIn.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(entityIn.partialTick, entityIn.xRot, entityIn.xRot) + 90.0F));
+//
+//        if (!entityIn.inGround) {
+//            matrixStackIn.mulPose(Axis.ZP.rotation(f1));
+//        }
+//        matrixStackIn.mulPose(Axis.ZP.rotationDegrees(120));
+//        matrixStackIn.translate(0, -0.075, 0);
+//
+//        matrixStackIn.pushPose();
+//
+//        //this.itemRenderer.render(itemstack, ItemDisplayContext.GROUND, false, matrixStackIn, bufferIn, packedLightIn, OverlayTexture.NO_OVERLAY, ibakedmodel);
+//        matrixStackIn.popPose();
+//        matrixStackIn.translate(0.0, 0.0, 0.09375F);
+//
+//        matrixStackIn.popPose();TODO
         super.render(entityIn, matrixStackIn, bufferIn, packedLightIn);
     }
 

@@ -41,6 +41,11 @@ public abstract class JVillagerEntity extends JPathfinderMob implements Npc, Mer
         playerEntity = player;
     }
 
+    @Override
+    public boolean stillValid(Player player) {
+        return this.getTradingPlayer() == player && this.isAlive() && player.canInteractWithEntity(this, 4.0);
+    }
+
     @Nullable
     @Override
     public Player getTradingPlayer() {

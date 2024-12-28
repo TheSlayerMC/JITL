@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class JShieldItemGenerator {
+public class JShieldItemGenerator extends BasicFileGenerator {
 
     protected BufferedWriter itemModelWriter, blockingWriter;
 
@@ -36,10 +36,10 @@ public class JShieldItemGenerator {
             }
 
             getItem(JITL.MODID, name);
+            generateShieldFile(name);
             itemModelInit();
         }
     }
-
 
     public void getItem(String modID, String name) {
         writeToItemModelFile(itemModelWriter, "{");
@@ -69,13 +69,12 @@ public class JShieldItemGenerator {
         try {
             itemModelWriter.close();
             blockingWriter.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void writeToItemModelFile(BufferedWriter writer, String text){
+    public void writeToItemModelFile(BufferedWriter writer, String text) {
         try {
             writer.write(text + "\n");
         } catch (IOException e) {

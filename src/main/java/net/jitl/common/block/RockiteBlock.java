@@ -66,7 +66,8 @@ public class RockiteBlock extends BaseEntityBlock {
 
     @Override
     public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
-        if (player.getMainHandItem().getItem() instanceof AxeItem
+        if (player.isCreative()
+                || player.getMainHandItem().getItem() instanceof PickaxeItem
                 || player.getMainHandItem().getItem() instanceof MultitoolItem
                 || player.getMainHandItem().getItem().getName(player.getMainHandItem()).contains(Component.literal("shickaxe"))) {
             level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 1F, Level.ExplosionInteraction.BLOCK);
@@ -86,6 +87,6 @@ public class RockiteBlock extends BaseEntityBlock {
 
     @Override
     public @NotNull RenderShape getRenderShape(BlockState pState) {
-        return RenderShape.ENTITYBLOCK_ANIMATED;
+        return RenderShape.INVISIBLE;
     }
 }

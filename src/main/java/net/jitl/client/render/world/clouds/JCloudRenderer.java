@@ -1,263 +1,394 @@
 package net.jitl.client.render.world.clouds;
 
+import com.mojang.blaze3d.buffers.BufferUsage;
+import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.*;
+import com.mojang.blaze3d.vertex.BufferBuilder;
+import com.mojang.blaze3d.vertex.MeshData;
+import com.mojang.blaze3d.vertex.Tesselator;
+import com.mojang.blaze3d.vertex.VertexBuffer;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Optional;
+import javax.annotation.Nullable;
 import net.minecraft.client.CloudStatus;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.CompiledShaderProgram;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
+import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
+import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.joml.Matrix4f;
+import org.slf4j.Logger;
 
-public abstract class JCloudRenderer {
+@OnlyIn(Dist.CLIENT)
+public class JCloudRenderer extends SimplePreparableReloadListener<Optional<JCloudRenderer.TextureData>> implements AutoCloseable {
+    
+    private static final Logger LOGGER = LogUtils.getLogger();
+    private final ResourceLocation TEXTURE_LOCATION;
+    private boolean needsRebuild = true;
+    private int prevCellX = Integer.MIN_VALUE;
+    private int prevCellZ = Integer.MIN_VALUE;
+    private RelativeCameraPos prevRelativeCameraPos;
+    @Nullable
+    private CloudStatus prevType;
+    @Nullable
+    private TextureData texture;
+    private final VertexBuffer vertexBuffer;
+    private boolean vertexBufferEmpty;
 
-    private CloudStatus prevCloudsType;
-    private Vec3 prevCloudColor = Vec3.ZERO;
-    private VertexBuffer cloudBuffer;
-    private int prevCloudX = Integer.MIN_VALUE;
-    private int prevCloudY = Integer.MIN_VALUE;
-    private int prevCloudZ = Integer.MIN_VALUE;
-    private boolean generateClouds = true;
-
-    public void render(ClientLevel level, int ticks, Matrix4f pProjectionMatrix, Matrix4f pFrustumMatrix, float pPartialTick, double pCamX, double pCamY, double pCamZ) {
-       /* Minecraft minecraft = Minecraft.getInstance();
-        float f = level.effects().getCloudHeight();
-        if(!Float.isNaN(f)) {
-            double d1 = ((float)ticks + pPartialTick) * 0.03F;
-            double x = (pCamX + d1) / 12.0;
-            double y = f - (float)pCamY + 0.33F;
-            double z = pCamZ / 12.0 + 0.33F;
-            x -= Mth.floor(x / 2048.0) * 2048;
-            z -= Mth.floor(z / 2048.0) * 2048;
-            float f3 = (float)(x - (double)Mth.floor(x));
-            float f4 = (float)(y / 4.0 - (double)Mth.floor(y / 4.0)) * 4.0F;
-            float f5 = (float)(z - (double)Mth.floor(z));
-            Vec3 vec3 = level.getCloudColor(pPartialTick);
-            int x1 = (int)Math.floor(x);
-            int y1 = (int)Math.floor(y / 4.0);
-            int z1 = (int)Math.floor(z);
-            if(x1 != this.prevCloudX
-                    || y1 != this.prevCloudY
-                    || z1 != this.prevCloudZ
-                    || minecraft.options.getCloudsType() != this.prevCloudsType
-                    || this.prevCloudColor.distanceToSqr(vec3) > 2.0E-4) {
-                this.prevCloudX = x1;
-                this.prevCloudY = y1;
-                this.prevCloudZ = z1;
-                this.prevCloudColor = vec3;
-                this.prevCloudsType = minecraft.options.getCloudsType();
-                this.generateClouds = true;
-            }
-
-            if(this.generateClouds) {
-                this.generateClouds = false;
-                if(this.cloudBuffer != null) {
-                    this.cloudBuffer.close();
-                }
-
-                this.cloudBuffer = new VertexBuffer(VertexBuffer.Usage.STATIC);
-                this.cloudBuffer.bind();
-                this.cloudBuffer.upload(this.buildClouds(Tesselator.getInstance(), x, y, z, vec3));
-                VertexBuffer.unbind();
-            }
-
-            FogRenderer.levelFogColor();
-            pPoseStack.pushPose();
-            pPoseStack.mulPose(pFrustumMatrix);
-            pPoseStack.scale(12.0F, 1.0F, 12.0F);
-            pPoseStack.translate(-f3, f4, -f5);
-            if(this.cloudBuffer != null) {
-                this.cloudBuffer.bind();
-                int l = this.prevCloudsType == CloudStatus.FANCY ? 0 : 1;
-
-                for(int i1 = l; i1 < 2; i1++) {
-                    RenderType rendertype = i1 == 0 ? depthClouds() : clouds();
-                    rendertype.setupRenderState();
-                    ShaderInstance shaderinstance = RenderSystem.getShader();
-                    assert shaderinstance != null;
-                    this.cloudBuffer.drawWithShader(pPoseStack.last().pose(), pProjectionMatrix, shaderinstance);
-                    rendertype.clearRenderState();
-                }
-
-                VertexBuffer.unbind();
-            }
-
-            pPoseStack.popPose();
-        }*///TODO
+    public JCloudRenderer(ResourceLocation texture) {
+        this.TEXTURE_LOCATION = texture;
+        this.prevRelativeCameraPos = JCloudRenderer.RelativeCameraPos.INSIDE_CLOUDS;
+        this.vertexBuffer = new VertexBuffer(BufferUsage.STATIC_WRITE);
     }
 
-    public abstract RenderType clouds();
-    public abstract RenderType depthClouds();
+    protected Optional<TextureData> prepare(ResourceManager resource, ProfilerFiller profile) {
+        try {
+            InputStream inputstream = resource.open(TEXTURE_LOCATION);
 
-    private MeshData buildClouds(Tesselator t, double pX, double pY, double pZ, Vec3 pCloudColor) {
-        float f3 = (float)Mth.floor(pX) * 0.00390625F;
-        float f4 = (float)Mth.floor(pZ) * 0.00390625F;
-        float f5 = (float)pCloudColor.x;
-        float f6 = (float)pCloudColor.y;
-        float f7 = (float)pCloudColor.z;
-        float f8 = f5 * 0.9F;
-        float f9 = f6 * 0.9F;
-        float f10 = f7 * 0.9F;
-        float f11 = f5 * 0.7F;
-        float f12 = f6 * 0.7F;
-        float f13 = f7 * 0.7F;
-        float f14 = f5 * 0.8F;
-        float f15 = f6 * 0.8F;
-        float f16 = f7 * 0.8F;
-        BufferBuilder bufferbuilder = t.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR_NORMAL);
-        float f17 = (float)Math.floor(pY / 4.0) * 4.0F;
-        if(this.prevCloudsType == CloudStatus.FANCY) {
-            for(int k = -3; k <= 4; k++) {
-                for(int l = -3; l <= 4; l++) {
-                    float f18 = (float)(k * 8);
-                    float f19 = (float)(l * 8);
-                    if(f17 > -5.0F) {
-                        bufferbuilder.addVertex(f18 + 0.0F, f17 + 0.0F, f19 + 8.0F)
-                                .setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4)
-                                .setColor(f11, f12, f13, 0.8F)
-                                .setNormal(0.0F, -1.0F, 0.0F);
-                        bufferbuilder.addVertex(f18 + 8.0F, f17 + 0.0F, f19 + 8.0F)
-                                .setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4)
-                                .setColor(f11, f12, f13, 0.8F)
-                                .setNormal(0.0F, -1.0F, 0.0F);
-                        bufferbuilder.addVertex(f18 + 8.0F, f17 + 0.0F, f19 + 0.0F)
-                                .setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4)
-                                .setColor(f11, f12, f13, 0.8F)
-                                .setNormal(0.0F, -1.0F, 0.0F);
-                        bufferbuilder.addVertex(f18 + 0.0F, f17 + 0.0F, f19 + 0.0F)
-                                .setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4)
-                                .setColor(f11, f12, f13, 0.8F)
-                                .setNormal(0.0F, -1.0F, 0.0F);
+            Optional optional;
+            try {
+                NativeImage nativeimage = NativeImage.read(inputstream);
+
+                try {
+                    int i = nativeimage.getWidth();
+                    int j = nativeimage.getHeight();
+                    long[] along = new long[i * j];
+                    int k = 0;
+
+                    while(true) {
+                        if (k >= j) {
+                            optional = Optional.of(new TextureData(along, i, j));
+                            break;
+                        }
+
+                        for(int l = 0; l < i; ++l) {
+                            int i1 = nativeimage.getPixel(l, k);
+                            if (isCellEmpty(i1)) {
+                                along[l + k * i] = 0L;
+                            } else {
+                                boolean flag = isCellEmpty(nativeimage.getPixel(l, Math.floorMod(k - 1, j)));
+                                boolean flag1 = isCellEmpty(nativeimage.getPixel(Math.floorMod(l + 1, j), k));
+                                boolean flag2 = isCellEmpty(nativeimage.getPixel(l, Math.floorMod(k + 1, j)));
+                                boolean flag3 = isCellEmpty(nativeimage.getPixel(Math.floorMod(l - 1, j), k));
+                                along[l + k * i] = packCellData(i1, flag, flag1, flag2, flag3);
+                            }
+                        }
+
+                        ++k;
                     }
-
-                    if(f17 <= 5.0F) {
-                        bufferbuilder.addVertex(f18 + 0.0F, f17 + 4.0F - 9.765625E-4F, f19 + 8.0F)
-                                .setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4)
-                                .setColor(f5, f6, f7, 0.8F)
-                                .setNormal(0.0F, 1.0F, 0.0F);
-                        bufferbuilder.addVertex(f18 + 8.0F, f17 + 4.0F - 9.765625E-4F, f19 + 8.0F)
-                                .setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4)
-                                .setColor(f5, f6, f7, 0.8F)
-                                .setNormal(0.0F, 1.0F, 0.0F);
-                        bufferbuilder.addVertex(f18 + 8.0F, f17 + 4.0F - 9.765625E-4F, f19 + 0.0F)
-                                .setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4)
-                                .setColor(f5, f6, f7, 0.8F)
-                                .setNormal(0.0F, 1.0F, 0.0F);
-                        bufferbuilder.addVertex(f18 + 0.0F, f17 + 4.0F - 9.765625E-4F, f19 + 0.0F)
-                                .setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4)
-                                .setColor(f5, f6, f7, 0.8F)
-                                .setNormal(0.0F, 1.0F, 0.0F);
-                    }
-
-                    if(k > -1) {
-                        for(int i1 = 0; i1 < 8; i1++) {
-                            bufferbuilder.addVertex(f18 + (float)i1 + 0.0F, f17 + 0.0F, f19 + 8.0F)
-                                    .setUv((f18 + (float)i1 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4)
-                                    .setColor(f8, f9, f10, 0.8F)
-                                    .setNormal(-1.0F, 0.0F, 0.0F);
-                            bufferbuilder.addVertex(f18 + (float)i1 + 0.0F, f17 + 4.0F, f19 + 8.0F)
-                                    .setUv((f18 + (float)i1 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4)
-                                    .setColor(f8, f9, f10, 0.8F)
-                                    .setNormal(-1.0F, 0.0F, 0.0F);
-                            bufferbuilder.addVertex(f18 + (float)i1 + 0.0F, f17 + 4.0F, f19 + 0.0F)
-                                    .setUv((f18 + (float)i1 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4)
-                                    .setColor(f8, f9, f10, 0.8F)
-                                    .setNormal(-1.0F, 0.0F, 0.0F);
-                            bufferbuilder.addVertex(f18 + (float)i1 + 0.0F, f17 + 0.0F, f19 + 0.0F)
-                                    .setUv((f18 + (float)i1 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4)
-                                    .setColor(f8, f9, f10, 0.8F)
-                                    .setNormal(-1.0F, 0.0F, 0.0F);
+                } catch (Throwable var18) {
+                    if (nativeimage != null) {
+                        try {
+                            nativeimage.close();
+                        } catch (Throwable var17) {
+                            var18.addSuppressed(var17);
                         }
                     }
 
-                    if(k <= 1) {
-                        for(int j2 = 0; j2 < 8; j2++) {
-                            bufferbuilder.addVertex(f18 + (float)j2 + 1.0F - 9.765625E-4F, f17 + 0.0F, f19 + 8.0F)
-                                    .setUv((f18 + (float)j2 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4)
-                                    .setColor(f8, f9, f10, 0.8F)
-                                    .setNormal(1.0F, 0.0F, 0.0F);
-                            bufferbuilder.addVertex(f18 + (float)j2 + 1.0F - 9.765625E-4F, f17 + 4.0F, f19 + 8.0F)
-                                    .setUv((f18 + (float)j2 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4)
-                                    .setColor(f8, f9, f10, 0.8F)
-                                    .setNormal(1.0F, 0.0F, 0.0F);
-                            bufferbuilder.addVertex(f18 + (float)j2 + 1.0F - 9.765625E-4F, f17 + 4.0F, f19 + 0.0F)
-                                    .setUv((f18 + (float)j2 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4)
-                                    .setColor(f8, f9, f10, 0.8F)
-                                    .setNormal(1.0F, 0.0F, 0.0F);
-                            bufferbuilder.addVertex(f18 + (float)j2 + 1.0F - 9.765625E-4F, f17 + 0.0F, f19 + 0.0F)
-                                    .setUv((f18 + (float)j2 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4)
-                                    .setColor(f8, f9, f10, 0.8F)
-                                    .setNormal(1.0F, 0.0F, 0.0F);
-                        }
-                    }
+                    throw var18;
+                }
 
-                    if(l > -1) {
-                        for(int k2 = 0; k2 < 8; k2++) {
-                            bufferbuilder.addVertex(f18 + 0.0F, f17 + 4.0F, f19 + (float)k2 + 0.0F)
-                                    .setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float)k2 + 0.5F) * 0.00390625F + f4)
-                                    .setColor(f14, f15, f16, 0.8F)
-                                    .setNormal(0.0F, 0.0F, -1.0F);
-                            bufferbuilder.addVertex(f18 + 8.0F, f17 + 4.0F, f19 + (float)k2 + 0.0F)
-                                    .setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float)k2 + 0.5F) * 0.00390625F + f4)
-                                    .setColor(f14, f15, f16, 0.8F)
-                                    .setNormal(0.0F, 0.0F, -1.0F);
-                            bufferbuilder.addVertex(f18 + 8.0F, f17 + 0.0F, f19 + (float)k2 + 0.0F)
-                                    .setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float)k2 + 0.5F) * 0.00390625F + f4)
-                                    .setColor(f14, f15, f16, 0.8F)
-                                    .setNormal(0.0F, 0.0F, -1.0F);
-                            bufferbuilder.addVertex(f18 + 0.0F, f17 + 0.0F, f19 + (float)k2 + 0.0F)
-                                    .setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float)k2 + 0.5F) * 0.00390625F + f4)
-                                    .setColor(f14, f15, f16, 0.8F)
-                                    .setNormal(0.0F, 0.0F, -1.0F);
-                        }
-                    }
-
-                    if(l <= 1) {
-                        for(int l2 = 0; l2 < 8; l2++) {
-                            bufferbuilder.addVertex(f18 + 0.0F, f17 + 4.0F, f19 + (float)l2 + 1.0F - 9.765625E-4F)
-                                    .setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float)l2 + 0.5F) * 0.00390625F + f4)
-                                    .setColor(f14, f15, f16, 0.8F)
-                                    .setNormal(0.0F, 0.0F, 1.0F);
-                            bufferbuilder.addVertex(f18 + 8.0F, f17 + 4.0F, f19 + (float)l2 + 1.0F - 9.765625E-4F)
-                                    .setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float)l2 + 0.5F) * 0.00390625F + f4)
-                                    .setColor(f14, f15, f16, 0.8F)
-                                    .setNormal(0.0F, 0.0F, 1.0F);
-                            bufferbuilder.addVertex(f18 + 8.0F, f17 + 0.0F, f19 + (float)l2 + 1.0F - 9.765625E-4F)
-                                    .setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float)l2 + 0.5F) * 0.00390625F + f4)
-                                    .setColor(f14, f15, f16, 0.8F)
-                                    .setNormal(0.0F, 0.0F, 1.0F);
-                            bufferbuilder.addVertex(f18 + 0.0F, f17 + 0.0F, f19 + (float)l2 + 1.0F - 9.765625E-4F)
-                                    .setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float)l2 + 0.5F) * 0.00390625F + f4)
-                                    .setColor(f14, f15, f16, 0.8F)
-                                    .setNormal(0.0F, 0.0F, 1.0F);
-                        }
+                if (nativeimage != null) {
+                    nativeimage.close();
+                }
+            } catch (Throwable var19) {
+                if (inputstream != null) {
+                    try {
+                        inputstream.close();
+                    } catch (Throwable var16) {
+                        var19.addSuppressed(var16);
                     }
                 }
-            }
-        } else {
 
-            for(int l1 = -32; l1 < 32; l1 += 32) {
-                for(int i2 = -32; i2 < 32; i2 += 32) {
-                    bufferbuilder.addVertex((float)(l1 + 0), f17, (float)(i2 + 32))
-                            .setUv((float)(l1 + 0) * 0.00390625F + f3, (float)(i2 + 32) * 0.00390625F + f4)
-                            .setColor(f5, f6, f7, 0.8F)
-                            .setNormal(0.0F, -1.0F, 0.0F);
-                    bufferbuilder.addVertex((float)(l1 + 32), f17, (float)(i2 + 32))
-                            .setUv((float)(l1 + 32) * 0.00390625F + f3, (float)(i2 + 32) * 0.00390625F + f4)
-                            .setColor(f5, f6, f7, 0.8F)
-                            .setNormal(0.0F, -1.0F, 0.0F);
-                    bufferbuilder.addVertex((float)(l1 + 32), f17, (float)(i2 + 0))
-                            .setUv((float)(l1 + 32) * 0.00390625F + f3, (float)(i2 + 0) * 0.00390625F + f4)
-                            .setColor(f5, f6, f7, 0.8F)
-                            .setNormal(0.0F, -1.0F, 0.0F);
-                    bufferbuilder.addVertex((float)(l1 + 0), f17, (float)(i2 + 0))
-                            .setUv((float)(l1 + 0) * 0.00390625F + f3, (float)(i2 + 0) * 0.00390625F + f4)
-                            .setColor(f5, f6, f7, 0.8F)
-                            .setNormal(0.0F, -1.0F, 0.0F);
+                throw var19;
+            }
+
+            if (inputstream != null) {
+                inputstream.close();
+            }
+
+            return optional;
+        } catch (IOException var20) {
+            IOException ioexception = var20;
+            LOGGER.error("Failed to load cloud texture", ioexception);
+            return Optional.empty();
+        }
+    }
+
+    protected void apply(Optional<JCloudRenderer.TextureData> t, ResourceManager r, ProfilerFiller p) {
+        this.texture = t.orElse(null);
+        this.needsRebuild = true;
+    }
+
+    private static boolean isCellEmpty(int c) {
+        return ARGB.alpha(c) < 10;
+    }
+
+    private static long packCellData(int i, boolean b, boolean b1, boolean b2, boolean b3) {
+        return (long)i << 4 | (long)((b ? 1 : 0) << 3) | (long)((b1 ? 1 : 0) << 2) | (long)((b2 ? 1 : 0) << 1) | (long)((b3 ? 1 : 0) << 0);
+    }
+
+    private static int getColor(long colour) {
+        return (int)(colour >> 4 & 4294967295L);
+    }
+
+    private static boolean isNorthEmpty(long d) {
+        return (d >> 3 & 1L) != 0L;
+    }
+
+    private static boolean isEastEmpty(long d) {
+        return (d >> 2 & 1L) != 0L;
+    }
+
+    private static boolean isSouthEmpty(long d) {
+        return (d >> 1 & 1L) != 0L;
+    }
+
+    private static boolean isWestEmpty(long d) {
+        return (d >> 0 & 1L) != 0L;
+    }
+
+    public void render(int type, CloudStatus status, float yPos, Matrix4f projectionMatrix, Matrix4f modelViewMatrix, Vec3 loc, float tick) {
+        if (this.texture != null) {
+            float f = (float)((double)yPos - loc.y);
+            float f1 = f + 4.0F;
+            RelativeCameraPos cam;
+            if (f1 < 0.0F) {
+                cam = JCloudRenderer.RelativeCameraPos.ABOVE_CLOUDS;
+            } else if (f > 0.0F) {
+                cam = JCloudRenderer.RelativeCameraPos.BELOW_CLOUDS;
+            } else {
+                cam = JCloudRenderer.RelativeCameraPos.INSIDE_CLOUDS;
+            }
+
+            double d0 = loc.x + (double)(tick * 0.030000001F);
+            double d1 = loc.z + 3.9600000381469727;
+            double d2 = (double)this.texture.width * 12.0;
+            double d3 = (double)this.texture.height * 12.0;
+            d0 -= (double)Mth.floor(d0 / d2) * d2;
+            d1 -= (double)Mth.floor(d1 / d3) * d3;
+            int i = Mth.floor(d0 / 12.0);
+            int j = Mth.floor(d1 / 12.0);
+            float f2 = (float)(d0 - (double)((float)i * 12.0F));
+            float f3 = (float)(d1 - (double)((float)j * 12.0F));
+            RenderType rendertype = status == CloudStatus.FANCY ? RenderType.clouds() : RenderType.flatClouds();
+            this.vertexBuffer.bind();
+            if (this.needsRebuild || i != this.prevCellX || j != this.prevCellZ || cam != this.prevRelativeCameraPos || status != this.prevType) {
+                this.needsRebuild = false;
+                this.prevCellX = i;
+                this.prevCellZ = j;
+                this.prevRelativeCameraPos = cam;
+                this.prevType = status;
+                MeshData meshdata = this.buildMesh(Tesselator.getInstance(), i, j, status, cam, rendertype);
+                if (meshdata != null) {
+                    this.vertexBuffer.upload(meshdata);
+                    this.vertexBufferEmpty = false;
+                } else {
+                    this.vertexBufferEmpty = true;
+                }
+            }
+
+            if (!this.vertexBufferEmpty) {
+                RenderSystem.setShaderColor(from8BitChannel(ARGB.red(type)), from8BitChannel(ARGB.green(type)), from8BitChannel(ARGB.blue(type)), 1.0F);
+                if (status == CloudStatus.FANCY) {
+                    this.drawWithRenderType(RenderType.cloudsDepthOnly(), projectionMatrix, modelViewMatrix, f2, f, f3);
+                }
+
+                this.drawWithRenderType(rendertype, projectionMatrix, modelViewMatrix, f2, f, f3);
+                VertexBuffer.unbind();
+                RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+            }
+        }
+
+    }
+
+    private static float from8BitChannel(int i) {
+        return (float)i / 255.0F;
+    }
+
+    private void drawWithRenderType(RenderType r, Matrix4f projectionMatrix, Matrix4f modelViewMatrix, float x, float y, float z) {
+        r.setupRenderState();
+        CompiledShaderProgram compiledshaderprogram = RenderSystem.getShader();
+        if (compiledshaderprogram != null && compiledshaderprogram.MODEL_OFFSET != null) {
+            compiledshaderprogram.MODEL_OFFSET.set(-x, y, -z);
+        }
+
+        this.vertexBuffer.drawWithShader(projectionMatrix, modelViewMatrix, compiledshaderprogram);
+        r.clearRenderState();
+    }
+
+    @Nullable
+    private MeshData buildMesh(Tesselator t, int x, int y, CloudStatus s, RelativeCameraPos p, RenderType r) {
+        float f = 0.8F;
+        int i = ARGB.colorFromFloat(0.8F, 1.0F, 1.0F, 1.0F);
+        int j = ARGB.colorFromFloat(0.8F, 0.9F, 0.9F, 0.9F);
+        int k = ARGB.colorFromFloat(0.8F, 0.7F, 0.7F, 0.7F);
+        int l = ARGB.colorFromFloat(0.8F, 0.8F, 0.8F, 0.8F);
+        BufferBuilder bufferbuilder = t.begin(r.mode(), r.format());
+        this.buildMesh(p, bufferbuilder, x, y, k, i, j, l, s == CloudStatus.FANCY);
+        return bufferbuilder.build();
+    }
+
+    private void buildMesh(RelativeCameraPos r, BufferBuilder buf, int p_361006_, int p_362674_, int p_362100_, int p_360889_, int p_360776_, int p_365003_, boolean p_362207_) {
+        if (this.texture != null) {
+            long[] along = this.texture.cells;
+            int j = this.texture.width;
+            int k = this.texture.height;
+
+            for(int l = -32; l <= 32; ++l) {
+                for(int i1 = -32; i1 <= 32; ++i1) {
+                    int j1 = Math.floorMod(p_361006_ + i1, j);
+                    int k1 = Math.floorMod(p_362674_ + l, k);
+                    long l1 = along[j1 + k1 * j];
+                    if (l1 != 0L) {
+                        int i2 = getColor(l1);
+                        if (p_362207_) {
+                            this.buildExtrudedCell(r, buf, ARGB.multiply(p_362100_, i2), ARGB.multiply(p_360889_, i2), ARGB.multiply(p_360776_, i2), ARGB.multiply(p_365003_, i2), i1, l, l1);
+                        } else {
+                            this.buildFlatCell(buf, ARGB.multiply(p_360889_, i2), i1, l);
+                        }
+                    }
                 }
             }
         }
-        return bufferbuilder.buildOrThrow();
+
+    }
+
+    private void buildFlatCell(BufferBuilder p_363638_, int p_364027_, int p_361818_, int p_364671_) {
+        float f = (float)p_361818_ * 12.0F;
+        float f1 = f + 12.0F;
+        float f2 = (float)p_364671_ * 12.0F;
+        float f3 = f2 + 12.0F;
+        p_363638_.addVertex(f, 0.0F, f2).setColor(p_364027_);
+        p_363638_.addVertex(f, 0.0F, f3).setColor(p_364027_);
+        p_363638_.addVertex(f1, 0.0F, f3).setColor(p_364027_);
+        p_363638_.addVertex(f1, 0.0F, f2).setColor(p_364027_);
+    }
+
+    private void buildExtrudedCell(RelativeCameraPos r, BufferBuilder b, int p_362180_, int p_364234_, int p_364613_, int p_361634_, int p_364709_, int p_363252_, long p_364423_) {
+        float f = (float)p_364709_ * 12.0F;
+        float f1 = f + 12.0F;
+        float f2 = 0.0F;
+        float f3 = 4.0F;
+        float f4 = (float)p_363252_ * 12.0F;
+        float f5 = f4 + 12.0F;
+        if (r != JCloudRenderer.RelativeCameraPos.BELOW_CLOUDS) {
+            b.addVertex(f, 4.0F, f4).setColor(p_364234_);
+            b.addVertex(f, 4.0F, f5).setColor(p_364234_);
+            b.addVertex(f1, 4.0F, f5).setColor(p_364234_);
+            b.addVertex(f1, 4.0F, f4).setColor(p_364234_);
+        }
+
+        if (r != JCloudRenderer.RelativeCameraPos.ABOVE_CLOUDS) {
+            b.addVertex(f1, 0.0F, f4).setColor(p_362180_);
+            b.addVertex(f1, 0.0F, f5).setColor(p_362180_);
+            b.addVertex(f, 0.0F, f5).setColor(p_362180_);
+            b.addVertex(f, 0.0F, f4).setColor(p_362180_);
+        }
+
+        if (isNorthEmpty(p_364423_) && p_363252_ > 0) {
+            b.addVertex(f, 0.0F, f4).setColor(p_361634_);
+            b.addVertex(f, 4.0F, f4).setColor(p_361634_);
+            b.addVertex(f1, 4.0F, f4).setColor(p_361634_);
+            b.addVertex(f1, 0.0F, f4).setColor(p_361634_);
+        }
+
+        if (isSouthEmpty(p_364423_) && p_363252_ < 0) {
+            b.addVertex(f1, 0.0F, f5).setColor(p_361634_);
+            b.addVertex(f1, 4.0F, f5).setColor(p_361634_);
+            b.addVertex(f, 4.0F, f5).setColor(p_361634_);
+            b.addVertex(f, 0.0F, f5).setColor(p_361634_);
+        }
+
+        if (isWestEmpty(p_364423_) && p_364709_ > 0) {
+            b.addVertex(f, 0.0F, f5).setColor(p_364613_);
+            b.addVertex(f, 4.0F, f5).setColor(p_364613_);
+            b.addVertex(f, 4.0F, f4).setColor(p_364613_);
+            b.addVertex(f, 0.0F, f4).setColor(p_364613_);
+        }
+
+        if (isEastEmpty(p_364423_) && p_364709_ < 0) {
+            b.addVertex(f1, 0.0F, f4).setColor(p_364613_);
+            b.addVertex(f1, 4.0F, f4).setColor(p_364613_);
+            b.addVertex(f1, 4.0F, f5).setColor(p_364613_);
+            b.addVertex(f1, 0.0F, f5).setColor(p_364613_);
+        }
+
+        boolean flag = Math.abs(p_364709_) <= 1 && Math.abs(p_363252_) <= 1;
+        if (flag) {
+            b.addVertex(f1, 4.0F, f4).setColor(p_364234_);
+            b.addVertex(f1, 4.0F, f5).setColor(p_364234_);
+            b.addVertex(f, 4.0F, f5).setColor(p_364234_);
+            b.addVertex(f, 4.0F, f4).setColor(p_364234_);
+            b.addVertex(f, 0.0F, f4).setColor(p_362180_);
+            b.addVertex(f, 0.0F, f5).setColor(p_362180_);
+            b.addVertex(f1, 0.0F, f5).setColor(p_362180_);
+            b.addVertex(f1, 0.0F, f4).setColor(p_362180_);
+            b.addVertex(f1, 0.0F, f4).setColor(p_361634_);
+            b.addVertex(f1, 4.0F, f4).setColor(p_361634_);
+            b.addVertex(f, 4.0F, f4).setColor(p_361634_);
+            b.addVertex(f, 0.0F, f4).setColor(p_361634_);
+            b.addVertex(f, 0.0F, f5).setColor(p_361634_);
+            b.addVertex(f, 4.0F, f5).setColor(p_361634_);
+            b.addVertex(f1, 4.0F, f5).setColor(p_361634_);
+            b.addVertex(f1, 0.0F, f5).setColor(p_361634_);
+            b.addVertex(f, 0.0F, f4).setColor(p_364613_);
+            b.addVertex(f, 4.0F, f4).setColor(p_364613_);
+            b.addVertex(f, 4.0F, f5).setColor(p_364613_);
+            b.addVertex(f, 0.0F, f5).setColor(p_364613_);
+            b.addVertex(f1, 0.0F, f5).setColor(p_364613_);
+            b.addVertex(f1, 4.0F, f5).setColor(p_364613_);
+            b.addVertex(f1, 4.0F, f4).setColor(p_364613_);
+            b.addVertex(f1, 0.0F, f4).setColor(p_364613_);
+        }
+
+    }
+
+    public void markForRebuild() {
+        this.needsRebuild = true;
+    }
+
+    public void close() {
+        this.vertexBuffer.close();
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    enum RelativeCameraPos {
+        ABOVE_CLOUDS,
+        INSIDE_CLOUDS,
+        BELOW_CLOUDS;
+
+        private RelativeCameraPos() {
+        }
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public record TextureData(long[] cells, int width, int height) {
+
+        public TextureData(long[] cells, int width, int height) {
+            this.cells = cells;
+            this.width = width;
+            this.height = height;
+        }
+
+        public long[] cells() {
+            return this.cells;
+        }
+
+        public int width() {
+            return this.width;
+        }
+
+        public int height() {
+            return this.height;
+        }
     }
 }

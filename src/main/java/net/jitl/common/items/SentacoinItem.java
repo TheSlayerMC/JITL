@@ -4,7 +4,6 @@ import net.jitl.common.entity.misc.Sentacoin;
 import net.jitl.common.items.base.JItem;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
-import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;

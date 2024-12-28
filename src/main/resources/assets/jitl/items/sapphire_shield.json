@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "on_false": {
+      "type": "minecraft:special",
+      "base": "jitl:item/sapphire_shield",
+      "model": {
+        "type": "jitl:sapphire_shield"
+      }
+    },
+    "on_true": {
+      "type": "minecraft:special",
+      "base": "jitl:item/sapphire_shield_blocking",
+      "model": {
+        "type": "jitl:sapphire_shield"
+      }
+    },
+    "property": "minecraft:using_item"
+  }
+}

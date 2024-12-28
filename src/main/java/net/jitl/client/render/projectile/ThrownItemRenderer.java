@@ -21,13 +21,11 @@ import org.jetbrains.annotations.NotNull;
 @OnlyIn(Dist.CLIENT)
 public class ThrownItemRenderer<T extends Entity & ItemSupplier> extends EntityRenderer<T, ThrownItemRenderState> {
 
-   private final ItemRenderer itemRenderer;
    private final float scale;
    private final boolean fullBright;
 
    public ThrownItemRenderer(EntityRendererProvider.Context ctx, float scale, boolean lit) {
       super(ctx);
-      this.itemRenderer = ctx.getItemRenderer();
       this.scale = scale;
       this.fullBright = lit;
    }
@@ -46,9 +44,7 @@ public class ThrownItemRenderer<T extends Entity & ItemSupplier> extends EntityR
       matrixStack.pushPose();
       matrixStack.scale(this.scale, this.scale, this.scale);
       matrixStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
-      if (entity.itemModel != null) {
-         this.itemRenderer.render(entity.item, ItemDisplayContext.GROUND, false, matrixStack, buffer, packedLight, OverlayTexture.NO_OVERLAY, entity.itemModel);
-      }
+      entity.item.render(matrixStack, buffer, packedLight, OverlayTexture.NO_OVERLAY);
       matrixStack.popPose();
       super.render(entity, matrixStack, buffer, packedLight);
    }

@@ -50,7 +50,7 @@ public class RedcurrantBushBlock extends BushBlock implements BonemealableBlock 
     }
 
     @Override
-    public @NotNull ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
+    public @NotNull ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
         return new ItemStack(JItems.REDCURRANT_BERRY.get());
     }
 

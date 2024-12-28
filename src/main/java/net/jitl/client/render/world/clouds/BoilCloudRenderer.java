@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.util.TriState;
 
-public class BoilCloudRenderer extends JCloudRenderer {
+public class BoilCloudRenderer {
 
     private RenderType createClouds(boolean colour) {
         return RenderType.create(
@@ -28,13 +28,4 @@ public class BoilCloudRenderer extends JCloudRenderer {
         );
     }
 
-    @Override
-    public RenderType clouds() {
-        return createClouds(false);
-    }
-
-    @Override
-    public RenderType depthClouds() {
-        return createClouds(true);
-    }
 }

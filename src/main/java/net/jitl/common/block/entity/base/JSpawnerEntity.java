@@ -60,11 +60,6 @@ public abstract class JSpawnerEntity extends BlockEntity implements Spawner {
         return this.getBaseSpawner().onEventTriggered(this.level, pId) || super.triggerEvent(pId, pType);
     }
 
-    @Override
-    public boolean onlyOpCanSetNbt() {
-        return true;
-    }
-
     public void setEntityId(EntityType<?> e, RandomSource r) {
         this.getBaseSpawner().setEntityId(e, this.level, r, this.worldPosition);
         this.setChanged();

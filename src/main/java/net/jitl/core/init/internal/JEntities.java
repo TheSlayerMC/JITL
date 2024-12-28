@@ -45,10 +45,10 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
@@ -65,6 +65,8 @@ public class JEntities {
     public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(Registries.ENTITY_TYPE, JITL.MODID);
     public static final ArrayList<String> entityName = new ArrayList<>();
     public static final ArrayList<String> entityLangName = new ArrayList<>();
+    public static final ArrayList<Integer> COLOUR1 = new ArrayList<>();
+    public static final ArrayList<Integer> COLOUR2 = new ArrayList<>();
 
     private static final int OVERWORLD_COLOR = 0x32f53f;
     private static final int NETHER_COLOR = 0x881a2b;
@@ -259,18 +261,22 @@ public class JEntities {
     private static <T extends Mob> DeferredHolder<EntityType<?>, EntityType<T>> registerEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height, float passengerAttachment, int backgroundColor, int highlightColor, MobCategory category) {
         ResourceKey<EntityType<?>> resource = ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(JITL.MODID, name));
         DeferredHolder<EntityType<?>, EntityType<T>> entity = REGISTRY.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).passengerAttachments(passengerAttachment).clientTrackingRange(10).build(resource));
-        JItems.register(name + "_spawn_egg" , lang + " Spawn Egg", (p) -> new DeferredSpawnEggItem(entity, backgroundColor, highlightColor, p), JItems.ItemType.SPAWN_EGG);
+        JItems.register(name + "_spawn_egg" , lang + " Spawn Egg", (p) -> new SpawnEggItem(entity.get(), /*backgroundColor, highlightColor,*/ p), JItems.ItemType.SPAWN_EGG);
         entityName.add(name);
         entityLangName.add(lang);
+        COLOUR1.add(backgroundColor);
+        COLOUR2.add(highlightColor);
         return entity;
     }
 
     private static <T extends Mob> DeferredHolder<EntityType<?>, EntityType<T>> registerEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height, int backgroundColor, int highlightColor, MobCategory category) {
         ResourceKey<EntityType<?>> resource = ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(JITL.MODID, name));
         DeferredHolder<EntityType<?>, EntityType<T>> entity = REGISTRY.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).build(resource));
-        JItems.register(name + "_spawn_egg" , lang + " Spawn Egg", (p) -> new DeferredSpawnEggItem(entity, backgroundColor, highlightColor, p), JItems.ItemType.SPAWN_EGG);
+        JItems.register(name + "_spawn_egg" , lang + " Spawn Egg", (p) -> new SpawnEggItem(entity.get(), /*backgroundColor, highlightColor,*/ p), JItems.ItemType.SPAWN_EGG);
         entityName.add(name);
         entityLangName.add(lang);
+        COLOUR1.add(backgroundColor);
+        COLOUR2.add(highlightColor);
         return entity;
     }
 
@@ -282,6 +288,8 @@ public class JEntities {
         ResourceKey<EntityType<?>> resource = ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(JITL.MODID, name));
         entityName.add(name);
         entityLangName.add(lang);
+        COLOUR1.add(0);
+        COLOUR2.add(0);
         return REGISTRY.register(name, () -> EntityType.Builder.of(factory, MobCategory.MISC).sized(width, height).setShouldReceiveVelocityUpdates(true).setTrackingRange(80).build(resource));
     }
 
@@ -289,6 +297,8 @@ public class JEntities {
         ResourceKey<EntityType<?>> resource = ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(JITL.MODID, name));
         entityName.add(name);
         entityLangName.add(lang);
+        COLOUR1.add(0);
+        COLOUR2.add(0);
         return REGISTRY.register(name, () -> EntityType.Builder.of(factory, MobCategory.MISC).sized(width, height).setShouldReceiveVelocityUpdates(true).setTrackingRange(120).setUpdateInterval(20).build(resource));
     }
 

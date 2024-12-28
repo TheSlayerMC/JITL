@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.util.TriState;
 
-public class FrozenCloudRenderer extends JCloudRenderer {
+public class FrozenCloudRenderer {
 
     private RenderType createClouds(boolean colour) {
         return RenderType.create(
@@ -26,15 +26,5 @@ public class FrozenCloudRenderer extends JCloudRenderer {
                         .setOutputState(RenderStateShard.CLOUDS_TARGET)
                         .createCompositeState(true)
         );
-    }
-
-    @Override
-    public RenderType clouds() {
-        return createClouds(false);
-    }
-
-    @Override
-    public RenderType depthClouds() {
-        return createClouds(true);
     }
 }

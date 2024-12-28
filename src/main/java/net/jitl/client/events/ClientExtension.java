@@ -13,20 +13,20 @@ public class ClientExtension {
 
     @SubscribeEvent
     public static void registerClientExtensions(RegisterClientExtensionsEvent event) {
-        event.registerItem(JShieldItem.RenderProps.INSTANCE,
-                JItems.SAPPHIRE_SHIELD.get(),
-                JItems.LUNIUM_SHIELD.get(),
-                JItems.SHADIUM_SHIELD.get(),
-                JItems.BLOODCRUST_SHIELD.get(),
-                JItems.CELESTIUM_SHIELD.get(),
-                JItems.MEKYUM_SHIELD.get(),
-                JItems.GORBITE_SHIELD.get(),
-                JItems.STORON_SHIELD.get(),
-                JItems.KORITE_SHIELD.get(),
-                JItems.FLAIRIUM_SHIELD.get(),
-                JItems.DES_SHIELD.get(),
-                JItems.ORBADITE_SHIELD.get(),
-                JItems.SOULSTONE_SHIELD.get()
-        );
+//        event.registerItem(JShieldItem.RenderProps.INSTANCE,todo
+//                JItems.SAPPHIRE_SHIELD.get(),
+//                JItems.LUNIUM_SHIELD.get(),
+//                JItems.SHADIUM_SHIELD.get(),
+//                JItems.BLOODCRUST_SHIELD.get(),
+//                JItems.CELESTIUM_SHIELD.get(),
+//                JItems.MEKYUM_SHIELD.get(),
+//                JItems.GORBITE_SHIELD.get(),
+//                JItems.STORON_SHIELD.get(),
+//                JItems.KORITE_SHIELD.get(),
+//                JItems.FLAIRIUM_SHIELD.get(),
+//                JItems.DES_SHIELD.get(),
+//                JItems.ORBADITE_SHIELD.get(),
+//                JItems.SOULSTONE_SHIELD.get()
+//        );
     }
 }

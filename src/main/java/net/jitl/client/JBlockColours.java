@@ -1,11 +1,14 @@
 package net.jitl.client;
 
+import com.mojang.serialization.MapCodec;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.client.color.block.BlockColor;
-import net.minecraft.client.color.item.ItemColor;
+import net.minecraft.client.color.item.ItemTintSource;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
@@ -17,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @EventBusSubscriber(modid = JITL.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-public class JBlockColours implements BlockColor, ItemColor {
+public class JBlockColours implements BlockColor, ItemTintSource {
 
     public static final JBlockColours BLOCK_COLOUR_INSTANCE = new JBlockColours();
     public static final JBlockColours ITEM_COLOUR_INSTANCE = new JBlockColours();
@@ -29,12 +32,6 @@ public class JBlockColours implements BlockColor, ItemColor {
         assert pPos != null;
         return BiomeColors.getAverageGrassColor(pLevel, pPos);
     }
-
-    @Override
-    public int getColor(@NotNull ItemStack pStack, int pTintIndex) {
-        return CORBA_SWAMP;
-    }
-
     @SubscribeEvent
     public static void registerBlockColours(RegisterColorHandlersEvent.Block event) {
         event.register(BLOCK_COLOUR_INSTANCE,
@@ -44,12 +41,22 @@ public class JBlockColours implements BlockColor, ItemColor {
                 JBlocks.CORBA_LEAVES.get());
     }
 
-    @SubscribeEvent
-    public static void registerItemColours(RegisterColorHandlersEvent.Item event) {
-        event.register(ITEM_COLOUR_INSTANCE,
-                JBlocks.CORBA_GRASS.get(),
-                JBlocks.CORBA_TALL_GRASS.get(),
-                JBlocks.BOGWOOD_LEAVES.get(),
-                JBlocks.CORBA_LEAVES.get());
+//    @SubscribeEvent
+//    public static void registerItemColours(RegisterColorHandlersEvent.ItemTintSources event) {
+//        event.register(ITEM_COLOUR_INSTANCE,
+//                JBlocks.CORBA_GRASS.get(),
+//                JBlocks.CORBA_TALL_GRASS.get(),
+//                JBlocks.BOGWOOD_LEAVES.get(),
+//                JBlocks.CORBA_LEAVES.get());
+//    }
+
+    @Override
+    public int calculate(ItemStack itemStack, @Nullable ClientLevel clientLevel, @Nullable LivingEntity livingEntity) {
+        return CORBA_SWAMP;
+    }
+
+    @Override
+    public MapCodec<? extends ItemTintSource> type() {
+        return MapCodec.unit(new JBlockColours());
     }
 }

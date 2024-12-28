@@ -6,6 +6,7 @@ import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -33,7 +34,7 @@ public class MiniGhastSpawnerBlock extends SpawnerBlock {
     }
 
     @Override
-    public @NotNull ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
+    public @NotNull ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
         return new ItemStack(this);
     }
 
