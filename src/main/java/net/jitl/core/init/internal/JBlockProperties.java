@@ -20,6 +20,11 @@ public class JBlockProperties {
             .sound(SoundType.STONE)
             .requiresCorrectToolForDrops();
 
+    public static BlockBehaviour.Properties DEEPSLATE = BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
+            .strength(1.5F)
+            .sound(SoundType.DEEPSLATE)
+            .requiresCorrectToolForDrops();
+
     public static BlockBehaviour.Properties ANCIENT_STONE = BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
             .strength(-1F, 3600000.0F)
             .sound(SoundType.STONE)

@@ -3,7 +3,6 @@ package net.jitl.core.init;
 import net.jitl.client.ClientEventHandler;
 import net.jitl.client.gui.BossBarRenderer;
 import net.jitl.client.gui.KeyUsedEvent;
-import net.jitl.client.render.ModelPropertyRegistry;
 import net.jitl.client.render.RenderEntitys;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.common.world.dimension.JCarver;
@@ -14,7 +13,6 @@ import net.jitl.core.config.JClientConfig;
 import net.jitl.core.config.JCommonConfig;
 import net.jitl.core.data.*;
 import net.jitl.core.data.block_generation.*;
-import net.jitl.core.helper.JToolTiers;
 import net.jitl.core.init.compat.ModCompat;
 import net.jitl.core.init.internal.*;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -127,7 +125,6 @@ public class JITL {
 
     private void clientSetup(final FMLClientSetupEvent event) {
         RenderEntitys.registerAnimationRenderers();
-        ModelPropertyRegistry.init();
         BossBarRenderer.init();
         NeoForge.EVENT_BUS.register(KeyUsedEvent.class);
         IEventBus forgeEventBus = NeoForge.EVENT_BUS;
