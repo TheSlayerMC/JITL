@@ -14,7 +14,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import java.util.Objects;
 
-@EventBusSubscriber(modid = JITL.MODID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = JITL.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public class ModEvents {
 
     @SubscribeEvent

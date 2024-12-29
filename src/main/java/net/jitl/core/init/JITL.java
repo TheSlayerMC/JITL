@@ -31,10 +31,10 @@ import net.neoforged.neoforge.common.NeoForge;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(JITL.MODID)
+@Mod(JITL.MOD_ID)
 public class JITL {
-    public static final String MODID = "jitl", PREFIX = MODID + ":", MOD_VERSION = "2.2.2", MOD_NAME = "Journey Into the Light";
-    public static final Logger LOGGER = LogManager.getLogger(MODID);
+    public static final String MOD_ID = "jitl", PREFIX = MOD_ID + ":", MOD_VERSION = "2.2.2", MOD_NAME = "Journey Into the Light";
+    public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
     public static final boolean DEV_MODE = true;
 
     public JITL(IEventBus modEventBus, ModContainer container) {
@@ -134,11 +134,11 @@ public class JITL {
     private void enqueue(InterModEnqueueEvent event) { }
 
     public static ResourceLocation rl(String r) {
-        return ResourceLocation.fromNamespaceAndPath(MODID, r);
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, r);
     }
 
     public static ResourceLocation tl(String r) {
-        return ResourceLocation.fromNamespaceAndPath(MODID, "textures/" + r);
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, "textures/" + r);
     }
 
     public static ResourceLocation getRegistryName(Item item) {

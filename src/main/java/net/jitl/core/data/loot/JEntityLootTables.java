@@ -32,7 +32,7 @@ public class JEntityLootTables extends EntityLootSubProvider {
         return BuiltInRegistries.ENTITY_TYPE.stream()
                 .filter(block -> BuiltInRegistries.ENTITY_TYPE.getKey(block)
                         .getNamespace()
-                        .equals(JITL.MODID));
+                        .equals(JITL.MOD_ID));
     }
 
     @Override

@@ -72,7 +72,7 @@ public class JEnchantments {
     }
 
     public static ResourceKey<Enchantment> registerKey(String name) {
-        return ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(JITL.MODID, name));
+        return ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, name));
     }
 
     //public static final RegistryObject<Enchantment> HOT_TOUCH =

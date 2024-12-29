@@ -31,8 +31,8 @@ public class JBlockModeledCropGenerator extends BasicFileGenerator {
             e.printStackTrace();
         }
 
-            getBlockItem(JITL.MODID, name, maxStages);
-            getBlockstate(JITL.MODID, name, maxStages);
+            getBlockItem(JITL.MOD_ID, name, maxStages);
+            getBlockstate(JITL.MOD_ID, name, maxStages);
         generateBasicFile(name + "_" + (maxStages - 1));
 
             writerInit();

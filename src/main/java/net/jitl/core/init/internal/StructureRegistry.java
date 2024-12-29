@@ -21,7 +21,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class StructureRegistry {
 	public static final StructurePlaceSettings defaultSettings = new StructurePlaceSettings().setIgnoreEntities(false).setFinalizeEntities(true).setLiquidSettings(LiquidSettings.APPLY_WATERLOGGING);
-    public static final DeferredRegister<StructureType<?>> REGISTRY = DeferredRegister.create(Registries.STRUCTURE_TYPE, JITL.MODID);
+    public static final DeferredRegister<StructureType<?>> REGISTRY = DeferredRegister.create(Registries.STRUCTURE_TYPE, JITL.MOD_ID);
 
     public static final DeferredHolder<StructureType<?>, StructureType<?>> HIGHEST_GROUND = REGISTRY.register("highest_ground", () -> codecConv(HighestGroundType.CODEC));
 	public static final DeferredHolder<StructureType<?>, StructureType<?>> LOWEST_GROUND = REGISTRY.register("lowest_ground", () -> codecConv(LowestGroundType.CODEC));

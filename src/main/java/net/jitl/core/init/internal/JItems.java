@@ -25,7 +25,6 @@ import net.jitl.core.helper.JToolTiers;
 import net.jitl.core.init.JITL;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -39,7 +38,6 @@ import net.minecraft.world.level.block.entity.FuelValues;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -50,8 +48,8 @@ import java.util.function.Supplier;
 
 public class JItems {
 
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(JITL.MODID);
-    public static final DeferredRegister.Items BLOCK_ITEMS = DeferredRegister.createItems(JITL.MODID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(JITL.MOD_ID);
+    public static final DeferredRegister.Items BLOCK_ITEMS = DeferredRegister.createItems(JITL.MOD_ID);
 
     public static final IAbility BASIC = new IAbility() {};
     private static final IAbility LUNIUM_ABILITY = new LuniumAbility();

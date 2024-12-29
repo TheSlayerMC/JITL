@@ -1,6 +1,7 @@
 package net.jitl.client.render.projectile.render_state;
 
 import net.minecraft.client.renderer.entity.state.ThrownItemRenderState;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 public class KnifeRenderState extends ThrownItemRenderState {
@@ -9,4 +10,5 @@ public class KnifeRenderState extends ThrownItemRenderState {
     public boolean inGround;
     public Level level;
     public int id;
+    public ItemStack item;
 }

@@ -15,7 +15,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import java.io.IOException;
 import java.net.SocketException;
 
-@EventBusSubscriber(modid = JITL.MODID, bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
+@EventBusSubscriber(modid = JITL.MOD_ID, bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
 public class ClientLoginChecker {
 
     @SubscribeEvent

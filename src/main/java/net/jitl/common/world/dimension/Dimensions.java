@@ -12,7 +12,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class Dimensions {
 
-    public static final DeferredRegister<PoiType> REGISTRY = DeferredRegister.create(Registries.POINT_OF_INTEREST_TYPE, JITL.MODID);
+    public static final DeferredRegister<PoiType> REGISTRY = DeferredRegister.create(Registries.POINT_OF_INTEREST_TYPE, JITL.MOD_ID);
 
     public static final ResourceKey<Level> OVERWORLD = Level.OVERWORLD;
     public static final ResourceKey<Level> NETHER = Level.NETHER;

@@ -19,7 +19,6 @@ public class CelestiumFullAbility  extends FullArmorAbility {
 
     @Override
     public void tick(Player entity) {
-        //TODO: Make enemies be smart and use the ability or something
 //        System.out.println("Dash cooldown for " + entity.getName().getString() + ": " + tag.getInt("cooldown"));
 //        System.out.println("Dash for " + entity.getName().getString() + " " + (tag.getBoolean("Jump ready") ? "is" : "is not") + " ready");
         CelestiumArmorAbility ability = entity.getData(JDataAttachments.CELESTIUM_ARMOR.get());

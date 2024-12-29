@@ -93,9 +93,9 @@ public class JBlockCropGenerator extends BasicFileGenerator {
         generateBasicFile(name + "_" +(maxStages - 1));
 
         if(itemModelWriter != null) {
-            getBlockItem(JITL.MODID, name, maxStages);
-            getBlockModel(JITL.MODID, name, maxStages);
-            getBlockstate(JITL.MODID, name, maxStages);
+            getBlockItem(JITL.MOD_ID, name, maxStages);
+            getBlockModel(JITL.MOD_ID, name, maxStages);
+            getBlockstate(JITL.MOD_ID, name, maxStages);
             writerInit(maxStages);
         }
     }

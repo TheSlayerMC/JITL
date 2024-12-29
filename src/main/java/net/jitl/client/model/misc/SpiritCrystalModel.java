@@ -9,12 +9,12 @@ import software.bernie.geckolib.renderer.GeoRenderer;
 public class SpiritCrystalModel extends DefaultedEntityGeoModel<SpiritCrystal> {
 
     public SpiritCrystalModel() {
-        super(ResourceLocation.fromNamespaceAndPath(JITL.MODID, "spirit_crystal"));
+        super(ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "spirit_crystal"));
     }
 
     @Override
     public ResourceLocation getModelResource(SpiritCrystal object, GeoRenderer<SpiritCrystal> renderer) {
-        return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "geo/spirit_crystal.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "geo/spirit_crystal.geo.json");
     }
 
     @Override
@@ -24,6 +24,6 @@ public class SpiritCrystalModel extends DefaultedEntityGeoModel<SpiritCrystal> {
 
     @Override
     public ResourceLocation getAnimationResource(SpiritCrystal animatable) {
-        return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "animations/spirit_crystal.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "animations/spirit_crystal.animation.json");
     }
 }

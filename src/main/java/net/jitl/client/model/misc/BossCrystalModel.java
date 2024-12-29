@@ -9,12 +9,12 @@ import software.bernie.geckolib.renderer.GeoRenderer;
 public class BossCrystalModel extends DefaultedEntityGeoModel<BossCrystal> {
 
     public BossCrystalModel() {
-        super(ResourceLocation.fromNamespaceAndPath(JITL.MODID, "bosscrystal"));
+        super(ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "bosscrystal"));
     }
 
     @Override
     public ResourceLocation getModelResource(BossCrystal object, GeoRenderer<BossCrystal> renderer) {
-        return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "geo/bosscrystal.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "geo/bosscrystal.geo.json");
     }
 
     @Override
@@ -24,6 +24,6 @@ public class BossCrystalModel extends DefaultedEntityGeoModel<BossCrystal> {
 
     @Override
     public ResourceLocation getAnimationResource(BossCrystal animatable) {
-        return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "animations/bosscrystal.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "animations/bosscrystal.animation.json");
     }
 }

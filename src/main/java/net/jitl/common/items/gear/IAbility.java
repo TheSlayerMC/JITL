@@ -8,6 +8,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -20,14 +21,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import java.util.List;
 
 public interface IAbility {
-    /*
-    TODO:Detailed testing and code review of all abilities
-     -Diamond (but if someone else sees this close to release remind me)
-     */
 
-    //TODO: hasTag() might not be needed. Test
-
-    //TODO: check if value rounding is ideal
     default void tick(LivingEntity entity, Level world, ItemStack stack) {
 
     }
@@ -61,15 +55,7 @@ public interface IAbility {
     }
 
     default boolean isCorrectTool(ItemStack stack, BlockState state) {
-        Item item = stack.getItem();
-
-        //FIXME port
-       /* if (((TieredItem) item).getTier().getLevel() >= state.getHarvestLevel()) {
-            for (ToolType type : stack.getToolTypes()) {
-                if (state.isToolEffective(type)) return true;
-            }
-        }*/
-        return item.isCorrectToolForDrops(stack, state);
+        return stack.getItem().isCorrectToolForDrops(stack, state);
     }
 
     default void equip(LivingEntity entity, EquipmentSlot slot, ItemStack stack) {

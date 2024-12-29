@@ -19,7 +19,7 @@ public class PlacedFeaturesGenerator extends DatapackBuiltinEntriesProvider {
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder().add(Registries.PLACED_FEATURE, PlacedFeaturesGenerator::addFeatures);
 
     public PlacedFeaturesGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries, BUILDER, Set.of(JITL.MODID));
+        super(output, registries, BUILDER, Set.of(JITL.MOD_ID));
     }
 
     public static void addFeatures(BootstrapContext<PlacedFeature> context) {

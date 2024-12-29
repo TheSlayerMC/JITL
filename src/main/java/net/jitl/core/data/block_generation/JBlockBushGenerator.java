@@ -57,9 +57,9 @@ public class JBlockBushGenerator extends BasicFileGenerator {
                 e.printStackTrace();
             }
 
-            getBlockItem(JITL.MODID, name);
-            getBlockModel(JITL.MODID, name, 4);
-            getBlockstate(JITL.MODID, name, 4);
+            getBlockItem(JITL.MOD_ID, name);
+            getBlockModel(JITL.MOD_ID, name, 4);
+            getBlockstate(JITL.MOD_ID, name, 4);
             generateBasicFile(true, name);
             writerInit();
         }

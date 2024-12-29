@@ -13,7 +13,7 @@ public class AnimatedMonsterModel<T extends GeoEntity> extends DefaultedEntityGe
     private final JDimension dim;
 
     public AnimatedMonsterModel(String name, JDimension dim) {
-        super(ResourceLocation.fromNamespaceAndPath(JITL.MODID, name));
+        super(ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, name));
         this.dim = dim;
         this.name = name;
     }

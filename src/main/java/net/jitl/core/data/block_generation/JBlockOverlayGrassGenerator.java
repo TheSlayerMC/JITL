@@ -39,9 +39,9 @@ public class JBlockOverlayGrassGenerator extends BasicFileGenerator {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            getBlockItem(JITL.MODID, name);
-            getBlockModel(JITL.MODID, name);
-            getBlockstate(JITL.MODID, name);
+            getBlockItem(JITL.MOD_ID, name);
+            getBlockModel(JITL.MOD_ID, name);
+            getBlockstate(JITL.MOD_ID, name);
             generateBasicFile(name);
 
             writerInit();
