@@ -1,21 +1,25 @@
 package net.jitl.common.entity.projectile;
 
+import net.jitl.core.init.internal.JItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.ThrowableProjectile;
+import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-public class DamagingProjectileEntity extends ThrowableProjectile {
+public abstract class DamagingProjectileEntity extends ThrowableItemProjectile {
 
     private float damage;
 
@@ -26,6 +30,7 @@ public class DamagingProjectileEntity extends ThrowableProjectile {
     public DamagingProjectileEntity(EntityType<? extends DamagingProjectileEntity> type, Level world, LivingEntity thrower, float damage) {
         super(type, world);
         this.damage = damage;
+        this.setOwner(thrower);
     }
 
     public float getDamage() {
@@ -33,8 +38,8 @@ public class DamagingProjectileEntity extends ThrowableProjectile {
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
-
+    protected @NotNull Item getDefaultItem() {
+        return getItem().getItem();
     }
 
     @Override
@@ -57,7 +62,7 @@ public class DamagingProjectileEntity extends ThrowableProjectile {
     }
 
     @Override
-    protected void onHit(HitResult result) {
+    protected void onHit(@NotNull HitResult result) {
         if(!level().isClientSide) {
             if(result.getType() == HitResult.Type.ENTITY) {
                 Entity target = ((EntityHitResult) result).getEntity();
@@ -68,7 +73,7 @@ public class DamagingProjectileEntity extends ThrowableProjectile {
                     remove(RemovalReason.DISCARDED);
                 }
             } else if(result.getType() == HitResult.Type.BLOCK) {
-                onBlockImpact((BlockHitResult) result);
+                onHitBlock((BlockHitResult) result);
             } else {
                 remove(RemovalReason.DISCARDED);
             }
@@ -76,10 +81,12 @@ public class DamagingProjectileEntity extends ThrowableProjectile {
     }
 
     protected void onEntityImpact(HitResult result, Entity target) {
-        target.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage());
+        if(level() instanceof ServerLevel level)
+            target.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), getDamage());
     }
 
-    protected void onBlockImpact(BlockHitResult result) {
+    @Override
+    protected void onHitBlock(BlockHitResult result) {
         remove(RemovalReason.DISCARDED);
     }
 
@@ -89,13 +96,13 @@ public class DamagingProjectileEntity extends ThrowableProjectile {
     }
 
     @Override
-    protected void addAdditionalSaveData(CompoundTag compound) {
+    public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         compound.putFloat("damage", damage);
     }
 
     @Override
-    protected void readAdditionalSaveData(CompoundTag compound) {
+    public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
         damage = compound.getFloat("damage");
     }

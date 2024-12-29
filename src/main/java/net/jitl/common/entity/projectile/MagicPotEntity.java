@@ -189,10 +189,6 @@ public class MagicPotEntity extends AbstractArrow implements ItemSupplier {
         }
     }
 
-    public boolean isInGround() {
-        return this.onGround();
-    }
-
     @Override
     public void addAdditionalSaveData(@NotNull CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);

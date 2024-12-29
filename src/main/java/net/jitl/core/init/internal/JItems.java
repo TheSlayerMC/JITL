@@ -529,13 +529,12 @@ public class JItems {
     public static final DeferredItem<Item> MUD_BALL = registerNormalItem("mud_ball", "Mud Ball", (p) -> new ThrowableItem(p,
             (world, thrower) -> new FloroMudEntity(JEntities.FLORO_MUD_TYPE.get(), world, thrower, 0.0F)).setSound(() -> SoundEvents.SNOWBALL_THROW));
 
-    public static final DeferredItem<Item> DEMONIC_BOMB = registerNormalItem("demonic_bomb", "Demonic Bomb", (p) -> new ThrowableItem(p,
-            (w, thrower) -> new DemonicBombEntity(JEntities.DEMONIC_BOMB_TYPE.get(), w, thrower, 4F)).setSound(() -> SoundEvents.SNOWBALL_THROW));
-
     public static final DeferredItem<Item> FIRE_BOMB = registerNormalItem("fire_bomb", "Fire Bomb", (p) -> new ThrowableItem(p,
             (w, thrower) -> new FireBombEntity(JEntities.FIRE_BOMB_TYPE.get(), w, thrower, 6F)).setSound(() -> SoundEvents.SNOWBALL_THROW));
 
     public static final DeferredItem<Item> MAGIC_BOMB = registerNormalItem("magic_bomb", "Magic Bomb", (p) -> new MagicBombItem(p).setSound(() -> SoundEvents.SNOWBALL_THROW));
+
+    public static final DeferredItem<Item> DEMONIC_BOMB = registerNormalItem("demonic_bomb", "Demonic Bomb", (p) -> new DemonicBombItem(p).setSound(() -> SoundEvents.SNOWBALL_THROW));
 
     public static final DeferredItem<Item> MAGIC_POT_OF_DESTRUCTION = registerNormalItem("magic_pot_of_destruction", "Magic Pot of Destruction", (p) -> new MagicPotItem(p.durability(128)));
 

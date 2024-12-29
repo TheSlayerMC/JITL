@@ -57,7 +57,7 @@ public class FireBombEntity extends DamagingProjectileEntity implements ItemSupp
     }
 
     @Override
-    protected void onHit(HitResult result) {
+    protected void onHit(@NotNull HitResult result) {
         super.onHit(result);
         if(result.getType() == HitResult.Type.BLOCK) {
             if (!this.level().isClientSide) {

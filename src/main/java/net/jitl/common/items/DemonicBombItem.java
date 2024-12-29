@@ -1,5 +1,7 @@
 package net.jitl.common.items;
 
+import net.jitl.common.entity.projectile.DemonicBombEntity;
+import net.jitl.common.entity.projectile.MagicBombEntity;
 import net.jitl.common.items.base.JItem;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -18,18 +20,18 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
-public class ThrowableItem extends JItem {
+public class DemonicBombItem extends JItem {
 
     protected BiFunction<Level, LivingEntity, Projectile> projectileFactory;
     @Nullable
     private Supplier<SoundEvent> sound;
 
-    public ThrowableItem(Properties properties, BiFunction<Level, LivingEntity, Projectile> projectileFactory) {
+    public DemonicBombItem(Properties properties) {
         super(properties);
-        this.projectileFactory = projectileFactory;
+        this.projectileFactory = (world, owner) -> new DemonicBombEntity(world, owner, 1F, new ItemStack(this));
     }
 
-    public ThrowableItem setSound(Supplier<SoundEvent> sound) {
+    public DemonicBombItem setSound(Supplier<SoundEvent> sound) {
         this.sound = sound;
         return this;
     }
@@ -44,7 +46,6 @@ public class ThrowableItem extends JItem {
             Projectile projectile = projectileFactory.apply(worldIn, playerIn);
             projectile.shootFromRotation(playerIn, playerIn.getXRot(), playerIn.getYRot(), 0.0F, 1.5F, 1.0F);
             worldIn.addFreshEntity(projectile);
-            projectile.setPos(playerIn.getX(), playerIn.getEyeY(), playerIn.getZ());
 
             if(!playerIn.isCreative()) {
                 itemstack.shrink(1);
@@ -53,6 +54,6 @@ public class ThrowableItem extends JItem {
             playerIn.awardStat(Stats.ITEM_USED.get(this));
         }
 
-        return InteractionResult.SUCCESS_SERVER;
+        return InteractionResult.SUCCESS;
     }
 }

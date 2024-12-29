@@ -58,7 +58,6 @@ public class ConjuringProjectileEntity extends ThrowableProjectile {
             this.level().broadcastEntityEvent(this, (byte)3);
             this.discard();
         }
-
     }
 
     @Override
@@ -70,5 +69,4 @@ public class ConjuringProjectileEntity extends ThrowableProjectile {
     protected double getDefaultGravity() {
         return 0.003F;
     }
-
 }
