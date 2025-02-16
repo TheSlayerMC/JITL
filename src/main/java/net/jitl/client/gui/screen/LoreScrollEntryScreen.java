@@ -130,6 +130,7 @@ public class LoreScrollEntryScreen extends Screen {
             for (int y = 0; y < heightRectCount; y++) {
                 int textureX = x == 0 ? 0 : (x == widthRectCount - 1 ? 64 : 32);
                 int textureY = y == 0 ? 0 : (y == heightRectCount - 1 ? 64 : 32);
+                //TODO poseStack.blit(BG, guix0 + x * 32, guiy0 + y * 32, textureX, textureY, 32, 32);
                 poseStack.blit(RenderType::guiTextured, BG, guix0 + x * 32, guiy0 + y * 32, textureX, textureY, 32, 32, 256, 256);
             }
         }
