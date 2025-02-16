@@ -13,7 +13,6 @@ import java.io.InputStream;
 import java.util.Optional;
 import javax.annotation.Nullable;
 import net.minecraft.client.CloudStatus;
-import net.minecraft.client.renderer.CloudRenderer;
 import net.minecraft.client.renderer.CompiledShaderProgram;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
@@ -25,13 +24,12 @@ import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 import org.slf4j.Logger;
 
 @OnlyIn(Dist.CLIENT)
-public class JCloudRenderer extends CloudRenderer {
-
+public class JCloudRenderer extends SimplePreparableReloadListener<Optional<JCloudRenderer.TextureData>> implements AutoCloseable {
+    
     private static final Logger LOGGER = LogUtils.getLogger();
     private final ResourceLocation TEXTURE_LOCATION;
     private boolean needsRebuild = true;
@@ -51,7 +49,6 @@ public class JCloudRenderer extends CloudRenderer {
         this.vertexBuffer = new VertexBuffer(BufferUsage.STATIC_WRITE);
     }
 
-    @Override
     protected Optional<TextureData> prepare(ResourceManager resource, ProfilerFiller profile) {
         try {
             InputStream inputstream = resource.open(TEXTURE_LOCATION);
@@ -126,9 +123,8 @@ public class JCloudRenderer extends CloudRenderer {
         }
     }
 
-    @Override
-    protected void apply(Optional<TextureData> t, ResourceManager r, ProfilerFiller p) {
-        this.texture = (TextureData)t.orElse(null);
+    protected void apply(Optional<JCloudRenderer.TextureData> t, ResourceManager r, ProfilerFiller p) {
+        this.texture = t.orElse(null);
         this.needsRebuild = true;
     }
 
@@ -160,10 +156,9 @@ public class JCloudRenderer extends CloudRenderer {
         return (d >> 0 & 1L) != 0L;
     }
 
-    @Override
-    public void render(int height, @NotNull CloudStatus status, float colour, @NotNull Matrix4f frustumMatrix, @NotNull Matrix4f projectionMatrix, @NotNull Vec3 loc, float tick) {
+    public void render(int type, CloudStatus status, float yPos, Matrix4f projectionMatrix, Matrix4f modelViewMatrix, Vec3 loc, float tick) {
         if (this.texture != null) {
-            float f = (float)((double)colour - loc.y);
+            float f = (float)((double)yPos - loc.y);
             float f1 = f + 4.0F;
             RelativeCameraPos cam;
             if (f1 < 0.0F) {
@@ -176,15 +171,15 @@ public class JCloudRenderer extends CloudRenderer {
 
             double d0 = loc.x + (double)(tick * 0.030000001F);
             double d1 = loc.z + 3.9600000381469727;
-            double d2 = (double)this.texture.width() * 12.0;
-            double d3 = (double)this.texture.height() * 12.0;
+            double d2 = (double)this.texture.width * 12.0;
+            double d3 = (double)this.texture.height * 12.0;
             d0 -= (double)Mth.floor(d0 / d2) * d2;
             d1 -= (double)Mth.floor(d1 / d3) * d3;
             int i = Mth.floor(d0 / 12.0);
             int j = Mth.floor(d1 / 12.0);
             float f2 = (float)(d0 - (double)((float)i * 12.0F));
             float f3 = (float)(d1 - (double)((float)j * 12.0F));
-            RenderType rendertype = RenderType.clouds();
+            RenderType rendertype = status == CloudStatus.FANCY ? RenderType.clouds() : RenderType.flatClouds();
             this.vertexBuffer.bind();
             if (this.needsRebuild || i != this.prevCellX || j != this.prevCellZ || cam != this.prevRelativeCameraPos || status != this.prevType) {
                 this.needsRebuild = false;
@@ -202,12 +197,12 @@ public class JCloudRenderer extends CloudRenderer {
             }
 
             if (!this.vertexBufferEmpty) {
-                RenderSystem.setShaderColor(from8BitChannel(ARGB.red(height)), from8BitChannel(ARGB.green(height)), from8BitChannel(ARGB.blue(height)), 1.0F);
+                RenderSystem.setShaderColor(from8BitChannel(ARGB.red(type)), from8BitChannel(ARGB.green(type)), from8BitChannel(ARGB.blue(type)), 1.0F);
                 if (status == CloudStatus.FANCY) {
-                    this.drawWithRenderType(RenderType.cloudsDepthOnly(), frustumMatrix, projectionMatrix, f2, f, f3);
+                    this.drawWithRenderType(RenderType.cloudsDepthOnly(), projectionMatrix, modelViewMatrix, f2, f, f3);
                 }
 
-                this.drawWithRenderType(rendertype, frustumMatrix, projectionMatrix, f2, f, f3);
+                this.drawWithRenderType(rendertype, projectionMatrix, modelViewMatrix, f2, f, f3);
                 VertexBuffer.unbind();
                 RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
             }
@@ -219,19 +214,20 @@ public class JCloudRenderer extends CloudRenderer {
         return (float)i / 255.0F;
     }
 
-    private void drawWithRenderType(RenderType r, Matrix4f frustumMatrix, Matrix4f projectionMatrix, float x, float y, float z) {
+    private void drawWithRenderType(RenderType r, Matrix4f projectionMatrix, Matrix4f modelViewMatrix, float x, float y, float z) {
         r.setupRenderState();
         CompiledShaderProgram compiledshaderprogram = RenderSystem.getShader();
         if (compiledshaderprogram != null && compiledshaderprogram.MODEL_OFFSET != null) {
             compiledshaderprogram.MODEL_OFFSET.set(-x, y, -z);
         }
 
-        this.vertexBuffer.drawWithShader(frustumMatrix, projectionMatrix, compiledshaderprogram);
+        this.vertexBuffer.drawWithShader(projectionMatrix, modelViewMatrix, compiledshaderprogram);
         r.clearRenderState();
     }
 
     @Nullable
     private MeshData buildMesh(Tesselator t, int x, int y, CloudStatus s, RelativeCameraPos p, RenderType r) {
+        float f = 0.8F;
         int i = ARGB.colorFromFloat(0.8F, 1.0F, 1.0F, 1.0F);
         int j = ARGB.colorFromFloat(0.8F, 0.9F, 0.9F, 0.9F);
         int k = ARGB.colorFromFloat(0.8F, 0.7F, 0.7F, 0.7F);
@@ -243,9 +239,9 @@ public class JCloudRenderer extends CloudRenderer {
 
     private void buildMesh(RelativeCameraPos r, BufferBuilder buf, int p_361006_, int p_362674_, int p_362100_, int p_360889_, int p_360776_, int p_365003_, boolean p_362207_) {
         if (this.texture != null) {
-            long[] along = this.texture.cells();
-            int j = this.texture.width();
-            int k = this.texture.height();
+            long[] along = this.texture.cells;
+            int j = this.texture.width;
+            int k = this.texture.height;
 
             for(int l = -32; l <= 32; ++l) {
                 for(int i1 = -32; i1 <= 32; ++i1) {
@@ -280,6 +276,8 @@ public class JCloudRenderer extends CloudRenderer {
     private void buildExtrudedCell(RelativeCameraPos r, BufferBuilder b, int p_362180_, int p_364234_, int p_364613_, int p_361634_, int p_364709_, int p_363252_, long p_364423_) {
         float f = (float)p_364709_ * 12.0F;
         float f1 = f + 12.0F;
+        float f2 = 0.0F;
+        float f3 = 4.0F;
         float f4 = (float)p_363252_ * 12.0F;
         float f5 = f4 + 12.0F;
         if (r != JCloudRenderer.RelativeCameraPos.BELOW_CLOUDS) {
@@ -369,6 +367,28 @@ public class JCloudRenderer extends CloudRenderer {
         BELOW_CLOUDS;
 
         private RelativeCameraPos() {
+        }
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public record TextureData(long[] cells, int width, int height) {
+
+        public TextureData(long[] cells, int width, int height) {
+            this.cells = cells;
+            this.width = width;
+            this.height = height;
+        }
+
+        public long[] cells() {
+            return this.cells;
+        }
+
+        public int width() {
+            return this.width;
+        }
+
+        public int height() {
+            return this.height;
         }
     }
 }
