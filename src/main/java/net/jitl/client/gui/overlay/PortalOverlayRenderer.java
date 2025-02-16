@@ -7,11 +7,8 @@ import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.LayeredDraw;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
@@ -36,12 +33,16 @@ public class PortalOverlayRenderer implements LayeredDraw.Layer {
                 RenderSystem.disableDepthTest();
                 RenderSystem.depthMask(false);
                 RenderSystem.enableBlend();
-                RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, timeInPortal);
-                pGuiGraphics.blitSprite(RenderType::guiTextured, minecraft.getBlockRenderer().getBlockModelShaper().getParticleIcon(playerPortalOverlay.getPortalBlockToRender().defaultBlockState()), 0, 0, pGuiGraphics.guiWidth(), pGuiGraphics.guiHeight());
-                pGuiGraphics.drawCenteredString(minecraft.font, Component.translatable("multiplayer.downloadingTerrain"), screenWidth / 2, screenHeight / 2 - 50, -1);
+                //pGuiGraphics.setColor(1.0F, 1.0F, 1.0F, timeInPortal);
+                TextureAtlasSprite textureatlassprite = Minecraft.getInstance()
+                        .getBlockRenderer()
+                        .getBlockModelShaper()
+                        .getParticleIcon(playerPortalOverlay.getPortalBlockToRender().defaultBlockState());
+                //pGuiGraphics.blit(0, 0, -90, pGuiGraphics.guiWidth(), pGuiGraphics.guiHeight(), textureatlassprite);
                 RenderSystem.disableBlend();
                 RenderSystem.depthMask(true);
                 RenderSystem.enableDepthTest();
+               //TODO pGuiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
             }
         }
     }

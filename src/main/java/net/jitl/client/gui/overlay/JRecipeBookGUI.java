@@ -65,7 +65,7 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
         poseStack.pose().pushPose();
         //RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, this.BACKGROUND);
-        poseStack.blit(RenderType::guiTextured, BACKGROUND, x, y, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
+        poseStack.blit(RenderType::guiTextured, BACKGROUND, x, y, 0, 0, this.imageWidth, this.imageHeight, 32, 32);//Draws the main Background
 
         switch(pageNumber) {
             case 0 -> page1(poseStack, mouseX, mouseY);
@@ -138,8 +138,9 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
 
         x = x + k + 10;
         y = y + l + 10;
+        //RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, this.RECIPE);
-        matrixStack.blit(RenderType::guiTextured, RECIPE, x - 5, y - 5, 0, 0, 112, 62, 256, 256);
+        matrixStack.blit(RenderType::guiTextured, RECIPE, x - 5, y - 5, 0, 0, 112, 62, 32, 32);
 
 
         renderItem(matrixStack, mouseX, mouseY, x, y, recipe, 0);
