@@ -12,8 +12,6 @@ import net.jitl.common.world.gen.tree_grower.JTreeGrower;
 import net.jitl.core.data.block_generation.JBlockCropGenerator;
 import net.jitl.core.data.block_generation.JBlockModeledCropGenerator;
 import net.jitl.core.init.JITL;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
@@ -124,10 +122,6 @@ public class JBlocks {
     public static final ArrayList<String> trophyLangName = new ArrayList<>();
     public static final ArrayList<String> totemBlockName = new ArrayList<>();
     public static final ArrayList<String> totemLangName = new ArrayList<>();
-    public static final ArrayList<String> torchBlockName = new ArrayList<>();
-    public static final ArrayList<String> torchLangName = new ArrayList<>();
-    public static final ArrayList<String> wallTorchBlockName = new ArrayList<>();
-    public static final ArrayList<String> wallTorchLangName = new ArrayList<>();
 
     public static final ArrayList<String> PICKAXE_BLOCKS = new ArrayList<>();
     public static final ArrayList<String> AXE_BLOCKS = new ArrayList<>();
@@ -137,8 +131,6 @@ public class JBlocks {
     public static final DeferredBlock<Block> IRIDIUM_ORE = register("iridium_ore", "Iridium Ore", JBlockProperties.STONE);
     public static final DeferredBlock<Block> IRIDIUM_BLOCK = registerFuelBlock("iridium_block", "Iridium Block", Block::new, JBlockProperties.STONE, 16000);
     public static final DeferredBlock<Block> DEEPSLATE_IRIDIUM_ORE = register("deepslate_iridium_ore", "Deepslate Iridium Ore", JBlockProperties.STONE);
-//    public static final DeferredBlock<Block> IRIDIUM_TORCH = registerTorch("iridium_torch", "Iridium Torch", ParticleTypes.SOUL_FIRE_FLAME);
-//    public static final DeferredBlock<Block> WALL_IRIDIUM_TORCH = registerWallTorch("wall_iridium_torch", "Iridium Torch", IRIDIUM_TORCH, ParticleTypes.SOUL_FIRE_FLAME);
 
     public static final DeferredBlock<Block> SAPPHIRE_ORE = register("sapphire_ore", "Sapphire Ore", JBlockProperties.STONE);
     public static final DeferredBlock<Block> SAPPHIRE_BLOCK = register("sapphire_block", "Sapphire Block", JBlockProperties.STONE);
@@ -1314,23 +1306,6 @@ public class JBlocks {
         attachedCrossBlockName.add(name);
         attachedCrossLangName.add(translatedName);
         DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
-        return block1;
-    }
-
-    public static DeferredBlock<Block> registerTorch(String name, String translatedName, SimpleParticleType particle) {
-        torchBlockName.add(name);
-        torchLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, (p) -> new TorchBlock(particle, p), JBlockProperties.TORCH);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
-        return block1;
-    }
-
-    public static DeferredBlock<Block> registerWallTorch(String name, String translatedName, DeferredBlock<Block> torch, SimpleParticleType particle) {
-        wallTorchBlockName.add(name);
-        wallTorchLangName.add(translatedName);
-        wallTorchLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, (p) -> new WallTorchBlock(particle, p), JBlockProperties.wallVariant(torch.get(), true));
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
