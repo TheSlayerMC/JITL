@@ -159,7 +159,7 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<HellTurtle>> HELL_TURTLE_TYPE = registerEntity(HellTurtle::new, "hell_turtle", "Hell Turtle", 2F, 2F, NETHER_COLOR, NEUTRAL_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<Reaper>> REAPER_TYPE = registerEntity(Reaper::new, "reaper", "Reaper", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<InfernoBlaze>> INFERNO_BLAZE_TYPE = registerEntity(InfernoBlaze::new, "inferno_blaze", "Inferno Blaze", 1F, 2F, NETHER_COLOR, HOSTILE_COLOR);
-    public static final DeferredHolder<EntityType<?>, EntityType<HellCow>> HELL_COW_TYPE = registerEntity(HellCow::new, "hell_cow", "Hell Cow", 1.5F, 1.75F, 1.36875F, NETHER_COLOR, PASSIVE_COLOR, MobCategory.CREATURE);
+    public static final DeferredHolder<EntityType<?>, EntityType<HellCow>> HELL_COW_TYPE = registerEntity(HellCow::new, "hell_cow", "Hell Cow", 1.5F, 1.75F, 1.36875F, NETHER_COLOR, PASSIVE_COLOR, MobCategory.MONSTER);
     public static final DeferredHolder<EntityType<?>, EntityType<Hellbot>> HELLBOT_TYPE = registerEntity(Hellbot::new, "hellbot", "Hellbot", 0.5F, 0.75F, NETHER_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<HellSerpent>> HELL_SERPENT_TYPE = registerEntity(HellSerpent::new, "hell_serpent", "Hell Serpent", 0.5F, 0.25F, NETHER_COLOR, HOSTILE_COLOR);
 

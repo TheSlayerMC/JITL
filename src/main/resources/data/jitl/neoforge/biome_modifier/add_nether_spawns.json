@@ -4,37 +4,37 @@
   "spawners": [
     {
       "type": "jitl:witherspine",
-      "weight": 3,
+      "weight": 5,
       "minCount": 1,
       "maxCount": 3
     },
     {
       "type": "jitl:hell_turtle",
-      "weight": 3,
+      "weight": 9,
       "minCount": 1,
       "maxCount": 3
     },
     {
       "type": "jitl:hell_serpent",
-      "weight": 2,
+      "weight": 4,
       "minCount": 1,
       "maxCount": 3
     },
     {
       "type": "jitl:inferno_blaze",
-      "weight": 2,
+      "weight": 5,
       "minCount": 1,
       "maxCount": 3
     },
     {
       "type": "jitl:hell_cow",
-      "weight": 3,
+      "weight": 9,
       "minCount": 1,
       "maxCount": 3
     },
     {
       "type": "jitl:reaper",
-      "weight": 3,
+      "weight": 4,
       "minCount": 1,
       "maxCount": 3
     }
