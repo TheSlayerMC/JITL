@@ -67,7 +67,7 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
         FogType fogtype = camera.getFluidInCamera();
         if (fogtype != FogType.POWDER_SNOW && fogtype != FogType.LAVA && !this.doesMobEffectBlockSky(camera)) {
             PoseStack posestack = new PoseStack();
-
+            posestack.mulPose(frustumMatrix);
             renderSky();
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
             RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
@@ -116,7 +116,9 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
     private void renderSkyTexture(VertexConsumer buffer) {
         RenderSystem.enableBlend();
         RenderSystem.depthMask(false);
+        //RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, BOIL_SKY_LOCATION);
+        Tesselator tesselator = Tesselator.getInstance();
 
         for(int i = 0; i < 6; ++i) {
             Matrix4f matrix4f = new Matrix4f();

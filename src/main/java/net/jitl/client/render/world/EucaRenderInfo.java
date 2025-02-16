@@ -40,7 +40,7 @@ public class EucaRenderInfo extends DimensionSpecialEffects {
 
     @Override
     public boolean renderClouds(ClientLevel level, int ticks, float partialTick, double camX, double camY, double camZ, Matrix4f modelViewMatrix, Matrix4f projectionMatrix) {
-        //new JCloudRenderer(JITL.rl("textures/environment/euca_clouds.png")).render(1, Minecraft.getInstance().options.cloudStatus().get(), getCloudHeight(), projectionMatrix, modelViewMatrix, new Vec3(camX, camY, camZ), partialTick + ticks);
+        new JCloudRenderer(JITL.rl("textures/environment/euca_clouds.png")).render(1, Minecraft.getInstance().options.cloudStatus().get(), getCloudHeight(), projectionMatrix, modelViewMatrix, new Vec3(camX, camY, camZ), partialTick + ticks);
         return true;
     }
 
