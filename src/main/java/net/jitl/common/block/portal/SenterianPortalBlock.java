@@ -7,7 +7,6 @@ import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JDataAttachments;
-import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceKey;
@@ -65,9 +64,10 @@ public class SenterianPortalBlock extends Block implements SenterianPortal {
     }
 
     @Override
-    public @NotNull ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
+    public ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return ItemStack.EMPTY;
     }
+
     @Override
     public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entity) {
         if(entity.canUsePortal(false)) {

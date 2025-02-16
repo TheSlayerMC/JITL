@@ -13,13 +13,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
-import org.jetbrains.annotations.NotNull;
 
 public class OkolooPedestalBlock extends Block {
 
@@ -54,10 +52,5 @@ public class OkolooPedestalBlock extends Block {
             }
         }
         return InteractionResult.FAIL;
-    }
-
-    @Override
-    public @NotNull RenderShape getRenderShape(BlockState pState) {
-        return RenderShape.INVISIBLE;
     }
 }

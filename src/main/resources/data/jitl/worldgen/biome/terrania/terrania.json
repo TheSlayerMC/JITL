@@ -9,17 +9,12 @@
     "water_fog_color": 10682526,
     "grass_color": 16711927,
     "foliage_color": 15597823,
-    "music": [
-      {
-        "weight": 1,
-        "data": {
-          "sound": "jitl:music.dim.terrania",
-          "min_delay": 12000,
-          "max_delay": 24000,
-          "replace_current_music": false
-        }
-      }
-    ]
+    "music": {
+      "sound": "jitl:music.dim.terrania",
+      "min_delay": 12000,
+      "max_delay": 24000,
+      "replace_current_music": false
+    }
   },
   "spawners": {
     "ambient": [],

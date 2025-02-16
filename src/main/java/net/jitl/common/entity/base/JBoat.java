@@ -777,6 +777,11 @@ public class JBoat extends Boat {
         }
     }
 
+    @Override
+    public @Nullable ItemStack getPickedResult(HitResult target) {
+        return new ItemStack(this.getDropItems());
+    }
+
     public enum Status {
         IN_WATER,
         UNDERWATER,

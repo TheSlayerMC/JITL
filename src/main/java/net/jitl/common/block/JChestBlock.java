@@ -128,6 +128,11 @@ public class JChestBlock extends AbstractChestBlock<JChestBlockEntity> implement
     }
 
     @Override
+    public @NotNull RenderShape getRenderShape(@NotNull BlockState state) {
+        return RenderShape.ENTITYBLOCK_ANIMATED;
+    }
+
+    @Override
     protected BlockState updateShape(BlockState p_51555_, LevelReader p_374487_, ScheduledTickAccess p_374060_, BlockPos p_51559_, Direction p_51556_, BlockPos p_51560_, BlockState p_51557_, RandomSource p_374212_) {
         if ((Boolean)p_51555_.getValue(WATERLOGGED)) {
             p_374060_.scheduleTick(p_51559_, Fluids.WATER, Fluids.WATER.getTickDelay(p_374487_));
@@ -351,10 +356,5 @@ public class JChestBlock extends AbstractChestBlock<JChestBlockEntity> implement
     @Override
     public float getDestroyProgress(BlockState state, @NotNull Player player, @NotNull BlockGetter level, @NotNull BlockPos pos) {
         return state.getValue(IS_LOCKED) ? 0F : super.getDestroyProgress(state, player, level, pos);
-    }
-
-    @Override
-    public @NotNull RenderShape getRenderShape(BlockState pState) {
-        return RenderShape.INVISIBLE;
     }
 }

@@ -110,6 +110,6 @@ public class SenterianAltar extends BaseEntityBlock {
 
     @Override
     public @NotNull RenderShape getRenderShape(BlockState pState) {
-        return RenderShape.MODEL;
+        return RenderShape.ENTITYBLOCK_ANIMATED;
     }
 }

@@ -5,7 +5,6 @@ import com.mojang.math.Axis;
 import net.jitl.common.entity.misc.Sentacoin;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -22,8 +21,6 @@ import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
 
 public class SentacoinRender<T extends Sentacoin> extends EntityRenderer<T, ItemEntityRenderState> {
 
@@ -54,20 +51,21 @@ public class SentacoinRender<T extends Sentacoin> extends EntityRenderer<T, Item
         matrixStack.pushPose();
         matrixStack.scale(scale, scale, scale);
         matrixStack.mulPose(Axis.YP.rotation(angle));
-        this.itemRenderer.renderStatic(stack, ItemDisplayContext.GROUND, packedLight, OverlayTexture.NO_OVERLAY, matrixStack, buffer, Minecraft.getInstance().level, 0);
+        assert entity.itemModel != null;
+        this.itemRenderer.render(stack, ItemDisplayContext.GROUND, false, matrixStack, buffer, packedLight, OverlayTexture.NO_OVERLAY, entity.itemModel);
         matrixStack.popPose();
         super.render(entity, matrixStack, buffer, packedLight);
     }
 
     @Override
-    public @NotNull ItemEntityRenderState createRenderState() {
+    public ItemEntityRenderState createRenderState() {
         return new ItemEntityRenderState();
     }
 
-//    public void extractRenderState(@NotNull T entity, @NotNull ItemEntityRenderState item, float f) {
-//        super.extractRenderState(entity, item, f);
-//        ItemStack itemstack = ((ItemSupplier)item).getItem();
-//        item.itemModel = !itemstack.isEmpty() ? this.itemRenderer.getModel(itemstack, entity.level(), null, entity.getId()) : null;
-//        item.item = itemstack.copy();
-//    }
+    public void extractRenderState(@NotNull T entity, @NotNull ItemEntityRenderState item, float f) {
+        super.extractRenderState(entity, item, f);
+        ItemStack itemstack = ((ItemSupplier)item).getItem();
+        item.itemModel = !itemstack.isEmpty() ? this.itemRenderer.getModel(itemstack, entity.level(), null, entity.getId()) : null;
+        item.item = itemstack.copy();
+    }
 }

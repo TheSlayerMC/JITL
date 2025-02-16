@@ -2,9 +2,6 @@ package net.jitl.client.render.world;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.jitl.client.render.world.clouds.FrozenCloudRenderer;
-import net.jitl.client.render.world.clouds.JCloudRenderer;
-import net.jitl.core.init.JITL;
-import net.minecraft.client.CloudStatus;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.world.phys.Vec3;
@@ -25,7 +22,7 @@ public class FrozenRenderInfo extends DimensionSpecialEffects {
 
     @Override
     public boolean renderClouds(ClientLevel level, int ticks, float partialTick, double camX, double camY, double camZ, Matrix4f modelViewMatrix, Matrix4f projectionMatrix) {
-        new JCloudRenderer(JITL.rl("textures/environment/frozen_clouds.png")).render(1, CloudStatus.FANCY, getCloudHeight(), projectionMatrix, modelViewMatrix, new Vec3(camX, camY, camZ), partialTick);
+        new FrozenCloudRenderer().render(level, ticks, projectionMatrix, modelViewMatrix, partialTick, camX, camY, camZ);
         return true;
     }
 

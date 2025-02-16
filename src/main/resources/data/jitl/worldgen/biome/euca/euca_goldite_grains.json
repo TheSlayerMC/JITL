@@ -9,17 +9,12 @@
     "water_fog_color": 3355141,
     "grass_color": 13159169,
     "foliage_color": 5660928,
-    "music": [
-      {
-        "weight": 1,
-        "data": {
-          "sound": "jitl:music.dim.euca",
-          "min_delay": 12000,
-          "max_delay": 24000,
-          "replace_current_music": false
-        }
-      }
-    ],
+    "music": {
+      "sound": "jitl:music.dim.euca",
+      "min_delay": 12000,
+      "max_delay": 24000,
+      "replace_current_music": false
+    },
     "particle": {
       "options": {
         "type": "jitl:goldite_flower"

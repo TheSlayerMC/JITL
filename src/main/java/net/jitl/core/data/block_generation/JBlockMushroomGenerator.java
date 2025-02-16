@@ -1,6 +1,5 @@
 package net.jitl.core.data.block_generation;
 
-import net.jitl.core.data.BasicFileGenerator;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 
@@ -9,7 +8,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class JBlockMushroomGenerator extends BasicFileGenerator {
+public class JBlockMushroomGenerator {
 
     protected BufferedWriter blockModelWriter, blockInsideModelWriter, blockInventoryModelWriter, blockstateWriter, itemModelWriter;
 
@@ -55,7 +54,6 @@ public class JBlockMushroomGenerator extends BasicFileGenerator {
             getBlockInventoryModel(JITL.MODID, name);
             getBlockInsideModel(JITL.MODID, name);
             getBlockstate(JITL.MODID, name);
-            generateBasicFile(name, "_inventory");
 
             writerInit();
         }

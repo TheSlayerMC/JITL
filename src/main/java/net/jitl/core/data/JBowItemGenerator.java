@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class JBowItemGenerator extends BasicFileGenerator {
+public class JBowItemGenerator {
 
     protected BufferedWriter itemModelWriter, pulling0Writer, pulling1Writer, pulling2Writer;
 
@@ -56,7 +56,6 @@ public class JBowItemGenerator extends BasicFileGenerator {
             }
 
             getItem(JITL.MODID, name);
-            generateBowFile(name);
             itemModelInit();
         }
     }
@@ -67,6 +66,7 @@ public class JBowItemGenerator extends BasicFileGenerator {
             pulling0Writer.close();
             pulling1Writer.close();
             pulling2Writer.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -153,5 +153,6 @@ public class JBowItemGenerator extends BasicFileGenerator {
         writeToItemModelFile(pulling2Writer, "        \"layer0\": \"" + modID + ":item/" + name + "_2\"");
         writeToItemModelFile(pulling2Writer, "    }");
         writeToItemModelFile(pulling2Writer, "}");
+
     }
 }

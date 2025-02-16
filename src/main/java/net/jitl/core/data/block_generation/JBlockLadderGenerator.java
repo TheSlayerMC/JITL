@@ -1,6 +1,5 @@
 package net.jitl.core.data.block_generation;
 
-import net.jitl.core.data.BasicFileGenerator;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 
@@ -9,7 +8,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class JBlockLadderGenerator extends BasicFileGenerator {
+public class JBlockLadderGenerator {
 
     protected BufferedWriter blockModelWriter, blockstateWriter, itemModelWriter;
 
@@ -42,7 +41,6 @@ public class JBlockLadderGenerator extends BasicFileGenerator {
             getBlockItem(JITL.MODID, name);
             getBlockModel(JITL.MODID, name);
             getBlockstate(JITL.MODID, name);
-            generateBasicFile(name);
 
             writerInit();
         }

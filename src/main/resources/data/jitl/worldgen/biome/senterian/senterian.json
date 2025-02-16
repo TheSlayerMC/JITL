@@ -8,18 +8,13 @@
     "water_color": 61183,
     "water_fog_color": 61183,
     "grass_color": 61183,
-    "foliage_color": 4262144,
-    "music": [
-      {
-        "weight": 1,
-        "data": {
-          "sound": "jitl:misc.portal.senterian",
-          "min_delay": 12000,
-          "max_delay": 24000,
-          "replace_current_music": false
-        }
-      }
-    ]
+    "foliage_color": 61183,
+    "music": {
+      "sound": "jitl:misc.portal.senterian",
+      "min_delay": 12000,
+      "max_delay": 24000,
+      "replace_current_music": false
+    }
   },
   "spawners": {
     "ambient": [],

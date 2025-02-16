@@ -1,6 +1,5 @@
 package net.jitl.core.data.block_generation;
 
-import net.jitl.core.data.BasicFileGenerator;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 
@@ -9,7 +8,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class JBlockGenerator extends BasicFileGenerator {
+public class JBlockGenerator {
 
     protected BufferedWriter blockModelWriter, blockstateWriter, itemModelWriter;
 
@@ -42,19 +41,9 @@ public class JBlockGenerator extends BasicFileGenerator {
             getBlockItem(JITL.MODID, name);
             getBlockModel(JITL.MODID, name);
             getBlockstate(JITL.MODID, name);
-            generateBasicFile(name);
 
             writerInit();
         }
-
-        for(String name : JBlocks.modelBlockName) {
-            generateBasicFile(name);
-        }
-        generateBasicFile(true, "tall_bogshroom");
-        generateBasicFile(true, "enchanted_shroom_tall");
-        generateBasicFile(true, "fungal_shelf");
-        generateBasicFile(true, "okoloo_pedestal");
-
     }
 
     public void getBlockItem(String modID, String name) {

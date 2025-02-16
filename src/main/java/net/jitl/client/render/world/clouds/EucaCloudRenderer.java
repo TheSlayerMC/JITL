@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.util.TriState;
 
-public class EucaCloudRenderer {
+public class EucaCloudRenderer extends JCloudRenderer {
 
     private RenderType createClouds(boolean colour) {
         return RenderType.create(
@@ -26,5 +26,15 @@ public class EucaCloudRenderer {
                         .setOutputState(RenderStateShard.CLOUDS_TARGET)
                         .createCompositeState(true)
         );
+    }
+
+    @Override
+    public RenderType clouds() {
+        return createClouds(false);
+    }
+
+    @Override
+    public RenderType depthClouds() {
+        return createClouds(true);
     }
 }

@@ -94,7 +94,7 @@ public class TowerGuardian extends JBossEntity {
             }
             if(blockstate.getRenderShape() != RenderShape.INVISIBLE) {
                 for(int i = 0; i < 50; i++) {
-                    this.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, blockstate), this.getX() + (this.random.nextDouble() - 0.5D) * particleWidth, this.getY() + 0.1D, this.getZ() + (this.random.nextDouble() - 0.5D) * particleWidth, vec3.x * -4.0D, 1.5D, vec3.z * -4.0D);
+                    this.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, blockstate).setPos(blockpos), this.getX() + (this.random.nextDouble() - 0.5D) * particleWidth, this.getY() + 0.1D, this.getZ() + (this.random.nextDouble() - 0.5D) * particleWidth, vec3.x * -4.0D, 1.5D, vec3.z * -4.0D);
                 }
             }
             DamageSource damagesource = this.damageSources().mobAttack(this);

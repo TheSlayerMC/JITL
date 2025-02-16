@@ -1,6 +1,5 @@
 package net.jitl.core.data.block_generation;
 
-import net.jitl.core.data.BasicFileGenerator;
 import net.jitl.core.init.JITL;
 
 import java.io.BufferedWriter;
@@ -8,7 +7,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class JBlockModeledCropGenerator extends BasicFileGenerator {
+public class JBlockModeledCropGenerator {
 
     protected BufferedWriter blockstateWriter, itemModelWriter;
 
@@ -33,7 +32,6 @@ public class JBlockModeledCropGenerator extends BasicFileGenerator {
 
             getBlockItem(JITL.MODID, name, maxStages);
             getBlockstate(JITL.MODID, name, maxStages);
-        generateBasicFile(name + "_" + (maxStages - 1));
 
             writerInit();
 

@@ -1,7 +1,6 @@
 package net.jitl.core.data;
 
 import net.jitl.core.init.JITL;
-import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
 
 import java.io.BufferedWriter;
@@ -9,14 +8,13 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class JItemGenerator extends BasicFileGenerator {
+public class JItemGenerator {
 
     protected BufferedWriter itemModelWriter;
 
     public void generate(){
         for(String name : JItems.itemName) {
             String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
-
             File itemModel = new File(itemModelDir);
             itemModel.mkdirs();
             try {
@@ -33,7 +31,6 @@ public class JItemGenerator extends BasicFileGenerator {
 
         for(String name : JItems.toolName) {
             String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
-
             File itemModel = new File(itemModelDir);
             itemModel.mkdirs();
             try {
@@ -50,7 +47,6 @@ public class JItemGenerator extends BasicFileGenerator {
 
         for(String name : JItems.recordName) {
             String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
-
             File itemModel = new File(itemModelDir);
             itemModel.mkdirs();
             try {
@@ -65,10 +61,8 @@ public class JItemGenerator extends BasicFileGenerator {
             itemModelInit();
         }
 
-        for(int i = 0; i < JEntities.entityName.size(); i++) {
-            String name = JEntities.entityName.get(i) + "_spawn_egg";
+        for(String name : JItems.spawnName) {
             String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
-
             File itemModel = new File(itemModelDir);
             itemModel.mkdirs();
             try {
@@ -80,13 +74,8 @@ public class JItemGenerator extends BasicFileGenerator {
             }
 
             getSpawnEggItem();
-            generateSpawnEggFile(name, JEntities.COLOUR1.get(i), JEntities.COLOUR2.get(i));
             itemModelInit();
         }
-
-        generateBasicFile(true, "broken_okoloo_club");
-        generateBasicFile(true, "sentacoin_bag");
-
     }
 
     public void itemModelInit() {
@@ -117,7 +106,6 @@ public class JItemGenerator extends BasicFileGenerator {
         writeToItemModelFile("    \"layer0\": \"" + modID + ":" + "item/" + texName + "\"");
         writeToItemModelFile("  }");
         writeToItemModelFile("}");
-        generateBasicFile(true, name);
     }
 
     public void getSpawnEggItem() {
