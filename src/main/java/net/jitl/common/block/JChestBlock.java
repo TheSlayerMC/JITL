@@ -18,7 +18,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.*;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
@@ -45,7 +48,7 @@ public class JChestBlock extends AbstractChestBlock<JChestBlockEntity> implement
 
     public static final MapCodec<JChestBlock> CODEC = simpleCodec((p_309280_) -> new JChestBlock());
 
-    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
+    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final EnumProperty<ChestType> TYPE = BlockStateProperties.CHEST_TYPE;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     protected static final VoxelShape NORTHAABB = Block.box(1.0D, 0.0D, 0.0D, 15.0D, 14.0D, 15.0D);
@@ -132,21 +135,21 @@ public class JChestBlock extends AbstractChestBlock<JChestBlockEntity> implement
     }
 
     @Override
-    protected BlockState updateShape(BlockState p_51555_, LevelReader p_374487_, ScheduledTickAccess p_374060_, BlockPos p_51559_, Direction p_51556_, BlockPos p_51560_, BlockState p_51557_, RandomSource p_374212_) {
-        if ((Boolean)p_51555_.getValue(WATERLOGGED)) {
-            p_374060_.scheduleTick(p_51559_, Fluids.WATER, Fluids.WATER.getTickDelay(p_374487_));
+    public @NotNull BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
+        if (state.getValue(WATERLOGGED)) {
+            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
 
-        if (p_51557_.is(this) && p_51556_.getAxis().isHorizontal()) {
-            ChestType chesttype = (ChestType)p_51557_.getValue(TYPE);
-            if (p_51555_.getValue(TYPE) == ChestType.SINGLE && chesttype != ChestType.SINGLE && p_51555_.getValue(FACING) == p_51557_.getValue(FACING) && getConnectedDirection(p_51557_) == p_51556_.getOpposite()) {
-                return (BlockState)p_51555_.setValue(TYPE, chesttype.getOpposite());
+        if (facingState.is(this) && facing.getAxis().isHorizontal()) {
+            ChestType chesttype = facingState.getValue(TYPE);
+            if (state.getValue(TYPE) == ChestType.SINGLE && chesttype != ChestType.SINGLE && state.getValue(FACING) == facingState.getValue(FACING) && getConnectedDirection(facingState) == facing.getOpposite()) {
+                return state.setValue(TYPE, chesttype.getOpposite());
             }
-        } else if (getConnectedDirection(p_51555_) == p_51556_) {
-            return (BlockState)p_51555_.setValue(TYPE, ChestType.SINGLE);
+        } else if (getConnectedDirection(state) == facing) {
+            return state.setValue(TYPE, ChestType.SINGLE);
         }
 
-        return super.updateShape(p_51555_, p_374487_, p_374060_, p_51559_, p_51556_, p_51560_, p_51557_, p_374212_);
+        return super.updateShape(state, facing, facingState, level, currentPos, facingPos);
     }
 
     @Override
@@ -220,15 +223,17 @@ public class JChestBlock extends AbstractChestBlock<JChestBlockEntity> implement
     }
 
     @Override
-    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        if (level instanceof ServerLevel serverlevel) {
-            MenuProvider menuprovider = this.getMenuProvider(state, level, pos);
+    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
+        if (pLevel.isClientSide) {
+            return InteractionResult.SUCCESS;
+        } else {
+            MenuProvider menuprovider = this.getMenuProvider(pState, pLevel, pPos);
             if (menuprovider != null) {
-                player.openMenu(menuprovider);
-                PiglinAi.angerNearbyPiglins(serverlevel, player, true);
+                pPlayer.openMenu(menuprovider);
+                PiglinAi.angerNearbyPiglins(pPlayer, true);
             }
+            return InteractionResult.CONSUME;
         }
-        return InteractionResult.SUCCESS;
     }
 
     @Nullable
