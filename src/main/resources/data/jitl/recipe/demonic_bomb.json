@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "d": "jitl:demonic_dust",
-    "i": "jitl:crystal_ball"
+    "d": {
+      "item": "jitl:demonic_dust"
+    },
+    "i": {
+      "item": "jitl:crystal_ball"
+    }
   },
   "pattern": [
     "ddd",

@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "d": "jitl:blood_rock",
-    "i": "minecraft:glowstone"
+    "d": {
+      "item": "jitl:blood_rock"
+    },
+    "i": {
+      "item": "minecraft:glowstone"
+    }
   },
   "pattern": [
     "ddd",

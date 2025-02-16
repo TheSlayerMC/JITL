@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": "jitl:shadium_ingot"
+    "#": {
+      "item": "jitl:shadium_ingot"
+    }
   },
   "pattern": [
     "# #",

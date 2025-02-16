@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "d": "jitl:blood_rock",
-    "i": "jitl:balmy_teardrop"
+    "d": {
+      "item": "jitl:blood_rock"
+    },
+    "i": {
+      "item": "jitl:balmy_teardrop"
+    }
   },
   "pattern": [
     "ddd",

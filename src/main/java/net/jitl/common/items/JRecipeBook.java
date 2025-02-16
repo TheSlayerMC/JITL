@@ -14,8 +14,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class JRecipeBook extends JItem {
 
-    public JRecipeBook(Properties props) {
-        super(props);
+    public JRecipeBook() {
+        super(JItems.itemProps());
     }
 
     @Override

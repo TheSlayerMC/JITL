@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    "jitl:terranian_log"
+    {
+      "item": "jitl:terranian_log"
+    }
   ],
   "result": {
     "count": 4,

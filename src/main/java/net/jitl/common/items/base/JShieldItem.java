@@ -20,8 +20,8 @@ public class JShieldItem extends ShieldItem {
     public final ResourceLocation texture;
     private final Ingredient repairItem;
 
-    public JShieldItem(Properties p, String name, int uses, Item repairItem) {
-        super(p.durability(uses));
+    public JShieldItem(String name, int uses, Item repairItem) {
+        super(JItems.itemProps().durability(uses));
         this.repairItem = Ingredient.of(repairItem);
         this.texture = JITL.rl("textures/shield/" + name + "_shield.png");
     }

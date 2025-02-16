@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "jitl:burned_bark_planks",
-    "I": "minecraft:stick"
+    "#": {
+      "item": "jitl:burned_bark_planks"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
   },
   "pattern": [
     "#I#",

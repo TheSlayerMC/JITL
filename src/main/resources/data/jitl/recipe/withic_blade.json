@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": "jitl:withic_dust",
-    "I": "jitl:bloodcrust_ingot"
+    "#": {
+      "item": "jitl:withic_dust"
+    },
+    "I": {
+      "item": "jitl:bloodcrust_ingot"
+    }
   },
   "pattern": [
     "#",

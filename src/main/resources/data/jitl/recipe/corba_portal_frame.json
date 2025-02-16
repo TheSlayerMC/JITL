@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "jitl:corba_portal_gem"
+    "#": {
+      "item": "jitl:corba_portal_gem"
+    }
   },
   "pattern": [
     "###",

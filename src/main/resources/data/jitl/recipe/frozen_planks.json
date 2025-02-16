@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    "jitl:frozen_log"
+    {
+      "item": "jitl:frozen_log"
+    }
   ],
   "result": {
     "count": 4,

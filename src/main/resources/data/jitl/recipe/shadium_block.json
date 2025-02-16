@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "jitl:shadium_ingot"
+    "#": {
+      "item": "jitl:shadium_ingot"
+    }
   },
   "pattern": [
     "###",

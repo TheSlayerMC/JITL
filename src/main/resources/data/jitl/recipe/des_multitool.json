@@ -2,10 +2,18 @@
   "type": "minecraft:crafting_shapeless",
   "category": "equipment",
   "ingredients": [
-    "jitl:des_axe",
-    "jitl:des_pickaxe",
-    "jitl:des_shovel",
-    "jitl:des_hoe"
+    {
+      "item": "jitl:des_axe"
+    },
+    {
+      "item": "jitl:des_pickaxe"
+    },
+    {
+      "item": "jitl:des_shovel"
+    },
+    {
+      "item": "jitl:des_hoe"
+    }
   ],
   "result": {
     "count": 1,

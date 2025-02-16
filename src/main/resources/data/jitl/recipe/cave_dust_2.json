@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": "jitl:cave_dust"
+    "d": {
+      "item": "jitl:cave_dust"
+    }
   },
   "pattern": [
     "ddd",

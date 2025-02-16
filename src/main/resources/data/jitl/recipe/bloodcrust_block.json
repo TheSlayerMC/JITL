@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "jitl:bloodcrust_ingot"
+    "#": {
+      "item": "jitl:bloodcrust_ingot"
+    }
   },
   "pattern": [
     "###",

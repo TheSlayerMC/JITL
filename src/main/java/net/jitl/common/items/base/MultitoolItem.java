@@ -71,8 +71,8 @@ public class MultitoolItem extends DiggerItem implements JGear {
     private final IAbility ability;
     private final JToolTiers tier;
 
-    public MultitoolItem(Properties p, JToolTiers tier, IAbility ability) {
-        super(tier.getTier(), BlockTags.MINEABLE_WITH_AXE, tier.getDamage(), tier.getSpeedModifier(), p);
+    public MultitoolItem(JToolTiers tier, IAbility ability) {
+        super(tier.getTier(), BlockTags.MINEABLE_WITH_AXE, tier.getDamage(), tier.getSpeedModifier(), JItems.itemProps());
         this.ability = ability;
         this.tier = tier;
     }

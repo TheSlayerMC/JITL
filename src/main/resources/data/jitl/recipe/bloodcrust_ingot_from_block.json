@@ -3,7 +3,9 @@
   "category": "building",
   "group": "jitl:bloodcrust_ingot",
   "ingredients": [
-    "jitl:bloodcrust_block"
+    {
+      "item": "jitl:bloodcrust_block"
+    }
   ],
   "result": {
     "count": 9,

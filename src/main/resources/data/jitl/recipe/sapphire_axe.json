@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": "jitl:sapphire",
-    "I": "minecraft:stick"
+    "#": {
+      "item": "jitl:sapphire"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
   },
   "pattern": [
     "##",

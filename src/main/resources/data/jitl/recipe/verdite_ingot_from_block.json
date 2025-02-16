@@ -3,7 +3,9 @@
   "category": "building",
   "group": "jitl:verdite_ingot",
   "ingredients": [
-    "jitl:verdite_block"
+    {
+      "item": "jitl:verdite_block"
+    }
   ],
   "result": {
     "count": 9,

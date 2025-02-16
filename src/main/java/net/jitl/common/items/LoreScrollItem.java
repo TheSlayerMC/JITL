@@ -36,8 +36,8 @@ import java.util.List;
 
 public class LoreScrollItem extends JItem {
 
-    public LoreScrollItem(Properties p) {
-        super(p.stacksTo(1));
+    public LoreScrollItem() {
+        super(JItems.itemProps().stacksTo(1));
     }
 
     @Override

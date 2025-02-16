@@ -1,91 +1,30 @@
 {
-  "temperature": -0.5,
+  "carvers": {
+    "air": [
+      "jitl:frozen_carver"
+    ]
+  },
   "downfall": 0.4,
-  "has_precipitation": true,
   "effects": {
-    "sky_color": 8625919,
     "fog_color": 7112378,
-    "water_color": 3145727,
-    "water_fog_color": 25855,
-    "grass_color": 3145727,
     "foliage_color": 25855,
+    "grass_color": 3145727,
     "music": {
-      "sound": "jitl:music.dim.frozen",
-      "min_delay": 12000,
       "max_delay": 24000,
-      "replace_current_music": false
+      "min_delay": 12000,
+      "replace_current_music": false,
+      "sound": "jitl:music.dim.frozen"
     },
     "particle": {
       "options": {
         "type": "jitl:snowflake"
       },
       "probability": 0.03428
-    }
+    },
+    "sky_color": 8625919,
+    "water_color": 3145727,
+    "water_fog_color": 25855
   },
-  "spawners": {
-    "ambient": [],
-    "axolotls": [],
-    "creature": [
-      {
-        "type": "jitl:frozen_troll",
-        "weight": 20,
-        "minCount": 1,
-        "maxCount": 3
-      },
-      {
-        "type": "jitl:shiverwolf",
-        "weight": 15,
-        "minCount": 1,
-        "maxCount": 3
-      },
-      {
-        "type": "jitl:capybara",
-        "weight": 20,
-        "minCount": 1,
-        "maxCount": 3
-      }
-    ],
-    "misc": [],
-    "monster": [
-      {
-        "type": "jitl:shivering_bushwalker",
-        "weight": 5,
-        "minCount": 1,
-        "maxCount": 2
-      },
-      {
-        "type": "jitl:shivering_shrieker",
-        "weight": 5,
-        "minCount": 1,
-        "maxCount": 2
-      },
-      {
-        "type": "jitl:permafraust",
-        "weight": 5,
-        "minCount": 1,
-        "maxCount": 2
-      },
-      {
-        "type": "jitl:crystal_cluster",
-        "weight": 5,
-        "minCount": 1,
-        "maxCount": 2
-      },
-      {
-        "type": "jitl:shatterer",
-        "weight": 5,
-        "minCount": 1,
-        "maxCount": 2
-      }
-    ],
-    "underground_water_creature": [],
-    "water_ambient": [],
-    "water_creature": []
-  },
-  "spawn_costs": {},
-  "carvers": [
-    "jitl:frozen_carver"
-  ],
   "features": [
     [],
     [],
@@ -108,5 +47,68 @@
       "jitl:frozen_veg",
       "jitl:frozen_flowers"
     ]
-  ]
+  ],
+  "has_precipitation": true,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [
+      {
+        "type": "jitl:frozen_troll",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 20
+      },
+      {
+        "type": "jitl:shiverwolf",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 15
+      },
+      {
+        "type": "jitl:capybara",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 20
+      }
+    ],
+    "misc": [],
+    "monster": [
+      {
+        "type": "jitl:shivering_bushwalker",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 5
+      },
+      {
+        "type": "jitl:shivering_shrieker",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 5
+      },
+      {
+        "type": "jitl:permafraust",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 5
+      },
+      {
+        "type": "jitl:crystal_cluster",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 5
+      },
+      {
+        "type": "jitl:shatterer",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 5
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": -0.5
 }

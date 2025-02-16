@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "jitl:bleedstone_dust",
-    "jitl:smithstone_dust"
+    {
+      "item": "jitl:bleedstone_dust"
+    },
+    {
+      "item": "jitl:smithstone_dust"
+    }
   ],
   "result": {
     "count": 1,

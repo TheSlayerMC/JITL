@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    "jitl:euca_brown_log"
+    {
+      "item": "jitl:euca_brown_log"
+    }
   ],
   "result": {
     "count": 4,

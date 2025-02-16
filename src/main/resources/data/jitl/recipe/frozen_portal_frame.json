@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "d": "minecraft:diamond",
-    "i": "minecraft:snowball"
+    "d": {
+      "item": "minecraft:diamond"
+    },
+    "i": {
+      "item": "minecraft:snowball"
+    }
   },
   "pattern": [
     "iii",

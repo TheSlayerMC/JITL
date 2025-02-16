@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "jitl:euca_gold_planks",
-    "I": "minecraft:stick"
+    "#": {
+      "item": "jitl:euca_gold_planks"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
   },
   "pattern": [
     "#I#",

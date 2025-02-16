@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": "jitl:euca_brown_planks"
+    "#": {
+      "item": "jitl:euca_brown_planks"
+    }
   },
   "pattern": [
     "# #",

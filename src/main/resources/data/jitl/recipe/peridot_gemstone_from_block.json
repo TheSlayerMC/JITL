@@ -3,7 +3,9 @@
   "category": "building",
   "group": "jitl:peridot_gemstone",
   "ingredients": [
-    "jitl:peridot_block"
+    {
+      "item": "jitl:peridot_block"
+    }
   ],
   "result": {
     "count": 9,

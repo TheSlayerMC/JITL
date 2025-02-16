@@ -22,8 +22,8 @@ public class StaffItem extends JItem implements IEssenceItem {
     protected BiFunction<Level, LivingEntity, ThrowableProjectile> projectileFactory;
     private final int essenceUsage;
 
-    public StaffItem(Properties p, int essence, BiFunction<Level, LivingEntity, ThrowableProjectile> projectileFactory) {
-        super(p.stacksTo(1));
+    public StaffItem(int essence, BiFunction<Level, LivingEntity, ThrowableProjectile> projectileFactory) {
+        super(JItems.itemProps().stacksTo(1));
         this.projectileFactory = projectileFactory;
         this.essenceUsage = essence;
     }

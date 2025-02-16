@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "d": "jitl:boil_powder",
-    "i": "jitl:blood_rock"
+    "d": {
+      "item": "jitl:boil_powder"
+    },
+    "i": {
+      "item": "jitl:blood_rock"
+    }
   },
   "pattern": [
     "ddd",

@@ -13,7 +13,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -26,8 +25,8 @@ public class JBlockSwampLamp extends JBlock {
     protected static final VoxelShape MID = Block.box(6D, 6D, 6D, 10D, 9D, 10D);
     protected static final VoxelShape TOP = Block.box(7D, 9D, 7D, 9D, 11D, 9D);
 
-    public JBlockSwampLamp(BlockBehaviour.Properties props) {
-        super(props);
+    public JBlockSwampLamp() {
+        super(JBlockProperties.BOTTLE);
     }
 
     @Override

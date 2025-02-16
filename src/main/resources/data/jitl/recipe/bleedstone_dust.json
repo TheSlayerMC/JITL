@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "jitl:bleedstone"
+    {
+      "item": "jitl:bleedstone"
+    }
   ],
   "result": {
     "count": 4,

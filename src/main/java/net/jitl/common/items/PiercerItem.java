@@ -24,8 +24,8 @@ public class PiercerItem extends JItem {
     public final int maxBounces;
     public final float damage;
 
-    public PiercerItem(Properties p, int maxBounces, float damage) {
-        super(p.stacksTo(8));
+    public PiercerItem(int maxBounces, float damage) {
+        super(JItems.itemProps().stacksTo(8));
         this.maxBounces = maxBounces;
         this.damage = damage;
     }

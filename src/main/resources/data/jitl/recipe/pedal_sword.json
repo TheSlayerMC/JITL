@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": "jitl:floro_pedal",
-    "I": "jitl:stone_clump"
+    "#": {
+      "item": "jitl:floro_pedal"
+    },
+    "I": {
+      "item": "jitl:stone_clump"
+    }
   },
   "pattern": [
     "#",

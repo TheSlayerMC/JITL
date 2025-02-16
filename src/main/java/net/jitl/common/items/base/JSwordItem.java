@@ -18,7 +18,12 @@ import java.util.List;
 public class JSwordItem extends SwordItem implements JGear {
     private final IAbility ability;
 
-    public JSwordItem(Properties p, JToolTiers tier, IAbility swordAbility) {
+    public JSwordItem(JToolTiers tier, IAbility swordAbility) {
+        super(tier.getTier(), tier.getDamage(), tier.getSpeedModifier(), JItems.itemProps());
+        this.ability = swordAbility;
+    }
+
+    public JSwordItem(JToolTiers tier, IAbility swordAbility, Properties p) {
         super(tier.getTier(), tier.getDamage(), tier.getSpeedModifier(), p);
         this.ability = swordAbility;
     }

@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": "jitl:crimson_quartz_block"
+    "#": {
+      "item": "jitl:crimson_quartz_block"
+    }
   },
   "pattern": [
     "##",

@@ -23,7 +23,6 @@ import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -45,8 +44,8 @@ public class JBasePortalBlock extends Block implements JPortal {
     private final ResourceKey<Level> dimensionID;
     private final Supplier<Block> frame;
 
-    public JBasePortalBlock(BlockBehaviour.Properties properties, ResourceKey<Level> dimID, Supplier<Block> frame) {
-        super(properties);
+    public JBasePortalBlock(ResourceKey<Level> dimID, Supplier<Block> frame) {
+        super(JBlockProperties.PORTAL);
         this.dimensionID = dimID;
         this.frame = frame;
         registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.HORIZONTAL_AXIS, Direction.Axis.X));

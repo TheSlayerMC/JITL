@@ -15,14 +15,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
 public class JDirt extends Block {
 
-    public JDirt(BlockBehaviour.Properties props) {
-        super(props);
+    public JDirt() {
+        super(JBlockProperties.DIRT);
     }
 
     public Block getFarmlandFromGrassDirt(Block checkedBlock) {

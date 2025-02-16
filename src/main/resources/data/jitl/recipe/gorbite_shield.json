@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": "#minecraft:planks",
-    "M": "jitl:gorbite_gem"
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "M": {
+      "item": "jitl:gorbite_gem"
+    }
   },
   "pattern": [
     "#M#",

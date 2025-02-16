@@ -3,7 +3,9 @@
   "category": "building",
   "group": "jitl:gorbite_gem",
   "ingredients": [
-    "jitl:gorbite_block"
+    {
+      "item": "jitl:gorbite_block"
+    }
   ],
   "result": {
     "count": 9,

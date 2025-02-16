@@ -24,8 +24,8 @@ import java.util.List;
 
 public class PetSpawnerItem extends JItem {
 
-    public PetSpawnerItem(Properties props) {
-        super(props.stacksTo(1).rarity(Rarity.RARE));
+    public PetSpawnerItem() {
+        super(JItems.itemProps().stacksTo(1).rarity(Rarity.RARE));
     }
 
     @Override

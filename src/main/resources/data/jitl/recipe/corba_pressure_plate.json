@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "jitl:corba_planks"
+    "#": {
+      "item": "jitl:corba_planks"
+    }
   },
   "pattern": [
     "##"

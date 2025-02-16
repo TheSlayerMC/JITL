@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "jitl:depths_planks"
+    "#": {
+      "item": "jitl:depths_planks"
+    }
   },
   "pattern": [
     "##"

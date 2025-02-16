@@ -1,67 +1,30 @@
 {
-  "temperature": 2,
-  "downfall": 0,
-  "has_precipitation": false,
+  "carvers": {
+    "air": [
+      "jitl:boil_carver"
+    ]
+  },
+  "downfall": 0.0,
   "effects": {
-    "sky_color": 7254527,
     "fog_color": 4262144,
-    "water_color": 4262144,
-    "water_fog_color": 4262144,
-    "grass_color": 4262144,
     "foliage_color": 4262144,
+    "grass_color": 4262144,
     "music": {
-      "sound": "jitl:music.dim.boil",
-      "min_delay": 12000,
       "max_delay": 24000,
-      "replace_current_music": false
+      "min_delay": 12000,
+      "replace_current_music": false,
+      "sound": "jitl:music.dim.boil"
     },
     "particle": {
       "options": {
         "type": "jitl:sulphur"
       },
       "probability": 0.001428
-    }
+    },
+    "sky_color": 7254527,
+    "water_color": 4262144,
+    "water_fog_color": 4262144
   },
-  "spawners": {
-    "ambient": [],
-    "axolotls": [],
-    "creature": [
-      {
-        "type": "jitl:flame_lotus",
-        "weight": 2,
-        "minCount": 1,
-        "maxCount": 50
-      }
-    ],
-    "misc": [],
-    "monster": [
-      {
-        "type": "jitl:magma_blaze",
-        "weight": 2,
-        "minCount": 1,
-        "maxCount": 3
-      },
-      {
-        "type": "jitl:frightener",
-        "weight": 2,
-        "minCount": 1,
-        "maxCount": 3
-      },
-      {
-        "type": "jitl:burning_light",
-        "weight": 2,
-        "minCount": 1,
-        "maxCount": 3
-      }
-    ],
-    "underground_water_creature": [],
-    "water_ambient": [],
-    "water_creature": []
-  },
-  "spawn_costs": {},
-  "carvers": [
-    "jitl:boil_carver"
-  ],
   "features": [
     [],
     [],
@@ -85,5 +48,44 @@
       "jitl:sulphur_crystal",
       "jitl:dying_burned_tree"
     ]
-  ]
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [
+      {
+        "type": "jitl:flame_lotus",
+        "maxCount": 50,
+        "minCount": 1,
+        "weight": 2
+      }
+    ],
+    "misc": [],
+    "monster": [
+      {
+        "type": "jitl:magma_blaze",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 2
+      },
+      {
+        "type": "jitl:frightener",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 2
+      },
+      {
+        "type": "jitl:burning_light",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 2
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 2.0
 }

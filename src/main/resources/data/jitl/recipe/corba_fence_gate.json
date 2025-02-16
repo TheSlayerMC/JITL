@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "jitl:corba_planks",
-    "I": "minecraft:stick"
+    "#": {
+      "item": "jitl:corba_planks"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
   },
   "pattern": [
     "#I#",

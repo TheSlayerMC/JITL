@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "jitl:demonic_bone"
+    {
+      "item": "jitl:demonic_bone"
+    }
   ],
   "result": {
     "count": 5,

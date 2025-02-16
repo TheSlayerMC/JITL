@@ -3,7 +3,9 @@
   "category": "building",
   "group": "jitl:lunium_ingot",
   "ingredients": [
-    "jitl:lunium_block"
+    {
+      "item": "jitl:lunium_block"
+    }
   ],
   "result": {
     "count": 9,

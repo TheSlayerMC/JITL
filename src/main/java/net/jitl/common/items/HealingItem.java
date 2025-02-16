@@ -20,8 +20,8 @@ public class HealingItem extends JItem implements IEssenceItem {
 
     public float amount = 0.0F;
 
-    public HealingItem(Properties props, float amount) {
-        super(props.stacksTo(1).durability(1));
+    public HealingItem(float amount) {
+        super(JItems.itemProps().stacksTo(1).durability(1));
         this.amount = amount;
     }
 

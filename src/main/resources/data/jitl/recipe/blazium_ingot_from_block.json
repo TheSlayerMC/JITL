@@ -3,7 +3,9 @@
   "category": "building",
   "group": "jitl:blazium_ingot",
   "ingredients": [
-    "jitl:blazium_block"
+    {
+      "item": "jitl:blazium_block"
+    }
   ],
   "result": {
     "count": 9,

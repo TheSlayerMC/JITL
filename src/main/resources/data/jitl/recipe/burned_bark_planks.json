@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    "jitl:burned_bark"
+    {
+      "item": "jitl:burned_bark"
+    }
   ],
   "result": {
     "count": 4,

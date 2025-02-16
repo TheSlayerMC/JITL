@@ -3,7 +3,9 @@
   "category": "building",
   "group": "jitl:firestone_clump",
   "ingredients": [
-    "jitl:firestone_block"
+    {
+      "item": "jitl:firestone_block"
+    }
   ],
   "result": {
     "count": 9,

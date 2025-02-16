@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "w": "minecraft:wheat"
+    "w": {
+      "item": "minecraft:wheat"
+    }
   },
   "pattern": [
     " w ",

@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": "jitl:shadium_ingot"
+    "d": {
+      "item": "jitl:shadium_ingot"
+    }
   },
   "pattern": [
     "ddd"

@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    "jitl:depths_log"
+    {
+      "item": "jitl:depths_log"
+    }
   ],
   "result": {
     "count": 4,

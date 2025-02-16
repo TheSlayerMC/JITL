@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": "jitl:celestium_ingot",
-    "I": "minecraft:stick"
+    "#": {
+      "item": "jitl:celestium_ingot"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
   },
   "pattern": [
     "#",

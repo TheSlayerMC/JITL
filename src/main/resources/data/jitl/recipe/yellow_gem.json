@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "jitl:yellow_gem_block"
+    {
+      "item": "jitl:yellow_gem_block"
+    }
   ],
   "result": {
     "count": 9,

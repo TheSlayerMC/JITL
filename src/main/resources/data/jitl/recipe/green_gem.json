@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "jitl:green_gem_block"
+    {
+      "item": "jitl:green_gem_block"
+    }
   ],
   "result": {
     "count": 9,

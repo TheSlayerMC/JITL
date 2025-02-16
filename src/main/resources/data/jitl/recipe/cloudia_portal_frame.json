@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "jitl:cloudia_portal_gem"
+    "#": {
+      "item": "jitl:cloudia_portal_gem"
+    }
   },
   "pattern": [
     "###",

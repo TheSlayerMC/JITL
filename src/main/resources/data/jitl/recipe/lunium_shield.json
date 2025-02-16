@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": "#minecraft:planks",
-    "M": "jitl:lunium_ingot"
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "M": {
+      "item": "jitl:lunium_ingot"
+    }
   },
   "pattern": [
     "#M#",

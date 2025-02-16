@@ -12,20 +12,16 @@ import net.jitl.common.world.gen.tree_grower.JTreeGrower;
 import net.jitl.core.data.block_generation.JBlockCropGenerator;
 import net.jitl.core.data.block_generation.JBlockModeledCropGenerator;
 import net.jitl.core.init.JITL;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.FuelValues;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -33,7 +29,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class JBlocks {
@@ -129,7 +124,7 @@ public class JBlocks {
     public static final ArrayList<String> HOE_BLOCKS = new ArrayList<>();
 
     public static final DeferredBlock<Block> IRIDIUM_ORE = register("iridium_ore", "Iridium Ore", JBlockProperties.STONE);
-    public static final DeferredBlock<Block> IRIDIUM_BLOCK = registerFuelBlock("iridium_block", "Iridium Block", Block::new, JBlockProperties.STONE, 16000);
+    public static final DeferredBlock<Block> IRIDIUM_BLOCK = registerFuelBlock("iridium_block", "Iridium Block", () -> new Block(JBlockProperties.STONE), 16000);
     public static final DeferredBlock<Block> DEEPSLATE_IRIDIUM_ORE = register("deepslate_iridium_ore", "Deepslate Iridium Ore", JBlockProperties.STONE);
 
     public static final DeferredBlock<Block> SAPPHIRE_ORE = register("sapphire_ore", "Sapphire Ore", JBlockProperties.STONE);
@@ -237,12 +232,12 @@ public class JBlocks {
     public static final DeferredBlock<Block> SENTERIAN_LIGHT_LAMP = register("senterian_light_lamp", "Senterian Light Lamp", JBlockProperties.GLOW_DUNGEON_BLOCK);
     public static final DeferredBlock<Block> SENTERIAN_MELLOW_LAMP = register("senterian_mellow_lamp", "Senterian Mellow Lamp", JBlockProperties.GLOW_DUNGEON_BLOCK);
 
-    public static final DeferredBlock<Block> TALL_GREEN_GLOWSHROOM = registerDoublePlant("tall_green_glowshroom", "Tall Green Glowshroom", TallGlowshroomBlock::new, JBlockProperties.CAVE_GLOW_PLANT);
-    public static final DeferredBlock<Block> TALL_BLUE_GLOWSHROOM = registerDoublePlant("tall_blue_glowshroom", "Tall Blue Glowshroom", TallGlowshroomBlock::new, JBlockProperties.CAVE_GLOW_PLANT);
-    public static final DeferredBlock<Block> TALL_RED_GLOWSHROOM = registerDoublePlant("tall_red_glowshroom", "Tall Red Glowshroom", TallGlowshroomBlock::new, JBlockProperties.CAVE_GLOW_PLANT);
-    public static final DeferredBlock<Block> GREEN_GLOWSHROOM = registerCrossBlock("green_glowshroom", "Green Glowshroom", CavePlantBlock::new, JBlockProperties.CAVE_GLOW_PLANT);
-    public static final DeferredBlock<Block> BLUE_GLOWSHROOM = registerCrossBlock("blue_glowshroom", "Blue Glowshroom", CavePlantBlock::new, JBlockProperties.CAVE_GLOW_PLANT);
-    public static final DeferredBlock<Block> RED_GLOWSHROOM = registerCrossBlock("red_glowshroom", "Red Glowshroom", CavePlantBlock::new, JBlockProperties.CAVE_GLOW_PLANT);
+    public static final DeferredBlock<Block> TALL_GREEN_GLOWSHROOM = registerDoublePlant("tall_green_glowshroom", "Tall Green Glowshroom", () -> new TallGlowshroomBlock(JBlockProperties.CAVE_GLOW_PLANT));
+    public static final DeferredBlock<Block> TALL_BLUE_GLOWSHROOM = registerDoublePlant("tall_blue_glowshroom", "Tall Blue Glowshroom", () -> new TallGlowshroomBlock(JBlockProperties.CAVE_GLOW_PLANT));
+    public static final DeferredBlock<Block> TALL_RED_GLOWSHROOM = registerDoublePlant("tall_red_glowshroom", "Tall Red Glowshroom", () -> new TallGlowshroomBlock(JBlockProperties.CAVE_GLOW_PLANT));
+    public static final DeferredBlock<Block> GREEN_GLOWSHROOM = registerCrossBlock("green_glowshroom", "Green Glowshroom", () -> new CavePlantBlock(JBlockProperties.CAVE_GLOW_PLANT));
+    public static final DeferredBlock<Block> BLUE_GLOWSHROOM = registerCrossBlock("blue_glowshroom", "Blue Glowshroom", () -> new CavePlantBlock(JBlockProperties.CAVE_GLOW_PLANT));
+    public static final DeferredBlock<Block> RED_GLOWSHROOM = registerCrossBlock("red_glowshroom", "Red Glowshroom", () -> new CavePlantBlock(JBlockProperties.CAVE_GLOW_PLANT));
 
     public static final DeferredBlock<Block> DUNGEON_BRICKS = register("dungeon_bricks", "Dungeon Bricks", JBlockProperties.DUNGEON_BLOCK);
     public static final DeferredBlock<StairBlock> DUNGEON_BRICK_STAIRS = registerStairs("dungeon_brick_stairs", "Dungeon Brick Stairs", DUNGEON_BRICKS, false, JBlockProperties.DUNGEON_BLOCK);
@@ -290,15 +285,15 @@ public class JBlocks {
     public static final DeferredBlock<Block> SCORCHED_RUBBLE_BRICKS = register("scorched_rubble_bricks", "Scorched Rubble Bricks", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> SCORCHED_RUBBLE_BRICK_STAIRS = registerStairs("scorched_rubble_brick_stairs", "Scorched Rubble Brick Stairs", SCORCHED_RUBBLE_BRICKS, false, JBlockProperties.STONE);
 
-    public static final DeferredBlock<Block> GOLDITE_FARMLAND = registerFarmlandBlock("goldite_farmland", "Goldite Farmland", GolditeFarmland::new, JBlockProperties.DIRT);
-    public static final DeferredBlock<Block> DEPTHS_FARMLAND = registerFarmlandBlock("depths_farmland", "Depths Farmland", DepthsFarmland::new, JBlockProperties.DIRT);
-    public static final DeferredBlock<Block> PERMAFROST_FARMLAND = registerFarmlandBlock("permafrost_farmland", "Permafrost Farmland", PermafrostFarmland::new, JBlockProperties.DIRT);
-    public static final DeferredBlock<Block> CORBA_FARMLAND = registerFarmlandBlock("corba_farmland", "Corba Farmland", CorbaFarmland::new, JBlockProperties.DIRT);
-    public static final DeferredBlock<Block> CLOUDIA_FARMLAND = registerFarmlandBlock("cloudia_farmland", "Cloudia Farmland", CloudiaFarmland::new, JBlockProperties.DIRT);
+    public static final DeferredBlock<Block> GOLDITE_FARMLAND = registerFarmlandBlock("goldite_farmland", "Goldite Farmland", GolditeFarmland::new);
+    public static final DeferredBlock<Block> DEPTHS_FARMLAND = registerFarmlandBlock("depths_farmland", "Depths Farmland", DepthsFarmland::new);
+    public static final DeferredBlock<Block> PERMAFROST_FARMLAND = registerFarmlandBlock("permafrost_farmland", "Permafrost Farmland", PermafrostFarmland::new);
+    public static final DeferredBlock<Block> CORBA_FARMLAND = registerFarmlandBlock("corba_farmland", "Corba Farmland", CorbaFarmland::new);
+    public static final DeferredBlock<Block> CLOUDIA_FARMLAND = registerFarmlandBlock("cloudia_farmland", "Cloudia Farmland", CloudiaFarmland::new);
 
     public static final DeferredBlock<Block> EUCA_PORTAL_FRAME = register("euca_portal_frame", "Euca Portal Frame", JBlockProperties.STONE);
-    public static final DeferredBlock<JBasePortalBlock> EUCA_PORTAL = registerPortalBlock("euca_portal", "Euca Portal", Dimensions.EUCA, EUCA_PORTAL_FRAME);
-    public static final DeferredBlock<Block> GOLDITE_DIRT = registerTerrainBlock("goldite_dirt", "Goldite Soil", JDirt::new, JBlockProperties.DIRT);
+    public static final DeferredBlock<JBasePortalBlock> EUCA_PORTAL = registerPortalBlock("euca_portal", "Euca Portal", () -> new JBasePortalBlock(Dimensions.EUCA, EUCA_PORTAL_FRAME));
+    public static final DeferredBlock<Block> GOLDITE_DIRT = registerTerrainBlock("goldite_dirt", "Goldite Soil", JDirt::new);
     public static final DeferredBlock<Block> GOLDITE_STONE = registerTerrainBlock("goldite_stone", "Goldite Stone", JBlockProperties.STONE);
     public static final DeferredBlock<Block> GOLDITE_COBBLESTONE = register("goldite_cobblestone", "Goldite Cobblestone", JBlockProperties.STONE);
     public static final DeferredBlock<Block> EUCA_BRICK = register("euca_brick", "Euca Bricks", JBlockProperties.STONE);
@@ -327,24 +322,24 @@ public class JBlocks {
     public static final DeferredBlock<Block> EUCA_SQUARE_RUNIC_BRICKS = register("euca_square_runic_bricks", "Euca Square Runic Bricks", JBlockProperties.STONE);
     public static final DeferredBlock<Block> EUCA_SQUARE_BRICKS = register("euca_square_bricks", "Euca Square Bricks", JBlockProperties.STONE);
     public static final DeferredBlock<Block> EUCA_TILE = register("euca_tile", "Euca Tile", JBlockProperties.STONE);
-    public static final DeferredBlock<Block> EUCA_TALL_GRASS = registerCrossBlock("euca_tall_grass", "Euca Tall Grass", TallGrassBlock::new, JBlockProperties.REPLACABLE_PLANT);
-    public static final DeferredBlock<Block> EUCA_TALL_FLOWERS = registerCrossBlock("euca_tall_flowers", "Euca Tall Flowers", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> EUCA_SILVER_FLOWER = registerCrossBlock("euca_silver_gold_flower", "Euca Silver Flower", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> EUCA_BLUE_FLOWER = registerCrossBlock("euca_blue_flower", "Euca Blue Flower", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> GOLDITE_FLOWER = registerCrossBlock("goldite_flower", "Goldite Flower", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> GOLDITE_STALKS = registerCrossBlock("goldite_stalks", "Goldite Stalks", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> GOLDITE_BULB = registerCrossBlock("goldite_bulb", "Goldite Bulb", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> GOLDITE_TALL_GRASS = registerDoublePlant("goldite_tall_grass", "Goldite Tall Grass", JDoublePlantBlock::new, JBlockProperties.FLOWER);
+    public static final DeferredBlock<Block> EUCA_TALL_GRASS = registerCrossBlock("euca_tall_grass", "Euca Tall Grass", () -> new TallGrassBlock(JBlockProperties.REPLACABLE_PLANT));
+    public static final DeferredBlock<Block> EUCA_TALL_FLOWERS = registerCrossBlock("euca_tall_flowers", "Euca Tall Flowers", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> EUCA_SILVER_FLOWER = registerCrossBlock("euca_silver_gold_flower", "Euca Silver Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> EUCA_BLUE_FLOWER = registerCrossBlock("euca_blue_flower", "Euca Blue Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> GOLDITE_FLOWER = registerCrossBlock("goldite_flower", "Goldite Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> GOLDITE_STALKS = registerCrossBlock("goldite_stalks", "Goldite Stalks", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> GOLDITE_BULB = registerCrossBlock("goldite_bulb", "Goldite Bulb", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> GOLDITE_TALL_GRASS = registerDoublePlant("goldite_tall_grass", "Goldite Tall Grass", () -> new JDoublePlantBlock(JBlockProperties.FLOWER));
     public static final DeferredBlock<Block> GOLD_BOT_SPAWNER = register("gold_bot_spawner", "Gold Bot Spawner", GoldBotSpawnerBlock::new, JBlockProperties.SPAWNER);
     public static final DeferredBlock<Block> GOLDITE_FURNACE = registerFurnaceBlock("goldite_furnace", "Goldite Furnace");
-    public static final DeferredBlock<Block> EUCA_PUMPKIN = registerRotatableBlock("euca_pumpkin", "Euca Pumpkin", FaceableBlock::new, JBlockProperties.WOOD, true);
-    public static final DeferredBlock<Block> GLIMMER_ROOT = registerVineBlock("glimmer_root", "Glimmer Root", JVineBlock::new ,JBlockProperties.VINE);
+    public static final DeferredBlock<Block> EUCA_PUMPKIN = registerRotatableBlock("euca_pumpkin", "Euca Pumpkin", () -> new FaceableBlock(JBlockProperties.WOOD), true);
+    public static final DeferredBlock<Block> GLIMMER_ROOT = registerVineBlock("glimmer_root", "Glimmer Root", () -> new JVineBlock(JBlockProperties.VINE));
     public static final DeferredBlock<Block> EUCA_GOLD_GRASS = registerGrassBlock("euca_gold_grass", "Euca Gold Grass", JGrassBlock::new);
     public static final DeferredBlock<Block> GOLDITE_GRASS = registerGrassBlock("goldite_grass", "Goldite Grass", JGrassBlock::new);
     public static final DeferredBlock<RotatedPillarBlock> EUCA_GOLD_LOG = addLogBlock("euca_gold_log", "Euca Gold Log");
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_EUCA_GOLD_LOG = registerPillar("stripped_euca_gold_log", "Stripped Euca Gold Log", true, JBlockProperties.WOOD);
     public static final DeferredBlock<Block> EUCA_GOLD_LEAVES = registerTerrainBlock("euca_gold_leaves", "Euca Gold Leaves", JBlockProperties.LEAVES);//JLeavesBlock::new);
-    public static final DeferredBlock<Block> EUCA_GOLD_SAPLING = registerCrossBlock("euca_gold_sapling", "Euca Gold Sapling", (p) -> new JSaplingBlock(JTreeGrower.EUCA_GOLD_TREE_GROWER, p), JBlockProperties.FLOWER);
+    public static final DeferredBlock<Block> EUCA_GOLD_SAPLING = registerCrossBlock("euca_gold_sapling", "Euca Gold Sapling", () -> new JSaplingBlock(JTreeGrower.EUCA_GOLD_TREE_GROWER, JBlockProperties.FLOWER));
     public static final DeferredBlock<Block> EUCA_GOLD_PLANKS = registerFuelBlock("euca_gold_planks", "Euca Gold Planks", JBlockProperties.WOOD, 300);
     public static final DeferredBlock<DoorBlock> EUCA_GOLD_DOOR = registerDoor("euca_gold_door", "Euca Gold Door", true, JBlockProperties.DOOR);
     public static final DeferredBlock<TrapDoorBlock> EUCA_GOLD_TRAP_DOOR = registerTrapDoor("euca_gold_trap_door", "Euca Gold Trap Door", true, JBlockProperties.DOOR);
@@ -354,11 +349,11 @@ public class JBlocks {
     public static final DeferredBlock<PressurePlateBlock> EUCA_GOLD_PRESSURE_PLATE = registerPressurePlate("euca_gold_pressure_plate", "Euca Gold Pressure Plate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<FenceGateBlock> EUCA_GOLD_FENCE_GATE = registerFenceGate("euca_gold_fence_gate", "Euca Gold Fence Gate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<JFenceBlock> EUCA_GOLD_FENCE = registerFence("euca_gold_fence", "Euca Gold Fence", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<Block> GOLDITE_PATH = registerPathBlock("goldite_path", "Goldite Path");
+    public static final DeferredBlock<Block> GOLDITE_PATH = registerPathBlock("goldite_path", "Goldite Path", () -> new JDirtPathBlock(JBlockProperties.PATH));
     public static final DeferredBlock<RotatedPillarBlock> EUCA_BROWN_LOG = addLogBlock("euca_brown_log", "Euca Brown Log");
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_EUCA_BROWN_LOG = registerPillar("stripped_euca_brown_log", "Stripped Euca Brown Log", true, JBlockProperties.WOOD);
     public static final DeferredBlock<Block> EUCA_GREEN_LEAVES = registerAltTexBlock("euca_green_leaves", "Euca Green Leaves", JBlockProperties.LEAVES);// JLeavesBlock::new);
-    public static final DeferredBlock<Block> EUCA_GREEN_SAPLING = registerCrossBlock("euca_green_sapling", "Euca Green Sapling", (p) -> new JSaplingBlock(JTreeGrower.EUCA_GREEN_TREE_GROWER, p), JBlockProperties.FLOWER);
+    public static final DeferredBlock<Block> EUCA_GREEN_SAPLING = registerCrossBlock("euca_green_sapling", "Euca Green Sapling", () -> new JSaplingBlock(JTreeGrower.EUCA_GREEN_TREE_GROWER, JBlockProperties.FLOWER));
     public static final DeferredBlock<Block> EUCA_BROWN_PLANKS = registerFuelBlock("euca_brown_planks", "Euca Brown Planks", JBlockProperties.WOOD, 300);
     public static final DeferredBlock<DoorBlock> EUCA_BROWN_DOOR = registerDoor("euca_brown_door", "Euca Brown Door", true, JBlockProperties.DOOR);
     public static final DeferredBlock<TrapDoorBlock> EUCA_BROWN_TRAP_DOOR = registerTrapDoor("euca_brown_trap_door", "Euca Brown Trap Door", true, JBlockProperties.DOOR);
@@ -370,15 +365,15 @@ public class JBlocks {
     public static final DeferredBlock<JFenceBlock> EUCA_BROWN_FENCE = registerFence("euca_brown_fence", "Euca Brown Fence", true, JBlockProperties.WOOD);
 
     public static final DeferredBlock<Block> FROZEN_PORTAL_FRAME = register("frozen_portal_frame", "Frozen Portal Frame", JBlockProperties.STONE);
-    public static final DeferredBlock<JBasePortalBlock> FROZEN_PORTAL = registerPortalBlock("frozen_portal", "Frozen Portal", Dimensions.FROZEN_LANDS, FROZEN_PORTAL_FRAME);
+    public static final DeferredBlock<JBasePortalBlock> FROZEN_PORTAL = registerPortalBlock("frozen_portal", "Frozen Portal", () -> new JBasePortalBlock(Dimensions.FROZEN_LANDS, FROZEN_PORTAL_FRAME));
     public static final DeferredBlock<Block> FUMICE = register("fumice", "Fumice", JBlockProperties.DIRT);
     public static final DeferredBlock<Block> GRASSY_PERMAFROST = registerGrassBlock("grassy_permafrost", "Grassy Permafrost", JGrassBlock::new);
     public static final DeferredBlock<Block> PERMAFROST = registerTerrainBlock("permafrost", "Permafrost", JBlockProperties.STONE);
-    public static final DeferredBlock<Block> CRUMBLED_PERMAFROST = registerTerrainBlock("crumbled_permafrost", "Crumbled Permafrost", JDirt::new, JBlockProperties.DIRT);
+    public static final DeferredBlock<Block> CRUMBLED_PERMAFROST = registerTerrainBlock("crumbled_permafrost", "Crumbled Permafrost", JDirt::new);
     public static final DeferredBlock<RotatedPillarBlock> FROZEN_LOG = addLogBlock("frozen_log", "Frozen Log");
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_FROZEN_LOG = registerPillar("stripped_frozen_log", "Stripped Frozen Log", true, JBlockProperties.WOOD);
     public static final DeferredBlock<Block> FROZEN_LEAVES = registerTerrainBlock("frozen_leaves", "Frozen Leaves", JBlockProperties.LEAVES);
-    public static final DeferredBlock<Block> FROSTWOOD_SAPLING = registerCrossBlock("frostwood_sapling", "Frostwood Sapling", (p) -> new JSaplingBlock(JTreeGrower.EUCA_GREEN_TREE_GROWER, p), JBlockProperties.FLOWER);
+    public static final DeferredBlock<Block> FROSTWOOD_SAPLING = registerCrossBlock("frostwood_sapling", "Frostwood Sapling", () -> new JSaplingBlock(JTreeGrower.EUCA_GREEN_TREE_GROWER, JBlockProperties.FLOWER));
     public static final DeferredBlock<Block> FROZEN_PLANKS = registerFuelBlock("frozen_planks", "Frostwood Planks", JBlockProperties.WOOD, 300);
     public static final DeferredBlock<DoorBlock> FROZEN_DOOR = registerDoor("frozen_door", "Frostwood Door", true, JBlockProperties.DOOR);
     public static final DeferredBlock<TrapDoorBlock> FROZEN_TRAP_DOOR = registerTrapDoor("frozen_trap_door", "Frostwood Trap Door", true, JBlockProperties.DOOR);
@@ -388,21 +383,21 @@ public class JBlocks {
     public static final DeferredBlock<PressurePlateBlock> FROZEN_PRESSURE_PLATE = registerPressurePlate("frozen_pressure_plate", "Frostwood Pressure Plate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<FenceGateBlock> FROZEN_FENCE_GATE = registerFenceGate("frozen_fence_gate", "Frostwood Fence Gate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<JFenceBlock> FROZEN_FENCE = registerFence("frozen_fence", "Frostwood Fence", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<Block> FROST_CRYSTAL_LARGE = registerAttachedCrossBlock("frost_crystal_large", "Frost Crystal", AttachedBlock::new, JBlockProperties.CRYSTAL);
-    public static final DeferredBlock<Block> FROST_CRYSTAL_MEDIUM = registerAttachedCrossBlock("frost_crystal_medium", "Frost Crystal", AttachedBlock::new, JBlockProperties.CRYSTAL);
-    public static final DeferredBlock<Block> FROST_CRYSTAL_SMALL = registerAttachedCrossBlock("frost_crystal_small", "Frost Crystal", AttachedBlock::new, JBlockProperties.CRYSTAL);
-    public static final DeferredBlock<Block> FROST_CRYSTAL_TINY = registerAttachedCrossBlock("frost_crystal_tiny", "Frost Crystal", AttachedBlock::new, JBlockProperties.CRYSTAL);
-    public static final DeferredBlock<Block> FROSTBERRY_THORN = registerCrossBlock("frostberry_thorn", "Frostberry Thorn", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> ICE_BUSH = registerCrossBlock("ice_bush", "Ice Bush", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> ICE_BUD = registerCrossBlock("ice_bud", "Ice Bud", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> CICLEBLOOM = registerModeledBlock("ciclebloom", "Cicle Bloom", SingleDoublePlant::new, JBlockProperties.PLANT.lightLevel((light) -> 4));
-    public static final DeferredBlock<Block> ICY_BRUSH = registerVineBlock("icy_brush", "Icy Brush", JVineBlock::new, JBlockProperties.VINE);
-    public static final DeferredBlock<Block> CRYSTAL_FRUIT = registerModeledBlock("crystal_fruit", "Crystal Fruit", CrystalFruit::new, JBlockProperties.CRYSTAL_FRUIT);
-    public static final DeferredBlock<GrowingPlantHeadBlock> ICY_IVY = registerGrowingPlantHeadBlock("icy_ivy", "Icy Ivy", IcyIvyTopBlock::new, JBlockProperties.VINE);
-    public static final DeferredBlock<Block> ICY_IVY_PLANT = registerCrossBlock("icy_ivy_plant", "Icy Ivy", IcyIvyBlock::new, JBlockProperties.VINE);
-    public static final DeferredBlock<Block> ICE_SHROOM_SHELF = registerModeledBlock("ice_shroom_shelf", "Ice Shroom Shelf", JBlockFungalShelf::new, JBlockProperties.MUSHROOM_SHELF);
-    public static final DeferredBlock<Block> BITTERWOOD_SAPLING = registerCrossBlock("bitterwood_sapling", "Bitterwood Sapling", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> BITTERWOOD_CAMPFIRE = registerCampfire("bitterwood_campfire", "Bitterwood Campfire", BitterwoodCampfireBlock::new, JBlockProperties.CAMPFIRE);
+    public static final DeferredBlock<Block> FROST_CRYSTAL_LARGE = registerAttachedCrossBlock("frost_crystal_large", "Frost Crystal", () -> new AttachedBlock(JBlockProperties.CRYSTAL));
+    public static final DeferredBlock<Block> FROST_CRYSTAL_MEDIUM = registerAttachedCrossBlock("frost_crystal_medium", "Frost Crystal", () -> new AttachedBlock(JBlockProperties.CRYSTAL));
+    public static final DeferredBlock<Block> FROST_CRYSTAL_SMALL = registerAttachedCrossBlock("frost_crystal_small", "Frost Crystal", () -> new AttachedBlock(JBlockProperties.CRYSTAL));
+    public static final DeferredBlock<Block> FROST_CRYSTAL_TINY = registerAttachedCrossBlock("frost_crystal_tiny", "Frost Crystal", () -> new AttachedBlock(JBlockProperties.CRYSTAL));
+    public static final DeferredBlock<Block> FROSTBERRY_THORN = registerCrossBlock("frostberry_thorn", "Frostberry Thorn", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> ICE_BUSH = registerCrossBlock("ice_bush", "Ice Bush", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> ICE_BUD = registerCrossBlock("ice_bud", "Ice Bud", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> CICLEBLOOM = registerModeledBlock("ciclebloom", "Cicle Bloom", () -> new SingleDoublePlant(JBlockProperties.PLANT.lightLevel((light) -> 4)));
+    public static final DeferredBlock<Block> ICY_BRUSH = registerVineBlock("icy_brush", "Icy Brush", () -> new JVineBlock(JBlockProperties.VINE));
+    public static final DeferredBlock<Block> CRYSTAL_FRUIT = registerModeledBlock("crystal_fruit", "Crystal Fruit", () -> new CrystalFruit(JBlockProperties.CRYSTAL_FRUIT));
+    public static final DeferredBlock<GrowingPlantHeadBlock> ICY_IVY = registerGrowingPlantHeadBlock("icy_ivy", "Icy Ivy", () -> new IcyIvyTopBlock(JBlockProperties.VINE));
+    public static final DeferredBlock<Block> ICY_IVY_PLANT = registerCrossBlock("icy_ivy_plant", "Icy Ivy", () -> new IcyIvyBlock(JBlockProperties.VINE));
+    public static final DeferredBlock<Block> ICE_SHROOM_SHELF = registerModeledBlock("ice_shroom_shelf", "Ice Shroom Shelf", JBlockFungalShelf::new);
+    public static final DeferredBlock<Block> BITTERWOOD_SAPLING = registerCrossBlock("bitterwood_sapling", "Bitterwood Sapling", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> BITTERWOOD_CAMPFIRE = registerCampfire("bitterwood_campfire", "Bitterwood Campfire", BitterwoodCampfireBlock::new);
     public static final DeferredBlock<Block> PERMAFROST_FURNACE = registerFurnaceBlock("permafrost_furnace", "Permafrost Furnace");
     public static final DeferredBlock<Block> PACKED_SNOW_BRICKS = register("packed_snow_bricks", "Packed Snow Bricks", JBlockProperties.STONE);
     public static final DeferredBlock<Block> PACKED_ICE_BRICKS = register("packed_ice_bricks", "Packed Ice Bricks", JBlockProperties.STONE);
@@ -411,9 +406,9 @@ public class JBlocks {
     public static final DeferredBlock<Block> FROZEN_BRICKS = register("frozen_bricks", "Frozen Bricks", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> PACKED_SNOW_BRICKS_STAIRS = registerStairs("packed_snow_brick_stairs", "Packed Snow Brick Stairs", PACKED_SNOW_BRICKS, false, JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> PACKED_ICE_BRICKS_STAIRS = registerStairs("packed_ice_brick_stairs", "Packed ice Brick Stairs", PACKED_ICE_BRICKS, false, JBlockProperties.STONE);
-    public static final DeferredBlock<Block> PERMAFROST_ROAD = registerPathBlock("permafrost_road", "Permafrost Road");
-    public static final DeferredBlock<Block> FROZEN_BLOOM = registerCrossBlock("frozen_bloom", "Frozen Bloom", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> FROZEN_FLOWER = registerCrossBlock("frozen_flower", "Frozen Flower", TallGrassBlock::new, JBlockProperties.FLOWER);
+    public static final DeferredBlock<Block> PERMAFROST_ROAD = registerPathBlock("permafrost_road", "Permafrost Road", () -> new JDirtPathBlock(JBlockProperties.PATH));
+    public static final DeferredBlock<Block> FROZEN_BLOOM = registerCrossBlock("frozen_bloom", "Frozen Bloom", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> FROZEN_FLOWER = registerCrossBlock("frozen_flower", "Frozen Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final DeferredBlock<Block> FROSTY_ICE = register("frosty_ice", "Frosty Ice", JBlockProperties.ICE);
     public static final DeferredBlock<Block> ICE_STONE = register("ice_stone", "Ice Stone", JBlockProperties.GLOW_BLOCK);
     public static final DeferredBlock<Block> FROST_GEM_BLOCK = register("frost_gem_block", "Frost Gem Block", JBlockProperties.STONE);
@@ -421,8 +416,8 @@ public class JBlocks {
     public static final DeferredBlock<Block> GLACIAL_ROCK = register("glacial_rock", "Glacial Rock", JBlockProperties.STONE);
 
     public static final DeferredBlock<Block> BOIL_PORTAL_FRAME = register("boil_portal_frame", "Boiling Point Portal Frame", JBlockProperties.STONE);
-    public static final DeferredBlock<JBasePortalBlock> BOIL_PORTAL = registerPortalBlock("boil_portal", "Boiling Point Portal", Dimensions.BOIL, BOIL_PORTAL_FRAME);
-    public static final DeferredBlock<Block> SULPHUR_CRYSTAL = registerAttachedCrossBlock("sulphur_crystal", "Sulphur Crystal", AttachedBlock::new, JBlockProperties.STONE);
+    public static final DeferredBlock<JBasePortalBlock> BOIL_PORTAL = registerPortalBlock("boil_portal", "Boiling Point Portal", () -> new JBasePortalBlock(Dimensions.BOIL, BOIL_PORTAL_FRAME));
+    public static final DeferredBlock<Block> SULPHUR_CRYSTAL = registerAttachedCrossBlock("sulphur_crystal", "Sulphur Crystal", () -> new AttachedBlock(JBlockProperties.STONE));
     public static final DeferredBlock<Block> SULPHUR_ROCK = register("sulphur_rock", "Sulphur Rock", JBlockProperties.STONE);
     public static final DeferredBlock<Block> RUBBLE = registerTerrainBlock("rubble", "Rubble", JBlockProperties.FIRE_DIRT);
     public static final DeferredBlock<Block> ASH_BLOCK = registerTerrainBlock("ash_block", "Ash", JBlockProperties.FIRE_STONE);
@@ -431,25 +426,25 @@ public class JBlocks {
     public static final DeferredBlock<Block> VOLCANIC_SOIL = registerTerrainBlock("volcanic_soil", "Volcanic Soil", JBlockProperties.FIRE_DIRT);
     public static final DeferredBlock<Block> HOT_GROUND = registerTerrainBlock("hot_ground", "Hot Ground", JBlockProperties.FIRE_STONE);
     public static final DeferredBlock<Block> CHARRED_GRASS = registerGrassBlock("charred_grass", "Charred Grass", JGrassBlock::new);
-    public static final DeferredBlock<Block> VOLCANIC_SANDSTONE = registerGrassBlock("volcanic_sandstone", "Volcanic Sandstone", Block::new, JBlockProperties.STONE);
-    public static final DeferredBlock<Block> SCORCHED_STALAGMITE_TINY = registerModeledBlock("scorched_stalagmite_tiny", "Scorched Stalagmite", JBlockStalagmite::new, JBlockProperties.STONE);
-    public static final DeferredBlock<Block> SCORCHED_STALAGMITE_SMALL = registerModeledBlock("scorched_stalagmite_small", "Scorched Stalagmite", JBlockStalagmite::new, JBlockProperties.STONE);
-    public static final DeferredBlock<Block> SCORCHED_STALAGMITE_MED = registerModeledBlock("scorched_stalagmite_med", "Scorched Stalagmite", JBlockStalagmite::new, JBlockProperties.STONE);
-    public static final DeferredBlock<Block> SCORCHED_STALAGMITE_LARGE = registerModeledBlock("scorched_stalagmite_large", "Scorched Stalagmite", JBlockStalagmite::new, JBlockProperties.STONE);
-    public static final DeferredBlock<Block> CHARRED_BRUSH = registerModeledBlock("charred_brush", "Charred Brush", VineBlock::new, JBlockProperties.VINE);
-    public static final DeferredBlock<Block> CHARRED_SHORT_GRASS = registerCrossBlock("charred_short_grass", "Charred Short Grass", TallGrassBlock::new, JBlockProperties.REPLACABLE_PLANT);
-    public static final DeferredBlock<Block> CHARRED_WEEDS = registerCrossBlock("charred_weeds", "Charred Weeds", TallGrassBlock::new, JBlockProperties.REPLACABLE_PLANT);
-    public static final DeferredBlock<Block> CRUMBLING_PINE = registerCrossBlock("crumbling_pine", "Crumbling Pine", TallGrassBlock::new, JBlockProperties.REPLACABLE_PLANT);
-    public static final DeferredBlock<Block> CRISP_GRASS = registerCrossBlock("crisp_grass", "Crisp Grass", TallGrassBlock::new, JBlockProperties.REPLACABLE_PLANT);
-    public static final DeferredBlock<Block> FLAME_POD = registerCrossBlock("flame_pod", "Flame Pod", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> LAVA_BLOOM = registerCrossBlock("lava_bloom", "Lava Bloom", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> INFERNO_BUSH = registerCrossBlock("inferno_bush", "Inferno Bush", TallGrassBlock::new, JBlockProperties.REPLACABLE_PLANT);
-    public static final DeferredBlock<Block> SCORCHED_CACTUS = registerModeledBlock("scorched_cactus", "Scorched Cactus", JBlockCactus::new, JBlockProperties.CACTUS);
+    public static final DeferredBlock<Block> VOLCANIC_SANDSTONE = registerGrassBlock("volcanic_sandstone", "Volcanic Sandstone", () -> new Block(JBlockProperties.STONE), JBlockProperties.STONE);
+    public static final DeferredBlock<Block> SCORCHED_STALAGMITE_TINY = registerModeledBlock("scorched_stalagmite_tiny", "Scorched Stalagmite", JBlockStalagmite::new);
+    public static final DeferredBlock<Block> SCORCHED_STALAGMITE_SMALL = registerModeledBlock("scorched_stalagmite_small", "Scorched Stalagmite", JBlockStalagmite::new);
+    public static final DeferredBlock<Block> SCORCHED_STALAGMITE_MED = registerModeledBlock("scorched_stalagmite_med", "Scorched Stalagmite", JBlockStalagmite::new);
+    public static final DeferredBlock<Block> SCORCHED_STALAGMITE_LARGE = registerModeledBlock("scorched_stalagmite_large", "Scorched Stalagmite", JBlockStalagmite::new);
+    public static final DeferredBlock<Block> CHARRED_BRUSH = registerModeledBlock("charred_brush", "Charred Brush", () -> new VineBlock(JBlockProperties.VINE));
+    public static final DeferredBlock<Block> CHARRED_SHORT_GRASS = registerCrossBlock("charred_short_grass", "Charred Short Grass", () -> new TallGrassBlock(JBlockProperties.REPLACABLE_PLANT));
+    public static final DeferredBlock<Block> CHARRED_WEEDS = registerCrossBlock("charred_weeds", "Charred Weeds", () -> new TallGrassBlock(JBlockProperties.REPLACABLE_PLANT));
+    public static final DeferredBlock<Block> CRUMBLING_PINE = registerCrossBlock("crumbling_pine", "Crumbling Pine", () -> new TallGrassBlock(JBlockProperties.REPLACABLE_PLANT));
+    public static final DeferredBlock<Block> CRISP_GRASS = registerCrossBlock("crisp_grass", "Crisp Grass", () -> new TallGrassBlock(JBlockProperties.REPLACABLE_PLANT));
+    public static final DeferredBlock<Block> FLAME_POD = registerCrossBlock("flame_pod", "Flame Pod", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> LAVA_BLOOM = registerCrossBlock("lava_bloom", "Lava Bloom", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> INFERNO_BUSH = registerCrossBlock("inferno_bush", "Inferno Bush", () -> new TallGrassBlock(JBlockProperties.REPLACABLE_PLANT));
+    public static final DeferredBlock<Block> SCORCHED_CACTUS = registerModeledBlock("scorched_cactus", "Scorched Cactus", JBlockCactus::new);
     public static final DeferredBlock<Block> CHARRED_LEAVES = registerTerrainBlock("charred_leaves", "Charred Leaves", JBlockProperties.LEAVES);
     public static final DeferredBlock<RotatedPillarBlock> BURNED_BARK = addLogBlock("burned_bark", "Burned Bark");
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_BURNED_BARK = registerPillar("stripped_burned_bark", "Stripped Burned Bark", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<Block> BURNED_SAPLING = registerCrossBlock("burned_sapling", "Burned Sapling", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> CHARRED_SAPLING = registerCrossBlock("charred_sapling", "Charred Sapling", TallGrassBlock::new, JBlockProperties.FLOWER);
+    public static final DeferredBlock<Block> BURNED_SAPLING = registerCrossBlock("burned_sapling", "Burned Sapling", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> CHARRED_SAPLING = registerCrossBlock("charred_sapling", "Charred Sapling", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final DeferredBlock<Block> BURNED_PLANKS = registerFuelBlock("burned_bark_planks", "Burned Planks", JBlockProperties.WOOD, 300);
     public static final DeferredBlock<DoorBlock> BURNED_DOOR = registerDoor("burned_door", "Burned Door", true, JBlockProperties.DOOR);
     public static final DeferredBlock<TrapDoorBlock> BURNED_TRAP_DOOR = registerTrapDoor("burned_trap_door", "Burned Trap Door", true, JBlockProperties.DOOR);
@@ -459,24 +454,24 @@ public class JBlocks {
     public static final DeferredBlock<PressurePlateBlock> BURNED_PRESSURE_PLATE = registerPressurePlate("burned_pressure_plate", "Burned Pressure Plate",true, JBlockProperties.WOOD);
     public static final DeferredBlock<FenceGateBlock> BURNED_FENCE_GATE = registerFenceGate("burned_fence_gate", "Burned Fence Gate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<JFenceBlock> BURNED_FENCE = registerFence("burned_fence", "Burned Fence", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<Block> VOLCANIC_ROCK = registerModeledBlock("volcanic_rock", "Volcanic Rock", VolcanicRockBlock::new, JBlockProperties.VOLCANIC_BLOCK);
-    public static final DeferredBlock<Block> BOIL_LOCK = registerRotatableBlock("boil_lock", "Boiling Lock", LockBlock::new, JBlockProperties.DUNGEON_BLOCK, false);
-    public static final DeferredBlock<Block> TALL_MOLTEN_PLANT = registerDoublePlant("tall_molten_plant", "Tall Molten Plant", JDoublePlantBlock::new, JBlockProperties.PLANT);
-    public static final DeferredBlock<Block> TALL_CRUMBLING_PINE = registerDoublePlant("tall_crumbling_pine", "Tall Crumbling Pine", JDoublePlantBlock::new, JBlockProperties.PLANT);
-    public static final DeferredBlock<Block> TALL_CHARRED_GRASS = registerDoublePlant("tall_charred_grass", "Tall Charred Grass", JDoublePlantBlock::new, JBlockProperties.PLANT);
-    public static final DeferredBlock<Block> TALL_SIZZLESHROOM = registerDoublePlant("tall_sizzleshroom", "Tall Sizzleshroom", TallGlowshroomBlock::new, JBlockProperties.CAVE_GLOW_PLANT);
-    public static final DeferredBlock<Block> SIZZLESHROOM = registerCrossBlock("sizzleshroom", "Sizzleshroom", CavePlantBlock::new, JBlockProperties.CAVE_GLOW_PLANT);
+    public static final DeferredBlock<Block> VOLCANIC_ROCK = registerModeledBlock("volcanic_rock", "Volcanic Rock", () -> new VolcanicRockBlock(JBlockProperties.VOLCANIC_BLOCK));
+    public static final DeferredBlock<Block> BOIL_LOCK = registerRotatableBlock("boil_lock", "Boiling Lock", LockBlock::new, false);
+    public static final DeferredBlock<Block> TALL_MOLTEN_PLANT = registerDoublePlant("tall_molten_plant", "Tall Molten Plant", () -> new JDoublePlantBlock(JBlockProperties.PLANT));
+    public static final DeferredBlock<Block> TALL_CRUMBLING_PINE = registerDoublePlant("tall_crumbling_pine", "Tall Crumbling Pine", () -> new JDoublePlantBlock(JBlockProperties.PLANT));
+    public static final DeferredBlock<Block> TALL_CHARRED_GRASS = registerDoublePlant("tall_charred_grass", "Tall Charred Grass", () -> new JDoublePlantBlock(JBlockProperties.PLANT));
+    public static final DeferredBlock<Block> TALL_SIZZLESHROOM = registerDoublePlant("tall_sizzleshroom", "Tall Sizzleshroom", () -> new TallGlowshroomBlock(JBlockProperties.CAVE_GLOW_PLANT));
+    public static final DeferredBlock<Block> SIZZLESHROOM = registerCrossBlock("sizzleshroom", "Sizzleshroom", () -> new CavePlantBlock(JBlockProperties.CAVE_GLOW_PLANT));
 
-    public static final DeferredBlock<Block> DEPTHS_PORTAL_FRAME = registerEndPortalFrameStyleBlock("depths_portal_frame", "Depths Portal Frame", DepthsPortalFrameBlock::new, JBlockProperties.STONE);
-    public static final DeferredBlock<Block> DEPTHS_PORTAL = registerEndPortalStyleBlock("depths_portal", "Depths Portal", DepthsPortalBlock::new, JBlockProperties.PORTAL);
+    public static final DeferredBlock<Block> DEPTHS_PORTAL_FRAME = registerEndPortalFrameStyleBlock("depths_portal_frame", "Depths Portal Frame", DepthsPortalFrameBlock::new);
+    public static final DeferredBlock<Block> DEPTHS_PORTAL = registerEndPortalStyleBlock("depths_portal", "Depths Portal", DepthsPortalBlock::new);
     public static final DeferredBlock<Block> DEPTHS_GRASS = registerGrassBlock("depths_grass", "Depths Grass", JGrassBlock::new);
-    public static final DeferredBlock<Block> DEPTHS_PATH = registerPathBlock("depths_path", "Depths Path");
-    public static final DeferredBlock<Block> DEPTHS_DIRT = registerTerrainBlock("depths_dirt", "Depths Soil", JDirt::new, JBlockProperties.DIRT);
+    public static final DeferredBlock<Block> DEPTHS_PATH = registerPathBlock("depths_path", "Depths Path", () -> new JDirtPathBlock(JBlockProperties.PATH));
+    public static final DeferredBlock<Block> DEPTHS_DIRT = registerTerrainBlock("depths_dirt", "Depths Soil", JDirt::new);
     public static final DeferredBlock<Block> DEPTHS_STONE = registerTerrainBlock("depths_stone", "Depths Stone", JBlockProperties.STONE);
     public static final DeferredBlock<RotatedPillarBlock> DEPTHS_LOG = addLogBlock("depths_log", "Depths Log");
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_DEPTHS_LOG = registerPillar("stripped_depths_log", "Stripped Depths Log", true, JBlockProperties.WOOD);
     public static final DeferredBlock<Block> DEPTHS_LEAVES = registerTerrainBlock("depths_leaves", "Depths Leaves", JBlockProperties.LUMINESCENT_LEAVES);
-    public static final DeferredBlock<Block> DEPTHS_SAPLING = registerCrossBlock("depths_sapling", "Depths Sapling", (p) -> new JSaplingBlock(JTreeGrower.DEPTHS_TREE_GROWER, p), JBlockProperties.FLOWER);
+    public static final DeferredBlock<Block> DEPTHS_SAPLING = registerCrossBlock("depths_sapling", "Depths Sapling", () -> new JSaplingBlock(JTreeGrower.DEPTHS_TREE_GROWER, JBlockProperties.FLOWER));
     public static final DeferredBlock<Block> DEPTHS_PLANKS = registerFuelBlock("depths_planks", "Depths Planks", JBlockProperties.WOOD, 300);
     public static final DeferredBlock<DoorBlock> DEPTHS_DOOR = registerDoor("depths_door", "Depths Door", true, JBlockProperties.DOOR);
     public static final DeferredBlock<TrapDoorBlock> DEPTHS_TRAP_DOOR = registerTrapDoor("depths_trap_door", "Depths Trap Door", true, JBlockProperties.DOOR);
@@ -486,13 +481,13 @@ public class JBlocks {
     public static final DeferredBlock<PressurePlateBlock> DEPTHS_PRESSURE_PLATE = registerPressurePlate("depths_pressure_plate", "Depths Pressure Plate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<FenceGateBlock> DEPTHS_FENCE_GATE = registerFenceGate("depths_fence_gate", "Depths Fence Gate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<JFenceBlock> DEPTHS_FENCE = registerFence("depths_fence", "Depths Fence", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<Block> DEPTHS_CRYSTAL = registerAttachedCrossBlock("depths_crystal", "Depths Crystal", AttachedBlock::new, JBlockProperties.GLOW_BLOCK.noCollission().noOcclusion());
+    public static final DeferredBlock<Block> DEPTHS_CRYSTAL = registerAttachedCrossBlock("depths_crystal", "Depths Crystal", () -> new AttachedBlock(JBlockProperties.GLOW_BLOCK.noCollission().noOcclusion()));
     public static final DeferredBlock<Block> DEPTHS_CRYSTAL_BLOCK = register("depths_crystal_block", "Depths Crystal Block", JBlockProperties.STONE);
     public static final DeferredBlock<Block> BUDDING_DEPTHS_CRYSTAL = register("budding_depths_crystal", "Budding Depths Crystal", JBlockProperties.STONE);
-    public static final DeferredBlock<Block> FLOOR_DEPTHS_CRYSTAL_BLUE = registerModeledBlock("floor_depths_crystal_blue", "Depths Crystal", FloorDepthsCrystalBlock::new, JBlockProperties.CRYSTAL);
-    public static final DeferredBlock<Block> FLOOR_DEPTHS_CRYSTAL_PINK = registerModeledBlock("floor_depths_crystal_pink", "Depths Crystal", FloorDepthsCrystalBlock::new, JBlockProperties.CRYSTAL);
-    public static final DeferredBlock<Block> FLOOR_DEPTHS_CRYSTAL_YELLOW = registerModeledBlock("floor_depths_crystal_yellow", "Depths Crystal", FloorDepthsCrystalBlock::new, JBlockProperties.CRYSTAL);
-    public static final DeferredBlock<Block> FLOOR_DEPTHS_CRYSTAL_GREEN = registerModeledBlock("floor_depths_crystal_green", "Depths Crystal", FloorDepthsCrystalBlock::new, JBlockProperties.CRYSTAL);
+    public static final DeferredBlock<Block> FLOOR_DEPTHS_CRYSTAL_BLUE = registerModeledBlock("floor_depths_crystal_blue", "Depths Crystal", FloorDepthsCrystalBlock::new);
+    public static final DeferredBlock<Block> FLOOR_DEPTHS_CRYSTAL_PINK = registerModeledBlock("floor_depths_crystal_pink", "Depths Crystal", FloorDepthsCrystalBlock::new);
+    public static final DeferredBlock<Block> FLOOR_DEPTHS_CRYSTAL_YELLOW = registerModeledBlock("floor_depths_crystal_yellow", "Depths Crystal", FloorDepthsCrystalBlock::new);
+    public static final DeferredBlock<Block> FLOOR_DEPTHS_CRYSTAL_GREEN = registerModeledBlock("floor_depths_crystal_green", "Depths Crystal", FloorDepthsCrystalBlock::new);
     public static final DeferredBlock<Block> DARK_BRICK = register("dark_brick", "Dark Brick", JBlockProperties.STONE);
     public static final DeferredBlock<Block> DARK_FLOOR = register("dark_floor", "Dark Floor", JBlockProperties.STONE);
     public static final DeferredBlock<Block> DARK_SHINGLE = register("dark_shingle", "Dark Shingle", JBlockProperties.STONE);
@@ -501,23 +496,23 @@ public class JBlocks {
     public static final DeferredBlock<Block> DEPTHS_DARK_SHINGLE = register("depths_dark_shingle", "Depths Dark Shingle", JBlockProperties.STONE);
     public static final DeferredBlock<Block> DEPTHS_COBBLESTONE = register("depths_cobblestone", "Depths Cobblestone", JBlockProperties.STONE);
     public static final DeferredBlock<Block> DEPTHS_TILE = register("depths_tile", "Depths Tile", JBlockProperties.STONE);
-    public static final DeferredBlock<Block> DEPTHS_GLASS = register("depths_glass", "Depths Glass", JTransparentBlock::new, JBlockProperties.GLASS);
+    public static final DeferredBlock<Block> DEPTHS_GLASS = register("depths_glass", "Depths Glass", () -> new JTransparentBlock(JBlockProperties.GLASS), JBlockProperties.GLASS);
     public static final DeferredBlock<RotatedPillarBlock> DEPTHS_PILLAR = registerPillar("depths_pillar", "Depths Pillar", false, JBlockProperties.STONE);
-    public static final DeferredBlock<Block> DARKLY_LOCK = registerRotatableBlock("darkly_lock", "Darkly Lock", LockBlock::new, JBlockProperties.DUNGEON_BLOCK, false);
-    public static final DeferredBlock<Block> DEPTHS_LOCK = registerRotatableBlock("depths_lock", "Depths Lock", LockBlock::new, JBlockProperties.DUNGEON_BLOCK, false);
+    public static final DeferredBlock<Block> DARKLY_LOCK = registerRotatableBlock("darkly_lock", "Darkly Lock", LockBlock::new, false);
+    public static final DeferredBlock<Block> DEPTHS_LOCK = registerRotatableBlock("depths_lock", "Depths Lock", LockBlock::new, false);
     public static final DeferredBlock<RotatedPillarBlock> DEPTHS_BOOK_SHELF = registerPillar("depths_book_shelf", "Depths Bookshelf", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<Block> DEPTHS_BLUE_FLOWER = registerCrossBlock("depths_blue_flower", "Depths Blue Flower", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> DEPTHS_FLOWER = registerCrossBlock("depths_flower", "Depths Flower", TallGrassBlock::new, JBlockProperties.FLOWER);
+    public static final DeferredBlock<Block> DEPTHS_BLUE_FLOWER = registerCrossBlock("depths_blue_flower", "Depths Blue Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> DEPTHS_FLOWER = registerCrossBlock("depths_flower", "Depths Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
     public static final DeferredBlock<Block> DEPTHS_FURNACE = registerFurnaceBlock("depths_furnace", "Depths Furnace");
     public static final DeferredBlock<IronBarsBlock> DEPTHS_GATE = registerPaneBlock("depths_gate", "Depths Gate", JBlockProperties.DUNGEON_BLOCK);
     public static final DeferredBlock<Block> DARK_SORCERER_SPAWNER = register("dark_sorcerer_spawner", "Dark Sorcerer Spawner", DarkSorcererSpawnerBlock::new, JBlockProperties.SPAWNER);
 
-    public static final DeferredBlock<Block> CORBA_PORTAL_FRAME = registerEndPortalFrameStyleBlock("corba_portal_frame", "Corba Portal Frame", CorbaPortalFrameBlock::new, JBlockProperties.STONE);
-    public static final DeferredBlock<Block> CORBA_PORTAL = registerEndPortalStyleBlock("corba_portal", "Corba Portal", CorbaPortalBlock::new, JBlockProperties.PORTAL);
-    public static final DeferredBlock<Block> CORBA_DIRT = registerTerrainBlock("corba_dirt", "Corba Dirt", JDirt::new, JBlockProperties.DIRT);
+    public static final DeferredBlock<Block> CORBA_PORTAL_FRAME = registerEndPortalFrameStyleBlock("corba_portal_frame", "Corba Portal Frame", CorbaPortalFrameBlock::new);
+    public static final DeferredBlock<Block> CORBA_PORTAL = registerEndPortalStyleBlock("corba_portal", "Corba Portal", CorbaPortalBlock::new);
+    public static final DeferredBlock<Block> CORBA_DIRT = registerTerrainBlock("corba_dirt", "Corba Dirt", JDirt::new);
     public static final DeferredBlock<Block> CORBA_GRASS = registerOverlayGrassBlock("corba_grass", "Corba Grass", JGrassBlock::new);
     public static final DeferredBlock<Block> CORBA_STONE = registerTerrainBlock("corba_stone", "Corba Stone", JBlockProperties.STONE);
-    public static final DeferredBlock<Block> CORBA_PATH = registerPathBlock("corba_path", "Corba Path");
+    public static final DeferredBlock<Block> CORBA_PATH = registerPathBlock("corba_path", "Corba Path", () -> new JDirtPathBlock(JBlockProperties.PATH));
     public static final DeferredBlock<JFenceBlock> CORBA_POST = registerFence("corba_post", "Corba Post", true, JBlockProperties.WOOD);
     public static final DeferredBlock<JWallBlock> CORBA_COBBLESTONE_WALL = registerWallBlock("corba_cobblestone_wall", "Corba Cobblestone Wall", JBlockProperties.STONE);
     public static final DeferredBlock<RotatedPillarBlock> CORBA_PLILLAR = registerPillar("corba_pillar", "Corba Pillar", false, JBlockProperties.STONE);
@@ -526,11 +521,11 @@ public class JBlocks {
     public static final DeferredBlock<RotatedPillarBlock> BOGWOOD_LOG = addLogBlock("bogwood_log", "Bogwood Log");
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_BOGWOOD_LOG = registerPillar("stripped_bogwood_log", "Stripped Bogwood Log", true, JBlockProperties.WOOD);
     public static final DeferredBlock<Block> BOGWOOD_LEAVES = registerTintedLeavesBlock("bogwood_leaves", "Bogwood Leaves", JBlockProperties.LEAVES);
-    public static final DeferredBlock<Block> BOGWOOD_SAPLING = registerCrossBlock("bogwood_sapling", "Bogwood Sapling", (p) -> new JSaplingBlock(JTreeGrower.BOGWOOD_TREE_GROWER, p), JBlockProperties.FLOWER);
+    public static final DeferredBlock<Block> BOGWOOD_SAPLING = registerCrossBlock("bogwood_sapling", "Bogwood Sapling", () -> new JSaplingBlock(JTreeGrower.BOGWOOD_TREE_GROWER, JBlockProperties.FLOWER));
     public static final DeferredBlock<RotatedPillarBlock> CORBA_LOG = addLogBlock("corba_log", "Corba Log");
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_CORBA_LOG = registerPillar("stripped_corba_log", "Stripped Corba Log", true, JBlockProperties.WOOD);
     public static final DeferredBlock<Block> CORBA_LEAVES = registerTintedLeavesBlock("corba_leaves", "Corba Leaves", JBlockProperties.LEAVES);
-    public static final DeferredBlock<Block> CORBA_SAPLING = registerCrossBlock("corba_sapling", "Corba Sapling", (p) -> new JSaplingBlock(JTreeGrower.CORBA_TREE_GROWER, p), JBlockProperties.FLOWER);
+    public static final DeferredBlock<Block> CORBA_SAPLING = registerCrossBlock("corba_sapling", "Corba Sapling", () -> new JSaplingBlock(JTreeGrower.CORBA_TREE_GROWER, JBlockProperties.FLOWER));
     public static final DeferredBlock<Block> CORBA_PLANKS = registerFuelBlock("corba_planks", "Corba Planks", JBlockProperties.WOOD, 300);
     public static final DeferredBlock<DoorBlock> CORBA_DOOR = registerDoor("corba_door", "Corba Door", true, JBlockProperties.DOOR);
     public static final DeferredBlock<TrapDoorBlock> CORBA_TRAP_DOOR = registerTrapDoor("corba_trap_door", "Corba Trap Door", true, JBlockProperties.DOOR);
@@ -549,32 +544,32 @@ public class JBlocks {
     public static final DeferredBlock<Block> CORBA_LIGHT_BRICKS = register("corba_light_bricks", "Corba Light Bricks", JBlockProperties.STONE);
     public static final DeferredBlock<Block> OVERSEER_ELDER_SPAWNER = register("overseer_elder_spawner", "Overseer Elder Spawner", OverseerElderSpawnerBlock::new, JBlockProperties.SPAWNER);
     public static final DeferredBlock<Block> OVERSEER_SPAWNER = register("overseer_spawner", "Overseer Spawner", OverseerSpawnerBlock::new, JBlockProperties.SPAWNER);
-    public static final DeferredBlock<Block> ELDER_BLOCK = register("elder_block", "Elder Block", ChangableBlock::new, JBlockProperties.STONE.sound(SoundType.METAL));
+    public static final DeferredBlock<Block> ELDER_BLOCK = register("elder_block", "Elder Block", ChangableBlock::new);
     public static final DeferredBlock<Block> CORBA_SENTRY_BRICKS = register("corba_sentry_bricks", "Corba Sentry Bricks", JBlockProperties.STONE);
-    public static final DeferredBlock<Block> CORBA_LADDER = registerLadder("corba_ladder", "Corba Ladder", LadderBlock::new, JBlockProperties.LADDER);
-    public static final DeferredBlock<Block> CORBA_BLUE_FLOWER = registerCrossBlock("corba_blue_flower", "Corba Blue Flower", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> CORBA_RED_FLOWER = registerCrossBlock("corba_red_flower", "Corba Red Flower", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> CORBA_SPECKLED_FLOWER = registerCrossBlock("corba_speckled_flower", "Corba Speckled Flower", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> CORBA_PURPLE_FLOWER = registerCrossBlock("corba_purple_flower", "Corba Purple Flower", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> CORBA_LIGHT_PURPLE_FLOWER = registerCrossBlock("corba_light_purple_flower", "Corba Light Purple Flower", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> CORBA_DARK_PURPLE_FLOWER = registerCrossBlock("corba_dark_purple_flower", "Corba Dark Purple Flower", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> CORBA_FLOWER = registerCrossBlock("corba_flower", "Corba Flower", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> CORBA_TALL_GRASS = registerTintedCrossBlock("corba_tall_grass", "Corba Tall Grass", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> SMALL_BOGSHROOM = registerModeledBlock("small_bogshroom", "Small Bogshroom", TallGrassBlock::new, JBlockProperties.GLOW_FLOWER);
-    public static final DeferredBlock<Block> TALL_BOGSHROOM = registerModeledBlock("tall_bogshroom", "Tall Bogshroom", TallGrassBlock::new, JBlockProperties.GLOW_FLOWER);
-    public static final DeferredBlock<Block> BOGWEED = registerDoublePlant("bogweed", "Bogweed", JDoublePlantBlock::new, JBlockProperties.PLANT);
-    public static final DeferredBlock<Block> SWAMP_LILY = registerLilyPad("swamp_lily", "Swamp Lilly", WaterlilyBlock::new, JBlockProperties.LILY_PLANT);
-    public static final DeferredBlock<Block> FUNGAL_SHELF = registerModeledBlock("fungal_shelf", "Fungal Shelf", JBlockFungalShelf::new, JBlockProperties.MUSHROOM_SHELF);
-    public static final DeferredBlock<Block> SLIME = registerSlimeStyleBlock("slime", "Slime", JSlimeBlock::new, JBlockProperties.SLIME);
-    public static final DeferredBlock<Block> SWAMP_LAMP = registerModeledBlock("swamp_lamp", "Swamp Lamp", JBlockSwampLamp::new, JBlockProperties.BOTTLE);
+    public static final DeferredBlock<Block> CORBA_LADDER = registerLadder("corba_ladder", "Corba Ladder", () -> new LadderBlock(JBlockProperties.LADDER));
+    public static final DeferredBlock<Block> CORBA_BLUE_FLOWER = registerCrossBlock("corba_blue_flower", "Corba Blue Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> CORBA_RED_FLOWER = registerCrossBlock("corba_red_flower", "Corba Red Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> CORBA_SPECKLED_FLOWER = registerCrossBlock("corba_speckled_flower", "Corba Speckled Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> CORBA_PURPLE_FLOWER = registerCrossBlock("corba_purple_flower", "Corba Purple Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> CORBA_LIGHT_PURPLE_FLOWER = registerCrossBlock("corba_light_purple_flower", "Corba Light Purple Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> CORBA_DARK_PURPLE_FLOWER = registerCrossBlock("corba_dark_purple_flower", "Corba Dark Purple Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> CORBA_FLOWER = registerCrossBlock("corba_flower", "Corba Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> CORBA_TALL_GRASS = registerTintedCrossBlock("corba_tall_grass", "Corba Tall Grass", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> SMALL_BOGSHROOM = registerModeledBlock("small_bogshroom", "Small Bogshroom", () -> new TallGrassBlock(JBlockProperties.GLOW_FLOWER));
+    public static final DeferredBlock<Block> TALL_BOGSHROOM = registerModeledBlock("tall_bogshroom", "Tall Bogshroom", () -> new TallGrassBlock(JBlockProperties.GLOW_FLOWER));
+    public static final DeferredBlock<Block> BOGWEED = registerDoublePlant("bogweed", "Bogweed", () -> new JDoublePlantBlock(JBlockProperties.PLANT));
+    public static final DeferredBlock<Block> SWAMP_LILY = registerLilyPad("swamp_lily", "Swamp Lilly", () -> new WaterlilyBlock(JBlockProperties.LILY_PLANT));
+    public static final DeferredBlock<Block> FUNGAL_SHELF = registerModeledBlock("fungal_shelf", "Fungal Shelf", JBlockFungalShelf::new);
+    public static final DeferredBlock<Block> SLIME = registerSlimeStyleBlock("slime", "Slime", JSlimeBlock::new);
+    public static final DeferredBlock<Block> SWAMP_LAMP = registerModeledBlock("swamp_lamp", "Swamp Lamp", JBlockSwampLamp::new);
 
     public static final DeferredBlock<Block> TERRANIAN_PORTAL_FRAME = register("terranian_portal_frame", "Terranian Portal Frame", JBlockProperties.STONE);
-    public static final DeferredBlock<JBasePortalBlock> TERRANIAN_PORTAL = registerPortalBlock("terranian_portal", "Terranian Portal", Dimensions.TERRANIA, TERRANIAN_PORTAL_FRAME);
+    public static final DeferredBlock<JBasePortalBlock> TERRANIAN_PORTAL = registerPortalBlock("terranian_portal", "Terranian Portal", () -> new JBasePortalBlock(Dimensions.TERRANIA, TERRANIAN_PORTAL_FRAME));
     public static final DeferredBlock<Block> TERRANIAN_GRASS = registerGrassBlock("terranian_grass", "Terranian Grass", JGrassBlock::new);
-    public static final DeferredBlock<Block> TERRANIAN_DIRT = registerTerrainBlock("terranian_dirt", "Terranian Dirt", JDirt::new, JBlockProperties.DIRT);
+    public static final DeferredBlock<Block> TERRANIAN_DIRT = registerTerrainBlock("terranian_dirt", "Terranian Dirt", JDirt::new);
     public static final DeferredBlock<Block> TERRANIAN_STONE = register("terranian_stone", "Terranian Stone", JBlockProperties.STONE);
-    public static final DeferredBlock<Block> TERRANIAN_LEAVES = registerTopBottomBlock("terranian_leaves", "Terrania Leaves", Block::new, JBlockProperties.LEAVES);
-    public static final DeferredBlock<Block> TERRANIAN_VINE = registerVineBlock("terranian_vine", "Terrania Vine", JVineBlock::new, JBlockProperties.VINE);
+    public static final DeferredBlock<Block> TERRANIAN_LEAVES = registerTopBottomBlock("terranian_leaves", "Terrania Leaves", () -> new Block(JBlockProperties.LEAVES));
+    public static final DeferredBlock<Block> TERRANIAN_VINE = registerVineBlock("terranian_vine", "Terrania Vine", () -> new JVineBlock(JBlockProperties.VINE));
     public static final DeferredBlock<RotatedPillarBlock> TERRANIAN_LOG = addLogBlock("terranian_log", "Terranian Log");
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_TERRANIAN_LOG = registerPillar("stripped_terranian_log", "Stripped Terranian Log", true, JBlockProperties.WOOD);
     public static final DeferredBlock<Block> TERRANIAN_PLANKS = register("terranian_planks", "Terranian Planks", JBlockProperties.WOOD);
@@ -589,20 +584,20 @@ public class JBlocks {
     public static final DeferredBlock<IronBarsBlock> TERRANIAN_BARS = registerPaneBlock("terranian_bars", "Terranian Bars", JBlockProperties.STONE);
     public static final DeferredBlock<Block> TERRANIAN_DARK_PANELS = register("terranian_dark_panels", "Terranian Dark Panels", JBlockProperties.STONE);
     public static final DeferredBlock<Block> TERRANIAN_PANELS = register("terranian_panels", "Terranian Panels", JBlockProperties.STONE);
-    public static final DeferredBlock<Block> TERRANIAN_TALL_GRASS = registerCrossBlock("terranian_tall_grass", "Terranian Tall Grass", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> TERRAMUSHROOM = registerCrossBlock("terramushroom", "Terranian Shroom", TallGrassBlock::new, JBlockProperties.FLOWER);//makes big terrashroom
-    public static final DeferredBlock<Block> TALL_TERRAMUSHROOM = registerDoublePlant("tall_terramushroom", "Tall Terranian Shroom", JDoublePlantBlock::new, JBlockProperties.GLOW_FLOWER);
-    public static final DeferredBlock<Block> TERRANIAN_FLOWER = registerCrossBlock("terranian_flower", "Terranian Flower", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> ENCHANTED_SHROOMS_SMALL = registerModeledBlock("enchanted_shrooms_small", "Enchanted Shrooms", TallGrassBlock::new, JBlockProperties.GLOW_FLOWER);
-    public static final DeferredBlock<Block> ENCHANTED_SHROOMS_TALL = registerModeledBlock("enchanted_shroom_tall", "Tall Enchanted Shroom", JDoublePlantBlock::new, JBlockProperties.GLOW_FLOWER);
-    public static final DeferredBlock<Block> TERRAMUSHROOM_BLOCK_PINK = registerMushroomBlock("terrashroom_block_pink", "Terrashroom Block", HugeMushroomBlock::new, JBlockProperties.MUSHROOM_BLOCK);
-    public static final DeferredBlock<Block> TERRAMUSHROOM_BLOCK_PURPLE = registerMushroomBlock("terrashroom_block_purple", "Terrashroom Block", HugeMushroomBlock::new, JBlockProperties.MUSHROOM_BLOCK);
-    public static final DeferredBlock<Block> TERRASHROOM_STEM = registerMushroomBlock("terrashroom_stem", "Terrashroom Stem", HugeMushroomBlock::new, JBlockProperties.MUSHROOM_BLOCK);
-    public static final DeferredBlock<Block> TERRANIAN_SAPLING = registerCrossBlock("terranian_sapling", "Terranian Sapling", (p) -> new JSaplingBlock(JTreeGrower.TERRRANIAN_TREE_GROWER, p), JBlockProperties.FLOWER);
+    public static final DeferredBlock<Block> TERRANIAN_TALL_GRASS = registerCrossBlock("terranian_tall_grass", "Terranian Tall Grass", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> TERRAMUSHROOM = registerCrossBlock("terramushroom", "Terranian Shroom", () -> new TallGrassBlock(JBlockProperties.FLOWER));//makes big terrashroom
+    public static final DeferredBlock<Block> TALL_TERRAMUSHROOM = registerDoublePlant("tall_terramushroom", "Tall Terranian Shroom", () -> new JDoublePlantBlock(JBlockProperties.GLOW_FLOWER));
+    public static final DeferredBlock<Block> TERRANIAN_FLOWER = registerCrossBlock("terranian_flower", "Terranian Flower", () -> new TallGrassBlock(JBlockProperties.FLOWER));
+    public static final DeferredBlock<Block> ENCHANTED_SHROOMS_SMALL = registerModeledBlock("enchanted_shrooms_small", "Enchanted Shrooms", () -> new TallGrassBlock(JBlockProperties.GLOW_FLOWER));
+    public static final DeferredBlock<Block> ENCHANTED_SHROOMS_TALL = registerModeledBlock("enchanted_shroom_tall", "Tall Enchanted Shroom",  () -> new JDoublePlantBlock(JBlockProperties.GLOW_FLOWER));
+    public static final DeferredBlock<Block> TERRAMUSHROOM_BLOCK_PINK = registerMushroomBlock("terrashroom_block_pink", "Terrashroom Block", () -> new HugeMushroomBlock(JBlockProperties.MUSHROOM_BLOCK));
+    public static final DeferredBlock<Block> TERRAMUSHROOM_BLOCK_PURPLE = registerMushroomBlock("terrashroom_block_purple", "Terrashroom Block", () -> new HugeMushroomBlock(JBlockProperties.MUSHROOM_BLOCK));
+    public static final DeferredBlock<Block> TERRASHROOM_STEM = registerMushroomBlock("terrashroom_stem", "Terrashroom Stem", () -> new HugeMushroomBlock(JBlockProperties.MUSHROOM_BLOCK));
+    public static final DeferredBlock<Block> TERRANIAN_SAPLING = registerCrossBlock("terranian_sapling", "Terranian Sapling", () -> new JSaplingBlock(JTreeGrower.TERRRANIAN_TREE_GROWER, JBlockProperties.FLOWER));
 
     public static final DeferredBlock<Block> CLOUDIA_PORTAL_FRAME = register("cloudia_portal_frame", "Cloudia Portal Frame", JBlockProperties.STONE);
-    public static final DeferredBlock<JBasePortalBlock> CLOUDIA_PORTAL = registerPortalBlock("cloudia_portal", "Cloudia Portal", Dimensions.CLOUDIA, CLOUDIA_PORTAL_FRAME);
-    public static final DeferredBlock<Block> CLOUDIA_DIRT = registerTerrainBlock("cloudia_dirt", "Cloudia Dirt", JDirt::new, JBlockProperties.DIRT);
+    public static final DeferredBlock<JBasePortalBlock> CLOUDIA_PORTAL = registerPortalBlock("cloudia_portal", "Cloudia Portal", () -> new JBasePortalBlock(Dimensions.CLOUDIA, CLOUDIA_PORTAL_FRAME));
+    public static final DeferredBlock<Block> CLOUDIA_DIRT = registerTerrainBlock("cloudia_dirt", "Cloudia Dirt", JDirt::new);
     public static final DeferredBlock<Block> CLOUDIA_GRASS = registerGrassBlock("cloudia_grass", "Cloudia Grass", JGrassBlock::new);
     public static final DeferredBlock<RotatedPillarBlock> CLOUDIA_LOG = addLogBlock("cloudia_log", "Cloudia Log");
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_CLOUDIA_LOG = registerPillar("stripped_cloudia_log", "Stripped Cloudia Log", true, JBlockProperties.WOOD);
@@ -625,24 +620,24 @@ public class JBlocks {
     public static final DeferredBlock<StairBlock> CLOUDIA_BRICK_STAIRS = registerStairs("cloudia_brick_stairs", "Cloudia Brick Stairs", CLOUDIA_BRICK, false, JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> CLOUDIA_TILE_STAIRS = registerStairs("cloudia_tile_stairs", "Cloudia Tile Stairs",CLOUDIA_TILE, false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> CLOUDIA_POST = registerFence("cloudia_post", "Cloudia Post", false, JBlockProperties.STONE);
-    public static final DeferredBlock<Block> PINK_CLOUDIA_CLOUD = register("pink_cloudia_cloud", "Pink Cloudia Cloud", JTransparentBlock::new, JBlockProperties.CLOUD);
-    public static final DeferredBlock<Block> BLUE_CLOUDIA_CLOUD = register("blue_cloudia_cloud", "Blue Cloudia Cloud", JTransparentBlock::new, JBlockProperties.CLOUD);
-    public static final DeferredBlock<Block> LIGHT_BLUE_CLOUDIA_CLOUD = register("light_blue_cloudia_cloud", "Light Blue Cloudia Cloud", JTransparentBlock::new, JBlockProperties.CLOUD);
+    public static final DeferredBlock<Block> PINK_CLOUDIA_CLOUD = register("pink_cloudia_cloud", "Pink Cloudia Cloud", () -> new JTransparentBlock(JBlockProperties.CLOUD));
+    public static final DeferredBlock<Block> BLUE_CLOUDIA_CLOUD = register("blue_cloudia_cloud", "Blue Cloudia Cloud", () -> new JTransparentBlock(JBlockProperties.CLOUD));
+    public static final DeferredBlock<Block> LIGHT_BLUE_CLOUDIA_CLOUD = register("light_blue_cloudia_cloud", "Light Blue Cloudia Cloud", () -> new JTransparentBlock(JBlockProperties.CLOUD));
     public static final DeferredBlock<SlabBlock> CLOUDIA_TILE_SLAB = registerSlab("cloudia_tile_slab", "Cloudia Tile Slab", false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> CLOUDIA_BRICK_SLAB = registerSlab("cloudia_brick_slab", "Cloudia Brick Slab", false, JBlockProperties.STONE);
 
-    public static final DeferredBlock<Block> SENTERIAN_PORTAL_FRAME = registerEndPortalFrameStyleBlock("senterian_portal_frame", "Senterian Portal Frame", SenterianPortalFrameBlock::new, JBlockProperties.STONE);
-    public static final DeferredBlock<Block> SENTERIAN_PORTAL = registerEndPortalStyleBlock("senterian_portal", "Senterian Portal", SenterianPortalBlock::new, JBlockProperties.PORTAL);
+    public static final DeferredBlock<Block> SENTERIAN_PORTAL_FRAME = registerEndPortalFrameStyleBlock("senterian_portal_frame", "Senterian Portal Frame", SenterianPortalFrameBlock::new);
+    public static final DeferredBlock<Block> SENTERIAN_PORTAL = registerEndPortalStyleBlock("senterian_portal", "Senterian Portal", SenterianPortalBlock::new);
     public static final DeferredBlock<IronBarsBlock> SENTERIAN_BARS = registerPaneBlock("senterian_bars", "Senterian Bars", JBlockProperties.DUNGEON_BLOCK);
     public static final DeferredBlock<Block> SENTERIAN_BRICKS = register("senterian_bricks", "Senterian Bricks", JBlockProperties.DUNGEON_BLOCK);
     public static final DeferredBlock<StairBlock> SENTERIAN_BRICK_STAIRS = registerStairs("senterian_brick_stairs", "Senterian Brick Stairs", SENTERIAN_BRICKS, false, JBlockProperties.DUNGEON_BLOCK);
     public static final DeferredBlock<Block> SENTERIAN_CARVED_ROCK = register("senterian_carved_rock", "Senterian Carved Rock", JBlockProperties.DUNGEON_BLOCK);
     public static final DeferredBlock<Block> SENTERIAN_FLOOR = register("senterian_floor", "Senterian Floor", JBlockProperties.DUNGEON_BLOCK);
     public static final DeferredBlock<Block> SENTERIAN_ROCK = register("senterian_rock", "Senterian Rock", JBlockProperties.DUNGEON_BLOCK);
-    public static final DeferredBlock<Block> SENTERIAN_GLASS = register("senterian_glass", "Senterian Glass", JTransparentBlock::new, JBlockProperties.DUNGEON_GLASS);
-    public static final DeferredBlock<Block> SENTERIAN_ALTAR = registerModeledBlock("senterian_altar", "Senterian Altar", SenterianAltar::new, JBlockProperties.STONE.lightLevel((l) -> 2).noOcclusion());
+    public static final DeferredBlock<Block> SENTERIAN_GLASS = register("senterian_glass", "Senterian Glass", () -> new JTransparentBlock(JBlockProperties.GLASS), JBlockProperties.DUNGEON_BLOCK);
+    public static final DeferredBlock<Block> SENTERIAN_ALTAR = registerModeledBlock("senterian_altar", "Senterian Altar", () -> new SenterianAltar(JBlockProperties.STONE.lightLevel((l) -> 2).noOcclusion()));
     public static final DeferredBlock<JFenceBlock> SENTERIAN_POST = registerFence("senterian_post", "Senterian Post", false, JBlockProperties.DUNGEON_BLOCK);
-    public static final DeferredBlock<Block> SENTRY_LOCK = registerRotatableBlock("sentry_lock", "Sentry Lock", LockBlock::new, JBlockProperties.DUNGEON_BLOCK, false);
+    public static final DeferredBlock<Block> SENTRY_LOCK = registerRotatableBlock("sentry_lock", "Sentry Lock", LockBlock::new, false);
 
     public static final DeferredBlock<IronBarsBlock> BREAKABLE_SENTERIAN_BARS = registerPaneBlock("breakable_senterian_bars", "Senterian Bars", JBlockProperties.STONE);
     public static final DeferredBlock<Block> BREAKABLE_SENTERIAN_BRICKS = register("breakable_senterian_bricks", "Senterian Bricks", JBlockProperties.STONE);
@@ -650,28 +645,28 @@ public class JBlocks {
     public static final DeferredBlock<Block> BREAKABLE_SENTERIAN_CARVED_ROCK = register("breakable_senterian_carved_rock", "Senterian Carved Rock", JBlockProperties.STONE);
     public static final DeferredBlock<Block> BREAKABLE_SENTERIAN_FLOOR = register("breakable_senterian_floor", "Senterian Floor", JBlockProperties.STONE);
     public static final DeferredBlock<Block> BREAKABLE_SENTERIAN_ROCK = register("breakable_senterian_rock", "Senterian Rock", JBlockProperties.STONE);
-    public static final DeferredBlock<Block> BREAKABLE_SENTERIAN_GLASS = register("breakable_senterian_glass", "Senterian Glass", JTransparentBlock::new, JBlockProperties.GLASS);
+    public static final DeferredBlock<Block> BREAKABLE_SENTERIAN_GLASS = register("breakable_senterian_glass", "Senterian Glass", () -> new JTransparentBlock(JBlockProperties.GLASS), JBlockProperties.GLASS);
     public static final DeferredBlock<JFenceBlock> BREAKABLE_SENTERIAN_POST = registerFence("breakable_senterian_post", "Senterian Post", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> BREAKABLE_SENTERIAN_GUARDIAN_LAMP = register("breakable_senterian_guardian_lamp", "Senterian Guardian Lamp", JBlockProperties.GLOW_BLOCK);
     public static final DeferredBlock<Block> BREAKABLE_SENTERIAN_LIGHT_LAMP = register("breakable_senterian_light_lamp", "Senterian Light Lamp", JBlockProperties.GLOW_BLOCK);
     public static final DeferredBlock<Block> BREAKABLE_SENTERIAN_MELLOW_LAMP = register("breakable_senterian_mellow_lamp", "Senterian Mellow Lamp", JBlockProperties.GLOW_BLOCK);
 
-    public static final DeferredBlock<Block> JOURNEY_CHEST = registerChestBlock("journey_chest", "Journey Chest", JChestBlock::new, JBlockProperties.CHEST);
-    public static final DeferredBlock<Block> NETHER_CHEST = registerChestBlock("nether_chest", "Nether Chest", JChestBlock::new, JBlockProperties.CHEST);
-    public static final DeferredBlock<Block> FROZEN_CHEST = registerChestBlock("frozen_chest", "Frozen Chest", JChestBlock::new, JBlockProperties.CHEST);
-    public static final DeferredBlock<Block> EUCA_CHEST = registerChestBlock("euca_chest", "Euca Chest", JChestBlock::new, JBlockProperties.CHEST);
-    public static final DeferredBlock<Block> BOIL_CHEST = registerChestBlock("boil_chest", "Boiling Chest", JChestBlock::new, JBlockProperties.CHEST);
-    public static final DeferredBlock<Block> DEPTHS_CHEST = registerChestBlock("depths_chest", "Depths Chest", JChestBlock::new, JBlockProperties.CHEST);
-    public static final DeferredBlock<Block> CORBA_CHEST = registerChestBlock("corba_chest", "Corba Chest", JChestBlock::new, JBlockProperties.CHEST);
-    public static final DeferredBlock<Block> TERRANIAN_CHEST = registerChestBlock("terranian_chest", "Terranian Chest", JChestBlock::new, JBlockProperties.CHEST);
-    public static final DeferredBlock<Block> CLOUDIA_CHEST = registerChestBlock("cloudia_chest", "Cloudia Chest", JChestBlock::new, JBlockProperties.CHEST);
-    public static final DeferredBlock<Block> SENTERIAN_CHEST = registerChestBlock("senterian_chest", "Senterian Chest", JChestBlock::new, JBlockProperties.CHEST);
+    public static final DeferredBlock<Block> JOURNEY_CHEST = registerChestBlock("journey_chest", "Journey Chest", JChestBlock::new);
+    public static final DeferredBlock<Block> NETHER_CHEST = registerChestBlock("nether_chest", "Nether Chest", JChestBlock::new);
+    public static final DeferredBlock<Block> FROZEN_CHEST = registerChestBlock("frozen_chest", "Frozen Chest", JChestBlock::new);
+    public static final DeferredBlock<Block> EUCA_CHEST = registerChestBlock("euca_chest", "Euca Chest", JChestBlock::new);
+    public static final DeferredBlock<Block> BOIL_CHEST = registerChestBlock("boil_chest", "Boiling Chest", JChestBlock::new);
+    public static final DeferredBlock<Block> DEPTHS_CHEST = registerChestBlock("depths_chest", "Depths Chest", JChestBlock::new);
+    public static final DeferredBlock<Block> CORBA_CHEST = registerChestBlock("corba_chest", "Corba Chest", JChestBlock::new);
+    public static final DeferredBlock<Block> TERRANIAN_CHEST = registerChestBlock("terranian_chest", "Terranian Chest", JChestBlock::new);
+    public static final DeferredBlock<Block> CLOUDIA_CHEST = registerChestBlock("cloudia_chest", "Cloudia Chest", JChestBlock::new);
+    public static final DeferredBlock<Block> SENTERIAN_CHEST = registerChestBlock("senterian_chest", "Senterian Chest", JChestBlock::new);
 
-    public static final DeferredBlock<Block> ROCKITE_SPAWNER = registerModeledBlock("rockite_spawner", "Rockite Spawner", RockiteBlock::new, JBlockProperties.ROCKITE_SPAWNER);
+    public static final DeferredBlock<Block> ROCKITE_SPAWNER = registerModeledBlock("rockite_spawner", "Rockite Spawner", () -> new RockiteBlock(JBlockProperties.ROCKITE_SPAWNER));
 
-    public static final DeferredBlock<Block> FROZEN_PEDESTAL = registerModeledBlock("frozen_pedestal", "Frozen Pedestal", PedestalBlock::new, JBlockProperties.STONE);
-    public static final DeferredBlock<Block> ROYAL_PEDESTAL = registerModeledBlock("royal_pedestal", "Royal Pedestal", PedestalBlock::new, JBlockProperties.STONE);
-    public static final DeferredBlock<Block> OKOLOO_PEDESTAL = registerModeledBlock("okoloo_pedestal", "Okoloo Pedestal", OkolooPedestalBlock::new, JBlockProperties.DUNGEON_BLOCK);
+    public static final DeferredBlock<Block> FROZEN_PEDESTAL = registerModeledBlock("frozen_pedestal", "Frozen Pedestal", PedestalBlock::new);
+    public static final DeferredBlock<Block> ROYAL_PEDESTAL = registerModeledBlock("royal_pedestal", "Royal Pedestal", PedestalBlock::new);
+    public static final DeferredBlock<Block> OKOLOO_PEDESTAL = registerModeledBlock("okoloo_pedestal", "Okoloo Pedestal", OkolooPedestalBlock::new);
 
     public static final DeferredBlock<Block> BLOOD_ROCK = register("blood_rock", "Blood Rock", JBlockProperties.STONE);
     public static final DeferredBlock<Block> BLOOD_RUNE = register("blood_rune", "Blood Rune", JBlockProperties.STONE);
@@ -680,7 +675,7 @@ public class JBlocks {
     public static final DeferredBlock<Block> CARVED_BLOOD_ROCK = register("carved_blood_rock", "Carved Blood Rock", JBlockProperties.STONE);
     public static final DeferredBlock<Block> OBELISK = register("obelisk", "Obelisk", JBlockProperties.BREAKABLE_DUNGEON_LAMP);
     public static final DeferredBlock<Block> BLOOD_LAMP = register("blood_lamp", "Blood Lamp", JBlockProperties.GLOW_BLOCK);
-    public static final DeferredBlock<Block> SUMMONING_TABLE = registerModeledBlock("summoning_table", "Summoning Table", SummoningTableBlock::new, JBlockProperties.GRINDSTONE);
+    public static final DeferredBlock<Block> SUMMONING_TABLE = registerModeledBlock("summoning_table", "Summoning Table", () -> new SummoningTableBlock(JBlockProperties.GRINDSTONE));
 
     public static final DeferredBlock<Block> OKOLOO_TROPHY = registerTrophyBlock("okoloo_trophy", "Okoloo Trophy");
     public static final DeferredBlock<Block> WITHERING_BEAST_TROPHY = registerTrophyBlock("wither_beast_trophy", "Withering Beast Trophy");
@@ -699,9 +694,9 @@ public class JBlocks {
     public static final DeferredBlock<RotatedPillarBlock> STONE_PLILLAR = registerPillar("stone_pillar", "Stone Pillar", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> SMALL_STONE_BRICKS = register("small_stone_bricks", "Small Stone Bricks", JBlockProperties.STONE);
 
-    public static final DeferredBlock<Block> ANCIENT_OBELISK = registerModeledBlock("ancient_obelisk", "Ancient Obelisk", ObeliskBlock::new, JBlockProperties.ANCIENT_STONE.lightLevel((l) -> 2).noOcclusion());
-    public static final DeferredBlock<Block> ANCIENT_SOCKET = registerModeledBlock("ancient_socket", "Ancient Socket", AncientSocketBlock::new, JBlockProperties.ANCIENT_STONE);
-    public static final DeferredBlock<Block> ANCIENT_CATALYST = register("ancient_catalyst", "Ancient Catalyst", AncientCatalystBlock::new, JBlockProperties.ANCIENT_STONE);
+    public static final DeferredBlock<Block> ANCIENT_OBELISK = registerModeledBlock("ancient_obelisk", "Ancient Obelisk", () -> new ObeliskBlock(JBlockProperties.ANCIENT_STONE.lightLevel((l) -> 2).noOcclusion()));
+    public static final DeferredBlock<Block> ANCIENT_SOCKET = registerModeledBlock("ancient_socket", "Ancient Socket", AncientSocketBlock::new);
+    public static final DeferredBlock<Block> ANCIENT_CATALYST = register("ancient_catalyst", "Ancient Catalyst", AncientCatalystBlock::new);
     public static final DeferredBlock<RotatedPillarBlock> ANCIENT_STONE = registerPillar("ancient_stone", "Ancient Stone", false, JBlockProperties.ANCIENT_STONE);
     public static final DeferredBlock<RotatedPillarBlock> ANCIENT_RUNIC_STONE_0 = registerPillar("ancient_stone_runic_0", "Ancient Runic Stone", false, JBlockProperties.ANCIENT_STONE);
     public static final DeferredBlock<RotatedPillarBlock> ANCIENT_RUNIC_STONE_1 = registerPillar("ancient_stone_runic_1", "Ancient Runic Stone", false, JBlockProperties.ANCIENT_STONE);
@@ -715,26 +710,26 @@ public class JBlocks {
     public static final DeferredBlock<Block> TOTEM_SCARED = registerTotemBlock("totem_scared", "Scared Totem");
 
     //OVERWORLD
-    public static final DeferredBlock<Block> TOMATO_CROP = registerCropBlock("tomato_crop", "Tomato", 8, TomatoCropBlock::new, JBlockProperties.CROP);
-    public static final DeferredBlock<Block> FLORO_PEDAL_CROP = registerCropBlock("floro_pedal_crop", "Floro Pedal", 8, FloroCropBlock::new, JBlockProperties.CROP);
-    public static final DeferredBlock<Block> REDCURRANT_BUSH = registerGrowingBushBlock("redcurrant_bush", "Redcurrant Bush", RedcurrantBushBlock::new);
-    public static final DeferredBlock<Block> BRADBERRY_BUSH = registerGrowingBushBlock("bradberry_bush", "Bradberry Bush", BradberryBushBlock::new);
+    public static final DeferredBlock<Block> TOMATO_CROP = registerCropBlock("tomato_crop", "Tomato", 8, TomatoCropBlock::new);
+    public static final DeferredBlock<Block> FLORO_PEDAL_CROP = registerCropBlock("floro_pedal_crop", "Floro Pedal", 8, FloroCropBlock::new);
+    public static final DeferredBlock<Block> REDCURRANT_BUSH = registerGrowingBushBlock("redcurrant_bush", "Redcurrant Bush", () -> new RedcurrantBushBlock(JBlockProperties.GROWING_BUSH));
+    public static final DeferredBlock<Block> BRADBERRY_BUSH = registerGrowingBushBlock("bradberry_bush", "Bradberry Bush", () -> new BradberryBushBlock(JBlockProperties.GROWING_BUSH));
 
     //EUCA
-    public static final DeferredBlock<Block> ZATPEDAL_CROP = registerCropBlock("zatpedal_crop", "Zatpedal", 8, ZatpedalCropBlock::new, JBlockProperties.CROP);
-    public static final DeferredBlock<Block> SPINEBERRY_CROP = registerCropBlock("spineberry_crop", "Spineberry", 8, SpineberryCropBlock::new, JBlockProperties.CROP);
+    public static final DeferredBlock<Block> ZATPEDAL_CROP = registerCropBlock("zatpedal_crop", "Zatpedal", 8, ZatpedalCropBlock::new);
+    public static final DeferredBlock<Block> SPINEBERRY_CROP = registerCropBlock("spineberry_crop", "Spineberry", 8, SpineberryCropBlock::new);
 
     //DEPTHS
-    public static final DeferredBlock<Block> CRAKEBULB_CROP = registerCropBlock("crakebulb_crop", "Crakebulb", 4, CrakebulbCropBlock::new, JBlockProperties.CROP);
-    public static final DeferredBlock<Block> CRACKENCANE_CROP = registerCropBlock("crackencane_crop", "Crackencane", 8, CrackencanesCropBlock::new, JBlockProperties.CROP);
+    public static final DeferredBlock<Block> CRAKEBULB_CROP = registerCropBlock("crakebulb_crop", "Crakebulb", 4, CrakebulbCropBlock::new);
+    public static final DeferredBlock<Block> CRACKENCANE_CROP = registerCropBlock("crackencane_crop", "Crackencane", 8, CrackencanesCropBlock::new);
 
     //CORBA
-    public static final DeferredBlock<Block> CORVEGGIES_CROP = registerCropBlock("corveggies_crop", "Corveggies", 3, CorveggieCropBlock::new, JBlockProperties.CROP);
-    public static final DeferredBlock<Block> GLOWA_CROP = registerCropBlock("glowa_crop", "Glowa", 4, GlowaCropBlock::new, JBlockProperties.CROP);
+    public static final DeferredBlock<Block> CORVEGGIES_CROP = registerCropBlock("corveggies_crop", "Corveggies", 3, CorveggieCropBlock::new);
+    public static final DeferredBlock<Block> GLOWA_CROP = registerCropBlock("glowa_crop", "Glowa", 4, GlowaCropBlock::new);
 
     //CLOUDIA
-    public static final DeferredBlock<Block> AIRROOT_MELON = registerModeledBlock("airroot_melon", "Airroot Melon", Block::new, JBlockProperties.WOOD);
-    public static final DeferredBlock<Block> AIRROOT_CROP = registerModeledCropBlock("airroot", "Airroot", 4, AirrootCropBlock::new, JBlockProperties.CROP);
+    public static final DeferredBlock<Block> AIRROOT_MELON = registerModeledBlock("airroot_melon", "Airroot Melon", () -> new Block(JBlockProperties.WOOD));
+    public static final DeferredBlock<Block> AIRROOT_CROP = registerModeledCropBlock("airroot", "Airroot", 4, AirrootCropBlock::new);
 
 
     private static void checkForPickaxeableBlocks(BlockBehaviour.Properties props, String name) {
@@ -787,48 +782,53 @@ public class JBlocks {
         checkForAxeableBlocks(props, name);
         checkForPickaxeableBlocks(props, name);
         normalBlockName.add(name);
-        return register(name, translatedName, JBlock::new, props, false);
+        return register(name, translatedName, () -> new JBlock(props), false);
     }
 
-    public static DeferredBlock<Block> register(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> register(String name, String translatedName, Supplier<Block> block, BlockBehaviour.Properties props) {
         checkForHoeableBlocks(props, name);
         checkForShovelableBlocks(props, name);
         checkForAxeableBlocks(props, name);
         checkForPickaxeableBlocks(props, name);
         normalBlockName.add(name);
-        return register(name, translatedName, block, props, false);
+        return register(name, translatedName, block, false);
     }
 
-    public static DeferredBlock<Block> register(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props, boolean addName) {
+    public static DeferredBlock<Block> register(String name, String translatedName, Supplier<Block> block) {
+        normalBlockName.add(name);
+        return register(name, translatedName, block, false);
+    }
+
+    public static DeferredBlock<Block> register(String name, String translatedName, Supplier<Block> block, boolean addName) {
         normalLangName.add(translatedName);
         if(addName)
             normalBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
-    public static DeferredBlock<Block> registerCampfire(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerCampfire(String name, String translatedName, Supplier<Block> block) {
         addAxeableBlocks(name);
         campfireBlockName.add(name);
         campfireLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerDoublePlant(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerDoublePlant(String name, String translatedName, Supplier<Block> block) {
         doublePlantBlockName.add(name);
         doublePlantLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerLilyPad(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerLilyPad(String name, String translatedName, Supplier<Block> block) {
         lilyPadBlockName.add(name);
         lilyPadLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -836,26 +836,26 @@ public class JBlocks {
         addPickaxeableBlocks(name);
         furnaceBlockName.add(name);
         furnaceLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, JFurnaceBlock::new, JBlockProperties.FURNACE);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, () -> new JFurnaceBlock(JBlockProperties.FURNACE));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerChestBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerChestBlock(String name, String translatedName, Supplier<Block> block) {
         addPickaxeableBlocks(name);
         chestBlockName.add(name);
         chestLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerLadder(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerLadder(String name, String translatedName, Supplier<Block> block) {
         addAxeableBlocks(name);
         ladderLangName.add(translatedName);
         ladderBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -866,8 +866,8 @@ public class JBlocks {
         checkForHoeableBlocks(props, name);
         randomLangName.add(translatedName);
         randomBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, Block::new, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, () -> new Block(props));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -878,53 +878,53 @@ public class JBlocks {
         checkForHoeableBlocks(props, name);
         tintedLeavesLangName.add(translatedName);
         tintedLeavesBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, Block::new, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, () -> new Block(props));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerMushroomBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerMushroomBlock(String name, String translatedName, Supplier<Block> block) {
         addAxeableBlocks(name);
         mushroomLangName.add(translatedName);
         mushroomBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerEndPortalFrameStyleBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerEndPortalFrameStyleBlock(String name, String translatedName, Supplier<Block> block) {
         addPickaxeableBlocks(name);
         basePortalFrameLangName.add(translatedName);
         basePortalFrameBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerSlimeStyleBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerSlimeStyleBlock(String name, String translatedName, Supplier<Block> block) {
         addShovelableBlocks(name);
         slimeLangName.add(translatedName);
         slimeBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerEndPortalStyleBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerEndPortalStyleBlock(String name, String translatedName, Supplier<Block> block) {
         basePortalLangName.add(translatedName);
         basePortalBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerTerrainBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerTerrainBlock(String name, String translatedName, Supplier<Block> block) {
         if(!name.contains("stone"))
             addShovelableBlocks(name);
         terrainLangName.add(translatedName);
         terrainBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -932,10 +932,10 @@ public class JBlocks {
         checkForAxeableBlocks(props, name);
         checkForPickaxeableBlocks(props, name);
         checkForHoeableBlocks(props, name);
-        return registerTerrainBlock(name, translatedName, Block::new, props);
+        return registerTerrainBlock(name, translatedName, () -> new Block(props));
     }
 
-    public static DeferredBlock<Block> registerRotatableBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props, boolean wood) {
+    public static DeferredBlock<Block> registerRotatableBlock(String name, String translatedName, Supplier<Block> block, boolean wood) {
         if(wood) {
             addAxeableBlocks(name);
         } else {
@@ -943,26 +943,26 @@ public class JBlocks {
         }
         rotatableBlockName.add(name);
         rotatableLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerVineBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerVineBlock(String name, String translatedName, Supplier<JVineBlock> block) {
         addHoeableBlocks(name);
         vineBlockName.add(name);
         vineLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerModeledBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerModeledBlock(String name, String translatedName, Supplier<Block> block) {
         addPickaxeableBlocks(name);
         modelBlockName.add(name);
         modelLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -970,8 +970,8 @@ public class JBlocks {
         addPickaxeableBlocks(name);
         trophyBlockName.add(name);
         trophyLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, TrophyBlock::new, JBlockProperties.STONE);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, TrophyBlock::new);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -979,86 +979,85 @@ public class JBlocks {
         addPickaxeableBlocks(name);
         totemBlockName.add(name);
         totemLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, TotemBlock::new, JBlockProperties.STONE);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, TotemBlock::new);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerGrassBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerGrassBlock(String name, String translatedName, Supplier<Block> block, BlockBehaviour.Properties props) {
         checkForShovelableBlocks(props, name);
         checkForAxeableBlocks(props, name);
         checkForPickaxeableBlocks(props, name);
         checkForHoeableBlocks(props, name);
         grassBlockName.add(name);
         grassLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerGrassBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block) {
+    public static DeferredBlock<Block> registerGrassBlock(String name, String translatedName, Supplier<Block> block) {
         return registerGrassBlock(name, translatedName, block, JBlockProperties.GRASS);
     }
 
-    public static DeferredBlock<Block> registerOverlayGrassBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block) {
+    public static DeferredBlock<Block> registerOverlayGrassBlock(String name, String translatedName, Supplier<Block> block) {
         addShovelableBlocks(name);
         overlayGrassBlockName.add(name);
         overlayGrassLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, JBlockProperties.GRASS);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<JBasePortalBlock> registerPortalBlock(String name, String translatedName, ResourceKey<Level> dimID, Supplier<Block> frame) {
+    public static DeferredBlock<JBasePortalBlock> registerPortalBlock(String name, String translatedName, Supplier<JBasePortalBlock> block) {
         portalBlockName.add(name);
         portalLangName.add(translatedName);
-        DeferredBlock<JBasePortalBlock> block1 = BLOCKS.register(name, () -> new JBasePortalBlock(JBlockProperties.PORTAL.setId(ResourceKey.create(Registries.BLOCK, JITL.rl(name))), dimID, frame));
-
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<JBasePortalBlock> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerPathBlock(String name, String translatedName) {
+    public static DeferredBlock<Block> registerPathBlock(String name, String translatedName, Supplier<Block> block) {
         addShovelableBlocks(name);
         pathBlockName.add(name);
         pathLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.register(name, () -> new JDirtPathBlock(JBlockProperties.PATH.setId(ResourceKey.create(Registries.BLOCK, JITL.rl(name)))));
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerGrowingBushBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block) {
+    public static DeferredBlock<Block> registerGrowingBushBlock(String name, String translatedName, Supplier<Block> block) {
         bushBlockName.add(name);
         bushLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, JBlockProperties.GROWING_BUSH);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerFarmlandBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerFarmlandBlock(String name, String translatedName, Supplier<Block> block) {
         addShovelableBlocks(name);
         farmlandBlockName.add(name);
         farmlandLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerCropBlock(String name, String translatedName, int maxStages, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerCropBlock(String name, String translatedName, int maxStages, Supplier<Block> block) {
         cropBlockName.add(name);
         cropLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         if(JITL.DEV_MODE)
             new JBlockCropGenerator().generate(name, maxStages);
         return block1;
     }
 
-    public static DeferredBlock<Block> registerModeledCropBlock(String name, String translatedName, int maxStages, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerModeledCropBlock(String name, String translatedName, int maxStages, Supplier<Block> block) {
         cropBlockName.add(name);
         cropLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         if(JITL.DEV_MODE)
             new JBlockModeledCropGenerator().generate(name, maxStages);
         return block1;
@@ -1068,8 +1067,8 @@ public class JBlocks {
         addAxeableBlocks(name);
         logBlockName.add(name);
         logLangName.add(translatedName);
-        DeferredBlock<RotatedPillarBlock> block1 = BLOCKS.registerBlock(name, LogBlock::new, JBlockProperties.WOOD);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()) {
+        DeferredBlock<RotatedPillarBlock> block1 = BLOCKS.register(name, LogBlock::new);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType, @NotNull FuelValues fuelValues) {
                 return 300;
@@ -1086,8 +1085,8 @@ public class JBlocks {
         }
         logBlockName.add(name);
         logLangName.add(translatedName);
-        DeferredBlock<RotatedPillarBlock> block1 = BLOCKS.register(name, () -> new RotatedPillarBlock(props.setId(ResourceKey.create(Registries.BLOCK, JITL.rl(name)))));
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()) {
+        DeferredBlock<RotatedPillarBlock> block1 = BLOCKS.register(name, () -> new RotatedPillarBlock(props));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType, @NotNull FuelValues fuelValues) {
                 return wood ? 300 : 0;
@@ -1104,8 +1103,8 @@ public class JBlocks {
         }
         doorBlockName.add(name);
         doorLangName.add(translatedName);
-        DeferredBlock<DoorBlock> block1 = BLOCKS.register(name, () -> new DoorBlock(BlockSetType.OAK, p.setId(ResourceKey.create(Registries.BLOCK, JITL.rl(name)))));
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()) {
+        DeferredBlock<DoorBlock> block1 = BLOCKS.register(name, () -> new DoorBlock(BlockSetType.OAK, p));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType, @NotNull FuelValues fuelValues) {
                 return wood ? 300 : 0;
@@ -1122,8 +1121,8 @@ public class JBlocks {
         }
         trapDoorBlockName.add(name);
         trapDoorLangName.add(translatedName);
-        DeferredBlock<TrapDoorBlock> block1 = BLOCKS.register(name, () -> new TrapDoorBlock(BlockSetType.OAK, p.setId(ResourceKey.create(Registries.BLOCK, JITL.rl(name)))));
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()) {
+        DeferredBlock<TrapDoorBlock> block1 = BLOCKS.register(name, () -> new TrapDoorBlock(BlockSetType.OAK, p));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType, @NotNull FuelValues fuelValues) {
                 return wood ? 300 : 0;
@@ -1140,8 +1139,8 @@ public class JBlocks {
         }
         stairsBlockName.add(name);
         stairsLangName.add(translatedName);
-        DeferredBlock<StairBlock> block1 = BLOCKS.register(name, () -> new StairBlock(plank.get().defaultBlockState(), p.setId(ResourceKey.create(Registries.BLOCK, JITL.rl(name)))));
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()) {
+        DeferredBlock<StairBlock> block1 = BLOCKS.register(name, () -> new StairBlock(plank.get().defaultBlockState(), p));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType, @NotNull FuelValues fuelValues) {
                 return wood ? 300 : 0;
@@ -1158,8 +1157,8 @@ public class JBlocks {
         }
         slabBlockName.add(name);
         slabLangName.add(translatedName);
-        DeferredBlock<SlabBlock> block1 = BLOCKS.register(name, () -> new SlabBlock(p.setId(ResourceKey.create(Registries.BLOCK, JITL.rl(name)))));
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()) {
+        DeferredBlock<SlabBlock> block1 = BLOCKS.register(name, () -> new SlabBlock(p));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType, @NotNull FuelValues fuelValues) {
                 return wood ? 300 : 0;
@@ -1176,13 +1175,13 @@ public class JBlocks {
         }
         buttonBlockName.add(name);
         buttonLangName.add(translatedName);
-        DeferredBlock<ButtonBlock> block1 = BLOCKS.register(name, () -> new ButtonBlock(BlockSetType.OAK, sensitive ? 20 : 30, p.setId(ResourceKey.create(Registries.BLOCK, JITL.rl(name)))) {
+        DeferredBlock<ButtonBlock> block1 = BLOCKS.register(name, () -> new ButtonBlock(BlockSetType.OAK, sensitive ? 20 : 30, p) {
             @Override
             protected @NotNull SoundEvent getSound(boolean pIsOn) {
                 return SoundEvents.WOODEN_BUTTON_CLICK_ON;
             }
         });
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()) {
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType, @NotNull FuelValues fuelValues) {
                 return wood ? 300 : 0;
@@ -1199,8 +1198,8 @@ public class JBlocks {
         }
         pressurePlateBlockName.add(name);
         pressurePlateLangName.add(translatedName);
-        DeferredBlock<PressurePlateBlock> block1 = BLOCKS.register(name, () -> new PressurePlateBlock(BlockSetType.OAK, p.setId(ResourceKey.create(Registries.BLOCK, JITL.rl(name)))));
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()) {
+        DeferredBlock<PressurePlateBlock> block1 = BLOCKS.register(name, () -> new PressurePlateBlock(BlockSetType.OAK, p));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType, @NotNull FuelValues fuelValues) {
                 return wood ? 300 : 0;
@@ -1217,8 +1216,8 @@ public class JBlocks {
         }
         gateBlockName.add(name);
         gateLangName.add(translatedName);
-        DeferredBlock<FenceGateBlock> block1 = BLOCKS.register(name, () -> new FenceGateBlock(WoodType.OAK, p.setId(ResourceKey.create(Registries.BLOCK, JITL.rl(name)))));
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()) {
+        DeferredBlock<FenceGateBlock> block1 = BLOCKS.register(name, () -> new FenceGateBlock(WoodType.OAK, p));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType, @NotNull FuelValues fuelValues) {
                 return wood ? 300 : 0;
@@ -1235,8 +1234,8 @@ public class JBlocks {
         }
         fenceBlockName.add(name);
         fenceLangName.add(translatedName);
-        DeferredBlock<JFenceBlock> block1 = BLOCKS.register(name, () -> new JFenceBlock(p.setId(ResourceKey.create(Registries.BLOCK, JITL.rl(name)))));
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()) {
+        DeferredBlock<JFenceBlock> block1 = BLOCKS.register(name, () -> new JFenceBlock(p));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType, @NotNull FuelValues fuelValues) {
                 return wood ? 300 : 0;
@@ -1252,8 +1251,8 @@ public class JBlocks {
         checkForHoeableBlocks(props, name);
         wallBlockName.add(name);
         wallLangName.add(translatedName);
-        DeferredBlock<JWallBlock> block1 = BLOCKS.register(name, () -> new JWallBlock(props.setId(ResourceKey.create(Registries.BLOCK, JITL.rl(name)))));
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<JWallBlock> block1 = BLOCKS.register(name, () -> new JWallBlock(props));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
@@ -1264,58 +1263,58 @@ public class JBlocks {
         checkForHoeableBlocks(props, name);
         paneBlockName.add(name);
         paneLangName.add(translatedName);
-        DeferredBlock<IronBarsBlock> block1 = BLOCKS.register(name, () -> new IronBarsBlock(props.setId(ResourceKey.create(Registries.BLOCK, JITL.rl(name)))));
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<IronBarsBlock> block1 = BLOCKS.register(name, () -> new IronBarsBlock(props));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerCrossBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerCrossBlock(String name, String translatedName, Supplier<Block> block) {
         crossBlockName.add(name);
         crossLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<GrowingPlantHeadBlock> registerGrowingPlantHeadBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends GrowingPlantHeadBlock> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<GrowingPlantHeadBlock> registerGrowingPlantHeadBlock(String name, String translatedName, Supplier<GrowingPlantHeadBlock> block) {
         crossBlockName.add(name);
         crossLangName.add(translatedName);
-        DeferredBlock<GrowingPlantHeadBlock> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<GrowingPlantHeadBlock> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerTopBottomBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerTopBottomBlock(String name, String translatedName, Supplier<Block> block) {
         addHoeableBlocks(name);//only for terranian leaves
         topBottomBlockName.add(name);
         topBottomLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerTintedCrossBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerTintedCrossBlock(String name, String translatedName, Supplier<Block> block) {
         tintedCrossBlockName.add(name);
         tintedCrossLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static DeferredBlock<Block> registerAttachedCrossBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerAttachedCrossBlock(String name, String translatedName, Supplier<Block> block) {
         attachedCrossBlockName.add(name);
         attachedCrossLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
 
-    public static <T extends Block>DeferredBlock<T> registerFuelBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends T> block, BlockBehaviour.Properties props, int burnTime) {
+    public static <T extends Block>DeferredBlock<T> registerFuelBlock(String name, String translatedName, Supplier<T> block, int burnTime) {
         addPickaxeableBlocks(name);
         normalLangName.add(translatedName);
         normalBlockName.add(name);
-        DeferredBlock<T> block1 = BLOCKS.registerBlock(name, block, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()) {
+        DeferredBlock<T> block1 = BLOCKS.register(name, block);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType, @NotNull FuelValues fuelValues) {
                 return burnTime;
@@ -1331,8 +1330,8 @@ public class JBlocks {
         checkForHoeableBlocks(props, name);
         normalLangName.add(translatedName);
         normalBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, Block::new, props);
-        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()) {
+        DeferredBlock<Block> block1 = BLOCKS.register(name, () -> new Block(props));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType, @NotNull FuelValues fuelValues) {
                 return burnTime;

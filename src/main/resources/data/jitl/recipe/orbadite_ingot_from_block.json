@@ -3,7 +3,9 @@
   "category": "building",
   "group": "jitl:orbadite_ingot",
   "ingredients": [
-    "jitl:orbadite_block"
+    {
+      "item": "jitl:orbadite_block"
+    }
   ],
   "result": {
     "count": 9,

@@ -2,10 +2,18 @@
   "type": "minecraft:crafting_shapeless",
   "category": "equipment",
   "ingredients": [
-    "jitl:shadium_axe",
-    "jitl:shadium_pickaxe",
-    "jitl:shadium_shovel",
-    "jitl:shadium_hoe"
+    {
+      "item": "jitl:shadium_axe"
+    },
+    {
+      "item": "jitl:shadium_pickaxe"
+    },
+    {
+      "item": "jitl:shadium_shovel"
+    },
+    {
+      "item": "jitl:shadium_hoe"
+    }
   ],
   "result": {
     "count": 1,

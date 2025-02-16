@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "jitl:firestone_clump"
+    "#": {
+      "item": "jitl:firestone_clump"
+    }
   },
   "pattern": [
     "###",

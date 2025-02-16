@@ -3,7 +3,9 @@
   "category": "building",
   "group": "jitl:ash",
   "ingredients": [
-    "jitl:ashual_block"
+    {
+      "item": "jitl:ashual_block"
+    }
   ],
   "result": {
     "count": 9,

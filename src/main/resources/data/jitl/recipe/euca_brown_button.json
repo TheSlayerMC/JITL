@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
   "ingredients": [
-    "jitl:euca_brown_planks"
+    {
+      "item": "jitl:euca_brown_planks"
+    }
   ],
   "result": {
     "count": 1,

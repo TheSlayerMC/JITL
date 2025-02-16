@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "jitl:burned_bark_planks"
+    "#": {
+      "item": "jitl:burned_bark_planks"
+    }
   },
   "pattern": [
     "###",

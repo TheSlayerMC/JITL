@@ -18,7 +18,6 @@ import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
@@ -99,12 +98,12 @@ public class JFenceBlock extends CrossCollisionBlock {
     }
 
     @Override
-    protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess tick, BlockPos pos, Direction dir, BlockPos newPos, BlockState newState, RandomSource random) {
-        if ((Boolean)state.getValue(WATERLOGGED)) {
-            tick.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+    protected BlockState updateShape(BlockState stateIn, LevelReader level, ScheduledTickAccess tick, BlockPos currentPos, Direction dir, BlockPos facingPos, BlockState state, RandomSource random) {
+        if (stateIn.getValue(WATERLOGGED)) {
+            tick.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
 
-        return dir.getAxis().isHorizontal() ? state.setValue((Property)PROPERTY_BY_DIRECTION.get(dir), this.connectsTo(newState, newState.isFaceSturdy(level, newPos, dir.getOpposite()), dir.getOpposite())) : super.updateShape(state, level, tick, pos, dir, newPos, newState, random);
+        return dir.getAxis().getPlane() == Direction.Plane.HORIZONTAL ? state.setValue(PROPERTY_BY_DIRECTION.get(dir), this.connectsTo(state, state.isFaceSturdy(level, facingPos, dir.getOpposite()), dir.getOpposite())) : super.updateShape(stateIn, level, tick, currentPos, dir, facingPos, state, random);
     }
 
     @Override

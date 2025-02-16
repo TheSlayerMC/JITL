@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": "minecraft:diamond",
-    "i": "minecraft:gold_ingot"
+    "d": {
+      "item": "minecraft:diamond"
+    },
+    "i": {
+      "item": "minecraft:gold_ingot"
+    }
   },
   "pattern": [
     "iii",

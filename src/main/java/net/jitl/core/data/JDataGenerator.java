@@ -20,7 +20,7 @@ public class JDataGenerator {
         DataGenerator generator = event.getGenerator();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        generator.addProvider(event.includeServer(), new JRecipeRegistry(generator.getPackOutput(), lookupProvider));
+        //generator.addProvider(event.includeServer(), new JRecipeRegistry(generator.getPackOutput(), lookupProvider));
         //generator.addProvider(event.includeServer(), new JLootTableSubProvider(generator.getPackOutput(), lookupProvider));
         //generator.addProvider(event.includeServer(), new CarverGenerator(generator.getPackOutput(), lookupProvider));
         //generator.addProvider(event.includeServer(), new ConfiguredFeaturesGenerator(generator.getPackOutput(), event.getLookupProvider()));

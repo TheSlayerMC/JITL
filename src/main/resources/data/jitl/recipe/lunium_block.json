@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "jitl:lunium_ingot"
+    "#": {
+      "item": "jitl:lunium_ingot"
+    }
   },
   "pattern": [
     "###",

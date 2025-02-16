@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "jitl:gorbite_gem"
+    "#": {
+      "item": "jitl:gorbite_gem"
+    }
   },
   "pattern": [
     "###",

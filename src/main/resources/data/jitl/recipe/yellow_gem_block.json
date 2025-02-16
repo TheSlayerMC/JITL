@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "jitl:yellow_gem"
+    "#": {
+      "item": "jitl:yellow_gem"
+    }
   },
   "pattern": [
     "###",

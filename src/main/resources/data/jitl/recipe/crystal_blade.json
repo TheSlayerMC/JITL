@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": "jitl:cave_crystal",
-    "I": "minecraft:stone"
+    "#": {
+      "item": "jitl:cave_crystal"
+    },
+    "I": {
+      "item": "minecraft:stone"
+    }
   },
   "pattern": [
     "#",

@@ -80,17 +80,17 @@ configurations {
 }
 
 dependencies {
-    //implementation "mezz.jei:jei-" + sub_sub_minecraft_version + "-neoforge:" + jei_version
+    implementation "mezz.jei:jei-" + sub_sub_minecraft_version + "-neoforge:" + jei_version
     // implementation "maven.modrinth:just-enough-resources-jer:" + jer_version
 
-    //implementation "top.theillusivec4.curios:curios-neoforge:" + curios_version
+    implementation "top.theillusivec4.curios:curios-neoforge:" + curios_version
 
     implementation "software.bernie.geckolib:geckolib-neoforge-" + gekolib_version
 
-//    compileOnly "vazkii.patchouli:Patchouli:" + sub_minecraft_version + "-" + patchouli_version + "-NEOFORGE:api"
-//    runtimeOnly "vazkii.patchouli:Patchouli:" + sub_minecraft_version + "-" + patchouli_version + "-NEOFORGE"
+    compileOnly "vazkii.patchouli:Patchouli:" + sub_minecraft_version + "-" + patchouli_version + "-NEOFORGE:api"
+    runtimeOnly "vazkii.patchouli:Patchouli:" + sub_minecraft_version + "-" + patchouli_version + "-NEOFORGE"
 
-    //runtimeOnly "maven.modrinth:worldedit:7.3.6"
+    runtimeOnly "maven.modrinth:worldedit:7.3.6"
 
     compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
     runtimeOnly "dev.emi:emi-neoforge:${emi_version}"

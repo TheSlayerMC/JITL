@@ -1,70 +1,20 @@
 {
-  "temperature": 1,
-  "downfall": 0,
-  "has_precipitation": false,
+  "carvers": {},
+  "downfall": 0.0,
   "effects": {
-    "sky_color": 7776511,
     "fog_color": 12638463,
-    "water_color": 4159204,
-    "water_fog_color": 329011,
-    "grass_color": 4159204,
     "foliage_color": 4159204,
+    "grass_color": 4159204,
     "music": {
-      "sound": "jitl:music.dim.depths",
-      "min_delay": 12000,
       "max_delay": 24000,
-      "replace_current_music": false
-    }
+      "min_delay": 12000,
+      "replace_current_music": false,
+      "sound": "jitl:music.dim.depths"
+    },
+    "sky_color": 7776511,
+    "water_color": 4159204,
+    "water_fog_color": 329011
   },
-  "spawners": {
-    "ambient": [],
-    "axolotls": [],
-    "creature": [],
-    "misc": [],
-    "monster": [
-      {
-        "type": "jitl:darkener",
-        "weight": 5,
-        "minCount": 1,
-        "maxCount": 2
-      },
-      {
-        "type": "jitl:depths_hunter",
-        "weight": 2,
-        "minCount": 1,
-        "maxCount": 1
-      },
-      {
-        "type": "jitl:spiked_beast",
-        "weight": 5,
-        "minCount": 1,
-        "maxCount": 1
-      },
-      {
-        "type": "jitl:depths_beast",
-        "weight": 5,
-        "minCount": 1,
-        "maxCount": 1
-      },
-      {
-        "type": "jitl:roc",
-        "weight": 5,
-        "minCount": 1,
-        "maxCount": 2
-      },
-      {
-        "type": "jitl:darkness_crawler",
-        "weight": 5,
-        "minCount": 1,
-        "maxCount": 2
-      }
-    ],
-    "underground_water_creature": [],
-    "water_ambient": [],
-    "water_creature": []
-  },
-  "spawn_costs": {},
-  "carvers": [],
   "features": [
     [],
     [],
@@ -88,5 +38,55 @@
       "jitl:depths_crystal",
       "jitl:floor_depths_crystal"
     ]
-  ]
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "jitl:darkener",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 5
+      },
+      {
+        "type": "jitl:depths_hunter",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 2
+      },
+      {
+        "type": "jitl:spiked_beast",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 5
+      },
+      {
+        "type": "jitl:depths_beast",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 5
+      },
+      {
+        "type": "jitl:roc",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 5
+      },
+      {
+        "type": "jitl:darkness_crawler",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 5
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 1.0
 }

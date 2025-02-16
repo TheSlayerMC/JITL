@@ -3,7 +3,9 @@
   "category": "building",
   "group": "jitl:enderillium_shard",
   "ingredients": [
-    "jitl:enderillium_block"
+    {
+      "item": "jitl:enderillium_block"
+    }
   ],
   "result": {
     "count": 9,

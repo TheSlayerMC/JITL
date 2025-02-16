@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": "jitl:stone_clump",
-    "i": "minecraft:stone"
+    "d": {
+      "item": "jitl:stone_clump"
+    },
+    "i": {
+      "item": "minecraft:stone"
+    }
   },
   "pattern": [
     "ddd",

@@ -21,7 +21,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.portal.TeleportTransition;
@@ -36,8 +35,8 @@ public class SenterianPortalBlock extends Block implements SenterianPortal {
 
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 11.0D, 16.0D);
 
-    public SenterianPortalBlock(BlockBehaviour.Properties props) {
-        super(props);
+    public SenterianPortalBlock() {
+        super(JBlockProperties.PORTAL);
     }
 
     @Override

@@ -2,10 +2,18 @@
   "type": "minecraft:crafting_shapeless",
   "category": "equipment",
   "ingredients": [
-    "jitl:sapphire_axe",
-    "jitl:sapphire_pickaxe",
-    "jitl:sapphire_shovel",
-    "jitl:sapphire_hoe"
+    {
+      "item": "jitl:sapphire_axe"
+    },
+    {
+      "item": "jitl:sapphire_pickaxe"
+    },
+    {
+      "item": "jitl:sapphire_shovel"
+    },
+    {
+      "item": "jitl:sapphire_hoe"
+    }
   ],
   "result": {
     "count": 1,

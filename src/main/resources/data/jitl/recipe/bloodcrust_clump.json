@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": "jitl:bloodcrust_ingot"
+    "d": {
+      "item": "jitl:bloodcrust_ingot"
+    }
   },
   "pattern": [
     "ddd"

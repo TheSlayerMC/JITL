@@ -2,9 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "e": "jitl:dark_orb",
-    "p": "jitl:light_terranian_soil",
-    "y": "jitl:magic_dust"
+    "e": {
+      "item": "jitl:dark_orb"
+    },
+    "p": {
+      "item": "jitl:light_terranian_soil"
+    },
+    "y": {
+      "item": "jitl:magic_dust"
+    }
   },
   "pattern": [
     "pep",

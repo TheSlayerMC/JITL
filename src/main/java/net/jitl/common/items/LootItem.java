@@ -27,8 +27,8 @@ public class LootItem extends JItem {
 
     public LootTier tier;
 
-    public LootItem(Properties props, LootTier tier, Rarity r) {
-        super(props.rarity(r).stacksTo(4));
+    public LootItem(LootTier tier, Rarity r) {
+        super(JItems.itemProps().rarity(r).stacksTo(4));
         this.tier = tier;
     }
 

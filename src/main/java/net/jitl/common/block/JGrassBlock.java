@@ -20,15 +20,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.lighting.LightEngine;
 import net.minecraft.world.phys.BlockHitResult;
 
 public class JGrassBlock extends Block {//implements BonemealableBlock {
 
-    public JGrassBlock(BlockBehaviour.Properties props) {
-        super(props);
+    public JGrassBlock() {
+        super(JBlockProperties.GRASS);
     }
 
     @Override

@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": "jitl:blood",
-    "i": "jitl:lost_soul"
+    "d": {
+      "item": "jitl:blood"
+    },
+    "i": {
+      "item": "jitl:lost_soul"
+    }
   },
   "pattern": [
     "ddd",

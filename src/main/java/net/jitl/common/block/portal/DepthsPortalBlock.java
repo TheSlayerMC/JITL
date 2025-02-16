@@ -21,7 +21,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.portal.TeleportTransition;
@@ -35,8 +34,8 @@ public class DepthsPortalBlock extends Block implements DepthsPortal {
 
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 11.0D, 16.0D);
 
-    public DepthsPortalBlock(BlockBehaviour.Properties props) {
-        super(props);
+    public DepthsPortalBlock() {
+        super(JBlockProperties.PORTAL);
     }
 
     @Override

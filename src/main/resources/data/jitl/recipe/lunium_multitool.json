@@ -2,10 +2,18 @@
   "type": "minecraft:crafting_shapeless",
   "category": "equipment",
   "ingredients": [
-    "jitl:lunium_axe",
-    "jitl:lunium_pickaxe",
-    "jitl:lunium_shovel",
-    "jitl:lunium_hoe"
+    {
+      "item": "jitl:lunium_axe"
+    },
+    {
+      "item": "jitl:lunium_pickaxe"
+    },
+    {
+      "item": "jitl:lunium_shovel"
+    },
+    {
+      "item": "jitl:lunium_hoe"
+    }
   ],
   "result": {
     "count": 1,

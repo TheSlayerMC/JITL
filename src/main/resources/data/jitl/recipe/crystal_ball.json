@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "e": "minecraft:ender_pearl",
-    "i": "jitl:magic_dust"
+    "e": {
+      "item": "minecraft:ender_pearl"
+    },
+    "i": {
+      "item": "jitl:magic_dust"
+    }
   },
   "pattern": [
     "iei",

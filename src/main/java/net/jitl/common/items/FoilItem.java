@@ -11,6 +11,10 @@ public class FoilItem extends JItem {
         super(p);
     }
 
+    public FoilItem() {
+        this(JItems.itemProps());
+    }
+
     @Override
     public boolean isFoil(@NotNull ItemStack stack) {
         return true;

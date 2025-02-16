@@ -8,7 +8,6 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -27,8 +26,8 @@ public class JBlockFungalShelf extends JBlock {
     protected static final VoxelShape SHROOM_WEST_AABB = Block.box(0.699999988079071D, 0.20000000298023224D, 0.3499999940395355D, 1.0D, 0.800000011920929D, 0.6499999761581421D);
     protected static final VoxelShape SHROOM_EAST_AABB = Block.box(0.0D, 0.20000000298023224D, 0.3499999940395355D, 0.30000001192092896D, 0.800000011920929D, 0.6499999761581421D);
 
-    public JBlockFungalShelf(BlockBehaviour.Properties props) {
-        super(props);
+    public JBlockFungalShelf() {
+        super(JBlockProperties.MUSHROOM_SHELF);
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
     }
 

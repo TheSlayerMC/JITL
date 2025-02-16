@@ -2,9 +2,15 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "jitl:euca_portal_piece_1",
-    "jitl:euca_portal_piece_2",
-    "jitl:euca_portal_piece_3"
+    {
+      "item": "jitl:euca_portal_piece_1"
+    },
+    {
+      "item": "jitl:euca_portal_piece_2"
+    },
+    {
+      "item": "jitl:euca_portal_piece_3"
+    }
   ],
   "result": {
     "count": 9,

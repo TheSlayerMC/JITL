@@ -2,9 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": "jitl:flaming_spring",
-    "g": "minecraft:gold_ingot",
-    "i": "jitl:flaming_sprocket"
+    "d": {
+      "item": "jitl:flaming_spring"
+    },
+    "g": {
+      "item": "minecraft:gold_ingot"
+    },
+    "i": {
+      "item": "jitl:flaming_sprocket"
+    }
   },
   "pattern": [
     "dgd",

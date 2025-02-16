@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    "jitl:corba_log"
+    {
+      "item": "jitl:corba_log"
+    }
   ],
   "result": {
     "count": 4,

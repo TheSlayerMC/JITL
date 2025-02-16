@@ -13,7 +13,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -23,8 +22,8 @@ public class OkolooPedestalBlock extends Block {
 
     public static final BooleanProperty HAS_CLUB = BooleanProperty.create("has_club");
 
-    public OkolooPedestalBlock(BlockBehaviour.Properties props) {
-        super(props);
+    public OkolooPedestalBlock() {
+        super(JBlockProperties.DUNGEON_BLOCK);
         this.registerDefaultState(this.stateDefinition.any().setValue(HAS_CLUB, Boolean.FALSE));
     }
 

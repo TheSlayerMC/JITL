@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": "jitl:bleedstone"
+    "#": {
+      "item": "jitl:bleedstone"
+    }
   },
   "pattern": [
     "##",

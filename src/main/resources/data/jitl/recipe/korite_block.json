@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "jitl:korite_ingot"
+    "#": {
+      "item": "jitl:korite_ingot"
+    }
   },
   "pattern": [
     "###",

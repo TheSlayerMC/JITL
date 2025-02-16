@@ -3,7 +3,9 @@
   "category": "building",
   "group": "jitl:flairium_ingot",
   "ingredients": [
-    "jitl:flairium_block"
+    {
+      "item": "jitl:flairium_block"
+    }
   ],
   "result": {
     "count": 9,

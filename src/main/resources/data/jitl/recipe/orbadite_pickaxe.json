@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": "jitl:orbadite_ingot",
-    "I": "minecraft:stick"
+    "#": {
+      "item": "jitl:orbadite_ingot"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
   },
   "pattern": [
     "###",

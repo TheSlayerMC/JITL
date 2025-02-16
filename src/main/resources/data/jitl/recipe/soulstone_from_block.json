@@ -3,7 +3,9 @@
   "category": "building",
   "group": "jitl:soulstone",
   "ingredients": [
-    "jitl:soulstone_block"
+    {
+      "item": "jitl:soulstone_block"
+    }
   ],
   "result": {
     "count": 9,

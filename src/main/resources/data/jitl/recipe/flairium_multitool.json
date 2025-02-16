@@ -2,10 +2,18 @@
   "type": "minecraft:crafting_shapeless",
   "category": "equipment",
   "ingredients": [
-    "jitl:flairium_axe",
-    "jitl:flairium_pickaxe",
-    "jitl:flairium_shovel",
-    "jitl:flairium_hoe"
+    {
+      "item": "jitl:flairium_axe"
+    },
+    {
+      "item": "jitl:flairium_pickaxe"
+    },
+    {
+      "item": "jitl:flairium_shovel"
+    },
+    {
+      "item": "jitl:flairium_hoe"
+    }
   ],
   "result": {
     "count": 1,

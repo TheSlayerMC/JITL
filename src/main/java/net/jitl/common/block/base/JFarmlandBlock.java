@@ -1,11 +1,8 @@
 package net.jitl.common.block.base;
 
-import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
@@ -15,7 +12,6 @@ import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraft.world.level.block.piston.MovingPistonBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -32,8 +28,8 @@ public abstract class JFarmlandBlock extends Block {
     public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE;
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 15.0D, 16.0D);
 
-    public JFarmlandBlock(BlockBehaviour.Properties props) {
-        super(props);
+    public JFarmlandBlock() {
+        super(JBlockProperties.FARMLAND);
         this.registerDefaultState(this.stateDefinition.any().setValue(MOISTURE, 0));
     }
 

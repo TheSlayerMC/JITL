@@ -20,8 +20,8 @@ public class JShovelItem extends ShovelItem implements JGear {
 
     private final IAbility ability;
 
-    public JShovelItem(Properties p, JToolTiers tier, IAbility ability) {
-        super(tier.getTier(), tier.getDamage(), tier.getSpeedModifier(), p);
+    public JShovelItem(JToolTiers tier, IAbility ability) {
+        super(tier.getTier(), tier.getDamage(), tier.getSpeedModifier(), JItems.itemProps());
         this.ability = ability;
     }
 

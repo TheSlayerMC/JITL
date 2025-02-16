@@ -39,16 +39,6 @@ public class JBlockProperties {
             .isRedstoneConductor(JBlockProperties::never)
             .requiresCorrectToolForDrops();
 
-    public static BlockBehaviour.Properties DUNGEON_GLASS = BlockBehaviour.Properties.of()
-            .strength(-1F)
-            .sound(SoundType.GLASS)
-            .noOcclusion()
-            .isViewBlocking(JBlockProperties::never)
-            .isSuffocating(JBlockProperties::never)
-            .isValidSpawn(JBlockProperties::never)
-            .isRedstoneConductor(JBlockProperties::never)
-            .requiresCorrectToolForDrops();
-
     public static BlockBehaviour.Properties MUSHROOM_BLOCK = BlockBehaviour.Properties.of()
             .mapColor(MapColor.COLOR_BROWN)
             .strength(0.5F)

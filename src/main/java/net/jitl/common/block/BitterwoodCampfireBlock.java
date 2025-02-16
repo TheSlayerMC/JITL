@@ -22,7 +22,6 @@ import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -35,8 +34,8 @@ import java.util.Optional;
 
 public class BitterwoodCampfireBlock extends CampfireBlock {
 
-    public BitterwoodCampfireBlock(BlockBehaviour.Properties props) {
-        super(true, 1, props);
+    public BitterwoodCampfireBlock() {
+        super(true, 1, JBlockProperties.CAMPFIRE);
     }
 
     @Override

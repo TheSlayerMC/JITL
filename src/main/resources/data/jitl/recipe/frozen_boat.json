@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": "jitl:frozen_planks"
+    "#": {
+      "item": "jitl:frozen_planks"
+    }
   },
   "pattern": [
     "# #",

@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": "#minecraft:planks",
-    "M": "jitl:celestium_ingot"
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "M": {
+      "item": "jitl:celestium_ingot"
+    }
   },
   "pattern": [
     "#M#",

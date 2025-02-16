@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "jitl:flame_coin",
-    "minecraft:book"
+    {
+      "item": "jitl:flame_coin"
+    },
+    {
+      "item": "minecraft:book"
+    }
   ],
   "result": {
     "count": 1,

@@ -4,7 +4,6 @@ import net.jitl.common.entity.misc.Sentacoin;
 import net.jitl.common.items.base.JItem;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
-import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -15,8 +14,8 @@ public class SentacoinItem extends JItem {
 
     private final Sentacoin.Type type;
 
-    public SentacoinItem(Properties props, Sentacoin.Type type) {
-        super(props);
+    public SentacoinItem(Sentacoin.Type type) {
+        super(JItems.itemProps());
         this.type = type;
     }
 
