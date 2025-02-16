@@ -31,10 +31,11 @@ public class UnderHeaderDescComponent implements IDescComponent {
     }
 
     protected void drawImage(int x, int y, int textureX, int textureY, int realWidth, int realHeight, GuiGraphics matrix) {
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, this.content);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         matrix.pose().pushPose();
-        //TODO matrix.blit(content, x, y, textureX, textureY, realWidth, realHeight);
+        matrix.blit(content, x, y, textureX, textureY, realWidth, realHeight);
         matrix.pose().popPose();
     }
 

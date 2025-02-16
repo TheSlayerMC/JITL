@@ -201,7 +201,7 @@ public class Blazier extends JBossEntity {
 
                     if (this.attackTime <= 0) {
                         this.attackTime = 20;
-                        this.blazier.doHurtTarget(getServerLevel(blazier), livingentity);
+                        this.blazier.doHurtTarget(livingentity);
                     }
 
                     this.blazier.getMoveControl().setWantedPosition(livingentity.getX(), livingentity.getY(), livingentity.getZ(), 1.0D);

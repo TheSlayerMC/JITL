@@ -40,7 +40,7 @@ public class PetSpawnerItem extends JItem {
                 bindSpawner(player, serverLevel, pos, JItems.PET_ROBOT_SPAWNER.get(), new PetRobot(JEntities.PET_ROBOT_TYPE.get(), level, player));
             }
         }
-        return InteractionResult.SUCCESS_SERVER;
+        return InteractionResult.sidedSuccess(level.isClientSide());
     }
 
     public void bindSpawner(Player player, ServerLevel level, BlockPos pos, Item spawner, LivingEntity pet) {

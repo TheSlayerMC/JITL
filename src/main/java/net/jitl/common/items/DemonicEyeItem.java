@@ -25,8 +25,8 @@ public class DemonicEyeItem extends JItem {
         BlockPos blockpos = pContext.getClickedPos();
         BlockState blockstate = level.getBlockState(blockpos);
         if (blockstate.is(JBlocks.CORBA_PORTAL_FRAME.get()) && !blockstate.getValue(CorbaPortalFrameBlock.HAS_EYE)) {
-            if (!level.isClientSide) {
-                return InteractionResult.SUCCESS_SERVER;
+            if (level.isClientSide) {
+                return InteractionResult.SUCCESS;
             } else {
                 BlockState blockstate1 = blockstate.setValue(CorbaPortalFrameBlock.HAS_EYE, Boolean.TRUE);
                 Block.pushEntitiesUp(blockstate, blockstate1, level, blockpos);

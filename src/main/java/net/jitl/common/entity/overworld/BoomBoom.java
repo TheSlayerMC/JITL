@@ -224,7 +224,7 @@ public class BoomBoom extends JMonsterEntity {
                     itemstack.hurtAndBreak(1, pPlayer, getSlotForHand(pHand));
                 }
             }
-            return InteractionResult.SUCCESS_SERVER;
+            return InteractionResult.SUCCESS;
         } else {
             return super.mobInteract(pPlayer, pHand);
         }

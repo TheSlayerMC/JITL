@@ -87,7 +87,7 @@ public class Flungas extends JPathfinderMob {
             this.level().playSound(player, player.getOnPos(), JSounds.BOTTLE_PLUG.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
             if(!player.isCreative()) heldItem.shrink(1);
             this.level().addFreshEntity(new ItemEntity(level(), player.position().x, player.position().y, player.position().z, new ItemStack(JItems.BILE_VIAL.get(), 1)));
-            return InteractionResult.SUCCESS;
+            return InteractionResult.sidedSuccess(this.level().isClientSide);
         }
         return super.mobInteract(player, hand);
     }

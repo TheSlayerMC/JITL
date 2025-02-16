@@ -110,25 +110,28 @@ public class Smelly extends JMonsterEntity {
     }
 
     @Override
-    public boolean doHurtTarget(ServerLevel level, Entity entity) {
+    public boolean doHurtTarget(Entity entity) {
         this.level().broadcastEntityEvent(this, (byte)1);
         float damage = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
         float f1 = (int)damage > 0 ? damage / 2.0F + (float)this.random.nextInt((int)damage) : damage;
-        boolean hurt = entity.hurtServer(level, this.damageSources().mobAttack(this), f1);
+        boolean hurt = entity.hurt(this.damageSources().mobAttack(this), f1);
         if(hurt) {
             DamageSource damagesource = this.damageSources().mobAttack(this);
+
             entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, 0.4F, 0.0D));
-            EnchantmentHelper.doPostAttackEffects(level, entity, damagesource);
+            if (this.level() instanceof ServerLevel serverlevel) {
+                EnchantmentHelper.doPostAttackEffects(serverlevel, entity, damagesource);
+            }
         }
         this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
         return hurt;
     }
 
     @Override
-    public boolean hurtServer(ServerLevel level, @NotNull DamageSource source, float amount) {
+    public boolean hurt(@NotNull DamageSource source, float amount) {
         if(source.getEntity() instanceof Arrow || source.getEntity() instanceof ThrowableProjectile) {
             return false;
         }
-        return super.hurtServer(level, source, amount);
+        return super.hurt(source, amount);
     }
 }

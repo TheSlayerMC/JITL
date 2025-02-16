@@ -25,8 +25,8 @@ public class SentryEyeItem extends JItem {
         BlockPos blockpos = pContext.getClickedPos();
         BlockState blockstate = level.getBlockState(blockpos);
         if (blockstate.is(JBlocks.SENTERIAN_PORTAL_FRAME.get()) && !blockstate.getValue(SenterianPortalFrameBlock.HAS_EYE)) {
-            if (!level.isClientSide) {
-                return InteractionResult.SUCCESS_SERVER;
+            if (level.isClientSide) {
+                return InteractionResult.SUCCESS;
             } else {
                 BlockState blockstate1 = blockstate.setValue(SenterianPortalFrameBlock.HAS_EYE, Boolean.TRUE);
                 Block.pushEntitiesUp(blockstate, blockstate1, level, blockpos);

@@ -8,7 +8,6 @@ import net.jitl.core.init.internal.JParticleManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -47,7 +46,7 @@ public class JBlockSwampLamp extends JBlock {
     @Override
     protected void spawnAfterBreak(@NotNull BlockState state, @NotNull ServerLevel level, @NotNull BlockPos pos, @NotNull ItemStack stack, boolean dropExperience) {
         super.spawnAfterBreak(state, level, pos, stack, dropExperience);
-        SwampFly swampFly = JEntities.SWAMP_FLY_TYPE.get().create(level, EntitySpawnReason.MOB_SUMMONED);
+        SwampFly swampFly = JEntities.SWAMP_FLY_TYPE.get().create(level);
         if(swampFly != null) {
             swampFly.moveTo((double)pos.getX() + 0.5, pos.getY(), (double)pos.getZ() + 0.5, 0.0F, 0.0F);
             level.addFreshEntity(swampFly);

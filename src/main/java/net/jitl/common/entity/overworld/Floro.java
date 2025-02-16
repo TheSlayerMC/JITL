@@ -10,7 +10,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -75,9 +74,9 @@ public class Floro extends JMonsterEntity implements RangedAttackMob {
     }
 
     @Override
-    public boolean hurtServer(ServerLevel level, DamageSource pSource, float pAmount) {
+    public boolean hurt(DamageSource pSource, float pAmount) {
         setHidden(false);
-        return super.hurtServer(level, pSource, pAmount);
+        return super.hurt(pSource, pAmount);
     }
 
     @Override

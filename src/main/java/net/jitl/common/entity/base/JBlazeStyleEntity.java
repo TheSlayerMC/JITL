@@ -4,7 +4,6 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -51,7 +50,7 @@ public abstract class JBlazeStyleEntity extends JMonsterEntity {
     }
 
     @Override
-    protected void customServerAiStep(ServerLevel level) {
+    protected void customServerAiStep() {
         this.nextHeightOffsetChangeTick--;
         if (this.nextHeightOffsetChangeTick <= 0) {
             this.nextHeightOffsetChangeTick = 100;
@@ -64,7 +63,7 @@ public abstract class JBlazeStyleEntity extends JMonsterEntity {
             this.setDeltaMovement(this.getDeltaMovement().add(0.0D, ((double)0.3F - vec3.y) * (double)0.3F, 0.0D));
             this.hasImpulse = true;
         }
-        super.customServerAiStep(level);
+        super.customServerAiStep();
     }
 
     @Override
@@ -181,7 +180,7 @@ public abstract class JBlazeStyleEntity extends JMonsterEntity {
 
                     if (this.attackTime <= 0) {
                         this.attackTime = 20;
-                        this.blaze.doHurtTarget(getServerLevel(this.blaze), livingentity);
+                        this.blaze.doHurtTarget(livingentity);
                     }
 
                     this.blaze.getMoveControl().setWantedPosition(livingentity.getX(), livingentity.getY(), livingentity.getZ(), 1.0);

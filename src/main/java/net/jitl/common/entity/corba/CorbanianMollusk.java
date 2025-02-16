@@ -6,7 +6,6 @@ import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
@@ -83,7 +82,7 @@ public class CorbanianMollusk extends JMonsterEntity {
     public void aiStep() {
         super.aiStep();
         if(!this.level().isClientSide) {
-            if(!EventHooks.canEntityGrief((ServerLevel)this.level(), this))
+            if(!EventHooks.canEntityGrief(this.level(), this))
                 return;
             BlockState slime = JBlocks.SLIME.get().defaultBlockState();
             for(int i = 0; i < 4; ++i) {

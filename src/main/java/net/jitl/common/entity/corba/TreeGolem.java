@@ -6,7 +6,6 @@ import net.jitl.common.entity.base.JNeutralMonster;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.helper.MathHelper;
 import net.jitl.core.init.internal.JSounds;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -68,11 +67,11 @@ public class TreeGolem extends JNeutralMonster {
     }
 
     @Override
-    public boolean doHurtTarget(ServerLevel level, Entity entity) {
+    public boolean doHurtTarget(Entity entity) {
         this.level().broadcastEntityEvent(this, (byte)1);
         float damage = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
         float f1 = (int)damage > 0 ? damage / 2.0F + (float)this.random.nextInt((int)damage) : damage;
-        boolean hurt = entity.hurtServer(level, this.damageSources().mobAttack(this), f1);
+        boolean hurt = entity.hurt(this.damageSources().mobAttack(this), f1);
         if(hurt) {
             entity.setDeltaMovement(entity.getDeltaMovement().add((double) (-MathHelper.sin(yRotO * (float) Math.PI / 180.0F)) * 4, 0.1D, (double) (MathHelper.cos(yRotO * (float) Math.PI / 180.0F)) * 4));
         }

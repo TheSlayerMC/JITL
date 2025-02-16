@@ -3,7 +3,6 @@ package net.jitl.common.entity.projectile;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JParticleManager;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -22,7 +21,7 @@ public class ConjuringProjectileEntity extends ThrowableProjectile {
     }
 
     public ConjuringProjectileEntity(Level world, LivingEntity thrower) {
-        super(JEntities.CONJURING_PROJECTILE_TYPE.get(), world);
+        super(JEntities.CONJURING_PROJECTILE_TYPE.get(), thrower, world);
     }
 
     @Override
@@ -38,12 +37,10 @@ public class ConjuringProjectileEntity extends ThrowableProjectile {
     protected void onHitEntity(EntityHitResult pResult) {
         super.onHitEntity(pResult);
         Entity entity = pResult.getEntity();
-        if(level() instanceof ServerLevel level) {
-            if(entity instanceof LivingEntity && entity.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), getDamage())) {
-                MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.POISON, 60);
-                ((LivingEntity)entity).addEffect(effectInstance);
-                entity.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), getDamage());
-            }
+        if(entity instanceof LivingEntity && entity.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage())) {
+            MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.POISON, 60);
+            ((LivingEntity)entity).addEffect(effectInstance);
+            entity.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage());
         }
     }
 

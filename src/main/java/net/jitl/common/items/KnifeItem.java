@@ -44,7 +44,7 @@ public class KnifeItem extends JSwordItem {
             worldIn.addFreshEntity(entity);
             playerIn.awardStat(Stats.ITEM_USED.get(this));
         }
-        return InteractionResult.SUCCESS_SERVER;
+        return InteractionResult.SUCCESS;
     }
 
     @Override

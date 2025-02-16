@@ -48,7 +48,7 @@ public class BitterwoodCampfireBlock extends CampfireBlock {
                 if (optional.isPresent()) {
                     if (campfireblockentity.placeFood(pPlayer, pPlayer.getAbilities().instabuild ? itemstack.copy() : itemstack, optional.get().value().cookingTime())) {
                         pPlayer.awardStat(Stats.INTERACT_WITH_CAMPFIRE);
-                        return InteractionResult.SUCCESS_SERVER;
+                        return InteractionResult.SUCCESS;
                     }
                     return InteractionResult.CONSUME;
                 }

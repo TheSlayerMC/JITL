@@ -5,7 +5,6 @@ import com.mojang.blaze3d.vertex.VertexFormat;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.util.TriState;
 
 public class EucaCloudRenderer extends JCloudRenderer {
 
@@ -19,7 +18,7 @@ public class EucaCloudRenderer extends JCloudRenderer {
                 false,
                 RenderType.CompositeState.builder()
                         .setShaderState(RenderStateShard.RENDERTYPE_CLOUDS_SHADER)
-                        .setTextureState(new RenderStateShard.TextureStateShard(JITL.rl("textures/environment/euca_clouds.png"), TriState.FALSE, false))
+                        .setTextureState(new RenderStateShard.TextureStateShard(JITL.rl("textures/environment/euca_clouds.png"), false, false))
                         .setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY)
                         .setCullState(RenderStateShard.NO_CULL)
                         .setWriteMaskState(colour ? RenderStateShard.DEPTH_WRITE : RenderStateShard.COLOR_DEPTH_WRITE)

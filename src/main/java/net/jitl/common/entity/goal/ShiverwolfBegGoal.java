@@ -19,16 +19,18 @@ public class ShiverwolfBegGoal extends Goal {
     private final Level level;
     private final float lookDistance;
     private int lookTime;
+    private final TargetingConditions begTargeting;
 
     public ShiverwolfBegGoal(Shiverwolf wolf, float lookDistance) {
         this.wolf = wolf;
         this.level = wolf.level();
         this.lookDistance = lookDistance;
+        this.begTargeting = TargetingConditions.forNonCombat().range(lookDistance);
         this.setFlags(EnumSet.of(Flag.LOOK));
     }
 
     public boolean canUse() {
-        this.player = this.level.getNearestPlayer(this.wolf, this.lookDistance);
+        this.player = this.level.getNearestPlayer(this.begTargeting, this.wolf);
         return this.player != null && this.playerHoldingInteresting(this.player);
     }
 

@@ -43,7 +43,7 @@ public class JGrassBlock extends Block {//implements BonemealableBlock {
                         pPlayer.getItemInHand(pHand).hurtAndBreak(1, pPlayer, EquipmentSlot.MAINHAND);
                 }
             }
-            return InteractionResult.SUCCESS_SERVER;
+            return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;
     }

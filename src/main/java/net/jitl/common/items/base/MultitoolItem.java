@@ -214,7 +214,7 @@ public class MultitoolItem extends DiggerItem implements JGear {
 
                         }
                     }
-                    return InteractionResult.SUCCESS_SERVER;
+                    return InteractionResult.SUCCESS;
                 } else {
                     return InteractionResult.PASS;
                 }

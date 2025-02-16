@@ -6,7 +6,6 @@ import net.jitl.core.config.JCommonConfig;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ambient.Bat;
@@ -66,22 +65,20 @@ public class DeathEvent {
                 stats.addLevel(EnumKnowledge.OVERWORLD, 10);
             }
 
-            if(event.getEntity().level() instanceof ServerLevel level) {
-                if (entity instanceof Ghast) {
-                    if (random.nextInt(3) == 0)
-                        entity.spawnAtLocation(level, JItems.GHAST_TENTACLE.get(), 1);
-                }
+            if(entity instanceof Ghast) {
+                if(random.nextInt(3) == 0)
+                    entity.spawnAtLocation(JItems.GHAST_TENTACLE.get(), 1);
+            }
 
-                if (JCommonConfig.ENABLE_LOOT_POUCH_DROP.get()) {
-                    if (random.nextInt(JCommonConfig.COMMON_LOOT_CHANCE.get()) == 0) {
-                        entity.spawnAtLocation(level, JItems.LOOT_POUCH.get(), 1);
-                    }
-                    if (random.nextInt(JCommonConfig.GOLD_LOOT_CHANCE.get()) == 0) {
-                        entity.spawnAtLocation(level, JItems.GOLD_LOOT_POUCH.get(), 1);
-                    }
-                    if (random.nextInt(JCommonConfig.DIAMOND_LOOT_CHANCE.get()) == 0) {
-                        entity.spawnAtLocation(level, JItems.DIAMOND_LOOT_POUCH.get(), 1);
-                    }
+            if(JCommonConfig.ENABLE_LOOT_POUCH_DROP.get()) {
+                if(random.nextInt(JCommonConfig.COMMON_LOOT_CHANCE.get()) == 0) {
+                    entity.spawnAtLocation(JItems.LOOT_POUCH.get(), 1);
+                }
+                if(random.nextInt(JCommonConfig.GOLD_LOOT_CHANCE.get()) == 0) {
+                    entity.spawnAtLocation(JItems.GOLD_LOOT_POUCH.get(), 1);
+                }
+                if(random.nextInt(JCommonConfig.DIAMOND_LOOT_CHANCE.get()) == 0) {
+                    entity.spawnAtLocation(JItems.DIAMOND_LOOT_POUCH.get(), 1);
                 }
             }
         }

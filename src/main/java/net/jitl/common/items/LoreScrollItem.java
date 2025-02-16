@@ -67,7 +67,7 @@ public class LoreScrollItem extends JItem {
                 ChatUtils.addChatBarChat(playerIn, msg);
             }
         }
-        return InteractionResult.SUCCESS_SERVER;
+        return InteractionResult.SUCCESS;
     }
 
     @OnlyIn(Dist.CLIENT)

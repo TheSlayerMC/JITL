@@ -21,15 +21,15 @@ import java.util.concurrent.CompletableFuture;
 
 public class JRecipeProvider extends RecipeProvider implements IConditionBuilder {
 
-    public JRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
-        super(provider, recipeOutput);
+    public JRecipeProvider(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pRegistries) {
+        super(pOutput, pRegistries);
     }
 
     @Override
-    protected void buildRecipes() {
-
+    protected void buildRecipes(RecipeOutput pRecipeOutput) {
+        
     }
-/*
+
     protected void addSmithingRecipe(RecipeOutput recipeConsumer, ItemLike input, ItemLike modifier, Item result) {
         //SmithingTransformRecipeBuilder.smithing(Ingredient.of(input), Ingredient.of(modifier), RecipeCategory.MISC, result).unlocks("has_" + modifier.toString().toLowerCase(), has(modifier)).save(recipeConsumer, "jitl:" + result.getDescriptionId() + "_smithing");
         //TODO FIX
@@ -524,5 +524,5 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
         public String getString() {
             return prefix;
         }
-    }*/
+    }
 }

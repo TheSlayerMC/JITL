@@ -31,7 +31,7 @@ public class SphericalFoliagePlacer extends BlobFoliagePlacer {
     protected void createFoliage(@NotNull LevelSimulatedReader reader, @NotNull FoliagePlacer.FoliageSetter blockSetter, @NotNull RandomSource rand, @NotNull TreeConfiguration baseTreeFeatureConfig, int maxFreeTreeHeight, FoliageAttachment foliage, int foliageHeight, int foliageRadius, int offset) {
         int size = foliageRadius + foliage.radiusOffset();
         BlockPos pos = foliage.pos().above(offset);
-        pos = pos.offset(Direction.UP.getUnitVec3i());
+        pos = pos.offset(Direction.UP.getNormal());
         for(byte x = 0; x <= size; x++) {
             for(byte y = 0; y <= size; y++) {
                 for(byte z = 0; z <= size; z++) {

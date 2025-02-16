@@ -31,9 +31,6 @@ public class JLootTables {
     public static ResourceKey<LootTable> LOOT_DIAMOND = addLootTable("loot/loot_diamond");
     public static ResourceKey<LootTable> LOOT_FROSTY = addLootTable("loot/loot_frosty_gift");
 
-    public static ResourceKey<LootTable> EMPTY = addLootTable("");
-
-
     public static ResourceKey<LootTable> addLootTable(String name) {
         return ResourceKey.create(Registries.LOOT_TABLE, JITL.rl(name));
     }

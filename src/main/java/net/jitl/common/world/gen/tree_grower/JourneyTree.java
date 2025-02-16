@@ -80,7 +80,7 @@ public class JourneyTree extends Feature<TreeConfig> {
 			BlockPos blockpos = config.rootPlacer.map((p_225286_) -> p_225286_.getTrunkOrigin(pos, random)).orElse(pos);
 			int i1 = Math.min(pos.getY(), blockpos.getY());
 			int j1 = Math.max(pos.getY(), blockpos.getY()) + i + 1;
-			if (i1 >= level.getMinY() + 1 && j1 <= level.getMaxY()) {
+			if (i1 >= level.getMinBuildHeight() + 1 && j1 <= level.getMaxBuildHeight()) {
 				OptionalInt optionalint = config.minimumSize.minClippedHeight();
 				int k1 = this.getMaxFreeTreeHeight(level, i, blockpos, config);
 				if (k1 >= i || optionalint.isPresent() && k1 >= optionalint.getAsInt()) {

@@ -9,7 +9,6 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -55,11 +54,11 @@ public class JDirtPathBlock extends Block {
     }
 
     @Override
-    public BlockState updateShape(BlockState stateIn, LevelReader reader, ScheduledTickAccess tick, BlockPos currentPos, Direction dir, BlockPos facingPos, BlockState state, RandomSource source) {
-        if(dir == Direction.UP && !stateIn.canSurvive(reader, currentPos)) {
-            tick.scheduleTick(currentPos, this, 1);
+    public BlockState updateShape(BlockState b, Direction d, BlockState s, LevelAccessor l, BlockPos p1, BlockPos p2) {
+        if(d == Direction.UP && !b.canSurvive(l, p1)) {
+            l.scheduleTick(p1, this, 1);
         }
-        return super.updateShape(stateIn, reader, tick,currentPos, dir, facingPos, state, source);
+        return super.updateShape(b, d, s, l, p1, p2);
     }
 
     @Override
