@@ -46,8 +46,7 @@ public class MagicBombEntity extends AbstractArrow implements ItemSupplier {
                     if(entity.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), (float) getBaseDamage())) {
                         level().explode(this, position().x, position().y, position().z, 2.0F, Level.ExplosionInteraction.BLOCK);
                         this.remove(RemovalReason.DISCARDED);
-                    }
-                }
+                    }                }
             }
             this.playSound(JSounds.BOTTLE_PLUG.get(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
         } else {
@@ -75,6 +74,10 @@ public class MagicBombEntity extends AbstractArrow implements ItemSupplier {
             }
         }
         return null;
+    }
+
+    public boolean isInGround() {
+        return this.onGround();
     }
 
     @Override

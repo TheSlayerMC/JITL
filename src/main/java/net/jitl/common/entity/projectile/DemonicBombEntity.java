@@ -1,92 +1,43 @@
 package net.jitl.common.entity.projectile;
 
 import net.jitl.core.data.JDamageSources;
-import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
-import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nullable;
-
 @OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)
-public class DemonicBombEntity extends AbstractArrow implements ItemSupplier {
+public class DemonicBombEntity extends DamagingProjectileEntity implements ItemSupplier {
 
-    private static final ItemStack DEFAULT_ARROW_STACK = new ItemStack(JItems.DEMONIC_BOMB.get());
-
-    public DemonicBombEntity(EntityType<? extends AbstractArrow> type, Level world) {
+    public DemonicBombEntity(EntityType<DemonicBombEntity> type, Level world) {
         super(type, world);
     }
 
-    public DemonicBombEntity(Level worldIn, LivingEntity player, float damage, @Nullable ItemStack weapon) {
-        super(JEntities.DEMONIC_BOMB_TYPE.get(), player, worldIn, DEFAULT_ARROW_STACK, weapon);
-        setBaseDamage(damage);
+    public DemonicBombEntity(EntityType<DemonicBombEntity> type, Level world, LivingEntity thrower, float damage) {
+        super(type, world, thrower, damage);
     }
 
     @Override
-    protected @NotNull SoundEvent getDefaultHitGroundSoundEvent() {
-        return JSounds.KNIFE.get();
-    }
-
-    @Override
-    protected void onHitEntity(@NotNull EntityHitResult entityRayTraceResult_) {
-        Entity entity = entityRayTraceResult_.getEntity();
-        if(entity instanceof LivingEntity && entity != this.getOwner()) {
-            if(level() instanceof ServerLevel level) {
-                if(entity instanceof LivingEntity && entity.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), 5)) {
-                    entity.hurtServer(level, JDamageSources.hurt(entity, JDamageSources.DEMONIC_BOMB), 5);
-                    if (!this.level().isClientSide) {
-                        this.level().broadcastEntityEvent(this, (byte) 1);
-                        this.discard();
-                    }
-                }
-            }
-            this.playSound(JSounds.BOTTLE_PLUG.get(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
-        } else {
-            super.onHitEntity(entityRayTraceResult_);
-        }
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        if(isInGround()) {
-            if (collidedWith() != null && collidedWith() != this.getOwner()) {
-                if (level() instanceof ServerLevel level) {
-                    if(collidedWith() instanceof LivingEntity entity && entity.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), 4)) {
-                        entity.hurtServer(level, JDamageSources.hurt(entity, JDamageSources.DEMONIC_BOMB), 4);
-                        if(!this.level().isClientSide) {
-                            this.level().broadcastEntityEvent(this, (byte) 1);
-                            this.discard();
-                        }
-                    }
+    protected void onEntityImpact(HitResult result, Entity target) {
+        if(level() instanceof ServerLevel level) {
+            if(target instanceof LivingEntity && target.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), getDamage())) {
+                target.hurtServer(level, JDamageSources.hurt(target, JDamageSources.DEMONIC_BOMB), this.getDamage());
+                if (!this.level().isClientSide) {
+                    this.level().broadcastEntityEvent(this, (byte) 1);
+                    this.discard();
                 }
             }
         }
-    }
-
-    public Entity collidedWith() {
-        for(Entity entity : this.level().getEntities(this, this.getBoundingBox())) {
-            if(entity instanceof LivingEntity) {
-                return entity;
-            }
-        }
-        return null;
     }
 
     @Override
@@ -105,18 +56,14 @@ public class DemonicBombEntity extends AbstractArrow implements ItemSupplier {
     }
 
     @Override
-    protected boolean tryPickup(Player pPlayer) {
-        return super.tryPickup(pPlayer);
-    }
-
-    @Override
-    public @NotNull ItemStack getPickupItem() {
-        return new ItemStack(JItems.DEMONIC_BOMB.get());
-    }
-
-    @Override
-    protected ItemStack getDefaultPickupItem() {
-        return getPickupItem();
+    protected void onHit(HitResult result) {
+        super.onHit(result);
+        if(result.getType() == HitResult.Type.BLOCK) {
+            if (!this.level().isClientSide) {
+                this.level().broadcastEntityEvent(this, (byte)2);
+                this.discard();
+            }
+        }
     }
 
     @Override

@@ -66,7 +66,7 @@ public class FloroMudEntity extends DamagingProjectileEntity implements ItemSupp
     }
 
     @Override
-    protected void onHit(@NotNull HitResult result) {
+    protected void onHit(HitResult result) {
         super.onHit(result);
         if (!level().isClientSide) {
             if(result.getType() != HitResult.Type.MISS) {

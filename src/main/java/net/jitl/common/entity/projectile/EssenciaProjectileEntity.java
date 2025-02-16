@@ -8,7 +8,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
 
 public class EssenciaProjectileEntity extends ThrowableProjectile {
 
@@ -36,15 +35,6 @@ public class EssenciaProjectileEntity extends ThrowableProjectile {
         essenciaBoltEntity.setPos(result.getLocation().x(), result.getLocation().y(), result.getLocation().z());
         essenciaBoltEntity.setARGB(0xff4800);
         level().addFreshEntity(essenciaBoltEntity);
-    }
-
-    @Override
-    protected void onHit(HitResult pResult) {
-        super.onHit(pResult);
-        if (!this.level().isClientSide) {
-            this.level().broadcastEntityEvent(this, (byte)3);
-            this.discard();
-        }
     }
 
     @Override
