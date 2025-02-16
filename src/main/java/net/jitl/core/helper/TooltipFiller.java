@@ -44,6 +44,7 @@ public class TooltipFiller {
     }
 
     public void addValue(Object... values) {
+        //TODO: test
         tooltip.add(Component.translatable("jitl.tooltip." + key + "." + line++, values).withStyle(ChatFormatting.GREEN));
     }
 
