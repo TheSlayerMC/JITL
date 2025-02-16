@@ -8,9 +8,9 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
@@ -44,7 +44,7 @@ public abstract class JMonsterEntity extends Monster implements GeoEntity {
     }
 
     @Override
-    public boolean checkSpawnRules(LevelAccessor level, @NotNull MobSpawnType type) {
+    public boolean checkSpawnRules(LevelAccessor level, @NotNull EntitySpawnReason type) {
         return !(level.getBiome(blockPosition()).is(Tags.Biomes.IS_MUSHROOM) || level.getBiome(blockPosition()).is(Biomes.DEEP_DARK));
     }
 
@@ -121,7 +121,7 @@ public abstract class JMonsterEntity extends Monster implements GeoEntity {
                 this.resetAttackCooldown();
                 setAttacking(true);
                 this.mob.swing(InteractionHand.MAIN_HAND);
-                this.mob.doHurtTarget(enemy);
+                this.mob.doHurtTarget(getServerLevel(this.mob), enemy);
             }
         }
     }
