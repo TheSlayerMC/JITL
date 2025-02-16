@@ -2,20 +2,19 @@ package net.jitl.client.model;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.jitl.common.entity.JEntityAction;
 import net.jitl.common.entity.frozen.FrozenTrollEntity;
 import net.minecraft.client.model.ArmedModel;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.HeadedModel;
+import net.minecraft.client.model.ListModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.HumanoidArm;
 import org.jetbrains.annotations.NotNull;
 
-public class FrozenTrollModel<S extends LivingEntityRenderState> extends EntityModel<S> implements ArmedModel, HeadedModel {
+public class FrozenTrollModel<T extends Entity> extends ListModel<T> implements ArmedModel {
     private final ModelPart head;
     private final ModelPart leg1;
     private final ModelPart leg2;
@@ -24,7 +23,6 @@ public class FrozenTrollModel<S extends LivingEntityRenderState> extends EntityM
     private final ModelPart body;
 
     public FrozenTrollModel(ModelPart root) {
-        super(root);
         this.head = root.getChild("head");
         this.leg1 = root.getChild("leg1");
         this.leg2 = root.getChild("leg2");
@@ -59,31 +57,39 @@ public class FrozenTrollModel<S extends LivingEntityRenderState> extends EntityM
     }
 
     @Override
-    public ModelPart getHead() {
-        return head;
+    public Iterable<ModelPart> parts() {
+        return ImmutableList.of(this.head, this.body, this.arm1, this.arm2, this.leg1, this.leg2);
     }
 
     @Override
-    public void setupAnim(@NotNull S entityIn) {
-        float limbSwing = entityIn.walkAnimationPos;
-        float limbSwingAmount = entityIn.walkAnimationSpeed;
+    public void setupAnim(@NotNull T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.leg1.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F;
         this.leg2.xRot = Mth.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F;
         this.arm1.yRot = 0.0F;
         this.arm2.yRot = 0.0F;
         this.arm2.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         this.arm1.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
-        this.head.yRot = entityIn.yRot * ((float) Math.PI / 180F);
-        this.head.xRot = entityIn.xRot * ((float) Math.PI / 180F);
+        this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
+        this.head.xRot = headPitch * ((float) Math.PI / 180F);
+        if (entityIn instanceof FrozenTrollEntity frozenTrollEntity) {
+//            JEntityAction entityAction = frozenTrollEntity.getArmPose();
+//            if (entityAction == JEntityAction.ADMIRING_ITEM) {
+//                this.head.xRot = 0.5F;
+//                this.head.yRot = 0.0F;
+//                this.arm1.yRot = 0.3F;
+//                this.arm1.xRot = -0.9F;
+//                this.arm2.yRot = -0.3F;
+//                this.arm2.xRot = -0.9F;
+//            }
+        }
+    }
+
+    @Override
+    public void translateToHand(HumanoidArm sideIn, PoseStack matrixStackIn) {
+        this.getArm(sideIn).translateAndRotate(matrixStackIn);
     }
 
     private ModelPart getArm(HumanoidArm handSide_) {
         return handSide_ == HumanoidArm.LEFT ? this.arm1 : this.arm2;
-    }
-
-    @Override
-    public void translateToHand(HumanoidArm side, PoseStack poseStack) {
-        this.root.translateAndRotate(poseStack);
-        this.getArm(side).translateAndRotate(poseStack);
     }
 }
