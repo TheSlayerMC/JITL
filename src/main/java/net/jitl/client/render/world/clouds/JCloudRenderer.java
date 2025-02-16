@@ -1,20 +1,29 @@
 package net.jitl.client.render.world.clouds;
 
+import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
+import net.jitl.core.init.JITL;
 import net.minecraft.client.CloudStatus;
 import net.minecraft.client.renderer.CloudRenderer;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
 import net.minecraft.util.TriState;
+import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Optional;
+
 @OnlyIn(Dist.CLIENT)
 public class JCloudRenderer extends CloudRenderer {
 
@@ -23,6 +32,75 @@ public class JCloudRenderer extends CloudRenderer {
     }
 
     public JCloudRenderer() { }
+
+    @Override
+    protected @NotNull Optional<TextureData> prepare(ResourceManager resource, @NotNull ProfilerFiller profile) {
+        try {
+            InputStream inputstream = resource.open(TEXTURE_LOCATION);
+            Optional<TextureData> optional;
+            try {
+                NativeImage nativeimage = NativeImage.read(inputstream);
+                try {
+                    int i = nativeimage.getWidth();
+                    int j = nativeimage.getHeight();
+                    long[] along = new long[i * j];
+                    int k = 0;
+
+                    while(true) {
+                        if(k >= j) {
+                            optional = Optional.of(new TextureData(along, i, j));
+                            break;
+                        }
+
+                        for(int l = 0; l < i; ++l) {
+                            int i1 = nativeimage.getPixel(l, k);
+                            if(isCellEmpty(i1)) {
+                                along[l + k * i] = 0L;
+                            } else {
+                                boolean flag = isCellEmpty(nativeimage.getPixel(l, Math.floorMod(k - 1, j)));
+                                boolean flag1 = isCellEmpty(nativeimage.getPixel(Math.floorMod(l + 1, j), k));
+                                boolean flag2 = isCellEmpty(nativeimage.getPixel(l, Math.floorMod(k + 1, j)));
+                                boolean flag3 = isCellEmpty(nativeimage.getPixel(Math.floorMod(l - 1, j), k));
+                                along[l + k * i] = packCellData(i1, flag, flag1, flag2, flag3);
+                            }
+                        }
+                        k++;
+                    }
+                } catch(Throwable var18) {
+                    try {
+                        nativeimage.close();
+                    } catch(Throwable var17) {
+                        var18.addSuppressed(var17);
+                    }
+
+                    throw var18;
+                }
+
+                nativeimage.close();
+            } catch(Throwable var19) {
+                try {
+                    inputstream.close();
+                } catch (Throwable var16) {
+                    var19.addSuppressed(var16);
+                }
+
+                throw var19;
+            }
+
+            inputstream.close();
+
+            return optional;
+        } catch (IOException ex) {
+            LOGGER.error("Failed to load cloud texture", ex);
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    protected void apply(Optional<TextureData> t, @NotNull ResourceManager r, @NotNull ProfilerFiller p) {
+        this.texture = t.orElse(null);
+        this.needsRebuild = true;
+    }
 
     @Override
     public void render(int height, @NotNull CloudStatus status, float colour, @NotNull Matrix4f frustumMatrix, @NotNull Matrix4f projectionMatrix, @NotNull Vec3 loc, float tick) {

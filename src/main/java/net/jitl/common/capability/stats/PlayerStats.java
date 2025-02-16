@@ -17,7 +17,6 @@ public class PlayerStats implements INBTSerializable<CompoundTag> {
 
     public void copyFrom(PlayerStats stats) {
         this.hasBlizzard = stats.hasBlizzard;
-        this.sentacoins = stats.sentacoins;
 
         for(EnumKnowledge k : EnumKnowledge.values()) {
             setLevel(k, stats.getLevel(k));

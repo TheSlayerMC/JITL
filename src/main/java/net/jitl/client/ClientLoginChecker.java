@@ -1,5 +1,6 @@
 package net.jitl.client;
 
+import net.jitl.client.render.world.clouds.JCloudRenderer;
 import net.jitl.core.config.JClientConfig;
 import net.jitl.core.helper.InternetHandler;
 import net.jitl.core.init.JITL;
@@ -10,6 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
 import java.io.IOException;
@@ -41,9 +43,11 @@ public class ClientLoginChecker {
                         if(!InternetHandler.isUpdateAvailable() && InternetHandler.isOnline()) {
                             ChatUtils.sendColouredTranslatedMessage(player, ChatFormatting.AQUA, "jitl.message.up_to_date");
                         }
-                    } catch(IOException ignored) {
+                    } catch(IOException e) {
+                        throw new RuntimeException(e);
                     }
-                } catch(SocketException ignored) {
+                } catch(SocketException e) {
+                    throw new RuntimeException(e);
                 }
                 ChatUtils.sendColouredMessage(player, ChatFormatting.GOLD, "[|---------------------------------------------------|]");
             }
