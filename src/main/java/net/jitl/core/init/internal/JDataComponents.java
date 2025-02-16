@@ -12,7 +12,7 @@ import java.util.function.UnaryOperator;
 
 public class JDataComponents {
 
-    public static final DeferredRegister.DataComponents REGISTRY = DeferredRegister.createDataComponents(Registries.DATA_COMPONENT_TYPE, JITL.MOD_ID);
+    public static final DeferredRegister.DataComponents REGISTRY = DeferredRegister.createDataComponents(Registries.DATA_COMPONENT_TYPE, JITL.MODID);
 
     public static final Supplier<DataComponentType<LoreScroll>> SCROLL = registerDataComponent(
             "lore_scroll", builder -> builder.persistent(LoreScroll.LORE_CODEC).networkSynchronized(LoreScroll.LORE_STREAM_CODEC));

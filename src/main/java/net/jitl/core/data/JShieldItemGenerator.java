@@ -35,7 +35,7 @@ public class JShieldItemGenerator extends BasicFileGenerator {
                 e.printStackTrace();
             }
 
-            getItem(JITL.MOD_ID, name);
+            getItem(JITL.MODID, name);
             generateShieldFile(name);
             itemModelInit();
         }

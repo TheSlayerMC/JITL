@@ -2,8 +2,10 @@ package net.jitl.core.init.internal;
 
 import net.jitl.core.init.JITL;
 import net.minecraft.Util;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.JukeboxSong;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -11,8 +13,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class JSounds {
 
-    public static final DeferredRegister<SoundEvent> REGISTRY = DeferredRegister.create(Registries.SOUND_EVENT, JITL.MOD_ID);
-    public static final DeferredRegister<JukeboxSong> JUKEBOX_SONG = DeferredRegister.create(Registries.JUKEBOX_SONG, JITL.MOD_ID);
+    public static final DeferredRegister<SoundEvent> REGISTRY = DeferredRegister.create(Registries.SOUND_EVENT, JITL.MODID);
+    public static final DeferredRegister<JukeboxSong> JUKEBOX_SONG = DeferredRegister.create(Registries.JUKEBOX_SONG, JITL.MODID);
 
     public static final DeferredHolder<SoundEvent, SoundEvent> ICE_CRYSTAL_BREAK = registerSound("block.ice_crystal.break");
     public static final DeferredHolder<SoundEvent, SoundEvent> TOAST = registerSound("music.toast");

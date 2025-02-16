@@ -55,7 +55,7 @@ public class JBowItemGenerator extends BasicFileGenerator {
                 e.printStackTrace();
             }
 
-            getItem(JITL.MOD_ID, name);
+            getItem(JITL.MODID, name);
             generateBowFile(name);
             itemModelInit();
         }

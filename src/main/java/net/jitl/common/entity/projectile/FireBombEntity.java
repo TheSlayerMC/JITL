@@ -1,6 +1,5 @@
 package net.jitl.common.entity.projectile;
 
-import net.jitl.core.data.JDamageSources;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -31,12 +30,14 @@ public class FireBombEntity extends DamagingProjectileEntity implements ItemSupp
     protected void onEntityImpact(HitResult result, Entity target) {
         if(level() instanceof ServerLevel level) {
             if(target instanceof LivingEntity && target.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), getDamage())) {
-                target.hurtServer(level, JDamageSources.hurt(target, JDamageSources.FIRE_BOMB), this.getDamage());
-                target.setRemainingFireTicks(60);
-                if(!this.level().isClientSide) {
-                    this.level().broadcastEntityEvent(this, (byte) 1);
-                    this.discard();
-                }
+            //target.hurt(JDamageSources.FIRE_BOMB, this.getDamage());//TODO
+            target.hurt(this.damageSources().cactus(), this.getDamage());
+
+            target.setRemainingFireTicks(60);
+            if(!this.level().isClientSide) {
+                this.level().broadcastEntityEvent(this, (byte) 1);
+                this.discard();
+            }
             }
         }
     }

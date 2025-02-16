@@ -44,10 +44,10 @@ public class BlockTotemGenerator extends BasicFileGenerator {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            getBlockItem(JITL.MOD_ID, name);
-            getBlockModel(JITL.MOD_ID, name);
-            getBlockAwakeModel(JITL.MOD_ID, name);
-            getBlockstate(JITL.MOD_ID, name);
+            getBlockItem(JITL.MODID, name);
+            getBlockModel(JITL.MODID, name);
+            getBlockAwakeModel(JITL.MODID, name);
+            getBlockstate(JITL.MODID, name);
 
             generateBasicFile(name);
 

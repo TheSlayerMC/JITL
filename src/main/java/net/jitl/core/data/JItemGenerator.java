@@ -27,7 +27,7 @@ public class JItemGenerator extends BasicFileGenerator {
                 e.printStackTrace();
             }
 
-            getNormalItem(JITL.MOD_ID, name, JItems.ItemType.ITEM);
+            getNormalItem(JITL.MODID, name, JItems.ItemType.ITEM);
             itemModelInit();
         }
 
@@ -44,7 +44,7 @@ public class JItemGenerator extends BasicFileGenerator {
                 e.printStackTrace();
             }
 
-            getNormalItem(JITL.MOD_ID, name, JItems.ItemType.TOOL);
+            getNormalItem(JITL.MODID, name, JItems.ItemType.TOOL);
             itemModelInit();
         }
 
@@ -61,7 +61,7 @@ public class JItemGenerator extends BasicFileGenerator {
                 e.printStackTrace();
             }
 
-            getNormalItem(JITL.MOD_ID, name, JItems.ItemType.RECORD);
+            getNormalItem(JITL.MODID, name, JItems.ItemType.RECORD);
             itemModelInit();
         }
 

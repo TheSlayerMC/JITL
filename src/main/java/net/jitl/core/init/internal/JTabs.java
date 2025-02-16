@@ -13,7 +13,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class JTabs {
-    public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, JITL.MOD_ID);
+    public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, JITL.MODID);
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BLOCKS = REGISTRY.register("blocks", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.jitl.blocks")).icon(() -> new ItemStack(JBlocks.FIRESTONE_BLOCK.get())).build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ITEMS = REGISTRY.register("items", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.jitl.items")).icon(() -> new ItemStack(JItems.BLAZING_FIREBALL.get())).build());

@@ -44,10 +44,10 @@ public class JBlockFarmGenerator extends BasicFileGenerator {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            getBlockItem(JITL.MOD_ID, name);
-            getBlockModel(JITL.MOD_ID, name);
-            getBlockHorModel(JITL.MOD_ID, name);
-            getBlockstate(JITL.MOD_ID, name);
+            getBlockItem(JITL.MODID, name);
+            getBlockModel(JITL.MODID, name);
+            getBlockHorModel(JITL.MODID, name);
+            getBlockstate(JITL.MODID, name);
             generateBasicFile(name);
 
             writerInit();

@@ -44,10 +44,10 @@ public class JBlockPortalGenerator extends BasicFileGenerator {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            getBlockItem(JITL.MOD_ID, name);
-            getBlockNSModel(JITL.MOD_ID, name);
-            getBlockEWModel(JITL.MOD_ID, name);
-            getBlockstate(JITL.MOD_ID, name);
+            getBlockItem(JITL.MODID, name);
+            getBlockNSModel(JITL.MODID, name);
+            getBlockEWModel(JITL.MODID, name);
+            getBlockstate(JITL.MODID, name);
             generateBasicFile(name, "_ns");
 
             writerInit();

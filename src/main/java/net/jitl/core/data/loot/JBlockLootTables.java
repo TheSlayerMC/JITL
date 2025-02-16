@@ -43,7 +43,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
         return BuiltInRegistries.BLOCK.stream()
                 .filter(block -> BuiltInRegistries.BLOCK.getKey(block)
                         .getNamespace()
-                        .equals(JITL.MOD_ID))
+                        .equals(JITL.MODID))
                 .toList();
     }
 

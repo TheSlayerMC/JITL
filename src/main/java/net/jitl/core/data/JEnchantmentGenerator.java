@@ -16,6 +16,6 @@ public class JEnchantmentGenerator extends DatapackBuiltinEntriesProvider {
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder().add(Registries.ENCHANTMENT, JEnchantments::bootstrap);
 
     public JEnchantmentGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries, BUILDER, Set.of(JITL.MOD_ID));
+        super(output, registries, BUILDER, Set.of(JITL.MODID));
     }
 }

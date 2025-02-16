@@ -9,21 +9,21 @@ import software.bernie.geckolib.renderer.GeoRenderer;
 public class ObeliskModel extends DefaultedBlockGeoModel<ObeliskTile> {
 
     public ObeliskModel() {
-        super(ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "geo/obelisk"));
+        super(ResourceLocation.fromNamespaceAndPath(JITL.MODID, "geo/obelisk"));
     }
 
     @Override
     public ResourceLocation getModelResource(ObeliskTile object, GeoRenderer<ObeliskTile> renderer) {
-        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "geo/obelisk.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "geo/obelisk.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(ObeliskTile object, GeoRenderer<ObeliskTile> renderer) {
-        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/models/block/obelisk.png");
+        return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/models/block/obelisk.png");
     }
 
     @Override
     public ResourceLocation getAnimationResource(ObeliskTile animatable) {
-        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "animations/obelisk.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "animations/obelisk.animation.json");
     }
 }

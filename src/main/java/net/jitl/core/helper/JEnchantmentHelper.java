@@ -10,6 +10,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 public class JEnchantmentHelper {
 
     public static int getEnchantmentAmount(Player player, ServerLevel level, ResourceKey<Enchantment> enchantment) {
-        return EnchantmentHelper.getEnchantmentLevel(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(enchantment), player);
+        return 0;//TODO EnchantmentHelper.getEnchantmentLevel(level.registryAccess().registryOrThrow(Registries.ENCHANTMENT).getHolder(enchantment).get(), player);
     }
+
 }

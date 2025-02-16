@@ -16,6 +16,6 @@ public class ConfiguredFeaturesGenerator extends DatapackBuiltinEntriesProvider 
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder().add(Registries.CONFIGURED_FEATURE, JConfiguredFeatures::bootstrap);
 
     public ConfiguredFeaturesGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries, BUILDER, Set.of(JITL.MOD_ID));
+        super(output, registries, BUILDER, Set.of(JITL.MODID));
     }
 }

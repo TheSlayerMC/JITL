@@ -58,6 +58,6 @@ public class LangHelper {
 	}
 
 	public static MutableComponent withModPrefix(String str) {
-		return Component.translatable(JITL.MOD_ID + "." + str);
+		return Component.translatable(JITL.MODID + "." + str);
 	}
 }

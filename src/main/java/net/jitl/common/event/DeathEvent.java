@@ -31,7 +31,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 
-@EventBusSubscriber(modid = JITL.MOD_ID)
+@EventBusSubscriber(modid = JITL.MODID)
 public class DeathEvent {
 
     @SubscribeEvent

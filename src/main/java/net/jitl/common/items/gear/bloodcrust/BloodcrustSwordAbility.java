@@ -4,7 +4,9 @@ import net.jitl.common.capability.player.BloodcrustAbility;
 import net.jitl.common.items.gear.IAbility;
 import net.jitl.core.helper.TooltipFiller;
 import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JDataComponents;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -18,10 +20,11 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 public class BloodcrustSwordAbility implements IAbility {
 
-    private static final ResourceLocation ID = ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "bloodcrust_ability");
+    private static final ResourceLocation ID = ResourceLocation.fromNamespaceAndPath(JITL.MODID, "bloodcrust_ability");
 
     @Override
     public void damageTarget(LivingEntity holder, ItemStack stack, LivingDamageEvent event) {

@@ -1,11 +1,21 @@
 package net.jitl.common.event;
 
 import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.JItems;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.*;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
 
-@EventBusSubscriber(modid = JITL.MOD_ID)
+import java.util.List;
+import java.util.Objects;
+
+@EventBusSubscriber(modid = JITL.MODID)
 public class BlockDropEvent {
 
     @SubscribeEvent

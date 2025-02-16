@@ -1,7 +1,6 @@
 package net.jitl.common.block.crop.bushs;
 
 import com.mojang.serialization.MapCodec;
-import net.jitl.core.data.JDamageSources;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -87,17 +86,14 @@ public class BradberryBushBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    public void entityInside(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Entity entity) {
-        if(entity instanceof LivingEntity && entity.getType() != EntityType.FOX && entity.getType() != EntityType.BEE) {
-            entity.makeStuckInBlock(state, new Vec3(0.8F, 0.75D, 0.8F));
-            if (level instanceof ServerLevel serverlevel && state.getValue(AGE) != 0) {
-                Vec3 vec3 = entity.isControlledByClient() ? entity.getKnownMovement() : entity.oldPosition().subtract(entity.position());
-                if (vec3.horizontalDistanceSqr() > 0.0) {
-                    double d0 = Math.abs(vec3.x());
-                    double d1 = Math.abs(vec3.z());
-                    if (d0 >= HURT_SPEED_THRESHOLD || d1 >= HURT_SPEED_THRESHOLD) {
-                        entity.hurtServer(serverlevel, JDamageSources.hurt(entity, JDamageSources.BRADBERRY_BUSH), 1.0F);
-                    }
+    public void entityInside(@NotNull BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, @NotNull Entity pEntity) {
+        if(pEntity instanceof LivingEntity && pEntity.getType() != EntityType.FOX && pEntity.getType() != EntityType.BEE) {
+            pEntity.makeStuckInBlock(pState, new Vec3(0.8F, 0.75D, 0.8F));
+            if (!pLevel.isClientSide && pState.getValue(AGE) > 0 && (pEntity.xOld != pEntity.getX() || pEntity.zOld != pEntity.getZ())) {
+                double d0 = Math.abs(pEntity.getX() - pEntity.xOld);
+                double d1 = Math.abs(pEntity.getZ() - pEntity.zOld);
+                if (d0 >= HURT_SPEED_THRESHOLD || d1 >= HURT_SPEED_THRESHOLD) {
+                    //pEntity.hurt(JDamageSources.BRADBERRY_BUSH, 1.0F);//TODO
                 }
             }
         }

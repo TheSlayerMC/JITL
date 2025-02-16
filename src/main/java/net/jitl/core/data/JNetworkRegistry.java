@@ -20,7 +20,7 @@ public class JNetworkRegistry {
     }
 
     private static void registerPackets(final RegisterPayloadHandlersEvent ev) {
-        PayloadRegistrar registry = ev.registrar(JITL.MOD_ID);
+        PayloadRegistrar registry = ev.registrar(JITL.MODID);
 
         registry.playBidirectional(PacketPlayerStats.TYPE, PacketPlayerStats.STREAM_CODEC, PacketPlayerStats::handle);
         registry.playBidirectional(PacketEssenceBar.TYPE, PacketEssenceBar.STREAM_CODEC, PacketEssenceBar::handle);

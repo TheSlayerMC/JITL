@@ -13,6 +13,7 @@ import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.LayeredDraw;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.FluidTags;
@@ -30,9 +31,9 @@ public class EssenceBar implements LayeredDraw.Layer {
     private static float transparency;
     private static float burnoutTransparency;
 
-    private static final ResourceLocation UNDER_CROSSHAIR_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/gui/essence_under_crosshair.png");
-    private static final ResourceLocation OVER_EXP_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/gui/essence_over_exp.png");
-    private static final ResourceLocation ABOVE_HUNGER_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/gui/essence_over_hunger.png");
+    private static final ResourceLocation UNDER_CROSSHAIR_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/gui/essence_under_crosshair.png");
+    private static final ResourceLocation OVER_EXP_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/gui/essence_over_exp.png");
+    private static final ResourceLocation ABOVE_HUNGER_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/gui/essence_over_hunger.png");
 
     @Override
     public void render(@NotNull GuiGraphics gui, DeltaTracker tracker) {

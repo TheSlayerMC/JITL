@@ -8,9 +8,11 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerTy
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.lang.reflect.Constructor;
+
 public class JFoliagePlacers {
 
-    public static final DeferredRegister<FoliagePlacerType<?>> REGISTRY = DeferredRegister.create(Registries.FOLIAGE_PLACER_TYPE, JITL.MOD_ID);
+    public static final DeferredRegister<FoliagePlacerType<?>> REGISTRY = DeferredRegister.create(Registries.FOLIAGE_PLACER_TYPE, JITL.MODID);
 
     public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<SphericalFoliagePlacer>> SPHERICAL_FOLIAGE_PLACER = REGISTRY.register("spherical_foliage_placer", () -> new FoliagePlacerType<>(SphericalFoliagePlacer.CODEC));
     public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<SwampFoliagePlacer>> SWAMP_FOLIAGE_PLACER = REGISTRY.register("swamp_foliage_placer", () -> new FoliagePlacerType<>(SwampFoliagePlacer.CODEC));

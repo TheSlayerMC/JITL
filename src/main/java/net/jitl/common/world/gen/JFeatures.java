@@ -32,7 +32,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class JFeatures {
 
-    public static final DeferredRegister<Feature<?>> REGISTRY = DeferredRegister.create(Registries.FEATURE, JITL.MOD_ID);
+    public static final DeferredRegister<Feature<?>> REGISTRY = DeferredRegister.create(Registries.FEATURE, JITL.MODID);
 
     public static final DeferredHolder<Feature<?>, Feature<TreeConfig>> JTREE = REGISTRY.register("tree", JourneyTree::new);
 

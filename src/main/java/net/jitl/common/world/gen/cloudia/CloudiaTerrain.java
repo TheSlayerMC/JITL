@@ -115,7 +115,7 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
     static class BigRoom {
         public final StructureTemplate room;
         public BigRoom(StructureTemplateManager manager, String room) {
-            this.room = manager.getOrCreate(ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, room));
+            this.room = manager.getOrCreate(ResourceLocation.fromNamespaceAndPath(JITL.MODID, room));
         }
         public void gen(WorldGenLevel level, RandomSource random, BlockPos pos, int xPart, int zPart) {
             if(xPart == 0) {

@@ -12,12 +12,14 @@ import net.jitl.common.world.gen.tree_grower.JTreeGrower;
 import net.jitl.core.data.block_generation.JBlockCropGenerator;
 import net.jitl.core.data.block_generation.JBlockModeledCropGenerator;
 import net.jitl.core.init.JITL;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
@@ -25,6 +27,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.FuelValues;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -37,7 +40,7 @@ import java.util.function.Supplier;
 
 public class JBlocks {
 
-    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(JITL.MOD_ID);
+    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(JITL.MODID);
 
     public static final ArrayList<String> modelBlockName = new ArrayList<>();
     public static final ArrayList<String> modelLangName = new ArrayList<>();
@@ -133,7 +136,7 @@ public class JBlocks {
 
     public static final DeferredBlock<Block> IRIDIUM_ORE = register("iridium_ore", "Iridium Ore", JBlockProperties.STONE);
     public static final DeferredBlock<Block> IRIDIUM_BLOCK = registerFuelBlock("iridium_block", "Iridium Block", Block::new, JBlockProperties.STONE, 16000);
-    public static final DeferredBlock<Block> DEEPSLATE_IRIDIUM_ORE = register("deepslate_iridium_ore", "Deepslate Iridium Ore", JBlockProperties.DEEPSLATE);
+    public static final DeferredBlock<Block> DEEPSLATE_IRIDIUM_ORE = register("deepslate_iridium_ore", "Deepslate Iridium Ore", JBlockProperties.STONE);
 //    public static final DeferredBlock<Block> IRIDIUM_TORCH = registerTorch("iridium_torch", "Iridium Torch", ParticleTypes.SOUL_FIRE_FLAME);
 //    public static final DeferredBlock<Block> WALL_IRIDIUM_TORCH = registerWallTorch("wall_iridium_torch", "Iridium Torch", IRIDIUM_TORCH, ParticleTypes.SOUL_FIRE_FLAME);
 
@@ -747,7 +750,7 @@ public class JBlocks {
                 || props == JBlockProperties.FIRE_STONE || props == JBlockProperties.FURNACE || props == JBlockProperties.ICE
                 || props == JBlockProperties.VOLCANIC_BLOCK || props == JBlockProperties.SPAWNER || props == JBlockProperties.ROCKITE_SPAWNER || props == JBlockProperties.GRINDSTONE
                 || props == JBlockProperties.GLASS || props == JBlockProperties.DUNGEON_BLOCK || props == JBlockProperties.LUNIUM_ORE_PROPS || props == JBlockProperties.CHEST
-                || props == JBlockProperties.DUNGEON_LAMP || props == JBlockProperties.CLOUD || props == JBlockProperties.DEEPSLATE) {
+                || props == JBlockProperties.DUNGEON_LAMP || props == JBlockProperties.CLOUD) {
             addPickaxeableBlocks(name);
         }
     }

@@ -44,10 +44,10 @@ public class JBlockCampfireGenerator extends BasicFileGenerator {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            getBlockItem(JITL.MOD_ID, name);
-            getBlockModel(JITL.MOD_ID, name);
-            getBlockOffModel(JITL.MOD_ID, name);
-            getBlockstate(JITL.MOD_ID, name);
+            getBlockItem(JITL.MODID, name);
+            getBlockModel(JITL.MODID, name);
+            getBlockOffModel(JITL.MODID, name);
+            getBlockstate(JITL.MODID, name);
             generateBasicFile(true, name);
             writerInit();
         }

@@ -699,10 +699,6 @@ public class LangRegistry {
         writeToFile("\"jitl.boss_spawn.terranian_protector\" : \"It's sole purpose was to protect this land. Why would you try to destroy it?\",");
         writeToFile("\"jitl.boss_spawn.sky_stalker\" : \"Watch the Sky's...\",");
 
-        writeToFile("\"death.attack.jitl:bradberry_bush.damage\" : \"%s was really killed by a Bradberry Bush..?\",");
-        writeToFile("\"death.attack.jitl:redcurrant_bush.damage\" : \"%s was really killed by a Redcurrant Bush..?\",");
-        writeToFile("\"death.attack.jitl:demonic_bomb.damage\" : \"%s was Blown up by a Demonic Bomb\",");
-        writeToFile("\"death.attack.jitl:demonic_bomb.damage\" : \"%s was Blown up by a Fire Bomb\",");
 
         /* --------------------- Finish manual lines --------------------- */
 

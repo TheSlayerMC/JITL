@@ -19,9 +19,9 @@ public class EucaHopperRenderer<T extends LivingEntity & GeoEntity> extends Anim
     @Override
     public @NotNull ResourceLocation getTextureLocation(@NotNull T entity) {
         if(((EucaHopper)entity).isTame()) {
-            return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/euca/euca_hopper_tame.png");
+            return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/entity/euca/euca_hopper_tame.png");
         } else {
-            return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/euca/euca_hopper.png");
+            return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/entity/euca/euca_hopper.png");
         }
     }
 }

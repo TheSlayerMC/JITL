@@ -8,8 +8,9 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class JAttributes {
-    public static final DeferredRegister<Attribute> REGISTRY = DeferredRegister.create(Registries.ATTRIBUTE, JITL.MOD_ID);
+    public static final DeferredRegister<Attribute> REGISTRY = DeferredRegister.create(Registries.ATTRIBUTE, JITL.MODID);
 
+    //TODO: During development, default values are set so we don't have to keep equipping curios to test essence. In public builds, they should be set to zero.
     public static final DeferredHolder<Attribute, Attribute> MAX_ESSENCE =
             REGISTRY.register("max_essence", () -> new RangedAttribute("jitl.max_essence", 1.0F, 0.0F, 20.0F).setSyncable(true));
 

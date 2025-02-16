@@ -10,7 +10,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class JBlockEntities {
 
-    public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, JITL.MOD_ID);
+    public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, JITL.MODID);
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SummoningTableTile>> SUMMONING_TABLE = REGISTRY.register("summon_table",
             () -> new BlockEntityType<>(SummoningTableTile::new, JBlocks.SUMMONING_TABLE.get()));

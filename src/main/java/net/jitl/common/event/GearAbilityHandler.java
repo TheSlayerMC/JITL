@@ -5,6 +5,7 @@ import net.jitl.common.items.base.JArmorItem;
 import net.jitl.common.items.base.JSwordItem;
 import net.jitl.common.items.gear.FullArmorAbility;
 import net.jitl.common.items.gear.JGear;
+import net.jitl.core.helper.JToolTiers;
 import net.jitl.core.helper.TooltipFiller;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JDataAttachments;
@@ -31,7 +32,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import java.util.ArrayList;
 import java.util.Objects;
 
-@EventBusSubscriber(modid = JITL.MOD_ID)
+@EventBusSubscriber(modid = JITL.MODID)
 public class GearAbilityHandler {
 
     @SubscribeEvent
@@ -141,7 +142,7 @@ public class GearAbilityHandler {
             ItemStack stack = player.getMainHandItem();
             if(stack.getItem() instanceof JSwordItem sword) {
                 if(player.getAttackStrengthScale(0.5F) > 0.9F && !player.isSprinting()) { //combines flag and flag1, since there's no reason not to
-                    if(player.onGround()) { //flag3. flag2 is ignored as the isOnGround() call in flag3 automatically means flag2 will be false
+                    if(player.onGround() ){//TODO&& player.walkDist - player.walkDistO < player.getSpeed()) { //flag3. flag2 is ignored as the isOnGround() call in flag3 automatically means flag2 will be false
                        sword.getAbility().onSweep(stack, event.getTarget(), player);
                     }
                 }

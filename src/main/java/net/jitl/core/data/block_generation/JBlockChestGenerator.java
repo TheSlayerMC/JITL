@@ -39,8 +39,8 @@ public class JBlockChestGenerator extends BasicFileGenerator {
                 e.printStackTrace();
             }
 
-            getBlockItem(JITL.MOD_ID, name);
-            getBlockModel(JITL.MOD_ID, name);
+            getBlockItem(JITL.MODID, name);
+            getBlockModel(JITL.MODID, name);
             getBlockstate();
             generateBasicFile(true, name);
 

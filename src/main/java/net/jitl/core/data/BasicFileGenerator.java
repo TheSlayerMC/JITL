@@ -23,7 +23,7 @@ public class BasicFileGenerator {
             e.printStackTrace();
         }
 
-        getItemFile(JITL.MOD_ID, name, extension);
+        getItemFile(JITL.MODID, name, extension);
         itemModelInit();
     }
 
@@ -87,7 +87,7 @@ public class BasicFileGenerator {
             e.printStackTrace();
         }
 
-        getItemFile(item, JITL.MOD_ID, name);
+        getItemFile(item, JITL.MODID, name);
         itemModelInit();
     }
 

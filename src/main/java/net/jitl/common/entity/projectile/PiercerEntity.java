@@ -7,7 +7,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -152,17 +151,17 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
     protected void onHitEntity(EntityHitResult entityRayTraceResult_) {
         Entity entity = entityRayTraceResult_.getEntity();
         if(entity instanceof LivingEntity && entity != this.getOwner()) {
-            if(level() instanceof ServerLevel level) {
+            if(!level().isClientSide()) {
                 if(getOwner() instanceof ServerPlayer player) {
                     getStack().hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                 }
 
-                if(entity.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), (float) getBaseDamage())) {
+                //if(entity.hurt(this.damageSources().thrown(this, this.getOwner()), (float) getBaseDamage())) {
                     if (getFlameAddend() > 0) {
                         entity.setRemainingFireTicks(getFlameAddend() * 4 * 20);
                     }
                     launch = true;
-                }
+                //}
                 this.playSound(JSounds.PIERCER.get(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
             }
         }
@@ -183,6 +182,10 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
                 }
             }
         }
+    }
+
+    public boolean isInGround() {
+        return this.onGround();
     }
 
     @Override
