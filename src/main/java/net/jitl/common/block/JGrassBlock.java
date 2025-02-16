@@ -11,7 +11,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.HoeItem;
@@ -31,7 +31,7 @@ public class JGrassBlock extends Block {//implements BonemealableBlock {
     }
 
     @Override
-    protected InteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         Item itemstack = pPlayer.getItemInHand(pHand).getItem();
         Block dirt = getFarmlandFromGrass();
         if(itemstack instanceof HoeItem || itemstack instanceof MultitoolItem) {
@@ -43,9 +43,9 @@ public class JGrassBlock extends Block {//implements BonemealableBlock {
                         pPlayer.getItemInHand(pHand).hurtAndBreak(1, pPlayer, EquipmentSlot.MAINHAND);
                 }
             }
-            return InteractionResult.SUCCESS;
+            return ItemInteractionResult.SUCCESS;
         }
-        return InteractionResult.PASS;
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     public Block getFarmlandFromGrass() {
@@ -149,8 +149,8 @@ public class JGrassBlock extends Block {//implements BonemealableBlock {
     private static boolean canBeGrass(BlockState pState, LevelReader pLevelReader, BlockPos pPos) {
         BlockPos blockpos = pPos.above();
         BlockState blockstate = pLevelReader.getBlockState(blockpos);
-        int i = LightEngine.getLightBlockInto(pState, blockstate, Direction.UP, blockstate.getLightBlock());
-        return i < 15;
+        int i = LightEngine.getLightBlockInto(pLevelReader, pState, pPos, blockstate, blockpos, Direction.UP, blockstate.getLightBlock(pLevelReader, blockpos));
+        return i < pLevelReader.getMaxLightLevel();
     }
 
     private static boolean canPropagate(BlockState pState, LevelReader pLevel, BlockPos pPos) {

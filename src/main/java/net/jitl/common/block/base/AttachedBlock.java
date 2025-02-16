@@ -8,12 +8,14 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
@@ -29,7 +31,7 @@ public class AttachedBlock extends Block {
     protected static final VoxelShape WEST_AABB = Block.box((16 - 5), 3, 3, 16.0D, (16 - 3), (16 - 3));
     protected static final VoxelShape EAST_AABB = Block.box(0.0D, 3, 3, 5, (16 - 3), (16 - 3));
 
-    public static final Property<Direction> FACING = BlockStateProperties.FACING;
+    public static final DirectionProperty FACING = BlockStateProperties.FACING;
 
     public AttachedBlock(Properties properties) {
         super(properties);
@@ -94,11 +96,11 @@ public class AttachedBlock extends Block {
     }
 
     @Override
-    protected BlockState updateShape(BlockState stateIn, LevelReader level, ScheduledTickAccess tick, BlockPos currentPos, Direction dir, BlockPos facingPos, BlockState state, RandomSource random) {
-        if (!stateIn.canSurvive(level, currentPos)) {
-            tick.scheduleTick(currentPos, this, 1);
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
+        if (!stateIn.canSurvive(worldIn, currentPos)) {
+            worldIn.scheduleTick(currentPos, this, 1);
         }
-        return super.updateShape(stateIn, level, tick, currentPos, dir, facingPos, state, random);
+        return super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
     @Override

@@ -37,7 +37,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -46,7 +45,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 public class JBoat extends Boat {
 
@@ -81,13 +79,13 @@ public class JBoat extends Boat {
     private float bubbleAngle;
     private float bubbleAngleO;
 
-    public JBoat(EntityType<? extends JBoat> entityType, Level level, Supplier<Item> item) {
-        super(entityType, level, item);
+    public JBoat(EntityType<? extends JBoat> entityType, Level level) {
+        super(entityType, level);
         this.blocksBuilding = true;
     }
 
-    public JBoat(Level world, double x, double y, double z, Supplier<Item> item) {
-        super(JEntities.JBOAT_TYPE.get(), world, item);
+    public JBoat(Level world, double x, double y, double z) {
+        super(JEntities.JBOAT_TYPE.get(), world);
         this.setPos(x, y, z);
         this.xo = x;
         this.yo = y;
@@ -156,6 +154,29 @@ public class JBoat extends Boat {
     }
 
     @Override
+    public boolean hurt(@NotNull DamageSource source, float amount) {
+        if(this.isInvulnerableTo(source)) {
+            return false;
+        } else if(!this.level().isClientSide && !this.isRemoved()) {
+            this.setHurtDir(-this.getHurtDir());
+            this.setHurtTime(10);
+            this.setDamage(this.getDamage() + amount * 10.0F);
+            this.markHurt();
+            this.gameEvent(GameEvent.ENTITY_DAMAGE, source.getEntity());
+            boolean flag = source.getEntity() instanceof Player && ((Player)source.getEntity()).getAbilities().instabuild;
+            if(flag || this.getDamage() > 40.0F) {
+                if(!flag && this.level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
+                    this.spawnAtLocation(this.getDropItem());
+                }
+                this.discard();
+            }
+            return true;
+        } else {
+            return true;
+        }
+    }
+
+    @Override
     public void onAboveBubbleCol(boolean downwards) {
         if(!this.level().isClientSide) {
             this.isAboveBubbleColumn = true;
@@ -185,7 +206,8 @@ public class JBoat extends Boat {
 
     }
 
-    public @NotNull Item getDropItems() {
+    @Override
+    public @NotNull Item getDropItem() {
         return switch (this.getJBoatType()) {
             case GOLD_EUCA -> JItems.GOLDEN_EUCA_BOAT.get();
             case BROWN_EUCA -> JItems.BROWN_EUCA_BOAT.get();
@@ -301,6 +323,7 @@ public class JBoat extends Boat {
             }
         }
 
+        this.checkInsideBlocks();
         List<Entity> list = this.level().getEntities(this, this.getBoundingBox().inflate(0.2F, -0.01F, 0.2F), EntitySelector.pushableBy(this));
         if(!list.isEmpty()) {
             boolean flag = !this.level().isClientSide && !(this.getControllingPassenger() instanceof Player);
@@ -680,14 +703,35 @@ public class JBoat extends Boat {
     }
 
     @Override
-    protected void checkFallDamage(double p_376661_, boolean p_376924_, BlockState p_376918_, BlockPos p_376727_) {
+    protected void checkFallDamage(double y, boolean onGround, @Nullable BlockState state, @Nullable BlockPos pos) {
         this.lastYd = this.getDeltaMovement().y;
-        if (!this.isPassenger()) {
-            if (p_376924_) {
+        if(!this.isPassenger()) {
+            if(onGround) {
+                if(this.fallDistance > 3.0F) {
+                    if(this.status != JBoat.Status.ON_LAND) {
+                        this.resetFallDistance();
+                        return;
+                    }
+                    this.causeFallDamage(this.fallDistance, 1.0F, this.damageSources().fall());
+                    if(!this.level().isClientSide && !this.isRemoved()) {
+                        this.kill();
+                        if(this.level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
+                            for(int i = 0; i < 3; ++i) {
+                                this.spawnAtLocation(this.getJBoatType().getPlanks());
+                            }
+
+                            for(int j = 0; j < 2; ++j) {
+                                this.spawnAtLocation(Items.STICK);
+                            }
+                        }
+                    }
+                }
+
                 this.resetFallDistance();
-            } else if (!this.canBoatInFluid(this.level().getFluidState(this.blockPosition().below())) && p_376661_ < 0.0) {
-                this.fallDistance -= (float)p_376661_;
+            } else if(!this.level().getFluidState(this.blockPosition().below()).is(FluidTags.WATER) && y < 0.0D) {
+                this.fallDistance = (float)((double)this.fallDistance - y);
             }
+
         }
     }
 
@@ -778,8 +822,8 @@ public class JBoat extends Boat {
     }
 
     @Override
-    public @Nullable ItemStack getPickedResult(HitResult target) {
-        return new ItemStack(this.getDropItems());
+    public ItemStack getPickResult() {
+        return new ItemStack(this.getDropItem());
     }
 
     public enum Status {

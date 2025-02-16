@@ -23,10 +23,11 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.portal.TeleportTransition;
+import net.minecraft.world.level.portal.DimensionTransition;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
@@ -84,8 +85,9 @@ public class CorbaPortalBlock extends Block implements CorbaPortal {
         }
     }
 
+    @Nullable
     @Override
-    public TeleportTransition getPortalDestination(ServerLevel level, Entity entity, BlockPos pos) {
+    public DimensionTransition getPortalDestination(ServerLevel level, Entity entity, BlockPos pos) {
         if (!(entity instanceof ServerPlayer))
             return null;
 

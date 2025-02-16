@@ -36,8 +36,8 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
     }
 
     @Override
-    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, double camX, double camY, double camZ, Matrix4f modelViewMatrix, Matrix4f projectionMatrix) {
-        new BoilCloudRenderer().render(level, ticks, projectionMatrix, modelViewMatrix, partialTick, camX, camY, camZ);
+    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f modelViewMatrix, Matrix4f projectionMatrix) {
+        new BoilCloudRenderer().render(level, ticks, poseStack, projectionMatrix, modelViewMatrix, partialTick, camX, camY, camZ);
         return true;
     }
 
@@ -53,26 +53,27 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
     }
 
     @Override
-    public boolean renderSky(@NotNull ClientLevel level, int ticks, float partialTick, @NotNull Matrix4f frustumMatrix, @NotNull Camera camera, @NotNull Matrix4f projectionMatrix, @NotNull Runnable setupFog) {
+    public boolean renderSky(@NotNull ClientLevel level, int ticks, float partialTick, @NotNull Matrix4f frustumMatrix, @NotNull Camera camera, @NotNull Matrix4f projectionMatrix, boolean isFoggy, @NotNull Runnable setupFog) {
         Minecraft mc = Minecraft.getInstance();
         Tesselator tesselator = Tesselator.getInstance();
         setupFog.run();
+        if(!isFoggy) {
             FogType fogtype = camera.getFluidInCamera();
             if (fogtype != FogType.POWDER_SNOW && fogtype != FogType.LAVA && !doesMobEffectBlockSky(camera)) {
                 PoseStack posestack = new PoseStack();
                 posestack.mulPose(frustumMatrix);
                 renderSkyTexture(posestack);
-                Vec3 vec3 = Vec3.fromRGB24(level.getSkyColor(mc.gameRenderer.getMainCamera().getPosition(), partialTick));
+                Vec3 vec3 = level.getSkyColor(mc.gameRenderer.getMainCamera().getPosition(), partialTick);
                 float f = (float)vec3.x;
                 float f1 = (float)vec3.y;
                 float f2 = (float)vec3.z;
 
-                //FogRenderer.levelFogColor();
+                FogRenderer.levelFogColor();
                 RenderSystem.depthMask(false);
                 RenderSystem.setShaderColor(f, f1, f2, 1.0F);
                 VertexBuffer.unbind();
                 RenderSystem.enableBlend();
-                //RenderSystem.setShader(GameRenderer::getPositionColorShader);
+                RenderSystem.setShader(GameRenderer::getPositionColorShader);
                 RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
                 posestack.pushPose();
                 posestack.mulPose(Axis.XP.rotationDegrees(90.0F));
@@ -88,7 +89,7 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
                 posestack.mulPose(Axis.XP.rotationDegrees(level.getTimeOfDay(partialTick) * 360.0F));
                 Matrix4f matrix4f1 = posestack.last().pose();
                 float f12 = 80F;
-                //RenderSystem.setShader(GameRenderer::getPositionTexShader);
+                RenderSystem.setShader(GameRenderer::getPositionTexShader);
                 RenderSystem.setShaderTexture(0, SUN_LOCATION);
                 BufferBuilder bufferbuilder = tesselator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
                 bufferbuilder.addVertex(matrix4f1, -f12, 100.0F, -f12).setUv(0.0F, 0.0F);
@@ -102,7 +103,7 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
                 posestack.mulPose(Axis.XP.rotationDegrees(6600F));
                 matrix4f1 = posestack.last().pose();
                 f12 = 1.5F;
-                //RenderSystem.setShader(GameRenderer::getPositionTexShader);
+                RenderSystem.setShader(GameRenderer::getPositionTexShader);
                 RenderSystem.setShaderTexture(0, CORBA_MOON_LOCATION);
                 bufferbuilder = Tesselator.getInstance().begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
                 bufferbuilder.addVertex(matrix4f1, -f12, 100.0F, -f12).setUv(0.0F, 0.0F);
@@ -116,7 +117,7 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
                 posestack.mulPose(Axis.XP.rotationDegrees(level.getTimeOfDay(partialTick) * 360.0F + 2000));
                 matrix4f1 = posestack.last().pose();
                 f12 = 4.0F;
-                //RenderSystem.setShader(GameRenderer::getPositionTexShader);
+                RenderSystem.setShader(GameRenderer::getPositionTexShader);
                 RenderSystem.setShaderTexture(0, EUCA_MOON_LOCATION);
                 bufferbuilder = Tesselator.getInstance().begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
                 bufferbuilder.addVertex(matrix4f1, -f12, 100.0F, -f12).setUv(0.0F, 0.0F);
@@ -132,6 +133,7 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
                 RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
                 RenderSystem.depthMask(true);
             }
+        }
         return true;
     }
 
@@ -143,7 +145,7 @@ public class BoilRenderInfo extends DimensionSpecialEffects {
     private void renderSkyTexture(PoseStack poseStack) {
         RenderSystem.enableBlend();
         RenderSystem.depthMask(false);
-        //RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, BOIL_SKY_LOCATION);
         Tesselator tesselator = Tesselator.getInstance();
 

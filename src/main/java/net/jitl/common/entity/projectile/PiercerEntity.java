@@ -156,12 +156,12 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
                     getStack().hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                 }
 
-                //if(entity.hurt(this.damageSources().thrown(this, this.getOwner()), (float) getBaseDamage())) {
+                if(entity.hurt(this.damageSources().thrown(this, this.getOwner()), (float) getBaseDamage())) {
                     if (getFlameAddend() > 0) {
                         entity.setRemainingFireTicks(getFlameAddend() * 4 * 20);
                     }
                     launch = true;
-                //}
+                }
                 this.playSound(JSounds.PIERCER.get(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
             }
         }
@@ -171,7 +171,7 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
     public void playerTouch(@NotNull Player entityIn) {
         if(!this.level().isClientSide) {
             boolean isOwner = this.getOwner().getUUID() == entityIn.getUUID();
-            if((isOwner && currentBounces > 0) || ((this.isInGround() || this.isNoPhysics()) && this.shakeTime <= 0)) {
+            if((isOwner && currentBounces > 0) || ((this.inGround || this.isNoPhysics()) && this.shakeTime <= 0)) {
                 boolean flag = this.pickup == Pickup.ALLOWED || this.pickup == Pickup.CREATIVE_ONLY && entityIn.canUseGameMasterBlocks() || this.isNoPhysics() && isOwner;
                 if(this.pickup == Pickup.ALLOWED && !entityIn.getInventory().add(this.getPickupItem()))
                     flag = false;
@@ -185,7 +185,7 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
     }
 
     public boolean isInGround() {
-        return this.onGround();
+        return this.inGround;
     }
 
     @Override

@@ -7,7 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.HoeItem;
@@ -48,7 +48,7 @@ public class JDirt extends Block {
     }
 
     @Override
-    protected InteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         Item itemstack = pPlayer.getItemInHand(pHand).getItem();
         Block farmLand = getFarmlandFromGrassDirt(pLevel.getBlockState(pPos).getBlock());
         if(itemstack instanceof HoeItem || itemstack instanceof MultitoolItem) {
@@ -59,9 +59,9 @@ public class JDirt extends Block {
                     if(!pPlayer.isCreative())
                         pPlayer.getItemInHand(pHand).hurtAndBreak(1, pPlayer, EquipmentSlot.MAINHAND);
                 }
-                return InteractionResult.SUCCESS;
+                return ItemInteractionResult.SUCCESS;
             }
         }
-        return  InteractionResult.PASS;
+        return  ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 }

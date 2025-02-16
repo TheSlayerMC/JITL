@@ -46,7 +46,7 @@ public class JSpawnerRenderer implements BlockEntityRenderer<JSpawnerEntity> {
       pPoseStack.translate(0.0F, -0.2F, 0.0F);
       pPoseStack.mulPose(Axis.XP.rotationDegrees(-30.0F));
       pPoseStack.scale(f, f, f);
-      pEntityRenderer.render(pEntity, 0.0D, 0.0D, 0.0D, pPartialTick, pPoseStack, pBuffer, pPackedLight);
+      pEntityRenderer.render(pEntity, 0.0D, 0.0D, 0.0D, 0.0F, pPartialTick, pPoseStack, pBuffer, pPackedLight);
       pPoseStack.popPose();
    }
 }

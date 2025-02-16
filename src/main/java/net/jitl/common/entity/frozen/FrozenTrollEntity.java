@@ -11,7 +11,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -77,11 +76,10 @@ public class FrozenTrollEntity extends JNeutralMonster {
         this.entityData.set(IS_ANGRY_ID, angry);
     }
 
-    @Override
-    protected void customServerAiStep(ServerLevel level) {
+    protected void customServerAiStep() {
         boolean isPresent = getTarget() != null;
         this.entityData.set(IS_ANGRY_ID, isPresent);
-        super.customServerAiStep(level);
+        super.customServerAiStep();
     }
 
     public void playSound(SoundEvent soundEvent_) {
@@ -89,8 +87,8 @@ public class FrozenTrollEntity extends JNeutralMonster {
     }
 
     @Override
-    public boolean doHurtTarget(ServerLevel level, Entity entityIn) {
-        if (super.doHurtTarget(level, entityIn)) {
+    public boolean doHurtTarget(@NotNull Entity entityIn) {
+        if (super.doHurtTarget(entityIn)) {
             if(entityIn instanceof LivingEntity) {
                 entityIn.setDeltaMovement(entityIn.getDeltaMovement().add(-MathHelper.sin((float) (this.lerpYRot * Math.PI / 180.0F)) * 2, 0.1D, MathHelper.cos((float) (this.lerpYRot * Math.PI / 180.0F)) * 2));
             }

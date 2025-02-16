@@ -35,22 +35,6 @@ public class JTags {
     public static final TagKey<Item> ESSENCE_ARROW = tagItem("essence_arrows");
     public static final TagKey<Item> PIERCER_ITEM = tagItem("piercers");
 
-    public static final TagKey<Item> SAPPHIRE = tagItem("sapphire");
-    public static final TagKey<Item> LUNIUM = tagItem("lunium_ingot");
-    public static final TagKey<Item> SHADIUM = tagItem("shadium_ingot");
-    public static final TagKey<Item> BLOODCRUST = tagItem("bloodcrust_ingot");
-    public static final TagKey<Item> CELESTIUM = tagItem("celestium_ingot");
-    public static final TagKey<Item> KORITE = tagItem("korite_ingot");
-    public static final TagKey<Item> STORON = tagItem("storon_ingot");
-    public static final TagKey<Item> MEKYUM = tagItem("mekyum_ingot");
-    public static final TagKey<Item> FLAIRIUM = tagItem("flairium_ingot");
-    public static final TagKey<Item> DES = tagItem("des_ingot");
-    public static final TagKey<Item> GORBITE = tagItem("gorbite_gem");
-    public static final TagKey<Item> ORBADITE = tagItem("orbadite_gem");
-    public static final TagKey<Item> SOULSTONE = tagItem("soulstone");
-    public static final TagKey<Item> EMPTY = tagItem("empty");
-
-
     private static TagKey<Item> tagItem(String name) {
         return ItemTags.create(JITL.rl(name));
     }

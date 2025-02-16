@@ -7,7 +7,7 @@ import net.jitl.core.init.internal.JSounds;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -26,16 +26,16 @@ public class HealingItem extends JItem implements IEssenceItem {
     }
 
     @Override
-    public InteractionResult use(Level world, @NotNull Player player, InteractionHand hand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(Level world, @NotNull Player player, InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
         if(!world.isClientSide) {
             player.heal(this.amount == -1F ? player.getMaxHealth() : this.amount);
             player.getItemInHand(hand).shrink(1);
-            return InteractionResult.CONSUME;
+            return InteractionResultHolder.consume(itemstack);
         } else {
             world.playSound(player, player.getOnPos(), JSounds.STAFF_0.get(), SoundSource.BLOCKS);
         }
-        return InteractionResult.FAIL;
+        return InteractionResultHolder.fail(itemstack);
     }
 
     @Override

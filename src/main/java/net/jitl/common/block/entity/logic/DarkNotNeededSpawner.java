@@ -14,9 +14,9 @@ import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.random.WeightedEntry;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.level.BaseSpawner;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.SpawnData;
@@ -111,7 +111,7 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
                                 continue;
                             }
                         }
-                        Entity entity = EntityType.loadEntityRecursive(compoundtag, pServerLevel, EntitySpawnReason.SPAWNER, (p_151310_) -> {
+                        Entity entity = EntityType.loadEntityRecursive(compoundtag, pServerLevel, (p_151310_) -> {
                             p_151310_.moveTo(d0, d1, d2, p_151310_.getYRot(), p_151310_.getXRot());
                             return p_151310_;
                         });
@@ -128,12 +128,12 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
 
                         entity.moveTo(entity.getX(), entity.getY(), entity.getZ(), randomsource.nextFloat() * 360.0F, 0.0F);
                         if (entity instanceof Mob mob) {
-                            if (!EventHooks.checkSpawnPositionSpawner(mob, pServerLevel, EntitySpawnReason.SPAWNER, spawndata, this)) {
+                            if (!EventHooks.checkSpawnPositionSpawner(mob, pServerLevel, MobSpawnType.SPAWNER, spawndata, this)) {
                                 continue;
                             }
 
                             boolean flag1 = spawndata.getEntityToSpawn().size() == 1 && spawndata.getEntityToSpawn().contains("id", 8);
-                            EventHooks.finalizeMobSpawnSpawner(mob, pServerLevel, pServerLevel.getCurrentDifficultyAt(entity.blockPosition()), EntitySpawnReason.SPAWNER, null, this, flag1);
+                            EventHooks.finalizeMobSpawnSpawner(mob, pServerLevel, pServerLevel.getCurrentDifficultyAt(entity.blockPosition()), MobSpawnType.SPAWNER, null, this, flag1);
 
                             spawndata.getEquipment().ifPresent(mob::equip);
                         }
@@ -244,7 +244,7 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
                 return null;
             }
 
-            this.displayEntity = EntityType.loadEntityRecursive(compoundtag, pLevel, EntitySpawnReason.SPAWNER, Function.identity());
+            this.displayEntity = EntityType.loadEntityRecursive(compoundtag, pLevel, Function.identity());
             if (compoundtag.size() == 1 && this.displayEntity instanceof Mob) {
             }
         }

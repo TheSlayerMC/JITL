@@ -2,7 +2,6 @@ package net.jitl.common.entity.projectile;
 
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -42,7 +41,7 @@ public abstract class AbstractKnifeEntity extends AbstractArrow {
         if((this.dealtDamage || this.isNoPhysics()) && entity != null) {
             if(!this.isAcceptableReturnOwner()) {
                 if(!this.level().isClientSide && this.pickup == Pickup.ALLOWED) {
-                    this.spawnAtLocation((ServerLevel)level(), this.getPickupItem(), 0.1F);
+                    this.spawnAtLocation(this.getPickupItem(), 0.1F);
                 }
                 this.remove(RemovalReason.DISCARDED);
             }

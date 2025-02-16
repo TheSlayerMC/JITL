@@ -9,19 +9,16 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.entity.state.ThrownItemRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.ItemDisplayContext;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
-public class RenderAnimated2D<T extends Entity> extends EntityRenderer<T, ThrownItemRenderState> {
+public class RenderAnimated2D<T extends Entity> extends EntityRenderer<T> {
 
     public String[] textures;
     public int animationSpeed;
@@ -34,16 +31,11 @@ public class RenderAnimated2D<T extends Entity> extends EntityRenderer<T, Thrown
     }
 
     @Override
-    public void render(ThrownItemRenderState entityIn, PoseStack matrixStackIn, MultiBufferSource bufferIn, int packedLightIn) {
-        if (entityIn.partialTick >= 2) {
+    public void render(@NotNull T entityIn, float entityYaw, float partialTicks, @NotNull PoseStack matrixStackIn, @NotNull MultiBufferSource bufferIn, int packedLightIn) {
+        if (entityIn.tickCount >= 2 || !(this.entityRenderDispatcher.camera.getEntity().distanceToSqr(entityIn) < 12.25D)) {
             render(entityIn, matrixStackIn, bufferIn, packedLightIn);
         }
-        super.render(entityIn, matrixStackIn, bufferIn, packedLightIn);
-    }
-
-    @Override
-    public ThrownItemRenderState createRenderState() {
-        return new ThrownItemRenderState();
+        super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
     }
 
     @Override
@@ -77,6 +69,7 @@ public class RenderAnimated2D<T extends Entity> extends EntityRenderer<T, Thrown
         builder.addVertex(pose, x - 0.5F, y - 0.5F, 0.0F).setColor(255, 255, 255, 255).setUv((float) u, (float) v).setOverlay(OverlayTexture.NO_OVERLAY).setLight(lightmapUV).setNormal(0.0F, 1.0F, 0.0F);
     }
 
+    @Override
     public @NotNull ResourceLocation getTextureLocation(T t) {
         RandomSource r = RandomSource.create();
         if(t.tickCount % animationSpeed == 0) {

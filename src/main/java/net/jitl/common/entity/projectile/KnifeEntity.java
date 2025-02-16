@@ -60,10 +60,10 @@ public class KnifeEntity extends AbstractKnifeEntity implements ItemSupplier {
         Entity entity = entityRayTraceResult_.getEntity();
         if(entity instanceof LivingEntity && entity != this.getOwner()) {
             if(!level().isClientSide()) {
-                //if(entity.hurt(this.damageSources().thrown(this, this.getOwner()), (float) getBaseDamage())) {
+                if(entity.hurt(this.damageSources().thrown(this, this.getOwner()), (float) getBaseDamage())) {
                     if(isFireKnife(getStack().getItem())) {
                         entity.setRemainingFireTicks(200);
-                  //  }
+                    }
                 }
                 this.playSound(JSounds.KNIFE.get(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
             }
@@ -73,7 +73,7 @@ public class KnifeEntity extends AbstractKnifeEntity implements ItemSupplier {
     }
 
     public boolean isInGround() {
-        return this.onGround();
+        return this.inGround;
     }
 
     @Override

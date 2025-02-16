@@ -6,7 +6,6 @@ import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.damagesource.DamageSource;
@@ -88,21 +87,19 @@ public class Sentacoin extends Entity {
     }
 
     @Override
-    public boolean hurtServer(@NotNull ServerLevel serverLevel, DamageSource damageSource, float amount) {
-        if (damageSource.getEntity() instanceof Player player) {
-            if (this.isInvisibleTo(player)) {
-                return false;
-            } else if (this.level().isClientSide) {
-                return true;
-            } else {
-                this.markHurt();
-                this.coinHealth = (int) ((float) this.coinHealth - amount);
-                if (this.coinHealth <= 0)
-                    this.discard();
-                return true;
-            }
+    public boolean hurt(@NotNull DamageSource source, float amount) {
+        if(this.level().isClientSide || this.isRemoved()) return false;
+        if(this.isInvulnerableTo(source)) {
+            return false;
+        } else if(this.level().isClientSide) {
+            return true;
+        } else {
+            this.markHurt();
+            this.coinHealth = (int)((float)this.coinHealth - amount);
+            if(this.coinHealth <= 0)
+                this.discard();
+            return true;
         }
-        return false;
     }
 
     @Override

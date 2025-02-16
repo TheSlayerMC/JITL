@@ -121,7 +121,7 @@ public class BossCrystal extends Mob implements GeoEntity {
             playSound(JSounds.CRYSTAL_PICKUP.get(), 1.0F, 1.0F);
             remove(RemovalReason.DISCARDED);
         }
-        return InteractionResult.SUCCESS;
+        return InteractionResult.sidedSuccess(level().isClientSide);
     }
 
     @Override
@@ -152,6 +152,11 @@ public class BossCrystal extends Mob implements GeoEntity {
 
     @Override
     public boolean isPushable() {
+        return false;
+    }
+
+    @Override
+    public boolean hurt(DamageSource source, float amount) {
         return false;
     }
 

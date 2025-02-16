@@ -20,8 +20,8 @@ public abstract class JCloudRenderer {
     private int prevCloudZ = Integer.MIN_VALUE;
     private boolean generateClouds = true;
 
-    public void render(ClientLevel level, int ticks, Matrix4f pProjectionMatrix, Matrix4f pFrustumMatrix, float pPartialTick, double pCamX, double pCamY, double pCamZ) {
-       /* Minecraft minecraft = Minecraft.getInstance();
+    public void render(ClientLevel level, int ticks, PoseStack pPoseStack, Matrix4f pProjectionMatrix, Matrix4f pFrustumMatrix, float pPartialTick, double pCamX, double pCamY, double pCamZ) {
+        Minecraft minecraft = Minecraft.getInstance();
         float f = level.effects().getCloudHeight();
         if(!Float.isNaN(f)) {
             double d1 = ((float)ticks + pPartialTick) * 0.03F;
@@ -84,7 +84,7 @@ public abstract class JCloudRenderer {
             }
 
             pPoseStack.popPose();
-        }*///TODO
+        }
     }
 
     public abstract RenderType clouds();

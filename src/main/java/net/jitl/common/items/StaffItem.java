@@ -7,7 +7,7 @@ import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
@@ -29,7 +29,7 @@ public class StaffItem extends JItem implements IEssenceItem {
     }
 
     @Override
-    public InteractionResult use(@NotNull Level level, Player player, @NotNull InteractionHand usedHand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand usedHand) {
         ItemStack stack = player.getItemInHand(usedHand);
         if(!level.isClientSide()) {
                 if(player.getData(JDataAttachments.ESSENCE).consumeEssence(player, this.essenceUsage)) {
@@ -39,6 +39,6 @@ public class StaffItem extends JItem implements IEssenceItem {
                     level.playSound(null, player.getX(), player.getY(), player.getZ(), JSounds.STAFF_0.get(), SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
                 }
         }
-        return InteractionResult.SUCCESS;
+        return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
     }
 }

@@ -14,8 +14,10 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -69,12 +71,10 @@ public class MultitoolItem extends DiggerItem implements JGear {
                     .put(Blocks.BAMBOO_BLOCK, Blocks.STRIPPED_BAMBOO_BLOCK).build();
 
     private final IAbility ability;
-    private final JToolTiers tier;
 
     public MultitoolItem(JToolTiers tier, IAbility ability) {
-        super(tier.getTier(), BlockTags.MINEABLE_WITH_AXE, tier.getDamage(), tier.getSpeedModifier(), JItems.itemProps());
+        super(tier.getTier(), BlockTags.MINEABLE_WITH_AXE, JItems.itemProps().attributes(createAttributes(tier.getTier(), tier.getDamage(), tier.getSpeedModifier())));
         this.ability = ability;
-        this.tier = tier;
     }
 
     @Override
@@ -83,7 +83,7 @@ public class MultitoolItem extends DiggerItem implements JGear {
     }
 
     @Override
-    public InteractionResult use(Level worldIn, Player playerIn, InteractionHand handIn) {
+    public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
         ability.rightClick(playerIn, handIn, worldIn);
         return super.use(worldIn, playerIn, handIn);
     }
@@ -214,7 +214,7 @@ public class MultitoolItem extends DiggerItem implements JGear {
 
                         }
                     }
-                    return InteractionResult.SUCCESS;
+                    return InteractionResult.sidedSuccess(level.isClientSide);
                 } else {
                     return InteractionResult.PASS;
                 }
@@ -236,7 +236,7 @@ public class MultitoolItem extends DiggerItem implements JGear {
 
     @Override
     public float getDestroySpeed(@NotNull ItemStack pStack, @NotNull BlockState pState) {
-        return this.tier.getSpeedModifier();
+        return this.getTier().getSpeed();
     }
 
     @Override

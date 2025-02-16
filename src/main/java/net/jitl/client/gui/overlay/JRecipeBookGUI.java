@@ -8,7 +8,6 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.PageButton;
 import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -63,9 +62,9 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
         poseStack.pose().pushPose();
-        //RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, this.BACKGROUND);
-        poseStack.blit(RenderType::guiTextured, BACKGROUND, x, y, 0, 0, this.imageWidth, this.imageHeight, 32, 32);//Draws the main Background
+        poseStack.blit(BACKGROUND, x, y, 0, 0, this.imageWidth, this.imageHeight);//Draws the main Background
 
         switch(pageNumber) {
             case 0 -> page1(poseStack, mouseX, mouseY);
@@ -138,9 +137,9 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
 
         x = x + k + 10;
         y = y + l + 10;
-        //RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, this.RECIPE);
-        matrixStack.blit(RenderType::guiTextured, RECIPE, x - 5, y - 5, 0, 0, 112, 62, 32, 32);
+        matrixStack.blit(RECIPE, x - 5, y - 5,0, 0, 112, 62);
 
 
         renderItem(matrixStack, mouseX, mouseY, x, y, recipe, 0);

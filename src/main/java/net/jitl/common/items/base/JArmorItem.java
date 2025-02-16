@@ -6,9 +6,6 @@ import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.equipment.ArmorMaterial;
-import net.minecraft.world.item.equipment.ArmorType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -17,16 +14,10 @@ import java.util.List;
 public class JArmorItem extends ArmorItem implements JGear {
 
     private final IAbility ability;
-    private final ArmorMaterial material;
 
-    public JArmorItem(ArmorMaterial pMaterial, ArmorType pSlot, IAbility ability) {
+    public JArmorItem(Holder<ArmorMaterial> pMaterial, ArmorItem.Type pSlot, IAbility ability) {
         super(pMaterial, pSlot, JItems.itemProps().stacksTo(1));
         this.ability = ability;
-        this.material = pMaterial;
-    }
-
-    public ArmorMaterial getMaterial() {
-        return material;
     }
 
     @Nullable
@@ -46,13 +37,12 @@ public class JArmorItem extends ArmorItem implements JGear {
     }
 
     @Override
-    public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
-        return true;
+    public int getEnchantmentValue(@NotNull ItemStack stack) {
+        return 30;
     }
 
     @Override
-    public boolean supportsEnchantment(ItemStack stack, Holder<Enchantment> enchantment) {
+    public boolean isEnchantable(@NotNull ItemStack pStack) {
         return true;
     }
-
 }

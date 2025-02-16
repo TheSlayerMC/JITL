@@ -7,7 +7,6 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.state.ThrownItemRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.core.BlockPos;
@@ -17,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
-public class RenderProjectile<T extends Entity> extends EntityRenderer<T, ThrownItemRenderState> {
+public class RenderProjectile<T extends Entity> extends EntityRenderer<T> {
 
     private final RenderType renderType;
     private float scale = 1.0F;
@@ -29,18 +28,12 @@ public class RenderProjectile<T extends Entity> extends EntityRenderer<T, Thrown
     }
 
     @Override
-    public void render(@NotNull ThrownItemRenderState entityIn, @NotNull PoseStack matrixStackIn, @NotNull MultiBufferSource bufferIn, int packedLightIn) {
-        if (entityIn.partialTick >= 2) {
+    public void render(@NotNull T entityIn, float entityYaw, float partialTicks, @NotNull PoseStack matrixStackIn, @NotNull MultiBufferSource bufferIn, int packedLightIn) {
+        if (entityIn.tickCount >= 2 || !(this.entityRenderDispatcher.camera.getEntity().distanceToSqr(entityIn) < 12.25D)) {
             renderProjectile(matrixStackIn, bufferIn, packedLightIn);
         }
-        super.render(entityIn, matrixStackIn, bufferIn, packedLightIn);
+        super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
     }
-
-    @Override
-    public ThrownItemRenderState createRenderState() {
-        return new ThrownItemRenderState();
-    }
-
     @Override
     protected int getBlockLightLevel(@NotNull T entity, @NotNull BlockPos pos) {
         return this.fullBright ? 15 : super.getBlockLightLevel(entity, pos);
@@ -70,5 +63,10 @@ public class RenderProjectile<T extends Entity> extends EntityRenderer<T, Thrown
 
     private static void vertex(VertexConsumer builder, Matrix4f pose, Matrix3f normal, int lightmapUV, float x, float y, int u, int v) {
         builder.addVertex(pose, x - 0.5F, y - 0.5F, 0.0F).setColor(255, 255, 255, 255).setUv((float) u, (float) v).setOverlay(OverlayTexture.NO_OVERLAY).setLight(lightmapUV).setNormal(0.0F, 1.0F, 0.0F);
+    }
+
+    @Override
+    public @NotNull ResourceLocation getTextureLocation(@NotNull Entity entityIn) {
+        return TextureAtlas.LOCATION_BLOCKS;
     }
 }

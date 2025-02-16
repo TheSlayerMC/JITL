@@ -6,13 +6,13 @@ import net.jitl.core.helper.JToolTiers;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.NotNull;
+import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class JPickaxeItem extends PickaxeItem implements JGear {
     public IAbility ability;
 
     public JPickaxeItem(JToolTiers tier, IAbility ability) {
-        super(tier.getTier(), tier.getDamage(), tier.getSpeedModifier(), JItems.itemProps());
+        super(tier.getTier(), JItems.itemProps().attributes(createAttributes(tier.getTier(), tier.getDamage(), tier.getSpeedModifier())));
         this.ability = ability;
     }
 
@@ -31,7 +31,7 @@ public class JPickaxeItem extends PickaxeItem implements JGear {
     }
 
     @Override
-    public @NotNull InteractionResult use(Level worldIn, Player playerIn, InteractionHand handIn) {
+    public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
         ability.rightClick(playerIn, handIn, worldIn);
         return super.use(worldIn, playerIn, handIn);
     }

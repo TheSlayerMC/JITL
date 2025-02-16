@@ -19,7 +19,6 @@ public class JModelLayers {
     public static final ModelLayerLocation JDOUBLE_CHEST_RIGHT = register("jdouble_chest_right");
     public static final ModelLayerLocation FROZEN_TROLL_MODEL_LAYER = register("frozen_troll");
     public static final ModelLayerLocation SHIVERWOLF_MODEL_LAYER = register("shiverwolf");
-    public static final ModelLayerLocation SHIVERWOLF_BABY_MODEL_LAYER = register("shiverwolf_baby");
     public static final ModelLayerLocation SHIVERWOLF_ARMOR_LAYER = register("shiverwolf_armor");
 
 

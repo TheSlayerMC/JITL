@@ -1,6 +1,5 @@
 package net.jitl.client;
 
-import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.client.render.world.*;
 import net.jitl.client.util.ClientGetter;
@@ -8,7 +7,6 @@ import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
-import net.minecraft.client.renderer.FogParameters;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -37,18 +35,20 @@ public class ClientEventHandler {
                 } else {
                     density = 0.1F;
                 }
-                RenderSystem.setShaderFog(new FogParameters(density, density * farPlaneDistance, FogShape.SPHERE, 1F, 1F, 1F, 1F));
+                RenderSystem.setShaderFogStart(density);
+                RenderSystem.setShaderFogEnd(density * farPlaneDistance);
         }
 
         if(ClientGetter.level().dimension() == Dimensions.CLOUDIA) {
             float density = 0.35F;
-            RenderSystem.setShaderFog(new FogParameters(density, density * farPlaneDistance, FogShape.SPHERE, 1F, 1F, 1F, 1F));
-
+            RenderSystem.setShaderFogStart(density);
+            RenderSystem.setShaderFogEnd(density * farPlaneDistance);
         }
 
         if(ClientGetter.level().dimension() == Dimensions.DEPTHS) {
             float density = 0.75F;
-            RenderSystem.setShaderFog(new FogParameters(density, density * farPlaneDistance, FogShape.SPHERE, 1F, 1F, 1F, 1F));
+            RenderSystem.setShaderFogStart(density);
+            RenderSystem.setShaderFogEnd(density * farPlaneDistance);
         }
     }
 

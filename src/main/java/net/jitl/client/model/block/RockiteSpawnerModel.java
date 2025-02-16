@@ -4,7 +4,6 @@ import net.jitl.common.block.entity.RockiteSpawnerEntity;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
-import software.bernie.geckolib.renderer.GeoRenderer;
 
 public class RockiteSpawnerModel extends DefaultedEntityGeoModel<RockiteSpawnerEntity> {
 
@@ -13,12 +12,12 @@ public class RockiteSpawnerModel extends DefaultedEntityGeoModel<RockiteSpawnerE
     }
 
     @Override
-    public ResourceLocation getModelResource(RockiteSpawnerEntity object, GeoRenderer<RockiteSpawnerEntity> renderer) {
+    public ResourceLocation getModelResource(RockiteSpawnerEntity object) {
         return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "geo/rockite_spawner.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureResource(RockiteSpawnerEntity object, GeoRenderer<RockiteSpawnerEntity> renderer) {
+    public ResourceLocation getTextureResource(RockiteSpawnerEntity object) {
         return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/models/block/rockite.png");
     }
 

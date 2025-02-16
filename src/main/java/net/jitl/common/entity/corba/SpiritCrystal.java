@@ -156,9 +156,9 @@ public class SpiritCrystal extends PathfinderMob implements GeoEntity {
     public boolean isPushable() {
         return false;
     }
-    
+
     @Override
-    public boolean hurtServer(ServerLevel s, DamageSource source, float amount) {
+    public boolean hurt(DamageSource source, float amount) {
         return source.isCreativePlayer();
     }
 

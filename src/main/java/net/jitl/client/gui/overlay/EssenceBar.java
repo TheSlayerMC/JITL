@@ -14,7 +14,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.LayeredDraw;
 import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.Entity;
@@ -138,7 +137,7 @@ public class EssenceBar implements LayeredDraw.Layer {
                  */
                 float addedAlpha = belowCrosshair ? 0.5F : 0;
 
-                //RenderSystem.setShader(GameRenderer::getPositionTexShader);
+                RenderSystem.setShader(GameRenderer::getPositionTexShader);
                 RenderSystem.setShaderTexture(0, getTextureBasedOnPosition(essencePosition));
                 RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, transparency - addedAlpha);
 
@@ -152,7 +151,7 @@ public class EssenceBar implements LayeredDraw.Layer {
                 int backgroundVOffset = renderSmall ? 5 : 9;
                 int burnoutVOffset = renderSmall ? 10 : 18;
 
-                gui.blit(RenderType::guiTextured, getTextureBasedOnPosition(essencePosition), x, y, 0, backgroundVOffset, 81, barHeight, 81, texHeight);
+                gui.blit(getTextureBasedOnPosition(essencePosition), x, y, 0, backgroundVOffset, 81, barHeight, 81, texHeight);
 
                 if (cooldownActive) {
                     /*
@@ -165,15 +164,15 @@ public class EssenceBar implements LayeredDraw.Layer {
                     float cooldownFade = Math.min(cooldown, 10) / 10;
                     RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, (sin * cooldownFade) - addedAlpha);
 
-                    gui.blit(RenderType::guiTextured, getTextureBasedOnPosition(essencePosition), x, y, 0, 0, 81, barHeight, 81, texHeight);
+                    gui.blit(getTextureBasedOnPosition(essencePosition), x, y, 0, 0, 81, barHeight, 81, texHeight);
                 } else {
                     int i = (int) ((currentEssence / maxEssence) * 81);
-                    gui.blit(RenderType::guiTextured, getTextureBasedOnPosition(essencePosition), x, y, 0, 0, i, barHeight, 81, texHeight);
+                    gui.blit(getTextureBasedOnPosition(essencePosition), x, y, 0, 0, i, barHeight, 81, texHeight);
                 }
 
                 if (burnoutTransparency > 0) {
                     RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, burnoutTransparency - addedAlpha);
-                    gui.blit(RenderType::guiTextured, getTextureBasedOnPosition(essencePosition), x, y, 0, burnoutVOffset, 81, barHeight, 81, texHeight);
+                    gui.blit(getTextureBasedOnPosition(essencePosition), x, y, 0, burnoutVOffset, 81, barHeight, 81, texHeight);
                 }
                 gui.pose().popPose();
             }

@@ -53,7 +53,7 @@ public class PedestalBlock extends JTileContainerBlock {
     }
 
     @Override
-    protected InteractionResult useItemOn(ItemStack pStack, BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
+    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
         Item heldItem = player.getMainHandItem().getItem();
         if(worldIn.getBlockEntity(pos) instanceof PedestalTile) {
             PedestalTile pedestal = (PedestalTile) worldIn.getBlockEntity(pos);
@@ -77,6 +77,6 @@ public class PedestalBlock extends JTileContainerBlock {
                 }
             }
         }
-        return InteractionResult.SUCCESS;
+        return ItemInteractionResult.sidedSuccess(worldIn.isClientSide);
     }
 }
