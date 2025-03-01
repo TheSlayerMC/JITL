@@ -65,9 +65,9 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.add(JBlocks.LUNITE_ORE, (block) -> createOreDrop(block, JItems.LUNITE_CHUNK.get()));
         this.dropSelf(JBlocks.LUNITE_BLOCK);
 
-        this.dropSelf(JBlocks.VERDITE_ORE);
-        this.dropSelf(JBlocks.VERDITE_BLOCK);
-        this.dropSelf(JBlocks.DEEPSLATE_VERDITE_ORE);
+//        this.dropSelf(JBlocks.VERDITE_ORE);
+//        this.dropSelf(JBlocks.VERDITE_BLOCK);
+//        this.dropSelf(JBlocks.DEEPSLATE_VERDITE_ORE);
 
         this.add(JBlocks.BLOODCRUST_ORE, (block) -> createOreDrop(block, JItems.RAW_BLOODCRUST.get()));
         this.dropSelf(JBlocks.BLOODCRUST_BLOCK);

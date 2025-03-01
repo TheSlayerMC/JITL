@@ -177,9 +177,9 @@ public class JBlocks {
     public static final DeferredBlock<Block> FLAIRIUM_ORE = register("flairium_ore", "Flairium Ore", JBlockProperties.STONE);
     public static final DeferredBlock<Block> FLAIRIUM_BLOCK = register("flairium_block", "Flairium Block", JBlockProperties.STONE);
 
-    public static final DeferredBlock<Block> VERDITE_ORE = register("verdite_ore", "Verdite Ore", JBlockProperties.STONE);
-    public static final DeferredBlock<Block> DEEPSLATE_VERDITE_ORE = register("deepslate_verdite_ore", "Deepslate Verdite Ore", JBlockProperties.STONE);
-    public static final DeferredBlock<Block> VERDITE_BLOCK = register("verdite_block", "Verdite Block", JBlockProperties.STONE);
+//    public static final DeferredBlock<Block> VERDITE_ORE = register("verdite_ore", "Verdite Ore", JBlockProperties.STONE);
+//    public static final DeferredBlock<Block> DEEPSLATE_VERDITE_ORE = register("deepslate_verdite_ore", "Deepslate Verdite Ore", JBlockProperties.STONE);
+//    public static final DeferredBlock<Block> VERDITE_BLOCK = register("verdite_block", "Verdite Block", JBlockProperties.STONE);
 
     public static final DeferredBlock<Block> ORBADITE_ORE = register("orbadite_ore", "Orbadite Ore", JBlockProperties.STONE);
     public static final DeferredBlock<Block> ORBADITE_BLOCK = register("orbadite_block", "Orbadite Block", JBlockProperties.STONE);
@@ -709,22 +709,22 @@ public class JBlocks {
     public static final DeferredBlock<Block> TOTEM_SCARED = registerTotemBlock("totem_scared", "Scared Totem");
 
     //OVERWORLD
-    public static final DeferredBlock<Block> TOMATO_CROP = registerCropBlock("tomato_crop", "Tomato", 8, TomatoCropBlock::new);
-    public static final DeferredBlock<Block> FLORO_PEDAL_CROP = registerCropBlock("floro_pedal_crop", "Floro Pedal", 8, FloroCropBlock::new);
-    public static final DeferredBlock<Block> REDCURRANT_BUSH = registerGrowingBushBlock("redcurrant_bush", "Redcurrant Bush", () -> new RedcurrantBushBlock(JBlockProperties.GROWING_BUSH));
-    public static final DeferredBlock<Block> BRADBERRY_BUSH = registerGrowingBushBlock("bradberry_bush", "Bradberry Bush", () -> new BradberryBushBlock(JBlockProperties.GROWING_BUSH));
+    public static final DeferredBlock<BushBlock> TOMATO_CROP = registerCropBlock("tomato_crop", "Tomato", 8, TomatoCropBlock::new);
+    public static final DeferredBlock<BushBlock> FLORO_PEDAL_CROP = registerCropBlock("floro_pedal_crop", "Floro Pedal", 8, FloroCropBlock::new);
+    public static final DeferredBlock<BushBlock> REDCURRANT_BUSH = registerGrowingBushBlock("redcurrant_bush", "Redcurrant Bush", () -> new RedcurrantBushBlock(JBlockProperties.GROWING_BUSH));
+    public static final DeferredBlock<BushBlock> BRADBERRY_BUSH = registerGrowingBushBlock("bradberry_bush", "Bradberry Bush", () -> new BradberryBushBlock(JBlockProperties.GROWING_BUSH));
 
     //EUCA
-    public static final DeferredBlock<Block> ZATPEDAL_CROP = registerCropBlock("zatpedal_crop", "Zatpedal", 8, ZatpedalCropBlock::new);
-    public static final DeferredBlock<Block> SPINEBERRY_CROP = registerCropBlock("spineberry_crop", "Spineberry", 8, SpineberryCropBlock::new);
+    public static final DeferredBlock<BushBlock> ZATPEDAL_CROP = registerCropBlock("zatpedal_crop", "Zatpedal", 8, ZatpedalCropBlock::new);
+    public static final DeferredBlock<BushBlock> SPINEBERRY_CROP = registerCropBlock("spineberry_crop", "Spineberry", 8, SpineberryCropBlock::new);
 
     //DEPTHS
-    public static final DeferredBlock<Block> CRAKEBULB_CROP = registerCropBlock("crakebulb_crop", "Crakebulb", 4, CrakebulbCropBlock::new);
-    public static final DeferredBlock<Block> CRACKENCANE_CROP = registerCropBlock("crackencane_crop", "Crackencane", 8, CrackencanesCropBlock::new);
+    public static final DeferredBlock<BushBlock> CRAKEBULB_CROP = registerCropBlock("crakebulb_crop", "Crakebulb", 4, CrakebulbCropBlock::new);
+    public static final DeferredBlock<BushBlock> CRACKENCANE_CROP = registerCropBlock("crackencane_crop", "Crackencane", 8, CrackencanesCropBlock::new);
 
     //CORBA
-    public static final DeferredBlock<Block> CORVEGGIES_CROP = registerCropBlock("corveggies_crop", "Corveggies", 3, CorveggieCropBlock::new);
-    public static final DeferredBlock<Block> GLOWA_CROP = registerCropBlock("glowa_crop", "Glowa", 4, GlowaCropBlock::new);
+    public static final DeferredBlock<BushBlock> CORVEGGIES_CROP = registerCropBlock("corveggies_crop", "Corveggies", 3, CorveggieCropBlock::new);
+    public static final DeferredBlock<BushBlock> GLOWA_CROP = registerCropBlock("glowa_crop", "Glowa", 4, GlowaCropBlock::new);
 
     //CLOUDIA
     public static final DeferredBlock<Block> AIRROOT_MELON = registerModeledBlock("airroot_melon", "Airroot Melon", () -> new Block(JBlockProperties.WOOD));
@@ -1025,10 +1025,10 @@ public class JBlocks {
         return block1;
     }
 
-    public static DeferredBlock<Block> registerGrowingBushBlock(String name, String translatedName, Supplier<Block> block) {
+    public static DeferredBlock<BushBlock> registerGrowingBushBlock(String name, String translatedName, Supplier<BushBlock> block) {
         bushBlockName.add(name);
         bushLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        DeferredBlock<BushBlock> block1 = BLOCKS.register(name, block);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }
@@ -1042,10 +1042,10 @@ public class JBlocks {
         return block1;
     }
 
-    public static DeferredBlock<Block> registerCropBlock(String name, String translatedName, int maxStages, Supplier<Block> block) {
+    public static DeferredBlock<BushBlock> registerCropBlock(String name, String translatedName, int maxStages, Supplier<BushBlock> block) {
         cropBlockName.add(name);
         cropLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
+        DeferredBlock<BushBlock> block1 = BLOCKS.register(name, block);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         if(JITL.DEV_MODE)
             new JBlockCropGenerator().generate(name, maxStages);

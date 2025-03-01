@@ -7,8 +7,7 @@ import net.jitl.common.items.*;
 import net.jitl.common.items.base.*;
 import net.jitl.common.items.curios.HeartContainerItem;
 import net.jitl.common.items.curios.JCurioItem;
-import net.jitl.common.items.curios.amulet.CloudwalkingAmuletItem;
-import net.jitl.common.items.curios.amulet.DynasterAmuletItem;
+import net.jitl.common.items.curios.amulet.CloudWalkerAmuletItem;
 import net.jitl.common.items.curios.amulet.IceAmuletItem;
 import net.jitl.common.items.curios.catalyst.EssenceCatalystItem;
 import net.jitl.common.items.curios.catalyst.EssenceRegenCatalystItem;
@@ -23,7 +22,6 @@ import net.jitl.common.items.gear.korite.KoriteSwordAbility;
 import net.jitl.common.items.gear.mekyum.MekyumSwordAbility;
 import net.jitl.core.helper.JToolTiers;
 import net.jitl.core.init.JITL;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -98,7 +96,7 @@ public class JItems {
     public static final DeferredItem<Item> BLAZIUM_INGOT = registerNormalItem("blazium_ingot", "Blazium Ingot");
     public static final DeferredItem<Item> REINFORCED_CRYSTAL_INGOT = registerNormalItem("reinforced_crystal_ingot", "Reinforced Crystal Ingot");
     public static final DeferredItem<Item> REINFORCED_STONE_INGOT = registerNormalItem("reinforced_stone_ingot", "Reinforced Stone Ingot");
-    public static final DeferredItem<Item> VERDITE_INGOT = registerNormalItem("verdite_ingot", "Verdite Ingot");
+    //public static final DeferredItem<Item> VERDITE_INGOT = registerNormalItem("verdite_ingot", "Verdite Ingot");
 
     public static final DeferredItem<Item> YELLOW_GEM = registerNormalItem("yellow_gem", "Yellow Gem");
     public static final DeferredItem<Item> PURPLE_GEM = registerNormalItem("purple_gem", "Purple Gem");
@@ -670,8 +668,7 @@ public class JItems {
     public static final DeferredItem<Item> DIAMOND_LOOT_POUCH = registerNormalItem("diamond_loot_pouch", "Loot Pouch", () -> new LootItem(LootItem.LootTier.DIAMOND, Rarity.RARE));
     public static final DeferredItem<Item> FROSTY_GIFT = registerNormalItem("frosty_gift", "Frosty Gift", () -> new LootItem(LootItem.LootTier.FROSTY_GIFT, Rarity.COMMON));
 
-    public static final DeferredItem<Item> CLOUDWALKER_AMULET = registerNormalItem("cloudwalker_amulet", "Cloudwalker Amulet", () -> new CloudwalkingAmuletItem(itemProps()));
-    public static final DeferredItem<Item> DYNASTER_AMULET = registerNormalItem("dynaster_amulet", "Amulet of the Dynaster", () -> new DynasterAmuletItem(itemProps().stacksTo(1)));
+    public static final DeferredItem<Item> CLOUDWALKER_AMULET = registerNormalItem("cloudwalker_amulet", "Cloudwalker Amulet", () -> new CloudWalkerAmuletItem(itemProps()));
     public static final DeferredItem<Item> ICE_AMULET = registerNormalItem("ice_amulet", "Amulet of Glacial Bloodlust", () -> new IceAmuletItem(itemProps().stacksTo(1)));
 
     public static final DeferredItem<Item> VERY_WEAK_ESSENCE_CRYSTAL = registerNormalItem("very_weak_essence_crystal", "Very Weak Essence Crystal", () -> new EssenceCatalystItem(itemProps().stacksTo(1)).essence(1F));

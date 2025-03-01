@@ -32,7 +32,7 @@ public class AnimatedMonsterRenderer<T extends LivingEntity & GeoEntity> extends
 
     @Override
     public @NotNull ResourceLocation getTextureLocation(@NotNull T instance) {
-        return getGeoModel().getTextureResource(instance);
+        return getGeoModel().getTextureResource(instance, this);
     }
 
     @Override

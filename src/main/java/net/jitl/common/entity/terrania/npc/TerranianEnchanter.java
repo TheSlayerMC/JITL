@@ -8,6 +8,8 @@ import net.jitl.common.entity.base.JPathfinderMob;
 import net.jitl.common.entity.base.JVillagerEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JItems;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -17,7 +19,9 @@ import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
@@ -31,7 +35,7 @@ public class TerranianEnchanter extends JVillagerEntity {
             new CurrencyForItemsTrade(JItems.PURPLE_POWDER.get(), 16, JItems.YELLOW_GEM.get(), 16, JItems.ANCIENT_FRAGMENT.get(), 1, 12, 5),
     }));
 
-    public TerranianEnchanter(EntityType<? extends JPathfinderMob> pEntityType, Level pLevel) {
+    public TerranianEnchanter(EntityType<? extends JVillagerEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
@@ -67,5 +71,21 @@ public class TerranianEnchanter extends JVillagerEntity {
                 return state.setAndContinue(IDLE);
             }
         }));
+    }
+
+    @Override
+    protected void rewardTradeXp(MerchantOffer merchantOffer) {
+
+    }
+
+    @Override
+    protected void updateTrades() {
+
+    }
+
+    @Nullable
+    @Override
+    public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
+        return null;
     }
 }

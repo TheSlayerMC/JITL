@@ -81,7 +81,9 @@ configurations {
 
 dependencies {
     implementation "mezz.jei:jei-" + minecraft_version + "-neoforge:" + jei_version
-    // implementation "maven.modrinth:just-enough-resources-jer:" + jer_version
+    //implementation "maven.modrinth:just-enough-resources-jer:" + jer_version
+
+      implementation("curse.maven:just-enough-resources-jer-240630:" + jer_version) //Just Enough Resources
 
     implementation "top.theillusivec4.curios:curios-neoforge:" + curios_version
 
@@ -141,6 +143,11 @@ repositories {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
+
+    maven {
+        url = "https://www.cursemaven.com"
+    }
+
     maven {
         name = "OctoStudios"
         url = "https://maven.octo-studios.com/releases"

@@ -4,10 +4,7 @@ import net.jitl.client.stats.PacketPlayerStats;
 import net.jitl.common.JManagers;
 import net.jitl.common.dialogue.DialogueNetHandler;
 import net.jitl.core.init.JITL;
-import net.jitl.core.init.network.CKeyPressedPacket;
-import net.jitl.core.init.network.PacketCelestiumArmor;
-import net.jitl.core.init.network.PacketItemCooldown;
-import net.jitl.core.init.network.PacketEssenceBar;
+import net.jitl.core.init.network.*;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.IEventBus;
@@ -30,11 +27,17 @@ public class JNetworkRegistry {
         registry.playBidirectional(PacketEssenceBar.TYPE, PacketEssenceBar.STREAM_CODEC, PacketEssenceBar::handle);
         registry.playBidirectional(PacketCelestiumArmor.TYPE, PacketCelestiumArmor.STREAM_CODEC, PacketCelestiumArmor::handle);
         registry.playBidirectional(PacketItemCooldown.TYPE, PacketItemCooldown.STREAM_CODEC, PacketItemCooldown::handle);
-        registry.playBidirectional(CKeyPressedPacket.TYPE, CKeyPressedPacket.STREAM_CODEC, CKeyPressedPacket::handle);
+        registry.playBidirectional(PacketKeyPressed.TYPE, PacketKeyPressed.STREAM_CODEC, PacketKeyPressed::handle);
+
+        registry.playToClient(PacketUpdateClientPlayerMovement.TYPE, PacketUpdateClientPlayerMovement.CODEC, PacketUpdateClientPlayerMovement::handle);
 
 //        registry.playToClient(S2COpenDialogueGuiMsg.TYPE, S2COpenDialogueGuiMsg.STREAM_CODEC, dialogueNetHandler::handleDialogueOpenPacket);
 //        registry.playToClient(S2CCloseDialogueGuiMsg.TYPE, S2CCloseDialogueGuiMsg.STREAM_CODEC, dialogueNetHandler::handleDialogueClosePacket);
 //        registry.playToServer(C2SChosenOptionMsg.TYPE, C2SChosenOptionMsg.STREAM_CODEC, dialogueNetHandler::handlePressOptionPacket);
+    }
+
+    public static void sendToServer(CustomPacketPayload packet) {
+        PacketDistributor.sendToServer(packet);
     }
 
     public static void sendToPlayer(ServerPlayer player, CustomPacketPayload packet) {

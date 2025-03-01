@@ -26,13 +26,13 @@ import javax.annotation.Nullable;
 import java.util.Objects;
 import java.util.Set;
 
-public abstract class JVillagerEntity extends JPathfinderMob implements Npc, Merchant, Enemy, GeoEntity {
+public abstract class JVillagerEntity extends JVillagerMob implements Npc, Merchant, Enemy, GeoEntity {
 
     private Player playerEntity;
     protected MerchantOffers offers;
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    public JVillagerEntity(EntityType<? extends JPathfinderMob> type, Level worldIn) {
+    public JVillagerEntity(EntityType<? extends JVillagerMob> type, Level worldIn) {
         super(type, worldIn);
     }
 

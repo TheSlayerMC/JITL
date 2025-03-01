@@ -48,6 +48,7 @@ public class JCurioItem extends JItem implements ICurioItem {
     @Override
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@NotNull ItemStack stack, @Nullable TooltipContext world, @NotNull List<Component> text, @NotNull TooltipFlag flag) {
+        super.appendHoverText(stack, world, text, flag);
         TooltipFiller tooltipFiller = new TooltipFiller(text, Objects.requireNonNull(JITL.getRegistryName(this)).getPath());
         if (hasOverview) {
             tooltipFiller.addOverview();

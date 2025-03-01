@@ -56,7 +56,13 @@ public class JItem extends Item {
         addItemDesc(JItems.FRUITY_CANDY_CANE.get(), tooltip, "jitl.item.desc.dam");
         addItemDesc(JItems.CHERRY_CANDY_CANE.get(), tooltip, "jitl.item.desc.regen");
 
-        addItemDesc(JItems.CHERRY_CANDY_CANE.get(), tooltip, "jitl.item.desc.regen");
+        addItemDesc(JItems.MOON_OF_ETERNAL_NIGHT.get(), tooltip, "jitl.item.desc.eternal_night");
+        addItemDesc(JItems.MINERS_PEARL.get(), tooltip, "jitl.item.desc.miners_pearl");
+        addItemDesc(JItems.LUCKY_CHARM.get(), tooltip, "jitl.item.desc.lucky_charm");
+        addItemDesc(JItems.DEATH_CAP.get(), tooltip, "jitl.item.desc.death_cap");
+        addItemDesc(JItems.SKULL_OF_DECAY.get(), tooltip, "jitl.item.desc.skull_decay");
+        addItemDesc(JItems.CLOUDWALKER_AMULET.get(), tooltip, "jitl.item.desc.cloud_walker");
+        addItemDesc(JItems.ICE_AMULET.get(), tooltip, "jitl.item.desc.ice_amulet");
 
     }
 

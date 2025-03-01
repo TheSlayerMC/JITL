@@ -9,8 +9,10 @@ import net.jitl.common.entity.base.JPathfinderMob;
 import net.jitl.common.entity.base.JVillagerEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JItems;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -20,21 +22,23 @@ import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 
 public class StarlightVillager extends JVillagerEntity {
 
-    private static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
+    public static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
             new CurrencyForItemsTrade(JItems.FLUFFY_FEATHER.get(), 32, JItems.GOLEM_CHUNK.get(), 16, JItems.CLOUDIA_ORB.get(), 1, 12, 5),
             new CurrencyForItemsTrade(JItems.FLUFFY_FEATHER.get(), 64, JItems.GOLEM_CHUNK.get(), 32, JItems.LUNITE_CHUNK.get(), 8, 12, 5),
             new CurrencyForItemsTrade(JItems.CLOUDIA_ORB.get(), 8, JItems.LUNITE_CHUNK.get(), 16, JItems.MYSTERIOUS_DISK.get(), 1, 12, 5)
     }));
 
-    public StarlightVillager(EntityType<? extends JPathfinderMob> type, Level worldIn) {
+    public StarlightVillager(EntityType<? extends JVillagerEntity> type, Level worldIn) {
         super(type, worldIn);
     }
 
@@ -80,5 +84,21 @@ public class StarlightVillager extends JVillagerEntity {
                 return state.setAndContinue(IDLE);
             }
         }));
+    }
+
+    @Override
+    protected void rewardTradeXp(MerchantOffer merchantOffer) {
+
+    }
+
+    @Override
+    protected void updateTrades() {
+
+    }
+
+    @Nullable
+    @Override
+    public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
+        return null;
     }
 }

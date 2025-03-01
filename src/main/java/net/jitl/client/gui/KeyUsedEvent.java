@@ -1,52 +1,42 @@
 package net.jitl.client.gui;
 
-import com.mojang.blaze3d.platform.InputConstants;
 import net.jitl.client.gui.overlay.PlayerStats;
+import net.jitl.core.data.JNetworkRegistry;
+import net.jitl.core.init.network.PacketKeyPressed;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.client.event.InputEvent;
-import org.lwjgl.glfw.GLFW;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
 
 public class KeyUsedEvent {
 
     private static final Minecraft MINECRAFT = Minecraft.getInstance();
 
     @SubscribeEvent
-    public static void onKeyInput(InputEvent.Key event) {
-        InputConstants.Key key = InputConstants.getKey(event.getKey(), event.getScanCode());
+    public static void onKeyInput(ClientTickEvent.Post event) {
         if (MINECRAFT.screen == null) {
 
             assert MINECRAFT.player != null;
-            int action = event.getAction();
-
-            if (action == GLFW.GLFW_PRESS) {
-                if (key == KeyBindEvents.keyStats.getKey()) {
+                while(KeyBindEvents.keyStats.consumeClick()) {
                     assert Minecraft.getInstance().player != null;
                     displayPlayerStats(Minecraft.getInstance().player);
-
-                } else {
-                    //handleIsometricCameraKeys(key);
-                    //handleBigScreenshotKeys(key);
-                    handleAbilityKeys(key, action);
-                }
-            } else if (action == GLFW.GLFW_RELEASE) {
-                handleAbilityKeys(key, action);
+            }
+            if(KeyBindEvents.keyAmulet.isDown() || KeyBindEvents.keyArmor.isDown()) {
+                handleAbilityKeys(KeyBindEvents.keyAmulet.isDown(), KeyBindEvents.keyArmor.isDown());
+            } else {
+                handleAbilityKeys(false, false);
             }
         }
+    }
+
+    public static void handleAbilityKeys(boolean amulet, boolean gear) {
+        JNetworkRegistry.sendToServer(new PacketKeyPressed(amulet, gear));
     }
 
     @OnlyIn(Dist.CLIENT)
     public static void displayPlayerStats(Player player) {
         Minecraft.getInstance().setScreen(new PlayerStats(player));
-    }
-
-    public static void handleAbilityKeys(InputConstants.Key input, int action) {
-        boolean key = input == KeyBindEvents.keyAmulet.getKey();
-        if(key || input == KeyBindEvents.keyArmor.getKey()) {
-            //JNetworkRegistry.sendToPlayer(new CKeyPressedPacket(key, action == GLFW.GLFW_PRESS));
-        }
     }
 }

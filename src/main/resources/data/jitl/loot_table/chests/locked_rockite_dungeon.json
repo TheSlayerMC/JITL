@@ -228,26 +228,6 @@
         {
           "type": "minecraft:item",
           "weight": 3,
-          "name": "jitl:ancient_piece"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 3,
-          "name": "jitl:ancient_shard"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 3,
-          "name": "jitl:ancient_chunk"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 3,
-          "name": "jitl:ancient_fragment"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 3,
           "name": "minecraft:diamond_pickaxe",
           "functions": [
             {

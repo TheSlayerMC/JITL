@@ -109,6 +109,8 @@ public class LangRegistry {
         writeToFile("\"jitl.sen.knowledge_1\" : \"See me when you have at least 75 Overworld Knowledge\",");
         writeToFile("\"jitl.sen.unlocked\" : \"I locked it for a reason but goodluck...\",");
 
+        writeToFile("\"emi.category.jitl.summoning_table\" : \"Summoning Table\",");
+
         writeToFile("\"scroll.jitl.fail\" : \"Can't retrieve entry from scroll, report in Discord (unless this item came from creative tab)\",");
 
         writeToFile("\"scroll.jitl.sentry_gospel\" : \"We never saw it, but we know it - the Divine land Corba was birthed by the o' powerful Rock and Eye. Never forget the day, the hour, the second he - The True One - the all powerful Rock and Eye - cometh unto the great world he created, to seek his revenge on the wrong-doers who dare disrespect his land.\",");
@@ -653,6 +655,14 @@ public class LangRegistry {
         writeToFile("\"jitl.item.desc.cloudia_key\" : \"Opens Locked Cloudia Chest\",");
         writeToFile("\"jitl.item.desc.senterian_key\" : \"Opens Locked Senterian Chest\",");
         writeToFile("\"jitl.tooltip.eye_of_the_blizzard.0\" : \"Used to see in the Frozen Storm\",");
+
+        writeToFile("\"jitl.item.desc.eternal_night\" : \"Make it Midnight\",");
+        writeToFile("\"jitl.item.desc.miners_pearl\" : \"Bring yourself up from the Mines\",");
+        writeToFile("\"jitl.item.desc.lucky_charm\" : \"Adds a chance for a random drop when Mining\",");
+        writeToFile("\"jitl.item.desc.death_cap\" : \"Poisons Attacker\",");
+        writeToFile("\"jitl.item.desc.skull_decay\" : \"Withers Attacker\",");
+        writeToFile("\"jitl.item.desc.cloud_walker\" : \"Press 'Amulet Key' to hover\",");
+        writeToFile("\"jitl.item.desc.ice_amulet\" : \"Makes you stronger in Cold Biomes\",");
 
         writeToFile("\"jitl.item.desc.sentry_eye\" : \"Inserted into the Senterian Portal Frame\",");
         writeToFile("\"jitl.item.desc.ancient_socket\" : \"Inserted into a Ancient Socket\",");

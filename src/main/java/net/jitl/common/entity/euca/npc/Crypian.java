@@ -13,8 +13,10 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -25,8 +27,10 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
@@ -36,11 +40,11 @@ public class Crypian extends JVillagerEntity {
     private static final EntityDataAccessor<Boolean> DATA_CAN_TRADE = SynchedEntityData.defineId(Crypian.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> DATA_ALLOY_HOUSE = SynchedEntityData.defineId(Crypian.class, EntityDataSerializers.BOOLEAN);
 
-    private static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
+    public static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
             new CurrencyForItemsTrade(JItems.PERIDOT_GEMSTONE.get(), 1, Items.COMPASS, 1, 12, 5)
     }));
 
-    public Crypian(EntityType<? extends JPathfinderMob> type, Level worldIn) {
+    public Crypian(EntityType<? extends JVillagerEntity> type, Level worldIn) {
         super(type, worldIn);
     }
 
@@ -51,12 +55,23 @@ public class Crypian extends JVillagerEntity {
         this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
     }
 
+    @Nullable
+    @Override
+    public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
+        return null;
+    }
+
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
         super.defineSynchedData(pBuilder);
         int chance = this.random.nextInt(2);
         pBuilder.define(DATA_CAN_TRADE, chance == 0);
         pBuilder.define(DATA_ALLOY_HOUSE, false);
+    }
+
+    @Override
+    protected void rewardTradeXp(MerchantOffer merchantOffer) {
+
     }
 
     @Override
@@ -71,6 +86,11 @@ public class Crypian extends JVillagerEntity {
         super.readAdditionalSaveData(compound);
         setCanTrade(compound.getBoolean("canTrade"));
         setAlloyHouse(compound.getBoolean("alloyHouse"));
+    }
+
+    @Override
+    protected void updateTrades() {
+
     }
 
     public void setAlloyHouse(boolean canTrade) {

@@ -53,8 +53,8 @@ public class JRecipeRegistry extends JRecipeProvider {
         addOreBlockRecipe(recipeConsumer, JItems.RIMESTONE.get(), JBlocks.RIMESTONE_BLOCK.get());
         addSmeltingAndBlastingRecipe(recipeConsumer, JBlocks.RIMESTONE_ORE.get(), JItems.RIMESTONE.get());
 
-        addOreBlockRecipe(recipeConsumer, JItems.VERDITE_INGOT.get(), JBlocks.VERDITE_BLOCK.get());
-        addSmeltingAndBlastingRecipe(recipeConsumer, JBlocks.VERDITE_ORE.get(), JItems.VERDITE_INGOT.get());
+//        addOreBlockRecipe(recipeConsumer, JItems.VERDITE_INGOT.get(), JBlocks.VERDITE_BLOCK.get());
+//        addSmeltingAndBlastingRecipe(recipeConsumer, JBlocks.VERDITE_ORE.get(), JItems.VERDITE_INGOT.get());
 
         addOreBlockRecipe(recipeConsumer, JItems.BLAZIUM_INGOT.get(), JBlocks.BLAZIUM_BLOCK.get());
         addSmeltingAndBlastingRecipe(recipeConsumer, JItems.RAW_BLAZIUM.get(), JItems.BLAZIUM_INGOT.get());

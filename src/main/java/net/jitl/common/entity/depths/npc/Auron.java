@@ -9,8 +9,10 @@ import net.jitl.common.entity.base.JPathfinderMob;
 import net.jitl.common.entity.base.JVillagerEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JItems;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -20,8 +22,10 @@ import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
@@ -36,7 +40,7 @@ public class Auron extends JVillagerEntity {
             new CurrencyForItemsTrade(JItems.DEPTHS_FLAKE.get(), 16, JItems.DARK_CRYSTAL.get(), 16, JItems.DARK_KEY.get(), 1, 12, 5)
     }));
 
-    public Auron(EntityType<? extends JPathfinderMob> type, Level worldIn) {
+    public Auron(EntityType<? extends JVillagerEntity> type, Level worldIn) {
         super(type, worldIn);
     }
 
@@ -75,5 +79,21 @@ public class Auron extends JVillagerEntity {
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController<>(this, "controller", 5, state -> state.setAndContinue(IDLE)));
+    }
+
+    @Override
+    protected void rewardTradeXp(MerchantOffer merchantOffer) {
+
+    }
+
+    @Override
+    protected void updateTrades() {
+
+    }
+
+    @Nullable
+    @Override
+    public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
+        return null;
     }
 }
