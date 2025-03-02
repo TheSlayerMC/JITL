@@ -31,7 +31,7 @@ public class TestBugItem extends JItem implements IEssenceItem {
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand usedHand) {
         ItemStack stack = player.getItemInHand(usedHand);
         if(!level.isClientSide()) {
-            new DialogueManager().startDialogue((ServerPlayer)player, ResourceLocation.fromNamespaceAndPath("minecraft", "zombie"), JDialogues.THE_HOODED);
+            //new DialogueManager().startDialogue((ServerPlayer)player, JITL.rl("aero_lotus"), JDialogues.THE_HOODED);
 
             ItemStack scrollStack = new ItemStack(JItems.LORE_SCROLL.asItem());
             LoreScrollItem.bindScrollEntry(scrollStack, ScrollEntries.BEYOND_BOILING, EnumKnowledge.BOIL, 25);
@@ -39,7 +39,6 @@ public class TestBugItem extends JItem implements IEssenceItem {
             player.addItem(scrollStack);
 
             PlayerEssence essence = player.getData(JDataAttachments.ESSENCE);
-
             PlayerStats stats = player.getData(JDataAttachments.PLAYER_STATS);
                 stats.setLevel(EnumKnowledge.OVERWORLD, 100);
                 stats.addSentacoins(1000);

@@ -3,19 +3,15 @@ package net.jitl.client.gui.screen.dialogue;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.client.util.Rectangle;
 import net.jitl.common.dialogue.ClientDialogueNode;
-import net.jitl.core.helper.internal.ArgbColor;
-import net.jitl.core.init.network.dialogue.C2SChosenOptionMsg;
+import net.jitl.common.network.dialogue.C2SChosenOptionMsg;
 import net.jitl.core.data.JNetworkRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.NotNull;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
 import java.util.List;
 
@@ -88,9 +84,10 @@ public class GuiDialogue extends Screen {
 
 		for(int i = 0; i < options.size(); i++) {
 			int finalI = i;
-			Button b = addRenderableWidget(new GuiOptionButton(options.get(i), (button) -> JNetworkRegistry.sendToServer(new C2SChosenOptionMsg(finalI)), x, startY));
-			b.active = true;
-			b.visible = true;
+			addRenderableWidget(new GuiOptionButton(options.get(i), (button) -> {
+				System.out.println("Hi");
+				JNetworkRegistry.sendToServer(new C2SChosenOptionMsg(finalI));
+			}, x, startY));
 			startY += incrementor;
 		}
 	}
@@ -100,17 +97,14 @@ public class GuiDialogue extends Screen {
 		renderBackground(poseStack, mouseX, mouseY, partialTicks);
 		drawDebugLayout(mouseX, mouseY, partialTicks);
 
-		drawMobText(poseStack);
-
+		drawMobText();
 		drawEntity(width / (INDENT_OFFSET) * 6, (int) (mobIconRect.bottom() - mobIconRect.height() * -3.75F), mouseX, mouseY, node.getNpc(), poseStack);
-
-//		System.out.println(node.getOptionTextKeys());
-//		System.out.println(node.getTextKey());
+		System.out.println(node.getOptionTextKeys());
 	}
 
-	private void drawMobText(GuiGraphics poseStack) {
-		String text = ChatFormatting.YELLOW + "" + ChatFormatting.ITALIC + node.getTextKey();
-		poseStack.drawString(font, text, mobTextRect.left() + INDENT * -(INDENT_OFFSET), mobTextRect.top() + INDENT + 64, ArgbColor.from(ChatFormatting.WHITE));
+	private void drawMobText() {
+		//String text = ChatFormatting.YELLOW + "" + ChatFormatting.ITALIC + I18n.format(node.getTextKey());
+		//font.drawSplitString(text, mobTextRect.left() + INDENT * -(INDENT_OFFSET), mobTextRect.top() + INDENT + 64, Math.max(mobTextRect.width(), 2), 0xFFFFFF);
 	}
 
 	private void drawDebugLayout(int mouseX, int mouseY, float partialTicks) {
@@ -124,10 +118,8 @@ public class GuiDialogue extends Screen {
 	}
 
 	public static void drawEntity(int posX, int posY, float mouseX, float mouseY, LivingEntity entity, GuiGraphics g) {
-		//System.out.println(entity == null ? "NULL" : "RENDERING");
-
 		float scaleFactor = entity.getEyeHeight() / 1.8F /*height of player */;
-		scaleFactor = Math.max(scaleFactor, 0.5F); // make it so very small mobs won't be huge
+		scaleFactor = Math.max(scaleFactor, 0.5F); // make it so very small mobs won't be super big
 
 		int adaptiveScale = (int) (164 /*scale for player */ / scaleFactor);
 

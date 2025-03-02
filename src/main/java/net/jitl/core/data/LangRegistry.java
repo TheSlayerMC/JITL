@@ -437,7 +437,7 @@ public class LangRegistry {
         writeToFile("\"book.jitl.entry.cloudia.mobs.starlight_blacksmith.desc\" : " + "\"Starlight Blacksmith is a trading NPC that lives in one variant of the $(l:jitl:terrania/structures#cloudia_village_1)Cloudia Villages$(/l)\",");
 
         writeToFile("\"structure.senterian.jitl.senterian_altar\" : " + "\"Senterian Altar\",");
-        writeToFile("\"book.jitl.entry.senterian.senterian_altar.desc\" : " + "\"Senterian Altar Room is the biggest room in the dimension, in this room in the middle you will find the Senterian Altars, you can place a Sentry Observer item into them and they will spawn Mini Senterian Mobs, this is the only way to receive Sentacoins.\",");
+        writeToFile("\"book.jitl.entry.senterian.senterian_altar.desc\" : " + "\"Senterian Altar Room is the biggest room in the dimension, in this room in the middle you will find the Senterian Altars, you can place a Sentry Observer item into them and they will spawn Mini Senterian Mobs, this is the only way to recieve Sentacoins.\",");
 
         addMob(EnumKnowledge.OVERWORLD, "brown_hongo", "Forest like", true, MobStats.BIG_HONGO_HEALTH, MobStats.BIG_HONGO_DAMAGE, "Hongoshrooms");
         addMob(EnumKnowledge.OVERWORLD, "big_hongo", "Forest like", true, MobStats.BIG_HONGO_HEALTH, MobStats.BIG_HONGO_DAMAGE, "Hongoshrooms");
@@ -454,7 +454,7 @@ public class LangRegistry {
         addMob(EnumKnowledge.OVERWORLD, "sand_crawler", "Desert like", false, MobStats.SAND_CRAWLER_HEALTH, MobStats.SAND_CRAWLER_DAMAGE, "Sand Blocks");
         addMob(EnumKnowledge.OVERWORLD, "spyclopse", "Desert like", false, MobStats.SPYCLOPS_HEALTH, MobStats.SPYCLOPS_DAMAGE, "Spyclopse Eye");
         addMob(EnumKnowledge.OVERWORLD, "rockite_golem", "Overworld Underground", "NPC Mob, Will trade with you", MobStats.NPC_HEALTH, "");
-        addStructureMob(EnumKnowledge.OVERWORLD, "neutral_sentry_stalker", "$(l:jitl:overworld/structures#ancient_structure)Ancient Structure$(/l)", "NPC Mob, Will trade with you once you reach 75 Overworld Knowledge, Will trade Sentacoins for Breakable versions of Senterian Blocks (Decorational)", true, MobStats.NPC_HEALTH, 0, "");
+        addStructureMob(EnumKnowledge.OVERWORLD, "neutral_sentry_stalker", "$(l:jitl:overworld/structures#ancient_structure)Ancient Structure$(/l)", "NPC Mob, Will trade with you once you reach 100 Overworld Knowledge", true, MobStats.NPC_HEALTH, 0, "");
         addStructureMob(EnumKnowledge.OVERWORLD, "mage", "$(l:jitl:overworld/structures#mage_hut)Mage Hut$(/l)", "NPC Mob, Will trade with you", true, MobStats.NPC_HEALTH, 0, "");
         addMob(EnumKnowledge.OVERWORLD, "robot", "Any Overworld Biome", "Will attack on site", MobStats.ROBOT_HEALTH, "Iron Ingot and Redstone Dust");
         addPet(EnumKnowledge.OVERWORLD, "pet_robot", true, "Obtained from the $(l:jitl:overworld/traders#mage)Mage$(/l)", "Already tamed when spawned, can be healed with Pet Food", MobStats.PET_ROBOT_HEALTH, MobStats.PET_ROBOT_DAMAGE,"");
