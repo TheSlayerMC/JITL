@@ -1,7 +1,6 @@
 package net.jitl.core.init.network.dialogue;
 
 import net.jitl.common.dialogue.DialogueNode;
-import net.jitl.core.helper.StreamCodecUtil;
 import net.jitl.core.init.JITL;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
