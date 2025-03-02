@@ -16,9 +16,9 @@ public record PacketUpdateClientPlayerMovement(Operation operation, OptionalDoub
     public static final Type<PacketUpdateClientPlayerMovement> TYPE = new Type<>(JITL.rl("update_client_movement"));
     public static final StreamCodec<FriendlyByteBuf, PacketUpdateClientPlayerMovement> CODEC = StreamCodec.composite(
             NeoForgeStreamCodecs.enumCodec(Operation.class), PacketUpdateClientPlayerMovement::operation,
-            StreamCodecUtil.OPTIONAL_DOUBLE, PacketUpdateClientPlayerMovement::x,
-            StreamCodecUtil.OPTIONAL_DOUBLE, PacketUpdateClientPlayerMovement::y,
-            StreamCodecUtil.OPTIONAL_DOUBLE, PacketUpdateClientPlayerMovement::z,
+            StreamCodecUtil.DOUBLE, PacketUpdateClientPlayerMovement::x,
+            StreamCodecUtil.DOUBLE, PacketUpdateClientPlayerMovement::y,
+            StreamCodecUtil.DOUBLE, PacketUpdateClientPlayerMovement::z,
             PacketUpdateClientPlayerMovement::new);
 
     public PacketUpdateClientPlayerMovement(Operation operation, double x, double y, double z) {
