@@ -5,6 +5,7 @@ import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
 import net.jitl.common.block.entity.JChestBlockEntity;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JBlockProperties;
+import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -17,6 +18,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ChestMenu;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Explosion;
@@ -224,16 +226,22 @@ public class JChestBlock extends AbstractChestBlock<JChestBlockEntity> implement
 
     @Override
     protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
+        Item heldItem = pPlayer.getMainHandItem().getItem();
         if (pLevel.isClientSide) {
             return InteractionResult.SUCCESS;
         } else {
-            MenuProvider menuprovider = this.getMenuProvider(pState, pLevel, pPos);
-            if (menuprovider != null) {
-                pPlayer.openMenu(menuprovider);
-                PiglinAi.angerNearbyPiglins(pPlayer, true);
+            if(pState.getValue(IS_LOCKED)) {
+                pPlayer.sendSystemMessage(Component.translatable("jitl.chest.locked"));
+                return InteractionResult.FAIL;
+            } else if(!pState.getValue(IS_LOCKED) && heldItem != JItems.PADLOCK.get()){
+                MenuProvider menuprovider = this.getMenuProvider(pState, pLevel, pPos);
+                if (menuprovider != null) {
+                    pPlayer.openMenu(menuprovider);
+                }
+                return InteractionResult.CONSUME;
             }
-            return InteractionResult.CONSUME;
         }
+        return InteractionResult.CONSUME;
     }
 
     @Nullable

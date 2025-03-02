@@ -170,7 +170,7 @@ public class EssenceBar implements LayeredDraw.Layer {
                     gui.blit(getTextureBasedOnPosition(essencePosition), x, y, 0, 0, i, barHeight, 81, texHeight);
                 }
 
-                if (burnoutTransparency > 0) {
+                if(burnoutTransparency > 0) {
                     RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, burnoutTransparency - addedAlpha);
                     gui.blit(getTextureBasedOnPosition(essencePosition), x, y, 0, burnoutVOffset, 81, barHeight, 81, texHeight);
                 }

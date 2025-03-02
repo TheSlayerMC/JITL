@@ -5,7 +5,7 @@ import net.jitl.client.gui.screen.SummoningTableScreen;
 import net.jitl.common.block.entity.container.JFurnaceMenu;
 import net.jitl.common.block.entity.container.SummoningTableContainer;
 import net.jitl.common.entity.jmerchant.SentacoinMerchantMenu;
-import net.jitl.common.entity.jmerchant.SentacoinMerchantScreen;
+import net.jitl.client.gui.screen.SentacoinMerchantScreen;
 import net.jitl.core.helper.internal.EmptyContainer;
 import net.jitl.core.init.JITL;
 import net.minecraft.core.registries.Registries;

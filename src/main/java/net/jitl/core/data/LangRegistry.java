@@ -646,6 +646,8 @@ public class LangRegistry {
         writeToFile("\"enchantment.jitl.scorching\" : \"Scorching\",");
         writeToFile("\"enchantment.jitl.faithful\" : \"Faithful\",");
 
+        writeToFile("\"jitl.chest.locked\" : \"You need a key to open this\",");
+
         writeToFile("\"jitl.item.desc.flame_coin\" : \"Used to Light JITL Portals\",");
         writeToFile("\"jitl.item.desc.padlock\" : \"Used to lock JITL chests\",");
         writeToFile("\"jitl.item.desc.master_key\" : \"Opens all locked JITL chests\",");
