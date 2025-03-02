@@ -5,6 +5,7 @@ import net.jitl.client.util.Rectangle;
 import net.jitl.common.dialogue.ClientDialogueNode;
 import net.jitl.common.network.dialogue.C2SChosenOptionMsg;
 import net.jitl.core.data.JNetworkRegistry;
+import net.jitl.core.helper.internal.ArgbColor;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
@@ -97,14 +98,14 @@ public class GuiDialogue extends Screen {
 		renderBackground(poseStack, mouseX, mouseY, partialTicks);
 		drawDebugLayout(mouseX, mouseY, partialTicks);
 
-		drawMobText();
+		drawMobText(poseStack);
 		drawEntity(width / (INDENT_OFFSET) * 6, (int) (mobIconRect.bottom() - mobIconRect.height() * -3.75F), mouseX, mouseY, node.getNpc(), poseStack);
 		System.out.println(node.getOptionTextKeys());
 	}
 
-	private void drawMobText() {
-		//String text = ChatFormatting.YELLOW + "" + ChatFormatting.ITALIC + I18n.format(node.getTextKey());
-		//font.drawSplitString(text, mobTextRect.left() + INDENT * -(INDENT_OFFSET), mobTextRect.top() + INDENT + 64, Math.max(mobTextRect.width(), 2), 0xFFFFFF);
+	private void drawMobText(GuiGraphics stack) {
+		String text = ChatFormatting.YELLOW + "" + ChatFormatting.ITALIC + node.getTextKey();
+		stack.drawString(font, text, mobTextRect.left() + INDENT * -(INDENT_OFFSET), mobTextRect.top() + INDENT + 64, ArgbColor.from(ChatFormatting.WHITE));
 	}
 
 	private void drawDebugLayout(int mouseX, int mouseY, float partialTicks) {
