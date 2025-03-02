@@ -19,9 +19,9 @@ public class KeyUsedEvent {
         if (MINECRAFT.screen == null) {
 
             assert MINECRAFT.player != null;
-                while(KeyBindEvents.keyStats.consumeClick()) {
-                    assert Minecraft.getInstance().player != null;
-                    displayPlayerStats(Minecraft.getInstance().player);
+            while(KeyBindEvents.keyStats.consumeClick()) {
+                assert Minecraft.getInstance().player != null;
+                displayPlayerStats(Minecraft.getInstance().player);
             }
             if(KeyBindEvents.keyAmulet.isDown() || KeyBindEvents.keyArmor.isDown()) {
                 handleAbilityKeys(KeyBindEvents.keyAmulet.isDown(), KeyBindEvents.keyArmor.isDown());

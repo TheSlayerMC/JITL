@@ -23,20 +23,21 @@ public class CloudWalkerAmuletItem extends JCurioItem {
 
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
-        if(slotContext.entity() instanceof ServerPlayer player) {
+        if(slotContext.entity() instanceof Player player) {
             PressedKeyCap key = player.getData(JDataAttachments.KEY_PRESSED);
             PlayerEssence essence = player.getData(JDataAttachments.ESSENCE);
 
             if(key.isAmuletPressed()) {
-                if(essence.consumeEssence(player, 0.15F)) {
-                    player.fallDistance = 0.0F;
-                    JNetworkRegistry.sendToPlayer(player, new PacketUpdateClientPlayerMovement(PacketUpdateClientPlayerMovement.Operation.ADD, 0.1));
-
-                    double halfSize = player.getBbWidth() / 2;
-                    for(int i = 0; i < 8; ++i) {
-                        player.level().addParticle(ParticleTypes.CLOUD, player.getX(), player.getY(), player.getZ(), 0, 0, 0);
+                if(essence.consumeEssence(player, 0.10F)) {
+                    if(player instanceof ServerPlayer sp) {
+                        JNetworkRegistry.sendToPlayer(sp, new PacketUpdateClientPlayerMovement(PacketUpdateClientPlayerMovement.Operation.ADD, 0.1));
+                        player.fallDistance = 0.0F;
                     }
                 }
+//                if(player.level().isClientSide) {
+//                    double halfSize = slotContext.entity().getBbWidth() / 2;
+//                    slotContext.entity().level().addParticle(ParticleTypes.CLOUD, true, slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ(), halfSize, 0, halfSize);
+//                }
             }
         }
     }

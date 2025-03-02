@@ -87,6 +87,8 @@ public class LangRegistry {
         writeToFile("\"itemGroup.jitl.blocks\" : \"JITL Blocks\",");
         writeToFile("\"itemGroup.jitl.items\" : \"JITL Items\",");
         writeToFile("\"jitl.key.stats\" : \"Player Stats\",");
+        writeToFile("\"jitl.key.amulet\" : \"Use Amulet Effects\",");
+        writeToFile("\"jitl.key.armor\" : \"Use Armor Effects\",");
         writeToFile("\"jitl.key\" : \"JITL Keys\",");
         writeToFile("\"jitl.knowledge.level\" : \"Level Up!\",");
         writeToFile("\"jitl.knowledge.experience\" : \"XP Gain!\",");
@@ -108,6 +110,9 @@ public class LangRegistry {
         writeToFile("\"jitl.sen.knowledge_0\" : \"Ill trade you Overworld knowledge to get in there\",");
         writeToFile("\"jitl.sen.knowledge_1\" : \"See me when you have at least 75 Overworld Knowledge\",");
         writeToFile("\"jitl.sen.unlocked\" : \"I locked it for a reason but goodluck...\",");
+
+        writeToFile("\"jitl.trade.no\" : \"You need more Sentacoins\",");
+
 
         writeToFile("\"emi.category.jitl.summoning_table\" : \"Summoning Table\",");
 
@@ -661,7 +666,7 @@ public class LangRegistry {
         writeToFile("\"jitl.item.desc.lucky_charm\" : \"Adds a chance for a random drop when Mining\",");
         writeToFile("\"jitl.item.desc.death_cap\" : \"Poisons Attacker\",");
         writeToFile("\"jitl.item.desc.skull_decay\" : \"Withers Attacker\",");
-        writeToFile("\"jitl.item.desc.cloud_walker\" : \"Press 'Amulet Key' to hover\",");
+        writeToFile("\"jitl.item.desc.cloud_walker\" : \"Press 'Amulet Key' to hover using Essence\",");
         writeToFile("\"jitl.item.desc.ice_amulet\" : \"Makes you stronger in Cold Biomes\",");
 
         writeToFile("\"jitl.item.desc.sentry_eye\" : \"Inserted into the Senterian Portal Frame\",");

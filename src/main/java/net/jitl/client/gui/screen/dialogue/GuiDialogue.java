@@ -3,6 +3,9 @@ package net.jitl.client.gui.screen.dialogue;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.client.util.Rectangle;
 import net.jitl.common.dialogue.ClientDialogueNode;
+import net.jitl.common.network.dialogue.C2SChosenOptionMsg;
+import net.jitl.core.data.JNetworkRegistry;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
@@ -25,7 +28,7 @@ public class GuiDialogue extends Screen {
 	private Rectangle mobTextRect;
 
 	public GuiDialogue(ClientDialogueNode node) {
-        super(Component.translatable("dialogue"));
+        super(Component.translatable("jitl.dialogue"));
         this.node = node;
 	}
 
@@ -79,13 +82,11 @@ public class GuiDialogue extends Screen {
 
 		int x = mobTextRect.left() + INDENT * -(INDENT_OFFSET);
 
-
-
 		for(int i = 0; i < options.size(); i++) {
 			int finalI = i;
 			addRenderableWidget(new GuiOptionButton(options.get(i), (button) -> {
 				System.out.println("Hi");
-				//JNetworkRegistry.sendToPlayer(new C2SChosenOptionMsg(finalI));
+				JNetworkRegistry.sendToServer(new C2SChosenOptionMsg(finalI));
 			}, x, startY));
 			startY += incrementor;
 		}
@@ -107,13 +108,13 @@ public class GuiDialogue extends Screen {
 	}
 
 	private void drawDebugLayout(int mouseX, int mouseY, float partialTicks) {
-		//RenderUtils.drawRect(guiRect, 0xFF8851FF); // whole gui
-
-		//RenderUtils.drawRect(mobIconRect, 0xFF194378); // mob icon background
-
-		//RenderUtils.drawRect(mobTextRect, 0xFF963232); // mob text background
-
-		//RenderUtils.drawRect(optionsRect, 0x75000000); // options background
+//		RenderUtils.drawRect(guiRect, 0xFF8851FF); // whole gui
+//
+//		RenderUtils.drawRect(mobIconRect, 0xFF194378); // mob icon background
+//
+//		RenderUtils.drawRect(mobTextRect, 0xFF963232); // mob text background
+//
+//		RenderUtils.drawRect(optionsRect, 0x75000000); // options background
 	}
 
 	public static void drawEntity(int posX, int posY, float mouseX, float mouseY, LivingEntity entity, GuiGraphics g) {

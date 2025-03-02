@@ -11,14 +11,14 @@ import org.lwjgl.glfw.GLFW;
 @EventBusSubscriber(modid = JITL.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class KeyBindEvents {
 
-    public static KeyMapping keyStats = new KeyMapping("Open Journey Stats", GLFW.GLFW_KEY_J, I18n.get("jitl.key"));
-    public static KeyMapping keyArmor = new KeyMapping("Use Armor Ability", GLFW.GLFW_KEY_C, I18n.get("jitl.key"));
-    public static KeyMapping keyAmulet = new KeyMapping("Use Amulet Ability", GLFW.GLFW_KEY_V, I18n.get("jitl.key"));
+    public static KeyMapping keyStats = new KeyMapping("jitl.key.stats", GLFW.GLFW_KEY_J, I18n.get("jitl.key"));
+    public static KeyMapping keyArmor = new KeyMapping("jitl.key.armor", GLFW.GLFW_KEY_C, I18n.get("jitl.key"));
+    public static KeyMapping keyAmulet = new KeyMapping("jitl.key.amulet", GLFW.GLFW_KEY_V, I18n.get("jitl.key"));
 
     @SubscribeEvent
     public static void onKeyRegister(RegisterKeyMappingsEvent event) {
         event.register(keyStats);
-        event.register(keyArmor);
+        //event.register(keyArmor);
         event.register(keyAmulet);
     }
 }

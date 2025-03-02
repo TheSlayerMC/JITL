@@ -4,6 +4,7 @@ import net.jitl.client.ChatUtils;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.capability.stats.PlayerStats;
 import net.jitl.common.entity.base.MobStats;
+import net.jitl.common.entity.jmerchant.SentacoinMerchantMenu;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
@@ -13,6 +14,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
@@ -32,6 +34,8 @@ import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
+
+import java.util.Objects;
 
 public class OverworldSentryStalker extends PathfinderMob implements GeoEntity, Npc{
 
@@ -155,8 +159,8 @@ public class OverworldSentryStalker extends PathfinderMob implements GeoEntity, 
 
             if(!hasKey()) {
                 ChatUtils.addDialogStyleChat(player, "jitl.sen.unlocked");
-//                if(!level().isClientSide)
-//                    player.openMenu(new SimpleMenuProvider((menu, inven, title) -> new SentacoinMerchantMenu(menu), Objects.requireNonNull(getDisplayName())));
+                if(!level().isClientSide)
+                    player.openMenu(new SimpleMenuProvider((menu, inven, title) -> new SentacoinMerchantMenu(menu), Objects.requireNonNull(getDisplayName())));
             }
         return super.mobInteract(player, hand);
     }
