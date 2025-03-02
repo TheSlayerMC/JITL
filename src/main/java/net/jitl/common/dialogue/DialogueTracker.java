@@ -1,8 +1,8 @@
 package net.jitl.common.dialogue;
 
 import net.jitl.common.JManagers;
-import net.jitl.core.init.network.dialogue.S2CCloseDialogueGuiMsg;
-import net.jitl.core.init.network.dialogue.S2COpenDialogueGuiMsg;
+import net.jitl.common.network.dialogue.S2CCloseDialogueGuiMsg;
+import net.jitl.common.network.dialogue.S2COpenDialogueGuiMsg;
 import net.jitl.core.data.JNetworkRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;

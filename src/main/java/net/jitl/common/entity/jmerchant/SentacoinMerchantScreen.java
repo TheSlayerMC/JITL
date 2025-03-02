@@ -33,17 +33,18 @@ public class SentacoinMerchantScreen extends AbstractContainerScreen<SentacoinMe
 
     protected void init() {
         super.init();
-        addButton(0, 86, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_BARS.get()), 16, 64);
-        addButton(0, 107, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_BRICKS.get()), 16, 64);
-        addButton(0, 128, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_BRICK_STAIRS.get()), 16, 64);
-        addButton(0, 149, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_CARVED_ROCK.get()), 16, 64);
-        addButton(0, 170, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_FLOOR.get()), 16, 64);
-        addButton(0, 191, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_ROCK.get()), 16, 64);
-        addButton(0, 212, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_GLASS.get()), 16, 64);
-        addButton(0, 233, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_POST.get()), 16, 64);
-        addButton(0, 254, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_GUARDIAN_LAMP.get()), 16, 64);
-        addButton(104, 86, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_LIGHT_LAMP.get()), 16, 64);
-        addButton(104, 107, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_MELLOW_LAMP.get()), 16, 64);
+        addButton(0, 86, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_BARS.get()), 16, 32);
+        addButton(0, 107, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_BRICKS.get()), 64, 64);
+        addButton(0, 128, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_BRICK_STAIRS.get()), 2, 128);
+        addButton(0, 149, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_CARVED_ROCK.get()), 32, 256);
+        addButton(0, 170, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_FLOOR.get()), 1, 512);
+        addButton(0, 191, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_ROCK.get()), 1, 512);
+        addButton(0, 212, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_GLASS.get()), 1, 512);
+        addButton(0, 233, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_POST.get()), 1, 512);
+        addButton(0, 254, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_GUARDIAN_LAMP.get()), 1, 512);
+
+        addButton(104, 86, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_LIGHT_LAMP.get()), 1, 512);
+        addButton(104, 107, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_MELLOW_LAMP.get()), 1, 512);
     }
 
     protected void renderLabels(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY) {
@@ -80,7 +81,7 @@ public class SentacoinMerchantScreen extends AbstractContainerScreen<SentacoinMe
         public TradeOfferButton(String name, int pX, int pY, ItemStack i, int amount, int cost) {
             super(pX, pY, 96, 20, Component.translatable(name), (press) -> buy(i, amount, cost), DEFAULT_NARRATION);
             setTooltip(Tooltip.create(Component.literal(" x" + amount + " for x"  + cost + " Sentacoins")));
-
+            
         }
     }
 }
