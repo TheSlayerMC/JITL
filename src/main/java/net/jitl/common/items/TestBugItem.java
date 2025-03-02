@@ -32,7 +32,11 @@ public class TestBugItem extends JItem implements IEssenceItem {
         ItemStack stack = player.getItemInHand(usedHand);
         if(!level.isClientSide()) {
 <<<<<<< HEAD
+<<<<<<< HEAD
             // new DialogueManager().startDialogue((ServerPlayer)player, JITL.rl("aero_lotus"), JDialogues.THE_HOODED);
+=======
+            //new DialogueManager().startDialogue((ServerPlayer)player, JITL.rl("aero_lotus"), JDialogues.THE_HOODED);
+>>>>>>> parent of 363d0355 (dialogue work)
 =======
             //new DialogueManager().startDialogue((ServerPlayer)player, JITL.rl("aero_lotus"), JDialogues.THE_HOODED);
 >>>>>>> parent of 363d0355 (dialogue work)
