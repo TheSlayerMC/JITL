@@ -29,7 +29,7 @@ public class DialogueNetHandler {
         List<String> opt = new ArrayList<>();
         opt.add(String.valueOf(message.options()));
         int size = opt.size();
-        List<String> optionKeys = new ArrayList<>();
+        List<String> optionKeys = new ArrayList<>(size);
         for(int i = 0; i < size; i++)
             optionKeys.add(message.options().toString());
         Minecraft.getInstance().setScreen(new GuiDialogue(new ClientDialogueNode(message.npcKey(), message.textKey(), optionKeys)));
