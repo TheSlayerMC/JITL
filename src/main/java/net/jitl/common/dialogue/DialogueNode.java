@@ -55,6 +55,10 @@ public class DialogueNode {
 		private DialogueNode nextNode = END;
 		private Action onClickAction = EMPTY_ACTION;
 
+		public static Option of(String option) {
+			return new Option(option);
+		}
+
 		public static final Codec<Option> CODEC = RecordCodecBuilder.create(instance ->
 				instance.group(
 						Codec.STRING.fieldOf("text").forGetter(Option::getText)

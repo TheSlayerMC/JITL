@@ -26,15 +26,9 @@ public record PacketUpdateClientPlayerMovement(Operation operation, OptionalDoub
 
     public static final StreamCodec<FriendlyByteBuf, PacketUpdateClientPlayerMovement> CODEC = StreamCodec.composite(
             NeoForgeStreamCodecs.enumCodec(Operation.class), PacketUpdateClientPlayerMovement::operation,
-<<<<<<< HEAD
             DOUBLE_STREAM_CODEC, PacketUpdateClientPlayerMovement::x,
             DOUBLE_STREAM_CODEC, PacketUpdateClientPlayerMovement::y,
             DOUBLE_STREAM_CODEC, PacketUpdateClientPlayerMovement::z,
-=======
-            StreamCodecUtil.OPTIONAL_DOUBLE, PacketUpdateClientPlayerMovement::x,
-            StreamCodecUtil.OPTIONAL_DOUBLE, PacketUpdateClientPlayerMovement::y,
-            StreamCodecUtil.OPTIONAL_DOUBLE, PacketUpdateClientPlayerMovement::z,
->>>>>>> parent of 363d0355 (dialogue work)
             PacketUpdateClientPlayerMovement::new);
 
     public PacketUpdateClientPlayerMovement(Operation operation, double x, double y, double z) {

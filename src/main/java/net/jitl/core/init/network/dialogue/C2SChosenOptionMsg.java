@@ -1,4 +1,4 @@
-package net.jitl.common.network.dialogue;
+package net.jitl.core.init.network.dialogue;
 
 import net.jitl.core.init.JITL;
 import net.minecraft.network.FriendlyByteBuf;
