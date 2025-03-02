@@ -34,9 +34,9 @@ public class JNetworkRegistry {
 
         registry.playToClient(PacketUpdateClientPlayerMovement.TYPE, PacketUpdateClientPlayerMovement.CODEC, PacketUpdateClientPlayerMovement::handle);
 
-//        registry.playToClient(S2COpenDialogueGuiMsg.TYPE, S2COpenDialogueGuiMsg.STREAM_CODEC, dialogueNetHandler::handleDialogueOpenPacket);
-//        registry.playToClient(S2CCloseDialogueGuiMsg.TYPE, S2CCloseDialogueGuiMsg.STREAM_CODEC, dialogueNetHandler::handleDialogueClosePacket);
-//        registry.playToServer(C2SChosenOptionMsg.TYPE, C2SChosenOptionMsg.STREAM_CODEC, dialogueNetHandler::handlePressOptionPacket);
+        registry.playToClient(S2COpenDialogueGuiMsg.TYPE, S2COpenDialogueGuiMsg.STREAM_CODEC, dialogueNetHandler::handleDialogueOpenPacket);
+        registry.playToClient(S2CCloseDialogueGuiMsg.TYPE, S2CCloseDialogueGuiMsg.STREAM_CODEC, dialogueNetHandler::handleDialogueClosePacket);
+        registry.playToServer(C2SChosenOptionMsg.TYPE, C2SChosenOptionMsg.STREAM_CODEC, dialogueNetHandler::handlePressOptionPacket);
     }
 
     public static void sendToServer(CustomPacketPayload packet) {
