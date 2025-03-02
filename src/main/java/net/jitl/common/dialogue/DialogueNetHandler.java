@@ -27,14 +27,11 @@ public class DialogueNetHandler {
     @OnlyIn(Dist.CLIENT)
     public void handleDialogueOpenPacket(S2COpenDialogueGuiMsg message, IPayloadContext ctx) {
 <<<<<<< HEAD
-<<<<<<< HEAD
         List<String> opt = new ArrayList<>();
         opt.add(String.valueOf(message.options()));
         int size = opt.size();
         List<String> optionKeys = new ArrayList<>();
 =======
-=======
->>>>>>> parent of 363d0355 (dialogue work)
         int size = message.options().size();
         List<String> optionKeys = new ArrayList<>(size);
 >>>>>>> parent of 363d0355 (dialogue work)
