@@ -176,10 +176,30 @@
               "secondary_depth_range": 0
             },
             "then_run": {
-              "type": "minecraft:block",
-              "result_state": {
-                "Name": "jitl:depths_grass"
-              }
+              "type": "minecraft:sequence",
+              "sequence": [
+                {
+                  "type": "minecraft:condition",
+                  "if_true": {
+                    "type": "minecraft:noise_threshold",
+                    "noise": "minecraft:nether_state_selector",
+                    "min_threshold": 0,
+                    "max_threshold": 0.3
+                  },
+                  "then_run": {
+                    "type": "minecraft:block",
+                    "result_state": {
+                      "Name": "jitl:depths_moss_block"
+                    }
+                  }
+                },
+                {
+                  "type": "minecraft:block",
+                  "result_state": {
+                    "Name": "jitl:depths_grass"
+                  }
+                }
+              ]
             }
           },
           {

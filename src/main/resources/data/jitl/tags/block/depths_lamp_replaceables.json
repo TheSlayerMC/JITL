@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "jitl:depths_grass"
+    "jitl:depths_grass",
+    "jitl:depths_moss_block"
   ]
 }
