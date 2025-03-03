@@ -18,7 +18,8 @@
   "features": [
     [],
     [
-      "jitl:depths_water"
+      "jitl:depths_water",
+      "jitl:depths_spike"
     ],
     [
       "jitl:depths_geode",

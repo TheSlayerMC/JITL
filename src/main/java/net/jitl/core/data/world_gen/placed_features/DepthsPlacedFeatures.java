@@ -23,6 +23,7 @@ public class DepthsPlacedFeatures extends JPlacedFeature {
             FLOOR_DEPTHS_CRYSTAL = registerKey("floor_depths_crystal"),
             DEPTHS_WATER = registerKey("depths_water"),
             DEPTHS_GEODE = registerKey("depths_geode"),
+            DEPTHS_SPIKE = registerKey("depths_spike"),
             CRYSTAL_DRIPSTONE = registerKey("crystal_dripstone");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
@@ -86,11 +87,16 @@ public class DepthsPlacedFeatures extends JPlacedFeature {
 
         PlacementUtils.register(
                 context,
+                DEPTHS_SPIKE,
+                holdergetter.getOrThrow(JConfiguredFeatures.DEPTHS_SPIKE),
+                patch(1, 30, PlacementUtils.FULL_RANGE)
+        );
+
+        PlacementUtils.register(
+                context,
                 CRYSTAL_DRIPSTONE,
                 holdergetter.getOrThrow(JConfiguredFeatures.CRYSTAL_DRIPSTONE),
-                CountPlacement.of(UniformInt.of(48, 96)),
-                InSquarePlacement.spread(),
-                PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT
+                patch(3, PlacementUtils.FULL_RANGE)
         );
 
         PlacementUtils.register(
