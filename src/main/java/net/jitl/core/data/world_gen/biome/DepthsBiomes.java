@@ -1,6 +1,7 @@
 package net.jitl.core.data.world_gen.biome;
 
 import net.jitl.core.data.world_gen.placed_features.DepthsPlacedFeatures;
+import net.jitl.core.data.world_gen.placed_features.EucaPlacedFeatures;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.HolderGetter;
@@ -35,6 +36,8 @@ public class DepthsBiomes extends Biomes {
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DepthsPlacedFeatures.FLOOR_DEPTHS_CRYSTAL);
         biomeSetting.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DepthsPlacedFeatures.DEPTHS_GEODE);
         biomeSetting.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DepthsPlacedFeatures.DEPTHS_LAMP_ROOF);
+        biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DepthsPlacedFeatures.CRYSTAL_DRIPSTONE);
+        biomeSetting.addFeature(GenerationStep.Decoration.LAKES, DepthsPlacedFeatures.DEPTHS_WATER);
 
         mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.DARKENER_TYPE.get(), 5, 1, 2));
         mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.DEPTHS_HUNTER_TYPE.get(), 2, 1, 1));

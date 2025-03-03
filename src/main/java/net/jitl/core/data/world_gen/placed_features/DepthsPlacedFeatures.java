@@ -6,11 +6,10 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.CountPlacement;
-import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.placement.*;
 
 public class DepthsPlacedFeatures extends JPlacedFeature {
 
@@ -22,8 +21,10 @@ public class DepthsPlacedFeatures extends JPlacedFeature {
             DEPTHS_TREE = registerKey("depths_tree"),
             DEPTHS_CRYSTAL = registerKey("depths_crystal"),
             FLOOR_DEPTHS_CRYSTAL = registerKey("floor_depths_crystal"),
-            DEPTHS_GEODE = registerKey("depths_geode");
-    
+            DEPTHS_WATER = registerKey("depths_water"),
+            DEPTHS_GEODE = registerKey("depths_geode"),
+            CRYSTAL_DRIPSTONE = registerKey("crystal_dripstone");
+
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> holdergetter = context.lookup(Registries.CONFIGURED_FEATURE);
 
@@ -81,6 +82,22 @@ public class DepthsPlacedFeatures extends JPlacedFeature {
                 DEPTHS_GEODE,
                 holdergetter.getOrThrow(JConfiguredFeatures.DEPTHS_GEODE),
                 patch(1, 30, PlacementUtils.FULL_RANGE)
+        );
+
+        PlacementUtils.register(
+                context,
+                CRYSTAL_DRIPSTONE,
+                holdergetter.getOrThrow(JConfiguredFeatures.CRYSTAL_DRIPSTONE),
+                CountPlacement.of(UniformInt.of(48, 96)),
+                InSquarePlacement.spread(),
+                PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT
+        );
+
+        PlacementUtils.register(
+                context,
+                DEPTHS_WATER,
+                holdergetter.getOrThrow(JConfiguredFeatures.DEPTHS_WATER),
+                patch(100, 8, PlacementUtils.FULL_RANGE)
         );
 
         PlacementUtils.register(

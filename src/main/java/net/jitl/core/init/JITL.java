@@ -108,6 +108,7 @@ public class JITL {
             new JBlockEndFrameGenerator().generate();
             new JBlockMushroomGenerator().generate();
             new BlockTotemGenerator().generate();
+            new JBlockDripstoneGenerator().generate();
             new LangRegistry().generate();
         }
 

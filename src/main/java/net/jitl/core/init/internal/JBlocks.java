@@ -116,6 +116,8 @@ public class JBlocks {
     public static final ArrayList<String> trophyLangName = new ArrayList<>();
     public static final ArrayList<String> totemBlockName = new ArrayList<>();
     public static final ArrayList<String> totemLangName = new ArrayList<>();
+    public static final ArrayList<String> dripstoneBlockName = new ArrayList<>();
+    public static final ArrayList<String> dripstoneLangName = new ArrayList<>();
 
     public static final ArrayList<String> PICKAXE_BLOCKS = new ArrayList<>();
     public static final ArrayList<String> AXE_BLOCKS = new ArrayList<>();
@@ -505,6 +507,8 @@ public class JBlocks {
     public static final DeferredBlock<Block> DEPTHS_FURNACE = registerFurnaceBlock("depths_furnace", "Depths Furnace");
     public static final DeferredBlock<IronBarsBlock> DEPTHS_GATE = registerPaneBlock("depths_gate", "Depths Gate", JBlockProperties.DUNGEON_BLOCK);
     public static final DeferredBlock<Block> DARK_SORCERER_SPAWNER = register("dark_sorcerer_spawner", "Dark Sorcerer Spawner", DarkSorcererSpawnerBlock::new, JBlockProperties.SPAWNER);
+    public static final DeferredBlock<Block> POINTED_CRYSTALLIZED_DRIPSTONE = registerDripstoneBlock("crystallized_pointed_dripstone", "Crystallized Dripstone", () -> new CrystallizedDripstoneBlock(JBlockProperties.POINTED_DRIPSTONE));
+    public static final DeferredBlock<Block> CRYSTALLIZED_DRIPSTONE = register("crystallized_dripstone", "Crystallized Dripstone", JBlockProperties.DRIPSTONE);
 
     public static final DeferredBlock<Block> CORBA_PORTAL_FRAME = registerEndPortalFrameStyleBlock("corba_portal_frame", "Corba Portal Frame", CorbaPortalFrameBlock::new);
     public static final DeferredBlock<Block> CORBA_PORTAL = registerEndPortalStyleBlock("corba_portal", "Corba Portal", CorbaPortalBlock::new);
@@ -970,6 +974,15 @@ public class JBlocks {
         trophyBlockName.add(name);
         trophyLangName.add(translatedName);
         DeferredBlock<Block> block1 = BLOCKS.register(name, TrophyBlock::new);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
+        return block1;
+    }
+
+    public static DeferredBlock<Block> registerDripstoneBlock(String name, String translatedName, Supplier<Block> block) {
+        addPickaxeableBlocks(name);
+        dripstoneBlockName.add(name);
+        dripstoneLangName.add(translatedName);
+        DeferredBlock<Block> block1 = BLOCKS.register(name, block);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), new Item.Properties()));
         return block1;
     }

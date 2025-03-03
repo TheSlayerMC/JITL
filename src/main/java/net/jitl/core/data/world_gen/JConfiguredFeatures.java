@@ -25,9 +25,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.SimpleWeightedRandomList;
-import net.minecraft.util.valueproviders.BiasedToBottomInt;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.util.valueproviders.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HugeMushroomBlock;
@@ -123,7 +121,9 @@ public class JConfiguredFeatures {
             DEPTHS_TREE = registerKey("depths_tree"),
             DEPTHS_CRYSTAL = registerKey("depths_crystal"),
             FLOOR_DEPTHS_CRYSTAL = registerKey("floor_depths_crystal"),
-            DEPTHS_GEODE = registerKey("depths_geode");
+            DEPTHS_WATER = registerKey("depths_water"),
+            DEPTHS_GEODE = registerKey("depths_geode"),
+            CRYSTAL_DRIPSTONE = registerKey("crystal_dripstone");
 
     //BOIL
     public static final ResourceKey<ConfiguredFeature<?, ?>> VOLCANIC_ROCK = registerKey("volcanic_rock"),
@@ -250,6 +250,9 @@ public class JConfiguredFeatures {
         register(context, DES_ORE, Feature.ORE, new OreConfiguration(Suppliers.memoize(() -> List.of(OreConfiguration.target(DEPTHS_REPLACEABLES, JBlocks.DES_ORE.get().defaultBlockState()))).get(), 7));
         register(context, DEPTHS_VEG , Feature.FLOWER, new RandomPatchConfiguration(60, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.DEPTHS_BLUE_FLOWER.get().defaultBlockState(), JBlocks.DEPTHS_FLOWER.get().defaultBlockState()))))));
         register(context, FLOOR_DEPTHS_CRYSTAL , Feature.FLOWER, new RandomPatchConfiguration(60, 4, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.FLOOR_DEPTHS_CRYSTAL_YELLOW.get().defaultBlockState(), JBlocks.FLOOR_DEPTHS_CRYSTAL_PINK.get().defaultBlockState(), JBlocks.FLOOR_DEPTHS_CRYSTAL_GREEN.get().defaultBlockState(), JBlocks.FLOOR_DEPTHS_CRYSTAL_BLUE.get().defaultBlockState()))))));
+        register(context, DEPTHS_WATER, JFeatures.DEPTHS_WATER_GEN.get(), new SpringConfiguration(Fluids.WATER.defaultFluidState(), false, 4, 1, HolderSet.direct(Block::builtInRegistryHolder, JBlocks.DEPTHS_GRASS.get(), JBlocks.DEPTHS_DIRT.get(), JBlocks.DEPTHS_DIRT.get())));
+        register(context, CRYSTAL_DRIPSTONE, JFeatures.CRYSTAL_DRIPSTONE.get(), new DripstoneClusterConfiguration(12, UniformInt.of(3, 6), UniformInt.of(2, 8), 1, 3, UniformInt.of(2, 4), UniformFloat.of(0.3F, 0.7F),  ClampedNormalFloat.of(0.1F, 0.3F, 0.1F, 0.9F), 0.1F, 3, 8));
+
 
         //BOIL
         register(context, VOLCANIC_ROCK, JFeatures.VOLCANIC_ROCK.get(), new NoneFeatureConfiguration());

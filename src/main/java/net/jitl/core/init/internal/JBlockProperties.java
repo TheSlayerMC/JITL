@@ -7,7 +7,9 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 
 import java.util.function.ToIntFunction;
 
@@ -17,6 +19,24 @@ public class JBlockProperties {
             .strength(1.5F)
             .sound(SoundType.STONE)
             .requiresCorrectToolForDrops();
+
+    public static BlockBehaviour.Properties POINTED_DRIPSTONE = BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN)
+            .strength(1.5F, 1.0F)
+            .forceSolidOn()
+            .instrument(NoteBlockInstrument.BASEDRUM)
+            .sound(SoundType.POINTED_DRIPSTONE)
+            .noOcclusion()
+            .randomTicks()
+            .dynamicShape()
+            .offsetType(BlockBehaviour.OffsetType.XZ)
+            .pushReaction(PushReaction.DESTROY)
+            .isRedstoneConductor(JBlockProperties::never);
+
+    public static BlockBehaviour.Properties DRIPSTONE = BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN)
+            .strength(1.5F, 1.0F)
+            .instrument(NoteBlockInstrument.BASEDRUM)
+            .sound(SoundType.DRIPSTONE_BLOCK)
+            .pushReaction(PushReaction.DESTROY);
 
     public static BlockBehaviour.Properties ANCIENT_STONE = BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
             .strength(-1F, 3600000.0F)

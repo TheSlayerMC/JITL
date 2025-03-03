@@ -169,6 +169,7 @@ public class BlockRenderTypes {
         translucent.add(JBlocks.FLOOR_DEPTHS_CRYSTAL_GREEN.get());
         translucent.add(JBlocks.FLOOR_DEPTHS_CRYSTAL_PINK.get());
         translucent.add(JBlocks.FLOOR_DEPTHS_CRYSTAL_YELLOW.get());
+        translucent.add(JBlocks.POINTED_CRYSTALLIZED_DRIPSTONE.get());
 
 
         for(Block b : cutout) {

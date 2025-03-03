@@ -9,6 +9,7 @@ import net.jitl.common.world.gen.cloudia.CloudiaLand;
 import net.jitl.common.world.gen.cloudia.CloudiaTerrain;
 import net.jitl.common.world.gen.corba.CorbaSwampTreeFeature;
 import net.jitl.common.world.gen.corba.SwampLilyFeature;
+import net.jitl.common.world.gen.depths.CrystalDripstoneClusterFeature;
 import net.jitl.common.world.gen.depths.DepthsCrystalFeature;
 import net.jitl.common.world.gen.depths.DepthsLampFeature;
 import net.jitl.common.world.gen.depths.DepthsLampFloorFeature;
@@ -51,6 +52,8 @@ public class JFeatures {
     public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> ROOF_DEPTHS_LAMP = REGISTRY.register("depths_lamp_roof", () -> new DepthsLampFeature(NoneFeatureConfiguration.CODEC));
     public static final DeferredHolder<Feature<?>, Feature<OreConfiguration>> FLOOR_DEPTHS_LAMP = REGISTRY.register("depths_lamp_floor", () -> new DepthsLampFloorFeature(OreConfiguration.CODEC));
     public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> DEPTHS_CRYSTAL = REGISTRY.register("depths_crystal", () -> new DepthsCrystalFeature(NoneFeatureConfiguration.CODEC));
+    public static final DeferredHolder<Feature<?>, Feature<SpringConfiguration>> DEPTHS_WATER_GEN = REGISTRY.register("depths_water_gen", () -> new SpringFeature(SpringConfiguration.CODEC));
+    public static final DeferredHolder<Feature<?>, Feature<DripstoneClusterConfiguration>> CRYSTAL_DRIPSTONE = REGISTRY.register("crystal_dripstone", () -> new CrystalDripstoneClusterFeature(DripstoneClusterConfiguration.CODEC));
 
     //BOIL
     public static final DeferredHolder<Feature<?>, Feature<BlockStateConfiguration>> BOULDER = REGISTRY.register("boulder", () -> new BoulderFeature(BlockStateConfiguration.CODEC));
