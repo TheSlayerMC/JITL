@@ -65,6 +65,16 @@ public class JBlockProperties {
             .sound(SoundType.WOOD)
             .requiresCorrectToolForDrops();
 
+    public static BlockBehaviour.Properties GLOW_MUSHROOM_BLOCK = BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_BROWN)
+            .strength(0.5F)
+            .noOcclusion()
+            .isViewBlocking(JBlockProperties::never)
+            .isSuffocating(JBlockProperties::never)
+            .lightLevel((s) -> 6)
+            .sound(SoundType.WOOD)
+            .requiresCorrectToolForDrops();
+
     public static BlockBehaviour.Properties MUSHROOM_SHELF = BlockBehaviour.Properties.of()
             .mapColor(MapColor.COLOR_BROWN)
             .strength(0.5F)

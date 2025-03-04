@@ -3,7 +3,6 @@ package net.jitl.common.world.gen.depths;
 import com.mojang.serialization.Codec;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
@@ -12,9 +11,9 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
-public class DepthsSpikeFeature extends Feature<NoneFeatureConfiguration> {
+public class DepthsPillarFeature extends Feature<NoneFeatureConfiguration> {
 
-    public DepthsSpikeFeature(Codec<NoneFeatureConfiguration> c) {
+    public DepthsPillarFeature(Codec<NoneFeatureConfiguration> c) {
         super(c);
     }
 

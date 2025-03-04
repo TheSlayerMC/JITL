@@ -9,13 +9,14 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.PointedDripstoneBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DripstoneThickness;
 
-public class CrystalDripstoneUtils {
-
+public class JDripstoneUtils {
+    
     protected static double getDripstoneHeight(double radius, double maxRadius, double scale, double minRadius) {
         if (radius < minRadius) {
             radius = minRadius;
@@ -51,36 +52,36 @@ public class CrystalDripstoneUtils {
     }
 
     protected static boolean isEmptyOrWater(LevelAccessor level, BlockPos pos) {
-        return level.isStateAtPosition(pos, CrystalDripstoneUtils::isEmptyOrWater);
+        return level.isStateAtPosition(pos, JDripstoneUtils::isEmptyOrWater);
     }
 
     protected static boolean isEmptyOrWaterOrLava(LevelAccessor level, BlockPos pos) {
-        return level.isStateAtPosition(pos, CrystalDripstoneUtils::isEmptyOrWaterOrLava);
+        return level.isStateAtPosition(pos, JDripstoneUtils::isEmptyOrWaterOrLava);
     }
 
-    protected static void buildBaseToTipColumn(Direction direction, int height, boolean mergeTip, Consumer<BlockState> blockSetter) {
+    protected static void buildBaseToTipColumn(Block pointed, Direction direction, int height, boolean mergeTip, Consumer<BlockState> blockSetter) {
         if (height >= 3) {
-            blockSetter.accept(createPointedDripstone(direction, DripstoneThickness.BASE));
+            blockSetter.accept(createPointedDripstone(pointed, direction, DripstoneThickness.BASE));
 
             for (int i = 0; i < height - 3; i++) {
-                blockSetter.accept(createPointedDripstone(direction, DripstoneThickness.MIDDLE));
+                blockSetter.accept(createPointedDripstone(pointed, direction, DripstoneThickness.MIDDLE));
             }
         }
 
         if (height >= 2) {
-            blockSetter.accept(createPointedDripstone(direction, DripstoneThickness.FRUSTUM));
+            blockSetter.accept(createPointedDripstone(pointed, direction, DripstoneThickness.FRUSTUM));
         }
 
         if (height >= 1) {
-            blockSetter.accept(createPointedDripstone(direction, mergeTip ? DripstoneThickness.TIP_MERGE : DripstoneThickness.TIP));
+            blockSetter.accept(createPointedDripstone(pointed, direction, mergeTip ? DripstoneThickness.TIP_MERGE : DripstoneThickness.TIP));
         }
     }
 
-    protected static void growPointedDripstone(LevelAccessor level, BlockPos pos, Direction direction, int height, boolean mergeTip) {
+    protected static void growPointedDripstone(Block pointed, LevelAccessor level, BlockPos pos, Direction direction, int height, boolean mergeTip) {
         if (isDripstoneBase(level.getBlockState(pos.relative(direction.getOpposite())))) {
             BlockPos.MutableBlockPos blockpos$mutableblockpos = pos.mutable();
-            buildBaseToTipColumn(direction, height, mergeTip, p_313662_ -> {
-                if (p_313662_.is(JBlocks.POINTED_CRYSTALLIZED_DRIPSTONE)) {
+            buildBaseToTipColumn(pointed, direction, height, mergeTip, p_313662_ -> {
+                if (p_313662_.is(pointed)) {
                     p_313662_ = p_313662_.setValue(PointedDripstoneBlock.WATERLOGGED, Boolean.valueOf(level.isWaterAt(blockpos$mutableblockpos)));
                 }
 
@@ -90,18 +91,18 @@ public class CrystalDripstoneUtils {
         }
     }
 
-    protected static boolean placeDripstoneBlockIfPossible(LevelAccessor level, BlockPos pos) {
+    protected static boolean placeDripstoneBlockIfPossible(Block dripstone, LevelAccessor level, BlockPos pos) {
         BlockState blockstate = level.getBlockState(pos);
         if(blockstate.is(JBlocks.DEPTHS_GRASS) || blockstate.is(JBlocks.DEPTHS_STONE) || blockstate.is(JBlocks.DEPTHS_DIRT)) {
-            level.setBlock(pos, JBlocks.CRYSTALLIZED_DRIPSTONE.get().defaultBlockState(), 2);
+            level.setBlock(pos, dripstone.defaultBlockState(), 2);
             return true;
         } else {
             return false;
         }
     }
 
-    private static BlockState createPointedDripstone(Direction direction, DripstoneThickness dripstoneThickness) {
-        return JBlocks.POINTED_CRYSTALLIZED_DRIPSTONE.get()
+    private static BlockState createPointedDripstone(Block pointed, Direction direction, DripstoneThickness dripstoneThickness) {
+        return pointed
             .defaultBlockState()
             .setValue(PointedDripstoneBlock.TIP_DIRECTION, direction)
             .setValue(PointedDripstoneBlock.THICKNESS, dripstoneThickness);
@@ -112,7 +113,7 @@ public class CrystalDripstoneUtils {
     }
 
     public static boolean isDripstoneBase(BlockState state) {
-        return state.is(JBlocks.CRYSTALLIZED_DRIPSTONE) || state.is(JBlocks.DEPTHS_GRASS) || state.is(JBlocks.DEPTHS_STONE) || state.is(JBlocks.DEPTHS_DIRT);
+        return state.is(JBlocks.CRYSTALLIZED_DRIPSTONE) || state.is(JBlocks.DEPTHS_DRIPSTONE) ||state.is(JBlocks.DEPTHS_GRASS) || state.is(JBlocks.DEPTHS_STONE) || state.is(JBlocks.DEPTHS_DIRT);
     }
 
     public static boolean isEmptyOrWater(BlockState state) {

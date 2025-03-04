@@ -41,7 +41,7 @@ public class JItemGenerator {
                 e.printStackTrace();
             }
 
-            getNormalItem(JITL.MODID, name, JItems.ItemType.TOOL);
+            getToolItem(JITL.MODID, name);
             itemModelInit();
         }
 
@@ -76,6 +76,22 @@ public class JItemGenerator {
             getSpawnEggItem();
             itemModelInit();
         }
+
+        for(String name : JItems.gunName) {
+            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            File itemModel = new File(itemModelDir);
+            itemModel.mkdirs();
+            try {
+                if(itemModel.exists()) itemModel.delete();
+                itemModel.createNewFile();
+                itemModelWriter = new BufferedWriter(new FileWriter(itemModel));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            getGunItem(JITL.MODID, name);
+            itemModelInit();
+        }
     }
 
     public void itemModelInit() {
@@ -94,13 +110,27 @@ public class JItemGenerator {
         }
     }
 
+    public void getGunItem(String modID, String name) {
+        writeToItemModelFile("{");
+        writeToItemModelFile("  \"parent\": \"jitl:item/gun\",");
+        writeToItemModelFile("  \"textures\": {");
+        writeToItemModelFile("    \"layer0\": \"" + modID + ":" + "item/" + name + "\"");
+        writeToItemModelFile("  }");
+        writeToItemModelFile("}");
+    }
+
+    public void getToolItem(String modID, String name) {
+        writeToItemModelFile("{");
+        writeToItemModelFile("  \"parent\": \"minecraft:item/handheld\",");
+        writeToItemModelFile("  \"textures\": {");
+        writeToItemModelFile("    \"layer0\": \"" + modID + ":" + "item/" + name + "\"");
+        writeToItemModelFile("  }");
+        writeToItemModelFile("}");
+    }
+
     public void getNormalItem(String modID, String name, JItems.ItemType type) {
         writeToItemModelFile("{");
-        if(type == JItems.ItemType.TOOL) {
-            writeToItemModelFile("  \"parent\": \"minecraft:item/handheld\",");
-        } else {
-            writeToItemModelFile("  \"parent\": \"minecraft:item/generated\",");
-        }
+        writeToItemModelFile("  \"parent\": \"minecraft:item/generated\",");
         String texName = type != JItems.ItemType.RECORD ? name : "record";
         writeToItemModelFile("  \"textures\": {");
         writeToItemModelFile("    \"layer0\": \"" + modID + ":" + "item/" + texName + "\"");

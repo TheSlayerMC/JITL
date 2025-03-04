@@ -64,6 +64,7 @@ public class LangRegistry {
         ArrayList<String> basePortalFrameBlockList = new ArrayList<>(JBlocks.basePortalFrameBlockName);
         ArrayList<String> topBottomBlockList = new ArrayList<>(JBlocks.topBottomBlockName);
         ArrayList<String> totemBlockList = new ArrayList<>(JBlocks.totemBlockName);
+        ArrayList<String> dripstoneBlockList = new ArrayList<>(JBlocks.dripstoneBlockName);
 
         ArrayList<String> toolItemList = new ArrayList<>(JItems.toolName);
         ArrayList<String> itemList = new ArrayList<>(JItems.itemName);
@@ -73,6 +74,7 @@ public class LangRegistry {
         ArrayList<String> recordList = new ArrayList<>(JItems.recordName);
         ArrayList<String> modelItemList = new ArrayList<>(JItems.modelName);
         ArrayList<String> recordDescList = new ArrayList<>(JItems.recordDescName);
+        ArrayList<String> gunList = new ArrayList<>(JItems.gunName);
 
         try {
             if(en_us.exists()) en_us.delete();
@@ -770,6 +772,9 @@ public class LangRegistry {
         for(int i = 0; i < totemBlockList.size(); i++)
             writeToFile("\"block.jitl." + totemBlockList.get(i) + "\": \"" + JBlocks.totemLangName.get(i) + "\"" + ",");
 
+        for(int i = 0; i < dripstoneBlockList.size(); i++)
+            writeToFile("\"block.jitl." + dripstoneBlockList.get(i) + "\": \"" + JBlocks.dripstoneLangName.get(i) + "\"" + ",");
+
         for(int i = 0; i < terrainBlockList.size(); i++)
             writeToFile("\"block.jitl." + terrainBlockList.get(i) + "\": \"" + JBlocks.terrainLangName.get(i) + "\"" + ",");
 
@@ -865,6 +870,10 @@ public class LangRegistry {
 
         for(int i = 0; i < modelItemList.size(); i++)
             writeToFile("\"item.jitl." + modelItemList.get(i) + "\": \"" + JItems.modelLangName.get(i) + "\"" + ",");
+
+        for(int i = 0; i < gunList.size(); i++)
+            writeToFile("\"item.jitl." + gunList.get(i) + "\": \"" + JItems.gunLangName.get(i) + "\"" + ",");
+
 
         int j = 0;
         for(int i = 0; i < itemList.size(); i++) {

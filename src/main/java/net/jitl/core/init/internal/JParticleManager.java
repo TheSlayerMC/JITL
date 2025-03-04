@@ -30,9 +30,14 @@ public class JParticleManager {
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FLAME_POLLEN = REGISTRY.register("flame_pollen", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> CAVE_VINE = REGISTRY.register("cave_vine", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> HELLSTONE = REGISTRY.register("hellstone", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> HELLSTONE_PROJECTILE = REGISTRY.register("hellstone_projectile", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> TERRANIA_PORTAL = REGISTRY.register("terrania", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> CLOUDIA_PORTAL = REGISTRY.register("cloudia", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SWAMP_FLY = REGISTRY.register("swamp_fly", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> ICEBALL = REGISTRY.register("iceball", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> WIZARDS_STAR = REGISTRY.register("wizards_star", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DOOMSBRINGER = REGISTRY.register("doomsbringer", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> ENLIGHTENMENT = REGISTRY.register("enlightenment", () -> new SimpleParticleType(false));
 
     @SubscribeEvent
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
@@ -50,5 +55,10 @@ public class JParticleManager {
         event.registerSpriteSet(TERRANIA_PORTAL.get(), TerraniaPortalParticle.Factory::new);
         event.registerSpriteSet(CLOUDIA_PORTAL.get(), CloudiaPortalParticle.Factory::new);
         event.registerSpriteSet(SWAMP_FLY.get(), SwampFlyParticle.Factory::new);
+        event.registerSpriteSet(ICEBALL.get(), BasicParticle.Factory::new);
+        event.registerSpriteSet(HELLSTONE_PROJECTILE.get(), BasicParticle.Factory::new);
+        event.registerSpriteSet(WIZARDS_STAR.get(), BasicParticle.Factory::new);
+        event.registerSpriteSet(DOOMSBRINGER.get(), BasicParticle.Factory::new);
+        event.registerSpriteSet(ENLIGHTENMENT.get(), BasicParticle.Factory::new);
     }
 }

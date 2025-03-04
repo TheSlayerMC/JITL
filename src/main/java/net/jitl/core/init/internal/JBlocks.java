@@ -507,9 +507,18 @@ public class JBlocks {
     public static final DeferredBlock<Block> DEPTHS_FURNACE = registerFurnaceBlock("depths_furnace", "Depths Furnace");
     public static final DeferredBlock<IronBarsBlock> DEPTHS_GATE = registerPaneBlock("depths_gate", "Depths Gate", JBlockProperties.DUNGEON_BLOCK);
     public static final DeferredBlock<Block> DARK_SORCERER_SPAWNER = register("dark_sorcerer_spawner", "Dark Sorcerer Spawner", DarkSorcererSpawnerBlock::new, JBlockProperties.SPAWNER);
-    public static final DeferredBlock<Block> POINTED_CRYSTALLIZED_DRIPSTONE = registerDripstoneBlock("crystallized_pointed_dripstone", "Crystallized Dripstone", () -> new CrystallizedDripstoneBlock(JBlockProperties.POINTED_DRIPSTONE));
+    public static final DeferredBlock<Block> POINTED_CRYSTALLIZED_DRIPSTONE = registerDripstoneBlock("crystallized_pointed_dripstone", "Crystallized Dripstone", () -> new CrystallizedDripstoneBlock(JBlockProperties.POINTED_DRIPSTONE.lightLevel((state) -> 6)));
     public static final DeferredBlock<Block> CRYSTALLIZED_DRIPSTONE = register("crystallized_dripstone", "Crystallized Dripstone", JBlockProperties.DRIPSTONE);
     public static final DeferredBlock<Block> DEPTHS_MOSS_BLOCK = register("depths_moss_block", "Depths Moss Block", JBlockProperties.DIRT);
+    public static final DeferredBlock<Block> POINTED_DEPTHS_DRIPSTONE = registerDripstoneBlock("depths_pointed_dripstone", "Depths Dripstone", () -> new DepthsDripstoneBlock(JBlockProperties.POINTED_DRIPSTONE));
+    public static final DeferredBlock<Block> DEPTHS_DRIPSTONE = register("depths_dripstone", "Depths Dripstone", JBlockProperties.DRIPSTONE);
+    public static final DeferredBlock<Block> GREEN_CRYSTAL_SHROOM_BLOCK = registerMushroomBlock("green_crystal_shroom_block", "Green Crystal Shroom", () -> new GlowMushroomBlock(JBlockProperties.GLOW_MUSHROOM_BLOCK));
+    public static final DeferredBlock<Block> BLUE_CRYSTAL_SHROOM_BLOCK = registerMushroomBlock("blue_crystal_shroom_block", "Blue Crystal Shroom", () -> new GlowMushroomBlock(JBlockProperties.GLOW_MUSHROOM_BLOCK));
+    public static final DeferredBlock<Block> RED_CRYSTAL_SHROOM_BLOCK = registerMushroomBlock("red_crystal_shroom_block", "Red Crystal Shroom", () -> new GlowMushroomBlock(JBlockProperties.GLOW_MUSHROOM_BLOCK));
+    public static final DeferredBlock<Block> PURPLE_CRYSTAL_SHROOM_BLOCK = registerMushroomBlock("purple_crystal_shroom_block", "Purple Crystal Shroom", () -> new GlowMushroomBlock(JBlockProperties.GLOW_MUSHROOM_BLOCK));
+    public static final DeferredBlock<Block> CRYSTALSHROOM_STEM = registerMushroomBlock("crystalshroom_stem", "Crystalshroom Stem", () -> new GlowMushroomBlock(JBlockProperties.GLOW_MUSHROOM_BLOCK));
+    public static final DeferredBlock<Block> SMALL_LIGSHROOM = registerModeledBlock("small_ligshroom", "Small Ligshroom", () -> new TallGrassBlock(JBlockProperties.GLOW_FLOWER));
+    public static final DeferredBlock<Block> TALL_LIGSHROOM = registerModeledBlock("tall_ligshroom", "Tall Ligshroom", () -> new TallGrassBlock(JBlockProperties.GLOW_FLOWER));
 
     public static final DeferredBlock<Block> CORBA_PORTAL_FRAME = registerEndPortalFrameStyleBlock("corba_portal_frame", "Corba Portal Frame", CorbaPortalFrameBlock::new);
     public static final DeferredBlock<Block> CORBA_PORTAL = registerEndPortalStyleBlock("corba_portal", "Corba Portal", CorbaPortalBlock::new);

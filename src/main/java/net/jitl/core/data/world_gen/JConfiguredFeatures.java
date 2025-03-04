@@ -79,8 +79,8 @@ public class JConfiguredFeatures {
             IRIDIUM_ORE = registerKey("iridium_ore"),
             SAPPHIRE_ORE = registerKey("sapphire_ore"),
             SHADIUM_ORE = registerKey("shadium_ore"),
-           // VERDITE_ORE = registerKey("verdite_ore"),
-            LUNIUM_ORE = registerKey("lunium_ore");
+    // VERDITE_ORE = registerKey("verdite_ore"),
+    LUNIUM_ORE = registerKey("lunium_ore");
 
     //NETHER
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMITHSTONE = registerKey("smithstone"),
@@ -124,7 +124,14 @@ public class JConfiguredFeatures {
             DEPTHS_WATER = registerKey("depths_water"),
             DEPTHS_GEODE = registerKey("depths_geode"),
             CRYSTAL_DRIPSTONE = registerKey("crystal_dripstone"),
-            DEPTHS_SPIKE = registerKey("depths_spike");
+            DEPTHS_DRIPSTONE = registerKey("depths_dripstone"),
+            DEPTHS_SPIKE = registerKey("depths_spike"),
+            GREEN_CRYSTAL_SHROOM = registerKey("green_crystal_shroom"),
+            BLUE_CRYSTAL_SHROOM = registerKey("blue_crystal_shroom"),
+            RED_CRYSTAL_SHROOM = registerKey("red_crystal_shroom"),
+            PURPLE_CRYSTAL_SHROOM = registerKey("purple_crystal_shroom"),
+            LIGSHROOM = registerKey("ligshroom"),
+    DEPTHS_PILLAR = registerKey("depths_pillar");
 
     //BOIL
     public static final ResourceKey<ConfiguredFeature<?, ?>> VOLCANIC_ROCK = registerKey("volcanic_rock"),
@@ -254,6 +261,13 @@ public class JConfiguredFeatures {
         register(context, DEPTHS_WATER, JFeatures.DEPTHS_WATER_GEN.get(), new SpringConfiguration(Fluids.WATER.defaultFluidState(), false, 4, 1, HolderSet.direct(Block::builtInRegistryHolder, JBlocks.DEPTHS_GRASS.get(), JBlocks.DEPTHS_DIRT.get(), JBlocks.DEPTHS_DIRT.get())));
         register(context, CRYSTAL_DRIPSTONE, JFeatures.CRYSTAL_DRIPSTONE.get(), new DripstoneClusterConfiguration(12, UniformInt.of(3, 6), UniformInt.of(2, 8), 1, 3, UniformInt.of(2, 4), UniformFloat.of(0.3F, 0.7F),  ClampedNormalFloat.of(0.1F, 0.3F, 0.1F, 0.9F), 0.1F, 3, 8));
         register(context, DEPTHS_SPIKE, JFeatures.DEPTHS_SPIKE.get(), new NoneFeatureConfiguration());
+        register(context, DEPTHS_PILLAR, JFeatures.DEPTHS_PILLAR.get(), new NoneFeatureConfiguration());
+        register(context, DEPTHS_DRIPSTONE, JFeatures.DEPTHS_DRIPSTONE.get(), new DripstoneClusterConfiguration(12, UniformInt.of(3, 6), UniformInt.of(2, 8), 1, 3, UniformInt.of(2, 4), UniformFloat.of(0.3F, 0.7F),  ClampedNormalFloat.of(0.1F, 0.3F, 0.1F, 0.9F), 0.1F, 3, 8));
+        register(context, GREEN_CRYSTAL_SHROOM, Feature.HUGE_BROWN_MUSHROOM, new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(JBlocks.GREEN_CRYSTAL_SHROOM_BLOCK.get().defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.TRUE).setValue(HugeMushroomBlock.DOWN, Boolean.FALSE)), BlockStateProvider.simple(JBlocks.CRYSTALSHROOM_STEM.get().defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.FALSE).setValue(HugeMushroomBlock.DOWN, Boolean.FALSE)), 3));
+        register(context, BLUE_CRYSTAL_SHROOM, Feature.HUGE_RED_MUSHROOM, new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(JBlocks.BLUE_CRYSTAL_SHROOM_BLOCK.get().defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.TRUE).setValue(HugeMushroomBlock.DOWN, Boolean.FALSE)), BlockStateProvider.simple(JBlocks.CRYSTALSHROOM_STEM.get().defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.FALSE).setValue(HugeMushroomBlock.DOWN, Boolean.FALSE)), 3));
+        register(context, RED_CRYSTAL_SHROOM, Feature.HUGE_RED_MUSHROOM, new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(JBlocks.RED_CRYSTAL_SHROOM_BLOCK.get().defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.TRUE).setValue(HugeMushroomBlock.DOWN, Boolean.FALSE)), BlockStateProvider.simple(JBlocks.CRYSTALSHROOM_STEM.get().defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.FALSE).setValue(HugeMushroomBlock.DOWN, Boolean.FALSE)), 3));
+        register(context, PURPLE_CRYSTAL_SHROOM, Feature.HUGE_BROWN_MUSHROOM, new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(JBlocks.PURPLE_CRYSTAL_SHROOM_BLOCK.get().defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.TRUE).setValue(HugeMushroomBlock.DOWN, Boolean.FALSE)), BlockStateProvider.simple(JBlocks.CRYSTALSHROOM_STEM.get().defaultBlockState().setValue(HugeMushroomBlock.UP, Boolean.FALSE).setValue(HugeMushroomBlock.DOWN, Boolean.FALSE)), 3));
+        register(context, LIGSHROOM, Feature.FLOWER, new RandomPatchConfiguration(40, 4, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.020833334F, List.of(JBlocks.SMALL_LIGSHROOM.get().defaultBlockState(), JBlocks.TALL_LIGSHROOM.get().defaultBlockState()))))));
 
         //BOIL
         register(context, VOLCANIC_ROCK, JFeatures.VOLCANIC_ROCK.get(), new NoneFeatureConfiguration());

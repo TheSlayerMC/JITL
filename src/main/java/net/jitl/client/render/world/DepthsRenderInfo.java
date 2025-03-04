@@ -14,7 +14,6 @@ public class DepthsRenderInfo extends DimensionSpecialEffects {
         super(0F, true, SkyType.NONE, false, false);
     }
 
-    @Override
     public @NotNull Vec3 getBrightnessDependentFogColor(Vec3 vector3d, float float_) {
         float color = 0.95F + 0.05F;
         return vector3d.multiply((float_ * color), (float_ * color), (float_ * color));

@@ -16,28 +16,14 @@
     "water_fog_color": 329011
   },
   "features": [
-    [],
     [
       "jitl:depths_water",
-      "jitl:depths_spike"
-    ],
-    [
       "jitl:depths_geode",
-      "jitl:depths_lamp_roof"
-    ],
-    [],
-    [],
-    [],
-    [
+      "jitl:depths_lamp_roof",
       "jitl:flairium_ore",
       "jitl:des_ore",
-      "jitl:depths_lamp_floor"
-    ],
-    [],
-    [
-      "jitl:crystal_dripstone"
-    ],
-    [
+      "jitl:depths_lamp_floor",
+      "jitl:crystal_dripstone",
       "jitl:depths_tree",
       "jitl:depths_veg",
       "jitl:depths_crystal",

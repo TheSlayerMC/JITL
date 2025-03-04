@@ -5,8 +5,45 @@
     "type": "minecraft:noise",
     "settings": "jitl:depths_generation",
     "biome_source": {
-      "type": "minecraft:fixed",
-      "biome": "jitl:depths/depths"
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "jitl:depths/depths",
+          "parameters": {
+            "temperature": 1,
+            "humidity": 0,
+            "continentalness": -0.2,
+            "erosion": 0,
+            "weirdness": 0.8,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "jitl:depths/dark_lands",
+          "parameters": {
+            "temperature": 1,
+            "humidity": -0.5,
+            "continentalness": -0.2,
+            "erosion": 0,
+            "weirdness": 0.7,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "jitl:depths/shroomland",
+          "parameters": {
+            "temperature": 1,
+            "humidity": 1,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        }
+      ]
     }
   }
 }

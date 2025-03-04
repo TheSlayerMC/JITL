@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class JBlockDripstoneGenerator {
 
-    protected BufferedWriter blockModelWriter, blockDownBase, blockDownFrustum, blockDownMiddle, blockDownTip, blockDownTipMerge, blockUpBase, blockUpFrustum, blockUpMiddle, blockUpTip, blockUpTipMerge, blockstateWriter, itemModelWriter;
+    protected BufferedWriter blockDownBase, blockDownFrustum, blockDownMiddle, blockDownTip, blockDownTipMerge, blockUpBase, blockUpFrustum, blockUpMiddle, blockUpTip, blockUpTipMerge, blockstateWriter, itemModelWriter;
 
     public void generate() {
         for(String name : JBlocks.dripstoneBlockName) {
@@ -19,8 +19,7 @@ public class JBlockDripstoneGenerator {
             String blockstateDir = "../src/main/resources/assets/jitl/blockstates/" + name + ".json";
 
             File itemModel = new File(itemModelDir);
-            //File blockModel = new File(blockModelDir + ".json");
-            
+
             File blockDownBaseModel = new File(blockModelDir + "down_base.json");
             File blockDownFrustumModel = new File(blockModelDir + "down_frustum.json");
             File blockDownMiddleModel = new File(blockModelDir + "down_middle.json");
@@ -39,10 +38,6 @@ public class JBlockDripstoneGenerator {
                 if (itemModel.exists()) itemModel.delete();
                 itemModel.createNewFile();
                 itemModelWriter = new BufferedWriter(new FileWriter(itemModel));
-
-//                if (blockModel.exists()) blockModel.delete();
-//                blockModel.createNewFile();
-//                blockModelWriter = new BufferedWriter(new FileWriter(blockModel));
 
                 if (blockDownBaseModel.exists()) blockDownBaseModel.delete();
                 blockDownBaseModel.createNewFile();
@@ -121,33 +116,6 @@ public class JBlockDripstoneGenerator {
     }
 
     public void getBlockModel(String modID, String name) {
-//        writeToBlockModelFile(blockModelWriter, "{");
-//        writeToBlockModelFile(blockModelWriter, "    \"ambientocclusion\": true,");
-//        writeToBlockModelFile(blockModelWriter, "    \"textures\": {");
-//        writeToBlockModelFile(blockModelWriter, "        \"particle\": \"#cross\"");
-//        writeToBlockModelFile(blockModelWriter, "    },");
-//        writeToBlockModelFile(blockModelWriter, "    \"elements\": [");
-//        writeToBlockModelFile(blockModelWriter, "        {   \"from\": [ 0.8, 0, 8 ],");
-//        writeToBlockModelFile(blockModelWriter, "            \"to\": [ 15.2, 16, 8 ],");
-//        writeToBlockModelFile(blockModelWriter, "            \"rotation\": { \"origin\": [ 8, 8, 8 ], \"axis\": \"y\", \"angle\": 45, \"rescale\": true },");
-//        writeToBlockModelFile(blockModelWriter, "            \"shade\": false,");
-//        writeToBlockModelFile(blockModelWriter, "            \"faces\": {");
-//        writeToBlockModelFile(blockModelWriter, "                \"north\": { \"uv\": [ 0, 0, 16, 16 ], \"texture\": \"#cross\" },");
-//        writeToBlockModelFile(blockModelWriter, "                \"south\": { \"uv\": [ 0, 0, 16, 16 ], \"texture\": \"#cross\" }");
-//        writeToBlockModelFile(blockModelWriter, "            }");
-//        writeToBlockModelFile(blockModelWriter, "        },");
-//        writeToBlockModelFile(blockModelWriter, "        {   \"from\": [ 8, 0, 0.8 ],");
-//        writeToBlockModelFile(blockModelWriter, "            \"to\": [ 8, 16, 15.2 ],");
-//        writeToBlockModelFile(blockModelWriter, "            \"rotation\": { \"origin\": [ 8, 8, 8 ], \"axis\": \"y\", \"angle\": 45, \"rescale\": true },");
-//        writeToBlockModelFile(blockModelWriter, "            \"shade\": false,");
-//        writeToBlockModelFile(blockModelWriter, "            \"faces\": {");
-//        writeToBlockModelFile(blockModelWriter, "                \"west\": { \"uv\": [ 0, 0, 16, 16 ], \"texture\": \"#cross\" },");
-//        writeToBlockModelFile(blockModelWriter, "                \"east\": { \"uv\": [ 0, 0, 16, 16 ], \"texture\": \"#cross\" }");
-//        writeToBlockModelFile(blockModelWriter, "            }");
-//        writeToBlockModelFile(blockModelWriter, "        }");
-//        writeToBlockModelFile(blockModelWriter, "    ]");
-//        writeToBlockModelFile(blockModelWriter, "}");
-
         writeToBlockModelFile(blockDownBase, "{");
         writeToBlockModelFile(blockDownBase, "  \"parent\": \"minecraft:block/pointed_dripstone\",");
         writeToBlockModelFile(blockDownBase, "  \"textures\": {");
@@ -259,7 +227,6 @@ public class JBlockDripstoneGenerator {
     public void writerInit() {
         try {
             itemModelWriter.close();
-            //blockModelWriter.close();
             blockstateWriter.close();
             blockDownBase.close();
             blockDownFrustum.close();

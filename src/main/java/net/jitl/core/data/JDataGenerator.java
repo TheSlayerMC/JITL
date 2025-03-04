@@ -25,7 +25,7 @@ public class JDataGenerator {
         //generator.addProvider(event.includeServer(), new JRecipeRegistry(generator.getPackOutput(), lookupProvider));
         //generator.addProvider(event.includeServer(), new JLootTableSubProvider(generator.getPackOutput(), lookupProvider));
         //generator.addProvider(event.includeServer(), new CarverGenerator(generator.getPackOutput(), lookupProvider));
-        //generator.addProvider(event.includeServer(), new ConfiguredFeaturesGenerator(generator.getPackOutput(), event.getLookupProvider()));
+       // generator.addProvider(event.includeServer(), new ConfiguredFeaturesGenerator(generator.getPackOutput(), event.getLookupProvider()));
         generator.addProvider(event.includeServer(), new PlacedFeaturesGenerator(generator.getPackOutput(), event.getLookupProvider()));
         //generator.addProvider(event.includeServer(), new BiomeGenerator(generator.getPackOutput(), event.getLookupProvider()));
         //generator.addProvider(event.includeServer(), new PlacedBonmealFeaturesGenerator(generator.getPackOutput()));

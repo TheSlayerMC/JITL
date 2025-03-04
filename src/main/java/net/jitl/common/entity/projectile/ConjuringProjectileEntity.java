@@ -12,6 +12,7 @@ import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+import org.jetbrains.annotations.NotNull;
 
 public class ConjuringProjectileEntity extends ThrowableProjectile {
 
@@ -49,13 +50,12 @@ public class ConjuringProjectileEntity extends ThrowableProjectile {
     }
 
     @Override
-    protected void onHit(HitResult pResult) {
-        super.onHit(pResult);
-        if (!this.level().isClientSide) {
+    protected void onHit(@NotNull HitResult r) {
+        super.onHit(r);
+        if(!this.level().isClientSide) {
             this.level().broadcastEntityEvent(this, (byte)3);
             this.discard();
         }
-
     }
 
     @Override

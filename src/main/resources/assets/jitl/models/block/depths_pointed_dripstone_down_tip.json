@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/pointed_dripstone",
+  "textures": {
+    "cross": "jitl:block/depths_pointed_dripstone_down_tip"
+  }
+}

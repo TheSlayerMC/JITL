@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 
 public class JTransparentBlock extends HalfTransparentBlock {
 
@@ -24,17 +25,17 @@ public class JTransparentBlock extends HalfTransparentBlock {
     }
 
     @Override
-    public VoxelShape getVisualShape(BlockState p_309057_, BlockGetter p_308936_, BlockPos p_308956_, CollisionContext p_309006_) {
+    public @NotNull VoxelShape getVisualShape(@NotNull BlockState d, @NotNull BlockGetter dh, @NotNull BlockPos p, @NotNull CollisionContext c) {
         return Shapes.empty();
     }
 
     @Override
-    public float getShadeBrightness(BlockState p_308911_, BlockGetter p_308952_, BlockPos p_308918_) {
+    public float getShadeBrightness(@NotNull BlockState d, @NotNull BlockGetter g, @NotNull BlockPos p) {
         return 1.0F;
     }
 
     @Override
-    public boolean propagatesSkylightDown(BlockState p_309084_, BlockGetter p_309133_, BlockPos p_309097_) {
+    public boolean propagatesSkylightDown(@NotNull BlockState s, @NotNull BlockGetter g, @NotNull BlockPos p) {
         return true;
     }
 }

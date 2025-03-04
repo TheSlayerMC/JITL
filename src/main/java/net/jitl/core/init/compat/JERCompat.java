@@ -50,7 +50,7 @@ public class JERCompat {
             worldGen.register(new ItemStack(JBlocks.CELESTIUM_ORE.get()), new DistributionSquare(7, 7, -64, 128), true, new LootDrop(new ItemStack(JItems.CELESTIUM_GEMSTONE.get()), 1, 5, Conditional.affectedByFortune));
             worldGen.register(new ItemStack(JBlocks.MEKYUM_ORE.get()), new DistributionSquare(7, 7, -64, 128), true, new LootDrop(new ItemStack(JItems.MEKYUM_GEMSTONE.get()), 1, 5, Conditional.affectedByFortune));
             worldGen.register(new ItemStack(JBlocks.STORON_ORE.get()), new DistributionSquare(7, 7, -64, 128), true, new LootDrop(new ItemStack(JItems.STORON_GEMSTONE.get()), 1, 5, Conditional.affectedByFortune));
-            worldGen.register(new ItemStack(JBlocks.ORBADITE_ORE.get()), new DistributionSquare(7, 7, -64, 128), true, new LootDrop(new ItemStack(JItems.RAW_ORBADITE.get()), 1, 5, Conditional.affectedByFortune));
+            worldGen.register(new ItemStack(JBlocks.KORITE_ORE.get()), new DistributionSquare(7, 7, -64, 128), true, new LootDrop(new ItemStack(JItems.RAW_ORBADITE.get()), 1, 5, Conditional.affectedByFortune));
 
             worldGen.register(new ItemStack(JBlocks.RIMESTONE_ORE.get()), new DistributionSquare(12, 7, 0, 256), true, new LootDrop(new ItemStack(JItems.RIMESTONE.get()), 1, 5, Conditional.affectedByFortune));
             worldGen.register(new ItemStack(JBlocks.PERIDOT_ORE.get()), new DistributionSquare(12, 7, 0, 256), true, new LootDrop(new ItemStack(JItems.PERIDOT_GEMSTONE.get()), 1, 5, Conditional.affectedByFortune));

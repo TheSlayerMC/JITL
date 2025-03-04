@@ -8,6 +8,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
+import org.jetbrains.annotations.NotNull;
 
 public class EssenciaProjectileEntity extends ThrowableProjectile {
 
@@ -29,16 +31,25 @@ public class EssenciaProjectileEntity extends ThrowableProjectile {
     }
 
     @Override
-    protected void onHitEntity(EntityHitResult result) {
+    protected void onHitEntity(@NotNull EntityHitResult result) {
         super.onHitEntity(result);
         EssenciaBoltEntity essenciaBoltEntity = new EssenciaBoltEntity(JEntities.ESSENCIA_BOLT_TYPE.get(), level());
         essenciaBoltEntity.setPos(result.getLocation().x(), result.getLocation().y(), result.getLocation().z());
         essenciaBoltEntity.setARGB(0xff4800);
-        level().addFreshEntity(essenciaBoltEntity);
+        this.level().addFreshEntity(essenciaBoltEntity);
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+    protected void onHit(@NotNull HitResult r) {
+        super.onHit(r);
+        if(!this.level().isClientSide) {
+            this.level().broadcastEntityEvent(this, (byte)3);
+            this.discard();
+        }
+    }
+
+    @Override
+    protected void defineSynchedData(@NotNull SynchedEntityData.Builder b) {
 
     }
 

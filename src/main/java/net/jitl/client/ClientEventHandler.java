@@ -46,7 +46,7 @@ public class ClientEventHandler {
         }
 
         if(ClientGetter.level().dimension() == Dimensions.DEPTHS) {
-            float density = 0.75F;
+            float density = 1.5F;
             RenderSystem.setShaderFogStart(density);
             RenderSystem.setShaderFogEnd(density * farPlaneDistance);
         }

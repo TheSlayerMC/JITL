@@ -93,6 +93,15 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<EssenceArrowEntity>> ESSENCE_ARROW_TYPE = registerProjectile(EssenceArrowEntity::new, "essence_arrow", "Essence Arrow", 0.5F, 0.5F);
     public static final DeferredHolder<EntityType<?>, EntityType<MagicPotEntity>> MAGIC_POT_TYPE = registerProjectile(MagicPotEntity::new, "magic_pot", "Magic Pot", 0.5F, 0.5F);
     public static final DeferredHolder<EntityType<?>, EntityType<FireballEntity>> FIREBALL_TYPE = registerProjectile(FireballEntity::new, "fireball", "Fireball", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<IceballEntity>> ICEBALL_TYPE = registerProjectile(IceballEntity::new, "iceball", "Iceball", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<HellstoneEntity>> HELLSTONE_TYPE = registerProjectile(HellstoneEntity::new, "hellstone", "Hellstone", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<WizardsStarEntity>> WIZARDS_STAR_TYPE = registerProjectile(WizardsStarEntity::new, "wizards_star", "Wizards Star", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<DoomsbringerEntity>> DOOMSBRINGER_TYPE = registerProjectile(DoomsbringerEntity::new, "doomsbringer", "Doomsbringer", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<GreenpaceEntity>> GREENPACE_TYPE = registerProjectile(GreenpaceEntity::new, "greenpace", "Greenpace", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<OvergrownEntity>> OVERGROWN_TYPE = registerProjectile(OvergrownEntity::new, "overgrown", "Overgrown", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<DivinityEntity>> DIVINITY_TYPE = registerProjectile(DivinityEntity::new, "divinity", "Divinity", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<EnlightenmentEntity>> ENLIGHTENMENT_TYPE = registerProjectile(EnlightenmentEntity::new, "enlightenment", "Enlightenment", 0.25F, 0.25F);
+
 
     //RAW ENTITYS
     public static final DeferredHolder<EntityType<?>, EntityType<EssenciaBoltEntity>> ESSENCIA_BOLT_TYPE = registerRawEntity(EssenciaBoltEntity::new, "essencia_bolt", "Essencia Bolt", 0.25F, 0.25F);

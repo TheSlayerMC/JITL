@@ -1,0 +1,6 @@
+{
+  "parent": "jitl:item/gun",
+  "textures": {
+    "layer0": "jitl:item/chaos_cannon"
+  }
+}

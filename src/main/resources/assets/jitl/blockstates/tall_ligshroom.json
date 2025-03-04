@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "": [
+			{ "model": "jitl:block/tall_ligshroom_0" },
+            { "model": "jitl:block/tall_ligshroom_1" },
+            { "model": "jitl:block/tall_ligshroom_0", "y": 180 },
+            { "model": "jitl:block/tall_ligshroom_1", "y": 180 },
+            { "model": "jitl:block/tall_ligshroom_0", "y": 270 },
+            { "model": "jitl:block/tall_ligshroom_1", "y": 270 },
+            { "model": "jitl:block/tall_ligshroom_0", "y": 90 },
+            { "model": "jitl:block/tall_ligshroom_1", "y": 90 }
+    ]
+  }
+}

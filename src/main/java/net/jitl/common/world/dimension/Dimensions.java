@@ -64,6 +64,8 @@ public class Dimensions {
         public static final ResourceKey<Biome> FROZEN_WASTES = ResourceKey.create(Registries.BIOME, JITL.rl("frozen/frozen_wastes"));
 
         public static final ResourceKey<Biome> DEPTHS = ResourceKey.create(Registries.BIOME, JITL.rl("depths/depths"));
+        public static final ResourceKey<Biome> DARK_LANDS = ResourceKey.create(Registries.BIOME, JITL.rl("depths/dark_lands"));
+        public static final ResourceKey<Biome> SHROOMLAND = ResourceKey.create(Registries.BIOME, JITL.rl("depths/shroomland"));
 
         public static final ResourceKey<Biome> BOGWEED_FIELDS = ResourceKey.create(Registries.BIOME, JITL.rl("corba/bogweed_fields"));
         public static final ResourceKey<Biome> CORBA_PLAINS = ResourceKey.create(Registries.BIOME, JITL.rl("corba/corba_plains"));

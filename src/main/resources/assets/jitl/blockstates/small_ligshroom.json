@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "": [
+			{ "model": "jitl:block/small_ligshroom" },
+            { "model": "jitl:block/small_ligshroom", "y": 180 },
+            { "model": "jitl:block/small_ligshroom", "y": 270 },
+            { "model": "jitl:block/small_ligshroom", "y": 90 }
+    ]
+  }
+}
