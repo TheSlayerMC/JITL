@@ -38,6 +38,8 @@ public class JParticleManager {
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> WIZARDS_STAR = REGISTRY.register("wizards_star", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DOOMSBRINGER = REGISTRY.register("doomsbringer", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> ENLIGHTENMENT = REGISTRY.register("enlightenment", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FLORO_MUD = REGISTRY.register("floro_mud", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> BUBBLE = REGISTRY.register("bubble", () -> new SimpleParticleType(false));
 
     @SubscribeEvent
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
@@ -60,5 +62,7 @@ public class JParticleManager {
         event.registerSpriteSet(WIZARDS_STAR.get(), BasicParticle.Factory::new);
         event.registerSpriteSet(DOOMSBRINGER.get(), BasicParticle.Factory::new);
         event.registerSpriteSet(ENLIGHTENMENT.get(), BasicParticle.Factory::new);
+        event.registerSpriteSet(FLORO_MUD.get(), BasicParticle.Factory::new);
+        event.registerSpriteSet(BUBBLE.get(), BasicParticle.Factory::new);
     }
 }

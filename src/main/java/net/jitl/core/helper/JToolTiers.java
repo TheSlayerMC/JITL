@@ -119,7 +119,7 @@ public enum JToolTiers {
 
     //frozen
     SNOW_SHOVELER(JToolTier.SNOW_SHOVELER, 6, -2.4F),
-    FROSTBITTEN_SWORD(JToolTier.FROSTBITTEN_SWORD, 6, -2.4F),
+    FROSTBITTEN_SWORD(JToolTier.FROSTBITTEN_SWORD, 9, -2.4F),
     FROSTY_SWORD(JToolTier.FROSTY_SWORD, 7, -2.4F),
 
     //nether

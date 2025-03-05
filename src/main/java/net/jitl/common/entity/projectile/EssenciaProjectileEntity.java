@@ -11,20 +11,20 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
-public class EssenciaProjectileEntity extends ThrowableProjectile {
+public class EssenciaProjectileEntity extends JThrowableProjectile {
 
     public EssenciaProjectileEntity(EntityType<EssenciaProjectileEntity> type, Level world) {
         super(type, world);
     }
 
-    public EssenciaProjectileEntity(Level world, LivingEntity thrower) {
-        super(JEntities.ESSENCIA_PROJECTILE_TYPE.get(), thrower, world);
+    public EssenciaProjectileEntity(int damage, Level world, LivingEntity thrower) {
+        super(JEntities.ESSENCIA_PROJECTILE_TYPE.get(), damage, world, thrower);
     }
 
     @Override
     public void handleEntityEvent(byte pId) {
         if (pId == 3) {
-            for(int i = 0; i < 8; ++i) {
+            for (int i = 0; i < 8; ++i) {
                 this.level().addParticle(JParticleManager.ESSENCIA_LIGHTNING.get(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
             }
         }
@@ -46,11 +46,6 @@ public class EssenciaProjectileEntity extends ThrowableProjectile {
             this.level().broadcastEntityEvent(this, (byte)3);
             this.discard();
         }
-    }
-
-    @Override
-    protected void defineSynchedData(@NotNull SynchedEntityData.Builder b) {
-
     }
 
     @Override

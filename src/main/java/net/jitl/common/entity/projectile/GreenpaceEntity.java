@@ -14,51 +14,25 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
-public class GreenpaceEntity extends ThrowableProjectile {
+public class GreenpaceEntity extends JThrowableProjectile {
 
     public GreenpaceEntity(EntityType<GreenpaceEntity> type, Level world) {
         super(type, world);
     }
 
-    public GreenpaceEntity(Level world, LivingEntity thrower) {
-        super(JEntities.GREENPACE_TYPE.get(), thrower, world);
+    public GreenpaceEntity(int damage, Level world, LivingEntity thrower) {
+        super(JEntities.GREENPACE_TYPE.get(), damage, world, thrower);
+        setPotionEffect(MobEffects.HARM, 40);
     }
 
     @Override
     public void handleEntityEvent(byte pId) {
-        if(pId == 3) {
-            for(int i = 0; i < 8; ++i) {
+        if (pId == 3) {
+            for (int i = 0; i < 8; ++i) {
                 this.level().addParticle(JParticleManager.CONJURING.get(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
             }
         }
     }
-
-    @Override
-    protected void onHitEntity(@NotNull EntityHitResult res) {
-        super.onHitEntity(res);
-        Entity entity = res.getEntity();
-        if(entity instanceof LivingEntity && entity.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage())) {
-            MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.HARM, 40);
-            ((LivingEntity)entity).addEffect(effectInstance);
-            entity.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage());
-        }
-    }
-
-    private float getDamage() {
-        return 10;
-    }
-
-    @Override
-    protected void onHit(@NotNull HitResult res) {
-        super.onHit(res);
-        if(!this.level().isClientSide) {
-            this.level().broadcastEntityEvent(this, (byte)3);
-            this.discard();
-        }
-    }
-
-    @Override
-    protected void defineSynchedData(SynchedEntityData.@NotNull Builder b) { }
 
     @Override
     protected double getDefaultGravity() {

@@ -60,6 +60,10 @@ public class RenderEntitys {
         event.registerEntityRenderer(JEntities.OVERGROWN_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/overgrown.png")));
         event.registerEntityRenderer(JEntities.DIVINITY_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/divinity.png")));
         event.registerEntityRenderer(JEntities.ENLIGHTENMENT_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/enlightenment.png")));
+        event.registerEntityRenderer(JEntities.BOUNCING_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/bouncing.png")));
+        event.registerEntityRenderer(JEntities.NETHER_PLASMA_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/nether_plasma.png")));
+        event.registerEntityRenderer(JEntities.OCEAN_PLASMA_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/ocean_plasma.png")));
+        event.registerEntityRenderer(JEntities.EYE_BLASTER_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/eye_blaster.png")));
 
         event.registerEntityRenderer(JEntities.ESSENCIA_BOLT_TYPE.get(), EssenciaBoltRenderer::new);
 

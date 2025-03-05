@@ -1,7 +1,9 @@
 package net.jitl.common.items;
 
+import net.jitl.common.entity.projectile.JThrowableProjectile;
 import net.jitl.common.items.base.JItem;
 import net.jitl.core.helper.IEssenceItem;
+import net.jitl.core.helper.TriFunction;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
@@ -20,26 +22,27 @@ import java.util.function.BiFunction;
 
 public class StaffItem extends JItem implements IEssenceItem {
 
-    protected BiFunction<Level, LivingEntity, ThrowableProjectile> projectileFactory;
-    private final int essenceUsage;
+    protected TriFunction<Integer, Level, LivingEntity, JThrowableProjectile> projectileFactory;
+    private final int essenceUsage, damage;
 
-    public StaffItem(int essence, int maxUses, BiFunction<Level, LivingEntity, ThrowableProjectile> projectileFactory) {
+    public StaffItem(int essence, int damage, int maxUses, TriFunction<Integer, Level, LivingEntity, JThrowableProjectile> projectileFactory) {
         super(JItems.itemProps().stacksTo(1).durability(maxUses));
         this.projectileFactory = projectileFactory;
         this.essenceUsage = essence;
+        this.damage = damage;
     }
 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand usedHand) {
         ItemStack stack = player.getItemInHand(usedHand);
         if(!level.isClientSide()) {
-                if(player.getData(JDataAttachments.ESSENCE).consumeEssence(player, this.essenceUsage)) {
-                    ThrowableProjectile projectile = projectileFactory.apply(level, player);
-                    projectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
-                    level.addFreshEntity(projectile);
-                    player.getItemInHand(usedHand).hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
-                    level.playSound(null, player.getX(), player.getY(), player.getZ(), JSounds.STAFF_0.get(), SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
-                }
+            if(player.getData(JDataAttachments.ESSENCE).consumeEssence(player, this.essenceUsage)) {
+                JThrowableProjectile projectile = projectileFactory.apply(this.damage, level, player);
+                projectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
+                level.addFreshEntity(projectile);
+                player.getItemInHand(usedHand).hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+                level.playSound(null, player.getX(), player.getY(), player.getZ(), JSounds.STAFF_0.get(), SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
+            }
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
     }

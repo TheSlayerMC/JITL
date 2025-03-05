@@ -7,22 +7,22 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
-public class IceballEntity extends JThrowableProjectile {
+public class NetherPlasmaEntity extends JThrowableProjectile {
 
-    public IceballEntity(EntityType<IceballEntity> type, Level world) {
+    public NetherPlasmaEntity(EntityType<NetherPlasmaEntity> type, Level world) {
         super(type, world);
     }
 
-    public IceballEntity(int damage, Level world, LivingEntity thrower) {
-        super(JEntities.ICEBALL_TYPE.get(), damage, world, thrower);
-        setPotionEffect(MobEffects.MOVEMENT_SLOWDOWN, 60);
+    public NetherPlasmaEntity(int damage, Level world, LivingEntity thrower) {
+        super(JEntities.NETHER_PLASMA_TYPE.get(), damage, world, thrower);
+        setFire(60);
     }
 
     @Override
     public void handleEntityEvent(byte pId) {
         if (pId == 3) {
             for (int i = 0; i < 8; ++i) {
-                this.level().addParticle(JParticleManager.ICEBALL.get(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+                this.level().addParticle(JParticleManager.DOOMSBRINGER.get(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
             }
         }
     }

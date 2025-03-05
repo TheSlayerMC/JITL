@@ -14,51 +14,25 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
-public class DivinityEntity extends ThrowableProjectile {
+public class DivinityEntity extends JThrowableProjectile {
 
     public DivinityEntity(EntityType<DivinityEntity> type, Level world) {
         super(type, world);
     }
 
-    public DivinityEntity(Level world, LivingEntity thrower) {
-        super(JEntities.DIVINITY_TYPE.get(), thrower, world);
+    public DivinityEntity(int damage, Level world, LivingEntity thrower) {
+        super(JEntities.DIVINITY_TYPE.get(), damage, world, thrower);
+        setPotionEffect(MobEffects.DIG_SLOWDOWN, 100);
     }
 
     @Override
     public void handleEntityEvent(byte pId) {
-        if(pId == 3) {
-            for(int i = 0; i < 8; ++i) {
+        if (pId == 3) {
+            for (int i = 0; i < 8; ++i) {
                 this.level().addParticle(JParticleManager.WIZARDS_STAR.get(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
             }
         }
     }
-
-    @Override
-    protected void onHitEntity(@NotNull EntityHitResult res) {
-        super.onHitEntity(res);
-        Entity entity = res.getEntity();
-        if(entity instanceof LivingEntity && entity.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage())) {
-            MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 100);
-            ((LivingEntity)entity).addEffect(effectInstance);
-            entity.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage());
-        }
-    }
-
-    private float getDamage() {
-        return 12;
-    }
-
-    @Override
-    protected void onHit(@NotNull HitResult res) {
-        super.onHit(res);
-        if(!this.level().isClientSide) {
-            this.level().broadcastEntityEvent(this, (byte)3);
-            this.discard();
-        }
-    }
-
-    @Override
-    protected void defineSynchedData(SynchedEntityData.@NotNull Builder b) { }
 
     @Override
     protected double getDefaultGravity() {

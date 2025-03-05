@@ -41,7 +41,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -49,11 +48,9 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
-import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 @EventBusSubscriber(modid = JITL.MODID, bus = EventBusSubscriber.Bus.MOD)
@@ -101,7 +98,11 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<OvergrownEntity>> OVERGROWN_TYPE = registerProjectile(OvergrownEntity::new, "overgrown", "Overgrown", 0.25F, 0.25F);
     public static final DeferredHolder<EntityType<?>, EntityType<DivinityEntity>> DIVINITY_TYPE = registerProjectile(DivinityEntity::new, "divinity", "Divinity", 0.25F, 0.25F);
     public static final DeferredHolder<EntityType<?>, EntityType<EnlightenmentEntity>> ENLIGHTENMENT_TYPE = registerProjectile(EnlightenmentEntity::new, "enlightenment", "Enlightenment", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<BouncingProjectileEntity>> BOUNCING_TYPE = registerProjectile(BouncingProjectileEntity::new, "bouncing", "Bouncing", 0.25F, 0.25F);
 
+    public static final DeferredHolder<EntityType<?>, EntityType<NetherPlasmaEntity>> NETHER_PLASMA_TYPE = registerProjectile(NetherPlasmaEntity::new, "nether_plasma", "Nether Plasma", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<OceanPlasmaEntity>> OCEAN_PLASMA_TYPE = registerProjectile(OceanPlasmaEntity::new, "ocean_plasma", "Ocean Plasma", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<EyeBlasterEntity>> EYE_BLASTER_TYPE = registerProjectile(EyeBlasterEntity::new, "eye_blaster", "Eye Blaster", 0.25F, 0.25F);
 
     //RAW ENTITYS
     public static final DeferredHolder<EntityType<?>, EntityType<EssenciaBoltEntity>> ESSENCIA_BOLT_TYPE = registerRawEntity(EssenciaBoltEntity::new, "essencia_bolt", "Essencia Bolt", 0.25F, 0.25F);

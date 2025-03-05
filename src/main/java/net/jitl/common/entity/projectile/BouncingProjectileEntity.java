@@ -1,0 +1,77 @@
+package net.jitl.common.entity.projectile;
+
+import net.jitl.core.init.internal.JEntities;
+import net.jitl.core.init.internal.JParticleManager;
+import net.minecraft.core.Direction;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.ThrowableProjectile;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
+
+public class BouncingProjectileEntity extends JThrowableProjectile {
+
+    private int bounces = 0;
+
+    public BouncingProjectileEntity(EntityType<BouncingProjectileEntity> type, Level world) {
+        super(type, world);
+    }
+
+    public BouncingProjectileEntity(int dam, Level world, LivingEntity thrower) {
+        super(JEntities.BOUNCING_TYPE.get(), dam, world, thrower);
+        setBouncy();
+    }
+
+    @Override
+    public void handleEntityEvent(byte pId) {
+        if(pId == 3) {
+            for(int i = 0; i < 8; ++i) {
+                this.level().addParticle(JParticleManager.CLOUDIA_PORTAL.get(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+            }
+        }
+    }
+
+    @Override
+    protected void onHitEntity(@NotNull EntityHitResult res) {
+        super.onHitEntity(res);
+        Entity entity = res.getEntity();
+        if(entity instanceof LivingEntity && entity.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage())) {
+            entity.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage());
+        }
+    }
+
+    @Override
+    public void onHitBlock(BlockHitResult result) {
+        Vec3 vec = getDeltaMovement();
+        double x = vec.x, y = vec.y, z = vec.z;
+        if(result.getDirection() == Direction.DOWN || result.getDirection() == Direction.UP)
+            lerpMotion(x * 0.8, y * -0.8, z * 0.8);
+        else if(result.getDirection() == Direction.EAST || result.getDirection() == Direction.WEST)
+            lerpMotion(x * -0.8, y * 0.8, z * 0.8);
+        else if(result.getDirection() == Direction.NORTH || result.getDirection() == Direction.SOUTH)
+            lerpMotion(x * 0.8, y * 0.8, z * -0.8);
+        if(this.bounces > 6) discard();
+        this.bounces++;
+    }
+
+    private float getDamage() {
+        return 6;
+    }
+
+    @Override
+    protected void onHit(@NotNull HitResult res) {
+        super.onHit(res);
+        if(!this.level().isClientSide) {
+            this.level().broadcastEntityEvent(this, (byte)3);
+        }
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.@NotNull Builder b) { }
+}
