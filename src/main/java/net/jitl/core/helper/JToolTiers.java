@@ -170,7 +170,10 @@ public enum JToolTiers {
     FLUFFY_BLADE(JToolTier.FLUFFY_BLADE, 0, -2.4F),
     DARK_KEEPER(JToolTier.DARK_KEEPER, 0, -2.4F),
 
-    DEVELOPER_SWORD(JToolTier.DEVELOPER_SWORD, 1000, 1000-2.4F),
+    DEVELOPER_SWORD(JToolTier.DEVELOPER_SWORD, 1000, 1000),
+
+    EARTHERN_HAMMER(JToolTier.EARTHERN_HAMMER, 0, -2.4F),
+
 
     THROWING_KNIFE(JToolTier.THROWING_KNIFE, 0, 0)
     ;
@@ -284,6 +287,7 @@ public enum JToolTiers {
         public static final Tier STARLIGHT_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 12F, 25, () -> Ingredient.EMPTY);
         public static final Tier FLUFFY_BLADE = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 15F, 25, () -> Ingredient.EMPTY);
         public static final Tier DARK_KEEPER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 10F, 25, () -> Ingredient.EMPTY);
+        public static final Tier EARTHERN_HAMMER = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 642, 8F, 6F, 25, () -> Ingredient.EMPTY);
 
         public static final Tier DEVELOPER_SWORD = new SimpleTier(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 1000F, 25, () -> Ingredient.EMPTY);
         public static final Tier THROWING_KNIFE = new SimpleTier(BlockTags.INCORRECT_FOR_IRON_TOOL, -1, 3F, 2F, 25, () -> Ingredient.EMPTY);

@@ -1,0 +1,6 @@
+{
+  "parent": "jitl:item/hammer_base",
+  "textures": {
+    "1": "jitl:item/crystallized_hammer"
+  }
+}

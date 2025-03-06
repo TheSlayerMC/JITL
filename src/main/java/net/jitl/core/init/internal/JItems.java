@@ -65,6 +65,8 @@ public class JItems {
     public static final ArrayList<String> shieldLangName = new ArrayList<>();
     public static final ArrayList<String> gunName = new ArrayList<>();
     public static final ArrayList<String> gunLangName = new ArrayList<>();
+    public static final ArrayList<String> hammerName = new ArrayList<>();
+    public static final ArrayList<String> hammerLangName = new ArrayList<>();
     public static final ArrayList<String> langName = new ArrayList<>();
     public static final ArrayList<String> toolLangName = new ArrayList<>();
     public static final ArrayList<String> modelLangName = new ArrayList<>();
@@ -471,6 +473,16 @@ public class JItems {
     public static final DeferredItem<Item> CHAOS_CANNON = register("chaos_cannon", "Chaos Cannon", () -> new GunItem(4, 6, 1000, BouncingProjectileEntity::new), ItemType.GUN);
     public static final DeferredItem<Item> EYE_BLASTER = register("eye_blaster", "Eye Blaster", () -> new GunItem(4, 12, 1000, EyeBlasterEntity::new), ItemType.GUN);
 
+    public static final DeferredItem<Item> SPELLBINDING_HAMMER = register("spellbinding_hammer", "Spellbinding Hammer", () -> new HammerItem(JToolTiers.EARTHERN_HAMMER, 4, 12, SpellbindingEntity::new), ItemType.HAMMER);
+    public static final DeferredItem<Item> EARTHEN_HAMMER = register("earthen_hammer", "Earthen Hammer", () -> new HammerItem(JToolTiers.EARTHERN_HAMMER, 4, 12, EarthenEntity::new), ItemType.HAMMER);
+    public static final DeferredItem<Item> FLAMING_HAMMER = register("flaming_hammer", "Flaming Hammer", () -> new HammerItem(JToolTiers.EARTHERN_HAMMER, 4, 12, FlamingHammerEntity::new), ItemType.HAMMER);
+    public static final DeferredItem<Item> NETHIC_HAMMER = register("nethic_hammer", "Nethic Hammer", () -> new HammerItem(JToolTiers.EARTHERN_HAMMER, 4, 12, NethicEntity::new), ItemType.HAMMER);
+    public static final DeferredItem<Item> OVERGROWN_HAMMER = register("overgrown_hammer", "Overgrown Hammer", () -> new HammerItem(JToolTiers.EARTHERN_HAMMER, 4, 12, OvergrownHammerEntity::new), ItemType.HAMMER);
+    public static final DeferredItem<Item> ROCKY_HAMMER = register("rocky_hammer", "Rocky Hammer", () -> new HammerItem(JToolTiers.EARTHERN_HAMMER, 4, 12, RockyHammerEntity::new), ItemType.HAMMER);
+    public static final DeferredItem<Item> ROYAL_HAMMER = register("royal_hammer", "Royal Hammer", () -> new HammerItem(JToolTiers.EARTHERN_HAMMER, 4, 12, RoyalEntity::new), ItemType.HAMMER);
+    public static final DeferredItem<Item> CRYSTALLIZED_HAMMER = register("crystallized_hammer", "Crystallized Hammer", () -> new HammerItem(JToolTiers.EARTHERN_HAMMER, 4, 12, CrystallizedEntity::new), ItemType.HAMMER);
+    public static final DeferredItem<Item> WITHIC_HAMMER = register("withic_hammer", "Withic Hammer", () -> new HammerItem(JToolTiers.EARTHERN_HAMMER, 4, 12, WithicEntity::new), ItemType.HAMMER);
+
     public static final DeferredItem<Item> GOLDEN_EUCA_BOAT = registerNormalItem("golden_euca_boat", "Gold Euca Boat", () -> new JBoatItem(JBoat.Type.GOLD_EUCA));
     public static final DeferredItem<Item> BROWN_EUCA_BOAT = registerNormalItem("brown_euca_boat", "Brown Euca Boat", () -> new JBoatItem(JBoat.Type.BROWN_EUCA));
     public static final DeferredItem<Item> FROZEN_BOAT = registerNormalItem("frozen_boat", "Frostwood Boat", () -> new JBoatItem(JBoat.Type.FROZEN));
@@ -807,6 +819,10 @@ public class JItems {
             gunName.add(name);
             gunLangName.add(translatedName);
         }
+        if(type == ItemType.HAMMER) {
+            hammerName.add(name);
+            hammerLangName.add(translatedName);
+        }
         if(type == ItemType.ITEM) {
             itemName.add(name);
             langName.add(translatedName);
@@ -860,6 +876,7 @@ public class JItems {
         SHIELD,
         PIERCER,
         GUN,
+        HAMMER,
 
         SWORD,
         PICKAXE,

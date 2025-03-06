@@ -99,7 +99,15 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<DivinityEntity>> DIVINITY_TYPE = registerProjectile(DivinityEntity::new, "divinity", "Divinity", 0.25F, 0.25F);
     public static final DeferredHolder<EntityType<?>, EntityType<EnlightenmentEntity>> ENLIGHTENMENT_TYPE = registerProjectile(EnlightenmentEntity::new, "enlightenment", "Enlightenment", 0.25F, 0.25F);
     public static final DeferredHolder<EntityType<?>, EntityType<BouncingProjectileEntity>> BOUNCING_TYPE = registerProjectile(BouncingProjectileEntity::new, "bouncing", "Bouncing", 0.25F, 0.25F);
-
+    public static final DeferredHolder<EntityType<?>, EntityType<SpellbindingEntity>> SPELLBINDING_TYPE = registerProjectile(SpellbindingEntity::new, "spellbinding", "Spellbinding", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<EarthenEntity>> EARTHEN_TYPE = registerProjectile(EarthenEntity::new, "earthen", "Earthen", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<FlamingHammerEntity>> FLAMING_TYPE = registerProjectile(FlamingHammerEntity::new, "flaming", "Flaming", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<NethicEntity>> NETHIC_TYPE = registerProjectile(NethicEntity::new, "nethic", "Nethic", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<OvergrownHammerEntity>> OVERGROWN_HAMMER_TYPE = registerProjectile(OvergrownHammerEntity::new, "overgrown_hammer", "Overgrown Hammer", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<RockyHammerEntity>> ROCKY_HAMMER_TYPE = registerProjectile(RockyHammerEntity::new, "rocky_hammer", "Overgrown Hammer", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<RoyalEntity>> ROYAL_TYPE = registerProjectile(RoyalEntity::new, "royal", "Royal", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<CrystallizedEntity>> CRYSTALLIZED_TYPE = registerProjectile(CrystallizedEntity::new, "crystallized_hammer", "Crystallized", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<WithicEntity>> WITHIC_TYPE = registerProjectile(WithicEntity::new, "withic", "withic", 0.25F, 0.25F);
     public static final DeferredHolder<EntityType<?>, EntityType<NetherPlasmaEntity>> NETHER_PLASMA_TYPE = registerProjectile(NetherPlasmaEntity::new, "nether_plasma", "Nether Plasma", 0.25F, 0.25F);
     public static final DeferredHolder<EntityType<?>, EntityType<OceanPlasmaEntity>> OCEAN_PLASMA_TYPE = registerProjectile(OceanPlasmaEntity::new, "ocean_plasma", "Ocean Plasma", 0.25F, 0.25F);
     public static final DeferredHolder<EntityType<?>, EntityType<EyeBlasterEntity>> EYE_BLASTER_TYPE = registerProjectile(EyeBlasterEntity::new, "eye_blaster", "Eye Blaster", 0.25F, 0.25F);

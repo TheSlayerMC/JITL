@@ -75,6 +75,7 @@ public class LangRegistry {
         ArrayList<String> modelItemList = new ArrayList<>(JItems.modelName);
         ArrayList<String> recordDescList = new ArrayList<>(JItems.recordDescName);
         ArrayList<String> gunList = new ArrayList<>(JItems.gunName);
+        ArrayList<String> hammerList = new ArrayList<>(JItems.hammerName);
 
         try {
             if(en_us.exists()) en_us.delete();
@@ -873,6 +874,9 @@ public class LangRegistry {
 
         for(int i = 0; i < gunList.size(); i++)
             writeToFile("\"item.jitl." + gunList.get(i) + "\": \"" + JItems.gunLangName.get(i) + "\"" + ",");
+
+        for(int i = 0; i < hammerList.size(); i++)
+            writeToFile("\"item.jitl." + hammerList.get(i) + "\": \"" + JItems.hammerLangName.get(i) + "\"" + ",");
 
 
         int j = 0;

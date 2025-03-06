@@ -64,6 +64,15 @@ public class RenderEntitys {
         event.registerEntityRenderer(JEntities.NETHER_PLASMA_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/nether_plasma.png")));
         event.registerEntityRenderer(JEntities.OCEAN_PLASMA_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/ocean_plasma.png")));
         event.registerEntityRenderer(JEntities.EYE_BLASTER_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/eye_blaster.png")));
+        event.registerEntityRenderer(JEntities.SPELLBINDING_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/homing.png")));
+        event.registerEntityRenderer(JEntities.EARTHEN_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/greenpace.png")));
+        event.registerEntityRenderer(JEntities.FLAMING_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/hellstone.png")));
+        event.registerEntityRenderer(JEntities.NETHIC_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/nether_plasma.png")));
+        event.registerEntityRenderer(JEntities.OVERGROWN_HAMMER_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/overgrown.png")));
+        event.registerEntityRenderer(JEntities.ROCKY_HAMMER_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/divinity.png")));
+        event.registerEntityRenderer(JEntities.ROYAL_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/wizards_star.png")));
+        event.registerEntityRenderer(JEntities.CRYSTALLIZED_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/iceball.png")));
+        event.registerEntityRenderer(JEntities.WITHIC_TYPE.get(), manager -> new RenderProjectile<>(manager, JITL.rl("textures/entity/projectile/homing.png")));
 
         event.registerEntityRenderer(JEntities.ESSENCIA_BOLT_TYPE.get(), EssenciaBoltRenderer::new);
 

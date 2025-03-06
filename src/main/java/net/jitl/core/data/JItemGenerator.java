@@ -92,6 +92,22 @@ public class JItemGenerator {
             getGunItem(JITL.MODID, name);
             itemModelInit();
         }
+
+        for(String name : JItems.hammerName) {
+            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            File itemModel = new File(itemModelDir);
+            itemModel.mkdirs();
+            try {
+                if(itemModel.exists()) itemModel.delete();
+                itemModel.createNewFile();
+                itemModelWriter = new BufferedWriter(new FileWriter(itemModel));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            getHammerItem(JITL.MODID, name);
+            itemModelInit();
+        }
     }
 
     public void itemModelInit() {
@@ -115,6 +131,15 @@ public class JItemGenerator {
         writeToItemModelFile("  \"parent\": \"jitl:item/gun\",");
         writeToItemModelFile("  \"textures\": {");
         writeToItemModelFile("    \"layer0\": \"" + modID + ":" + "item/" + name + "\"");
+        writeToItemModelFile("  }");
+        writeToItemModelFile("}");
+    }
+
+    public void getHammerItem(String modID, String name) {
+        writeToItemModelFile("{");
+        writeToItemModelFile("  \"parent\": \"jitl:item/hammer_base\",");
+        writeToItemModelFile("  \"textures\": {");
+        writeToItemModelFile("    \"1\": \"" + modID + ":" + "item/" + name + "\"");
         writeToItemModelFile("  }");
         writeToItemModelFile("}");
     }

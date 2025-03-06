@@ -60,7 +60,11 @@ public abstract class JThrowableProjectile extends ThrowableProjectile {
                 entity.setRemainingFireTicks(this.fireTicks);
 
         }
-}
+    }
+
+    public int getEntityDamage() {
+        return damage;
+    }
 
     @Override
     protected void onHit(@NotNull HitResult res) {
