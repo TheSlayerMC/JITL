@@ -31,6 +31,8 @@ public class OvergrownMerchant extends JVillagerEntity {
     public static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
             new CurrencyForItemsTrade(JItems.ENCHANTED_LEAF.get(), 64, JItems.ORBADITE_INGOT.get(), 16, JItems.VINESTRAND_BLADE.get(), 1, 12, 5),
             new CurrencyForItemsTrade(JItems.ENCHANTED_LEAF.get(), 64, JItems.GORBITE_GEM.get(), 16, JItems.DARK_PINE_SWORD.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.ENCHANTED_LEAF.get(), 64, JItems.ORBADITE_INGOT.get(), 16, JItems.OVERGROWN_STAFF.get(), 1, 12, 5),
+            new CurrencyForItemsTrade(JItems.ENCHANTED_LEAF.get(), 64, JItems.GORBITE_GEM.get(), 16, JItems.OVERGROWN_HAMMER.get(), 1, 12, 5),
     }));
 
     public OvergrownMerchant(EntityType<? extends JVillagerEntity> pEntityType, Level pLevel) {

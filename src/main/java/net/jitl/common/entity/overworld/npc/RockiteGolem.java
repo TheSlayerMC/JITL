@@ -37,7 +37,13 @@ import software.bernie.geckolib.animation.RawAnimation;
 public class RockiteGolem extends JVillagerEntity {
 
     public static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
-            new CurrencyForItemsTrade(JItems.REINFORCED_CRYSTAL_INGOT.get(), 4, Items.BLAZE_POWDER, 8, 99, 5)
+            new CurrencyForItemsTrade(JItems.REINFORCED_CRYSTAL_INGOT, 4, Items.BLAZE_POWDER, 8, 99, 5),
+            new CurrencyForItemsTrade(JItems.REINFORCED_STONE_INGOT, 4, JItems.BACK_BITER, 1, JItems.CRYSTALLIZED_BATTLE_AXE, 1, 99, 5),
+            new CurrencyForItemsTrade(JItems.REINFORCED_CRYSTAL_INGOT, 4, JItems.EARTHEN_HAMMER, 1, JItems.CRYSTALLIZED_HAMMER, 1, 99, 5),
+            new CurrencyForItemsTrade(JItems.REINFORCED_STONE_INGOT, 4, JItems.EARTHEN_HAMMER, 1, JItems.ROCKY_HAMMER, 1, 99, 5),
+            new CurrencyForItemsTrade(JItems.REINFORCED_STONE_INGOT, 4, JItems.STONE_CLUMP, 4, JItems.ROCK_LAUNCHER, 1, 99, 5),
+            new CurrencyForItemsTrade(JItems.REINFORCED_CRYSTAL_INGOT, 4, JItems.STAFF_OF_ENLIGHTENMENT, 1, JItems.STAFF_OF_DIVINITY, 1, 99, 5),
+            new CurrencyForItemsTrade(JItems.REINFORCED_CRYSTAL_INGOT, 4, JItems.STAFF_OF_DIVINITY, 1, JItems.CRYSTAL_STAFF, 1, 99, 5)
     }));
 
     public RockiteGolem(EntityType<? extends JVillagerEntity> type, Level worldIn) {

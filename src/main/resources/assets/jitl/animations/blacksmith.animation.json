@@ -1,64 +1,6 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.royal_king.idle": {
-			"loop": true,
-			"animation_length": 1.375,
-			"bones": {
-				"head": {
-					"rotation": {
-						"0.0": {
-							"vector": [0, 0, 0]
-						},
-						"0.7083": {
-							"vector": [2.5, 0, 0]
-						},
-						"1.375": {
-							"vector": [0, 0, 0]
-						}
-					}
-				},
-				"body": {
-					"rotation": {
-						"0.0": {
-							"vector": [-2.5, 0, 0]
-						},
-						"0.75": {
-							"vector": [0, 0, 0]
-						},
-						"1.375": {
-							"vector": [-2.5, 0, 0]
-						}
-					}
-				},
-				"leftArm": {
-					"rotation": {
-						"0.0": {
-							"vector": [0, 0, 0]
-						},
-						"0.7083": {
-							"vector": [0, 0, 2.5]
-						},
-						"1.375": {
-							"vector": [0, 0, 0]
-						}
-					}
-				},
-				"rightArm": {
-					"rotation": {
-						"0.0": {
-							"vector": [0, 0, 0]
-						},
-						"0.7083": {
-							"vector": [0, 0, -2.5]
-						},
-						"1.375": {
-							"vector": [0, 0, 0]
-						}
-					}
-				}
-			}
-		},
 		"animation.blacksmith.idle": {
 			"loop": true,
 			"animation_length": 1.375,
@@ -138,6 +80,5 @@
 				}
 			}
 		}
-	},
-	"geckolib_format_version": 2
+	}
 }

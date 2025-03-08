@@ -30,6 +30,19 @@
       "text": "book.jitl.entry.overworld.mage_hut.desc"
     },
     {
+    "type": "image",
+    "title": "structure.overworld.jitl.blacksmith",
+    "anchor": "blacksmith_house",
+    "images": [
+      "jitl:textures/gui/patchouli/blacksmith.png"
+    ],
+    "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.blacksmith_house.desc"
+    },
+    {
       "type": "image",
       "title": "structure.overworld.jitl.rockite_dungeon",
       "images": [

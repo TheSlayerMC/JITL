@@ -318,6 +318,9 @@ public class LangRegistry {
 
         writeToFile("\"structure.overworld.jitl.mage_hut\" : " + "\"Mage Hut\",");
         writeToFile("\"book.jitl.entry.overworld.mage_hut.desc\" : " + "\"Found randomly in any Dark Forest Biome, Climb up the top to find and meet the $(l:jitl:overworld/traders#mage)Mage\",");
+        
+        writeToFile("\"structure.overworld.jitl.blacksmith\" : " + "\"Blacksmith House\",");
+        writeToFile("\"book.jitl.entry.overworld.blacksmith_house.desc\" : " + "\"Found randomly in any Plains, Meadow, Sunflower Plains, Forest, Flower Forest, Birch Forest and Cherry Grove Biomes, Climb up the top to find and meet the $(l:jitl:overworld/traders#blacksmith)Blacksmith\",");
 
         writeToFile("\"structure.nether.jitl.boil_lock\" : " + "\"Boil Lock\",");
         writeToFile("\"book.jitl.entry.nether.boil_lock.desc\" : " + "\"Unbreakable structure which you need to unlock with a Boiling Lock Key which is found in the Nether Tower. This structure contains the Boiling Point Portal Frames\",");
@@ -332,6 +335,7 @@ public class LangRegistry {
         writeToFile("\"book.jitl.entry.nether.okoloo_crypt.desc\" : " + "\"A structure that you place the Broken Okoloo Club into the Pedestal to spawn $(l:jitl:nether/bosses#okoloo)Okoloo\",");
 
         writeToFile("\"book.jitl.entry.overworld.mage.desc\" : " + "\"Mage is a trading NPC that lives up the top of $(l:jitl:overworld/structures#mage_hut)Mage Hut\",");
+        writeToFile("\"book.jitl.entry.overworld.blacksmith.desc\" : " + "\"Blacksmith is a trading NPC that lives up the top of $(l:jitl:overworld/structures#blacksmith_house)Blacksmith House\",");
         writeToFile("\"book.jitl.entry.overworld.neutral_sentry_stalker.desc\" : " + "\"This Sentry Stalker is a bit different to normal... He locked the Senterian Portal away trying to close it away while he finds enough information on the Overworld. While he resides inside of the $(l:jitl:overworld/structures#ancient_tower)Ancient Tower$(/l) he will give the key inside for an exchange\",");
         writeToFile("\"book.jitl.entry.overworld.rockite_golem.desc\" : " + "\"Rockite Golem is a trading NPC and spawns underground randomly\",");
 
@@ -460,6 +464,7 @@ public class LangRegistry {
         addMob(EnumKnowledge.OVERWORLD, "rockite_golem", "Overworld Underground", "NPC Mob, Will trade with you", MobStats.NPC_HEALTH, "");
         addStructureMob(EnumKnowledge.OVERWORLD, "neutral_sentry_stalker", "$(l:jitl:overworld/structures#ancient_structure)Ancient Structure$(/l)", "NPC Mob, Will trade with you once you reach 75 Overworld Knowledge, Will trade Sentacoins for Breakable versions of Senterian Blocks (Decorational)", true, MobStats.NPC_HEALTH, 0, "");
         addStructureMob(EnumKnowledge.OVERWORLD, "mage", "$(l:jitl:overworld/structures#mage_hut)Mage Hut$(/l)", "NPC Mob, Will trade with you", true, MobStats.NPC_HEALTH, 0, "");
+        addStructureMob(EnumKnowledge.OVERWORLD, "blacksmith", "$(l:jitl:overworld/structures#blacksmith)Blacksmith House$(/l)", "NPC Mob, Will trade with you", true, MobStats.NPC_HEALTH, 0, "");
         addMob(EnumKnowledge.OVERWORLD, "robot", "Any Overworld Biome", "Will attack on site", MobStats.ROBOT_HEALTH, "Iron Ingot and Redstone Dust");
         addPet(EnumKnowledge.OVERWORLD, "pet_robot", true, "Obtained from the $(l:jitl:overworld/traders#mage)Mage$(/l)", "Already tamed when spawned, can be healed with Pet Food", MobStats.PET_ROBOT_HEALTH, MobStats.PET_ROBOT_DAMAGE,"");
         addPet(EnumKnowledge.OVERWORLD, "ferret", false, "Forest like", "Pet Food", MobStats.FERRET_HEALTH, MobStats.FERRET_DAMAGE,"");

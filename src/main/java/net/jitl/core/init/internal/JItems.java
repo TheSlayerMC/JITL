@@ -453,6 +453,7 @@ public class JItems {
 
     public static final DeferredItem<Item> HELLMETAL_HELMET = registerNormalItem("hellmetal_helmet", "Mask of Hellmetal", () -> new JArmorItem(JToolTiers.JArmorTier.HELLMETAL, ArmorItem.Type.HELMET, null), ItemType.HELMET);
 
+    public static final DeferredItem<Item> STAFF_BASE = registerNormalItem("staff_base", "Staff Base");
     public static final DeferredItem<Item> STAFF_OF_CONJURING = registerToolItem("staff_of_conjuring", "Staff of Conjuring", () -> new StaffItem(1, 5, 256, ConjuringProjectileEntity::new));
     public static final DeferredItem<Item> STAFF_OF_ESSENCIA = registerToolItem("staff_of_essencia", "Staff of Essencia", () -> new StaffItem(4, 6, 256, EssenciaProjectileEntity::new));
     public static final DeferredItem<Item> STAFF_OF_HELLSTONE = registerToolItem("staff_of_hellstone", "Staff Of Hellstone", () -> new StaffItem(4, 7, 256, HellstoneEntity::new));

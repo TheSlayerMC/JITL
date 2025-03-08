@@ -28,6 +28,7 @@ import net.jitl.common.entity.misc.Sentacoin;
 import net.jitl.common.entity.nether.*;
 import net.jitl.common.entity.overworld.*;
 import net.jitl.common.entity.overworld.Robot;
+import net.jitl.common.entity.overworld.npc.Blacksmith;
 import net.jitl.common.entity.overworld.npc.Mage;
 import net.jitl.common.entity.overworld.npc.OverworldSentryStalker;
 import net.jitl.common.entity.overworld.npc.RockiteGolem;
@@ -142,6 +143,7 @@ public class JEntities {
 
     //OVERWORLD MOBS
     public static final DeferredHolder<EntityType<?>, EntityType<Mage>> MAGE_TYPE = registerEntity(Mage::new, "mage", "Mage", 1F, 1.75F, OVERWORLD_COLOR, TRADER_COLOR, MobCategory.CREATURE);
+    public static final DeferredHolder<EntityType<?>, EntityType<Blacksmith>> BLACKSMITH_TYPE = registerEntity(Blacksmith::new, "blacksmith", "Blacksmith", 1F, 2F, OVERWORLD_COLOR, TRADER_COLOR, MobCategory.CREATURE);
     public static final DeferredHolder<EntityType<?>, EntityType<Floro>> FLORO_TYPE = registerEntity(Floro::new, "floro", "Floro", 1F, 1.75F, OVERWORLD_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<BoomBoom>> BOOM_TYPE = registerEntity(BoomBoom::new, "boomboom", "BoomBoom", 1F, 1.75F, OVERWORLD_COLOR, HOSTILE_COLOR);
     public static final DeferredHolder<EntityType<?>, EntityType<IllagerMech>> ILLAGER_MECH_TYPE = registerEntity(IllagerMech::new, "illager_mech", "Illager Mech", 2F, 3.25F, OVERWORLD_COLOR, HOSTILE_COLOR);
@@ -308,6 +310,7 @@ public class JEntities {
     @SubscribeEvent
     public static void registerAttributes(final EntityAttributeCreationEvent event) {
         event.put(MAGE_TYPE.get(), Mage.createAttributes());
+        event.put(BLACKSMITH_TYPE.get(), Blacksmith.createAttributes());
         event.put(FLORO_TYPE.get(), Floro.createAttributes());
         event.put(BOOM_TYPE.get(), BoomBoom.createAttributes());
         event.put(TOWER_GUARDIAN_TYPE.get(), TowerGuardian.createAttributes());

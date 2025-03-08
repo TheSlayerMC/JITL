@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:blacksmith",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 184984489456,
+
+    "spacing": 20,
+
+    "separation": 6,
+
+    "type": "minecraft:random_spread"
+  }
+}

@@ -18,6 +18,18 @@
     },
     {
       "type": "entity",
+      "entity": "jitl:blacksmith",
+      "scale": 1,
+      "name": "Blacksmith",
+      "offset": 0.2,
+      "anchor": "blacksmith"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.blacksmith.desc"
+    },
+    {
+      "type": "entity",
       "entity": "jitl:neutral_sentry_stalker",
       "scale": 1,
       "name": "Neutral Sentry Stalker",

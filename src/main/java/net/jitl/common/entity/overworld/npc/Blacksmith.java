@@ -30,32 +30,24 @@ import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 
-public class Mage extends JVillagerEntity {
+public class Blacksmith extends JVillagerEntity {
 
     public static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
-            //new CurrencyForItemsTrade(JItems.POWDER_OF_ESSENCIA.get(), 32, JItems.LUNIUM_POWDER.get(), 32, 99, 5),
-            new CurrencyForItemsTrade(JItems.SAPPHIRE.get(), 16, JItems.LOOT_POUCH.get(), 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.LUNIUM_POWDER.get(), 8, JItems.SAPPHIRE.get(), 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.CRIMSON_QUARTZ.get(), 32, JItems.MEKYUM_INGOT.get(), 16, JItems.PET_ROBOT_SPAWNER.get(), 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.SAPPHIRE.get(), 16, Items.FERMENTED_SPIDER_EYE, 2, 99, 5),
-            new CurrencyForItemsTrade(JItems.SAPPHIRE.get(), 10, Items.GUNPOWDER, 4, 99, 5),
-            new CurrencyForItemsTrade(JItems.SAPPHIRE.get(), 4, Items.REDSTONE, 8, 99, 5),
-            new CurrencyForItemsTrade(JItems.SAPPHIRE.get(), 16, Items.PHANTOM_MEMBRANE, 2, 99, 5),
-            new CurrencyForItemsTrade(JItems.SAPPHIRE.get(), 16, Items.GHAST_TEAR, 4, 99, 5),
-            new CurrencyForItemsTrade(JItems.SAPPHIRE.get(), 16, Items.MAGMA_CREAM, 8, 99, 5),
-            new CurrencyForItemsTrade(JItems.SAPPHIRE.get(), 8, Items.GLOWSTONE_DUST, 4, 99, 5),
-            new CurrencyForItemsTrade(JItems.SAPPHIRE.get(), 32, Items.BLAZE_POWDER, 8, 99, 5),
-            new CurrencyForItemsTrade(JItems.STONE_STICK, 2, JItems.GREEN_GEM.get(), 10, JItems.EARTHEN_HAMMER, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.STAFF_BASE, 1, JItems.GREEN_GEM.get(), 10, JItems.STAFF_OF_GREENPACE, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.STAFF_BASE, 1, JItems.BLOODCRUST_INGOT.get(), 10, JItems.STAFF_OF_HELLSTONE, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.STAFF_BASE, 1, JItems.PURPLE_GEM.get(), 10, JItems.DOOMSBRINGER, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.STAFF_BASE, 1, JItems.YELLOW_GEM.get(), 10, JItems.WIZARDS_STAR, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.STAFF_BASE, 1, JItems.BLUE_GEM.get(), 10, JItems.STAFF_OF_ENLIGHTENMENT, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.GREEN_GEM, 1, JItems.STAFF_OF_GREENPACE.get(), 10, JItems.STAFF_OF_CONJURING, 1, 99, 5)
+            new CurrencyForItemsTrade(Items.STICK, 10, JItems.PURPLE_GEM.get(), 10, JItems.DAWN_BREAKER, 1, 99, 5),
+            new CurrencyForItemsTrade(Items.STICK, 10, JItems.PURPLE_GEM.get(), 10, JItems.TEMPEST_BATTLE_AXE, 1, 99, 5),
+            new CurrencyForItemsTrade(Items.STICK, 10, JItems.GREEN_GEM.get(), 10, JItems.DRAGONS_TOOTH, 1, 99, 5),
+            new CurrencyForItemsTrade(Items.STICK, 10, JItems.GREEN_GEM.get(), 10, JItems.POISON_SWORD, 1, 99, 5),
+            new CurrencyForItemsTrade(Items.STICK, 10, JItems.BLUE_GEM.get(), 10, JItems.CLOUD_SLICER, 1, 99, 5),
+            new CurrencyForItemsTrade(Items.STICK, 10, JItems.YELLOW_GEM.get(), 10, JItems.BACK_BITER, 1, 99, 5),
+            new CurrencyForItemsTrade(JItems.BLUE_GEM, 10, JItems.YELLOW_GEM.get(), 10, JItems.SUNSET_PIERCER, 8, 99, 5),
+            new CurrencyForItemsTrade(JItems.BLUE_GEM, 10, JItems.YELLOW_GEM.get(), 10, JItems.AQUATIC_KNIFE, 8, 99, 5),
+            new CurrencyForItemsTrade(JItems.PURPLE_GEM, 10, JItems.GREEN_GEM.get(), 10, JItems.POISON_BOW, 1, 99, 5),
+            new CurrencyForItemsTrade(JItems.PURPLE_GEM, 10, JItems.YELLOW_GEM.get(), 10, JItems.DARKNESS_BOW, 1, 99, 5),
+            new CurrencyForItemsTrade(JItems.PURPLE_GEM, 10, JItems.BLUE_GEM.get(), 10, JItems.FROZEN_BOW, 1, 99, 5)
     }));
 
-    public Mage(EntityType<? extends JVillagerEntity> type, Level worldIn) {
-            super(type, worldIn);
+    public Blacksmith(EntityType<? extends JVillagerEntity> type, Level worldIn) {
+        super(type, worldIn);
     }
 
     @Override
@@ -67,10 +59,10 @@ public class Mage extends JVillagerEntity {
 
     @Override
     public @NotNull InteractionResult mobInteract(@NotNull Player player, @NotNull InteractionHand playerHand) {
-        switch (random.nextInt(3)) {
-            case 0 -> ChatUtils.addDialogStyleChat(player, "jitl.trader.mage1");
-            case 1 -> ChatUtils.addDialogStyleChat(player, "jitl.trader.mage2");
-            case 2 -> ChatUtils.addDialogStyleChat(player, "jitl.trader.mage3");
+        switch(random.nextInt(3)) {
+            case 0 -> ChatUtils.addDialogStyleChat(player, "jitl.trader.blacksmith1");
+            case 1 -> ChatUtils.addDialogStyleChat(player, "jitl.trader.blacksmith2");
+            case 2 -> ChatUtils.addDialogStyleChat(player, "jitl.trader.blacksmith3");
         }
         return super.mobInteract(player, playerHand);
     }
@@ -88,8 +80,8 @@ public class Mage extends JVillagerEntity {
                 .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
     }
 
-    private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.mage.walk");
-    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.mage.idle");
+    private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.blacksmith.walk");
+    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.blacksmith.idle");
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
