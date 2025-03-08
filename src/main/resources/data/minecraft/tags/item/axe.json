@@ -26,6 +26,16 @@
     "jitl:orbadite_axe",
     "jitl:orbadite_multitool",
     "jitl:soulstone_axe",
-    "jitl:soulstone_multitool"
+    "jitl:soulstone_multitool",
+    "jitl:rocky_battle_axe",
+    "jitl:crystallized_battle_axe",
+    "jitl:back_biter",
+    "jitl:dawn_breaker",
+    "jitl:tempest_battle_axe",
+    "jitl:bronzed_battle_axe",
+    "jitl:celestite_battle_axe",
+    "jitl:storum_battle_axe",
+    "jitl:celekium_battle_axe",
+    "jitl:thunderbird_battle_axe"
   ]
 }

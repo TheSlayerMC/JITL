@@ -305,6 +305,16 @@
       "jitl:items/staff/staff_0"
     ]
   },
+  "items.cannon": {
+    "sounds": [
+      "jitl:items/cannon"
+    ]
+  },
+  "items.hammer": {
+    "sounds": [
+      "jitl:items/hammer"
+    ]
+  },
   "items.crystal_apple.freeze": {
     "sounds": [
       "jitl:items/crystal_apple_freeze"

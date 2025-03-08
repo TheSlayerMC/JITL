@@ -26,12 +26,10 @@ public class OvergrownEntity extends JThrowableProjectile {
     }
 
     @Override
-    public void handleEntityEvent(byte pId) {
-        if (pId == 3) {
-            for (int i = 0; i < 8; ++i) {
-                this.level().addParticle(JParticleManager.CONJURING.get(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
-            }
-        }
+    public void tick() {
+        super.tick();
+        for(int i = 0; i < 1; ++i)
+            this.level().addParticle(JParticleManager.CONJURING.get(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
     }
 
     @Override

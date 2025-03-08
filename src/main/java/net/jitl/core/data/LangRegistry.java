@@ -116,7 +116,6 @@ public class LangRegistry {
 
         writeToFile("\"jitl.trade.no\" : \"You need more Sentacoins\",");
 
-
         writeToFile("\"emi.category.jitl.summoning_table\" : \"Summoning Table\",");
 
         writeToFile("\"scroll.jitl.fail\" : \"Can't retrieve entry from scroll, report in Discord (unless this item came from creative tab)\",");
@@ -161,6 +160,8 @@ public class LangRegistry {
         writeToFile("\"curios.modifiers.heart_container\" : \"Adds hearts\",");
         writeToFile("\"curios.identifier.catalyst\" : \"Catalyst\",");
         writeToFile("\"curios.modifiers.catalyst\" : \"Adds Essence Storage\",");
+        writeToFile("\"jitl.max_essence\" : \"Max Essence\",");
+        writeToFile("\"jitl.essence_regen_speed\" : \"Essence Regen Speed\",");
 
         writeToFile("\"book.jitl.landing_text\" : " + "\"Welcome $(playername) to Journey Into The Light, any other info needed head over to the $(l:https://discord.com/invite/WhXvz5b)Discord\",");
         writeToFile("\"book.jitl.book_name\" : " + "\"Essentia Bible\",");
@@ -637,6 +638,41 @@ public class LangRegistry {
         writeToFile("\"jitl.tooltip.celestium_armor.0\" : \"Jumping in the air allows you to dash\",");
         writeToFile("\"jitl.tooltip.celestium_armor.1\" : \"Dashing cancels your vertical movement and increases your horizontal movement\",");
         writeToFile("\"jitl.tooltip.celestium_armor.2\" : \"To recharge this ability, touch the ground at least 2 seconds after previous dash\",");
+
+        writeToFile("\"jitl.tooltip.staff\" : \"Shoots projectile that does x%s Hearts of damage\",");
+        writeToFile("\"jitl.tooltip.hammer\" : \"Shoots a Homing projectile that does x%s Hearts of damage\",");
+        writeToFile("\"jitl.tooltip.cannon\" : \"Shoots a Bouncing projectile that does x%s Hearts of damage\",");
+        writeToFile("\"jitl.tooltip.essence_usage\" : \"Uses %s Essence\",");
+
+        writeToFile("\"jitl.tooltip.teleport\" : \"Teleports to where the Player is looking.\",");
+        writeToFile("\"jitl.uses_remaining\" : \"%s Uses Remaining\",");
+
+        writeToFile("\"jitl.tooltip.staff_of_conjuring\" : \"Poisons Foe on impact\",");
+        writeToFile("\"jitl.tooltip.staff_of_essencia\" : \"Summons Lightening on Foe upon impact\",");
+        writeToFile("\"jitl.tooltip.staff_of_hellstone\" : \"Sets Foe on Fire\",");
+        writeToFile("\"jitl.tooltip.doomsbringer\" : \"Confuses Foe on impact\",");
+        writeToFile("\"jitl.tooltip.overgrown_staff\" : \"Blinds Foe on impact\",");
+        writeToFile("\"jitl.tooltip.staff_of_divinity\" : \"Gives Foe Slow Digging\",");
+        writeToFile("\"jitl.tooltip.staff_of_enlightenment\" : \"Reveals Foe's location on impact\",");
+        writeToFile("\"jitl.tooltip.crystal_staff\" : \"Causes Foe to slow on movement and digging\",");
+        writeToFile("\"jitl.tooltip.staff_of_greenpace\" : \"Harms Foe on impact\",");
+
+        writeToFile("\"jitl.tooltip.spellbinding_hammer\" : \"Summons Lightening on Foe upon impact\",");
+        writeToFile("\"jitl.tooltip.earthen_hammer\" : \"Raises Foe in the air upon impact\",");
+        writeToFile("\"jitl.tooltip.flaming_hammer\" : \"Sets Foe on Fire\",");
+        writeToFile("\"jitl.tooltip.nethic_hammer\" : \"Sets Foe on Fire and Harms\",");
+        writeToFile("\"jitl.tooltip.overgrown_hammer\" : \"Blinds Foe on impact\",");
+        writeToFile("\"jitl.tooltip.rocky_hammer\" : \"Gives Foe slow Digging on impact\",");
+        writeToFile("\"jitl.tooltip.royal_hammer\" : \"Makes Foe slow Moving on impact\",");
+        writeToFile("\"jitl.tooltip.crystallized_hammer\" : \"Reveals Foe's Location and slows\",");
+        writeToFile("\"jitl.tooltip.withic_hammer\" : \"Withers Foe on impact\",");
+
+        writeToFile("\"jitl.tooltip.nether_plasma\" : \"Sets Foe on Fire\",");
+        writeToFile("\"jitl.tooltip.ocean_plasma\" : \"Harms Foe on impact\",");
+        writeToFile("\"jitl.tooltip.forest_plasma\" : \"Blinds Foe on impact\",");
+        writeToFile("\"jitl.tooltip.rock_launcher\" : \"Gives Foe slow Digging on impact\",");
+        writeToFile("\"jitl.tooltip.chaos_cannon\" : \"Raises Foe in the air upon impact\",");
+        writeToFile("\"jitl.tooltip.eye_blaster\" : \"Harms Foe and Sets on Fire on impact\",");
 
         writeToFile("\"jitl.tooltip.uses_remaining\" : \"Uses Remaining\",");
         writeToFile("\"jitl.tooltip.okoloo\" : \"Placed in Okoloo Pedestal\",");

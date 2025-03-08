@@ -19,12 +19,12 @@ public class BouncingProjectileEntity extends JThrowableProjectile {
 
     private int bounces = 0;
 
-    public BouncingProjectileEntity(EntityType<BouncingProjectileEntity> type, Level world) {
+    public BouncingProjectileEntity(EntityType<? extends BouncingProjectileEntity> type, Level world) {
         super(type, world);
     }
 
-    public BouncingProjectileEntity(int dam, Level world, LivingEntity thrower) {
-        super(JEntities.BOUNCING_TYPE.get(), dam, world, thrower);
+    public BouncingProjectileEntity(EntityType<? extends BouncingProjectileEntity> type, int dam, Level world, LivingEntity thrower) {
+        super(type, dam, world, thrower);
         setBouncy();
     }
 
@@ -34,15 +34,6 @@ public class BouncingProjectileEntity extends JThrowableProjectile {
             for(int i = 0; i < 8; ++i) {
                 this.level().addParticle(JParticleManager.CLOUDIA_PORTAL.get(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
             }
-        }
-    }
-
-    @Override
-    protected void onHitEntity(@NotNull EntityHitResult res) {
-        super.onHitEntity(res);
-        Entity entity = res.getEntity();
-        if(entity instanceof LivingEntity && entity.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage())) {
-            entity.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage());
         }
     }
 
@@ -59,19 +50,4 @@ public class BouncingProjectileEntity extends JThrowableProjectile {
         if(this.bounces > 6) discard();
         this.bounces++;
     }
-
-    private float getDamage() {
-        return 6;
-    }
-
-    @Override
-    protected void onHit(@NotNull HitResult res) {
-        super.onHit(res);
-        if(!this.level().isClientSide) {
-            this.level().broadcastEntityEvent(this, (byte)3);
-        }
-    }
-
-    @Override
-    protected void defineSynchedData(SynchedEntityData.@NotNull Builder b) { }
 }

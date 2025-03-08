@@ -8,6 +8,7 @@ import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -19,6 +20,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
@@ -27,6 +29,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.function.BiFunction;
 
 public class TeleportItem extends JItem implements IEssenceItem {
@@ -82,5 +85,11 @@ public class TeleportItem extends JItem implements IEssenceItem {
     protected void teleportTo(ServerPlayer player, Level level, int x, int y, int z) {
         player.teleportTo(x, y, z);
         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext pContext, List<Component> tooltip, TooltipFlag pTooltipFlag) {
+        addItemDesc(JItems.TELEPORTATION_STAFF.asItem(), tooltip, "jitl.tooltip.teleport");
+        tooltip.add(Component.translatable("jitl.tooltip.essence_usage", essenceUsage));
     }
 }

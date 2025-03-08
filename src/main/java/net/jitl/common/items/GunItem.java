@@ -7,6 +7,7 @@ import net.jitl.core.helper.TriFunction;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -18,11 +19,13 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.function.BiFunction;
 
 public class GunItem extends JItem implements IEssenceItem {
@@ -42,10 +45,11 @@ public class GunItem extends JItem implements IEssenceItem {
         if(entityLiving instanceof Player player && worldIn instanceof ServerLevel level) {
             if(getPowerForTime(this.getUseDuration(stack, player) - timeLeft) > 0.25) {
                 if (player.getData(JDataAttachments.ESSENCE).consumeEssence(player, this.essenceUsage)) {
-                    player.getItemInHand(player.getUsedItemHand()).hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                     JThrowableProjectile projectile = projectileFactory.apply(this.damage, level, player);
                     projectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
                     level.addFreshEntity(projectile);
+                    player.getItemInHand(player.getUsedItemHand()).hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+                    level.playSound(null, player.getX(), player.getY(), player.getZ(), JSounds.CANNON.get(), SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
                 }
             }
         }
@@ -76,5 +80,18 @@ public class GunItem extends JItem implements IEssenceItem {
         ItemStack stack = player.getItemInHand(usedHand);
         player.startUsingItem(usedHand);
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext pContext, List<Component> tooltip, TooltipFlag pTooltipFlag) {
+        tooltip.add(Component.translatable("jitl.tooltip.cannon", (damage / 2)));
+        addItemDesc(JItems.NETHER_PLASMA.asItem(), tooltip, "jitl.tooltip.nether_plasma");
+        addItemDesc(JItems.OCEAN_PLASMA.asItem(), tooltip, "jitl.tooltip.ocean_plasma");
+        addItemDesc(JItems.FOREST_PLASMA.asItem(), tooltip, "jitl.tooltip.forest_plasma");
+        addItemDesc(JItems.ROCK_LAUNCHER.asItem(), tooltip, "jitl.tooltip.rock_launcher");
+        addItemDesc(JItems.CHAOS_CANNON.asItem(), tooltip, "jitl.tooltip.chaos_cannon");
+        addItemDesc(JItems.EYE_BLASTER.asItem(), tooltip, "jitl.tooltip.eye_blaster");
+        tooltip.add(Component.translatable("jitl.tooltip.essence_usage", essenceUsage));
+        tooltip.add(Component.translatable("jitl.uses_remaining", (stack.getMaxDamage() - stack.getDamageValue())));
     }
 }

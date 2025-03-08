@@ -453,35 +453,45 @@ public class JItems {
 
     public static final DeferredItem<Item> HELLMETAL_HELMET = registerNormalItem("hellmetal_helmet", "Mask of Hellmetal", () -> new JArmorItem(JToolTiers.JArmorTier.HELLMETAL, ArmorItem.Type.HELMET, null), ItemType.HELMET);
 
-    public static final DeferredItem<Item> STAFF_OF_CONJURING = registerToolItem("staff_of_conjuring", "Staff of Conjuring", () -> new StaffItem(1, 5, 1000, ConjuringProjectileEntity::new));
-    public static final DeferredItem<Item> STAFF_OF_ESSENCIA = registerToolItem("staff_of_essencia", "Staff of Essencia", () -> new StaffItem(4, 6, 1000, EssenciaProjectileEntity::new));
+    public static final DeferredItem<Item> STAFF_OF_CONJURING = registerToolItem("staff_of_conjuring", "Staff of Conjuring", () -> new StaffItem(1, 5, 256, ConjuringProjectileEntity::new));
+    public static final DeferredItem<Item> STAFF_OF_ESSENCIA = registerToolItem("staff_of_essencia", "Staff of Essencia", () -> new StaffItem(4, 6, 256, EssenciaProjectileEntity::new));
+    public static final DeferredItem<Item> STAFF_OF_HELLSTONE = registerToolItem("staff_of_hellstone", "Staff Of Hellstone", () -> new StaffItem(4, 7, 256, HellstoneEntity::new));
+    public static final DeferredItem<Item> WIZARDS_STAR = registerToolItem("wizards_star", "Wizard's Star", () -> new StaffItem(4, 5, 256, WizardsStarEntity::new));
+    public static final DeferredItem<Item> DOOMSBRINGER = registerToolItem("doomsbringer", "Doomsbringer", () -> new StaffItem(4, 12, 256, DoomsbringerEntity::new));
+    public static final DeferredItem<Item> OVERGROWN_STAFF = registerToolItem("overgrown_staff", "Overgrown Staff", () -> new StaffItem(4, 5, 256, OvergrownEntity::new));
+    public static final DeferredItem<Item> STAFF_OF_DIVINITY = registerToolItem("staff_of_divinity", "Staff of Divinity", () -> new StaffItem(4, 9, 256, DivinityEntity::new));
+    public static final DeferredItem<Item> STAFF_OF_ENLIGHTENMENT = registerToolItem("staff_of_enlightenment", "Staff of Enlightenment", () -> new StaffItem(4, 14, 256, EnlightenmentEntity::new));
+    public static final DeferredItem<Item> CRYSTAL_STAFF = registerToolItem("crystal_staff", "Crystal Staff", () -> new StaffItem(4, 10, 256, IceballEntity::new));
+    public static final DeferredItem<Item> STAFF_OF_GREENPACE = registerToolItem("staff_of_greenpace", "Staff of Greenpace", () -> new StaffItem(4, 10, 256, GreenpaceEntity::new));
+    public static final DeferredItem<Item> TELEPORTATION_STAFF = registerToolItem("teleportation_staff", "Teleportation Staff", () -> new TeleportItem(4, 256));
 
-    public static final DeferredItem<Item> STAFF_OF_HELLSTONE = registerToolItem("staff_of_hellstone", "Staff Of Hellstone", () -> new StaffItem(4, 7, 1000, HellstoneEntity::new));
-    public static final DeferredItem<Item> WIZARDS_STAR = registerToolItem("wizards_star", "Wizard's Star", () -> new StaffItem(4, 5, 1000, WizardsStarEntity::new));
-    public static final DeferredItem<Item> DOOMSBRINGER = registerToolItem("doomsbringer", "Doomsbringer", () -> new StaffItem(4, 12, 1000, DoomsbringerEntity::new));
-    public static final DeferredItem<Item> OVERGROWN_STAFF = registerToolItem("overgrown_staff", "Overgrown Staff", () -> new StaffItem(4, 5, 1000, OvergrownEntity::new));
-    public static final DeferredItem<Item> STAFF_OF_DIVINITY = registerToolItem("staff_of_divinity", "Staff of Divinity", () -> new StaffItem(4, 12, 1000, DivinityEntity::new));
-    public static final DeferredItem<Item> STAFF_OF_ENLIGHTENMENT = registerToolItem("staff_of_enlightenment", "Staff of Enlightenment", () -> new StaffItem(4, 12, 1000, EnlightenmentEntity::new));
-    public static final DeferredItem<Item> CRYSTAL_STAFF = registerToolItem("crystal_staff", "Crystal Staff", () -> new StaffItem(4, 10, 1000, IceballEntity::new));
-    public static final DeferredItem<Item> STAFF_OF_GREENPACE = registerToolItem("staff_of_greenpace", "Staff of Greenpace", () -> new StaffItem(4, 10, 1000, GreenpaceEntity::new));
-    public static final DeferredItem<Item> TELEPORTATION_STAFF = registerToolItem("teleportation_staff", "Teleportation Staff", () -> new TeleportItem(4, 1000));
+    public static final DeferredItem<Item> NETHER_PLASMA = register("nether_plasma", "Nether Plasma", () -> new GunItem(4, 6, 512, NetherPlasmaEntity::new), ItemType.GUN);
+    public static final DeferredItem<Item> OCEAN_PLASMA = register("ocean_plasma", "Ocean Plasma", () -> new GunItem(4, 4, 512, OceanPlasmaEntity::new), ItemType.GUN);
+    public static final DeferredItem<Item> FOREST_PLASMA = register("forest_plasma", "Forest Plasma", () -> new GunItem(4, 4, 512, BouncingOvergrownEntity::new), ItemType.GUN);
+    public static final DeferredItem<Item> ROCK_LAUNCHER = register("rock_launcher", "Rock Launcher", () -> new GunItem(4, 4, 512, BouncingDivinityEntity::new), ItemType.GUN);
+    public static final DeferredItem<Item> CHAOS_CANNON = register("chaos_cannon", "Chaos Cannon", () -> new GunItem(4, 6, 512, ChaosCannonEntity::new), ItemType.GUN);
+    public static final DeferredItem<Item> EYE_BLASTER = register("eye_blaster", "Eye Blaster", () -> new GunItem(4, 12, 512, EyeBlasterEntity::new), ItemType.GUN);
 
-    public static final DeferredItem<Item> NETHER_PLASMA = register("nether_plasma", "Nether Plasma", () -> new GunItem(4, 6, 1000, NetherPlasmaEntity::new), ItemType.GUN);
-    public static final DeferredItem<Item> OCEAN_PLASMA = register("ocean_plasma", "Ocean Plasma", () -> new GunItem(4, 4, 1000, OceanPlasmaEntity::new), ItemType.GUN);
-    public static final DeferredItem<Item> FOREST_PLASMA = register("forest_plasma", "Forest Plasma", () -> new GunItem(4, 4, 1000, OvergrownEntity::new), ItemType.GUN);
-    public static final DeferredItem<Item> ROCK_LAUNCHER = register("rock_launcher", "Rock Launcher", () -> new GunItem(4, 4, 1000, DivinityEntity::new), ItemType.GUN);
-    public static final DeferredItem<Item> CHAOS_CANNON = register("chaos_cannon", "Chaos Cannon", () -> new GunItem(4, 6, 1000, BouncingProjectileEntity::new), ItemType.GUN);
-    public static final DeferredItem<Item> EYE_BLASTER = register("eye_blaster", "Eye Blaster", () -> new GunItem(4, 12, 1000, EyeBlasterEntity::new), ItemType.GUN);
+    public static final DeferredItem<Item> SPELLBINDING_HAMMER = register("spellbinding_hammer", "Spellbinding Hammer", () -> new HammerItem(JToolTiers.HAMMER, 4, 12, SpellbindingEntity::new), ItemType.HAMMER);
+    public static final DeferredItem<Item> EARTHEN_HAMMER = register("earthen_hammer", "Earthen Hammer", () -> new HammerItem(JToolTiers.HAMMER, 4, 12, EarthenEntity::new), ItemType.HAMMER);
+    public static final DeferredItem<Item> FLAMING_HAMMER = register("flaming_hammer", "Flaming Hammer", () -> new HammerItem(JToolTiers.HAMMER, 4, 12, FlamingHammerEntity::new), ItemType.HAMMER);
+    public static final DeferredItem<Item> NETHIC_HAMMER = register("nethic_hammer", "Nethic Hammer", () -> new HammerItem(JToolTiers.HAMMER, 4, 12, NethicEntity::new), ItemType.HAMMER);
+    public static final DeferredItem<Item> OVERGROWN_HAMMER = register("overgrown_hammer", "Overgrown Hammer", () -> new HammerItem(JToolTiers.HAMMER, 4, 12, OvergrownHammerEntity::new), ItemType.HAMMER);
+    public static final DeferredItem<Item> ROCKY_HAMMER = register("rocky_hammer", "Rocky Hammer", () -> new HammerItem(JToolTiers.HAMMER, 4, 12, RockyHammerEntity::new), ItemType.HAMMER);
+    public static final DeferredItem<Item> ROYAL_HAMMER = register("royal_hammer", "Royal Hammer", () -> new HammerItem(JToolTiers.HAMMER, 4, 12, RoyalEntity::new), ItemType.HAMMER);
+    public static final DeferredItem<Item> CRYSTALLIZED_HAMMER = register("crystallized_hammer", "Crystallized Hammer", () -> new HammerItem(JToolTiers.HAMMER, 4, 12, CrystallizedEntity::new), ItemType.HAMMER);
+    public static final DeferredItem<Item> WITHIC_HAMMER = register("withic_hammer", "Withic Hammer", () -> new HammerItem(JToolTiers.HAMMER, 4, 12, WithicEntity::new), ItemType.HAMMER);
 
-    public static final DeferredItem<Item> SPELLBINDING_HAMMER = register("spellbinding_hammer", "Spellbinding Hammer", () -> new HammerItem(JToolTiers.EARTHERN_HAMMER, 4, 12, SpellbindingEntity::new), ItemType.HAMMER);
-    public static final DeferredItem<Item> EARTHEN_HAMMER = register("earthen_hammer", "Earthen Hammer", () -> new HammerItem(JToolTiers.EARTHERN_HAMMER, 4, 12, EarthenEntity::new), ItemType.HAMMER);
-    public static final DeferredItem<Item> FLAMING_HAMMER = register("flaming_hammer", "Flaming Hammer", () -> new HammerItem(JToolTiers.EARTHERN_HAMMER, 4, 12, FlamingHammerEntity::new), ItemType.HAMMER);
-    public static final DeferredItem<Item> NETHIC_HAMMER = register("nethic_hammer", "Nethic Hammer", () -> new HammerItem(JToolTiers.EARTHERN_HAMMER, 4, 12, NethicEntity::new), ItemType.HAMMER);
-    public static final DeferredItem<Item> OVERGROWN_HAMMER = register("overgrown_hammer", "Overgrown Hammer", () -> new HammerItem(JToolTiers.EARTHERN_HAMMER, 4, 12, OvergrownHammerEntity::new), ItemType.HAMMER);
-    public static final DeferredItem<Item> ROCKY_HAMMER = register("rocky_hammer", "Rocky Hammer", () -> new HammerItem(JToolTiers.EARTHERN_HAMMER, 4, 12, RockyHammerEntity::new), ItemType.HAMMER);
-    public static final DeferredItem<Item> ROYAL_HAMMER = register("royal_hammer", "Royal Hammer", () -> new HammerItem(JToolTiers.EARTHERN_HAMMER, 4, 12, RoyalEntity::new), ItemType.HAMMER);
-    public static final DeferredItem<Item> CRYSTALLIZED_HAMMER = register("crystallized_hammer", "Crystallized Hammer", () -> new HammerItem(JToolTiers.EARTHERN_HAMMER, 4, 12, CrystallizedEntity::new), ItemType.HAMMER);
-    public static final DeferredItem<Item> WITHIC_HAMMER = register("withic_hammer", "Withic Hammer", () -> new HammerItem(JToolTiers.EARTHERN_HAMMER, 4, 12, WithicEntity::new), ItemType.HAMMER);
+    public static final DeferredItem<Item> ROCKY_BATTLE_AXE = registerToolItem("rocky_battle_axe", "Rocky Battle Axe", () -> new BattleAxeItem(JToolTiers.BATTLE_AXE, -4), ItemType.AXE);
+    public static final DeferredItem<Item> CRYSTALLIZED_BATTLE_AXE = registerToolItem("crystallized_battle_axe", "Crystallized Battle Axe", () -> new BattleAxeItem(JToolTiers.BATTLE_AXE, -3), ItemType.AXE);
+    public static final DeferredItem<Item> BACK_BITER = registerToolItem("back_biter", "Back Biter", () -> new BattleAxeItem(JToolTiers.BATTLE_AXE, -3), ItemType.AXE);
+    public static final DeferredItem<Item> DAWN_BREAKER = registerToolItem("dawn_breaker", "Dawn Breaker", () -> new BattleAxeItem(JToolTiers.BATTLE_AXE, -2), ItemType.AXE);
+    public static final DeferredItem<Item> TEMPEST_BATTLE_AXE = registerToolItem("tempest_battle_axe", "Tempest Battle Axe", () -> new BattleAxeItem(JToolTiers.BATTLE_AXE, -3), ItemType.AXE);
+    public static final DeferredItem<Item> BRONZED_BATTLE_AXE = registerToolItem("bronzed_battle_axe", "Bronzed Battle Axe", () -> new BattleAxeItem(JToolTiers.BATTLE_AXE, -3), ItemType.AXE);
+    public static final DeferredItem<Item> CELESTITE_BATTLE_AXE = registerToolItem("celestite_battle_axe", "Celestite Battle Axe", () -> new BattleAxeItem(JToolTiers.BATTLE_AXE, -2), ItemType.AXE);
+    public static final DeferredItem<Item> STORUM_BATTLE_AXE = registerToolItem("storum_battle_axe", "Storum Battle Axe", () -> new BattleAxeItem(JToolTiers.BATTLE_AXE, -2), ItemType.AXE);
+    public static final DeferredItem<Item> CELEKIUM_BATTLE_AXE = registerToolItem("celekium_battle_axe", "Celekium Battle Axe", () -> new BattleAxeItem(JToolTiers.BATTLE_AXE, -2), ItemType.AXE);
+    public static final DeferredItem<Item> THUNDERBIRD_BATTLE_AXE = registerToolItem("thunderbird_battle_axe", "Thunderbird Battle Axe", () -> new BattleAxeItem(JToolTiers.BATTLE_AXE, 0), ItemType.AXE);
 
     public static final DeferredItem<Item> GOLDEN_EUCA_BOAT = registerNormalItem("golden_euca_boat", "Gold Euca Boat", () -> new JBoatItem(JBoat.Type.GOLD_EUCA));
     public static final DeferredItem<Item> BROWN_EUCA_BOAT = registerNormalItem("brown_euca_boat", "Brown Euca Boat", () -> new JBoatItem(JBoat.Type.BROWN_EUCA));

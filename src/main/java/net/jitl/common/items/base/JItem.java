@@ -68,7 +68,7 @@ public class JItem extends Item {
 
     public void addItemDesc(Item item, List<Component> tooltip, String descLoc) {
         if(this == item) {
-            tooltip.add((Component.translatable(descLoc)));
+            tooltip.add(Component.translatable(descLoc));
         }
     }
 }

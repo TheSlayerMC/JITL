@@ -40,7 +40,7 @@ public class BottleEssenciaItem extends JItem implements IEssenceItem {
                     essence.addEssence(player, strong ? 8 : 4);
             }
 
-            if (!player.getAbilities().instabuild) {
+            if(!player.getAbilities().instabuild) {
                 pStack.shrink(1);
             }
         }
@@ -48,14 +48,17 @@ public class BottleEssenciaItem extends JItem implements IEssenceItem {
         return pStack;
     }
 
-    public int getUseDuration(ItemStack pStack) {
+    @Override
+    public int getUseDuration(ItemStack stack, LivingEntity entity) {
         return 32;
     }
 
+    @Override
     public UseAnim getUseAnimation(ItemStack pStack) {
         return UseAnim.DRINK;
     }
 
+    @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
         return ItemUtils.startUsingInstantly(pLevel, pPlayer, pHand);
     }

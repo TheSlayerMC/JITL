@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "jitl:item/bronzed_battle_axe"
+  }
+}

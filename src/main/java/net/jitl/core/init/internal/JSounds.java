@@ -65,6 +65,8 @@ public class JSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> STAFF_0 = registerSound("items.staff.staff_0");
     public static final DeferredHolder<SoundEvent, SoundEvent> LOOT = registerSound("items.loot");
     public static final DeferredHolder<SoundEvent, SoundEvent> MINERS_PEARL = registerSound("items.miners_pearl");
+    public static final DeferredHolder<SoundEvent, SoundEvent> HAMMER = registerSound("items.hammer");
+    public static final DeferredHolder<SoundEvent, SoundEvent> CANNON = registerSound("items.cannon");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> HONGO_AMBIENT = registerSound("entities.hongo_ambient");
     public static final DeferredHolder<SoundEvent, SoundEvent> HONGO_HURT = registerSound("entities.hongo_hurt");

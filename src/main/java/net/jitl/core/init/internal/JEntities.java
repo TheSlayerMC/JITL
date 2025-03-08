@@ -96,9 +96,11 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<DoomsbringerEntity>> DOOMSBRINGER_TYPE = registerProjectile(DoomsbringerEntity::new, "doomsbringer", "Doomsbringer", 0.25F, 0.25F);
     public static final DeferredHolder<EntityType<?>, EntityType<GreenpaceEntity>> GREENPACE_TYPE = registerProjectile(GreenpaceEntity::new, "greenpace", "Greenpace", 0.25F, 0.25F);
     public static final DeferredHolder<EntityType<?>, EntityType<OvergrownEntity>> OVERGROWN_TYPE = registerProjectile(OvergrownEntity::new, "overgrown", "Overgrown", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<BouncingOvergrownEntity>> BOUNCING_OVERGROWN_TYPE = registerProjectile(BouncingOvergrownEntity::new, "b_overgrown", "Overgrown", 0.25F, 0.25F);
     public static final DeferredHolder<EntityType<?>, EntityType<DivinityEntity>> DIVINITY_TYPE = registerProjectile(DivinityEntity::new, "divinity", "Divinity", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<BouncingDivinityEntity>> BOUNCING_DIVINITY_TYPE = registerProjectile(BouncingDivinityEntity::new, "b_divinity", "Divinity", 0.25F, 0.25F);
     public static final DeferredHolder<EntityType<?>, EntityType<EnlightenmentEntity>> ENLIGHTENMENT_TYPE = registerProjectile(EnlightenmentEntity::new, "enlightenment", "Enlightenment", 0.25F, 0.25F);
-    public static final DeferredHolder<EntityType<?>, EntityType<BouncingProjectileEntity>> BOUNCING_TYPE = registerProjectile(BouncingProjectileEntity::new, "bouncing", "Bouncing", 0.25F, 0.25F);
+    public static final DeferredHolder<EntityType<?>, EntityType<ChaosCannonEntity>> CHAOS_CANNON = registerProjectile(ChaosCannonEntity::new, "chaos", "Chaos", 0.25F, 0.25F);
     public static final DeferredHolder<EntityType<?>, EntityType<SpellbindingEntity>> SPELLBINDING_TYPE = registerProjectile(SpellbindingEntity::new, "spellbinding", "Spellbinding", 0.25F, 0.25F);
     public static final DeferredHolder<EntityType<?>, EntityType<EarthenEntity>> EARTHEN_TYPE = registerProjectile(EarthenEntity::new, "earthen", "Earthen", 0.25F, 0.25F);
     public static final DeferredHolder<EntityType<?>, EntityType<FlamingHammerEntity>> FLAMING_TYPE = registerProjectile(FlamingHammerEntity::new, "flaming", "Flaming", 0.25F, 0.25F);
