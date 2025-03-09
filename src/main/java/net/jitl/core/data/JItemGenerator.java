@@ -73,7 +73,7 @@ public class JItemGenerator {
                 e.printStackTrace();
             }
 
-            getSpawnEggItem();
+            getSpawnEggItem(JITL.MODID, name);
             itemModelInit();
         }
 
@@ -163,9 +163,12 @@ public class JItemGenerator {
         writeToItemModelFile("}");
     }
 
-    public void getSpawnEggItem() {
+    public void getSpawnEggItem(String modID, String name) {
         writeToItemModelFile("{");
-        writeToItemModelFile("  \"parent\": \"minecraft:item/template_spawn_egg\"");
+        writeToItemModelFile("  \"parent\": \"minecraft:item/generated\",");
+        writeToItemModelFile("  \"textures\": {");
+        writeToItemModelFile("    \"layer0\": \"" + modID + ":" + "item/spawn_eggs/" + name + "\"");
+        writeToItemModelFile("  }");
         writeToItemModelFile("}");
     }
 }
