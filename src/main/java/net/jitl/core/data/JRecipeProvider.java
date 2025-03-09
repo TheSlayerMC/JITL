@@ -6,6 +6,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -67,6 +68,12 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
                 .pattern(b).unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
     }
 
+    protected void addShapedRecipe(RecipeOutput recipeConsumer, RecipeCategory cat, String m, String b, char s, ItemLike input, char s2, ItemLike input2, char s3, TagKey<Item> input3, ItemLike output, int count) {
+        ShapedRecipeBuilder.shaped(cat, output, count).define(s, input).define(s2, input2).define(s3, input3)
+                .pattern(m)
+                .pattern(b).unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
+    }
+
     protected void addShapedRecipe(RecipeOutput recipeConsumer, RecipeCategory cat, String t, String m, String b, char s, ItemLike input, ItemLike output, int count) {
         ShapedRecipeBuilder.shaped(cat, output, count).define(s, input)
                 .pattern(t)
@@ -97,6 +104,13 @@ public class JRecipeProvider extends RecipeProvider implements IConditionBuilder
     }
 
     protected void addShapedRecipe(RecipeOutput recipeConsumer, RecipeCategory cat, String t, String m, String b, char s, ItemLike input, char s2, ItemLike input2, char s3, ItemLike input3, ItemLike output, int count) {
+        ShapedRecipeBuilder.shaped(cat, output, count).define(s, input).define(s2, input2).define(s3, input3)
+                .pattern(t)
+                .pattern(m)
+                .pattern(b).unlockedBy(inputToKey(input), has(input)).save(recipeConsumer);
+    }
+
+    protected void addShapedRecipe(RecipeOutput recipeConsumer, RecipeCategory cat, String t, String m, String b, char s, ItemLike input, char s2, ItemLike input2, char s3, TagKey<Item> input3, ItemLike output, int count) {
         ShapedRecipeBuilder.shaped(cat, output, count).define(s, input).define(s2, input2).define(s3, input3)
                 .pattern(t)
                 .pattern(m)

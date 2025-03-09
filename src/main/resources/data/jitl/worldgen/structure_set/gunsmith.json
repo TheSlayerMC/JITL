@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "jitl:gunsmith",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 184915841589,
+
+    "spacing": 20,
+
+    "separation": 6,
+
+    "type": "minecraft:random_spread"
+  }
+}

@@ -134,6 +134,7 @@ public class RenderEntitys {
     public static void registerAnimationRenderers() {
         EntityRenderers.register(JEntities.MAGE_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("mage", JDimension.OVERWORLD), 0.55F, 1.25F));
         EntityRenderers.register(JEntities.BLACKSMITH_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("blacksmith", JDimension.OVERWORLD), 0.5F, 1F));
+        EntityRenderers.register(JEntities.GUNSMITH_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("gunsmith", JDimension.OVERWORLD), 0.5F, 1F));
         EntityRenderers.register(JEntities.FLORO_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("floro", JDimension.OVERWORLD), 0.5F, 1.25F));
         EntityRenderers.register(JEntities.BOOM_TYPE.get(), renderer -> new BoomBoomRenderer<>(renderer, new AnimatedMonsterModel<>("boomboom", JDimension.OVERWORLD)));
         EntityRenderers.register(JEntities.BROWN_HONGO_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("brown_hongo", JDimension.OVERWORLD), 0.6F));

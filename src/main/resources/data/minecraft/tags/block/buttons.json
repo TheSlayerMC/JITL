@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "jitl:euca_gold_button",
+    "jitl:euca_brown_button",
+    "jitl:frozen_button",
+    "jitl:burned_button",
+    "jitl:depths_button",
+    "jitl:corba_button",
+    "jitl:terranian_button",
+    "jitl:cloudia_button"
+  ]
+}

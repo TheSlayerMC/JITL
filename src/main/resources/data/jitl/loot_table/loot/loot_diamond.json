@@ -46,6 +46,20 @@
         },
         {
           "type": "minecraft:item",
+          "weight": 10,
+          "name": "jitl:strong_bottle_of_essencia",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 5
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "weight": 14,
           "name": "minecraft:saddle",
           "functions": [

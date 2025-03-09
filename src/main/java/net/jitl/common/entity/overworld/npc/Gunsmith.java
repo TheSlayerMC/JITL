@@ -30,23 +30,21 @@ import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 
-public class Blacksmith extends JVillagerEntity {
+public class Gunsmith extends JVillagerEntity {
 
     public static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
-            new CurrencyForItemsTrade(Items.STICK, 10, JItems.PURPLE_GEM.get(), 10, JItems.DAWN_BREAKER, 1, 99, 5),
-            new CurrencyForItemsTrade(Items.STICK, 10, JItems.PURPLE_GEM.get(), 10, JItems.TEMPEST_BATTLE_AXE, 1, 99, 5),
-            new CurrencyForItemsTrade(Items.STICK, 10, JItems.GREEN_GEM.get(), 10, JItems.DRAGONS_TOOTH, 1, 99, 5),
-            new CurrencyForItemsTrade(Items.STICK, 10, JItems.GREEN_GEM.get(), 10, JItems.POISON_SWORD, 1, 99, 5),
-            new CurrencyForItemsTrade(Items.STICK, 10, JItems.BLUE_GEM.get(), 10, JItems.CLOUD_SLICER, 1, 99, 5),
-            new CurrencyForItemsTrade(Items.STICK, 10, JItems.YELLOW_GEM.get(), 10, JItems.BACK_BITER, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.BLUE_GEM, 10, JItems.YELLOW_GEM.get(), 10, JItems.SUNSET_PIERCER, 8, 99, 5),
-            new CurrencyForItemsTrade(JItems.BLUE_GEM, 10, JItems.YELLOW_GEM.get(), 10, JItems.AQUATIC_KNIFE, 8, 99, 5),
-            new CurrencyForItemsTrade(JItems.PURPLE_GEM, 10, JItems.GREEN_GEM.get(), 10, JItems.POISON_BOW, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.PURPLE_GEM, 10, JItems.YELLOW_GEM.get(), 10, JItems.DARKNESS_BOW, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.PURPLE_GEM, 10, JItems.BLUE_GEM.get(), 10, JItems.FROZEN_BOW, 1, 99, 5)
+            new CurrencyForItemsTrade(JItems.GUN_BASE, 1, Items.BLAZE_ROD, 16, JItems.NETHER_PLASMA, 1, 99, 5),
+            new CurrencyForItemsTrade(JItems.GUN_BASE, 1, JItems.BLUE_GEM, 16, JItems.OCEAN_PLASMA, 1, 99, 5),
+            new CurrencyForItemsTrade(JItems.GUN_BASE, 1, JItems.GREEN_GEM, 16, JItems.FOREST_PLASMA, 1, 99, 5),
+            new CurrencyForItemsTrade(JItems.GUN_BASE, 1, JItems.STONE_CLUMP, 16, JItems.ROCK_LAUNCHER, 1, 99, 5),
+            new CurrencyForItemsTrade(JItems.GUN_BASE, 1, JItems.YELLOW_GEM, 16, JItems.CHAOS_CANNON, 1, 99, 5),
+            new CurrencyForItemsTrade(JItems.GUN_BASE, 1, Items.ENDER_EYE, 8, JItems.EYE_BLASTER, 1, 99, 5),
+            new CurrencyForItemsTrade(JItems.ROCKY_HAMMER, 1, JItems.BLOODCRUST_INGOT, 8, JItems.FLAMING_HAMMER, 1, 99, 5),
+            new CurrencyForItemsTrade(JItems.ROCKY_HAMMER, 1, Items.BLAZE_ROD, 8, JItems.NETHIC_HAMMER, 1, 99, 5),
+            new CurrencyForItemsTrade(JItems.NETHIC_HAMMER, 1, Items.WITHER_SKELETON_SKULL, 1, JItems.WITHIC_HAMMER, 1, 99, 5)
     }));
 
-    public Blacksmith(EntityType<? extends JVillagerEntity> type, Level worldIn) {
+    public Gunsmith(EntityType<? extends JVillagerEntity> type, Level worldIn) {
         super(type, worldIn);
     }
 
@@ -70,8 +68,8 @@ public class Blacksmith extends JVillagerEntity {
                 .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
     }
 
-    private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.blacksmith.walk");
-    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.blacksmith.idle");
+    private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.gunsmith.walk");
+    private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.gunsmith.idle");
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {

@@ -45,6 +45,8 @@ public class JEntityLootTables extends EntityLootSubProvider {
                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))));
 
         this.add(JEntities.MAGE_TYPE.get(), empty());
+        this.add(JEntities.BLACKSMITH_TYPE.get(), empty());
+        this.add(JEntities.GUNSMITH_TYPE.get(), empty());
 
         this.add(JEntities.WITHERSPINE_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
                 .add(LootItem.lootTableItem(JItems.WITHIC_DUST.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))

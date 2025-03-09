@@ -466,6 +466,7 @@ public class JItems {
     public static final DeferredItem<Item> STAFF_OF_GREENPACE = registerToolItem("staff_of_greenpace", "Staff of Greenpace", () -> new StaffItem(4, 10, 256, GreenpaceEntity::new));
     public static final DeferredItem<Item> TELEPORTATION_STAFF = registerToolItem("teleportation_staff", "Teleportation Staff", () -> new TeleportItem(4, 256));
 
+    public static final DeferredItem<Item> GUN_BASE = registerNormalItem("gun_base", "Gun Base");
     public static final DeferredItem<Item> NETHER_PLASMA = register("nether_plasma", "Nether Plasma", () -> new GunItem(4, 6, 512, NetherPlasmaEntity::new), ItemType.GUN);
     public static final DeferredItem<Item> OCEAN_PLASMA = register("ocean_plasma", "Ocean Plasma", () -> new GunItem(4, 4, 512, OceanPlasmaEntity::new), ItemType.GUN);
     public static final DeferredItem<Item> FOREST_PLASMA = register("forest_plasma", "Forest Plasma", () -> new GunItem(4, 4, 512, BouncingOvergrownEntity::new), ItemType.GUN);
@@ -483,7 +484,7 @@ public class JItems {
     public static final DeferredItem<Item> CRYSTALLIZED_HAMMER = register("crystallized_hammer", "Crystallized Hammer", () -> new HammerItem(JToolTiers.HAMMER, 4, 12, CrystallizedEntity::new), ItemType.HAMMER);
     public static final DeferredItem<Item> WITHIC_HAMMER = register("withic_hammer", "Withic Hammer", () -> new HammerItem(JToolTiers.HAMMER, 4, 12, WithicEntity::new), ItemType.HAMMER);
 
-    public static final DeferredItem<Item> ROCKY_BATTLE_AXE = registerToolItem("rocky_battle_axe", "Rocky Battle Axe", () -> new BattleAxeItem(JToolTiers.BATTLE_AXE, -4), ItemType.AXE);
+    public static final DeferredItem<Item> ROCKY_BATTLE_AXE = registerToolItem("rocky_battle_axe", "Rocky Battle Axe", () -> new BattleAxeItem(JToolTiers.BATTLE_AXE, -2), ItemType.AXE);
     public static final DeferredItem<Item> CRYSTALLIZED_BATTLE_AXE = registerToolItem("crystallized_battle_axe", "Crystallized Battle Axe", () -> new BattleAxeItem(JToolTiers.BATTLE_AXE, -3), ItemType.AXE);
     public static final DeferredItem<Item> BACK_BITER = registerToolItem("back_biter", "Back Biter", () -> new BattleAxeItem(JToolTiers.BATTLE_AXE, -3), ItemType.AXE);
     public static final DeferredItem<Item> DAWN_BREAKER = registerToolItem("dawn_breaker", "Dawn Breaker", () -> new BattleAxeItem(JToolTiers.BATTLE_AXE, -2), ItemType.AXE);

@@ -123,6 +123,12 @@ public class JERCompat {
             chest.registerChest("Terranian Protector Boss Crystal", getBossLootTable("terranian_protector"));
             chest.registerChest("Thunder Bird Boss Crystal", getBossLootTable("thunder_bird"));
             chest.registerChest("Withering Beast Boss Crystal", getBossLootTable("withering_beast"));
+
+            chest.registerChest("Basic Loot Pouch", getLootTable("loot_basic"));
+            chest.registerChest("Gold Loot Pouch", getLootTable("loot_gold"));
+            chest.registerChest("Diamond Loot Pouch", getLootTable("loot_diamond"));
+            chest.registerChest("Frosty Loot Pouch", getLootTable("loot_frosty_gift"));
+            chest.registerChest("Corba Spirit Crystal", getLootTable("spirit_crystal"));
         }
     }
 
@@ -140,6 +146,10 @@ public class JERCompat {
 
     public static ResourceKey<LootTable> getMobLootTable(String name){
         return ResourceKey.create(Registries.LOOT_TABLE, JITL.rl("entities/" + name));
+    }
+
+    public static ResourceKey<LootTable> getLootTable(String name){
+        return ResourceKey.create(Registries.LOOT_TABLE, JITL.rl("loot/" + name));
     }
 
     public static ResourceKey<LootTable> getChestLootTable(String name){

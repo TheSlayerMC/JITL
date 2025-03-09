@@ -322,6 +322,9 @@ public class LangRegistry {
         writeToFile("\"structure.overworld.jitl.blacksmith\" : " + "\"Blacksmith House\",");
         writeToFile("\"book.jitl.entry.overworld.blacksmith_house.desc\" : " + "\"Found randomly in any Plains, Meadow, Sunflower Plains, Forest, Flower Forest, Birch Forest and Cherry Grove Biomes, Climb up the top to find and meet the $(l:jitl:overworld/traders#blacksmith)Blacksmith\",");
 
+        writeToFile("\"structure.overworld.jitl.gunsmith\" : " + "\"Gunsmith House\",");
+        writeToFile("\"book.jitl.entry.overworld.gunsmith_house.desc\" : " + "\"Found randomly in any Plains, Meadow, Sunflower Plains, Forest, Flower Forest, Birch Forest and Cherry Grove Biomes, Climb up the top to find and meet the $(l:jitl:overworld/traders#gunsmith)Gunsmith\",");
+
         writeToFile("\"structure.nether.jitl.boil_lock\" : " + "\"Boil Lock\",");
         writeToFile("\"book.jitl.entry.nether.boil_lock.desc\" : " + "\"Unbreakable structure which you need to unlock with a Boiling Lock Key which is found in the Nether Tower. This structure contains the Boiling Point Portal Frames\",");
 
@@ -464,7 +467,8 @@ public class LangRegistry {
         addMob(EnumKnowledge.OVERWORLD, "rockite_golem", "Overworld Underground", "NPC Mob, Will trade with you", MobStats.NPC_HEALTH, "");
         addStructureMob(EnumKnowledge.OVERWORLD, "neutral_sentry_stalker", "$(l:jitl:overworld/structures#ancient_structure)Ancient Structure$(/l)", "NPC Mob, Will trade with you once you reach 75 Overworld Knowledge, Will trade Sentacoins for Breakable versions of Senterian Blocks (Decorational)", true, MobStats.NPC_HEALTH, 0, "");
         addStructureMob(EnumKnowledge.OVERWORLD, "mage", "$(l:jitl:overworld/structures#mage_hut)Mage Hut$(/l)", "NPC Mob, Will trade with you", true, MobStats.NPC_HEALTH, 0, "");
-        addStructureMob(EnumKnowledge.OVERWORLD, "blacksmith", "$(l:jitl:overworld/structures#blacksmith)Blacksmith House$(/l)", "NPC Mob, Will trade with you", true, MobStats.NPC_HEALTH, 0, "");
+        addStructureMob(EnumKnowledge.OVERWORLD, "blacksmith", "$(l:jitl:overworld/structures#blacksmith_house)Blacksmith House$(/l)", "NPC Mob, Will trade with you", true, MobStats.NPC_HEALTH, 0, "");
+        addStructureMob(EnumKnowledge.OVERWORLD, "gunsmith", "$(l:jitl:overworld/structures#gunsmith_house)Gunsmith House$(/l)", "NPC Mob, Will trade with you", true, MobStats.NPC_HEALTH, 0, "");
         addMob(EnumKnowledge.OVERWORLD, "robot", "Any Overworld Biome", "Will attack on site", MobStats.ROBOT_HEALTH, "Iron Ingot and Redstone Dust");
         addPet(EnumKnowledge.OVERWORLD, "pet_robot", true, "Obtained from the $(l:jitl:overworld/traders#mage)Mage$(/l)", "Already tamed when spawned, can be healed with Pet Food", MobStats.PET_ROBOT_HEALTH, MobStats.PET_ROBOT_DAMAGE,"");
         addPet(EnumKnowledge.OVERWORLD, "ferret", false, "Forest like", "Pet Food", MobStats.FERRET_HEALTH, MobStats.FERRET_DAMAGE,"");

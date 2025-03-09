@@ -7,6 +7,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 
@@ -93,8 +94,6 @@ public class JRecipeRegistry extends JRecipeProvider {
 
         add2x2Recipe(recipeConsumer, JItems.SMITHSTONE.get(), JBlocks.SMITHSTONE_BLOCK.get(), true);
         add2x2Recipe(recipeConsumer, JItems.BLEEDSTONE.get(), JBlocks.BLEEDSTONE_BLOCK.get(), true);
-
-        addShapedRecipe(recipeConsumer, "s s", " s ", "s s", 's', Items.STRING, Blocks.COBWEB, 1);
     }
 
     public void buildItemRecipes(RecipeOutput recipeConsumer) {
@@ -140,6 +139,10 @@ public class JRecipeRegistry extends JRecipeProvider {
         addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "pep", "eye", "pep", 'e', JItems.ENDERILLIUM_SHARD, 'p', Items.ENDER_PEARL, 'y', Items.ENDER_EYE, JItems.MINERS_PEARL.get(), 1);
         addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "pep", "eye", "pep", 'e', JItems.DARK_ORB, 'p', JItems.LIGHT_TERRANIAN_SOIL, 'y', JItems.MAGIC_DUST, JItems.MOON_OF_ETERNAL_NIGHT.get(), 1);
         addShapedRecipe(recipeConsumer, RecipeCategory.MISC, " w ", "www", " w ", 'w', Items.WHEAT, JItems.PET_FOOD, 4);
+
+        addShapedRecipe(recipeConsumer, RecipeCategory.COMBAT, "  e", " s ", "s  ", 's', JItems.STONE_STICK.get(), 'e', Items.ENDER_PEARL, JItems.STAFF_BASE.get(), 1);
+        addShapedRecipe(recipeConsumer, RecipeCategory.COMBAT, "s", "s", 's', Blocks.STONE, JItems.STONE_STICK.get(), 2);
+        addShapedRecipe(recipeConsumer, RecipeCategory.COMBAT, " ii", "igi", "ib ", 'i', Items.IRON_INGOT, 'g', Items.GUNPOWDER, 'b', ItemTags.BUTTONS, JItems.GUN_BASE.get(), 1);
     }
 
     public void buildWoodTypes(RecipeOutput consumer) {

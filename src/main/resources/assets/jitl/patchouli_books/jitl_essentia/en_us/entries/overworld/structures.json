@@ -44,6 +44,19 @@
     },
     {
       "type": "image",
+      "title": "structure.overworld.jitl.gunsmith",
+      "anchor": "gunsmith_house",
+      "images": [
+        "jitl:textures/gui/patchouli/gunsmith.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.gunsmith_house.desc"
+    },
+    {
+      "type": "image",
       "title": "structure.overworld.jitl.rockite_dungeon",
       "images": [
         "jitl:textures/gui/patchouli/rockite_dungeon.png"

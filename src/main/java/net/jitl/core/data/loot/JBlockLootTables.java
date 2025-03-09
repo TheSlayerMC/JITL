@@ -65,6 +65,25 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.add(JBlocks.LUNITE_ORE, (block) -> createOreDrop(block, JItems.LUNITE_CHUNK.get()));
         this.dropSelf(JBlocks.LUNITE_BLOCK);
 
+        this.dropSelf(JBlocks.DEPTHS_MOSS_BLOCK);
+        this.dropSelf(JBlocks.POINTED_DEPTHS_DRIPSTONE);
+        this.dropSelf(JBlocks.DEPTHS_DRIPSTONE);
+        this.dropSelf(JBlocks.CRYSTALLIZED_DRIPSTONE);
+        this.dropSelf(JBlocks.POINTED_CRYSTALLIZED_DRIPSTONE);
+        this.add(JBlocks.BLUE_GLOWSHROOM, noDrop());
+        this.add(JBlocks.BLUE_GLOWSHROOM, noDrop());
+        this.add(JBlocks.RED_GLOWSHROOM, noDrop());
+        this.dropSelf(JBlocks.TALL_GREEN_GLOWSHROOM);
+        this.dropSelf(JBlocks.TALL_RED_GLOWSHROOM);
+        this.dropSelf(JBlocks.TALL_BLUE_GLOWSHROOM);
+        this.add(JBlocks.RED_CRYSTAL_SHROOM_BLOCK, noDrop());
+        this.add(JBlocks.BLUE_CRYSTAL_SHROOM_BLOCK, noDrop());
+        this.add(JBlocks.GREEN_CRYSTAL_SHROOM_BLOCK, noDrop());
+        this.add(JBlocks.PURPLE_CRYSTAL_SHROOM_BLOCK, noDrop());
+        this.add(JBlocks.CRYSTALSHROOM_STEM, noDrop());
+        this.dropSelf(JBlocks.SMALL_LIGSHROOM);
+        this.dropSelf(JBlocks.TALL_LIGSHROOM);
+
 //        this.dropSelf(JBlocks.VERDITE_ORE);
 //        this.dropSelf(JBlocks.VERDITE_BLOCK);
 //        this.dropSelf(JBlocks.DEEPSLATE_VERDITE_ORE);

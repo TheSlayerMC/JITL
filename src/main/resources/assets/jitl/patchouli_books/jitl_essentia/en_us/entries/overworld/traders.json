@@ -30,6 +30,18 @@
     },
     {
       "type": "entity",
+      "entity": "jitl:gunsmith",
+      "scale": 1,
+      "name": "Gunsmith",
+      "offset": 0.2,
+      "anchor": "gunsmith"
+    },
+    {
+      "type": "text",
+      "text": "book.jitl.entry.overworld.mobs.gunsmith.desc"
+    },
+    {
+      "type": "entity",
       "entity": "jitl:neutral_sentry_stalker",
       "scale": 1,
       "name": "Neutral Sentry Stalker",

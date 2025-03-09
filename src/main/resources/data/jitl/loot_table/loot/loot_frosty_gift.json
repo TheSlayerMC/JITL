@@ -75,6 +75,20 @@
         },
         {
           "type": "minecraft:item",
+          "weight": 10,
+          "name": "jitl:bottle_of_essencia",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 5
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "weight": 20,
           "name": "minecraft:diamond",
           "functions": [
