@@ -2,7 +2,7 @@ The official repository for the Journey Into The Light Minecraft mod
 
 Download [Curseforge](https://www.curseforge.com/minecraft/mc-mods/journey-into-the-light-mod), [Modrinth](https://modrinth.com/mod/jitl)
 
-Discord: https://discord.com/invite/WhXvz5b
+[Discord](https://discord.com/invite/WhXvz5b)
 
 What you can and cannot do with Journey Into The Light
 
