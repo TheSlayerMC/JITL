@@ -7,7 +7,7 @@ Discord: https://discord.com/invite/WhXvz5b
 What you can and cannot do with Journey Into The Light
 
 You CAN:
-Download Journey Into The Light and use it
+* Download Journey Into The Light and use it
 Make a public Minecraft server with Journey Into The Light installed
 Include Journey Into The Light in a modpack. Ideally you include the CurseForge or Modrinth download link (given above) with it.
 Make videos with Journey Into The Light gameplay. Ideally you include the CurseForge or Modrinth download link (given above) with them.
