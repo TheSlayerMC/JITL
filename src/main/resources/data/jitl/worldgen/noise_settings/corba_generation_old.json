@@ -2,7 +2,7 @@
   "sea_level": 63,
   "disable_mob_generation": false,
   "aquifers_enabled": true,
-  "ore_veins_enabled": false,
+  "ore_veins_enabled": true,
   "legacy_random_source": false,
   "default_block": {
     "Name": "jitl:corba_stone"
@@ -389,20 +389,100 @@
       {
         "type": "minecraft:condition",
         "if_true": {
-          "type": "minecraft:vertical_gradient",
-          "random_name": "minecraft:bedrock_floor",
-          "true_at_and_below": {
-            "above_bottom": 0
-          },
-          "false_at_and_above": {
-            "above_bottom": 5
-          }
+          "type": "minecraft:biome",
+          "biome_is": [
+            "jitl:corba/tainted_swamp"
+          ]
         },
         "then_run": {
-          "type": "minecraft:block",
-          "result_state": {
-            "Name": "minecraft:bedrock"
+          "type": "minecraft:condition",
+          "if_true": {
+            "type": "minecraft:y_above",
+            "anchor": {
+              "absolute": 62
+            },
+            "surface_depth_multiplier": 0,
+            "add_stone_depth": false
+          },
+          "then_run": {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:not",
+              "invert": {
+                "type": "minecraft:y_above",
+                "anchor": {
+                  "absolute": 63
+                },
+                "surface_depth_multiplier": 0,
+                "add_stone_depth": false
+              }
+            },
+            "then_run": {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:noise_threshold",
+                "noise": "minecraft:surface_swamp",
+                "min_threshold": 0,
+                "max_threshold": 1.7976931348623157e+308
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "minecraft:water",
+                  "Properties": {
+                    "level": "0"
+                  }
+                }
+              }
+            }
           }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:biome",
+          "biome_is": [
+            "jitl:corba/corba_plains",
+            "jitl:corba/tainted_forest"
+          ]
+        },
+        "then_run": {
+          "type": "minecraft:sequence",
+          "sequence": [
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:stone_depth",
+                "offset": 0,
+                "surface_type": "floor",
+                "add_surface_depth": false,
+                "secondary_depth_range": 0
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "jitl:corba_grass"
+                }
+              }
+            },
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:stone_depth",
+                "offset": 0,
+                "surface_type": "floor",
+                "add_surface_depth": true,
+                "secondary_depth_range": 0
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "jitl:corba_dirt"
+                }
+              }
+            }
+          ]
         }
       },
       {
@@ -454,11 +534,10 @@
       {
         "type": "minecraft:condition",
         "if_true": {
-          "type": "minecraft:stone_depth",
-          "offset": 1,
-          "surface_type": "floor",
-          "add_surface_depth": true,
-          "secondary_depth_range": 1
+          "type": "minecraft:biome",
+          "biome_is": [
+            "jitl:corba/tainted_swamp"
+          ]
         },
         "then_run": {
           "type": "minecraft:sequence",
@@ -466,284 +545,53 @@
             {
               "type": "minecraft:condition",
               "if_true": {
-                "type": "minecraft:biome",
-                "biome_is": [
-                  "jitl:null"
-                ]
-              },
-              "then_run": {
-                "type": "minecraft:condition",
-                "if_true": {
-                  "type": "minecraft:noise_threshold",
-                  "noise": "jitl:streams",
-                  "min_threshold": 0,
-                  "max_threshold": 0.1
-                },
-                "then_run": {
-                  "type": "minecraft:block",
-                  "result_state": {
-                    "Name": "minecraft:water",
-                    "Properties": {
-                      "level": "0"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "minecraft:condition",
-              "if_true": {
-                "type": "minecraft:vertical_gradient",
-                "random_name": "jitl:corba_stone_bottom",
-                "true_at_and_below": {
-                  "absolute": 0
-                },
-                "false_at_and_above": {
-                  "absolute": 32
-                }
-              },
-              "then_run": {
-                "type": "minecraft:block",
-                "result_state": {
-                  "Name": "jitl:corba_stone"
-                }
-              }
-            },
-            {
-              "type": "minecraft:condition",
-              "if_true": {
-                "type": "minecraft:vertical_gradient",
-                "random_name": "jitl:dried_mud",
-                "true_at_and_below": {
-                  "absolute": 16
-                },
-                "false_at_and_above": {
-                  "absolute": 48
-                }
-              },
-              "then_run": {
-                "type": "minecraft:block",
-                "result_state": {
-                  "Name": "jitl:dried_mud"
-                }
-              }
-            },
-            {
-              "type": "minecraft:condition",
-              "if_true": {
-                "type": "minecraft:water",
+                "type": "minecraft:stone_depth",
                 "offset": 0,
-                "surface_depth_multiplier": 0,
-                "add_stone_depth": false
+                "surface_type": "floor",
+                "add_surface_depth": true,
+                "secondary_depth_range": 0
               },
               "then_run": {
-                "type": "minecraft:condition",
-                "if_true": {
-                  "type": "minecraft:stone_depth",
-                  "offset": 0,
-                  "surface_type": "floor",
-                  "add_surface_depth": false,
-                  "secondary_depth_range": 0
-                },
-                "then_run": {
-                  "type": "minecraft:sequence",
-                  "sequence": [
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:biome",
-                        "biome_is": [
-                          "jitl:corba/tainted_swamp"
-                        ]
-                      },
-                      "then_run": {
-                        "type": "minecraft:condition",
-                        "if_true": {
-                          "type": "minecraft:not",
-                          "invert": {
-                            "type": "minecraft:vertical_gradient",
-                            "random_name": "jitl:dry_mud",
-                            "true_at_and_below": {
-                              "absolute": 64
-                            },
-                            "false_at_and_above": {
-                              "absolute": 245
-                            }
-                          }
-                        },
-                        "then_run": {
-                          "type": "minecraft:sequence",
-                          "sequence": [
-                            {
-                              "type": "minecraft:condition",
-                              "if_true": {
-                                "type": "minecraft:biome",
-                                "biome_is": [
-                                  "jitl:null"
-                                ]
-                              },
-                              "then_run": {
-                                "type": "minecraft:condition",
-                                "if_true": {
-                                  "type": "minecraft:not",
-                                  "invert": {
-                                    "type": "minecraft:vertical_gradient",
-                                    "random_name": "jitl:corba_stone",
-                                    "true_at_and_below": {
-                                      "absolute": 128
-                                    },
-                                    "false_at_and_above": {
-                                      "absolute": 255
-                                    }
-                                  }
-                                },
-                                "then_run": {
-                                  "type": "minecraft:sequence",
-                                  "sequence": [
-                                    {
-                                      "type": "minecraft:condition",
-                                      "if_true": {
-                                        "type": "minecraft:vertical_gradient",
-                                        "random_name": "jitl:corba_cobblestone",
-                                        "true_at_and_below": {
-                                          "absolute": 128
-                                        },
-                                        "false_at_and_above": {
-                                          "absolute": 245
-                                        }
-                                      },
-                                      "then_run": {
-                                        "type": "minecraft:block",
-                                        "result_state": {
-                                          "Name": "jitl:dried_mud"
-                                        }
-                                      }
-                                    },
-                                    {
-                                      "type": "minecraft:block",
-                                      "result_state": {
-                                        "Name": "jitl:corba_stone"
-                                      }
-                                    }
-                                  ]
-                                }
-                              }
-                            }
-                          ]
-                        }
-                      }
+                "type": "minecraft:sequence",
+                "sequence": [
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:noise_threshold",
+                      "noise": "minecraft:nether_state_selector",
+                      "min_threshold": 0,
+                      "max_threshold": 0.2
                     },
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:biome",
-                        "biome_is": [
-                          "jitl:null"
-                        ]
-                      },
-                      "then_run": {
-                        "type": "minecraft:block",
-                        "result_state": {
-                          "Name": "minecraft:snow_block"
-                        }
-                      }
-                    },
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:y_above",
-                        "anchor": {
-                          "absolute": 32
-                        },
-                        "surface_depth_multiplier": 0,
-                        "add_stone_depth": false
-                      },
-                      "then_run": {
-                        "type": "minecraft:sequence",
-                        "sequence": [
-                          {
-                            "type": "minecraft:condition",
-                            "if_true": {
-                              "type": "minecraft:biome",
-                              "biome_is": [
-                                "jitl:corba/tainted_swamp"
-                              ]
-                            },
-                            "then_run": {
-                              "type": "minecraft:block",
-                              "result_state": {
-                                "Name": "jitl:dried_mud"
-                              }
-                            }
-                          },
-                          {
-                            "type": "minecraft:block",
-                            "result_state": {
-                              "Name": "jitl:corba_grass"
-                            }
-                          }
-                        ]
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "jitl:dried_mud"
                       }
                     }
-                  ]
-                }
-              }
-            },
-            {
-              "type": "minecraft:condition",
-              "if_true": {
-                "type": "minecraft:biome",
-                "biome_is": [
-                  "jitl:null"
+                  },
+                  {
+                    "type": "minecraft:block",
+                    "result_state": {
+                      "Name": "jitl:tainted_mud"
+                    }
+                  }
                 ]
-              },
-              "then_run": {
-                "type": "minecraft:condition",
-                "if_true": {
-                  "type": "minecraft:water",
-                  "offset": 0,
-                  "surface_depth_multiplier": 0,
-                  "add_stone_depth": false
-                },
-                "then_run": {
-                  "type": "minecraft:block",
-                  "result_state": {
-                    "Name": "jitl:tainted_mud"
-                  }
-                }
               }
             },
             {
               "type": "minecraft:condition",
               "if_true": {
-                "type": "minecraft:not",
-                "invert": {
-                  "type": "minecraft:water",
-                  "offset": 0,
-                  "surface_depth_multiplier": 0,
-                  "add_stone_depth": false
-                }
+                "type": "minecraft:stone_depth",
+                "offset": 0,
+                "surface_type": "floor",
+                "add_surface_depth": true,
+                "secondary_depth_range": 0
               },
               "then_run": {
-                "type": "minecraft:condition",
-                "if_true": {
-                  "type": "minecraft:noise_threshold",
-                  "noise": "minecraft:gravel",
-                  "min_threshold": 0.2,
-                  "max_threshold": 1
-                },
-                "then_run": {
-                  "type": "minecraft:block",
-                  "result_state": {
-                    "Name": "jitl:tainted_mud"
-                  }
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "jitl:corba_dirt"
                 }
-              }
-            },
-            {
-              "type": "minecraft:block",
-              "result_state": {
-                "Name": "jitl:corba_dirt"
               }
             }
           ]

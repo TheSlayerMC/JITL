@@ -104,6 +104,7 @@ public class BlockRenderTypes {
         cutout.add(JBlocks.TALL_CRUMBLING_PINE.get());
 
         cutout.add(JBlocks.CORBA_LEAVES.get());
+        cutout.add(JBlocks.CORBA_GRASS.get());
         cutout.add(JBlocks.CORBA_SAPLING.get());
         cutout.add(JBlocks.CORBA_DOOR.get());
         cutout.add(JBlocks.CORBA_TRAP_DOOR.get());

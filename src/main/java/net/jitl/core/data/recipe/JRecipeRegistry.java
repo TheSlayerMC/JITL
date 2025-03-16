@@ -67,7 +67,7 @@ public class JRecipeRegistry extends JRecipeProvider {
         addOreDefaultItems(recipeConsumer, RecipePrefix.SAPPHIRE, JBlocks.SAPPHIRE_BLOCK.get(), JBlocks.SAPPHIRE_ORE.get(), JBlocks.DEEPSLATE_SAPPHIRE_ORE.get(), null, JItems.SAPPHIRE.get(), Items.STICK);
         addOreDefaultItems(recipeConsumer, RecipePrefix.LUNIUM, JBlocks.LUNIUM_BLOCK.get(), JBlocks.LUNIUM_ORE.get(), JBlocks.DEEPSLATE_LUNIUM_ORE.get(), JItems.LUNIUM_POWDER.get(), JItems.LUNIUM_INGOT.get(), Items.STICK);
         addOreDefaultItems(recipeConsumer, RecipePrefix.BLOODCRUST, JBlocks.BLOODCRUST_BLOCK.get(), JBlocks.BLOODCRUST_ORE.get(), null, JItems.RAW_BLOODCRUST.get(), JItems.BLOODCRUST_INGOT.get(), Items.STICK);
-        addOreNoArmorItems(recipeConsumer, RecipePrefix.CELESTIUM, JBlocks.CELESTIUM_BLOCK.get(), JBlocks.CELESTIUM_ORE.get(), null, JItems.CELESTIUM_GEMSTONE.get(), JItems.CELESTIUM_INGOT.get(), Items.STICK);
+        addOreDefaultItems(recipeConsumer, RecipePrefix.CELESTIUM, JBlocks.CELESTIUM_BLOCK.get(), JBlocks.CELESTIUM_ORE.get(), null, JItems.CELESTIUM_GEMSTONE.get(), JItems.CELESTIUM_INGOT.get(), Items.STICK);
         addOreNoArmorItems(recipeConsumer, RecipePrefix.KORITE, JBlocks.KORITE_BLOCK.get(), JBlocks.KORITE_ORE.get(), null, JItems.KORITE_GEMSTONE.get(), JItems.KORITE_INGOT.get(), Items.STICK);
         addOreNoArmorItems(recipeConsumer, RecipePrefix.STORON, JBlocks.STORON_BLOCK.get(), JBlocks.STORON_ORE.get(), null, JItems.STORON_GEMSTONE.get(), JItems.STORON_INGOT.get(), Items.STICK);
         addOreNoArmorItems(recipeConsumer, RecipePrefix.MEKYUM, JBlocks.MEKYUM_BLOCK.get(), JBlocks.MEKYUM_ORE.get(), null, JItems.MEKYUM_GEMSTONE.get(), JItems.MEKYUM_INGOT.get(), Items.STICK);

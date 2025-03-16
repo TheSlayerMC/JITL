@@ -1,95 +1,44 @@
 {
   "type": "minecraft:block",
-  "functions": [
-    {
-      "function": "minecraft:explosion_decay"
-    }
-  ],
   "pools": [
     {
-      "bonus_rolls": 0.0,
+      "bonus_rolls": 0,
       "conditions": [
         {
-          "chance": 0.125,
-          "condition": "minecraft:random_chance"
-        },
-        {
-          "chance": 0.125,
-          "condition": "minecraft:random_chance"
-        },
-        {
-          "chance": 0.125,
-          "condition": "minecraft:random_chance"
-        },
-        {
-          "chance": 0.125,
-          "condition": "minecraft:random_chance"
+          "condition": "minecraft:survives_explosion"
         }
       ],
       "entries": [
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 2.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "jitl:yellow_gem"
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 2.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
           "name": "jitl:purple_gem"
         },
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 2.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "jitl:green_gem"
+          "name": "jitl:blue_gem"
         },
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 2.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "jitl:blue_gem"
+          "name": "jitl:yellow_gem"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jitl:green_gem",
+          "functions": []
         }
       ],
-      "rolls": 1.0
+      "rolls": 1
     }
   ],
-  "random_sequence": "jitl:blocks/common_gem_block"
+  "functions": [
+    {
+      "function": "minecraft:set_count",
+      "count": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 2
+      }
+    }
+  ],
+  "random_sequence": "jitl:blocks/rare_gem_block"
 }

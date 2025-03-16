@@ -680,14 +680,13 @@ public class JBlockLootTables extends BlockLootSubProvider {
     }
 
     protected LootTable.Builder createGemBlockDrops(Block block, boolean rare) {
-        float prob = rare ? 0.525F : 0.125F;
         int min = rare ? 2 : 1;
         int max = rare ? 4 : 2;
         return this.applyExplosionDecay(block, LootTable.lootTable().withPool(LootPool.lootPool()
-                .add(LootItem.lootTableItem(JItems.YELLOW_GEM.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))).when(LootItemRandomChanceCondition.randomChance(prob))
-                .add(LootItem.lootTableItem(JItems.PURPLE_GEM.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))).when(LootItemRandomChanceCondition.randomChance(prob))
-                .add(LootItem.lootTableItem(JItems.GREEN_GEM.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))).when(LootItemRandomChanceCondition.randomChance(prob))
-                .add(LootItem.lootTableItem(JItems.BLUE_GEM.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))).when(LootItemRandomChanceCondition.randomChance(prob))));
+                .add(LootItem.lootTableItem(JItems.YELLOW_GEM.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max))))
+                .add(LootItem.lootTableItem(JItems.PURPLE_GEM.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max))))
+                .add(LootItem.lootTableItem(JItems.GREEN_GEM.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max))))
+                .add(LootItem.lootTableItem(JItems.BLUE_GEM.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max))))));
     }
 
 

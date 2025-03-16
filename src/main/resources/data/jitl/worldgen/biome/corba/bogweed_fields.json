@@ -16,7 +16,9 @@
     "water_fog_color": 800768
   },
   "features": [
-    [],
+    [
+      "minecraft:seagrass_normal"
+    ],
     [],
     [
       "jitl:corba_ruins"
@@ -26,7 +28,8 @@
     [],
     [
       "jitl:orbadite_ore",
-      "jitl:gorbite_ore"
+      "jitl:gorbite_ore",
+      "jitl:glowshrooms"
     ],
     [],
     [],
@@ -39,7 +42,14 @@
   "has_precipitation": false,
   "spawn_costs": {},
   "spawners": {
-    "ambient": [],
+    "ambient": [
+      {
+        "type": "minecraft:drowned",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 5
+      }
+    ],
     "axolotls": [],
     "creature": [
       {
@@ -77,8 +87,28 @@
       }
     ],
     "underground_water_creature": [],
-    "water_ambient": [],
-    "water_creature": []
+    "water_ambient": [
+      {
+        "type": "minecraft:cod",
+        "maxCount": 6,
+        "minCount": 3,
+        "weight": 10
+      },
+      {
+        "type": "minecraft:salmon",
+        "maxCount": 5,
+        "minCount": 1,
+        "weight": 5
+      }
+    ],
+    "water_creature": [
+      {
+        "type": "minecraft:squid",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 1
+      }
+    ]
   },
   "temperature": 0.8
 }
