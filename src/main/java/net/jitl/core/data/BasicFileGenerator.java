@@ -1,6 +1,7 @@
 package net.jitl.core.data;
 
 import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.JItems;
 
 import java.io.BufferedWriter;
 import java.io.File;
