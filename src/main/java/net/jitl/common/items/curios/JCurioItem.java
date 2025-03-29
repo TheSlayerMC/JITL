@@ -6,6 +6,7 @@ import net.jitl.core.init.JITL;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
@@ -15,6 +16,7 @@ import top.theillusivec4.curios.api.type.capability.ICurioItem;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 public class JCurioItem extends JItem implements ICurioItem {
     private boolean hasOverview;
@@ -47,9 +49,9 @@ public class JCurioItem extends JItem implements ICurioItem {
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable TooltipContext world, @NotNull List<Component> text, @NotNull TooltipFlag flag) {
-        super.appendHoverText(stack, world, text, flag);
-        TooltipFiller tooltipFiller = new TooltipFiller(text, Objects.requireNonNull(JITL.getRegistryName(this)).getPath());
+    public void appendHoverText(ItemStack stack, TooltipContext pContext, TooltipDisplay display, Consumer<Component> tip, TooltipFlag pTooltipFlag) {
+        super.appendHoverText(stack, pContext, display, tip, pTooltipFlag);
+        TooltipFiller tooltipFiller = new TooltipFiller(tip, Objects.requireNonNull(JITL.getRegistryName(this)).getPath());
         if (hasOverview) {
             tooltipFiller.addOverview();
         }

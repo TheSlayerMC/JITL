@@ -18,6 +18,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 public class BloodcrustSwordAbility implements IAbility {
 
@@ -53,7 +54,7 @@ public class BloodcrustSwordAbility implements IAbility {
     }
 
     @Override
-    public void fillTooltips(ItemStack stack, List<Component> tooltip) {
+    public void fillTooltips(ItemStack stack, Consumer<Component> tooltip) {
         TooltipFiller filler = new TooltipFiller(tooltip, "bloodcrust_sword");
         filler.addOverview();
         filler.addDetail();

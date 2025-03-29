@@ -40,7 +40,7 @@ public class PressedKeyCap implements INBTSerializable<CompoundTag> {
 
     @Override
     public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
-        this.armor = nbt.getBoolean("armor");
-        this.amulet = nbt.getBoolean("amulet");
+        this.armor = nbt.getBooleanOr("armor", false);
+        this.amulet = nbt.getBooleanOr("amulet", false);
     }
 }

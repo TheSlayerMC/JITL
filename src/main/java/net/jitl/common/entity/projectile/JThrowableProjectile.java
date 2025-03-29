@@ -24,7 +24,7 @@ public abstract class JThrowableProjectile extends ThrowableProjectile {
     }
 
     public JThrowableProjectile(EntityType<? extends ThrowableProjectile> e, int damage, Level world, LivingEntity thrower) {
-        super(e, thrower, world);
+        super(e, world);
         this.damage = damage;
     }
 

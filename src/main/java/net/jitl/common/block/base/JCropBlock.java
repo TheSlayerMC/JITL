@@ -7,6 +7,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
@@ -14,8 +15,8 @@ public class JCropBlock extends CropBlock {
 
     private final Block farmBlock;
 
-    public JCropBlock(DimensionCrops farmBlock) {
-        super(JBlockProperties.CROP);
+    public JCropBlock(BlockBehaviour.Properties props, DimensionCrops farmBlock) {
+        super(props);
         this.farmBlock = farmBlock.getGrowBlock();
     }
 

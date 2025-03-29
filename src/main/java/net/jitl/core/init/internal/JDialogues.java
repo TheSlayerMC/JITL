@@ -85,6 +85,6 @@ public class JDialogues {
 
 	public static void sendMessage(Player player, String key) {
 		MutableComponent msg = Component.literal(key);
-		player.sendSystemMessage(msg);
+		player.displayClientMessage(msg, false);
 	}
 }

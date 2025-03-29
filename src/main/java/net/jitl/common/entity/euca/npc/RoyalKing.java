@@ -98,8 +98,8 @@ public class RoyalKing extends PathfinderMob implements GeoEntity {
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        setActivated(compound.getBoolean("activated"));
-        setHasCrown(compound.getBoolean("hasCrown"));
+        setActivated(compound.getBooleanOr("activated", true));
+        setHasCrown(compound.getBooleanOr("hasCrown", true));
     }
 
     public void setActivated(boolean activated) {

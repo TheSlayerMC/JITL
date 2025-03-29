@@ -45,8 +45,8 @@ public class CelestiumArmorAbility implements INBTSerializable<CompoundTag> {
 
     @Override
     public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
-        jumpReady = nbt.getBoolean("jumpReady");
-        cooldown = nbt.getInt("cooldown");
+        jumpReady = nbt.getBooleanOr("jumpReady", false);
+        cooldown = nbt.getIntOr("cooldown", 0);
     }
 
     public void sendPacket(Player player) {

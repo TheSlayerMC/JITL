@@ -8,9 +8,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
@@ -65,21 +63,23 @@ public class JLeavesBlock extends Block implements SimpleWaterloggedBlock, IShea
     }
 
     @Override
-    public int getLightBlock(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos) {
+    protected int getLightBlock(BlockState p_60585_) {
         return 1;
     }
 
     @Override
-    public @NotNull BlockState updateShape(BlockState pState, @NotNull Direction facing, @NotNull BlockState facingState, @NotNull LevelAccessor level, @NotNull BlockPos currentPos, @NotNull BlockPos facingPos) {
-        if(pState.getValue(WATERLOGGED))
-            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+    public BlockState updateShape(BlockState stateIn, LevelReader reader, ScheduledTickAccess tick, BlockPos currentPos, Direction dir, BlockPos facingPos, BlockState state, RandomSource source) {
+        if (!stateIn.canSurvive(reader, currentPos)) {
+            tick.scheduleTick(currentPos, this, 1);
+        }
+        if (stateIn.getValue(WATERLOGGED))
+            tick.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(reader));
 
-        int i = getDistanceAt(facingState) + 1;
+        int i = getDistanceAt(state) + 1;
 
-        if(i != 1 || pState.getValue(DISTANCE) != i)
-            level.scheduleTick(currentPos, this, 1);
-
-        return pState;
+        if (i != 1 || stateIn.getValue(DISTANCE) != i)
+            tick.scheduleTick(currentPos, this, 1);
+        return super.updateShape(stateIn, reader, tick, currentPos, dir, facingPos, state, source);
     }
 
     private static BlockState updateDistance(BlockState state, LevelAccessor level, BlockPos pos) {

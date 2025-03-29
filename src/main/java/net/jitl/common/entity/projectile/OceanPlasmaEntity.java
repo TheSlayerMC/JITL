@@ -15,6 +15,6 @@ public class OceanPlasmaEntity extends BouncingProjectileEntity {
 
     public OceanPlasmaEntity(int damage, Level world, LivingEntity thrower) {
         super(JEntities.OCEAN_PLASMA_TYPE.get(), damage, world, thrower);
-        setPotionEffect(MobEffects.HARM, 60);
+        setPotionEffect(MobEffects.INSTANT_DAMAGE, 60);
     }
 }

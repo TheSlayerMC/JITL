@@ -5,6 +5,7 @@ import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JParticleManager;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -56,14 +57,16 @@ public class FloroMudEntity extends DamagingProjectileEntity implements ItemSupp
 
     @Override
     protected void onEntityImpact(HitResult result, Entity target) {
-        if(target instanceof LivingEntity && target.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage())) {
-            MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20);
-            ((LivingEntity) target).addEffect(effectInstance);
+        if(level() instanceof ServerLevel level) {
+            if(target instanceof LivingEntity && target.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), getDamage())) {
+                MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.SLOWNESS, 20);
+                ((LivingEntity) target).addEffect(effectInstance);
+            }
         }
     }
 
     @Override
-    protected void onHit(HitResult result) {
+    protected void onHit(@NotNull HitResult result) {
         super.onHit(result);
         if (!level().isClientSide) {
             if(result.getType() != HitResult.Type.MISS) {

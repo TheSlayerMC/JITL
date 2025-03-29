@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class BloodcrustToolAbility implements IAbility {
 
@@ -51,7 +52,7 @@ public class BloodcrustToolAbility implements IAbility {
     }
 
     @Override
-    public void fillTooltips(ItemStack stack, List<Component> tooltip) {
+    public void fillTooltips(ItemStack stack, Consumer<Component> tooltip) {
         TooltipFiller filler = new TooltipFiller(tooltip, "bloodcrust_tool");
         filler.addOverview();
         filler.addDrawback();

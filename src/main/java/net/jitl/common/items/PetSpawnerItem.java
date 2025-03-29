@@ -15,17 +15,19 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class PetSpawnerItem extends JItem {
 
-    public PetSpawnerItem() {
-        super(JItems.itemProps().stacksTo(1).rarity(Rarity.RARE));
+    public PetSpawnerItem(Properties props) {
+        super(props.stacksTo(1).rarity(Rarity.RARE));
     }
 
     @Override
@@ -40,7 +42,7 @@ public class PetSpawnerItem extends JItem {
                 bindSpawner(player, serverLevel, pos, JItems.PET_ROBOT_SPAWNER.get(), new PetRobot(JEntities.PET_ROBOT_TYPE.get(), level, player));
             }
         }
-        return InteractionResult.sidedSuccess(level.isClientSide());
+        return InteractionResult.SUCCESS;
     }
 
     public void bindSpawner(Player player, ServerLevel level, BlockPos pos, Item spawner, LivingEntity pet) {
@@ -52,7 +54,7 @@ public class PetSpawnerItem extends JItem {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack pStack, @Nullable TooltipContext con, @NotNull List<Component> tip, @NotNull TooltipFlag pFlag) {
-        if(this == JItems.PET_ROBOT_SPAWNER.get()) tip.add(LangHelper.setPetSpawner("Robot"));
+    public void appendHoverText(@NotNull ItemStack pStack, @Nullable TooltipContext con, TooltipDisplay d, @NotNull Consumer<Component> tip, @NotNull TooltipFlag pFlag) {
+        if(this == JItems.PET_ROBOT_SPAWNER.get()) tip.accept(LangHelper.setPetSpawner("Robot"));
     }
 }

@@ -8,10 +8,12 @@ import net.jitl.core.init.internal.JParticleManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -24,8 +26,8 @@ public class JBlockSwampLamp extends JBlock {
     protected static final VoxelShape MID = Block.box(6D, 6D, 6D, 10D, 9D, 10D);
     protected static final VoxelShape TOP = Block.box(7D, 9D, 7D, 9D, 11D, 9D);
 
-    public JBlockSwampLamp() {
-        super(JBlockProperties.BOTTLE);
+    public JBlockSwampLamp(BlockBehaviour.Properties props) {
+        super(props);
     }
 
     @Override
@@ -46,9 +48,9 @@ public class JBlockSwampLamp extends JBlock {
     @Override
     protected void spawnAfterBreak(@NotNull BlockState state, @NotNull ServerLevel level, @NotNull BlockPos pos, @NotNull ItemStack stack, boolean dropExperience) {
         super.spawnAfterBreak(state, level, pos, stack, dropExperience);
-        SwampFly swampFly = JEntities.SWAMP_FLY_TYPE.get().create(level);
+        SwampFly swampFly = JEntities.SWAMP_FLY_TYPE.get().create(level, EntitySpawnReason.MOB_SUMMONED);
         if(swampFly != null) {
-            swampFly.moveTo((double)pos.getX() + 0.5, pos.getY(), (double)pos.getZ() + 0.5, 0.0F, 0.0F);
+            swampFly.snapTo((double)pos.getX() + 0.5, pos.getY(), (double)pos.getZ() + 0.5, 0.0F, 0.0F);
             level.addFreshEntity(swampFly);
         }
     }

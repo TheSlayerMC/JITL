@@ -248,31 +248,31 @@ public class PlayerStats implements INBTSerializable<CompoundTag> {
 
     @Override
     public void deserializeNBT(HolderLookup.Provider provider, CompoundTag tag) {
-        hasBlizzard = tag.getBoolean("hasBlizzard");
-        sentacoins = tag.getInt("sentacoins");
+        hasBlizzard = tag.getBooleanOr("hasBlizzard", false);
+        sentacoins = tag.getIntOr("sentacoins", 0);
 
-        overworldLevel = tag.getInt("overworld_level");
-        netherLevel = tag.getInt("nether_level");
-        endLevel = tag.getInt("end_level");
-        eucaLevel = tag.getInt("euca_level");
-        boilLevel = tag.getInt("boil_level");
-        frozenLevel = tag.getInt("frozen_level");
-        depthsLevel = tag.getInt("depths_level");
-        corbaLevel = tag.getInt("corba_level");
-        cloudiaLevel = tag.getInt("cloudia_level");
-        terraniaLevel = tag.getInt("terrania_level");
-        senterianLevel = tag.getInt("senterian_level");
+        overworldLevel = tag.getIntOr("overworld_level", 0);
+        netherLevel = tag.getIntOr("nether_level", 0);
+        endLevel = tag.getIntOr("end_level", 0);
+        eucaLevel = tag.getIntOr("euca_level", 0);
+        boilLevel = tag.getIntOr("boil_level", 0);
+        frozenLevel = tag.getIntOr("frozen_level", 0);
+        depthsLevel = tag.getIntOr("depths_level", 0);
+        corbaLevel = tag.getIntOr("corba_level", 0);
+        cloudiaLevel = tag.getIntOr("cloudia_level", 0);
+        terraniaLevel = tag.getIntOr("terrania_level", 0);
+        senterianLevel = tag.getIntOr("senterian_level", 0);
 
-        overworldXP = tag.getFloat("overworld_xp");
-        netherXP = tag.getFloat("nether_xp");
-        endXP = tag.getFloat("end_xp");
-        eucaXP = tag.getFloat("euca_xp");
-        boilXP = tag.getFloat("boil_xp");
-        frozenXP = tag.getFloat("frozen_xp");
-        depthsXP = tag.getFloat("depths_xp");
-        corbaXP = tag.getFloat("corba_xp");
-        cloudiaXP = tag.getFloat("cloudia_xp");
-        terraniaXP = tag.getFloat("terrania_xp");
-        senterianXP = tag.getFloat("senterian_xp");
+        overworldXP = tag.getFloatOr("overworld_xp", 0F);
+        netherXP = tag.getFloatOr("nether_xp", 0F);
+        endXP = tag.getFloatOr("end_xp", 0F);
+        eucaXP = tag.getFloatOr("euca_xp", 0F);
+        boilXP = tag.getFloatOr("boil_xp", 0F);
+        frozenXP = tag.getFloatOr("frozen_xp", 0F);
+        depthsXP = tag.getFloatOr("depths_xp", 0F);
+        corbaXP = tag.getFloatOr("corba_xp", 0F);
+        cloudiaXP = tag.getFloatOr("cloudia_xp", 0F);
+        terraniaXP = tag.getFloatOr("terrania_xp", 0F);
+        senterianXP = tag.getFloatOr("senterian_xp", 0F);
     }
 }

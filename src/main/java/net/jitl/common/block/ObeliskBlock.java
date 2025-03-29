@@ -59,7 +59,8 @@ public class ObeliskBlock extends BaseEntityBlock {
     }
 
     @Override
-    public @NotNull RenderShape getRenderShape(BlockState pState) {
-        return RenderShape.ENTITYBLOCK_ANIMATED;
+    public @NotNull RenderShape getRenderShape(@NotNull BlockState pState) {
+        return RenderShape.INVISIBLE;
     }
+
 }

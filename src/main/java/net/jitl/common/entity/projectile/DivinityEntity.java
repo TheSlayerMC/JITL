@@ -22,7 +22,7 @@ public class DivinityEntity extends JThrowableProjectile {
 
     public DivinityEntity(int damage, Level world, LivingEntity thrower) {
         super(JEntities.DIVINITY_TYPE.get(), damage, world, thrower);
-        setPotionEffect(MobEffects.DIG_SLOWDOWN, 100);
+        setPotionEffect(MobEffects.MINING_FATIGUE, 100);
     }
 
     @Override

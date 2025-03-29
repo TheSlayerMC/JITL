@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -19,8 +20,8 @@ public class AncientSocketBlock extends Block {
     protected static final VoxelShape INSERT = Block.box(4.0D, 16.0D, 4.0D, 12.0D, 19.0D, 12.0D);
     protected static final VoxelShape FULL_SHAPE = Shapes.or(BLOCK, INSERT);
 
-    public AncientSocketBlock() {
-        super(JBlockProperties.ANCIENT_STONE);
+    public AncientSocketBlock(BlockBehaviour.Properties props) {
+        super(props);
         this.registerDefaultState(this.stateDefinition.any().setValue(INSERTED, Boolean.FALSE));
     }
 

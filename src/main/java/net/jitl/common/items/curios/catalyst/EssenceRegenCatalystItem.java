@@ -20,6 +20,7 @@ public class EssenceRegenCatalystItem extends JCurioItem {
         super(properties);
     }
 
+
     public EssenceRegenCatalystItem speed(float regenSpeed) {
         this.regenSpeed = regenSpeed;
         return this;

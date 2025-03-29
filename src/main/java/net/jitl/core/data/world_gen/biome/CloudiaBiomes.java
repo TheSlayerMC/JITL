@@ -35,13 +35,13 @@ public class CloudiaBiomes extends Biomes {
         biomeSetting.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, CloudiaPlacedFeatures.CLOUDIA_CLOUD_PINK);
         biomeSetting.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, CloudiaPlacedFeatures.CLOUDIA_ISLAND);
 
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.CLOUD_GHOST_TYPE.get(), 1, 1, 3));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SKY_EEL_TYPE.get(), 1, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.STARLIGHT_GOLEM_TYPE.get(), 1, 1, 3));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.STARLIGHT_TRANSPORTER_TYPE.get(), 1, 1, 3));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.STARLIGHT_WALKER_TYPE.get(), 1, 1, 3));
-
-        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.AERO_LOTUS_TYPE.get(), 15, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.CLOUD_GHOST_TYPE.get(), 1, 1, 3));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SKY_EEL_TYPE.get(), 1, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.STARLIGHT_GOLEM_TYPE.get(), 1, 1, 3));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.STARLIGHT_TRANSPORTER_TYPE.get(), 1, 1, 3));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.STARLIGHT_WALKER_TYPE.get(), 1, 1, 3));
+//
+//        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.AERO_LOTUS_TYPE.get(), 15, 1, 1));
 
         return biome(false, 1F, 0F, SKY_COLOUR, FOG_COLOUR, WATER_COLOUR, WATER_FOG_COLOUR, GRASS_COLOUR, FOLIAGE_COLOUR,
                 mobSettings, biomeSetting, JParticleManager.CLOUDIA_PORTAL.get(), 0.001428F, Musics.createGameMusic(JSounds.CLOUDIA_MUSIC));

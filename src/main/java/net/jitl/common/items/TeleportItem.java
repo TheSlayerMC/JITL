@@ -31,8 +31,8 @@ public class TeleportItem extends JItem implements IEssenceItem {
 
     private final int essenceUsage;
 
-    public TeleportItem(int essence, int maxUses) {
-        super(JItems.itemProps().stacksTo(1).durability(maxUses));
+    public TeleportItem(Properties p, int essence, int maxUses) {
+        super(p.stacksTo(1).durability(maxUses));
         this.essenceUsage = essence;
     }
 

@@ -26,8 +26,8 @@ public class StaffItem extends JItem implements IEssenceItem {
     protected TriFunction<Integer, Level, LivingEntity, JThrowableProjectile> projectileFactory;
     private final int essenceUsage, damage;
 
-    public StaffItem(int essence, int damage, int maxUses, TriFunction<Integer, Level, LivingEntity, JThrowableProjectile> projectileFactory) {
-        super(JItems.itemProps().stacksTo(1).durability(maxUses));
+    public StaffItem(Properties p, int essence, int damage, int maxUses, TriFunction<Integer, Level, LivingEntity, JThrowableProjectile> projectileFactory) {
+        super(p.stacksTo(1).durability(maxUses));
         this.projectileFactory = projectileFactory;
         this.essenceUsage = essence;
         this.damage = damage;

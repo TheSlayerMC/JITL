@@ -18,7 +18,7 @@ public class JDamageSources {
     public final DamageSource FIRE_BOMB;
 
     private JDamageSources(RegistryAccess r) {
-        this.damageTypes = r.registryOrThrow(Registries.DAMAGE_TYPE);
+        this.damageTypes = r.lookupOrThrow(Registries.DAMAGE_TYPE);
         this.BRADBERRY_BUSH = source(makeSource("bradberry_bush"));
         this.REDCURRANT_BUSH = source(makeSource("redcurrant_bush"));
         this.DEMONIC_BOMB = source(makeSource("demonic_bomb"));
@@ -30,6 +30,6 @@ public class JDamageSources {
     }
 
     private DamageSource source(ResourceKey<DamageType> r) {
-        return new DamageSource(this.damageTypes.getHolderOrThrow(r));
+        return new DamageSource(this.damageTypes.getOrThrow(r));
     }
 }

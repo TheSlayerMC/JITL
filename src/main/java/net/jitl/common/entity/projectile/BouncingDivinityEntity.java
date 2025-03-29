@@ -14,6 +14,6 @@ public class BouncingDivinityEntity extends BouncingProjectileEntity {
 
     public BouncingDivinityEntity(int damage, Level world, LivingEntity thrower) {
         super(JEntities.BOUNCING_DIVINITY_TYPE.get(), damage, world, thrower);
-        setPotionEffect(MobEffects.DIG_SLOWDOWN, 100);
+        setPotionEffect(MobEffects.MINING_FATIGUE, 100);
     }
 }

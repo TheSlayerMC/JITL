@@ -15,8 +15,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class DemonicEyeItem extends JItem {
 
-    public DemonicEyeItem() {
-        super(JItems.itemProps());
+    public DemonicEyeItem(Properties p) {
+        super(p);
     }
 
     @Override

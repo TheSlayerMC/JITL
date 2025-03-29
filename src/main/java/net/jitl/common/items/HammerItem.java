@@ -27,8 +27,8 @@ public class HammerItem extends JSwordItem implements IEssenceItem {
     protected TriFunction<Integer, Level, LivingEntity, JThrowableProjectile> projectileFactory;
     private final int essenceUsage, damage;
 
-    public HammerItem(JToolTiers tier, int essence, int damage, TriFunction<Integer, Level, LivingEntity, JThrowableProjectile> projectileFactory) {
-        super(tier, JItems.BASIC);
+    public HammerItem(Properties p, JToolTiers tier, int essence, int damage, TriFunction<Integer, Level, LivingEntity, JThrowableProjectile> projectileFactory) {
+        super(p, tier, JItems.BASIC);
         this.projectileFactory = projectileFactory;
         this.essenceUsage = essence;
         this.damage = damage;

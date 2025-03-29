@@ -4,9 +4,12 @@ import com.mojang.serialization.MapCodec;
 import java.util.Map;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -50,7 +53,7 @@ public class GlowMushroomBlock extends HalfTransparentBlock {
     }
 
     @Override
-    public boolean propagatesSkylightDown(@NotNull BlockState s, @NotNull BlockGetter g, @NotNull BlockPos p) {
+    protected boolean propagatesSkylightDown(BlockState state) {
         return true;
     }
 
@@ -62,8 +65,8 @@ public class GlowMushroomBlock extends HalfTransparentBlock {
     }
 
     @Override
-    protected @NotNull BlockState updateShape(@NotNull BlockState state, @NotNull Direction dir, BlockState s2, @NotNull LevelAccessor level, @NotNull BlockPos pos, @NotNull BlockPos pos2) {
-        return s2.is(this) ? state.setValue(PROPERTY_BY_DIRECTION.get(dir), false) : super.updateShape(state, dir, s2, level, pos, pos2);
+    protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess scheduledTickAccess, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
+        return neighborState.is(this) ? state.setValue(PROPERTY_BY_DIRECTION.get(direction), false) : super.updateShape(state, level, scheduledTickAccess, pos, direction, neighborPos, neighborState, random);
     }
 
     @Override

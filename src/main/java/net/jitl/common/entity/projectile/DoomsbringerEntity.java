@@ -22,7 +22,7 @@ public class DoomsbringerEntity extends JThrowableProjectile {
 
     public DoomsbringerEntity(int damage, Level world, LivingEntity thrower) {
         super(JEntities.DOOMSBRINGER_TYPE.get(), damage, world, thrower);
-        setPotionEffect(MobEffects.CONFUSION, 100);
+        setPotionEffect(MobEffects.NAUSEA, 100);
     }
 
     @Override

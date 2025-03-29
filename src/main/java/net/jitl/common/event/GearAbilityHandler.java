@@ -8,13 +8,12 @@ import net.jitl.common.items.gear.JGear;
 import net.jitl.core.helper.TooltipFiller;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JDataAttachments;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.equipment.ArmorMaterial;
+import net.minecraft.world.item.equipment.ArmorMaterials;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
@@ -72,12 +71,12 @@ public class GearAbilityHandler {
                 }
             } else if (entity.getType() == EntityType.ARROW) {
                 if (((Arrow) entity).getOwner() instanceof LivingEntity owner) {
-                    for (ItemStack itemStack : owner.getArmorSlots()) {
-                        Item current = itemStack.getItem();
-                        if (!(current instanceof ArmorItem && ((ArmorItem) current).getMaterial() == ArmorMaterials.LEATHER))
-                            return;
-                    }
-                    event.setNewDamage(event.getOriginalDamage() + 5F);
+                    for (EquipmentSlot equipmentSlot : EquipmentSlotGroup.ARMOR) {
+                            Item current = owner.getItemBySlot(equipmentSlot).getItem();
+                            if (!(current instanceof JArmorItem && ((JArmorItem) current).getMaterial() == ArmorMaterials.LEATHER))
+                                return;
+                        }
+                        event.setNewDamage(event.getOriginalDamage() + 5F);
                 }
             }
         }
@@ -120,17 +119,17 @@ public class GearAbilityHandler {
 
     @SubscribeEvent
     public static void addVanillaTooptips(ItemTooltipEvent event) {
-        Item item = event.getItemStack().getItem();
-        if (item instanceof ArmorItem) {
-            ArmorMaterial material = ((ArmorItem) item).getMaterial().value();
-            if (material.equals(ArmorMaterials.LEATHER)) {
-                TooltipFiller filler = new TooltipFiller(event.getToolTip(), "leather_gear", 1);
-                filler.addOverview();
-            } else if (material.equals(ArmorMaterials.CHAIN)) {
-                TooltipFiller filler = new TooltipFiller(event.getToolTip(), "chain_gear");
-                filler.addOverview();
-            }
-        }
+//        Item item = event.getItemStack().getItem();
+//        if (item instanceof JArmorItem) {
+//            ArmorMaterial material = ((JArmorItem) item).getMaterial();
+//            if (material.equals(ArmorMaterials.LEATHER)) {
+//                TooltipFiller filler = new TooltipFiller(event.getToolTip(), "leather_gear", 1);
+//                filler.addOverview();
+//            } else if (material.equals(ArmorMaterials.CHAINMAIL)) {
+//                TooltipFiller filler = new TooltipFiller(event.getToolTip(), "chain_gear");
+//                filler.addOverview();
+//            }
+//        }todo
     }
 
     @SubscribeEvent
@@ -139,8 +138,8 @@ public class GearAbilityHandler {
             ItemStack stack = player.getMainHandItem();
             if(stack.getItem() instanceof JSwordItem sword) {
                 if(player.getAttackStrengthScale(0.5F) > 0.9F && !player.isSprinting()) { //combines flag and flag1, since there's no reason not to
-                    if(player.onGround() && player.walkDist - player.walkDistO < player.getSpeed()) { //flag3. flag2 is ignored as the isOnGround() call in flag3 automatically means flag2 will be false
-                       sword.getAbility().onSweep(stack, event.getTarget(), player);
+                    if(player.onGround()) { //flag3. flag2 is ignored as the isOnGround() call in flag3 automatically means flag2 will be false
+                        sword.getAbility().onSweep(stack, event.getTarget(), player);
                     }
                 }
             }
@@ -169,7 +168,11 @@ public class GearAbilityHandler {
         }
         if(slot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR) {
             PlayerArmor armor = event.getEntity().getData(JDataAttachments.PLAYER_ARMOR);
-            armor.setArmor(entity.getArmorSlots().iterator());
+            for(EquipmentSlot equipmentSlot : EquipmentSlotGroup.ARMOR) {
+                ItemStack current = entity.getItemBySlot(equipmentSlot);
+
+                //armor.setArmor(entity.getItemBySlot(current).iterator());
+            }
         }
     }
 }

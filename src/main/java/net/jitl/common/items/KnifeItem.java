@@ -22,7 +22,7 @@ public class KnifeItem extends JSwordItem {
     public final float damage;
 
     public KnifeItem(Properties properties, float damage) {
-        super(JToolTiers.THROWING_KNIFE, JItems.BASIC, properties);
+        super(properties, JToolTiers.THROWING_KNIFE, JItems.BASIC);
         this.damage = damage;
     }
 

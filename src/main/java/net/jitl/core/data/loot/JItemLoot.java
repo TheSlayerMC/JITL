@@ -26,16 +26,16 @@ public class JItemLoot implements LootTableSubProvider {
 
     @Override
     public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer) {
-        consumer.accept(
-                BuiltInLootTables.EMPTY,
-                LootTable.lootTable()
-                        .withPool(
-                        LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                                .add(LootItem.lootTableItem(JItems.LORE_SCROLL.asItem())
-                                        .setWeight(1))
-                                .apply(SetComponentsFunction.setComponent(
-                                        JDataComponents.SCROLL.get(), new LoreScroll(ScrollEntries.BEYOND_BOILING.getId(), EnumKnowledge.BOIL.getName(), 10, false)))
-                )
-        );
+//        consumer.accept(
+//                BuiltInLootTables.EMPTY,
+//                LootTable.lootTable()
+//                        .withPool(
+//                        LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+//                                .add(LootItem.lootTableItem(JItems.LORE_SCROLL.asItem())
+//                                        .setWeight(1))
+//                                .apply(SetComponentsFunction.setComponent(
+//                                        JDataComponents.SCROLL.get(), new LoreScroll(ScrollEntries.BEYOND_BOILING.getId(), EnumKnowledge.BOIL.getName(), 10, false)))
+//                )
+//        );
     }
 }

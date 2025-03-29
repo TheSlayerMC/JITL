@@ -1,5 +1,6 @@
 package net.jitl.core.data.block_generation;
 
+import net.jitl.core.data.BasicFileGenerator;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 
@@ -8,7 +9,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class JBlockPaneGenerator {
+public class JBlockPaneGenerator extends BasicFileGenerator {
 
     protected BufferedWriter blockPostModelWriter, blockPostEndsWriter, blockCapModelWriter, blockSideModelWriter, blockCapAltModelWriter, blockSideAltModelWriter, blockstateWriter, itemModelWriter;
 
@@ -72,6 +73,7 @@ public class JBlockPaneGenerator {
             getBlockItem(JITL.MOD_ID, name);
             getBlockModel(JITL.MOD_ID, name);
             getBlockstate(JITL.MOD_ID, name);
+            generateBasicFile(true, name);
 
             writerInit();
         }

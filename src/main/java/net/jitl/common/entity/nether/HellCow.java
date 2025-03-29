@@ -12,6 +12,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -54,7 +55,7 @@ public class HellCow extends JAnimalEntity {
 
     @Nullable
     public HellCow getBreedOffspring(@NotNull ServerLevel level, @NotNull AgeableMob otherParent) {
-        return JEntities.HELL_COW_TYPE.get().create(level);
+        return JEntities.HELL_COW_TYPE.get().create(level, EntitySpawnReason.BREEDING);
     }
 
     @Override
@@ -68,6 +69,7 @@ public class HellCow extends JAnimalEntity {
                 .add(Attributes.ATTACK_DAMAGE, MobStats.HELL_COW_DAMAGE)
                 .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.STANDARD_KNOCKBACK_RESISTANCE)
                 .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
+                .add(Attributes.TEMPT_RANGE, MobStats.STANDARD_TEMPT_RANGE)
                 .add(Attributes.MOVEMENT_SPEED, MobStats.HELL_COW_MOVEMENT_SPEED).build();
     }
 
@@ -78,7 +80,7 @@ public class HellCow extends JAnimalEntity {
             player.playSound(SoundEvents.COW_MILK, 1.0F, 1.0F);
             ItemStack itemstack1 = ItemUtils.createFilledResult(itemstack, player, Items.LAVA_BUCKET.getDefaultInstance());
             player.setItemInHand(hand, itemstack1);
-            return InteractionResult.sidedSuccess(this.level().isClientSide);
+            return InteractionResult.SUCCESS_SERVER;
         } else {
             return super.mobInteract(player, hand);
         }

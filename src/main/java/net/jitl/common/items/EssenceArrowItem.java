@@ -19,8 +19,8 @@ import org.jetbrains.annotations.Nullable;
 
 public class EssenceArrowItem extends ArrowItem {
 
-    public EssenceArrowItem() {
-        super(JItems.itemProps());
+    public EssenceArrowItem(Properties p) {
+        super(p);
     }
 
     @Override

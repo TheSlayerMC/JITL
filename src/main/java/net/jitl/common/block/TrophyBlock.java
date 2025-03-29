@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -34,8 +35,8 @@ public class TrophyBlock extends FaceableBlock {
     protected static final VoxelShape N_S_SHAPE = Shapes.or(BASE_SHAPE, SIDE_NS1, SIDE_NS2);
     protected static final VoxelShape E_W_SHAPE = Shapes.or(BASE_SHAPE, SIDE_EW1, SIDE_EW2);
 
-    public TrophyBlock() {
-        super(JBlockProperties.TROPHY);
+    public TrophyBlock(BlockBehaviour.Properties props) {
+        super(props);
     }
 
     @Override

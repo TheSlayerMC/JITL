@@ -4,20 +4,21 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.ChatFormatting;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class TooltipFiller {
-    private final List<Component> tooltip;
+    private final Consumer<Component> tooltip;
     private final String key;
     private int line = 0;
     private final int startPoint;
 
-    public TooltipFiller(List<Component> text, String itemKey) {
+    public TooltipFiller(Consumer<Component> text, String itemKey) {
         tooltip = text;
         key = itemKey;
         startPoint = -1;
     }
 
-    public TooltipFiller(List<Component> text, String itemKey, int start) {
+    public TooltipFiller(Consumer<Component> text, String itemKey, int start) {
         tooltip = text;
         key = itemKey;
         startPoint = start;
@@ -25,9 +26,9 @@ public class TooltipFiller {
 
     public void addTooltip(ChatFormatting color) {
         if (startPoint == -1) {
-            tooltip.add(Component.translatable("jitl.tooltip." + key + "." + line++).withStyle(color));
+            tooltip.accept(Component.translatable("jitl.tooltip." + key + "." + line++).withStyle(color));
         } else {
-            tooltip.add(startPoint + line, Component.translatable("jitl.tooltip." + key + "." + line++).withStyle(color));
+            //tooltip.accept(startPoint + line, Component.translatable("jitl.tooltip." + key + "." + line++).withStyle(color));
         }
     }
 
@@ -45,10 +46,10 @@ public class TooltipFiller {
 
     public void addValue(Object... values) {
         //TODO: test
-        tooltip.add(Component.translatable("jitl.tooltip." + key + "." + line++, values).withStyle(ChatFormatting.GREEN));
+        tooltip.accept(Component.translatable("jitl.tooltip." + key + "." + line++, values).withStyle(ChatFormatting.GREEN));
     }
 
     public void addBreak() {
-        tooltip.add(Component.empty());
+        tooltip.accept(Component.empty());
     }
 }

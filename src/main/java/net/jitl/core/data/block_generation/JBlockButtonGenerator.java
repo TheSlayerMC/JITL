@@ -1,7 +1,8 @@
 package net.jitl.core.data.block_generation;
 
-import net.jitl.core.init.internal.JBlockProperties;
+import net.jitl.core.data.BasicFileGenerator;
 import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 
 import java.io.BufferedWriter;
@@ -9,7 +10,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class JBlockButtonGenerator {
+public class JBlockButtonGenerator extends BasicFileGenerator {
 
     protected BufferedWriter blockModelWriter, blockPressedModelWriter, blockInventoryModelWriter, blockstateWriter, itemModelWriter;
 
@@ -54,6 +55,7 @@ public class JBlockButtonGenerator {
             getBlockItem(JITL.MOD_ID, name);
             getBlockModel(JITL.MOD_ID, name);
             getBlockstate(JITL.MOD_ID, name);
+            generateBasicFile(name, "_inventory");
 
             writerInit();
         }

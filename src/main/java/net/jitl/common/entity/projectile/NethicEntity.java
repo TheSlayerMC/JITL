@@ -16,7 +16,7 @@ public class NethicEntity extends AbstractHomingEntity {
 
     public NethicEntity(int damage, Level world, LivingEntity thrower) {
         super(JEntities.NETHIC_TYPE.get(), damage, world, thrower);
-        setPotionEffect(MobEffects.HARM, 60);
+        setPotionEffect(MobEffects.INSTANT_DAMAGE, 60);
         setFire(60);
     }
 

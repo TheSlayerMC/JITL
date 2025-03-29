@@ -22,8 +22,8 @@ public class JPickaxeItem extends JItem implements JGear {
 
     public IAbility ability;
 
-    public JPickaxeItem(JToolTiers tier, IAbility ability) {
-        super(JItems.itemProps().pickaxe(tier.getTier(), tier.getDamage(), tier.getSpeedModifier()));
+    public JPickaxeItem(Properties p, JToolTiers tier, IAbility ability) {
+        super(p.pickaxe(tier.getTier(), tier.getDamage(), tier.getSpeedModifier()));
         this.ability = ability;
     }
 

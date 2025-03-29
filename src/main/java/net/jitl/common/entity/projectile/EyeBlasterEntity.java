@@ -15,7 +15,7 @@ public class EyeBlasterEntity extends BouncingProjectileEntity {
 
     public EyeBlasterEntity(int damage, Level world, LivingEntity thrower) {
         super(JEntities.EYE_BLASTER_TYPE.get(), damage, world, thrower);
-        setPotionEffect(MobEffects.HARM, 60);
+        setPotionEffect(MobEffects.INSTANT_DAMAGE, 60);
         setFire(60);
     }
 }

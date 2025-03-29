@@ -39,12 +39,12 @@ public class DepthsBiomes extends Biomes {
         biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DepthsPlacedFeatures.CRYSTAL_DRIPSTONE);
         biomeSetting.addFeature(GenerationStep.Decoration.LAKES, DepthsPlacedFeatures.DEPTHS_WATER);
 
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.DARKENER_TYPE.get(), 5, 1, 2));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.DEPTHS_HUNTER_TYPE.get(), 2, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SPIKED_BEAST_TYPE.get(), 5, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.DEPTHS_BEAST_TYPE.get(), 5, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.ROC_TYPE.get(), 5, 1, 2));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.DARKNESS_CRAWLER_TYPE.get(), 5, 1, 2));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.DARKENER_TYPE.get(), 5, 1, 2));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.DEPTHS_HUNTER_TYPE.get(), 2, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SPIKED_BEAST_TYPE.get(), 5, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.DEPTHS_BEAST_TYPE.get(), 5, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.ROC_TYPE.get(), 5, 1, 2));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.DARKNESS_CRAWLER_TYPE.get(), 5, 1, 2));
 
         return biome(false, 1F, 0, SKY_COLOUR, FOG_COLOUR, WATER_COLOUR, WATER_FOG_COLOUR, GRASS_COLOUR, FOLIAGE_COLOUR,
                 mobSettings, biomeSetting, Musics.createGameMusic(JSounds.DEPTHS_MUSIC));

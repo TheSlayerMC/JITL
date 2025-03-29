@@ -18,13 +18,8 @@ public class JSwordItem extends JItem implements JGear {
 
     private final IAbility ability;
 
-    public JSwordItem(JToolTiers tier, IAbility swordAbility) {
-        super(JItems.itemProps().sword(tier.getTier(), tier.getDamage(), tier.getSpeedModifier()).durability(tier.getTier().durability()));
-        this.ability = swordAbility;
-    }
-
-    public JSwordItem(JToolTiers tier, IAbility swordAbility, Properties p) {
-        super(p.sword(tier.getTier(), tier.getDamage(), tier.getSpeedModifier()));
+    public JSwordItem(Properties p, JToolTiers tier, IAbility swordAbility) {
+        super(p.sword(tier.getTier(), tier.getDamage(), tier.getSpeedModifier()).durability(tier.getTier().durability()));
         this.ability = swordAbility;
     }
 

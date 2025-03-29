@@ -175,6 +175,9 @@ public enum JToolTiers {
 
     DEVELOPER_SWORD(JToolTier.DEVELOPER_SWORD, 1000, 10000),
 
+    HAMMER(JToolTier.HAMMER, 0, -2.8F),
+    BATTLE_AXE(JToolTier.BATTLE_AXE, 5, -3F),
+
     THROWING_KNIFE(JToolTier.THROWING_KNIFE, 0, 0)
     ;
 
@@ -290,6 +293,9 @@ public enum JToolTiers {
 
         public static final ToolMaterial DEVELOPER_SWORD = new ToolMaterial(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8F, 1000F, 25, JTags.EMPTY);
         public static final ToolMaterial THROWING_KNIFE = new ToolMaterial(BlockTags.INCORRECT_FOR_IRON_TOOL, -1, 3F, 2F, 25, JTags.EMPTY);
+
+        public static final ToolMaterial BATTLE_AXE = new ToolMaterial(BlockTags.INCORRECT_FOR_DIAMOND_TOOL,768, 12F, 7, 15, JTags.EMPTY);
+        public static final ToolMaterial HAMMER = new ToolMaterial(BlockTags.INCORRECT_FOR_DIAMOND_TOOL,642, 8F, 6, 25, JTags.EMPTY);
     }
 
     public static class JArmorTier {

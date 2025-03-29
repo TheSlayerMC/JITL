@@ -4,10 +4,12 @@ import com.google.common.collect.ImmutableMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -141,15 +143,14 @@ public class JWallBlock extends Block implements SimpleWaterloggedBlock {
    }
 
    @Override
-   public @NotNull BlockState updateShape(BlockState pState, @NotNull Direction pFacing, @NotNull BlockState pFacingState, @NotNull LevelAccessor pLevel, @NotNull BlockPos pCurrentPos, @NotNull BlockPos pFacingPos) {
-      if (pState.getValue(WATERLOGGED)) {
-         pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+   public BlockState updateShape(BlockState stateIn, LevelReader reader, ScheduledTickAccess tick, BlockPos currentPos, Direction dir, BlockPos facingPos, BlockState state, RandomSource source) {
+      if (!stateIn.canSurvive(reader, currentPos)) {
+         tick.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(reader));
       }
-
-      if (pFacing == Direction.DOWN) {
-         return super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
+      if (dir == Direction.DOWN) {
+         return super.updateShape(stateIn, reader, tick, currentPos, dir, facingPos, state, source);
       } else {
-         return pFacing == Direction.UP ? this.topUpdate(pLevel, pState, pFacingPos, pFacingState) : this.sideUpdate(pLevel, pCurrentPos, pState, pFacingPos, pFacingState, pFacing);
+         return dir == Direction.UP ? this.topUpdate(reader, stateIn, facingPos, state) : this.sideUpdate(reader, currentPos, stateIn, facingPos, state, dir);
       }
    }
 
@@ -231,7 +232,7 @@ public class JWallBlock extends Block implements SimpleWaterloggedBlock {
    }
 
    @Override
-   public boolean propagatesSkylightDown(BlockState pState, @NotNull BlockGetter pReader, @NotNull BlockPos pPos) {
+   protected boolean propagatesSkylightDown(BlockState pState) {
       return !pState.getValue(WATERLOGGED);
    }
 

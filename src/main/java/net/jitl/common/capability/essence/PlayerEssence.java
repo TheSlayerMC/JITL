@@ -97,9 +97,9 @@ public class PlayerEssence implements INBTSerializable<CompoundTag> {
 
     @Override
     public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
-        currentEssence = nbt.getFloat("essence");
-        burnoutTime = nbt.getFloat("burnoutTime");
-        timeout = nbt.getInt("timeout");
+        currentEssence = nbt.getFloatOr("essence", 0F);
+        burnoutTime = nbt.getFloatOr("burnoutTime", 0F);
+        timeout = nbt.getIntOr("timeout", 0);
     }
 
     public void sendPacket(Player player) {

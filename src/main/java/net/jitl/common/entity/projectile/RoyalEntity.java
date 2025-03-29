@@ -14,7 +14,7 @@ public class RoyalEntity extends AbstractHomingEntity {
 
     public RoyalEntity(int damage, Level world, LivingEntity thrower) {
         super(JEntities.ROYAL_TYPE.get(), damage, world, thrower);
-        setPotionEffect(MobEffects.MOVEMENT_SLOWDOWN, 100);
+        setPotionEffect(MobEffects.SLOWNESS, 100);
     }
 
     @Override

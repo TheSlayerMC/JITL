@@ -8,9 +8,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -21,7 +19,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
-public class JSaplingBlock extends BushBlock implements BonemealableBlock {
+public class JSaplingBlock extends VegetationBlock implements BonemealableBlock {
 
     public static final MapCodec<JSaplingBlock> CODEC = RecordCodecBuilder.mapCodec((p_312128_) -> {
         return p_312128_.group(TreeGrower.CODEC.fieldOf("tree").forGetter((p_310598_) -> {
@@ -81,7 +79,7 @@ public class JSaplingBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    protected MapCodec<? extends BushBlock> codec() {
+    public MapCodec<? extends JSaplingBlock> codec() {
         return CODEC;
     }
 }

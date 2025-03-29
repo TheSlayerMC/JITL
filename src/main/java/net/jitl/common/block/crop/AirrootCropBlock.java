@@ -10,6 +10,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -24,9 +25,10 @@ public class AirrootCropBlock extends JCropBlock {
     public static final int MAX_AGE = 4;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_4;
 
-    public AirrootCropBlock() {
-        super(DimensionCrops.CLOUDIA);
+    public AirrootCropBlock(BlockBehaviour.Properties props) {
+        super(props, DimensionCrops.CLOUDIA);
     }
+
 
     @Override
     public @NotNull IntegerProperty getAgeProperty() {

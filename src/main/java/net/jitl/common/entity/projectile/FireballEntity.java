@@ -3,6 +3,7 @@ package net.jitl.common.entity.projectile;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JParticleManager;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,7 +21,7 @@ public class FireballEntity extends ThrowableProjectile {
     }
 
     public FireballEntity(Level world, LivingEntity thrower) {
-        super(JEntities.FIREBALL_TYPE.get(), thrower, world);
+        super(JEntities.FIREBALL_TYPE.get(), world);
     }
 
     @Override
@@ -36,10 +37,12 @@ public class FireballEntity extends ThrowableProjectile {
     @Override
     protected void onHitEntity(EntityHitResult pResult) {
         super.onHitEntity(pResult);
-        Entity entity = pResult.getEntity();
-        if(entity instanceof LivingEntity && entity.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage())) {
-            entity.setRemainingFireTicks(20);
-            entity.hurt(this.damageSources().thrown(this, this.getOwner()), getDamage());
+        if(level() instanceof ServerLevel level) {
+            Entity entity = pResult.getEntity();
+            if (entity instanceof LivingEntity && entity.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), getDamage())) {
+                entity.setRemainingFireTicks(20);
+                entity.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), getDamage());
+            }
         }
     }
 

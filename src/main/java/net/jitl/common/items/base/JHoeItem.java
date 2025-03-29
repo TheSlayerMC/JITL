@@ -19,8 +19,8 @@ public class JHoeItem extends HoeItem implements JGear {
 
     private final IAbility ability;
 
-    public JHoeItem(JToolTiers tier, int dam, IAbility ability) {
-        super(tier.getTier(), dam, tier.getSpeedModifier(), JItems.itemProps());
+    public JHoeItem(Properties p, JToolTiers tier, int dam, IAbility ability) {
+        super(tier.getTier(), dam, tier.getSpeedModifier(), p);
         this.ability = ability;
     }
 

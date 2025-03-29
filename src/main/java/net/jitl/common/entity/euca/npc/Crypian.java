@@ -84,8 +84,8 @@ public class Crypian extends JVillagerEntity {
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        setCanTrade(compound.getBoolean("canTrade"));
-        setAlloyHouse(compound.getBoolean("alloyHouse"));
+        setCanTrade(compound.getBooleanOr("canTrade", false));
+        setAlloyHouse(compound.getBooleanOr("alloyHouse", true));
     }
 
     @Override

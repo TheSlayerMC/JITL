@@ -28,9 +28,9 @@ public class SenterianBiomes extends Biomes {
 
         biomeSetting.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, SenterianPlacedFeatures.SENTERIAN_TERRAIN);
 
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SENTRY_LORD_TYPE.get(), 2, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SENTRY_WALKER_TYPE.get(), 2, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SENTRY_STALKER_TYPE.get(), 2, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SENTRY_LORD_TYPE.get(), 2, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SENTRY_WALKER_TYPE.get(), 2, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SENTRY_STALKER_TYPE.get(), 2, 1, 1));
 
         return biome(false, 1F, 0.0F, SKY_COLOUR, FOG_COLOUR, WATER_COLOUR, WATER_FOG_COLOUR, GRASS_COLOUR, FOLIAGE_COLOUR,
                 mobSettings, biomeSetting, Musics.createGameMusic(JSounds.SENTERIAN_PORTAL));

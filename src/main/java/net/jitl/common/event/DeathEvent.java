@@ -6,6 +6,8 @@ import net.jitl.core.config.JCommonConfig;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ambient.Bat;
@@ -20,7 +22,9 @@ import net.minecraft.world.entity.animal.horse.Donkey;
 import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.animal.horse.Mule;
+import net.minecraft.world.entity.animal.sheep.Sheep;
 import net.minecraft.world.entity.animal.sniffer.Sniffer;
+import net.minecraft.world.entity.animal.wolf.Wolf;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.monster.piglin.Piglin;
@@ -37,8 +41,7 @@ public class DeathEvent {
     public static void onEntityDrop(LivingDropsEvent event) {
         RandomSource random = RandomSource.create();
         LivingEntity entity = event.getEntity();
-        if(event.getSource().getEntity() instanceof Player player) {
-
+        if(event.getSource().getEntity() instanceof Player player && event.getEntity().level() instanceof ServerLevel serverLevel) {
             PlayerStats stats = player.getData(JDataAttachments.PLAYER_STATS);
 
             if(isOverworldAnimal(entity)) {
@@ -67,18 +70,18 @@ public class DeathEvent {
 
             if(entity instanceof Ghast) {
                 if(random.nextInt(3) == 0)
-                    entity.spawnAtLocation(JItems.GHAST_TENTACLE.get(), 1);
+                    entity.spawnAtLocation(serverLevel, JItems.GHAST_TENTACLE.get(), 1);
             }
 
             if(JCommonConfig.ENABLE_LOOT_POUCH_DROP.get()) {
                 if(random.nextInt(JCommonConfig.COMMON_LOOT_CHANCE.get()) == 0) {
-                    entity.spawnAtLocation(JItems.LOOT_POUCH.get(), 1);
+                    entity.spawnAtLocation(serverLevel, JItems.LOOT_POUCH.get(), 1);
                 }
                 if(random.nextInt(JCommonConfig.GOLD_LOOT_CHANCE.get()) == 0) {
-                    entity.spawnAtLocation(JItems.GOLD_LOOT_POUCH.get(), 1);
+                    entity.spawnAtLocation(serverLevel, JItems.GOLD_LOOT_POUCH.get(), 1);
                 }
                 if(random.nextInt(JCommonConfig.DIAMOND_LOOT_CHANCE.get()) == 0) {
-                    entity.spawnAtLocation(JItems.DIAMOND_LOOT_POUCH.get(), 1);
+                    entity.spawnAtLocation(serverLevel, JItems.DIAMOND_LOOT_POUCH.get(), 1);
                 }
             }
         }

@@ -1,20 +1,21 @@
 package net.jitl.common.block.base;
 
+import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraft.world.level.block.piston.MovingPistonBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -31,18 +32,19 @@ public abstract class JFarmlandBlock extends Block {
     public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE;
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 15.0D, 16.0D);
 
-    public JFarmlandBlock() {
-        super(JBlockProperties.FARMLAND);
+    public JFarmlandBlock(BlockBehaviour.Properties props) {
+        super(props);
         this.registerDefaultState(this.stateDefinition.any().setValue(MOISTURE, 0));
     }
 
     public abstract Block setDirt();
 
     @Override
-    public @NotNull BlockState updateShape(@NotNull BlockState pState, @NotNull Direction pFacing, @NotNull BlockState pFacingState, @NotNull LevelAccessor pLevel, @NotNull BlockPos pCurrentPos, @NotNull BlockPos pFacingPos) {
-        if(pFacing == Direction.UP && !pState.canSurvive(pLevel, pCurrentPos))
-            pLevel.scheduleTick(pCurrentPos, this, 1);
-        return super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
+    public BlockState updateShape(BlockState stateIn, LevelReader reader, ScheduledTickAccess tick, BlockPos currentPos, Direction dir, BlockPos facingPos, BlockState state, RandomSource source) {
+        if(dir == Direction.UP && !stateIn.canSurvive(reader, currentPos)) {
+            tick.scheduleTick(currentPos, this, 1);
+        }
+        return super.updateShape(stateIn, reader, tick,currentPos, dir, facingPos, state, source);
     }
 
     @Override
@@ -88,9 +90,11 @@ public abstract class JFarmlandBlock extends Block {
     }
 
     @Override
-    public void fallOn(Level pLevel, @NotNull BlockState pState, @NotNull BlockPos pPos, @NotNull Entity pEntity, float pFallDistance) {
-        if(!pLevel.isClientSide && CommonHooks.onFarmlandTrample(pLevel, pPos, setDirt().defaultBlockState(), pFallDistance, pEntity))
-            turnToDirt(pState, pLevel, pPos);
+    public void fallOn(Level pLevel, @NotNull BlockState pState, @NotNull BlockPos pPos, @NotNull Entity pEntity, double pFallDistance) {
+        if(pLevel instanceof ServerLevel level) {
+            if (!pLevel.isClientSide && CommonHooks.onFarmlandTrample(level, pPos, setDirt().defaultBlockState(), pFallDistance, pEntity))
+                turnToDirt(pState, pLevel, pPos);
+        }
 
         super.fallOn(pLevel, pState, pPos, pEntity, pFallDistance);
     }

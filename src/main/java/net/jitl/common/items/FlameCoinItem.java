@@ -17,8 +17,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class FlameCoinItem extends JItem {
 
-    public FlameCoinItem() {
-        super(JItems.itemProps().durability(100));
+    public FlameCoinItem(Properties p) {
+        super(p.durability(100));
     }
 
     @Override
@@ -65,6 +65,6 @@ public class FlameCoinItem extends JItem {
                 if (!player.isCreative()) context.getItemInHand().hurtAndBreak(1, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
             }
         }
-        return InteractionResult.sidedSuccess(context.getLevel().isClientSide);
+        return InteractionResult.SUCCESS;
     }
 }

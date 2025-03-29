@@ -75,14 +75,14 @@ public class TowerGuardian extends JBossEntity {
     }
 
     @Override
-    public boolean doHurtTarget(Entity entity) {
+    public boolean doHurtTarget(ServerLevel level, Entity entity) {
         this.level().broadcastEntityEvent(this, (byte)1);
         float damage = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
         float explosionRadius = 3;
         double particleWidth = 4;
         Vec3 vec3 = this.getDeltaMovement();
         float f1 = (int)damage > 0 ? damage / 2.0F + (float)this.random.nextInt((int)damage) : damage;
-        boolean hurt = entity.hurt(this.damageSources().mobAttack(this), f1);
+        boolean hurt = entity.hurtServer(level, this.damageSources().mobAttack(this), f1);
         int x = Mth.floor(entity.getX());
         int y = Mth.floor(entity.getY() - (double)0.2F);
         int z = Mth.floor(entity.getZ());
@@ -94,7 +94,7 @@ public class TowerGuardian extends JBossEntity {
             }
             if(blockstate.getRenderShape() != RenderShape.INVISIBLE) {
                 for(int i = 0; i < 50; i++) {
-                    this.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, blockstate).setPos(blockpos), this.getX() + (this.random.nextDouble() - 0.5D) * particleWidth, this.getY() + 0.1D, this.getZ() + (this.random.nextDouble() - 0.5D) * particleWidth, vec3.x * -4.0D, 1.5D, vec3.z * -4.0D);
+                    this.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, blockstate), this.getX() + (this.random.nextDouble() - 0.5D) * particleWidth, this.getY() + 0.1D, this.getZ() + (this.random.nextDouble() - 0.5D) * particleWidth, vec3.x * -4.0D, 1.5D, vec3.z * -4.0D);
                 }
             }
             DamageSource damagesource = this.damageSources().mobAttack(this);

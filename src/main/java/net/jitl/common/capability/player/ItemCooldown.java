@@ -34,7 +34,7 @@ public class ItemCooldown implements INBTSerializable<CompoundTag> {
 
     @Override
     public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
-        cooldown = nbt.getInt("cooldown");
+        cooldown = nbt.getIntOr("cooldown", 0);
     }
 
     public void sendPacket(Player player) {

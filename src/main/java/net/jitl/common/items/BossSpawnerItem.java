@@ -21,6 +21,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -28,11 +29,12 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class BossSpawnerItem extends JItem {
 
-    public BossSpawnerItem() {
-        super(JItems.itemProps().stacksTo(1).rarity(Rarity.EPIC));
+    public BossSpawnerItem(Properties props) {
+        super(props.stacksTo(1).rarity(Rarity.EPIC));
     }
 
     @Override
@@ -81,7 +83,7 @@ public class BossSpawnerItem extends JItem {
                 }
             }
         }
-        return InteractionResult.sidedSuccess(level.isClientSide());
+        return InteractionResult.SUCCESS_SERVER;
     }
 
     public void bindSpawner(Player player, ServerLevel level, BlockPos pos, Item spawner, String langKey, ResourceKey<Level> dimension, String dimensionName, LivingEntity boss) {
@@ -98,25 +100,25 @@ public class BossSpawnerItem extends JItem {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack pStack, @Nullable TooltipContext con, @NotNull List<Component> tip, @NotNull TooltipFlag pFlag) {
-        if(this == JItems.BROKEN_OKOLOO_CLUB.get()) tip.add(Component.translatable("jitl.tooltip.okoloo"));
+    public void appendHoverText(ItemStack stack, TooltipContext pContext, TooltipDisplay display, Consumer<Component> tip, TooltipFlag pTooltipFlag) {
+        if(this == JItems.BROKEN_OKOLOO_CLUB.get()) tip.accept(Component.translatable("jitl.tooltip.okoloo"));
 
-        if(this == JItems.WITHERING_BEAST_ORB.get()) tip.add(LangHelper.setBossSpawner("Withering Beast"));
-        if(this == JItems.CALCIA_ORB.get()) tip.add(LangHelper.setBossSpawner("Calcia"));
-        if(this == JItems.SOUL_WATCHER_ORB.get()) tip.add(LangHelper.setBossSpawner("Soul Watcher"));
-        if(this == JItems.BLAZIER_ORB.get()) tip.add(LangHelper.setBossSpawner("Blazier"));
+        if(this == JItems.WITHERING_BEAST_ORB.get()) tip.accept(LangHelper.setBossSpawner("Withering Beast"));
+        if(this == JItems.CALCIA_ORB.get()) tip.accept(LangHelper.setBossSpawner("Calcia"));
+        if(this == JItems.SOUL_WATCHER_ORB.get()) tip.accept(LangHelper.setBossSpawner("Soul Watcher"));
+        if(this == JItems.BLAZIER_ORB.get()) tip.accept(LangHelper.setBossSpawner("Blazier"));
 
-        if(this == JItems.EUDOR_CROWN.get()) tip.add(LangHelper.setBossSpawner("Eudor"));
-        if(this == JItems.CORALLATOR_ORB.get()) tip.add(LangHelper.setBossSpawner("Corallator"));
+        if(this == JItems.EUDOR_CROWN.get()) tip.accept(LangHelper.setBossSpawner("Eudor"));
+        if(this == JItems.CORALLATOR_ORB.get()) tip.accept(LangHelper.setBossSpawner("Corallator"));
 
-        if(this == JItems.THUNDER_BIRD_ORB.get()) tip.add(LangHelper.setBossSpawner("Thunderbird"));
-        if(this == JItems.SCALE_ORB.get()) tip.add(LangHelper.setBossSpawner("Scale"));
+        if(this == JItems.THUNDER_BIRD_ORB.get()) tip.accept(LangHelper.setBossSpawner("Thunderbird"));
+        if(this == JItems.SCALE_ORB.get()) tip.accept(LangHelper.setBossSpawner("Scale"));
 
-        if(this == JItems.LOGGER_ORB.get()) tip.add(LangHelper.setBossSpawner("Logger"));
-        if(this == JItems.SENTRY_KING_ORB.get()) tip.add(LangHelper.setBossSpawner("Sentry King"));
+        if(this == JItems.LOGGER_ORB.get()) tip.accept(LangHelper.setBossSpawner("Logger"));
+        if(this == JItems.SENTRY_KING_ORB.get()) tip.accept(LangHelper.setBossSpawner("Sentry King"));
 
-        if(this == JItems.ENCHANTED_TERRASTAR.get()) tip.add(LangHelper.setBossSpawner("Terranian Protector"));
+        if(this == JItems.ENCHANTED_TERRASTAR.get()) tip.accept(LangHelper.setBossSpawner("Terranian Protector"));
 
-        if(this == JItems.MYSTERIOUS_DISK.get()) tip.add(LangHelper.setBossSpawner("Sky Stalker"));
+        if(this == JItems.MYSTERIOUS_DISK.get()) tip.accept(LangHelper.setBossSpawner("Sky Stalker"));
     }
 }

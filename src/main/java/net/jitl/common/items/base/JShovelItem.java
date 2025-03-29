@@ -23,8 +23,8 @@ public class JShovelItem extends ShovelItem implements JGear {
 
     private final IAbility ability;
 
-    public JShovelItem(JToolTiers tier, IAbility ability) {
-        super(tier.getTier(), tier.getDamage(), tier.getSpeedModifier(), JItems.itemProps());
+    public JShovelItem(Properties p, JToolTiers tier, IAbility ability) {
+        super(tier.getTier(), tier.getDamage(), tier.getSpeedModifier(), p);
         this.ability = ability;
     }
 
@@ -34,15 +34,15 @@ public class JShovelItem extends ShovelItem implements JGear {
     }
 
     @Override
-    public @NotNull InteractionResult use(Level worldIn, Player playerIn, InteractionHand handIn) {
-        ability.rightClick(playerIn, handIn, worldIn);
-        return super.use(worldIn, playerIn, handIn);
+    public InteractionResult use(Level level, Player player, InteractionHand hand) {
+        ability.rightClick(player, hand, level);
+        return super.use(level, player, hand);
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-        super.appendHoverText(stack, pContext, pTooltipComponents, pTooltipFlag);
-        ability.fillTooltips(stack, pTooltipComponents);
+    public void appendHoverText(ItemStack stack, TooltipContext pContext, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag pTooltipFlag) {
+        super.appendHoverText(stack, pContext, display, tooltip, pTooltipFlag);
+        ability.fillTooltips(stack, tooltip);
     }
 
     @Override

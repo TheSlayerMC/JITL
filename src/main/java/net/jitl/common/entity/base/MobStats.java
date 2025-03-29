@@ -5,6 +5,7 @@ public class MobStats {
     public static final double FAST_MOVEMENT_SPEED = 0.35D;
 
     public static final double STANDARD_FOLLOW_RANGE = 25D;
+    public static final double STANDARD_TEMPT_RANGE = 10D;
     public static final double STANDARD_FLYING_FOLLOW_RANGE = 50D;
     public static final double STANDARD_BOSS_FOLLOW_RANGE = 80D;
 

@@ -51,7 +51,7 @@ public class BoilCaveCarver extends CaveWorldCarver {
             } else {
                 blockstate = CAVE_AIR;
             }
-            chunk.setBlockState(pos, blockstate, false);
+            chunk.setBlockState(pos, blockstate);
             return true;
         } else {
             return false;

@@ -28,12 +28,12 @@ public class CorbaBiomes extends Biomes {
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_LILY_PAD);
         biomeSetting.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, CorbaPlacedFeatures.CORBA_RUINS);
 
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.LEAF_BLOWER_TYPE.get(), 3, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SURFACE_SEER_TYPE.get(), 4, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.WOOD_CREATURE_TYPE.get(), 4, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SMELLY_TYPE.get(), 2, 1, 1));
-
-        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.CORBANIAN_MOLLUSK_TYPE.get(), 20, 1, 2));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.LEAF_BLOWER_TYPE.get(), 3, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SURFACE_SEER_TYPE.get(), 4, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.WOOD_CREATURE_TYPE.get(), 4, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SMELLY_TYPE.get(), 2, 1, 1));
+//
+//        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.CORBANIAN_MOLLUSK_TYPE.get(), 20, 1, 2));
 
         return biome(false, 0.8F, 0.4F, 23609, 1524224, 800768, 800768, 800769, 800768,
                 mobSettings, biomeSetting, Musics.createGameMusic(JSounds.CORBA_MUSIC));
@@ -50,12 +50,12 @@ public class CorbaBiomes extends Biomes {
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_TREE_MEDIUM);
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_TREE_LARGE);
 
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.LEAF_BLOWER_TYPE.get(), 3, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SURFACE_SEER_TYPE.get(), 4, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.WOOD_CREATURE_TYPE.get(), 4, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SMELLY_TYPE.get(), 2, 1, 1));
-
-        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.CORBANIAN_MOLLUSK_TYPE.get(), 20, 1, 2));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.LEAF_BLOWER_TYPE.get(), 3, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SURFACE_SEER_TYPE.get(), 4, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.WOOD_CREATURE_TYPE.get(), 4, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SMELLY_TYPE.get(), 2, 1, 1));
+//
+//        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.CORBANIAN_MOLLUSK_TYPE.get(), 20, 1, 2));
 
         return biome(false, 0.8F, 0.4F, 763904, 1524224, 3496974, 3496974, 800768, 800768,
                 mobSettings, biomeSetting, Musics.createGameMusic(JSounds.CORBA_MUSIC));
@@ -73,15 +73,15 @@ public class CorbaBiomes extends Biomes {
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.BOGSHROOMS);
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_LILY_PAD);
 
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.NATURE_MAGE_TYPE.get(), 3, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.LEAF_BLOWER_TYPE.get(), 3, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SURFACE_SEER_TYPE.get(), 4, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.WOOD_CREATURE_TYPE.get(), 4, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.STINKY_TYPE.get(), 2, 1, 3));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SMELLY_TYPE.get(), 4, 1, 1));
-
-        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.CORBANIAN_MOLLUSK_TYPE.get(), 20, 1, 2));
-        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.SWAMP_FLY_TYPE.get(), 40, 1, 3));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.NATURE_MAGE_TYPE.get(), 3, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.LEAF_BLOWER_TYPE.get(), 3, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SURFACE_SEER_TYPE.get(), 4, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.WOOD_CREATURE_TYPE.get(), 4, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.STINKY_TYPE.get(), 2, 1, 3));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SMELLY_TYPE.get(), 4, 1, 1));
+//
+//        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.CORBANIAN_MOLLUSK_TYPE.get(), 20, 1, 2));
+//        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.SWAMP_FLY_TYPE.get(), 40, 1, 3));
 
         return biome(false, 0.8F, 0.4F, 23609, 1524224, 800769, 800769, 3496974, 3496974,
                 mobSettings, biomeSetting, Musics.createGameMusic(JSounds.CORBA_MUSIC));
@@ -98,13 +98,13 @@ public class CorbaBiomes extends Biomes {
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_TREE_MEDIUM);
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_TREE_LARGE);
 
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.TREE_GOLEM_TYPE.get(), 5, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.LEAF_BLOWER_TYPE.get(), 3, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SURFACE_SEER_TYPE.get(), 4, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.WOOD_CREATURE_TYPE.get(), 4, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SMELLY_TYPE.get(), 2, 1, 1));
-
-        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.CORBANIAN_MOLLUSK_TYPE.get(), 20, 1, 2));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.TREE_GOLEM_TYPE.get(), 5, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.LEAF_BLOWER_TYPE.get(), 3, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SURFACE_SEER_TYPE.get(), 4, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.WOOD_CREATURE_TYPE.get(), 4, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SMELLY_TYPE.get(), 2, 1, 1));
+//
+//        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.CORBANIAN_MOLLUSK_TYPE.get(), 20, 1, 2));
 
         return biome(false, 0.8F, 0.4F, 1927192, 1524224, 3496974, 3496974, 800769, 800769,
                 mobSettings, biomeSetting, Musics.createGameMusic(JSounds.CORBA_MUSIC));

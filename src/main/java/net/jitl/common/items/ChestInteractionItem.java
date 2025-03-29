@@ -21,8 +21,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class ChestInteractionItem extends JItem {
 
-    public ChestInteractionItem() {
-        super(JItems.itemProps().stacksTo(16));
+    public ChestInteractionItem(Properties p) {
+        super(p.stacksTo(16));
     }
 
     @Override
@@ -55,7 +55,7 @@ public class ChestInteractionItem extends JItem {
                 lockChest(player, world, pos);
             }
         }
-        return InteractionResult.sidedSuccess(world.isClientSide);
+        return InteractionResult.SUCCESS;
     }
 
     public void lockChest(Player player, Level world, BlockPos pos) {

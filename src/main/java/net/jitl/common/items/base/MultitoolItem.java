@@ -72,8 +72,8 @@ public class MultitoolItem extends JItem implements JGear {
     private final IAbility ability;
     private final JToolTiers tier;
 
-    public MultitoolItem(JToolTiers tier, IAbility ability) {
-        super(JItems.itemProps().pickaxe(tier.getTier(), tier.getDamage(), tier.getSpeedModifier())
+    public MultitoolItem(Properties p, JToolTiers tier, IAbility ability) {
+        super(p.pickaxe(tier.getTier(), tier.getDamage(), tier.getSpeedModifier())
                 .axe(tier.getTier(), tier.getDamage(), tier.getSpeedModifier())
                 .shovel(tier.getTier(), tier.getDamage(), tier.getSpeedModifier())
                 .hoe(tier.getTier(), tier.getDamage(), tier.getSpeedModifier())

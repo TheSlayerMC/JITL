@@ -13,6 +13,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -124,7 +125,7 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        setActivated(compound.getBoolean("activated"));
+        setActivated(compound.getBooleanOr("activated", false));
     }
 
     public void setActivated(boolean activated) {
@@ -162,7 +163,7 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
     }
 
     @Override
-    public boolean hurt(DamageSource source, float amount) {
+    public boolean hurtServer(ServerLevel p_376221_, DamageSource p_376460_, float p_376610_) {
         return false;
     }
 

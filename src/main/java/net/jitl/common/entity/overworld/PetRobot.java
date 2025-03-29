@@ -26,7 +26,7 @@ public class PetRobot extends JTamableEntity {
 
     public PetRobot(EntityType<? extends JTamableEntity> pEntityType, Level pLevel, Player player) {
         super(pEntityType, pLevel);
-        setOwnerUUID(player.getUUID());
+        setOwner(player);
         setTame(true, true);
     }
 

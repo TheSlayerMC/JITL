@@ -24,7 +24,7 @@ public class DamagingProjectileEntity extends ThrowableProjectile {
     }
 
     public DamagingProjectileEntity(EntityType<? extends DamagingProjectileEntity> type, Level world, LivingEntity thrower, float damage) {
-        super(type, thrower, world);
+        super(type, world);
         this.damage = damage;
     }
 
@@ -97,7 +97,7 @@ public class DamagingProjectileEntity extends ThrowableProjectile {
     @Override
     protected void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        damage = compound.getFloat("damage");
+        damage = compound.getFloatOr("damage", 0);
     }
 
 }

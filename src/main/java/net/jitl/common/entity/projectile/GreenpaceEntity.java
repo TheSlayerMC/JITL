@@ -22,7 +22,7 @@ public class GreenpaceEntity extends JThrowableProjectile {
 
     public GreenpaceEntity(int damage, Level world, LivingEntity thrower) {
         super(JEntities.GREENPACE_TYPE.get(), damage, world, thrower);
-        setPotionEffect(MobEffects.HARM, 40);
+        setPotionEffect(MobEffects.INSTANT_DAMAGE, 40);
     }
 
     @Override

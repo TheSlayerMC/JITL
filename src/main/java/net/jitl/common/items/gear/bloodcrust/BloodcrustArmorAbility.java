@@ -8,6 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class BloodcrustArmorAbility implements IAbility {
     @Override
@@ -17,7 +18,7 @@ public class BloodcrustArmorAbility implements IAbility {
     }
 
    @Override
-    public void fillTooltips(ItemStack stack, List<Component> tooltip) {
+    public void fillTooltips(ItemStack stack, Consumer<Component> tooltip) {
         TooltipFiller filler = new TooltipFiller(tooltip, "bloodcrust_armor");
         filler.addOverview();
         filler.addDetail();

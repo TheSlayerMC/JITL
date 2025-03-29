@@ -20,8 +20,8 @@ public class JAxeItem extends AxeItem implements JGear {
 
     private final IAbility ability;
 
-    public JAxeItem(JToolTiers tier, IAbility ability) {
-        super(tier.getTier(), tier.getDamage(), tier.getSpeedModifier(), JItems.itemProps());
+    public JAxeItem(Properties p, JToolTiers tier, IAbility ability) {
+        super(tier.getTier(), tier.getDamage(), tier.getSpeedModifier(), p);
         this.ability = ability;
     }
 

@@ -15,8 +15,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class SentryEyeItem extends JItem {
 
-    public SentryEyeItem() {
-        super(JItems.itemProps());
+    public SentryEyeItem(Properties p) {
+        super(p);
     }
 
     @Override

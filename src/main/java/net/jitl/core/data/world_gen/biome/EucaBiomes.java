@@ -36,10 +36,10 @@ public class EucaBiomes extends Biomes {
         biomeSetting.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, EucaPlacedFeatures.GOLD_BOT_SPAWNER);
         biomeSetting.addFeature(GenerationStep.Decoration.LAKES, EucaPlacedFeatures.EUCA_WATER);
 
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.EUCA_CHARGER_TYPE.get(), 15, 1, 2));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.DYNASTER_TYPE.get(), 15, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.GOLDER_TYPE.get(), 15, 1, 2));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SHIMMERER_TYPE.get(), 5, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.EUCA_CHARGER_TYPE.get(), 15, 1, 2));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.DYNASTER_TYPE.get(), 15, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.GOLDER_TYPE.get(), 15, 1, 2));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SHIMMERER_TYPE.get(), 5, 1, 1));
 
         return biome(false, 0.8F, 0, EUCA_SKY_COLOUR, EUCA_FOG_COLOUR, EUCA_WATER_COLOUR, EUCA_WATER_FOG_COLOUR, EUCA_GRASS_COLOUR, EUCA_FOLIAGE_COLOUR,
                 mobSettings, biomeSetting, JParticleManager.GOLDITE_FLOWER.get(), 0.001428F, Musics.createGameMusic(JSounds.EUCA_MUSIC));
@@ -57,10 +57,10 @@ public class EucaBiomes extends Biomes {
         biomeSetting.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, EucaPlacedFeatures.EUCA_GOLDITE_RUINS);
         biomeSetting.addFeature(GenerationStep.Decoration.LAKES, EucaPlacedFeatures.EUCA_WATER);
 
-        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.EUCA_HOPPER.get(), 5, 1, 2));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.EUCA_CHARGER_TYPE.get(), 15, 1, 2));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.DYNASTER_TYPE.get(), 15, 1, 1));
-        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.GOLDER_TYPE.get(), 15, 1, 2));
+//        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.EUCA_HOPPER.get(), 5, 1, 2));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.EUCA_CHARGER_TYPE.get(), 15, 1, 2));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.DYNASTER_TYPE.get(), 15, 1, 1));
+//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.GOLDER_TYPE.get(), 15, 1, 2));
 
         return biome(false, 0.8F, 0, EUCA_SKY_COLOUR, EUCA_FOG_COLOUR, EUCA_WATER_COLOUR, EUCA_WATER_FOG_COLOUR, EUCA_GRASS_COLOUR, EUCA_FOLIAGE_COLOUR,
                 mobSettings, biomeSetting, JParticleManager.GOLDITE_FLOWER.get(), 0.001428F, Musics.createGameMusic(JSounds.EUCA_MUSIC));

@@ -119,12 +119,14 @@ public class Portal implements INBTSerializable<CompoundTag> {
         nbt.putBoolean("inPortal", this.inPortal);
 
         if (nbt.contains("PortalMap")) {
-            CompoundTag portalMapTag = nbt.getCompound("PortalMap");
+            CompoundTag portalMapTag = nbt.getCompound("PortalMap").orElse(null);
 
-            for (String s : portalMapTag.getAllKeys()) {
-                CompoundTag portalReturnTag = portalMapTag.getCompound(s);
-                ResourceLocation fromDim = ResourceLocation.read(portalReturnTag.getString("FromDim")).getOrThrow();
-                BlockPos portalPos = NbtUtils.readBlockPos(portalReturnTag, "PortalPos").get();
+            assert portalMapTag != null;
+            for (String s : portalMapTag.keySet()) {
+                CompoundTag portalReturnTag = portalMapTag.getCompound(s).orElse(null);
+                assert portalReturnTag != null;
+                ResourceLocation fromDim = ResourceLocation.read(portalReturnTag.getStringOr("FromDim", "FromDim")).getOrThrow();
+                BlockPos portalPos = portalReturnTag.read("PortalPos", BlockPos.CODEC).orElse(null);
                 ResourceKey<Level> toDimKey = ResourceKey.create(Registries.DIMENSION, ResourceLocation.read(s).getOrThrow());
                 ResourceKey<Level> fromDimKey = ResourceKey.create(Registries.DIMENSION, fromDim);
                 portalCoordinatesMap.put(toDimKey, new PortalCoordinatesContainer(fromDimKey, portalPos));
@@ -135,10 +137,10 @@ public class Portal implements INBTSerializable<CompoundTag> {
 
     @Override
     public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
-        this.portalOverlayTime = nbt.getFloat("portalOverlayTime");
-        this.oldPortalOverlayTime = nbt.getFloat("oldPortalOverlayTime");
-        this.portalTimer = nbt.getInt("portalTimer");
-        this.inPortal = nbt.getBoolean("inPortal");
+        this.portalOverlayTime = nbt.getFloatOr("portalOverlayTime", 0F);
+        this.oldPortalOverlayTime = nbt.getFloatOr("oldPortalOverlayTime", 0F);
+        this.portalTimer = nbt.getIntOr("portalTimer", 0);
+        this.inPortal = nbt.getBooleanOr("inPortal", false);
 
         if (!portalCoordinatesMap.isEmpty()) {
             CompoundTag portalCoordinatesNBT = new CompoundTag();
@@ -148,7 +150,8 @@ public class Portal implements INBTSerializable<CompoundTag> {
                 PortalCoordinatesContainer container = entry.getValue();
 
                 portalReturnTag.putString("FromDim", container.fromDim().location().toString());
-                portalReturnTag.put("PortalPos", NbtUtils.writeBlockPos(container.portalPos()));
+               // portalReturnTag.put("PortalPos", nbt.storeNullable(container.portalPos()););
+                portalReturnTag.storeNullable("PortalPos", BlockPos.CODEC, container.portalPos());
 
                 portalCoordinatesNBT.put(entry.getKey().location().toString(), portalReturnTag);
             }

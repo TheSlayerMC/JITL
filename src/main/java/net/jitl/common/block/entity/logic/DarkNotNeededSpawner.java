@@ -13,6 +13,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.behavior.ShufflingList;
 import net.minecraft.world.level.BaseSpawner;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.SpawnData;
@@ -138,9 +139,6 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
 
                             boolean flag1 = spawndata.getEntityToSpawn().size() == 1 && spawndata.getEntityToSpawn().getString("id").isPresent();
                             EventHooks.finalizeMobSpawnSpawner(mob, serverLevel, serverLevel.getCurrentDifficultyAt(entity.blockPosition()), EntitySpawnReason.SPAWNER, (SpawnGroupData) null, this, flag1);
-                            Optional var10000 = spawndata.getEquipment();
-                            Objects.requireNonNull(mob);
-                            var10000.ifPresent(mob::equip);
                         }
 
                         if (!serverLevel.tryAddFreshEntityWithPassengers(entity)) {
@@ -238,10 +236,12 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
     }
 
     private SpawnData getOrCreateNextSpawnData(@Nullable Level pLevel, RandomSource pRandom, BlockPos pPos) {
-        if(this.nextSpawnData == null) {
-            this.setNextSpawnData(pLevel, pPos, this.spawnPotentials.getRandom(pRandom).map(WeightedEntry.Wrapper::data).orElseGet(SpawnData::new));
+        if (this.nextSpawnData != null) {
+            return this.nextSpawnData;
+        } else {
+            this.setNextSpawnData(pLevel, pPos, this.spawnPotentials.getRandom(pRandom).orElseGet(SpawnData::new));
+            return this.nextSpawnData;
         }
-        return this.nextSpawnData;
     }
 
     @Override

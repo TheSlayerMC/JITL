@@ -35,7 +35,7 @@ public class JTransparentBlock extends HalfTransparentBlock {
     }
 
     @Override
-    public boolean propagatesSkylightDown(@NotNull BlockState s, @NotNull BlockGetter g, @NotNull BlockPos p) {
+    protected boolean propagatesSkylightDown(BlockState state) {
         return true;
     }
 }

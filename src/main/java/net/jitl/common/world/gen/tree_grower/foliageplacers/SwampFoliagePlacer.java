@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 public class SwampFoliagePlacer extends BlobFoliagePlacer {
 
     public static final MapCodec<SwampFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> blobParts(instance).apply(instance, SwampFoliagePlacer::new));
-    
+
     public SwampFoliagePlacer(IntProvider featureSpread, IntProvider featureSpread1, int i) {
         super(featureSpread, featureSpread1, i);
     }
@@ -27,12 +27,12 @@ public class SwampFoliagePlacer extends BlobFoliagePlacer {
         return JFoliagePlacers.SPHERICAL_FOLIAGE_PLACER.get();
     }
 
-    
+
     @Override
     protected void createFoliage(@NotNull LevelSimulatedReader reader, @NotNull FoliagePlacer.FoliageSetter blockSetter, @NotNull RandomSource rand, @NotNull TreeConfiguration baseTreeFeatureConfig, int maxFreeTreeHeight, FoliageAttachment foliage, int foliageHeight, int foliageRadius, int offset) {
         int size = foliageRadius + foliage.radiusOffset();
         BlockPos pos = foliage.pos().above(offset);
-        pos = pos.offset(Direction.UP.getNormal());
+        pos = pos.offset(Direction.UP.getUnitVec3i());
         for (byte x = 0; x <= size; x++) {
             for (byte y = 0; y <= size; y++) {
                 for (byte z = 0; z <= size; z++) {

@@ -20,8 +20,8 @@ import java.util.Random;
 
 public class AncientPieceItem extends JItem {
 
-    public AncientPieceItem() {
-        super(JItems.itemProps());
+    public AncientPieceItem(Properties p) {
+        super(p);
     }
 
     @NotNull
@@ -46,6 +46,6 @@ public class AncientPieceItem extends JItem {
                 }
                 world.playSound(null, pos, SoundEvents.END_PORTAL_FRAME_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
         }
-        return InteractionResult.sidedSuccess(world.isClientSide);
+        return InteractionResult.SUCCESS;
     }
 }
