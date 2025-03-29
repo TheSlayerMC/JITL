@@ -14,14 +14,14 @@ import java.util.concurrent.CompletableFuture;
 public class JDataGenerator {
 
     @SubscribeEvent
-    public static void gatherData(GatherDataEvent event) {
+    public static void gatherData(GatherDataEvent.Client event) {
         DataGenerator generator = event.getGenerator();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        JDamageSources.register(event);
+        //JDamageSources.register(event);
 
         //generator.addProvider(event.includeServer(), new JRecipeRegistry(generator.getPackOutput(), lookupProvider));
-        generator.addProvider(true, new JLootTableSubProvider(generator.getPackOutput(), lookupProvider));
+        //generator.addProvider(true, new JLootTableSubProvider(generator.getPackOutput(), lookupProvider));
         //generator.addProvider(event.includeServer(), new CarverGenerator(generator.getPackOutput(), lookupProvider));
        // generator.addProvider(event.includeServer(), new ConfiguredFeaturesGenerator(generator.getPackOutput(), event.getLookupProvider()));
         //generator.addProvider(event.includeServer(), new PlacedFeaturesGenerator(generator.getPackOutput(), event.getLookupProvider()));

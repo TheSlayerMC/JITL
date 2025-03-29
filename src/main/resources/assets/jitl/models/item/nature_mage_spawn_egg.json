@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "jitl:item/spawn_eggs/nature_mage_spawn_egg"
-  }
-}

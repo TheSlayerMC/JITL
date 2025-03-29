@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "jitl:item/spawn_eggs/depths_hunter_spawn_egg"
-  }
-}

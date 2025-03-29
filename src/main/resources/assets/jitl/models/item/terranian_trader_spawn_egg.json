@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "jitl:item/spawn_eggs/terranian_trader_spawn_egg"
-  }
-}

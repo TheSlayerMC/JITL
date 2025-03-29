@@ -17,7 +17,7 @@ public class FrozenTrollRenderer extends MobRenderer<FrozenTrollEntity, FrozenTr
     }
 
     @Override
-    public FrozenTrollState createRenderState() {
+    public @NotNull FrozenTrollState createRenderState() {
         return new FrozenTrollState();
     }
 

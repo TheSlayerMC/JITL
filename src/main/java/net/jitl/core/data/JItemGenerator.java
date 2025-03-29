@@ -62,19 +62,20 @@ public class JItemGenerator extends BasicFileGenerator {
             itemModelInit();
         }
 
-        for (String name : JItems.spawnName) {
+        for(int i = 0; i < JEntities.entityName.size(); i++) {
+            String name = JEntities.entityName.get(i) + "_spawn_egg";
             String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
+
             File itemModel = new File(itemModelDir);
             itemModel.mkdirs();
             try {
-                if (itemModel.exists()) itemModel.delete();
+                if(itemModel.exists()) itemModel.delete();
                 itemModel.createNewFile();
                 itemModelWriter = new BufferedWriter(new FileWriter(itemModel));
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            getSpawnEggItem(JITL.MOD_ID, name);
             generateSpawnEggFile(name);
             itemModelInit();
         }

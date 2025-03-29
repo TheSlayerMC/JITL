@@ -59,7 +59,6 @@ public class JITL {
         JTabs.REGISTRY.register(modEventBus);
         JDataAttachments.REGISTRY.register(modEventBus);
         JDataComponents.REGISTRY.register(modEventBus);
-        JToolTiers.JArmorTier.REGISTRY.register(modEventBus);
         JNetworkRegistry.init(modEventBus);
 
         if(DEV_MODE) {

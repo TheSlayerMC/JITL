@@ -35,12 +35,12 @@ public record PacketBuyItem(String item, int amount, int cost) implements Custom
         ctx.enqueueWork(() -> {
             Player player = ctx.player();
             PlayerStats stats = player.getData(JDataAttachments.PLAYER_STATS);
-            Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(payload.item()));
+            Item item = BuiltInRegistries.ITEM.getValue(ResourceLocation.parse(payload.item));
 
             if(stats.useSentacoins(payload.cost())) {
                 player.addItem(new ItemStack(item, payload.amount));
             } else {
-                player.sendSystemMessage(Component.translatable("jitl.trade.no"));
+                player.displayClientMessage(Component.translatable("jitl.trade.no"), false);
             }
         });
     }
