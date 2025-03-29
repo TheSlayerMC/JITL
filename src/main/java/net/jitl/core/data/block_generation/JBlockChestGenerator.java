@@ -38,8 +38,8 @@ public class JBlockChestGenerator {
                 e.printStackTrace();
             }
 
-            getBlockItem(JITL.MODID, name);
-            getBlockModel(JITL.MODID, name);
+            getBlockItem(JITL.MOD_ID, name);
+            getBlockModel(JITL.MOD_ID, name);
             getBlockstate();
 
             writerInit();

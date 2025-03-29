@@ -1,6 +1,5 @@
 package net.jitl.client.gui.overlay;
 
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.client.essence.ClientEssence;
 import net.jitl.common.entity.projectile.EssenceArrowEntity;
@@ -13,7 +12,7 @@ import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.LayeredDraw;
-import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.Entity;
@@ -30,16 +29,16 @@ public class EssenceBar implements LayeredDraw.Layer {
     private static float transparency;
     private static float burnoutTransparency;
 
-    private static final ResourceLocation UNDER_CROSSHAIR_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/gui/essence_under_crosshair.png");
-    private static final ResourceLocation OVER_EXP_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/gui/essence_over_exp.png");
-    private static final ResourceLocation ABOVE_HUNGER_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/gui/essence_over_hunger.png");
+    private static final ResourceLocation UNDER_CROSSHAIR_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/gui/essence_under_crosshair.png");
+    private static final ResourceLocation OVER_EXP_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/gui/essence_over_exp.png");
+    private static final ResourceLocation ABOVE_HUNGER_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/gui/essence_over_hunger.png");
 
     @Override
     public void render(@NotNull GuiGraphics gui, DeltaTracker tracker) {
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.setShaderTexture(0, OVER_EXP_TEXTURE);
+        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(OVER_EXP_TEXTURE).getTexture());
         if(player != null && !player.isCreative() && !player.isSpectator()) {
 
             float currentEssence = ClientEssence.getCurrentClientEssence();
@@ -128,8 +127,8 @@ public class EssenceBar implements LayeredDraw.Layer {
                     gui.pose().scale(scale, scale, 0);
                     gui.pose().translate(-widthTranslation, -heightTranslation, 0);
 
-                    RenderSystem.enableBlend();
-                    RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.ONE_MINUS_DST_COLOR, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR, GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ZERO);
+//                    RenderSystem.enableBlend();
+//                    RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.ONE_MINUS_DST_COLOR, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR, GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ZERO);
                 }
 
                 /*
@@ -137,8 +136,8 @@ public class EssenceBar implements LayeredDraw.Layer {
                  */
                 float addedAlpha = belowCrosshair ? 0.5F : 0;
 
-                RenderSystem.setShader(GameRenderer::getPositionTexShader);
-                RenderSystem.setShaderTexture(0, getTextureBasedOnPosition(essencePosition));
+                //RenderSystem.setShader(GameRenderer::getPositionTexShader);
+                RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(getTextureBasedOnPosition(essencePosition)).getTexture());
                 RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, transparency - addedAlpha);
 
                 /*
@@ -151,7 +150,7 @@ public class EssenceBar implements LayeredDraw.Layer {
                 int backgroundVOffset = renderSmall ? 5 : 9;
                 int burnoutVOffset = renderSmall ? 10 : 18;
 
-                gui.blit(getTextureBasedOnPosition(essencePosition), x, y, 0, backgroundVOffset, 81, barHeight, 81, texHeight);
+                gui.blit(RenderType::guiTextured, getTextureBasedOnPosition(essencePosition), x, y, 0, backgroundVOffset, 81, barHeight, 81, texHeight);
 
                 if (cooldownActive) {
                     /*
@@ -164,15 +163,15 @@ public class EssenceBar implements LayeredDraw.Layer {
                     float cooldownFade = Math.min(cooldown, 10) / 10;
                     RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, (sin * cooldownFade) - addedAlpha);
 
-                    gui.blit(getTextureBasedOnPosition(essencePosition), x, y, 0, 0, 81, barHeight, 81, texHeight);
+                    gui.blit(RenderType::guiTextured, getTextureBasedOnPosition(essencePosition), x, y, 0, 0, 81, barHeight, 81, texHeight);
                 } else {
                     int i = (int) ((currentEssence / maxEssence) * 81);
-                    gui.blit(getTextureBasedOnPosition(essencePosition), x, y, 0, 0, i, barHeight, 81, texHeight);
+                    gui.blit(RenderType::guiTextured, getTextureBasedOnPosition(essencePosition), x, y, 0, 0, i, barHeight, 81, texHeight);
                 }
 
-                if(burnoutTransparency > 0) {
+                if (burnoutTransparency > 0) {
                     RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, burnoutTransparency - addedAlpha);
-                    gui.blit(getTextureBasedOnPosition(essencePosition), x, y, 0, burnoutVOffset, 81, barHeight, 81, texHeight);
+                    gui.blit(RenderType::guiTextured, getTextureBasedOnPosition(essencePosition), x, y, 0, burnoutVOffset, 81, barHeight, 81, texHeight);
                 }
                 gui.pose().popPose();
             }

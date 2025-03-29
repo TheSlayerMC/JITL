@@ -7,6 +7,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -127,7 +128,7 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
             }
         }
         if(getStack().isEmpty()) {
-            level().playSound(null, blockPosition(), SoundEvents.ITEM_BREAK, SoundSource.AMBIENT, 1.0F, 1.0F);
+            level().playSound(null, blockPosition(), SoundEvents.ITEM_BREAK.value(), SoundSource.AMBIENT, 1F, 1F);
             discard();
         }
     }
@@ -151,12 +152,12 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
     protected void onHitEntity(EntityHitResult entityRayTraceResult_) {
         Entity entity = entityRayTraceResult_.getEntity();
         if(entity instanceof LivingEntity && entity != this.getOwner()) {
-            if(!level().isClientSide()) {
+            if(level() instanceof ServerLevel level) {
                 if(getOwner() instanceof ServerPlayer player) {
                     getStack().hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                 }
 
-                if(entity.hurt(this.damageSources().thrown(this, this.getOwner()), (float) getBaseDamage())) {
+                if(entity.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), (float)baseDamage)) {
                     if (getFlameAddend() > 0) {
                         entity.setRemainingFireTicks(getFlameAddend() * 4 * 20);
                     }
@@ -171,7 +172,7 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
     public void playerTouch(@NotNull Player entityIn) {
         if(!this.level().isClientSide) {
             boolean isOwner = this.getOwner().getUUID() == entityIn.getUUID();
-            if((isOwner && currentBounces > 0) || ((this.inGround || this.isNoPhysics()) && this.shakeTime <= 0)) {
+            if((isOwner && currentBounces > 0) || ((this.isInGround() || this.isNoPhysics()) && this.shakeTime <= 0)) {
                 boolean flag = this.pickup == Pickup.ALLOWED || this.pickup == Pickup.CREATIVE_ONLY && entityIn.canUseGameMasterBlocks() || this.isNoPhysics() && isOwner;
                 if(this.pickup == Pickup.ALLOWED && !entityIn.getInventory().add(this.getPickupItem()))
                     flag = false;
@@ -182,10 +183,6 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
                 }
             }
         }
-    }
-
-    public boolean isInGround() {
-        return this.inGround;
     }
 
     @Override
@@ -202,13 +199,13 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
     @Override
     public void readAdditionalSaveData(@NotNull CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
-        setStack(ItemStack.parse(this.registryAccess(), nbt.getCompound("stack")).orElse(this.getDefaultPickupItem()));
+        setStack(ItemStack.parse(this.registryAccess(), nbt.getCompoundOrEmpty("stack")).orElse(this.getDefaultPickupItem()));
         if (getStack().isEmpty()) remove(RemovalReason.DISCARDED);
-        currentBounces = nbt.getInt("bounces");
-        maxBounces = nbt.getInt("maxBounces");
-        velocityMultiplier = nbt.getFloat("velocityMultiplier");
-        rangeAddend = nbt.getDouble("rangeAddend");
-        flameAddend = nbt.getInt("flameAddend");
+        currentBounces = nbt.getIntOr("bounces", 0);
+        maxBounces = nbt.getIntOr("maxBounces", 0);
+        velocityMultiplier = nbt.getFloatOr("velocityMultiplier", 0F);
+        rangeAddend = nbt.getDoubleOr("rangeAddend", 0D);
+        flameAddend = nbt.getIntOr("flameAddend", 0);
     }
 
     private void setStack(ItemStack stack) {

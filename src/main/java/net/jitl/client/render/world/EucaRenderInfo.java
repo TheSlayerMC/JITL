@@ -1,17 +1,13 @@
 package net.jitl.client.render.world;
 
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Axis;
-import net.jitl.client.render.world.clouds.EucaCloudRenderer;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
-import net.minecraft.client.renderer.FogRenderer;
-import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffects;
@@ -22,8 +18,8 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 
-public class EucaRenderInfo extends DimensionSpecialEffects {
-
+public class EucaRenderInfo {//extends DimensionSpecialEffects {
+/*
     private static final ResourceLocation CORBA_MOON_LOCATION = JITL.rl("textures/environment/corba_moon.png");
 
     public EucaRenderInfo() {
@@ -37,13 +33,13 @@ public class EucaRenderInfo extends DimensionSpecialEffects {
     }
 
     @Override
-    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f modelViewMatrix, Matrix4f projectionMatrix) {
-        new EucaCloudRenderer().render(level, ticks, poseStack, projectionMatrix, modelViewMatrix, partialTick, camX, camY, camZ);
+    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, double camX, double camY, double camZ, Matrix4f modelViewMatrix, Matrix4f projectionMatrix) {
+        //new JCloudRenderer(JITL.rl("textures/environment/euca_clouds.png")).render(1, Minecraft.getInstance().options.cloudStatus().get(), getCloudHeight(), projectionMatrix, modelViewMatrix, new Vec3(camX, camY, camZ), partialTick + ticks);
         return true;
     }
 
     @Override
-    public boolean renderSky(@NotNull ClientLevel level, int ticks, float partialTick, @NotNull Matrix4f frustumMatrix, @NotNull Camera camera, @NotNull Matrix4f projectionMatrix, boolean isFoggy, @NotNull Runnable setupFog) {
+    public boolean renderSky(@NotNull ClientLevel level, int ticks, float partialTick, @NotNull Matrix4f frustumMatrix, @NotNull Camera camera, @NotNull Matrix4f projectionMatrix, @NotNull Runnable setupFog) {
         Tesselator tesselator = Tesselator.getInstance();
         Minecraft mc = Minecraft.getInstance();
         setupFog.run();
@@ -51,17 +47,15 @@ public class EucaRenderInfo extends DimensionSpecialEffects {
         if(fogtype != FogType.POWDER_SNOW && fogtype != FogType.LAVA && !doesMobEffectBlockSky(camera)) {
             PoseStack poseStack = new PoseStack();
             poseStack.mulPose(frustumMatrix);
-            Vec3 vec3 = level.getSkyColor(mc.gameRenderer.getMainCamera().getPosition(), partialTick);
+            Vec3 vec3 = Vec3.fromRGB24(level.getSkyColor(mc.gameRenderer.getMainCamera().getPosition(), partialTick));
             float f = (float)vec3.x;
             float f1 = (float)vec3.y;
             float f2 = (float)vec3.z;
 
-            FogRenderer.levelFogColor();
             RenderSystem.depthMask(false);
             RenderSystem.setShaderColor(f, f1, f2, 1.0F);
             VertexBuffer.unbind();
             RenderSystem.enableBlend();
-            RenderSystem.setShader(GameRenderer::getPositionColorShader);
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
             poseStack.pushPose();
             poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
@@ -77,7 +71,6 @@ public class EucaRenderInfo extends DimensionSpecialEffects {
             poseStack.mulPose(Axis.XP.rotationDegrees(-24000));
             Matrix4f matrix4f1 = poseStack.last().pose();
             float f12 = 20F;
-            RenderSystem.setShader(GameRenderer::getPositionTexShader);
             RenderSystem.setShaderTexture(0, CORBA_MOON_LOCATION);
             BufferBuilder bufferbuilder = tesselator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
             bufferbuilder.addVertex(matrix4f1, -f12, 100.0F, -f12).setUv(0.0F, 0.0F);
@@ -105,5 +98,5 @@ public class EucaRenderInfo extends DimensionSpecialEffects {
     @Override
     public boolean isFoggyAt(int int_, int int1_) {
         return false;
-    }
+    }*/
 }

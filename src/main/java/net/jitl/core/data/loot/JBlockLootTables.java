@@ -23,7 +23,6 @@ import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.LimitCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -43,7 +42,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
         return BuiltInRegistries.BLOCK.stream()
                 .filter(block -> BuiltInRegistries.BLOCK.getKey(block)
                         .getNamespace()
-                        .equals(JITL.MODID))
+                        .equals(JITL.MOD_ID))
                 .toList();
     }
 

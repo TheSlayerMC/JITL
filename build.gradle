@@ -1,7 +1,8 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '1.0.17'
+    id 'net.neoforged.moddev' version '2.0.80'
+    id 'idea'
 }
 
 tasks.named('wrapper', Wrapper).configure {
@@ -54,8 +55,14 @@ neoForge {
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
 
-        data {
-            data()
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+
+        clientData {
+            clientData()
+
             programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
         }
 
@@ -80,22 +87,22 @@ configurations {
 }
 
 dependencies {
-    implementation "mezz.jei:jei-" + minecraft_version + "-neoforge:" + jei_version
+    //implementation "mezz.jei:jei-" + minecraft_version + "-neoforge:" + jei_version
     //implementation "maven.modrinth:just-enough-resources-jer:" + jer_version
 
-      implementation("curse.maven:just-enough-resources-jer-240630:" + jer_version) //Just Enough Resources
+    //  implementation("curse.maven:just-enough-resources-jer-240630:" + jer_version) //Just Enough Resources
 
     implementation "top.theillusivec4.curios:curios-neoforge:" + curios_version
 
     implementation "software.bernie.geckolib:geckolib-neoforge-" + gekolib_version
 
-    compileOnly "vazkii.patchouli:Patchouli:" + sub_minecraft_version + "-" + patchouli_version + "-NEOFORGE:api"
-    runtimeOnly "vazkii.patchouli:Patchouli:" + sub_minecraft_version + "-" + patchouli_version + "-NEOFORGE"
-
-    runtimeOnly "maven.modrinth:worldedit:7.3.6"
-
-    compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
-    runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
+//    compileOnly "vazkii.patchouli:Patchouli:" + sub_minecraft_version + "-" + patchouli_version + "-NEOFORGE:api"
+//    runtimeOnly "vazkii.patchouli:Patchouli:" + sub_minecraft_version + "-" + patchouli_version + "-NEOFORGE"
+//
+//    runtimeOnly "maven.modrinth:worldedit:7.3.6"
+//
+//    compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
+//    runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

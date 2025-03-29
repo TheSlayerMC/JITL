@@ -92,7 +92,7 @@ public class BossCrystal extends Mob implements GeoEntity {
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
        // ContainerHelper.loadAllItems(compound, storedItems);
-        setType(compound.getString("type"));
+        setType(compound.getStringOr("type", "type"));
     }
 
     @Override
@@ -121,7 +121,7 @@ public class BossCrystal extends Mob implements GeoEntity {
             playSound(JSounds.CRYSTAL_PICKUP.get(), 1.0F, 1.0F);
             remove(RemovalReason.DISCARDED);
         }
-        return InteractionResult.sidedSuccess(level().isClientSide);
+        return InteractionResult.SUCCESS;
     }
 
     @Override
@@ -156,7 +156,7 @@ public class BossCrystal extends Mob implements GeoEntity {
     }
 
     @Override
-    public boolean hurt(DamageSource source, float amount) {
+    public boolean hurtServer(ServerLevel p_376221_, DamageSource p_376460_, float p_376610_) {
         return false;
     }
 

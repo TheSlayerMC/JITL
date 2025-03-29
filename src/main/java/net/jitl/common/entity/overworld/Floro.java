@@ -10,6 +10,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -22,7 +23,7 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.Bee;
-import net.minecraft.world.entity.animal.Wolf;
+import net.minecraft.world.entity.animal.wolf.Wolf;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
@@ -74,9 +75,9 @@ public class Floro extends JMonsterEntity implements RangedAttackMob {
     }
 
     @Override
-    public boolean hurt(DamageSource pSource, float pAmount) {
+    public boolean hurtServer(ServerLevel p_376221_, DamageSource p_376460_, float p_376610_) {
         setHidden(false);
-        return super.hurt(pSource, pAmount);
+        return super.hurtServer(p_376221_, p_376460_, p_376610_);
     }
 
     @Override
@@ -100,11 +101,11 @@ public class Floro extends JMonsterEntity implements RangedAttackMob {
         super.readAdditionalSaveData(compound);
 
         if (compound.contains("hidden")) {
-            setHidden(compound.getBoolean("hidden"));
+            setHidden(compound.getBoolean("hidden").get());
         }
 
         if (compound.contains("shooting")) {
-            setShooting(compound.getBoolean("shooting"));
+            setShooting(compound.getBoolean("shooting").get());
         }
     }
 

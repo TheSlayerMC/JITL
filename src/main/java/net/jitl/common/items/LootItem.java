@@ -8,7 +8,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -33,7 +33,7 @@ public class LootItem extends JItem {
     }
 
     @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(Level world, @NotNull Player player, InteractionHand hand) {
+    public @NotNull InteractionResult use(Level world, @NotNull Player player, InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
         RandomSource rand = world.random;
         ResourceKey<LootTable> loot = JLootTables.LOOT_BASIC;
@@ -52,9 +52,9 @@ public class LootItem extends JItem {
             player.awardStat(Stats.ITEM_USED.get(this));
             if(!player.isCreative())
                 player.getItemInHand(hand).shrink(1);
-            return InteractionResultHolder.consume(itemstack);
+            return InteractionResult.CONSUME;
         }
-        return InteractionResultHolder.fail(itemstack);
+        return InteractionResult.FAIL;
     }
 
     @Override

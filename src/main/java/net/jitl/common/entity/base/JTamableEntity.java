@@ -3,6 +3,7 @@ package net.jitl.common.entity.base;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -67,7 +68,7 @@ public abstract class JTamableEntity extends TamableAnimal implements NeutralMob
     }
 
     @Override
-    public boolean checkSpawnRules(LevelAccessor level, MobSpawnType type) {
+    public boolean checkSpawnRules(LevelAccessor level, EntitySpawnReason type) {
         return !(level.getBiome(blockPosition()).is(Tags.Biomes.IS_MUSHROOM) || level.getBiome(blockPosition()).is(Biomes.DEEP_DARK));
     }
 
@@ -127,13 +128,13 @@ public abstract class JTamableEntity extends TamableAnimal implements NeutralMob
     }
 
     @Override
-    public boolean hurt(@NotNull DamageSource pSource, float pAmount) {
-        if (this.isInvulnerableTo(pSource)) {
-            return false;
+    protected void actuallyHurt(@NotNull ServerLevel level, @NotNull DamageSource damageSource, float damageAmount) {
+        if (this.isInvulnerableTo(level, damageSource)) {
+            ;
         } else {
             if(!this.level().isClientSide)
                 this.setOrderedToSit(false);
-            return super.hurt(pSource, pAmount);
+            super.actuallyHurt(level, damageSource, damageAmount);
         }
     }
 
@@ -172,12 +173,12 @@ public abstract class JTamableEntity extends TamableAnimal implements NeutralMob
         if (!this.level().isClientSide || this.isBaby() && this.isFood(itemstack)) {
             if (this.isTame()) {
                 if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
-                    FoodProperties foodproperties = itemstack.getFoodProperties(this);
+                    FoodProperties foodproperties = itemstack.get(DataComponents.FOOD);
                     float f = foodproperties != null ? (float)foodproperties.nutrition() : 1.0F;
                     this.heal(2.0F * f);
                     itemstack.consume(1, pPlayer);
                     this.gameEvent(GameEvent.EAT);
-                    return InteractionResult.sidedSuccess(this.level().isClientSide());
+                    return InteractionResult.SUCCESS;
                 } else {
                     InteractionResult interactionresult = super.mobInteract(pPlayer, pHand);
                     if (!interactionresult.consumesAction() && this.isOwnedBy(pPlayer)) {
@@ -185,7 +186,7 @@ public abstract class JTamableEntity extends TamableAnimal implements NeutralMob
                         this.jumping = false;
                         this.navigation.stop();
                         this.setTarget(null);
-                        return InteractionResult.SUCCESS_NO_ITEM_USED;
+                        return InteractionResult.SUCCESS;
                     } else {
                         return interactionresult;
                     }

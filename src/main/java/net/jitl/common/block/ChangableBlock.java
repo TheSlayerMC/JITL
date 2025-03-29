@@ -8,29 +8,30 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 
 public class ChangableBlock extends Block {
 
-    public ChangableBlock() {
-        super(JBlockProperties.STONE.sound(SoundType.METAL));
+    public ChangableBlock(BlockBehaviour.Properties props) {
+        super(props);
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack pStack, @NotNull BlockState state, Level worldIn, @NotNull BlockPos pos, Player player, @NotNull InteractionHand handIn, @NotNull BlockHitResult hit) {
+    protected InteractionResult useItemOn(ItemStack pStack, @NotNull BlockState state, Level worldIn, @NotNull BlockPos pos, Player player, @NotNull InteractionHand handIn, @NotNull BlockHitResult hit) {
         ItemStack heldItem = player.getMainHandItem();
         RandomSource r = RandomSource.create();
 
         if(worldIn.isClientSide) {
-            return ItemInteractionResult.SUCCESS;
+            return InteractionResult.SUCCESS;
         } else {
             if(this == JBlocks.ELDER_BLOCK.get()) {
                 if (heldItem.getItem() == JItems.ELDER_KEY.get()) {
@@ -42,6 +43,6 @@ public class ChangableBlock extends Block {
                 }
             }
         }
-        return ItemInteractionResult.CONSUME;
+        return InteractionResult.CONSUME;
     }
 }

@@ -14,23 +14,18 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
-import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
 public class TeleportItem extends JItem implements IEssenceItem {
 
@@ -42,7 +37,7 @@ public class TeleportItem extends JItem implements IEssenceItem {
     }
 
     @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand usedHand) {
+    public @NotNull InteractionResult use(@NotNull Level level, Player player, @NotNull InteractionHand usedHand) {
         float var4 = player.getXRot();
         float var5 = player.getYRot();
         double var6 = player.getX();
@@ -59,7 +54,7 @@ public class TeleportItem extends JItem implements IEssenceItem {
         Vec3 var21 = var12.add(var17 * var19, var16 * var19, var18 * var19);
         BlockHitResult var22 = level.clip(new ClipContext(var12, var21, ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, CollisionContext.empty()));
         if (var22 == null) {
-            return InteractionResultHolder.fail(player.getItemInHand(usedHand));
+            return InteractionResult.FAIL;
         } else {
             int var23 = var22.getBlockPos().getX();
             int var24 = var22.getBlockPos().getY();
@@ -79,7 +74,7 @@ public class TeleportItem extends JItem implements IEssenceItem {
                 }
             }
         }
-        return InteractionResultHolder.pass(player.getItemInHand(usedHand));
+        return InteractionResult.SUCCESS;
     }
 
     protected void teleportTo(ServerPlayer player, Level level, int x, int y, int z) {
@@ -88,8 +83,8 @@ public class TeleportItem extends JItem implements IEssenceItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext pContext, List<Component> tooltip, TooltipFlag pTooltipFlag) {
+    public void appendHoverText(ItemStack stack, TooltipContext pContext, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag pTooltipFlag) {
         addItemDesc(JItems.TELEPORTATION_STAFF.asItem(), tooltip, "jitl.tooltip.teleport");
-        tooltip.add(Component.translatable("jitl.tooltip.essence_usage", essenceUsage));
+        tooltip.accept(Component.translatable("jitl.tooltip.essence_usage", essenceUsage));
     }
 }

@@ -44,8 +44,8 @@ public class SenterianAltarTile extends BlockEntity implements GeoBlockEntity {
     @Override
     public void loadAdditional(@NotNull CompoundTag tag, HolderLookup.Provider pRegistries) {
         super.loadAdditional(tag, pRegistries);
-        spawnTimer = tag.getInt("spawnTimer");
-        spawnCount = tag.getInt("spawnCount");
+        spawnTimer = tag.getIntOr("spawnTimer", 0);
+        spawnCount = tag.getIntOr("spawnCount", 0);
     }
 
     @Override

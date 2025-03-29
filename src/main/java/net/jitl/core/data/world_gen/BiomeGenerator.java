@@ -16,6 +16,6 @@ public class BiomeGenerator extends DatapackBuiltinEntriesProvider {
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder().add(Registries.BIOME, JBiomeData::bootstrap);
 
     public BiomeGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries, BUILDER, Set.of(JITL.MODID));
+        super(output, registries, BUILDER, Set.of(JITL.MOD_ID));
     }
 }

@@ -32,7 +32,7 @@ import java.util.function.Supplier;
 
 public class JBlocks {
 
-    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(JITL.MODID);
+    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(JITL.MOD_ID);
 
     public static final ArrayList<String> modelBlockName = new ArrayList<>();
     public static final ArrayList<String> modelLangName = new ArrayList<>();

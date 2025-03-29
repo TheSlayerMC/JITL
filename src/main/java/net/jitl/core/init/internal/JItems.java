@@ -40,8 +40,8 @@ import java.util.function.Supplier;
 
 public class JItems {
 
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(JITL.MODID);
-    public static final DeferredRegister.Items BLOCK_ITEMS = DeferredRegister.createItems(JITL.MODID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(JITL.MOD_ID);
+    public static final DeferredRegister.Items BLOCK_ITEMS = DeferredRegister.createItems(JITL.MOD_ID);
 
     public static final IAbility BASIC = new IAbility() {};
     private static final IAbility LUNIUM_ABILITY = new LuniumAbility();

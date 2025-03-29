@@ -8,9 +8,10 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -38,7 +39,6 @@ public class BradberryBushBlock extends BushBlock implements BonemealableBlock {
 
     public static final MapCodec<BradberryBushBlock> CODEC = simpleCodec(BradberryBushBlock::new);
 
-    private static final double HURT_SPEED_THRESHOLD = 0.003F;
     public static final int MAX_AGE = 3;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
     private static final VoxelShape SAPLING_SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D);
@@ -50,12 +50,7 @@ public class BradberryBushBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    protected MapCodec<? extends BushBlock> codec() {
-        return CODEC;
-    }
-
-    @Override
-    public @NotNull ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
+    public @NotNull ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
         return new ItemStack(JItems.BRADBERRY.get());
     }
 
@@ -86,33 +81,39 @@ public class BradberryBushBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    public void entityInside(@NotNull BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, @NotNull Entity pEntity) {
-        if(pEntity instanceof LivingEntity && pEntity.getType() != EntityType.FOX && pEntity.getType() != EntityType.BEE) {
-            pEntity.makeStuckInBlock(pState, new Vec3(0.8F, 0.75D, 0.8F));
-            if (!pLevel.isClientSide && pState.getValue(AGE) > 0 && (pEntity.xOld != pEntity.getX() || pEntity.zOld != pEntity.getZ())) {
-                double d0 = Math.abs(pEntity.getX() - pEntity.xOld);
-                double d1 = Math.abs(pEntity.getZ() - pEntity.zOld);
-                if (d0 >= HURT_SPEED_THRESHOLD || d1 >= HURT_SPEED_THRESHOLD) {
-                    //pEntity.hurt(JDamageSources.BRADBERRY_BUSH, 1.0F);//TODO
+    protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier p_405414_) {
+        if (entity instanceof LivingEntity && entity.getType() != EntityType.FOX && entity.getType() != EntityType.BEE) {
+            entity.makeStuckInBlock(state, new Vec3((double)0.8F, (double)0.75F, (double)0.8F));
+            if (level instanceof ServerLevel) {
+                ServerLevel serverlevel = (ServerLevel)level;
+                if ((Integer)state.getValue(AGE) != 0) {
+                    Vec3 vec3 = entity.isClientAuthoritative() ? entity.getKnownMovement() : entity.oldPosition().subtract(entity.position());
+                    if (vec3.horizontalDistanceSqr() > (double)0.0F) {
+                        double d0 = Math.abs(vec3.x());
+                        double d1 = Math.abs(vec3.z());
+                        if (d0 >= (double)0.003F || d1 >= (double)0.003F) {
+                            entity.hurtServer(serverlevel, level.damageSources().sweetBerryBush(), 1.0F);
+                        }
+                    }
                 }
             }
         }
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, @NotNull Player pPlayer, @NotNull InteractionHand pHand, @NotNull BlockHitResult pHit) {
+    protected InteractionResult useItemOn(ItemStack pStack, BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, @NotNull Player pPlayer, @NotNull InteractionHand pHand, @NotNull BlockHitResult pHit) {
         int i = pState.getValue(AGE);
         boolean flag = i == MAX_AGE;
         if(!flag && pPlayer.getItemInHand(pHand).is(Items.BONE_MEAL)) {
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            return InteractionResult.PASS;
         } else if(i > 1) {
             int j = 1 + pLevel.random.nextInt(2);
-            popResource(pLevel, pPos, new ItemStack(JItems.BRADBERRY.get(), j + (flag ? 1 : 0)));
+            popResource(pLevel, pPos, new ItemStack(JItems.BRADBERRY.asItem(), j + (flag ? 1 : 0)));
             pLevel.playSound(null, pPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + pLevel.random.nextFloat() * 0.4F);
             BlockState blockstate = pState.setValue(AGE, 1);
             pLevel.setBlock(pPos, blockstate, 2);
             pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(pPlayer, blockstate));
-            return ItemInteractionResult.sidedSuccess(pLevel.isClientSide);
+            return InteractionResult.SUCCESS;
         } else {
             return super.useItemOn(pStack, pState, pLevel, pPos, pPlayer, pHand, pHit);
         }

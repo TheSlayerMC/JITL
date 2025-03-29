@@ -53,7 +53,7 @@ public class EssenceArrowEntity extends AbstractArrow {
                     applyPotionEffect(entity, MobEffects.WITHER, 100, 2);
                 }
                 if(effects.contains(BowEffects.SLOWNESS)) {
-                    applyPotionEffect(entity, MobEffects.MOVEMENT_SLOWDOWN, 100, 2);
+                    applyPotionEffect(entity, MobEffects.SLOWNESS, 100, 2);
                 }
                 if(effects.contains(BowEffects.FLAME)) {
                     entity.setRemainingFireTicks(60);

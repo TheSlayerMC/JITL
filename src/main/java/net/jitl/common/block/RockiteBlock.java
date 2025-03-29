@@ -11,8 +11,6 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -66,7 +64,8 @@ public class RockiteBlock extends BaseEntityBlock {
 
     @Override
     public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
-        if (player.getMainHandItem().getItem() instanceof AxeItem
+        if (player.isCreative()
+                || player.getMainHandItem().getItem().getName(player.getMainHandItem()).contains(Component.literal("pickaxe"))
                 || player.getMainHandItem().getItem() instanceof MultitoolItem
                 || player.getMainHandItem().getItem().getName(player.getMainHandItem()).contains(Component.literal("shickaxe"))) {
             level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 1F, Level.ExplosionInteraction.BLOCK);
@@ -86,6 +85,6 @@ public class RockiteBlock extends BaseEntityBlock {
 
     @Override
     public @NotNull RenderShape getRenderShape(BlockState pState) {
-        return RenderShape.ENTITYBLOCK_ANIMATED;
+        return RenderShape.INVISIBLE;
     }
 }

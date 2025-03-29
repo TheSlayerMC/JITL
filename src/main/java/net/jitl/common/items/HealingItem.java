@@ -7,14 +7,14 @@ import net.jitl.core.init.internal.JSounds;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
+import java.util.function.Consumer;
 
 public class HealingItem extends JItem implements IEssenceItem {
 
@@ -26,24 +26,24 @@ public class HealingItem extends JItem implements IEssenceItem {
     }
 
     @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(Level world, @NotNull Player player, InteractionHand hand) {
-        ItemStack itemstack = player.getItemInHand(hand);
-        if(!world.isClientSide) {
+    public @NotNull InteractionResult use(@NotNull Level level, Player player, @NotNull InteractionHand usedHand) {
+        ItemStack itemstack = player.getItemInHand(usedHand);
+        if(!level.isClientSide) {
             player.heal(this.amount == -1F ? player.getMaxHealth() : this.amount);
-            player.getItemInHand(hand).shrink(1);
-            return InteractionResultHolder.consume(itemstack);
+            player.getItemInHand(usedHand).shrink(1);
+            return InteractionResult.CONSUME;
         } else {
-            world.playSound(player, player.getOnPos(), JSounds.STAFF_0.get(), SoundSource.BLOCKS);
+            level.playSound(player, player.getOnPos(), JSounds.STAFF_0.get(), SoundSource.BLOCKS);
         }
-        return InteractionResultHolder.fail(itemstack);
+        return InteractionResult.FAIL;
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext pContext, List<Component> tooltip, TooltipFlag pTooltipFlag) {
+    public void appendHoverText(ItemStack stack, TooltipContext pContext, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag pTooltipFlag) {
         if (amount == -1F) {
-            tooltip.add(Component.translatable("jitl.item.desc.full_health"));
+            tooltip.accept(Component.translatable("jitl.item.desc.full_health"));
         } else {
-            tooltip.add(Component.literal("Restores " + amount + " health"));
+            tooltip.accept(Component.literal("Restores " + amount + " health"));
         }
     }
 }

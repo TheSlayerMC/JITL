@@ -35,7 +35,7 @@ public class JShieldItemGenerator {
                 e.printStackTrace();
             }
 
-            getItem(JITL.MODID, name);
+            getItem(JITL.MOD_ID, name);
             itemModelInit();
         }
     }

@@ -11,7 +11,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.HoeItem;
@@ -20,18 +20,19 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.lighting.LightEngine;
 import net.minecraft.world.phys.BlockHitResult;
 
 public class JGrassBlock extends Block {//implements BonemealableBlock {
 
-    public JGrassBlock() {
-        super(JBlockProperties.GRASS);
+    public JGrassBlock(BlockBehaviour.Properties props) {
+        super(props);
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+    protected InteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         Item itemstack = pPlayer.getItemInHand(pHand).getItem();
         Block dirt = getFarmlandFromGrass();
         if(itemstack instanceof HoeItem || itemstack instanceof MultitoolItem) {
@@ -43,9 +44,9 @@ public class JGrassBlock extends Block {//implements BonemealableBlock {
                         pPlayer.getItemInHand(pHand).hurtAndBreak(1, pPlayer, EquipmentSlot.MAINHAND);
                 }
             }
-            return ItemInteractionResult.SUCCESS;
+            return InteractionResult.SUCCESS_SERVER;
         }
-        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        return InteractionResult.PASS;
     }
 
     public Block getFarmlandFromGrass() {
@@ -149,8 +150,8 @@ public class JGrassBlock extends Block {//implements BonemealableBlock {
     private static boolean canBeGrass(BlockState pState, LevelReader pLevelReader, BlockPos pPos) {
         BlockPos blockpos = pPos.above();
         BlockState blockstate = pLevelReader.getBlockState(blockpos);
-        int i = LightEngine.getLightBlockInto(pLevelReader, pState, pPos, blockstate, blockpos, Direction.UP, blockstate.getLightBlock(pLevelReader, blockpos));
-        return i < pLevelReader.getMaxLightLevel();
+        int i = LightEngine.getLightBlockInto(pState, blockstate, Direction.UP, blockstate.getLightBlock());
+        return i < 15;
     }
 
     private static boolean canPropagate(BlockState pState, LevelReader pLevel, BlockPos pPos) {

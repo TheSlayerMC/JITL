@@ -17,16 +17,19 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.portal.DimensionTransition;
+import net.minecraft.world.level.portal.TeleportTransition;
+import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
@@ -43,8 +46,8 @@ public class JBasePortalBlock extends Block implements JPortal {
     private final ResourceKey<Level> dimensionID;
     private final Supplier<Block> frame;
 
-    public JBasePortalBlock(ResourceKey<Level> dimID, Supplier<Block> frame) {
-        super(JBlockProperties.PORTAL);
+    public JBasePortalBlock(BlockBehaviour.Properties properties, ResourceKey<Level> dimID, Supplier<Block> frame) {
+        super(properties);
         this.dimensionID = dimID;
         this.frame = frame;
         registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.HORIZONTAL_AXIS, Direction.Axis.X));
@@ -140,7 +143,7 @@ public class JBasePortalBlock extends Block implements JPortal {
     }
 
     @Override
-    public void neighborChanged(BlockState state, Level world, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
+    public void neighborChanged(BlockState state, Level world, BlockPos pos, Block block, Orientation fromPos, boolean isMoving) {
         Direction.Axis facing = state.getValue(BlockStateProperties.HORIZONTAL_AXIS);
 
         switch (facing) {
@@ -213,7 +216,7 @@ public class JBasePortalBlock extends Block implements JPortal {
     }
 
     @Override
-    public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entity) {
+    public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entity, InsideBlockEffectApplier eff) {
         if(entity.canUsePortal(false)) {
             if(entity instanceof Player player) {
                 Portal portal = player.getData(JDataAttachments.PORTAL_OVERLAY);
@@ -232,7 +235,7 @@ public class JBasePortalBlock extends Block implements JPortal {
 
     @Nullable
     @Override
-    public DimensionTransition getPortalDestination(ServerLevel level, Entity entity, BlockPos pos) {
+    public TeleportTransition getPortalDestination(ServerLevel level, Entity entity, BlockPos pos) {
         if (!(entity instanceof ServerPlayer))
             return null;
 
@@ -252,15 +255,5 @@ public class JBasePortalBlock extends Block implements JPortal {
         }
 
         return JPortal.getTransitionForLevel(targetLevel, entity, Optional.of(pos), JPortal.makeSafeCoords(level, targetLevel, entity.position()), this, existingLink);
-    }
-
-    public boolean makePortal(LevelAccessor worldIn, BlockPos pos) {
-//        if(portal != null) {
-//            portal.createPortalBlocks();
-//            return true;
-//        } else {
-//            return false;
-//        }
-        return false;
     }
 }

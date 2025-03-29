@@ -12,6 +12,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
@@ -25,7 +26,7 @@ public class BitterwoodCampfireRenderer implements BlockEntityRenderer<Bitterwoo
     }
 
     @Override
-    public void render(BitterwoodCampfireBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
+    public void render(BitterwoodCampfireBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay, Vec3 v) {
         Direction direction = pBlockEntity.getBlockState().getValue(BitterwoodCampfireBlock.FACING);
         NonNullList<ItemStack> nonnulllist = pBlockEntity.getItems();
         int i = (int)pBlockEntity.getBlockPos().asLong();

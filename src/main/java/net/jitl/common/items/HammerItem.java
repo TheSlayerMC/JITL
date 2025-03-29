@@ -1,32 +1,26 @@
 package net.jitl.common.items;
 
 import net.jitl.common.entity.projectile.JThrowableProjectile;
-import net.jitl.common.items.base.JItem;
 import net.jitl.common.items.base.JSwordItem;
 import net.jitl.core.helper.IEssenceItem;
 import net.jitl.core.helper.JToolTiers;
-import net.jitl.core.helper.LangHelper;
 import net.jitl.core.helper.TriFunction;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
+import java.util.function.Consumer;
 
 public class HammerItem extends JSwordItem implements IEssenceItem {
 
@@ -34,14 +28,14 @@ public class HammerItem extends JSwordItem implements IEssenceItem {
     private final int essenceUsage, damage;
 
     public HammerItem(JToolTiers tier, int essence, int damage, TriFunction<Integer, Level, LivingEntity, JThrowableProjectile> projectileFactory) {
-        super(tier, JItems.BASIC, JItems.itemProps().attributes(createAttributes(tier.getTier(), tier.getDamage(), tier.getSpeedModifier())).durability(tier.getTier().getUses()));
+        super(tier, JItems.BASIC);
         this.projectileFactory = projectileFactory;
         this.essenceUsage = essence;
         this.damage = damage;
     }
 
     @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand usedHand) {
+    public @NotNull InteractionResult use(@NotNull Level level, Player player, @NotNull InteractionHand usedHand) {
         ItemStack stack = player.getItemInHand(usedHand);
         if(!level.isClientSide()) {
             if(player.getData(JDataAttachments.ESSENCE).consumeEssence(player, this.essenceUsage)) {
@@ -52,12 +46,12 @@ public class HammerItem extends JSwordItem implements IEssenceItem {
                 level.playSound(null, player.getX(), player.getY(), player.getZ(), JSounds.HAMMER.get(), SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
             }
         }
-        return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
+        return InteractionResult.SUCCESS;
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext pContext, List<Component> tooltip, TooltipFlag pTooltipFlag) {
-        tooltip.add(Component.translatable("jitl.tooltip.hammer", (damage / 2)));
+    public void appendHoverText(ItemStack stack, TooltipContext pContext, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag pTooltipFlag) {
+        tooltip.accept(Component.translatable("jitl.tooltip.hammer", (damage / 2)));
         addItemDesc(JItems.SPELLBINDING_HAMMER.asItem(), tooltip, "jitl.tooltip.spellbinding_hammer");
         addItemDesc(JItems.EARTHEN_HAMMER.asItem(), tooltip, "jitl.tooltip.earthen_hammer");
         addItemDesc(JItems.FLAMING_HAMMER.asItem(), tooltip, "jitl.tooltip.flaming_hammer");
@@ -67,13 +61,7 @@ public class HammerItem extends JSwordItem implements IEssenceItem {
         addItemDesc(JItems.ROYAL_HAMMER.asItem(), tooltip, "jitl.tooltip.royal_hammer");
         addItemDesc(JItems.CRYSTALLIZED_HAMMER.asItem(), tooltip, "jitl.tooltip.crystallized_hammer");
         addItemDesc(JItems.WITHIC_HAMMER.asItem(), tooltip, "jitl.tooltip.withic_hammer");
-        tooltip.add(Component.translatable("jitl.tooltip.essence_usage", essenceUsage));
-        tooltip.add(Component.translatable("jitl.uses_remaining", (stack.getMaxDamage() - stack.getDamageValue())));
-    }
-
-    public void addItemDesc(Item item, List<Component> tooltip, String descLoc) {
-        if(this == item) {
-            tooltip.add(Component.translatable(descLoc));
-        }
+        tooltip.accept(Component.translatable("jitl.tooltip.essence_usage", essenceUsage));
+        tooltip.accept(Component.translatable("jitl.uses_remaining", (stack.getMaxDamage() - stack.getDamageValue())));
     }
 }

@@ -8,6 +8,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -59,8 +60,8 @@ public class KnifeEntity extends AbstractKnifeEntity implements ItemSupplier {
     protected void onHitEntity(@NotNull EntityHitResult entityRayTraceResult_) {
         Entity entity = entityRayTraceResult_.getEntity();
         if(entity instanceof LivingEntity && entity != this.getOwner()) {
-            if(!level().isClientSide()) {
-                if(entity.hurt(this.damageSources().thrown(this, this.getOwner()), (float) getBaseDamage())) {
+            if(level() instanceof ServerLevel level) {
+                if(entity.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), (float) baseDamage)) {
                     if(isFireKnife(getStack().getItem())) {
                         entity.setRemainingFireTicks(200);
                     }
@@ -70,10 +71,6 @@ public class KnifeEntity extends AbstractKnifeEntity implements ItemSupplier {
         } else {
             super.onHitEntity(entityRayTraceResult_);
         }
-    }
-
-    public boolean isInGround() {
-        return this.inGround;
     }
 
     @Override
@@ -86,8 +83,8 @@ public class KnifeEntity extends AbstractKnifeEntity implements ItemSupplier {
     @Override
     public void readAdditionalSaveData(@NotNull CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
-        durability = nbt.getInt("dur");
-        setStack(ItemStack.parse(this.registryAccess(), nbt.getCompound("stack")).orElse(this.getDefaultPickupItem()));
+        durability = nbt.getIntOr("dur", 0);
+        setStack(ItemStack.parse(this.registryAccess(), nbt.getCompoundOrEmpty("stack")).orElse(this.getDefaultPickupItem()));
         if(getStack().isEmpty()) remove(RemovalReason.DISCARDED);
     }
 

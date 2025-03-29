@@ -9,10 +9,17 @@ import net.jitl.client.JModelLayers;
 import net.jitl.client.model.JBoatModel;
 import net.jitl.common.entity.base.JBoat;
 import net.jitl.core.init.JITL;
+import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.Model;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.AbstractBoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.state.BoatRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -25,57 +32,38 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 @OnlyIn(Dist.CLIENT)
-public class JBoatRenderer extends EntityRenderer<JBoat> {
+public class JBoatRenderer extends AbstractBoatRenderer {
 
-    private final Map<JBoat.Type, Pair<ResourceLocation, JBoatModel>> boatResources;
+    private final Model waterPatchModel;
+    private final ResourceLocation texture;
+    private final EntityModel<BoatRenderState> model;
 
-    public JBoatRenderer(EntityRendererProvider.Context context) {
+    public JBoatRenderer(EntityRendererProvider.Context context, ModelLayerLocation layer, String name) {
         super(context);
         this.shadowRadius = 0.8F;
-        this.boatResources = Stream.of(JBoat.Type.values()).collect(ImmutableMap.toImmutableMap(
-                (type) -> type,
-                (JBoatType) -> Pair.of(JITL.rl("textures/entity/boat/" + JBoatType.getName() + ".png"), new JBoatModel(context.bakeLayer(JModelLayers.createBoatModelName(JBoatType))))));
+//        this.boatResources = Stream.of(JBoat.Type.values()).collect(ImmutableMap.toImmutableMap(
+//                (type) -> type,
+//                (JBoatType) -> Pair.of(JITL.rl("textures/entity/boat/" + JBoatType.getName() + ".png"), new JBoatModel(context.bakeLayer(JModelLayers.createBoatModelName(JBoatType))))));
+
+        this.texture = layer.model().withPath((type) -> "textures/entity/" + name + ".png");
+        this.waterPatchModel = new Model.Simple(context.bakeLayer(ModelLayers.BOAT_WATER_PATCH), (e) -> RenderType.waterMask());
+        this.model = new JBoatModel(context.bakeLayer(layer));
     }
 
     @Override
-    public void render(JBoat entity, float entityYaw, float partialTicks_, PoseStack matrixStack, @NotNull MultiBufferSource buffer, int packedLight) {
-        matrixStack.pushPose();
-        matrixStack.translate(0.0D, 0.375D, 0.0D);
-        matrixStack.mulPose(Axis.YP.rotationDegrees(180.0F - entityYaw));
-        float f = (float)entity.getHurtTime() - partialTicks_;
-        float f1 = entity.getDamage() - partialTicks_;
-        if(f1 < 0.0F)
-            f1 = 0.0F;
+    protected EntityModel<BoatRenderState> model() {
+        return this.model;
+    }
 
-        if(f > 0.0F)
-            matrixStack.mulPose(Axis.XP.rotationDegrees(Mth.sin(f) * f * f1 / 10.0F * (float)entity.getHurtDir()));
+    @Override
+    protected RenderType renderType() {
+        return this.model.renderType(this.texture);
+    }
 
-        float f2 = entity.getBubbleAngle(partialTicks_);
-        if(!Mth.equal(f2, 0.0F))
-            matrixStack.mulPose(new Quaternionf().setAngleAxis(entity.getBubbleAngle(partialTicks_) * ((float)Math.PI / 180F), 1.0F, 0.0F, 1.0F));
-
-        Pair<ResourceLocation, JBoatModel> pair = getModelWithLocation(entity);
-        ResourceLocation resourcelocation = pair.getFirst();
-        JBoatModel JBoatmodel = pair.getSecond();
-        matrixStack.scale(-1.0F, -1.0F, 1.0F);
-        matrixStack.mulPose(Axis.YP.rotationDegrees(90.0F));
-        JBoatmodel.setupAnim(entity, partialTicks_, 0.0F, -0.1F, 0.0F, 0.0F);
-        VertexConsumer vertexconsumer = buffer.getBuffer(JBoatmodel.renderType(resourcelocation));
-        JBoatmodel.renderToBuffer(matrixStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY);
-        if (!entity.isUnderWater()) {
-            VertexConsumer v = buffer.getBuffer(RenderType.waterMask());
-            JBoatmodel.waterPatch().render(matrixStack, v, packedLight, OverlayTexture.NO_OVERLAY);
+    @Override
+    protected void renderTypeAdditions(BoatRenderState b, PoseStack p, MultiBufferSource buffer, int i) {
+        if (!b.isUnderWater) {
+            this.waterPatchModel.renderToBuffer(p, buffer.getBuffer(this.waterPatchModel.renderType(this.texture)), i, OverlayTexture.NO_OVERLAY);
         }
-        matrixStack.popPose();
-        super.render(entity, entityYaw, partialTicks_, matrixStack, buffer, packedLight);
-    }
-
-    @Override
-    public @NotNull ResourceLocation getTextureLocation(@NotNull JBoat entity) {
-        return getModelWithLocation(entity).getFirst();
-    }
-
-    public Pair<ResourceLocation, JBoatModel> getModelWithLocation(JBoat JBoat) {
-        return this.boatResources.get(JBoat.getJBoatType());
     }
 }

@@ -7,12 +7,14 @@ import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -29,6 +31,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.*;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.animal.horse.Llama;
@@ -46,11 +49,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.pathfinder.PathType;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.ItemAbilities;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animation.AnimatableManager;
 import javax.annotation.Nullable;
+import java.util.Map;
 import java.util.UUID;
 import java.util.function.Predicate;
 
@@ -59,8 +65,8 @@ public class Shiverwolf extends JTamableEntity {
     private static final EntityDataAccessor<Boolean> DATA_INTERESTED_ID = SynchedEntityData.defineId(Shiverwolf.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> DATA_COLLAR_COLOR = SynchedEntityData.defineId(Shiverwolf.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(Shiverwolf.class, EntityDataSerializers.INT);
-    public static final Predicate<LivingEntity> PREY_SELECTOR = (p_348295_) -> {
-        EntityType<?> entitytype = p_348295_.getType();
+    public static final TargetingConditions.Selector PREY_SELECTOR = (p_375833_, p_375834_) -> {
+        EntityType<?> entitytype = p_375833_.getType();
         return entitytype == EntityType.SHEEP || entitytype == EntityType.RABBIT || entitytype == EntityType.FOX;
     };
     private float interestedAngle;
@@ -72,6 +78,7 @@ public class Shiverwolf extends JTamableEntity {
     private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
     @Nullable
     private UUID persistentAngerTarget;
+    private static final DyeColor DEFAULT_COLLAR_COLOR = DyeColor.RED;
 
     public Shiverwolf(EntityType<? extends JTamableEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -114,7 +121,7 @@ public class Shiverwolf extends JTamableEntity {
     protected void defineSynchedData(SynchedEntityData.@NotNull Builder builder) {
         super.defineSynchedData(builder);
         builder.define(DATA_INTERESTED_ID, false);
-        builder.define(DATA_COLLAR_COLOR, DyeColor.RED.getId());
+        builder.define(DATA_COLLAR_COLOR, DEFAULT_COLLAR_COLOR.getId());
         builder.define(DATA_REMAINING_ANGER_TIME, 0);
     }
 
@@ -133,8 +140,7 @@ public class Shiverwolf extends JTamableEntity {
     @Override
     public void readAdditionalSaveData(@NotNull CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        if(compound.contains("CollarColor", 99))
-            this.setCollarColor(DyeColor.byId(compound.getInt("CollarColor")));
+        this.setCollarColor(compound.read("CollarColor", DyeColor.LEGACY_ID_CODEC).orElse(DEFAULT_COLLAR_COLOR));
         this.readPersistentAngerSaveData(this.level(), compound);
     }
 
@@ -146,21 +152,21 @@ public class Shiverwolf extends JTamableEntity {
         }
     }
 
-    @Override
-    protected SoundEvent getAmbientSound() {
-        if (this.isAngry()) {
-            return SoundEvents.WOLF_GROWL;
-        } else if (this.random.nextInt(3) != 0) {
-            return SoundEvents.WOLF_AMBIENT;
-        } else {
-            return this.isTame() && this.getHealth() < 20.0F ? SoundEvents.WOLF_WHINE : SoundEvents.WOLF_PANT;
-        }
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(@NotNull DamageSource damageSource) {
-        return this.canArmorAbsorb(damageSource) ? SoundEvents.WOLF_ARMOR_DAMAGE : SoundEvents.WOLF_HURT;
-    }
+//    @Override
+//    protected SoundEvent getAmbientSound() {
+//        if (this.isAngry()) {
+//            return SoundEvents.WOLF_GROWL;
+//        } else if (this.random.nextInt(3) != 0) {
+//            return SoundEvents.WOLF_AMBIENT;
+//        } else {
+//            return this.isTame() && this.getHealth() < 20.0F ? SoundEvents.WOLF_WHINE : SoundEvents.WOLF_PANT;
+//        }
+//    }
+//
+//    @Override
+//    protected SoundEvent getHurtSound(@NotNull DamageSource damageSource) {
+//        return this.canArmorAbsorb(damageSource) ? SoundEvents.WOLF_ARMOR_DAMAGE : SoundEvents.WOLF_HURT;
+//    }
 
     @Override
     public void aiStep() {
@@ -188,7 +194,7 @@ public class Shiverwolf extends JTamableEntity {
                 this.interestedAngle += (0.0F - this.interestedAngle) * 0.4F;
             }
 
-            if (this.isInWaterRainOrBubble()) {
+            if (this.isInWaterOrRain()) {
                 this.isWet = true;
                 if (this.isShaking && !this.level().isClientSide) {
                     this.level().broadcastEntityEvent(this, (byte)56);
@@ -262,6 +268,10 @@ public class Shiverwolf extends JTamableEntity {
         return Mth.lerp(partialTicks, this.interestedAngleO, this.interestedAngle) * 0.15F * 3.1415927F;
     }
 
+    public float getShakeAnim(float p_364626_) {
+        return Mth.lerp(p_364626_, this.shakeAnimO, this.shakeAnim);
+    }
+
     @Override
     public int getMaxHeadXRot() {
         return this.isInSittingPose() ? 20 : super.getMaxHeadXRot();
@@ -273,9 +283,9 @@ public class Shiverwolf extends JTamableEntity {
     }
 
     @Override
-    protected void actuallyHurt(@NotNull DamageSource damageSource, float damageAmount) {
+    protected void actuallyHurt(@NotNull ServerLevel level, @NotNull DamageSource damageSource, float damageAmount) {
         if(!this.canArmorAbsorb(damageSource)) {
-            super.actuallyHurt(damageSource, damageAmount);
+            super.actuallyHurt(level, damageSource, damageAmount);
         } else {
             ItemStack itemstack = this.getBodyArmorItem();
             int i = itemstack.getDamageValue();
@@ -294,11 +304,11 @@ public class Shiverwolf extends JTamableEntity {
     private boolean canArmorAbsorb(DamageSource damageSource) {
         return this.hasArmor() && !damageSource.is(DamageTypeTags.BYPASSES_WOLF_ARMOR);
     }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.WOLF_DEATH;
-    }
+//
+//    @Override
+//    protected SoundEvent getDeathSound() {
+//        return SoundEvents.WOLF_DEATH;
+//    }
 
     @Override
     protected float getSoundVolume() {
@@ -332,75 +342,73 @@ public class Shiverwolf extends JTamableEntity {
     public @NotNull InteractionResult mobInteract(Player player, @NotNull InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
         Item item = itemstack.getItem();
-        if (!this.level().isClientSide || this.isBaby() && this.isFood(itemstack)) {
-            if (this.isTame()) {
-                if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
-                    FoodProperties foodproperties = itemstack.getFoodProperties(this);
-                    float f = foodproperties != null ? (float)foodproperties.nutrition() : 1.0F;
-                    this.heal(2.0F * f);
-                    itemstack.consume(1, player);
-                    this.gameEvent(GameEvent.EAT);
-                    return InteractionResult.sidedSuccess(this.level().isClientSide());
-                } else {
-                    if (item instanceof DyeItem dyeitem) {
-                        if (this.isOwnedBy(player)) {
-                            DyeColor dyecolor = dyeitem.getDyeColor();
-                            if (dyecolor != this.getCollarColor()) {
-                                this.setCollarColor(dyecolor);
-                                itemstack.consume(1, player);
-                                return InteractionResult.SUCCESS;
-                            }
-
-                            return super.mobInteract(player, hand);
-                        }
-                    }
-
-                    if (itemstack.is(Items.WOLF_ARMOR) && this.isOwnedBy(player) && this.getBodyArmorItem().isEmpty() && !this.isBaby()) {
-                        this.setBodyArmorItem(itemstack.copyWithCount(1));
-                        itemstack.consume(1, player);
-                        return InteractionResult.SUCCESS;
-                    } else {
-                        ItemStack itemstack2;
-                        if (!itemstack.canPerformAction(ItemAbilities.SHEARS_REMOVE_ARMOR) || !this.isOwnedBy(player) || !this.hasArmor() || EnchantmentHelper.has(this.getBodyArmorItem(), EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE) && !player.isCreative()) {
-                            if (ArmorMaterials.ARMADILLO.value().repairIngredient().get().test(itemstack) && this.isInSittingPose() && this.hasArmor() && this.isOwnedBy(player) && this.getBodyArmorItem().isDamaged()) {
-                                itemstack.shrink(1);
-                                this.playSound(SoundEvents.WOLF_ARMOR_REPAIR);
-                                itemstack2 = this.getBodyArmorItem();
-                                int i = (int)((float)itemstack2.getMaxDamage() * 0.125F);
-                                itemstack2.setDamageValue(Math.max(0, itemstack2.getDamageValue() - i));
-                                return InteractionResult.SUCCESS;
-                            } else {
-                                InteractionResult interactionresult = super.mobInteract(player, hand);
-                                if (!interactionresult.consumesAction() && this.isOwnedBy(player)) {
-                                    this.setOrderedToSit(!this.isOrderedToSit());
-                                    this.jumping = false;
-                                    this.navigation.stop();
-                                    this.setTarget(null);
-                                    return InteractionResult.SUCCESS_NO_ITEM_USED;
-                                } else {
-                                    return interactionresult;
-                                }
-                            }
-                        } else {
-                            itemstack.hurtAndBreak(1, player, getSlotForHand(hand));
-                            this.playSound(SoundEvents.ARMOR_UNEQUIP_WOLF);
-                            itemstack2 = this.getBodyArmorItem();
-                            this.setBodyArmorItem(ItemStack.EMPTY);
-                            this.spawnAtLocation(itemstack2);
-                            return InteractionResult.SUCCESS;
-                        }
-                    }
-                }
-            } else if (itemstack.is(getTameItem()) && !this.isAngry()) {
-                itemstack.consume(1, player);
-                this.tryToTame(player);
+        if (this.isTame()) {
+            if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
+                FoodProperties foodproperties = itemstack.get(DataComponents.FOOD);
+                float f = foodproperties != null ? (float)foodproperties.nutrition() : 1.0F;
+                this.heal(2.0F * f);
+                this.usePlayerItem(player, hand, itemstack);
+                this.gameEvent(GameEvent.EAT); // Neo: add EAT game event
                 return InteractionResult.SUCCESS;
             } else {
-                return super.mobInteract(player, hand);
+                if (item instanceof DyeItem dyeitem && this.isOwnedBy(player)) {
+                    DyeColor dyecolor = dyeitem.getDyeColor();
+                    if (dyecolor != this.getCollarColor()) {
+                        this.setCollarColor(dyecolor);
+                        itemstack.consume(1, player);
+                        return InteractionResult.SUCCESS;
+                    }
+
+                    return super.mobInteract(player, hand);
+                }
+
+                if (this.isEquippableInSlot(itemstack, EquipmentSlot.BODY) && !this.isWearingBodyArmor() && this.isOwnedBy(player) && !this.isBaby()) {
+                    this.setBodyArmorItem(itemstack.copyWithCount(1));
+                    itemstack.consume(1, player);
+                    return InteractionResult.SUCCESS;
+                } else if (itemstack.canPerformAction(net.neoforged.neoforge.common.ItemAbilities.SHEARS_REMOVE_ARMOR)
+                        && this.isOwnedBy(player)
+                        && this.isWearingBodyArmor()
+                        && (!EnchantmentHelper.has(this.getBodyArmorItem(), EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE) || player.isCreative())) {
+                    itemstack.hurtAndBreak(1, player, getSlotForHand(hand));
+                    this.playSound(SoundEvents.ARMOR_UNEQUIP_WOLF);
+                    ItemStack itemstack1 = this.getBodyArmorItem();
+                    this.setBodyArmorItem(ItemStack.EMPTY);
+                    if (this.level() instanceof ServerLevel serverlevel) {
+                        this.spawnAtLocation(serverlevel, itemstack1);
+                    }
+
+                    return InteractionResult.SUCCESS;
+                } else if (this.isInSittingPose()
+                        && this.isWearingBodyArmor()
+                        && this.isOwnedBy(player)
+                        && this.getBodyArmorItem().isDamaged()
+                        && this.getBodyArmorItem().isValidRepairItem(itemstack)) {
+                    itemstack.shrink(1);
+                    this.playSound(SoundEvents.WOLF_ARMOR_REPAIR);
+                    ItemStack itemstack2 = this.getBodyArmorItem();
+                    int i = (int) ((float) itemstack2.getMaxDamage() * 0.125F);
+                    itemstack2.setDamageValue(Math.max(0, itemstack2.getDamageValue() - i));
+                    return InteractionResult.SUCCESS;
+                } else {
+                    InteractionResult interactionresult = super.mobInteract(player, hand);
+                    if (!interactionresult.consumesAction() && this.isOwnedBy(player)) {
+                        this.setOrderedToSit(!this.isOrderedToSit());
+                        this.jumping = false;
+                        this.navigation.stop();
+                        this.setTarget(null);
+                        return InteractionResult.SUCCESS.withoutItem();
+                    } else {
+                        return interactionresult;
+                    }
+                }
             }
+        } else if (!this.level().isClientSide && itemstack.is(Items.BONE) && !this.isAngry()) {
+            itemstack.consume(1, player);
+            this.tryToTame(player);
+            return InteractionResult.SUCCESS_SERVER;
         } else {
-            boolean flag = this.isOwnedBy(player) || this.isTame() || itemstack.is(getTameItem()) && !this.isTame() && !this.isAngry();
-            return flag ? InteractionResult.CONSUME : InteractionResult.PASS;
+            return super.mobInteract(player, hand);
         }
     }
 
@@ -470,10 +478,10 @@ public class Shiverwolf extends JTamableEntity {
     @Nullable
     @Override
     public Shiverwolf getBreedOffspring(@NotNull ServerLevel level, @NotNull AgeableMob otherParent) {
-        Shiverwolf wolf = JEntities.SHIVERWOLF_TYPE.get().create(level);
+        Shiverwolf wolf = JEntities.SHIVERWOLF_TYPE.get().create(level, EntitySpawnReason.BREEDING);
         if (wolf != null && otherParent instanceof Shiverwolf wolf1) {
             if (this.isTame()) {
-                wolf.setOwnerUUID(this.getOwnerUUID());
+                wolf.setOwnerReference(this.getOwnerReference());
                 wolf.setTame(true, true);
                 if (this.random.nextBoolean()) {
                     wolf.setCollarColor(this.getCollarColor());

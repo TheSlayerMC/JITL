@@ -12,6 +12,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.resources.ResourceLocation;
@@ -114,8 +115,7 @@ public class LoreScrollEntryScreen extends Screen {
     @Override
     public void render(@NotNull GuiGraphics poseStack, int mouseX, int mouseY, float partialTicks) {
         renderBackground(poseStack, mouseX, mouseY, partialTicks);
-        RenderSystem.setShader(GameRenderer::getPositionTexShader);
-        RenderSystem.setShaderTexture(0, BG);
+        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(BG).getTexture());
 
         int heightRectCount = (height - (height <= 480 ? 12 : 48)) / 32;
         int widthRectCount = height <= 480 ? 6 : 10;
@@ -130,7 +130,7 @@ public class LoreScrollEntryScreen extends Screen {
             for (int y = 0; y < heightRectCount; y++) {
                 int textureX = x == 0 ? 0 : (x == widthRectCount - 1 ? 64 : 32);
                 int textureY = y == 0 ? 0 : (y == heightRectCount - 1 ? 64 : 32);
-                poseStack.blit(BG, guix0 + x * 32, guiy0 + y * 32, textureX, textureY, 32, 32);
+                poseStack.blit(RenderType::guiTextured, BG, guix0 + x * 32, guiy0 + y * 32, textureX, textureY, 32, 32, 256, 256);
             }
         }
         drawScrollingContent(poseStack, mouseX, mouseY);
@@ -205,7 +205,6 @@ public class LoreScrollEntryScreen extends Screen {
         int baseY = this.top + border - (int) this.scrollDistance;
         int indentY = 0;
 
-        RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 
         for (int partIdx = 0; partIdx < entryLength; ++partIdx) {
@@ -241,8 +240,8 @@ public class LoreScrollEntryScreen extends Screen {
             int alpha, red, green, blue;
 
 
-            RenderSystem.disableBlend();
-            RenderSystem.enableBlend();
+//            RenderSystem.disableBlend();
+//            RenderSystem.enableBlend();
             RenderSystem.setShaderColor(1F, 1F, 1F, 1F);
 
             alpha = DrawHelper.getAlpha(SLIDER_PATH_COLOR);
@@ -254,7 +253,7 @@ public class LoreScrollEntryScreen extends Screen {
             worldr.addVertex(scrollButtonRightTop, this.bottom, 0.0F).setUv(1.0F, 1.0F).setColor(red, green, blue, alpha);
             worldr.addVertex(scrollButtonRightTop, this.top, 0.0F).setUv(1.0F, 0.0F).setColor(red, green, blue, alpha);
             worldr.addVertex(scrollButtonLeftTop, this.top, 0.0F).setUv(0.0F, 0.0F).setColor(red, green, blue, alpha);
-            BufferUploader.drawWithShader(worldr.buildOrThrow());
+            //BufferUploader.drawWithShader(worldr.buildOrThrow());
 
             // Dark slider part
             alpha = DrawHelper.getAlpha(SLIDER_DARK_COLOR);
@@ -267,7 +266,7 @@ public class LoreScrollEntryScreen extends Screen {
             worldr.addVertex(scrollButtonRightTop, barTop + height, 0.0F).setUv(1.0F, 1.0F).setColor(red, green, blue, alpha);
             worldr.addVertex(scrollButtonRightTop, barTop, 0.0F).setUv(1.0F, 0.0F).setColor(red, green, blue, alpha);
             worldr.addVertex(scrollButtonLeftTop, barTop, 0.0F).setUv(0.0F, 0.0F).setColor(red, green, blue, alpha);
-            BufferUploader.drawWithShader(worldr.buildOrThrow());
+            //BufferUploader.drawWithShader(worldr.buildOrThrow());
 
             // Light slider part
             alpha = DrawHelper.getAlpha(SLIDER_LIGHT_COLOR);
@@ -280,14 +279,14 @@ public class LoreScrollEntryScreen extends Screen {
             worldr.addVertex(scrollButtonRightTop - 1, barTop + height - 1, 0.0F).setUv(1.0F, 1.0F).setColor(red, green, blue, alpha);
             worldr.addVertex(scrollButtonRightTop - 1, barTop, 0.0F).setUv(1.0F, 0.0F).setColor(red, green, blue, alpha);
             worldr.addVertex(scrollButtonLeftTop, barTop, 0.0F).setUv(0.0F, 0.0F).setColor(red, green, blue, alpha);
-            BufferUploader.drawWithShader(worldr.buildOrThrow());
-
-            RenderSystem.disableBlend();
+//            BufferUploader.drawWithShader(worldr.buildOrThrow());
+//
+//            RenderSystem.disableBlend();
         }
 
         this.drawScreen(mouseX, mouseY);
-        RenderSystem.enableBlend();
-        RenderSystem.disableBlend();
+//        RenderSystem.enableBlend();
+//        RenderSystem.disableBlend();
         GL11.glDisable(GL11.GL_SCISSOR_TEST);
     }
 

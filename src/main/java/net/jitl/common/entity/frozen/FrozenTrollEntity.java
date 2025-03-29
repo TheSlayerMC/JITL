@@ -11,6 +11,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -59,7 +60,7 @@ public class FrozenTrollEntity extends JNeutralMonster {
 
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        setAngry(compound.getBoolean("angry"));
+        setAngry(compound.getBooleanOr("angry", false));
     }
 
     @Override
@@ -76,10 +77,11 @@ public class FrozenTrollEntity extends JNeutralMonster {
         this.entityData.set(IS_ANGRY_ID, angry);
     }
 
-    protected void customServerAiStep() {
+    @Override
+    protected void customServerAiStep(ServerLevel level) {
         boolean isPresent = getTarget() != null;
         this.entityData.set(IS_ANGRY_ID, isPresent);
-        super.customServerAiStep();
+        super.customServerAiStep(level);
     }
 
     public void playSound(SoundEvent soundEvent_) {
@@ -87,10 +89,10 @@ public class FrozenTrollEntity extends JNeutralMonster {
     }
 
     @Override
-    public boolean doHurtTarget(@NotNull Entity entityIn) {
-        if (super.doHurtTarget(entityIn)) {
+    public boolean doHurtTarget(ServerLevel level, Entity entityIn) {
+        if (super.doHurtTarget(level, entityIn)) {
             if(entityIn instanceof LivingEntity) {
-                entityIn.setDeltaMovement(entityIn.getDeltaMovement().add(-MathHelper.sin((float) (this.lerpYRot * Math.PI / 180.0F)) * 2, 0.1D, MathHelper.cos((float) (this.lerpYRot * Math.PI / 180.0F)) * 2));
+                entityIn.setDeltaMovement(entityIn.getDeltaMovement().add(-MathHelper.sin((float) (this.interpolation.yRot() * Math.PI / 180.0F)) * 2, 0.1D, MathHelper.cos((float) (this.interpolation.yRot() * Math.PI / 180.0F)) * 2));
             }
             return true;
         } else {

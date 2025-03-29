@@ -5,7 +5,6 @@ import net.jitl.common.items.base.JArmorItem;
 import net.jitl.common.items.base.JSwordItem;
 import net.jitl.common.items.gear.FullArmorAbility;
 import net.jitl.common.items.gear.JGear;
-import net.jitl.core.helper.JToolTiers;
 import net.jitl.core.helper.TooltipFiller;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JDataAttachments;
@@ -30,7 +29,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import java.util.ArrayList;
 import java.util.Objects;
 
-@EventBusSubscriber(modid = JITL.MODID)
+@EventBusSubscriber(modid = JITL.MOD_ID)
 public class GearAbilityHandler {
 
     @SubscribeEvent

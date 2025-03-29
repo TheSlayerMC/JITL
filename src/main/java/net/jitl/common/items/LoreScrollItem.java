@@ -22,10 +22,10 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
@@ -33,6 +33,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class LoreScrollItem extends JItem {
 
@@ -41,7 +42,7 @@ public class LoreScrollItem extends JItem {
     }
 
     @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level worldIn, @NotNull Player playerIn, @NotNull InteractionHand handIn) {
+    public @NotNull InteractionResult use(@NotNull Level worldIn, @NotNull Player playerIn, @NotNull InteractionHand handIn) {
         ItemStack heldItem = playerIn.getItemInHand(handIn);
         ScrollEntry entry = getScrollEntry(heldItem);
         LoreScroll scroll = heldItem.get(JDataComponents.SCROLL);
@@ -64,15 +65,15 @@ public class LoreScrollItem extends JItem {
             if(!worldIn.isClientSide) {
                 MutableComponent msg = Component.translatable("scroll.jitl.fail");
                 msg.withStyle(ChatFormatting.RED);
-                playerIn.sendSystemMessage(msg);
+                playerIn.displayClientMessage(msg, false);
             }
         }
-        return new InteractionResultHolder<>(InteractionResult.SUCCESS, heldItem);
+        return InteractionResult.SUCCESS;
     }
 
     @OnlyIn(Dist.CLIENT)
     private static void displayToast(LoreScroll scroll) {
-        Minecraft.getInstance().getToasts().addToast(new KnowledgeToast(EnumKnowledge.byName(scroll.knowledge()), true));
+        Minecraft.getInstance().getToastManager().addToast(new KnowledgeToast(EnumKnowledge.byName(scroll.knowledge()), true));
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -111,7 +112,7 @@ public class LoreScrollItem extends JItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack item, TooltipContext c, List<Component> list, TooltipFlag tip) {
+    public void appendHoverText(ItemStack stack, TooltipContext pContext, TooltipDisplay display, Consumer<Component> list, TooltipFlag pTooltipFlag) {
         Component overworld = Component.translatable("scroll.jitl.chapter.one").setStyle(Style.EMPTY.withColor(ChatFormatting.AQUA));
         Component nether = Component.translatable("scroll.jitl.chapter.two").setStyle(Style.EMPTY.withColor(ChatFormatting.RED));
         Component end = Component.translatable("scroll.jitl.chapter.three").setStyle(Style.EMPTY.withColor(ChatFormatting.DARK_PURPLE));
@@ -124,61 +125,61 @@ public class LoreScrollItem extends JItem {
         Component cloudia = Component.translatable("scroll.jitl.chapter.ten").setStyle(Style.EMPTY.withColor(ChatFormatting.LIGHT_PURPLE));
         Component senterian = Component.translatable("scroll.jitl.chapter.eleven").setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY));
 
-        LoreScroll scroll = item.get(JDataComponents.SCROLL);
+        LoreScroll scroll = stack.get(JDataComponents.SCROLL);
         if(scroll != null) {
             if(scroll.entry().contains("my_last_words")) {
-                list.add(overworld);
-                list.add(Component.translatable("scroll.jitl.name.my_last_words").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
+                list.accept(overworld);
+                list.accept(Component.translatable("scroll.jitl.name.my_last_words").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
             }
 
             if(scroll.entry().contains("netheric_status")) {
-                list.add(nether);
-                list.add(Component.translatable("scroll.jitl.name.netheric_status").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
+                list.accept(nether);
+                list.accept(Component.translatable("scroll.jitl.name.netheric_status").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
             }
 
             if(scroll.entry().contains("the_end")) {
-                list.add(end);
-                list.add(Component.translatable("scroll.jitl.name.the_end").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
+                list.accept(end);
+                list.accept(Component.translatable("scroll.jitl.name.the_end").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
             }
 
             if(scroll.entry().contains("beyond_boiling")) {
-                list.add(boil);
-                list.add(Component.translatable("scroll.jitl.name.beyond_boiling").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
+                list.accept(boil);
+                list.accept(Component.translatable("scroll.jitl.name.beyond_boiling").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
             }
 
             if(scroll.entry().contains("frozen_despair")) {
-                list.add(frozen);
-                list.add(Component.translatable("scroll.jitl.name.frozen_despair").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
+                list.accept(frozen);
+                list.accept(Component.translatable("scroll.jitl.name.frozen_despair").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
             }
 
             if(scroll.entry().contains("the_royals")) {
-                list.add(euca);
-                list.add(Component.translatable("scroll.jitl.name.the_royals").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
+                list.accept(euca);
+                list.accept(Component.translatable("scroll.jitl.name.the_royals").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
             }
 
             if(scroll.entry().contains("darkness")) {
-                list.add(depths);
-                list.add(Component.translatable("scroll.jitl.name.darkness").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
+                list.accept(depths);
+                list.accept(Component.translatable("scroll.jitl.name.darkness").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
             }
 
             if(scroll.entry().contains("senterian_gospel")) {
-                list.add(corba);
-                list.add(Component.translatable("scroll.jitl.name.sentry_gospel").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
+                list.accept(corba);
+                list.accept(Component.translatable("scroll.jitl.name.sentry_gospel").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
             }
 
             if(scroll.entry().contains("fungi")) {
-                list.add(terrania);
-                list.add(Component.translatable("scroll.jitl.name.fungi").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
+                list.accept(terrania);
+                list.accept(Component.translatable("scroll.jitl.name.fungi").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
             }
 
             if(scroll.entry().contains("mist")) {
-                list.add(cloudia);
-                list.add(Component.translatable("scroll.jitl.name.mist").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
+                list.accept(cloudia);
+                list.accept(Component.translatable("scroll.jitl.name.mist").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
             }
 
             if(scroll.entry().contains("this_is_it")) {
-                list.add(senterian);
-                list.add(Component.translatable("scroll.jitl.name.this_is_it").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
+                list.accept(senterian);
+                list.accept(Component.translatable("scroll.jitl.name.this_is_it").setStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)));
             }
         }
     }

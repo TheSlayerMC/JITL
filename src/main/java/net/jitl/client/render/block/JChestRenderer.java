@@ -16,24 +16,29 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.BrightnessCombiner;
 import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.DoubleBlockCombiner;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.LidBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.ChestType;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 public class JChestRenderer<T extends BlockEntity & LidBlockEntity> implements BlockEntityRenderer<T> {
 
@@ -90,7 +95,7 @@ public class JChestRenderer<T extends BlockEntity & LidBlockEntity> implements B
     }
 
     @Override
-    public void render(T blockEntity, float partialTick, PoseStack poseStack, @NotNull MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+    public void render(T blockEntity, float partialTick, PoseStack poseStack, @NotNull MultiBufferSource bufferSource, int packedLight, int packedOverlay, Vec3 v) {
         Level level = blockEntity.getLevel();
         boolean viable = level != null;
         BlockState blockstate = viable ? blockEntity.getBlockState() : blockEntity.getBlockState().getBlock().defaultBlockState().setValue(JChestBlock.FACING, Direction.SOUTH);
@@ -99,7 +104,7 @@ public class JChestRenderer<T extends BlockEntity & LidBlockEntity> implements B
         JChestBlock chest = (JChestBlock)block;
         boolean isDouble = chesttype != ChestType.SINGLE;
         poseStack.pushPose();
-        float f = blockstate.getValue(JChestBlock.FACING).toYRot();
+        float f = ((Direction)blockstate.getValue(JChestBlock.FACING)).toYRot();
         poseStack.translate(0.5D, 0.5D, 0.5D);
         poseStack.mulPose(Axis.YP.rotationDegrees(-f));
         poseStack.translate(-0.5D, -0.5D, -0.5D);
@@ -131,28 +136,32 @@ public class JChestRenderer<T extends BlockEntity & LidBlockEntity> implements B
         if(blockstate.getValue(JChestBlock.IS_LOCKED)) {
             if(isDouble) {
                 if(chesttype == ChestType.LEFT) {
-                    renderItem(new ItemStack(JItems.PADLOCK.get()), new double[]{0.0D, 0.2D, 0.945D}, poseStack, bufferSource, packedOverlay, packedLight, blockstate);
+                    renderItem(blockEntity, new ItemStack(JItems.PADLOCK.get()), new double[]{0.0D, 0.2D, 0.945D}, poseStack, bufferSource, packedOverlay, packedLight, blockstate);
                 } else {
-                    renderItem(new ItemStack(JItems.PADLOCK.get()), new double[]{1, 0.2D, 0.945D}, poseStack, bufferSource, packedOverlay, packedLight, blockstate);
+                    renderItem(blockEntity, new ItemStack(JItems.PADLOCK.get()), new double[]{1, 0.2D, 0.945D}, poseStack, bufferSource, packedOverlay, packedLight, blockstate);
                 }
             } else {
-                renderItem(new ItemStack(JItems.PADLOCK.get()), new double[]{0.5D, 0.2D, 0.945D}, poseStack, bufferSource, packedOverlay, packedLight, blockstate);
+                renderItem(blockEntity, new ItemStack(JItems.PADLOCK.get()), new double[]{0.5D, 0.2D, 0.945D}, poseStack, bufferSource, packedOverlay, packedLight, blockstate);
             }
         }
     }
 
-    private void renderItem(ItemStack stack, double[] translation, PoseStack matrixStack, MultiBufferSource buffer, int combinedOverlay, int lightLevel, BlockState state) {
+    private void renderItem(T block, ItemStack stack, double[] translation, PoseStack matrixStack, MultiBufferSource buffer, int combinedOverlay, int lightLevel, BlockState state) {
         ItemRenderer renderer = Minecraft.getInstance().getItemRenderer();
         matrixStack.pushPose();
-        float f = state.getValue(JChestBlock.FACING).toYRot();
+        float f = ((Direction)state.getValue(JChestBlock.FACING)).toYRot();
         matrixStack.translate(0.5D, 0.5D, 0.5D);
         matrixStack.mulPose(Axis.YP.rotationDegrees(-f));
         matrixStack.translate(-0.5D, -0.5D, -0.5D);
         matrixStack.translate(translation[0], translation[1], translation[2]);
         float scale = 1.0F;
         matrixStack.scale(scale, scale, scale + 0.15F);
-        BakedModel model = renderer.getModel(stack, null, null, 0);
-        renderer.render(stack, ItemDisplayContext.GROUND, true, matrixStack, buffer, lightLevel, combinedOverlay, model);
+        //BakedModel model = renderer.getModel(stack, null, null, 0);
+        //renderer.render(stack, ItemDisplayContext.GROUND, true, matrixStack, buffer, lightLevel, combinedOverlay, model);
+        //stack.render(matrixStack, buffer, 0, OverlayTexture.NO_OVERLAY);
+        int j = LevelRenderer.getLightColor(LevelRenderer.BrightnessGetter.DEFAULT, Objects.requireNonNull(block.getLevel()), state, block.getBlockPos());
+        renderer.renderStatic(stack, ItemDisplayContext.GROUND, j, OverlayTexture.NO_OVERLAY, matrixStack, buffer, block.getLevel(), 0);
+        //ItemRenderer.renderItem(ItemDisplayContext.GROUND, matrixStack, buffer, combinedOverlay, lightLevel, );
         matrixStack.popPose();
     }
 

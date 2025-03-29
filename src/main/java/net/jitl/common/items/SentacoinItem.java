@@ -5,9 +5,8 @@ import net.jitl.common.items.base.JItem;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
@@ -15,13 +14,13 @@ public class SentacoinItem extends JItem {
 
     private final Sentacoin.Type type;
 
-    public SentacoinItem(Sentacoin.Type type) {
-        super(JItems.itemProps());
+    public SentacoinItem(Properties props, Sentacoin.Type type) {
+        super(props);
         this.type = type;
     }
 
     @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(Level level, @NotNull Player player, @NotNull InteractionHand hand) {
+    public InteractionResult use(Level level, @NotNull Player player, @NotNull InteractionHand hand) {
         Sentacoin entity = new Sentacoin(type == Sentacoin.Type.BAG ? JEntities.SENTACOIN_BAG_TYPE.get() : JEntities.SENTACOIN_TYPE.get(), player);
         if(!level.isClientSide()) {
             level.addFreshEntity(entity);

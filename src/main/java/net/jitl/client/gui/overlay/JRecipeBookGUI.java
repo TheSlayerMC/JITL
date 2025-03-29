@@ -8,6 +8,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.PageButton;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -62,9 +63,8 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
         poseStack.pose().pushPose();
-        RenderSystem.setShader(GameRenderer::getPositionTexShader);
-        RenderSystem.setShaderTexture(0, this.BACKGROUND);
-        poseStack.blit(BACKGROUND, x, y, 0, 0, this.imageWidth, this.imageHeight);//Draws the main Background
+        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.BACKGROUND).getTexture());
+        poseStack.blit(RenderType::guiTextured, BACKGROUND, x, y, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
 
         switch(pageNumber) {
             case 0 -> page1(poseStack, mouseX, mouseY);
@@ -74,7 +74,7 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
             }
         }
         poseStack.pose().popPose();
-        RenderSystem.enableDepthTest();
+       // RenderSystem.enableDepthTest();
     }
 
     public void page1(GuiGraphics stack, int mouseX, int mouseY) {
@@ -120,7 +120,7 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
         x -= w;
         drawSprite(stack, mouseX, mouseY, x, y, EnumSummoningRecipes.TERRASTAR);
         x += w;
-       // drawSprite(stack, mouseX, mouseY, x, y, EnumSummoningRecipes.BLAZIER);
+        // drawSprite(stack, mouseX, mouseY, x, y, EnumSummoningRecipes.BLAZIER);
 
     }
 
@@ -137,9 +137,8 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
 
         x = x + k + 10;
         y = y + l + 10;
-        RenderSystem.setShader(GameRenderer::getPositionTexShader);
-        RenderSystem.setShaderTexture(0, this.RECIPE);
-        matrixStack.blit(RECIPE, x - 5, y - 5,0, 0, 112, 62);
+        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.RECIPE).getTexture());
+        matrixStack.blit(RenderType::guiTextured, RECIPE, x - 5, y - 5, 0, 0, 112, 62, 256, 256);
 
 
         renderItem(matrixStack, mouseX, mouseY, x, y, recipe, 0);
@@ -163,7 +162,7 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
         y = y - 18;
         renderItem(matrixStack, mouseX, mouseY, x + 46, y, recipe, 7);
 
-        RenderSystem.enableDepthTest();
+        //RenderSystem.enableDepthTest();
     }
 
     public void renderItem(GuiGraphics matrixStack, int mouseX, int mouseY, int x, int y, EnumSummoningRecipes recipe, int index) {

@@ -9,24 +9,22 @@ import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
-import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nullable;
 import java.util.List;
-import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
 public class GunItem extends JItem implements IEssenceItem {
 
@@ -41,7 +39,7 @@ public class GunItem extends JItem implements IEssenceItem {
     }
 
     @Override
-    public void releaseUsing(@NotNull ItemStack stack, @NotNull Level worldIn, @NotNull LivingEntity entityLiving, int timeLeft) {
+    public boolean releaseUsing(@NotNull ItemStack stack, @NotNull Level worldIn, @NotNull LivingEntity entityLiving, int timeLeft) {
         if(entityLiving instanceof Player player && worldIn instanceof ServerLevel level) {
             if(getPowerForTime(this.getUseDuration(stack, player) - timeLeft) > 0.25) {
                 if (player.getData(JDataAttachments.ESSENCE).consumeEssence(player, this.essenceUsage)) {
@@ -53,6 +51,7 @@ public class GunItem extends JItem implements IEssenceItem {
                 }
             }
         }
+        return true;
     }
 
     public static float getPowerForTime(int charge) {
@@ -71,27 +70,27 @@ public class GunItem extends JItem implements IEssenceItem {
     }
 
     @Override
-    public @NotNull UseAnim getUseAnimation(@NotNull ItemStack item) {
-        return UseAnim.BOW;
+    public ItemUseAnimation getUseAnimation(ItemStack stack) {
+        return ItemUseAnimation.BOW;
     }
 
     @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand usedHand) {
+    public @NotNull InteractionResult use(@NotNull Level level, Player player, @NotNull InteractionHand usedHand) {
         ItemStack stack = player.getItemInHand(usedHand);
         player.startUsingItem(usedHand);
-        return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
+        return InteractionResult.CONSUME;
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext pContext, List<Component> tooltip, TooltipFlag pTooltipFlag) {
-        tooltip.add(Component.translatable("jitl.tooltip.cannon", (damage / 2)));
-        addItemDesc(JItems.NETHER_PLASMA.asItem(), tooltip, "jitl.tooltip.nether_plasma");
-        addItemDesc(JItems.OCEAN_PLASMA.asItem(), tooltip, "jitl.tooltip.ocean_plasma");
-        addItemDesc(JItems.FOREST_PLASMA.asItem(), tooltip, "jitl.tooltip.forest_plasma");
-        addItemDesc(JItems.ROCK_LAUNCHER.asItem(), tooltip, "jitl.tooltip.rock_launcher");
-        addItemDesc(JItems.CHAOS_CANNON.asItem(), tooltip, "jitl.tooltip.chaos_cannon");
-        addItemDesc(JItems.EYE_BLASTER.asItem(), tooltip, "jitl.tooltip.eye_blaster");
-        tooltip.add(Component.translatable("jitl.tooltip.essence_usage", essenceUsage));
-        tooltip.add(Component.translatable("jitl.uses_remaining", (stack.getMaxDamage() - stack.getDamageValue())));
+    public void appendHoverText(ItemStack stack, TooltipContext pContext, TooltipDisplay display, Consumer<Component> comp, TooltipFlag pTooltipFlag) {
+        comp.accept(Component.translatable("jitl.tooltip.cannon", (damage / 2)));
+        addItemDesc(JItems.NETHER_PLASMA.asItem(), comp, "jitl.tooltip.nether_plasma");
+        addItemDesc(JItems.OCEAN_PLASMA.asItem(), comp, "jitl.tooltip.ocean_plasma");
+        addItemDesc(JItems.FOREST_PLASMA.asItem(), comp, "jitl.tooltip.forest_plasma");
+        addItemDesc(JItems.ROCK_LAUNCHER.asItem(), comp, "jitl.tooltip.rock_launcher");
+        addItemDesc(JItems.CHAOS_CANNON.asItem(), comp, "jitl.tooltip.chaos_cannon");
+        addItemDesc(JItems.EYE_BLASTER.asItem(), comp, "jitl.tooltip.eye_blaster");
+        comp.accept(Component.translatable("jitl.tooltip.essence_usage", essenceUsage));
+        comp.accept(Component.translatable("jitl.uses_remaining", (stack.getMaxDamage() - stack.getDamageValue())));
     }
 }

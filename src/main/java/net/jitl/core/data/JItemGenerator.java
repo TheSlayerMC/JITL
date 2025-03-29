@@ -25,7 +25,7 @@ public class JItemGenerator {
                 e.printStackTrace();
             }
 
-            getNormalItem(JITL.MODID, name, JItems.ItemType.ITEM);
+            getNormalItem(JITL.MOD_ID, name, JItems.ItemType.ITEM);
             itemModelInit();
         }
 
@@ -41,7 +41,7 @@ public class JItemGenerator {
                 e.printStackTrace();
             }
 
-            getToolItem(JITL.MODID, name);
+            getToolItem(JITL.MOD_ID, name);
             itemModelInit();
         }
 
@@ -57,7 +57,7 @@ public class JItemGenerator {
                 e.printStackTrace();
             }
 
-            getNormalItem(JITL.MODID, name, JItems.ItemType.RECORD);
+            getNormalItem(JITL.MOD_ID, name, JItems.ItemType.RECORD);
             itemModelInit();
         }
 
@@ -73,7 +73,7 @@ public class JItemGenerator {
                 e.printStackTrace();
             }
 
-            getSpawnEggItem(JITL.MODID, name);
+            getSpawnEggItem(JITL.MOD_ID, name);
             itemModelInit();
         }
 
@@ -89,7 +89,7 @@ public class JItemGenerator {
                 e.printStackTrace();
             }
 
-            getGunItem(JITL.MODID, name);
+            getGunItem(JITL.MOD_ID, name);
             itemModelInit();
         }
 
@@ -105,7 +105,7 @@ public class JItemGenerator {
                 e.printStackTrace();
             }
 
-            getHammerItem(JITL.MODID, name);
+            getHammerItem(JITL.MOD_ID, name);
             itemModelInit();
         }
     }

@@ -1,11 +1,10 @@
 package net.jitl.common.block;
 
-import com.google.common.annotations.VisibleForTesting;
+
 import com.mojang.serialization.MapCodec;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Direction.Axis;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -16,17 +15,18 @@ import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ThrownTrident;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Fallable;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DripstoneThickness;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
@@ -37,16 +37,17 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
-import javax.annotation.Nullable;
 import java.util.Optional;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 public class DepthsDripstoneBlock extends Block implements Fallable, SimpleWaterloggedBlock {
-    
+
     public static final MapCodec<DepthsDripstoneBlock> CODEC = simpleCodec(DepthsDripstoneBlock::new);
-    public static final DirectionProperty TIP_DIRECTION = BlockStateProperties.VERTICAL_DIRECTION;
+    public static final EnumProperty<Direction> TIP_DIRECTION = BlockStateProperties.VERTICAL_DIRECTION;
     public static final EnumProperty<DripstoneThickness> THICKNESS = BlockStateProperties.DRIPSTONE_THICKNESS;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     private static final VoxelShape TIP_MERGE_SHAPE = Block.box(5.0F, 0.0F, 5.0F, 11.0F, 16.0F, 11.0F);
@@ -61,7 +62,7 @@ public class DepthsDripstoneBlock extends Block implements Fallable, SimpleWater
         return CODEC;
     }
 
-    public DepthsDripstoneBlock(Properties props) {
+    public DepthsDripstoneBlock(BlockBehaviour.Properties props) {
         super(props);
         this.registerDefaultState(this.stateDefinition.any().setValue(TIP_DIRECTION, Direction.UP).setValue(THICKNESS, DripstoneThickness.TIP).setValue(WATERLOGGED, false));
     }
@@ -77,46 +78,53 @@ public class DepthsDripstoneBlock extends Block implements Fallable, SimpleWater
     }
 
     @Override
-    protected @NotNull BlockState updateShape(BlockState s, @NotNull Direction d, @NotNull BlockState s2, @NotNull LevelAccessor level, @NotNull BlockPos pos1, @NotNull BlockPos pos2) {
-        if(s.getValue(WATERLOGGED)) 
-            level.scheduleTick(pos1, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        
-        if(d != Direction.UP && d != Direction.DOWN) {
-            return s;
+    protected BlockState updateShape(BlockState p_154147_, LevelReader p_374104_, ScheduledTickAccess p_374078_, BlockPos p_154151_, Direction p_154148_, BlockPos p_154152_, BlockState p_154149_, RandomSource p_374393_) {
+        if ((Boolean)p_154147_.getValue(WATERLOGGED)) {
+            p_374078_.scheduleTick(p_154151_, Fluids.WATER, Fluids.WATER.getTickDelay(p_374104_));
+        }
+
+        if (p_154148_ != Direction.UP && p_154148_ != Direction.DOWN) {
+            return p_154147_;
         } else {
-            Direction direction = s.getValue(TIP_DIRECTION);
-            if(direction == Direction.DOWN && level.getBlockTicks().hasScheduledTick(pos1, this)) {
-                return s;
-            } else if(d == direction.getOpposite() && !this.canSurvive(s, level, pos1)) {
-                if(direction == Direction.DOWN) {
-                    level.scheduleTick(pos1, this, 2);
+            Direction direction = (Direction)p_154147_.getValue(TIP_DIRECTION);
+            if (direction == Direction.DOWN && p_374078_.getBlockTicks().hasScheduledTick(p_154151_, this)) {
+                return p_154147_;
+            } else if (p_154148_ == direction.getOpposite() && !this.canSurvive(p_154147_, p_374104_, p_154151_)) {
+                if (direction == Direction.DOWN) {
+                    p_374078_.scheduleTick(p_154151_, this, 2);
                 } else {
-                    level.scheduleTick(pos1, this, 1);
+                    p_374078_.scheduleTick(p_154151_, this, 1);
                 }
-                return s;
+
+                return p_154147_;
             } else {
-                boolean flag = s.getValue(THICKNESS) == DripstoneThickness.TIP_MERGE;
-                DripstoneThickness dripstonethickness = calculateDripstoneThickness(level, pos1, direction, flag);
-                return s.setValue(THICKNESS, dripstonethickness);
+                boolean flag = p_154147_.getValue(THICKNESS) == DripstoneThickness.TIP_MERGE;
+                DripstoneThickness dripstonethickness = calculateDripstoneThickness(p_374104_, p_154151_, direction, flag);
+                return (BlockState)p_154147_.setValue(THICKNESS, dripstonethickness);
             }
         }
     }
 
     @Override
-    protected void onProjectileHit(Level l, @NotNull BlockState s, @NotNull BlockHitResult b, @NotNull Projectile p) {
-        if(!l.isClientSide) {
-            BlockPos blockpos = b.getBlockPos();
-            if(p.mayInteract(l, blockpos) && p.mayBreak(l) && p instanceof ThrownTrident && p.getDeltaMovement().length() > 0.6) 
-                l.destroyBlock(blockpos, true);
+    protected void onProjectileHit(Level p_154042_, BlockState p_154043_, BlockHitResult p_154044_, Projectile p_154045_) {
+        if (!p_154042_.isClientSide) {
+            BlockPos blockpos = p_154044_.getBlockPos();
+            if (p_154042_ instanceof ServerLevel) {
+                ServerLevel serverlevel = (ServerLevel)p_154042_;
+                if (p_154045_.mayInteract(serverlevel, blockpos) && p_154045_.mayBreak(serverlevel) && p_154045_ instanceof ThrownTrident && p_154045_.getDeltaMovement().length() > 0.6) {
+                    p_154042_.destroyBlock(blockpos, true);
+                }
+            }
         }
+
     }
 
     @Override
-    public void fallOn(@NotNull Level l, BlockState d, @NotNull BlockPos p, @NotNull Entity e, float f) {
-        if(d.getValue(TIP_DIRECTION) == Direction.UP && d.getValue(THICKNESS) == DripstoneThickness.TIP) {
-            e.causeFallDamage(f + 2.0F, 2.0F, l.damageSources().stalagmite());
+    public void fallOn(Level p_154047_, BlockState p_154048_, BlockPos p_154049_, Entity p_154050_, double p_397761_) {
+        if (p_154048_.getValue(TIP_DIRECTION) == Direction.UP && p_154048_.getValue(THICKNESS) == DripstoneThickness.TIP) {
+            p_154050_.causeFallDamage(p_397761_ + (double)2.5F, 2.0F, p_154047_.damageSources().stalagmite());
         } else {
-            super.fallOn(l, d, p, e, f);
+            super.fallOn(p_154047_, p_154048_, p_154049_, p_154050_, p_397761_);
         }
 
     }
@@ -160,33 +168,25 @@ public class DepthsDripstoneBlock extends Block implements Fallable, SimpleWater
     }
 
     @Override
-    protected @NotNull VoxelShape getOcclusionShape(BlockState p_154170_, BlockGetter p_154171_, BlockPos p_154172_) {
+    protected @NotNull VoxelShape getOcclusionShape(BlockState p_154170_) {
         return Shapes.empty();
     }
 
-    protected @NotNull VoxelShape getShape(BlockState p_154117_, BlockGetter p_154118_, BlockPos p_154119_, CollisionContext p_154120_) {
-        DripstoneThickness dripstonethickness = p_154117_.getValue(THICKNESS);
-        VoxelShape voxelshape;
-        if(dripstonethickness == DripstoneThickness.TIP_MERGE) {
-            voxelshape = TIP_MERGE_SHAPE;
-        } else if(dripstonethickness == DripstoneThickness.TIP) {
-            if(p_154117_.getValue(TIP_DIRECTION) == Direction.DOWN) {
-                voxelshape = TIP_SHAPE_DOWN;
-            } else {
-                voxelshape = TIP_SHAPE_UP;
-            }
-        } else if(dripstonethickness == DripstoneThickness.FRUSTUM) {
-            voxelshape = FRUSTUM_SHAPE;
-        } else if(dripstonethickness == DripstoneThickness.MIDDLE) {
-            voxelshape = MIDDLE_SHAPE;
-        } else {
-            voxelshape = BASE_SHAPE;
+    protected VoxelShape getShape(BlockState p_154117_, BlockGetter p_154118_, BlockPos p_154119_, CollisionContext p_154120_) {
+        VoxelShape var10000;
+        switch ((DripstoneThickness)p_154117_.getValue(THICKNESS)) {
+            case TIP_MERGE -> var10000 = TIP_MERGE_SHAPE;
+            case TIP -> var10000 = p_154117_.getValue(TIP_DIRECTION) == Direction.DOWN ? TIP_SHAPE_DOWN : TIP_SHAPE_UP;
+            case FRUSTUM -> var10000 = FRUSTUM_SHAPE;
+            case MIDDLE -> var10000 = MIDDLE_SHAPE;
+            case BASE -> var10000 = BASE_SHAPE;
+            default -> throw new MatchException((String)null, (Throwable)null);
         }
 
-        Vec3 vec3 = p_154117_.getOffset(p_154118_, p_154119_);
-        return voxelshape.move(vec3.x, 0.0F, vec3.z);
+        VoxelShape voxelshape = var10000;
+        return voxelshape.move(p_154117_.getOffset(p_154119_));
     }
-    
+
     @Override
     protected boolean isCollisionShapeFullBlock(BlockState p_181235_, BlockGetter p_181236_, BlockPos p_181237_) {
         return false;
@@ -252,7 +252,7 @@ public class DepthsDripstoneBlock extends Block implements Fallable, SimpleWater
         if(canDrip(p_221870_)) {
             float f = p_221873_.nextFloat();
             if(!(f > 0.12F)) {
-               spawnDripParticle(p_221871_, p_221872_, p_221870_);
+                spawnDripParticle(p_221871_, p_221872_, p_221870_);
             }
         }
 
@@ -311,7 +311,7 @@ public class DepthsDripstoneBlock extends Block implements Fallable, SimpleWater
     }
 
     private static void spawnDripParticle(Level level, BlockPos pos, BlockState state) {
-        Vec3 vec3 = state.getOffset(level, pos);
+        Vec3 vec3 = state.getOffset(pos);
         double d1 = (double)pos.getX() + (double)0.5F + vec3.x;
         double d2 = (double)((float)(pos.getY() + 1) - 0.6875F) - (double)0.0625F;
         double d3 = (double)pos.getZ() + (double)0.5F + vec3.z;
@@ -324,12 +324,12 @@ public class DepthsDripstoneBlock extends Block implements Fallable, SimpleWater
 
     @Nullable
     private static BlockPos findTip(BlockState state, LevelAccessor level, BlockPos pos, int maxIterations, boolean isTipMerge) {
-        if(isTip(state, isTipMerge)) {
+        if (isTip(state, isTipMerge)) {
             return pos;
         } else {
             Direction direction = state.getValue(TIP_DIRECTION);
-            BiPredicate<BlockPos, BlockState> bipredicate = (p_202023_, p_202024_) -> p_202024_.is(JBlocks.POINTED_DEPTHS_DRIPSTONE.get()) && p_202024_.getValue(TIP_DIRECTION) == direction;
-            return findBlockVertical(level, pos, direction.getAxisDirection(), bipredicate, (p_154168_) -> isTip(p_154168_, isTipMerge), maxIterations).orElse(null);
+            BiPredicate<BlockPos, BlockState> bipredicate = (p_373975_, p_373976_) -> p_373976_.is(JBlocks.POINTED_DEPTHS_DRIPSTONE) && p_373976_.getValue(TIP_DIRECTION) == direction;
+            return (BlockPos)findBlockVertical(level, pos, direction.getAxisDirection(), bipredicate, (p_154168_) -> isTip(p_154168_, isTipMerge), maxIterations).orElse((BlockPos)null);
         }
     }
 
@@ -339,7 +339,7 @@ public class DepthsDripstoneBlock extends Block implements Fallable, SimpleWater
         if(isValidPointedDripstonePlacement(level, pos, dir)) {
             direction = dir;
         } else {
-            if(!isValidPointedDripstonePlacement(level, pos, dir.getOpposite())) 
+            if(!isValidPointedDripstonePlacement(level, pos, dir.getOpposite()))
                 return null;
             direction = dir.getOpposite();
         }
@@ -419,25 +419,26 @@ public class DepthsDripstoneBlock extends Block implements Fallable, SimpleWater
     private static boolean isPointedDripstoneWithDirection(BlockState state, Direction dir) {
         return state.is(JBlocks.POINTED_DEPTHS_DRIPSTONE.get()) && state.getValue(TIP_DIRECTION) == dir;
     }
-    
+
     private static boolean canGrow(BlockState dripstoneState, BlockState state) {
         return dripstoneState.is(JBlocks.DEPTHS_DRIPSTONE) && state.is(Blocks.WATER) && state.getFluidState().isSource();
     }
 
     private static Optional<BlockPos> findBlockVertical(LevelAccessor level, BlockPos pos, Direction.AxisDirection axis, BiPredicate<BlockPos, BlockState> positionalStatePredicate, Predicate<BlockState> statePredicate, int maxIterations) {
-        Direction direction = Direction.get(axis, Axis.Y);
+        Direction direction = Direction.get(axis, Direction.Axis.Y);
         BlockPos.MutableBlockPos blockpos$mutableblockpos = pos.mutable();
 
-        for(int i = 1; i < maxIterations; i++) {
+        for(int i = 1; i < maxIterations; ++i) {
             blockpos$mutableblockpos.move(direction);
             BlockState blockstate = level.getBlockState(blockpos$mutableblockpos);
-            if(statePredicate.test(blockstate)) 
+            if (statePredicate.test(blockstate)) {
                 return Optional.of(blockpos$mutableblockpos.immutable());
-            
-            if(level.isOutsideBuildHeight(blockpos$mutableblockpos.getY()) || !positionalStatePredicate.test(blockpos$mutableblockpos, blockstate)) 
-                return Optional.empty();
-        }
+            }
 
+            if (level.isOutsideBuildHeight(blockpos$mutableblockpos.getY()) || !positionalStatePredicate.test(blockpos$mutableblockpos, blockstate)) {
+                return Optional.empty();
+            }
+        }
         return Optional.empty();
     }
 }

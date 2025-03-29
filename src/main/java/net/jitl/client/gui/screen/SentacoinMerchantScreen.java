@@ -10,6 +10,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -55,7 +56,7 @@ public class SentacoinMerchantScreen extends AbstractContainerScreen<SentacoinMe
     protected void renderBg(GuiGraphics pGuiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
         int i = (this.width - this.imageWidth) / 2;
         int j = (this.height - this.imageHeight) / 2;
-        pGuiGraphics.blit(MERCHANT_LOCATION, i, j, 0, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
+        pGuiGraphics.blit(RenderType::guiTextured, MERCHANT_LOCATION, i, j, 0, 0.0F, 0, this.imageWidth, this.imageHeight, 512, 256);
     }
 
     public void render(@NotNull GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {

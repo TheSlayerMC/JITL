@@ -24,6 +24,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.vehicle.AbstractBoat;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.item.Item;
@@ -37,6 +38,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -45,25 +47,23 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 public class JBoat extends Boat {
 
-    private static final EntityDataAccessor<Integer> DATAIDHURT = SynchedEntityData.defineId(JBoat.class, EntityDataSerializers.INT);
-    private static final EntityDataAccessor<Integer> DATAIDHURTDIR = SynchedEntityData.defineId(JBoat.class, EntityDataSerializers.INT);
-    private static final EntityDataAccessor<Float> DATAIDDAMAGE = SynchedEntityData.defineId(JBoat.class, EntityDataSerializers.FLOAT);
-    private static final EntityDataAccessor<Integer> DATAIDTYPE = SynchedEntityData.defineId(JBoat.class, EntityDataSerializers.INT);
-    private static final EntityDataAccessor<Boolean> DATAIDPADDLELEFT = SynchedEntityData.defineId(JBoat.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Boolean> DATAIDPADDLERIGHT = SynchedEntityData.defineId(JBoat.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Integer> DATAIDBUBBLETIME = SynchedEntityData.defineId(JBoat.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> DATA_ID_PADDLE_LEFT = SynchedEntityData.defineId(AbstractBoat.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DATA_ID_PADDLE_RIGHT = SynchedEntityData.defineId(AbstractBoat.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> DATA_ID_BUBBLE_TIME = SynchedEntityData.defineId(AbstractBoat.class, EntityDataSerializers.INT);
+    public static final int PADDLE_LEFT = 0;
+    public static final int PADDLE_RIGHT = 1;
+    private static final int TIME_TO_EJECT = 60;
+    private static final float PADDLE_SPEED = ((float)Math.PI / 8F);
+    public static final double PADDLE_SOUND_TIME = (double)((float)Math.PI / 4F);
+    public static final int BUBBLE_TIME = 60;
     private final float[] paddlePositions = new float[2];
     private float outOfControlTicks;
     private float deltaRotation;
-    private int lerpSteps;
-    private double lerpX;
-    private double lerpY;
-    private double lerpZ;
-    private double lerpYRot;
-    private double lerpXRot;
+    private final InterpolationHandler interpolation = new InterpolationHandler(this, 3);
     private boolean inputLeft;
     private boolean inputRight;
     private boolean inputUp;
@@ -78,18 +78,23 @@ public class JBoat extends Boat {
     private float bubbleMultiplier;
     private float bubbleAngle;
     private float bubbleAngleO;
+    @javax.annotation.Nullable
+    private Leashable.LeashData leashData;
+    private final Supplier<Item> dropItem;
 
-    public JBoat(EntityType<? extends JBoat> entityType, Level level) {
-        super(entityType, level);
+    public JBoat(EntityType<? extends JBoat> entityType, Level level, Supplier<Item> item) {
+        super(entityType, level, item);
         this.blocksBuilding = true;
+        this.dropItem = item;
     }
 
-    public JBoat(Level world, double x, double y, double z) {
-        super(JEntities.JBOAT_TYPE.get(), world);
+    public JBoat(EntityType<? extends JBoat> entityType, Level world, double x, double y, double z, Supplier<Item> item) {
+        super(entityType, world, item);
         this.setPos(x, y, z);
         this.xo = x;
         this.yo = y;
         this.zo = z;
+        this.dropItem = item;
     }
 
     @Override
@@ -98,15 +103,11 @@ public class JBoat extends Boat {
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
-        super.defineSynchedData(pBuilder);
-        pBuilder.define(DATAIDHURT, 0);
-        pBuilder.define(DATAIDHURTDIR, 1);
-        pBuilder.define(DATAIDDAMAGE, 0.0F);
-        pBuilder.define(DATAIDTYPE, Type.GOLD_EUCA.ordinal());
-        pBuilder.define(DATAIDPADDLELEFT, false);
-        pBuilder.define(DATAIDPADDLERIGHT, false);
-        pBuilder.define(DATAIDBUBBLETIME, 0);
+    protected void defineSynchedData(SynchedEntityData.Builder b) {
+        super.defineSynchedData(b);
+        b.define(DATA_ID_PADDLE_LEFT, false);
+        b.define(DATA_ID_PADDLE_RIGHT, false);
+        b.define(DATA_ID_BUBBLE_TIME, 0);
     }
 
     @Override
@@ -154,30 +155,7 @@ public class JBoat extends Boat {
     }
 
     @Override
-    public boolean hurt(@NotNull DamageSource source, float amount) {
-        if(this.isInvulnerableTo(source)) {
-            return false;
-        } else if(!this.level().isClientSide && !this.isRemoved()) {
-            this.setHurtDir(-this.getHurtDir());
-            this.setHurtTime(10);
-            this.setDamage(this.getDamage() + amount * 10.0F);
-            this.markHurt();
-            this.gameEvent(GameEvent.ENTITY_DAMAGE, source.getEntity());
-            boolean flag = source.getEntity() instanceof Player && ((Player)source.getEntity()).getAbilities().instabuild;
-            if(flag || this.getDamage() > 40.0F) {
-                if(!flag && this.level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
-                    this.spawnAtLocation(this.getDropItem());
-                }
-                this.discard();
-            }
-            return true;
-        } else {
-            return true;
-        }
-    }
-
-    @Override
-    public void onAboveBubbleCol(boolean downwards) {
+    public void onAboveBubbleColumn(boolean downwards, BlockPos pos) {
         if(!this.level().isClientSide) {
             this.isAboveBubbleColumn = true;
             this.bubbleColumnDirectionIsDown = downwards;
@@ -206,8 +184,7 @@ public class JBoat extends Boat {
 
     }
 
-    @Override
-    public @NotNull Item getDropItem() {
+    public @NotNull Item getDropItems() {
         return switch (this.getJBoatType()) {
             case GOLD_EUCA -> JItems.GOLDEN_EUCA_BOAT.get();
             case BROWN_EUCA -> JItems.BROWN_EUCA_BOAT.get();
@@ -228,41 +205,6 @@ public class JBoat extends Boat {
     }
 
     @Override
-    public void lerpTo(double x, double y, double z, float yRot, float xRot, int steps) {
-        this.lerpX = x;
-        this.lerpY = y;
-        this.lerpZ = z;
-        this.lerpYRot = (double)yRot;
-        this.lerpXRot = (double)xRot;
-        this.lerpSteps = 10;
-    }
-
-    @Override
-    public double lerpTargetX() {
-        return this.lerpSteps > 0 ? this.lerpX : this.getX();
-    }
-
-    @Override
-    public double lerpTargetY() {
-        return this.lerpSteps > 0 ? this.lerpY : this.getY();
-    }
-
-    @Override
-    public double lerpTargetZ() {
-        return this.lerpSteps > 0 ? this.lerpZ : this.getZ();
-    }
-
-    @Override
-    public float lerpTargetXRot() {
-        return this.lerpSteps > 0 ? (float)this.lerpXRot : this.getXRot();
-    }
-
-    @Override
-    public float lerpTargetYRot() {
-        return this.lerpSteps > 0 ? (float)this.lerpYRot : this.getYRot();
-    }
-
-    @Override
     public boolean isPickable() {
         return !this.isRemoved();
     }
@@ -278,7 +220,7 @@ public class JBoat extends Boat {
         this.status = this.getStatus();
         if(this.status != JBoat.Status.UNDERWATER && this.status != JBoat.Status.UNDER_FLOWING_WATER)
             this.outOfControlTicks = 0.0F;
-         else
+        else
             this.outOfControlTicks++;
 
         if(!this.level().isClientSide && this.outOfControlTicks >= 60.0F)
@@ -290,8 +232,9 @@ public class JBoat extends Boat {
         if(this.getDamage() > 0.0F)
             this.setDamage(this.getDamage() - 1.0F);
 
-        this.tickLerp();
-        if(this.isControlledByLocalInstance()) {
+        super.tick();
+        this.interpolation.interpolate();
+        if(this.isLocalInstanceAuthoritative()) {
             if(!(this.getFirstPassenger() instanceof Player)) {
                 this.setPaddleState(false, false);
             }
@@ -304,6 +247,8 @@ public class JBoat extends Boat {
         } else {
             this.setDeltaMovement(Vec3.ZERO);
         }
+        this.applyEffectsFromBlocks();
+        this.applyEffectsFromBlocks();
         this.tickBubbleColumn();
         for(int i = 0; i <= 1; ++i) {
             if(this.getPaddleState(i)) {
@@ -323,7 +268,6 @@ public class JBoat extends Boat {
             }
         }
 
-        this.checkInsideBlocks();
         List<Entity> list = this.level().getEntities(this, this.getBoundingBox().inflate(0.2F, -0.01F, 0.2F), EntitySelector.pushableBy(this));
         if(!list.isEmpty()) {
             boolean flag = !this.level().isClientSide && !(this.getControllingPassenger() instanceof Player);
@@ -385,21 +329,9 @@ public class JBoat extends Boat {
         };
     }
 
-    private void tickLerp() {
-        if (this.isControlledByLocalInstance()) {
-            this.lerpSteps = 0;
-            this.syncPacketPositionCodec(this.getX(), this.getY(), this.getZ());
-        }
-
-        if (this.lerpSteps > 0) {
-            this.lerpPositionAndRotationStep(this.lerpSteps, this.lerpX, this.lerpY, this.lerpZ, this.lerpYRot, this.lerpXRot);
-            --this.lerpSteps;
-        }
-    }
-
     public void setPaddleState(boolean left, boolean right) {
-        this.entityData.set(DATAIDPADDLELEFT, left);
-        this.entityData.set(DATAIDPADDLERIGHT, right);
+        this.entityData.set(DATA_ID_PADDLE_LEFT, left);
+        this.entityData.set(DATA_ID_PADDLE_RIGHT, right);
     }
 
     public float getRowingTime(int side, float limbSwing) {
@@ -680,13 +612,9 @@ public class JBoat extends Boat {
     }
 
     @Override
-    protected void readAdditionalSaveData(CompoundTag compound) {
-        if(compound.contains("Type", 8)) {
-            this.setType(JBoat.Type.byName(compound.getString("Type")));
-        }
-
+    protected void readAdditionalSaveData(CompoundTag c) {
+        this.readLeashData(c);
     }
-
     @Override
     public @NotNull InteractionResult interact(Player player, @NotNull InteractionHand hand) {
         if(player.isSecondaryUseActive()) {
@@ -703,84 +631,36 @@ public class JBoat extends Boat {
     }
 
     @Override
-    protected void checkFallDamage(double y, boolean onGround, @Nullable BlockState state, @Nullable BlockPos pos) {
+    protected void checkFallDamage(double p_376661_, boolean p_376924_, BlockState p_376918_, BlockPos p_376727_) {
         this.lastYd = this.getDeltaMovement().y;
-        if(!this.isPassenger()) {
-            if(onGround) {
-                if(this.fallDistance > 3.0F) {
-                    if(this.status != JBoat.Status.ON_LAND) {
-                        this.resetFallDistance();
-                        return;
-                    }
-                    this.causeFallDamage(this.fallDistance, 1.0F, this.damageSources().fall());
-                    if(!this.level().isClientSide && !this.isRemoved()) {
-                        this.kill();
-                        if(this.level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
-                            for(int i = 0; i < 3; ++i) {
-                                this.spawnAtLocation(this.getJBoatType().getPlanks());
-                            }
-
-                            for(int j = 0; j < 2; ++j) {
-                                this.spawnAtLocation(Items.STICK);
-                            }
-                        }
-                    }
-                }
-
+        if (!this.isPassenger()) {
+            if (p_376924_) {
                 this.resetFallDistance();
-            } else if(!this.level().getFluidState(this.blockPosition().below()).is(FluidTags.WATER) && y < 0.0D) {
-                this.fallDistance = (float)((double)this.fallDistance - y);
+            } else if (!this.canBoatInFluid(this.level().getFluidState(this.blockPosition().below())) && p_376661_ < 0.0) {
+                this.fallDistance -= (float)p_376661_;
             }
-
         }
     }
 
     public boolean getPaddleState(int side) {
-        return this.entityData.<Boolean>get(side == 0 ? DATAIDPADDLELEFT : DATAIDPADDLERIGHT) && this.getControllingPassenger() != null;
+        return (Boolean)this.entityData.get(side == 0 ? DATA_ID_PADDLE_LEFT : DATA_ID_PADDLE_RIGHT) && this.getControllingPassenger() != null;
     }
 
-    public void setDamage(float damageTaken) {
-        this.entityData.set(DATAIDDAMAGE, damageTaken);
-    }
-
-    public float getDamage() {
-        return this.entityData.get(DATAIDDAMAGE);
-    }
-
-    public void setHurtTime(int timeSinceHit) {
-        this.entityData.set(DATAIDHURT, timeSinceHit);
-    }
-
-    public int getHurtTime() {
-        return this.entityData.get(DATAIDHURT);
-    }
-
-    private void setBubbleTime(int ticks) {
-        this.entityData.set(DATAIDBUBBLETIME, ticks);
+    private void setBubbleTime(int bubbleTime) {
+        this.entityData.set(DATA_ID_BUBBLE_TIME, bubbleTime);
     }
 
     private int getBubbleTime() {
-        return this.entityData.get(DATAIDBUBBLETIME);
+        return (Integer)this.entityData.get(DATA_ID_BUBBLE_TIME);
     }
 
-    public float getBubbleAngle(float partialTicks) {
-        return Mth.lerp(partialTicks, this.bubbleAngleO, this.bubbleAngle);
-    }
-
-    public void setHurtDir(int forwardDirection) {
-        this.entityData.set(DATAIDHURTDIR, forwardDirection);
-    }
-
-    public int getHurtDir() {
-        return this.entityData.get(DATAIDHURTDIR);
-    }
-
-    public void setType(JBoat.Type JBoatType) {
-        this.entityData.set(DATAIDTYPE, JBoatType.ordinal());
+    public float getBubbleAngle(float partialTick) {
+        return Mth.lerp(partialTick, this.bubbleAngleO, this.bubbleAngle);
     }
 
     public JBoat.Type getJBoatType() {
-        return JBoat.Type.byId(this.entityData.get(DATAIDTYPE));
+        //return JBoat.Type.byId(this.entityData.get(DATAIDTYPE));todo
+        return Type.BURNED;
     }
 
     @Override
@@ -810,20 +690,6 @@ public class JBoat extends Boat {
     @Override
     public boolean isUnderWater() {
         return this.status == JBoat.Status.UNDERWATER || this.status == JBoat.Status.UNDER_FLOWING_WATER;
-    }
-
-    @Override
-    protected void addPassenger(@NotNull Entity passenger) {
-        super.addPassenger(passenger);
-        if(this.isControlledByLocalInstance() && this.lerpSteps > 0) {
-            this.lerpSteps = 0;
-            this.absMoveTo(this.lerpX, this.lerpY, this.lerpZ, (float)this.lerpYRot, (float)this.lerpXRot);
-        }
-    }
-
-    @Override
-    public ItemStack getPickResult() {
-        return new ItemStack(this.getDropItem());
     }
 
     public enum Status {

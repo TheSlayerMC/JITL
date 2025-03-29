@@ -18,6 +18,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public interface IAbility {
     /*
@@ -80,7 +81,7 @@ public interface IAbility {
 
     }
 
-    default void fillTooltips(ItemStack stack, List<Component> tooltip) {
+    default void fillTooltips(ItemStack stack, Consumer<Component> tooltip) {
 
     }
 

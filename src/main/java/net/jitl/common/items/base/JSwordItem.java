@@ -6,25 +6,25 @@ import net.jitl.core.helper.JToolTiers;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
+import java.util.function.Consumer;
 
-import java.util.List;
+public class JSwordItem extends JItem implements JGear {
 
-public class JSwordItem extends SwordItem implements JGear {
     private final IAbility ability;
 
     public JSwordItem(JToolTiers tier, IAbility swordAbility) {
-        super(tier.getTier(), JItems.itemProps().attributes(createAttributes(tier.getTier(), tier.getDamage(), tier.getSpeedModifier())));
+        super(JItems.itemProps().sword(tier.getTier(), tier.getDamage(), tier.getSpeedModifier()).durability(tier.getTier().durability()));
         this.ability = swordAbility;
     }
 
     public JSwordItem(JToolTiers tier, IAbility swordAbility, Properties p) {
-        super(tier.getTier(), p.attributes(createAttributes(tier.getTier(), tier.getDamage(), tier.getSpeedModifier())));
+        super(p.sword(tier.getTier(), tier.getDamage(), tier.getSpeedModifier()));
         this.ability = swordAbility;
     }
 
@@ -34,15 +34,15 @@ public class JSwordItem extends SwordItem implements JGear {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
-        ability.rightClick(playerIn, handIn, worldIn);
-        return super.use(worldIn, playerIn, handIn);
+    public InteractionResult use(Level level, Player player, InteractionHand hand) {
+        ability.rightClick(player, hand, level);
+        return super.use(level, player, hand);
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-        super.appendHoverText(stack, pContext, pTooltipComponents, pTooltipFlag);
-        ability.fillTooltips(stack, pTooltipComponents);
+    public void appendHoverText(ItemStack stack, TooltipContext pContext, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag pTooltipFlag) {
+        super.appendHoverText(stack, pContext, display, tooltip, pTooltipFlag);
+        ability.fillTooltips(stack, tooltip);
     }
 
     @Override

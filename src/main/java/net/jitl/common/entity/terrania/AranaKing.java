@@ -157,13 +157,13 @@ public class AranaKing extends JMonsterEntity {
 
     @Nullable
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pSpawnType, @Nullable SpawnGroupData pSpawnGroupData) {
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, EntitySpawnReason pSpawnType, @Nullable SpawnGroupData pSpawnGroupData) {
         pSpawnGroupData = super.finalizeSpawn(pLevel, pDifficulty, pSpawnType, pSpawnGroupData);
         RandomSource randomsource = pLevel.getRandom();
         if (randomsource.nextInt(100) == 0) {
-            Skeleton skeleton = EntityType.SKELETON.create(this.level());
+            Skeleton skeleton = EntityType.SKELETON.create(this.level(), pSpawnType);
             if (skeleton != null) {
-                skeleton.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
+                skeleton.teleportTo(this.getX(), this.getY(), this.getZ());
                 skeleton.finalizeSpawn(pLevel, pDifficulty, pSpawnType, null);
                 skeleton.startRiding(this);
             }
@@ -222,9 +222,9 @@ public class AranaKing extends JMonsterEntity {
         public void setRandomEffect(RandomSource pRandom) {
             int i = pRandom.nextInt(5);
             if(i <= 1) {
-                this.effect = MobEffects.MOVEMENT_SPEED;
+                this.effect = MobEffects.SPEED;
             } else if(i <= 2) {
-                this.effect = MobEffects.DAMAGE_BOOST;
+                this.effect = MobEffects.INSTANT_DAMAGE;
             } else if(i <= 3) {
                 this.effect = MobEffects.REGENERATION;
             } else if(i <= 4) {

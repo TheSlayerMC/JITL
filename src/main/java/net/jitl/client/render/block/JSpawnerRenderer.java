@@ -11,6 +11,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.BaseSpawner;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 public class JSpawnerRenderer implements BlockEntityRenderer<JSpawnerEntity> {
 
@@ -21,7 +22,7 @@ public class JSpawnerRenderer implements BlockEntityRenderer<JSpawnerEntity> {
    }
 
    @Override
-   public void render(JSpawnerEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
+   public void render(JSpawnerEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay, Vec3 v) {
       Level level = pBlockEntity.getLevel();
       if (level != null) {
          BaseSpawner basespawner = pBlockEntity.getSpawner();
@@ -46,7 +47,7 @@ public class JSpawnerRenderer implements BlockEntityRenderer<JSpawnerEntity> {
       pPoseStack.translate(0.0F, -0.2F, 0.0F);
       pPoseStack.mulPose(Axis.XP.rotationDegrees(-30.0F));
       pPoseStack.scale(f, f, f);
-      pEntityRenderer.render(pEntity, 0.0D, 0.0D, 0.0D, 0.0F, pPartialTick, pPoseStack, pBuffer, pPackedLight);
+      pEntityRenderer.render(pEntity, 0.0D, 0.0D, 0.0D, pPartialTick, pPoseStack, pBuffer, pPackedLight);
       pPoseStack.popPose();
    }
 }

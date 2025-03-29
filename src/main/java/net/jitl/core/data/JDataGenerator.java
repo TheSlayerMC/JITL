@@ -1,11 +1,6 @@
 package net.jitl.core.data;
 
 import net.jitl.core.data.loot.JLootTableSubProvider;
-import net.jitl.core.data.recipe.JRecipeRegistry;
-import net.jitl.core.data.world_gen.BiomeGenerator;
-import net.jitl.core.data.world_gen.ConfiguredFeaturesGenerator;
-import net.jitl.core.data.world_gen.PlacedFeaturesGenerator;
-import net.jitl.core.data.world_gen.carver.CarverGenerator;
 import net.jitl.core.init.JITL;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
@@ -15,7 +10,7 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.concurrent.CompletableFuture;
 
-@EventBusSubscriber(modid = JITL.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = JITL.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class JDataGenerator {
 
     @SubscribeEvent

@@ -29,6 +29,7 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.Cat;
 import net.minecraft.world.entity.animal.Ocelot;
 import net.minecraft.world.entity.animal.goat.Goat;
+import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -44,7 +45,7 @@ import software.bernie.geckolib.animation.RawAnimation;
 import javax.annotation.Nullable;
 import java.util.Collection;
 
-public class BoomBoom extends JMonsterEntity implements PowerableMob {
+public class BoomBoom extends JMonsterEntity {
 
     private static final EntityDataAccessor<Integer> DATA_SWELL_DIR = SynchedEntityData.defineId(BoomBoom.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> DATA_IS_POWERED = SynchedEntityData.defineId(BoomBoom.class, EntityDataSerializers.BOOLEAN);
@@ -59,7 +60,7 @@ public class BoomBoom extends JMonsterEntity implements PowerableMob {
         setKnowledge(EnumKnowledge.OVERWORLD, 5F);
     }
 
-    public static boolean checkSpawn(EntityType<BoomBoom> entity, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+    public static boolean checkSpawn(EntityType<BoomBoom> entity, ServerLevelAccessor level, EntitySpawnReason spawnType, BlockPos pos, RandomSource random) {
         return level.getDifficulty() != Difficulty.PEACEFUL && checkMobSpawnRules(entity, level, spawnType, pos, random) && level.canSeeSky(pos)
                 && JCommonConfig.ENABLE_BOOM_SPAWN.get();
     }
@@ -106,7 +107,7 @@ public class BoomBoom extends JMonsterEntity implements PowerableMob {
     }
 
     @Override
-    public boolean causeFallDamage(float pFallDistance, float pMultiplier, DamageSource pSource) {
+    public boolean causeFallDamage(double pFallDistance, float pMultiplier, DamageSource pSource) {
         boolean flag = super.causeFallDamage(pFallDistance, pMultiplier, pSource);
         this.swell += (int)(pFallDistance * 1.5F);
         if(this.swell > this.maxSwell - 5)
@@ -133,16 +134,12 @@ public class BoomBoom extends JMonsterEntity implements PowerableMob {
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag pCompound) {
-        super.readAdditionalSaveData(pCompound);
-        this.entityData.set(DATA_IS_POWERED, pCompound.getBoolean("powered"));
-        if(pCompound.contains("Fuse", 99))
-            this.maxSwell = pCompound.getShort("Fuse");
-
-        if(pCompound.contains("ExplosionRadius", 99))
-            this.explosionRadius = pCompound.getByte("ExplosionRadius");
-
-        if(pCompound.getBoolean("ignited"))
+    public void readAdditionalSaveData(CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        this.entityData.set(DATA_IS_POWERED, compound.getBooleanOr("powered", false));
+        this.maxSwell = compound.getShortOr("Fuse", (short)30);
+        this.explosionRadius = compound.getByteOr("ExplosionRadius", (byte)3);
+        if(compound.getBooleanOr("ignited", false))
             this.ignite();
     }
 
@@ -188,11 +185,6 @@ public class BoomBoom extends JMonsterEntity implements PowerableMob {
         return SoundEvents.CREEPER_DEATH;
     }
 
-    @Override
-    public boolean doHurtTarget(Entity pEntity) {
-        return true;
-    }
-
     public boolean isPowered() {
         return this.entityData.get(DATA_IS_POWERED);
     }
@@ -228,7 +220,7 @@ public class BoomBoom extends JMonsterEntity implements PowerableMob {
                     itemstack.hurtAndBreak(1, pPlayer, getSlotForHand(pHand));
                 }
             }
-            return InteractionResult.sidedSuccess(this.level().isClientSide);
+            return InteractionResult.SUCCESS_SERVER;
         } else {
             return super.mobInteract(pPlayer, pHand);
         }

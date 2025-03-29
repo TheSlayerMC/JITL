@@ -27,8 +27,6 @@ import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JDimension;
 import net.jitl.core.init.internal.JEntities;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.WolfModel;
-import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -37,7 +35,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
-@EventBusSubscriber(modid = JITL.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 public class RenderEntitys {
 
     @SubscribeEvent
@@ -83,8 +81,13 @@ public class RenderEntitys {
         event.registerEntityRenderer(JEntities.PIERCER_TYPE.get(), manager -> new PiercerRenderer(manager, Minecraft.getInstance().getItemRenderer()));
         event.registerEntityRenderer(JEntities.KNIFE_TYPE.get(), manager -> new KnifeRenderer(manager, Minecraft.getInstance().getItemRenderer()));
 
-        event.registerEntityRenderer(JEntities.JBOAT_TYPE.get(), JBoatRenderer::new);
-        event.registerEntityRenderer(JEntities.SENTACOIN_TYPE.get(), (context) -> new SentacoinRender(context, Sentacoin.Type.COIN));
+        event.registerEntityRenderer(JEntities.BROWN_EUCA_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.BROWN_EUCA_BOAT, "brown_euca"));
+        event.registerEntityRenderer(JEntities.GOLD_EUCA_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.GOLD_EUCA_BOAT, "gold_euca"));
+        event.registerEntityRenderer(JEntities.CLOUDIA_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.CLOUDIA_BOAT, "cloudia"));
+        event.registerEntityRenderer(JEntities.CORBA_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.CORBA_BOAT, "corba"));
+        event.registerEntityRenderer(JEntities.DEPTHS_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.DEPTHS_BOAT, "depths"));
+        event.registerEntityRenderer(JEntities.FROZEN_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.FROZEN_BOAT, "frozen"));
+        event.registerEntityRenderer(JEntities.TERRANIA_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.TERRANIA_BOAT, "terranian"));        event.registerEntityRenderer(JEntities.SENTACOIN_TYPE.get(), (context) -> new SentacoinRender(context, Sentacoin.Type.COIN));
         event.registerEntityRenderer(JEntities.SENTACOIN_BAG_TYPE.get(), (context) -> new SentacoinRender(context, Sentacoin.Type.BAG));
 
         event.registerEntityRenderer(JEntities.FROZEN_TROLL_TYPE.get(), FrozenTrollRenderer::new);

@@ -5,7 +5,6 @@ import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
 import net.jitl.common.block.entity.JChestBlockEntity;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JBlockProperties;
-import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -18,17 +17,14 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ChestMenu;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.LidBlockEntity;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
@@ -48,9 +44,9 @@ import java.util.function.BiPredicate;
 
 public class JChestBlock extends AbstractChestBlock<JChestBlockEntity> implements SimpleWaterloggedBlock {
 
-    public static final MapCodec<JChestBlock> CODEC = simpleCodec((p_309280_) -> new JChestBlock());
+    public static final MapCodec<JChestBlock> CODEC = simpleCodec(JChestBlock::new);
 
-    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
     public static final EnumProperty<ChestType> TYPE = BlockStateProperties.CHEST_TYPE;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     protected static final VoxelShape NORTHAABB = Block.box(1.0D, 0.0D, 0.0D, 15.0D, 14.0D, 15.0D);
@@ -116,8 +112,8 @@ public class JChestBlock extends AbstractChestBlock<JChestBlockEntity> implement
         }
     };
 
-    public JChestBlock() {
-        super(JBlockProperties.CHEST, JBlockEntities.JCHEST::get);
+    public JChestBlock(BlockBehaviour.Properties props) {
+        super(props, JBlockEntities.JCHEST::get);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH)
                 .setValue(TYPE, ChestType.SINGLE).setValue(IS_LOCKED, Boolean.FALSE).setValue(WATERLOGGED, Boolean.FALSE));
     }
@@ -132,26 +128,21 @@ public class JChestBlock extends AbstractChestBlock<JChestBlockEntity> implement
     }
 
     @Override
-    public @NotNull RenderShape getRenderShape(@NotNull BlockState state) {
-        return RenderShape.ENTITYBLOCK_ANIMATED;
-    }
-
-    @Override
-    public @NotNull BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
-        if (state.getValue(WATERLOGGED)) {
-            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+    protected BlockState updateShape(BlockState p_51555_, LevelReader p_374487_, ScheduledTickAccess p_374060_, BlockPos p_51559_, Direction p_51556_, BlockPos p_51560_, BlockState p_51557_, RandomSource p_374212_) {
+        if ((Boolean)p_51555_.getValue(WATERLOGGED)) {
+            p_374060_.scheduleTick(p_51559_, Fluids.WATER, Fluids.WATER.getTickDelay(p_374487_));
         }
 
-        if (facingState.is(this) && facing.getAxis().isHorizontal()) {
-            ChestType chesttype = facingState.getValue(TYPE);
-            if (state.getValue(TYPE) == ChestType.SINGLE && chesttype != ChestType.SINGLE && state.getValue(FACING) == facingState.getValue(FACING) && getConnectedDirection(facingState) == facing.getOpposite()) {
-                return state.setValue(TYPE, chesttype.getOpposite());
+        if (p_51557_.is(this) && p_51556_.getAxis().isHorizontal()) {
+            ChestType chesttype = (ChestType)p_51557_.getValue(TYPE);
+            if (p_51555_.getValue(TYPE) == ChestType.SINGLE && chesttype != ChestType.SINGLE && p_51555_.getValue(FACING) == p_51557_.getValue(FACING) && getConnectedDirection(p_51557_) == p_51556_.getOpposite()) {
+                return (BlockState)p_51555_.setValue(TYPE, chesttype.getOpposite());
             }
-        } else if (getConnectedDirection(state) == facing) {
-            return state.setValue(TYPE, ChestType.SINGLE);
+        } else if (getConnectedDirection(p_51555_) == p_51556_) {
+            return (BlockState)p_51555_.setValue(TYPE, ChestType.SINGLE);
         }
 
-        return super.updateShape(state, facing, facingState, level, currentPos, facingPos);
+        return super.updateShape(p_51555_, p_374487_, p_374060_, p_51559_, p_51556_, p_51560_, p_51557_, p_374212_);
     }
 
     @Override
@@ -211,37 +202,29 @@ public class JChestBlock extends AbstractChestBlock<JChestBlockEntity> implement
         return blockstate.is(this) && blockstate.getValue(TYPE) == ChestType.SINGLE ? blockstate.getValue(FACING) : null;
     }
 
-    @Override
-    public void onRemove(BlockState state, @NotNull Level level, @NotNull BlockPos pos, BlockState newState, boolean isMoving) {
-        if (!state.is(newState.getBlock())) {
-            BlockEntity blockentity = level.getBlockEntity(pos);
-            if (blockentity instanceof Container) {
-                if(!state.getValue(IS_LOCKED))
-                    Containers.dropContents(level, pos, (Container)blockentity);
-                level.updateNeighbourForOutputSignal(pos, this);
-            }
-            super.onRemove(state, level, pos, newState, isMoving);
-        }
-    }
+//    @Override
+//    public void onRemove(BlockState state, @NotNull Level level, @NotNull BlockPos pos, BlockState newState, boolean isMoving) {
+//        if (!state.is(newState.getBlock())) {
+//            BlockEntity blockentity = level.getBlockEntity(pos);
+//            if (blockentity instanceof Container) {
+//                if(!state.getValue(IS_LOCKED))
+//                    Containers.dropContents(level, pos, (Container)blockentity);
+//                level.updateNeighbourForOutputSignal(pos, this);
+//            }
+//            super.onRemove(state, level, pos, newState, isMoving);
+//        }
+//    }
 
     @Override
-    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
-        Item heldItem = pPlayer.getMainHandItem().getItem();
-        if (pLevel.isClientSide) {
-            return InteractionResult.SUCCESS;
-        } else {
-            if(pState.getValue(IS_LOCKED)) {
-                pPlayer.sendSystemMessage(Component.translatable("jitl.chest.locked"));
-                return InteractionResult.FAIL;
-            } else if(!pState.getValue(IS_LOCKED) && heldItem != JItems.PADLOCK.get()){
-                MenuProvider menuprovider = this.getMenuProvider(pState, pLevel, pPos);
-                if (menuprovider != null) {
-                    pPlayer.openMenu(menuprovider);
-                }
-                return InteractionResult.CONSUME;
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if (level instanceof ServerLevel serverlevel) {
+            MenuProvider menuprovider = this.getMenuProvider(state, level, pos);
+            if (menuprovider != null) {
+                player.openMenu(menuprovider);
+                PiglinAi.angerNearbyPiglins(serverlevel, player, true);
             }
         }
-        return InteractionResult.CONSUME;
+        return InteractionResult.SUCCESS_SERVER;
     }
 
     @Nullable
@@ -368,5 +351,10 @@ public class JChestBlock extends AbstractChestBlock<JChestBlockEntity> implement
     @Override
     public float getDestroyProgress(BlockState state, @NotNull Player player, @NotNull BlockGetter level, @NotNull BlockPos pos) {
         return state.getValue(IS_LOCKED) ? 0F : super.getDestroyProgress(state, player, level, pos);
+    }
+
+    @Override
+    public @NotNull RenderShape getRenderShape(BlockState pState) {
+        return RenderShape.INVISIBLE;
     }
 }

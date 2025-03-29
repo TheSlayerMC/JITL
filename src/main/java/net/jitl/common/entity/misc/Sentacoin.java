@@ -6,6 +6,7 @@ import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.damagesource.DamageSource;
@@ -87,19 +88,21 @@ public class Sentacoin extends Entity {
     }
 
     @Override
-    public boolean hurt(@NotNull DamageSource source, float amount) {
-        if(this.level().isClientSide || this.isRemoved()) return false;
-        if(this.isInvulnerableTo(source)) {
-            return false;
-        } else if(this.level().isClientSide) {
-            return true;
-        } else {
-            this.markHurt();
-            this.coinHealth = (int)((float)this.coinHealth - amount);
-            if(this.coinHealth <= 0)
-                this.discard();
-            return true;
+    public boolean hurtServer(@NotNull ServerLevel serverLevel, DamageSource damageSource, float amount) {
+        if (damageSource.getEntity() instanceof Player player) {
+            if (this.isInvisibleTo(player)) {
+                return false;
+            } else if (this.level().isClientSide) {
+                return true;
+            } else {
+                this.markHurt();
+                this.coinHealth = (int) ((float) this.coinHealth - amount);
+                if (this.coinHealth <= 0)
+                    this.discard();
+                return true;
+            }
         }
+        return false;
     }
 
     @Override
@@ -113,16 +116,16 @@ public class Sentacoin extends Entity {
                 case COIN -> amount = 1 + coinRand;
             }
             final int finalAmount = amount;
-                player.take(this, 1);
+            player.take(this, 1);
             player.getData(JDataAttachments.PLAYER_STATS).addSentacoins(finalAmount);
-                if(this.type == Type.BAG) {
-                    for(int i = 0; i < 5; i++) {
-                        this.playSound(JSounds.COIN_PICKUP.get(), 1.0F, 1.0F + random.nextFloat());
-                    }
-                } else {
+            if(this.type == Type.BAG) {
+                for(int i = 0; i < 5; i++) {
                     this.playSound(JSounds.COIN_PICKUP.get(), 1.0F, 1.0F + random.nextFloat());
                 }
-                this.discard();
+            } else {
+                this.playSound(JSounds.COIN_PICKUP.get(), 1.0F, 1.0F + random.nextFloat());
+            }
+            this.discard();
         }
     }
 
@@ -136,8 +139,8 @@ public class Sentacoin extends Entity {
 
     @Override
     protected void readAdditionalSaveData(CompoundTag compound) {
-        this.coinHealth = compound.getShort("Health");
-        this.coinAge = compound.getShort("Age");
+        this.coinHealth = compound.getShortOr("Health", (short)0);
+        this.coinAge = compound.getShortOr("Age", (short)0);
     }
 
     @Override

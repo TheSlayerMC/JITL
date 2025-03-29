@@ -11,7 +11,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class JTreeDecorators {
 
-    public static final DeferredRegister<TreeDecoratorType<?>> REGISTRY = DeferredRegister.create(Registries.TREE_DECORATOR_TYPE, JITL.MODID);
+    public static final DeferredRegister<TreeDecoratorType<?>> REGISTRY = DeferredRegister.create(Registries.TREE_DECORATOR_TYPE, JITL.MOD_ID);
 
     public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<FrozenTreeDecorator>> FROZEN_DECORATOR = REGISTRY.register("frozen_tree_decorator", () -> new TreeDecoratorType<>(FrozenTreeDecorator.CODEC));
     public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<IceShroomTreeDecorator>> ICE_SHELF_DECORATOR = REGISTRY.register("ice_tree_decorator", () -> new TreeDecoratorType<>(IceShroomTreeDecorator.CODEC));

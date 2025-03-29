@@ -1,5 +1,6 @@
 package net.jitl.client;
 
+import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.client.render.world.*;
 import net.jitl.client.util.ClientGetter;
@@ -7,6 +8,7 @@ import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
+import net.minecraft.client.renderer.FogParameters;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -17,7 +19,7 @@ import net.neoforged.neoforge.client.event.ViewportEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
-@EventBusSubscriber(modid = JITL.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = JITL.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientEventHandler {
 
     public static void regToBus(IEventBus forgeBus) {
@@ -35,31 +37,33 @@ public class ClientEventHandler {
                 } else {
                     density = 0.1F;
                 }
-                RenderSystem.setShaderFogStart(density);
-                RenderSystem.setShaderFogEnd(density * farPlaneDistance);
+            FogParameters fog = new FogParameters(density, density * farPlaneDistance, FogShape.SPHERE, 1F, 1F, 1F, 1F);
+            RenderSystem.setShaderFog(fog);
+//            RenderSystem.setShaderFogStart(density);
+//                RenderSystem.setShaderFogEnd(density * farPlaneDistance);
         }
 
         if(ClientGetter.level().dimension() == Dimensions.CLOUDIA) {
             float density = 0.35F;
-            RenderSystem.setShaderFogStart(density);
-            RenderSystem.setShaderFogEnd(density * farPlaneDistance);
+            FogParameters fog = new FogParameters(density, density * farPlaneDistance, FogShape.SPHERE, 1F, 1F, 1F, 1F);
+            RenderSystem.setShaderFog(fog);
         }
 
         if(ClientGetter.level().dimension() == Dimensions.DEPTHS) {
             float density = 1.5F;
-            RenderSystem.setShaderFogStart(density);
-            RenderSystem.setShaderFogEnd(density * farPlaneDistance);
+            FogParameters fog = new FogParameters(density, density * farPlaneDistance, FogShape.SPHERE, 1F, 1F, 1F, 1F);
+            RenderSystem.setShaderFog(fog);
         }
     }
 
     @SubscribeEvent
     public static void registerDimensionSpecialEffects(RegisterDimensionSpecialEffectsEvent event) {
-        event.register(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
-        event.register(Dimensions.DEPTHS_EFFECTS, new EucaRenderInfo());
-        event.register(Dimensions.BOIL_EFFECTS, new BoilRenderInfo());
-        event.register(Dimensions.FROZEN_EFFECTS, new FrozenRenderInfo());
-        event.register(Dimensions.CORBA_EFFECTS, new CorbaRenderInfo());
-        event.register(Dimensions.TERRANIA_EFFECTS, new TerraniaRenderInfo());
-        event.register(Dimensions.CLOUDIA_EFFECTS, new CloudiaRenderInfo());
+//        event.register(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
+//        event.register(Dimensions.DEPTHS_EFFECTS, new EucaRenderInfo());
+//        event.register(Dimensions.BOIL_EFFECTS, new BoilRenderInfo());
+//        event.register(Dimensions.FROZEN_EFFECTS, new FrozenRenderInfo());todo
+//        event.register(Dimensions.CORBA_EFFECTS, new CorbaRenderInfo());
+//        event.register(Dimensions.TERRANIA_EFFECTS, new TerraniaRenderInfo());
+//        event.register(Dimensions.CLOUDIA_EFFECTS, new CloudiaRenderInfo());
     }
 }

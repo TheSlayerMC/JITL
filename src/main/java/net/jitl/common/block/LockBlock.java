@@ -9,24 +9,24 @@ import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
 public class LockBlock extends FaceableBlock {
 
-    public LockBlock() {
-        super(JBlockProperties.DUNGEON_BLOCK);
+    public LockBlock(BlockBehaviour.Properties props) {
+        super(props);
     }
 
     @Override
-    protected @NotNull ItemInteractionResult useItemOn(ItemStack pStack, BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
+    protected InteractionResult useItemOn(ItemStack pStack, BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
         ItemStack heldItem = player.getMainHandItem();
         Random r = new Random();
         boolean canOpen = this == JBlocks.BOIL_LOCK.get() && heldItem.getItem() == JItems.BOIL_LOCK_KEY.get() ||
@@ -36,8 +36,8 @@ public class LockBlock extends FaceableBlock {
 
         if(heldItem != null && canOpen) {
             worldIn.playSound(player, pos, SoundEvents.IRON_DOOR_OPEN, SoundSource.BLOCKS, 1.0F, r.nextFloat());
-            if(worldIn.isClientSide) {
-                return ItemInteractionResult.SUCCESS;
+            if(!worldIn.isClientSide) {
+                return InteractionResult.SUCCESS_SERVER;
             } else {
                 if(state.getValue(FACING) == Direction.WEST || state.getValue(FACING) == Direction.EAST) {
                     for(int y = -1; y < 2; y++) {
@@ -57,6 +57,6 @@ public class LockBlock extends FaceableBlock {
                     heldItem.shrink(1);
             }
         }
-        return ItemInteractionResult.CONSUME;
+        return InteractionResult.CONSUME;
     }
 }

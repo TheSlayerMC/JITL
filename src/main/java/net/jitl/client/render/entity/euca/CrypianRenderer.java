@@ -19,12 +19,12 @@ public class CrypianRenderer<T extends LivingEntity & GeoEntity> extends Animate
     @Override
     public @NotNull ResourceLocation getTextureLocation(@NotNull T entity) {
         if(((Crypian)entity).isAlloyHouse()) {
-            return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/entity/euca/crypian_alloy.png");
+            return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/euca/crypian_alloy.png");
         }
         else if(((Crypian)entity).canTrade()) {
-            return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/entity/euca/crypian_trade.png");
+            return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/euca/crypian_trade.png");
         } else {
-            return ResourceLocation.fromNamespaceAndPath(JITL.MODID, "textures/entity/euca/crypian.png");
+            return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/euca/crypian.png");
         }
 
     }

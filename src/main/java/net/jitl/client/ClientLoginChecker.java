@@ -15,7 +15,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import java.io.IOException;
 import java.net.SocketException;
 
-@EventBusSubscriber(modid = JITL.MODID, bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
+@EventBusSubscriber(modid = JITL.MOD_ID, bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
 public class ClientLoginChecker {
 
     @SubscribeEvent
@@ -32,7 +32,7 @@ public class ClientLoginChecker {
                     if(!InternetHandler.isOnline()) {
                         MutableComponent msg = Component.translatable("jitl.message.no_internet");
                         msg.withStyle(ChatFormatting.RED);
-                        player.sendSystemMessage(msg);
+                        player.displayClientMessage(msg, false);
                     }
                     try {
                         if(InternetHandler.isUpdateAvailable() && InternetHandler.isOnline()) {

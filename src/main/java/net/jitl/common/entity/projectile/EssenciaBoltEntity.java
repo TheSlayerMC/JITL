@@ -61,8 +61,8 @@ public class EssenciaBoltEntity extends LightningBolt {
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        this.setARGB(compound.getInt("Color"));
-        this.setStrikeVolume(compound.getFloat("Strike Volume"));
-        this.setThunderVolume(compound.getFloat("Thunder Volume"));
+        this.setARGB(compound.getIntOr("Color", 0));
+        this.setStrikeVolume(compound.getFloatOr("Strike Volume", 0F));
+        this.setThunderVolume(compound.getFloatOr("Thunder Volume", 0F));
     }
 }

@@ -43,10 +43,10 @@ public class BlockTotemGenerator {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            getBlockItem(JITL.MODID, name);
-            getBlockModel(JITL.MODID, name);
-            getBlockAwakeModel(JITL.MODID, name);
-            getBlockstate(JITL.MODID, name);
+            getBlockItem(JITL.MOD_ID, name);
+            getBlockModel(JITL.MOD_ID, name);
+            getBlockAwakeModel(JITL.MOD_ID, name);
+            getBlockstate(JITL.MOD_ID, name);
             writerInit();
         }
     }

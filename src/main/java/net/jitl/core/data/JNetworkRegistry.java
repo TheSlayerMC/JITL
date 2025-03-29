@@ -3,9 +3,6 @@ package net.jitl.core.data;
 import net.jitl.client.stats.PacketPlayerStats;
 import net.jitl.common.JManagers;
 import net.jitl.common.dialogue.DialogueNetHandler;
-import net.jitl.common.network.dialogue.C2SChosenOptionMsg;
-import net.jitl.common.network.dialogue.S2CCloseDialogueGuiMsg;
-import net.jitl.common.network.dialogue.S2COpenDialogueGuiMsg;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.network.*;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -22,7 +19,7 @@ public class JNetworkRegistry {
     }
 
     private static void registerPackets(final RegisterPayloadHandlersEvent ev) {
-        PayloadRegistrar registry = ev.registrar(JITL.MODID);
+        PayloadRegistrar registry = ev.registrar(JITL.MOD_ID);
         DialogueNetHandler dialogueNetHandler = getDialogueNetHandler();
 
         registry.playBidirectional(PacketPlayerStats.TYPE, PacketPlayerStats.STREAM_CODEC, PacketPlayerStats::handle);

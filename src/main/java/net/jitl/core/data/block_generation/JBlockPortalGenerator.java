@@ -43,10 +43,10 @@ public class JBlockPortalGenerator {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            getBlockItem(JITL.MODID, name);
-            getBlockNSModel(JITL.MODID, name);
-            getBlockEWModel(JITL.MODID, name);
-            getBlockstate(JITL.MODID, name);
+            getBlockItem(JITL.MOD_ID, name);
+            getBlockNSModel(JITL.MOD_ID, name);
+            getBlockEWModel(JITL.MOD_ID, name);
+            getBlockstate(JITL.MOD_ID, name);
             writerInit();
         }
     }

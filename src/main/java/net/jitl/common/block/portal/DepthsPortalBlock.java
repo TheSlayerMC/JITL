@@ -1,13 +1,13 @@
 package net.jitl.common.block.portal;
 
 import net.jitl.common.block.portal.logic.DepthsPortal;
-import net.jitl.common.block.portal.logic.JPortal;
 import net.jitl.common.block.portal.logic.PortalCoordinatesContainer;
 import net.jitl.common.capability.player.Portal;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JDataAttachments;
+import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceKey;
@@ -16,19 +16,20 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.portal.DimensionTransition;
+import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
@@ -36,8 +37,8 @@ public class DepthsPortalBlock extends Block implements DepthsPortal {
 
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 11.0D, 16.0D);
 
-    public DepthsPortalBlock() {
-        super(JBlockProperties.PORTAL);
+    public DepthsPortalBlock(BlockBehaviour.Properties props) {
+        super(props);
     }
 
     @Override
@@ -64,12 +65,12 @@ public class DepthsPortalBlock extends Block implements DepthsPortal {
     }
 
     @Override
-    public ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
+    public @NotNull ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
         return ItemStack.EMPTY;
     }
 
     @Override
-    public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entity) {
+    public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entity, InsideBlockEffectApplier eff) {
         if(entity.canUsePortal(false)) {
             if(entity instanceof Player player) {
                 Portal portal = player.getData(JDataAttachments.PORTAL_OVERLAY);
@@ -86,9 +87,8 @@ public class DepthsPortalBlock extends Block implements DepthsPortal {
         }
     }
 
-    @Nullable
     @Override
-    public DimensionTransition getPortalDestination(ServerLevel level, Entity entity, BlockPos pos) {
+    public TeleportTransition getPortalDestination(ServerLevel level, Entity entity, BlockPos pos) {
         if (!(entity instanceof ServerPlayer))
             return null;
 

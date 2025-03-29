@@ -4,21 +4,21 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CrossCollisionBlock;
 import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
@@ -28,21 +28,22 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
+import java.util.function.Function;
 
 public class JFenceBlock extends CrossCollisionBlock {
 
     public static final MapCodec<JFenceBlock> CODEC = simpleCodec(JFenceBlock::new);
-    private final VoxelShape[] occlusionByIndex;
+    private final Function<BlockState, VoxelShape> occlusionShapes;
 
     public JFenceBlock(BlockBehaviour.Properties p) {
         super(2.0F, 2.0F, 16.0F, 16.0F, 24.0F, p);
         this.registerDefaultState(this.stateDefinition.any().setValue(NORTH, Boolean.FALSE).setValue(EAST, Boolean.FALSE).setValue(SOUTH, Boolean.FALSE).setValue(WEST, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)));
-        this.occlusionByIndex = this.makeShapes(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
+        this.occlusionShapes = this.makeShapes(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
     }
 
     @Override
-    public @NotNull VoxelShape getOcclusionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        return this.occlusionByIndex[this.getAABBIndex(pState)];
+    protected VoxelShape getOcclusionShape(BlockState p_53338_) {
+        return this.occlusionShapes.apply(p_53338_);
     }
 
     @Override
@@ -72,11 +73,11 @@ public class JFenceBlock extends CrossCollisionBlock {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(
+    protected InteractionResult useItemOn(
             ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult
     ) {
         if (pLevel.isClientSide) {
-            return pStack.is(Items.LEAD) ? ItemInteractionResult.SUCCESS : ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
+            return pStack.is(Items.LEAD) ? InteractionResult.SUCCESS : InteractionResult.PASS;
         } else {
             return super.useItemOn(pStack, pState, pLevel, pPos, pPlayer, pHand, pHitResult);
         }
@@ -99,12 +100,12 @@ public class JFenceBlock extends CrossCollisionBlock {
     }
 
     @Override
-    public @NotNull BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
-        if (pState.getValue(WATERLOGGED)) {
-            pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+    protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess tick, BlockPos pos, Direction dir, BlockPos newPos, BlockState newState, RandomSource random) {
+        if ((Boolean)state.getValue(WATERLOGGED)) {
+            tick.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
 
-        return pFacing.getAxis().getPlane() == Direction.Plane.HORIZONTAL ? pState.setValue(PROPERTY_BY_DIRECTION.get(pFacing), this.connectsTo(pFacingState, pFacingState.isFaceSturdy(pLevel, pFacingPos, pFacing.getOpposite()), pFacing.getOpposite())) : super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
+        return dir.getAxis().isHorizontal() ? state.setValue((Property)PROPERTY_BY_DIRECTION.get(dir), this.connectsTo(newState, newState.isFaceSturdy(level, newPos, dir.getOpposite()), dir.getOpposite())) : super.updateShape(state, level, tick, pos, dir, newPos, newState, random);
     }
 
     @Override

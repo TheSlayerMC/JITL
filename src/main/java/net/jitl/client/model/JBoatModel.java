@@ -2,31 +2,29 @@ package net.jitl.client.model;
 
 import com.google.common.collect.ImmutableList;
 import net.jitl.common.entity.base.JBoat;
-import net.minecraft.client.model.ListModel;
+import net.minecraft.client.model.AbstractBoatModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.client.renderer.entity.state.BoatRenderState;
 import net.minecraft.util.Mth;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(Dist.CLIENT)
-public class JBoatModel extends ListModel<JBoat> {
+public class JBoatModel extends EntityModel<BoatRenderState> {
 
     private final ModelPart leftPaddle;
     private final ModelPart rightPaddle;
-    private final ModelPart waterPatch;
-    private final ImmutableList<ModelPart> parts;
 
     public JBoatModel(ModelPart root) {
+        super(root);
         this.leftPaddle = root.getChild("left_paddle");
         this.rightPaddle = root.getChild("right_paddle");
-        this.waterPatch = root.getChild("water_patch");
-        this.parts = ImmutableList.of(root.getChild("bottom"), root.getChild("back"), root.getChild("front"), root.getChild("right"), root.getChild("left"), this.leftPaddle, this.rightPaddle);
     }
 
     public static LayerDefinition createBodyModel() {
@@ -45,26 +43,17 @@ public class JBoatModel extends ListModel<JBoat> {
 
 
     @Override
-    public void setupAnim(@NotNull JBoat entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        animatePaddle(entity, 0, this.leftPaddle, limbSwing);
-        animatePaddle(entity, 1, this.rightPaddle, limbSwing);
+    public void setupAnim(BoatRenderState boat) {
+        super.setupAnim(boat);
+        animatePaddle(boat.rowingTimeLeft, 0, this.leftPaddle);
+        animatePaddle(boat.rowingTimeRight, 1, this.rightPaddle);
     }
 
-    @Override
-    public @NotNull ImmutableList<ModelPart> parts() {
-        return this.parts;
-    }
-
-    public ModelPart waterPatch() {
-        return this.waterPatch;
-    }
-
-    private static void animatePaddle(JBoat boat, int side, ModelPart paddle, float limbSwing) {
-        float f = boat.getRowingTime(side, limbSwing);
-        paddle.xRot = Mth.clampedLerp((-(float)Math.PI / 3F), -0.2617994F, (Mth.sin(-f) + 1.0F) / 2.0F);
-        paddle.yRot = Mth.clampedLerp((-(float)Math.PI / 4F), ((float)Math.PI / 4F), (Mth.sin(-f + 1.0F) + 1.0F) / 2.0F);
-        if (side == 1) {
-            paddle.yRot = (float)Math.PI - paddle.yRot;
+    private static void animatePaddle(float p_376567_, int p_376720_, ModelPart p_376932_) {
+        p_376932_.xRot = Mth.clampedLerp(-1.0471976F, -0.2617994F, (Mth.sin(-p_376567_) + 1.0F) / 2.0F);
+        p_376932_.yRot = Mth.clampedLerp(-0.7853982F, 0.7853982F, (Mth.sin(-p_376567_ + 1.0F) + 1.0F) / 2.0F);
+        if (p_376720_ == 1) {
+            p_376932_.yRot = 3.1415927F - p_376932_.yRot;
         }
     }
 }

@@ -13,8 +13,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.SlotContext;
 
-import java.util.UUID;
-
 public class EssenceCatalystItem extends JCurioItem {
     public float maxEssence;
 
@@ -30,7 +28,7 @@ public class EssenceCatalystItem extends JCurioItem {
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation uuid, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = LinkedHashMultimap.create();
-        modifierMultimap.put(JAttributes.MAX_ESSENCE, new AttributeModifier(ResourceLocation.fromNamespaceAndPath( JITL.MODID, "max_essence_modifier"), maxEssence, AttributeModifier.Operation.ADD_VALUE));
+        modifierMultimap.put(JAttributes.MAX_ESSENCE, new AttributeModifier(ResourceLocation.fromNamespaceAndPath( JITL.MOD_ID, "max_essence_modifier"), maxEssence, AttributeModifier.Operation.ADD_VALUE));
         return modifierMultimap;
     }
 }
