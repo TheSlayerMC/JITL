@@ -14,7 +14,7 @@ public class BossCrystalModel extends DefaultedEntityGeoModel<BossCrystal> {
 
     @Override
     public ResourceLocation getModelResource(GeoRenderState object) {
-        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "geo/bosscrystal.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "bosscrystal");
     }
 
     @Override
@@ -29,6 +29,6 @@ public class BossCrystalModel extends DefaultedEntityGeoModel<BossCrystal> {
 
     @Override
     public ResourceLocation getAnimationResource(BossCrystal animatable) {
-        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "animations/bosscrystal.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "bosscrystal");
     }
 }

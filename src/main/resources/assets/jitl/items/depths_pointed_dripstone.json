@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "jitl:block/depths_pointed_dripstone"
+    "model": "jitl:item/depths_pointed_dripstone"
   }
 }

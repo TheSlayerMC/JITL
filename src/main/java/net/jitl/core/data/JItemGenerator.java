@@ -138,6 +138,7 @@ public class JItemGenerator extends BasicFileGenerator {
         writeToItemModelFile("    \"layer0\": \"" + modID + ":" + "item/" + name + "\"");
         writeToItemModelFile("  }");
         writeToItemModelFile("}");
+        generateBasicFile(true, name);
     }
 
     public void getHammerItem(String modID, String name) {
@@ -147,6 +148,7 @@ public class JItemGenerator extends BasicFileGenerator {
         writeToItemModelFile("    \"1\": \"" + modID + ":" + "item/" + name + "\"");
         writeToItemModelFile("  }");
         writeToItemModelFile("}");
+        generateBasicFile(true, name);
     }
 
     public void getNormalItem(String modID, String name, JItems.ItemType type) {

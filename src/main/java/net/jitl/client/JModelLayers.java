@@ -28,6 +28,9 @@ public class JModelLayers {
     public static final ModelLayerLocation DEPTHS_BOAT = createBoatModelName(JBoat.Type.DEPTHS);
     public static final ModelLayerLocation FROZEN_BOAT = createBoatModelName(JBoat.Type.FROZEN);
     public static final ModelLayerLocation TERRANIA_BOAT = createBoatModelName(JBoat.Type.TERRANIA);
+    public static final ModelLayerLocation BURNED_BOAT = createBoatModelName(JBoat.Type.BURNED);
+
+    public static final ModelLayerLocation STORON_SHIELD = register("storon_shield");
 
 
     private static ModelLayerLocation register(String path) {

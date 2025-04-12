@@ -4,13 +4,16 @@ import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -52,6 +55,9 @@ public class BossCrystal extends Mob implements GeoEntity {
         setType(t.getName());
         setLootTable(loot);
         this.setDeltaMovement(0, 0, 0);
+        LootTable table = Objects.requireNonNull(level().getServer()).reloadableRegistries().getLootTable(loot_table);
+        List<ItemStack> itemList = table.getRandomItems(new LootParams.Builder((ServerLevel)level()).withParameter(LootContextParams.THIS_ENTITY, this).withParameter(LootContextParams.ORIGIN, this.position()).create(LootContextParamSets.GIFT));
+        storedItems.addAll(itemList);
     }
 
     public BossCrystal(EntityType<? extends BossCrystal> entityEntityType, Level level) {
@@ -93,13 +99,13 @@ public class BossCrystal extends Mob implements GeoEntity {
 
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
-       // ContainerHelper.loadAllItems(compound, storedItems);
+        ContainerHelper.loadAllItems(compound, storedItems, level().registryAccess());
         setType(compound.getStringOr("type", "type"));
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag compound) {
-        //ContainerHelper.saveAllItems(compound, storedItems);
+        ContainerHelper.saveAllItems(compound, storedItems, level().registryAccess());
         compound.putString("type", getCrystalType());
     }
 
@@ -111,10 +117,8 @@ public class BossCrystal extends Mob implements GeoEntity {
     @Override
     public @NotNull InteractionResult mobInteract(@NotNull Player player, @NotNull InteractionHand hand) {
         if(!this.level().isClientSide) {
-            LootTable table = Objects.requireNonNull(level().getServer()).reloadableRegistries().getLootTable(loot_table);
-            List<ItemStack> itemList = table.getRandomItems(new LootParams.Builder((ServerLevel)level()).withParameter(LootContextParams.THIS_ENTITY, player).withParameter(LootContextParams.ORIGIN, player.position()).create(LootContextParamSets.GIFT));
-            storedItems.addAll(itemList);
-            for(ItemStack storedItem : storedItems) {
+
+            for (ItemStack storedItem : storedItems) {
                 ItemStack item = new ItemStack(storedItem.getItem());
                 item.setCount(storedItem.getCount());
                 ItemEntity entity = new ItemEntity(level(), this.getX(), this.getY(), this.getZ(), item);

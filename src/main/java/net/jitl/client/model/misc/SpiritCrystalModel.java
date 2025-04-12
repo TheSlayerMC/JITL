@@ -14,7 +14,7 @@ public class SpiritCrystalModel extends DefaultedEntityGeoModel<SpiritCrystal> {
 
     @Override
     public ResourceLocation getModelResource(GeoRenderState object) {
-        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "geo/spirit_crystal.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "spirit_crystal");
     }
 
     @Override
@@ -24,6 +24,6 @@ public class SpiritCrystalModel extends DefaultedEntityGeoModel<SpiritCrystal> {
 
     @Override
     public ResourceLocation getAnimationResource(SpiritCrystal animatable) {
-        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "animations/spirit_crystal.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "spirit_crystal");
     }
 }

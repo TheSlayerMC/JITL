@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "jitl:block/tall_ligshroom"
+    "model": "jitl:item/tall_ligshroom"
   }
 }

@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "jitl:flairium"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "jitl:flairium"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "jitl:flairium"
+      }
+    ]
+  }
+}

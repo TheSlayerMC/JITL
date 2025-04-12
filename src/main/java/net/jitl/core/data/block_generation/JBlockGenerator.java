@@ -54,6 +54,7 @@ public class JBlockGenerator extends BasicFileGenerator {
         generateBasicFile(true, "enchanted_shroom_tall");
         generateBasicFile(true, "fungal_shelf");
         generateBasicFile(true, "okoloo_pedestal");
+        generateBasicFile(true, "tall_ligshroom");
 
     }
 

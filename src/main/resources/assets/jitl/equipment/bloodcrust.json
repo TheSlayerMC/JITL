@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "jitl:bloodcrust"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "jitl:bloodcrust"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "jitl:bloodcrust"
+      }
+    ]
+  }
+}

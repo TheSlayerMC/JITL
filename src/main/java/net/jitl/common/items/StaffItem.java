@@ -35,12 +35,12 @@ public class StaffItem extends JItem implements IEssenceItem {
 
     @Override
     public @NotNull InteractionResult use(@NotNull Level level, Player player, @NotNull InteractionHand usedHand) {
-        ItemStack stack = player.getItemInHand(usedHand);
         if(!level.isClientSide()) {
             if(player.getData(JDataAttachments.ESSENCE).consumeEssence(player, this.essenceUsage)) {
                 JThrowableProjectile projectile = projectileFactory.apply(this.damage, level, player);
                 projectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
                 level.addFreshEntity(projectile);
+                projectile.setPos(player.getX(), player.getEyeY(), player.getZ());
                 player.getItemInHand(usedHand).hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                 level.playSound(null, player.getX(), player.getY(), player.getZ(), JSounds.STAFF_0.get(), SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
             }

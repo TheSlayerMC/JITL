@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "jitl:shadium"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "jitl:shadium"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "jitl:shadium"
+      }
+    ]
+  }
+}

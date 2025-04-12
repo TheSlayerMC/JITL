@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "jitl:crystal_flake"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "jitl:crystal_flake"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "jitl:crystal_flake"
+      }
+    ]
+  }
+}

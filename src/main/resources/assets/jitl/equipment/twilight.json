@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "jitl:twilight"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "jitl:twilight"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "jitl:twilight"
+      }
+    ]
+  }
+}

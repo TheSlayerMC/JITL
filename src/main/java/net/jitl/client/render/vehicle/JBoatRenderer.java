@@ -41,11 +41,7 @@ public class JBoatRenderer extends AbstractBoatRenderer {
     public JBoatRenderer(EntityRendererProvider.Context context, ModelLayerLocation layer, String name) {
         super(context);
         this.shadowRadius = 0.8F;
-//        this.boatResources = Stream.of(JBoat.Type.values()).collect(ImmutableMap.toImmutableMap(
-//                (type) -> type,
-//                (JBoatType) -> Pair.of(JITL.rl("textures/entity/boat/" + JBoatType.getName() + ".png"), new JBoatModel(context.bakeLayer(JModelLayers.createBoatModelName(JBoatType))))));
-
-        this.texture = layer.model().withPath((type) -> "textures/entity/" + name + ".png");
+        this.texture = layer.model().withPath((type) -> "textures/entity/boat/" + name + ".png");
         this.waterPatchModel = new Model.Simple(context.bakeLayer(ModelLayers.BOAT_WATER_PATCH), (e) -> RenderType.waterMask());
         this.model = new JBoatModel(context.bakeLayer(layer));
     }

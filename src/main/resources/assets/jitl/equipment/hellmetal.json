@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "jitl:hellmetal"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "jitl:hellmetal"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "jitl:hellmetal"
+      }
+    ]
+  }
+}

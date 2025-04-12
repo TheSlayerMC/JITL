@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "jitl:frostbitten"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "jitl:frostbitten"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "jitl:frostbitten"
+      }
+    ]
+  }
+}

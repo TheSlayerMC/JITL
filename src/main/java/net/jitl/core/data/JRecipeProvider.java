@@ -660,7 +660,6 @@ public class JRecipeProvider extends RecipeProvider {
 
     public ItemLike getItemFromRegistryName(String registryName) {
         ItemLike item = BuiltInRegistries.ITEM.getValue(ResourceLocation.parse(registryName));
-        System.out.println(item);
         return item;
     }
 

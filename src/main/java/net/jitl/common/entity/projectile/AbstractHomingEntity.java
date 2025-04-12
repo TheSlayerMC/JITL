@@ -23,6 +23,7 @@ public abstract class AbstractHomingEntity extends JThrowableProjectile {
 
     public AbstractHomingEntity(EntityType<? extends ThrowableProjectile> e, int damage, Level world, LivingEntity thrower) {
         super(e, damage, world, thrower);
+        setOwner(thrower);
     }
 
     @Override
@@ -39,7 +40,7 @@ public abstract class AbstractHomingEntity extends JThrowableProjectile {
                 if(findNewTarget && (target == null || compareDist < targetDist)) target = e;
             }
         }
-        if(target != null) {
+        if(target != null && target != getOwner()) {
             Vec3 dir = new Vec3(target.xo - xo, (target.yo + target.getEyeHeight()) - yo, target.zo - zo).normalize();
             setDeltaMovement(dir.x / 1.25, dir.y / 1.25, dir.z / 1.25);
         }

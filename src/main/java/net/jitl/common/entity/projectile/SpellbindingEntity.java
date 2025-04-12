@@ -22,10 +22,12 @@ public class SpellbindingEntity extends AbstractHomingEntity {
     @Override
     protected void onHitEntity(@NotNull EntityHitResult result) {
         super.onHitEntity(result);
-        EssenciaBoltEntity essenciaBoltEntity = new EssenciaBoltEntity(JEntities.ESSENCIA_BOLT_TYPE.get(), level());
-        essenciaBoltEntity.setPos(result.getLocation().x(), result.getLocation().y(), result.getLocation().z());
-        essenciaBoltEntity.setARGB(0xff00ff);
-        this.level().addFreshEntity(essenciaBoltEntity);
+        if(result.getEntity() != this.getOwner()) {
+            EssenciaBoltEntity essenciaBoltEntity = new EssenciaBoltEntity(JEntities.ESSENCIA_BOLT_TYPE.get(), level());
+            essenciaBoltEntity.setPos(result.getLocation().x(), result.getLocation().y(), result.getLocation().z());
+            essenciaBoltEntity.setARGB(0xff00ff);
+            this.level().addFreshEntity(essenciaBoltEntity);
+        }
     }
 
     @Override

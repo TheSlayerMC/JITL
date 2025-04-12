@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "jitl:gorbite"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "jitl:gorbite"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "jitl:gorbite"
+      }
+    ]
+  }
+}

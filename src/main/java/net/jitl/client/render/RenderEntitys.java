@@ -18,6 +18,7 @@ import net.jitl.client.render.entity.misc.SentacoinRender;
 import net.jitl.client.render.entity.misc.SpiritCrystalRenderer;
 import net.jitl.client.render.entity.nether.MiniGhastRenderer;
 import net.jitl.client.render.entity.overworld.BoomBoomRenderer;
+import net.jitl.client.render.item.*;
 import net.jitl.client.render.projectile.*;
 import net.jitl.client.render.vehicle.JBoatRenderer;
 import net.jitl.common.entity.base.JBoat;
@@ -28,6 +29,7 @@ import net.jitl.core.init.internal.JDimension;
 import net.jitl.core.init.internal.JEntities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.model.ShieldModel;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -40,6 +42,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterSpecialModelRendererEvent;
 import org.checkerframework.checker.units.qual.A;
 
 import java.util.function.BiConsumer;
@@ -96,6 +99,7 @@ public class RenderEntitys {
         event.registerEntityRenderer(JEntities.CORBA_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.CORBA_BOAT, "corba"));
         event.registerEntityRenderer(JEntities.DEPTHS_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.DEPTHS_BOAT, "depths"));
         event.registerEntityRenderer(JEntities.FROZEN_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.FROZEN_BOAT, "frozen"));
+        event.registerEntityRenderer(JEntities.BURNED_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.BURNED_BOAT, "burned"));
         event.registerEntityRenderer(JEntities.TERRANIA_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.TERRANIA_BOAT, "terranian"));
         event.registerEntityRenderer(JEntities.SENTACOIN_TYPE.get(), (context) -> new SentacoinRender<>(context, Sentacoin.Type.COIN));
         event.registerEntityRenderer(JEntities.SENTACOIN_BAG_TYPE.get(), (context) -> new SentacoinRender<>(context, Sentacoin.Type.BAG));
@@ -156,6 +160,27 @@ public class RenderEntitys {
         event.registerLayerDefinition(JModelLayers.DEPTHS_BOAT, BoatModel::createBoatModel);
         event.registerLayerDefinition(JModelLayers.FROZEN_BOAT, BoatModel::createBoatModel);
         event.registerLayerDefinition(JModelLayers.TERRANIA_BOAT, BoatModel::createBoatModel);
+        event.registerLayerDefinition(JModelLayers.BURNED_BOAT, BoatModel::createBoatModel);
+
+        event.registerLayerDefinition(JModelLayers.STORON_SHIELD, ShieldModel::createLayer);
+
+    }
+
+    @SubscribeEvent
+    public static void registerSpecialRenderers(RegisterSpecialModelRendererEvent event) {
+        event.register(JITL.rl("bloodcrust_shield"), BloodcrustShieldRenderer.Unbaked.MAP_CODEC);
+        event.register(JITL.rl("celestium_shield"), CelestiumShieldRenderer.Unbaked.MAP_CODEC);
+        event.register(JITL.rl("des_shield"), DesShieldRenderer.Unbaked.MAP_CODEC);
+        event.register(JITL.rl("flairium_shield"), FlairiumShieldRenderer.Unbaked.MAP_CODEC);
+        event.register(JITL.rl("gorbite_shield"), GorbiteShieldRenderer.Unbaked.MAP_CODEC);
+        event.register(JITL.rl("korite_shield"), KoriteShieldRenderer.Unbaked.MAP_CODEC);
+        event.register(JITL.rl("lunium_shield"), LuniumShieldRenderer.Unbaked.MAP_CODEC);
+        event.register(JITL.rl("mekyum_shield"), MekyumShieldRenderer.Unbaked.MAP_CODEC);
+        event.register(JITL.rl("orbadite_shield"), OrbaditeShieldRenderer.Unbaked.MAP_CODEC);
+        event.register(JITL.rl("sapphire_shield"), SapphireShieldRenderer.Unbaked.MAP_CODEC);
+        event.register(JITL.rl("shadium_shield"), ShadiumShieldRenderer.Unbaked.MAP_CODEC);
+        event.register(JITL.rl("soulstone_shield"), SoulstoneShieldRenderer.Unbaked.MAP_CODEC);
+        event.register(JITL.rl("storon_shield"), StoronShieldRenderer.Unbaked.MAP_CODEC);
     }
 
     public static void registerAnimationRenderers(BiConsumer<EntityType<? extends Entity>, EntityRendererProvider> entityRenderers) {

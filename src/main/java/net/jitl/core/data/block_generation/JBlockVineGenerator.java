@@ -93,7 +93,7 @@ public class JBlockVineGenerator extends BasicFileGenerator {
         writeToBlockstateFile("     {");
         writeToBlockstateFile("        \"apply\": {");
         writeToBlockstateFile("            \"model\": \"" + modID + ":" + "block/" + name + "\",");
-        writeToBlockstateFile("            \"uvlock\": \"true\",");
+        writeToBlockstateFile("            \"uvlock\": true,");
         writeToBlockstateFile("            \"y\": 90");
         writeToBlockstateFile("        },");
         writeToBlockstateFile("       \"when\": {");
@@ -103,7 +103,7 @@ public class JBlockVineGenerator extends BasicFileGenerator {
         writeToBlockstateFile("     {");
         writeToBlockstateFile("        \"apply\": {");
         writeToBlockstateFile("            \"model\": \"" + modID + ":" + "block/" + name + "\",");
-        writeToBlockstateFile("            \"uvlock\": \"true\",");
+        writeToBlockstateFile("            \"uvlock\": true,");
         writeToBlockstateFile("            \"y\": 180");
         writeToBlockstateFile("        },");
         writeToBlockstateFile("       \"when\": {");
@@ -117,7 +117,7 @@ public class JBlockVineGenerator extends BasicFileGenerator {
         writeToBlockstateFile("     {");
         writeToBlockstateFile("        \"apply\": {");
         writeToBlockstateFile("            \"model\": \"" + modID + ":" + "block/" + name + "\",");
-        writeToBlockstateFile("            \"uvlock\": \"true\",");
+        writeToBlockstateFile("            \"uvlock\": true,");
         writeToBlockstateFile("            \"y\": 90");
         writeToBlockstateFile("        },");
         writeToBlockstateFile("       \"when\": {");
@@ -131,7 +131,7 @@ public class JBlockVineGenerator extends BasicFileGenerator {
         writeToBlockstateFile("     {");
         writeToBlockstateFile("        \"apply\": {");
         writeToBlockstateFile("            \"model\": \"" + modID + ":" + "block/" + name + "\",");
-        writeToBlockstateFile("            \"uvlock\": \"true\",");
+        writeToBlockstateFile("            \"uvlock\": true,");
         writeToBlockstateFile("            \"y\": 180");
         writeToBlockstateFile("        },");
         writeToBlockstateFile("       \"when\": {");
@@ -141,7 +141,7 @@ public class JBlockVineGenerator extends BasicFileGenerator {
         writeToBlockstateFile("     {");
         writeToBlockstateFile("        \"apply\": {");
         writeToBlockstateFile("            \"model\": \"" + modID + ":" + "block/" + name + "\",");
-        writeToBlockstateFile("            \"uvlock\": \"true\",");
+        writeToBlockstateFile("            \"uvlock\": true,");
         writeToBlockstateFile("            \"y\": 180");
         writeToBlockstateFile("        },");
         writeToBlockstateFile("       \"when\": {");
@@ -155,7 +155,7 @@ public class JBlockVineGenerator extends BasicFileGenerator {
         writeToBlockstateFile("     {");
         writeToBlockstateFile("        \"apply\": {");
         writeToBlockstateFile("            \"model\": \"" + modID + ":" + "block/" + name + "\",");
-        writeToBlockstateFile("            \"uvlock\": \"true\",");
+        writeToBlockstateFile("            \"uvlock\": true,");
         writeToBlockstateFile("            \"y\": 270");
         writeToBlockstateFile("        },");
         writeToBlockstateFile("       \"when\": {");
@@ -165,7 +165,7 @@ public class JBlockVineGenerator extends BasicFileGenerator {
         writeToBlockstateFile("     {");
         writeToBlockstateFile("        \"apply\": {");
         writeToBlockstateFile("            \"model\": \"" + modID + ":" + "block/" + name + "\",");
-        writeToBlockstateFile("            \"uvlock\": \"true\",");
+        writeToBlockstateFile("            \"uvlock\": true,");
         writeToBlockstateFile("            \"y\": 270");
         writeToBlockstateFile("        },");
         writeToBlockstateFile("       \"when\": {");
@@ -179,7 +179,7 @@ public class JBlockVineGenerator extends BasicFileGenerator {
         writeToBlockstateFile("     {");
         writeToBlockstateFile("        \"apply\": {");
         writeToBlockstateFile("            \"model\": \"" + modID + ":" + "block/" + name + "\",");
-        writeToBlockstateFile("            \"uvlock\": \"true\",");
+        writeToBlockstateFile("            \"uvlock\": true,");
         writeToBlockstateFile("            \"x\": 270");
         writeToBlockstateFile("        },");
         writeToBlockstateFile("       \"when\": {");
@@ -189,7 +189,7 @@ public class JBlockVineGenerator extends BasicFileGenerator {
         writeToBlockstateFile("     {");
         writeToBlockstateFile("        \"apply\": {");
         writeToBlockstateFile("            \"model\": \"" + modID + ":" + "block/" + name + "\",");
-        writeToBlockstateFile("            \"uvlock\": \"true\",");
+        writeToBlockstateFile("            \"uvlock\": true,");
         writeToBlockstateFile("            \"x\": 270");
         writeToBlockstateFile("        },");
         writeToBlockstateFile("       \"when\": {");

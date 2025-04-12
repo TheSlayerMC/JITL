@@ -4,6 +4,7 @@ import net.jitl.client.ClientEventHandler;
 import net.jitl.client.gui.BossBarRenderer;
 import net.jitl.client.gui.KeyUsedEvent;
 import net.jitl.client.render.RenderEntitys;
+import net.jitl.common.items.base.JArmorItem;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.common.world.dimension.JCarver;
 import net.jitl.common.world.gen.JFeatures;
@@ -107,6 +108,7 @@ public class JITL {
             new JBlockMushroomGenerator().generate();
             new BlockTotemGenerator().generate();
             new JBlockDripstoneGenerator().generate();
+            new ArmorGenerator().generate();
             new LangRegistry().generate();
         }
 

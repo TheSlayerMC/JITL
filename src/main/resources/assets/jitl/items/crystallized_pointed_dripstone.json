@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "jitl:block/crystallized_pointed_dripstone"
+    "model": "jitl:item/crystallized_pointed_dripstone"
   }
 }

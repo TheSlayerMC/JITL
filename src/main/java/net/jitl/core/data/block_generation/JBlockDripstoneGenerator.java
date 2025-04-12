@@ -90,7 +90,7 @@ public class JBlockDripstoneGenerator extends BasicFileGenerator {
             getBlockItem(JITL.MOD_ID, name);
             getBlockModel(JITL.MOD_ID, name);
             getBlockstate(JITL.MOD_ID, name);
-            generateBasicFile(name);
+            generateBasicFile(true, name);
 
             writerInit();
         }

@@ -46,6 +46,7 @@ public class GunItem extends JItem implements IEssenceItem {
                     JThrowableProjectile projectile = projectileFactory.apply(this.damage, level, player);
                     projectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
                     level.addFreshEntity(projectile);
+                    projectile.setPos(player.getX(), player.getEyeY(), player.getZ());
                     player.getItemInHand(player.getUsedItemHand()).hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                     level.playSound(null, player.getX(), player.getY(), player.getZ(), JSounds.CANNON.get(), SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
                 }
