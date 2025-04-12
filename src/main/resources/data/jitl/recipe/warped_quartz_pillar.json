@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "s": {
-      "item": "jitl:warped_quartz_block"
-    }
+    "s": "jitl:warped_quartz_block"
   },
   "pattern": [
     "s",

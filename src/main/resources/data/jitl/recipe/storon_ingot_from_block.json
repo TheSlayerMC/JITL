@@ -3,9 +3,7 @@
   "category": "building",
   "group": "jitl:storon_ingot",
   "ingredients": [
-    {
-      "item": "jitl:storon_block"
-    }
+    "jitl:storon_block"
   ],
   "result": {
     "count": 9,

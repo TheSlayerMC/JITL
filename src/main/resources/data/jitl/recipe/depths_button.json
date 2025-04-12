@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
   "ingredients": [
-    {
-      "item": "jitl:depths_planks"
-    }
+    "jitl:depths_planks"
   ],
   "result": {
     "count": 1,

@@ -1,6 +1,5 @@
 {
   "type": "jitl:euca",
-  "forge:use_server_seed": true,
   "generator": {
     "type": "minecraft:noise",
     "settings": "jitl:euca_generation",

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "jitl:flairium_ingot"
-    }
+    "#": "jitl:flairium_ingot"
   },
   "pattern": [
     "###",

@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "jitl:korite_ingot"
-    },
-    "I": {
-      "item": "minecraft:stick"
-    }
+    "#": "jitl:korite_ingot",
+    "I": "minecraft:stick"
   },
   "pattern": [
     "##",

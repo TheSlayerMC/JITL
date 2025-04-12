@@ -2,18 +2,10 @@
   "type": "minecraft:crafting_shapeless",
   "category": "equipment",
   "ingredients": [
-    {
-      "item": "jitl:storon_axe"
-    },
-    {
-      "item": "jitl:storon_pickaxe"
-    },
-    {
-      "item": "jitl:storon_shovel"
-    },
-    {
-      "item": "jitl:storon_hoe"
-    }
+    "jitl:storon_axe",
+    "jitl:storon_pickaxe",
+    "jitl:storon_shovel",
+    "jitl:storon_hoe"
   ],
   "result": {
     "count": 1,

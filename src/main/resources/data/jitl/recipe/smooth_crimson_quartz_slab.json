@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "jitl:smooth_crimson_quartz_block"
-    }
+    "#": "jitl:smooth_crimson_quartz_block"
   },
   "pattern": [
     "###"

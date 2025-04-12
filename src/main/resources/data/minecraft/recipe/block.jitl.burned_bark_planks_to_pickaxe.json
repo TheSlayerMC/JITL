@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "jitl:burned_bark_planks"
-    },
-    "I": {
-      "item": "minecraft:stick"
-    }
+    "#": "jitl:burned_bark_planks",
+    "I": "minecraft:stick"
   },
   "pattern": [
     "###",

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "jitl:storon_ingot"
-    }
+    "#": "jitl:storon_ingot"
   },
   "pattern": [
     "###",

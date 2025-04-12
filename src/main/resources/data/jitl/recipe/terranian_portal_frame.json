@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "jitl:terrania_portal_gem"
-    }
+    "#": "jitl:terrania_portal_gem"
   },
   "pattern": [
     "###",

@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "jitl:euca_brown_planks"
-    },
-    "I": {
-      "item": "minecraft:stick"
-    }
+    "#": "jitl:euca_brown_planks",
+    "I": "minecraft:stick"
   },
   "pattern": [
     "#",

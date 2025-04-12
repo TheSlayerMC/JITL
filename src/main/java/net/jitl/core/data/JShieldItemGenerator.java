@@ -45,7 +45,7 @@ public class JShieldItemGenerator extends BasicFileGenerator {
         writeToItemModelFile(itemModelWriter, "{");
         writeToItemModelFile(itemModelWriter, "  \"parent\": \"minecraft:item/shield\",");
         writeToItemModelFile(itemModelWriter, "  \"textures\": {");
-        writeToItemModelFile(itemModelWriter, "    \"particle\": \"" + modID + ":shield/" + name + "\"");
+        writeToItemModelFile(itemModelWriter, "    \"particle\": \"block/dark_oak_planks\"");
         writeToItemModelFile(itemModelWriter, "  },");
         writeToItemModelFile(itemModelWriter, "  \"overrides\": [");
         writeToItemModelFile(itemModelWriter, "    {");
@@ -60,7 +60,7 @@ public class JShieldItemGenerator extends BasicFileGenerator {
         writeToItemModelFile(blockingWriter, "{");
         writeToItemModelFile(blockingWriter, "  \"parent\": \"minecraft:item/shield_blocking\",");
         writeToItemModelFile(blockingWriter, "  \"textures\": {");
-        writeToItemModelFile(blockingWriter, "    \"particle\": \"" + modID + ":shield/" + name + "\"");
+        writeToItemModelFile(blockingWriter, "    \"particle\": \"block/dark_oak_planks\"");
         writeToItemModelFile(blockingWriter, "  }");
         writeToItemModelFile(blockingWriter, "}");
     }

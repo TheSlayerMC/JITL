@@ -1,6 +1,5 @@
 {
   "type": "jitl:depths",
-  "forge:use_server_seed": true,
   "generator": {
     "type": "minecraft:noise",
     "settings": "jitl:depths_generation",

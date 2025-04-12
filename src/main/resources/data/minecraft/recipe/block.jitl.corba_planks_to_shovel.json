@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "jitl:corba_planks"
-    },
-    "I": {
-      "item": "minecraft:stick"
-    }
+    "#": "jitl:corba_planks",
+    "I": "minecraft:stick"
   },
   "pattern": [
     "#",

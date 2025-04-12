@@ -3,9 +3,7 @@
   "category": "building",
   "group": "jitl:des_ingot",
   "ingredients": [
-    {
-      "item": "jitl:des_block"
-    }
+    "jitl:des_block"
   ],
   "result": {
     "count": 9,

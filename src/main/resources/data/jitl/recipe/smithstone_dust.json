@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "jitl:smithstone"
-    }
+    "jitl:smithstone"
   ],
   "result": {
     "count": 4,

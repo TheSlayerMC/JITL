@@ -3,9 +3,7 @@
   "category": "building",
   "group": "jitl:mekyum_ingot",
   "ingredients": [
-    {
-      "item": "jitl:mekyum_block"
-    }
+    "jitl:mekyum_block"
   ],
   "result": {
     "count": 9,

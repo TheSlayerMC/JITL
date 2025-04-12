@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.0,
-  "ingredient": {
-    "item": "jitl:sapphire_ore"
-  },
+  "ingredient": "jitl:sapphire_ore",
   "result": {
     "count": 1,
     "id": "jitl:sapphire"

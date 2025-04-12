@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.0,
-  "ingredient": {
-    "item": "jitl:celestium_gemstone"
-  },
+  "ingredient": "jitl:celestium_gemstone",
   "result": {
     "count": 1,
     "id": "jitl:celestium_ingot"

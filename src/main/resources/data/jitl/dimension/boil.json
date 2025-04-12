@@ -1,6 +1,5 @@
 {
   "type": "jitl:boil",
-  "forge:use_server_seed": true,
   "generator": {
     "type": "minecraft:noise",
     "settings": "jitl:boil_generation",

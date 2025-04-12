@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "jitl:depths_portal_gem"
-    }
+    "#": "jitl:depths_portal_gem"
   },
   "pattern": [
     "###",

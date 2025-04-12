@@ -3,9 +3,7 @@
   "category": "building",
   "group": "jitl:shadium_ingot",
   "ingredients": [
-    {
-      "item": "jitl:shadium_block"
-    }
+    "jitl:shadium_block"
   ],
   "result": {
     "count": 9,

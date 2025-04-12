@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "tag": "minecraft:planks"
-    },
-    "M": {
-      "item": "jitl:sapphire"
-    }
+    "#": "#minecraft:planks",
+    "M": "jitl:sapphire"
   },
   "pattern": [
     "#M#",

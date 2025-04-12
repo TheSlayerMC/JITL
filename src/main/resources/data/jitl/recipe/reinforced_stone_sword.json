@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "jitl:reinforced_stone_ingot"
-    },
-    "I": {
-      "item": "jitl:stone_stick"
-    }
+    "#": "jitl:reinforced_stone_ingot",
+    "I": "jitl:stone_stick"
   },
   "pattern": [
     "#",

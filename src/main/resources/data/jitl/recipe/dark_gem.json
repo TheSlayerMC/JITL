@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "jitl:shadium_ingot"
-    },
-    {
-      "item": "minecraft:diamond"
-    }
+    "jitl:shadium_ingot",
+    "minecraft:diamond"
   ],
   "result": {
     "count": 1,

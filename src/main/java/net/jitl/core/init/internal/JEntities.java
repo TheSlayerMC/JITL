@@ -261,8 +261,7 @@ public class JEntities {
     private static <T extends Mob> DeferredHolder<EntityType<?>, EntityType<T>> registerEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height, float passengerAttachment, MobCategory category) {
         ResourceKey<EntityType<?>> resource = ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, name));
         DeferredHolder<EntityType<?>, EntityType<T>> entity = REGISTRY.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).passengerAttachments(passengerAttachment).clientTrackingRange(10).build(resource));
-        if(!name.contains("boss_crystal") || !name.contains("spirit_crystal"))
-            JItems.register(name + "_spawn_egg" , lang + " Spawn Egg", (p) -> new SpawnEggItem(entity.get(), p), JItems.ItemType.SPAWN_EGG);
+        JItems.register(name + "_spawn_egg" , lang + " Spawn Egg", (p) -> new SpawnEggItem(entity.get(), p), JItems.ItemType.SPAWN_EGG);
         entityName.add(name);
         entityLangName.add(lang);
         return entity;
@@ -271,8 +270,7 @@ public class JEntities {
     private static <T extends Mob> DeferredHolder<EntityType<?>, EntityType<T>> registerEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height, MobCategory category) {
         ResourceKey<EntityType<?>> resource = ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, name));
         DeferredHolder<EntityType<?>, EntityType<T>> entity = REGISTRY.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).build(resource));
-        if(!name.contains("boss_crystal") || !name.contains("spirit_crystal"))
-            JItems.register(name + "_spawn_egg" , lang + " Spawn Egg", (p) -> new SpawnEggItem(entity.get(), p), JItems.ItemType.SPAWN_EGG);
+        JItems.register(name + "_spawn_egg" , lang + " Spawn Egg", (p) -> new SpawnEggItem(entity.get(), p), JItems.ItemType.SPAWN_EGG);
         entityName.add(name);
         entityLangName.add(lang);
         return entity;
@@ -284,15 +282,11 @@ public class JEntities {
 
     private static <T extends Entity> DeferredHolder<EntityType<?>, EntityType<T>> registerRawEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height) {
         ResourceKey<EntityType<?>> resource = ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, name));
-        entityName.add(name);
-        entityLangName.add(lang);
         return REGISTRY.register(name, () -> EntityType.Builder.of(factory, MobCategory.MISC).sized(width, height).setShouldReceiveVelocityUpdates(true).setTrackingRange(80).build(resource));
     }
 
     private static <T extends Projectile> DeferredHolder<EntityType<?>, EntityType<T>> registerProjectile(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height) {
         ResourceKey<EntityType<?>> resource = ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, name));
-        entityName.add(name);
-        entityLangName.add(lang);
         return REGISTRY.register(name, () -> EntityType.Builder.of(factory, MobCategory.MISC).sized(width, height).setShouldReceiveVelocityUpdates(true).setTrackingRange(120).setUpdateInterval(20).build(resource));
     }
 

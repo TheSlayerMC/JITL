@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "jitl:des_ingot"
-    },
-    "I": {
-      "item": "minecraft:stick"
-    }
+    "#": "jitl:des_ingot",
+    "I": "minecraft:stick"
   },
   "pattern": [
     "#",

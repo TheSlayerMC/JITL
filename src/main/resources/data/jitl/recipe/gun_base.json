@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "b": {
-      "tag": "minecraft:buttons"
-    },
-    "g": {
-      "item": "minecraft:gunpowder"
-    },
-    "i": {
-      "item": "minecraft:iron_ingot"
-    }
+    "b": "#minecraft:buttons",
+    "g": "minecraft:gunpowder",
+    "i": "minecraft:iron_ingot"
   },
   "pattern": [
     " ii",

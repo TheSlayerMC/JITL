@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.0,
-  "ingredient": {
-    "item": "jitl:gorbite_ore"
-  },
+  "ingredient": "jitl:gorbite_ore",
   "result": {
     "count": 1,
     "id": "jitl:gorbite_gem"

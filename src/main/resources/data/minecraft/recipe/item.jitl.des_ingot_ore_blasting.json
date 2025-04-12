@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.0,
-  "ingredient": {
-    "item": "jitl:des_ore"
-  },
+  "ingredient": "jitl:des_ore",
   "result": {
     "count": 1,
     "id": "jitl:des_ingot"

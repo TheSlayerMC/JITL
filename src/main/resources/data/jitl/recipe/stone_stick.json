@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "s": {
-      "item": "minecraft:stone"
-    }
+    "s": "minecraft:stone"
   },
   "pattern": [
     "s",

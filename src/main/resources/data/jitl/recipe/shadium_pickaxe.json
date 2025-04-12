@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "jitl:shadium_ingot"
-    },
-    "I": {
-      "item": "minecraft:stick"
-    }
+    "#": "jitl:shadium_ingot",
+    "I": "minecraft:stick"
   },
   "pattern": [
     "###",

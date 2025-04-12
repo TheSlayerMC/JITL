@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "jitl:des_ingot"
-    }
+    "#": "jitl:des_ingot"
   },
   "pattern": [
     "###",

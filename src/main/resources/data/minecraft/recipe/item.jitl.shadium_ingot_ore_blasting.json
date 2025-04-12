@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.0,
-  "ingredient": {
-    "item": "jitl:shadium_ore"
-  },
+  "ingredient": "jitl:shadium_ore",
   "result": {
     "count": 1,
     "id": "jitl:shadium_ingot"

@@ -2,18 +2,10 @@
   "type": "minecraft:crafting_shapeless",
   "category": "equipment",
   "ingredients": [
-    {
-      "item": "jitl:bloodcrust_axe"
-    },
-    {
-      "item": "jitl:bloodcrust_pickaxe"
-    },
-    {
-      "item": "jitl:bloodcrust_shovel"
-    },
-    {
-      "item": "jitl:bloodcrust_hoe"
-    }
+    "jitl:bloodcrust_axe",
+    "jitl:bloodcrust_pickaxe",
+    "jitl:bloodcrust_shovel",
+    "jitl:bloodcrust_hoe"
   ],
   "result": {
     "count": 1,

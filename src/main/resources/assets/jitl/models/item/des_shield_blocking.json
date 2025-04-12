@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/shield_blocking",
   "textures": {
-    "particle": "jitl:shield/des_shield"
+    "particle": "block/dark_oak_planks"
   }
 }

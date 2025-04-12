@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "jitl:terranian_planks"
-    }
+    "#": "jitl:terranian_planks"
   },
   "pattern": [
     "###",

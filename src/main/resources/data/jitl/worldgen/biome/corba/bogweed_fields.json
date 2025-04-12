@@ -48,12 +48,7 @@
   "spawn_costs": {},
   "spawners": {
     "ambient": [
-      {
-        "type": "minecraft:drowned",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 5
-      }
+
     ],
     "axolotls": [],
     "creature": [
@@ -66,6 +61,12 @@
     ],
     "misc": [],
     "monster": [
+      {
+        "type": "minecraft:drowned",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 2
+      },
       {
         "type": "jitl:leaf_blower",
         "maxCount": 1,

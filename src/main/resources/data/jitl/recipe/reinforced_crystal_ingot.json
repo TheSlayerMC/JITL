@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": {
-      "item": "jitl:stone_clump"
-    },
-    "i": {
-      "item": "jitl:cave_crystal"
-    }
+    "d": "jitl:stone_clump",
+    "i": "jitl:cave_crystal"
   },
   "pattern": [
     "ddd",

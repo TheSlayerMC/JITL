@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:ender_eye"
-    },
-    {
-      "item": "jitl:sentry_stone"
-    }
+    "minecraft:ender_eye",
+    "jitl:sentry_stone"
   ],
   "result": {
     "count": 1,

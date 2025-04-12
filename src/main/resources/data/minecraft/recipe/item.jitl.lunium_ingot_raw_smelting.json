@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 1.0,
-  "ingredient": {
-    "item": "jitl:lunium_powder"
-  },
+  "ingredient": "jitl:lunium_powder",
   "result": {
     "count": 1,
     "id": "jitl:lunium_ingot"

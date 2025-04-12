@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "jitl:soulstone"
-    },
-    "I": {
-      "item": "jitl:obsidian_stick"
-    }
+    "#": "jitl:soulstone",
+    "I": "jitl:obsidian_stick"
   },
   "pattern": [
     "#",

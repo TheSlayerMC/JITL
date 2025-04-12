@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "tag": "minecraft:planks"
-    },
-    "M": {
-      "item": "jitl:storon_ingot"
-    }
+    "#": "#minecraft:planks",
+    "M": "jitl:storon_ingot"
   },
   "pattern": [
     "#M#",

@@ -517,7 +517,6 @@
           ]
         }
       },
-
       {
         "type": "minecraft:condition",
         "if_true": {

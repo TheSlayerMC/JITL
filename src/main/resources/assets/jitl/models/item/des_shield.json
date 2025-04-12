@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/shield",
   "textures": {
-    "particle": "jitl:shield/des_shield"
+    "particle": "block/dark_oak_planks"
   },
   "overrides": [
     {

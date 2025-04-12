@@ -1,6 +1,5 @@
 {
   "type": "jitl:terrania",
-  "forge:use_server_seed": true,
   "generator": {
     "type": "minecraft:noise",
     "settings": "jitl:terranian_generation",

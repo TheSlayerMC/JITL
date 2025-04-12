@@ -1,6 +1,7 @@
 package net.jitl.core.data;
 
 import net.jitl.core.data.loot.JLootTableSubProvider;
+import net.jitl.core.data.recipe.JRecipeRegistry;
 import net.jitl.core.init.JITL;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
@@ -20,7 +21,7 @@ public class JDataGenerator {
 
         //JDamageSources.register(event);
 
-        //generator.addProvider(event.includeServer(), new JRecipeRegistry(generator.getPackOutput(), lookupProvider));
+        //generator.addProvider(true, new JRecipeRegistry(generator.getPackOutput(), lookupProvider));
         //generator.addProvider(true, new JLootTableSubProvider(generator.getPackOutput(), lookupProvider));
         //generator.addProvider(event.includeServer(), new CarverGenerator(generator.getPackOutput(), lookupProvider));
        // generator.addProvider(event.includeServer(), new ConfiguredFeaturesGenerator(generator.getPackOutput(), event.getLookupProvider()));
