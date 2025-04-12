@@ -75,8 +75,7 @@ public class JItemGenerator extends BasicFileGenerator {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            generateSpawnEggFile(name);
+            getSpawnEggItem(JITL.MOD_ID, name);
             itemModelInit();
         }
 
@@ -160,6 +159,16 @@ public class JItemGenerator extends BasicFileGenerator {
         String texName = type != JItems.ItemType.RECORD ? name : "record";
         writeToItemModelFile("  \"textures\": {");
         writeToItemModelFile("    \"layer0\": \"" + modID + ":" + "item/" + texName + "\"");
+        writeToItemModelFile("  }");
+        writeToItemModelFile("}");
+        generateBasicFile(true, name);
+    }
+
+    public void getSpawnEggItem(String modID, String name) {
+        writeToItemModelFile("{");
+        writeToItemModelFile("  \"parent\": \"minecraft:item/generated\",");
+        writeToItemModelFile("  \"textures\": {");
+        writeToItemModelFile("    \"layer0\": \"" + modID + ":" + "item/spawn_eggs/" + name + "\"");
         writeToItemModelFile("  }");
         writeToItemModelFile("}");
         generateBasicFile(true, name);

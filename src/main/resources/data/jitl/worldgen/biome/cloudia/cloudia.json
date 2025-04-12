@@ -1,26 +1,82 @@
 {
-  "carvers": {},
-  "downfall": 0.0,
+  "temperature": 1,
+  "downfall": 0,
+  "has_precipitation": false,
   "effects": {
+    "sky_color": 7776511,
     "fog_color": 61183,
-    "foliage_color": 61183,
+    "water_color": 61183,
+    "water_fog_color": 61183,
     "grass_color": 61183,
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "jitl:music.dim.cloudia"
-    },
+    "foliage_color": 61183,
+    "music": [
+      {
+        "weight": 1,
+        "data": {
+          "sound": "jitl:music.dim.cloudia",
+          "min_delay": 12000,
+          "max_delay": 24000,
+          "replace_current_music": false
+        }
+      }
+    ],
     "particle": {
       "options": {
         "type": "jitl:cloudia"
       },
       "probability": 0.001428
-    },
-    "sky_color": 7776511,
-    "water_color": 61183,
-    "water_fog_color": 61183
+    }
   },
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [
+      {
+        "type": "jitl:aero_lotus",
+        "weight": 15,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "misc": [],
+    "monster": [
+      {
+        "type": "jitl:cloud_ghost",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "jitl:sky_eel",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "jitl:starlight_golem",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "jitl:starlight_transporter",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "jitl:starlight_walker",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 3
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "spawn_costs": {},
+  "carvers": [],
   "features": [
     [],
     [],
@@ -34,56 +90,5 @@
       "jitl:pink_cloudia_clouds",
       "jitl:cloudia_island"
     ]
-  ],
-  "has_precipitation": false,
-  "spawn_costs": {},
-  "spawners": {
-    "ambient": [],
-    "axolotls": [],
-    "creature": [
-      {
-        "type": "jitl:aero_lotus",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 15
-      }
-    ],
-    "misc": [],
-    "monster": [
-      {
-        "type": "jitl:cloud_ghost",
-        "maxCount": 3,
-        "minCount": 1,
-        "weight": 1
-      },
-      {
-        "type": "jitl:sky_eel",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 1
-      },
-      {
-        "type": "jitl:starlight_golem",
-        "maxCount": 3,
-        "minCount": 1,
-        "weight": 1
-      },
-      {
-        "type": "jitl:starlight_transporter",
-        "maxCount": 3,
-        "minCount": 1,
-        "weight": 1
-      },
-      {
-        "type": "jitl:starlight_walker",
-        "maxCount": 3,
-        "minCount": 1,
-        "weight": 1
-      }
-    ],
-    "underground_water_creature": [],
-    "water_ambient": [],
-    "water_creature": []
-  },
-  "temperature": 1.0
+  ]
 }

@@ -1,16 +1,21 @@
 {
-  "carvers": {},
+  "carvers": [],
   "downfall": 0.4,
   "effects": {
     "fog_color": 1524224,
     "foliage_color": 800769,
     "grass_color": 800769,
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "jitl:music.dim.corba"
-    },
+    "music": [
+      {
+        "weight": 1,
+        "data": {
+          "sound": "jitl:music.dim.corba",
+          "min_delay": 12000,
+          "max_delay": 24000,
+          "replace_current_music": false
+        }
+      }
+    ],
     "sky_color": 7907327,
     "water_color": 3496974,
     "water_fog_color": 3496974

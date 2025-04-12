@@ -3,6 +3,7 @@ package net.jitl.common.entity.overworld.npc;
 import net.jitl.client.ChatUtils;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.capability.stats.PlayerStats;
+import net.jitl.common.entity.base.JPathfinderMob;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.jmerchant.SentacoinMerchantMenu;
 import net.jitl.core.init.internal.JDataAttachments;
@@ -31,14 +32,14 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.animation.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animatable.manager.AnimatableManager;
+import software.bernie.geckolib.animatable.processing.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Objects;
 
-public class OverworldSentryStalker extends PathfinderMob implements GeoEntity, Npc{
+public class OverworldSentryStalker extends JPathfinderMob implements Npc{
 
     private static final EntityDataAccessor<Boolean> DATA_IS_ACTIVATED = SynchedEntityData.defineId(OverworldSentryStalker.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> DATA_HAS_KEY = SynchedEntityData.defineId(OverworldSentryStalker.class, EntityDataSerializers.BOOLEAN);
@@ -61,8 +62,8 @@ public class OverworldSentryStalker extends PathfinderMob implements GeoEntity, 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.neutral_sentry_stalker.walk");
 
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "controller", 5, state -> {
+    public void controller(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>("controller", 5, state -> {
             if(state.isMoving()) {
                 return state.setAndContinue(MOVING);
             } else {

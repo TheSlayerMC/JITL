@@ -5,7 +5,6 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.jitl.client.ChatUtils;
 import net.jitl.common.entity.base.CurrencyForItemsTrade;
-import net.jitl.common.entity.base.JPathfinderMob;
 import net.jitl.common.entity.base.JVillagerEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JItems;
@@ -26,8 +25,8 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animation.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animatable.manager.AnimatableManager;
+import software.bernie.geckolib.animatable.processing.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 
 public class BoilTrader extends JVillagerEntity {
@@ -81,7 +80,7 @@ public class BoilTrader extends JVillagerEntity {
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "controller", 5, state -> state.setAndContinue(IDLE)));
+        controllers.add(new AnimationController<>("controller", 5, state -> state.setAndContinue(IDLE)));
     }
 
     @Override

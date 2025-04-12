@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "jitl:item/spawn_eggs/red_tordo_spawn_egg"
+  "model": {
+    "type": "minecraft:model",
+    "model": "jitl:item/red_tordo_spawn_egg"
   }
 }

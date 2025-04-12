@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "jitl:item/spawn_eggs/b_overgrown_spawn_egg"
+  }
+}

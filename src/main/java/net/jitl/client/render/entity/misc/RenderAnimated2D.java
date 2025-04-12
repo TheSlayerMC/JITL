@@ -59,7 +59,7 @@ public class RenderAnimated2D<T extends Entity> extends EntityRenderer<T, TwoDRe
     }
 
     @Override
-    public TwoDRenderState createRenderState() {
+    public @NotNull TwoDRenderState createRenderState() {
         return new TwoDRenderState();
     }
 

@@ -10,15 +10,13 @@ import net.minecraft.world.item.component.TooltipDisplay;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
-import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
 
-public class JCurioItem extends JItem implements ICurioItem {
+public class JCurioItem extends JItem {//implements ICurioItem {
     private boolean hasOverview;
     private boolean hasAbility;
     private boolean hasNegativeEffects;
@@ -42,10 +40,10 @@ public class JCurioItem extends JItem implements ICurioItem {
         return this;
     }
 
-    @Override
-    public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
-        return true;
-    }
+//    @Override
+//    public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
+//        return true;
+//    }todo
 
     @Override
     @OnlyIn(Dist.CLIENT)

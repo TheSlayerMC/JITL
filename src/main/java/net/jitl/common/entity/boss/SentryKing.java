@@ -28,8 +28,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootTable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animation.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animatable.manager.AnimatableManager;
+import software.bernie.geckolib.animatable.processing.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 
 public class SentryKing extends JBossEntity implements RangedAttackMob {
@@ -122,7 +122,7 @@ public class SentryKing extends JBossEntity implements RangedAttackMob {
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "controller", 5, state -> state.setAndContinue(IDLE)));
+        controllers.add(new AnimationController<>("controller", 5, state -> state.setAndContinue(IDLE)));
     }
 
     @Override

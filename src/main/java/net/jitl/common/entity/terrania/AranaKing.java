@@ -34,8 +34,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.animation.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animatable.manager.AnimatableManager;
+import software.bernie.geckolib.animatable.processing.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 
 import javax.annotation.Nullable;
@@ -90,7 +90,7 @@ public class AranaKing extends JMonsterEntity {
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "controller", 5, state -> {
+        controllers.add(new AnimationController<>("controller", 5, state -> {
             if(state.isMoving()) {
                 return state.setAndContinue(MOVING);
             } else {

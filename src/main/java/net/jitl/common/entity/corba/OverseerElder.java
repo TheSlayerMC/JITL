@@ -26,8 +26,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.animation.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animatable.manager.AnimatableManager;
+import software.bernie.geckolib.animatable.processing.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 
 public class OverseerElder extends JFlyingEntity {
@@ -73,7 +73,7 @@ public class OverseerElder extends JFlyingEntity {
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "controller", 5, state -> state.setAndContinue(IDLE)));
+        controllers.add(new AnimationController<>("controller", 5, state -> state.setAndContinue(IDLE)));
     }
 
     @Override

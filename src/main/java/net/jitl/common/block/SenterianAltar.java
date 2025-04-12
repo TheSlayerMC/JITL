@@ -28,11 +28,13 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.constant.dataticket.DataTicket;
 
 public class SenterianAltar extends BaseEntityBlock {
 
     public static final MapCodec<SenterianAltar> CODEC = simpleCodec(SenterianAltar::new);
     public static final BooleanProperty IS_ACTIVE = BooleanProperty.create("is_active");
+    public static final DataTicket<Boolean> IS_ACTIVE_TICKET = DataTicket.create("is_active_ticket", Boolean.class);
     public static final BooleanProperty IS_SPAWNING = BooleanProperty.create("is_spawning");
 
     public SenterianAltar(Properties p) {

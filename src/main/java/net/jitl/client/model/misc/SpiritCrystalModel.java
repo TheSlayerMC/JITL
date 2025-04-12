@@ -4,6 +4,7 @@ import net.jitl.common.entity.corba.SpiritCrystal;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
+import software.bernie.geckolib.renderer.base.GeoRenderState;
 
 public class SpiritCrystalModel extends DefaultedEntityGeoModel<SpiritCrystal> {
 
@@ -12,12 +13,12 @@ public class SpiritCrystalModel extends DefaultedEntityGeoModel<SpiritCrystal> {
     }
 
     @Override
-    public ResourceLocation getModelResource(SpiritCrystal object) {
+    public ResourceLocation getModelResource(GeoRenderState object) {
         return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "geo/spirit_crystal.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureResource(SpiritCrystal object) {
+    public ResourceLocation getTextureResource(GeoRenderState object) {
         return JITL.rl("textures/entity/crystal/spirit_crystal.png");
     }
 

@@ -28,22 +28,6 @@ public class BasicFileGenerator {
         itemModelInit();
     }
 
-    public void generateSpawnEggFile(String name) {
-        String itemFileDir = "../src/main/resources/assets/jitl/items/" + name + ".json";
-        File itemFile = new File(itemFileDir);
-        itemFile.mkdirs();
-        try {
-            if(itemFile.exists()) itemFile.delete();
-            itemFile.createNewFile();
-            itemFileWriter = new BufferedWriter(new FileWriter(itemFile));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        getSpawnEggItem(JITL.MOD_ID, name);
-        itemModelInit();
-    }
-
     public void generateShieldFile(String name) {
         String itemFileDir = "../src/main/resources/assets/jitl/items/" + name + ".json";
         File itemFile = new File(itemFileDir);
@@ -130,15 +114,6 @@ public class BasicFileGenerator {
         writeToItemFile("  \"model\": {");
         writeToItemFile("    \"type\": \"minecraft:model\",");
         writeToItemFile("    \"model\": \"" + modID + ":" + "block/" + name + ext + "\"");
-        writeToItemFile("  }");
-        writeToItemFile("}");
-    }
-
-    public void getSpawnEggItem(String modID, String name) {
-        writeToItemFile("{");
-        writeToItemFile("  \"parent\": \"minecraft:item/generated\",");
-        writeToItemFile("  \"textures\": {");
-        writeToItemFile("    \"layer0\": \"" + modID + ":" + "item/spawn_eggs/" + name + "\"");
         writeToItemFile("  }");
         writeToItemFile("}");
     }

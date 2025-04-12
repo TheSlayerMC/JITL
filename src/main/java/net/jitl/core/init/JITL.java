@@ -124,7 +124,6 @@ public class JITL {
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
-        RenderEntitys.registerAnimationRenderers();
         BossBarRenderer.init();
 
         NeoForge.EVENT_BUS.register(KeyUsedEvent.class);

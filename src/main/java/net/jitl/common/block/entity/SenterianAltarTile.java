@@ -19,8 +19,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.animation.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animatable.manager.AnimatableManager;
+import software.bernie.geckolib.animatable.processing.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
@@ -58,8 +58,8 @@ public class SenterianAltarTile extends BlockEntity implements GeoBlockEntity {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "controller", 5, state -> {
-            if(state.getAnimatable().getBlockState().getValue(SenterianAltar.IS_ACTIVE)) {
+        controllers.add(new AnimationController<>(state -> {
+            if(state.getData(SenterianAltar.IS_ACTIVE_TICKET)) {//todo
                 return state.setAndContinue(this.ROTATE);
             } else {
                 return state.setAndContinue(this.IDLE);

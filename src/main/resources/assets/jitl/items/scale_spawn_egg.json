@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "jitl:item/spawn_eggs/scale_spawn_egg"
+  "model": {
+    "type": "minecraft:model",
+    "model": "jitl:item/scale_spawn_egg"
   }
 }

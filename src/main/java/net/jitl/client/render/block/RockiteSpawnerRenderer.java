@@ -11,6 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.renderer.GeoBlockRenderer;
+import software.bernie.geckolib.renderer.base.GeoRenderState;
 
 public class RockiteSpawnerRenderer extends GeoBlockRenderer<RockiteSpawnerEntity> {
 
@@ -19,15 +20,15 @@ public class RockiteSpawnerRenderer extends GeoBlockRenderer<RockiteSpawnerEntit
     }
 
     @Override
-    public RenderType getRenderType(RockiteSpawnerEntity animatable, ResourceLocation texture, @Nullable MultiBufferSource bufferSource, float partialTick) {
-        return RenderType.entityTranslucent(getTextureLocation(animatable));
+    public @Nullable RenderType getRenderType(GeoRenderState renderState, ResourceLocation texture) {
+        return RenderType.entityTranslucent(texture);
     }
 
     @Override
-    public void preRender(PoseStack poseStack, RockiteSpawnerEntity animatable, BakedGeoModel model, @Nullable MultiBufferSource bufferSource, @Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+    public void preRender(GeoRenderState renderState, PoseStack poseStack, BakedGeoModel model, @Nullable MultiBufferSource bufferSource, @Nullable VertexConsumer buffer, boolean isReRender, int packedLight, int packedOverlay, int renderColor) {
         float size = 2.0F;
         poseStack.scale(size, size, size);
         poseStack.translate(-0.5F, 0, -0.5F);
-        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
+        super.preRender(renderState, poseStack, model, bufferSource, buffer, isReRender, packedLight, packedOverlay, renderColor);
     }
 }

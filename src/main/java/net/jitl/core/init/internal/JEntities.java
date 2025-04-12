@@ -261,7 +261,8 @@ public class JEntities {
     private static <T extends Mob> DeferredHolder<EntityType<?>, EntityType<T>> registerEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height, float passengerAttachment, MobCategory category) {
         ResourceKey<EntityType<?>> resource = ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, name));
         DeferredHolder<EntityType<?>, EntityType<T>> entity = REGISTRY.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).passengerAttachments(passengerAttachment).clientTrackingRange(10).build(resource));
-        JItems.register(name + "_spawn_egg" , lang + " Spawn Egg", (p) -> new SpawnEggItem(entity.get(), p), JItems.ItemType.SPAWN_EGG);
+        if(!name.contains("boss_crystal") || !name.contains("spirit_crystal"))
+            JItems.register(name + "_spawn_egg" , lang + " Spawn Egg", (p) -> new SpawnEggItem(entity.get(), p), JItems.ItemType.SPAWN_EGG);
         entityName.add(name);
         entityLangName.add(lang);
         return entity;
@@ -270,7 +271,8 @@ public class JEntities {
     private static <T extends Mob> DeferredHolder<EntityType<?>, EntityType<T>> registerEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height, MobCategory category) {
         ResourceKey<EntityType<?>> resource = ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, name));
         DeferredHolder<EntityType<?>, EntityType<T>> entity = REGISTRY.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).build(resource));
-        JItems.register(name + "_spawn_egg" , lang + " Spawn Egg", (p) -> new SpawnEggItem(entity.get(), p), JItems.ItemType.SPAWN_EGG);
+        if(!name.contains("boss_crystal") || !name.contains("spirit_crystal"))
+            JItems.register(name + "_spawn_egg" , lang + " Spawn Egg", (p) -> new SpawnEggItem(entity.get(), p), JItems.ItemType.SPAWN_EGG);
         entityName.add(name);
         entityLangName.add(lang);
         return entity;

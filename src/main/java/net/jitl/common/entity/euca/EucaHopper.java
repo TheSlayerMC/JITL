@@ -10,8 +10,8 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
-import software.bernie.geckolib.animation.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animatable.manager.AnimatableManager;
+import software.bernie.geckolib.animatable.processing.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 
 public class EucaHopper extends JTamableEntity {
@@ -36,7 +36,7 @@ public class EucaHopper extends JTamableEntity {
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "controller", 5, state -> {
+        controllers.add(new AnimationController<>("controller", 5, state -> {
             if(state.isMoving()) {
                 return state.setAndContinue(MOVING);
             } else if(isInSittingPose()) {

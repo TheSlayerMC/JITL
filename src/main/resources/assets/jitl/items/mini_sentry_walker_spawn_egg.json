@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "jitl:item/spawn_eggs/mini_sentry_walker_spawn_egg"
+  "model": {
+    "type": "minecraft:model",
+    "model": "jitl:item/mini_sentry_walker_spawn_egg"
   }
 }

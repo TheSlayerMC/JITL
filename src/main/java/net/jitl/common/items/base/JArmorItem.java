@@ -43,6 +43,7 @@ public class JArmorItem extends JItem implements JGear {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext pContext, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag pTooltipFlag) {
         super.appendHoverText(stack, pContext, display, tooltip, pTooltipFlag);
+        if(ability != null)
         ability.fillTooltips(stack, tooltip);
     }
     @Override

@@ -31,9 +31,10 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.animation.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animatable.manager.AnimatableManager;
+import software.bernie.geckolib.animatable.processing.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
+import software.bernie.geckolib.constant.dataticket.DataTicket;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
@@ -44,6 +45,7 @@ public class BossCrystal extends Mob implements GeoEntity {
     private final NonNullList<ItemStack> storedItems = NonNullList.create();
     private ResourceKey<LootTable> loot_table;
     private static final EntityDataAccessor<String> TYPE = SynchedEntityData.defineId(BossCrystal.class, EntityDataSerializers.STRING);
+    public static final DataTicket<String> TYPE_TICKET = DataTicket.create("crystal_type", String.class);
 
     public BossCrystal(EntityType<? extends BossCrystal> pEntityType, Level pLevel, Type t, ResourceKey<LootTable> loot) {
         this(pEntityType, pLevel);
@@ -174,7 +176,7 @@ public class BossCrystal extends Mob implements GeoEntity {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "controller", 5, state -> state.setAndContinue(IDLE)));
+        controllers.add(new AnimationController<>("controller", 5, state -> state.setAndContinue(IDLE)));
     }
 
     @Override

@@ -14,8 +14,8 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import software.bernie.geckolib.animation.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animatable.manager.AnimatableManager;
+import software.bernie.geckolib.animatable.processing.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 
 public class IceGolem extends JMonsterEntity {
@@ -46,7 +46,7 @@ public class IceGolem extends JMonsterEntity {
     }
 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.ice_golem.walk");
-    private final RawAnimation ATTACK = RawAnimation.begin().thenLoop("animation.ice_golem.attack");
+    private final RawAnimation ATTACK = RawAnimation.begin().thenLoop("animation.ice_golem.swing");
     private final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.ice_golem.idle");
 
     @Override
@@ -66,7 +66,7 @@ public class IceGolem extends JMonsterEntity {
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "controller", 5, state -> {
+        controllers.add(new AnimationController<>("controller", 5, state -> {
             if(state.isMoving()) {
                 return state.setAndContinue(MOVING);
             }

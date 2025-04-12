@@ -21,8 +21,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.animation.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animatable.manager.AnimatableManager;
+import software.bernie.geckolib.animatable.processing.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 
 public class Shatterer extends JFlyingEntity {
@@ -51,7 +51,7 @@ public class Shatterer extends JFlyingEntity {
 
     @Override
     protected void controller(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "controller", 5, state -> state.setAndContinue(IDLE)));
+        controllers.add(new AnimationController<>("controller", 5, state -> state.setAndContinue(IDLE)));
     }
 
     @Override

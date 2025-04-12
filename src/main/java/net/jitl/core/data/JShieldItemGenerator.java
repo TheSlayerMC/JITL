@@ -43,7 +43,7 @@ public class JShieldItemGenerator extends BasicFileGenerator {
 
     public void getItem(String modID, String name) {
         writeToItemModelFile(itemModelWriter, "{");
-        writeToItemModelFile(itemModelWriter, "  \"parent\": \"item/shield\",");
+        writeToItemModelFile(itemModelWriter, "  \"parent\": \"minecraft:item/shield\",");
         writeToItemModelFile(itemModelWriter, "  \"textures\": {");
         writeToItemModelFile(itemModelWriter, "    \"particle\": \"" + modID + ":shield/" + name + "\"");
         writeToItemModelFile(itemModelWriter, "  },");
@@ -58,7 +58,7 @@ public class JShieldItemGenerator extends BasicFileGenerator {
         writeToItemModelFile(itemModelWriter, "}");
 
         writeToItemModelFile(blockingWriter, "{");
-        writeToItemModelFile(blockingWriter, "  \"parent\": \"item/shield_blocking\",");
+        writeToItemModelFile(blockingWriter, "  \"parent\": \"minecraft:item/shield_blocking\",");
         writeToItemModelFile(blockingWriter, "  \"textures\": {");
         writeToItemModelFile(blockingWriter, "    \"particle\": \"" + modID + ":shield/" + name + "\"");
         writeToItemModelFile(blockingWriter, "  }");
