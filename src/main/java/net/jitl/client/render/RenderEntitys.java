@@ -161,9 +161,6 @@ public class RenderEntitys {
         event.registerLayerDefinition(JModelLayers.FROZEN_BOAT, BoatModel::createBoatModel);
         event.registerLayerDefinition(JModelLayers.TERRANIA_BOAT, BoatModel::createBoatModel);
         event.registerLayerDefinition(JModelLayers.BURNED_BOAT, BoatModel::createBoatModel);
-
-        event.registerLayerDefinition(JModelLayers.STORON_SHIELD, ShieldModel::createLayer);
-
     }
 
     @SubscribeEvent
