@@ -3,17 +3,17 @@ package net.jitl.client;
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.client.render.world.*;
+import net.jitl.client.render.world.clouds.JCloudRenderer;
 import net.jitl.client.util.ClientGetter;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.core.init.JITL;
-import net.jitl.core.init.internal.JDataAttachments;
-import net.jitl.core.init.internal.JItems;
 import net.minecraft.client.renderer.FogParameters;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.AddClientReloadListenersEvent;
 import net.neoforged.neoforge.client.event.RegisterDimensionSpecialEffectsEvent;
 import net.neoforged.neoforge.client.event.ViewportEvent;
 
@@ -22,6 +22,11 @@ public class ClientEventHandler {
 
     public static void regToBus(IEventBus forgeBus) {
         forgeBus.addListener(ClientEventHandler::onFogDensityEvent);
+    }
+
+    @SubscribeEvent
+    public static void addReload(AddClientReloadListenersEvent event) {
+        event.addListener(JITL.rl("clouds"), new JCloudRenderer());
     }
 
     public static void onFogDensityEvent(ViewportEvent.RenderFog event) {
@@ -56,7 +61,7 @@ public class ClientEventHandler {
 
     @SubscribeEvent
     public static void registerDimensionSpecialEffects(RegisterDimensionSpecialEffectsEvent event) {
-//        event.register(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
+        event.register(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
 //        event.register(Dimensions.DEPTHS_EFFECTS, new EucaRenderInfo());
 //        event.register(Dimensions.BOIL_EFFECTS, new BoilRenderInfo());
 //        event.register(Dimensions.FROZEN_EFFECTS, new FrozenRenderInfo());todo

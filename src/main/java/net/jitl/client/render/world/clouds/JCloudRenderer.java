@@ -1,5 +1,9 @@
 package net.jitl.client.render.world.clouds;
 
+import com.mojang.blaze3d.buffers.BufferType;
+import com.mojang.blaze3d.buffers.BufferUsage;
+import com.mojang.blaze3d.pipeline.RenderPipeline;
+import com.mojang.blaze3d.systems.CommandEncoder;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.MeshData;
@@ -7,6 +11,7 @@ import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import net.minecraft.client.CloudStatus;
 import net.minecraft.client.renderer.CloudRenderer;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
@@ -19,8 +24,8 @@ import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 @OnlyIn(Dist.CLIENT)
-public class JCloudRenderer {//extends CloudRenderer {
-/*
+public class JCloudRenderer extends CloudRenderer {
+
     public JCloudRenderer(ResourceLocation texture) {
         TEXTURE_LOCATION = texture;
     }
@@ -28,78 +33,68 @@ public class JCloudRenderer {//extends CloudRenderer {
     public JCloudRenderer() { }
 
     @Override
-    public void render(int height, @NotNull CloudStatus status, float colour, @NotNull Matrix4f frustumMatrix, @NotNull Matrix4f projectionMatrix, @NotNull Vec3 loc, float tick) {
-        if(this.texture != null) {
-            float f = (float)((double)colour - loc.y);
+    public void render(int p_363907_, CloudStatus p_364293_, float p_363260_, Vec3 p_363573_, float p_360711_) {
+        if (this.texture != null) {
+            float f = (float)((double)p_363260_ - p_363573_.y);
             float f1 = f + 4.0F;
-            RelativeCameraPos cam;
+            RelativeCameraPos cloudrenderer$relativecamerapos;
             if (f1 < 0.0F) {
-                cam = RelativeCameraPos.ABOVE_CLOUDS;
-            } else if(f > 0.0F) {
-                cam = RelativeCameraPos.BELOW_CLOUDS;
+                cloudrenderer$relativecamerapos = CloudRenderer.RelativeCameraPos.ABOVE_CLOUDS;
+            } else if (f > 0.0F) {
+                cloudrenderer$relativecamerapos = CloudRenderer.RelativeCameraPos.BELOW_CLOUDS;
             } else {
-                cam = RelativeCameraPos.INSIDE_CLOUDS;
+                cloudrenderer$relativecamerapos = CloudRenderer.RelativeCameraPos.INSIDE_CLOUDS;
             }
 
-            double d0 = loc.x + (double)(tick * 0.030000001F);
-            double d1 = loc.z + 3.9600000381469727;
-            double d2 = (double)this.texture.width() * 12.0;
-            double d3 = (double)this.texture.height() * 12.0;
-            d0 -= (double) Mth.floor(d0 / d2) * d2;
+            double d0 = p_363573_.x + (double)(p_360711_ * 0.030000001F);
+            double d1 = p_363573_.z + (double)3.96F;
+            double d2 = (double)this.texture.width() * (double)12.0F;
+            double d3 = (double)this.texture.height() * (double)12.0F;
+            d0 -= (double)Mth.floor(d0 / d2) * d2;
             d1 -= (double)Mth.floor(d1 / d3) * d3;
-            int i = Mth.floor(d0 / 12.0);
-            int j = Mth.floor(d1 / 12.0);
+            int i = Mth.floor(d0 / (double)12.0F);
+            int j = Mth.floor(d1 / (double)12.0F);
             float f2 = (float)(d0 - (double)((float)i * 12.0F));
             float f3 = (float)(d1 - (double)((float)j * 12.0F));
-            RenderType rendertype = createClouds(true);
-            this.vertexBuffer.bind();
-            if(this.needsRebuild || i != this.prevCellX || j != this.prevCellZ || cam != this.prevRelativeCameraPos || status != this.prevType) {
+            boolean flag = p_364293_ == CloudStatus.FANCY;
+            RenderPipeline renderpipeline = flag ? RenderPipelines.CLOUDS : RenderPipelines.FLAT_CLOUDS;
+            if (this.needsRebuild || i != this.prevCellX || j != this.prevCellZ || cloudrenderer$relativecamerapos != this.prevRelativeCameraPos || p_364293_ != this.prevType) {
                 this.needsRebuild = false;
                 this.prevCellX = i;
                 this.prevCellZ = j;
-                this.prevRelativeCameraPos = cam;
-                this.prevType = status;
-                MeshData meshdata = this.buildMesh(Tesselator.getInstance(), i, j, status, cam, rendertype);
-                if(meshdata != null) {
-                    this.vertexBuffer.upload(meshdata);
-                    this.vertexBufferEmpty = false;
-                } else {
-                    this.vertexBufferEmpty = true;
+                this.prevRelativeCameraPos = cloudrenderer$relativecamerapos;
+                this.prevType = p_364293_;
+
+                try (MeshData meshdata = this.buildMesh(Tesselator.getInstance(), i, j, p_364293_, cloudrenderer$relativecamerapos, renderpipeline)) {
+                    if (meshdata == null) {
+                        this.indexCount = 0;
+                    } else {
+                        if (this.vertexBuffer != null && this.vertexBuffer.size >= meshdata.vertexBuffer().remaining()) {
+                            CommandEncoder commandencoder = RenderSystem.getDevice().createCommandEncoder();
+                            commandencoder.writeToBuffer(this.vertexBuffer, meshdata.vertexBuffer(), 0);
+                        } else {
+                            if (this.vertexBuffer != null) {
+                                this.vertexBuffer.close();
+                            }
+
+                            this.vertexBuffer = RenderSystem.getDevice().createBuffer(() -> "Cloud vertex buffer", BufferType.VERTICES, BufferUsage.DYNAMIC_WRITE, meshdata.vertexBuffer());
+                        }
+
+                        this.indexCount = meshdata.drawState().indexCount();
+                    }
                 }
             }
 
-            if(!this.vertexBufferEmpty) {
-                RenderSystem.setShaderColor(from8BitChannel(ARGB.red(height)), from8BitChannel(ARGB.green(height)), from8BitChannel(ARGB.blue(height)), 1.0F);
-                if(status == CloudStatus.FANCY) {
-                    this.drawWithRenderType(RenderType.cloudsDepthOnly(), frustumMatrix, projectionMatrix, f2, f, f3);
+            if (this.indexCount != 0) {
+                RenderSystem.setShaderColor(ARGB.redFloat(p_363907_), ARGB.greenFloat(p_363907_), ARGB.blueFloat(p_363907_), 1.0F);
+                if (flag) {
+                    this.draw(RenderPipelines.CLOUDS_DEPTH_ONLY, f2, f, f3);
                 }
-                this.drawWithRenderType(rendertype, frustumMatrix, projectionMatrix, f2, f, f3);
-                VertexBuffer.unbind();
+
+                this.draw(renderpipeline, f2, f, f3);
                 RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
             }
         }
-    }
 
-    public static float from8BitChannel(int i) {
-        return (float)i / 255.0F;
     }
-
-    public static RenderType createClouds(boolean colour) {
-        return RenderType.create(
-                "jitl_clouds",
-                DefaultVertexFormat.POSITION_COLOR,
-                VertexFormat.Mode.QUADS,
-                786432,
-                false,
-                false,
-                RenderType.CompositeState.builder()
-                        .setShaderState(RenderStateShard.RENDERTYPE_CLOUDS_SHADER)
-                        .setTextureState(new RenderStateShard.TextureStateShard(TEXTURE_LOCATION, TriState.FALSE, false))
-                        .setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY)
-                        .setCullState(RenderStateShard.NO_CULL)
-                        .setWriteMaskState(colour ? RenderStateShard.DEPTH_WRITE : RenderStateShard.COLOR_DEPTH_WRITE)
-                        .setOutputState(RenderStateShard.CLOUDS_TARGET)
-                        .createCompositeState(true)
-        );
-    }*/
 }
