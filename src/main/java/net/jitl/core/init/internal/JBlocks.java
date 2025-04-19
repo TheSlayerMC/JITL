@@ -309,7 +309,6 @@ public class JBlocks {
     public static final DeferredBlock<Block> ROYAL_BRICKS = register("royal_bricks", "Royal Bricks", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> ROYAL_STAIRS = registerStairs("royal_stairs", "Royal Stairs", ROYAL_BRICKS, false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> ROYAL_FENCE = registerFence("royal_fence", "Royal Fence", false, JBlockProperties.STONE);
-
     public static final DeferredBlock<Block> ROYAL_STONE = register("royal_stone", "Royal Stone", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> ROYAL_STONE_STAIRS = registerStairs("royal_stone_stairs", "Royal Stone Stairs", ROYAL_STONE, false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> ROYAL_STONE_FENCE = registerFence("royal_stone_fence", "Royal Stone Fence",false, JBlockProperties.STONE);
@@ -346,7 +345,7 @@ public class JBlocks {
     public static final DeferredBlock<Block> GOLDITE_GRASS = registerGrassBlock("goldite_grass", "Goldite Grass", JGrassBlock::new);
     public static final DeferredBlock<RotatedPillarBlock> EUCA_GOLD_LOG = addLogBlock("euca_gold_log", "Euca Gold Log");
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_EUCA_GOLD_LOG = registerPillar("stripped_euca_gold_log", "Stripped Euca Gold Log", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<Block> EUCA_GOLD_LEAVES = registerTerrainBlock("euca_gold_leaves", "Euca Gold Leaves", JBlockProperties.LEAVES);//JLeavesBlock::new);
+    public static final DeferredBlock<Block> EUCA_GOLD_LEAVES = registerTerrainBlock("euca_gold_leaves", "Euca Gold Leaves", (p) -> new JLeavesBlock(p, 15138560), JBlockProperties.LEAVES);
     public static final DeferredBlock<Block> EUCA_GOLD_SAPLING = registerCrossBlock("euca_gold_sapling", "Euca Gold Sapling", (p) -> new JSaplingBlock(JTreeGrower.EUCA_GOLD_TREE_GROWER, p), JBlockProperties.FLOWER);
     public static final DeferredBlock<Block> EUCA_GOLD_PLANKS = registerFuelBlock("euca_gold_planks", "Euca Gold Planks", JBlockProperties.WOOD, 300);
     public static final DeferredBlock<DoorBlock> EUCA_GOLD_DOOR = registerDoor("euca_gold_door", "Euca Gold Door", true, JBlockProperties.DOOR);
@@ -360,7 +359,7 @@ public class JBlocks {
     public static final DeferredBlock<Block> GOLDITE_PATH = registerPathBlock("goldite_path", "Goldite Path");
     public static final DeferredBlock<RotatedPillarBlock> EUCA_BROWN_LOG = addLogBlock("euca_brown_log", "Euca Brown Log");
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_EUCA_BROWN_LOG = registerPillar("stripped_euca_brown_log", "Stripped Euca Brown Log", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<Block> EUCA_GREEN_LEAVES = registerAltTexBlock("euca_green_leaves", "Euca Green Leaves", JBlockProperties.LEAVES);// JLeavesBlock::new);
+    public static final DeferredBlock<Block> EUCA_GREEN_LEAVES = registerAltTexBlock("euca_green_leaves", "Euca Green Leaves", (p) -> new JLeavesBlock(p, 65322), JBlockProperties.LEAVES);
     public static final DeferredBlock<Block> EUCA_GREEN_SAPLING = registerCrossBlock("euca_green_sapling", "Euca Green Sapling", (p) -> new JSaplingBlock(JTreeGrower.EUCA_GREEN_TREE_GROWER, p), JBlockProperties.FLOWER);
     public static final DeferredBlock<Block> EUCA_BROWN_PLANKS = registerFuelBlock("euca_brown_planks", "Euca Brown Planks", JBlockProperties.WOOD, 300);
     public static final DeferredBlock<DoorBlock> EUCA_BROWN_DOOR = registerDoor("euca_brown_door", "Euca Brown Door", true, JBlockProperties.DOOR);
@@ -381,8 +380,8 @@ public class JBlocks {
     public static final DeferredBlock<Block> CRUMBLED_PERMAFROST = registerTerrainBlock("crumbled_permafrost", "Crumbled Permafrost", JDirt::new, JBlockProperties.DIRT);
     public static final DeferredBlock<RotatedPillarBlock> FROZEN_LOG = addLogBlock("frozen_log", "Frozen Log");
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_FROZEN_LOG = registerPillar("stripped_frozen_log", "Stripped Frozen Log", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<Block> FROZEN_LEAVES = registerTerrainBlock("frozen_leaves", "Frozen Leaves", JBlockProperties.LEAVES);
-    public static final DeferredBlock<Block> FROSTWOOD_SAPLING = registerCrossBlock("frostwood_sapling", "Frostwood Sapling", (p) -> new JSaplingBlock(JTreeGrower.EUCA_GREEN_TREE_GROWER, p), JBlockProperties.FLOWER);
+    public static final DeferredBlock<Block> FROZEN_LEAVES = registerTerrainBlock("frozen_leaves", "Frozen Leaves", (p) -> new JLeavesBlock(p, 54527), JBlockProperties.LEAVES);
+    public static final DeferredBlock<Block> FROSTWOOD_SAPLING = registerCrossBlock("frostwood_sapling", "Frostwood Sapling", (p) -> new JSaplingBlock(JTreeGrower.FROSTWOOD_TREE_GROWER, p), JBlockProperties.FLOWER);
     public static final DeferredBlock<Block> FROZEN_PLANKS = registerFuelBlock("frozen_planks", "Frostwood Planks", JBlockProperties.WOOD, 300);
     public static final DeferredBlock<DoorBlock> FROZEN_DOOR = registerDoor("frozen_door", "Frostwood Door", true, JBlockProperties.DOOR);
     public static final DeferredBlock<TrapDoorBlock> FROZEN_TRAP_DOOR = registerTrapDoor("frozen_trap_door", "Frostwood Trap Door", true, JBlockProperties.DOOR);
@@ -405,7 +404,7 @@ public class JBlocks {
     public static final DeferredBlock<GrowingPlantHeadBlock> ICY_IVY = registerGrowingPlantHeadBlock("icy_ivy", "Icy Ivy", IcyIvyTopBlock::new, JBlockProperties.VINE);
     public static final DeferredBlock<Block> ICY_IVY_PLANT = registerCrossBlock("icy_ivy_plant", "Icy Ivy", IcyIvyBlock::new, JBlockProperties.VINE);
     public static final DeferredBlock<Block> ICE_SHROOM_SHELF = registerModeledBlock("ice_shroom_shelf", "Ice Shroom Shelf", JBlockFungalShelf::new, JBlockProperties.MUSHROOM_SHELF);
-    public static final DeferredBlock<Block> BITTERWOOD_SAPLING = registerCrossBlock("bitterwood_sapling", "Bitterwood Sapling", TallGrassBlock::new, JBlockProperties.FLOWER);
+    public static final DeferredBlock<Block> BITTERWOOD_SAPLING = registerCrossBlock("bitterwood_sapling", "Bitterwood Sapling", (p) -> new JSaplingBlock(JTreeGrower.BITTERWOOD_TREE_GROWER, p), JBlockProperties.FLOWER);
     public static final DeferredBlock<Block> BITTERWOOD_CAMPFIRE = registerCampfire("bitterwood_campfire", "Bitterwood Campfire", BitterwoodCampfireBlock::new, JBlockProperties.CAMPFIRE);
     public static final DeferredBlock<Block> PERMAFROST_FURNACE = registerFurnaceBlock("permafrost_furnace", "Permafrost Furnace");
     public static final DeferredBlock<Block> PACKED_SNOW_BRICKS = register("packed_snow_bricks", "Packed Snow Bricks", JBlockProperties.STONE);
@@ -449,11 +448,11 @@ public class JBlocks {
     public static final DeferredBlock<Block> LAVA_BLOOM = registerCrossBlock("lava_bloom", "Lava Bloom", TallGrassBlock::new, JBlockProperties.FLOWER);
     public static final DeferredBlock<Block> INFERNO_BUSH = registerCrossBlock("inferno_bush", "Inferno Bush", TallGrassBlock::new, JBlockProperties.REPLACABLE_PLANT);
     public static final DeferredBlock<Block> SCORCHED_CACTUS = registerModeledBlock("scorched_cactus", "Scorched Cactus", JBlockCactus::new, JBlockProperties.CACTUS);
-    public static final DeferredBlock<Block> CHARRED_LEAVES = registerTerrainBlock("charred_leaves", "Charred Leaves", JBlockProperties.LEAVES);
+    public static final DeferredBlock<Block> CHARRED_LEAVES = registerTerrainBlock("charred_leaves", "Charred Leaves", (p) -> new JLeavesBlock(p, 9043970), JBlockProperties.LEAVES);
     public static final DeferredBlock<RotatedPillarBlock> BURNED_BARK = addLogBlock("burned_bark", "Burned Bark");
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_BURNED_BARK = registerPillar("stripped_burned_bark", "Stripped Burned Bark", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<Block> BURNED_SAPLING = registerCrossBlock("burned_sapling", "Burned Sapling", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> CHARRED_SAPLING = registerCrossBlock("charred_sapling", "Charred Sapling", TallGrassBlock::new, JBlockProperties.FLOWER);
+    public static final DeferredBlock<Block> BURNED_SAPLING = registerCrossBlock("burned_sapling", "Burned Sapling", (p) -> new JSaplingBlock(JTreeGrower.BURNED_TREE_GROWER, p), JBlockProperties.FLOWER);
+    public static final DeferredBlock<Block> CHARRED_SAPLING = registerCrossBlock("charred_sapling", "Charred Sapling", (p) -> new JSaplingBlock(JTreeGrower.CHARRED_TREE_GROWER, p), JBlockProperties.FLOWER);
     public static final DeferredBlock<Block> BURNED_PLANKS = registerFuelBlock("burned_bark_planks", "Burned Planks", JBlockProperties.WOOD, 300);
     public static final DeferredBlock<DoorBlock> BURNED_DOOR = registerDoor("burned_door", "Burned Door", true, JBlockProperties.DOOR);
     public static final DeferredBlock<TrapDoorBlock> BURNED_TRAP_DOOR = registerTrapDoor("burned_trap_door", "Burned Trap Door", true, JBlockProperties.DOOR);
@@ -479,7 +478,7 @@ public class JBlocks {
     public static final DeferredBlock<Block> DEPTHS_STONE = registerTerrainBlock("depths_stone", "Depths Stone", JBlockProperties.STONE);
     public static final DeferredBlock<RotatedPillarBlock> DEPTHS_LOG = addLogBlock("depths_log", "Depths Log");
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_DEPTHS_LOG = registerPillar("stripped_depths_log", "Stripped Depths Log", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<Block> DEPTHS_LEAVES = registerTerrainBlock("depths_leaves", "Depths Leaves", JBlockProperties.LUMINESCENT_LEAVES);
+    public static final DeferredBlock<Block> DEPTHS_LEAVES = registerTerrainBlock("depths_leaves", "Depths Leaves", (p) -> new JLeavesBlock(p, 20991), JBlockProperties.LUMINESCENT_LEAVES);
     public static final DeferredBlock<Block> DEPTHS_SAPLING = registerCrossBlock("depths_sapling", "Depths Sapling", (p) -> new JSaplingBlock(JTreeGrower.DEPTHS_TREE_GROWER, p), JBlockProperties.FLOWER);
     public static final DeferredBlock<Block> DEPTHS_PLANKS = registerFuelBlock("depths_planks", "Depths Planks", JBlockProperties.WOOD, 300);
     public static final DeferredBlock<DoorBlock> DEPTHS_DOOR = registerDoor("depths_door", "Depths Door", true, JBlockProperties.DOOR);
@@ -541,11 +540,11 @@ public class JBlocks {
     public static final DeferredBlock<Block> DRIED_MUD = registerTerrainBlock("dried_mud", "Dried Mud", JBlockProperties.DIRT);
     public static final DeferredBlock<RotatedPillarBlock> BOGWOOD_LOG = addLogBlock("bogwood_log", "Bogwood Log");
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_BOGWOOD_LOG = registerPillar("stripped_bogwood_log", "Stripped Bogwood Log", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<Block> BOGWOOD_LEAVES = registerTintedLeavesBlock("bogwood_leaves", "Bogwood Leaves", JBlockProperties.LEAVES);
+    public static final DeferredBlock<Block> BOGWOOD_LEAVES = registerTintedLeavesBlock("bogwood_leaves", "Bogwood Leaves", (p) -> new JLeavesBlock(p, 7186988), JBlockProperties.LEAVES);
     public static final DeferredBlock<Block> BOGWOOD_SAPLING = registerCrossBlock("bogwood_sapling", "Bogwood Sapling", (p) -> new JSaplingBlock(JTreeGrower.BOGWOOD_TREE_GROWER, p), JBlockProperties.FLOWER);
     public static final DeferredBlock<RotatedPillarBlock> CORBA_LOG = addLogBlock("corba_log", "Corba Log");
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_CORBA_LOG = registerPillar("stripped_corba_log", "Stripped Corba Log", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<Block> CORBA_LEAVES = registerTintedLeavesBlock("corba_leaves", "Corba Leaves", JBlockProperties.LEAVES);
+    public static final DeferredBlock<Block> CORBA_LEAVES = registerTintedLeavesBlock("corba_leaves", "Corba Leaves", (p) -> new JLeavesBlock(p, 7186988), JBlockProperties.LEAVES);
     public static final DeferredBlock<Block> CORBA_SAPLING = registerCrossBlock("corba_sapling", "Corba Sapling", (p) -> new JSaplingBlock(JTreeGrower.CORBA_TREE_GROWER, p), JBlockProperties.FLOWER);
     public static final DeferredBlock<Block> CORBA_PLANKS = registerFuelBlock("corba_planks", "Corba Planks", JBlockProperties.WOOD, 300);
     public static final DeferredBlock<DoorBlock> CORBA_DOOR = registerDoor("corba_door", "Corba Door", true, JBlockProperties.DOOR);
@@ -589,7 +588,7 @@ public class JBlocks {
     public static final DeferredBlock<Block> TERRANIAN_GRASS = registerGrassBlock("terranian_grass", "Terranian Grass", JGrassBlock::new);
     public static final DeferredBlock<Block> TERRANIAN_DIRT = registerTerrainBlock("terranian_dirt", "Terranian Dirt", JDirt::new, JBlockProperties.DIRT);
     public static final DeferredBlock<Block> TERRANIAN_STONE = register("terranian_stone", "Terranian Stone", JBlockProperties.STONE);
-    public static final DeferredBlock<Block> TERRANIAN_LEAVES = registerTopBottomBlock("terranian_leaves", "Terrania Leaves", Block::new, JBlockProperties.LEAVES);
+    public static final DeferredBlock<Block> TERRANIAN_LEAVES = registerTopBottomBlock("terranian_leaves", "Terrania Leaves", (p) -> new JLeavesBlock(p, 9437439), JBlockProperties.LEAVES);
     public static final DeferredBlock<Block> TERRANIAN_VINE = registerVineBlock("terranian_vine", "Terrania Vine", JVineBlock::new, JBlockProperties.VINE);
     public static final DeferredBlock<RotatedPillarBlock> TERRANIAN_LOG = addLogBlock("terranian_log", "Terranian Log");
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_TERRANIAN_LOG = registerPillar("stripped_terranian_log", "Stripped Terranian Log", true, JBlockProperties.WOOD);
@@ -636,7 +635,7 @@ public class JBlocks {
     public static final DeferredBlock<Block> CLOUDIA_BRICK = register("cloudia_brick", "Cloudia Bricks", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> CLOUDIA_WALL = registerWallBlock("cloudia_wall", "Cloudia Wall", JBlockProperties.STONE);
     public static final DeferredBlock<Block> CLOUDIA_TILE = register("cloudia_tile", "Cloudia Tile", JBlockProperties.STONE);
-    public static final DeferredBlock<Block> CLOUDIA_LEAVES = register("cloudia_leaves", "Cloudia Leaves", JBlockProperties.LUMINESCENT_LEAVES);
+    public static final DeferredBlock<Block> CLOUDIA_LEAVES = registerTerrainBlock("cloudia_leaves", "Cloudia Leaves", (p) -> new JLeavesBlock(p, 15597823), JBlockProperties.LUMINESCENT_LEAVES);
     public static final DeferredBlock<Block> CLOUDIA_COBBLESTONE = register("cloudia_cobblestone", "Cloudia Cobblestone", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> CLOUDIA_BRICK_STAIRS = registerStairs("cloudia_brick_stairs", "Cloudia Brick Stairs", CLOUDIA_BRICK, false, JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> CLOUDIA_TILE_STAIRS = registerStairs("cloudia_tile_stairs", "Cloudia Tile Stairs",CLOUDIA_TILE, false, JBlockProperties.STONE);
@@ -875,6 +874,18 @@ public class JBlocks {
         return block1;
     }
 
+    public static DeferredBlock<Block> registerAltTexBlock(String name, String translatedName,  Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+        checkForShovelableBlocks(props, name);
+        checkForAxeableBlocks(props, name);
+        checkForPickaxeableBlocks(props, name);
+        checkForHoeableBlocks(props, name);
+        randomLangName.add(translatedName);
+        randomBlockName.add(name);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        return block1;
+    }
+
     public static DeferredBlock<Block> registerAltTexBlock(String name, String translatedName, BlockBehaviour.Properties props) {
         checkForShovelableBlocks(props, name);
         checkForAxeableBlocks(props, name);
@@ -887,14 +898,14 @@ public class JBlocks {
         return block1;
     }
 
-    public static DeferredBlock<Block> registerTintedLeavesBlock(String name, String translatedName, BlockBehaviour.Properties props) {
+    public static DeferredBlock<Block> registerTintedLeavesBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
         checkForShovelableBlocks(props, name);
         checkForAxeableBlocks(props, name);
         checkForPickaxeableBlocks(props, name);
         checkForHoeableBlocks(props, name);
         tintedLeavesLangName.add(translatedName);
         tintedLeavesBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, Block::new, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }

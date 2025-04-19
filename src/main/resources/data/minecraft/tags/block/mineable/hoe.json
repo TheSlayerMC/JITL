@@ -2,16 +2,11 @@
   "replace": false,
   "values": [
     "jitl:glimmer_root",
-    "jitl:euca_gold_leaves",
     "jitl:euca_green_leaves",
-    "jitl:frozen_leaves",
     "jitl:icy_brush",
-    "jitl:charred_leaves",
-    "jitl:depths_leaves",
     "jitl:bogwood_leaves",
     "jitl:corba_leaves",
     "jitl:terranian_leaves",
-    "jitl:terranian_vine",
-    "jitl:cloudia_leaves"
+    "jitl:terranian_vine"
   ]
 }

@@ -3,6 +3,7 @@ package net.jitl.core.init.internal;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -201,10 +202,39 @@ public class JBlockProperties {
             .sound(SoundType.WOOL);
 
     public static BlockBehaviour.Properties LEAVES = BlockBehaviour.Properties.of()
-            .strength(0.5F)
+            .strength(0.2F)
             .sound(SoundType.GRASS)
             .noOcclusion()
+            .randomTicks()
+            .ignitedByLava()
+            .isSuffocating(JBlockProperties::never)
             .isValidSpawn(JBlockProperties::never)
+            .pushReaction(PushReaction.DESTROY)
+            .isRedstoneConductor(JBlockProperties::never)
+            .requiresCorrectToolForDrops();
+
+    public static BlockBehaviour.Properties FIRE_LEAVES = BlockBehaviour.Properties.of()
+            .strength(0.2F)
+            .sound(SoundType.GRASS)
+            .noOcclusion()
+            .randomTicks()
+            .pushReaction(PushReaction.DESTROY)
+            .isRedstoneConductor(JBlockProperties::never)
+            .isSuffocating(JBlockProperties::never)
+            .isValidSpawn(JBlockProperties::never)
+            .requiresCorrectToolForDrops();
+
+    public static BlockBehaviour.Properties LUMINESCENT_LEAVES = BlockBehaviour.Properties.of()
+            .strength(0.2F)
+            .sound(SoundType.GRASS)
+            .noOcclusion()
+            .randomTicks()
+            .ignitedByLava()
+            .pushReaction(PushReaction.DESTROY)
+            .isRedstoneConductor(JBlockProperties::never)
+            .isSuffocating(JBlockProperties::never)
+            .isValidSpawn(JBlockProperties::never)
+            .lightLevel((state) -> 4)
             .requiresCorrectToolForDrops();
 
     public static BlockBehaviour.Properties CLOUD = BlockBehaviour.Properties.of()
@@ -231,12 +261,6 @@ public class JBlockProperties {
             .noOcclusion()
             .randomTicks();
 
-    public static BlockBehaviour.Properties LUMINESCENT_LEAVES = BlockBehaviour.Properties.of()
-            .strength(0.5F)
-            .sound(SoundType.GRASS)
-            .noOcclusion()
-            .lightLevel((state) -> 4)
-            .requiresCorrectToolForDrops();
 
     public static BlockBehaviour.Properties ICE = BlockBehaviour.Properties.of()
             .strength(0.5F)
@@ -249,6 +273,7 @@ public class JBlockProperties {
             .sound(SoundType.GRASS)
             .noCollission()
             .noOcclusion()
+            .ignitedByLava()
             .offsetType(BlockBehaviour.OffsetType.XZ);
 
     public static BlockBehaviour.Properties PLANT = BlockBehaviour.Properties.of()
@@ -256,6 +281,7 @@ public class JBlockProperties {
             .sound(SoundType.GRASS)
             .noCollission()
             .noOcclusion()
+            .ignitedByLava()
             .offsetType(BlockBehaviour.OffsetType.XZ);
 
     public static BlockBehaviour.Properties LILY_PLANT = BlockBehaviour.Properties.of()
@@ -297,6 +323,7 @@ public class JBlockProperties {
 
     public static BlockBehaviour.Properties WOOD = BlockBehaviour.Properties.of()
             .strength(1F)
+            .ignitedByLava()
             .sound(SoundType.WOOD);
 
     public static BlockBehaviour.Properties LADDER = BlockBehaviour.Properties.of()
@@ -347,6 +374,7 @@ public class JBlockProperties {
             .noOcclusion()
             .offsetType(BlockBehaviour.OffsetType.XZ)
             .noCollission()
+            .ignitedByLava()
             .lightLevel((state) -> 10)
             .instabreak();
 
