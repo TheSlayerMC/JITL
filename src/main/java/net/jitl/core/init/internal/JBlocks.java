@@ -292,11 +292,11 @@ public class JBlocks {
     public static final DeferredBlock<Block> SCORCHED_RUBBLE_BRICKS = register("scorched_rubble_bricks", "Scorched Rubble Bricks", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> SCORCHED_RUBBLE_BRICK_STAIRS = registerStairs("scorched_rubble_brick_stairs", "Scorched Rubble Brick Stairs", SCORCHED_RUBBLE_BRICKS, false, JBlockProperties.STONE);
 
-    public static final DeferredBlock<Block> GOLDITE_FARMLAND = registerFarmlandBlock("goldite_farmland", "Goldite Farmland", GolditeFarmland::new, JBlockProperties.DIRT);
-    public static final DeferredBlock<Block> DEPTHS_FARMLAND = registerFarmlandBlock("depths_farmland", "Depths Farmland", DepthsFarmland::new, JBlockProperties.DIRT);
-    public static final DeferredBlock<Block> PERMAFROST_FARMLAND = registerFarmlandBlock("permafrost_farmland", "Permafrost Farmland", PermafrostFarmland::new, JBlockProperties.DIRT);
-    public static final DeferredBlock<Block> CORBA_FARMLAND = registerFarmlandBlock("corba_farmland", "Corba Farmland", CorbaFarmland::new, JBlockProperties.DIRT);
-    public static final DeferredBlock<Block> CLOUDIA_FARMLAND = registerFarmlandBlock("cloudia_farmland", "Cloudia Farmland", CloudiaFarmland::new, JBlockProperties.DIRT);
+    public static final DeferredBlock<Block> GOLDITE_FARMLAND = registerFarmlandBlock("goldite_farmland", "Goldite Farmland", GolditeFarmland::new, JBlockProperties.FARMLAND);
+    public static final DeferredBlock<Block> DEPTHS_FARMLAND = registerFarmlandBlock("depths_farmland", "Depths Farmland", DepthsFarmland::new, JBlockProperties.FARMLAND);
+    public static final DeferredBlock<Block> PERMAFROST_FARMLAND = registerFarmlandBlock("permafrost_farmland", "Permafrost Farmland", PermafrostFarmland::new, JBlockProperties.FARMLAND);
+    public static final DeferredBlock<Block> CORBA_FARMLAND = registerFarmlandBlock("corba_farmland", "Corba Farmland", CorbaFarmland::new, JBlockProperties.FARMLAND);
+    public static final DeferredBlock<Block> CLOUDIA_FARMLAND = registerFarmlandBlock("cloudia_farmland", "Cloudia Farmland", CloudiaFarmland::new, JBlockProperties.FARMLAND);
 
 
     public static final DeferredBlock<Block> EUCA_PORTAL_FRAME = register("euca_portal_frame", "Euca Portal Frame", JBlockProperties.STONE);
@@ -398,7 +398,7 @@ public class JBlocks {
     public static final DeferredBlock<Block> FROSTBERRY_THORN = registerCrossBlock("frostberry_thorn", "Frostberry Thorn", TallGrassBlock::new, JBlockProperties.FLOWER);
     public static final DeferredBlock<Block> ICE_BUSH = registerCrossBlock("ice_bush", "Ice Bush", TallGrassBlock::new, JBlockProperties.FLOWER);
     public static final DeferredBlock<Block> ICE_BUD = registerCrossBlock("ice_bud", "Ice Bud", TallGrassBlock::new, JBlockProperties.FLOWER);
-    public static final DeferredBlock<Block> CICLEBLOOM = registerModeledBlock("ciclebloom", "Cicle Bloom", SingleDoublePlant::new, JBlockProperties.PLANT.lightLevel((light) -> 4));
+    public static final DeferredBlock<Block> CICLEBLOOM = registerModeledBlock("ciclebloom", "Cicle Bloom", SingleDoublePlant::new, JBlockProperties.LIGHT_PLANT);
     public static final DeferredBlock<Block> ICY_BRUSH = registerVineBlock("icy_brush", "Icy Brush", JVineBlock::new, JBlockProperties.VINE);
     public static final DeferredBlock<Block> CRYSTAL_FRUIT = registerModeledBlock("crystal_fruit", "Crystal Fruit", CrystalFruit::new, JBlockProperties.CRYSTAL_FRUIT);
     public static final DeferredBlock<GrowingPlantHeadBlock> ICY_IVY = registerGrowingPlantHeadBlock("icy_ivy", "Icy Ivy", IcyIvyTopBlock::new, JBlockProperties.VINE);
@@ -489,7 +489,7 @@ public class JBlocks {
     public static final DeferredBlock<PressurePlateBlock> DEPTHS_PRESSURE_PLATE = registerPressurePlate("depths_pressure_plate", "Depths Pressure Plate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<FenceGateBlock> DEPTHS_FENCE_GATE = registerFenceGate("depths_fence_gate", "Depths Fence Gate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<JFenceBlock> DEPTHS_FENCE = registerFence("depths_fence", "Depths Fence", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<Block> DEPTHS_CRYSTAL = registerAttachedCrossBlock("depths_crystal", "Depths Crystal", AttachedBlock::new, JBlockProperties.GLOW_BLOCK.noCollission().noOcclusion());
+    public static final DeferredBlock<Block> DEPTHS_CRYSTAL = registerAttachedCrossBlock("depths_crystal", "Depths Crystal", AttachedBlock::new, JBlockProperties.LIGHT_CRYSTAL_BLOCK);
     public static final DeferredBlock<Block> DEPTHS_CRYSTAL_BLOCK = register("depths_crystal_block", "Depths Crystal Block", JBlockProperties.STONE);
     public static final DeferredBlock<Block> BUDDING_DEPTHS_CRYSTAL = register("budding_depths_crystal", "Budding Depths Crystal", JBlockProperties.STONE);
     public static final DeferredBlock<Block> FLOOR_DEPTHS_CRYSTAL_BLUE = registerModeledBlock("floor_depths_crystal_blue", "Depths Crystal", FloorDepthsCrystalBlock::new, JBlockProperties.CRYSTAL);
@@ -514,7 +514,7 @@ public class JBlocks {
     public static final DeferredBlock<Block> DEPTHS_FURNACE = registerFurnaceBlock("depths_furnace", "Depths Furnace");
     public static final DeferredBlock<IronBarsBlock> DEPTHS_GATE = registerPaneBlock("depths_gate", "Depths Gate", JBlockProperties.DUNGEON_BLOCK);
     public static final DeferredBlock<Block> DARK_SORCERER_SPAWNER = register("dark_sorcerer_spawner", "Dark Sorcerer Spawner", DarkSorcererSpawnerBlock::new, JBlockProperties.SPAWNER);
-    public static final DeferredBlock<Block> POINTED_CRYSTALLIZED_DRIPSTONE = registerDripstoneBlock("crystallized_pointed_dripstone", "Crystallized Dripstone", CrystallizedDripstoneBlock::new, JBlockProperties.POINTED_DRIPSTONE.lightLevel((state) -> 6));
+    public static final DeferredBlock<Block> POINTED_CRYSTALLIZED_DRIPSTONE = registerDripstoneBlock("crystallized_pointed_dripstone", "Crystallized Dripstone", CrystallizedDripstoneBlock::new, JBlockProperties.LIGHT_POINTED_DRIPSTONE);
     public static final DeferredBlock<Block> CRYSTALLIZED_DRIPSTONE = register("crystallized_dripstone", "Crystallized Dripstone", JBlockProperties.DRIPSTONE);
     public static final DeferredBlock<Block> DEPTHS_MOSS_BLOCK = register("depths_moss_block", "Depths Moss Block", JBlockProperties.DIRT);
     public static final DeferredBlock<Block> POINTED_DEPTHS_DRIPSTONE = registerDripstoneBlock("depths_pointed_dripstone", "Depths Dripstone", DepthsDripstoneBlock::new, JBlockProperties.POINTED_DRIPSTONE);
@@ -537,7 +537,7 @@ public class JBlocks {
     public static final DeferredBlock<JWallBlock> CORBA_COBBLESTONE_WALL = registerWallBlock("corba_cobblestone_wall", "Corba Cobblestone Wall", JBlockProperties.STONE);
     public static final DeferredBlock<RotatedPillarBlock> CORBA_PLILLAR = registerPillar("corba_pillar", "Corba Pillar", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> TAINTED_MUD = registerTerrainBlock("tainted_mud", "Tainted Mud", JBlockProperties.DIRT);
-    public static final DeferredBlock<Block> DRIED_MUD = registerTerrainBlock("dried_mud", "Dried Mud", JBlockProperties.DIRT);
+    public static final DeferredBlock<Block> DRIED_MUD = registerTerrainBlock("dried_mud", "Loggers Mud", JBlockProperties.DIRT);
     public static final DeferredBlock<RotatedPillarBlock> BOGWOOD_LOG = addLogBlock("bogwood_log", "Bogwood Log");
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_BOGWOOD_LOG = registerPillar("stripped_bogwood_log", "Stripped Bogwood Log", true, JBlockProperties.WOOD);
     public static final DeferredBlock<Block> BOGWOOD_LEAVES = registerTintedLeavesBlock("bogwood_leaves", "Bogwood Leaves", (p) -> new JLeavesBlock(p, 7186988), JBlockProperties.LEAVES);
@@ -587,7 +587,7 @@ public class JBlocks {
     public static final DeferredBlock<JBasePortalBlock> TERRANIAN_PORTAL = registerPortalBlock("terranian_portal", "Terranian Portal", Dimensions.TERRANIA, TERRANIAN_PORTAL_FRAME);
     public static final DeferredBlock<Block> TERRANIAN_GRASS = registerGrassBlock("terranian_grass", "Terranian Grass", JGrassBlock::new);
     public static final DeferredBlock<Block> TERRANIAN_DIRT = registerTerrainBlock("terranian_dirt", "Terranian Dirt", JDirt::new, JBlockProperties.DIRT);
-    public static final DeferredBlock<Block> TERRANIAN_STONE = register("terranian_stone", "Terranian Stone", JBlockProperties.STONE);
+    public static final DeferredBlock<Block> TERRANIAN_STONE = registerTerrainBlock("terranian_stone", "Terranian Stone", JBlockProperties.STONE);
     public static final DeferredBlock<Block> TERRANIAN_LEAVES = registerTopBottomBlock("terranian_leaves", "Terrania Leaves", (p) -> new JLeavesBlock(p, 9437439), JBlockProperties.LEAVES);
     public static final DeferredBlock<Block> TERRANIAN_VINE = registerVineBlock("terranian_vine", "Terrania Vine", JVineBlock::new, JBlockProperties.VINE);
     public static final DeferredBlock<RotatedPillarBlock> TERRANIAN_LOG = addLogBlock("terranian_log", "Terranian Log");
@@ -655,7 +655,7 @@ public class JBlocks {
     public static final DeferredBlock<Block> SENTERIAN_FLOOR = register("senterian_floor", "Senterian Floor", JBlockProperties.DUNGEON_BLOCK);
     public static final DeferredBlock<Block> SENTERIAN_ROCK = register("senterian_rock", "Senterian Rock", JBlockProperties.DUNGEON_BLOCK);
     public static final DeferredBlock<Block> SENTERIAN_GLASS = register("senterian_glass", "Senterian Glass", JTransparentBlock::new, JBlockProperties.DUNGEON_GLASS);
-    public static final DeferredBlock<Block> SENTERIAN_ALTAR = registerModeledBlock("senterian_altar", "Senterian Altar", SenterianAltar::new, JBlockProperties.STONE.lightLevel((l) -> 2).noOcclusion());
+    public static final DeferredBlock<Block> SENTERIAN_ALTAR = registerModeledBlock("senterian_altar", "Senterian Altar", SenterianAltar::new, JBlockProperties.ALTAR);
     public static final DeferredBlock<JFenceBlock> SENTERIAN_POST = registerFence("senterian_post", "Senterian Post", false, JBlockProperties.DUNGEON_BLOCK);
     public static final DeferredBlock<Block> SENTRY_LOCK = registerRotatableBlock("sentry_lock", "Sentry Lock", LockBlock::new, JBlockProperties.DUNGEON_BLOCK, false);
 
@@ -714,7 +714,7 @@ public class JBlocks {
     public static final DeferredBlock<RotatedPillarBlock> STONE_PLILLAR = registerPillar("stone_pillar", "Stone Pillar", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> SMALL_STONE_BRICKS = register("small_stone_bricks", "Small Stone Bricks", JBlockProperties.STONE);
 
-    public static final DeferredBlock<Block> ANCIENT_OBELISK = registerModeledBlock("ancient_obelisk", "Ancient Obelisk", ObeliskBlock::new, JBlockProperties.ANCIENT_STONE.lightLevel((l) -> 2).noOcclusion());
+    public static final DeferredBlock<Block> ANCIENT_OBELISK = registerModeledBlock("ancient_obelisk", "Ancient Obelisk", ObeliskBlock::new, JBlockProperties.OBELISK);
     public static final DeferredBlock<Block> ANCIENT_SOCKET = registerModeledBlock("ancient_socket", "Ancient Socket", AncientSocketBlock::new, JBlockProperties.ANCIENT_STONE);
     public static final DeferredBlock<Block> ANCIENT_CATALYST = register("ancient_catalyst", "Ancient Catalyst", AncientCatalystBlock::new, JBlockProperties.ANCIENT_STONE);
     public static final DeferredBlock<RotatedPillarBlock> ANCIENT_STONE = registerPillar("ancient_stone", "Ancient Stone", false, JBlockProperties.ANCIENT_STONE);

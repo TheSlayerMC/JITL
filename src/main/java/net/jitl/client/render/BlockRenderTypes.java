@@ -180,7 +180,6 @@ public class BlockRenderTypes {
         translucent.add(JBlocks.TALL_LIGSHROOM.get());
         translucent.add(JBlocks.SMALL_LIGSHROOM.get());
 
-
         for(Block b : cutout) {
             ItemBlockRenderTypes.setRenderLayer(b, RenderType.cutout());
         }

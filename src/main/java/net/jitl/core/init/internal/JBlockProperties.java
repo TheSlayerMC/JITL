@@ -16,14 +16,40 @@ import java.util.function.ToIntFunction;
 
 public class JBlockProperties {
 
-    public static BlockBehaviour.Properties STONE = BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
-            .strength(1.5F)
-            .sound(SoundType.STONE)
-            .requiresCorrectToolForDrops();
+    public static BlockBehaviour.Properties STONE = BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
+            .instrument(NoteBlockInstrument.BASEDRUM)
+            .requiresCorrectToolForDrops()
+            .strength(1.5F, 6.0F);
+
+    public static BlockBehaviour.Properties ALTAR = BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
+            .instrument(NoteBlockInstrument.BASEDRUM)
+            .requiresCorrectToolForDrops()
+            .lightLevel((l) -> 2)
+            .noOcclusion()
+            .strength(1.5F, 6.0F);
+
+    public static BlockBehaviour.Properties DIRT = BlockBehaviour.Properties.of()
+            .strength(1F)
+            .sound(SoundType.GRAVEL);
 
     public static BlockBehaviour.Properties POINTED_DRIPSTONE = BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN)
             .strength(1.5F, 1.0F)
             .forceSolidOn()
+            .instrument(NoteBlockInstrument.BASEDRUM)
+            .sound(SoundType.POINTED_DRIPSTONE)
+            .noOcclusion()
+            .randomTicks()
+            .dynamicShape()
+            .offsetType(BlockBehaviour.OffsetType.XZ)
+            .pushReaction(PushReaction.DESTROY)
+            .isRedstoneConductor(JBlockProperties::never);
+
+    public static BlockBehaviour.Properties LIGHT_POINTED_DRIPSTONE = BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN)
+            .strength(1.5F, 1.0F)
+            .forceSolidOn()
+            .lightLevel((state) -> 6)
             .instrument(NoteBlockInstrument.BASEDRUM)
             .sound(SoundType.POINTED_DRIPSTONE)
             .noOcclusion()
@@ -42,6 +68,13 @@ public class JBlockProperties {
     public static BlockBehaviour.Properties ANCIENT_STONE = BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
             .strength(-1F, 3600000.0F)
             .sound(SoundType.STONE)
+            .requiresCorrectToolForDrops();
+
+    public static BlockBehaviour.Properties OBELISK = BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
+            .strength(-1F, 3600000.0F)
+            .sound(SoundType.STONE)
+            .sound(SoundType.STONE)
+            .lightLevel((l) -> 2)
             .requiresCorrectToolForDrops();
 
     public static BlockBehaviour.Properties TROPHY = BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
@@ -153,15 +186,17 @@ public class JBlockProperties {
             .lightLevel((level) -> 15)
             .sound(SoundType.GLASS);
 
+    public static BlockBehaviour.Properties LIGHT_CRYSTAL_BLOCK = BlockBehaviour.Properties.of()
+            .strength(1.5F)
+            .lightLevel((level) -> 15)
+            .noOcclusion()
+            .noCollission()
+            .sound(SoundType.GLASS);
+
     public static BlockBehaviour.Properties GLOW_DUNGEON_BLOCK = BlockBehaviour.Properties.of()
             .strength(-1F, 3600000.0F)
             .lightLevel((level) -> 15)
             .sound(SoundType.GLASS);
-
-
-    public static BlockBehaviour.Properties DIRT = BlockBehaviour.Properties.of()
-            .strength(1F)
-            .sound(SoundType.GRAVEL);
 
     public static BlockBehaviour.Properties SLIME = BlockBehaviour.Properties.of()
             .strength(0.5F)
@@ -377,6 +412,15 @@ public class JBlockProperties {
             .ignitedByLava()
             .lightLevel((state) -> 10)
             .instabreak();
+
+    public static BlockBehaviour.Properties LIGHT_PLANT = BlockBehaviour.Properties.of()
+            .instabreak()
+            .sound(SoundType.GRASS)
+            .noCollission()
+            .noOcclusion()
+            .lightLevel((state) -> 4)
+            .ignitedByLava()
+            .offsetType(BlockBehaviour.OffsetType.XZ);
 
     public static final BlockBehaviour.Properties CRYSTAL_FRUIT = BlockBehaviour.Properties.of()
             .sound(JSoundTypes.CRYSTAL_FRUIT)
