@@ -218,10 +218,10 @@ public class JChestBlock extends AbstractChestBlock<JChestBlockEntity> implement
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if (level instanceof ServerLevel serverlevel) {
-            MenuProvider menuprovider = this.getMenuProvider(state, level, pos);
-            if (menuprovider != null) {
-                player.openMenu(menuprovider);
-                PiglinAi.angerNearbyPiglins(serverlevel, player, true);
+            MenuProvider menuprovider = this.getMenuProvider(state, serverlevel, pos);
+            if(menuprovider != null) {
+                if(!state.getValue(IS_LOCKED) || player.isCreative())
+                    player.openMenu(menuprovider);
             }
         }
         return InteractionResult.SUCCESS_SERVER;
