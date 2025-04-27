@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+        "model": "jitl:block/depths_tile_slab"
+      },
+    "type=double": {
+        "model": "jitl:block/depths_tile"
+      },
+    "type=top": {
+        "model": "jitl:block/depths_tile_slab_top"
+      }
+  }
+}

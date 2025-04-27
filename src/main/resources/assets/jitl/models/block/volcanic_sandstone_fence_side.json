@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_side",
+  "textures": {
+    "texture": "jitl:block/volcanic_sandstone_bottom"
+  }
+}

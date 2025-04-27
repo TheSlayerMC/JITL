@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "jitl:block/blazier_metal",
+    "side": "jitl:block/blazier_metal",
+    "top": "jitl:block/blazier_metal"
+  }
+}

@@ -37,6 +37,7 @@ public class JRecipeProvider extends RecipeProvider {
         buildBlockRecipes(output);
         buildItemRecipes(output);
         buildWoodTypes(output);
+        buildDecorTypes(output);
         buildQuartzTypes(output);
         buildSmithingRecipes(output);
     }
@@ -168,6 +169,39 @@ public class JRecipeProvider extends RecipeProvider {
         addWoodType(consumer, JBlocks.TERRANIAN_LOG, JBlocks.TERRANIAN_PLANKS, JBlocks.TERRANIAN_STAIRS, JBlocks.TERRANIAN_SLAB, JBlocks.TERRANIAN_POST, JBlocks.TERRANIAN_FENCE_GATE, JBlocks.TERRANIAN_TRAP_DOOR, JBlocks.TERRANIAN_PRESSURE_PLATE, JBlocks.TERRANIAN_DOOR, JBlocks.TERRANIAN_BUTTON, JItems.TERRANIAN_BOAT);
         addWoodType(consumer, JBlocks.CLOUDIA_LOG, JBlocks.CLOUDIA_PLANKS, JBlocks.CLOUDIA_STAIRS, JBlocks.CLOUDIA_SLAB, JBlocks.CLOUDIA_FENCE, JBlocks.CLOUDIA_FENCE_GATE, JBlocks.CLOUDIA_TRAP_DOOR, JBlocks.CLOUDIA_PRESSURE_PLATE, JBlocks.CLOUDIA_DOOR, JBlocks.CLOUDIA_BUTTON, JItems.CLOUDIA_BOAT);
 
+    }
+
+    public void buildDecorTypes(RecipeOutput consumer) {
+        addDecorType(consumer, JBlocks.BOIL_COBBLESTONE, JBlocks.BOIL_COBBLESTONE_STAIRS, JBlocks.BOIL_COBBLESTONE_SLAB, JBlocks.BOIL_COBBLESTONE_FENCE, JBlocks.BOIL_COBBLESTONE_FENCE_GATE, JBlocks.BOIL_COBBLESTONE_PRESSURE_PLATE, JBlocks.BOIL_COBBLESTONE_BUTTON);
+        addDecorType(consumer, JBlocks.BOIL_BRICKS, JBlocks.BOIL_BRICK_STAIRS, JBlocks.BOIL_BRICK_SLAB, JBlocks.BOIL_BRICK_FENCE, JBlocks.BOIL_BRICK_FENCE_GATE, JBlocks.BOIL_BRICK_PRESSURE_PLATE, JBlocks.BOIL_BRICK_BUTTON);
+        addDecorType(consumer, JBlocks.BOIL_SQUARE_BRICKS, JBlocks.BOIL_SQUARE_BRICK_STAIRS, JBlocks.BOIL_SQUARE_BRICK_SLAB, JBlocks.BOIL_SQUARE_BRICK_FENCE, JBlocks.BOIL_SQUARE_BRICK_FENCE_GATE, JBlocks.BOIL_SQUARE_BRICK_PRESSURE_PLATE, JBlocks.BOIL_SQUARE_BRICK_BUTTON);
+        addDecorType(consumer, JBlocks.BOIL_SHINGLE, JBlocks.BOIL_SHINGLE_STAIRS, JBlocks.BOIL_SHINGLE_SLAB, JBlocks.BOIL_SHINGLE_FENCE, JBlocks.BOIL_SHINGLE_FENCE_GATE, JBlocks.BOIL_SHINGLE_PRESSURE_PLATE, JBlocks.BOIL_SHINGLE_BUTTON);
+        addDecorType(consumer, JBlocks.BLAZIER_BRICKS, JBlocks.BLAZIER_BRICK_STAIRS, JBlocks.BLAZIER_BRICK_SLAB, JBlocks.BLAZIER_BRICK_FENCE, JBlocks.BLAZIER_BRICK_FENCE_GATE, JBlocks.BLAZIER_BRICK_PRESSURE_PLATE, JBlocks.BLAZIER_BRICK_BUTTON);
+        addDecorType(consumer, JBlocks.BLAZIER_METAL, JBlocks.BLAZIER_METAL_STAIRS, JBlocks.BLAZIER_METAL_SLAB, JBlocks.BLAZIER_METAL_FENCE, JBlocks.BLAZIER_METAL_FENCE_GATE, JBlocks.BLAZIER_METAL_PRESSURE_PLATE, JBlocks.BLAZIER_METAL_BUTTON);
+        addDecorType(consumer, JBlocks.GOLDITE_COBBLESTONE, JBlocks.GOLDITE_COBBLESTONE_STAIRS, JBlocks.GOLDITE_COBBLESTONE_SLAB, JBlocks.GOLDITE_COBBLESTONE_FENCE, JBlocks.GOLDITE_COBBLESTONE_FENCE_GATE, JBlocks.GOLDITE_COBBLESTONE_PRESSURE_PLATE, JBlocks.GOLDITE_COBBLESTONE_BUTTON);
+        addDecorType(consumer, JBlocks.PERMAFROST, JBlocks.PERMAFROST_STAIRS, JBlocks.PERMAFROST_SLAB, JBlocks.PERMAFROST_FENCE, JBlocks.PERMAFROST_FENCE_GATE, JBlocks.PERMAFROST_PRESSURE_PLATE, JBlocks.PERMAFROST_BUTTON);
+        addDecorType(consumer, JBlocks.PACKED_SNOW_BRICKS, JBlocks.PACKED_SNOW_BRICK_STAIRS, JBlocks.PACKED_SNOW_BRICK_SLAB, JBlocks.PACKED_SNOW_BRICK_FENCE, JBlocks.PACKED_SNOW_BRICK_FENCE_GATE, JBlocks.PACKED_SNOW_BRICK_PRESSURE_PLATE, JBlocks.PACKED_SNOW_BRICK_BUTTON);
+        addDecorType(consumer, JBlocks.PACKED_ICE_BRICKS, JBlocks.PACKED_ICE_BRICK_STAIRS, JBlocks.PACKED_ICE_BRICK_SLAB, JBlocks.PACKED_ICE_BRICK_FENCE, JBlocks.PACKED_ICE_BRICK_FENCE_GATE, JBlocks.PACKED_ICE_BRICK_PRESSURE_PLATE, JBlocks.PACKED_ICE_BRICK_BUTTON);
+        addDecorType(consumer, JBlocks.FROZEN_BRICKS, JBlocks.FROZEN_BRICK_STAIRS, JBlocks.FROZEN_BRICK_SLAB, JBlocks.FROZEN_BRICK_FENCE, JBlocks.FROZEN_BRICK_FENCE_GATE, JBlocks.FROZEN_BRICK_PRESSURE_PLATE, JBlocks.FROZEN_BRICK_BUTTON);
+        addDecorType(consumer, JBlocks.VOLCANIC_SANDSTONE, JBlocks.VOLCANIC_SANDSTONE_STAIRS, JBlocks.VOLCANIC_SANDSTONE_SLAB, JBlocks.VOLCANIC_SANDSTONE_FENCE, JBlocks.VOLCANIC_SANDSTONE_FENCE_GATE, JBlocks.VOLCANIC_SANDSTONE_PRESSURE_PLATE, JBlocks.VOLCANIC_SANDSTONE_BUTTON);
+
+        addDecorType(consumer, JBlocks.DARK_BRICK, JBlocks.DARK_BRICK_STAIRS, JBlocks.DARK_BRICK_SLAB, JBlocks.DARK_BRICK_FENCE, JBlocks.DARK_BRICK_FENCE_GATE, JBlocks.DARK_BRICK_PRESSURE_PLATE, JBlocks.DARK_BRICK_BUTTON);
+        addDecorType(consumer, JBlocks.DARK_FLOOR, JBlocks.DARK_FLOOR_STAIRS, JBlocks.DARK_FLOOR_SLAB, JBlocks.DARK_FLOOR_FENCE, JBlocks.DARK_FLOOR_FENCE_GATE, JBlocks.DARK_FLOOR_PRESSURE_PLATE, JBlocks.DARK_FLOOR_BUTTON);
+        addDecorType(consumer, JBlocks.DARK_SHINGLE, JBlocks.DARK_SHINGLE_STAIRS, JBlocks.DARK_SHINGLE_SLAB, JBlocks.DARK_SHINGLE_FENCE, JBlocks.DARK_SHINGLE_FENCE_GATE, JBlocks.DARK_SHINGLE_PRESSURE_PLATE, JBlocks.DARK_SHINGLE_BUTTON);
+        addDecorType(consumer, JBlocks.DEPTHS_BRICK, JBlocks.DEPTHS_BRICK_STAIRS, JBlocks.DEPTHS_BRICK_SLAB, JBlocks.DEPTHS_BRICK_FENCE, JBlocks.DEPTHS_BRICK_FENCE_GATE, JBlocks.DEPTHS_BRICK_PRESSURE_PLATE, JBlocks.DEPTHS_BRICK_BUTTON);
+        addDecorType(consumer, JBlocks.DEPTHS_SHINGLE, JBlocks.DEPTHS_SHINGLE_STAIRS, JBlocks.DEPTHS_SHINGLE_SLAB, JBlocks.DEPTHS_SHINGLE_FENCE, JBlocks.DEPTHS_SHINGLE_FENCE_GATE, JBlocks.DEPTHS_SHINGLE_PRESSURE_PLATE, JBlocks.DEPTHS_SHINGLE_BUTTON);
+        addDecorType(consumer, JBlocks.DEPTHS_DARK_SHINGLE, JBlocks.DEPTHS_DARK_SHINGLE_STAIRS, JBlocks.DEPTHS_DARK_SHINGLE_SLAB, JBlocks.DEPTHS_DARK_SHINGLE_FENCE, JBlocks.DEPTHS_DARK_SHINGLE_FENCE_GATE, JBlocks.DEPTHS_DARK_SHINGLE_PRESSURE_PLATE, JBlocks.DEPTHS_DARK_SHINGLE_BUTTON);
+        addDecorType(consumer, JBlocks.DEPTHS_COBBLESTONE, JBlocks.DEPTHS_COBBLESTONE_STAIRS, JBlocks.DEPTHS_COBBLESTONE_SLAB, JBlocks.DEPTHS_COBBLESTONE_FENCE, JBlocks.DEPTHS_COBBLESTONE_FENCE_GATE, JBlocks.DEPTHS_COBBLESTONE_PRESSURE_PLATE, JBlocks.DEPTHS_COBBLESTONE_BUTTON);
+        addDecorType(consumer, JBlocks.DEPTHS_TILE, JBlocks.DEPTHS_TILE_STAIRS, JBlocks.DEPTHS_TILE_SLAB, JBlocks.DEPTHS_TILE_FENCE, JBlocks.DEPTHS_TILE_FENCE_GATE, JBlocks.DEPTHS_TILE_PRESSURE_PLATE, JBlocks.DEPTHS_TILE_BUTTON);
+        addDecorType(consumer, JBlocks.CORBA_DARK_BRICKS, JBlocks.CORBA_DARK_BRICK_STAIRS, JBlocks.CORBA_DARK_BRICK_SLAB, JBlocks.CORBA_DARK_BRICK_FENCE, JBlocks.CORBA_DARK_BRICK_FENCE_GATE, JBlocks.CORBA_DARK_BRICK_PRESSURE_PLATE, JBlocks.CORBA_DARK_BRICK_BUTTON);
+        addDecorType(consumer, JBlocks.CORBA_SENTRY_BRICKS, JBlocks.CORBA_SENTRY_BRICK_STAIRS, JBlocks.CORBA_SENTRY_BRICK_SLAB, JBlocks.CORBA_SENTRY_BRICK_FENCE, JBlocks.CORBA_SENTRY_BRICK_FENCE_GATE, JBlocks.CORBA_SENTRY_BRICK_PRESSURE_PLATE, JBlocks.CORBA_SENTRY_BRICK_BUTTON);
+        addDecorType(consumer, JBlocks.CORBA_LIGHT_BRICKS, JBlocks.CORBA_LIGHT_BRICK_STAIRS, JBlocks.CORBA_LIGHT_BRICK_SLAB, JBlocks.CORBA_LIGHT_BRICK_FENCE, JBlocks.CORBA_LIGHT_BRICK_FENCE_GATE, JBlocks.CORBA_LIGHT_BRICK_PRESSURE_PLATE, JBlocks.CORBA_LIGHT_BRICK_BUTTON);
+        addDecorType(consumer, JBlocks.TERRANIAN_STONE, JBlocks.TERRANIAN_STONE_STAIRS, JBlocks.TERRANIAN_STONE_SLAB, JBlocks.TERRANIAN_STONE_FENCE, JBlocks.TERRANIAN_STONE_FENCE_GATE, JBlocks.TERRANIAN_STONE_PRESSURE_PLATE, JBlocks.TERRANIAN_STONE_BUTTON);
+        addDecorType(consumer, JBlocks.TERRANIAN_DARK_PANELS, JBlocks.TERRANIAN_DARK_PANEL_STAIRS, JBlocks.TERRANIAN_DARK_PANEL_SLAB, JBlocks.TERRANIAN_DARK_PANEL_FENCE, JBlocks.TERRANIAN_DARK_PANEL_FENCE_GATE, JBlocks.TERRANIAN_DARK_PANEL_PRESSURE_PLATE, JBlocks.TERRANIAN_DARK_PANEL_BUTTON);
+        addDecorType(consumer, JBlocks.TERRANIAN_PANELS, JBlocks.TERRANIAN_PANEL_STAIRS, JBlocks.TERRANIAN_PANEL_SLAB, JBlocks.TERRANIAN_PANEL_FENCE, JBlocks.TERRANIAN_PANEL_FENCE_GATE, JBlocks.TERRANIAN_PANEL_PRESSURE_PLATE, JBlocks.TERRANIAN_PANEL_BUTTON);
+        addDecorType(consumer, JBlocks.CORBA_COBBLESTONE, JBlocks.CORBA_COBBLESTONE_STAIRS, JBlocks.CORBA_COBBLESTONE_SLAB, JBlocks.CORBA_COBBLESTONE_FENCE, JBlocks.CORBA_COBBLESTONE_FENCE_GATE, JBlocks.CORBA_COBBLESTONE_PRESSURE_PLATE, JBlocks.CORBA_COBBLESTONE_BUTTON);
+        addDecorType(consumer, JBlocks.CORBA_BRICKS, JBlocks.CORBA_BRICK_STAIRS, JBlocks.CORBA_BRICK_SLAB, JBlocks.CORBA_BRICK_FENCE, JBlocks.CORBA_BRICK_FENCE_GATE, JBlocks.CORBA_BRICK_PRESSURE_PLATE, JBlocks.CORBA_BRICK_BUTTON);
+        addDecorType(consumer, JBlocks.CORBA_CRACKED_BRICKS, JBlocks.CORBA_CRACKED_BRICK_STAIRS, JBlocks.CORBA_CRACKED_BRICK_SLAB, JBlocks.CORBA_CRACKED_BRICK_FENCE, JBlocks.CORBA_CRACKED_BRICK_FENCE_GATE, JBlocks.CORBA_CRACKED_BRICK_PRESSURE_PLATE, JBlocks.CORBA_CRACKED_BRICK_BUTTON);
     }
 
     public void buildQuartzTypes(RecipeOutput consumer) {
@@ -394,6 +428,16 @@ public class JRecipeProvider extends RecipeProvider {
         addBootsRecipe(recipeConsumer, materialItem, getItemFromRegistryName("jitl:" + (recipePrefix.getString() + "boots")));
     }
 
+    public void addDecorType(RecipeOutput recipeConsumer, DeferredBlock<? extends Block> plank, DeferredBlock<? extends Block> stairs, DeferredBlock<? extends Block> slab, DeferredBlock<? extends Block> fence, DeferredBlock<? extends Block> gate, DeferredBlock<? extends Block> pressureplate, DeferredBlock<? extends Block> button) {
+        addStairRecipe(recipeConsumer, plank.get(), stairs.get());
+        addWallRecipe(recipeConsumer, plank.get(), stairs.get());
+        addSlabRecipe(recipeConsumer, plank.get(), slab.get());
+        addFenceRecipe(recipeConsumer, plank.get(), Items.STICK, fence.get());
+        addFenceGateRecipe(recipeConsumer, Items.STICK, plank.get(), gate.get());
+        addPressureplateRecipe(recipeConsumer, plank.get(), pressureplate.get());
+        buttonBuilder(recipeConsumer, button.get(), plank.get());
+    }
+
     public void addWoodType(RecipeOutput recipeConsumer, DeferredBlock<? extends Block> log, DeferredBlock<? extends Block> plank, DeferredBlock<? extends Block> stairs, DeferredBlock<? extends Block> slab, DeferredBlock<? extends Block> fence, DeferredBlock<? extends Block> gate, DeferredBlock<? extends Block> trapdoor, DeferredBlock<? extends Block> pressureplate, DeferredBlock<? extends Block> door, DeferredBlock<? extends Block> button, DeferredItem<Item> boat) {
         addAxeRecipe(recipeConsumer, Items.STICK, plank.get(), Items.WOODEN_AXE, plank.get().getDescriptionId());
         addPickaxeRecipe(recipeConsumer, Items.STICK, plank.get(), Items.WOODEN_PICKAXE, plank.get().getDescriptionId());
@@ -482,6 +526,12 @@ public class JRecipeProvider extends RecipeProvider {
         ShapedRecipeBuilder.shaped(items, RecipeCategory.BUILDING_BLOCKS, output, 1).define('#', materialItem)
                 .pattern("#  ")
                 .pattern("## ")
+                .pattern("###").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
+    }
+
+    protected void addWallRecipe(RecipeOutput recipeConsumer, ItemLike materialItem, ItemLike output) {
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.BUILDING_BLOCKS, output, 1).define('#', materialItem)
+                .pattern("###")
                 .pattern("###").unlockedBy(inputToKey(materialItem), has(materialItem)).save(recipeConsumer);
     }
 

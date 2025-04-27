@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+        "model": "jitl:block/corba_light_brick_slab"
+      },
+    "type=double": {
+        "model": "jitl:block/corba_light_bricks"
+      },
+    "type=top": {
+        "model": "jitl:block/corba_light_brick_slab_top"
+      }
+  }
+}

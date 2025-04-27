@@ -300,7 +300,6 @@ public class JBlockProperties {
     public static BlockBehaviour.Properties ICE = BlockBehaviour.Properties.of()
             .strength(0.5F)
             .sound(SoundType.GLASS)
-            .noOcclusion()
             .requiresCorrectToolForDrops();
 
     public static BlockBehaviour.Properties REPLACABLE_PLANT = BlockBehaviour.Properties.of()
@@ -446,6 +445,9 @@ public class JBlockProperties {
         if(name.contains("frozen")) {
             texName = "frozen_planks";
         }
+        if(name.contains("frozen_brick")) {
+            texName = "frozen_bricks";
+        }
         if(name.contains("depths")) {
             texName = "depths_planks";
         }
@@ -518,11 +520,23 @@ public class JBlockProperties {
         if(name.contains("royal_shingle")) {
             texName = "royal_shingle";
         }
-        if(name.contains("corba_cobblestone_wall")) {
+        if(name.contains("corba_cobblestone")) {
             texName = "corba_cobblestone";
         }
         if(name.contains("corba_brick")) {
             texName = "corba_bricks";
+        }
+        if(name.contains("corba_cracked")) {
+            texName = "corba_cracked_bricks";
+        }
+        if(name.contains("corba_dark")) {
+            texName = "corba_dark_bricks";
+        }
+        if(name.contains("corba_light")) {
+            texName = "corba_light_bricks";
+        }
+        if(name.contains("corba_sentry")) {
+            texName = "corba_sentry_bricks";
         }
         if(name.contains("cloudia_post")) {
             texName = "cloudia_post";
@@ -547,6 +561,75 @@ public class JBlockProperties {
         }
         if(name.contains("scorched_rubble_brick")) {
             texName = "scorched_rubble_bricks";
+        }
+        if(name.contains("boil_cobblestone")) {
+            texName = "boil_cobblestone";
+        }
+        if(name.contains("dark_floor")) {
+            texName = "dark_floor";
+        }
+        if(name.contains("dark_brick")) {
+            texName = "dark_brick";
+        }
+        if(name.contains("depths_brick")) {
+            texName = "depths_brick";
+        }
+        if(name.contains("depths_shingle")) {
+            texName = "depths_shingle";
+        }
+        if(name.contains("depths_cobblestone")) {
+            texName = "depths_cobblestone";
+        }
+        if(name.contains("depths_tile")) {
+            texName = "depths_tile";
+        }
+        if(name.contains("dark_shingle")) {
+            texName = "dark_shingle";
+        }
+        if(name.contains("depths_dark_shingle")) {
+            texName = "depths_dark_shingle";
+        }
+        if(name.contains("terranian_panel")) {
+            texName = "terranian_panels";
+        }
+        if(name.contains("terranian_stone")) {
+            texName = "terranian_stone";
+        }
+        if(name.contains("terranian_dark_panel")) {
+            texName = "terranian_dark_panels";
+        }
+        if(name.contains("terranian_dark_panel")) {
+            texName = "terranian_dark_panels";
+        }
+        if(name.contains("volcanic_sandstone")) {
+            texName = "volcanic_sandstone_bottom";
+        }
+        if(name.contains("permafrost")) {
+            texName = "permafrost";
+        }
+        if(name.contains("goldite_cobblestone")) {
+            texName = "goldite_cobblestone";
+        }
+        if(name.contains("boil_cobblestone")) {
+            texName = "boil_cobblestone";
+        }
+        if(name.contains("boil_brick")) {
+            texName = "boil_bricks";
+        }
+        if(name.contains("boil_square")) {
+            texName = "boil_square_bricks";
+        }
+        if(name.contains("boil_shingle")) {
+            texName = "boil_shingle";
+        }
+        if(name.contains("blazier_brick")) {
+            texName = "blazier_bricks";
+        }
+        if(name.contains("blazier_metal")) {
+            texName = "blazier_metal";
+        }
+        if(name.contains("corba_dark")) {
+            texName = "corba_dark_bricks";
         }
         return texName;
     }

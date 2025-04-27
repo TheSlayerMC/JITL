@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "jitl:block/terranian_stone",
+    "side": "jitl:block/terranian_stone",
+    "top": "jitl:block/terranian_stone"
+  }
+}

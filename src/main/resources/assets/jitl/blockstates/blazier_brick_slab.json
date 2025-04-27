@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+        "model": "jitl:block/blazier_brick_slab"
+      },
+    "type=double": {
+        "model": "jitl:block/blazier_bricks"
+      },
+    "type=top": {
+        "model": "jitl:block/blazier_brick_slab_top"
+      }
+  }
+}

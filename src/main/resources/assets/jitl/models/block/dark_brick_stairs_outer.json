@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "jitl:block/dark_brick",
+    "side": "jitl:block/dark_brick",
+    "top": "jitl:block/dark_brick"
+  }
+}

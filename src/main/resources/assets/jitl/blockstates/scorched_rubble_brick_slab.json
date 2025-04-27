@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+        "model": "jitl:block/scorched_rubble_brick_slab"
+      },
+    "type=double": {
+        "model": "jitl:block/scorched_rubble_bricks"
+      },
+    "type=top": {
+        "model": "jitl:block/scorched_rubble_brick_slab_top"
+      }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+        "model": "jitl:block/permafrost_slab"
+      },
+    "type=double": {
+        "model": "jitl:block/permafrost"
+      },
+    "type=top": {
+        "model": "jitl:block/permafrost_slab_top"
+      }
+  }
+}

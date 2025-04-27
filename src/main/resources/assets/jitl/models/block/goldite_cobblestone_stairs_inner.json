@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "jitl:block/goldite_cobblestone",
+    "side": "jitl:block/goldite_cobblestone",
+    "top": "jitl:block/goldite_cobblestone"
+  }
+}

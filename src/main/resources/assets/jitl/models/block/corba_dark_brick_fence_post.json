@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_post",
+  "textures": {
+    "texture": "jitl:block/corba_dark_bricks"
+  }
+}

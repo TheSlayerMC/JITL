@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "jitl:block/terranian_dark_panels",
+    "side": "jitl:block/terranian_dark_panels",
+    "top": "jitl:block/terranian_dark_panels"
+  }
+}

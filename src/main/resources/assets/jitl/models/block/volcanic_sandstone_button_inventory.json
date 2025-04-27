@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button_inventory",
+  "textures": {
+    "texture": "jitl:block/volcanic_sandstone_bottom"
+  }
+}

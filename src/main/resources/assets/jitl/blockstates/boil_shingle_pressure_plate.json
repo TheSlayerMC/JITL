@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+        "model": "jitl:block/boil_shingle_pressure_plate"
+      },
+    "powered=true": {
+        "model": "jitl:block/boil_shingle_pressure_plate_down"
+      }
+  }
+}

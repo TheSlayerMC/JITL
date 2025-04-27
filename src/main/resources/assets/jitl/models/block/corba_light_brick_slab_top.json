@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "jitl:block/corba_light_bricks",
+    "side": "jitl:block/corba_light_bricks",
+    "top": "jitl:block/corba_light_bricks"
+  }
+}

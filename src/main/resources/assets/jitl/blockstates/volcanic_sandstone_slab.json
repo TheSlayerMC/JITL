@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+        "model": "jitl:block/volcanic_sandstone_slab"
+      },
+    "type=double": {
+        "model": "jitl:block/volcanic_sandstone_bottom"
+      },
+    "type=top": {
+        "model": "jitl:block/volcanic_sandstone_slab_top"
+      }
+  }
+}

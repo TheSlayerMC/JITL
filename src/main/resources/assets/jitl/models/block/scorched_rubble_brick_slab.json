@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "jitl:block/scorched_rubble_bricks",
+    "side": "jitl:block/scorched_rubble_bricks",
+    "top": "jitl:block/scorched_rubble_bricks"
+  }
+}

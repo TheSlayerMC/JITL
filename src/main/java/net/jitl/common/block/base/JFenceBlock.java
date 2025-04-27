@@ -36,9 +36,9 @@ public class JFenceBlock extends CrossCollisionBlock {
     private final Function<BlockState, VoxelShape> occlusionShapes;
 
     public JFenceBlock(BlockBehaviour.Properties p) {
-        super(2.0F, 2.0F, 16.0F, 16.0F, 24.0F, p);
+        super(4.0F, 16.0F, 4.0F, 16.0F, 24.0F, p);
         this.registerDefaultState(this.stateDefinition.any().setValue(NORTH, Boolean.FALSE).setValue(EAST, Boolean.FALSE).setValue(SOUTH, Boolean.FALSE).setValue(WEST, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)));
-        this.occlusionShapes = this.makeShapes(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
+        this.occlusionShapes = this.makeShapes(4.0F, 16.0F, 2.0F, 6.0F, 15.0F);
     }
 
     @Override

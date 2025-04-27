@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+        "model": "jitl:block/terranian_dark_panel_pressure_plate"
+      },
+    "powered=true": {
+        "model": "jitl:block/terranian_dark_panel_pressure_plate_down"
+      }
+  }
+}

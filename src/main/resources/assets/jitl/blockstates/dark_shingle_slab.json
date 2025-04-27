@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+        "model": "jitl:block/dark_shingle_slab"
+      },
+    "type=double": {
+        "model": "jitl:block/dark_shingle"
+      },
+    "type=top": {
+        "model": "jitl:block/dark_shingle_slab_top"
+      }
+  }
+}

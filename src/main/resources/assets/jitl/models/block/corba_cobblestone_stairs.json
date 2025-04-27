@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "jitl:block/corba_cobblestone",
+    "side": "jitl:block/corba_cobblestone",
+    "top": "jitl:block/corba_cobblestone"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+        "model": "jitl:block/blazier_metal_slab"
+      },
+    "type=double": {
+        "model": "jitl:block/blazier_metal"
+      },
+    "type=top": {
+        "model": "jitl:block/blazier_metal_slab_top"
+      }
+  }
+}
