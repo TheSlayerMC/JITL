@@ -48,6 +48,55 @@ public class JEntityLootTables extends EntityLootSubProvider {
         this.add(JEntities.BLACKSMITH_TYPE.get(), empty());
         this.add(JEntities.GUNSMITH_TYPE.get(), empty());
 
+        this.add(JEntities.CONJURING_PROJECTILE_TYPE.get(), empty());
+        this.add(JEntities.ESSENCIA_PROJECTILE_TYPE.get(), empty());
+        this.add(JEntities.FLORO_MUD_TYPE.get(), empty());
+        this.add(JEntities.PIERCER_TYPE.get(), empty());
+        this.add(JEntities.KNIFE_TYPE.get(), empty());
+        this.add(JEntities.DEMONIC_BOMB_TYPE.get(), empty());
+        this.add(JEntities.FIRE_BOMB_TYPE.get(), empty());
+        this.add(JEntities.MAGIC_BOMB_TYPE.get(), empty());
+        this.add(JEntities.ESSENCE_ARROW_TYPE.get(), empty());
+        this.add(JEntities.MAGIC_POT_TYPE.get(), empty());
+        this.add(JEntities.FIREBALL_TYPE.get(), empty());
+        this.add(JEntities.ICEBALL_TYPE.get(), empty());
+        this.add(JEntities.HELLSTONE_TYPE.get(), empty());
+        this.add(JEntities.WIZARDS_STAR_TYPE.get(), empty());
+        this.add(JEntities.DOOMSBRINGER_TYPE.get(), empty());
+        this.add(JEntities.GREENPACE_TYPE.get(), empty());
+        this.add(JEntities.OVERGROWN_TYPE.get(), empty());
+        this.add(JEntities.BOUNCING_OVERGROWN_TYPE.get(), empty());
+        this.add(JEntities.DIVINITY_TYPE.get(), empty());
+        this.add(JEntities.BOUNCING_DIVINITY_TYPE.get(), empty());
+        this.add(JEntities.ENLIGHTENMENT_TYPE.get(), empty());
+        this.add(JEntities.CHAOS_CANNON.get(), empty());
+        this.add(JEntities.SPELLBINDING_TYPE.get(), empty());
+        this.add(JEntities.EARTHEN_TYPE.get(), empty());
+        this.add(JEntities.FLAMING_TYPE.get(), empty());
+        this.add(JEntities.NETHIC_TYPE.get(), empty());
+        this.add(JEntities.OVERGROWN_HAMMER_TYPE.get(), empty());
+        this.add(JEntities.ROCKY_HAMMER_TYPE.get(), empty());
+        this.add(JEntities.ROYAL_TYPE.get(), empty());
+        this.add(JEntities.CRYSTALLIZED_TYPE.get(), empty());
+        this.add(JEntities.WITHIC_TYPE.get(), empty());
+        this.add(JEntities.NETHER_PLASMA_TYPE.get(), empty());
+        this.add(JEntities.OCEAN_PLASMA_TYPE.get(), empty());
+        this.add(JEntities.EYE_BLASTER_TYPE.get(), empty());
+
+        this.add(JEntities.ESSENCIA_BOLT_TYPE.get(), empty());
+        this.add(JEntities.SENTACOIN_TYPE.get(), empty());
+        this.add(JEntities.SENTACOIN_BAG_TYPE.get(), empty());
+        this.add(JEntities.BOSS_CRYSTAL_TYPE.get(), empty());
+        this.add(JEntities.SPIRIT_CRYSTAL_TYPE.get(), empty());
+        this.add(JEntities.GOLD_EUCA_BOAT_TYPE.get(), empty());
+        this.add(JEntities.BROWN_EUCA_BOAT_TYPE.get(), empty());
+        this.add(JEntities.FROZEN_BOAT_TYPE.get(), empty());
+        this.add(JEntities.DEPTHS_BOAT_TYPE.get(), empty());
+        this.add(JEntities.BURNED_BOAT_TYPE.get(), empty());
+        this.add(JEntities.CORBA_BOAT_TYPE.get(), empty());
+        this.add(JEntities.TERRANIA_BOAT_TYPE.get(), empty());
+        this.add(JEntities.CLOUDIA_BOAT_TYPE.get(), empty());
+
         this.add(JEntities.WITHERSPINE_TYPE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
                 .add(LootItem.lootTableItem(JItems.WITHIC_DUST.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
