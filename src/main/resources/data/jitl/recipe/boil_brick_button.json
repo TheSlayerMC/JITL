@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "jitl:boil_bricks"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jitl:boil_brick_button"
+  }
+}

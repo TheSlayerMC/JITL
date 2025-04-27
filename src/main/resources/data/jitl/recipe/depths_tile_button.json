@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "jitl:depths_tile"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jitl:depths_tile_button"
+  }
+}

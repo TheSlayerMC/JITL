@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "jitl:goldite_cobblestone"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jitl:goldite_cobblestone_button"
+  }
+}

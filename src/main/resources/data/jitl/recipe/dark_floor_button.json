@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "jitl:dark_floor"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jitl:dark_floor_button"
+  }
+}

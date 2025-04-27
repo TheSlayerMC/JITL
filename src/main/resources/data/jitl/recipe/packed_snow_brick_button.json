@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "jitl:packed_snow_bricks"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jitl:packed_snow_brick_button"
+  }
+}

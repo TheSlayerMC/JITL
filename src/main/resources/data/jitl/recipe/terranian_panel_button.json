@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "jitl:terranian_panels"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jitl:terranian_panel_button"
+  }
+}

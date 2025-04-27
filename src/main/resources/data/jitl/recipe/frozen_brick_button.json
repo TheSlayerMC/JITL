@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "jitl:frozen_bricks"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jitl:frozen_brick_button"
+  }
+}

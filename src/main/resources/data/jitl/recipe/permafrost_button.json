@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "jitl:permafrost"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jitl:permafrost_button"
+  }
+}

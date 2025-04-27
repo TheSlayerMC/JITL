@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "jitl:corba_dark_bricks"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jitl:corba_dark_brick_button"
+  }
+}

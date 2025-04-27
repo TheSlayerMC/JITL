@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "jitl:volcanic_sandstone"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jitl:volcanic_sandstone_button"
+  }
+}

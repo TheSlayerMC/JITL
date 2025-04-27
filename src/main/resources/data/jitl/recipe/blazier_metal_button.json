@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "jitl:blazier_metal"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jitl:blazier_metal_button"
+  }
+}
