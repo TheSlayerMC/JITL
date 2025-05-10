@@ -59,7 +59,7 @@ public class SenterianAltarTile extends BlockEntity implements GeoBlockEntity {
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController<>(state -> {
-            if(state.getData(SenterianAltar.IS_ACTIVE_TICKET)) {//todo
+            if(Boolean.TRUE.equals(state.getData(SenterianAltar.IS_ACTIVE_TICKET))) {
                 return state.setAndContinue(this.ROTATE);
             } else {
                 return state.setAndContinue(this.IDLE);

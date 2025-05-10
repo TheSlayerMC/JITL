@@ -22,7 +22,7 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import java.util.function.Consumer;
 
-public class HammerItem extends JSwordItem implements IEssenceItem {
+public class  HammerItem extends JSwordItem implements IEssenceItem {
 
     protected TriFunction<Integer, Level, LivingEntity, JThrowableProjectile> projectileFactory;
     private final int essenceUsage, damage;
@@ -36,7 +36,6 @@ public class HammerItem extends JSwordItem implements IEssenceItem {
 
     @Override
     public @NotNull InteractionResult use(@NotNull Level level, Player player, @NotNull InteractionHand usedHand) {
-        ItemStack stack = player.getItemInHand(usedHand);
         if(!level.isClientSide()) {
             if(player.getData(JDataAttachments.ESSENCE).consumeEssence(player, this.essenceUsage)) {
                 JThrowableProjectile projectile = projectileFactory.apply(this.damage, level, player);

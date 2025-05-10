@@ -144,7 +144,7 @@ public class JBlocks {
 
     public static final DeferredBlock<Block> LUNIUM_ORE = register("lunium_ore", "Lunium Ore", JBlockProperties.LUNIUM_ORE_PROPS);
     public static final DeferredBlock<Block> LUNIUM_BLOCK = register("lunium_block", "Lunium Block", JBlockProperties.LUNIUM_ORE_PROPS);
-    public static final DeferredBlock<Block> DEEPSLATE_LUNIUM_ORE = register("deepslate_lunium_ore", "Deepslate Lunium Ore", JBlockProperties.LUNIUM_ORE_PROPS);//TODO DEEPSLATE SOUNDS
+    public static final DeferredBlock<Block> DEEPSLATE_LUNIUM_ORE = register("deepslate_lunium_ore", "Deepslate Lunium Ore", JBlockProperties.LUNIUM_ORE_PROPS);
 
     public static final DeferredBlock<Block> BLOODCRUST_ORE = register("bloodcrust_ore", "Bloodcrust Ore", JBlockProperties.STONE);
     public static final DeferredBlock<Block> BLOODCRUST_BLOCK = register("bloodcrust_block", "Bloodcrust Block", JBlockProperties.STONE);

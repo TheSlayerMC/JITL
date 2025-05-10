@@ -94,7 +94,7 @@ dependencies {
 
    // implementation "top.theillusivec4.curios:curios-neoforge:" + curios_version
 
-    implementation "software.bernie.geckolib:geckolib-neoforge-" + gekolib_version
+    implementation "software.bernie.geckolib:geckolib-neoforge-" + geckolib_version
 
 //    compileOnly "vazkii.patchouli:Patchouli:" + sub_minecraft_version + "-" + patchouli_version + "-NEOFORGE:api"
 //    runtimeOnly "vazkii.patchouli:Patchouli:" + sub_minecraft_version + "-" + patchouli_version + "-NEOFORGE"

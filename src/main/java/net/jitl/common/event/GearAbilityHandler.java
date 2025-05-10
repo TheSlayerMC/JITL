@@ -8,6 +8,7 @@ import net.jitl.common.items.gear.JGear;
 import net.jitl.core.helper.TooltipFiller;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JDataAttachments;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
@@ -27,6 +28,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 @EventBusSubscriber(modid = JITL.MOD_ID)
 public class GearAbilityHandler {
@@ -119,17 +121,8 @@ public class GearAbilityHandler {
 
     @SubscribeEvent
     public static void addVanillaTooptips(ItemTooltipEvent event) {
-//        Item item = event.getItemStack().getItem();
-//        if (item instanceof JArmorItem) {
-//            ArmorMaterial material = ((JArmorItem) item).getMaterial();
-//            if (material.equals(ArmorMaterials.LEATHER)) {
-//                TooltipFiller filler = new TooltipFiller(event.getToolTip(), "leather_gear", 1);
-//                filler.addOverview();
-//            } else if (material.equals(ArmorMaterials.CHAINMAIL)) {
-//                TooltipFiller filler = new TooltipFiller(event.getToolTip(), "chain_gear");
-//                filler.addOverview();
-//            }
-//        }todo
+        Item item = event.getItemStack().getItem();
+
     }
 
     @SubscribeEvent

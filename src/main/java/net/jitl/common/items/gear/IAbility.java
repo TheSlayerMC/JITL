@@ -21,14 +21,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public interface IAbility {
-    /*
-    TODO:Detailed testing and code review of all abilities
-     -Diamond (but if someone else sees this close to release remind me)
-     */
 
-    //TODO: hasTag() might not be needed. Test
-
-    //TODO: check if value rounding is ideal
     default void tick(LivingEntity entity, Level world, ItemStack stack) {
 
     }
@@ -63,13 +56,6 @@ public interface IAbility {
 
     default boolean isCorrectTool(ItemStack stack, BlockState state) {
         Item item = stack.getItem();
-
-        //FIXME port
-       /* if (((TieredItem) item).getTier().getLevel() >= state.getHarvestLevel()) {
-            for (ToolType type : stack.getToolTypes()) {
-                if (state.isToolEffective(type)) return true;
-            }
-        }*/
         return item.isCorrectToolForDrops(stack, state);
     }
 
@@ -103,7 +89,7 @@ public interface IAbility {
             if (oldStack.equals(newStack)) return false;
             if (oldStack.is(newStack.getItem())) {
                 int durability = oldStack.getDamageValue() - newStack.getDamageValue();
-                return durability != 0 && durability != 1; //for repair
+                return durability != 0 && durability != 1;
             }
             return true;
         }
@@ -113,7 +99,7 @@ public interface IAbility {
             if (oldStack.equals(newStack)) return false;
             if (oldStack.is(newStack.getItem())) {
                 int durability = oldStack.getDamageValue() - newStack.getDamageValue();
-                return durability != 0 && durability != 1; //for repair
+                return durability != 0 && durability != 1;
             }
             return true;
         }

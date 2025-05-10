@@ -27,7 +27,6 @@ public class HealingItem extends JItem implements IEssenceItem {
 
     @Override
     public @NotNull InteractionResult use(@NotNull Level level, Player player, @NotNull InteractionHand usedHand) {
-        ItemStack itemstack = player.getItemInHand(usedHand);
         if(!level.isClientSide) {
             player.heal(this.amount == -1F ? player.getMaxHealth() : this.amount);
             player.getItemInHand(usedHand).shrink(1);
