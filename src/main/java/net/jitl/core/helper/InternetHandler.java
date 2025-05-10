@@ -12,14 +12,14 @@ import java.util.List;
 public class InternetHandler {
 
     public static boolean isUpdateAvailable() throws IOException {
-        BufferedReader versionFile = new BufferedReader(new InputStreamReader(new URL("https://raw.githubusercontent.com/TheSlayerMC/JITL/main/version").openStream()));
+        BufferedReader versionFile = new BufferedReader(new InputStreamReader(new URL("https://raw.githubusercontent.com/TheSlayerMC/JITL/refs/heads/1.21.1/version").openStream()));
         String curVersion = versionFile.readLine();
         versionFile.close();
         return !curVersion.contains(JITL.MOD_VERSION);
     }
 
     public static String getUpdateVersion() throws IOException {
-        BufferedReader versionFile = new BufferedReader(new InputStreamReader(new URL("https://raw.githubusercontent.com/TheSlayerMC/JITL/main/version").openStream()));
+        BufferedReader versionFile = new BufferedReader(new InputStreamReader(new URL("https://raw.githubusercontent.com/TheSlayerMC/JITL/refs/heads/1.21.1/version").openStream()));
         return versionFile.readLine();
     }
 
