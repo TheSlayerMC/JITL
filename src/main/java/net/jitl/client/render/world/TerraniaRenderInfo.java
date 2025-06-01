@@ -3,6 +3,7 @@ package net.jitl.client.render.world;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Axis;
+import net.jitl.client.render.world.clouds.JCloudRenderer;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
@@ -20,8 +21,8 @@ import org.joml.Matrix4f;
 
 import javax.annotation.Nullable;
 
-public class TerraniaRenderInfo {//} extends DimensionSpecialEffects {
-/*
+public class TerraniaRenderInfo extends DimensionSpecialEffects {
+
     private static final ResourceLocation MOON_LOCATION = JITL.rl("textures/environment/terrania_moon1.png");
     private static final ResourceLocation CLOUDIA_SKY_LOCATION = JITL.rl("textures/environment/cloudia_sky.png");
 
@@ -29,13 +30,13 @@ public class TerraniaRenderInfo {//} extends DimensionSpecialEffects {
         super(200F, true, SkyType.NONE, false, false);
     }
 
-    @Override
+        @Override
     public boolean renderClouds(ClientLevel level, int ticks, float partialTick, double camX, double camY, double camZ, Matrix4f modelViewMatrix, Matrix4f projectionMatrix) {
-        //new JCloudRenderer(JITL.rl("textures/environment/cloudia_clouds.png")).render(1, CloudStatus.FANCY, getCloudHeight(), projectionMatrix, modelViewMatrix, new Vec3(camX, camY, camZ), partialTick);
+        new JCloudRenderer(JITL.rl("textures/environment/cloudia_clouds.png")).render(level.getCloudColor(partialTick), Minecraft.getInstance().options.cloudStatus().get(), getCloudHeight(), new Vec3(camX, camY, camZ), partialTick);
         return true;
     }
 
-    @Override
+   @Override
     public @NotNull Vec3 getBrightnessDependentFogColor(Vec3 vector3d, float float_) {
         float color = 0.95F + 0.05F;
         return vector3d.multiply((float_ * color), (float_ * color), (float_ * color));
@@ -46,7 +47,7 @@ public class TerraniaRenderInfo {//} extends DimensionSpecialEffects {
         return false;
     }
 
-    @Override
+  /*   @Override
     public boolean renderSky(@NotNull ClientLevel level, int ticks, float partialTick, @NotNull Matrix4f frustumMatrix, @NotNull Camera camera, @NotNull Matrix4f projectionMatrix, @NotNull Runnable setupFog) {
         Tesselator tesselator = Tesselator.getInstance();
         Minecraft mc = Minecraft.getInstance();

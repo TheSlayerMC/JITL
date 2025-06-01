@@ -47,10 +47,6 @@ public class JArmorItem extends JItem implements JGear {
         if(ability != null)
         ability.fillTooltips(stack, tooltip);
     }
-    @Override
-    public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
-        return true;
-    }
 
     @Override
     public boolean supportsEnchantment(ItemStack stack, Holder<Enchantment> enchantment) {

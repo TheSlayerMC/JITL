@@ -76,8 +76,4 @@ public class PiercerItem extends JItem {
         return true;
     }
 
-    @Override
-    public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
-        return true;
-    }
 }

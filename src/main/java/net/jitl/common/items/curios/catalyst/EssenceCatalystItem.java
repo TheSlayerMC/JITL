@@ -11,6 +11,7 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import top.theillusivec4.curios.api.SlotContext;
 
 public class EssenceCatalystItem extends JCurioItem {
     public float maxEssence;
@@ -24,10 +25,10 @@ public class EssenceCatalystItem extends JCurioItem {
         return this;
     }
 
-//    @Override todo
-//    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation uuid, ItemStack stack) {
-//        Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = LinkedHashMultimap.create();
-//        modifierMultimap.put(JAttributes.MAX_ESSENCE, new AttributeModifier(ResourceLocation.fromNamespaceAndPath( JITL.MOD_ID, "max_essence_modifier"), maxEssence, AttributeModifier.Operation.ADD_VALUE));
-//        return modifierMultimap;
-//    }
+    @Override
+    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation uuid, ItemStack stack) {
+        Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = LinkedHashMultimap.create();
+        modifierMultimap.put(JAttributes.MAX_ESSENCE, new AttributeModifier(ResourceLocation.fromNamespaceAndPath( JITL.MOD_ID, "max_essence_modifier"), maxEssence, AttributeModifier.Operation.ADD_VALUE));
+        return modifierMultimap;
+    }
 }
