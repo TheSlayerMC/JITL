@@ -656,6 +656,13 @@ public class LangRegistry {
         writeToFile("\"jitl.tooltip.teleport\" : \"Teleports to where the Player is looking.\",");
         writeToFile("\"jitl.uses_remaining\" : \"%s Uses Remaining\",");
 
+        writeToFile("\"jitl.item.desc.bonemeal_hoe\" : \"Crouch + Right Click to Bonemeal, Right Click to Till\",");
+        writeToFile("\"jitl.item.desc.cursed_tomb\" : \"Levitates user for 5 seconds\",");
+
+        writeToFile("\"jitl.item.desc.withic_obstructor\" : \"Withers foes in a 10 block radius\",");
+        writeToFile("\"jitl.item.desc.nethic_obstructor\" : \"Sets foes on fire in a 10 block radius\",");
+
+
         writeToFile("\"jitl.tooltip.staff_of_conjuring\" : \"Poisons Foe on impact\",");
         writeToFile("\"jitl.tooltip.staff_of_essencia\" : \"Summons Lightening on Foe upon impact\",");
         writeToFile("\"jitl.tooltip.staff_of_hellstone\" : \"Sets Foe on Fire\",");

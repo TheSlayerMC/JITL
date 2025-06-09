@@ -162,7 +162,7 @@ public class JItems {
     public static final DeferredItem<Item> AIRROOT_SEEDS = registerNormalItem("airroot_seeds", "Airroot Seeds", (p) -> new BlockItem(JBlocks.AIRROOT_CROP.get(), p));
     public static final DeferredItem<Item> SNAKE_FLESH = registerFoodItem("snake_flesh", "Snake Flesh", JFood.SNAKE_FLESH);
     public static final DeferredItem<Item> SLIMY_FLESH = registerFoodItem("slimy_flesh", "Slimy Flesh", JFood.SLIMY_FLESH);
-    public static final DeferredItem<Item> BREATHING_FUNGUS = registerFoodItem("breathing_fungus", "Freathing Fungus", JFood.BREATHING_FUNGUS);
+    public static final DeferredItem<Item> BREATHING_FUNGUS = registerFoodItem("breathing_fungus", "Breathing Fungus", JFood.BREATHING_FUNGUS);
 
     public static final DeferredItem<Item> OBSIDIAN_STICK = registerNormalItem("obsidian_stick", "Obsidian Rod");
     public static final DeferredItem<Item> STONE_STICK = registerNormalItem("stone_stick", "Stone Stick");
@@ -432,6 +432,9 @@ public class JItems {
     public static final DeferredItem<Item> SOULSTONE_HOE = registerToolItem("soulstone_hoe", "Soulstone Hoe", (p) -> new JHoeItem(p, JToolTiers.SOULSTONE_HOE, -5, BASIC), ItemType.HOE);
     public static final DeferredItem<Item> SOULSTONE_MULTITOOL = registerToolItem("soulstone_multitool", "Soulstone Multitool", (p) -> new MultitoolItem(p, JToolTiers.SOULSTONE_SWORD, BASIC), ItemType.MULTITOOL);
     public static final DeferredItem<Item> SOULSTONE_SWORD = registerToolItem("soulstone_sword", "Soulstone Sword", (p) -> new JSwordItem(p, JToolTiers.SOULSTONE_SWORD, BASIC), ItemType.SWORD);
+
+    public static final DeferredItem<Item> HOE_OF_ETERNAL_LIFE = registerToolItem("hoe_of_eternal_life", "Hoe Of Eternal Life", (p) -> new BonemealHoeItem(p, JToolTiers.LIFE_HOE, -5), ItemType.HOE);
+    public static final DeferredItem<Item> HOE_OF_EARTH_LOVING = registerToolItem("hoe_of_earth_loving", "Hoe Of Earth Loving", (p) -> new BonemealHoeItem(p, JToolTiers.EARTH_HOE, -5), ItemType.HOE);
 
     public static final DeferredItem<Item> TWILIGHT_HELMET = registerNormalItem("twilight_helmet", "Twilight Helmet", (p) -> new JArmorItem(p, JToolTiers.JArmorTier.TWILIGHT, ArmorType.HELMET, null), ItemType.HELMET);
     public static final DeferredItem<Item> TWILIGHT_CHEST = registerNormalItem("twilight_chestplate", "Twilight Chestplate", (p) -> new JArmorItem(p, JToolTiers.JArmorTier.TWILIGHT, ArmorType.CHESTPLATE, null), ItemType.CHESTPLATE);
@@ -711,6 +714,10 @@ public class JItems {
     public static final DeferredItem<Item> MINERS_PEARL = registerNormalItem("miners_pearl", "Miner's Pearl", (p) -> new MinersPearl(p.stacksTo(1).durability(10)));
     public static final DeferredItem<Item> MOON_OF_ETERNAL_NIGHT = registerNormalItem("moon_of_eternal_night", "Moon of Eternal Night", (p) -> new EternalNight(p.stacksTo(1).durability(4)));
     public static final DeferredItem<Item> HEART_STONE = registerNormalItem("heart_stone", "Heart Stone", (p) -> new HealingItem(p, -1F));
+    public static final DeferredItem<Item> CURSED_TOMB = registerNormalItem("cursed_tomb", "Cursed Tomb", (p) -> new CursedTomb(p.stacksTo(1).durability(128)));
+
+    public static final DeferredItem<Item> WITHIC_OBSTRUCTOR = registerNormalItem("withic_obstructor", "Withic Obstructor", (p) -> new ObstructorItem(p.durability(128), ObstructorItem.Type.WITHIC));
+    public static final DeferredItem<Item> NETHIC_OBSTRUCTOR = registerNormalItem("nethic_obstructor", "Nethic Obstructor", (p) -> new ObstructorItem(p.durability(128), ObstructorItem.Type.NETHER));
 
 
     public static final DeferredItem<Item> PET_FOOD = registerNormalItem("pet_food", "Pet Food");

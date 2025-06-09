@@ -99,6 +99,9 @@ public class JRecipeProvider extends RecipeProvider {
         addShapedRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, "ddd", "did", "ddd", 'd', JBlocks.BLOOD_ROCK.get(), 'i', JItems.BALMY_TEARDROP.get(), JBlocks.BLOOD_RUNE.get(), 4);
         addShapedRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, "dd", "dd", 'd', JBlocks.CARVED_BLOOD_ROCK.get(), JBlocks.BLOOD_PILLAR.get(), 4);
 
+        addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "d", "d", 'd', Blocks.OBSIDIAN, JItems.OBSIDIAN_STICK.get(), 4);
+
+
         add3x3Recipe(recipeConsumer, JItems.EUCA_PORTAL_GEM.get(), JBlocks.EUCA_PORTAL_FRAME.get(), 10);
         add3x3Recipe(recipeConsumer, JItems.DEPTHS_PORTAL_GEM.get(), JBlocks.DEPTHS_PORTAL_FRAME.get(), 12);
         add3x3Recipe(recipeConsumer, JItems.CORBA_PORTAL_GEM.get(), JBlocks.CORBA_PORTAL_FRAME.get(), 12);

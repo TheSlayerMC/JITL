@@ -120,6 +120,10 @@ public enum JToolTiers {
     RE_STONE_SWORD(JToolTier.RE_STONE_SWORD, 4, 0),
     CRYSTAL_BLADE(JToolTier.CRYSTAL_BLADE, 5, 0),
 
+    LIFE_HOE(JToolTier.LIFE_HOE, 0),
+    EARTH_HOE(JToolTier.EARTH_HOE, 0),
+
+
     //frozen
     SNOW_SHOVELER(JToolTier.SNOW_SHOVELER, 6, 0),
     FROSTBITTEN_SWORD(JToolTier.FROSTBITTEN_SWORD, 6, 0),
@@ -242,6 +246,9 @@ public enum JToolTiers {
         public static final ToolMaterial ORBADITE = new ToolMaterial(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 2056, 15F, 8F, 15, JTags.ORBADITE);
 
         public static final ToolMaterial SOULSTONE = new ToolMaterial(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1883, 8F, 5F, 15, JTags.SOULSTONE);
+
+        public static final ToolMaterial LIFE_HOE = new ToolMaterial(BlockTags.INCORRECT_FOR_STONE_TOOL, 126, 8F, 5F, 15, JTags.EMPTY);
+        public static final ToolMaterial EARTH_HOE = new ToolMaterial(BlockTags.INCORRECT_FOR_STONE_TOOL, 512, 8F, 5F, 15, JTags.EMPTY);
 
         public static final ToolMaterial CHAMPIONS_SWORD = new ToolMaterial(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1483, 8F, 5F, 25, JTags.EMPTY);
         public static final ToolMaterial THE_WRAITH = new ToolMaterial(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1483, 8F, 5F, 25, JTags.EMPTY);
