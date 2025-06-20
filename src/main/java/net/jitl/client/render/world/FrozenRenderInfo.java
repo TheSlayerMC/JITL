@@ -1,15 +1,20 @@
 package net.jitl.client.render.world;
 
+import net.jitl.client.render.world.clouds.JCloudRenderer;
+import net.jitl.core.init.JITL;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 
+import java.util.Optional;
+
 public class FrozenRenderInfo extends DimensionSpecialEffects {
 
     public FrozenRenderInfo() {
-        super(150F, true, SkyType.NONE, false, false);
+        super(SkyType.NONE, false, false);
     }
 
     @Override
@@ -19,8 +24,9 @@ public class FrozenRenderInfo extends DimensionSpecialEffects {
     }
 
     @Override
-    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, double camX, double camY, double camZ, Matrix4f modelViewMatrix, Matrix4f projectionMatrix) {
-        //new JCloudRenderer(JITL.rl("textures/environment/frozen_clouds.png")).render(1, CloudStatus.FANCY, getCloudHeight(), projectionMatrix, modelViewMatrix, new Vec3(camX, camY, camZ), partialTick);
+    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, double camX, double camY, double camZ, Matrix4f modelViewMatrix) {
+        Optional<Integer> optional = level.dimensionType().cloudHeight();
+        optional.ifPresent(height -> new JCloudRenderer(JITL.rl("textures/environment/frozen_clouds.png")).render(1, Minecraft.getInstance().options.cloudStatus().get(), height, new Vec3(camX, camY, camZ), partialTick + ticks));
         return true;
     }
 

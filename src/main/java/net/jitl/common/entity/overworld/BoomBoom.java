@@ -36,6 +36,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.manager.AnimatableManager;
 import software.bernie.geckolib.animatable.processing.AnimationController;
@@ -123,7 +125,7 @@ public class BoomBoom extends JMonsterEntity {
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag pCompound) {
+    public void addAdditionalSaveData(ValueOutput pCompound) {
         super.addAdditionalSaveData(pCompound);
         if(this.entityData.get(DATA_IS_POWERED))
             pCompound.putBoolean("powered", true);
@@ -133,7 +135,7 @@ public class BoomBoom extends JMonsterEntity {
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag compound) {
+    public void readAdditionalSaveData(ValueInput compound) {
         super.readAdditionalSaveData(compound);
         this.entityData.set(DATA_IS_POWERED, compound.getBooleanOr("powered", false));
         this.maxSwell = compound.getShortOr("Fuse", (short)30);

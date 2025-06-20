@@ -7,6 +7,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -89,13 +91,13 @@ public class DamagingProjectileEntity extends ThrowableProjectile {
     }
 
     @Override
-    protected void addAdditionalSaveData(CompoundTag compound) {
+    protected void addAdditionalSaveData(ValueOutput compound) {
         super.addAdditionalSaveData(compound);
         compound.putFloat("damage", damage);
     }
 
     @Override
-    protected void readAdditionalSaveData(CompoundTag compound) {
+    protected void readAdditionalSaveData(ValueInput compound) {
         super.readAdditionalSaveData(compound);
         damage = compound.getFloatOr("damage", 0);
     }

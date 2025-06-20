@@ -15,8 +15,10 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import org.joml.Vector3f;
 
 import javax.annotation.Nullable;
+import java.util.Set;
 
 public class SapphireShieldRenderer implements SpecialModelRenderer<DataComponentMap> {
 
@@ -41,6 +43,14 @@ public class SapphireShieldRenderer implements SpecialModelRenderer<DataComponen
         this.model.renderToBuffer(pose, vertexconsumer, alp, col);
         pose.popPose();
     }
+
+    @Override
+    public void getExtents(Set<Vector3f> set) {
+        PoseStack posestack = new PoseStack();
+        posestack.scale(1.0F, -1.0F, -1.0F);
+        this.model.root().getExtentsForGui(posestack, set);
+    }
+
 
     @OnlyIn(Dist.CLIENT)
     public record Unbaked() implements SpecialModelRenderer.Unbaked {

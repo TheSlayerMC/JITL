@@ -2,19 +2,19 @@ package net.jitl.common.capability.gear;
 
 import net.jitl.common.items.base.JArmorItem;
 import net.jitl.common.items.gear.FullArmorAbility;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.equipment.ArmorMaterial;
-import net.neoforged.neoforge.common.util.INBTSerializable;
-import org.jetbrains.annotations.UnknownNullability;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.neoforged.neoforge.common.util.ValueIOSerializable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Objects;
 
-public class PlayerArmor implements INBTSerializable<CompoundTag> {
+public class PlayerArmor implements ValueIOSerializable {
 
     private ArrayList<ItemStack> armorPieces;
     private FullArmorAbility fullSet;
@@ -67,14 +67,13 @@ public class PlayerArmor implements INBTSerializable<CompoundTag> {
     }
 
     @Override
-    public @UnknownNullability CompoundTag serializeNBT(HolderLookup.Provider provider) {
-        CompoundTag nbt = new CompoundTag();
+    public void serialize(ValueOutput valueOutput) {
         nbt.put("armor_ability", this.nbt);
-        return nbt;
+
     }
 
     @Override
-    public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
+    public void deserialize(ValueInput valueInput) {
         this.nbt = nbt.getCompound("armor_ability").get();
     }
 }

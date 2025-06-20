@@ -9,6 +9,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.ProblemReporter;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.Difficulty;
@@ -20,6 +21,9 @@ import net.minecraft.world.level.SpawnData;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.storage.TagValueInput;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.event.EventHooks;
@@ -92,67 +96,69 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
                 SpawnData spawndata = this.getOrCreateNextSpawnData(serverLevel, randomsource, pos);
 
                 for (int i = 0; i < this.spawnCount; ++i) {
-                    CompoundTag compoundtag = spawndata.getEntityToSpawn();
-                    Optional<EntityType<?>> optional = EntityType.by(compoundtag);
-                    if (optional.isEmpty()) {
-                        this.delay(serverLevel, pos);
-                        return;
-                    }
-
-                    Vec3 vec3 = (Vec3) compoundtag.read("Pos", Vec3.CODEC).orElseGet(() -> new Vec3((double) pos.getX() + (randomsource.nextDouble() - randomsource.nextDouble()) * (double) this.spawnRange + (double) 0.5F, (double) (pos.getY() + randomsource.nextInt(3) - 1), (double) pos.getZ() + (randomsource.nextDouble() - randomsource.nextDouble()) * (double) this.spawnRange + (double) 0.5F));
-                    if (serverLevel.noCollision(((EntityType) optional.get()).getSpawnAABB(vec3.x, vec3.y, vec3.z))) {
-                        BlockPos blockpos = BlockPos.containing(vec3);
-                        if (spawndata.getCustomSpawnRules().isPresent()) {
-                            if (!((EntityType) optional.get()).getCategory().isFriendly() && serverLevel.getDifficulty() == Difficulty.PEACEFUL) {
-                                continue;
-                            }
-
-                            SpawnData.CustomSpawnRules spawndata$customspawnrules = (SpawnData.CustomSpawnRules) spawndata.getCustomSpawnRules().get();
-                            if (!spawndata$customspawnrules.isValidPosition(blockpos, serverLevel)) {
-                                continue;
-                            }
-                        } else if (!SpawnPlacements.checkSpawnRules((EntityType) optional.get(), serverLevel, EntitySpawnReason.SPAWNER, blockpos, serverLevel.getRandom())) {
-                            continue;
-                        }
-
-                        Entity entity = EntityType.loadEntityRecursive(compoundtag, serverLevel, EntitySpawnReason.SPAWNER, (p_404552_) -> {
-                            p_404552_.snapTo(vec3.x, vec3.y, vec3.z, p_404552_.getYRot(), p_404552_.getXRot());
-                            return p_404552_;
-                        });
-                        if (entity == null) {
+                    try (ProblemReporter.ScopedCollector problemreporter$scopedcollector = new ProblemReporter.ScopedCollector(this::toString, LOGGER)) {
+                        ValueInput compoundtag = TagValueInput.create(problemreporter$scopedcollector, serverLevel.registryAccess(), spawndata.getEntityToSpawn());
+                        Optional<EntityType<?>> optional = EntityType.by(compoundtag);
+                        if (optional.isEmpty()) {
                             this.delay(serverLevel, pos);
                             return;
                         }
 
-                        int j = serverLevel.getEntities(EntityTypeTest.forExactClass(entity.getClass()), (new AABB((double) pos.getX(), (double) pos.getY(), (double) pos.getZ(), (double) (pos.getX() + 1), (double) (pos.getY() + 1), (double) (pos.getZ() + 1))).inflate((double) this.spawnRange), EntitySelector.NO_SPECTATORS).size();
-                        if (j >= this.maxNearbyEntities) {
-                            this.delay(serverLevel, pos);
-                            return;
-                        }
+                        Vec3 vec3 = (Vec3) compoundtag.read("Pos", Vec3.CODEC).orElseGet(() -> new Vec3((double) pos.getX() + (randomsource.nextDouble() - randomsource.nextDouble()) * (double) this.spawnRange + (double) 0.5F, (double) (pos.getY() + randomsource.nextInt(3) - 1), (double) pos.getZ() + (randomsource.nextDouble() - randomsource.nextDouble()) * (double) this.spawnRange + (double) 0.5F));
+                        if (serverLevel.noCollision(((EntityType) optional.get()).getSpawnAABB(vec3.x, vec3.y, vec3.z))) {
+                            BlockPos blockpos = BlockPos.containing(vec3);
+                            if (spawndata.getCustomSpawnRules().isPresent()) {
+                                if (!((EntityType) optional.get()).getCategory().isFriendly() && serverLevel.getDifficulty() == Difficulty.PEACEFUL) {
+                                    continue;
+                                }
 
-                        entity.snapTo(entity.getX(), entity.getY(), entity.getZ(), randomsource.nextFloat() * 360.0F, 0.0F);
-                        if (entity instanceof Mob) {
-                            Mob mob = (Mob) entity;
-                            if (!EventHooks.checkSpawnPositionSpawner(mob, serverLevel, EntitySpawnReason.SPAWNER, spawndata, this)) {
+                                SpawnData.CustomSpawnRules spawndata$customspawnrules = (SpawnData.CustomSpawnRules) spawndata.getCustomSpawnRules().get();
+                                if (!spawndata$customspawnrules.isValidPosition(blockpos, serverLevel)) {
+                                    continue;
+                                }
+                            } else if (!SpawnPlacements.checkSpawnRules((EntityType) optional.get(), serverLevel, EntitySpawnReason.SPAWNER, blockpos, serverLevel.getRandom())) {
                                 continue;
                             }
 
-                            boolean flag1 = spawndata.getEntityToSpawn().size() == 1 && spawndata.getEntityToSpawn().getString("id").isPresent();
-                            EventHooks.finalizeMobSpawnSpawner(mob, serverLevel, serverLevel.getCurrentDifficultyAt(entity.blockPosition()), EntitySpawnReason.SPAWNER, (SpawnGroupData) null, this, flag1);
-                        }
+                            Entity entity = EntityType.loadEntityRecursive(compoundtag, serverLevel, EntitySpawnReason.SPAWNER, (p_404552_) -> {
+                                p_404552_.snapTo(vec3.x, vec3.y, vec3.z, p_404552_.getYRot(), p_404552_.getXRot());
+                                return p_404552_;
+                            });
+                            if (entity == null) {
+                                this.delay(serverLevel, pos);
+                                return;
+                            }
 
-                        if (!serverLevel.tryAddFreshEntityWithPassengers(entity)) {
-                            this.delay(serverLevel, pos);
-                            return;
-                        }
+                            int j = serverLevel.getEntities(EntityTypeTest.forExactClass(entity.getClass()), (new AABB((double) pos.getX(), (double) pos.getY(), (double) pos.getZ(), (double) (pos.getX() + 1), (double) (pos.getY() + 1), (double) (pos.getZ() + 1))).inflate((double) this.spawnRange), EntitySelector.NO_SPECTATORS).size();
+                            if (j >= this.maxNearbyEntities) {
+                                this.delay(serverLevel, pos);
+                                return;
+                            }
 
-                        serverLevel.levelEvent(2004, pos, 0);
-                        serverLevel.gameEvent(entity, GameEvent.ENTITY_PLACE, blockpos);
-                        if (entity instanceof Mob) {
-                            ((Mob) entity).spawnAnim();
-                        }
+                            entity.snapTo(entity.getX(), entity.getY(), entity.getZ(), randomsource.nextFloat() * 360.0F, 0.0F);
+                            if (entity instanceof Mob) {
+                                Mob mob = (Mob) entity;
+                                if (!EventHooks.checkSpawnPositionSpawner(mob, serverLevel, EntitySpawnReason.SPAWNER, spawndata, this)) {
+                                    continue;
+                                }
 
-                        flag = true;
+                                boolean flag1 = spawndata.getEntityToSpawn().size() == 1 && spawndata.getEntityToSpawn().getString("id").isPresent();
+                                EventHooks.finalizeMobSpawnSpawner(mob, serverLevel, serverLevel.getCurrentDifficultyAt(entity.blockPosition()), EntitySpawnReason.SPAWNER, (SpawnGroupData) null, this, flag1);
+                            }
+
+                            if (!serverLevel.tryAddFreshEntityWithPassengers(entity)) {
+                                this.delay(serverLevel, pos);
+                                return;
+                            }
+
+                            serverLevel.levelEvent(2004, pos, 0);
+                            serverLevel.gameEvent(entity, GameEvent.ENTITY_PLACE, blockpos);
+                            if (entity instanceof Mob) {
+                                ((Mob) entity).spawnAnim();
+                            }
+
+                            flag = true;
+                        }
                     }
                 }
 
@@ -176,7 +182,7 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
     }
 
     @Override
-    public void load(@Nullable Level level, BlockPos pos, CompoundTag tag) {
+    public void load(@Nullable Level level, BlockPos pos, ValueInput tag) {
         this.spawnDelay = tag.getShortOr("Delay", (short)20);
         tag.read("SpawnData", SpawnData.CODEC).ifPresent((p_400944_) -> this.setNextSpawnData(level, pos, p_400944_));
         this.spawnPotentials = (WeightedList)tag.read("SpawnPotentials", SpawnData.LIST_CODEC).orElseGet(() -> WeightedList.of(this.nextSpawnData != null ? this.nextSpawnData : new SpawnData()));
@@ -190,7 +196,7 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
     }
 
     @Override
-    public CompoundTag save(CompoundTag tag) {
+    public void save(ValueOutput tag) {
         tag.putShort("Delay", (short)this.spawnDelay);
         tag.putShort("MinSpawnDelay", (short)this.minSpawnDelay);
         tag.putShort("MaxSpawnDelay", (short)this.maxSpawnDelay);
@@ -200,7 +206,6 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
         tag.putShort("SpawnRange", (short)this.spawnRange);
         tag.storeNullable("SpawnData", SpawnData.CODEC, this.nextSpawnData);
         tag.store("SpawnPotentials", SpawnData.LIST_CODEC, this.spawnPotentials);
-        return tag;
     }
 
     @Nullable

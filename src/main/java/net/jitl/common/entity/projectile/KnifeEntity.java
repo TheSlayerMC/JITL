@@ -17,6 +17,8 @@ import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.NotNull;
 
@@ -74,17 +76,17 @@ public class KnifeEntity extends AbstractKnifeEntity implements ItemSupplier {
     }
 
     @Override
-    public void addAdditionalSaveData(@NotNull CompoundTag nbt) {
+    public void addAdditionalSaveData(ValueOutput nbt) {
         super.addAdditionalSaveData(nbt);
         nbt.putInt("dur", getStack().getDamageValue());
-        nbt.put("stack", getStack().save(this.registryAccess()));
+        nbt.store("stack", ItemStack.CODEC, getStack());
     }
 
     @Override
-    public void readAdditionalSaveData(@NotNull CompoundTag nbt) {
+    public void readAdditionalSaveData(ValueInput nbt) {
         super.readAdditionalSaveData(nbt);
         durability = nbt.getIntOr("dur", 0);
-        setStack(ItemStack.parse(this.registryAccess(), nbt.getCompoundOrEmpty("stack")).orElse(this.getDefaultPickupItem()));
+        this.setStack(nbt.read("stack", ItemStack.CODEC).orElse(this.getDefaultPickupItem()));
         if(getStack().isEmpty()) remove(RemovalReason.DISCARDED);
     }
 

@@ -3,16 +3,15 @@ package net.jitl.common.capability.essence;
 import net.jitl.core.data.JNetworkRegistry;
 import net.jitl.core.init.internal.JAttributes;
 import net.jitl.core.init.network.PacketEssenceBar;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.neoforge.common.util.INBTSerializable;
-import org.jetbrains.annotations.UnknownNullability;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.neoforged.neoforge.common.util.ValueIOSerializable;
 
 import java.util.Objects;
 
-public class PlayerEssence implements INBTSerializable<CompoundTag> {
+public class PlayerEssence implements ValueIOSerializable {
     private float currentEssence;
     private float burnoutTime;
     private int timeout;
@@ -86,25 +85,23 @@ public class PlayerEssence implements INBTSerializable<CompoundTag> {
         return consumeEssence(player, price);
     }
 
-    @Override
-    public @UnknownNullability CompoundTag serializeNBT(HolderLookup.Provider provider) {
-        CompoundTag nbt = new CompoundTag();
-        nbt.putFloat("essence", this.currentEssence);
-        nbt.putFloat("burnoutTime", this.burnoutTime);
-        nbt.putInt("timeout", this.timeout);
-        return nbt;
-    }
-
-    @Override
-    public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
-        currentEssence = nbt.getFloatOr("essence", 0F);
-        burnoutTime = nbt.getFloatOr("burnoutTime", 0F);
-        timeout = nbt.getIntOr("timeout", 0);
-    }
-
     public void sendPacket(Player player) {
         if(player != null && player instanceof ServerPlayer) {
             JNetworkRegistry.sendToPlayer((ServerPlayer)player, new PacketEssenceBar(getCurrentEssence(), getBurnout()));
         }
+    }
+
+    @Override
+    public void serialize(ValueOutput valueOutput) {
+        valueOutput.putFloat("essence", this.currentEssence);
+        valueOutput.putFloat("burnoutTime", this.burnoutTime);
+        valueOutput.putInt("timeout", this.timeout);
+    }
+
+    @Override
+    public void deserialize(ValueInput valueInput) {
+        currentEssence = valueInput.getFloatOr("essence", 0F);
+        burnoutTime = valueInput.getFloatOr("burnoutTime", 0F);
+        timeout = valueInput.getIntOr("timeout", 0);
     }
 }

@@ -20,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 
 import javax.annotation.Nullable;
+import java.util.Optional;
 
 public class TerraniaRenderInfo extends DimensionSpecialEffects {
 
@@ -27,12 +28,13 @@ public class TerraniaRenderInfo extends DimensionSpecialEffects {
     private static final ResourceLocation CLOUDIA_SKY_LOCATION = JITL.rl("textures/environment/cloudia_sky.png");
 
     public TerraniaRenderInfo() {
-        super(200F, true, SkyType.NONE, false, false);
+        super(SkyType.NONE, false, false);
     }
 
-        @Override
-    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, double camX, double camY, double camZ, Matrix4f modelViewMatrix, Matrix4f projectionMatrix) {
-        new JCloudRenderer(JITL.rl("textures/environment/cloudia_clouds.png")).render(level.getCloudColor(partialTick), Minecraft.getInstance().options.cloudStatus().get(), getCloudHeight(), new Vec3(camX, camY, camZ), partialTick);
+    @Override
+    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, double camX, double camY, double camZ, Matrix4f modelViewMatrix) {
+        Optional<Integer> optional = level.dimensionType().cloudHeight();
+        optional.ifPresent(height -> new JCloudRenderer(JITL.rl("textures/environment/cloudia_clouds.png")).render(1, Minecraft.getInstance().options.cloudStatus().get(), height, new Vec3(camX, camY, camZ), partialTick + ticks));
         return true;
     }
 

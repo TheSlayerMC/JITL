@@ -27,11 +27,14 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.manager.AnimatableManager;
@@ -98,19 +101,19 @@ public class BossCrystal extends Mob implements GeoEntity {
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag compound) {
-        ContainerHelper.loadAllItems(compound, storedItems, level().registryAccess());
+    protected void readAdditionalSaveData(ValueInput compound) {
+        ContainerHelper.loadAllItems(compound, storedItems);
         setType(compound.getStringOr("type", "type"));
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag compound) {
-        ContainerHelper.saveAllItems(compound, storedItems, level().registryAccess());
+    protected void addAdditionalSaveData(ValueOutput compound) {
+        ContainerHelper.saveAllItems(compound, storedItems, true);
         compound.putString("type", getCrystalType());
     }
 
     @Override
-    public boolean canBeCollidedWith() {
+    public boolean canBeCollidedWith(@Nullable Entity e) {
         return true;
     }
 

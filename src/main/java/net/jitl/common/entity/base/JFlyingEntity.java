@@ -7,7 +7,6 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.FlyingMob;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.monster.Enemy;

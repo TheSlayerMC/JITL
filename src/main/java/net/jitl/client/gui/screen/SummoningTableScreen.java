@@ -5,6 +5,7 @@ import net.jitl.common.block.entity.container.SummoningTableContainer;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -31,10 +32,10 @@ public class SummoningTableScreen extends AbstractContainerScreen<SummoningTable
 
     @Override
     protected void renderBg(@NotNull GuiGraphics graphics, float tick, int mouseX, int mouseY) {
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(GUI_TEXTURE).getTexture());
+        //RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(GUI_TEXTURE).getTextureView());
         int i = this.leftPos;
         int j = this.topPos;
-        graphics.blit(RenderType::guiTextured, GUI_TEXTURE, i, j, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
+        graphics.blit(RenderPipelines.GUI_TEXTURED, GUI_TEXTURE, i, j, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
     }
 }

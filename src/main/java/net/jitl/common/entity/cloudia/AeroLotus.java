@@ -66,7 +66,7 @@ public class AeroLotus extends JPathfinderMob {
     }
 
     @Override
-    public boolean canBeCollidedWith() {
+    public boolean canBeCollidedWith(Entity e) {
         return false;
     }
 

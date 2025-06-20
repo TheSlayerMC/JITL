@@ -30,5 +30,5 @@ public class EssenceRegenCatalystItem extends JCurioItem {
 //        Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = LinkedHashMultimap.create();
 //        modifierMultimap.put(JAttributes.ESSENCE_REGEN_SPEED, new AttributeModifier(ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "essence_regen_speed_modifier"), regenSpeed, AttributeModifier.Operation.ADD_VALUE));
 //        return modifierMultimap;
-//    }
+//    }todo
 }

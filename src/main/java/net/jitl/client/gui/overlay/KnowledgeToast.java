@@ -16,6 +16,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.toasts.Toast;
 import net.minecraft.client.gui.components.toasts.ToastManager;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.resources.ResourceLocation;
@@ -54,10 +55,9 @@ public class KnowledgeToast implements JToast {
 
     @Override
     public void render(GuiGraphics poseStack, Font font, long timeSinceLastVisible) {
-        RenderSystem.setShaderTexture(0, Minecraft.getInstance().getTextureManager().getTexture(TEXTURE).getTexture());
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.setShaderTexture(0, Minecraft.getInstance().getTextureManager().getTexture(TEXTURE).getTextureView());
         JDisplayInfo displayinfo = isLevel ? this.knowledge.getLevelDisplay() : this.knowledge.getXPDisplay();
-        poseStack.blitSprite(RenderType::guiTextured, TEXTURE, 0, 0, this.width(), this.height());
+        poseStack.blitSprite(RenderPipelines.GUI_TEXTURED, TEXTURE, 0, 0, this.width(), this.height());
         if(displayinfo != null) {
             List<FormattedCharSequence> list = font.split(displayinfo.getDescription(), 125);
             int i = displayinfo.getFrame() == JFrameType.LEVEL ? ArgbColor.from(ChatFormatting.DARK_PURPLE) : ArgbColor.from(ChatFormatting.BLACK);
@@ -88,14 +88,14 @@ public class KnowledgeToast implements JToast {
                 }
             }
             float scale = 0.8F;
-            double translate = 2.5D;
-            poseStack.pose().pushPose();
-            poseStack.pose().scale(scale, scale, scale);
-            poseStack.pose().translate(translate, translate, translate);
-            RenderSystem.setShaderTexture(0, Minecraft.getInstance().getTextureManager().getTexture(KNOWLEDGE_SPRITE).getTexture());
-            poseStack.blitSprite(RenderType::guiTextured, KNOWLEDGE_SPRITE, knowledge.getSpriteX(), knowledge.getSpriteY(), 32, 32);
+            float translate = 2.5F;
+            poseStack.pose().pushMatrix();
+            poseStack.pose().scale(scale, scale);
+            poseStack.pose().translate(translate, translate);
+            RenderSystem.setShaderTexture(0, Minecraft.getInstance().getTextureManager().getTexture(KNOWLEDGE_SPRITE).getTextureView());
+            poseStack.blitSprite(RenderPipelines.GUI_TEXTURED, KNOWLEDGE_SPRITE, knowledge.getSpriteX(), knowledge.getSpriteY(), 32, 32);
 
-            poseStack.pose().popPose();
+            poseStack.pose().popMatrix();
         }
     }
 }

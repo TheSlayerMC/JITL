@@ -29,6 +29,8 @@ import net.minecraft.world.entity.npc.Npc;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
@@ -116,14 +118,14 @@ public class OverworldSentryStalker extends JPathfinderMob implements Npc{
     }
 
     @Override
-    public void addAdditionalSaveData(@NotNull CompoundTag compound) {
+    protected void addAdditionalSaveData(ValueOutput compound) {
         super.addAdditionalSaveData(compound);
         compound.putBoolean("activated", this.entityData.get(DATA_IS_ACTIVATED));
         compound.putBoolean("hasKey", this.entityData.get(DATA_HAS_KEY));
     }
 
     @Override
-    public void readAdditionalSaveData(@NotNull CompoundTag compound) {
+    protected void readAdditionalSaveData(ValueInput compound) {
         super.readAdditionalSaveData(compound);
         setActivated(compound.getBooleanOr("activated", false));
         setHasKey(compound.getBooleanOr("hasKey", false));

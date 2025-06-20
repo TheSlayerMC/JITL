@@ -1,7 +1,5 @@
 package net.jitl.common.items;
 
-import net.jitl.client.knowledge.EnumKnowledge;
-import net.jitl.common.capability.stats.PlayerStats;
 import net.jitl.common.items.base.JItem;
 import net.jitl.core.helper.IEssenceItem;
 import net.jitl.core.init.internal.JDataAttachments;
@@ -40,10 +38,10 @@ public class ObstructorItem extends JItem implements IEssenceItem {
                 for (LivingEntity entity : level.getEntitiesOfClass(LivingEntity.class, axisalignedbb)) {
                     if(!(entity instanceof Player)) {
                         int duration = 60;
-                        if(type == Type.NETHER) {
+                        if(this.type == Type.NETHER) {
                             entity.setRemainingFireTicks(duration);
                         }
-                        if(type == Type.WITHIC) {
+                        if(this.type == Type.WITHIC) {
                             entity.addEffect(new MobEffectInstance(MobEffects.WITHER, duration));
                         }
                     }
@@ -56,9 +54,9 @@ public class ObstructorItem extends JItem implements IEssenceItem {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext pContext, TooltipDisplay display, Consumer<Component> comp, TooltipFlag pTooltipFlag) {
 
-        if(this == JItems.WITHIC_OBSTRUCTOR.asItem())
+        if(this.type == Type.WITHIC)
             comp.accept(Component.translatable("jitl.item.desc.withic_obstructor"));
-        if(this == JItems.NETHIC_OBSTRUCTOR.asItem())
+        if(this.type == Type.NETHER)
             comp.accept(Component.translatable("jitl.item.desc.nethic_obstructor"));
 
         comp.accept(Component.translatable("jitl.tooltip.essence_usage", 5));

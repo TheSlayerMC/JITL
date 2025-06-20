@@ -21,12 +21,14 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 
+import java.util.Optional;
+
 public class EucaRenderInfo extends DimensionSpecialEffects {
 
     private static final ResourceLocation CORBA_MOON_LOCATION = JITL.rl("textures/environment/corba_moon.png");
 
     public EucaRenderInfo() {
-        super(0F, true, SkyType.NONE, false, false);
+        super(SkyType.NONE, false, false);
     }
 
     @Override
@@ -36,18 +38,19 @@ public class EucaRenderInfo extends DimensionSpecialEffects {
     }
 
     @Override
-    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, double camX, double camY, double camZ, Matrix4f modelViewMatrix, Matrix4f projectionMatrix) {
-        new JCloudRenderer(JITL.rl("textures/environment/euca_clouds.png")).render(1, Minecraft.getInstance().options.cloudStatus().get(), getCloudHeight(), new Vec3(camX, camY, camZ), partialTick + ticks);
+    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, double camX, double camY, double camZ, Matrix4f modelViewMatrix) {
+        Optional<Integer> optional = level.dimensionType().cloudHeight();
+        optional.ifPresent(height -> new JCloudRenderer(JITL.rl("textures/environment/euca_clouds.png")).render(1, Minecraft.getInstance().options.cloudStatus().get(), height, new Vec3(camX, camY, camZ), partialTick + ticks));
         return true;
     }
 
     @Override
-    public boolean renderSky(@NotNull ClientLevel level, int ticks, float partialTick, @NotNull Matrix4f frustumMatrix, @NotNull Camera camera, @NotNull Matrix4f projectionMatrix, @NotNull Runnable setupFog) {
+    public boolean renderSky(ClientLevel level, int ticks, float partialTick, Matrix4f modelViewMatrix, Camera camera, Runnable setupFog) {
         setupFog.run();
         FogType fogtype = camera.getFluidInCamera();
         if(fogtype != FogType.POWDER_SNOW && fogtype != FogType.LAVA && !doesMobEffectBlockSky(camera)) {
             PoseStack poseStack = new PoseStack();
-            poseStack.mulPose(frustumMatrix);
+            poseStack.mulPose(modelViewMatrix);
 
             //START CORBA MOON
             poseStack.mulPose(Axis.YP.rotationDegrees(-180F));

@@ -12,6 +12,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
@@ -88,11 +89,11 @@ public class LoreScrollEntryScreen extends Screen {
     }
 
     public void drawCenteredStringWithCustomScale(GuiGraphics gui, Font f, FormattedText comp, int x, int y, int z, EnumHexColor colour, float size, int avaliableHeight) {
-        gui.pose().pushPose();
-        gui.pose().translate(x - (double)f.width(comp) / 2 * size, y + ((double)avaliableHeight / 2) + (f.lineHeight * size > 1 ? -1 * f.lineHeight * size : f.lineHeight * size) * 0.5, z);
-        gui.pose().scale(size, size, size);
+        gui.pose().pushMatrix();
+        gui.pose().translate((float) (x - (double)f.width(comp) / 2 * size), (float) (y + ((double)avaliableHeight / 2) + (f.lineHeight * size > 1 ? -1 * f.lineHeight * size : f.lineHeight * size) * 0.5));
+        gui.pose().scale(size, size);
         gui.drawString(f, comp.getString(), 0, 0, colour.getInt(), false);
-        gui.pose().popPose();
+        gui.pose().popMatrix();
     }
 
     private void drawContentPart(GuiGraphics poseStack, int partIdx, int contentRight, int partTop, int partBuffer, Tesselator tess) {
@@ -115,7 +116,7 @@ public class LoreScrollEntryScreen extends Screen {
     @Override
     public void render(@NotNull GuiGraphics poseStack, int mouseX, int mouseY, float partialTicks) {
         renderBackground(poseStack, mouseX, mouseY, partialTicks);
-        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(BG).getTexture());
+        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(BG).getTextureView());
 
         int heightRectCount = (height - (height <= 480 ? 12 : 48)) / 32;
         int widthRectCount = height <= 480 ? 6 : 10;
@@ -130,7 +131,7 @@ public class LoreScrollEntryScreen extends Screen {
             for (int y = 0; y < heightRectCount; y++) {
                 int textureX = x == 0 ? 0 : (x == widthRectCount - 1 ? 64 : 32);
                 int textureY = y == 0 ? 0 : (y == heightRectCount - 1 ? 64 : 32);
-                poseStack.blit(RenderType::guiTextured, BG, guix0 + x * 32, guiy0 + y * 32, textureX, textureY, 32, 32, 256, 256);
+                poseStack.blit(RenderPipelines.GUI_TEXTURED, BG, guix0 + x * 32, guiy0 + y * 32, textureX, textureY, 32, 32, 256, 256);
             }
         }
         drawScrollingContent(poseStack, mouseX, mouseY);
@@ -205,7 +206,7 @@ public class LoreScrollEntryScreen extends Screen {
         int baseY = this.top + border - (int) this.scrollDistance;
         int indentY = 0;
 
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        //RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 
         for (int partIdx = 0; partIdx < entryLength; ++partIdx) {
             int partTop = baseY + this.headerHeight + indentY;
@@ -242,7 +243,7 @@ public class LoreScrollEntryScreen extends Screen {
 
 //            RenderSystem.disableBlend();
 //            RenderSystem.enableBlend();
-            RenderSystem.setShaderColor(1F, 1F, 1F, 1F);
+            //RenderSystem.setShaderColor(1F, 1F, 1F, 1F);
 
             alpha = DrawHelper.getAlpha(SLIDER_PATH_COLOR);
             red = DrawHelper.getRed(SLIDER_PATH_COLOR);

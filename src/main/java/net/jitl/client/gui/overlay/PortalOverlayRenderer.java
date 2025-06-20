@@ -6,20 +6,19 @@ import net.jitl.core.init.internal.JDataAttachments;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.LayeredDraw;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.EmptyBlockAndTintGetter;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.client.gui.GuiLayer;
 import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(Dist.CLIENT)
-public class PortalOverlayRenderer implements LayeredDraw.Layer {
+public class PortalOverlayRenderer implements GuiLayer {
 
     @Override
     public void render(@NotNull GuiGraphics pGuiGraphics, @NotNull DeltaTracker deltaTracker) {
@@ -37,8 +36,8 @@ public class PortalOverlayRenderer implements LayeredDraw.Layer {
                     timeInPortal = timeInPortal * 0.8F + 0.2F;
                 }
 
-                RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, timeInPortal);
-                pGuiGraphics.blitSprite(RenderType::guiTextured, minecraft.getBlockRenderer().getBlockModelShaper().getParticleIcon(playerPortalOverlay.getPortalBlockToRender().defaultBlockState(), EmptyBlockAndTintGetter.INSTANCE, BlockPos.ZERO), 0, 0, pGuiGraphics.guiWidth(), pGuiGraphics.guiHeight());
+                //RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, timeInPortal);todo
+                pGuiGraphics.blitSprite(RenderPipelines.GUI_TEXTURED, minecraft.getBlockRenderer().getBlockModelShaper().getParticleIcon(playerPortalOverlay.getPortalBlockToRender().defaultBlockState(), EmptyBlockAndTintGetter.INSTANCE, BlockPos.ZERO), 0, 0, pGuiGraphics.guiWidth(), pGuiGraphics.guiHeight());
                 pGuiGraphics.drawCenteredString(minecraft.font, Component.translatable("multiplayer.downloadingTerrain"), screenWidth / 2, screenHeight / 2 - 50, -1);
 
             }

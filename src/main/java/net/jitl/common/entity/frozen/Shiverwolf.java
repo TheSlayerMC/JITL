@@ -49,6 +49,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.pathfinder.PathType;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.manager.AnimatableManager;
@@ -126,14 +128,14 @@ public class Shiverwolf extends JTamableEntity {
     }
 
     @Override
-    public void addAdditionalSaveData(@NotNull CompoundTag compound) {
+    public void addAdditionalSaveData(ValueOutput compound) {
         super.addAdditionalSaveData(compound);
         compound.putByte("CollarColor", (byte)this.getCollarColor().getId());
         this.addPersistentAngerSaveData(compound);
     }
 
     @Override
-    public void readAdditionalSaveData(@NotNull CompoundTag compound) {
+    public void readAdditionalSaveData(ValueInput compound) {
         super.readAdditionalSaveData(compound);
         this.setCollarColor(compound.read("CollarColor", DyeColor.LEGACY_ID_CODEC).orElse(DEFAULT_COLLAR_COLOR));
         this.readPersistentAngerSaveData(this.level(), compound);

@@ -28,6 +28,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.manager.AnimatableManager;
@@ -74,14 +76,14 @@ public class Crypian extends JVillagerEntity {
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag compound) {
+    public void addAdditionalSaveData(ValueOutput compound) {
         super.addAdditionalSaveData(compound);
         compound.putBoolean("canTrade", this.entityData.get(DATA_CAN_TRADE));
         compound.putBoolean("alloyHouse", this.entityData.get(DATA_ALLOY_HOUSE));
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag compound) {
+    public void readAdditionalSaveData(ValueInput compound) {
         super.readAdditionalSaveData(compound);
         setCanTrade(compound.getBooleanOr("canTrade", false));
         setAlloyHouse(compound.getBooleanOr("alloyHouse", true));

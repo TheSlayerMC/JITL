@@ -3,14 +3,13 @@ package net.jitl.common.capability.stats;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.client.stats.PacketPlayerStats;
 import net.jitl.core.data.JNetworkRegistry;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.neoforge.common.util.INBTSerializable;
-import org.jetbrains.annotations.UnknownNullability;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.neoforged.neoforge.common.util.ValueIOSerializable;
 
-public class PlayerStats implements INBTSerializable<CompoundTag> {
+public class PlayerStats implements ValueIOSerializable {
 
     private boolean hasBlizzard;
     private int sentacoins;
@@ -215,64 +214,62 @@ public class PlayerStats implements INBTSerializable<CompoundTag> {
     }
 
     @Override
-    public @UnknownNullability CompoundTag serializeNBT(HolderLookup.Provider provider) {
-        CompoundTag tag = new CompoundTag();
-        tag.putBoolean("hasBlizzard", this.hasBlizzard);
-        tag.putInt("sentacoins", this.sentacoins);
+    public void serialize(ValueOutput valueOutput) {
+        valueOutput.putBoolean("hasBlizzard", this.hasBlizzard);
+        valueOutput.putInt("sentacoins", this.sentacoins);
 
-        tag.putInt("overworld_level", overworldLevel);
-        tag.putInt("nether_level", netherLevel);
-        tag.putInt("end_level", endLevel);
-        tag.putInt("euca_level", eucaLevel);
-        tag.putInt("boil_level", boilLevel);
-        tag.putInt("frozen_level", frozenLevel);
-        tag.putInt("depths_level", depthsLevel);
-        tag.putInt("corba_level", corbaLevel);
-        tag.putInt("cloudia_level", cloudiaLevel);
-        tag.putInt("terrania_level", terraniaLevel);
-        tag.putInt("senterian_level", senterianLevel);
+        valueOutput.putInt("overworld_level", overworldLevel);
+        valueOutput.putInt("nether_level", netherLevel);
+        valueOutput.putInt("end_level", endLevel);
+        valueOutput.putInt("euca_level", eucaLevel);
+        valueOutput.putInt("boil_level", boilLevel);
+        valueOutput.putInt("frozen_level", frozenLevel);
+        valueOutput.putInt("depths_level", depthsLevel);
+        valueOutput.putInt("corba_level", corbaLevel);
+        valueOutput.putInt("cloudia_level", cloudiaLevel);
+        valueOutput.putInt("terrania_level", terraniaLevel);
+        valueOutput.putInt("senterian_level", senterianLevel);
 
-        tag.putFloat("overworld_xp", overworldXP);
-        tag.putFloat("nether_xp", netherXP);
-        tag.putFloat("end_xp", endXP);
-        tag.putFloat("euca_xp", eucaXP);
-        tag.putFloat("boil_xp", boilXP);
-        tag.putFloat("frozen_xp", frozenXP);
-        tag.putFloat("depths_xp", depthsXP);
-        tag.putFloat("corba_xp", corbaXP);
-        tag.putFloat("cloudia_xp", cloudiaXP);
-        tag.putFloat("terrania_xp", terraniaXP);
-        tag.putFloat("senterian_xp", senterianXP);
-        return tag;
+        valueOutput.putFloat("overworld_xp", overworldXP);
+        valueOutput.putFloat("nether_xp", netherXP);
+        valueOutput.putFloat("end_xp", endXP);
+        valueOutput.putFloat("euca_xp", eucaXP);
+        valueOutput.putFloat("boil_xp", boilXP);
+        valueOutput.putFloat("frozen_xp", frozenXP);
+        valueOutput.putFloat("depths_xp", depthsXP);
+        valueOutput.putFloat("corba_xp", corbaXP);
+        valueOutput.putFloat("cloudia_xp", cloudiaXP);
+        valueOutput.putFloat("terrania_xp", terraniaXP);
+        valueOutput.putFloat("senterian_xp", senterianXP);
     }
 
     @Override
-    public void deserializeNBT(HolderLookup.Provider provider, CompoundTag tag) {
-        hasBlizzard = tag.getBooleanOr("hasBlizzard", false);
-        sentacoins = tag.getIntOr("sentacoins", 0);
+    public void deserialize(ValueInput valueInput) {
+        hasBlizzard = valueInput.getBooleanOr("hasBlizzard", false);
+        sentacoins = valueInput.getIntOr("sentacoins", 0);
 
-        overworldLevel = tag.getIntOr("overworld_level", 0);
-        netherLevel = tag.getIntOr("nether_level", 0);
-        endLevel = tag.getIntOr("end_level", 0);
-        eucaLevel = tag.getIntOr("euca_level", 0);
-        boilLevel = tag.getIntOr("boil_level", 0);
-        frozenLevel = tag.getIntOr("frozen_level", 0);
-        depthsLevel = tag.getIntOr("depths_level", 0);
-        corbaLevel = tag.getIntOr("corba_level", 0);
-        cloudiaLevel = tag.getIntOr("cloudia_level", 0);
-        terraniaLevel = tag.getIntOr("terrania_level", 0);
-        senterianLevel = tag.getIntOr("senterian_level", 0);
+        overworldLevel = valueInput.getIntOr("overworld_level", 0);
+        netherLevel = valueInput.getIntOr("nether_level", 0);
+        endLevel = valueInput.getIntOr("end_level", 0);
+        eucaLevel = valueInput.getIntOr("euca_level", 0);
+        boilLevel = valueInput.getIntOr("boil_level", 0);
+        frozenLevel = valueInput.getIntOr("frozen_level", 0);
+        depthsLevel = valueInput.getIntOr("depths_level", 0);
+        corbaLevel = valueInput.getIntOr("corba_level", 0);
+        cloudiaLevel = valueInput.getIntOr("cloudia_level", 0);
+        terraniaLevel = valueInput.getIntOr("terrania_level", 0);
+        senterianLevel = valueInput.getIntOr("senterian_level", 0);
 
-        overworldXP = tag.getFloatOr("overworld_xp", 0F);
-        netherXP = tag.getFloatOr("nether_xp", 0F);
-        endXP = tag.getFloatOr("end_xp", 0F);
-        eucaXP = tag.getFloatOr("euca_xp", 0F);
-        boilXP = tag.getFloatOr("boil_xp", 0F);
-        frozenXP = tag.getFloatOr("frozen_xp", 0F);
-        depthsXP = tag.getFloatOr("depths_xp", 0F);
-        corbaXP = tag.getFloatOr("corba_xp", 0F);
-        cloudiaXP = tag.getFloatOr("cloudia_xp", 0F);
-        terraniaXP = tag.getFloatOr("terrania_xp", 0F);
-        senterianXP = tag.getFloatOr("senterian_xp", 0F);
+        overworldXP = valueInput.getFloatOr("overworld_xp", 0F);
+        netherXP = valueInput.getFloatOr("nether_xp", 0F);
+        endXP = valueInput.getFloatOr("end_xp", 0F);
+        eucaXP = valueInput.getFloatOr("euca_xp", 0F);
+        boilXP = valueInput.getFloatOr("boil_xp", 0F);
+        frozenXP = valueInput.getFloatOr("frozen_xp", 0F);
+        depthsXP = valueInput.getFloatOr("depths_xp", 0F);
+        corbaXP = valueInput.getFloatOr("corba_xp", 0F);
+        cloudiaXP = valueInput.getFloatOr("cloudia_xp", 0F);
+        terraniaXP = valueInput.getFloatOr("terrania_xp", 0F);
+        senterianXP = valueInput.getFloatOr("senterian_xp", 0F);
     }
 }

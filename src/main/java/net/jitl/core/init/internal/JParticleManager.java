@@ -13,7 +13,7 @@ import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-@EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT)//bus = EventBusSubscriber.Bus.MOD)
 public class JParticleManager {
 
     public static final DeferredRegister<ParticleType<?>> REGISTRY = DeferredRegister.create(Registries.PARTICLE_TYPE, JITL.MOD_ID);

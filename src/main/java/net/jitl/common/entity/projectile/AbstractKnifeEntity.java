@@ -11,6 +11,8 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
@@ -70,13 +72,13 @@ public abstract class AbstractKnifeEntity extends AbstractArrow {
     public abstract @NotNull Item pickupItem();
 
     @Override
-    public void addAdditionalSaveData(@NotNull CompoundTag compound) {
+    public void addAdditionalSaveData(ValueOutput compound) {
         super.addAdditionalSaveData(compound);
         compound.putBoolean("damage dealt", dealtDamage);
     }
 
     @Override
-    public void readAdditionalSaveData(@NotNull CompoundTag compound) {
+    public void readAdditionalSaveData(ValueInput compound) {
         super.readAdditionalSaveData(compound);
         dealtDamage = compound.getBooleanOr("damage dealt", false);
     }

@@ -75,17 +75,17 @@ public class SpiritCrystal extends PathfinderMob implements GeoEntity {
         return false;
     }
 
-    @Override
-    public void addAdditionalSaveData(CompoundTag compound) {
-        super.addAdditionalSaveData(compound);
-        //ContainerHelper.saveAllItems(compound, storedItems);
-    }
-
-    @Override
-    public void readAdditionalSaveData(CompoundTag compound) {
-        super.readAdditionalSaveData(compound);
-        //ContainerHelper.loadAllItems(compound, storedItems);
-    }
+//    @Override
+//    public void addAdditionalSaveData(CompoundTag compound) {
+//        super.addAdditionalSaveData(compound);
+//        //ContainerHelper.saveAllItems(compound, storedItems);
+//    }
+//
+//    @Override
+//    public void readAdditionalSaveData(CompoundTag compound) {
+//        super.readAdditionalSaveData(compound);
+//        //ContainerHelper.loadAllItems(compound, storedItems);
+//    }
 
     @Override
     protected InteractionResult mobInteract(Player playerEntity, InteractionHand hand) {

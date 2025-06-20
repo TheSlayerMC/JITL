@@ -54,7 +54,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.ArrayList;
 import java.util.function.Supplier;
 
-@EventBusSubscriber(modid = JITL.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = JITL.MOD_ID)//bus = EventBusSubscriber.Bus.MOD)
 public class JEntities {
 
     public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(Registries.ENTITY_TYPE, JITL.MOD_ID);

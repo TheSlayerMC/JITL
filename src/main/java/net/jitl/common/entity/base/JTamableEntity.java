@@ -31,6 +31,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.EventHooks;
@@ -115,9 +116,8 @@ public abstract class JTamableEntity extends TamableAnimal implements NeutralMob
     }
 
     @Override
-    public void readAdditionalSaveData(@NotNull CompoundTag pCompound) {
-        super.readAdditionalSaveData(pCompound);
-        this.readPersistentAngerSaveData(this.level(), pCompound);
+    protected void readAdditionalSaveData(ValueInput compound) {
+        this.readPersistentAngerSaveData(this.level(), compound);
     }
 
     @Override

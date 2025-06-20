@@ -28,6 +28,8 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.manager.AnimatableManager;
 import software.bernie.geckolib.animatable.processing.AnimationController;
@@ -89,7 +91,7 @@ public class Floro extends JMonsterEntity implements RangedAttackMob {
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag compound) {
+    protected void addAdditionalSaveData(ValueOutput compound) {
         super.addAdditionalSaveData(compound);
         compound.putBoolean("hidden", isHidden());
         compound.putBoolean("shooting", isShooting());
@@ -97,16 +99,10 @@ public class Floro extends JMonsterEntity implements RangedAttackMob {
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag compound) {
+    protected void readAdditionalSaveData(ValueInput compound) {
         super.readAdditionalSaveData(compound);
-
-        if (compound.contains("hidden")) {
-            setHidden(compound.getBoolean("hidden").get());
-        }
-
-        if (compound.contains("shooting")) {
-            setShooting(compound.getBoolean("shooting").get());
-        }
+            setHidden(compound.getBooleanOr("hidden", false));
+            setShooting(compound.getBooleanOr("shooting", false));
     }
 
     @Override

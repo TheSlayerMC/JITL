@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 public class DepthsRenderInfo extends DimensionSpecialEffects {
 
     public DepthsRenderInfo() {
-        super(0F, true, SkyType.NONE, false, false);
+        super(SkyType.NONE, false, false);
     }
 
     @Override

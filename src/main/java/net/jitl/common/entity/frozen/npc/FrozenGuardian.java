@@ -30,7 +30,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.AABB;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.manager.AnimatableManager;
@@ -116,13 +119,13 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag compound) {
+    public void addAdditionalSaveData(ValueOutput compound) {
         super.addAdditionalSaveData(compound);
         compound.putBoolean("activated", this.entityData.get(DATA_IS_ACTIVATED));
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag compound) {
+    public void readAdditionalSaveData(ValueInput compound) {
         super.readAdditionalSaveData(compound);
         setActivated(compound.getBooleanOr("activated", false));
     }
@@ -136,7 +139,7 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
     }
 
     @Override
-    public boolean canBeCollidedWith() {
+    public boolean canBeCollidedWith(@Nullable Entity p_423659_) {
         return false;
     }
 

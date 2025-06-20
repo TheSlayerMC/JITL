@@ -19,7 +19,7 @@ import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@EventBusSubscriber(modid = JITL.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT)//bus = EventBusSubscriber.Bus.MOD)
 public class JBlockColours implements BlockColor, ItemTintSource {
 
     public static final JBlockColours BLOCK_COLOUR_INSTANCE = new JBlockColours();

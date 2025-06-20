@@ -19,6 +19,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
@@ -63,7 +64,7 @@ public abstract class JFlyingBossEntity extends JFlyingEntity implements IDontAt
     public abstract ResourceKey<LootTable> lootTable();
 
     @Override
-    public void readAdditionalSaveData(CompoundTag compound) {
+    protected void readAdditionalSaveData(ValueInput compound) {
         super.readAdditionalSaveData(compound);
         if(hasCustomName())
             this.BOSS_INFO.setName(Objects.requireNonNull(getDisplayName()));

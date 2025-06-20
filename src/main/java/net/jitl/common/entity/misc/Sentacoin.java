@@ -15,6 +15,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
@@ -106,6 +108,18 @@ public class Sentacoin extends Entity {
     }
 
     @Override
+    protected void readAdditionalSaveData(ValueInput valueInput) {
+        this.coinHealth = valueInput.getShortOr("Health", (short)0);
+        this.coinAge = valueInput.getShortOr("Age", (short)0);
+    }
+
+    @Override
+    protected void addAdditionalSaveData(ValueOutput valueOutput) {
+        valueOutput.putShort("Health", (short)this.coinHealth);
+        valueOutput.putShort("Age", (short)this.coinAge);
+    }
+
+    @Override
     public void playerTouch(@NotNull Player player) {
         if(!this.level().isClientSide()) {
             int amount = 0;
@@ -136,18 +150,6 @@ public class Sentacoin extends Entity {
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder pBuilder) { }
-
-    @Override
-    protected void readAdditionalSaveData(CompoundTag compound) {
-        this.coinHealth = compound.getShortOr("Health", (short)0);
-        this.coinAge = compound.getShortOr("Age", (short)0);
-    }
-
-    @Override
-    protected void addAdditionalSaveData(CompoundTag compound) {
-        compound.putShort("Health", (short)this.coinHealth);
-        compound.putShort("Age", (short)this.coinAge);
-    }
 
     @Override
     public boolean isAttackable() {

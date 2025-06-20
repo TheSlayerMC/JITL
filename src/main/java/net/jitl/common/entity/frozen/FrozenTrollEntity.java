@@ -22,6 +22,8 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.manager.AnimatableManager;
 
@@ -49,12 +51,14 @@ public class FrozenTrollEntity extends JNeutralMonster {
 
     }
 
-    public void addAdditionalSaveData(CompoundTag compound) {
+    @Override
+    public void addAdditionalSaveData(ValueOutput compound) {
         super.addAdditionalSaveData(compound);
         compound.putBoolean("angry", this.entityData.get(IS_ANGRY_ID));
     }
 
-    public void readAdditionalSaveData(CompoundTag compound) {
+    @Override
+    public void readAdditionalSaveData(ValueInput compound) {
         super.readAdditionalSaveData(compound);
         setAngry(compound.getBooleanOr("angry", false));
     }

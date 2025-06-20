@@ -49,7 +49,7 @@ public class Flungas extends JPathfinderMob {
     }
 
     @Override
-    public boolean canBeCollidedWith() {
+    public boolean canBeCollidedWith(Entity e) {
         return false;
     }
 

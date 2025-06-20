@@ -9,7 +9,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
-@EventBusSubscriber(modid = JITL.MOD_ID, bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
+@EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT)//bus = EventBusSubscriber.Bus.GAME,)
 public class PortalOverlay {
 
     @SubscribeEvent

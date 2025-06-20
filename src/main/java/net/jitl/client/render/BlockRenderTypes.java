@@ -4,6 +4,7 @@ import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -12,7 +13,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 
 import java.util.ArrayList;
 
-@EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT)//bus = EventBusSubscriber.Bus.MOD)
 public class BlockRenderTypes {
 
     @SubscribeEvent
@@ -181,11 +182,11 @@ public class BlockRenderTypes {
         translucent.add(JBlocks.SMALL_LIGSHROOM.get());
 
         for(Block b : cutout) {
-            ItemBlockRenderTypes.setRenderLayer(b, RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(b, ChunkSectionLayer.CUTOUT);
         }
 
         for(Block b : translucent) {
-            ItemBlockRenderTypes.setRenderLayer(b, RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(b, ChunkSectionLayer.TRANSLUCENT);
         }
     }
 }

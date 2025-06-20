@@ -7,6 +7,8 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 
 public class EssenciaBoltEntity extends LightningBolt {
 
@@ -51,7 +53,7 @@ public class EssenciaBoltEntity extends LightningBolt {
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag compound) {
+    public void addAdditionalSaveData(ValueOutput compound) {
         super.addAdditionalSaveData(compound);
         compound.putInt("Color", getARGB());
         compound.putFloat("Strike Volume", getStrikeVolume());
@@ -59,7 +61,7 @@ public class EssenciaBoltEntity extends LightningBolt {
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag compound) {
+    public void readAdditionalSaveData(ValueInput compound) {
         super.readAdditionalSaveData(compound);
         this.setARGB(compound.getIntOr("Color", 0));
         this.setStrikeVolume(compound.getFloatOr("Strike Volume", 0F));

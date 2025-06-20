@@ -12,6 +12,8 @@ import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 
 import javax.annotation.Nullable;
 import java.util.UUID;
@@ -32,12 +34,12 @@ public abstract class JNeutralMonster extends JMonsterEntity implements NeutralM
         return isAngry();
     }
 
-    public void addAdditionalSaveData(CompoundTag compound) {
+    public void addAdditionalSaveData(ValueOutput compound) {
         super.addAdditionalSaveData(compound);
         this.addPersistentAngerSaveData(compound);
     }
 
-    public void readAdditionalSaveData(CompoundTag compound) {
+    public void readAdditionalSaveData(ValueInput compound) {
         super.readAdditionalSaveData(compound);
         this.readPersistentAngerSaveData(this.level(), compound);
     }

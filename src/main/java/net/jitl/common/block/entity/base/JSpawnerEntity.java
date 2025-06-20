@@ -13,6 +13,8 @@ import net.minecraft.world.level.Spawner;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 
 public abstract class JSpawnerEntity extends BlockEntity implements Spawner {
 
@@ -23,14 +25,14 @@ public abstract class JSpawnerEntity extends BlockEntity implements Spawner {
     }
 
     @Override
-    protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
-        super.loadAdditional(pTag, pRegistries);
+    protected void loadAdditional(ValueInput pTag) {
+        super.loadAdditional(pTag);
         this.getBaseSpawner().load(this.level, this.worldPosition, pTag);
     }
-
+    
     @Override
-    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
-        super.saveAdditional(pTag, pRegistries);
+    protected void saveAdditional(ValueOutput pTag) {
+        super.saveAdditional(pTag);
         this.getBaseSpawner().save(pTag);
     }
 

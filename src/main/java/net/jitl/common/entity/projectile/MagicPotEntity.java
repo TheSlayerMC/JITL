@@ -19,6 +19,8 @@ import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
@@ -190,9 +192,9 @@ public class MagicPotEntity extends AbstractArrow implements ItemSupplier {
     }
 
     @Override
-    public void addAdditionalSaveData(@NotNull CompoundTag nbt) {
+    public void addAdditionalSaveData(ValueOutput nbt) {
         super.addAdditionalSaveData(nbt);
-        nbt.put("stack", getStack().save(this.registryAccess()));
+        nbt.store("stack", ItemStack.CODEC, getStack());
         nbt.putInt("bounces", currentBounces);
         nbt.putInt("maxBounces", maxBounces);
         nbt.putFloat("velocityMultiplier", velocityMultiplier);
@@ -201,9 +203,9 @@ public class MagicPotEntity extends AbstractArrow implements ItemSupplier {
     }
 
     @Override
-    public void readAdditionalSaveData(@NotNull CompoundTag nbt) {
+    public void readAdditionalSaveData(ValueInput nbt) {
         super.readAdditionalSaveData(nbt);
-        setStack(ItemStack.parse(this.registryAccess(), nbt.getCompoundOrEmpty("stack")).orElse(this.getDefaultPickupItem()));
+        this.setStack(nbt.read("stack", ItemStack.CODEC).orElse(this.getDefaultPickupItem()));
         if (getStack().isEmpty()) remove(RemovalReason.DISCARDED);
         currentBounces = nbt.getIntOr("bounces", 0);
         maxBounces = nbt.getIntOr("maxBounces", 0);

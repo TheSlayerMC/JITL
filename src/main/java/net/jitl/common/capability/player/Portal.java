@@ -9,20 +9,21 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.neoforged.neoforge.common.util.INBTSerializable;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.neoforged.neoforge.common.util.ValueIOSerializable;
 import org.jetbrains.annotations.UnknownNullability;
 
 import javax.annotation.Nullable;
 import java.util.Map;
 
-public class Portal implements INBTSerializable<CompoundTag> {
+public class Portal implements ValueIOSerializable {
 
     private float portalOverlayTime = 0F;
     private float oldPortalOverlayTime = 0F;
@@ -110,55 +111,6 @@ public class Portal implements INBTSerializable<CompoundTag> {
         return this.oldPortalOverlayTime;
     }
 
-    @Override
-    public @UnknownNullability CompoundTag serializeNBT(HolderLookup.Provider provider) {
-        CompoundTag nbt = new CompoundTag();
-        nbt.putFloat("portalOverlayTime", this.portalOverlayTime);
-        nbt.putFloat("oldPortalOverlayTime", this.oldPortalOverlayTime);
-        nbt.putInt("portalTimer", this.portalTimer);
-        nbt.putBoolean("inPortal", this.inPortal);
-
-        if (nbt.contains("PortalMap")) {
-            CompoundTag portalMapTag = nbt.getCompound("PortalMap").orElse(null);
-
-            assert portalMapTag != null;
-            for (String s : portalMapTag.keySet()) {
-                CompoundTag portalReturnTag = portalMapTag.getCompound(s).orElse(null);
-                assert portalReturnTag != null;
-                ResourceLocation fromDim = ResourceLocation.read(portalReturnTag.getStringOr("FromDim", "FromDim")).getOrThrow();
-                BlockPos portalPos = portalReturnTag.read("PortalPos", BlockPos.CODEC).orElse(null);
-                ResourceKey<Level> toDimKey = ResourceKey.create(Registries.DIMENSION, ResourceLocation.read(s).getOrThrow());
-                ResourceKey<Level> fromDimKey = ResourceKey.create(Registries.DIMENSION, fromDim);
-                portalCoordinatesMap.put(toDimKey, new PortalCoordinatesContainer(fromDimKey, portalPos));
-            }
-        }
-        return nbt;
-    }
-
-    @Override
-    public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
-        this.portalOverlayTime = nbt.getFloatOr("portalOverlayTime", 0F);
-        this.oldPortalOverlayTime = nbt.getFloatOr("oldPortalOverlayTime", 0F);
-        this.portalTimer = nbt.getIntOr("portalTimer", 0);
-        this.inPortal = nbt.getBooleanOr("inPortal", false);
-
-        if (!portalCoordinatesMap.isEmpty()) {
-            CompoundTag portalCoordinatesNBT = new CompoundTag();
-
-            for(Map.Entry<ResourceKey<Level>, PortalCoordinatesContainer> entry : portalCoordinatesMap.entrySet()) {
-                CompoundTag portalReturnTag = new CompoundTag();
-                PortalCoordinatesContainer container = entry.getValue();
-
-                portalReturnTag.putString("FromDim", container.fromDim().location().toString());
-               // portalReturnTag.put("PortalPos", nbt.storeNullable(container.portalPos()););
-                portalReturnTag.storeNullable("PortalPos", BlockPos.CODEC, container.portalPos());
-
-                portalCoordinatesNBT.put(entry.getKey().location().toString(), portalReturnTag);
-            }
-            nbt.put("PortalMap", portalCoordinatesNBT);
-        }
-    }
-
     public void setPortalReturnLocation(ResourceKey<Level> toDim, PortalCoordinatesContainer coords) {
         portalCoordinatesMap.put(toDim, coords);
     }
@@ -174,5 +126,54 @@ public class Portal implements INBTSerializable<CompoundTag> {
     @Nullable
     public PortalCoordinatesContainer getPortalReturnLocation(ResourceKey<Level> toDim) {
         return portalCoordinatesMap.get(toDim);
+    }
+
+    @Override
+    public void serialize(ValueOutput nbt) {
+        CompoundTag tag = new CompoundTag();
+
+        nbt.putFloat("portalOverlayTime", this.portalOverlayTime);
+        nbt.putFloat("oldPortalOverlayTime", this.oldPortalOverlayTime);
+        nbt.putInt("portalTimer", this.portalTimer);
+        nbt.putBoolean("inPortal", this.inPortal);
+
+        if (tag.contains("PortalMap")) {
+            CompoundTag portalMapTag = tag.getCompound("PortalMap").orElse(null);
+
+            assert portalMapTag != null;
+            for (String s : portalMapTag.keySet()) {
+                CompoundTag portalReturnTag = portalMapTag.getCompound(s).orElse(null);
+                assert portalReturnTag != null;
+                ResourceLocation fromDim = ResourceLocation.read(portalReturnTag.getStringOr("FromDim", "FromDim")).getOrThrow();
+                BlockPos portalPos = portalReturnTag.read("PortalPos", BlockPos.CODEC).orElse(null);
+                ResourceKey<Level> toDimKey = ResourceKey.create(Registries.DIMENSION, ResourceLocation.read(s).getOrThrow());
+                ResourceKey<Level> fromDimKey = ResourceKey.create(Registries.DIMENSION, fromDim);
+                portalCoordinatesMap.put(toDimKey, new PortalCoordinatesContainer(fromDimKey, portalPos));
+            }
+        }
+    }
+
+    @Override
+    public void deserialize(ValueInput nbt) {
+        this.portalOverlayTime = nbt.getFloatOr("portalOverlayTime", 0F);
+        this.oldPortalOverlayTime = nbt.getFloatOr("oldPortalOverlayTime", 0F);
+        this.portalTimer = nbt.getIntOr("portalTimer", 0);
+        this.inPortal = nbt.getBooleanOr("inPortal", false);
+        CompoundTag tag = new CompoundTag();
+        if (!portalCoordinatesMap.isEmpty()) {
+            CompoundTag portalCoordinatesNBT = new CompoundTag();
+
+            for(Map.Entry<ResourceKey<Level>, PortalCoordinatesContainer> entry : portalCoordinatesMap.entrySet()) {
+                CompoundTag portalReturnTag = new CompoundTag();
+                PortalCoordinatesContainer container = entry.getValue();
+
+                portalReturnTag.putString("FromDim", container.fromDim().location().toString());
+                // portalReturnTag.put("PortalPos", nbt.storeNullable(container.portalPos()););
+                portalReturnTag.storeNullable("PortalPos", BlockPos.CODEC, container.portalPos());
+
+                portalCoordinatesNBT.put(entry.getKey().location().toString(), portalReturnTag);
+            }
+            tag.put("PortalMap", portalCoordinatesNBT);
+        }
     }
 }

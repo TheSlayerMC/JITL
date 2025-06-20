@@ -6,6 +6,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntitySpawnReason;
@@ -17,6 +18,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -73,17 +76,13 @@ public abstract class JMonsterEntity extends Monster implements GeoEntity {
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag compound) {
-        super.addAdditionalSaveData(compound);
-        compound.putBoolean("attack", isAttacking());
+    protected void readAdditionalSaveData(ValueInput compound) {
+        setAttacking(compound.getBooleanOr("attack", true));
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag compound) {
-        super.readAdditionalSaveData(compound);
-        if(compound.contains("attack")) {
-            setAttacking(compound.getBoolean("attack").isPresent());
-        }
+    protected void addAdditionalSaveData(ValueOutput compound) {
+        compound.putBoolean("attack", isAttacking());
     }
 
     public boolean isAttacking() {

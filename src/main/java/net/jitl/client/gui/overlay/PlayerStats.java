@@ -13,6 +13,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.BookViewScreen;
 import net.minecraft.client.gui.screens.inventory.PageButton;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -78,10 +79,10 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
     protected void renderBg(@NotNull GuiGraphics poseStack, float partialTick, int mouseX, int mouseY) {
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
-        poseStack.pose().pushPose();
+        poseStack.pose().pushMatrix();
         //RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
-        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.BACKGROUND).getTexture());
-        poseStack.blit(RenderType::guiTextured, BACKGROUND, x, y, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
+        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.BACKGROUND).getTextureView());
+        poseStack.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, x, y, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
 
         switch(pageNumber) {
             case 0 -> page1(poseStack);
@@ -89,7 +90,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
             default -> {
             }
         }
-        poseStack.pose().popPose();
+        poseStack.pose().popMatrix();
         //RenderSystem.enableDepthTest();
     }
 
@@ -133,13 +134,13 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
     public void drawSprite(GuiGraphics matrixStack, int x, int y, int spriteX, int spriteY, String s) {
         int k = (width - imageWidth) / 2;
         int l = (height - imageHeight) / 2;
-        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.BACKGROUND).getTexture());
+        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.BACKGROUND).getTextureView());
 
-        matrixStack.blit(RenderType::guiTextured, BACKGROUND, k + x - 4, l + y - 4, 0, 216, 115, 40, 256, 256);
+        matrixStack.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, k + x - 4, l + y - 4, 0, 216, 115, 40, 256, 256);
 
-        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.KNOWLEDGE_SPRITE).getTexture());
+        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.KNOWLEDGE_SPRITE).getTextureView());
 
-        matrixStack.blit(RenderType::guiTextured, KNOWLEDGE_SPRITE, k + x, l + y, spriteX, spriteY, 32, 32, 256, 256);
+        matrixStack.blit(RenderPipelines.GUI_TEXTURED, KNOWLEDGE_SPRITE, k + x, l + y, spriteX, spriteY, 32, 32, 256, 256);
         matrixStack.drawString(font, s, k + x + 35, l + y + 5, 4210752, false); //Draws the sprite name
 
         if(s.contains("Sentacoins"))
@@ -153,7 +154,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         int progressBarSize = 65;
         int k = (width - imageWidth) / 2;
         int l = (height - imageHeight) / 2;
-        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.KNOWLEDGE_SPRITE).getTexture());
+        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.KNOWLEDGE_SPRITE).getTextureView());
         if(player != null) {
             net.jitl.common.capability.stats.PlayerStats knowledge = player.getData(JDataAttachments.PLAYER_STATS);
             boolean completed = knowledge.isCompleted(type);
@@ -163,11 +164,11 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
             int progressBarX = k + x + 35, progressBarY = l + y + 19;
 
 
-            matrixStack.blit(RenderType::guiTextured, KNOWLEDGE_SPRITE, progressBarX, progressBarY, 0, 5, progressBarSize, 5, 256, 256);
-            matrixStack.blit(RenderType::guiTextured, KNOWLEDGE_SPRITE, progressBarX, progressBarY, 0, 0, width, 5, 256, 256);
+            matrixStack.blit(RenderPipelines.GUI_TEXTURED, KNOWLEDGE_SPRITE, progressBarX, progressBarY, 0, 5, progressBarSize, 5, 256, 256);
+            matrixStack.blit(RenderPipelines.GUI_TEXTURED, KNOWLEDGE_SPRITE, progressBarX, progressBarY, 0, 0, width, 5, 256, 256);
 
             if(completed) {
-                matrixStack.blit(RenderType::guiTextured, KNOWLEDGE_SPRITE, k + x, l + y + 3, 130, 43, 32, 29, 256, 256);
+                matrixStack.blit(RenderPipelines.GUI_TEXTURED, KNOWLEDGE_SPRITE, k + x, l + y + 3, 130, 43, 32, 29, 256, 256);
             }
 
             int lvX = progressBarX + 29, lvY = progressBarY - 1;

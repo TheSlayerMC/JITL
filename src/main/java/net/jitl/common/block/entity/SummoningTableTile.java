@@ -24,6 +24,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -96,16 +98,16 @@ public class SummoningTableTile extends RandomizableContainerBlockEntity impleme
     }
 
     @Override
-    protected void loadAdditional(CompoundTag nbt, HolderLookup.Provider pRegistries) {
-        super.loadAdditional(nbt, pRegistries);
+    protected void loadAdditional(ValueInput nbt) {
+        super.loadAdditional(nbt);
         this.inventory = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(nbt, this.inventory, pRegistries);
+        ContainerHelper.loadAllItems(nbt, this.inventory);
     }
 
     @Override
-    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
-        super.saveAdditional(pTag, pRegistries);
-        ContainerHelper.saveAllItems(pTag, this.inventory, pRegistries);
+    protected void saveAdditional(ValueOutput pTag) {
+        super.saveAdditional(pTag);
+        ContainerHelper.saveAllItems(pTag, this.inventory);
     }
 
     @Override

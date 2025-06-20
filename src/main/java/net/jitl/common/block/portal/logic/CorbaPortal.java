@@ -68,7 +68,7 @@ public interface CorbaPortal extends Portal {
     }
 
     static BlockPos getOrCreatePortalLocation(ServerLevel destination, ServerLevel fromLevel, Entity entity, BlockPos safeCoords, CorbaPortal portal, Optional<PortalCoordinatesContainer> existingLink) {
-        BlockPos portalPos = entity instanceof ServerPlayer pl ? existingLink.filter(link -> link.fromDim() == destination.dimension()).map(link -> portal.retrieveExistingLinkExit(pl, pl.serverLevel(), destination, link)).orElse(null) : null;
+        BlockPos portalPos = entity instanceof ServerPlayer pl ? existingLink.filter(link -> link.fromDim() == destination.dimension()).map(link -> portal.retrieveExistingLinkExit(pl, pl.level(), destination, link)).orElse(null) : null;
 
         if(fromLevel.getBlockState(entity.blockPosition()).getBlock() instanceof JBasePortalBlock)
             updateLocalCache(fromLevel, entity.blockPosition());

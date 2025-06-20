@@ -7,8 +7,12 @@ import net.jitl.core.init.JITL;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.PageButton;
+import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
+import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -16,6 +20,8 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 @OnlyIn(Dist.CLIENT)
 public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
@@ -62,9 +68,9 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
     protected void renderBg(@NotNull GuiGraphics poseStack, float partialTick, int mouseX, int mouseY) {
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
-        poseStack.pose().pushPose();
-        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.BACKGROUND).getTexture());
-        poseStack.blit(RenderType::guiTextured, BACKGROUND, x, y, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
+        poseStack.pose().pushMatrix();
+        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.BACKGROUND).getTextureView());
+        poseStack.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, x, y, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
 
         switch(pageNumber) {
             case 0 -> page1(poseStack, mouseX, mouseY);
@@ -73,7 +79,7 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
             default -> {
             }
         }
-        poseStack.pose().popPose();
+        poseStack.pose().popMatrix();
        // RenderSystem.enableDepthTest();
     }
 
@@ -137,8 +143,8 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
 
         x = x + k + 10;
         y = y + l + 10;
-        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.RECIPE).getTexture());
-        matrixStack.blit(RenderType::guiTextured, RECIPE, x - 5, y - 5, 0, 0, 112, 62, 256, 256);
+        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.RECIPE).getTextureView());
+        matrixStack.blit(RenderPipelines.GUI_TEXTURED, RECIPE, x - 5, y - 5, 0, 0, 112, 62, 256, 256);
 
 
         renderItem(matrixStack, mouseX, mouseY, x, y, recipe, 0);
@@ -174,7 +180,10 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
     }
 
     protected void renderTooltip(GuiGraphics pGuiGraphics, int pX, int pY, ItemStack item) {
-        pGuiGraphics.renderTooltip(this.font, getTooltipFromItem(getMinecraft(), item), item.getTooltipImage(), item, pX, pY);
+        Component component = item.getStyledHoverName();
+        ClientTooltipComponent clienttooltipcomponent = ClientTooltipComponent.create(component.getVisualOrderText());
+
+        pGuiGraphics.renderTooltip(this.font, List.of(clienttooltipcomponent), pX, pY, DefaultTooltipPositioner.INSTANCE, item.get(DataComponents.TOOLTIP_STYLE));
     }
 
     protected boolean isMouseOver(int mouseX, int mouseY, int spriteX, int spriteY) {

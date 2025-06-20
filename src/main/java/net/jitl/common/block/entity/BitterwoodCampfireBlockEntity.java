@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+import com.mojang.logging.LogUtils;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -22,6 +23,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
+import net.minecraft.util.ProblemReporter;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Clearable;
 import net.minecraft.world.ContainerHelper;
@@ -41,6 +43,10 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.GameEvent.Context;
+import net.minecraft.world.level.storage.TagValueOutput;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import org.slf4j.Logger;
 
 public class BitterwoodCampfireBlockEntity extends BlockEntity implements Clearable {
 
@@ -49,6 +55,7 @@ public class BitterwoodCampfireBlockEntity extends BlockEntity implements Cleara
    private final NonNullList<ItemStack> items;
    private final int[] cookingProgress;
    private final int[] cookingTime;
+   private static final Logger LOGGER = LogUtils.getLogger();
 
    public BitterwoodCampfireBlockEntity(BlockPos pos, BlockState blockState) {
       super(JBlockEntities.BITTERWOOD_CAMPFIRE.get(), pos, blockState);
@@ -130,17 +137,19 @@ public class BitterwoodCampfireBlockEntity extends BlockEntity implements Cleara
       return this.items;
    }
 
-   protected void loadAdditional(CompoundTag p_155312_, HolderLookup.Provider p_323804_) {
-      super.loadAdditional(p_155312_, p_323804_);
+   @Override
+   protected void loadAdditional(ValueInput p_155312_) {
+      super.loadAdditional(p_155312_);
       this.items.clear();
-      ContainerHelper.loadAllItems(p_155312_, this.items, p_323804_);
+      ContainerHelper.loadAllItems(p_155312_, this.items);
       p_155312_.getIntArray("CookingTimes").ifPresentOrElse((p_409480_) -> System.arraycopy(p_409480_, 0, this.cookingProgress, 0, Math.min(this.cookingTime.length, p_409480_.length)), () -> Arrays.fill(this.cookingProgress, 0));
       p_155312_.getIntArray("CookingTotalTimes").ifPresentOrElse((p_409481_) -> System.arraycopy(p_409481_, 0, this.cookingTime, 0, Math.min(this.cookingTime.length, p_409481_.length)), () -> Arrays.fill(this.cookingTime, 0));
    }
 
-   protected void saveAdditional(CompoundTag p_187486_, HolderLookup.Provider p_324005_) {
-      super.saveAdditional(p_187486_, p_324005_);
-      ContainerHelper.saveAllItems(p_187486_, this.items, true, p_324005_);
+   @Override
+   protected void saveAdditional(ValueOutput p_187486_) {
+      super.saveAdditional(p_187486_);
+      ContainerHelper.saveAllItems(p_187486_, this.items, true);
       p_187486_.putIntArray("CookingTimes", this.cookingProgress);
       p_187486_.putIntArray("CookingTotalTimes", this.cookingTime);
    }
@@ -150,9 +159,11 @@ public class BitterwoodCampfireBlockEntity extends BlockEntity implements Cleara
    }
 
    public CompoundTag getUpdateTag(HolderLookup.Provider p_324612_) {
-      CompoundTag compoundtag = new CompoundTag();
-      ContainerHelper.saveAllItems(compoundtag, this.items, true, p_324612_);
-      return compoundtag;
+      try (ProblemReporter.ScopedCollector problemreporter$scopedcollector = new ProblemReporter.ScopedCollector(this.problemPath(), LOGGER)) {
+         TagValueOutput tagvalueoutput = TagValueOutput.createWithContext(problemreporter$scopedcollector, p_324612_);
+         ContainerHelper.saveAllItems(tagvalueoutput, this.items, true);
+         return tagvalueoutput.buildResult();
+      }
    }
 
    public boolean placeFood(ServerLevel level, @Nullable LivingEntity entity, ItemStack stack) {

@@ -127,7 +127,7 @@ public class GuiDialogue extends Screen {
 		int playerEyeHeight = (int) entity.getEyeHeight() * (int) (adaptiveScale * 2.0F); // eye height of player in pixels of inventory gui
 		float eyeOffset = playerEyeHeight * entity.getEyeHeight() / (1.65F * scaleFactor) /* eye height of player in blocks */;
 
-		RenderSystem.setShaderColor(1, 1, 1, 1);
+		//RenderSystem.setShaderColor(1, 1, 1, 1);
 		InventoryScreen.renderEntityInInventoryFollowsMouse(g, posX, posY, (int) (posX - mouseX), (int) (posY - mouseY - eyeOffset), adaptiveScale, 0.0625F, mouseX, mouseY, entity);
 	}
 }

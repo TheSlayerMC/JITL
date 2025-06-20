@@ -11,7 +11,7 @@ import net.jitl.core.init.JITL;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.LayeredDraw;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.FluidTags;
@@ -21,10 +21,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.client.gui.GuiLayer;
 import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(Dist.CLIENT)
-public class EssenceBar implements LayeredDraw.Layer {
+public class EssenceBar implements GuiLayer {
 
     private static float transparency;
     private static float burnoutTransparency;
@@ -37,8 +38,8 @@ public class EssenceBar implements LayeredDraw.Layer {
     public void render(@NotNull GuiGraphics gui, DeltaTracker tracker) {
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(OVER_EXP_TEXTURE).getTexture());
+        //RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(OVER_EXP_TEXTURE).getTextureView());
         if(player != null && !player.isCreative() && !player.isSpectator()) {
 
             float currentEssence = ClientEssence.getCurrentClientEssence();
@@ -114,18 +115,18 @@ public class EssenceBar implements LayeredDraw.Layer {
                     y -= heartRows * 10;
                 }
 
-                gui.pose().pushPose();
+                gui.pose().pushMatrix();
 
                 /*
                  * Translates and scales the bar if it's rendered below the crosshair
                  */
                 if (belowCrosshair) {
                     float scale = 0.5F;
-                    double widthTranslation = (screenWidth / 2F) - 42;
-                    double heightTranslation = (screenHeight / 2F) + 42;
-                    gui.pose().translate(widthTranslation, heightTranslation, 0);
-                    gui.pose().scale(scale, scale, 0);
-                    gui.pose().translate(-widthTranslation, -heightTranslation, 0);
+                    float widthTranslation = (screenWidth / 2F) - 42;
+                    float heightTranslation = (screenHeight / 2F) + 42;
+                    gui.pose().translate(widthTranslation, heightTranslation);
+                    gui.pose().scale(scale, scale);
+                    gui.pose().translate(-widthTranslation, -heightTranslation);
 
 //                    RenderSystem.enableBlend();
 //                    RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.ONE_MINUS_DST_COLOR, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR, GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ZERO);
@@ -137,8 +138,8 @@ public class EssenceBar implements LayeredDraw.Layer {
                 float addedAlpha = belowCrosshair ? 0.5F : 0;
 
                 //RenderSystem.setShader(GameRenderer::getPositionTexShader);
-                RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(getTextureBasedOnPosition(essencePosition)).getTexture());
-                RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, transparency - addedAlpha);
+                RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(getTextureBasedOnPosition(essencePosition)).getTextureView());
+                //RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, transparency - addedAlpha);todo
 
                 /*
                  * Our texture is relative to the configured position.
@@ -150,7 +151,7 @@ public class EssenceBar implements LayeredDraw.Layer {
                 int backgroundVOffset = renderSmall ? 5 : 9;
                 int burnoutVOffset = renderSmall ? 10 : 18;
 
-                gui.blit(RenderType::guiTextured, getTextureBasedOnPosition(essencePosition), x, y, 0, backgroundVOffset, 81, barHeight, 81, texHeight);
+                gui.blit(RenderPipelines.GUI_TEXTURED, getTextureBasedOnPosition(essencePosition), x, y, 0, backgroundVOffset, 81, barHeight, 81, texHeight);
 
                 if (cooldownActive) {
                     /*
@@ -161,19 +162,19 @@ public class EssenceBar implements LayeredDraw.Layer {
                      * When the cooldown starts getting close to zero, the bar fades out.
                      */
                     float cooldownFade = Math.min(cooldown, 10) / 10;
-                    RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, (sin * cooldownFade) - addedAlpha);
+                   // RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, (sin * cooldownFade) - addedAlpha);todo
 
-                    gui.blit(RenderType::guiTextured, getTextureBasedOnPosition(essencePosition), x, y, 0, 0, 81, barHeight, 81, texHeight);
+                    gui.blit(RenderPipelines.GUI_TEXTURED, getTextureBasedOnPosition(essencePosition), x, y, 0, 0, 81, barHeight, 81, texHeight);
                 } else {
                     int i = (int) ((currentEssence / maxEssence) * 81);
-                    gui.blit(RenderType::guiTextured, getTextureBasedOnPosition(essencePosition), x, y, 0, 0, i, barHeight, 81, texHeight);
+                    gui.blit(RenderPipelines.GUI_TEXTURED, getTextureBasedOnPosition(essencePosition), x, y, 0, 0, i, barHeight, 81, texHeight);
                 }
 
                 if (burnoutTransparency > 0) {
-                    RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, burnoutTransparency - addedAlpha);
-                    gui.blit(RenderType::guiTextured, getTextureBasedOnPosition(essencePosition), x, y, 0, burnoutVOffset, 81, barHeight, 81, texHeight);
+                    //RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, burnoutTransparency - addedAlpha);todo
+                    gui.blit(RenderPipelines.GUI_TEXTURED, getTextureBasedOnPosition(essencePosition), x, y, 0, burnoutVOffset, 81, barHeight, 81, texHeight);
                 }
-                gui.pose().popPose();
+                gui.pose().popMatrix();
             }
         }
     }

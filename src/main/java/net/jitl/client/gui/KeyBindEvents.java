@@ -8,7 +8,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import org.lwjgl.glfw.GLFW;
-@EventBusSubscriber(modid = JITL.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT)//bus = EventBusSubscriber.Bus.MOD)
 public class KeyBindEvents {
 
     public static KeyMapping keyStats = new KeyMapping("jitl.key.stats", GLFW.GLFW_KEY_J, I18n.get("jitl.key"));

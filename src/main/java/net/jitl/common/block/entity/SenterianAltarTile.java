@@ -16,6 +16,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
@@ -35,15 +37,15 @@ public class SenterianAltarTile extends BlockEntity implements GeoBlockEntity {
     }
 
     @Override
-    protected void saveAdditional(@NotNull CompoundTag tag, HolderLookup.Provider pRegistries) {
-        super.saveAdditional(tag, pRegistries);
+    protected void saveAdditional(ValueOutput tag) {
+        super.saveAdditional(tag);
         tag.putInt("spawnTimer", 0);
         tag.putInt("spawnCount", 0);
     }
 
     @Override
-    public void loadAdditional(@NotNull CompoundTag tag, HolderLookup.Provider pRegistries) {
-        super.loadAdditional(tag, pRegistries);
+    public void loadAdditional(@NotNull ValueInput tag) {
+        super.loadAdditional(tag);
         spawnTimer = tag.getIntOr("spawnTimer", 0);
         spawnCount = tag.getIntOr("spawnCount", 0);
     }
