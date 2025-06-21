@@ -5,6 +5,8 @@ import com.mojang.math.Axis;
 import net.jitl.client.render.world.clouds.JCloudRenderer;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.Camera;
+import net.minecraft.client.CloudStatus;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
@@ -23,12 +25,12 @@ import org.joml.Matrix4f;
 
 import java.util.Optional;
 
-public class EucaRenderInfo extends DimensionSpecialEffects {
+public class EucaRenderInfo extends JDimensionSpecialEffects {
 
     private static final ResourceLocation CORBA_MOON_LOCATION = JITL.rl("textures/environment/corba_moon.png");
 
     public EucaRenderInfo() {
-        super(SkyType.NONE, false, false);
+        super(SkyType.OVERWORLD, false, false);
     }
 
     @Override
@@ -38,10 +40,8 @@ public class EucaRenderInfo extends DimensionSpecialEffects {
     }
 
     @Override
-    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, double camX, double camY, double camZ, Matrix4f modelViewMatrix) {
-        Optional<Integer> optional = level.dimensionType().cloudHeight();
-        optional.ifPresent(height -> new JCloudRenderer(JITL.rl("textures/environment/euca_clouds.png")).render(1, Minecraft.getInstance().options.cloudStatus().get(), height, new Vec3(camX, camY, camZ), partialTick + ticks));
-        return true;
+    public JCloudRenderer getCloudRenderer() {
+        return new JCloudRenderer(JITL.rl("textures/environment/euca_clouds.png"));
     }
 
     @Override
@@ -50,34 +50,15 @@ public class EucaRenderInfo extends DimensionSpecialEffects {
         FogType fogtype = camera.getFluidInCamera();
         if(fogtype != FogType.POWDER_SNOW && fogtype != FogType.LAVA && !doesMobEffectBlockSky(camera)) {
             PoseStack poseStack = new PoseStack();
-            poseStack.mulPose(modelViewMatrix);
+            poseStack.pushPose();
 
             //START CORBA MOON
             poseStack.mulPose(Axis.YP.rotationDegrees(-180F));
             poseStack.mulPose(Axis.XP.rotationDegrees(-24000F));
             renderSun(20F, 1F, Minecraft.getInstance().renderBuffers().bufferSource(), poseStack, CORBA_MOON_LOCATION);
+            poseStack.popPose();
         }
-        return false;
-    }
-
-    private void renderSun(float size, float alpha, MultiBufferSource bufferSource, PoseStack poseStack, ResourceLocation tex) {
-        VertexConsumer vertexconsumer = bufferSource.getBuffer(RenderType.celestial(tex));
-        int i = ARGB.white(alpha);
-        Matrix4f matrix4f = poseStack.last().pose();
-        poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
-        float f = Mth.sin(0) < 0.0F ? 180.0F : 0.0F;
-        poseStack.mulPose(Axis.ZP.rotationDegrees(f));
-        poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
-        vertexconsumer.addVertex(matrix4f, -size, 100.0F, -size).setUv(0.0F, 0.0F).setColor(i);
-        vertexconsumer.addVertex(matrix4f, size, 100.0F, -size).setUv(1.0F, 0.0F).setColor(i);
-        vertexconsumer.addVertex(matrix4f, size, 100.0F, size).setUv(1.0F, 1.0F).setColor(i);
-        vertexconsumer.addVertex(matrix4f, -size, 100.0F, size).setUv(0.0F, 1.0F).setColor(i);
-    }
-
-    public static boolean doesMobEffectBlockSky(Camera camera) {
-        Entity entity = camera.getEntity();
-        if(!(entity instanceof LivingEntity livingentity)) return false;
-        return livingentity.hasEffect(MobEffects.BLINDNESS) || livingentity.hasEffect(MobEffects.DARKNESS);
+        return true;
     }
 
     @Override

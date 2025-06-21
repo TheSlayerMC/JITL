@@ -18,6 +18,6 @@ public class DepthsRenderInfo extends DimensionSpecialEffects {
 
     @Override
     public boolean isFoggyAt(int int_, int int1_) {
-        return true;
+        return false;
     }
 }

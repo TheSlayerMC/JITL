@@ -14,7 +14,7 @@ import net.neoforged.neoforge.client.event.AddClientReloadListenersEvent;
 import net.neoforged.neoforge.client.event.RegisterDimensionSpecialEffectsEvent;
 import net.neoforged.neoforge.client.event.ViewportEvent;
 
-@EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT)//,bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT)
 public class ClientEventHandler {
 
     public static void regToBus(IEventBus forgeBus) {
@@ -23,11 +23,10 @@ public class ClientEventHandler {
 
     @SubscribeEvent
     public static void addReload(AddClientReloadListenersEvent event) {
-        event.addListener(JITL.rl("clouds"), new JCloudRenderer());
+        event.addListener(JITL.rl("clouds"), new JCloudRenderer(JITL.rl("textures/environment/euca_clouds.png")));
     }
 
     public static void onFogDensityEvent(ViewportEvent.RenderFog event) {
-        //event.setCanceled(true);
         float farPlaneDistance = event.getFarPlaneDistance();
         Player player = ClientGetter.player();
 //        if (ClientGetter.level().dimension() == Dimensions.FROZEN_LANDS) {
@@ -64,11 +63,11 @@ public class ClientEventHandler {
     @SubscribeEvent
     public static void registerDimensionSpecialEffects(RegisterDimensionSpecialEffectsEvent event) {
         event.register(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
-//        event.register(Dimensions.DEPTHS_EFFECTS, new EucaRenderInfo());
-//        event.register(Dimensions.BOIL_EFFECTS, new BoilRenderInfo());
+       event.register(Dimensions.DEPTHS_EFFECTS, new DepthsRenderInfo());
+        event.register(Dimensions.BOIL_EFFECTS, new BoilRenderInfo());
 //        event.register(Dimensions.FROZEN_EFFECTS, new FrozenRenderInfo());todo
-//        event.register(Dimensions.CORBA_EFFECTS, new CorbaRenderInfo());
+        event.register(Dimensions.CORBA_EFFECTS, new CorbaRenderInfo());
        // event.register(Dimensions.TERRANIA_EFFECTS, new TerraniaRenderInfo());
-//        event.register(Dimensions.CLOUDIA_EFFECTS, new CloudiaRenderInfo());
+        event.register(Dimensions.CLOUDIA_EFFECTS, new CloudiaRenderInfo());
     }
 }
