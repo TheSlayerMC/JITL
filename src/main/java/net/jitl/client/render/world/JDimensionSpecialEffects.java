@@ -83,6 +83,10 @@ public abstract class JDimensionSpecialEffects extends DimensionSpecialEffects {
     }
 
     protected void renderSky(ResourceLocation texture) {
+        renderSky(texture, 1F);
+    }
+
+    protected void renderSky(ResourceLocation texture, float brightness) {
         TextureManager texturemanager = Minecraft.getInstance().getTextureManager();
         AbstractTexture abstracttexture = texturemanager.getTexture(texture);
         abstracttexture.setUseMipmaps(false);
@@ -90,7 +94,7 @@ public abstract class JDimensionSpecialEffects extends DimensionSpecialEffects {
         GpuBuffer gpubuffer = rendersystem$autostorageindexbuffer.getBuffer(36);
         GpuTextureView gputextureview = Minecraft.getInstance().getMainRenderTarget().getColorTextureView();
         GpuTextureView gputextureview1 = Minecraft.getInstance().getMainRenderTarget().getDepthTextureView();
-        GpuBufferSlice gpubufferslice = RenderSystem.getDynamicUniforms().writeTransform(RenderSystem.getModelViewMatrix(), new Vector4f(1.0F, 1.0F, 1.0F, 1.0F), new Vector3f(), new Matrix4f(), 0.0F);
+        GpuBufferSlice gpubufferslice = RenderSystem.getDynamicUniforms().writeTransform(RenderSystem.getModelViewMatrix(), new Vector4f(brightness, brightness, brightness, brightness), new Vector3f(), new Matrix4f(), 0.0F);
 
         try (RenderPass renderpass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(() -> "Journey Sky", gputextureview, OptionalInt.empty(), gputextureview1, OptionalDouble.empty())) {
             renderpass.setPipeline(RenderPipelines.END_SKY);

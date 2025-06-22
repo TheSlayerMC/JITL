@@ -47,7 +47,7 @@ public class BoilRenderInfo extends JDimensionSpecialEffects {
         if (fogtype != FogType.POWDER_SNOW && fogtype != FogType.LAVA && !doesMobEffectBlockSky(camera)) {
             PoseStack posestack = new PoseStack();
 
-            renderSky(BOIL_SKY_LOCATION);
+            renderSky(BOIL_SKY_LOCATION, 3F);
 
             //START SUN
             posestack.pushPose();

@@ -23,7 +23,7 @@ public class ClientEventHandler {
 
     @SubscribeEvent
     public static void addReload(AddClientReloadListenersEvent event) {
-        event.addListener(JITL.rl("clouds"), new JCloudRenderer(JITL.rl("textures/environment/euca_clouds.png")));
+        event.addListener(JITL.rl("clouds"), new JCloudRenderer());
     }
 
     public static void onFogDensityEvent(ViewportEvent.RenderFog event) {
@@ -63,11 +63,11 @@ public class ClientEventHandler {
     @SubscribeEvent
     public static void registerDimensionSpecialEffects(RegisterDimensionSpecialEffectsEvent event) {
         event.register(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
-       event.register(Dimensions.DEPTHS_EFFECTS, new DepthsRenderInfo());
+        event.register(Dimensions.DEPTHS_EFFECTS, new DepthsRenderInfo());
         event.register(Dimensions.BOIL_EFFECTS, new BoilRenderInfo());
-//        event.register(Dimensions.FROZEN_EFFECTS, new FrozenRenderInfo());todo
+        event.register(Dimensions.FROZEN_EFFECTS, new FrozenRenderInfo());
         event.register(Dimensions.CORBA_EFFECTS, new CorbaRenderInfo());
-       // event.register(Dimensions.TERRANIA_EFFECTS, new TerraniaRenderInfo());
+        event.register(Dimensions.TERRANIA_EFFECTS, new TerraniaRenderInfo());
         event.register(Dimensions.CLOUDIA_EFFECTS, new CloudiaRenderInfo());
     }
 }

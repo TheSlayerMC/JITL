@@ -11,10 +11,10 @@ import org.joml.Matrix4f;
 
 import java.util.Optional;
 
-public class FrozenRenderInfo extends DimensionSpecialEffects {
+public class FrozenRenderInfo extends JDimensionSpecialEffects {
 
     public FrozenRenderInfo() {
-        super(SkyType.NONE, false, false);
+        super(SkyType.OVERWORLD, false, false);
     }
 
     @Override
@@ -24,10 +24,8 @@ public class FrozenRenderInfo extends DimensionSpecialEffects {
     }
 
     @Override
-    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, double camX, double camY, double camZ, Matrix4f modelViewMatrix) {
-        Optional<Integer> optional = level.dimensionType().cloudHeight();
-        optional.ifPresent(height -> new JCloudRenderer(JITL.rl("textures/environment/frozen_clouds.png")).render(1, Minecraft.getInstance().options.cloudStatus().get(), height, new Vec3(camX, camY, camZ), partialTick + ticks));
-        return true;
+    public JCloudRenderer getCloudRenderer() {
+        return new JCloudRenderer(JITL.rl("textures/environment/frozen_clouds.png"));
     }
 
     @Override

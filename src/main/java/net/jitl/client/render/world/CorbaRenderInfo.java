@@ -46,7 +46,7 @@ public class CorbaRenderInfo extends JDimensionSpecialEffects {
         if(fogtype != FogType.POWDER_SNOW && fogtype != FogType.LAVA && !doesMobEffectBlockSky(camera)) {
             PoseStack posestack = new PoseStack();
 
-            renderSky(SKY_LOCATION);
+            renderSky(SKY_LOCATION, 3F);
 
             //START BOIL MOON
             posestack.pushPose();

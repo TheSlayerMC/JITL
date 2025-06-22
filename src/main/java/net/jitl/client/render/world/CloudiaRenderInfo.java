@@ -46,12 +46,11 @@ public class CloudiaRenderInfo extends JDimensionSpecialEffects {
         if (fogtype != FogType.POWDER_SNOW && fogtype != FogType.LAVA && !this.doesMobEffectBlockSky(camera)) {
             PoseStack poseStack = new PoseStack();
 
-            renderSky(CLOUDIA_SKY_LOCATION);
+            renderSky(CLOUDIA_SKY_LOCATION, 8F);
 
             poseStack.pushPose();
-            poseStack.mulPose(Axis.YP.rotationDegrees(-180F));
-            poseStack.mulPose(Axis.XP.rotationDegrees(-24000F));
-            renderSun(14F, 1F, Minecraft.getInstance().renderBuffers().bufferSource(), poseStack, SUN_LOCATION);
+            poseStack.mulPose(Axis.ZP.rotationDegrees(-270));
+            renderSun(30F, 1F, Minecraft.getInstance().renderBuffers().bufferSource(), poseStack, SUN_LOCATION);
             poseStack.popPose();
         }
         return true;
