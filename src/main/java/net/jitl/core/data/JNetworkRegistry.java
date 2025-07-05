@@ -22,12 +22,12 @@ public class JNetworkRegistry {
         PayloadRegistrar registry = ev.registrar(JITL.MOD_ID);
         DialogueNetHandler dialogueNetHandler = getDialogueNetHandler();
 
-        registry.playBidirectional(PacketPlayerStats.TYPE, PacketPlayerStats.STREAM_CODEC, PacketPlayerStats::handle);
-        registry.playBidirectional(PacketEssenceBar.TYPE, PacketEssenceBar.STREAM_CODEC, PacketEssenceBar::handle);
-        registry.playBidirectional(PacketCelestiumArmor.TYPE, PacketCelestiumArmor.STREAM_CODEC, PacketCelestiumArmor::handle);
-        registry.playBidirectional(PacketItemCooldown.TYPE, PacketItemCooldown.STREAM_CODEC, PacketItemCooldown::handle);
-        registry.playBidirectional(PacketKeyPressed.TYPE, PacketKeyPressed.STREAM_CODEC, PacketKeyPressed::handle);
-        registry.playBidirectional(PacketBuyItem.TYPE, PacketBuyItem.STREAM_CODEC, PacketBuyItem::handle);
+        registry.playBidirectional(PacketPlayerStats.TYPE, PacketPlayerStats.STREAM_CODEC, PacketPlayerStats::handle, PacketPlayerStats::handle);
+        registry.playBidirectional(PacketEssenceBar.TYPE, PacketEssenceBar.STREAM_CODEC, PacketEssenceBar::handle, PacketEssenceBar::handle);
+        registry.playBidirectional(PacketCelestiumArmor.TYPE, PacketCelestiumArmor.STREAM_CODEC, PacketCelestiumArmor::handle, PacketCelestiumArmor::handle);
+        registry.playBidirectional(PacketItemCooldown.TYPE, PacketItemCooldown.STREAM_CODEC, PacketItemCooldown::handle, PacketItemCooldown::handle);
+        registry.playBidirectional(PacketKeyPressed.TYPE, PacketKeyPressed.STREAM_CODEC, PacketKeyPressed::handle, PacketKeyPressed::handle);
+        registry.playBidirectional(PacketBuyItem.TYPE, PacketBuyItem.STREAM_CODEC, PacketBuyItem::handle, PacketBuyItem::handle);
 
         registry.playToClient(PacketUpdateClientPlayerMovement.TYPE, PacketUpdateClientPlayerMovement.CODEC, PacketUpdateClientPlayerMovement::handle);
 
@@ -37,7 +37,7 @@ public class JNetworkRegistry {
     }
 
     public static void sendToServer(CustomPacketPayload packet) {
-        PacketDistributor.sendToServer(packet);
+        PacketDistributor.sendToAllPlayers(packet);
     }
 
     public static void sendToPlayer(ServerPlayer player, CustomPacketPayload packet) {

@@ -37,7 +37,6 @@ public class MathHelper {
         return p_floor_0_ < (float)lvt_1_1_ ? lvt_1_1_ - 1 : lvt_1_1_;
     }
 
-    @OnlyIn(Dist.CLIENT)
     public static int fastFloor(double p_fastFloor_0_) {
         return (int)(p_fastFloor_0_ + 1024.0) - 1024;
     }
@@ -52,7 +51,6 @@ public class MathHelper {
         return p_lfloor_0_ < (double)lvt_2_1_ ? lvt_2_1_ - 1L : lvt_2_1_;
     }
 
-    @OnlyIn(Dist.CLIENT)
     public static int absFloor(double p_absFloor_0_) {
         return (int)(p_absFloor_0_ >= 0.0 ? p_absFloor_0_ : -p_absFloor_0_ + 1.0);
     }

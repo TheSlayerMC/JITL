@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.95'
+    id 'net.neoforged.moddev' version '2.0.97'
     id 'idea'
 }
 
@@ -60,9 +60,8 @@ neoForge {
             logLevel = org.slf4j.event.Level.DEBUG
         }
 
-        clientData {
+        data {
             clientData()
-
             programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
         }
 

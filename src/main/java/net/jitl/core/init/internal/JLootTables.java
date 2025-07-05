@@ -39,6 +39,10 @@ public class JLootTables {
         return ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.withDefaultNamespace(name));
     }
 
+    public static ResourceKey<LootTable> addRuinTable(String name) {
+        return ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(name));
+    }
+
     public static ResourceKey<LootTable> addBossCrystalLootTable(String name) {
         return ResourceKey.create(Registries.LOOT_TABLE, JITL.rl("boss_crystal/" + name));
     }
