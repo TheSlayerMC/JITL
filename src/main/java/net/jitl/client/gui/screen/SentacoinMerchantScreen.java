@@ -57,7 +57,9 @@ public class SentacoinMerchantScreen extends AbstractContainerScreen<SentacoinMe
     protected void renderBg(GuiGraphics pGuiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
         int i = (this.width - this.imageWidth) / 2;
         int j = (this.height - this.imageHeight) / 2;
-        pGuiGraphics.blit(RenderPipelines.GUI_TEXTURED, MERCHANT_LOCATION, i, j, 0, 0.0F, 0, this.imageWidth, this.imageHeight, 512, 256);
+        pGuiGraphics.pose().pushMatrix();
+        pGuiGraphics.blit(RenderPipelines.GUI_TEXTURED, MERCHANT_LOCATION, i, j, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
+        pGuiGraphics.pose().pushMatrix();
     }
 
     public void render(@NotNull GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
@@ -79,7 +81,6 @@ public class SentacoinMerchantScreen extends AbstractContainerScreen<SentacoinMe
         public TradeOfferButton(String name, int pX, int pY, ItemStack i, int amount, int cost) {
             super(pX, pY, 96, 20, Component.translatable(name), (press) -> buy(i, amount, cost), DEFAULT_NARRATION);
             setTooltip(Tooltip.create(Component.literal(" x" + amount + " for x"  + cost + " Sentacoins")));
-            
         }
     }
 }

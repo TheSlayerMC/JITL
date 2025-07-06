@@ -1,6 +1,6 @@
 package net.jitl.common.entity.frozen.npc;
 
-import net.jitl.client.ChatUtils;
+import net.jitl.client.util.ChatUtils;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.block.entity.PedestalTile;
 import net.jitl.common.capability.stats.PlayerStats;
@@ -9,7 +9,6 @@ import net.jitl.common.items.LoreScrollItem;
 import net.jitl.core.init.internal.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;

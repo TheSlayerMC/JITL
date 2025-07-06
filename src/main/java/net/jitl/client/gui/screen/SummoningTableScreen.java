@@ -14,7 +14,6 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
-@OnlyIn(Dist.CLIENT)
 public class SummoningTableScreen extends AbstractContainerScreen<SummoningTableContainer> {
 
     private static final ResourceLocation GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/gui/summoning_table.png");
@@ -26,13 +25,11 @@ public class SummoningTableScreen extends AbstractContainerScreen<SummoningTable
     @Override
     public void render(@NotNull GuiGraphics matrixStack, int x, int y, float partialTicks) {
         super.render(matrixStack, x, y, partialTicks);
-        this.renderBackground(matrixStack, x, y, partialTicks);//Dims around the GUI for a more vanilla look
         renderTooltip(matrixStack, x, y);
     }
 
     @Override
     protected void renderBg(@NotNull GuiGraphics graphics, float tick, int mouseX, int mouseY) {
-        //RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(GUI_TEXTURE).getTextureView());
         int i = this.leftPos;
         int j = this.topPos;

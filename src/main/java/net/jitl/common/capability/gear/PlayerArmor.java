@@ -9,6 +9,7 @@ import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.neoforged.neoforge.common.util.ValueIOSerializable;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -68,12 +69,9 @@ public class PlayerArmor implements ValueIOSerializable {
 
     @Override
     public void serialize(ValueOutput valueOutput) {
-        nbt.put("armor_ability", this.nbt);
-
     }
 
     @Override
-    public void deserialize(ValueInput valueInput) {
-        this.nbt = nbt.getCompound("armor_ability").get();
+    public void deserialize(@NotNull ValueInput valueInput) {
     }
 }

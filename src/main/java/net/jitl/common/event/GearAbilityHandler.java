@@ -5,15 +5,12 @@ import net.jitl.common.items.base.JArmorItem;
 import net.jitl.common.items.base.JSwordItem;
 import net.jitl.common.items.gear.FullArmorAbility;
 import net.jitl.common.items.gear.JGear;
-import net.jitl.core.helper.TooltipFiller;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JDataAttachments;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorMaterials;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -27,8 +24,8 @@ import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
-import java.util.function.Consumer;
 
 @EventBusSubscriber(modid = JITL.MOD_ID)
 public class GearAbilityHandler {
@@ -36,7 +33,6 @@ public class GearAbilityHandler {
     @SubscribeEvent
     public static void handleTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
-        player.getInventory();
         ItemStack hand = player.getMainHandItem();
         Item item = hand.getItem();
         if (item instanceof JGear && !(item instanceof JArmorItem)) {
@@ -162,9 +158,8 @@ public class GearAbilityHandler {
         if(slot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR) {
             PlayerArmor armor = event.getEntity().getData(JDataAttachments.PLAYER_ARMOR);
             for(EquipmentSlot equipmentSlot : EquipmentSlotGroup.ARMOR) {
-                ItemStack current = entity.getItemBySlot(equipmentSlot);
-
-                //armor.setArmor(entity.getItemBySlot(current).iterator());
+                Iterable<ItemStack> current = Collections.singleton(entity.getItemBySlot(equipmentSlot));
+                armor.setArmor(current.iterator());
             }
         }
     }

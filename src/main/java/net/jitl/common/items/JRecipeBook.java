@@ -1,6 +1,7 @@
 package net.jitl.common.items;
 
 import net.jitl.client.gui.overlay.JRecipeBookGUI;
+import net.jitl.client.util.ClientUtils;
 import net.jitl.common.items.base.JItem;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.client.Minecraft;
@@ -21,12 +22,7 @@ public class JRecipeBook extends JItem {
     @Override
     public @NotNull InteractionResult use(@NotNull Level level, Player player, @NotNull InteractionHand usedHand) {
         if(level.isClientSide())
-           displayBookGUI(player);
+            ClientUtils.displayBookGUI(player);
         return super.use(level, player, usedHand);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static void displayBookGUI(Player player) {
-        Minecraft.getInstance().setScreen(new JRecipeBookGUI(player.getInventory()));
     }
 }

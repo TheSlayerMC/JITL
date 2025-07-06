@@ -1,13 +1,12 @@
 package net.jitl.core.data;
 
 import net.jitl.client.stats.PacketPlayerStats;
-import net.jitl.common.JManagers;
-import net.jitl.common.dialogue.DialogueNetHandler;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.network.*;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
@@ -20,7 +19,6 @@ public class JNetworkRegistry {
 
     private static void registerPackets(final RegisterPayloadHandlersEvent ev) {
         PayloadRegistrar registry = ev.registrar(JITL.MOD_ID);
-        DialogueNetHandler dialogueNetHandler = getDialogueNetHandler();
 
         registry.playBidirectional(PacketPlayerStats.TYPE, PacketPlayerStats.STREAM_CODEC, PacketPlayerStats::handle, PacketPlayerStats::handle);
         registry.playBidirectional(PacketEssenceBar.TYPE, PacketEssenceBar.STREAM_CODEC, PacketEssenceBar::handle, PacketEssenceBar::handle);
@@ -37,14 +35,10 @@ public class JNetworkRegistry {
     }
 
     public static void sendToServer(CustomPacketPayload packet) {
-        PacketDistributor.sendToAllPlayers(packet);
+        ClientPacketDistributor.sendToServer(packet);
     }
 
     public static void sendToPlayer(ServerPlayer player, CustomPacketPayload packet) {
         PacketDistributor.sendToPlayer(player, packet);
-    }
-
-    public static DialogueNetHandler getDialogueNetHandler() {
-        return JManagers.DIALOGUE_MANAGER.getNetHandler();
     }
 }

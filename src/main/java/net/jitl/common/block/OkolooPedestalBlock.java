@@ -1,8 +1,7 @@
 package net.jitl.common.block;
 
-import net.jitl.client.ChatUtils;
+import net.jitl.client.util.ChatUtils;
 import net.jitl.common.entity.boss.Okoloo;
-import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JEntities;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;

@@ -32,7 +32,6 @@ public abstract class AbstractKnifeEntity extends AbstractArrow {
         super(entityType, player, worldIn, DEFAULT_ARROW_STACK, weapon);
     }
 
-    @OnlyIn(Dist.CLIENT)
     public void onClientTick() { }
 
     @Override

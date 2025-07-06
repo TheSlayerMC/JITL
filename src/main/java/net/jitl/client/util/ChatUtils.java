@@ -1,4 +1,4 @@
-package net.jitl.client;
+package net.jitl.client.util;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;

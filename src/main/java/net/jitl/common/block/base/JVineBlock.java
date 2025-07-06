@@ -17,7 +17,6 @@ public class JVineBlock extends VineBlock{
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand) {
         if (rand.nextInt(8) == 0) {
             BlockPos blockpos = pos.below();

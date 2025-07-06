@@ -1,5 +1,6 @@
 package net.jitl.client;
 
+import net.jitl.client.util.ChatUtils;
 import net.jitl.core.config.JClientConfig;
 import net.jitl.core.helper.InternetHandler;
 import net.jitl.core.init.JITL;

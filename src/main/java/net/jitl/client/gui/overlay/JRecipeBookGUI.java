@@ -23,7 +23,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-@OnlyIn(Dist.CLIENT)
 public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
 
     private PageButton nextButton;
@@ -68,7 +67,6 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
     protected void renderBg(@NotNull GuiGraphics poseStack, float partialTick, int mouseX, int mouseY) {
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
-        poseStack.pose().pushMatrix();
         RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.BACKGROUND).getTextureView());
         poseStack.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, x, y, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
 
@@ -79,8 +77,6 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
             default -> {
             }
         }
-        poseStack.pose().popMatrix();
-       // RenderSystem.enableDepthTest();
     }
 
     public void page1(GuiGraphics stack, int mouseX, int mouseY) {
@@ -167,16 +163,16 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
 
         y = y - 18;
         renderItem(matrixStack, mouseX, mouseY, x + 46, y, recipe, 7);
-
-        //RenderSystem.enableDepthTest();
     }
 
     public void renderItem(GuiGraphics matrixStack, int mouseX, int mouseY, int x, int y, EnumSummoningRecipes recipe, int index) {
         ItemStack item = new ItemStack(recipe.getItem(index));
+        matrixStack.pose().pushMatrix();
         matrixStack.renderItem(item, x, y);
         if(isMouseOver(mouseX, mouseY ,x, y)) {
             renderTooltip(matrixStack, mouseX, mouseY, item);
         }
+        matrixStack.pose().popMatrix();
     }
 
     protected void renderTooltip(GuiGraphics pGuiGraphics, int pX, int pY, ItemStack item) {

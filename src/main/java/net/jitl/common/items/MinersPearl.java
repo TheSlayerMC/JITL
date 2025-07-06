@@ -1,6 +1,6 @@
 package net.jitl.common.items;
 
-import net.jitl.client.ChatUtils;
+import net.jitl.client.util.ChatUtils;
 import net.jitl.common.capability.essence.PlayerEssence;
 import net.jitl.common.items.base.JItem;
 import net.jitl.core.helper.IEssenceItem;

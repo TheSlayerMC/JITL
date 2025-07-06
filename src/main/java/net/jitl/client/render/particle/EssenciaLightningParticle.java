@@ -10,7 +10,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
-@OnlyIn(Dist.CLIENT)
 public class EssenciaLightningParticle extends TextureSheetParticle {
     private static final Random RANDOM = new Random();
     private final SpriteSet sprites;
@@ -66,7 +65,6 @@ public class EssenciaLightningParticle extends TextureSheetParticle {
         }
     }
 
-    @OnlyIn(Dist.CLIENT)
     public static class Factory implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet sprite;
 

@@ -9,7 +9,6 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
-@OnlyIn(Dist.CLIENT)
 public interface JToast extends Toast {
 
     ResourceLocation TEXTURE = JITL.rl("textures/gui/toasts.png");

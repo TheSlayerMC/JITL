@@ -1,6 +1,6 @@
 package net.jitl.common.items;
 
-import net.jitl.client.ChatUtils;
+import net.jitl.client.util.ChatUtils;
 import net.jitl.common.block.OkolooPedestalBlock;
 import net.jitl.common.entity.boss.*;
 import net.jitl.common.items.base.JItem;
@@ -27,8 +27,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nullable;
-import java.util.List;
 import java.util.function.Consumer;
 
 public class BossSpawnerItem extends JItem {

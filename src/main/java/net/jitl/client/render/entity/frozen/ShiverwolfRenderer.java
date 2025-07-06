@@ -14,7 +14,6 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
-@OnlyIn(Dist.CLIENT)
 public class ShiverwolfRenderer extends AgeableMobRenderer<Shiverwolf, WolfRenderState, ShiverwolfModel> {
 
     public ShiverwolfRenderer(EntityRendererProvider.Context p_174452_) {

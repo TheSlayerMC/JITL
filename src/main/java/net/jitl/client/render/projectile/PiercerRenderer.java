@@ -20,7 +20,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
-@OnlyIn(Dist.CLIENT)
 public class PiercerRenderer<T extends PiercerEntity> extends EntityRenderer<T, KnifeRenderState> {
     private final ItemRenderer itemRenderer;
     private final Random random = new Random();

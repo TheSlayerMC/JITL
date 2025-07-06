@@ -16,7 +16,6 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
-@OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)
 public class FireBombEntity extends DamagingProjectileEntity implements ItemSupplier {
 
     public FireBombEntity(EntityType<FireBombEntity> type, Level world) {

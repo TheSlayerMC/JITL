@@ -29,7 +29,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-@OnlyIn(Dist.CLIENT)
 public class KnowledgeToast implements JToast {
 
     private final EnumKnowledge knowledge;

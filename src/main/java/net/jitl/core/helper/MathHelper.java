@@ -117,7 +117,6 @@ public class MathHelper {
         return p_absMax_0_ > p_absMax_2_ ? p_absMax_0_ : p_absMax_2_;
     }
 
-    @OnlyIn(Dist.CLIENT)
     public static int intFloorDiv(int p_intFloorDiv_0_, int p_intFloorDiv_1_) {
         return p_intFloorDiv_0_ < 0 ? -((-p_intFloorDiv_0_ - 1) / p_intFloorDiv_1_) - 1 : p_intFloorDiv_0_ / p_intFloorDiv_1_;
     }
@@ -147,22 +146,18 @@ public class MathHelper {
         return (double)lvt_1_1_ / (double)p_average_0_.length;
     }
 
-    @OnlyIn(Dist.CLIENT)
     public static boolean epsilonEquals(float p_epsilonEquals_0_, float p_epsilonEquals_1_) {
         return abs(p_epsilonEquals_1_ - p_epsilonEquals_0_) < 1.0E-5F;
     }
 
-    @OnlyIn(Dist.CLIENT)
     public static int normalizeAngle(int p_normalizeAngle_0_, int p_normalizeAngle_1_) {
         return (p_normalizeAngle_0_ % p_normalizeAngle_1_ + p_normalizeAngle_1_) % p_normalizeAngle_1_;
     }
 
-    @OnlyIn(Dist.CLIENT)
     public static float positiveModulo(float p_positiveModulo_0_, float p_positiveModulo_1_) {
         return (p_positiveModulo_0_ % p_positiveModulo_1_ + p_positiveModulo_1_) % p_positiveModulo_1_;
     }
 
-    @OnlyIn(Dist.CLIENT)
     public static double positiveModulo(double p_positiveModulo_0_, double p_positiveModulo_2_) {
         return (p_positiveModulo_0_ % p_positiveModulo_2_ + p_positiveModulo_2_) % p_positiveModulo_2_;
     }
@@ -274,19 +269,19 @@ public class MathHelper {
         return lvt_3_1_;
     }
 
-    @OnlyIn(Dist.CLIENT)
+
     public static int rgb(float p_rgb_0_, float p_rgb_1_, float p_rgb_2_) {
         return rgb(floor(p_rgb_0_ * 255.0F), floor(p_rgb_1_ * 255.0F), floor(p_rgb_2_ * 255.0F));
     }
 
-    @OnlyIn(Dist.CLIENT)
+
     public static int rgb(int p_rgb_0_, int p_rgb_1_, int p_rgb_2_) {
         int lvt_3_1_ = (p_rgb_0_ << 8) + p_rgb_1_;
         lvt_3_1_ = (lvt_3_1_ << 8) + p_rgb_2_;
         return lvt_3_1_;
     }
 
-    @OnlyIn(Dist.CLIENT)
+
     public static int multiplyColor(int p_multiplyColor_0_, int p_multiplyColor_1_) {
         int lvt_2_1_ = (p_multiplyColor_0_ & 16711680) >> 16;
         int lvt_3_1_ = (p_multiplyColor_1_ & 16711680) >> 16;
@@ -300,12 +295,12 @@ public class MathHelper {
         return p_multiplyColor_0_ & -16777216 | lvt_8_1_ << 16 | lvt_9_1_ << 8 | lvt_10_1_;
     }
 
-    @OnlyIn(Dist.CLIENT)
+
     public static double frac(double p_frac_0_) {
         return p_frac_0_ - Math.floor(p_frac_0_);
     }
 
-    @OnlyIn(Dist.CLIENT)
+
     public static long getPositionRandom(Vec3i p_getPositionRandom_0_) {
         return getCoordinateRandom(p_getPositionRandom_0_.getX(), p_getPositionRandom_0_.getY(), p_getPositionRandom_0_.getZ());
     }
@@ -383,7 +378,7 @@ public class MathHelper {
         return p_fastInvSqrt_0_;
     }
 
-    @OnlyIn(Dist.CLIENT)
+
     public static int hsvToRGB(float p_hsvToRGB_0_, float p_hsvToRGB_1_, float p_hsvToRGB_2_) {
         int lvt_3_1_ = (int)(p_hsvToRGB_0_ * 6.0F) % 6;
         float lvt_4_1_ = p_hsvToRGB_0_ * 6.0F - (float)lvt_3_1_;

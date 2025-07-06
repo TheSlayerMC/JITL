@@ -16,7 +16,6 @@ import org.joml.Matrix4f;
 
 import java.util.Random;
 
-@OnlyIn(Dist.CLIENT)
 public class EssenciaBoltRenderer extends EntityRenderer<EssenciaBoltEntity, EssentiaLightningBoltRenderState> {
 
     public EssenciaBoltRenderer(EntityRendererProvider.Context context) {

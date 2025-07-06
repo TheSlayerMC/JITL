@@ -51,8 +51,6 @@ public class ShadiumShieldRenderer implements SpecialModelRenderer<DataComponent
         this.model.root().getExtentsForGui(posestack, set);
     }
 
-
-    @OnlyIn(Dist.CLIENT)
     public record Unbaked() implements SpecialModelRenderer.Unbaked {
         public static final Unbaked INSTANCE = new Unbaked();
         public static final MapCodec<Unbaked> MAP_CODEC;

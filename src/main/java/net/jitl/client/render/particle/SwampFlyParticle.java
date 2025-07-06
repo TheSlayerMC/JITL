@@ -8,7 +8,6 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
-@OnlyIn(Dist.CLIENT)
 public class SwampFlyParticle extends TextureSheetParticle {
 
     private SwampFlyParticle(ClientLevel worldIn, double x, double y, double z, SpriteSet spriteWithAge) {
@@ -49,7 +48,6 @@ public class SwampFlyParticle extends TextureSheetParticle {
             this.remove();
     }
 
-    @OnlyIn(Dist.CLIENT)
     public static class Factory implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet sprites;
 

@@ -11,7 +11,6 @@ import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.Optional;
 
-@OnlyIn(Dist.CLIENT)
 public class JCloudRenderer extends CloudRenderer {
 
     public JCloudRenderer(ResourceLocation texture) {

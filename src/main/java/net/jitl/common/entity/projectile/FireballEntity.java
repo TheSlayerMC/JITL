@@ -25,7 +25,6 @@ public class FireballEntity extends ThrowableProjectile {
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public void handleEntityEvent(byte pId) {
         if (pId == 3) {
             for(int i = 0; i < 8; ++i) {

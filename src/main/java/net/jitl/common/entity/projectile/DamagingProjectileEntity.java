@@ -51,7 +51,6 @@ public class DamagingProjectileEntity extends ThrowableProjectile {
         }
     }
 
-    @OnlyIn(Dist.CLIENT)
     public void onClientTick() { }
 
     protected boolean shouldDespawn() {

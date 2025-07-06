@@ -73,7 +73,6 @@ public class SnowflakeParticle extends TextureSheetParticle {
         return this.quadSize * (1.0F - f * f * 0.5F);
     }
 
-    @OnlyIn(Dist.CLIENT)
     public static class Factory implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet sprite;
 

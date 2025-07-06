@@ -36,7 +36,6 @@ public class FloroMudEntity extends DamagingProjectileEntity implements ItemSupp
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public void onClientTick() {
         super.onClientTick();
         int count = 2;

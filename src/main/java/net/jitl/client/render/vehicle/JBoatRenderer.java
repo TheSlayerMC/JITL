@@ -31,7 +31,6 @@ import org.joml.Quaternionf;
 import java.util.Map;
 import java.util.stream.Stream;
 
-@OnlyIn(Dist.CLIENT)
 public class JBoatRenderer extends AbstractBoatRenderer {
 
     private final Model waterPatchModel;

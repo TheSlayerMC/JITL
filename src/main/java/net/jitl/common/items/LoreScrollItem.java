@@ -4,6 +4,7 @@ import net.jitl.client.gui.overlay.KnowledgeToast;
 import net.jitl.client.gui.screen.LoreScrollEntryScreen;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.client.util.ClientTools;
+import net.jitl.client.util.ClientUtils;
 import net.jitl.client.util.EnumHexColor;
 import net.jitl.common.capability.player.LoreScroll;
 import net.jitl.common.capability.stats.PlayerStats;
@@ -57,9 +58,9 @@ public class LoreScrollItem extends JItem {
                 }
             } else {
                 ClientTools.playLocalSound(SoundEvents.BOOK_PAGE_TURN, 1.0F, 1.0F);
-                displayScrollGui(entry);
+                ClientUtils.displayScrollGui(entry);
                 if(!scroll.openedBefore() && scroll.knowledge() != null)
-                    displayToast(scroll);
+                    ClientUtils.displayToast(scroll);
             }
         } else {
             if(!worldIn.isClientSide) {
@@ -69,16 +70,6 @@ public class LoreScrollItem extends JItem {
             }
         }
         return InteractionResult.SUCCESS;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static void displayToast(LoreScroll scroll) {
-        Minecraft.getInstance().getToastManager().addToast(new KnowledgeToast(EnumKnowledge.byName(scroll.knowledge()), true));
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static void displayScrollGui(ScrollEntry entry) {
-        Minecraft.getInstance().setScreen(new LoreScrollEntryScreen(entry));
     }
 
     public static void bindScrollEntry(ItemStack stack, ScrollEntry entry, EnumKnowledge knowledge, int level) {

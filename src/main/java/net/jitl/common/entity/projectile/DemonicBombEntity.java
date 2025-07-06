@@ -24,7 +24,6 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
-@OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)
 public class DemonicBombEntity extends AbstractArrow implements ItemSupplier {
 
     private static final ItemStack DEFAULT_ARROW_STACK = new ItemStack(JItems.DEMONIC_BOMB.get());

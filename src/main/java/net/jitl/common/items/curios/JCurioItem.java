@@ -43,7 +43,6 @@ public class JCurioItem extends JItem {//todo implements ICurioItem {
 //    }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, TooltipContext pContext, TooltipDisplay display, Consumer<Component> tip, TooltipFlag pTooltipFlag) {
         super.appendHoverText(stack, pContext, display, tip, pTooltipFlag);
         TooltipFiller tooltipFiller = new TooltipFiller(tip, Objects.requireNonNull(JITL.getRegistryName(this)).getPath());

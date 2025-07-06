@@ -12,7 +12,6 @@ import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.Set;
 
-@OnlyIn(Dist.CLIENT)
 public class ShiverwolfModel extends EntityModel<WolfRenderState> {
 
     public static final MeshTransformer BABY_TRANSFORMER = new BabyModelTransform(Set.of("head"));

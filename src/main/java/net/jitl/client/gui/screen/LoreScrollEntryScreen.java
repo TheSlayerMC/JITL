@@ -115,7 +115,6 @@ public class LoreScrollEntryScreen extends Screen {
 
     @Override
     public void render(@NotNull GuiGraphics poseStack, int mouseX, int mouseY, float partialTicks) {
-       // renderBackground(poseStack, mouseX, mouseY, partialTicks);
         RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(BG).getTextureView());
 
         int heightRectCount = (height - (height <= 480 ? 12 : 48)) / 32;

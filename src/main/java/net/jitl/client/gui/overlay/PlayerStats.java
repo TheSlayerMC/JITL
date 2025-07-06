@@ -22,7 +22,6 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
-@OnlyIn(Dist.CLIENT)
 public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
 
     private PageButton nextButton;
@@ -42,8 +41,8 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
     @Override
     public void render(GuiGraphics graphics, int pMouseX, int pMouseY, float pPartialTick) {
         super.render(graphics, pMouseX, pMouseY, pPartialTick);
-        // this.renderBackground(graphics, pMouseX, pMouseY, pPartialTick);//Dims around the GUI for a more vanilla look
         this.updateButtonVisibility();
+        graphics.drawString(this.font, "COINS" + ClientPlayerStats.getSentacoins(), leftPos, height, ArgbColor.from(ChatFormatting.WHITE));
     }
 
     @Override
@@ -79,8 +78,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
     protected void renderBg(@NotNull GuiGraphics poseStack, float partialTick, int mouseX, int mouseY) {
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
-        poseStack.pose().pushMatrix();
-        //RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
+
         RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.BACKGROUND).getTextureView());
         poseStack.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, x, y, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
 
@@ -90,8 +88,6 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
             default -> {
             }
         }
-        poseStack.pose().popMatrix();
-        //RenderSystem.enableDepthTest();
     }
 
     public void page1(GuiGraphics stack) {
@@ -126,10 +122,12 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
 
         h += height;
 
-        drawKnowledgeSprite(stack, x, h,  EnumKnowledge.SENTERIAN, "Senterain");
+        drawKnowledgeSprite(stack, x, h,  EnumKnowledge.SENTERIAN, "Senterian");
         drawSprite(stack, 126, h, 0, 74, "Sentacoins:");
 
     }
+
+
 
     public void drawSprite(GuiGraphics matrixStack, int x, int y, int spriteX, int spriteY, String s) {
         int k = (width - imageWidth) / 2;
@@ -141,15 +139,16 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.KNOWLEDGE_SPRITE).getTextureView());
 
         matrixStack.blit(RenderPipelines.GUI_TEXTURED, KNOWLEDGE_SPRITE, k + x, l + y, spriteX, spriteY, 32, 32, 256, 256);
-        matrixStack.drawString(font, s, k + x + 35, l + y + 5, 4210752, false); //Draws the sprite name
+        matrixStack.drawString(this.font, s, k + x + 35, l + y + 5, 4210752, false); //Draws the sprite name
 
         if(s.contains("Sentacoins"))
-            matrixStack.drawString(font, "" + ClientPlayerStats.getSentacoins(), k + x + 35, l + y + 15, ArgbColor.from(ChatFormatting.WHITE));
-
+            matrixStack.drawString(this.font, "" + ClientPlayerStats.getSentacoins(), k + x + 35, l + y + 15, ArgbColor.from(ChatFormatting.WHITE));
        // RenderSystem.enableDepthTest();
     }
 
     public void drawKnowledgeSprite(GuiGraphics matrixStack, int x, int y, EnumKnowledge type, String s) {
+        matrixStack.pose().pushMatrix();
+
         drawSprite(matrixStack, x, y, type.getSpriteX(), type.getSpriteY(), s);
         int progressBarSize = 65;
         int k = (width - imageWidth) / 2;
@@ -176,7 +175,9 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
             int getLevelCount = knowledge.getLevel(type);
             String level = "" + getLevelCount;
 
-            matrixStack.drawString(font, "" + (getLevelCount), lvX - this.font.width(level) / 2 + 4, lvY, ArgbColor.from(ChatFormatting.WHITE), true);
+            matrixStack.drawString(this.font, "" + (getLevelCount), lvX - this.font.width(level) / 2 + 4, lvY, ArgbColor.from(ChatFormatting.WHITE), true);
+            matrixStack.pose().popMatrix();
+
         }
     }
 

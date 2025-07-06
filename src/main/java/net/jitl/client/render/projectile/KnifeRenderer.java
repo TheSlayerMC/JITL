@@ -20,7 +20,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
-@OnlyIn(Dist.CLIENT)
 public class KnifeRenderer<T extends KnifeEntity> extends EntityRenderer<T, KnifeRenderState> {
     private final ItemRenderer itemRenderer;
     private final Random random = new Random();

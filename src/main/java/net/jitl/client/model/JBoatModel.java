@@ -15,7 +15,6 @@ import net.minecraft.util.Mth;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class JBoatModel extends EntityModel<BoatRenderState> {
 
     private final ModelPart leftPaddle;

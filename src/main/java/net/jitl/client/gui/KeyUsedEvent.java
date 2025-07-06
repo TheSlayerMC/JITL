@@ -35,7 +35,6 @@ public class KeyUsedEvent {
         JNetworkRegistry.sendToServer(new PacketKeyPressed(amulet, gear));
     }
 
-    @OnlyIn(Dist.CLIENT)
     public static void displayPlayerStats(Player player) {
         Minecraft.getInstance().setScreen(new PlayerStats(player));
     }

@@ -26,7 +26,6 @@ import net.minecraft.world.item.equipment.Equippable;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class ShiverwolfArmorLayer extends RenderLayer<WolfRenderState, ShiverwolfModel> {
 
     private final ShiverwolfModel adultModel;
