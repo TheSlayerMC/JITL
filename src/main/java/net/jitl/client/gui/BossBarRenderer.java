@@ -41,28 +41,26 @@ public class BossBarRenderer {
         assert mc.level != null;
         LivingEntity entity = (LivingEntity)mc.level.getEntities().get(bossStatusInfo.getId());
 
-
-        if(entity == null || ev.isCanceled() || Minecraft.getInstance().level == null || bossStatusInfo.getColor() != BossEvent.BossBarColor.PINK || bossStatusInfo.getOverlay() != BossEvent.BossBarOverlay.NOTCHED_20)
-            return;
-
-        ResourceLocation texture = BAR_ID_CACHE.computeIfAbsent(
-                JITL.getRegistryName(entity.getType()), key -> ResourceLocation.fromNamespaceAndPath(key.getNamespace(), "textures/gui/bossbars/" + key.getPath() + ".png"));
-
-        double healthWidth = entity.getHealth() / entity.getMaxHealth();
-
-        RenderSystem.setShaderTexture(0, mc.getTextureManager().getTexture(texture).getTextureView());
-
-        graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, 0, 10, 182, 9, 182, 19);
-        graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, 0, 0, (int)(182 * healthWidth), 9, 182, 19);
-
-
         if(entity instanceof IJourneyBoss boss) {
+            if(ev.isCanceled() || Minecraft.getInstance().level == null || bossStatusInfo.getColor() != BossEvent.BossBarColor.PINK || bossStatusInfo.getOverlay() != BossEvent.BossBarOverlay.NOTCHED_20)
+                return;
+
+            ResourceLocation texture = BAR_ID_CACHE.computeIfAbsent(
+                    JITL.getRegistryName(entity.getType()), key -> ResourceLocation.fromNamespaceAndPath(key.getNamespace(), "textures/gui/bossbars/" + key.getPath() + ".png"));
+
+            double healthWidth = entity.getHealth() / entity.getMaxHealth();
+
+            RenderSystem.setShaderTexture(0, mc.getTextureManager().getTexture(texture).getTextureView());
+
+            graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, 0, 10, 182, 9, 182, 19);
+            graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, 0, 0, (int)(182 * healthWidth), 9, 182, 19);
+
             if(boss.showName())
                 drawCenteredString(graphics, mc.font, entity.getName(), x, y + 1, 255, 255, 255, 255);
-        }
 
-        ev.setIncrement(ev.getIncrement() + 5);
-        ev.setCanceled(true);
+            ev.setIncrement(ev.getIncrement() + 5);
+            ev.setCanceled(true);
+        }
     }
 
     public static void drawCenteredString(GuiGraphics matrixStack, Font fontRenderer, Component fontIn, float x, float y, int red, int green, int blue, int alpha) {
