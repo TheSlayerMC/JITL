@@ -139,11 +139,13 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.KNOWLEDGE_SPRITE).getTextureView());
 
         matrixStack.blit(RenderPipelines.GUI_TEXTURED, KNOWLEDGE_SPRITE, k + x, l + y, spriteX, spriteY, 32, 32, 256, 256);
-        matrixStack.drawString(this.font, s, k + x + 35, l + y + 5, 4210752, false); //Draws the sprite name
+        matrixStack.drawString(this.font, s, k + x + 35, l + y + 5, -12566464, false);
 
         if(s.contains("Sentacoins"))
-            matrixStack.drawString(this.font, "" + ClientPlayerStats.getSentacoins(), k + x + 35, l + y + 15, ArgbColor.from(ChatFormatting.WHITE));
-       // RenderSystem.enableDepthTest();
+            matrixStack.drawString(this.font, "" + ClientPlayerStats.getSentacoins(), k + x + 35, l + y + 15, -333333, true);
+
+        // RenderSystem.enableDepthTest();
+
     }
 
     public void drawKnowledgeSprite(GuiGraphics matrixStack, int x, int y, EnumKnowledge type, String s) {
@@ -175,7 +177,8 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
             int getLevelCount = knowledge.getLevel(type);
             String level = "" + getLevelCount;
 
-            matrixStack.drawString(this.font, "" + (getLevelCount), lvX - this.font.width(level) / 2 + 4, lvY, ArgbColor.from(ChatFormatting.WHITE), true);
+            matrixStack.drawString(this.font, "" + (getLevelCount), lvX - this.font.width(level) / 2 + 4, lvY, -333333, true);
+
             matrixStack.pose().popMatrix();
 
         }

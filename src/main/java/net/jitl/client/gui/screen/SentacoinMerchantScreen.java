@@ -49,9 +49,9 @@ public class SentacoinMerchantScreen extends AbstractContainerScreen<SentacoinMe
         Component component = Component.literal("Sentacoins: " + ClientPlayerStats.getSentacoins());
         int j = this.font.width(component);
         int k = 49 + this.imageWidth / 2 - j / 2;
-        pGuiGraphics.drawString(this.font, component, k, 6, 4210752, false);
+        pGuiGraphics.drawString(this.font, component, k, 6, -12566464, false);
         int l = this.font.width(TRADES_LABEL);
-        pGuiGraphics.drawString(this.font, TRADES_LABEL, 5 - l / 2 + 53, 6, 4210752, false);
+        pGuiGraphics.drawString(this.font, TRADES_LABEL, 5 - l / 2 + 53, 6, -12566464, false);
     }
 
     protected void renderBg(GuiGraphics pGuiGraphics, float pPartialTick, int pMouseX, int pMouseY) {

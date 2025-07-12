@@ -46,6 +46,11 @@ public class SoulWatcher extends JFlyingBossEntity {
     }
 
     @Override
+    public boolean showName() {
+        return false;
+    }
+
+    @Override
     public boolean fireImmune() {
         return true;
     }

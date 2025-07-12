@@ -21,6 +21,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.ARGB;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.neoforged.api.distmarker.Dist;
@@ -59,7 +60,7 @@ public class KnowledgeToast implements JToast {
         poseStack.blitSprite(RenderPipelines.GUI_TEXTURED, TEXTURE, 0, 0, this.width(), this.height());
         if(displayinfo != null) {
             List<FormattedCharSequence> list = font.split(displayinfo.getDescription(), 125);
-            int i = displayinfo.getFrame() == JFrameType.LEVEL ? ArgbColor.from(ChatFormatting.DARK_PURPLE) : ArgbColor.from(ChatFormatting.BLACK);
+            int i = displayinfo.getFrame() == JFrameType.LEVEL ? ArgbColor.from(ChatFormatting.DARK_PURPLE) : ARGB.colorFromFloat(1, 0, 0, 0);
             if(list.size() == 1) {
                 poseStack.drawString(font, displayinfo.getFrame().getDisplayName(), 30, 18, i, false);//Level or XP
                 poseStack.drawString(font, list.get(0), 30, 7, ArgbColor.from(ChatFormatting.BLACK), false);// Knowledge name

@@ -3,6 +3,7 @@ package net.jitl.client.gui;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.systems.RenderSystem;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import net.jitl.common.entity.IJourneyBoss;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -40,6 +41,7 @@ public class BossBarRenderer {
         assert mc.level != null;
         LivingEntity entity = (LivingEntity)mc.level.getEntities().get(bossStatusInfo.getId());
 
+
         if(entity == null || ev.isCanceled() || Minecraft.getInstance().level == null || bossStatusInfo.getColor() != BossEvent.BossBarColor.PINK || bossStatusInfo.getOverlay() != BossEvent.BossBarOverlay.NOTCHED_20)
             return;
 
@@ -48,13 +50,16 @@ public class BossBarRenderer {
 
         double healthWidth = entity.getHealth() / entity.getMaxHealth();
 
-//        RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, mc.getTextureManager().getTexture(texture).getTextureView());
-       // RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 
-        graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, 182, 9, 0, 10, 182, 9, 182, 19);
-        graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, (int)(182 * healthWidth), 9, 0, 0, (int)(182 * healthWidth), 9, 182, 19);
-        drawCenteredString(graphics, mc.font, entity.getName(), x, y - 9, 255, 255, 255, 255);
+        graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, 0, 10, 182, 9, 182, 19);
+        graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, 0, 0, (int)(182 * healthWidth), 9, 182, 19);
+
+
+        if(entity instanceof IJourneyBoss boss) {
+            if(boss.showName())
+                drawCenteredString(graphics, mc.font, entity.getName(), x, y + 1, 255, 255, 255, 255);
+        }
 
         ev.setIncrement(ev.getIncrement() + 5);
         ev.setCanceled(true);

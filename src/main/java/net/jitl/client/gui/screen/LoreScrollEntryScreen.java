@@ -17,6 +17,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.ARGB;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
 
@@ -80,19 +81,19 @@ public class LoreScrollEntryScreen extends Screen {
     private void drawHeader(GuiGraphics poseStack, int maxX, int y0, Tesselator tess) {
         float zLevel = this.getContentHeight();
         if (scrollEntry.hasComment()) {
-            drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getTitleKey()), left + (maxX - left) / 2 + 1, y0, (int) zLevel, EnumHexColor.BLACK, 1.5F, headerHeight - 5);
+            drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getTitleKey()), left + (maxX - left) / 2 + 1, y0, (int) zLevel, ARGB.colorFromFloat(1, 0, 0, 0), 1.5F, headerHeight - 5);
             if (scrollEntry.getCommentKey() != null)
-                drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getCommentKey()), left + (maxX - left) / 2 + 1, y0 + (int) ((float) font.lineHeight * 0.7), (int) zLevel, EnumHexColor.DARK_BROWN, 1F, headerHeight + 5);
+                drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getCommentKey()), left + (maxX - left) / 2 + 1, y0 + (int) ((float) font.lineHeight * 0.7), (int) zLevel, -12566464, 1F, headerHeight + 5);
         } else {
-            drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getTitleKey()), left + (maxX - left) / 2 + 1, y0, (int) zLevel, EnumHexColor.BLACK, 1.2F, headerHeight);
+            drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getTitleKey()), left + (maxX - left) / 2 + 1, y0, (int) zLevel, -12566464, 1.2F, headerHeight);
         }
     }
 
-    public void drawCenteredStringWithCustomScale(GuiGraphics gui, Font f, FormattedText comp, int x, int y, int z, EnumHexColor colour, float size, int avaliableHeight) {
+    public void drawCenteredStringWithCustomScale(GuiGraphics gui, Font f, FormattedText comp, int x, int y, int z, int colour, float size, int avaliableHeight) {
         gui.pose().pushMatrix();
         gui.pose().translate((float) (x - (double)f.width(comp) / 2 * size), (float) (y + ((double)avaliableHeight / 2) + (f.lineHeight * size > 1 ? -1 * f.lineHeight * size : f.lineHeight * size) * 0.5));
         gui.pose().scale(size, size);
-        gui.drawString(f, comp.getString(), 0, 0, colour.getInt(), false);
+        gui.drawString(f, comp.getString(), 0, 0, colour, false);
         gui.pose().popMatrix();
     }
 

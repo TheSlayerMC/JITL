@@ -47,6 +47,11 @@ public class Scale extends JFlyingBossEntity {
     }
 
     @Override
+    public boolean showName() {
+        return true;
+    }
+
+    @Override
     public void addGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(7, new Scale.ShootFireballGoal(this));

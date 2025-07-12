@@ -40,6 +40,11 @@ public class TerranianProtector extends JBossEntity implements RangedAttackMob {
     }
 
     @Override
+    public boolean showName() {
+        return true;
+    }
+
+    @Override
     public boolean fireImmune() {
         return true;
     }

@@ -46,6 +46,11 @@ public class SkyStalker extends JFlyingBossEntity {
     }
 
     @Override
+    public boolean showName() {
+        return true;
+    }
+
+    @Override
     public boolean fireImmune() {
         return true;
     }

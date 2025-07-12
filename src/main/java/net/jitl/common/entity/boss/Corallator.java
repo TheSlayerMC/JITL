@@ -40,6 +40,11 @@ public class Corallator extends JFlyingBossEntity implements RangedAttackMob {
     }
 
     @Override
+    public boolean showName() {
+        return false;
+    }
+
+    @Override
     public boolean fireImmune() {
         return true;
     }

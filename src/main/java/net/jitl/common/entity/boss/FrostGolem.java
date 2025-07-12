@@ -36,6 +36,11 @@ public class FrostGolem extends JBossEntity {
     }
 
     @Override
+    public boolean showName() {
+        return true;
+    }
+
+    @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(0, new AnimatedAttackGoal(this, 1.0D, false));

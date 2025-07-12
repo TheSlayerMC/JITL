@@ -28,7 +28,7 @@ public class TestBugItem extends JItem implements IEssenceItem {
         if(!level.isClientSide()) {
 
             ItemStack scrollStack = new ItemStack(JItems.LORE_SCROLL.asItem());
-            LoreScrollItem.bindScrollEntry(scrollStack, ScrollEntries.BEYOND_BOILING, EnumKnowledge.BOIL, 25);
+            LoreScrollItem.bindScrollEntry(scrollStack, ScrollEntries.THE_ROYALS, EnumKnowledge.EUCA, 25);
             System.out.println(scrollStack.getComponents());
             player.addItem(scrollStack);
 

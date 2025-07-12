@@ -1,6 +1,7 @@
 package net.jitl.common.entity.base;
 
 import net.jitl.client.knowledge.EnumKnowledge;
+import net.jitl.common.entity.IJourneyBoss;
 import net.jitl.common.entity.boss.BossCrystal;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JEntities;
@@ -26,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-public abstract class JFlyingBossEntity extends JFlyingEntity implements IDontAttackWhenPeaceful {
+public abstract class JFlyingBossEntity extends JFlyingEntity implements IDontAttackWhenPeaceful, IJourneyBoss {
 
     private final ServerBossEvent BOSS_INFO = (ServerBossEvent)new ServerBossEvent(Objects.requireNonNull(getDisplayName()), BossEvent.BossBarColor.PINK, BossEvent.BossBarOverlay.NOTCHED_20).setDarkenScreen(false).setCreateWorldFog(false);
 

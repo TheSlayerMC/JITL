@@ -26,7 +26,7 @@ public class TextDescComponent implements IDescComponent {
     public void drawContentPart(GuiGraphics matrixStack, int x0, int y0, int width) {
         int i = y0;
         for(FormattedCharSequence s : wrappedText) {
-            matrixStack.drawString(Minecraft.getInstance().font, s, x0, i, EnumHexColor.DARK_BROWN.getInt(), false);
+            matrixStack.drawString(Minecraft.getInstance().font, s, x0, i, -12566464, false);
             i += Minecraft.getInstance().font.lineHeight;
         }
     }

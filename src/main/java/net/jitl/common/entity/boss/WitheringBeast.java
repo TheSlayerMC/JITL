@@ -45,6 +45,11 @@ public class WitheringBeast extends JBossEntity implements RangedAttackMob {
     }
 
     @Override
+    public boolean showName() {
+        return false;
+    }
+
+    @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(2, new RangedAttackGoal(this, 1.0D, 40, 20.0F));
         this.goalSelector.addGoal(0, new FloatGoal(this));

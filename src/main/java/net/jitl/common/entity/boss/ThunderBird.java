@@ -36,6 +36,11 @@ public class ThunderBird extends JBossEntity {
     }
 
     @Override
+    public boolean showName() {
+        return true;
+    }
+
+    @Override
     public boolean fireImmune() {
         return true;
     }

@@ -48,6 +48,11 @@ public class Blazier extends JBossEntity {
     }
 
     @Override
+    public boolean showName() {
+        return false;
+    }
+
+    @Override
     public boolean fireImmune() {
         return true;
     }
