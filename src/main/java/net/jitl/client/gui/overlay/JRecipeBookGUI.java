@@ -1,6 +1,7 @@
 package net.jitl.client.gui.overlay;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.jitl.client.util.GuiHelper;
 import net.jitl.core.helper.EnumSummoningRecipes;
 import net.jitl.core.helper.internal.EmptyContainer;
 import net.jitl.core.init.JITL;
@@ -9,16 +10,11 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.PageButton;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner;
-import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -32,7 +28,7 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
     public int pageNumber = 0;
 
     public JRecipeBookGUI(Inventory playerInventory) {
-        super(new EmptyContainer(), playerInventory, Component.translatable("jitl.recipe_book"));
+        super(new EmptyContainer(), playerInventory, Component.translatable(""));
         this.imageWidth = 242;
         this.imageHeight = 216;
     }
@@ -67,13 +63,13 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
     protected void renderBg(@NotNull GuiGraphics poseStack, float partialTick, int mouseX, int mouseY) {
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
+        assert minecraft != null;
         RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.BACKGROUND).getTextureView());
-        poseStack.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, x, y, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
+        GuiHelper.drawTexture(poseStack, BACKGROUND, x, y, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
 
         switch(pageNumber) {
             case 0 -> page1(poseStack, mouseX, mouseY);
             case 1 -> page2(poseStack, mouseX, mouseY);
-            case 2 -> page3(poseStack, mouseX, mouseY);
             default -> {
             }
         }
@@ -100,7 +96,6 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
         x += w;
         drawSprite(stack, mouseX, mouseY, x, y, EnumSummoningRecipes.BLAZIER);
 
-
     }
 
     public void page2(GuiGraphics stack, int mouseX, int mouseY) {
@@ -126,23 +121,16 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
 
     }
 
-    private void page3(GuiGraphics poseStack, int mouseX, int mouseY) {
-        int w = 120;
-        int x = -3;
-        int y = -3;
-
-    }
-
     public void drawSprite(GuiGraphics matrixStack, int mouseX, int mouseY, int x, int y, EnumSummoningRecipes recipe) {
         int k = (width - imageWidth) / 2 + 3;
         int l = (height - imageHeight) / 2 + 3;
 
         x = x + k + 10;
         y = y + l + 10;
+        assert minecraft != null;
         RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.RECIPE).getTextureView());
-        matrixStack.blit(RenderPipelines.GUI_TEXTURED, RECIPE, x - 5, y - 5, 0, 0, 112, 62, 256, 256);
-
-
+        GuiHelper.drawTexture(matrixStack, RECIPE, x - 5, y - 5, 0, 0, 112, 62, 256, 256);
+        matrixStack.pose().pushMatrix();
         renderItem(matrixStack, mouseX, mouseY, x, y, recipe, 0);
         y = y + 18;
         renderItem(matrixStack, mouseX, mouseY, x, y, recipe, 1);
@@ -163,22 +151,21 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
 
         y = y - 18;
         renderItem(matrixStack, mouseX, mouseY, x + 46, y, recipe, 7);
+        matrixStack.pose().popMatrix();
     }
 
     public void renderItem(GuiGraphics matrixStack, int mouseX, int mouseY, int x, int y, EnumSummoningRecipes recipe, int index) {
         ItemStack item = new ItemStack(recipe.getItem(index));
-        matrixStack.pose().pushMatrix();
         matrixStack.renderItem(item, x, y);
-        if(isMouseOver(mouseX, mouseY ,x, y)) {
+
+        if(isMouseOver(mouseX, mouseY, x, y)) {
             renderTooltip(matrixStack, mouseX, mouseY, item);
         }
-        matrixStack.pose().popMatrix();
     }
 
     protected void renderTooltip(GuiGraphics pGuiGraphics, int pX, int pY, ItemStack item) {
         Component component = item.getStyledHoverName();
         ClientTooltipComponent clienttooltipcomponent = ClientTooltipComponent.create(component.getVisualOrderText());
-
         pGuiGraphics.renderTooltip(this.font, List.of(clienttooltipcomponent), pX, pY, DefaultTooltipPositioner.INSTANCE, item.get(DataComponents.TOOLTIP_STYLE));
     }
 

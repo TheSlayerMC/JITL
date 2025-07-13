@@ -3,6 +3,7 @@ package net.jitl.client.gui;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.systems.RenderSystem;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import net.jitl.client.util.GuiHelper;
 import net.jitl.common.entity.IJourneyBoss;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.Minecraft;
@@ -52,8 +53,8 @@ public class BossBarRenderer {
 
             RenderSystem.setShaderTexture(0, mc.getTextureManager().getTexture(texture).getTextureView());
 
-            graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, 0, 10, 182, 9, 182, 19);
-            graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, 0, 0, (int)(182 * healthWidth), 9, 182, 19);
+            GuiHelper.drawTexture(graphics, texture, x, y, 0, 10, 182, 9, 182, 19);
+            GuiHelper.drawTexture(graphics, texture, x, y, 0, 0, (int)(182 * healthWidth), 9, 182, 19);
 
             if(boss.showName())
                 drawCenteredString(graphics, mc.font, entity.getName(), x, y + 1, 255, 255, 255, 255);
@@ -66,6 +67,6 @@ public class BossBarRenderer {
     public static void drawCenteredString(GuiGraphics matrixStack, Font fontRenderer, Component fontIn, float x, float y, int red, int green, int blue, int alpha) {
         FormattedCharSequence ireorderingprocessor = fontIn.getVisualOrderText();
         int color = Math.max(4, alpha) << 24 | red << 16 | green << 8 | blue;
-        matrixStack.drawString(fontRenderer, ireorderingprocessor, (int) (x - fontRenderer.width(ireorderingprocessor) / 2F + 91), (int) y, color, true);
+        GuiHelper.drawString(matrixStack, ireorderingprocessor, (int) (x - fontRenderer.width(ireorderingprocessor) / 2F + 91), (int) y, color, true);
     }
 }

@@ -1,6 +1,7 @@
 package net.jitl.client.gui.screen;
 
 import net.jitl.client.stats.ClientPlayerStats;
+import net.jitl.client.util.GuiHelper;
 import net.jitl.common.entity.jmerchant.SentacoinMerchantMenu;
 import net.jitl.core.data.JNetworkRegistry;
 import net.jitl.core.init.JITL;
@@ -49,16 +50,16 @@ public class SentacoinMerchantScreen extends AbstractContainerScreen<SentacoinMe
         Component component = Component.literal("Sentacoins: " + ClientPlayerStats.getSentacoins());
         int j = this.font.width(component);
         int k = 49 + this.imageWidth / 2 - j / 2;
-        pGuiGraphics.drawString(this.font, component, k, 6, -12566464, false);
+        GuiHelper.drawString(pGuiGraphics, component, k, 6, -12566464, false);
         int l = this.font.width(TRADES_LABEL);
-        pGuiGraphics.drawString(this.font, TRADES_LABEL, 5 - l / 2 + 53, 6, -12566464, false);
+        GuiHelper.drawString(pGuiGraphics, TRADES_LABEL, 5 - l / 2 + 53, 6, -12566464, false);
     }
 
     protected void renderBg(GuiGraphics pGuiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
         int i = (this.width - this.imageWidth) / 2;
         int j = (this.height - this.imageHeight) / 2;
         pGuiGraphics.pose().pushMatrix();
-        pGuiGraphics.blit(RenderPipelines.GUI_TEXTURED, MERCHANT_LOCATION, i, j, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
+        GuiHelper.drawTexture(pGuiGraphics, MERCHANT_LOCATION, i, j, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
         pGuiGraphics.pose().pushMatrix();
     }
 

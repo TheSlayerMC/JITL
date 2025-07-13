@@ -3,6 +3,7 @@ package net.jitl.client.gui.overlay;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.client.stats.ClientPlayerStats;
+import net.jitl.client.util.GuiHelper;
 import net.jitl.core.helper.internal.ArgbColor;
 import net.jitl.core.helper.internal.EmptyContainer;
 import net.jitl.core.init.JITL;
@@ -134,18 +135,15 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         int l = (height - imageHeight) / 2;
         RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.BACKGROUND).getTextureView());
 
-        matrixStack.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, k + x - 4, l + y - 4, 0, 216, 115, 40, 256, 256);
+        GuiHelper.drawTexture(matrixStack, BACKGROUND, k + x - 4, l + y - 4, 0, 216, 115, 40, 256, 256);
 
         RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.KNOWLEDGE_SPRITE).getTextureView());
 
-        matrixStack.blit(RenderPipelines.GUI_TEXTURED, KNOWLEDGE_SPRITE, k + x, l + y, spriteX, spriteY, 32, 32, 256, 256);
-        matrixStack.drawString(this.font, s, k + x + 35, l + y + 5, -12566464, false);
+        GuiHelper.drawTexture(matrixStack, KNOWLEDGE_SPRITE, k + x, l + y, spriteX, spriteY, 32, 32, 256, 256);
+        GuiHelper.drawString(matrixStack, s, k + x + 35, l + y + 5, -12566464, false);
 
         if(s.contains("Sentacoins"))
-            matrixStack.drawString(this.font, "" + ClientPlayerStats.getSentacoins(), k + x + 35, l + y + 15, -333333, true);
-
-        // RenderSystem.enableDepthTest();
-
+            GuiHelper.drawString(matrixStack, "x" + ClientPlayerStats.getSentacoins(), k + x + 35, l + y + 15, -333333, true);
     }
 
     public void drawKnowledgeSprite(GuiGraphics matrixStack, int x, int y, EnumKnowledge type, String s) {
@@ -165,11 +163,11 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
             int progressBarX = k + x + 35, progressBarY = l + y + 19;
 
 
-            matrixStack.blit(RenderPipelines.GUI_TEXTURED, KNOWLEDGE_SPRITE, progressBarX, progressBarY, 0, 5, progressBarSize, 5, 256, 256);
-            matrixStack.blit(RenderPipelines.GUI_TEXTURED, KNOWLEDGE_SPRITE, progressBarX, progressBarY, 0, 0, width, 5, 256, 256);
+            GuiHelper.drawTexture(matrixStack, KNOWLEDGE_SPRITE, progressBarX, progressBarY, 0, 5, progressBarSize, 5, 256, 256);
+            GuiHelper.drawTexture(matrixStack, KNOWLEDGE_SPRITE, progressBarX, progressBarY, 0, 0, width, 5, 256, 256);
 
             if(completed) {
-                matrixStack.blit(RenderPipelines.GUI_TEXTURED, KNOWLEDGE_SPRITE, k + x, l + y + 3, 130, 43, 32, 29, 256, 256);
+                GuiHelper.drawTexture(matrixStack, KNOWLEDGE_SPRITE, k + x, l + y + 3, 130, 43, 32, 29, 256, 256);
             }
 
             int lvX = progressBarX + 29, lvY = progressBarY - 1;
@@ -177,7 +175,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
             int getLevelCount = knowledge.getLevel(type);
             String level = "" + getLevelCount;
 
-            matrixStack.drawString(this.font, "" + (getLevelCount), lvX - this.font.width(level) / 2 + 4, lvY, -333333, true);
+            GuiHelper.drawString(matrixStack, "" + (getLevelCount), lvX - this.font.width(level) / 2 + 4, lvY, -333333, true);
 
             matrixStack.pose().popMatrix();
 

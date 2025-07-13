@@ -1,8 +1,10 @@
 package net.jitl.client.gui.screen;
 
+import com.mojang.blaze3d.buffers.GpuBuffer;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import net.jitl.client.util.EnumHexColor;
+import net.jitl.client.util.GuiHelper;
 import net.jitl.common.scroll.IDescComponent;
 import net.jitl.common.scroll.ScrollEntry;
 import net.jitl.core.helper.internal.DrawHelper;
@@ -79,22 +81,13 @@ public class LoreScrollEntryScreen extends Screen {
     }
 
     private void drawHeader(GuiGraphics poseStack, int maxX, int y0, Tesselator tess) {
-        float zLevel = this.getContentHeight();
-        if (scrollEntry.hasComment()) {
-            drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getTitleKey()), left + (maxX - left) / 2 + 1, y0, (int) zLevel, ARGB.colorFromFloat(1, 0, 0, 0), 1.5F, headerHeight - 5);
-            if (scrollEntry.getCommentKey() != null)
-                drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getCommentKey()), left + (maxX - left) / 2 + 1, y0 + (int) ((float) font.lineHeight * 0.7), (int) zLevel, -12566464, 1F, headerHeight + 5);
+        if(scrollEntry.hasComment()) {
+            GuiHelper.drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getTitleKey()), left + (maxX - left) / 2 + 1, y0, ARGB.colorFromFloat(1, 0, 0, 0), 1.5F, headerHeight - 5);
+            if(scrollEntry.getCommentKey() != null)
+                GuiHelper.drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getCommentKey()), left + (maxX - left) / 2 + 1, y0 + (int) ((float) font.lineHeight * 0.7),-12566464, 1F, headerHeight + 5);
         } else {
-            drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getTitleKey()), left + (maxX - left) / 2 + 1, y0, (int) zLevel, -12566464, 1.2F, headerHeight);
+            GuiHelper.drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getTitleKey()), left + (maxX - left) / 2 + 1, y0, -12566464, 1.2F, headerHeight);
         }
-    }
-
-    public void drawCenteredStringWithCustomScale(GuiGraphics gui, Font f, FormattedText comp, int x, int y, int z, int colour, float size, int avaliableHeight) {
-        gui.pose().pushMatrix();
-        gui.pose().translate((float) (x - (double)f.width(comp) / 2 * size), (float) (y + ((double)avaliableHeight / 2) + (f.lineHeight * size > 1 ? -1 * f.lineHeight * size : f.lineHeight * size) * 0.5));
-        gui.pose().scale(size, size);
-        gui.drawString(f, comp.getString(), 0, 0, colour, false);
-        gui.pose().popMatrix();
     }
 
     private void drawContentPart(GuiGraphics poseStack, int partIdx, int contentRight, int partTop, int partBuffer, Tesselator tess) {
@@ -116,6 +109,7 @@ public class LoreScrollEntryScreen extends Screen {
 
     @Override
     public void render(@NotNull GuiGraphics poseStack, int mouseX, int mouseY, float partialTicks) {
+        assert minecraft != null;
         RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(BG).getTextureView());
 
         int heightRectCount = (height - (height <= 480 ? 12 : 48)) / 32;
@@ -162,18 +156,18 @@ public class LoreScrollEntryScreen extends Screen {
 
         assert minecraft != null;
         MouseHandler mouseHandler = new MouseHandler(minecraft);
-        if (mouseHandler.isLeftPressed()) {
-            if (this.initialMouseClickY == -1.0F) {
-                if (isHovering) {
-                    if (mouseX >= scrollButtonLeftTop && mouseX <= scrollButtonRightTop) {
+        if(mouseHandler.isLeftPressed()) {
+            if(this.initialMouseClickY == -1.0F) {
+                if(isHovering) {
+                    if(mouseX >= scrollButtonLeftTop && mouseX <= scrollButtonRightTop) {
                         this.scrollFactor = -1.0F;
                         int scrollHeight = this.getContentHeight() - viewHeight - border;
-                        if (scrollHeight < 1) scrollHeight = 1;
+                        if(scrollHeight < 1) scrollHeight = 1;
 
                         int var13 = (int) ((float) (viewHeight * viewHeight) / (float) this.getContentHeight());
 
-                        if (var13 < 32) var13 = 32;
-                        if (var13 > viewHeight - border * 2)
+                        if(var13 < 32) var13 = 32;
+                        if(var13 > viewHeight - border * 2)
                             var13 = viewHeight - border * 2;
 
                         this.scrollFactor /= (float) (viewHeight - var13) / (float) scrollHeight;
@@ -186,7 +180,7 @@ public class LoreScrollEntryScreen extends Screen {
                 } else {
                     this.initialMouseClickY = -2.0F;
                 }
-            } else if (this.initialMouseClickY >= 0.0F) {
+            } else if(this.initialMouseClickY >= 0.0F) {
                 this.scrollDistance -= ((float) mouseY - this.initialMouseClickY) * this.scrollFactor;
                 this.initialMouseClickY = (float) mouseY;
             }
@@ -212,39 +206,32 @@ public class LoreScrollEntryScreen extends Screen {
             int partTop = baseY + this.headerHeight + indentY;
             int partBuffer = getContentPartHeight(partIdx) - border;
 
-            if (baseY + headerHeight >= top) {
+            if(baseY + headerHeight >= top) {
                 drawHeader(poseStack, contentRightTop, baseY, tess);
             }
 
-            if (partTop <= this.bottom && partTop + partBuffer >= this.top) {
+            if(partTop <= this.bottom && partTop + partBuffer >= this.top) {
                 int min = this.left;
-                int max = contentRightTop;
-                this.drawContentPart(poseStack, partIdx, max - min - 4, partTop, partBuffer, tess);
+                this.drawContentPart(poseStack, partIdx, contentRightTop - min - 4, partTop, partBuffer, tess);
             }
             indentY += scrollEntry.getDesc().get(partIdx).getContentPartHeight();
         }
 
         int extraHeight = (this.getContentHeight() + border) - viewHeight;
-        if (extraHeight > 0) {
+        if(extraHeight > 0) {
             int height = (viewHeight * viewHeight) / this.getContentHeight();
-            if (height < 32) {
+            if(height < 32) {
                 height = 32;
             }
-            if (height > viewHeight - border * 2) {
+            if(height > viewHeight - border * 2) {
                 height = viewHeight - border * 2;
             }
             int barTop = (int) this.scrollDistance * (viewHeight - height) / extraHeight + this.top;
-            if (barTop < this.top) {
+            if(barTop < this.top) {
                 barTop = this.top;
             }
 
             int alpha, red, green, blue;
-
-
-//            RenderSystem.disableBlend();
-//            RenderSystem.enableBlend();
-            //RenderSystem.setShaderColor(1F, 1F, 1F, 1F);
-
             alpha = DrawHelper.getAlpha(SLIDER_PATH_COLOR);
             red = DrawHelper.getRed(SLIDER_PATH_COLOR);
             green = DrawHelper.getGreen(SLIDER_PATH_COLOR);
@@ -254,7 +241,7 @@ public class LoreScrollEntryScreen extends Screen {
             worldr.addVertex(scrollButtonRightTop, this.bottom, 0.0F).setUv(1.0F, 1.0F).setColor(red, green, blue, alpha);
             worldr.addVertex(scrollButtonRightTop, this.top, 0.0F).setUv(1.0F, 0.0F).setColor(red, green, blue, alpha);
             worldr.addVertex(scrollButtonLeftTop, this.top, 0.0F).setUv(0.0F, 0.0F).setColor(red, green, blue, alpha);
-            //BufferUploader.drawWithShader(worldr.buildOrThrow());
+            //worldr.build();
 
             // Dark slider part
             alpha = DrawHelper.getAlpha(SLIDER_DARK_COLOR);
@@ -282,12 +269,9 @@ public class LoreScrollEntryScreen extends Screen {
             worldr.addVertex(scrollButtonLeftTop, barTop, 0.0F).setUv(0.0F, 0.0F).setColor(red, green, blue, alpha);
 //            BufferUploader.drawWithShader(worldr.buildOrThrow());
 //
-//            RenderSystem.disableBlend();
         }
 
         this.drawScreen(mouseX, mouseY);
-//        RenderSystem.enableBlend();
-//        RenderSystem.disableBlend();
         GL11.glDisable(GL11.GL_SCISSOR_TEST);
     }
 
@@ -295,7 +279,7 @@ public class LoreScrollEntryScreen extends Screen {
     public boolean mouseScrolled(double pMouseX, double pMouseY, double pScrollX, double pScrollY) {
         boolean isHovering = mouseX >= this.left && mouseX <= this.left + this.entryWidth &&
                 mouseY >= this.top && mouseY <= this.bottom;
-        if (!isHovering)
+        if(!isHovering)
             return false;
 
         this.scrollDistance += (float)((-1 * pScrollY) * 2);

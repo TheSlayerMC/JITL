@@ -19,7 +19,7 @@ import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT)//bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT)
 public class JBlockColours implements BlockColor, ItemTintSource {
 
     public static final JBlockColours BLOCK_COLOUR_INSTANCE = new JBlockColours();
@@ -51,12 +51,12 @@ public class JBlockColours implements BlockColor, ItemTintSource {
 //    }
 
     @Override
-    public int calculate(ItemStack itemStack, @Nullable ClientLevel clientLevel, @Nullable LivingEntity livingEntity) {
+    public int calculate(@NotNull ItemStack itemStack, @Nullable ClientLevel clientLevel, @Nullable LivingEntity livingEntity) {
         return CORBA_SWAMP;
     }
 
     @Override
-    public MapCodec<? extends ItemTintSource> type() {
+    public @NotNull MapCodec<? extends ItemTintSource> type() {
         return MapCodec.unit(new JBlockColours());
     }
 }
