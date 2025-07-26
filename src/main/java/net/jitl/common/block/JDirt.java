@@ -43,7 +43,7 @@ public class JDirt extends Block {
             farmLand = JBlocks.TERRANIAN_DIRT.get();
 
         if(checkedBlock == JBlocks.CLOUDIA_GRASS.get() || checkedBlock == JBlocks.CLOUDIA_DIRT.get())
-            farmLand = JBlocks.CLOUDIA_DIRT.get();
+            farmLand = JBlocks.CLOUDIA_FARMLAND.get();
 
         return farmLand;
     }
