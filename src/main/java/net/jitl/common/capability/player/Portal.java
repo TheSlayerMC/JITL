@@ -9,6 +9,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
@@ -168,12 +169,19 @@ public class Portal implements ValueIOSerializable {
                 PortalCoordinatesContainer container = entry.getValue();
 
                 portalReturnTag.putString("FromDim", container.fromDim().location().toString());
-                // portalReturnTag.put("PortalPos", nbt.storeNullable(container.portalPos()););
-                portalReturnTag.storeNullable("PortalPos", BlockPos.CODEC, container.portalPos());
+                portalReturnTag.put("PortalPos", writeBlockPos(container.portalPos()));
 
                 portalCoordinatesNBT.put(entry.getKey().location().toString(), portalReturnTag);
             }
             tag.put("PortalMap", portalCoordinatesNBT);
         }
+    }
+
+    public static CompoundTag writeBlockPos(BlockPos pPos) {
+        CompoundTag tag = new CompoundTag();
+        tag.putInt("X", pPos.getX());
+        tag.putInt("Y", pPos.getY());
+        tag.putInt("Z", pPos.getZ());
+        return tag;
     }
 }
