@@ -6,6 +6,7 @@ import net.jitl.client.model.FrozenTrollModel;
 import net.jitl.client.model.JBoatModel;
 import net.jitl.client.model.ShiverwolfModel;
 import net.jitl.client.render.block.*;
+import net.jitl.client.render.entity.frozen.ShiveringRamRenderer;
 import net.jitl.client.render.entity.frozen.ShiverwolfRenderer;
 import net.jitl.client.render.entity.misc.RenderAnimated2D;
 import net.jitl.client.render.entity.euca.CrypianRenderer;
@@ -261,6 +262,7 @@ public class RenderEntitys {
         entityRenderers.accept(JEntities.SHIVERING_BUSHWALKER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("shivering_bushwalker", JDimension.FROZEN)));
         entityRenderers.accept(JEntities.SHIVERING_SHRIEKER_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("shivering_shrieker", JDimension.FROZEN)));
         entityRenderers.accept(JEntities.CAPYBARA_TYPE.get(), renderer -> new AnimatedMonsterRenderer<>(renderer, new AnimatedMonsterModel<>("capybara", JDimension.FROZEN)));
+        entityRenderers.accept(JEntities.SHIVERING_RAM_TYPE.get(), renderer -> new ShiveringRamRenderer<>(renderer, new AnimatedMonsterModel<>("shivering_ram", JDimension.FROZEN)));
 
         entityRenderers.accept(JEntities.DARKENER_TYPE.get(), renderer -> new AnimatedFlyingRenderer<>(renderer, new AnimatedMonsterModel<>("darkener", JDimension.DEPTHS)));
         entityRenderers.accept(JEntities.DARKNESS_CRAWLER_TYPE.get(), renderer -> new AnimatedTamableRenderer<>(renderer, new AnimatedMonsterModel<>("darkness_crawler", JDimension.DEPTHS)));

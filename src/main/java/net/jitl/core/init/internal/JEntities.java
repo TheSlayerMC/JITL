@@ -200,6 +200,7 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<ShiveringShrieker>> SHIVERING_SHRIEKER_TYPE = registerEntity(ShiveringShrieker::new, "shivering_shrieker", "Shivering Shrieker", 1F, 2F);
     public static final DeferredHolder<EntityType<?>, EntityType<Capybara>> CAPYBARA_TYPE = registerEntity(Capybara::new, "capybara", "Capybara", 1F, 2F, MobCategory.CREATURE);
     public static final DeferredHolder<EntityType<?>, EntityType<Shiverwolf>> SHIVERWOLF_TYPE = registerEntity(Shiverwolf::new, "shiverwolf", "Shiverwolf", 1F, 2F, MobCategory.CREATURE);
+    public static final DeferredHolder<EntityType<?>, EntityType<ShiveringRam>> SHIVERING_RAM_TYPE = registerEntity(ShiveringRam::new, "shivering_ram", "Shivering Ram", 1F, 2F, MobCategory.CREATURE);
 
     //DEPTHS MOBS
     public static final DeferredHolder<EntityType<?>, EntityType<Darkener>> DARKENER_TYPE = registerEntity(Darkener::new, "darkener", "Darkener", 1F, 1F);
@@ -383,6 +384,7 @@ public class JEntities {
         event.put(FROZEN_TROLL_TYPE.get(), FrozenTrollEntity.createAttributes());
         event.put(CAPYBARA_TYPE.get(), Capybara.createAttributes());
         event.put(SHIVERWOLF_TYPE.get(), Shiverwolf.createAttributes());
+        event.put(SHIVERING_RAM_TYPE.get(), ShiveringRam.createAttributes());
 
         event.put(CORBANIAN_MOLLUSK_TYPE.get(), CorbanianMollusk.createAttributes());
         event.put(SMELLY_TYPE.get(), Smelly.createAttributes());
@@ -508,6 +510,7 @@ public class JEntities {
         setDefaultMonsterSpawn(event, SHIVERING_SHRIEKER_TYPE);
         setDefaultSpawn(event, CAPYBARA_TYPE);
         setDefaultSpawn(event, SHIVERWOLF_TYPE);
+        setDefaultSpawn(event, SHIVERING_RAM_TYPE);
 
         setDefaultSpawn(event, STARLIGHT_BLACKSMITH_TYPE);
         setDefaultSpawn(event, STARLIGHT_VILLAGER_TYPE);

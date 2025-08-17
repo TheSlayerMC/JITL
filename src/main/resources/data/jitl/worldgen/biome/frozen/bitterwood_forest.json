@@ -48,6 +48,12 @@
         "weight": 20,
         "minCount": 1,
         "maxCount": 3
+      },
+      {
+        "type": "jitl:shivering_ram",
+        "weight": 15,
+        "minCount": 1,
+        "maxCount": 3
       }
     ],
     "misc": [],

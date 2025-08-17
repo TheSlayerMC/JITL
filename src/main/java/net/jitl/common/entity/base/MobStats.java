@@ -192,6 +192,9 @@ public class MobStats {
     public static final double SHIVERING_SHRIEKER_HEALTH = 40;
     public static final double SHIVERING_SHRIEKER_DAMAGE = 8;
 
+    public static final double SHIVERING_RAM_HEALTH = 30;
+
+
     // =======================================================
     // ===================== NETHER MOBS =====================
     // =======================================================
