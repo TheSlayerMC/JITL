@@ -200,7 +200,7 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<ShiveringShrieker>> SHIVERING_SHRIEKER_TYPE = registerEntity(ShiveringShrieker::new, "shivering_shrieker", "Shivering Shrieker", 1F, 2F);
     public static final DeferredHolder<EntityType<?>, EntityType<Capybara>> CAPYBARA_TYPE = registerEntity(Capybara::new, "capybara", "Capybara", 1F, 2F, MobCategory.CREATURE);
     public static final DeferredHolder<EntityType<?>, EntityType<Shiverwolf>> SHIVERWOLF_TYPE = registerEntity(Shiverwolf::new, "shiverwolf", "Shiverwolf", 1F, 2F, MobCategory.CREATURE);
-    public static final DeferredHolder<EntityType<?>, EntityType<ShiveringRam>> SHIVERING_RAM_TYPE = registerEntity(ShiveringRam::new, "shivering_ram", "Shivering Ram", 1F, 2F, MobCategory.CREATURE);
+    public static final DeferredHolder<EntityType<?>, EntityType<ShiveringRam>> SHIVERING_RAM_TYPE = registerEntity(ShiveringRam::new, "shivering_ram", "Shivering Ram", 1F, 1F, MobCategory.CREATURE);
 
     //DEPTHS MOBS
     public static final DeferredHolder<EntityType<?>, EntityType<Darkener>> DARKENER_TYPE = registerEntity(Darkener::new, "darkener", "Darkener", 1F, 1F);

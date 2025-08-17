@@ -35,13 +35,16 @@ public class AnimatedAnimalRenderer<T extends LivingEntityRenderState & GeoAnima
     }
 
     @Override
-    public @NotNull ResourceLocation getTextureLocation(@NotNull T instance) {
-        return getGeoModel().getTextureResource(instance);
+    public void render(T renderState, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
+        if(renderState.isBaby) {
+            this.size = 0.5F;
+        }
+        poseStack.scale(this.size, this.size, this.size);
+        super.render(renderState, poseStack, bufferSource, packedLight);
     }
 
     @Override
-    public void render(T renderState, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
-        poseStack.scale(this.size, this.size, this.size);
-        super.render(renderState, poseStack, bufferSource, packedLight);
+    public @NotNull ResourceLocation getTextureLocation(@NotNull T instance) {
+        return getGeoModel().getTextureResource(instance);
     }
 }
