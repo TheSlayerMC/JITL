@@ -97,15 +97,15 @@ public class ShiveringRam extends JAnimalEntity implements Shearable {
     @Override
     protected void addAdditionalSaveData(@NotNull ValueOutput output) {
         super.addAdditionalSaveData(output);
-        output.putBoolean("Sheared", this.isSheared());
-        output.putBoolean("Eating", this.isEating());
+        output.putBoolean("sheared", this.isSheared());
+        output.putBoolean("eating", this.isEating());
     }
 
     @Override
     protected void readAdditionalSaveData(@NotNull ValueInput input) {
         super.readAdditionalSaveData(input);
-        this.setSheared(input.getBooleanOr("Sheared", false));
-        this.setSheared(input.getBooleanOr("Eating", false));
+        this.setSheared(input.getBooleanOr("sheared", false));
+        this.setSheared(input.getBooleanOr("eating", false));
     }
 
     public boolean isEating() {
@@ -154,10 +154,10 @@ public class ShiveringRam extends JAnimalEntity implements Shearable {
     @Override
     public void shear(ServerLevel level, SoundSource sounds, ItemStack stack) {
         level.playSound(null, this, SoundEvents.SHEEP_SHEAR, sounds, 1.0F, 1.0F);
-        this.dropFromShearingLootTable(level, JLootTables.SHIVERING_RAM_WOOL, stack, (p_405522_, p_405241_) -> {
-            for(int i = 0; i < p_405241_.getCount(); ++i) {
-                ItemEntity itementity = this.spawnAtLocation(p_405522_, p_405241_.copyWithCount(1), 1.0F);
-                if (itementity != null) {
+        this.dropFromShearingLootTable(level, JLootTables.SHIVERING_RAM_WOOL, stack, (server, item) -> {
+            for(int i = 0; i < item.getCount(); ++i) {
+                ItemEntity itementity = this.spawnAtLocation(server, item.copyWithCount(1), 1.0F);
+                if(itementity != null) {
                     itementity.setDeltaMovement(itementity.getDeltaMovement().add((this.random.nextFloat() - this.random.nextFloat()) * 0.1F, this.random.nextFloat() * 0.05F, (this.random.nextFloat() - this.random.nextFloat()) * 0.1F));
                 }
             }
@@ -165,6 +165,7 @@ public class ShiveringRam extends JAnimalEntity implements Shearable {
         this.setSheared(true);
     }
 
+    @Override
     public void ate() {
         super.ate();
         this.setSheared(false);
@@ -173,7 +174,7 @@ public class ShiveringRam extends JAnimalEntity implements Shearable {
         }
     }
 
-    @Nullable
+    @Override
     public ShiveringRam getBreedOffspring(@NotNull ServerLevel level, @NotNull AgeableMob otherParent) {
         return JEntities.SHIVERING_RAM_TYPE.get().create(level, EntitySpawnReason.BREEDING);
     }
@@ -182,5 +183,4 @@ public class ShiveringRam extends JAnimalEntity implements Shearable {
     public boolean readyForShearing() {
         return this.isAlive() && !this.isSheared() && !this.isBaby();
     }
-
 }

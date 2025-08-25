@@ -98,7 +98,7 @@ dependencies {
 //    compileOnly "vazkii.patchouli:Patchouli:" + sub_minecraft_version + "-" + patchouli_version + "-NEOFORGE:api"
 //    runtimeOnly "vazkii.patchouli:Patchouli:" + sub_minecraft_version + "-" + patchouli_version + "-NEOFORGE"
 //
-//    runtimeOnly "maven.modrinth:worldedit:7.3.6"
+    runtimeOnly "curse.maven:worldedit-225608:6786288"
 //
 //    compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
 //    runtimeOnly "dev.emi:emi-neoforge:${emi_version}"

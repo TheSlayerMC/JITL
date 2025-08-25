@@ -48,7 +48,7 @@ import org.checkerframework.checker.units.qual.A;
 
 import java.util.function.BiConsumer;
 
-@EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT)//bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT)
 public class RenderEntitys {
 
     @SubscribeEvent
