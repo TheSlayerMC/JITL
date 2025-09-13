@@ -3,8 +3,6 @@ package net.jitl.core.init;
 import net.jitl.client.ClientEventHandler;
 import net.jitl.client.gui.BossBarRenderer;
 import net.jitl.client.gui.KeyUsedEvent;
-import net.jitl.client.render.RenderEntitys;
-import net.jitl.common.items.base.JArmorItem;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.common.world.dimension.JCarver;
 import net.jitl.common.world.gen.JFeatures;
@@ -14,7 +12,6 @@ import net.jitl.core.config.JClientConfig;
 import net.jitl.core.config.JCommonConfig;
 import net.jitl.core.data.*;
 import net.jitl.core.data.block_generation.*;
-import net.jitl.core.helper.JToolTiers;
 import net.jitl.core.init.compat.ModCompat;
 import net.jitl.core.init.internal.*;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -35,7 +32,7 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(JITL.MOD_ID)
 public class JITL {
-    public static final String MOD_ID = "jitl", PREFIX = MOD_ID + ":", MOD_VERSION = "2.2.5", MOD_NAME = "Journey Into the Light";
+    public static final String MOD_ID = "jitl", MOD_VERSION = "2.2.5", MOD_NAME = "Journey Into the Light";
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
     public static final boolean DEV_MODE = true;
 

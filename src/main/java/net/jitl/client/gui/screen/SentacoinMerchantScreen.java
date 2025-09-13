@@ -11,8 +11,6 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -46,6 +44,7 @@ public class SentacoinMerchantScreen extends AbstractContainerScreen<SentacoinMe
         addButton(104, 107, new ItemStack(JBlocks.BREAKABLE_SENTERIAN_MELLOW_LAMP.get()), 16, 64);
     }
 
+    @Override
     protected void renderLabels(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY) {
         Component component = Component.literal("Sentacoins: " + ClientPlayerStats.getSentacoins());
         int j = this.font.width(component);
@@ -55,6 +54,7 @@ public class SentacoinMerchantScreen extends AbstractContainerScreen<SentacoinMe
         GuiHelper.drawString(pGuiGraphics, TRADES_LABEL, 5 - l / 2 + 53, 6, -12566464, false);
     }
 
+    @Override
     protected void renderBg(GuiGraphics pGuiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
         int i = (this.width - this.imageWidth) / 2;
         int j = (this.height - this.imageHeight) / 2;
@@ -63,6 +63,7 @@ public class SentacoinMerchantScreen extends AbstractContainerScreen<SentacoinMe
         pGuiGraphics.pose().pushMatrix();
     }
 
+    @Override
     public void render(@NotNull GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
         super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
     }
@@ -77,7 +78,7 @@ public class SentacoinMerchantScreen extends AbstractContainerScreen<SentacoinMe
         JNetworkRegistry.sendToServer(new PacketBuyItem(item.getItem() + "", amount, cost));
     }
 
-    class TradeOfferButton extends Button {
+    public class TradeOfferButton extends Button {
 
         public TradeOfferButton(String name, int pX, int pY, ItemStack i, int amount, int cost) {
             super(pX, pY, 96, 20, Component.translatable(name), (press) -> buy(i, amount, cost), DEFAULT_NARRATION);

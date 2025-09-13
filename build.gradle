@@ -89,7 +89,7 @@ dependencies {
     implementation "mezz.jei:jei-" + minecraft_version + "-neoforge:" + jei_version
     //implementation "maven.modrinth:just-enough-resources-jer:" + jer_version
 
-    //  implementation("curse.maven:just-enough-resources-jer-240630:" + jer_version) //Just Enough Resources
+    //  implementation("curse.maven:just-enough-resources-jer-240630:" + jer_version)
 
     //implementation "top.theillusivec4.curios:curios-neoforge:" + curios_version
 
