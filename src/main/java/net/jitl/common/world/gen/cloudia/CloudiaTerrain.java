@@ -36,14 +36,20 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
                 new CloudiaPiece(manager, "cloudia/crossroads/cross"),
                 new CloudiaPiece(manager, "cloudia/crossroads/straight"),
                 new CloudiaPiece(manager, "cloudia/crossroads/tee"),
-                new CloudiaPiece(manager, "cloudia/crossroads/elbow")
+                new CloudiaPiece(manager, "cloudia/crossroads/elbow"),
+                new CloudiaPiece(manager, "cloudia/crossroads/curve"),
+                new CloudiaPiece(manager, "cloudia/crossroads/round"),
+                new CloudiaPiece(manager, "cloudia/crossroads/round_large")
         };
 
         TOP_PATHS = new CloudiaPiece[] {
                 new CloudiaPiece(manager, "cloudia/crossroads/top_cross"),
                 new CloudiaPiece(manager, "cloudia/crossroads/top_straight"),
                 new CloudiaPiece(manager, "cloudia/crossroads/top_tee"),
-                new CloudiaPiece(manager, "cloudia/crossroads/top_elbow")
+                new CloudiaPiece(manager, "cloudia/crossroads/top_elbow"),
+                new CloudiaPiece(manager, "cloudia/crossroads/top_curve"),
+                new CloudiaPiece(manager, "cloudia/crossroads/top_round"),
+                new CloudiaPiece(manager, "cloudia/crossroads/top_round_large")
         };
 
         TOP = new CloudiaPiece[] {

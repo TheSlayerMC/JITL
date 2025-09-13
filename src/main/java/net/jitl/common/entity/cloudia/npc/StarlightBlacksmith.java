@@ -60,16 +60,16 @@ public class StarlightBlacksmith extends JVillagerEntity {
                 new CurrencyForItemsTrade(JItems.LUNITE_CHUNK.get(), 16, JItems.GOLEM_CHUNK.get(), 8, JItems.STARLIGHT_BLADE.get(), 1, 12, 5),
                 new CurrencyForItemsTrade(JItems.LUNITE_CHUNK.get(), 16, JItems.GOLEM_CHUNK.get(), 8, JItems.STARLIGHT_BOW.get(), 1, 12, 5),
 
-                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.MY_LAST_WORDS, EnumKnowledge.OVERWORLD, 10),
-                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.NETHERIC_STATUS, EnumKnowledge.NETHER, 10),
-                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.THE_END, EnumKnowledge.END, 10),
-                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.BEYOND_BOILING, EnumKnowledge.BOIL, 10),
-                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.THE_ROYALS, EnumKnowledge.EUCA, 10),
-                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.DARKNESS, EnumKnowledge.DEPTHS, 10),
-                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.SENTERIAN_GOSPEL, EnumKnowledge.CORBA, 10),
-                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.FUNGI, EnumKnowledge.TERRANIA, 10),
-                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.MIST, EnumKnowledge.CLOUDIA, 10),
-                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.THIS_IS_IT, EnumKnowledge.SENTERIAN, 10),
+//                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.MY_LAST_WORDS, EnumKnowledge.OVERWORLD, 10),
+//                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.NETHERIC_STATUS, EnumKnowledge.NETHER, 10),
+//                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.THE_END, EnumKnowledge.END, 10),
+//                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.BEYOND_BOILING, EnumKnowledge.BOIL, 10),
+//                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.THE_ROYALS, EnumKnowledge.EUCA, 10),
+//                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.DARKNESS, EnumKnowledge.DEPTHS, 10),
+//                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.SENTERIAN_GOSPEL, EnumKnowledge.CORBA, 10),
+//                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.FUNGI, EnumKnowledge.TERRANIA, 10),
+//                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.MIST, EnumKnowledge.CLOUDIA, 10),
+//                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.THIS_IS_IT, EnumKnowledge.SENTERIAN, 10),
         }));
     }
 
