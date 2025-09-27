@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "jitl:block/iridium_wall_torch"
+    },
+    "facing=north": {
+      "model": "jitl:block/iridium_wall_torch",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "jitl:block/iridium_wall_torch",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "jitl:block/iridium_wall_torch",
+      "y": 180
+    }
+  }
+}

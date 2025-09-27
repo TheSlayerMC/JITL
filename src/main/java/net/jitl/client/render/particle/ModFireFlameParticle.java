@@ -4,12 +4,10 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
-public class RedFlameParticle extends TextureSheetParticle {
-	protected RedFlameParticle(ClientLevel worldIn, double x, double y, double z, double motionX, double motionY, double motionZ) {
+public class ModFireFlameParticle extends RisingParticle {
+	protected ModFireFlameParticle(ClientLevel worldIn, double x, double y, double z, double motionX, double motionY, double motionZ) {
 		super(worldIn, x, y, z, motionX, motionY, motionZ);
 	}
 
@@ -26,23 +24,22 @@ public class RedFlameParticle extends TextureSheetParticle {
 
 	@Override
 	public float getQuadSize(float scaleFactor) {
-		float f = ((float) this.age + scaleFactor) / (float) this.lifetime;
-		return this.quadSize * (1.0F - f * f * 0.5F);
+        float f = ((float)this.age + scaleFactor) / (float)this.lifetime;
+        return this.quadSize * (1.0F - f * f * 0.5F);
 	}
 
 	@Override
 	public int getLightColor(float partialTick) {
-		float f = ((float) this.age + partialTick) / (float) this.lifetime;
-		f = Mth.clamp(f, 0.0F, 1.0F);
-		int i = super.getLightColor(partialTick);
-		int j = i & 255;
-		int k = i >> 16 & 255;
-		j = j + (int) (f * 15.0F * 16.0F);
-		if (j > 240) {
-			j = 240;
-		}
-
-		return j | k << 16;
+        float f = ((float)this.age + partialTick) / (float)this.lifetime;
+        f = Mth.clamp(f, 0.0F, 1.0F);
+        int i = super.getLightColor(partialTick);
+        int j = i & 255;
+        int k = i >> 16 & 255;
+        j += (int)(f * 15.0F * 16.0F);
+        if (j > 240) {
+            j = 240;
+        }
+        return j | k << 16;
 	}
 
 	public static class Factory implements ParticleProvider<SimpleParticleType> {
@@ -53,9 +50,9 @@ public class RedFlameParticle extends TextureSheetParticle {
 		}
 
 		public Particle createParticle(@NotNull SimpleParticleType typeIn, @NotNull ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-			RedFlameParticle redFlameparticle = new RedFlameParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed);
-			redFlameparticle.pickSprite(this.sprite);
-			return redFlameparticle;
+			ModFireFlameParticle flameparticle = new ModFireFlameParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed);
+            flameparticle.pickSprite(this.sprite);
+			return flameparticle;
 		}
 	}
 }

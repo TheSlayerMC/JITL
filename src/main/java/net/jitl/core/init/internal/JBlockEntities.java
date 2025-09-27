@@ -33,6 +33,9 @@ public class JBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BitterwoodCampfireBlockEntity>> BITTERWOOD_CAMPFIRE = REGISTRY.register("bitterwood_campfire",
             () -> new BlockEntityType<>(BitterwoodCampfireBlockEntity::new, JBlocks.BITTERWOOD_CAMPFIRE.get()));
 
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<IridiumCampfireBlockEntity>> IRIDIUM_CAMPFIRE = REGISTRY.register("iridium_campfire",
+            () -> new BlockEntityType<>(IridiumCampfireBlockEntity::new, JBlocks.IRIDIUM_CAMPFIRE.get()));
+
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<JFurnaceTile>> JFURNACE = REGISTRY.register("furnace",
             () -> new BlockEntityType<>(JFurnaceTile::new, JBlocks.GOLDITE_FURNACE.get(), JBlocks.PERMAFROST_FURNACE.get(), JBlocks.DEPTHS_FURNACE.get(), JBlocks.CORBA_FURNACE.get()));
 

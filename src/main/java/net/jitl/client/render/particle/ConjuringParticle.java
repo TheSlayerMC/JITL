@@ -4,8 +4,6 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 public class ConjuringParticle extends TextureSheetParticle {
@@ -81,7 +79,7 @@ public class ConjuringParticle extends TextureSheetParticle {
         }
 
         public Particle createParticle(@NotNull SimpleParticleType typeIn, @NotNull ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            RedFlameParticle redFlameparticle = new RedFlameParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed);
+            ModFlameParticle redFlameparticle = new ModFlameParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed);
             redFlameparticle.pickSprite(this.sprite);
             return redFlameparticle;
         }

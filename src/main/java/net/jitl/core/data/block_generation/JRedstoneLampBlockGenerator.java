@@ -1,0 +1,133 @@
+package net.jitl.core.data.block_generation;
+
+import net.jitl.core.data.BasicFileGenerator;
+import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.JBlocks;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class JRedstoneLampBlockGenerator extends BasicFileGenerator {
+
+    protected BufferedWriter blockModelWriter, blockOnModelWriter, blockstateWriter, itemModelWriter;
+
+    public void generate() {
+        for(String name : JBlocks.redstoneLampBlockName) {
+            String itemModelDir = "../src/main/resources/assets/jitl/models/item/" + name + ".json";
+            String blockModelDir = "../src/main/resources/assets/jitl/models/block/" + name + ".json";
+            String blockOnModelDir = "../src/main/resources/assets/jitl/models/block/" + name + "_on.json";
+            String blockstateDir = "../src/main/resources/assets/jitl/blockstates/" + name + ".json";
+
+            File itemModel = new File(itemModelDir);
+            File blockModel = new File(blockModelDir);
+            File blockOnModel = new File(blockOnModelDir);
+            File blockstateModel = new File(blockstateDir);
+
+            try {
+                if (itemModel.exists()) itemModel.delete();
+                itemModel.createNewFile();
+                itemModelWriter = new BufferedWriter(new FileWriter(itemModel));
+
+                if (blockModel.exists()) blockModel.delete();
+                blockModel.createNewFile();
+                blockModelWriter = new BufferedWriter(new FileWriter(blockModel));
+
+                if (blockOnModel.exists()) blockOnModel.delete();
+                blockOnModel.createNewFile();
+                blockOnModelWriter = new BufferedWriter(new FileWriter(blockOnModel));
+
+                if (blockstateModel.exists()) blockstateModel.delete();
+                blockstateModel.createNewFile();
+                blockstateWriter = new BufferedWriter(new FileWriter(blockstateModel));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            getBlockItem(JITL.MOD_ID, name);
+            getBlockModel(JITL.MOD_ID, name);
+            getBlockstate(JITL.MOD_ID, name);
+            generateBasicFile(name);
+            writerInit();
+        }
+    }
+
+    public void getBlockItem(String modID, String name) {
+        writeToItemModelFile("{");
+        writeToItemModelFile("  \"parent\": \"" + modID + ":block/" + name + "\"");
+        writeToItemModelFile("}");
+    }
+
+    public void getBlockModel(String modID, String name) {
+        writeToBlockModelFile("{");
+        writeToBlockModelFile("  \"parent\": \"minecraft:block/cube_all\",");
+        writeToBlockModelFile("  \"textures\": {");
+        writeToBlockModelFile("    \"all\": \"" + modID + ":" + "block/" + name + "\"");
+        writeToBlockModelFile("  }");
+        writeToBlockModelFile("}");
+
+        writeToOnBlockModelFile("{");
+        writeToOnBlockModelFile("  \"parent\": \"minecraft:block/cube_all\",");
+        writeToOnBlockModelFile("  \"textures\": {");
+        writeToOnBlockModelFile("    \"all\": \"" + modID + ":" + "block/" + name + "_on\"");
+        writeToOnBlockModelFile("  }");
+        writeToOnBlockModelFile("}");
+    }
+
+    public void getBlockstate(String modID, String name) {
+        writeToBlockstateFile("{");
+        writeToBlockstateFile("  \"variants\": {");
+        writeToBlockstateFile("    \"lit=false\": {");
+        writeToBlockstateFile("      \"model\": \"" + modID + ":block/" + name + "\"");
+        writeToBlockstateFile("    },");
+        writeToBlockstateFile("    \"lit=true\": {");
+        writeToBlockstateFile("      \"model\": \"" + modID + ":block/" + name + "_on\"");
+        writeToBlockstateFile("    }");
+        writeToBlockstateFile("  }");
+        writeToBlockstateFile("}");
+    }
+
+    public void writerInit() {
+        try {
+            itemModelWriter.close();
+            blockModelWriter.close();
+            blockOnModelWriter.close();
+            blockstateWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeToItemModelFile(String text){
+        try {
+            itemModelWriter.write(text + "\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeToBlockModelFile(String text){
+        try {
+            blockModelWriter.write(text + "\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeToOnBlockModelFile(String text){
+        try {
+            blockOnModelWriter.write(text + "\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeToBlockstateFile(String text){
+        try {
+            blockstateWriter.write(text + "\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

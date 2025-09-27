@@ -13,12 +13,13 @@ import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-@EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT)//bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT)
 public class JParticleManager {
 
     public static final DeferredRegister<ParticleType<?>> REGISTRY = DeferredRegister.create(Registries.PARTICLE_TYPE, JITL.MOD_ID);
 
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> RED_FLAME = REGISTRY.register("red_flame", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> GREEN_FLAME = REGISTRY.register("green_flame", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> MUD = REGISTRY.register("mud", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> CONJURING = REGISTRY.register("conjuring", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> ESSENCIA_LIGHTNING = REGISTRY.register("essencia_lightning", () -> new SimpleParticleType(false));
@@ -43,7 +44,8 @@ public class JParticleManager {
 
     @SubscribeEvent
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
-        event.registerSpriteSet(RED_FLAME.get(), RedFlameParticle.Factory::new);
+        event.registerSpriteSet(RED_FLAME.get(), ModFlameParticle.Factory::new);
+        event.registerSpriteSet(GREEN_FLAME.get(), ModFireFlameParticle.Factory::new);
         event.registerSpriteSet(MUD.get(), MudParticle.Factory::new);
         event.registerSpriteSet(CONJURING.get(), ConjuringParticle.Factory::new);
         event.registerSpriteSet(ESSENCIA_LIGHTNING.get(), EssenciaLightningParticle.Factory::new);

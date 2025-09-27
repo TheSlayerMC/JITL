@@ -1,14 +1,12 @@
 package net.jitl.common.block;
 
-import net.jitl.common.block.entity.BitterwoodCampfireBlockEntity;
+import net.jitl.common.block.entity.IridiumCampfireBlockEntity;
 import net.jitl.core.init.internal.JBlockEntities;
-import net.jitl.core.init.internal.JBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -21,7 +19,7 @@ import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -30,17 +28,16 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 
 import javax.annotation.Nullable;
-import java.util.Optional;
 
-public class BitterwoodCampfireBlock extends CampfireBlock {
+public class IridiumCampfireBlock extends CampfireBlock {
 
-    public BitterwoodCampfireBlock(BlockBehaviour.Properties props) {
+    public IridiumCampfireBlock(Properties props) {
         super(true, 1, props);
     }
 
     @Override
     protected InteractionResult useItemOn(ItemStack p_316347_, BlockState p_51274_, Level p_51275_, BlockPos p_51276_, Player p_51277_, InteractionHand p_51278_, BlockHitResult p_51279_) {
-        if (p_51275_.getBlockEntity(p_51276_) instanceof BitterwoodCampfireBlockEntity campfireblockentity) {
+        if (p_51275_.getBlockEntity(p_51276_) instanceof IridiumCampfireBlockEntity campfireblockentity) {
             ItemStack itemstack = p_51277_.getItemInHand(p_51278_);
             if (p_51275_.recipeAccess().propertySet(RecipePropertySet.CAMPFIRE_INPUT).test(itemstack)) {
                 if (p_51275_ instanceof ServerLevel serverlevel && campfireblockentity.placeFood(serverlevel, p_51277_, itemstack)) {
@@ -84,7 +81,7 @@ public class BitterwoodCampfireBlock extends CampfireBlock {
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new BitterwoodCampfireBlockEntity(pPos, pState);
+        return new IridiumCampfireBlockEntity(pPos, pState);
     }
 
     @Nullable
@@ -95,14 +92,14 @@ public class BitterwoodCampfireBlock extends CampfireBlock {
                 RecipeManager.CachedCheck<SingleRecipeInput, CampfireCookingRecipe> cachedcheck = RecipeManager.createCheck(RecipeType.CAMPFIRE_COOKING);
                 return createTickerHelper(
                         p_152757_,
-                        JBlockEntities.BITTERWOOD_CAMPFIRE.get(),
-                        (p_379259_, p_379260_, p_379261_, p_379262_) -> BitterwoodCampfireBlockEntity.cookTick(serverlevel, p_379260_, p_379261_, p_379262_, cachedcheck)
+                        JBlockEntities.IRIDIUM_CAMPFIRE.get(),
+                        (p_379259_, p_379260_, p_379261_, p_379262_) -> IridiumCampfireBlockEntity.cookTick(serverlevel, p_379260_, p_379261_, p_379262_, cachedcheck)
                 );
             } else {
-                return createTickerHelper(p_152757_, JBlockEntities.BITTERWOOD_CAMPFIRE.get(), BitterwoodCampfireBlockEntity::cooldownTick);
+                return createTickerHelper(p_152757_, JBlockEntities.IRIDIUM_CAMPFIRE.get(), IridiumCampfireBlockEntity::cooldownTick);
             }
         } else {
-            return p_152756_.getValue(LIT) ? createTickerHelper(p_152757_, JBlockEntities.BITTERWOOD_CAMPFIRE.get(), BitterwoodCampfireBlockEntity::particleTick) : null;
+            return p_152756_.getValue(LIT) ? createTickerHelper(p_152757_, JBlockEntities.IRIDIUM_CAMPFIRE.get(), IridiumCampfireBlockEntity::particleTick) : null;
         }
     }
 }

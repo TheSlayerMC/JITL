@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "jitl:block/iridium_lamp"
+    },
+    "lit=true": {
+      "model": "jitl:block/iridium_lamp_on"
+    }
+  }
+}

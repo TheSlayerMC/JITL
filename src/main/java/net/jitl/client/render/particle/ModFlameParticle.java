@@ -6,42 +6,14 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.NotNull;
 
-public class BasicParticle extends TextureSheetParticle {
-
-	private final SpriteSet sprites;
-
-	protected BasicParticle(ClientLevel worldIn, double x, double y, double z, double motionX, double motionY, double motionZ, SpriteSet spriteWithAge) {
+public class ModFlameParticle extends TextureSheetParticle {
+	protected ModFlameParticle(ClientLevel worldIn, double x, double y, double z, double motionX, double motionY, double motionZ) {
 		super(worldIn, x, y, z, motionX, motionY, motionZ);
-		this.sprites = spriteWithAge;
-		int i = (int) (32.0D / (Math.random() * 0.8D + 0.2D));
-		this.lifetime = (int) Math.max((float) i * 0.9F, 1.0F);
-		this.gravity = 0.003F;
-		this.setSpriteFromAge(spriteWithAge);
 	}
 
 	@Override
 	public ParticleRenderType getRenderType() {
 		return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
-	}
-
-	@Override
-	public void tick() {
-		this.xo = this.x;
-		this.yo = this.y;
-		this.zo = this.z;
-		if (this.age++ >= this.lifetime) {
-			this.remove();
-		} else {
-			this.setSpriteFromAge(this.sprites);
-			this.oRoll = this.roll;
-			this.yd -= this.gravity;
-			this.move(this.xd, this.yd, this.zd);
-			if (!this.removed) {
-				this.xd *= 0.98F;
-				this.yd *= 0.98F;
-				this.zd *= 0.98F;
-			}
-		}
 	}
 
 	@Override

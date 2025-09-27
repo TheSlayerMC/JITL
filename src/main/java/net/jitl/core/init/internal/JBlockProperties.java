@@ -403,6 +403,13 @@ public class JBlockProperties {
             .lightLevel(litBlockEmission(13))
             .strength(1.5F, 6.0F);
 
+    public static final BlockBehaviour.Properties REDSTONE_LAMP = BlockBehaviour.Properties.of()
+            .mapColor(MapColor.TERRACOTTA_ORANGE)
+            .sound(SoundType.STONE)
+            .isValidSpawn(JBlockProperties::always)
+            .lightLevel(litBlockEmission(15))
+            .strength(0.3F);
+
     public static final BlockBehaviour.Properties GLOW_PLANT = BlockBehaviour.Properties.of()
             .sound(JSoundTypes.CRYSTAL_FRUIT)
             .noOcclusion()
@@ -441,6 +448,9 @@ public class JBlockProperties {
         }
         if(name.contains("euca_gold")) {
             texName = "euca_gold_planks";
+        }
+        if(name.contains("iridium") && name.contains("torch")) {
+            texName = "iridium_torch";
         }
         if(name.contains("frozen")) {
             texName = "frozen_planks";
@@ -644,5 +654,9 @@ public class JBlockProperties {
 
     private static Boolean never(BlockState s, BlockGetter g, BlockPos p, EntityType<?> e) {
         return false;
+    }
+
+    private static Boolean always(BlockState s, BlockGetter g, BlockPos p, EntityType<?> e) {
+        return true;
     }
 }

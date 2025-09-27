@@ -1,5 +1,6 @@
 {
   "parent": "minecraft:block/campfire",
+  "render_type": "cutout",
   "textures": {
     "particle": "jitl:block/bitterwood_campfire_log",
     "fire": "jitl:block/bitterwood_campfire_fire",

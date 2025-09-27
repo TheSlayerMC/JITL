@@ -65,6 +65,7 @@ public class JBlockCampfireGenerator extends BasicFileGenerator {
     public void getBlockModel(String modID, String name) {
         writeToBlockModelFile(blockModelWriter, "{");
         writeToBlockModelFile(blockModelWriter, "  \"parent\": \"minecraft:block/campfire\",");
+        writeToBlockModelFile(blockModelWriter, "  \"render_type\": \"cutout\",");
         writeToBlockModelFile(blockModelWriter, "  \"textures\": {");
         writeToBlockModelFile(blockModelWriter, "    \"particle\": \"" + modID + ":" + "block/" + name + "_log\",");
         writeToBlockModelFile(blockModelWriter, "    \"fire\": \"" + modID + ":" + "block/" + name + "_fire\",");
@@ -77,6 +78,7 @@ public class JBlockCampfireGenerator extends BasicFileGenerator {
     public void getBlockOffModel(String modID, String name) {
         writeToBlockModelFile(blockOffModelWriter, "{");
         writeToBlockModelFile(blockOffModelWriter, "  \"parent\": \"minecraft:block/campfire_off\",");
+        writeToBlockModelFile(blockOffModelWriter, "  \"render_type\": \"cutout\",");
         writeToBlockModelFile(blockOffModelWriter, "  \"textures\": {");
         writeToBlockModelFile(blockOffModelWriter, "    \"particle\": \"" + modID + ":" + "block/" + name + "_log\",");
         writeToBlockModelFile(blockOffModelWriter, "    \"log\": \"" + modID + ":" + "block/" + name + "_log\"");

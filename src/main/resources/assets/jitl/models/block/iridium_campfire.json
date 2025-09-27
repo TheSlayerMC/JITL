@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/campfire",
+  "render_type": "cutout",
+  "textures": {
+    "particle": "jitl:block/iridium_campfire_log",
+    "fire": "jitl:block/iridium_campfire_fire",
+    "log": "jitl:block/iridium_campfire_log",
+    "lit_log": "jitl:block/iridium_campfire_log_lit"
+  }
+}

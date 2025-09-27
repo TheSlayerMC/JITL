@@ -82,6 +82,8 @@ public class JBlocks {
     public static final ArrayList<String> attachedCrossLangName = new ArrayList<>();
     public static final ArrayList<String> doublePlantBlockName = new ArrayList<>();
     public static final ArrayList<String> doublePlantLangName = new ArrayList<>();
+    public static final ArrayList<String> redstoneLampBlockName = new ArrayList<>();
+    public static final ArrayList<String> redstoneLampLangName = new ArrayList<>();
     public static final ArrayList<String> lilyPadBlockName = new ArrayList<>();
     public static final ArrayList<String> lilyPadLangName = new ArrayList<>();
     public static final ArrayList<String> grassBlockName = new ArrayList<>();
@@ -100,6 +102,10 @@ public class JBlocks {
     public static final ArrayList<String> chestLangName = new ArrayList<>();
     public static final ArrayList<String> campfireBlockName = new ArrayList<>();
     public static final ArrayList<String> campfireLangName = new ArrayList<>();
+    public static final ArrayList<String> torchBlockName = new ArrayList<>();
+    public static final ArrayList<String> torchLangName = new ArrayList<>();
+    public static final ArrayList<String> wallTorchBlockName = new ArrayList<>();
+    public static final ArrayList<String> wallTorchLangName = new ArrayList<>();
     public static final ArrayList<String> pathBlockName = new ArrayList<>();
     public static final ArrayList<String> pathLangName = new ArrayList<>();
     public static final ArrayList<String> cropBlockName = new ArrayList<>();
@@ -204,6 +210,11 @@ public class JBlocks {
     public static final DeferredBlock<Block> PURPLE_GEM_BLOCK = register("purple_gem_block", "Purple Gem Block", JBlockProperties.STONE);
     public static final DeferredBlock<Block> GREEN_GEM_BLOCK = register("green_gem_block", "Green Gem Block", JBlockProperties.STONE);
     public static final DeferredBlock<Block> BLUE_GEM_BLOCK = register("blue_gem_block", "Blue Gem Block", JBlockProperties.STONE);
+
+    public static final DeferredBlock<Block> IRIDIUM_CAMPFIRE = registerCampfire("iridium_campfire", "Iridium Campfire", IridiumCampfireBlock::new, JBlockProperties.CAMPFIRE);
+    public static final DeferredBlock<Block> IRIDIUM_TORCH = registerTorch("iridium_torch_block", "Iridium Torch", (p) -> new TorchBlock(JParticleManager.GREEN_FLAME.get(), p));
+    public static final DeferredBlock<Block> IRIDIUM_WALL_TORCH = registerWallTorch("iridium_wall_torch", "Iridium Torch", (p) -> new WallTorchBlock(JParticleManager.GREEN_FLAME.get(), p));
+    public static final DeferredBlock<Block> IRIDIUM_LAMP = registerRedstoneLamp("iridium_lamp", "Iridium Lamp", RedstoneLampBlock::new, JBlockProperties.REDSTONE_LAMP);
 
     public static final DeferredBlock<Block> WARPED_QUARTZ_ORE = register("warped_quartz_ore", "Warped Quartz Ore", JBlockProperties.STONE);//gravel
     public static final DeferredBlock<Block> WARPED_QUARTZ_BLOCK = register("warped_quartz_block", "Warped Quartz Block", JBlockProperties.STONE);
@@ -1024,10 +1035,35 @@ public class JBlocks {
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
+
     public static DeferredBlock<Block> registerCampfire(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
         addAxeableBlocks(name);
         campfireBlockName.add(name);
         campfireLangName.add(translatedName);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        return block1;
+    }
+
+    public static DeferredBlock<Block> registerTorch(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block) {
+        torchBlockName.add(name);
+        torchLangName.add(translatedName);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, BlockBehaviour.Properties.ofFullCopy(Blocks.TORCH));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        return block1;
+    }
+
+    public static DeferredBlock<Block> registerWallTorch(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block) {
+        wallTorchBlockName.add(name);
+        wallTorchLangName.add(translatedName);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, BlockBehaviour.Properties.ofFullCopy(Blocks.WALL_TORCH));
+        JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
+        return block1;
+    }
+
+    public static DeferredBlock<Block> registerRedstoneLamp(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
+        redstoneLampBlockName.add(name);
+        redstoneLampLangName.add(translatedName);
         DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;

@@ -22,6 +22,7 @@ import net.jitl.common.items.gear.korite.KoriteSwordAbility;
 import net.jitl.common.items.gear.mekyum.MekyumSwordAbility;
 import net.jitl.core.helper.JToolTiers;
 import net.jitl.core.init.JITL;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
@@ -719,6 +720,7 @@ public class JItems {
     public static final DeferredItem<Item> WITHIC_OBSTRUCTOR = registerNormalItem("withic_obstructor", "Withic Obstructor", (p) -> new ObstructorItem(p.durability(128), ObstructorItem.Type.WITHIC));
     public static final DeferredItem<Item> NETHIC_OBSTRUCTOR = registerNormalItem("nethic_obstructor", "Nethic Obstructor", (p) -> new ObstructorItem(p.durability(128), ObstructorItem.Type.NETHER));
 
+    public static final DeferredItem<Item> IRIDIUM_TORCH = registerNormalItem("iridium_torch", "Iridium Torch", (p) -> new StandingAndWallBlockItem(JBlocks.IRIDIUM_TORCH.get(), JBlocks.IRIDIUM_WALL_TORCH.get(), Direction.DOWN, p));
 
     public static final DeferredItem<Item> PET_FOOD = registerNormalItem("pet_food", "Pet Food");
 
