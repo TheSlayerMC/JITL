@@ -8,6 +8,8 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.TorchBlock;
+import net.minecraft.world.level.block.WallTorchBlock;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -21,7 +23,7 @@ public class JTabs {
     public static void registerTabs(BuildCreativeModeTabContentsEvent event){
         if(event.getTab() == BLOCKS.get()) {
             for(DeferredHolder<Block, ? extends Block> block : JBlocks.BLOCKS.getEntries()){
-                if(!(block.get() instanceof JCropBlock))
+                if(!(block.get() instanceof JCropBlock || block.get() instanceof WallTorchBlock || block.get() instanceof TorchBlock))
                     event.accept(block.get());
             }
         };
