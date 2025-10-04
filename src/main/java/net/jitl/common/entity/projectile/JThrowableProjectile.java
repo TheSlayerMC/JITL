@@ -15,9 +15,9 @@ import org.jetbrains.annotations.NotNull;
 
 public abstract class JThrowableProjectile extends ThrowableProjectile {
 
-    private int damage = 0, fireTicks = 0, potionTicks = 0;
+    private int damage = 0, fireTicks = 0, potionTicks = 0, secondaryPotionTicks = 0;
     private boolean isBouncy = false, isFire = false, isPotion = false;
-    private Holder<MobEffect> potion;
+    private Holder<MobEffect> potion, secondaryPotion;
 
     protected JThrowableProjectile(EntityType<? extends ThrowableProjectile> e, Level l) {
         super(e, l);
@@ -26,12 +26,19 @@ public abstract class JThrowableProjectile extends ThrowableProjectile {
     public JThrowableProjectile(EntityType<? extends ThrowableProjectile> e, int damage, Level world, LivingEntity thrower) {
         super(e, world);
         this.damage = damage;
+        this.setOwner(thrower);
     }
 
     public void setPotionEffect(Holder<MobEffect> potion, int ticks) {
         this.isPotion = true;
         this.potionTicks = ticks;
         this.potion = potion;
+    }
+
+    public void setSecondaryPotionEffect(Holder<MobEffect> potion, int ticks) {
+        this.isPotion = true;
+        this.secondaryPotionTicks = ticks;
+        this.secondaryPotion = potion;
     }
 
     public void setFire(int fireTicks) {
@@ -47,9 +54,14 @@ public abstract class JThrowableProjectile extends ThrowableProjectile {
     protected void onHitEntity(@NotNull EntityHitResult res) {
         super.onHitEntity(res);
         Entity entity = res.getEntity();
-        if(entity instanceof LivingEntity) {
+        if(entity instanceof LivingEntity && entity != this.getOwner()) {
             if(this.isPotion && this.potion != null) {
                 MobEffectInstance effectInstance = new MobEffectInstance(potion, potionTicks);
+                ((LivingEntity)entity).addEffect(effectInstance);
+            }
+
+            if(this.isPotion && this.secondaryPotion != null) {
+                MobEffectInstance effectInstance = new MobEffectInstance(secondaryPotion, secondaryPotionTicks);
                 ((LivingEntity)entity).addEffect(effectInstance);
             }
 

@@ -16,7 +16,7 @@ public class IceballEntity extends JThrowableProjectile {
     public IceballEntity(int damage, Level world, LivingEntity thrower) {
         super(JEntities.ICEBALL_TYPE.get(), damage, world, thrower);
         setPotionEffect(MobEffects.SLOWNESS, 60);
-        setPotionEffect(MobEffects.MINING_FATIGUE, 60);
+        setSecondaryPotionEffect(MobEffects.MINING_FATIGUE, 60);
     }
 
     @Override

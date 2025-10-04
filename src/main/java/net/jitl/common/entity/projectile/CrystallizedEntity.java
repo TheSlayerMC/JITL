@@ -15,7 +15,7 @@ public class CrystallizedEntity extends AbstractHomingEntity {
     public CrystallizedEntity(int damage, Level world, LivingEntity thrower) {
         super(JEntities.CRYSTALLIZED_TYPE.get(), damage, world, thrower);
         setPotionEffect(MobEffects.GLOWING, 100);
-        setPotionEffect(MobEffects.SLOWNESS, 100);
+        setSecondaryPotionEffect(MobEffects.SLOWNESS, 100);
     }
 
     @Override

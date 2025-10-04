@@ -405,7 +405,7 @@ public class JBlockProperties {
 
     public static final BlockBehaviour.Properties REDSTONE_LAMP = BlockBehaviour.Properties.of()
             .mapColor(MapColor.TERRACOTTA_ORANGE)
-            .sound(SoundType.STONE)
+            .sound(SoundType.GLASS)
             .isValidSpawn(JBlockProperties::always)
             .lightLevel(litBlockEmission(15))
             .strength(0.3F);
