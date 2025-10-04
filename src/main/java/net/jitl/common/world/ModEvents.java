@@ -8,6 +8,7 @@ import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JAttributes;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JDimension;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -74,7 +75,7 @@ public class ModEvents {
         }
     }
 
-    private static void entityFell(Entity entity, ResourceKey<Level> to) {
+    private static void entityFell(Player entity, ResourceKey<Level> to) {
         Level serverLevel = entity.level();
         MinecraftServer minecraftserver = serverLevel.getServer();
         if(minecraftserver != null) {
@@ -83,6 +84,7 @@ public class ModEvents {
                 entity.setPortalCooldown();
                 TeleportTransition transition = new TeleportTransition(destination, new Vec3(entity.getX(), destination.getMaxY() - entity.getBbHeight(), entity.getZ()), entity.getDeltaMovement(), entity.getYRot(), entity.getXRot(), TeleportTransition.DO_NOTHING);
                 entity.teleport(transition);
+                entity.displayClientMessage(Component.translatable("jitl.death_pos", (int)entity.getX(), (int)entity.getZ()), false);
             }
         }
     }

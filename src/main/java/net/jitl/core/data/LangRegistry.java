@@ -118,6 +118,8 @@ public class LangRegistry {
 
         writeToFile("\"emi.category.jitl.summoning_table\" : \"Summoning Table\",");
 
+        writeToFile("\"jitl.death_pos\" : \"You fell out of the world at X: %s, Y: %s\",");
+
         writeToFile("\"scroll.jitl.fail\" : \"Can't retrieve entry from scroll, report in Discord (unless this item came from creative tab)\",");
 
         writeToFile("\"scroll.jitl.sentry_gospel\" : \"We never saw it, but we know it - the Divine land Corba was birthed by the o' powerful Rock and Eye. Never forget the day, the hour, the second he - The True One - the all powerful Rock and Eye - cometh unto the great world he created, to seek his revenge on the wrong-doers who dare disrespect his land.\",");
