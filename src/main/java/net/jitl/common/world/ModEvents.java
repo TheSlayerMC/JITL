@@ -3,18 +3,30 @@ package net.jitl.common.world;
 import net.jitl.common.capability.essence.PlayerEssence;
 import net.jitl.common.capability.player.Portal;
 import net.jitl.common.capability.stats.PlayerStats;
+import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JAttributes;
 import net.jitl.core.init.internal.JDataAttachments;
+import net.jitl.core.init.internal.JDimension;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.portal.TeleportTransition;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import org.spongepowered.asm.mixin.Unique;
 
+import javax.annotation.Nullable;
+import java.awt.*;
 import java.util.Objects;
 
-@EventBusSubscriber(modid = JITL.MOD_ID)//bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = JITL.MOD_ID)
 public class ModEvents {
 
     @SubscribeEvent
@@ -46,6 +58,32 @@ public class ModEvents {
                 essence.setBurnout(essence.getBurnout() - 0.1F);
             }
             essence.sendPacket(player);
+
+            Level level = player.level();
+            if(level instanceof ServerLevel serverLevel) {
+                //maybe add a config if falling will change dim
+                if(player.getY() <= serverLevel.getMinY()) {
+                    if(serverLevel.dimension() == Dimensions.EUCA) {
+                        entityFell(player, Dimensions.OVERWORLD);
+                    }
+                    if(serverLevel.dimension() == Dimensions.CLOUDIA) {
+                        entityFell(player, Dimensions.TERRANIA);
+                    }
+                }
+            }
+        }
+    }
+
+    private static void entityFell(Entity entity, ResourceKey<Level> to) {
+        Level serverLevel = entity.level();
+        MinecraftServer minecraftserver = serverLevel.getServer();
+        if(minecraftserver != null) {
+            ServerLevel destination = minecraftserver.getLevel(to);
+            if(destination != null) {
+                entity.setPortalCooldown();
+                TeleportTransition transition = new TeleportTransition(destination, new Vec3(entity.getX(), destination.getMaxY() - entity.getBbHeight(), entity.getZ()), entity.getDeltaMovement(), entity.getYRot(), entity.getXRot(), TeleportTransition.DO_NOTHING);
+                entity.teleport(transition);
+            }
         }
     }
 }
