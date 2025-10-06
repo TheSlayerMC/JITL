@@ -2,39 +2,31 @@ package net.jitl.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.jitl.common.block.BitterwoodCampfireBlock;
-import net.jitl.common.block.entity.BitterwoodCampfireBlockEntity;
-import net.minecraft.client.renderer.MultiBufferSource;
+import net.jitl.common.block.IridiumCampfireBlock;
+import net.jitl.common.block.entity.IridiumCampfireBlockEntity;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.state.CampfireRenderState;
-import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
 import net.minecraft.client.renderer.item.ItemModelResolver;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
 import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
-import net.minecraft.world.entity.ItemOwner;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.CampfireBlock;
-import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BitterwoodCampfireRenderer implements BlockEntityRenderer<BitterwoodCampfireBlockEntity, CampfireRenderState> {
+public class IridiumCampfireRenderer implements BlockEntityRenderer<IridiumCampfireBlockEntity, CampfireRenderState> {
 
     private final ItemModelResolver itemModelResolver;
 
-    public BitterwoodCampfireRenderer(BlockEntityRendererProvider.Context context) {
+    public IridiumCampfireRenderer(BlockEntityRendererProvider.Context context) {
         this.itemModelResolver = context.itemModelResolver();
     }
 
@@ -43,9 +35,9 @@ public class BitterwoodCampfireRenderer implements BlockEntityRenderer<Bitterwoo
     }
 
     @Override
-    public void extractRenderState(BitterwoodCampfireBlockEntity entity, CampfireRenderState state, float f, Vec3 vec, @Nullable ModelFeatureRenderer.CrumblingOverlay model) {
+    public void extractRenderState(IridiumCampfireBlockEntity entity, CampfireRenderState state, float f, Vec3 vec, @Nullable ModelFeatureRenderer.CrumblingOverlay model) {
         BlockEntityRenderer.super.extractRenderState(entity, state, f, vec, model);
-        state.facing = entity.getBlockState().getValue(BitterwoodCampfireBlock.FACING);
+        state.facing = entity.getBlockState().getValue(IridiumCampfireBlock.FACING);
         int i = (int)entity.getBlockPos().asLong();
         state.items = new ArrayList();
 

@@ -10,14 +10,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.Mth;
@@ -32,7 +29,8 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.*;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.animal.*;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.Turtle;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.decoration.ArmorStand;
@@ -42,7 +40,6 @@ import net.minecraft.world.entity.monster.Ghast;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
@@ -54,6 +51,7 @@ import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.manager.AnimatableManager;
+
 import javax.annotation.Nullable;
 import java.util.UUID;
 
@@ -168,14 +166,14 @@ public class Shiverwolf extends JTamableEntity {
     @Override
     public void aiStep() {
         super.aiStep();
-        if (!this.level().isClientSide && this.isWet && !this.isShaking && !this.isPathFinding() && this.onGround()) {
+        if (!this.level().isClientSide() && this.isWet && !this.isShaking && !this.isPathFinding() && this.onGround()) {
             this.isShaking = true;
             this.shakeAnim = 0.0F;
             this.shakeAnimO = 0.0F;
             this.level().broadcastEntityEvent(this, (byte)8);
         }
 
-        if (!this.level().isClientSide) {
+        if (!this.level().isClientSide()) {
             this.updatePersistentAnger((ServerLevel)this.level(), true);
         }
 
@@ -193,7 +191,7 @@ public class Shiverwolf extends JTamableEntity {
 
             if (this.isInWaterOrRain()) {
                 this.isWet = true;
-                if (this.isShaking && !this.level().isClientSide) {
+                if (this.isShaking && !this.level().isClientSide()) {
                     this.level().broadcastEntityEvent(this, (byte)56);
                     this.cancelShake();
                 }
@@ -367,7 +365,7 @@ public class Shiverwolf extends JTamableEntity {
                         && this.isOwnedBy(player)
                         && this.isWearingBodyArmor()
                         && (!EnchantmentHelper.has(this.getBodyArmorItem(), EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE) || player.isCreative())) {
-                    itemstack.hurtAndBreak(1, player, getSlotForHand(hand));
+                    itemstack.shrink(1);
                     this.playSound(SoundEvents.ARMOR_UNEQUIP_WOLF);
                     ItemStack itemstack1 = this.getBodyArmorItem();
                     this.setBodyArmorItem(ItemStack.EMPTY);
@@ -400,7 +398,7 @@ public class Shiverwolf extends JTamableEntity {
                     }
                 }
             }
-        } else if (!this.level().isClientSide && itemstack.is(Items.BONE) && !this.isAngry()) {
+        } else if (!this.level().isClientSide() && itemstack.is(Items.BONE) && !this.isAngry()) {
             itemstack.consume(1, player);
             this.tryToTame(player);
             return InteractionResult.SUCCESS_SERVER;

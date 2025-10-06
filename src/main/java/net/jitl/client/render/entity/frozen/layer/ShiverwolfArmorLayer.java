@@ -1,19 +1,17 @@
 package net.jitl.client.render.entity.frozen.layer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.Map;
-
 import net.jitl.client.model.ShiverwolfModel;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.EquipmentLayerRenderer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.entity.state.WolfRenderState;
+import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.core.component.DataComponents;
@@ -23,8 +21,8 @@ import net.minecraft.world.entity.Crackiness;
 import net.minecraft.world.entity.Crackiness.Level;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.equipment.Equippable;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
+
+import java.util.Map;
 
 public class ShiverwolfArmorLayer extends RenderLayer<WolfRenderState, ShiverwolfModel> {
 
@@ -40,24 +38,24 @@ public class ShiverwolfArmorLayer extends RenderLayer<WolfRenderState, Shiverwol
         this.equipmentRenderer = layer;
     }
 
-    public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, WolfRenderState livingEntity, float limbSwing, float limbSwingAmount) {
-        ItemStack itemstack = livingEntity.bodyArmorItem;
-        Equippable equippable = itemstack.get(DataComponents.EQUIPPABLE);
+    @Override
+    public void submit(PoseStack p_436050_, SubmitNodeCollector p_434212_, int p_433618_, WolfRenderState p_435660_, float p_435015_, float p_434923_) {
+        ItemStack itemstack = p_435660_.bodyArmorItem;
+        Equippable equippable = (Equippable)itemstack.get(DataComponents.EQUIPPABLE);
         if (equippable != null && !equippable.assetId().isEmpty()) {
-            ShiverwolfModel wolfmodel = livingEntity.isBaby ? this.babyModel : this.adultModel;
-            wolfmodel.setupAnim(livingEntity);
-            this.equipmentRenderer.renderLayers(EquipmentClientInfo.LayerType.WOLF_BODY, (ResourceKey)equippable.assetId().get(), wolfmodel, itemstack, poseStack, bufferSource, packedLight);
-            this.maybeRenderCracks(poseStack, bufferSource, packedLight, itemstack, wolfmodel);
+            ShiverwolfModel wolfmodel = p_435660_.isBaby ? this.babyModel : this.adultModel;
+            this.equipmentRenderer.renderLayers(EquipmentClientInfo.LayerType.WOLF_BODY, (ResourceKey)equippable.assetId().get(), wolfmodel, p_435660_, itemstack, p_436050_, p_434212_, p_433618_, p_435660_.outlineColor);
+            this.maybeRenderCracks(p_436050_, p_434212_, p_433618_, itemstack, wolfmodel, p_435660_);
         }
     }
 
-    private void maybeRenderCracks(PoseStack poseStack, MultiBufferSource buffer, int packedLight, ItemStack armorStack, Model p_364428_) {
-        Crackiness.Level crackiness$level = Crackiness.WOLF_ARMOR.byDamage(armorStack);
+    private void maybeRenderCracks(PoseStack p_331222_, SubmitNodeCollector p_434578_, int p_330931_, ItemStack p_331187_, Model<WolfRenderState> p_364428_, WolfRenderState p_433708_) {
+        Crackiness.Level crackiness$level = Crackiness.WOLF_ARMOR.byDamage(p_331187_);
         if (crackiness$level != Level.NONE) {
             ResourceLocation resourcelocation = (ResourceLocation)ARMOR_CRACK_LOCATIONS.get(crackiness$level);
-            VertexConsumer vertexconsumer = buffer.getBuffer(RenderType.armorTranslucent(resourcelocation));
-            p_364428_.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY);
+            p_434578_.submitModel(p_364428_, p_433708_, p_331222_, RenderType.armorTranslucent(resourcelocation), p_330931_, OverlayTexture.NO_OVERLAY, p_433708_.outlineColor, (ModelFeatureRenderer.CrumblingOverlay)null);
         }
+
     }
 
     static {

@@ -1,20 +1,22 @@
 package net.jitl.client.render.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.particle.*;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.client.particle.ParticleProvider;
+import net.minecraft.client.particle.SingleQuadParticle;
+import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
+import net.minecraft.util.RandomSource;
 import org.jetbrains.annotations.NotNull;
 
-public class HellstoneParticle extends TextureSheetParticle {
+public class HellstoneParticle extends SingleQuadParticle {
 
 	private final double xStart;
 	private final double yStart;
 	private final double zStart;
 
-	protected HellstoneParticle(ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed) {
-		super(pLevel, pX, pY, pZ);
+	protected HellstoneParticle(ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed, SpriteSet spriteWithAge) {
+		super(pLevel, pX, pY, pZ, spriteWithAge.first());
 		this.xd = pXSpeed;
 		this.yd = pYSpeed;
 		this.zd = pZSpeed;
@@ -32,9 +34,10 @@ public class HellstoneParticle extends TextureSheetParticle {
 		this.lifetime = (int)(Math.random() * 10.0D) + 40;
 	}
 
-	public ParticleRenderType getRenderType() {
-		return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
-	}
+    @Override
+    public SingleQuadParticle.Layer getLayer() {
+        return SingleQuadParticle.Layer.OPAQUE;
+    }
 
 	public void move(double pX, double pY, double pZ) {
 		this.setBoundingBox(this.getBoundingBox().move(pX, pY, pZ));
@@ -88,10 +91,9 @@ public class HellstoneParticle extends TextureSheetParticle {
 			this.sprite = spriteSet;
 		}
 
-		public Particle createParticle(@NotNull SimpleParticleType typeIn, @NotNull ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-			HellstoneParticle part = new HellstoneParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed);
-			part.pickSprite(sprite);
-			return part;
+        @Override
+        public Particle createParticle(@NotNull SimpleParticleType typeIn, @NotNull ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, RandomSource random) {
+			return new HellstoneParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, sprite);
 		}
 	}
 }

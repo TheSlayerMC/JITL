@@ -73,7 +73,7 @@ public class RoyalKing extends JPathfinderMob {
     public void tick() {
         super.tick();
         if(isActivated()) {
-            if (!level().isClientSide) {
+            if (!level().isClientSide()) {
                 if(hasCrown())
                     this.level().addFreshEntity(new ItemEntity(level(), this.position().x + 0.5F, this.position().y + 1.4F, this.position().z + 0.5F, new ItemStack(JItems.EUDOR_CROWN.get(), 1)));
                 setHasCrown(false);

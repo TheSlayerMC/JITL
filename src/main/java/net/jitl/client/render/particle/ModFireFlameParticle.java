@@ -2,19 +2,21 @@ package net.jitl.client.render.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
-import org.jetbrains.annotations.NotNull;
+import net.minecraft.util.RandomSource;
 
 public class ModFireFlameParticle extends RisingParticle {
-	protected ModFireFlameParticle(ClientLevel worldIn, double x, double y, double z, double motionX, double motionY, double motionZ) {
-		super(worldIn, x, y, z, motionX, motionY, motionZ);
+
+	protected ModFireFlameParticle(ClientLevel worldIn, double x, double y, double z, double motionX, double motionY, double motionZ, TextureAtlasSprite sprite) {
+		super(worldIn, x, y, z, motionX, motionY, motionZ, sprite);
 	}
 
-	@Override
-	public ParticleRenderType getRenderType() {
-		return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
-	}
+    @Override
+    public SingleQuadParticle.Layer getLayer() {
+        return SingleQuadParticle.Layer.OPAQUE;
+    }
 
 	@Override
 	public void move(double x, double y, double z) {
@@ -49,10 +51,9 @@ public class ModFireFlameParticle extends RisingParticle {
 			this.sprite = spriteSet;
 		}
 
-		public Particle createParticle(@NotNull SimpleParticleType typeIn, @NotNull ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-			ModFireFlameParticle flameparticle = new ModFireFlameParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed);
-            flameparticle.pickSprite(this.sprite);
-			return flameparticle;
+        @Override
+        public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, RandomSource random) {
+			return new ModFireFlameParticle(level, x, y, z, xSpeed, ySpeed, zSpeed, this.sprite.get(random));
 		}
 	}
 }

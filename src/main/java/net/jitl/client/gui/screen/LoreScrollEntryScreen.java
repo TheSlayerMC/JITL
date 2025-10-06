@@ -1,23 +1,21 @@
 package net.jitl.client.gui.screen;
 
-import com.mojang.blaze3d.buffers.GpuBuffer;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.*;
-import net.jitl.client.util.EnumHexColor;
+import com.mojang.blaze3d.vertex.BufferBuilder;
+import com.mojang.blaze3d.vertex.DefaultVertexFormat;
+import com.mojang.blaze3d.vertex.Tesselator;
+import com.mojang.blaze3d.vertex.VertexFormat;
 import net.jitl.client.util.GuiHelper;
 import net.jitl.common.scroll.IDescComponent;
 import net.jitl.common.scroll.ScrollEntry;
 import net.jitl.core.helper.internal.DrawHelper;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.MouseHandler;
-import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FormattedText;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ARGB;
 import org.jetbrains.annotations.NotNull;
@@ -287,8 +285,8 @@ public class LoreScrollEntryScreen extends Screen {
     }
 
     @Override
-    public boolean keyPressed(int keyCode, int scanCode, int modifiers_) {
-        if(keyCode == 256) {
+    public boolean keyPressed(KeyEvent event) {
+        if(event.isEscape()) {
             assert minecraft != null;
             minecraft.setScreen(null);
         }

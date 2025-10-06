@@ -1,210 +1,255 @@
 package net.jitl.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 import net.jitl.client.JModelLayers;
+import net.jitl.client.render.block.state.JChestRenderState;
 import net.jitl.common.block.JChestBlock;
-import net.jitl.common.block.entity.JChestBlockEntity;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.LevelRenderer;
-import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.model.ChestModel;
+import net.minecraft.client.renderer.MaterialMapper;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.BrightnessCombiner;
-import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
+import net.minecraft.client.renderer.item.ItemModelResolver;
+import net.minecraft.client.renderer.item.ItemStackRenderState;
+import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.Direction;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.resources.model.Material;
+import net.minecraft.client.resources.model.MaterialSet;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.DoubleBlockCombiner;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.entity.LidBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.ChestType;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class JChestRenderer<T extends BlockEntity & LidBlockEntity> implements BlockEntityRenderer<T> {
+public class JChestRenderer<T extends BlockEntity & LidBlockEntity> implements BlockEntityRenderer<T, JChestRenderState> {
 
-    protected final ModelPart lid;
-    protected final ModelPart bottom;
-    protected final ModelPart lock;
-    protected final ModelPart doubleLeftLid;
-    protected final ModelPart doubleLeftBottom;
-    protected final ModelPart doubleLeftLock;
-    protected final ModelPart doubleRightLid;
-    protected final ModelPart doubleRightBottom;
-    protected final ModelPart doubleRightLock;
+    private final ChestModel singleModel;
+    private final ChestModel doubleLeftModel;
+    private final ChestModel doubleRightModel;
+    private final ItemModelResolver renderEntity;
+    private final MaterialSet materials;
+
+    public static final MaterialMapper CHEST_MAPPER = new MaterialMapper(Sheets.CHEST_SHEET, "models/block/chest");
+
+    public static final Material BOILING_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("boiling_chest"));
+    public static final Material BOILING_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("boiling_chest_left"));
+    public static final Material BOILING_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("boiling_chest_right"));
+
+    public static final Material CLOUDIA_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("cloudia_chest"));
+    public static final Material CLOUDIA_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("cloudia_chest_left"));
+    public static final Material CLOUDIA_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("cloudia_chest_right"));
+
+    public static final Material CORBA_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("corba_chest"));
+    public static final Material CORBA_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("corba_chest_left"));
+    public static final Material CORBA_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("corba_chest_right"));
+
+    public static final Material DEPTHS_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("depths_chest"));
+    public static final Material DEPTHS_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("depths_chest_left"));
+    public static final Material DEPTHS_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("depths_chest_right"));
+
+    public static final Material EUCA_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("euca_chest"));
+    public static final Material EUCA_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("euca_chest_left"));
+    public static final Material EUCA_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("euca_chest_right"));
+
+    public static final Material FROZEN_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("frozen_chest"));
+    public static final Material FROZEN_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("frozen_chest_left"));
+    public static final Material FROZEN_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("frozen_chest_right"));
+
+    public static final Material JOURNEY_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("journey_chest"));
+    public static final Material JOURNEY_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("journey_chest_left"));
+    public static final Material JOURNEY_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("journey_chest_right"));
+
+    public static final Material NETHER_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("nether_chest"));
+    public static final Material NETHER_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("nether_chest_left"));
+    public static final Material NETHER_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("nether_chest_right"));
+
+    public static final Material SENTERIAN_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("senterian_chest"));
+    public static final Material SENTERIAN_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("senterian_chest_left"));
+    public static final Material SENTERIAN_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("senterian_chest_right"));
+
+    public static final Material TERRANIAN_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("terranian_chest"));
+    public static final Material TERRANIAN_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("terranian_chest_left"));
+    public static final Material TERRANIAN_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("terranian_chest_right"));
 
     public JChestRenderer(BlockEntityRendererProvider.Context context) {
-        ModelPart modelpart = context.bakeLayer(JModelLayers.JCHEST);
-        this.bottom = modelpart.getChild("bottom");
-        this.lid = modelpart.getChild("lid");
-        this.lock = modelpart.getChild("lock");
-        ModelPart modelpart1 = context.bakeLayer(JModelLayers.JDOUBLE_CHEST_LEFT);
-        this.doubleLeftBottom = modelpart1.getChild("bottom");
-        this.doubleLeftLid = modelpart1.getChild("lid");
-        this.doubleLeftLock = modelpart1.getChild("lock");
-        ModelPart modelpart2 = context.bakeLayer(JModelLayers.JDOUBLE_CHEST_RIGHT);
-        this.doubleRightBottom = modelpart2.getChild("bottom");
-        this.doubleRightLid = modelpart2.getChild("lid");
-        this.doubleRightLock = modelpart2.getChild("lock");
+        this.materials = context.materials();
+        this.singleModel = new ChestModel(context.bakeLayer(JModelLayers.JCHEST));
+        this.doubleLeftModel = new ChestModel(context.bakeLayer(JModelLayers.JDOUBLE_CHEST_LEFT));
+        this.doubleRightModel = new ChestModel(context.bakeLayer(JModelLayers.JDOUBLE_CHEST_RIGHT));
+        this.renderEntity = context.itemModelResolver();
     }
 
-    public static LayerDefinition createSingleBodyLayer() {
-        MeshDefinition meshdefinition = new MeshDefinition();
-        PartDefinition partdefinition = meshdefinition.getRoot();
-        partdefinition.addOrReplaceChild("bottom", CubeListBuilder.create().texOffs(0, 19).addBox(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), PartPose.ZERO);
-        partdefinition.addOrReplaceChild("lid", CubeListBuilder.create().texOffs(0, 0).addBox(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), PartPose.offset(0.0F, 9.0F, 1.0F));
-        partdefinition.addOrReplaceChild("lock", CubeListBuilder.create().texOffs(0, 0).addBox(7.0F, -1.0F, 15.0F, 2.0F, 4.0F, 1.0F), PartPose.offset(0.0F, 8.0F, 0.0F));
-        return LayerDefinition.create(meshdefinition, 64, 64);
+    public static Material chooseMaterial(JChestRenderState.JChestMaterialType materialType, ChestType chestType) {
+        return switch(materialType) {
+            case BOILING -> chooseMaterial(chestType, BOILING_CHEST_LOCATION, BOILING_CHEST_LOCATION_LEFT, BOILING_CHEST_LOCATION_RIGHT);
+            case CLOUDIA -> chooseMaterial(chestType, CLOUDIA_CHEST_LOCATION, CLOUDIA_CHEST_LOCATION_LEFT, CLOUDIA_CHEST_LOCATION_RIGHT);
+            case CORBA -> chooseMaterial(chestType, CORBA_CHEST_LOCATION, CORBA_CHEST_LOCATION_LEFT, CORBA_CHEST_LOCATION_RIGHT);
+            case DEPTHS -> chooseMaterial(chestType, DEPTHS_CHEST_LOCATION, DEPTHS_CHEST_LOCATION_LEFT, DEPTHS_CHEST_LOCATION_RIGHT);
+            case EUCA -> chooseMaterial(chestType, EUCA_CHEST_LOCATION, EUCA_CHEST_LOCATION_LEFT, EUCA_CHEST_LOCATION_RIGHT);
+            case NETHER -> chooseMaterial(chestType, NETHER_CHEST_LOCATION, NETHER_CHEST_LOCATION_LEFT, NETHER_CHEST_LOCATION_RIGHT);
+            case FROZEN -> chooseMaterial(chestType, FROZEN_CHEST_LOCATION, FROZEN_CHEST_LOCATION_LEFT, FROZEN_CHEST_LOCATION_RIGHT);
+            case SENTERIAN -> chooseMaterial(chestType, SENTERIAN_CHEST_LOCATION, SENTERIAN_CHEST_LOCATION_LEFT, SENTERIAN_CHEST_LOCATION_RIGHT);
+            case TERRANIAN -> chooseMaterial(chestType, TERRANIAN_CHEST_LOCATION, TERRANIAN_CHEST_LOCATION_LEFT, TERRANIAN_CHEST_LOCATION_RIGHT);
+            case JOURNEY -> chooseMaterial(chestType, JOURNEY_CHEST_LOCATION, JOURNEY_CHEST_LOCATION_LEFT, JOURNEY_CHEST_LOCATION_RIGHT);
+        };
     }
 
-    public static LayerDefinition createDoubleBodyRightLayer() {
-        MeshDefinition meshdefinition = new MeshDefinition();
-        PartDefinition partdefinition = meshdefinition.getRoot();
-        partdefinition.addOrReplaceChild("bottom", CubeListBuilder.create().texOffs(0, 19).addBox(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), PartPose.ZERO);
-        partdefinition.addOrReplaceChild("lid", CubeListBuilder.create().texOffs(0, 0).addBox(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), PartPose.offset(0.0F, 9.0F, 1.0F));
-        partdefinition.addOrReplaceChild("lock", CubeListBuilder.create().texOffs(0, 0).addBox(15.0F, -1.0F, 15.0F, 1.0F, 4.0F, 1.0F), PartPose.offset(0.0F, 8.0F, 0.0F));
-        return LayerDefinition.create(meshdefinition, 64, 64);
+    private JChestRenderState.JChestMaterialType getChestMaterial(BlockEntity e) {
+        Block chest = e.getBlockState().getBlock();
+        JChestRenderState.JChestMaterialType type = JChestRenderState.JChestMaterialType.JOURNEY;
+        if(chest == JBlocks.JOURNEY_CHEST.get()) {
+            type = JChestRenderState.JChestMaterialType.JOURNEY;
+        }
+        if(chest == JBlocks.EUCA_CHEST.get()) {
+            type = JChestRenderState.JChestMaterialType.EUCA;
+        }
+        if(chest == JBlocks.FROZEN_CHEST.get()) {
+            type = JChestRenderState.JChestMaterialType.FROZEN;
+        }
+        if(chest == JBlocks.BOIL_CHEST.get()) {
+            type = JChestRenderState.JChestMaterialType.BOILING;
+        }
+        if(chest == JBlocks.NETHER_CHEST.get()) {
+            type = JChestRenderState.JChestMaterialType.NETHER;
+        }
+        if(chest == JBlocks.DEPTHS_CHEST.get()) {
+            type = JChestRenderState.JChestMaterialType.DEPTHS;
+        }
+        if(chest == JBlocks.CORBA_CHEST.get()) {
+            type = JChestRenderState.JChestMaterialType.CORBA;
+        }
+        if(chest == JBlocks.TERRANIAN_CHEST.get()) {
+            type = JChestRenderState.JChestMaterialType.TERRANIAN;
+        }
+        if(chest == JBlocks.CLOUDIA_CHEST.get()) {
+            type = JChestRenderState.JChestMaterialType.CLOUDIA;
+        }
+        if(chest == JBlocks.SENTERIAN_CHEST.get()) {
+            type = JChestRenderState.JChestMaterialType.CLOUDIA;
+        }
+        return type;
     }
 
-    public static LayerDefinition createDoubleBodyLeftLayer() {
-        MeshDefinition meshdefinition = new MeshDefinition();
-        PartDefinition partdefinition = meshdefinition.getRoot();
-        partdefinition.addOrReplaceChild("bottom", CubeListBuilder.create().texOffs(0, 19).addBox(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), PartPose.ZERO);
-        partdefinition.addOrReplaceChild("lid", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), PartPose.offset(0.0F, 9.0F, 1.0F));
-        partdefinition.addOrReplaceChild("lock", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, -1.0F, 15.0F, 1.0F, 4.0F, 1.0F), PartPose.offset(0.0F, 8.0F, 0.0F));
-        return LayerDefinition.create(meshdefinition, 64, 64);
+    private static Material chooseMaterial(ChestType chestType, Material doubleMaterial, Material leftMaterial, Material rightMaterial) {
+        return switch (chestType) {
+            case LEFT -> leftMaterial;
+            case RIGHT -> rightMaterial;
+            default -> doubleMaterial;
+        };
     }
 
     @Override
-    public void render(T blockEntity, float partialTick, PoseStack poseStack, @NotNull MultiBufferSource bufferSource, int packedLight, int packedOverlay, Vec3 v) {
-        Level level = blockEntity.getLevel();
-        boolean viable = level != null;
-        BlockState blockstate = viable ? blockEntity.getBlockState() : blockEntity.getBlockState().getBlock().defaultBlockState().setValue(JChestBlock.FACING, Direction.SOUTH);
-        ChestType chesttype = blockstate.hasProperty(JChestBlock.TYPE) ? blockstate.getValue(JChestBlock.TYPE) : ChestType.SINGLE;
-        Block block = blockstate.getBlock();
-        JChestBlock chest = (JChestBlock)block;
-        boolean isDouble = chesttype != ChestType.SINGLE;
-        poseStack.pushPose();
-        float f = ((Direction)blockstate.getValue(JChestBlock.FACING)).toYRot();
-        poseStack.translate(0.5D, 0.5D, 0.5D);
-        poseStack.mulPose(Axis.YP.rotationDegrees(-f));
-        poseStack.translate(-0.5D, -0.5D, -0.5D);
-        DoubleBlockCombiner.NeighborCombineResult<? extends JChestBlockEntity> res;
-        if(viable) {
-            res = chest.combine(blockstate, level, blockEntity.getBlockPos(), true);
-        } else {
-            res = DoubleBlockCombiner.Combiner::acceptNone;
-        }
-        float f1 = res.apply(JChestBlock.opennessCombiner(blockEntity)).get(partialTick);
-        f1 = 1.0F - f1;
-        f1 = 1.0F - f1 * f1 * f1;
-        int i = res.apply(new BrightnessCombiner<>()).applyAsInt(packedLight);
-        VertexConsumer vertexconsumer = bufferSource.getBuffer(RenderType.entitySolid(JITL.rl("textures/models/block/chest/" + getNameFromBlock(chest) + ".png")));
+    public @NotNull JChestRenderState createRenderState() {
+        return new JChestRenderState();
+    }
 
-        if(isDouble) {
-            if (chesttype == ChestType.LEFT) {
-                vertexconsumer = bufferSource.getBuffer(RenderType.entitySolid(JITL.rl("textures/models/block/chest/" + getNameFromBlock(chest) + "_left.png")));
-                this.render(poseStack, vertexconsumer, this.doubleLeftLid, this.doubleLeftLock, this.doubleLeftBottom, f1, i, packedOverlay);
+    @Override
+    public void extractRenderState(T tile, JChestRenderState render, float tick, Vec3 vec, @Nullable ModelFeatureRenderer.CrumblingOverlay overlay) {
+        DoubleBlockCombiner.NeighborCombineResult<? extends ChestBlockEntity> neighborcombineresult;
+        label30: {
+            BlockEntityRenderer.super.extractRenderState(tile, render, tick, vec, overlay);
+            boolean flag = tile.getLevel() != null;
+            BlockState blockstate = tile.getBlockState();
+            render.type = blockstate.hasProperty(JChestBlock.TYPE) ? blockstate.getValue(JChestBlock.TYPE) : ChestType.SINGLE;
+            render.angle = blockstate.getValue(JChestBlock.FACING).toYRot();
+            render.material = this.getChestMaterial(tile);
+            render.facingYAngle = tile.getBlockState().getValue(JChestBlock.FACING).toYRot();
+            render.isLocked = tile.getBlockState().getValue(JChestBlock.IS_LOCKED);
+            ItemStackRenderState itemstackrenderstate = new ItemStackRenderState();
+            this.renderEntity.updateForTopItem(itemstackrenderstate, new ItemStack(JItems.PADLOCK.get()), ItemDisplayContext.GROUND, tile.getLevel(), null, (int)tile.getBlockPos().asLong());
+            render.item = itemstackrenderstate;
+            if (flag) {
+                Block var10 = blockstate.getBlock();
+                if (var10 instanceof JChestBlock) {
+                    JChestBlock chestblock = (JChestBlock)var10;
+                    neighborcombineresult = chestblock.combine(blockstate, tile.getLevel(), tile.getBlockPos(), true);
+                    break label30;
+                }
+            }
+            neighborcombineresult = DoubleBlockCombiner.Combiner::acceptNone;
+        }
+
+        render.open = neighborcombineresult.apply(ChestBlock.opennessCombiner(tile)).get(tick);
+        if(render.type != ChestType.SINGLE) {
+            render.lightCoords = ((Int2IntFunction)neighborcombineresult.apply(new BrightnessCombiner())).applyAsInt(render.lightCoords);
+        }
+    }
+
+    @Override
+    public void submit(JChestRenderState render, PoseStack stack, SubmitNodeCollector node, CameraRenderState renderState) {
+        stack.pushPose();
+        stack.translate(0.5F, 0.5F, 0.5F);
+        stack.mulPose(Axis.YP.rotationDegrees(-render.angle));
+        stack.translate(-0.5F, -0.5F, -0.5F);
+        float f = render.open;
+        f = 1.0F - f;
+        f = 1.0F - f * f * f;
+        Material material = chooseMaterial(render.material, render.type);
+        RenderType rendertype = material.renderType(RenderType::entityCutout);
+        TextureAtlasSprite textureatlassprite = this.materials.get(material);
+        if (render.type != ChestType.SINGLE) {
+            if (render.type == ChestType.LEFT) {
+                node.submitModel(this.doubleLeftModel, f, stack, rendertype, render.lightCoords, OverlayTexture.NO_OVERLAY, -1, textureatlassprite, 0, render.breakProgress);
             } else {
-                vertexconsumer = bufferSource.getBuffer(RenderType.entitySolid(JITL.rl("textures/models/block/chest/" + getNameFromBlock(chest) + "_right.png")));
-                this.render(poseStack, vertexconsumer, this.doubleRightLid, this.doubleRightLock, this.doubleRightBottom, f1, i, packedOverlay);
+                node.submitModel(this.doubleRightModel, f, stack, rendertype, render.lightCoords, OverlayTexture.NO_OVERLAY, -1, textureatlassprite, 0, render.breakProgress);
             }
         } else {
-            this.render(poseStack, vertexconsumer, this.lid, this.lock, this.bottom, f1, i, packedOverlay);
+            node.submitModel(this.singleModel, f, stack, rendertype, render.lightCoords, OverlayTexture.NO_OVERLAY, -1, textureatlassprite, 0, render.breakProgress);
         }
-        poseStack.popPose();
 
-        if(blockstate.getValue(JChestBlock.IS_LOCKED)) {
-            if(isDouble) {
-                if(chesttype == ChestType.LEFT) {
-                    renderItem(blockEntity, new ItemStack(JItems.PADLOCK.get()), new double[]{0.0D, 0.2D, 0.945D}, poseStack, bufferSource, packedOverlay, packedLight, blockstate);
+        stack.popPose();
+
+        if(render.isLocked) {
+            if(render.type != ChestType.SINGLE) {
+                if(render.type == ChestType.LEFT) {
+                    renderItem(render, new double[]{0.0D, 0.2D, 0.945D}, stack, node);
                 } else {
-                    renderItem(blockEntity, new ItemStack(JItems.PADLOCK.get()), new double[]{1, 0.2D, 0.945D}, poseStack, bufferSource, packedOverlay, packedLight, blockstate);
+                    renderItem(render, new double[]{1, 0.2D, 0.945D}, stack, node);
                 }
             } else {
-                renderItem(blockEntity, new ItemStack(JItems.PADLOCK.get()), new double[]{0.5D, 0.2D, 0.945D}, poseStack, bufferSource, packedOverlay, packedLight, blockstate);
+                renderItem(render, new double[]{0.5D, 0.2D, 0.945D}, stack, node);
             }
         }
     }
 
-    private void renderItem(T block, ItemStack stack, double[] translation, PoseStack matrixStack, MultiBufferSource buffer, int combinedOverlay, int lightLevel, BlockState state) {
-        ItemRenderer renderer = Minecraft.getInstance().getItemRenderer();
-        matrixStack.pushPose();
-        float f = ((Direction)state.getValue(JChestBlock.FACING)).toYRot();
-        matrixStack.translate(0.5D, 0.5D, 0.5D);
-        matrixStack.mulPose(Axis.YP.rotationDegrees(-f));
-        matrixStack.translate(-0.5D, -0.5D, -0.5D);
-        matrixStack.translate(translation[0], translation[1], translation[2]);
-        float scale = 1.0F;
-        matrixStack.scale(scale, scale, scale + 0.15F);
-        //BakedModel model = renderer.getModel(stack, null, null, 0);
-        //renderer.render(stack, ItemDisplayContext.GROUND, true, matrixStack, buffer, lightLevel, combinedOverlay, model);
-        //stack.render(matrixStack, buffer, 0, OverlayTexture.NO_OVERLAY);
-        int j = LevelRenderer.getLightColor(LevelRenderer.BrightnessGetter.DEFAULT, Objects.requireNonNull(block.getLevel()), state, block.getBlockPos());
-        renderer.renderStatic(stack, ItemDisplayContext.GROUND, j, OverlayTexture.NO_OVERLAY, matrixStack, buffer, block.getLevel(), 0);
-        //ItemRenderer.renderItem(ItemDisplayContext.GROUND, matrixStack, buffer, combinedOverlay, lightLevel, );
-        matrixStack.popPose();
+    @Override
+    public net.minecraft.world.phys.@NotNull AABB getRenderBoundingBox(T blockEntity) {
+        net.minecraft.core.BlockPos pos = blockEntity.getBlockPos();
+        return net.minecraft.world.phys.AABB.encapsulatingFullBlocks(pos.offset(-1, 0, -1), pos.offset(1, 1, 1));
     }
 
-    public String getNameFromBlock(JChestBlock chest) {
-        String name = "";
-        if(chest == JBlocks.JOURNEY_CHEST.get()) {
-            name = "journey_chest";
+    private void renderItem(JChestRenderState state, double[] translation, PoseStack matrixStack, SubmitNodeCollector collector) {
+        ItemStackRenderState item = state.item;
+        if (!item.isEmpty()) {
+            matrixStack.pushPose();
+            float f = state.facingYAngle;
+            matrixStack.translate(0.5D, 0.5D, 0.5D);
+            matrixStack.mulPose(Axis.YP.rotationDegrees(-f));
+            matrixStack.translate(-0.5D, -0.5D, -0.5D);
+            matrixStack.translate(translation[0], translation[1], translation[2]);
+            float scale = 1.0F;
+            matrixStack.scale(scale, scale, scale + 0.15F);
+            item.submit(matrixStack, collector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
+            matrixStack.popPose();
         }
-        if(chest == JBlocks.EUCA_CHEST.get()) {
-            name = "euca_chest";
-        }
-        if(chest == JBlocks.FROZEN_CHEST.get()) {
-            name = "frozen_chest";
-        }
-        if(chest == JBlocks.BOIL_CHEST.get()) {
-            name = "boiling_chest";
-        }
-        if(chest == JBlocks.NETHER_CHEST.get()) {
-            name = "nether_chest";
-        }
-        if(chest == JBlocks.DEPTHS_CHEST.get()) {
-            name = "depths_chest";
-        }
-        if(chest == JBlocks.CORBA_CHEST.get()) {
-            name = "corba_chest";
-        }
-        if(chest == JBlocks.TERRANIAN_CHEST.get()) {
-            name = "terranian_chest";
-        }
-        if(chest == JBlocks.CLOUDIA_CHEST.get()) {
-            name = "cloudia_chest";
-        }
-        if(chest == JBlocks.SENTERIAN_CHEST.get()) {
-            name = "senterian_chest";
-        }
-        return name;
-    }
-
-    private void render(PoseStack poseStack, VertexConsumer consumer, ModelPart lidPart, ModelPart lockPart, ModelPart bottomPart, float lidAngle, int packedLight, int packedOverlay) {
-        lidPart.xRot = -(lidAngle * ((float) Math.PI / 2F));
-        lockPart.xRot = lidPart.xRot;
-        lidPart.render(poseStack, consumer, packedLight, packedOverlay);
-        lockPart.render(poseStack, consumer, packedLight, packedOverlay);
-        bottomPart.render(poseStack, consumer, packedLight, packedOverlay);
     }
 }

@@ -7,7 +7,6 @@ import net.jitl.core.init.internal.JLootTables;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -108,7 +107,7 @@ public class SpiritCrystal extends PathfinderMob implements GeoEntity {
             }
         }
         if(totalAwakeTotems >= 4) {
-            if(!this.level().isClientSide) {
+            if(!this.level().isClientSide()) {
                 LootTable table = Objects.requireNonNull(level().getServer()).reloadableRegistries().getLootTable(JLootTables.SPIRIT_CRYSTAL);
                 List<ItemStack> itemList = table.getRandomItems(new LootParams.Builder((ServerLevel)level()).withParameter(LootContextParams.THIS_ENTITY, playerEntity)
                         .withParameter(LootContextParams.ORIGIN, playerEntity.position()).create(LootContextParamSets.GIFT));

@@ -133,7 +133,8 @@ public class RenderEntitys {
 
         event.registerBlockEntityRenderer(JBlockEntities.SUMMONING_TABLE.get(), SummoningTableRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.BITTERWOOD_CAMPFIRE.get(), BitterwoodCampfireRenderer::new);
-        
+        event.registerBlockEntityRenderer(JBlockEntities.IRIDIUM_CAMPFIRE.get(), IridiumCampfireRenderer::new);
+
         registerAnimationRenderers(event::registerEntityRenderer);
     }
 

@@ -4,9 +4,6 @@ import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -119,7 +116,7 @@ public class BossCrystal extends Mob implements GeoEntity {
 
     @Override
     public @NotNull InteractionResult mobInteract(@NotNull Player player, @NotNull InteractionHand hand) {
-        if(!this.level().isClientSide) {
+        if(!this.level().isClientSide()) {
 
             for (ItemStack storedItem : storedItems) {
                 ItemStack item = new ItemStack(storedItem.getItem());

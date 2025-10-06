@@ -1,6 +1,5 @@
 package net.jitl.common.entity.base;
 
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.EntityType;
@@ -29,7 +28,7 @@ public abstract class JNeutralMonster extends JMonsterEntity implements NeutralM
         super(pEntityType, pLevel);
     }
 
-    @Override
+    //todo
     protected boolean shouldDespawnInPeaceful() {
         return isAngry();
     }

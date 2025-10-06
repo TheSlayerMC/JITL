@@ -1,18 +1,20 @@
 package net.jitl.client.render.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.particle.*;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.client.particle.ParticleProvider;
+import net.minecraft.client.particle.SingleQuadParticle;
+import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
+import net.minecraft.util.RandomSource;
 import org.jetbrains.annotations.NotNull;
 
-public class SulphurParticle extends TextureSheetParticle {
+public class SulphurParticle extends SingleQuadParticle {
 
     private final SpriteSet sprites;
 
     protected SulphurParticle(ClientLevel worldIn, double x, double y, double z, double motionX, double motionY, double motionZ, SpriteSet spriteWithAge) {
-        super(worldIn, x, y, z, motionX, motionY, motionZ);
+        super(worldIn, x, y, z, motionX, motionY, motionZ, spriteWithAge.first());
         this.sprites = spriteWithAge;
         int i = (int) (32.0D / (Math.random() * 0.8D + 0.2D));
         this.lifetime = (int) Math.max((float) i * 0.9F, 1.0F);
@@ -21,8 +23,8 @@ public class SulphurParticle extends TextureSheetParticle {
     }
 
     @Override
-    public ParticleRenderType getRenderType() {
-        return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
+    public SingleQuadParticle.Layer getLayer() {
+        return Layer.OPAQUE;
     }
 
     @Override
@@ -64,7 +66,8 @@ public class SulphurParticle extends TextureSheetParticle {
             this.sprite = spriteSet;
         }
 
-        public Particle createParticle(@NotNull SimpleParticleType typeIn, @NotNull ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+        @Override
+        public Particle createParticle(@NotNull SimpleParticleType typeIn, @NotNull ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, RandomSource random) {
             return new SulphurParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, this.sprite);
         }
     }

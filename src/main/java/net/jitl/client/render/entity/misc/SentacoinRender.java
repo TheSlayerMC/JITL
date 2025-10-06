@@ -64,10 +64,9 @@ public class SentacoinRender<T extends Sentacoin> extends EntityRenderer<T, Item
         return new ItemEntityRenderState();
     }
 
-//    public void extractRenderState(@NotNull T entity, @NotNull ItemEntityRenderState item, float f) {
-//        super.extractRenderState(entity, item, f);
-//        ItemStack itemstack = ((ItemSupplier)item).getItem();
-//        item.itemModel = !itemstack.isEmpty() ? this.itemRenderer.getModel(itemstack, entity.level(), null, entity.getId()) : null;
-//        item.item = itemstack.copy();
-//    }
+    @Override
+    public void extractRenderState(@NotNull T entity, @NotNull ItemEntityRenderState item, float f) {
+        super.extractRenderState(entity, item, f);
+        item.item = itemstack.copy();
+    }
 }

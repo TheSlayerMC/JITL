@@ -2,7 +2,6 @@ package net.jitl.core.init.internal;
 
 import net.jitl.client.render.particle.*;
 import net.jitl.core.init.JITL;
-import net.minecraft.client.particle.SnowflakeParticle;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
@@ -47,10 +46,10 @@ public class JParticleManager {
         event.registerSpriteSet(RED_FLAME.get(), ModFlameParticle.Factory::new);
         event.registerSpriteSet(GREEN_FLAME.get(), ModFireFlameParticle.Factory::new);
         event.registerSpriteSet(MUD.get(), MudParticle.Factory::new);
-        event.registerSpriteSet(CONJURING.get(), ConjuringParticle.Factory::new);
+        event.registerSpriteSet(CONJURING.get(), BasicParticle.Factory::new);
         event.registerSpriteSet(ESSENCIA_LIGHTNING.get(), EssenciaLightningParticle.Factory::new);
         event.registerSpriteSet(MINERS_PEARL.get(), MinersPearlParticle.Factory::new);
-        event.registerSpriteSet(SNOWFLAKE.get(), SnowflakeParticle.Provider::new);
+        event.registerSpriteSet(SNOWFLAKE.get(), SnowflakeParticle.Factory::new);
         event.registerSpriteSet(SULPHUR.get(), SulphurParticle.Factory::new);
         event.registerSpriteSet(CRYSTAL_FRUIT.get(), CrystalFruitParticle.Factory::new);
         event.registerSpriteSet(GOLDITE_FLOWER.get(), GolditeFlowerParticle.Factory::new);

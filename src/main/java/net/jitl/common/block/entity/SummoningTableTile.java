@@ -111,7 +111,7 @@ public class SummoningTableTile extends RandomizableContainerBlockEntity impleme
     }
 
     @Override
-    protected @NotNull NonNullList<ItemStack> getItems() {
+    public @NotNull NonNullList<ItemStack> getItems() {
         return inventory;
     }
 

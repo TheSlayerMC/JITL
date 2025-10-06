@@ -2,20 +2,20 @@ package net.jitl.client.render.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
-import org.jetbrains.annotations.NotNull;
+import net.minecraft.util.RandomSource;
 
-public class ModFlameParticle extends TextureSheetParticle {
-	protected ModFlameParticle(ClientLevel worldIn, double x, double y, double z, double motionX, double motionY, double motionZ) {
-		super(worldIn, x, y, z, motionX, motionY, motionZ);
+public class ModFlameParticle extends SingleQuadParticle {
+	protected ModFlameParticle(ClientLevel worldIn, double x, double y, double z, double motionX, double motionY, double motionZ, TextureAtlasSprite sprite) {
+		super(worldIn, x, y, z, motionX, motionY, motionZ, sprite);
 	}
 
-	@Override
-	public ParticleRenderType getRenderType() {
-		return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
-	}
-
+    @Override
+    public SingleQuadParticle.Layer getLayer() {
+        return SingleQuadParticle.Layer.OPAQUE;
+    }
 	@Override
 	public void move(double x, double y, double z) {
 		this.setBoundingBox(this.getBoundingBox().move(x, y, z));
@@ -50,10 +50,9 @@ public class ModFlameParticle extends TextureSheetParticle {
 			this.sprite = spriteSet;
 		}
 
-		public Particle createParticle(@NotNull SimpleParticleType typeIn, @NotNull ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-			ModFlameParticle redFlameparticle = new ModFlameParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed);
-			redFlameparticle.pickSprite(this.sprite);
-			return redFlameparticle;
-		}
+        @Override
+        public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, RandomSource random) {
+            return new ModFlameParticle(level, x, y, z, xSpeed, ySpeed, zSpeed, this.sprite.get(random));
+        }
 	}
 }

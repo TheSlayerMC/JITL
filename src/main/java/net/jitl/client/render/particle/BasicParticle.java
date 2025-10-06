@@ -4,24 +4,20 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import org.jetbrains.annotations.NotNull;
 
-public class BasicParticle extends TextureSheetParticle {
+public class BasicParticle extends SingleQuadParticle {
 
 	private final SpriteSet sprites;
 
 	protected BasicParticle(ClientLevel worldIn, double x, double y, double z, double motionX, double motionY, double motionZ, SpriteSet spriteWithAge) {
-		super(worldIn, x, y, z, motionX, motionY, motionZ);
+		super(worldIn, x, y, z, motionX, motionY, motionZ, spriteWithAge.first());
 		this.sprites = spriteWithAge;
 		int i = (int) (32.0D / (Math.random() * 0.8D + 0.2D));
 		this.lifetime = (int) Math.max((float) i * 0.9F, 1.0F);
 		this.gravity = 0.003F;
 		this.setSpriteFromAge(spriteWithAge);
-	}
-
-	@Override
-	public ParticleRenderType getRenderType() {
-		return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
 	}
 
 	@Override
@@ -56,7 +52,12 @@ public class BasicParticle extends TextureSheetParticle {
 		return this.quadSize * (1.0F - f * f * 0.5F);
 	}
 
-	@Override
+    @Override
+    public SingleQuadParticle.Layer getLayer() {
+        return SingleQuadParticle.Layer.OPAQUE;
+    }
+
+    @Override
 	public int getLightColor(float partialTick) {
 		float f = ((float) this.age + partialTick) / (float) this.lifetime;
 		f = Mth.clamp(f, 0.0F, 1.0F);
@@ -78,10 +79,9 @@ public class BasicParticle extends TextureSheetParticle {
 			this.sprite = spriteSet;
 		}
 
-		public Particle createParticle(@NotNull SimpleParticleType typeIn, @NotNull ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-			ModFlameParticle redFlameparticle = new ModFlameParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed);
-			redFlameparticle.pickSprite(this.sprite);
-			return redFlameparticle;
+        @Override
+		public Particle createParticle(@NotNull SimpleParticleType typeIn, @NotNull ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, RandomSource random) {
+            return new BasicParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, sprite);
 		}
 	}
 }

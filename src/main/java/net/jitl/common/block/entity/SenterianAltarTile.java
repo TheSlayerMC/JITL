@@ -118,7 +118,7 @@ public class SenterianAltarTile extends BlockEntity implements GeoBlockEntity {
             default -> new MiniSentryLord(JEntities.MINI_SENTRY_LORD_TYPE.get(), getLevel());
         };
 
-        if(!level.isClientSide) {
+        if(!level.isClientSide()) {
             mob.setPos(x + 0.5F, y + 1F, z + 0.5F);
             level.addFreshEntity(mob);
         }

@@ -1,18 +1,20 @@
 package net.jitl.client.render.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.particle.*;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.client.particle.ParticleProvider;
+import net.minecraft.client.particle.SingleQuadParticle;
+import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
+import net.minecraft.util.RandomSource;
 import org.jetbrains.annotations.NotNull;
 
-public class TerraniaPortalParticle extends TextureSheetParticle {
+public class TerraniaPortalParticle extends SingleQuadParticle {
 	private final float rotSpeed;
 	private final SpriteSet sprites;
 
 	protected TerraniaPortalParticle(ClientLevel worldIn, double x, double y, double z, double motionX, double motionY, double motionZ, SpriteSet spriteWithAge) {
-		super(worldIn, x, y, z, motionX, motionY, motionZ);
+		super(worldIn, x, y, z, motionX, motionY, motionZ, spriteWithAge.first());
 		this.sprites = spriteWithAge;
 		this.quadSize *= 0.67499995F;
 		int i = (int) (32.0D / (Math.random() * 0.8D + 0.2D));
@@ -22,10 +24,10 @@ public class TerraniaPortalParticle extends TextureSheetParticle {
 		this.roll = (float) Math.random() * ((float) Math.PI * 2F);
 	}
 
-	@Override
-	public @NotNull ParticleRenderType getRenderType() {
-		return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
-	}
+    @Override
+    public SingleQuadParticle.Layer getLayer() {
+        return Layer.OPAQUE;
+    }
 
 	@Override
 	public void move(double x, double y, double z) {
@@ -67,9 +69,9 @@ public class TerraniaPortalParticle extends TextureSheetParticle {
 			this.sprite = spriteSet;
 		}
 
-		public Particle createParticle(@NotNull SimpleParticleType typeIn, @NotNull ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+        @Override
+        public Particle createParticle(@NotNull SimpleParticleType typeIn, @NotNull ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, RandomSource random) {
 			TerraniaPortalParticle golditeFlowerParticle = new TerraniaPortalParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, sprite);
-			golditeFlowerParticle.pickSprite(this.sprite);
 			return golditeFlowerParticle;
 		}
 	}

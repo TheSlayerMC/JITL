@@ -2,46 +2,56 @@ package net.jitl.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import net.jitl.client.render.block.state.BlockEntityItemRenderState;
 import net.jitl.common.block.entity.PedestalTile;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.LevelRenderer;
-import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
+import net.minecraft.client.renderer.item.ItemModelResolver;
+import net.minecraft.client.renderer.item.ItemStackRenderState;
+import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.Objects;
+public class PedestalRenderer implements BlockEntityRenderer<PedestalTile, BlockEntityItemRenderState> {
 
-public class PedestalRenderer implements BlockEntityRenderer<PedestalTile> {
-
-    private final ItemRenderer renderEntity;
+    private final ItemModelResolver renderEntity;
 
     public PedestalRenderer(BlockEntityRendererProvider.Context context) {
-        this.renderEntity = Minecraft.getInstance().getItemRenderer();
+        this.renderEntity = context.itemModelResolver();
     }
 
     @Override
-    public void render(PedestalTile e, float partialTicks, PoseStack matrixStackIn, MultiBufferSource bufferIn, int combinedLightIn, int combinedOverlayIn, Vec3 v) {
-        ItemStack i = e.getItem(0);
-        renderItem(e, i, new double[]{0.5D, 1.25D, 0.5D}, matrixStackIn, bufferIn, combinedOverlayIn, combinedLightIn, 1.0F);
+    public BlockEntityItemRenderState createRenderState() {
+        return new BlockEntityItemRenderState();
     }
 
-    private void renderItem(PedestalTile block, ItemStack stack, double[] translation, PoseStack matrixStack, MultiBufferSource buffer, int combinedOverlay, int lightLevel, float scale) {
-        ItemRenderer renderer = Minecraft.getInstance().getItemRenderer();
-        matrixStack.pushPose();
-        float timeD = (float) (360.0 * (System.currentTimeMillis() & 0x3FFFL) / 0x3FFFL) / 16;
-        matrixStack.translate(translation[0], translation[1], translation[2]);
-        matrixStack.mulPose(Axis.YP.rotation(timeD));
-        matrixStack.scale(scale, scale, scale);
-        //BakedModel model = renderEntity.getModel(stack, null, null, 0);
-        //this.renderEntity.render(stack, ItemDisplayContext.GROUND, true, matrixStack, buffer, lightLevel, combinedOverlay, model);
+    @Override
+    public void submit(BlockEntityItemRenderState blockEntityItemRenderState, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState cameraRenderState) {
+        renderItem(blockEntityItemRenderState, new double[]{0.5D, 1.25D, 0.5D}, poseStack, submitNodeCollector, 1.0F);
+    }
 
-        int j = LevelRenderer.getLightColor(LevelRenderer.BrightnessGetter.DEFAULT, Objects.requireNonNull(block.getLevel()), block.getBlockState(), block.getBlockPos());
-        renderer.renderStatic(stack, ItemDisplayContext.GROUND, j, OverlayTexture.NO_OVERLAY, matrixStack, buffer, block.getLevel(), 0);
-        matrixStack.popPose();
+    private void renderItem(BlockEntityItemRenderState state, double[] translation, PoseStack matrixStack, SubmitNodeCollector collector, float scale) {
+        ItemStackRenderState item = state.item;
+        if (!item.isEmpty()) {
+            matrixStack.pushPose();
+            float timeD = (float) (360.0 * (System.currentTimeMillis() & 0x3FFFL) / 0x3FFFL) / 16;
+            matrixStack.translate(translation[0], translation[1], translation[2]);
+            matrixStack.mulPose(Axis.YP.rotation(timeD));
+            matrixStack.scale(scale, scale, scale);
+            item.submit(matrixStack, collector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
+            matrixStack.popPose();
+        }
+    }
+
+    @Override
+    public void extractRenderState(PedestalTile tile, BlockEntityItemRenderState s, float ticks, Vec3 v, @Nullable ModelFeatureRenderer.CrumblingOverlay o) {
+        BlockEntityRenderer.super.extractRenderState(tile, s, ticks, v, o);
+        ItemStackRenderState itemstackrenderstate = new ItemStackRenderState();
+        this.renderEntity.updateForTopItem(itemstackrenderstate, tile.getItem(0), ItemDisplayContext.GROUND, tile.getLevel(), null, (int)tile.getBlockPos().asLong());
+        s.item = itemstackrenderstate;
     }
 }

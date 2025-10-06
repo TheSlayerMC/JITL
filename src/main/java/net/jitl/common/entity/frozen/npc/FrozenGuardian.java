@@ -101,7 +101,7 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
                 this.playSound(SoundEvents.FIRE_EXTINGUISH, 1.0F, 1.0F);
                 this.remove(RemovalReason.DISCARDED);
                 
-                if(!level().isClientSide) {
+                if(!level().isClientSide()) {
                     ItemStack scrollStack = new ItemStack(JItems.LORE_SCROLL.asItem());
                     LoreScrollItem.bindScrollEntry(scrollStack, ScrollEntries.FROZEN_DESPAIR, EnumKnowledge.FROZEN, 25);
                     this.level().addFreshEntity(new ItemEntity(level(), this.position().x + 0.5F, this.position().y + 1.4F, this.position().z + 0.5F, scrollStack));
@@ -188,7 +188,7 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
                         PedestalTile tile = (PedestalTile) world.getBlockEntity(pos);
                         if (tile != null && tile.getItem(0).getItem().equals(JItems.FROSTBORN_SOUL.get())) {
                             if (isActivated()) {
-                                if (!level().isClientSide) {
+                                if (!level().isClientSide()) {
                                     summonLightning(pos);
                                     disableFrozenBlizzard();
                                 }
@@ -215,7 +215,7 @@ public class FrozenGuardian extends PathfinderMob implements GeoEntity {
         bolt.setPos(pos.getX(), pos.getY() + 1.0D, pos.getZ());
         bolt.setARGB(0x5acbff);
         bolt.setVisualOnly(true);
-        if(!level().isClientSide)
+        if(!level().isClientSide())
             this.level().addFreshEntity(bolt);
     }
 

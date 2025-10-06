@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.107'
+    id 'net.neoforged.moddev' version '2.0.112'
     id 'idea'
 }
 
@@ -86,7 +86,7 @@ configurations {
 }
 
 dependencies {
-    implementation "mezz.jei:jei-" + minecraft_version + "-neoforge:" + jei_version
+    //implementation "mezz.jei:jei-" + minecraft_version + "-neoforge:" + jei_version
     //implementation "maven.modrinth:just-enough-resources-jer:" + jer_version
 
     //  implementation("curse.maven:just-enough-resources-jer-240630:" + jer_version)
@@ -98,7 +98,7 @@ dependencies {
 //    compileOnly "vazkii.patchouli:Patchouli:" + sub_minecraft_version + "-" + patchouli_version + "-NEOFORGE:api"
 //    runtimeOnly "vazkii.patchouli:Patchouli:" + sub_minecraft_version + "-" + patchouli_version + "-NEOFORGE"
 //
-    runtimeOnly "curse.maven:worldedit-225608:6786288"
+    //runtimeOnly "curse.maven:worldedit-225608:6786288"
 //
 //    compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
 //    runtimeOnly "dev.emi:emi-neoforge:${emi_version}"

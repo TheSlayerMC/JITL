@@ -1,25 +1,27 @@
 package net.jitl.client.render.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.particle.*;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.client.particle.ParticleProvider;
+import net.minecraft.client.particle.SingleQuadParticle;
+import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
+import net.minecraft.util.RandomSource;
 import org.jetbrains.annotations.NotNull;
 
-public class SwampFlyParticle extends TextureSheetParticle {
+public class SwampFlyParticle extends SingleQuadParticle {
 
     private SwampFlyParticle(ClientLevel worldIn, double x, double y, double z, SpriteSet spriteWithAge) {
-        super(worldIn, x, y, z);
+        super(worldIn, x, y, z, spriteWithAge.first());
         this.quadSize *= 0.67499995F;
         this.lifetime = 3;
         this.setSpriteFromAge(spriteWithAge);
     }
 
     @Override
-    public @NotNull ParticleRenderType getRenderType() {
-        return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+    public SingleQuadParticle.Layer getLayer() {
+        return Layer.OPAQUE;
     }
 
     @Override
@@ -55,7 +57,8 @@ public class SwampFlyParticle extends TextureSheetParticle {
             this.sprites = spriteSet;
         }
 
-        public Particle createParticle(@NotNull SimpleParticleType typeIn, @NotNull ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+        @Override
+        public Particle createParticle(@NotNull SimpleParticleType typeIn, @NotNull ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, RandomSource random) {
             return new SwampFlyParticle(worldIn, x, y, z, this.sprites);
         }
     }

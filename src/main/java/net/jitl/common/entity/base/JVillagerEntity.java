@@ -161,6 +161,6 @@ public abstract class JVillagerEntity extends JVillagerMob implements Npc, Merch
 
     @Override
     public boolean isClientSide() {
-        return this.getLevel().isClientSide;
+        return this.getLevel().isClientSide();
     }
 }

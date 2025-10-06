@@ -23,7 +23,7 @@ public class ClientLoginChecker {
     public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
         Player player = event.getEntity();
         if(JClientConfig.UPDATE_MESSAGE.get()) {
-            if(!player.level().isClientSide) {
+            if(!player.level().isClientSide()) {
                 ChatUtils.sendColouredMessage(player, ChatFormatting.GOLD, "[|---------------------------------------------------|]");
                 ChatUtils.sendColouredMessage(player, ChatFormatting.GOLD, "[" + JITL.MOD_NAME + "]");
                 ChatUtils.sendColouredTranslatedMessage(player, ChatFormatting.LIGHT_PURPLE, "jitl.message.thank_you", player.getDisplayName());

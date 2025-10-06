@@ -80,7 +80,7 @@ public abstract class JFlyingEntity extends FlyingMob implements Enemy, GeoEntit
 
     public abstract void addGoals();
 
-    @Override
+ //TODO
     protected boolean shouldDespawnInPeaceful() {
         return despawnInPeaceful();
     }

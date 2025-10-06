@@ -4,7 +4,6 @@ import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -63,7 +62,8 @@ public abstract class JTamableEntity extends TamableAnimal implements NeutralMob
         this.setTame(false, false);
     }
 
-    @Override
+//    @Override
+    //TODO
     protected boolean shouldDespawnInPeaceful() {
         return !isTame();
     }
@@ -123,7 +123,7 @@ public abstract class JTamableEntity extends TamableAnimal implements NeutralMob
     @Override
     public void aiStep() {
         super.aiStep();
-        if(!this.level().isClientSide)
+        if(!this.level().isClientSide())
             this.updatePersistentAnger((ServerLevel)this.level(), true);
     }
 
@@ -132,7 +132,7 @@ public abstract class JTamableEntity extends TamableAnimal implements NeutralMob
         if (this.isInvulnerableTo(level, damageSource)) {
             ;
         } else {
-            if(!this.level().isClientSide)
+            if(!this.level().isClientSide())
                 this.setOrderedToSit(false);
             super.actuallyHurt(level, damageSource, damageAmount);
         }
@@ -170,7 +170,7 @@ public abstract class JTamableEntity extends TamableAnimal implements NeutralMob
     @Override
     public @NotNull InteractionResult mobInteract(Player pPlayer, @NotNull InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
-        if (!this.level().isClientSide || this.isBaby() && this.isFood(itemstack)) {
+        if (!this.level().isClientSide() || this.isBaby() && this.isFood(itemstack)) {
             if (this.isTame()) {
                 if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
                     FoodProperties foodproperties = itemstack.get(DataComponents.FOOD);
