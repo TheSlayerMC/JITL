@@ -1,35 +1,19 @@
 package net.jitl.client.render.vehicle;
 
-import com.google.common.collect.ImmutableMap;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.math.Axis;
-import net.jitl.client.JModelLayers;
 import net.jitl.client.model.JBoatModel;
-import net.jitl.common.entity.base.JBoat;
-import net.jitl.core.init.JITL;
-import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.AbstractBoatRenderer;
-import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.BoatRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
-import org.jetbrains.annotations.NotNull;
-import org.joml.Quaternionf;
-
-import java.util.Map;
-import java.util.stream.Stream;
+import net.minecraft.util.Unit;
 
 public class JBoatRenderer extends AbstractBoatRenderer {
 
@@ -56,9 +40,18 @@ public class JBoatRenderer extends AbstractBoatRenderer {
     }
 
     @Override
-    protected void renderTypeAdditions(BoatRenderState b, PoseStack p, MultiBufferSource buffer, int i) {
-        if (!b.isUnderWater) {
-            this.waterPatchModel.renderToBuffer(p, buffer.getBuffer(this.waterPatchModel.renderType(this.texture)), i, OverlayTexture.NO_OVERLAY);
+    protected void submitTypeAdditions(BoatRenderState s, PoseStack p, SubmitNodeCollector node, int i) {
+        if (!s.isUnderWater) {
+            node.submitModel(
+                    this.waterPatchModel,
+                    Unit.INSTANCE,
+                    p,
+                    this.waterPatchModel.renderType(this.texture),
+                    i,
+                    OverlayTexture.NO_OVERLAY,
+                    s.outlineColor,
+                    null
+            );
         }
     }
 }

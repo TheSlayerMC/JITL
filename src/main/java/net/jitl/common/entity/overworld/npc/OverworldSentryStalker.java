@@ -97,7 +97,7 @@ public class OverworldSentryStalker extends JPathfinderMob implements Npc{
     public void tick() {
         super.tick();
         if(isActivated()) {
-            if(!level().isClientSide) {
+            if(!level().isClientSide()) {
                 if(hasKey()) {
                     this.level().addFreshEntity(new ItemEntity(level(), this.position().x + 0.5F, this.position().y + 1.4F, this.position().z + 0.5F, new ItemStack(JItems.SENTRY_KEY.get(), 1)));
                     this.playSound(JSounds.COIN_PICKUP.get(), 1.5F, 1.0F);
@@ -160,7 +160,7 @@ public class OverworldSentryStalker extends JPathfinderMob implements Npc{
 
             if(!hasKey()) {
                 ChatUtils.addDialogStyleChat(player, "jitl.sen.unlocked");
-                if(!level().isClientSide)
+                if(!level().isClientSide())
                     player.openMenu(new SimpleMenuProvider((menu, inven, title) -> new SentacoinMerchantMenu(menu), Objects.requireNonNull(getDisplayName())));
             }
         return super.mobInteract(player, hand);

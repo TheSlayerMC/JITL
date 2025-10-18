@@ -7,7 +7,6 @@ import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ambient.Bat;
@@ -15,6 +14,7 @@ import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.animal.allay.Allay;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
 import net.minecraft.world.entity.animal.camel.Camel;
+import net.minecraft.world.entity.animal.coppergolem.CopperGolem;
 import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.animal.frog.Tadpole;
 import net.minecraft.world.entity.animal.goat.Goat;
@@ -30,6 +30,7 @@ import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
@@ -70,18 +71,18 @@ public class DeathEvent {
 
             if(entity instanceof Ghast) {
                 if(random.nextInt(3) == 0)
-                    entity.spawnAtLocation(serverLevel, JItems.GHAST_TENTACLE.get(), 1);
+                    entity.spawnAtLocation(serverLevel, new ItemStack(JItems.GHAST_TENTACLE.get(), 1));
             }
 
             if(JCommonConfig.ENABLE_LOOT_POUCH_DROP.get()) {
                 if(random.nextInt(JCommonConfig.COMMON_LOOT_CHANCE.get()) == 0) {
-                    entity.spawnAtLocation(serverLevel, JItems.LOOT_POUCH.get(), 1);
+                    entity.spawnAtLocation(serverLevel, new ItemStack(JItems.LOOT_POUCH.get(), 1));
                 }
                 if(random.nextInt(JCommonConfig.GOLD_LOOT_CHANCE.get()) == 0) {
-                    entity.spawnAtLocation(serverLevel, JItems.GOLD_LOOT_POUCH.get(), 1);
+                    entity.spawnAtLocation(serverLevel, new ItemStack(JItems.GOLD_LOOT_POUCH.get(), 1));
                 }
                 if(random.nextInt(JCommonConfig.DIAMOND_LOOT_CHANCE.get()) == 0) {
-                    entity.spawnAtLocation(serverLevel, JItems.DIAMOND_LOOT_POUCH.get(), 1);
+                    entity.spawnAtLocation(serverLevel, new ItemStack(JItems.DIAMOND_LOOT_POUCH.get(), 1));
                 }
             }
         }
@@ -93,7 +94,7 @@ public class DeathEvent {
                 || entity instanceof Cat || entity instanceof Chicken || entity instanceof Cod || entity instanceof Frog || entity instanceof Donkey
                 || entity instanceof Dolphin || entity instanceof Fox || entity instanceof Goat || entity instanceof Mule || entity instanceof Ocelot
                 || entity instanceof Panda || entity instanceof Parrot || entity instanceof PolarBear || entity instanceof Sniffer || entity instanceof SnowGolem
-                || entity instanceof Tadpole || entity instanceof TropicalFish || entity instanceof Turtle || entity instanceof Wolf;
+                || entity instanceof Tadpole || entity instanceof TropicalFish || entity instanceof Turtle || entity instanceof Wolf || entity instanceof CopperGolem;
     }
 
     public static boolean isOverworldMob(LivingEntity entity) {

@@ -39,6 +39,6 @@ public class HellwingSpawnerBlock extends SpawnerBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level_, @NotNull BlockState state_, @NotNull BlockEntityType<T> blockEntityType_) {
-        return createTickerHelper(blockEntityType_, JBlockEntities.HELLWING_SPAWNER.get(), level_.isClientSide ? HellwingSpawnerEntity::clientTick : HellwingSpawnerEntity::serverTick);
+        return createTickerHelper(blockEntityType_, JBlockEntities.HELLWING_SPAWNER.get(), level_.isClientSide() ? HellwingSpawnerEntity::clientTick : HellwingSpawnerEntity::serverTick);
     }
 }

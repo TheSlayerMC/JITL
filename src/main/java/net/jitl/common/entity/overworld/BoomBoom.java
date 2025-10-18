@@ -6,7 +6,6 @@ import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.goal.BoomSwellGoal;
 import net.jitl.core.config.JCommonConfig;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -213,12 +212,12 @@ public class BoomBoom extends JMonsterEntity {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
         if (itemstack.is(Items.FLINT_AND_STEEL)) {
             this.level().playSound(pPlayer, this.getX(), this.getY(), this.getZ(), SoundEvents.FLINTANDSTEEL_USE, this.getSoundSource(), 1.0F, this.random.nextFloat() * 0.4F + 0.8F);
-            if (!this.level().isClientSide) {
+            if (!this.level().isClientSide()) {
                 this.ignite();
                 if (!itemstack.isDamageableItem()) {
                     itemstack.shrink(1);
                 } else {
-                    itemstack.hurtAndBreak(1, pPlayer, getSlotForHand(pHand));
+                    itemstack.hurtAndBreak(1, pPlayer, getUsedItemHand());
                 }
             }
             return InteractionResult.SUCCESS_SERVER;
@@ -228,7 +227,7 @@ public class BoomBoom extends JMonsterEntity {
     }
 
     private void explodeBoom() {
-        if (!this.level().isClientSide) {
+        if (!this.level().isClientSide()) {
             float f = this.isPowered() ? 2.0F : 1.0F;
             this.dead = true;
             this.level().explode(this, this.getX(), this.getY(), this.getZ(), (float)this.explosionRadius * f, Level.ExplosionInteraction.MOB);

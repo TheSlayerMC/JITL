@@ -23,10 +23,8 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nullable;
 import java.text.DecimalFormat;
 import java.util.EnumSet;
-import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -74,7 +72,7 @@ public class JBowItem extends BowItem {
                     || effect.contains(EssenceArrowEntity.BowEffects.CONSUMES_ESSENCE);
 
             ItemStack itemstack = this.findAmmo(player);
-            if(!worldIn.isClientSide) {
+            if(!worldIn.isClientSide()) {
 
                 int i = this.maxUseDuration - timeLeft;
                 i = EventHooks.onArrowLoose(stack, worldIn, player, i, !itemstack.isEmpty() || emptyPickup);

@@ -3,12 +3,10 @@ package net.jitl.common.items;
 import net.jitl.common.block.portal.logic.JPortalShape;
 import net.jitl.common.items.base.JItem;
 import net.jitl.core.init.internal.JBlocks;
-import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
@@ -25,7 +23,7 @@ public class FlameCoinItem extends JItem {
     public @NotNull InteractionResult useOn(UseOnContext context) {
         Level world = context.getLevel();
         Player player = context.getPlayer();
-        if(!context.getLevel().isClientSide) {
+        if(!context.getLevel().isClientSide()) {
             if (player != null) {
                 for (Direction direction : Direction.Plane.VERTICAL) {
                     BlockPos blockpos = context.getClickedPos();
@@ -62,7 +60,7 @@ public class FlameCoinItem extends JItem {
                         return InteractionResult.CONSUME;
                     }
                 }
-                if (!player.isCreative()) context.getItemInHand().hurtAndBreak(1, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
+                if (!player.isCreative()) context.getItemInHand().hurtAndBreak(1, player, player.getUsedItemHand());
             }
         }
         return InteractionResult.SUCCESS;

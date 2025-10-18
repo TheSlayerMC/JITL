@@ -1,17 +1,16 @@
 package net.jitl.common.block.base;
 
-import net.jitl.core.init.JITL;
-import net.jitl.core.init.internal.JBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.*;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraft.world.level.block.piston.MovingPistonBlock;
@@ -92,7 +91,7 @@ public abstract class JFarmlandBlock extends Block {
     @Override
     public void fallOn(Level pLevel, @NotNull BlockState pState, @NotNull BlockPos pPos, @NotNull Entity pEntity, double pFallDistance) {
         if(pLevel instanceof ServerLevel level) {
-            if (!pLevel.isClientSide && CommonHooks.onFarmlandTrample(level, pPos, setDirt().defaultBlockState(), pFallDistance, pEntity))
+            if (!pLevel.isClientSide() && CommonHooks.onFarmlandTrample(level, pPos, setDirt().defaultBlockState(), pFallDistance, pEntity))
                 turnToDirt(pState, pLevel, pPos);
         }
 

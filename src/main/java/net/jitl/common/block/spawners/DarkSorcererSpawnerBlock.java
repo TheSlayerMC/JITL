@@ -39,6 +39,6 @@ public class DarkSorcererSpawnerBlock extends SpawnerBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level_, @NotNull BlockState state_, @NotNull BlockEntityType<T> blockEntityType_) {
-        return createTickerHelper(blockEntityType_, JBlockEntities.DARK_SORCERER_SPAWNER.get(), level_.isClientSide ? DarkSorcererSpawnerEntity::clientTick : DarkSorcererSpawnerEntity::serverTick);
+        return createTickerHelper(blockEntityType_, JBlockEntities.DARK_SORCERER_SPAWNER.get(), level_.isClientSide() ? DarkSorcererSpawnerEntity::clientTick : DarkSorcererSpawnerEntity::serverTick);
     }
 }

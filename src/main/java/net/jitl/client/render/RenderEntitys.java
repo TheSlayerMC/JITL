@@ -6,15 +6,15 @@ import net.jitl.client.model.FrozenTrollModel;
 import net.jitl.client.model.JBoatModel;
 import net.jitl.client.model.ShiverwolfModel;
 import net.jitl.client.render.block.*;
-import net.jitl.client.render.entity.frozen.ShiveringRamRenderer;
-import net.jitl.client.render.entity.frozen.ShiverwolfRenderer;
-import net.jitl.client.render.entity.misc.RenderAnimated2D;
 import net.jitl.client.render.entity.euca.CrypianRenderer;
 import net.jitl.client.render.entity.euca.EucaHopperRenderer;
 import net.jitl.client.render.entity.euca.RoyalKingRenderer;
 import net.jitl.client.render.entity.frozen.FrozenGuardianRenderer;
 import net.jitl.client.render.entity.frozen.FrozenTrollRenderer;
+import net.jitl.client.render.entity.frozen.ShiveringRamRenderer;
+import net.jitl.client.render.entity.frozen.ShiverwolfRenderer;
 import net.jitl.client.render.entity.misc.BossCrystalRenderer;
+import net.jitl.client.render.entity.misc.RenderAnimated2D;
 import net.jitl.client.render.entity.misc.SentacoinRender;
 import net.jitl.client.render.entity.misc.SpiritCrystalRenderer;
 import net.jitl.client.render.entity.nether.MiniGhastRenderer;
@@ -28,23 +28,18 @@ import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JDimension;
 import net.jitl.core.init.internal.JEntities;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.BoatModel;
-import net.minecraft.client.model.ShieldModel;
+import net.minecraft.client.model.ChestModel;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterSpecialModelRendererEvent;
-import org.checkerframework.checker.units.qual.A;
 
 import java.util.function.BiConsumer;
 
@@ -91,8 +86,8 @@ public class RenderEntitys {
         event.registerEntityRenderer(JEntities.BOSS_CRYSTAL_TYPE.get(), BossCrystalRenderer::new);
         event.registerEntityRenderer(JEntities.SPIRIT_CRYSTAL_TYPE.get(), SpiritCrystalRenderer::new);
 
-        event.registerEntityRenderer(JEntities.PIERCER_TYPE.get(), manager -> new PiercerRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
-        event.registerEntityRenderer(JEntities.KNIFE_TYPE.get(), manager -> new KnifeRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
+        event.registerEntityRenderer(JEntities.PIERCER_TYPE.get(), PiercerRenderer::new);
+        event.registerEntityRenderer(JEntities.KNIFE_TYPE.get(), KnifeRenderer::new);
 
         event.registerEntityRenderer(JEntities.BROWN_EUCA_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.BROWN_EUCA_BOAT, "brown_euca"));
         event.registerEntityRenderer(JEntities.GOLD_EUCA_BOAT_TYPE.get(), manager -> new JBoatRenderer(manager, JModelLayers.GOLD_EUCA_BOAT, "gold_euca"));
@@ -149,9 +144,9 @@ public class RenderEntitys {
         event.registerLayerDefinition(JModelLayers.SHIVERWOLF_BABY_MODEL_LAYER, () -> LayerDefinition.create(ShiverwolfModel.createMeshDefinition(CubeDeformation.NONE), 64, 32));
         event.registerLayerDefinition(JModelLayers.SHIVERWOLF_ARMOR_LAYER, () -> LayerDefinition.create(ShiverwolfModel.createMeshDefinition(new CubeDeformation(0.2F)), 64, 32));
 
-        event.registerLayerDefinition(JModelLayers.JCHEST, JChestRenderer::createSingleBodyLayer);
-        event.registerLayerDefinition(JModelLayers.JDOUBLE_CHEST_RIGHT, JChestRenderer::createDoubleBodyRightLayer);
-        event.registerLayerDefinition(JModelLayers.JDOUBLE_CHEST_LEFT, JChestRenderer::createDoubleBodyLeftLayer);
+        event.registerLayerDefinition(JModelLayers.JCHEST, ChestModel::createSingleBodyLayer);
+        event.registerLayerDefinition(JModelLayers.JDOUBLE_CHEST_RIGHT, ChestModel::createDoubleBodyRightLayer);
+        event.registerLayerDefinition(JModelLayers.JDOUBLE_CHEST_LEFT, ChestModel::createDoubleBodyLeftLayer);
 
         event.registerLayerDefinition(JModelLayers.SHIVERWOLF_MODEL_LAYER, () -> LayerDefinition.create(ShiverwolfModel.createMeshDefinition(CubeDeformation.NONE), 64, 32));
 

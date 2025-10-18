@@ -1,7 +1,5 @@
 package net.jitl.common.items;
 
-import net.jitl.client.gui.overlay.KnowledgeToast;
-import net.jitl.client.gui.screen.LoreScrollEntryScreen;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.client.util.ClientTools;
 import net.jitl.client.util.ClientUtils;
@@ -14,9 +12,7 @@ import net.jitl.common.scroll.ScrollEntry;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JDataComponents;
-import net.jitl.core.init.internal.JItems;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
@@ -28,12 +24,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
-import java.util.List;
 import java.util.function.Consumer;
 
 public class LoreScrollItem extends JItem {
@@ -50,7 +43,7 @@ public class LoreScrollItem extends JItem {
         PlayerStats stats = playerIn.getData(JDataAttachments.PLAYER_STATS);
 
         if(entry != null && scroll != null) {
-            if(!worldIn.isClientSide) {
+            if(!worldIn.isClientSide()) {
                 if(!scroll.openedBefore()) {
                     if(scroll.knowledge() != null)
                         stats.addLevel(EnumKnowledge.byName(scroll.knowledge()), scroll.level());
@@ -63,7 +56,7 @@ public class LoreScrollItem extends JItem {
                     ClientUtils.displayToast(scroll);
             }
         } else {
-            if(!worldIn.isClientSide) {
+            if(!worldIn.isClientSide()) {
                 MutableComponent msg = Component.translatable("scroll.jitl.fail");
                 msg.withStyle(ChatFormatting.RED);
                 playerIn.displayClientMessage(msg, false);

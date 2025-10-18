@@ -64,7 +64,7 @@ public class MiniSentryLord extends JMonsterEntity {
     @Override
     public void die(DamageSource d) {
         super.die(d);
-        if(!level().isClientSide) {
+        if(!level().isClientSide()) {
             for(int i = 0; i < 1 + random.nextInt(4); i++) {
                 this.level().addFreshEntity(new Sentacoin(JEntities.SENTACOIN_TYPE.get(), this));
             }

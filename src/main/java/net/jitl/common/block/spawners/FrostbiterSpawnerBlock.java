@@ -39,6 +39,6 @@ public class FrostbiterSpawnerBlock extends SpawnerBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level_, @NotNull BlockState state_, @NotNull BlockEntityType<T> blockEntityType_) {
-        return createTickerHelper(blockEntityType_, JBlockEntities.FROSTBITER_SPAWNER.get(), level_.isClientSide ? FrostbiterSpawnerEntity::clientTick : FrostbiterSpawnerEntity::serverTick);
+        return createTickerHelper(blockEntityType_, JBlockEntities.FROSTBITER_SPAWNER.get(), level_.isClientSide() ? FrostbiterSpawnerEntity::clientTick : FrostbiterSpawnerEntity::serverTick);
     }
 }

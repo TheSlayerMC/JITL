@@ -3,7 +3,6 @@ package net.jitl.common.items;
 import net.jitl.common.block.portal.DepthsPortalFrameBlock;
 import net.jitl.common.items.base.JItem;
 import net.jitl.core.init.internal.JBlocks;
-import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.context.UseOnContext;
@@ -25,7 +24,7 @@ public class DarkGemItem extends JItem {
         BlockPos blockpos = pContext.getClickedPos();
         BlockState blockstate = level.getBlockState(blockpos);
         if (blockstate.is(JBlocks.DEPTHS_PORTAL_FRAME.get()) && !blockstate.getValue(DepthsPortalFrameBlock.HAS_EYE)) {
-            if (level.isClientSide) {
+            if (level.isClientSide()) {
                 return InteractionResult.SUCCESS;
             } else {
                 BlockState blockstate1 = blockstate.setValue(DepthsPortalFrameBlock.HAS_EYE, Boolean.TRUE);

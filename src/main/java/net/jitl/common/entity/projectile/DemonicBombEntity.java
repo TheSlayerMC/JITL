@@ -6,6 +6,7 @@ import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SpellParticleOption;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
@@ -17,9 +18,6 @@ import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -49,7 +47,7 @@ public class DemonicBombEntity extends AbstractArrow implements ItemSupplier {
             if(level() instanceof ServerLevel level) {
                 if(entity instanceof LivingEntity && entity.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), 5)) {
                     entity.hurtServer(level, JDamageSources.hurt(entity, JDamageSources.DEMONIC_BOMB), 5);
-                    if (!this.level().isClientSide) {
+                    if (!this.level().isClientSide()) {
                         this.level().broadcastEntityEvent(this, (byte) 1);
                         this.discard();
                     }
@@ -69,7 +67,7 @@ public class DemonicBombEntity extends AbstractArrow implements ItemSupplier {
                 if (level() instanceof ServerLevel level) {
                     if(collidedWith() instanceof LivingEntity entity && entity.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), 4)) {
                         entity.hurtServer(level, JDamageSources.hurt(entity, JDamageSources.DEMONIC_BOMB), 4);
-                        if(!this.level().isClientSide) {
+                        if(!this.level().isClientSide()) {
                             this.level().broadcastEntityEvent(this, (byte) 1);
                             this.discard();
                         }
@@ -90,7 +88,7 @@ public class DemonicBombEntity extends AbstractArrow implements ItemSupplier {
 
     @Override
     public void handleEntityEvent(byte id) {
-        ParticleOptions particleoptions = ParticleTypes.EFFECT;
+        ParticleOptions particleoptions = SpellParticleOption.create(ParticleTypes.EFFECT, -1, 1F);
 
         if(id == 1) {
             for(int i = 0; i < 15; ++i)

@@ -36,10 +36,10 @@ public abstract class JBossEntity extends JMonsterEntity implements IDontAttackW
         this.BOSS_INFO.id = this.getUUID();
     }
 
-    @Override
-    protected boolean shouldDespawnInPeaceful() {
-        return false;
-    }
+//    @Override
+//    protected boolean shouldDespawnInPeaceful() {
+//        return false;
+//    }todo
 
     @Override
     public boolean removeWhenFarAway(double distanceToClosestPlayer) {

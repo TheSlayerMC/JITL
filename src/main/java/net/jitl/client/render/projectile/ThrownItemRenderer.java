@@ -1,23 +1,17 @@
 package net.jitl.client.render.projectile;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.jitl.core.init.internal.JItems;
-import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.entity.state.ThrownItemRenderState;
 import net.minecraft.client.renderer.item.ItemModelResolver;
+import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.projectile.ItemSupplier;
-import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.item.ItemDisplayContext;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 public class ThrownItemRenderer<T extends Entity & ItemSupplier> extends EntityRenderer<T, ThrownItemRenderState> {
@@ -48,13 +42,12 @@ public class ThrownItemRenderer<T extends Entity & ItemSupplier> extends EntityR
    }
 
    @Override
-   public void render(ThrownItemRenderState entity, @NotNull PoseStack matrixStack, MultiBufferSource buffer, int packedLight) {
+   public void submit(ThrownItemRenderState entity, @NotNull PoseStack matrixStack, SubmitNodeCollector buffer, CameraRenderState cameraRenderState) {
       matrixStack.pushPose();
       matrixStack.scale(this.scale, this.scale, this.scale);
-      matrixStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
-      entity.item.render(matrixStack, buffer, packedLight, OverlayTexture.NO_OVERLAY);
+      matrixStack.mulPose(cameraRenderState.orientation);
+       entity.item.submit(matrixStack, buffer, entity.lightCoords, OverlayTexture.NO_OVERLAY, entity.outlineColor);
       matrixStack.popPose();
-      super.render(entity, matrixStack, buffer, packedLight);
    }
 
    @Override

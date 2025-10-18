@@ -44,6 +44,7 @@
       "xz_scale": 1,
       "y_scale": 1
     },
+    "preliminary_surface_level": 0.0,
     "temperature": {
       "type": "minecraft:shifted_noise",
       "noise": "minecraft:temperature",

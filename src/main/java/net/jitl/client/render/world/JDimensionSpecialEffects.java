@@ -8,14 +8,12 @@ import com.mojang.blaze3d.textures.GpuTextureView;
 import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Axis;
 import net.jitl.client.render.world.clouds.JCloudRenderer;
-import net.jitl.core.init.JITL;
 import net.minecraft.client.Camera;
+import net.minecraft.client.CloudStatus;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.state.LevelRenderState;
 import net.minecraft.client.renderer.texture.AbstractTexture;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.resources.ResourceLocation;
@@ -30,7 +28,6 @@ import org.joml.Matrix4fStack;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
-import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
 
@@ -38,6 +35,7 @@ public abstract class JDimensionSpecialEffects extends DimensionSpecialEffects {
 
     private final GpuBuffer topSkyBuffer;
     private final GpuBuffer bottomSkyBuffer;
+    private final RenderSystem.AutoStorageIndexBuffer quadIndices;
 
     public JDimensionSpecialEffects(SkyType type, boolean forceBrightLightmap, boolean constantAmbientLight) {
         super(type, forceBrightLightmap, constantAmbientLight);
@@ -56,6 +54,8 @@ public abstract class JDimensionSpecialEffects extends DimensionSpecialEffects {
                 this.bottomSkyBuffer = RenderSystem.getDevice().createBuffer(() -> "Bottom sky vertex buffer", 32, meshdata1.vertexBuffer());
             }
         }
+        this.quadIndices = RenderSystem.getSequentialBuffer(VertexFormat.Mode.QUADS);
+
     }
 
     private void buildSkyDisc(VertexConsumer buffer, float y) {
@@ -67,19 +67,63 @@ public abstract class JDimensionSpecialEffects extends DimensionSpecialEffects {
         }
     }
 
-    public void renderSun(float size, float alpha, MultiBufferSource.BufferSource bufferSource, PoseStack poseStack, ResourceLocation tex) {
-        VertexConsumer vertexconsumer = bufferSource.getBuffer(RenderType.celestial(tex));
+    private AbstractTexture getTexture(ResourceLocation location) {
+        TextureManager texturemanager = Minecraft.getInstance().getTextureManager();
+        AbstractTexture abstracttexture = texturemanager.getTexture(location);
+        abstracttexture.setUseMipmaps(false);
+        return abstracttexture;
+    }
+
+    public void renderSun(float size, float alpha, PoseStack poseStack, ResourceLocation tex) {
+        AbstractTexture texture = getTexture(tex);
+        if(texture != null) {
+            Matrix4fStack matrix4fstack = RenderSystem.getModelViewStack();
+            matrix4fstack.pushMatrix();
+            matrix4fstack.mul(poseStack.last().pose());
+            matrix4fstack.translate(0.0F, 100.0F, 0.0F);
+            matrix4fstack.scale(30.0F, 1.0F, 30.0F);
+            GpuBufferSlice gpubufferslice = RenderSystem.getDynamicUniforms().writeTransform(matrix4fstack, new Vector4f(1.0F, 1.0F, 1.0F, alpha), new Vector3f(), new Matrix4f(), 0.0F);
+            GpuTextureView gputextureview = Minecraft.getInstance().getMainRenderTarget().getColorTextureView();
+            GpuTextureView gputextureview1 = Minecraft.getInstance().getMainRenderTarget().getDepthTextureView();
+            GpuBuffer gpubuffer = this.quadIndices.getBuffer(6);
+
+            try (RenderPass renderpass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(() -> "Sky sun", gputextureview, OptionalInt.empty(), gputextureview1, OptionalDouble.empty())) {
+                renderpass.setPipeline(RenderPipelines.CELESTIAL);
+                RenderSystem.bindDefaultUniforms(renderpass);
+                renderpass.setUniform("DynamicTransforms", gpubufferslice);
+                renderpass.bindSampler("Sampler0", texture.getTextureView());
+
+                Matrix4f matrix4f = poseStack.last().pose();
+                poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
+                float f = Mth.sin(0) < 0.0F ? 180.0F : 0.0F;
+                poseStack.mulPose(Axis.ZP.rotationDegrees(f));
+                poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
+                renderpass.setVertexBuffer(0, buildSunQuad(matrix4f, size, alpha));
+
+                renderpass.setIndexBuffer(gpubuffer, this.quadIndices.type());
+                renderpass.drawIndexed(0, 0, 6, 1);
+            }
+
+            matrix4fstack.popMatrix();
+        }
+    }
+
+    private GpuBuffer buildSunQuad(Matrix4f matrix4f, float size, float alpha) {
         int i = ARGB.white(alpha);
-        Matrix4f matrix4f = poseStack.last().pose();
-        poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
-        float f = Mth.sin(0) < 0.0F ? 180.0F : 0.0F;
-        poseStack.mulPose(Axis.ZP.rotationDegrees(f));
-        poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
-        vertexconsumer.addVertex(matrix4f, -size, 100.0F, -size).setUv(0.0F, 0.0F).setColor(i);
-        vertexconsumer.addVertex(matrix4f, size, 100.0F, -size).setUv(1.0F, 0.0F).setColor(i);
-        vertexconsumer.addVertex(matrix4f, size, 100.0F, size).setUv(1.0F, 1.0F).setColor(i);
-        vertexconsumer.addVertex(matrix4f, -size, 100.0F, size).setUv(0.0F, 1.0F).setColor(i);
-        bufferSource.endBatch();
+        GpuBuffer gpubuffer;
+        try (ByteBufferBuilder bytebufferbuilder = ByteBufferBuilder.exactlySized(4 * DefaultVertexFormat.POSITION_TEX.getVertexSize())) {
+            BufferBuilder bufferbuilder = new BufferBuilder(bytebufferbuilder, VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+
+            bufferbuilder.addVertex(matrix4f, -size, 100.0F, -size).setUv(0.0F, 0.0F).setColor(i);
+            bufferbuilder.addVertex(matrix4f, size, 100.0F, -size).setUv(1.0F, 0.0F).setColor(i);
+            bufferbuilder.addVertex(matrix4f, size, 100.0F, size).setUv(1.0F, 1.0F).setColor(i);
+            bufferbuilder.addVertex(matrix4f, -size, 100.0F, size).setUv(0.0F, 1.0F).setColor(i);
+
+            try (MeshData meshdata = bufferbuilder.buildOrThrow()) {
+                gpubuffer = RenderSystem.getDevice().createBuffer(() -> "Sun quad", 40, meshdata.vertexBuffer());
+            }
+        }
+        return gpubuffer;
     }
 
     protected void renderSky(ResourceLocation texture) {
@@ -175,11 +219,8 @@ public abstract class JDimensionSpecialEffects extends DimensionSpecialEffects {
     }
 
     @Override
-    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, double camX, double camY, double camZ, Matrix4f modelViewMatrix) {
-        if(getCloudRenderer() != null) {
-            Optional<Integer> optional = level.dimensionType().cloudHeight();
-            optional.ifPresent(height -> getCloudRenderer().render(level.getCloudColor(partialTick), Minecraft.getInstance().options.getCloudsType(), height + 0.33F, new Vec3(camX, camY, camZ), ticks + partialTick));
-        }
+    public boolean renderClouds(LevelRenderState levelRenderState, Vec3 camPos, CloudStatus cloudStatus, int cloudColor, float cloudHeight, Matrix4f modelViewMatrix) {
+        getCloudRenderer().render(cloudColor, cloudStatus, cloudHeight, camPos, levelRenderState.skyRenderState.timeOfDay);//todo ticks
         return true;
     }
 

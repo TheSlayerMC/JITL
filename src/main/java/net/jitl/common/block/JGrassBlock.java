@@ -1,7 +1,6 @@
 package net.jitl.common.block;
 
 import net.jitl.common.items.base.MultitoolItem;
-import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -38,7 +37,7 @@ public class JGrassBlock extends Block {//implements BonemealableBlock {
         if(itemstack instanceof HoeItem || itemstack instanceof MultitoolItem) {
             if(dirt != null) {
                 pLevel.playSound(pPlayer, pPos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                if(!pLevel.isClientSide) {
+                if(!pLevel.isClientSide()) {
                     pLevel.setBlock(pPos, dirt.defaultBlockState(), 2);
                     if(!pPlayer.isCreative())
                         pPlayer.getItemInHand(pHand).hurtAndBreak(1, pPlayer, EquipmentSlot.MAINHAND);

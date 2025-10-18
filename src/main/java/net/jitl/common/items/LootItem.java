@@ -1,7 +1,6 @@
 package net.jitl.common.items;
 
 import net.jitl.common.items.base.JItem;
-import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JLootTables;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -42,7 +41,7 @@ public class LootItem extends JItem {
             case DIAMOND -> loot = JLootTables.LOOT_DIAMOND;
             case FROSTY_GIFT -> loot = JLootTables.LOOT_FROSTY;
         }
-        if(!world.isClientSide) {
+        if(!world.isClientSide()) {
             LootTable table = Objects.requireNonNull(world.getServer()).reloadableRegistries().getLootTable(loot);
             List<ItemStack> itemList = table.getRandomItems(new LootParams.Builder((ServerLevel)world).withParameter(LootContextParams.THIS_ENTITY, player).withParameter(LootContextParams.ORIGIN, player.position()).create(LootContextParamSets.GIFT));
             ItemStack spawn = itemList.get(rand.nextInt(itemList.size()));

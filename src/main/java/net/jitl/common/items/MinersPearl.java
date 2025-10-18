@@ -45,7 +45,7 @@ public class MinersPearl extends JItem implements IEssenceItem {
                     !player.isInWater();
 
             if(canUse) {
-                if(!world.isClientSide) {
+                if(!world.isClientSide()) {
                     player.addEffect(new MobEffectInstance(MobEffects.NAUSEA, 200, 2));
                     if(essence.consumeEssence(player, 10)) {
                         player.teleportTo(player.getBlockX(), world.getHeight(Heightmap.Types.WORLD_SURFACE, (int)player.getX(), (int)player.getZ()), player.getBlockZ());
@@ -55,7 +55,7 @@ public class MinersPearl extends JItem implements IEssenceItem {
                     world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS);
                 }
             } else {
-                if (world.isClientSide) {
+                if (world.isClientSide()) {
                     world.playSound(player, player.getX(), player.getY(), player.getZ(), JSounds.STAFF_0.get(), SoundSource.BLOCKS);
                     ChatUtils.sendColouredTranslatedMessage(player, ChatFormatting.DARK_PURPLE, "jitl.message.item.miners_pearl");
                 }

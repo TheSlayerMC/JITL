@@ -90,7 +90,7 @@ public class Smelly extends JMonsterEntity {
 
     @Override
     public void aiStep() {
-        if(this.level().isClientSide) {
+        if(this.level().isClientSide()) {
             int x = MathHelper.floor(this.position().x());
             int y = MathHelper.floor(this.position().y() - 0.20000000298023224D);
             int z = MathHelper.floor(this.position().z());

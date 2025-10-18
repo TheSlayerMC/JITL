@@ -76,7 +76,7 @@ public class JFenceBlock extends CrossCollisionBlock {
     protected InteractionResult useItemOn(
             ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult
     ) {
-        if (pLevel.isClientSide) {
+        if (pLevel.isClientSide()) {
             return pStack.is(Items.LEAD) ? InteractionResult.SUCCESS : InteractionResult.PASS;
         } else {
             return super.useItemOn(pStack, pState, pLevel, pPos, pPlayer, pHand, pHitResult);

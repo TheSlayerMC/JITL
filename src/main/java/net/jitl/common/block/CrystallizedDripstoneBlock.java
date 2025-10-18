@@ -107,7 +107,7 @@ public class CrystallizedDripstoneBlock extends Block implements Fallable, Simpl
 
     @Override
     protected void onProjectileHit(Level p_154042_, BlockState p_154043_, BlockHitResult p_154044_, Projectile p_154045_) {
-        if (!p_154042_.isClientSide) {
+        if (!p_154042_.isClientSide()) {
             BlockPos blockpos = p_154044_.getBlockPos();
             if (p_154042_ instanceof ServerLevel) {
                 ServerLevel serverlevel = (ServerLevel)p_154042_;

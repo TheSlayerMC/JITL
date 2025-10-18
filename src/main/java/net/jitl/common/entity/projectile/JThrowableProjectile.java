@@ -81,7 +81,7 @@ public abstract class JThrowableProjectile extends ThrowableProjectile {
     @Override
     protected void onHit(@NotNull HitResult res) {
         super.onHit(res);
-        if(!this.level().isClientSide) {
+        if(!this.level().isClientSide()) {
             this.level().broadcastEntityEvent(this, (byte)3);
             if(!isBouncy)
                 discard();

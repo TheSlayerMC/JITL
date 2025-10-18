@@ -1,7 +1,6 @@
 package net.jitl.common.block;
 
 import net.jitl.common.block.base.FaceableBlock;
-import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
@@ -36,7 +35,7 @@ public class LockBlock extends FaceableBlock {
 
         if(heldItem != null && canOpen) {
             worldIn.playSound(player, pos, SoundEvents.IRON_DOOR_OPEN, SoundSource.BLOCKS, 1.0F, r.nextFloat());
-            if(!worldIn.isClientSide) {
+            if(!worldIn.isClientSide()) {
                 return InteractionResult.SUCCESS_SERVER;
             } else {
                 if(state.getValue(FACING) == Direction.WEST || state.getValue(FACING) == Direction.EAST) {

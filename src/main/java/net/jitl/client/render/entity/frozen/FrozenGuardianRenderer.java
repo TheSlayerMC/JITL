@@ -3,10 +3,8 @@ package net.jitl.client.render.entity.frozen;
 import net.jitl.client.model.AnimatedMonsterModel;
 import net.jitl.client.render.entity.state.ActiveRenderState;
 import net.jitl.common.entity.frozen.npc.FrozenGuardian;
-import net.jitl.common.entity.nether.MiniGhast;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.state.GhastRenderState;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
@@ -21,7 +19,7 @@ public class FrozenGuardianRenderer<R extends ActiveRenderState & GeoRenderState
     }
 
     @Override
-    protected R createBaseRenderState(FrozenGuardian entity) {
+    public R createRenderState(FrozenGuardian entity, Void relatedObject) {
         return (R)new ActiveRenderState();
     }
 

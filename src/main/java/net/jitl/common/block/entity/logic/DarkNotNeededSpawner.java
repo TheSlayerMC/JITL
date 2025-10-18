@@ -6,15 +6,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.NbtOps;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.ProblemReporter;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.behavior.ShufflingList;
 import net.minecraft.world.level.BaseSpawner;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.SpawnData;
@@ -31,7 +28,6 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 import javax.annotation.Nullable;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 
@@ -227,7 +223,7 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
     @Override
     public boolean onEventTriggered(@NotNull Level pLevel, int pId) {
         if(pId == 1) {
-            if(pLevel.isClientSide)
+            if(pLevel.isClientSide())
                 this.spawnDelay = this.minSpawnDelay;
             return true;
         } else {
@@ -258,7 +254,7 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
     }
 
     @Override
-    public double getoSpin() {
+    public double getOSpin() {
         return this.oSpin;
     }
 

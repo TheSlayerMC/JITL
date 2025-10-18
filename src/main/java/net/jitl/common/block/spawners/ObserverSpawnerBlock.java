@@ -38,6 +38,6 @@ public class ObserverSpawnerBlock extends SpawnerBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level_, @NotNull BlockState state_, @NotNull BlockEntityType<T> blockEntityType_) {
-        return createTickerHelper(blockEntityType_, JBlockEntities.OBSERVER_SPAWNER.get(), level_.isClientSide ? ObserverSpawnerEntity::clientTick : ObserverSpawnerEntity::serverTick);
+        return createTickerHelper(blockEntityType_, JBlockEntities.OBSERVER_SPAWNER.get(), level_.isClientSide() ? ObserverSpawnerEntity::clientTick : ObserverSpawnerEntity::serverTick);
     }
 }

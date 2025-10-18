@@ -4,11 +4,9 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.jitl.client.render.world.clouds.JCloudRenderer;
 import net.jitl.core.init.JITL;
-import net.minecraft.client.Camera;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.state.LevelRenderState;
+import net.minecraft.client.renderer.state.SkyRenderState;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.material.FogType;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
@@ -40,10 +38,8 @@ public class CorbaRenderInfo extends JDimensionSpecialEffects {
     }
 
     @Override
-    public boolean renderSky(ClientLevel level, int ticks, float partialTick, Matrix4f modelViewMatrix, Camera camera, Runnable setupFog) {
+    public boolean renderSky(LevelRenderState levelRenderState, SkyRenderState skyRenderState, Matrix4f modelViewMatrix, Runnable setupFog) {
         setupFog.run();
-        FogType fogtype = camera.getFluidInCamera();
-        if(fogtype != FogType.POWDER_SNOW && fogtype != FogType.LAVA && !doesMobEffectBlockSky(camera)) {
             PoseStack posestack = new PoseStack();
 
             renderSky(SKY_LOCATION, 3F);
@@ -52,7 +48,7 @@ public class CorbaRenderInfo extends JDimensionSpecialEffects {
             posestack.pushPose();
             posestack.mulPose(Axis.YP.rotationDegrees(20F));
             posestack.mulPose(Axis.ZP.rotationDegrees(-20));
-            renderSun(10F, 1F, Minecraft.getInstance().renderBuffers().bufferSource(), posestack, BOIL_MOON_LOCATION);
+            renderSun(10F, 1F, posestack, BOIL_MOON_LOCATION);
             posestack.popPose();
 
             //START EUCA MOON
@@ -61,9 +57,9 @@ public class CorbaRenderInfo extends JDimensionSpecialEffects {
             posestack.mulPose(Axis.XP.rotationDegrees(360F));
             posestack.mulPose(Axis.ZP.rotationDegrees(-10));
 
-            renderSun(25F, 1F, Minecraft.getInstance().renderBuffers().bufferSource(), posestack, EUCA_MOON_LOCATION);
+            renderSun(25F, 1F, posestack, EUCA_MOON_LOCATION);
             posestack.popPose();
-        }
+
         return true;
     }
 }

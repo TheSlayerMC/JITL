@@ -39,6 +39,6 @@ public class ScreamerSpawnerBlock extends SpawnerBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level_, @NotNull BlockState state_, @NotNull BlockEntityType<T> blockEntityType_) {
-        return createTickerHelper(blockEntityType_, JBlockEntities.SCREAMER_SPAWNER.get(), level_.isClientSide ? ScreamerSpawnerEntity::clientTick : ScreamerSpawnerEntity::serverTick);
+        return createTickerHelper(blockEntityType_, JBlockEntities.SCREAMER_SPAWNER.get(), level_.isClientSide() ? ScreamerSpawnerEntity::clientTick : ScreamerSpawnerEntity::serverTick);
     }
 }

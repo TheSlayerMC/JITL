@@ -17,7 +17,7 @@ public class BossCrystalRenderer<T extends BossCrystalRenderState & GeoRenderSta
     }
 
     @Override
-    protected T createBaseRenderState(BossCrystal entity) {
+    public T createRenderState(BossCrystal animatable, Void relatedObject) {
         return (T)new BossCrystalRenderState();
     }
 

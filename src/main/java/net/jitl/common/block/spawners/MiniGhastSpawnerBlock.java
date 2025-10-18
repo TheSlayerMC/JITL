@@ -39,6 +39,6 @@ public class MiniGhastSpawnerBlock extends SpawnerBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level_, @NotNull BlockState state_, @NotNull BlockEntityType<T> blockEntityType_) {
-        return createTickerHelper(blockEntityType_, JBlockEntities.MINI_GHAST_SPAWNER.get(), level_.isClientSide ? MiniGhastSpawnerEntity::clientTick : MiniGhastSpawnerEntity::serverTick);
+        return createTickerHelper(blockEntityType_, JBlockEntities.MINI_GHAST_SPAWNER.get(), level_.isClientSide() ? MiniGhastSpawnerEntity::clientTick : MiniGhastSpawnerEntity::serverTick);
     }
 }

@@ -3,10 +3,11 @@ package net.jitl.client.render.entity.overworld;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.jitl.client.render.entity.overworld.state.BoomRenderState;
 import net.jitl.common.entity.overworld.BoomBoom;
-import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.util.Mth;
-import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.base.GeoRenderState;
@@ -30,14 +31,14 @@ public class BoomBoomRenderer<T extends BoomRenderState & GeoRenderState> extend
     }
 
     @Override
-    protected T createBaseRenderState(BoomBoom entity) {
+    public T createRenderState(BoomBoom animatable, Void relatedObject) {
         return (T)new BoomRenderState();
     }
 
     @Override
-    public void render(T renderState, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
+    public void preRender(T renderState, PoseStack poseStack, BakedGeoModel model, SubmitNodeCollector renderTasks, CameraRenderState cameraState, int packedLight, int packedOverlay, int renderColor) {
         scale(renderState, poseStack);
-        super.render(renderState, poseStack, bufferSource, packedLight);
+        super.preRender(renderState, poseStack, model, renderTasks, cameraState, packedLight, packedOverlay, renderColor);
     }
 
     @Override

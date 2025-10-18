@@ -60,7 +60,7 @@ public class MagicBombEntity extends AbstractArrow implements ItemSupplier {
         super.tick();
         if(isInGround()) {
             if (collidedWith() != null && collidedWith() != this.getOwner()) {
-                if (!level().isClientSide) {
+                if (!level().isClientSide()) {
                     level().explode(this, position().x, position().y, position().z, 2.0F, Level.ExplosionInteraction.BLOCK);
                     this.remove(RemovalReason.DISCARDED);
                 }

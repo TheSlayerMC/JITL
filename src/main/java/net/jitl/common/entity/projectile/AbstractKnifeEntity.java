@@ -1,7 +1,6 @@
 package net.jitl.common.entity.projectile;
 
 import net.jitl.core.init.internal.JItems;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -13,8 +12,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -42,13 +39,13 @@ public abstract class AbstractKnifeEntity extends AbstractArrow {
         Entity entity = this.getOwner();
         if((this.dealtDamage || this.isNoPhysics()) && entity != null) {
             if(!this.isAcceptableReturnOwner()) {
-                if(!this.level().isClientSide && this.pickup == Pickup.ALLOWED) {
+                if(!this.level().isClientSide() && this.pickup == Pickup.ALLOWED) {
                     this.spawnAtLocation((ServerLevel)this.level(), this.getPickupItem(), 0.1F);
                 }
                 this.remove(RemovalReason.DISCARDED);
             }
         }
-        if(level().isClientSide) {
+        if(level().isClientSide()) {
             onClientTick();
         }
         super.tick();

@@ -72,7 +72,7 @@ public abstract class JBlazeStyleEntity extends JMonsterEntity {
             this.setDeltaMovement(this.getDeltaMovement().multiply(1.0D, 0.6D, 1.0D));
         }
 
-        if (this.level().isClientSide) {
+        if (this.level().isClientSide()) {
             if(canSpawnSmoke) {
                 if(this.random.nextInt(24) == 0 && !this.isSilent())
                     this.level().playLocalSound(this.getX() + 0.5D, this.getY() + 0.5D, this.getZ() + 0.5D, SoundEvents.BLAZE_BURN, this.getSoundSource(), 1.0F + this.random.nextFloat(), this.random.nextFloat() * 0.7F + 0.3F, false);

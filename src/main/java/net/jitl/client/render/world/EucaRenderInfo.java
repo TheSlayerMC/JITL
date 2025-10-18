@@ -1,29 +1,15 @@
 package net.jitl.client.render.world;
 
-import com.mojang.blaze3d.vertex.*;
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.jitl.client.render.world.clouds.JCloudRenderer;
 import net.jitl.core.init.JITL;
-import net.minecraft.client.Camera;
-import net.minecraft.client.CloudStatus;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.DimensionSpecialEffects;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.state.LevelRenderState;
+import net.minecraft.client.renderer.state.SkyRenderState;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.material.FogType;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
-
-import java.util.Optional;
 
 public class EucaRenderInfo extends JDimensionSpecialEffects {
 
@@ -45,19 +31,17 @@ public class EucaRenderInfo extends JDimensionSpecialEffects {
     }
 
     @Override
-    public boolean renderSky(ClientLevel level, int ticks, float partialTick, Matrix4f modelViewMatrix, Camera camera, Runnable setupFog) {
+    public boolean renderSky(LevelRenderState levelRenderState, SkyRenderState skyRenderState, Matrix4f modelViewMatrix, Runnable setupFog) {
         setupFog.run();
-        FogType fogtype = camera.getFluidInCamera();
-        if(fogtype != FogType.POWDER_SNOW && fogtype != FogType.LAVA && !doesMobEffectBlockSky(camera)) {
             PoseStack poseStack = new PoseStack();
             poseStack.pushPose();
 
             //START CORBA MOON
             poseStack.mulPose(Axis.YP.rotationDegrees(-180F));
             poseStack.mulPose(Axis.XP.rotationDegrees(-24000F));
-            renderSun(20F, 1F, Minecraft.getInstance().renderBuffers().bufferSource(), poseStack, CORBA_MOON_LOCATION);
+            renderSun(20F, 1F, poseStack, CORBA_MOON_LOCATION);
             poseStack.popPose();
-        }
+
         return true;
     }
 

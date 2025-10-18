@@ -63,7 +63,7 @@ public class JBoatItem extends Item {
                 if(!level.noCollision(boat, boat.getBoundingBox())) {
                     return InteractionResult.FAIL;
                 } else {
-                    if(!level.isClientSide) {
+                    if(!level.isClientSide()) {
                         level.addFreshEntity(boat);
                         level.gameEvent(player, GameEvent.ENTITY_PLACE, BlockPos.containing(hitresult.getLocation()));
                         if(!player.getAbilities().instabuild) {

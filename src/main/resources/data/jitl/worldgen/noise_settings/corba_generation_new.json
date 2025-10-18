@@ -38,6 +38,7 @@
       "xz_scale": 1,
       "y_scale": 0.7142857142857143
     },
+    "preliminary_surface_level": 0.0,
     "lava": {
       "type": "minecraft:noise",
       "noise": "minecraft:aquifer_lava",

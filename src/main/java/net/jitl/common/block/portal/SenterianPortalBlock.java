@@ -4,10 +4,8 @@ import net.jitl.common.block.portal.logic.PortalCoordinatesContainer;
 import net.jitl.common.block.portal.logic.SenterianPortal;
 import net.jitl.common.capability.player.Portal;
 import net.jitl.common.world.dimension.Dimensions;
-import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JDataAttachments;
-import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceKey;
@@ -70,7 +68,7 @@ public class SenterianPortalBlock extends Block implements SenterianPortal {
         return ItemStack.EMPTY;
     }
     @Override
-    public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entity, InsideBlockEffectApplier eff) {
+    protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier applier, boolean intersects) {
         if(entity.canUsePortal(false)) {
             if(entity instanceof Player player) {
                 Portal portal = player.getData(JDataAttachments.PORTAL_OVERLAY);

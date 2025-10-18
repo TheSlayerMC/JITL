@@ -1,7 +1,6 @@
 package net.jitl.common.block.portal;
 
 import com.google.common.base.Predicates;
-import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -64,7 +63,7 @@ public class SenterianPortalFrameBlock extends Block {
     }
 
     @Override
-    public int getAnalogOutputSignal(BlockState blockState, @NotNull Level worldIn, BlockPos pos) {
+    public int getAnalogOutputSignal(BlockState blockState, @NotNull Level worldIn, BlockPos pos, Direction direction) {
         return blockState.getValue(HAS_EYE) ? 15 : 0;
     }
 

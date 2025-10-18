@@ -1,7 +1,6 @@
 package net.jitl.common.block;
 
 import net.jitl.common.items.base.MultitoolItem;
-import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -55,7 +54,7 @@ public class JDirt extends Block {
         if(itemstack instanceof HoeItem || itemstack instanceof MultitoolItem) {
             if(farmLand != null) {
                 pLevel.playSound(pPlayer, pPos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                if(!pLevel.isClientSide) {
+                if(!pLevel.isClientSide()) {
                     pLevel.setBlock(pPos, farmLand.defaultBlockState(), 2);
                     if(!pPlayer.isCreative())
                         pPlayer.getItemInHand(pHand).hurtAndBreak(1, pPlayer, EquipmentSlot.MAINHAND);

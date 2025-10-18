@@ -4,7 +4,6 @@ import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -94,7 +93,7 @@ public class Sentacoin extends Entity {
         if (damageSource.getEntity() instanceof Player player) {
             if (this.isInvisibleTo(player)) {
                 return false;
-            } else if (this.level().isClientSide) {
+            } else if (this.level().isClientSide()) {
                 return true;
             } else {
                 this.markHurt();

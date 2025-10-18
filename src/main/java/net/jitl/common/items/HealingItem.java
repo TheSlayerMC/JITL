@@ -2,7 +2,6 @@ package net.jitl.common.items;
 
 import net.jitl.common.items.base.JItem;
 import net.jitl.core.helper.IEssenceItem;
-import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
@@ -14,6 +13,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
+
 import java.util.function.Consumer;
 
 public class HealingItem extends JItem implements IEssenceItem {
@@ -27,7 +27,7 @@ public class HealingItem extends JItem implements IEssenceItem {
 
     @Override
     public @NotNull InteractionResult use(@NotNull Level level, Player player, @NotNull InteractionHand usedHand) {
-        if(!level.isClientSide) {
+        if(!level.isClientSide()) {
             player.heal(this.amount == -1F ? player.getMaxHealth() : this.amount);
             player.getItemInHand(usedHand).shrink(1);
             return InteractionResult.CONSUME;

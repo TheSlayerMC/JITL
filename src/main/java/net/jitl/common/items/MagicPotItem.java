@@ -41,7 +41,7 @@ public class MagicPotItem extends JItem {
         if(sound != null) {
             worldIn.playSound(null, playerIn.getX(), playerIn.getY(), playerIn.getZ(), sound.get(), SoundSource.PLAYERS, 0.5F, 0.4F / (worldIn.getRandom().nextFloat() * 0.4F + 0.8F));
         }
-        if(!worldIn.isClientSide) {
+        if(!worldIn.isClientSide()) {
             Projectile projectile = projectileFactory.apply(worldIn, playerIn);
             projectile.shootFromRotation(playerIn, playerIn.getXRot(), playerIn.getYRot(), 0.0F, 1.5F, 1.0F);
             worldIn.addFreshEntity(projectile);

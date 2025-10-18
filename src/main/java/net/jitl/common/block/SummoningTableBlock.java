@@ -7,10 +7,8 @@ import net.jitl.core.init.internal.JBlockEntities;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -77,12 +75,12 @@ public class SummoningTableBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(@NotNull Level level, @NotNull BlockState state, @NotNull BlockEntityType<T> entity) {
-        return level.isClientSide ? null : createTickerHelper(entity, JBlockEntities.SUMMONING_TABLE.get(), SummoningTableTile::serverTick);
+        return level.isClientSide() ? null : createTickerHelper(entity, JBlockEntities.SUMMONING_TABLE.get(), SummoningTableTile::serverTick);
     }
 
     @Override
     protected InteractionResult useItemOn(ItemStack pStack, @NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hit) {
-        if(level.isClientSide) {
+        if(level.isClientSide()) {
             return InteractionResult.SUCCESS;
         } else {
             BlockEntity blockentity = level.getBlockEntity(pos);

@@ -3,7 +3,6 @@ package net.jitl.core.init.internal;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -123,7 +122,7 @@ public class JBlockProperties {
             .mapColor(MapColor.COLOR_BROWN)
             .strength(0.5F)
             .sound(SoundType.WOOD)
-            .noCollission()
+            .noCollision()
             .requiresCorrectToolForDrops();
 
     public static BlockBehaviour.Properties SPAWNER = BlockBehaviour.Properties.of()
@@ -190,7 +189,7 @@ public class JBlockProperties {
             .strength(1.5F)
             .lightLevel((level) -> 15)
             .noOcclusion()
-            .noCollission()
+            .noCollision()
             .sound(SoundType.GLASS);
 
     public static BlockBehaviour.Properties GLOW_DUNGEON_BLOCK = BlockBehaviour.Properties.of()
@@ -276,7 +275,7 @@ public class JBlockProperties {
             .strength(0.5F)
             .sound(SoundType.WOOL)
             .noOcclusion()
-            .noCollission()
+            .noCollision()
             .isViewBlocking(JBlockProperties::never)
             .isSuffocating(JBlockProperties::never)
             .isValidSpawn(JBlockProperties::never)
@@ -285,14 +284,14 @@ public class JBlockProperties {
     public static BlockBehaviour.Properties CROP = BlockBehaviour.Properties.of()
             .sound(SoundType.CROP)
             .instabreak()
-            .noCollission()
+            .noCollision()
             .noOcclusion()
             .randomTicks();
 
     public static BlockBehaviour.Properties GROWING_BUSH = BlockBehaviour.Properties.of()
             .sound(SoundType.SWEET_BERRY_BUSH)
             .instabreak()
-            .noCollission()
+            .noCollision()
             .noOcclusion()
             .randomTicks();
 
@@ -305,7 +304,7 @@ public class JBlockProperties {
     public static BlockBehaviour.Properties REPLACABLE_PLANT = BlockBehaviour.Properties.of()
             .instabreak()
             .sound(SoundType.GRASS)
-            .noCollission()
+            .noCollision()
             .noOcclusion()
             .ignitedByLava()
             .offsetType(BlockBehaviour.OffsetType.XZ);
@@ -313,7 +312,7 @@ public class JBlockProperties {
     public static BlockBehaviour.Properties PLANT = BlockBehaviour.Properties.of()
             .instabreak()
             .sound(SoundType.GRASS)
-            .noCollission()
+            .noCollision()
             .noOcclusion()
             .ignitedByLava()
             .offsetType(BlockBehaviour.OffsetType.XZ);
@@ -326,27 +325,27 @@ public class JBlockProperties {
     public static BlockBehaviour.Properties FLOWER = BlockBehaviour.Properties.of()
             .instabreak()
             .sound(SoundType.GRASS)
-            .noCollission()
+            .noCollision()
             .noOcclusion()
             .offsetType(BlockBehaviour.OffsetType.XZ);
 
     public static BlockBehaviour.Properties GLOW_FLOWER = BlockBehaviour.Properties.of()
             .instabreak()
             .sound(SoundType.GRASS)
-            .noCollission()
+            .noCollision()
             .noOcclusion()
             .lightLevel((state) -> 5)
             .offsetType(BlockBehaviour.OffsetType.XZ);
 
     public static BlockBehaviour.Properties CRYSTAL = BlockBehaviour.Properties.of()
             .sound(SoundType.GLASS)
-            .noCollission()
+            .noCollision()
             .noOcclusion()
             .offsetType(BlockBehaviour.OffsetType.XZ);
 
     public static BlockBehaviour.Properties VINE = BlockBehaviour.Properties.of()
             .sound(SoundType.GRASS)
-            .noCollission()
+            .noCollision()
             .noOcclusion()
             .randomTicks();
 
@@ -375,7 +374,7 @@ public class JBlockProperties {
     public static BlockBehaviour.Properties BUTTON = BlockBehaviour.Properties.of()
             .strength(1F)
             .noOcclusion()
-            .noCollission()
+            .noCollision()
             .sound(SoundType.WOOD);
 
     public static BlockBehaviour.Properties DOOR = BlockBehaviour.Properties.of()
@@ -389,7 +388,7 @@ public class JBlockProperties {
             .sound(SoundType.GLASS)
             .lightLevel((state) -> 6)
             .noOcclusion()
-            .noCollission();
+            .noCollision();
 
     public static final BlockBehaviour.Properties VOLCANIC_BLOCK = BlockBehaviour.Properties.of()
             .sound(SoundType.STONE)
@@ -414,7 +413,7 @@ public class JBlockProperties {
             .sound(JSoundTypes.CRYSTAL_FRUIT)
             .noOcclusion()
             .offsetType(BlockBehaviour.OffsetType.XZ)
-            .noCollission()
+            .noCollision()
             .ignitedByLava()
             .lightLevel((state) -> 10)
             .instabreak();
@@ -422,7 +421,7 @@ public class JBlockProperties {
     public static BlockBehaviour.Properties LIGHT_PLANT = BlockBehaviour.Properties.of()
             .instabreak()
             .sound(SoundType.GRASS)
-            .noCollission()
+            .noCollision()
             .noOcclusion()
             .lightLevel((state) -> 4)
             .ignitedByLava()
@@ -436,7 +435,7 @@ public class JBlockProperties {
     public static final BlockBehaviour.Properties CAVE_GLOW_PLANT = BlockBehaviour.Properties.of()
             .sound(JSoundTypes.CRYSTAL_FRUIT)
             .noOcclusion()
-            .noCollission()
+            .noCollision()
             .offsetType(BlockBehaviour.OffsetType.XZ)
             .lightLevel((state) -> 5)
             .instabreak();

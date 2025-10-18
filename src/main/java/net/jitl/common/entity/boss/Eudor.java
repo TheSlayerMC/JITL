@@ -98,7 +98,7 @@ public class Eudor extends JBossEntity {
         }
 
         if(isInvisible()) {
-            if(this.level().isClientSide) {
+            if(this.level().isClientSide()) {
                 for (int i = 0; i < 5; i++)
                     this.level().addParticle(ParticleTypes.ENCHANT, this.position().x + (this.random.nextDouble() - 0.5D), this.position().y + this.random.nextDouble(), this.position().z + (this.random.nextDouble() - 0.5D), (this.random.nextDouble() - 0.5D) * 2.0D, -this.random.nextDouble(), (this.random.nextDouble() - 0.5D) * 2.0D);
             }

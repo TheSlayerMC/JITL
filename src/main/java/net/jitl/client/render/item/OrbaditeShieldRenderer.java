@@ -1,20 +1,19 @@
 package net.jitl.client.render.item;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.serialization.MapCodec;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.model.ShieldModel;
-import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.special.SpecialModelRenderer;
+import net.minecraft.client.resources.model.Material;
+import net.minecraft.client.resources.model.MaterialSet;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 
 import javax.annotation.Nullable;
@@ -23,24 +22,25 @@ import java.util.Set;
 public class OrbaditeShieldRenderer implements SpecialModelRenderer<DataComponentMap> {
 
     private final ShieldModel model;
+    private final MaterialSet materials;
 
-    public OrbaditeShieldRenderer(ShieldModel model) {
+    public OrbaditeShieldRenderer(MaterialSet materials, ShieldModel model) {
         this.model = model;
+        this.materials = materials;
     }
 
     @Nullable
-    public DataComponentMap extractArgument(ItemStack p_387204_) {
-        return p_387204_.immutableComponents();
+    public DataComponentMap extractArgument(ItemStack i) {
+        return i.immutableComponents();
     }
 
     @Override
-    public void render(@Nullable DataComponentMap map, ItemDisplayContext ctx, PoseStack pose, MultiBufferSource buff, int alp, int col, boolean bol) {
+    public void submit(@Nullable DataComponentMap typedDataComponents, @NotNull ItemDisplayContext itemDisplayContext, PoseStack pose, SubmitNodeCollector submitNodeCollector, int i, int i1, boolean b, int i2) {
         pose.pushPose();
         pose.scale(1.0F, -1.0F, -1.0F);
-        VertexConsumer vertexconsumer = buff.getBuffer(RenderType.entityCutoutNoCull(JITL.rl("textures/shield/" + "orbadite" + "_shield.png")));
-        this.model.handle().render(pose, vertexconsumer, alp, col);
-        this.model.plate().render(pose, vertexconsumer, alp, col);
-        this.model.renderToBuffer(pose, vertexconsumer, alp, col);
+        Material material = new Material(Sheets.SHIELD_SHEET, JITL.rl("textures/shield/" + "orbadite" + "_shield.png"));
+        submitNodeCollector.submitModelPart(this.model.handle(), pose, this.model.renderType(material.atlasLocation()), i, i1, this.materials.get(material), false, false,-1, null, i2 );
+        submitNodeCollector.submitModelPart(this.model.plate(), pose, this.model.renderType(material.atlasLocation()), i, i1, this.materials.get(material), false, b, -1, null, i2);
         pose.popPose();
     }
 
@@ -60,8 +60,8 @@ public class OrbaditeShieldRenderer implements SpecialModelRenderer<DataComponen
             return MAP_CODEC;
         }
 
-        public SpecialModelRenderer<?> bake(EntityModelSet p_387269_) {
-            return new OrbaditeShieldRenderer(new ShieldModel(p_387269_.bakeLayer(ModelLayers.SHIELD)));
+        public SpecialModelRenderer<?> bake(SpecialModelRenderer.BakingContext c) {
+            return new OrbaditeShieldRenderer(c.materials(), new ShieldModel(c.entityModelSet().bakeLayer(ModelLayers.SHIELD)));
         }
 
         static {

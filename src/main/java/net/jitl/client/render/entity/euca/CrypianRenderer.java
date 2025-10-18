@@ -4,10 +4,12 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.jitl.client.render.entity.euca.state.CrypianRenderState;
 import net.jitl.common.entity.euca.npc.Crypian;
 import net.jitl.core.init.JITL;
-import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.base.GeoRenderState;
@@ -20,7 +22,7 @@ public class CrypianRenderer<R extends CrypianRenderState & GeoRenderState> exte
     }
 
     @Override
-    protected R createBaseRenderState(Crypian entity) {
+    public R createRenderState(Crypian animatable, Void relatedObject) {
         return (R)new CrypianRenderState();
     }
 
@@ -38,9 +40,9 @@ public class CrypianRenderer<R extends CrypianRenderState & GeoRenderState> exte
     }
 
     @Override
-    public void render(R renderState, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
+    public void preRender(R renderState, PoseStack poseStack, BakedGeoModel model, SubmitNodeCollector renderTasks, CameraRenderState cameraState, int packedLight, int packedOverlay, int renderColor) {
         poseStack.scale(1.25F, 1.25F, 1.25F);
-        super.render(renderState, poseStack, bufferSource, packedLight);
+        super.preRender(renderState, poseStack, model, renderTasks, cameraState, packedLight, packedOverlay, renderColor);
     }
 
     @Override

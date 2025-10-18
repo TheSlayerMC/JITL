@@ -42,7 +42,7 @@ public class EssenciaProjectileEntity extends JThrowableProjectile {
     @Override
     protected void onHit(@NotNull HitResult r) {
         super.onHit(r);
-        if(!this.level().isClientSide) {
+        if(!this.level().isClientSide()) {
             this.level().broadcastEntityEvent(this, (byte)3);
             this.discard();
         }

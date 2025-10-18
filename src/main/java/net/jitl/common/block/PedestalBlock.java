@@ -1,13 +1,13 @@
 package net.jitl.common.block;
 
 import net.jitl.common.block.entity.PedestalTile;
-import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.*;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -15,7 +15,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
@@ -60,7 +59,7 @@ public class PedestalBlock extends JTileContainerBlock {
             PedestalTile pedestal = (PedestalTile) worldIn.getBlockEntity(pos);
             if(pedestal != null) {
                 pedestal.getItem(0);
-                if(!worldIn.isClientSide)
+                if(!worldIn.isClientSide())
                     worldIn.addFreshEntity(new ItemEntity(worldIn, pos.getX() + 0.5F, pos.getY() + 1.4F, pos.getZ() + 0.5F, pedestal.getItem(0)));
                 pedestal.setItem(0, ItemStack.EMPTY);
                 if(this == JBlocks.FROZEN_PEDESTAL.get() && heldItem == JItems.FROSTBORN_SOUL.get()) {

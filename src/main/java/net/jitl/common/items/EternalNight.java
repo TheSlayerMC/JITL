@@ -38,7 +38,7 @@ public class EternalNight extends JItem implements IEssenceItem {
     public boolean releaseUsing(@NotNull ItemStack stack, @NotNull Level world, @NotNull LivingEntity entity, int timeLeft) {
         if(entity instanceof Player player) {
             PlayerEssence essence = player.getData(JDataAttachments.ESSENCE);
-            if(!world.isClientSide) {
+            if(!world.isClientSide()) {
                 if(JCommonConfig.ENABLE_ETERNAL_LIGHT.get()) {
                     ServerLevel serverLevel = (ServerLevel) world;
                     player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 2));

@@ -57,7 +57,7 @@ public class SenterianAltar extends BaseEntityBlock {
     @javax.annotation.Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(@NotNull Level level, @NotNull BlockState state, @NotNull BlockEntityType<T> entity) {
-        return level.isClientSide ? null : createTickerHelper(entity, JBlockEntities.SENTERIAN_ALTAR.get(), SenterianAltarTile::serverTick);
+        return level.isClientSide() ? null : createTickerHelper(entity, JBlockEntities.SENTERIAN_ALTAR.get(), SenterianAltarTile::serverTick);
     }
 
     @Override
@@ -74,7 +74,7 @@ public class SenterianAltar extends BaseEntityBlock {
 
     @Override
     protected InteractionResult useItemOn(ItemStack pStack, @NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hit) {
-        if(level.isClientSide) {
+        if(level.isClientSide()) {
             return InteractionResult.SUCCESS;
         } else {
             if(!getIsActive(state)) {

@@ -39,6 +39,6 @@ public class OverseerSpawnerBlock extends SpawnerBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level_, @NotNull BlockState state_, @NotNull BlockEntityType<T> blockEntityType_) {
-        return createTickerHelper(blockEntityType_, JBlockEntities.OVERSEER_SPAWNER.get(), level_.isClientSide ? OverseerSpawnerEntity::clientTick : OverseerSpawnerEntity::serverTick);
+        return createTickerHelper(blockEntityType_, JBlockEntities.OVERSEER_SPAWNER.get(), level_.isClientSide() ? OverseerSpawnerEntity::clientTick : OverseerSpawnerEntity::serverTick);
     }
 }

@@ -51,7 +51,7 @@ public class JBlockCactus extends Block {
     }
 
     @Override
-    public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entityIn, InsideBlockEffectApplier eff) {
-        entityIn.hurt(worldIn.damageSources().cactus(), 1.0F);
+    protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier applier, boolean intersects) {
+        entity.hurt(level.damageSources().cactus(), 1.0F);
     }
 }

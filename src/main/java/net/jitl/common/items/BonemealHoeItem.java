@@ -1,18 +1,12 @@
 package net.jitl.common.items;
 
 import com.mojang.datafixers.util.Pair;
-import net.jitl.common.items.gear.IAbility;
-import net.jitl.common.items.gear.JGear;
 import net.jitl.core.helper.JToolTiers;
-import net.jitl.core.init.internal.JItems;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BoneMealItem;
 import net.minecraft.world.item.HoeItem;
@@ -51,10 +45,10 @@ public class BonemealHoeItem extends HoeItem {
                 if(predicate.test(context)) {
                     Player player = context.getPlayer();
                     level.playSound(player, blockpos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                    if(!level.isClientSide) {
+                    if(!level.isClientSide()) {
                         consumer.accept(context);
                         if(player != null) {
-                            context.getItemInHand().hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
+                            context.getItemInHand().hurtAndBreak(1, player, context.getHand());
                         }
                     }
                     return InteractionResult.SUCCESS;
@@ -63,19 +57,19 @@ public class BonemealHoeItem extends HoeItem {
         } else {
             if(context.getPlayer() instanceof Player player) {
                 if(BoneMealItem.applyBonemeal(context.getItemInHand(), level, blockpos, context.getPlayer())) {
-                    if(!level.isClientSide) {
+                    if(!level.isClientSide()) {
                         context.getPlayer().gameEvent(GameEvent.ITEM_INTERACT_FINISH);
                         level.levelEvent(1505, blockpos, 15);
-                        context.getItemInHand().hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
+                        context.getItemInHand().hurtAndBreak(1, player, context.getHand());
                     }
                     return InteractionResult.SUCCESS;
                 } else {
                     if(level.getBlockState(blockpos).isFaceSturdy(level, blockpos, context.getClickedFace())
                             && BoneMealItem.growWaterPlant(context.getItemInHand(), level, blockpos, context.getClickedFace())) {
-                        if(!level.isClientSide) {
+                        if(!level.isClientSide()) {
                             context.getPlayer().gameEvent(GameEvent.ITEM_INTERACT_FINISH);
                             level.levelEvent(1505, blockpos, 15);
-                            context.getItemInHand().hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
+                            context.getItemInHand().hurtAndBreak(1, player, context.getHand());
                         }
                         return InteractionResult.SUCCESS;
                     } else {

@@ -1,19 +1,12 @@
 package net.jitl.common.entity.projectile;
 
-import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JParticleManager;
 import net.minecraft.core.Direction;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.NotNull;
 
 public class BouncingProjectileEntity extends JThrowableProjectile {
 
@@ -42,11 +35,11 @@ public class BouncingProjectileEntity extends JThrowableProjectile {
         Vec3 vec = getDeltaMovement();
         double x = vec.x, y = vec.y, z = vec.z;
         if(result.getDirection() == Direction.DOWN || result.getDirection() == Direction.UP)
-            lerpMotion(x * 0.8, y * -0.8, z * 0.8);
+            lerpMotion(new Vec3(x * 0.8, y * -0.8, z * 0.8));
         else if(result.getDirection() == Direction.EAST || result.getDirection() == Direction.WEST)
-            lerpMotion(x * -0.8, y * 0.8, z * 0.8);
+            lerpMotion(new Vec3(x * -0.8, y * 0.8, z * 0.8));
         else if(result.getDirection() == Direction.NORTH || result.getDirection() == Direction.SOUTH)
-            lerpMotion(x * 0.8, y * 0.8, z * -0.8);
+            lerpMotion(new Vec3(x * 0.8, y * 0.8, z * -0.8));
         if(this.bounces > 6) discard();
         this.bounces++;
     }

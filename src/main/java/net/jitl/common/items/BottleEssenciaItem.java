@@ -4,7 +4,6 @@ import net.jitl.common.capability.essence.PlayerEssence;
 import net.jitl.common.items.base.JItem;
 import net.jitl.core.helper.IEssenceItem;
 import net.jitl.core.init.internal.JDataAttachments;
-import net.jitl.core.init.internal.JItems;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -35,7 +34,7 @@ public class BottleEssenciaItem extends JItem implements IEssenceItem {
         }
 
         if(player != null) {
-            if(!pLevel.isClientSide) {
+            if(!pLevel.isClientSide()) {
                 PlayerEssence essence = player.getData(JDataAttachments.ESSENCE);
                 essence.addEssence(player, strong ? 8 : 4);
             }

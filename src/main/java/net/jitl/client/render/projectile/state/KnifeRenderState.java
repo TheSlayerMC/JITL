@@ -10,5 +10,5 @@ public class KnifeRenderState extends ThrownItemRenderState {
     public boolean inGround;
     public Level level;
     public int id;
-    public ItemStack item;
+    public ItemStack knife;
 }

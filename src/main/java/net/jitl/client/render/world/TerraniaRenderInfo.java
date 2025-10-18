@@ -1,14 +1,12 @@
 package net.jitl.client.render.world;
 
-import com.mojang.blaze3d.vertex.*;
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.jitl.client.render.world.clouds.JCloudRenderer;
 import net.jitl.core.init.JITL;
-import net.minecraft.client.Camera;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.state.LevelRenderState;
+import net.minecraft.client.renderer.state.SkyRenderState;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.material.FogType;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
@@ -39,10 +37,8 @@ public class TerraniaRenderInfo extends JDimensionSpecialEffects {
     }
 
     @Override
-    public boolean renderSky(ClientLevel level, int ticks, float partialTick, Matrix4f modelViewMatrix, Camera camera, Runnable setupFog) {
+    public boolean renderSky(LevelRenderState levelRenderState, SkyRenderState skyRenderState, Matrix4f modelViewMatrix, Runnable setupFog) {
         setupFog.run();
-        FogType fogtype = camera.getFluidInCamera();
-        if(fogtype != FogType.POWDER_SNOW && fogtype != FogType.LAVA && !this.doesMobEffectBlockSky(camera)) {
             PoseStack poseStack = new PoseStack();
             renderSky(CLOUDIA_SKY_LOCATION, 2F);
 
@@ -50,9 +46,9 @@ public class TerraniaRenderInfo extends JDimensionSpecialEffects {
             poseStack.pushPose();
             poseStack.mulPose(Axis.YP.rotationDegrees(20F));
             poseStack.mulPose(Axis.ZP.rotationDegrees(-90));
-            renderSun(40F, 1F, Minecraft.getInstance().renderBuffers().bufferSource(), poseStack, MOON_LOCATION);
+            renderSun(40F, 1F,  poseStack, MOON_LOCATION);
             poseStack.popPose();
-        }
+
         return true;
     }
 }

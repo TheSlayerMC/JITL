@@ -8,6 +8,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.CompoundContainer;
 import net.minecraft.world.Container;
+import net.minecraft.world.entity.ContainerUser;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -46,7 +47,7 @@ public class JChestBlockEntity extends ChestBlockEntity {
         }
 
         @Override
-        protected boolean isOwnContainer(Player player1) {
+        public boolean isOwnContainer(Player player1) {
             if(!(player1.containerMenu instanceof ChestMenu)) {
                 return false;
             } else {
@@ -79,16 +80,16 @@ public class JChestBlockEntity extends ChestBlockEntity {
     }
 
     @Override
-    public void startOpen(@NotNull Player player) {
-        if(!this.remove && !player.isSpectator()) {
-            this.openersCounter.incrementOpeners(player, Objects.requireNonNull(this.getLevel()), this.getBlockPos(), this.getBlockState());
+    public void startOpen(ContainerUser player) {
+        if (!this.remove && !player.getLivingEntity().isSpectator()) {
+            this.openersCounter.incrementOpeners(player.getLivingEntity(), this.getLevel(), this.getBlockPos(), this.getBlockState(), player.getContainerInteractionRange());
         }
     }
 
     @Override
-    public void stopOpen(@NotNull Player player) {
-        if(!this.remove && !player.isSpectator()) {
-            this.openersCounter.decrementOpeners(player, Objects.requireNonNull(this.getLevel()), this.getBlockPos(), this.getBlockState());
+    public void stopOpen(ContainerUser player) {
+        if (!this.remove && !player.getLivingEntity().isSpectator()) {
+            this.openersCounter.decrementOpeners(player.getLivingEntity(), this.getLevel(), this.getBlockPos(), this.getBlockState());
         }
     }
 

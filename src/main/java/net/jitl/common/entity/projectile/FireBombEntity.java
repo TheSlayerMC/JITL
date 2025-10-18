@@ -4,6 +4,7 @@ import net.jitl.core.data.JDamageSources;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SpellParticleOption;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -12,8 +13,6 @@ import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 public class FireBombEntity extends DamagingProjectileEntity implements ItemSupplier {
@@ -32,7 +31,7 @@ public class FireBombEntity extends DamagingProjectileEntity implements ItemSupp
             if(target instanceof LivingEntity && target.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), getDamage())) {
                 target.hurtServer(level, JDamageSources.hurt(target, JDamageSources.FIRE_BOMB), this.getDamage());
                 target.setRemainingFireTicks(60);
-                if(!this.level().isClientSide) {
+                if(!this.level().isClientSide()) {
                     this.level().broadcastEntityEvent(this, (byte) 1);
                     this.discard();
                 }
@@ -42,7 +41,7 @@ public class FireBombEntity extends DamagingProjectileEntity implements ItemSupp
 
     @Override
     public void handleEntityEvent(byte id) {
-        ParticleOptions particleoptions = ParticleTypes.EFFECT;
+        ParticleOptions particleoptions = SpellParticleOption.create(ParticleTypes.EFFECT, -1, 1F);
 
         if(id == 1) {
             for(int i = 0; i < 15; ++i)
@@ -59,7 +58,7 @@ public class FireBombEntity extends DamagingProjectileEntity implements ItemSupp
     protected void onHit(@NotNull HitResult result) {
         super.onHit(result);
         if(result.getType() == HitResult.Type.BLOCK) {
-            if (!this.level().isClientSide) {
+            if (!this.level().isClientSide()) {
                 this.level().broadcastEntityEvent(this, (byte)2);
                 this.discard();
             }

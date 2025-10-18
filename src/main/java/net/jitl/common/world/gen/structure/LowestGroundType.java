@@ -15,6 +15,7 @@ import net.minecraft.world.level.levelgen.structure.pools.DimensionPadding;
 import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup;
+import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
 import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
 
 import java.util.Optional;
@@ -76,7 +77,7 @@ public final class LowestGroundType extends Structure {
                         new BlockPos(x, y, z),
                         false,
                         Optional.empty(),
-                        this.maxDistanceFromCenter,
+                        new JigsawStructure.MaxDistance(this.maxDistanceFromCenter),
                         PoolAliasLookup.EMPTY,
                         DimensionPadding.ZERO,
                         LiquidSettings.APPLY_WATERLOGGING);

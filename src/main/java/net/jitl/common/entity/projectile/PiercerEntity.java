@@ -3,7 +3,6 @@ package net.jitl.common.entity.projectile;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -118,7 +117,7 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
                 this.setNoPhysics(true);
                 Vec3 vector3d = new Vec3(entity.getX() - this.getX(), entity.getEyeY() - this.getY(), entity.getZ() - this.getZ());
                 this.setPosRaw(this.getX(), this.getY() + vector3d.y * 0.015D * (double) faithfulLevel, this.getZ());
-                if(this.level().isClientSide)
+                if(this.level().isClientSide())
                     this.yOld = this.getY();
 
                 double d0 = 0.15D * (double) faithfulLevel;
@@ -172,7 +171,7 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
 
     @Override
     public void playerTouch(@NotNull Player entityIn) {
-        if(!this.level().isClientSide) {
+        if(!this.level().isClientSide()) {
             boolean isOwner = this.getOwner().getUUID() == entityIn.getUUID();
             if((isOwner && currentBounces > 0) || ((this.isInGround() || this.isNoPhysics()) && this.shakeTime <= 0)) {
                 boolean flag = this.pickup == Pickup.ALLOWED || this.pickup == Pickup.CREATIVE_ONLY && entityIn.canUseGameMasterBlocks() || this.isNoPhysics() && isOwner;

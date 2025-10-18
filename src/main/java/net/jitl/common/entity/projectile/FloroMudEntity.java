@@ -17,8 +17,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 public class FloroMudEntity extends DamagingProjectileEntity implements ItemSupplier {
@@ -67,7 +65,7 @@ public class FloroMudEntity extends DamagingProjectileEntity implements ItemSupp
     @Override
     protected void onHit(@NotNull HitResult result) {
         super.onHit(result);
-        if (!level().isClientSide) {
+        if (!level().isClientSide()) {
             if(result.getType() != HitResult.Type.MISS) {
                 level().playSound(null, BlockPos.containing(result.getLocation()), JSounds.MUD_BLOCK_BREAK.get(), SoundSource.AMBIENT, 1.0F, 1.5F);
             }

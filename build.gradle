@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.112'
+    id 'net.neoforged.moddev' version '2.0.115'
     id 'idea'
 }
 
@@ -86,7 +86,7 @@ configurations {
 }
 
 dependencies {
-    //implementation "mezz.jei:jei-" + minecraft_version + "-neoforge:" + jei_version
+    implementation "mezz.jei:jei-" + minecraft_version + "-neoforge:" + jei_version
     //implementation "maven.modrinth:just-enough-resources-jer:" + jer_version
 
     //  implementation("curse.maven:just-enough-resources-jer-240630:" + jer_version)
