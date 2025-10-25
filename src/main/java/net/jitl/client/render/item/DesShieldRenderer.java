@@ -39,7 +39,7 @@ public class DesShieldRenderer implements SpecialModelRenderer<DataComponentMap>
     public void submit(@Nullable DataComponentMap typedDataComponents, @NotNull ItemDisplayContext itemDisplayContext, PoseStack pose, SubmitNodeCollector submitNodeCollector, int i, int i1, boolean b, int i2) {
         pose.pushPose();
         pose.scale(1.0F, -1.0F, -1.0F);
-        Material material = new Material(Sheets.SHIELD_SHEET, JITL.rl("textures/shield/" + "des" + "_shield.png"));
+        Material material = new Material(Sheets.SHIELD_SHEET, JITL.tl("shield/des_shield"));
         submitNodeCollector.submitModelPart(this.model.handle(), pose, this.model.renderType(material.atlasLocation()), i, i1, this.materials.get(material), false, false,-1, null, i2 );
         submitNodeCollector.submitModelPart(this.model.plate(), pose, this.model.renderType(material.atlasLocation()), i, i1, this.materials.get(material), false, b, -1, null, i2);
         pose.popPose();
@@ -54,18 +54,16 @@ public class DesShieldRenderer implements SpecialModelRenderer<DataComponentMap>
 
     public record Unbaked() implements SpecialModelRenderer.Unbaked {
         public static final Unbaked INSTANCE = new Unbaked();
-        public static final MapCodec<Unbaked> MAP_CODEC;
+        public static final MapCodec<Unbaked> MAP_CODEC = MapCodec.unit(INSTANCE);;
 
-        public MapCodec<Unbaked> type() {
+        @Override
+        public @NotNull MapCodec<DesShieldRenderer.Unbaked> type() {
             return MAP_CODEC;
         }
 
+        @Override
         public SpecialModelRenderer<?> bake(SpecialModelRenderer.BakingContext c) {
             return new DesShieldRenderer(c.materials(), new ShieldModel(c.entityModelSet().bakeLayer(ModelLayers.SHIELD)));
-        }
-
-        static {
-            MAP_CODEC = MapCodec.unit(INSTANCE);
         }
     }
 }

@@ -12,13 +12,11 @@ import net.jitl.common.world.gen.tree_grower.JTreeGrower;
 import net.jitl.core.data.block_generation.JBlockCropGenerator;
 import net.jitl.core.data.block_generation.JBlockModeledCropGenerator;
 import net.jitl.core.init.JITL;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
@@ -1031,7 +1029,7 @@ public class JBlocks {
         normalLangName.add(translatedName);
         if(addName)
             normalBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p -> props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1040,7 +1038,7 @@ public class JBlocks {
         addAxeableBlocks(name);
         campfireBlockName.add(name);
         campfireLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p -> props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1048,7 +1046,7 @@ public class JBlocks {
     public static DeferredBlock<Block> registerTorch(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block) {
         torchBlockName.add(name);
         torchLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, BlockBehaviour.Properties.ofFullCopy(Blocks.TORCH));
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p -> BlockBehaviour.Properties.ofFullCopy(Blocks.TORCH));
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1056,7 +1054,7 @@ public class JBlocks {
     public static DeferredBlock<Block> registerWallTorch(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block) {
         wallTorchBlockName.add(name);
         wallTorchLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, BlockBehaviour.Properties.ofFullCopy(Blocks.WALL_TORCH));
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p -> BlockBehaviour.Properties.ofFullCopy(Blocks.WALL_TORCH));
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1064,7 +1062,7 @@ public class JBlocks {
     public static DeferredBlock<Block> registerRedstoneLamp(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
         redstoneLampBlockName.add(name);
         redstoneLampLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p -> props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1072,7 +1070,7 @@ public class JBlocks {
     public static DeferredBlock<Block> registerDoublePlant(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
         doublePlantBlockName.add(name);
         doublePlantLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p -> props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1080,7 +1078,7 @@ public class JBlocks {
     public static DeferredBlock<Block> registerLilyPad(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
         lilyPadBlockName.add(name);
         lilyPadLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p -> props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1089,7 +1087,7 @@ public class JBlocks {
         addPickaxeableBlocks(name);
         furnaceBlockName.add(name);
         furnaceLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, JFurnaceBlock::new, JBlockProperties.FURNACE);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, JFurnaceBlock::new, p -> JBlockProperties.FURNACE);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1098,7 +1096,7 @@ public class JBlocks {
         addPickaxeableBlocks(name);
         chestBlockName.add(name);
         chestLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p -> props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1107,7 +1105,7 @@ public class JBlocks {
         addAxeableBlocks(name);
         ladderLangName.add(translatedName);
         ladderBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p -> props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1119,7 +1117,7 @@ public class JBlocks {
         checkForHoeableBlocks(props, name);
         randomLangName.add(translatedName);
         randomBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p -> props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1131,7 +1129,7 @@ public class JBlocks {
         checkForHoeableBlocks(props, name);
         randomLangName.add(translatedName);
         randomBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, Block::new, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, Block::new, p -> props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1143,7 +1141,7 @@ public class JBlocks {
         checkForHoeableBlocks(props, name);
         tintedLeavesLangName.add(translatedName);
         tintedLeavesBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p -> props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1152,7 +1150,7 @@ public class JBlocks {
         addAxeableBlocks(name);
         mushroomLangName.add(translatedName);
         mushroomBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p -> props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1161,7 +1159,7 @@ public class JBlocks {
         addPickaxeableBlocks(name);
         basePortalFrameLangName.add(translatedName);
         basePortalFrameBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p -> props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1170,7 +1168,7 @@ public class JBlocks {
         addShovelableBlocks(name);
         slimeLangName.add(translatedName);
         slimeBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p -> props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1178,7 +1176,7 @@ public class JBlocks {
     public static DeferredBlock<Block> registerEndPortalStyleBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
         basePortalLangName.add(translatedName);
         basePortalBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p -> props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1188,7 +1186,7 @@ public class JBlocks {
             addShovelableBlocks(name);
         terrainLangName.add(translatedName);
         terrainBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p -> props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1208,7 +1206,7 @@ public class JBlocks {
         }
         rotatableBlockName.add(name);
         rotatableLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p ->  props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1217,7 +1215,7 @@ public class JBlocks {
         addHoeableBlocks(name);
         vineBlockName.add(name);
         vineLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p ->  props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1226,7 +1224,7 @@ public class JBlocks {
         addPickaxeableBlocks(name);
         modelBlockName.add(name);
         modelLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p ->  props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1235,7 +1233,7 @@ public class JBlocks {
         addPickaxeableBlocks(name);
         trophyBlockName.add(name);
         trophyLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, TrophyBlock::new, JBlockProperties.STONE);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, TrophyBlock::new, p -> JBlockProperties.STONE);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1244,7 +1242,7 @@ public class JBlocks {
         addPickaxeableBlocks(name);
         dripstoneBlockName.add(name);
         dripstoneLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p ->  props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1253,7 +1251,7 @@ public class JBlocks {
         addPickaxeableBlocks(name);
         totemBlockName.add(name);
         totemLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, TotemBlock::new, JBlockProperties.STONE);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, TotemBlock::new, p -> JBlockProperties.STONE);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1265,7 +1263,7 @@ public class JBlocks {
         checkForHoeableBlocks(props, name);
         grassBlockName.add(name);
         grassLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p ->  props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1278,7 +1276,7 @@ public class JBlocks {
         addShovelableBlocks(name);
         overlayGrassBlockName.add(name);
         overlayGrassLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, JBlockProperties.GRASS);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p -> JBlockProperties.GRASS);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1304,7 +1302,7 @@ public class JBlocks {
     public static DeferredBlock<Block> registerGrowingBushBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block) {
         bushBlockName.add(name);
         bushLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, JBlockProperties.GROWING_BUSH);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p -> JBlockProperties.GROWING_BUSH);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1313,7 +1311,7 @@ public class JBlocks {
         addShovelableBlocks(name);
         farmlandBlockName.add(name);
         farmlandLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p ->  props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1321,7 +1319,7 @@ public class JBlocks {
     public static DeferredBlock<Block> registerCropBlock(String name, String translatedName, int maxStages, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
         cropBlockName.add(name);
         cropLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p ->  props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         if(JITL.DEV_MODE)
             new JBlockCropGenerator().generate(name, maxStages);
@@ -1331,7 +1329,7 @@ public class JBlocks {
     public static DeferredBlock<Block> registerModeledCropBlock(String name, String translatedName, int maxStages, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
         cropBlockName.add(name);
         cropLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p ->  props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         if(JITL.DEV_MODE)
             new JBlockModeledCropGenerator().generate(name, maxStages);
@@ -1342,7 +1340,7 @@ public class JBlocks {
         addAxeableBlocks(name);
         logBlockName.add(name);
         logLangName.add(translatedName);
-        DeferredBlock<RotatedPillarBlock> block1 = BLOCKS.registerBlock(name, LogBlock::new, JBlockProperties.WOOD);
+        DeferredBlock<RotatedPillarBlock> block1 = BLOCKS.registerBlock(name, LogBlock::new, p -> JBlockProperties.WOOD);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType, @NotNull FuelValues fuelValues) {
@@ -1546,7 +1544,7 @@ public class JBlocks {
     public static DeferredBlock<Block> registerCrossBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
         crossBlockName.add(name);
         crossLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p ->  props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1554,7 +1552,7 @@ public class JBlocks {
     public static DeferredBlock<GrowingPlantHeadBlock> registerGrowingPlantHeadBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends GrowingPlantHeadBlock> block, BlockBehaviour.Properties props) {
         crossBlockName.add(name);
         crossLangName.add(translatedName);
-        DeferredBlock<GrowingPlantHeadBlock> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<GrowingPlantHeadBlock> block1 = BLOCKS.registerBlock(name, block, p ->  props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1563,7 +1561,7 @@ public class JBlocks {
         addHoeableBlocks(name);//only for terranian leaves
         topBottomBlockName.add(name);
         topBottomLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p ->  props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1571,7 +1569,7 @@ public class JBlocks {
     public static DeferredBlock<Block> registerTintedCrossBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
         tintedCrossBlockName.add(name);
         tintedCrossLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p ->  props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1579,7 +1577,7 @@ public class JBlocks {
     public static DeferredBlock<Block> registerAttachedCrossBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block, BlockBehaviour.Properties props) {
         attachedCrossBlockName.add(name);
         attachedCrossLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p ->  props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1588,7 +1586,7 @@ public class JBlocks {
         addPickaxeableBlocks(name);
         normalLangName.add(translatedName);
         normalBlockName.add(name);
-        DeferredBlock<T> block1 = BLOCKS.registerBlock(name, block, props);
+        DeferredBlock<T> block1 = BLOCKS.registerBlock(name, block, p ->  props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType, @NotNull FuelValues fuelValues) {
@@ -1605,7 +1603,7 @@ public class JBlocks {
         checkForHoeableBlocks(props, name);
         normalLangName.add(translatedName);
         normalBlockName.add(name);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, Block::new, props);
+        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, Block::new, p ->  props);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType, @NotNull FuelValues fuelValues) {

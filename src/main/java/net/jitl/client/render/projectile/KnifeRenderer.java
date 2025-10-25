@@ -45,7 +45,6 @@ public class KnifeRenderer<T extends KnifeEntity> extends EntityRenderer<T, Knif
         if (!entityIn.inGround) {
             matrixStackIn.mulPose(Axis.ZP.rotation(f1));
         }
-        matrixStackIn.pushPose();
         ItemStackRenderState item = entityIn.item;
         item.submit(matrixStackIn, nodeCollector, entityIn.lightCoords, OverlayTexture.NO_OVERLAY, 0);
         matrixStackIn.translate(0.0, 0.0, 0.09375F);

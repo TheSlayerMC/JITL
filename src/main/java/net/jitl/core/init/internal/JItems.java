@@ -38,6 +38,7 @@ import net.minecraft.world.level.block.entity.FuelValues;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -793,7 +794,7 @@ public class JItems {
     private static DeferredItem<Item> registerFuelItem(String name, String translatedName, int burnTime /* 200 ticks per item */) {
         return register(name, translatedName, (p) -> new JItem(p) {
             @Override
-            public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType, FuelValues fuelValues) {
+            public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType, @NotNull FuelValues fuelValues) {
                 return burnTime;
             }
         }, ItemType.ITEM);
@@ -898,7 +899,7 @@ public class JItems {
     }
 
     private static DeferredItem<Item> register(String name, Function<Item.Properties, ? extends Item> item) {
-        return ITEMS.registerItem(name, item, itemProps(name));
+        return ITEMS.registerItem(name, item, props -> itemProps(name));
     }
 
     public static void registerBlockItem(String name, Supplier<Item> item) {

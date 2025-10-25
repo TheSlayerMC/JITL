@@ -46,7 +46,7 @@ public class ThrownItemRenderer<T extends Entity & ItemSupplier> extends EntityR
       matrixStack.pushPose();
       matrixStack.scale(this.scale, this.scale, this.scale);
       matrixStack.mulPose(cameraRenderState.orientation);
-       entity.item.submit(matrixStack, buffer, entity.lightCoords, OverlayTexture.NO_OVERLAY, entity.outlineColor);
+      entity.item.submit(matrixStack, buffer, entity.lightCoords, OverlayTexture.NO_OVERLAY, entity.outlineColor);
       matrixStack.popPose();
    }
 

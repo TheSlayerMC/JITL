@@ -7,7 +7,6 @@ import net.jitl.common.entity.projectile.PiercerEntity;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.item.ItemModelResolver;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
 import net.minecraft.client.renderer.state.CameraRenderState;
@@ -46,7 +45,6 @@ public class PiercerRenderer<T extends PiercerEntity> extends EntityRenderer<T, 
         if (!entityIn.inGround) {
             matrixStackIn.mulPose(Axis.ZP.rotation(f1));
         }
-        matrixStackIn.pushPose();
         ItemStackRenderState item = entityIn.item;
         item.submit(matrixStackIn, nodeCollector, entityIn.lightCoords, OverlayTexture.NO_OVERLAY, 0);
         matrixStackIn.translate(0.0, 0.0, 0.09375F);

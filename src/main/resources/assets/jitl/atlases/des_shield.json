@@ -1,0 +1,17 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:single",
+      "resource": "jitl:shield/des_shield"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "jitl:shield/des_shield"
+    },
+    {
+      "type": "minecraft:directory",
+      "prefix": "shield/",
+      "source": "shield/"
+    }
+  ]
+}
