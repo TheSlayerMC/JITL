@@ -1,19 +1,15 @@
 package net.jitl.client.gui.overlay;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.common.capability.player.Portal;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.EmptyBlockAndTintGetter;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.client.gui.GuiLayer;
 import org.jetbrains.annotations.NotNull;
 

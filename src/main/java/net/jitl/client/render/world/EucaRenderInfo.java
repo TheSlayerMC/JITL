@@ -37,9 +37,8 @@ public class EucaRenderInfo extends JDimensionSpecialEffects {
             poseStack.pushPose();
 
             //START CORBA MOON
-            poseStack.mulPose(Axis.YP.rotationDegrees(-180F));
-            poseStack.mulPose(Axis.XP.rotationDegrees(-24000F));
-            renderSun(20F, 1F, poseStack, CORBA_MOON_LOCATION);
+            poseStack.mulPose(Axis.XP.rotationDegrees(90F));
+            renderSun(40F, 1F, poseStack, CORBA_MOON_LOCATION);
             poseStack.popPose();
 
         return true;

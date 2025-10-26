@@ -47,17 +47,16 @@ public class CorbaRenderInfo extends JDimensionSpecialEffects {
             //START BOIL MOON
             posestack.pushPose();
             posestack.mulPose(Axis.YP.rotationDegrees(20F));
-            posestack.mulPose(Axis.ZP.rotationDegrees(-20));
-            renderSun(10F, 1F, posestack, BOIL_MOON_LOCATION);
+            posestack.mulPose(Axis.ZP.rotationDegrees(-30));
+            renderSun(15F, 1F, posestack, BOIL_MOON_LOCATION);
             posestack.popPose();
 
             //START EUCA MOON
             posestack.pushPose();
-            posestack.mulPose(Axis.YP.rotationDegrees(-90.0F));
-            posestack.mulPose(Axis.XP.rotationDegrees(360F));
+            posestack.mulPose(Axis.YP.rotationDegrees(-80.0F));
             posestack.mulPose(Axis.ZP.rotationDegrees(-10));
 
-            renderSun(25F, 1F, posestack, EUCA_MOON_LOCATION);
+            renderSun(50F, 1F, posestack, EUCA_MOON_LOCATION);
             posestack.popPose();
 
         return true;

@@ -65,7 +65,7 @@ public class ModEvents {
                 //maybe add a config if falling will change dim
                 if(player.getY() <= serverLevel.getMinY()) {
                     if(serverLevel.dimension() == Dimensions.EUCA) {
-                        entityFell(player, Dimensions.OVERWORLD);
+                        entityFell(player, Dimensions.CORBA);
                     }
                     if(serverLevel.dimension() == Dimensions.CLOUDIA) {
                         entityFell(player, Dimensions.TERRANIA);

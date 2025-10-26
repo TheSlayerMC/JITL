@@ -44,7 +44,7 @@ public class CloudiaRenderInfo extends JDimensionSpecialEffects {
 
         poseStack.pushPose();
         poseStack.mulPose(Axis.ZP.rotationDegrees(-270));
-        renderSun(30F, 1F, poseStack, SUN_LOCATION);
+        renderSun(60F, 1F, poseStack, SUN_LOCATION);
         poseStack.popPose();
         return true;
     }

@@ -6,7 +6,6 @@ import com.mojang.blaze3d.systems.RenderPass;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.textures.GpuTextureView;
 import com.mojang.blaze3d.vertex.*;
-import com.mojang.math.Axis;
 import net.jitl.client.render.world.clouds.JCloudRenderer;
 import net.minecraft.client.Camera;
 import net.minecraft.client.CloudStatus;
@@ -76,36 +75,23 @@ public abstract class JDimensionSpecialEffects extends DimensionSpecialEffects {
 
     public void renderSun(float size, float alpha, PoseStack poseStack, ResourceLocation tex) {
         AbstractTexture texture = getTexture(tex);
-        if(texture != null) {
-            Matrix4fStack matrix4fstack = RenderSystem.getModelViewStack();
-            matrix4fstack.pushMatrix();
-            matrix4fstack.mul(poseStack.last().pose());
-            matrix4fstack.translate(0.0F, 100.0F, 0.0F);
-            matrix4fstack.scale(30.0F, 1.0F, 30.0F);
-            GpuBufferSlice gpubufferslice = RenderSystem.getDynamicUniforms().writeTransform(matrix4fstack, new Vector4f(1.0F, 1.0F, 1.0F, alpha), new Vector3f(), new Matrix4f(), 0.0F);
-            GpuTextureView gputextureview = Minecraft.getInstance().getMainRenderTarget().getColorTextureView();
-            GpuTextureView gputextureview1 = Minecraft.getInstance().getMainRenderTarget().getDepthTextureView();
-            GpuBuffer gpubuffer = this.quadIndices.getBuffer(6);
+        Matrix4fStack matrix4fstack = RenderSystem.getModelViewStack();
+        matrix4fstack.pushMatrix();
+        matrix4fstack.mul(poseStack.last().pose());
+        GpuBufferSlice gpubufferslice = RenderSystem.getDynamicUniforms().writeTransform(matrix4fstack, new Vector4f(alpha, alpha, alpha, alpha), new Vector3f(), new Matrix4f(), 0.0F);
+        GpuBuffer gpubuffer = this.quadIndices.getBuffer(6);
 
-            try (RenderPass renderpass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(() -> "Sky sun", gputextureview, OptionalInt.empty(), gputextureview1, OptionalDouble.empty())) {
-                renderpass.setPipeline(RenderPipelines.CELESTIAL);
-                RenderSystem.bindDefaultUniforms(renderpass);
-                renderpass.setUniform("DynamicTransforms", gpubufferslice);
-                renderpass.bindSampler("Sampler0", texture.getTextureView());
-
-                Matrix4f matrix4f = poseStack.last().pose();
-                poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
-                float f = Mth.sin(0) < 0.0F ? 180.0F : 0.0F;
-                poseStack.mulPose(Axis.ZP.rotationDegrees(f));
-                poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
-                renderpass.setVertexBuffer(0, buildSunQuad(matrix4f, size, alpha));
-
-                renderpass.setIndexBuffer(gpubuffer, this.quadIndices.type());
-                renderpass.drawIndexed(0, 0, 6, 1);
-            }
-
-            matrix4fstack.popMatrix();
+        try (RenderPass renderpass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(() -> "Journey Sun", Minecraft.getInstance().getMainRenderTarget().getColorTextureView(), OptionalInt.empty(), Minecraft.getInstance().getMainRenderTarget().getDepthTextureView(), OptionalDouble.empty())) {
+            renderpass.setPipeline(RenderPipelines.CELESTIAL);
+            RenderSystem.bindDefaultUniforms(renderpass);
+            renderpass.setUniform("DynamicTransforms", gpubufferslice);
+            renderpass.bindSampler("Sampler0", texture.getTextureView());
+            Matrix4f matrix4f = poseStack.last().pose();
+            renderpass.setVertexBuffer(0, buildSunQuad(matrix4f, size, alpha));
+            renderpass.setIndexBuffer(gpubuffer, this.quadIndices.type());
+            renderpass.drawIndexed(0, 0, 6, 1);
         }
+        matrix4fstack.popMatrix();
     }
 
     private GpuBuffer buildSunQuad(Matrix4f matrix4f, float size, float alpha) {

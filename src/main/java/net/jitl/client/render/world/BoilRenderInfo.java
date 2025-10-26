@@ -47,25 +47,24 @@ public class BoilRenderInfo extends JDimensionSpecialEffects {
 
         //START SUN
         posestack.pushPose();
-        posestack.mulPose(Axis.YP.rotationDegrees(-90.0F));
-        posestack.mulPose(Axis.XP.rotationDegrees(360F));
-        renderSun(80F, 1F, posestack, SUN_LOCATION);
+        posestack.mulPose(Axis.XP.rotationDegrees(45F));
+        renderSun(120F, 1F, posestack, SUN_LOCATION);
         posestack.popPose();
 
 
         //START CORBA MOON
         posestack.pushPose();
-        posestack.mulPose(Axis.YP.rotationDegrees(20F));
-        posestack.mulPose(Axis.ZP.rotationDegrees(-90));
+        posestack.mulPose(Axis.YP.rotationDegrees(30F));
+        posestack.mulPose(Axis.ZP.rotationDegrees(90));
+        posestack.mulPose(Axis.XP.rotationDegrees(100));
         renderSun(3F, 1F, posestack, CORBA_MOON_LOCATION);
         posestack.popPose();
 
         //START EUCA MOON
         posestack.pushPose();
         posestack.mulPose(Axis.YP.rotationDegrees(120F));
-        posestack.mulPose(Axis.ZP.rotationDegrees(-30));
-        posestack.mulPose(Axis.XP.rotationDegrees(-30));
-
+        posestack.mulPose(Axis.ZP.rotationDegrees(-10));
+        posestack.mulPose(Axis.XP.rotationDegrees(90));
         renderSun(6F, 1F, posestack, EUCA_MOON_LOCATION);
         posestack.popPose();
         return true;

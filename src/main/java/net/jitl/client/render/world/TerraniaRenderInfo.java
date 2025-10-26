@@ -39,15 +39,14 @@ public class TerraniaRenderInfo extends JDimensionSpecialEffects {
     @Override
     public boolean renderSky(LevelRenderState levelRenderState, SkyRenderState skyRenderState, Matrix4f modelViewMatrix, Runnable setupFog) {
         setupFog.run();
-            PoseStack poseStack = new PoseStack();
-            renderSky(CLOUDIA_SKY_LOCATION, 2F);
+        PoseStack poseStack = new PoseStack();
+        renderSky(CLOUDIA_SKY_LOCATION, 2F);
 
-            //START CLOUDIA MOON
-            poseStack.pushPose();
-            poseStack.mulPose(Axis.YP.rotationDegrees(20F));
-            poseStack.mulPose(Axis.ZP.rotationDegrees(-90));
-            renderSun(40F, 1F,  poseStack, MOON_LOCATION);
-            poseStack.popPose();
+        //START CLOUDIA MOON
+        poseStack.pushPose();
+        poseStack.mulPose(Axis.XP.rotationDegrees(180F));
+        renderSun(80F, 1F,  poseStack, MOON_LOCATION);
+        poseStack.popPose();
 
         return true;
     }
