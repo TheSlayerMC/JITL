@@ -1,10 +1,7 @@
 package net.jitl.client.render;
 
 import net.jitl.client.JModelLayers;
-import net.jitl.client.model.AnimatedMonsterModel;
-import net.jitl.client.model.FrozenTrollModel;
-import net.jitl.client.model.JBoatModel;
-import net.jitl.client.model.ShiverwolfModel;
+import net.jitl.client.model.*;
 import net.jitl.client.render.block.*;
 import net.jitl.client.render.entity.euca.CrypianRenderer;
 import net.jitl.client.render.entity.euca.EucaHopperRenderer;
@@ -110,8 +107,8 @@ public class RenderEntitys {
                 "corba/swamp_fly_3"));
 
         event.registerBlockEntityRenderer(JBlockEntities.ROCKITE.get(), RockiteSpawnerRenderer::new);
-        event.registerBlockEntityRenderer(JBlockEntities.OBELISK.get(), con -> new ObeliskRenderer());
-        event.registerBlockEntityRenderer(JBlockEntities.SENTERIAN_ALTAR.get(), con -> new SenterianAltarRenderer());
+        event.registerBlockEntityRenderer(JBlockEntities.OBELISK.get(), con -> new ObeliskRenderer<>());
+        event.registerBlockEntityRenderer(JBlockEntities.SENTERIAN_ALTAR.get(), con -> new SenterianAltarRenderer<>());
         event.registerBlockEntityRenderer(JBlockEntities.JCHEST.get(), JChestRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.PEDESTAL.get(), PedestalRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.GOLD_BOT_SPAWNER.get(), JSpawnerRenderer::new);
@@ -158,6 +155,9 @@ public class RenderEntitys {
         event.registerLayerDefinition(JModelLayers.FROZEN_BOAT, BoatModel::createBoatModel);
         event.registerLayerDefinition(JModelLayers.TERRANIA_BOAT, BoatModel::createBoatModel);
         event.registerLayerDefinition(JModelLayers.BURNED_BOAT, BoatModel::createBoatModel);
+
+        event.registerLayerDefinition(JModelLayers.ITEM_MODEL, JItemModel::createBodyLayer);
+
     }
 
     @SubscribeEvent

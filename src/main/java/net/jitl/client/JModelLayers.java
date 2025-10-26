@@ -3,10 +3,7 @@ package net.jitl.client;
 import com.google.common.collect.Sets;
 import net.jitl.common.entity.base.JBoat;
 import net.jitl.core.init.JITL;
-import net.minecraft.client.model.WolfModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
 
 import java.util.Set;
 
@@ -21,6 +18,7 @@ public class JModelLayers {
     public static final ModelLayerLocation SHIVERWOLF_MODEL_LAYER = register("shiverwolf");
     public static final ModelLayerLocation SHIVERWOLF_BABY_MODEL_LAYER = register("shiverwolf_baby");
     public static final ModelLayerLocation SHIVERWOLF_ARMOR_LAYER = register("shiverwolf_armor");
+    public static final ModelLayerLocation ITEM_MODEL = register("item_model");
     public static final ModelLayerLocation BROWN_EUCA_BOAT = createBoatModelName(JBoat.Type.BROWN_EUCA);
     public static final ModelLayerLocation GOLD_EUCA_BOAT = createBoatModelName(JBoat.Type.GOLD_EUCA);
     public static final ModelLayerLocation CLOUDIA_BOAT = createBoatModelName(JBoat.Type.CLOUDIA);

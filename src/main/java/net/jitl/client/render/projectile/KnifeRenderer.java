@@ -2,7 +2,7 @@ package net.jitl.client.render.projectile;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.jitl.client.render.projectile.state.KnifeRenderState;
+import net.jitl.client.render.projectile.state.JThrownItemRenderState;
 import net.jitl.common.entity.projectile.KnifeEntity;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
-public class KnifeRenderer<T extends KnifeEntity> extends EntityRenderer<T, KnifeRenderState> {
+public class KnifeRenderer<T extends KnifeEntity> extends EntityRenderer<T, JThrownItemRenderState> {
     private final Random random = new Random();
     private final ItemModelResolver renderEntity;
 
@@ -31,9 +31,9 @@ public class KnifeRenderer<T extends KnifeEntity> extends EntityRenderer<T, Knif
     }
 
     @Override
-    public void submit(KnifeRenderState entityIn, PoseStack matrixStackIn, SubmitNodeCollector nodeCollector, CameraRenderState cameraRenderState) {
+    public void submit(JThrownItemRenderState entityIn, PoseStack matrixStackIn, SubmitNodeCollector nodeCollector, CameraRenderState cameraRenderState) {
         matrixStackIn.pushPose();
-        ItemStack itemstack = entityIn.knife;
+        ItemStack itemstack = entityIn.item;
         int i = itemstack.isEmpty() ? 187 : Item.getId(itemstack.getItem()) + itemstack.getDamageValue();
         this.random.setSeed(i);
 
@@ -42,17 +42,20 @@ public class KnifeRenderer<T extends KnifeEntity> extends EntityRenderer<T, Knif
         matrixStackIn.mulPose(Axis.YP.rotationDegrees(Mth.lerp(entityIn.partialTick, entityIn.yRot, entityIn.yRot) - 90.0F));
         matrixStackIn.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(entityIn.partialTick, entityIn.xRot, entityIn.xRot) + 90.0F));
 
-        if (!entityIn.inGround) {
+        if(!entityIn.inGround)
             matrixStackIn.mulPose(Axis.ZP.rotation(f1));
-        }
-        ItemStackRenderState item = entityIn.item;
+
+        ItemStackRenderState item = entityIn.renderState;
+        float scale = 1.0F;
+
+        matrixStackIn.scale(scale, scale, scale);
+        matrixStackIn.translate(0.09375F, 0.0, 0);
         item.submit(matrixStackIn, nodeCollector, entityIn.lightCoords, OverlayTexture.NO_OVERLAY, 0);
-        matrixStackIn.translate(0.0, 0.0, 0.09375F);
         matrixStackIn.popPose();
     }
 
     @Override
-    public void extractRenderState(T e, KnifeRenderState s, float f) {
+    public void extractRenderState(T e, JThrownItemRenderState s, float f) {
         super.extractRenderState(e, s, f);
         s.tick = e.tickCount;
         s.xRot = e.xRotO;
@@ -60,13 +63,14 @@ public class KnifeRenderer<T extends KnifeEntity> extends EntityRenderer<T, Knif
         s.level = e.level();
         s.inGround = e.isInGround();
         s.id = e.getId();
-        s.knife = e.getItem();
         ItemStackRenderState itemstackrenderstate = new ItemStackRenderState();
-        this.renderEntity.updateForNonLiving(itemstackrenderstate, e.getItem(), ItemDisplayContext.GROUND, e);
+        this.renderEntity.updateForTopItem(itemstackrenderstate, e.getItem(), ItemDisplayContext.GROUND, e.level(), null, (int)e.blockPosition().asLong());
+        s.item = e.getItem();
+        s.renderState = itemstackrenderstate;
     }
 
     @Override
-    public @NotNull KnifeRenderState createRenderState() {
-        return new KnifeRenderState();
+    public @NotNull JThrownItemRenderState createRenderState() {
+        return new JThrownItemRenderState();
     }
 }

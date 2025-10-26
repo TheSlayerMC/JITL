@@ -52,7 +52,7 @@ public class Mage extends JVillagerEntity {
             new CurrencyForItemsTrade(JItems.STAFF_BASE, 1, JItems.BOTTLE_OF_ESSENCIA.get(), 8, JItems.STAFF_OF_ESSENCIA, 1, 99, 5),
             new CurrencyForItemsTrade(JItems.STAFF_BASE, 1, JItems.YELLOW_GEM.get(), 10, JItems.WIZARDS_STAR, 1, 99, 5),
             new CurrencyForItemsTrade(JItems.STAFF_BASE, 1, JItems.BLUE_GEM.get(), 10, JItems.STAFF_OF_ENLIGHTENMENT, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.GREEN_GEM, 1, JItems.STAFF_OF_GREENPACE.get(), 10, JItems.STAFF_OF_CONJURING, 1, 99, 5),
+            new CurrencyForItemsTrade(JItems.STAFF_BASE, 1, JItems.STAFF_OF_GREENPACE.get(), 1, JItems.STAFF_OF_CONJURING, 1, 99, 5),
             new CurrencyForItemsTrade(JItems.STAFF_BASE, 1, Items.ENDER_PEARL, 64, JItems.TELEPORTATION_STAFF, 1, 99, 5)
     }));
 

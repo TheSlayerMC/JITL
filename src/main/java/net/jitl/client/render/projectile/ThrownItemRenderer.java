@@ -1,11 +1,12 @@
 package net.jitl.client.render.projectile;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.jitl.client.render.projectile.state.JThrownItemRenderState;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.state.ThrownItemRenderState;
 import net.minecraft.client.renderer.item.ItemModelResolver;
+import net.minecraft.client.renderer.item.ItemStackRenderState;
 import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
@@ -14,7 +15,7 @@ import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.item.ItemDisplayContext;
 import org.jetbrains.annotations.NotNull;
 
-public class ThrownItemRenderer<T extends Entity & ItemSupplier> extends EntityRenderer<T, ThrownItemRenderState> {
+public class ThrownItemRenderer<T extends Entity & ItemSupplier> extends EntityRenderer<T, JThrownItemRenderState> {
 
    private final float scale;
    private final boolean fullBright;
@@ -36,22 +37,34 @@ public class ThrownItemRenderer<T extends Entity & ItemSupplier> extends EntityR
       return this.fullBright ? 15 : super.getBlockLightLevel(entity, pos);
    }
 
-   public void extractRenderState(T p_364505_, ThrownItemRenderState p_363251_, float p_362608_) {
-      super.extractRenderState(p_364505_, p_363251_, p_362608_);
-      this.itemModelResolver.updateForNonLiving(p_363251_.item, p_364505_.getItem(), ItemDisplayContext.GROUND, p_364505_);
-   }
+    @Override
+    public void submit(JThrownItemRenderState entityIn, PoseStack matrixStackIn, SubmitNodeCollector nodeCollector, CameraRenderState cameraRenderState) {
+        matrixStackIn.pushPose();
+
+        matrixStackIn.mulPose(cameraRenderState.orientation);
+
+        ItemStackRenderState item = entityIn.renderState;
+        matrixStackIn.scale(scale, scale, scale);
+        item.submit(matrixStackIn, nodeCollector, entityIn.lightCoords, OverlayTexture.NO_OVERLAY, 0);
+        matrixStackIn.popPose();
+    }
+
+    @Override
+    public void extractRenderState(T e, JThrownItemRenderState s, float f) {
+        super.extractRenderState(e, s, f);
+        s.tick = e.tickCount;
+        s.xRot = e.xRotO;
+        s.yRot = e.yRotO;
+        s.level = e.level();
+        s.id = e.getId();
+        s.item = e.getItem();
+        ItemStackRenderState itemstackrenderstate = new ItemStackRenderState();
+        this.itemModelResolver.updateForNonLiving(itemstackrenderstate, e.getItem(), ItemDisplayContext.GROUND, e);
+        s.renderState = itemstackrenderstate;
+    }
 
    @Override
-   public void submit(ThrownItemRenderState entity, @NotNull PoseStack matrixStack, SubmitNodeCollector buffer, CameraRenderState cameraRenderState) {
-      matrixStack.pushPose();
-      matrixStack.scale(this.scale, this.scale, this.scale);
-      matrixStack.mulPose(cameraRenderState.orientation);
-      entity.item.submit(matrixStack, buffer, entity.lightCoords, OverlayTexture.NO_OVERLAY, entity.outlineColor);
-      matrixStack.popPose();
-   }
-
-   @Override
-   public ThrownItemRenderState createRenderState() {
-      return new ThrownItemRenderState();
+   public JThrownItemRenderState createRenderState() {
+      return new JThrownItemRenderState();
    }
 }

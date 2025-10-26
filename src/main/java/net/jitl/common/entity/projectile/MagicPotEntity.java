@@ -3,9 +3,6 @@ package net.jitl.common.entity.projectile;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
 import net.jitl.core.init.internal.JSounds;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -29,7 +26,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class MagicPotEntity extends AbstractArrow implements ItemSupplier {
-    private static final EntityDataAccessor<ItemStack> STACK = SynchedEntityData.defineId(MagicPotEntity.class, EntityDataSerializers.ITEM_STACK);
+    private static final ItemStack DEFAULT_ARROW_STACK = new ItemStack(JItems.MAGIC_POT_OF_DESTRUCTION.get());
 
     private float velocityMultiplier;
     private double rangeAddend;
@@ -40,11 +37,9 @@ public class MagicPotEntity extends AbstractArrow implements ItemSupplier {
     private int currentBounces;
     private int maxBounces;
     public int soundTickCount;
-    private static final ItemStack DEFAULT_ARROW_STACK = new ItemStack(JItems.ESSENCE_ARROW.get());
 
     public MagicPotEntity(LivingEntity shooter, Level worldIn, int maxBounces, float damage, @Nullable ItemStack weapon) {
         super(JEntities.MAGIC_POT_TYPE.get(), shooter, worldIn, DEFAULT_ARROW_STACK, weapon);
-        setStack(new ItemStack(JItems.MAGIC_POT_OF_DESTRUCTION.get()));
         this.setSoundEvent(JSounds.BOTTLE_PLUG.get());
         this.maxBounces = maxBounces;
         setBaseDamage(damage);
@@ -128,7 +123,7 @@ public class MagicPotEntity extends AbstractArrow implements ItemSupplier {
                 this.soundTickCount++;
             }
         }
-        if(getStack().isEmpty()) {
+        if(getItem().isEmpty()) {
             level().playSound(null, blockPosition(), SoundEvents.ITEM_BREAK.value(), SoundSource.AMBIENT, 1.0F, 1.0F);
             discard();
         }
@@ -157,7 +152,7 @@ public class MagicPotEntity extends AbstractArrow implements ItemSupplier {
                 if(level() instanceof ServerLevel level) {
 
                     if (getOwner() instanceof ServerPlayer player) {
-                        getStack().hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+                        getItem().hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                     }
                     level().explode(this, position().x, position().y, position().z, 0.5F, Level.ExplosionInteraction.BLOCK);
 
@@ -193,7 +188,7 @@ public class MagicPotEntity extends AbstractArrow implements ItemSupplier {
     @Override
     public void addAdditionalSaveData(ValueOutput nbt) {
         super.addAdditionalSaveData(nbt);
-        nbt.store("stack", ItemStack.CODEC, getStack());
+        nbt.store("stack", ItemStack.CODEC, getItem());
         nbt.putInt("bounces", currentBounces);
         nbt.putInt("maxBounces", maxBounces);
         nbt.putFloat("velocityMultiplier", velocityMultiplier);
@@ -204,26 +199,16 @@ public class MagicPotEntity extends AbstractArrow implements ItemSupplier {
     @Override
     public void readAdditionalSaveData(ValueInput nbt) {
         super.readAdditionalSaveData(nbt);
-        this.setStack(nbt.read("stack", ItemStack.CODEC).orElse(this.getDefaultPickupItem()));
-        if (getStack().isEmpty()) remove(RemovalReason.DISCARDED);
+        nbt.read("stack", ItemStack.CODEC).orElse(this.getDefaultPickupItem());
         currentBounces = nbt.getIntOr("bounces", 0);
         maxBounces = nbt.getIntOr("maxBounces", 0);
         velocityMultiplier = nbt.getFloatOr("velocityMultiplier", 0F);
         rangeAddend = nbt.getDoubleOr("rangeAddend", 0D);
         flameAddend = nbt.getIntOr("flameAddend", 0);
     }
-
-    private void setStack(ItemStack stack) {
-        this.getEntityData().set(STACK, stack);
-    }
-
-    private ItemStack getStack() {
-        return this.getEntityData().get(STACK);
-    }
-
     @Override
     protected @NotNull ItemStack getPickupItem() {
-        return getStack().copy();
+        return getItem().copy();
     }
 
     @Override
@@ -233,19 +218,6 @@ public class MagicPotEntity extends AbstractArrow implements ItemSupplier {
 
     @Override
     public @NotNull ItemStack getItem() {
-        ItemStack stack = getStack();
-        return stack.isEmpty() ? new ItemStack(JItems.PIERCER.get()) : stack;
-    }
-
-    @Override
-    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
-        this.getEntityData().set(STACK, ItemStack.EMPTY);
-    }
-
-    @Override
-    public void onSyncedDataUpdated(@NotNull EntityDataAccessor<?> key) {
-        if(key == STACK)
-            getStack().setEntityRepresentation(this);
-        super.onSyncedDataUpdated(key);
+        return new ItemStack(JItems.MAGIC_POT_OF_DESTRUCTION.get());
     }
 }

@@ -1,4 +1,4 @@
-package net.jitl.common.world;
+package net.jitl.common.event;
 
 import net.jitl.common.capability.essence.PlayerEssence;
 import net.jitl.common.capability.player.Portal;
@@ -7,12 +7,10 @@ import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JAttributes;
 import net.jitl.core.init.internal.JDataAttachments;
-import net.jitl.core.init.internal.JDimension;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.portal.TeleportTransition;
@@ -21,10 +19,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import org.spongepowered.asm.mixin.Unique;
 
-import javax.annotation.Nullable;
-import java.awt.*;
 import java.util.Objects;
 
 @EventBusSubscriber(modid = JITL.MOD_ID)
@@ -65,7 +60,7 @@ public class ModEvents {
                 //maybe add a config if falling will change dim
                 if(player.getY() <= serverLevel.getMinY()) {
                     if(serverLevel.dimension() == Dimensions.EUCA) {
-                        entityFell(player, Dimensions.CORBA);
+                        entityFell(player, Dimensions.OVERWORLD);
                     }
                     if(serverLevel.dimension() == Dimensions.CLOUDIA) {
                         entityFell(player, Dimensions.TERRANIA);

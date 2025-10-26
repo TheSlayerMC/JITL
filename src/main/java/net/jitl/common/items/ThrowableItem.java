@@ -44,6 +44,7 @@ public class ThrowableItem extends JItem {
             Projectile projectile = projectileFactory.apply(worldIn, playerIn);
             projectile.shootFromRotation(playerIn, playerIn.getXRot(), playerIn.getYRot(), 0.0F, 1.5F, 1.0F);
             worldIn.addFreshEntity(projectile);
+            projectile.setPos(playerIn.getX(), playerIn.getEyeY(), playerIn.getZ());
 
             if(!playerIn.isCreative()) {
                 itemstack.shrink(1);
