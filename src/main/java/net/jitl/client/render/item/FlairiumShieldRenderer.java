@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.model.ShieldModel;
 import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.special.SpecialModelRenderer;
@@ -39,9 +40,9 @@ public class FlairiumShieldRenderer implements SpecialModelRenderer<DataComponen
     public void submit(@Nullable DataComponentMap typedDataComponents, @NotNull ItemDisplayContext itemDisplayContext, PoseStack pose, SubmitNodeCollector submitNodeCollector, int i, int i1, boolean b, int i2) {
         pose.pushPose();
         pose.scale(1.0F, -1.0F, -1.0F);
-        Material material = new Material(Sheets.SHIELD_SHEET, JITL.rl("textures/shield/" + "flairium" + "_shield.png"));
+        Material material = new Material(Sheets.SHIELD_SHEET, JITL.rl("entity/shield/flairium_shield"));
         submitNodeCollector.submitModelPart(this.model.handle(), pose, this.model.renderType(material.atlasLocation()), i, i1, this.materials.get(material), false, false,-1, null, i2 );
-        submitNodeCollector.submitModelPart(this.model.plate(), pose, this.model.renderType(material.atlasLocation()), i, i1, this.materials.get(material), false, b, -1, null, i2);
+        submitNodeCollector.submitModelPart(this.model.plate(), pose, material.renderType(RenderType::entityCutout), i, i1, this.materials.get(material), false, b, -1, null, i2);
         pose.popPose();
     }
 
