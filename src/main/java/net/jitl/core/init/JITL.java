@@ -32,7 +32,7 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(JITL.MOD_ID)
 public class JITL {
-    public static final String MOD_ID = "jitl", MOD_VERSION = "2.2.5", MOD_NAME = "Journey Into the Light";
+    public static final String MOD_ID = "jitl", MOD_VERSION = "2.2.6", MOD_NAME = "Journey Into the Light";
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
     public static final boolean DEV_MODE = true;
 
