@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "d": "minecraft:obsidian"
+  },
+  "pattern": [
+    "d",
+    "d"
+  ],
+  "result": {
+    "count": 4,
+    "id": "jitl:obsidian_stick"
+  }
+}

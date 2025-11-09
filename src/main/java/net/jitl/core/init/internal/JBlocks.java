@@ -133,6 +133,7 @@ public class JBlocks {
     public static final ArrayList<String> AXE_BLOCKS = new ArrayList<>();
     public static final ArrayList<String> SHOVEL_BLOCKS = new ArrayList<>();
     public static final ArrayList<String> HOE_BLOCKS = new ArrayList<>();
+    public static final ArrayList<String> PLANKS = new ArrayList<>();
 
     public static final DeferredBlock<Block> IRIDIUM_ORE = register("iridium_ore", "Iridium Ore", JBlockProperties.STONE);
     public static final DeferredBlock<Block> IRIDIUM_BLOCK = registerFuelBlock("iridium_block", "Iridium Block", Block::new, JBlockProperties.STONE, 16000);
@@ -977,6 +978,10 @@ public class JBlocks {
         if(props == JBlockProperties.WOOD || props == JBlockProperties.CLOUD || props == JBlockProperties.VINE || props == JBlockProperties.CACTUS || props == JBlockProperties.LADDER || props == JBlockProperties.CAMPFIRE || props == JBlockProperties.BUTTON || props == JBlockProperties.DOOR || props == JBlockProperties.MUSHROOM_BLOCK) {
             addAxeableBlocks(name);
         }
+
+        if(name.contains("plank")) {
+            addPlankToList(name);
+        }
     }
 
     private static void checkForShovelableBlocks(BlockBehaviour.Properties props, String name) {
@@ -993,6 +998,10 @@ public class JBlocks {
 
     private static void addAxeableBlocks(String name) {
         AXE_BLOCKS.add(name);
+    }
+
+    private static void addPlankToList(String name) {
+        PLANKS.add(name);
     }
 
     private static void addPickaxeableBlocks(String name) {

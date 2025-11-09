@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "c": "minecraft:coal",
+    "p": "jitl:frozen_planks",
+    "s": "minecraft:stick"
+  },
+  "pattern": [
+    " s ",
+    "scs",
+    "ppp"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jitl:bitterwood_campfire"
+  }
+}

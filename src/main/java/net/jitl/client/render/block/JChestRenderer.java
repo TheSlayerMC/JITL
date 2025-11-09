@@ -50,7 +50,7 @@ public class JChestRenderer<T extends BlockEntity & LidBlockEntity> implements B
 
     public static final MaterialMapper CHEST_MAPPER = new MaterialMapper(Sheets.CHEST_SHEET, "models/block/chest");
 
-    public static final Material BOILING_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("boiling_chest"));
+    public static final Material BOILING_CHEST_LOCATION = new Material(Sheets.CHEST_SHEET, JITL.rl("models/block/chest/boiling_chest"));
     public static final Material BOILING_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("boiling_chest_left"));
     public static final Material BOILING_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("boiling_chest_right"));
 
@@ -150,7 +150,7 @@ public class JChestRenderer<T extends BlockEntity & LidBlockEntity> implements B
     }
 
     private static Material chooseMaterial(ChestType chestType, Material doubleMaterial, Material leftMaterial, Material rightMaterial) {
-        return switch (chestType) {
+        return switch(chestType) {
             case LEFT -> leftMaterial;
             case RIGHT -> rightMaterial;
             default -> doubleMaterial;

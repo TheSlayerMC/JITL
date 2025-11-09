@@ -101,6 +101,10 @@ public class JRecipeProvider extends RecipeProvider {
 
         addShapedRecipe(recipeConsumer, RecipeCategory.MISC, "d", "d", 'd', Blocks.OBSIDIAN, JItems.OBSIDIAN_STICK.get(), 4);
 
+        addShapedRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, " i ", "igi", " i ", 'i', JItems.IRIDIUM_NUGGET, 'g', Blocks.GLOWSTONE, JBlocks.IRIDIUM_LAMP.get(), 1);
+        addShapedRecipe(recipeConsumer, RecipeCategory.DECORATIONS, "i", "s", 'i', JItems.IRIDIUM_NUGGET, 's', Items.STICK, JItems.IRIDIUM_TORCH.get(), 4);
+        addShapedRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, " s ", "sis", "ppp", 'i', JItems.IRIDIUM_NUGGET, 's', Items.STICK, 'p',  ItemTags.PLANKS, JBlocks.IRIDIUM_CAMPFIRE.get(), 1);
+        addShapedRecipe(recipeConsumer, RecipeCategory.BUILDING_BLOCKS, " s ", "scs", "ppp", 'c', Items.COAL, 's', Items.STICK, 'p', JBlocks.FROZEN_PLANKS, JBlocks.BITTERWOOD_CAMPFIRE.get(), 1);
 
         add3x3Recipe(recipeConsumer, JItems.EUCA_PORTAL_GEM.get(), JBlocks.EUCA_PORTAL_FRAME.get(), 10);
         add3x3Recipe(recipeConsumer, JItems.DEPTHS_PORTAL_GEM.get(), JBlocks.DEPTHS_PORTAL_FRAME.get(), 12);
@@ -441,11 +445,6 @@ public class JRecipeProvider extends RecipeProvider {
     }
 
     public void addWoodType(RecipeOutput recipeConsumer, DeferredBlock<? extends Block> log, DeferredBlock<? extends Block> plank, DeferredBlock<? extends Block> stairs, DeferredBlock<? extends Block> slab, DeferredBlock<? extends Block> fence, DeferredBlock<? extends Block> gate, DeferredBlock<? extends Block> trapdoor, DeferredBlock<? extends Block> pressureplate, DeferredBlock<? extends Block> door, DeferredBlock<? extends Block> button, DeferredItem<Item> boat) {
-        addAxeRecipe(recipeConsumer, Items.STICK, plank.get(), Items.WOODEN_AXE, plank.get().getDescriptionId());
-        addPickaxeRecipe(recipeConsumer, Items.STICK, plank.get(), Items.WOODEN_PICKAXE, plank.get().getDescriptionId());
-        addShovelRecipe(recipeConsumer, Items.STICK, plank.get(), Items.WOODEN_SHOVEL, plank.get().getDescriptionId());
-        addSwordRecipe(recipeConsumer, Items.STICK, plank.get(), Items.WOODEN_SWORD, plank.get().getDescriptionId());
-        addHoeRecipe(recipeConsumer, Items.STICK, plank.get(), Items.WOODEN_HOE, plank.get().getDescriptionId());
         addBoatRecipe(recipeConsumer, plank.get(), boat.get());
         addStairRecipe(recipeConsumer, plank.get(), stairs.get());
         addSlabRecipe(recipeConsumer, plank.get(), slab.get());
@@ -454,7 +453,6 @@ public class JRecipeProvider extends RecipeProvider {
         addTrapdoorRecipe(recipeConsumer, plank.get(), trapdoor.get());
         addPressureplateRecipe(recipeConsumer, plank.get(), pressureplate.get());
         addDoorRecipe(recipeConsumer, plank.get(), door.get());
-        addStick(recipeConsumer, plank.get());
         planksFromLogs(recipeConsumer, plank.get(), log.get());
         buttonBuilder(recipeConsumer, button.get(), plank.get());
     }

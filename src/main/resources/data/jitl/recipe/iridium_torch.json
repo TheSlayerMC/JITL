@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "i": "jitl:iridium_nugget",
+    "s": "minecraft:stick"
+  },
+  "pattern": [
+    "i",
+    "s"
+  ],
+  "result": {
+    "count": 4,
+    "id": "jitl:iridium_torch"
+  }
+}

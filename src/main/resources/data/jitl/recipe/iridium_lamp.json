@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "g": "minecraft:glowstone",
+    "i": "jitl:iridium_nugget"
+  },
+  "pattern": [
+    " i ",
+    "igi",
+    " i "
+  ],
+  "result": {
+    "count": 1,
+    "id": "jitl:iridium_lamp"
+  }
+}

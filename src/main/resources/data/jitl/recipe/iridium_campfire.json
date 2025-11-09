@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "i": "jitl:iridium_nugget",
+    "p": "#minecraft:planks",
+    "s": "minecraft:stick"
+  },
+  "pattern": [
+    " s ",
+    "sis",
+    "ppp"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jitl:iridium_campfire"
+  }
+}
