@@ -31,6 +31,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -288,8 +289,8 @@ public class JBlocks {
     public static final DeferredBlock<JWallBlock> BOIL_COBBLESTONE_WALL = registerWallBlock("boil_cobblestone_wall", "Boiling Cobblestone Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> BOIL_COBBLESTONE_STAIRS = registerStairs("boil_cobblestone_stairs", "Boiling Cobblestone Stairs", BOIL_COBBLESTONE, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> BOIL_COBBLESTONE_SLAB = registerSlab("boil_cobblestone_slab", "Boiling Cobblestone Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> BOIL_COBBLESTONE_BUTTON = registerButton("boil_cobblestone_button", "Boiling Cobblestone Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> BOIL_COBBLESTONE_PRESSURE_PLATE = registerPressurePlate("boil_cobblestone_pressure_plate", "Boiling Cobblestone Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> BOIL_COBBLESTONE_BUTTON = registerButton("boil_cobblestone_button", "Boiling Cobblestone Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> BOIL_COBBLESTONE_PRESSURE_PLATE = registerPressurePlate("boil_cobblestone_pressure_plate", "Boiling Cobblestone Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> BOIL_COBBLESTONE_FENCE_GATE = registerFenceGate("boil_cobblestone_fence_gate", "Boiling Cobblestone Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> BOIL_COBBLESTONE_FENCE = registerFence("boil_cobblestone_fence", "Boiling Cobblestone Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<RotatedPillarBlock> BOIL_PILLAR = registerPillar("boil_pillar", "Boil Pillar", false, JBlockProperties.STONE);
@@ -297,40 +298,40 @@ public class JBlocks {
     public static final DeferredBlock<JWallBlock> BOIL_BRICK_WALL = registerWallBlock("boil_brick_wall", "Boil Brick Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> BOIL_BRICK_STAIRS = registerStairs("boil_brick_stairs", "Boil Brick Stairs", BOIL_BRICKS, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> BOIL_BRICK_SLAB = registerSlab("boil_brick_slab", "Boil Brick Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> BOIL_BRICK_BUTTON = registerButton("boil_brick_button", "Boil Brick Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> BOIL_BRICK_PRESSURE_PLATE = registerPressurePlate("boil_brick_pressure_plate", "Boil Brick Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> BOIL_BRICK_BUTTON = registerButton("boil_brick_button", "Boil Brick Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> BOIL_BRICK_PRESSURE_PLATE = registerPressurePlate("boil_brick_pressure_plate", "Boil Brick Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> BOIL_BRICK_FENCE_GATE = registerFenceGate("boil_brick_fence_gate", "Boil Brick Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> BOIL_BRICK_FENCE = registerFence("boil_brick_fence", "Boil Brick Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> BOIL_SQUARE_BRICKS = register("boil_square_bricks", "Boil Square Bricks", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> BOIL_SQUARE_BRICK_WALL = registerWallBlock("boil_square_brick_wall", "Boil Square Brick Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> BOIL_SQUARE_BRICK_STAIRS = registerStairs("boil_square_brick_stairs", "Boil Square Brick Stairs", BOIL_SQUARE_BRICKS, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> BOIL_SQUARE_BRICK_SLAB = registerSlab("boil_square_brick_slab", "Boil Square Brick Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> BOIL_SQUARE_BRICK_BUTTON = registerButton("boil_square_brick_button", "Boil Square Brick Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> BOIL_SQUARE_BRICK_PRESSURE_PLATE = registerPressurePlate("boil_square_brick_pressure_plate", "Boil Square Brick Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> BOIL_SQUARE_BRICK_BUTTON = registerButton("boil_square_brick_button", "Boil Square Brick Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> BOIL_SQUARE_BRICK_PRESSURE_PLATE = registerPressurePlate("boil_square_brick_pressure_plate", "Boil Square Brick Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> BOIL_SQUARE_BRICK_FENCE_GATE = registerFenceGate("boil_square_brick_fence_gate", "Boil Square Brick Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> BOIL_SQUARE_BRICK_FENCE = registerFence("boil_square_brick_fence", "Boil Square Brick Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> BOIL_SHINGLE = register("boil_shingle", "Boil Shingle", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> BOIL_SHINGLE_WALL = registerWallBlock("boil_shingle_wall", "Boil Shingle Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> BOIL_SHINGLE_STAIRS = registerStairs("boil_shingle_stairs", "Boil Shingle Stairs", BOIL_SHINGLE, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> BOIL_SHINGLE_SLAB = registerSlab("boil_shingle_slab", "Boil Shingle Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> BOIL_SHINGLE_BUTTON = registerButton("boil_shingle_button", "Boil Shingle Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> BOIL_SHINGLE_PRESSURE_PLATE = registerPressurePlate("boil_shingle_pressure_plate", "Boil Shingle Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> BOIL_SHINGLE_BUTTON = registerButton("boil_shingle_button", "Boil Shingle Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> BOIL_SHINGLE_PRESSURE_PLATE = registerPressurePlate("boil_shingle_pressure_plate", "Boil Shingle Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> BOIL_SHINGLE_FENCE_GATE = registerFenceGate("boil_shingle_fence_gate", "Boil Shingle Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> BOIL_SHINGLE_FENCE = registerFence("boil_shingle_fence", "Boil Shingle Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> BLAZIER_BRICKS = register("blazier_bricks", "Blazier Bricks", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> BLAZIER_BRICK_WALL = registerWallBlock("blazier_brick_wall", "Blazier Brick Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> BLAZIER_BRICK_STAIRS = registerStairs("blazier_brick_stairs", "Blazier Brick Stairs", BLAZIER_BRICKS, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> BLAZIER_BRICK_SLAB = registerSlab("blazier_brick_slab", "Blazier Brick Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> BLAZIER_BRICK_BUTTON = registerButton("blazier_brick_button", "Blazier Brick Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> BLAZIER_BRICK_PRESSURE_PLATE = registerPressurePlate("blazier_brick_pressure_plate", "Blazier Brick Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> BLAZIER_BRICK_BUTTON = registerButton("blazier_brick_button", "Blazier Brick Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> BLAZIER_BRICK_PRESSURE_PLATE = registerPressurePlate("blazier_brick_pressure_plate", "Blazier Brick Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> BLAZIER_BRICK_FENCE_GATE = registerFenceGate("blazier_brick_fence_gate", "Blazier Brick Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> BLAZIER_BRICK_FENCE = registerFence("blazier_brick_fence", "Blazier Brick Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> BLAZIER_METAL = register("blazier_metal", "Blazier Metal", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> BLAZIER_METAL_WALL = registerWallBlock("blazier_metal_wall", "Blazier Metal Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> BLAZIER_METAL_STAIRS = registerStairs("blazier_metal_stairs", "Blazier Metal Stairs", BLAZIER_METAL, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> BLAZIER_METAL_SLAB = registerSlab("blazier_metal_slab", "Blazier Metal Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> BLAZIER_METAL_BUTTON = registerButton("blazier_metal_button", "Blazier Metal Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> BLAZIER_METAL_PRESSURE_PLATE = registerPressurePlate("blazier_metal_pressure_plate", "Blazier Metal Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> BLAZIER_METAL_BUTTON = registerButton("blazier_metal_button", "Blazier Metal Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> BLAZIER_METAL_PRESSURE_PLATE = registerPressurePlate("blazier_metal_pressure_plate", "Blazier Metal Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> BLAZIER_METAL_FENCE_GATE = registerFenceGate("blazier_metal_fence_gate", "Blazier Metal Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> BLAZIER_METAL_FENCE = registerFence("blazier_metal_fence", "Blazier Metal Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> HELLWING_SPAWNER = register("hellwing_spawner", "Hellwing Spawner", HellwingSpawnerBlock::new, JBlockProperties.SPAWNER);
@@ -345,8 +346,8 @@ public class JBlocks {
     public static final DeferredBlock<JWallBlock> SCORCHED_RUBBLE_BRICK_WALL = registerWallBlock("scorched_rubble_brick_wall", "Scorched Rubble Brick Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> SCORCHED_RUBBLE_BRICK_STAIRS = registerStairs("scorched_rubble_brick_stairs", "Scorched Rubble Brick Stairs", SCORCHED_RUBBLE_BRICKS, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> SCORCHED_RUBBLE_BRICK_SLAB = registerSlab("scorched_rubble_brick_slab", "Scorched Rubble Brick Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> SCORCHED_RUBBLE_BRICK_BUTTON = registerButton("scorched_rubble_brick_button", "Scorched Rubble Brick Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> SCORCHED_RUBBLE_BRICK_PRESSURE_PLATE = registerPressurePlate("scorched_rubble_brick_pressure_plate", "Scorched Rubble Brick Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> SCORCHED_RUBBLE_BRICK_BUTTON = registerButton("scorched_rubble_brick_button", "Scorched Rubble Brick Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> SCORCHED_RUBBLE_BRICK_PRESSURE_PLATE = registerPressurePlate("scorched_rubble_brick_pressure_plate", "Scorched Rubble Brick Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> SCORCHED_RUBBLE_BRICK_FENCE_GATE = registerFenceGate("scorched_rubble_brick_fence_gate", "Scorched Rubble Brick Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> SCORCHED_RUBBLE_BRICK_FENCE = registerFence("scorched_rubble_brick_fence", "Scorched Rubble Brick Fence", false, JBlockProperties.STONE);
 
@@ -364,8 +365,8 @@ public class JBlocks {
     public static final DeferredBlock<JWallBlock> GOLDITE_COBBLESTONE_WALL = registerWallBlock("goldite_cobblestone_wall", "Goldite Cobblestone Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> GOLDITE_COBBLESTONE_STAIRS = registerStairs("goldite_cobblestone_stairs", "Goldite Cobblestone Stairs", GOLDITE_COBBLESTONE, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> GOLDITE_COBBLESTONE_SLAB = registerSlab("goldite_cobblestone_slab", "Goldite Cobblestone Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> GOLDITE_COBBLESTONE_BUTTON = registerButton("goldite_cobblestone_button", "Goldite Cobblestone Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> GOLDITE_COBBLESTONE_PRESSURE_PLATE = registerPressurePlate("goldite_cobblestone_pressure_plate", "Goldite Cobblestone Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> GOLDITE_COBBLESTONE_BUTTON = registerButton("goldite_cobblestone_button", "Goldite Cobblestone Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> GOLDITE_COBBLESTONE_PRESSURE_PLATE = registerPressurePlate("goldite_cobblestone_pressure_plate", "Goldite Cobblestone Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> GOLDITE_COBBLESTONE_FENCE_GATE = registerFenceGate("goldite_cobblestone_fence_gate", "Goldite Cobblestone Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> GOLDITE_COBBLESTONE_FENCE = registerFence("goldite_cobblestone_fence", "Goldite Cobblestone Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> EUCA_BRICK = register("euca_brick", "Euca Bricks", JBlockProperties.STONE);
@@ -416,8 +417,8 @@ public class JBlocks {
     public static final DeferredBlock<TrapDoorBlock> EUCA_GOLD_TRAP_DOOR = registerTrapDoor("euca_gold_trap_door", "Euca Gold Trap Door", true, JBlockProperties.DOOR);
     public static final DeferredBlock<StairBlock> EUCA_GOLD_STAIRS = registerStairs("euca_gold_stairs", "Euca Gold Plank Stairs", EUCA_GOLD_PLANKS, true, JBlockProperties.WOOD);
     public static final DeferredBlock<SlabBlock> EUCA_GOLD_SLAB = registerSlab("euca_gold_slab", "Euca Gold Plank Slab", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<ButtonBlock> EUCA_GOLD_BUTTON = registerButton("euca_gold_button", "Euca Gold Button", false, true, JBlockProperties.WOOD);
-    public static final DeferredBlock<PressurePlateBlock> EUCA_GOLD_PRESSURE_PLATE = registerPressurePlate("euca_gold_pressure_plate", "Euca Gold Pressure Plate", true, JBlockProperties.WOOD);
+    public static final DeferredBlock<JButtonBlock> EUCA_GOLD_BUTTON = registerButton("euca_gold_button", "Euca Gold Button", false, true, JBlockProperties.WOOD);
+    public static final DeferredBlock<JPressurePlateBlock> EUCA_GOLD_PRESSURE_PLATE = registerPressurePlate("euca_gold_pressure_plate", "Euca Gold Pressure Plate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<FenceGateBlock> EUCA_GOLD_FENCE_GATE = registerFenceGate("euca_gold_fence_gate", "Euca Gold Fence Gate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<JFenceBlock> EUCA_GOLD_FENCE = registerFence("euca_gold_fence", "Euca Gold Fence", true, JBlockProperties.WOOD);
     public static final DeferredBlock<Block> GOLDITE_PATH = registerPathBlock("goldite_path", "Goldite Path");
@@ -430,8 +431,8 @@ public class JBlocks {
     public static final DeferredBlock<TrapDoorBlock> EUCA_BROWN_TRAP_DOOR = registerTrapDoor("euca_brown_trap_door", "Euca Brown Trap Door", true, JBlockProperties.DOOR);
     public static final DeferredBlock<StairBlock> EUCA_BROWN_STAIRS = registerStairs("euca_brown_stairs", "Euca Brown Plank Stairs", EUCA_BROWN_PLANKS, true, JBlockProperties.WOOD);
     public static final DeferredBlock<SlabBlock> EUCA_BROWN_SLAB = registerSlab("euca_brown_slab", "Euca Brown Plank Slab", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<ButtonBlock> EUCA_BROWN_BUTTON = registerButton("euca_brown_button", "Euca Brown Button", true, true, JBlockProperties.BUTTON);
-    public static final DeferredBlock<PressurePlateBlock> EUCA_BROWN_PRESSURE_PLATE = registerPressurePlate("euca_brown_pressure_plate", "Euca Brown Pressure Plate", true, JBlockProperties.WOOD);
+    public static final DeferredBlock<JButtonBlock> EUCA_BROWN_BUTTON = registerButton("euca_brown_button", "Euca Brown Button", true, true, JBlockProperties.BUTTON);
+    public static final DeferredBlock<JPressurePlateBlock> EUCA_BROWN_PRESSURE_PLATE = registerPressurePlate("euca_brown_pressure_plate", "Euca Brown Pressure Plate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<FenceGateBlock> EUCA_BROWN_FENCE_GATE = registerFenceGate("euca_brown_fence_gate", "Euca Brown Fence Gate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<JFenceBlock> EUCA_BROWN_FENCE = registerFence("euca_brown_fence", "Euca Brown Fence", true, JBlockProperties.WOOD);
 
@@ -444,8 +445,8 @@ public class JBlocks {
     public static final DeferredBlock<JWallBlock> PERMAFROST_WALL = registerWallBlock("permafrost_wall", "Permafrost Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> PERMAFROST_STAIRS = registerStairs("permafrost_stairs", "Permafrost Stairs", PERMAFROST, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> PERMAFROST_SLAB = registerSlab("permafrost_slab", "Permafrost Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> PERMAFROST_BUTTON = registerButton("permafrost_button", "Permafrost Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> PERMAFROST_PRESSURE_PLATE = registerPressurePlate("permafrost_pressure_plate", "Permafrost Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> PERMAFROST_BUTTON = registerButton("permafrost_button", "Permafrost Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> PERMAFROST_PRESSURE_PLATE = registerPressurePlate("permafrost_pressure_plate", "Permafrost Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> PERMAFROST_FENCE_GATE = registerFenceGate("permafrost_fence_gate", "Permafrost Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> PERMAFROST_FENCE = registerFence("permafrost_fence", "Permafrost Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> CRUMBLED_PERMAFROST = registerTerrainBlock("crumbled_permafrost", "Crumbled Permafrost", JDirt::new, JBlockProperties.DIRT);
@@ -458,8 +459,8 @@ public class JBlocks {
     public static final DeferredBlock<TrapDoorBlock> FROZEN_TRAP_DOOR = registerTrapDoor("frozen_trap_door", "Frostwood Trap Door", true, JBlockProperties.DOOR);
     public static final DeferredBlock<StairBlock> FROZEN_STAIRS = registerStairs("frozen_stairs", "Frostwood Plank Stairs", EUCA_BROWN_PLANKS, true, JBlockProperties.WOOD);
     public static final DeferredBlock<SlabBlock> FROZEN_SLAB = registerSlab("frozen_slab", "Frostwood Plank Slab", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<ButtonBlock> FROZEN_BUTTON = registerButton("frozen_button", "Frostwood Button", true, true, JBlockProperties.BUTTON);
-    public static final DeferredBlock<PressurePlateBlock> FROZEN_PRESSURE_PLATE = registerPressurePlate("frozen_pressure_plate", "Frostwood Pressure Plate", true, JBlockProperties.WOOD);
+    public static final DeferredBlock<JButtonBlock> FROZEN_BUTTON = registerButton("frozen_button", "Frostwood Button", true, true, JBlockProperties.BUTTON);
+    public static final DeferredBlock<JPressurePlateBlock> FROZEN_PRESSURE_PLATE = registerPressurePlate("frozen_pressure_plate", "Frostwood Pressure Plate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<FenceGateBlock> FROZEN_FENCE_GATE = registerFenceGate("frozen_fence_gate", "Frostwood Fence Gate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<JFenceBlock> FROZEN_FENCE = registerFence("frozen_fence", "Frostwood Fence", true, JBlockProperties.WOOD);
     public static final DeferredBlock<Block> FROST_CRYSTAL_LARGE = registerAttachedCrossBlock("frost_crystal_large", "Frost Crystal", AttachedBlock::new, JBlockProperties.CRYSTAL);
@@ -482,24 +483,24 @@ public class JBlocks {
     public static final DeferredBlock<JWallBlock> PACKED_SNOW_BRICK_WALL = registerWallBlock("packed_snow_brick_wall", "Packed Snow Brick Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> PACKED_SNOW_BRICK_STAIRS = registerStairs("packed_snow_brick_stairs", "Packed Snow Brick Stairs", PACKED_SNOW_BRICKS, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> PACKED_SNOW_BRICK_SLAB = registerSlab("packed_snow_brick_slab", "Packed Snow Brick Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> PACKED_SNOW_BRICK_BUTTON = registerButton("packed_snow_brick_button", "Packed Snow Brick Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> PACKED_SNOW_BRICK_PRESSURE_PLATE = registerPressurePlate("packed_snow_brick_pressure_plate", "Packed Snow Brick Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> PACKED_SNOW_BRICK_BUTTON = registerButton("packed_snow_brick_button", "Packed Snow Brick Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> PACKED_SNOW_BRICK_PRESSURE_PLATE = registerPressurePlate("packed_snow_brick_pressure_plate", "Packed Snow Brick Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> PACKED_SNOW_BRICK_FENCE_GATE = registerFenceGate("packed_snow_brick_fence_gate", "Packed Snow Brick Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> PACKED_SNOW_BRICK_FENCE = registerFence("packed_snow_brick_fence", "Packed Snow Brick Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> PACKED_ICE_BRICKS = register("packed_ice_bricks", "Packed Ice Bricks", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> PACKED_ICE_BRICK_WALL = registerWallBlock("packed_ice_brick_wall", "Packed Ice Brick Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> PACKED_ICE_BRICK_STAIRS = registerStairs("packed_ice_brick_stairs", "Packed Ice Brick Stairs", PACKED_ICE_BRICKS, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> PACKED_ICE_BRICK_SLAB = registerSlab("packed_ice_brick_slab", "Packed Ice Brick Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> PACKED_ICE_BRICK_BUTTON = registerButton("packed_ice_brick_button", "Packed Ice Brick Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> PACKED_ICE_BRICK_PRESSURE_PLATE = registerPressurePlate("packed_ice_brick_pressure_plate", "Packed Ice Brick Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> PACKED_ICE_BRICK_BUTTON = registerButton("packed_ice_brick_button", "Packed Ice Brick Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> PACKED_ICE_BRICK_PRESSURE_PLATE = registerPressurePlate("packed_ice_brick_pressure_plate", "Packed Ice Brick Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> PACKED_ICE_BRICK_FENCE_GATE = registerFenceGate("packed_ice_brick_fence_gate", "Packed Ice Brick Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> PACKED_ICE_BRICK_FENCE = registerFence("packed_ice_brick_fence", "Packed Ice Brick Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> FROZEN_BRICKS = register("frozen_bricks", "Frozen Bricks", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> FROZEN_BRICK_WALL = registerWallBlock("frozen_brick_wall", "Frozen Brick Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> FROZEN_BRICK_STAIRS = registerStairs("frozen_brick_stairs", "Frozen Brick Stairs", FROZEN_BRICKS, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> FROZEN_BRICK_SLAB = registerSlab("frozen_brick_slab", "Frozen Brick Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> FROZEN_BRICK_BUTTON = registerButton("frozen_brick_button", "Frozen Brick Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> FROZEN_BRICK_PRESSURE_PLATE = registerPressurePlate("frozen_brick_pressure_plate", "Frozen Brick Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> FROZEN_BRICK_BUTTON = registerButton("frozen_brick_button", "Frozen Brick Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> FROZEN_BRICK_PRESSURE_PLATE = registerPressurePlate("frozen_brick_pressure_plate", "Frozen Brick Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> FROZEN_BRICK_FENCE_GATE = registerFenceGate("frozen_brick_fence_gate", "Frozen Brick Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> FROZEN_BRICK_FENCE = registerFence("frozen_brick_fence", "Frozen Brick Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> PERMAFROST_ROAD = registerPathBlock("permafrost_road", "Permafrost Road");
@@ -526,8 +527,8 @@ public class JBlocks {
     public static final DeferredBlock<JWallBlock> VOLCANIC_SANDSTONE_WALL = registerWallBlock("volcanic_sandstone_wall", "Volcanic Sandstone Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> VOLCANIC_SANDSTONE_STAIRS = registerStairs("volcanic_sandstone_stairs", "Volcanic Sandstone Stairs", VOLCANIC_SANDSTONE, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> VOLCANIC_SANDSTONE_SLAB = registerSlab("volcanic_sandstone_slab", "Volcanic Sandstone Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> VOLCANIC_SANDSTONE_BUTTON = registerButton("volcanic_sandstone_button", "Volcanic Sandstone Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> VOLCANIC_SANDSTONE_PRESSURE_PLATE = registerPressurePlate("volcanic_sandstone_pressure_plate", "Volcanic Sandstone Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> VOLCANIC_SANDSTONE_BUTTON = registerButton("volcanic_sandstone_button", "Volcanic Sandstone Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> VOLCANIC_SANDSTONE_PRESSURE_PLATE = registerPressurePlate("volcanic_sandstone_pressure_plate", "Volcanic Sandstone Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> VOLCANIC_SANDSTONE_FENCE_GATE = registerFenceGate("volcanic_sandstone_fence_gate", "Volcanic Sandstone Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> VOLCANIC_SANDSTONE_FENCE = registerFence("volcanic_sandstone_fence", "Volcanic Sandstone Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> SCORCHED_STALAGMITE_TINY = registerModeledBlock("scorched_stalagmite_tiny", "Scorched Stalagmite", JBlockStalagmite::new, JBlockProperties.STONE);
@@ -553,8 +554,8 @@ public class JBlocks {
     public static final DeferredBlock<TrapDoorBlock> BURNED_TRAP_DOOR = registerTrapDoor("burned_trap_door", "Burned Trap Door", true, JBlockProperties.DOOR);
     public static final DeferredBlock<StairBlock> BURNED_STAIRS = registerStairs("burned_stairs", "Burned Plank Stairs", BURNED_PLANKS, true, JBlockProperties.WOOD);
     public static final DeferredBlock<SlabBlock> BURNED_SLAB = registerSlab("burned_slab", "Burned Plank Slab", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<ButtonBlock> BURNED_BUTTON = registerButton("burned_button", "Burned Button", true, true, JBlockProperties.BUTTON);
-    public static final DeferredBlock<PressurePlateBlock> BURNED_PRESSURE_PLATE = registerPressurePlate("burned_pressure_plate", "Burned Pressure Plate",true, JBlockProperties.WOOD);
+    public static final DeferredBlock<JButtonBlock> BURNED_BUTTON = registerButton("burned_button", "Burned Button", true, true, JBlockProperties.BUTTON);
+    public static final DeferredBlock<JPressurePlateBlock> BURNED_PRESSURE_PLATE = registerPressurePlate("burned_pressure_plate", "Burned Pressure Plate",true, JBlockProperties.WOOD);
     public static final DeferredBlock<FenceGateBlock> BURNED_FENCE_GATE = registerFenceGate("burned_fence_gate", "Burned Fence Gate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<JFenceBlock> BURNED_FENCE = registerFence("burned_fence", "Burned Fence", true, JBlockProperties.WOOD);
     public static final DeferredBlock<Block> VOLCANIC_ROCK = registerModeledBlock("volcanic_rock", "Volcanic Rock", VolcanicRockBlock::new, JBlockProperties.VOLCANIC_BLOCK);
@@ -580,8 +581,8 @@ public class JBlocks {
     public static final DeferredBlock<TrapDoorBlock> DEPTHS_TRAP_DOOR = registerTrapDoor("depths_trap_door", "Depths Trap Door", true, JBlockProperties.DOOR);
     public static final DeferredBlock<StairBlock> DEPTHS_STAIRS = registerStairs("depths_stairs", "Depths Plank Stairs", DEPTHS_PLANKS, true, JBlockProperties.WOOD);
     public static final DeferredBlock<SlabBlock> DEPTHS_SLAB = registerSlab("depths_slab", "Depths Plank Slab", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<ButtonBlock> DEPTHS_BUTTON = registerButton("depths_button", "Depths Button", true, true, JBlockProperties.BUTTON);
-    public static final DeferredBlock<PressurePlateBlock> DEPTHS_PRESSURE_PLATE = registerPressurePlate("depths_pressure_plate", "Depths Pressure Plate", true, JBlockProperties.WOOD);
+    public static final DeferredBlock<JButtonBlock> DEPTHS_BUTTON = registerButton("depths_button", "Depths Button", true, true, JBlockProperties.BUTTON);
+    public static final DeferredBlock<JPressurePlateBlock> DEPTHS_PRESSURE_PLATE = registerPressurePlate("depths_pressure_plate", "Depths Pressure Plate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<FenceGateBlock> DEPTHS_FENCE_GATE = registerFenceGate("depths_fence_gate", "Depths Fence Gate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<JFenceBlock> DEPTHS_FENCE = registerFence("depths_fence", "Depths Fence", true, JBlockProperties.WOOD);
     public static final DeferredBlock<Block> DEPTHS_CRYSTAL = registerAttachedCrossBlock("depths_crystal", "Depths Crystal", AttachedBlock::new, JBlockProperties.LIGHT_CRYSTAL_BLOCK);
@@ -595,64 +596,64 @@ public class JBlocks {
     public static final DeferredBlock<JWallBlock> DARK_BRICK_WALL = registerWallBlock("dark_brick_wall", "Dark Brick Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> DARK_BRICK_STAIRS = registerStairs("dark_brick_stairs", "Dark Brick Stairs", DARK_BRICK, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> DARK_BRICK_SLAB = registerSlab("dark_brick_slab", "Dark Brick Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> DARK_BRICK_BUTTON = registerButton("dark_brick_button", "Dark Brick Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> DARK_BRICK_PRESSURE_PLATE = registerPressurePlate("dark_brick_pressure_plate", "Dark Brick Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> DARK_BRICK_BUTTON = registerButton("dark_brick_button", "Dark Brick Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> DARK_BRICK_PRESSURE_PLATE = registerPressurePlate("dark_brick_pressure_plate", "Dark Brick Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> DARK_BRICK_FENCE_GATE = registerFenceGate("dark_brick_fence_gate", "Dark Brick Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> DARK_BRICK_FENCE = registerFence("dark_brick_fence", "Dark Brick Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> DARK_FLOOR = register("dark_floor", "Dark Floor", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> DARK_FLOOR_WALL = registerWallBlock("dark_floor_wall", "Dark Floor Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> DARK_FLOOR_STAIRS = registerStairs("dark_floor_stairs", "Dark Floor Stairs", DARK_FLOOR, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> DARK_FLOOR_SLAB = registerSlab("dark_floor_slab", "Dark Floor Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> DARK_FLOOR_BUTTON = registerButton("dark_floor_button", "Dark Floor Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> DARK_FLOOR_PRESSURE_PLATE = registerPressurePlate("dark_floor_pressure_plate", "Dark Floor Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> DARK_FLOOR_BUTTON = registerButton("dark_floor_button", "Dark Floor Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> DARK_FLOOR_PRESSURE_PLATE = registerPressurePlate("dark_floor_pressure_plate", "Dark Floor Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> DARK_FLOOR_FENCE_GATE = registerFenceGate("dark_floor_fence_gate", "Dark Floor Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> DARK_FLOOR_FENCE = registerFence("dark_floor_fence", "Dark Floor Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> DARK_SHINGLE = register("dark_shingle", "Dark Shingle", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> DARK_SHINGLE_WALL = registerWallBlock("dark_shingle_wall", "Dark Shingle Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> DARK_SHINGLE_STAIRS = registerStairs("dark_shingle_stairs", "Dark Shingle Stairs", DARK_SHINGLE, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> DARK_SHINGLE_SLAB = registerSlab("dark_shingle_slab", "Dark Shingle Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> DARK_SHINGLE_BUTTON = registerButton("dark_shingle_button", "Dark Shingle Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> DARK_SHINGLE_PRESSURE_PLATE = registerPressurePlate("dark_shingle_pressure_plate", "Dark Shingle Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> DARK_SHINGLE_BUTTON = registerButton("dark_shingle_button", "Dark Shingle Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> DARK_SHINGLE_PRESSURE_PLATE = registerPressurePlate("dark_shingle_pressure_plate", "Dark Shingle Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> DARK_SHINGLE_FENCE_GATE = registerFenceGate("dark_shingle_fence_gate", "Dark Shingle Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> DARK_SHINGLE_FENCE = registerFence("dark_shingle_fence", "Dark Shingle Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> DEPTHS_BRICK = register("depths_brick", "Depths Bricks", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> DEPTHS_BRICK_WALL = registerWallBlock("depths_brick_wall", "Depths Brick Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> DEPTHS_BRICK_STAIRS = registerStairs("depths_brick_stairs", "Depths Brick Stairs", DEPTHS_BRICK, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> DEPTHS_BRICK_SLAB = registerSlab("depths_brick_slab", "Depths Brick Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> DEPTHS_BRICK_BUTTON = registerButton("depths_brick_button", "Depths Brick Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> DEPTHS_BRICK_PRESSURE_PLATE = registerPressurePlate("depths_brick_pressure_plate", "Depths Brick Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> DEPTHS_BRICK_BUTTON = registerButton("depths_brick_button", "Depths Brick Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> DEPTHS_BRICK_PRESSURE_PLATE = registerPressurePlate("depths_brick_pressure_plate", "Depths Brick Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> DEPTHS_BRICK_FENCE_GATE = registerFenceGate("depths_brick_fence_gate", "Depths Brick Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> DEPTHS_BRICK_FENCE = registerFence("depths_brick_fence", "Depths Brick Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> DEPTHS_SHINGLE = register("depths_shingle", "Depths Shingle", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> DEPTHS_SHINGLE_WALL = registerWallBlock("depths_shingle_wall", "Depths Shingle Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> DEPTHS_SHINGLE_STAIRS = registerStairs("depths_shingle_stairs", "Depths Shingle Stairs", DEPTHS_SHINGLE, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> DEPTHS_SHINGLE_SLAB = registerSlab("depths_shingle_slab", "Depths Shingle Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> DEPTHS_SHINGLE_BUTTON = registerButton("depths_shingle_button", "Depths Shingle Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> DEPTHS_SHINGLE_PRESSURE_PLATE = registerPressurePlate("depths_shingle_pressure_plate", "Depths Shingle Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> DEPTHS_SHINGLE_BUTTON = registerButton("depths_shingle_button", "Depths Shingle Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> DEPTHS_SHINGLE_PRESSURE_PLATE = registerPressurePlate("depths_shingle_pressure_plate", "Depths Shingle Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> DEPTHS_SHINGLE_FENCE_GATE = registerFenceGate("depths_shingle_fence_gate", "Depths Shingle Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> DEPTHS_SHINGLE_FENCE = registerFence("depths_shingle_fence", "Depths Shingle Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> DEPTHS_DARK_SHINGLE = register("depths_dark_shingle", "Depths Dark Shingle", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> DEPTHS_DARK_SHINGLE_WALL = registerWallBlock("depths_dark_shingle_wall", "Depths Dark Shingle Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> DEPTHS_DARK_SHINGLE_STAIRS = registerStairs("depths_dark_shingle_stairs", "Depths Dark Shingle Stairs", DEPTHS_DARK_SHINGLE, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> DEPTHS_DARK_SHINGLE_SLAB = registerSlab("depths_dark_shingle_slab", "Depths Dark Shingle Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> DEPTHS_DARK_SHINGLE_BUTTON = registerButton("depths_dark_shingle_button", "Depths Dark Shingle Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> DEPTHS_DARK_SHINGLE_PRESSURE_PLATE = registerPressurePlate("depths_dark_shingle_pressure_plate", "Depths Dark Shingle Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> DEPTHS_DARK_SHINGLE_BUTTON = registerButton("depths_dark_shingle_button", "Depths Dark Shingle Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> DEPTHS_DARK_SHINGLE_PRESSURE_PLATE = registerPressurePlate("depths_dark_shingle_pressure_plate", "Depths Dark Shingle Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> DEPTHS_DARK_SHINGLE_FENCE_GATE = registerFenceGate("depths_dark_shingle_fence_gate", "Depths Dark Shingle Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> DEPTHS_DARK_SHINGLE_FENCE = registerFence("depths_dark_shingle_fence", "Depths Dark Shingle Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> DEPTHS_COBBLESTONE = register("depths_cobblestone", "Depths Cobblestone", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> DEPTHS_COBBLESTONE_WALL = registerWallBlock("depths_cobblestone_wall", "Depths Cobblestone Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> DEPTHS_COBBLESTONE_STAIRS = registerStairs("depths_cobblestone_stairs", "Depths Cobblestone Stairs", DEPTHS_COBBLESTONE, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> DEPTHS_COBBLESTONE_SLAB = registerSlab("depths_cobblestone_slab", "Depths Cobblestone Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> DEPTHS_COBBLESTONE_BUTTON = registerButton("depths_cobblestone_button", "Depths Cobblestone Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> DEPTHS_COBBLESTONE_PRESSURE_PLATE = registerPressurePlate("depths_cobblestone_pressure_plate", "Depths Cobblestone Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> DEPTHS_COBBLESTONE_BUTTON = registerButton("depths_cobblestone_button", "Depths Cobblestone Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> DEPTHS_COBBLESTONE_PRESSURE_PLATE = registerPressurePlate("depths_cobblestone_pressure_plate", "Depths Cobblestone Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> DEPTHS_COBBLESTONE_FENCE_GATE = registerFenceGate("depths_cobblestone_fence_gate", "Depths Cobblestone Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> DEPTHS_COBBLESTONE_FENCE = registerFence("depths_cobblestone_fence", "Depths Cobblestone Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> DEPTHS_TILE = register("depths_tile", "Depths Tile", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> DEPTHS_TILE_WALL = registerWallBlock("depths_tile_wall", "Depths Tile Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> DEPTHS_TILE_STAIRS = registerStairs("depths_tile_stairs", "Depths Tile Stairs", DEPTHS_TILE, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> DEPTHS_TILE_SLAB = registerSlab("depths_tile_slab", "Depths Tile Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> DEPTHS_TILE_BUTTON = registerButton("depths_tile_button", "Depths Tile Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> DEPTHS_TILE_PRESSURE_PLATE = registerPressurePlate("depths_tile_pressure_plate", "Depths Tile Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> DEPTHS_TILE_BUTTON = registerButton("depths_tile_button", "Depths Tile Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> DEPTHS_TILE_PRESSURE_PLATE = registerPressurePlate("depths_tile_pressure_plate", "Depths Tile Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> DEPTHS_TILE_FENCE_GATE = registerFenceGate("depths_tile_fence_gate", "Depths Tile Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> DEPTHS_TILE_FENCE = registerFence("depths_tile_fence", "Depths Tile Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> DEPTHS_GLASS = register("depths_glass", "Depths Glass", JTransparentBlock::new, JBlockProperties.GLASS);
@@ -701,16 +702,16 @@ public class JBlocks {
     public static final DeferredBlock<TrapDoorBlock> CORBA_TRAP_DOOR = registerTrapDoor("corba_trap_door", "Corba Trap Door", true, JBlockProperties.DOOR);
     public static final DeferredBlock<StairBlock> CORBA_STAIRS = registerStairs("corba_stairs", "Corba Plank Stairs", CORBA_PLANKS, true, JBlockProperties.WOOD);
     public static final DeferredBlock<SlabBlock> CORBA_SLAB = registerSlab("corba_slab", "Corba Plank Slab", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<ButtonBlock> CORBA_BUTTON = registerButton("corba_button", "Corba Button", true, true, JBlockProperties.BUTTON);
-    public static final DeferredBlock<PressurePlateBlock> CORBA_PRESSURE_PLATE = registerPressurePlate("corba_pressure_plate", "Corba Pressure Plate", true, JBlockProperties.WOOD);
+    public static final DeferredBlock<JButtonBlock> CORBA_BUTTON = registerButton("corba_button", "Corba Button", true, true, JBlockProperties.BUTTON);
+    public static final DeferredBlock<JPressurePlateBlock> CORBA_PRESSURE_PLATE = registerPressurePlate("corba_pressure_plate", "Corba Pressure Plate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<FenceGateBlock> CORBA_FENCE_GATE = registerFenceGate("corba_fence_gate", "Corba Fence Gate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<JFenceBlock> CORBA_FENCE = registerFence("corba_fence", "Corba Fence", true, JBlockProperties.WOOD);
     public static final DeferredBlock<Block> CORBA_COBBLESTONE = register("corba_cobblestone", "Corba Cobblestone", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> CORBA_COBBLESTONE_WALL = registerWallBlock("corba_cobblestone_wall", "Corba Cobblestone Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> CORBA_COBBLESTONE_STAIRS = registerStairs("corba_cobblestone_stairs", "Corba Cobblestone Stairs", CORBA_COBBLESTONE, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> CORBA_COBBLESTONE_SLAB = registerSlab("corba_cobblestone_slab", "Corba Cobblestone Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> CORBA_COBBLESTONE_BUTTON = registerButton("corba_cobblestone_button", "Corba Cobblestone Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> CORBA_COBBLESTONE_PRESSURE_PLATE = registerPressurePlate("corba_cobblestone_pressure_plate", "Corba Cobblestone Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> CORBA_COBBLESTONE_BUTTON = registerButton("corba_cobblestone_button", "Corba Cobblestone Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> CORBA_COBBLESTONE_PRESSURE_PLATE = registerPressurePlate("corba_cobblestone_pressure_plate", "Corba Cobblestone Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> CORBA_COBBLESTONE_FENCE_GATE = registerFenceGate("corba_cobblestone_fence_gate", "Corba Cobblestone Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> CORBA_COBBLESTONE_FENCE = registerFence("corba_cobblestone_fence", "Corba Cobblestone Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> CORBA_FURNACE = registerFurnaceBlock("corba_furnace", "Corba Furnace");
@@ -718,45 +719,45 @@ public class JBlocks {
     public static final DeferredBlock<JWallBlock> CORBA_BRICK_WALL = registerWallBlock("corba_brick_wall", "Corba Brick Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> CORBA_BRICK_STAIRS = registerStairs("corba_brick_stairs", "Corba Brick Stairs", CORBA_BRICKS, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> CORBA_BRICK_SLAB = registerSlab("corba_brick_slab", "Corba Brick Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> CORBA_BRICK_BUTTON = registerButton("corba_brick_button", "Corba Brick Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> CORBA_BRICK_PRESSURE_PLATE = registerPressurePlate("corba_brick_pressure_plate", "Corba Brick Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> CORBA_BRICK_BUTTON = registerButton("corba_brick_button", "Corba Brick Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> CORBA_BRICK_PRESSURE_PLATE = registerPressurePlate("corba_brick_pressure_plate", "Corba Brick Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> CORBA_BRICK_FENCE_GATE = registerFenceGate("corba_brick_fence_gate", "Corba Brick Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> CORBA_BRICK_FENCE = registerFence("corba_brick_fence", "Corba Brick Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> CORBA_CRACKED_BRICKS = register("corba_cracked_bricks", "Corba Cracked Bricks", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> CORBA_CRACKED_BRICK_WALL = registerWallBlock("corba_cracked_brick_wall", "Corba Cracked Brick Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> CORBA_CRACKED_BRICK_STAIRS = registerStairs("corba_cracked_brick_stairs", "Corba Cracked Brick Stairs", CORBA_CRACKED_BRICKS, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> CORBA_CRACKED_BRICK_SLAB = registerSlab("corba_cracked_brick_slab", "Corba Cracked Brick Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> CORBA_CRACKED_BRICK_BUTTON = registerButton("corba_cracked_brick_button", "Corba Cracked Brick Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> CORBA_CRACKED_BRICK_PRESSURE_PLATE = registerPressurePlate("corba_cracked_brick_pressure_plate", "Corba Cracked Brick Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> CORBA_CRACKED_BRICK_BUTTON = registerButton("corba_cracked_brick_button", "Corba Cracked Brick Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> CORBA_CRACKED_BRICK_PRESSURE_PLATE = registerPressurePlate("corba_cracked_brick_pressure_plate", "Corba Cracked Brick Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> CORBA_CRACKED_BRICK_FENCE_GATE = registerFenceGate("corba_cracked_brick_fence_gate", "Corba Cracked Brick Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> CORBA_CRACKED_BRICK_FENCE = registerFence("corba_cracked_brick_fence", "Corba Cracked Brick Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> CORBA_DARK_BRICKS = register("corba_dark_bricks", "Corba Dark Bricks", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> CORBA_DARK_BRICK_WALL = registerWallBlock("corba_dark_brick_wall", "Corba Dark Brick Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> CORBA_DARK_BRICK_STAIRS = registerStairs("corba_dark_brick_stairs", "Corba Dark Brick Stairs", CORBA_DARK_BRICKS, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> CORBA_DARK_BRICK_SLAB = registerSlab("corba_dark_brick_slab", "Corba Dark Brick Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> CORBA_DARK_BRICK_BUTTON = registerButton("corba_dark_brick_button", "Corba Dark Brick Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> CORBA_DARK_BRICK_PRESSURE_PLATE = registerPressurePlate("corba_dark_brick_pressure_plate", "Corba Dark Brick Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> CORBA_DARK_BRICK_BUTTON = registerButton("corba_dark_brick_button", "Corba Dark Brick Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> CORBA_DARK_BRICK_PRESSURE_PLATE = registerPressurePlate("corba_dark_brick_pressure_plate", "Corba Dark Brick Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> CORBA_DARK_BRICK_FENCE_GATE = registerFenceGate("corba_dark_brick_fence_gate", "Corba Dark Brick Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> CORBA_DARK_BRICK_FENCE = registerFence("corba_dark_brick_fence", "Corba Dark Brick Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> CORBA_LIGHT_BRICKS = register("corba_light_bricks", "Corba Light Bricks", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> CORBA_LIGHT_BRICK_WALL = registerWallBlock("corba_light_brick_wall", "Corba Light Brick Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> CORBA_LIGHT_BRICK_STAIRS = registerStairs("corba_light_brick_stairs", "Corba Light Brick Stairs", CORBA_LIGHT_BRICKS, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> CORBA_LIGHT_BRICK_SLAB = registerSlab("corba_light_brick_slab", "Corba Light Brick Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> CORBA_LIGHT_BRICK_BUTTON = registerButton("corba_light_brick_button", "Corba Light Brick Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> CORBA_LIGHT_BRICK_PRESSURE_PLATE = registerPressurePlate("corba_light_brick_pressure_plate", "Corba Light Brick Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> CORBA_LIGHT_BRICK_BUTTON = registerButton("corba_light_brick_button", "Corba Light Brick Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> CORBA_LIGHT_BRICK_PRESSURE_PLATE = registerPressurePlate("corba_light_brick_pressure_plate", "Corba Light Brick Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> CORBA_LIGHT_BRICK_FENCE_GATE = registerFenceGate("corba_light_brick_fence_gate", "Corba Light Brick Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> CORBA_LIGHT_BRICK_FENCE = registerFence("corba_light_brick_fence", "Corba Light Brick Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> CORBA_SENTRY_BRICKS = register("corba_sentry_bricks", "Corba Sentry Bricks", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> CORBA_SENTRY_BRICK_WALL = registerWallBlock("corba_sentry_brick_wall", "Corba Sentry Brick Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> CORBA_SENTRY_BRICK_STAIRS = registerStairs("corba_sentry_brick_stairs", "Corba Sentry Brick Stairs", CORBA_SENTRY_BRICKS, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> CORBA_SENTRY_BRICK_SLAB = registerSlab("corba_sentry_brick_slab", "Corba Sentry Brick Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> CORBA_SENTRY_BRICK_BUTTON = registerButton("corba_sentry_brick_button", "Corba Sentry Brick Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> CORBA_SENTRY_BRICK_PRESSURE_PLATE = registerPressurePlate("corba_sentry_brick_pressure_plate", "Corba Sentry Brick Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> CORBA_SENTRY_BRICK_BUTTON = registerButton("corba_sentry_brick_button", "Corba Sentry Brick Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> CORBA_SENTRY_BRICK_PRESSURE_PLATE = registerPressurePlate("corba_sentry_brick_pressure_plate", "Corba Sentry Brick Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> CORBA_SENTRY_BRICK_FENCE_GATE = registerFenceGate("corba_sentry_brick_fence_gate", "Corba Sentry Brick Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> CORBA_SENTRY_BRICK_FENCE = registerFence("corba_sentry_brick_fence", "Corba Sentry Brick Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> OVERSEER_ELDER_SPAWNER = register("overseer_elder_spawner", "Overseer Elder Spawner", OverseerElderSpawnerBlock::new, JBlockProperties.SPAWNER);
     public static final DeferredBlock<Block> OVERSEER_SPAWNER = register("overseer_spawner", "Overseer Spawner", OverseerSpawnerBlock::new, JBlockProperties.SPAWNER);
-    public static final DeferredBlock<Block> ELDER_BLOCK = register("elder_block", "Elder Block", ChangableBlock::new, JBlockProperties.STONE.sound(SoundType.METAL));
+    public static final DeferredBlock<Block> ELDER_BLOCK = register("elder_block", "Elder Block", ChangableBlock::new, JBlockProperties.STONE_METAL);
     public static final DeferredBlock<Block> CORBA_LADDER = registerLadder("corba_ladder", "Corba Ladder", LadderBlock::new, JBlockProperties.LADDER);
     public static final DeferredBlock<Block> CORBA_BLUE_FLOWER = registerCrossBlock("corba_blue_flower", "Corba Blue Flower", TallGrassBlock::new, JBlockProperties.FLOWER);
     public static final DeferredBlock<Block> CORBA_RED_FLOWER = registerCrossBlock("corba_red_flower", "Corba Red Flower", TallGrassBlock::new, JBlockProperties.FLOWER);
@@ -782,8 +783,8 @@ public class JBlocks {
     public static final DeferredBlock<JWallBlock> TERRANIAN_STONE_WALL = registerWallBlock("terranian_stone_wall", "Terranian Stone Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> TERRANIAN_STONE_STAIRS = registerStairs("terranian_stone_stairs", "Terranian Stone Stairs", TERRANIAN_STONE, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> TERRANIAN_STONE_SLAB = registerSlab("terranian_stone_slab", "Terranian Stone Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> TERRANIAN_STONE_BUTTON = registerButton("terranian_stone_button", "Terranian Stone Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> TERRANIAN_STONE_PRESSURE_PLATE = registerPressurePlate("terranian_stone_pressure_plate", "Terranian Stone Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> TERRANIAN_STONE_BUTTON = registerButton("terranian_stone_button", "Terranian Stone Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> TERRANIAN_STONE_PRESSURE_PLATE = registerPressurePlate("terranian_stone_pressure_plate", "Terranian Stone Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> TERRANIAN_STONE_FENCE_GATE = registerFenceGate("terranian_stone_fence_gate", "Terranian Stone Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> TERRANIAN_STONE_FENCE = registerFence("terranian_stone_fence", "Terranian Stone Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> TERRANIAN_LEAVES = registerTopBottomBlock("terranian_leaves", "Terrania Leaves", (p) -> new JLeavesBlock(p, 9437439), JBlockProperties.LEAVES);
@@ -795,8 +796,8 @@ public class JBlocks {
     public static final DeferredBlock<TrapDoorBlock> TERRANIAN_TRAP_DOOR = registerTrapDoor("terranian_trap_door", "Terranian Trap Door", true, JBlockProperties.DOOR);
     public static final DeferredBlock<StairBlock> TERRANIAN_STAIRS = registerStairs("terranian_stairs", "Terranian Plank Stairs", CORBA_PLANKS, true, JBlockProperties.WOOD);
     public static final DeferredBlock<SlabBlock> TERRANIAN_SLAB = registerSlab("terranian_slab", "Terranian Plank Slab", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<ButtonBlock> TERRANIAN_BUTTON = registerButton("terranian_button", "Terranian Button", true, true, JBlockProperties.BUTTON);
-    public static final DeferredBlock<PressurePlateBlock> TERRANIAN_PRESSURE_PLATE = registerPressurePlate("terranian_pressure_plate", "Terranian Pressure Plate", true, JBlockProperties.WOOD);
+    public static final DeferredBlock<JButtonBlock> TERRANIAN_BUTTON = registerButton("terranian_button", "Terranian Button", true, true, JBlockProperties.BUTTON);
+    public static final DeferredBlock<JPressurePlateBlock> TERRANIAN_PRESSURE_PLATE = registerPressurePlate("terranian_pressure_plate", "Terranian Pressure Plate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<JFenceBlock> TERRANIAN_POST = registerFence("terranian_post", "Terranian Post", true, JBlockProperties.WOOD);
     public static final DeferredBlock<FenceGateBlock> TERRANIAN_FENCE_GATE = registerFenceGate("terranian_fence_gate", "Terranian Fence Gate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<IronBarsBlock> TERRANIAN_BARS = registerPaneBlock("terranian_bars", "Terranian Bars", JBlockProperties.STONE);
@@ -804,16 +805,16 @@ public class JBlocks {
     public static final DeferredBlock<JWallBlock> TERRANIAN_DARK_PANEL_WALL = registerWallBlock("terranian_dark_panel_wall", "Terranian Dark Panel Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> TERRANIAN_DARK_PANEL_STAIRS = registerStairs("terranian_dark_panel_stairs", "Terranian Dark Panel Stairs", TERRANIAN_DARK_PANELS, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> TERRANIAN_DARK_PANEL_SLAB = registerSlab("terranian_dark_panel_slab", "Terranian Dark Panel Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> TERRANIAN_DARK_PANEL_BUTTON = registerButton("terranian_dark_panel_button", "Terranian Dark Panel Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> TERRANIAN_DARK_PANEL_PRESSURE_PLATE = registerPressurePlate("terranian_dark_panel_pressure_plate", "Terranian Dark Panel Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> TERRANIAN_DARK_PANEL_BUTTON = registerButton("terranian_dark_panel_button", "Terranian Dark Panel Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> TERRANIAN_DARK_PANEL_PRESSURE_PLATE = registerPressurePlate("terranian_dark_panel_pressure_plate", "Terranian Dark Panel Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> TERRANIAN_DARK_PANEL_FENCE_GATE = registerFenceGate("terranian_dark_panel_fence_gate", "Terranian Dark Panel Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> TERRANIAN_DARK_PANEL_FENCE = registerFence("terranian_dark_panel_fence", "Terranian Dark Panel Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> TERRANIAN_PANELS = register("terranian_panels", "Terranian Panels", JBlockProperties.STONE);
     public static final DeferredBlock<JWallBlock> TERRANIAN_PANEL_WALL = registerWallBlock("terranian_panel_wall", "Terranian Panel Wall", JBlockProperties.STONE);
     public static final DeferredBlock<StairBlock> TERRANIAN_PANEL_STAIRS = registerStairs("terranian_panel_stairs", "Terranian Panel Stairs", TERRANIAN_PANELS, false, JBlockProperties.STONE);
     public static final DeferredBlock<SlabBlock> TERRANIAN_PANEL_SLAB = registerSlab("terranian_panel_slab", "Terranian Panel Slab", false, JBlockProperties.STONE);
-    public static final DeferredBlock<ButtonBlock> TERRANIAN_PANEL_BUTTON = registerButton("terranian_panel_button", "Terranian Panel Button", false, false, JBlockProperties.STONE);
-    public static final DeferredBlock<PressurePlateBlock> TERRANIAN_PANEL_PRESSURE_PLATE = registerPressurePlate("terranian_panel_pressure_plate", "Terranian Panel Plate", false, JBlockProperties.STONE);
+    public static final DeferredBlock<JButtonBlock> TERRANIAN_PANEL_BUTTON = registerButton("terranian_panel_button", "Terranian Panel Button", false, false, JBlockProperties.STONE);
+    public static final DeferredBlock<JPressurePlateBlock> TERRANIAN_PANEL_PRESSURE_PLATE = registerPressurePlate("terranian_panel_pressure_plate", "Terranian Panel Plate", false, JBlockProperties.STONE);
     public static final DeferredBlock<FenceGateBlock> TERRANIAN_PANEL_FENCE_GATE = registerFenceGate("terranian_panel_fence_gate", "Terranian Panel Fence Gate", false, JBlockProperties.STONE);
     public static final DeferredBlock<JFenceBlock> TERRANIAN_PANEL_FENCE = registerFence("terranian_panel_fence", "Terranian Panel Fence", false, JBlockProperties.STONE);
     public static final DeferredBlock<Block> TERRANIAN_TALL_GRASS = registerCrossBlock("terranian_tall_grass", "Terranian Tall Grass", TallGrassBlock::new, JBlockProperties.FLOWER);
@@ -840,8 +841,8 @@ public class JBlocks {
     public static final DeferredBlock<TrapDoorBlock> CLOUDIA_TRAP_DOOR = registerTrapDoor("cloudia_trap_door", "Cloudia Trap Door", true, JBlockProperties.DOOR);
     public static final DeferredBlock<StairBlock> CLOUDIA_STAIRS = registerStairs("cloudia_stairs", "Cloudia Plank Stairs", CORBA_PLANKS, true, JBlockProperties.WOOD);
     public static final DeferredBlock<SlabBlock> CLOUDIA_SLAB = registerSlab("cloudia_slab", "Cloudia Plank Slab", true, JBlockProperties.WOOD);
-    public static final DeferredBlock<ButtonBlock> CLOUDIA_BUTTON = registerButton("cloudia_button", "Cloudia Button", true, true, JBlockProperties.BUTTON);
-    public static final DeferredBlock<PressurePlateBlock> CLOUDIA_PRESSURE_PLATE = registerPressurePlate("cloudia_pressure_plate", "Cloudia Pressure Plate", true, JBlockProperties.WOOD);
+    public static final DeferredBlock<JButtonBlock> CLOUDIA_BUTTON = registerButton("cloudia_button", "Cloudia Button", true, true, JBlockProperties.BUTTON);
+    public static final DeferredBlock<JPressurePlateBlock> CLOUDIA_PRESSURE_PLATE = registerPressurePlate("cloudia_pressure_plate", "Cloudia Pressure Plate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<FenceGateBlock> CLOUDIA_FENCE_GATE = registerFenceGate("cloudia_fence_gate", "Cloudia Fence Gate", true, JBlockProperties.WOOD);
     public static final DeferredBlock<JFenceBlock> CLOUDIA_FENCE = registerFence("cloudia_fence", "Cloudia Fence", true, JBlockProperties.WOOD);
     public static final DeferredBlock<Block> CLOUDIA_BRICK = register("cloudia_brick", "Cloudia Bricks", JBlockProperties.STONE);
@@ -944,8 +945,8 @@ public class JBlocks {
     //OVERWORLD
     public static final DeferredBlock<Block> TOMATO_CROP = registerCropBlock("tomato_crop", "Tomato", 8, TomatoCropBlock::new, JBlockProperties.CROP);
     public static final DeferredBlock<Block> FLORO_PEDAL_CROP = registerCropBlock("floro_pedal_crop", "Floro Pedal", 8, FloroCropBlock::new, JBlockProperties.CROP);
-    public static final DeferredBlock<Block> REDCURRANT_BUSH = registerGrowingBushBlock("redcurrant_bush", "Redcurrant Bush", RedcurrantBushBlock::new);
-    public static final DeferredBlock<Block> BRADBERRY_BUSH = registerGrowingBushBlock("bradberry_bush", "Bradberry Bush", BradberryBushBlock::new);
+    public static final DeferredBlock<BushBlock> REDCURRANT_BUSH = registerGrowingBushBlock("redcurrant_bush", "Redcurrant Bush", RedcurrantBushBlock::new);
+    public static final DeferredBlock<BushBlock> BRADBERRY_BUSH = registerGrowingBushBlock("bradberry_bush", "Bradberry Bush", BradberryBushBlock::new);
 
     //EUCA
     public static final DeferredBlock<Block> ZATPEDAL_CROP = registerCropBlock("zatpedal_crop", "Zatpedal", 8, ZatpedalCropBlock::new, JBlockProperties.CROP);
@@ -1308,10 +1309,10 @@ public class JBlocks {
         return block1;
     }
 
-    public static DeferredBlock<Block> registerGrowingBushBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends Block> block) {
+    public static DeferredBlock<BushBlock> registerGrowingBushBlock(String name, String translatedName, Function<BlockBehaviour.Properties, ? extends BushBlock> block) {
         bushBlockName.add(name);
         bushLangName.add(translatedName);
-        DeferredBlock<Block> block1 = BLOCKS.registerBlock(name, block, p -> JBlockProperties.GROWING_BUSH);
+        DeferredBlock<BushBlock> block1 = BLOCKS.registerBlock(name, block, p -> JBlockProperties.GROWING_BUSH);
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()));
         return block1;
     }
@@ -1449,7 +1450,7 @@ public class JBlocks {
         return block1;
     }
 
-    public static DeferredBlock<ButtonBlock> registerButton(String name, String translatedName, boolean sensitive, boolean wood, BlockBehaviour.Properties p) {
+    public static DeferredBlock<JButtonBlock> registerButton(String name, String translatedName, boolean sensitive, boolean wood, BlockBehaviour.Properties p) {
         if(wood) {
             addAxeableBlocks(name);
         } else {
@@ -1457,7 +1458,7 @@ public class JBlocks {
         }
         buttonBlockName.add(name);
         buttonLangName.add(translatedName);
-        DeferredBlock<ButtonBlock> block1 = BLOCKS.register(name, () -> new ButtonBlock(BlockSetType.OAK, sensitive ? 20 : 30, p.setId(ResourceKey.create(Registries.BLOCK, JITL.rl(name)))) {
+        DeferredBlock<JButtonBlock> block1 = BLOCKS.register(name, () -> new JButtonBlock(BlockSetType.OAK, sensitive ? 20 : 30, p.setId(ResourceKey.create(Registries.BLOCK, JITL.rl(name)))) {
             @Override
             protected @NotNull SoundEvent getSound(boolean pIsOn) {
                 return SoundEvents.WOODEN_BUTTON_CLICK_ON;
@@ -1472,7 +1473,7 @@ public class JBlocks {
         return block1;
     }
 
-    public static DeferredBlock<PressurePlateBlock> registerPressurePlate(String name, String translatedName, boolean wood, BlockBehaviour.Properties p) {
+    public static DeferredBlock<JPressurePlateBlock> registerPressurePlate(String name, String translatedName, boolean wood, BlockBehaviour.Properties p) {
         if(wood) {
             addAxeableBlocks(name);
         } else {
@@ -1480,7 +1481,7 @@ public class JBlocks {
         }
         pressurePlateBlockName.add(name);
         pressurePlateLangName.add(translatedName);
-        DeferredBlock<PressurePlateBlock> block1 = BLOCKS.register(name, () -> new PressurePlateBlock(BlockSetType.OAK, p.setId(ResourceKey.create(Registries.BLOCK, JITL.rl(name)))));
+        DeferredBlock<JPressurePlateBlock> block1 = BLOCKS.register(name, () -> new JPressurePlateBlock(BlockSetType.OAK, p.setId(ResourceKey.create(Registries.BLOCK, JITL.rl(name)))));
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType, @NotNull FuelValues fuelValues) {
@@ -1498,7 +1499,7 @@ public class JBlocks {
         }
         gateBlockName.add(name);
         gateLangName.add(translatedName);
-        DeferredBlock<FenceGateBlock> block1 = BLOCKS.register(name, () -> new FenceGateBlock(WoodType.OAK, p.setId(ResourceKey.create(Registries.BLOCK, JITL.rl(name)))));
+        DeferredBlock<FenceGateBlock> block1 = BLOCKS.register(name, () -> new FenceGateBlock(Optional.of(WoodType.OAK), p.setId(ResourceKey.create(Registries.BLOCK, JITL.rl(name))), Optional.of(WoodType.OAK.fenceGateOpen()), Optional.of(WoodType.OAK.fenceGateClose())));
         JItems.registerBlockItem(name, () -> new BlockItem(block1.get(), JItems.itemProps(name).useBlockDescriptionPrefix()) {
             @Override
             public int getBurnTime(@NotNull ItemStack itemStack, @Nullable RecipeType<?> recipeType, @NotNull FuelValues fuelValues) {

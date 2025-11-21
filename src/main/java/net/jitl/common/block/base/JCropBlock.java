@@ -1,6 +1,5 @@
 package net.jitl.common.block.base;
 
-import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
@@ -32,7 +31,7 @@ public class JCropBlock extends CropBlock {
         DEPTHS(JBlocks.DEPTHS_FARMLAND.get()),
         CORBA(JBlocks.CORBA_FARMLAND.get()),
         CLOUDIA(JBlocks.CLOUDIA_FARMLAND.get())
-            ;
+        ;
 
         private final Block growOn;
 

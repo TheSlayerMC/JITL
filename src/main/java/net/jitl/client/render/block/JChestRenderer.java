@@ -48,9 +48,9 @@ public class JChestRenderer<T extends BlockEntity & LidBlockEntity> implements B
     private final ItemModelResolver renderEntity;
     private final MaterialSet materials;
 
-    public static final MaterialMapper CHEST_MAPPER = new MaterialMapper(Sheets.CHEST_SHEET, "models/block/chest");
+    public static final MaterialMapper CHEST_MAPPER = new MaterialMapper(Sheets.CHEST_SHEET, "entity/chest");
 
-    public static final Material BOILING_CHEST_LOCATION = new Material(Sheets.CHEST_SHEET, JITL.rl("models/block/chest/boiling_chest"));
+    public static final Material BOILING_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("boiling_chest"));
     public static final Material BOILING_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("boiling_chest_left"));
     public static final Material BOILING_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("boiling_chest_right"));
 

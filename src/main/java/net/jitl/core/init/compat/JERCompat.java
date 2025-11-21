@@ -1,25 +1,11 @@
 package net.jitl.core.init.compat;
 
 
-import net.jitl.common.block.base.JFarmlandBlock;
-import net.jitl.core.init.JITL;
-import net.jitl.core.init.internal.JBlocks;
-import net.jitl.core.init.internal.JEntities;
-import net.jitl.core.init.internal.JItems;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BushBlock;
-import net.minecraft.world.level.storage.loot.LootTable;
-
 public class JERCompat {
 
 //    public static void init() {
 //        IJERAPI api = JERAPI.getInstance();
-//todo
+//
 //        IWorldGenRegistry worldGen = api.getWorldGenRegistry();
 //        if(worldGen != null) {
 //            worldGen.register(new ItemStack(JBlocks.SAPPHIRE_ORE.get()), new ItemStack(JBlocks.DEEPSLATE_SAPPHIRE_ORE.get()), new DistributionSquare(5, 7, -80, 48), new LootDrop(new ItemStack(JItems.SAPPHIRE.get()), 1, 5, Conditional.affectedByFortune));
@@ -61,19 +47,19 @@ public class JERCompat {
 //        IPlantRegistry plants = api.getPlantRegistry();
 //
 //        if(plants != null) {
-//            addPlant(plants, JItems.FLORO_SEEDS.get(), JItems.FLORO_PEDAL.get(), JBlocks.FLORO_PEDAL_CROP.get());
-//            addPlant(plants, JItems.TOMATO_SEEDS.get(), JItems.TOMATO.get(), JBlocks.TOMATO_CROP.get());
+//   //todo         addPlant(plants, JItems.FLORO_SEEDS.get(), JItems.FLORO_PEDAL.get(), JBlocks.FLORO_PEDAL_CROP.get());
+//    //        addPlant(plants, JItems.TOMATO_SEEDS.get(), JItems.TOMATO.get(), JBlocks.TOMATO_CROP.get());
 //            addBerryBush(plants, JItems.REDCURRANT_BERRY.get(), JBlocks.REDCURRANT_BUSH.get(), JBlocks.GRASSY_PERMAFROST.get());
 //            addBerryBush(plants, JItems.BRADBERRY.get(), JBlocks.BRADBERRY_BUSH.get(), Blocks.GRASS_BLOCK);
 //
-//            addPlant(plants, JItems.ZATPEDAL_SEEDS.get(), JItems.ZATPEDAL.get(), JBlocks.ZATPEDAL_CROP.get(), JBlocks.GOLDITE_FARMLAND.get());
-//            addPlant(plants, JItems.SPINEBERRY_SEEDS.get(), JItems.SPINEBERRIES.get(), JBlocks.SPINEBERRY_CROP.get(), JBlocks.GOLDITE_FARMLAND.get());
-//
-//            addPlant(plants, JItems.CRAKEBULB_SEEDS.get(), JItems.CRAKEBULB.get(), JBlocks.CRAKEBULB_CROP.get(), JBlocks.DEPTHS_FARMLAND.get());
-//            addPlant(plants, JItems.CRACKENCANE_SEEDS.get(), JItems.CRACKENCANE.get(), JBlocks.CRACKENCANE_CROP.get(), JBlocks.DEPTHS_FARMLAND.get());
-//
-//            addPlant(plants, JItems.CORVEGGIES.get(), JItems.CORVEGGIES.get(), JBlocks.CORVEGGIES_CROP.get(), JBlocks.CORBA_FARMLAND.get());
-//            addPlant(plants, JItems.GLOWA_SEEDS.get(), JItems.GLOWA.get(), JBlocks.GLOWA_CROP.get(), JBlocks.CORBA_FARMLAND.get());
+////            addPlant(plants, JItems.ZATPEDAL_SEEDS.get(), JItems.ZATPEDAL.get(), JBlocks.ZATPEDAL_CROP.get(), JBlocks.GOLDITE_FARMLAND.get());
+////            addPlant(plants, JItems.SPINEBERRY_SEEDS.get(), JItems.SPINEBERRIES.get(), JBlocks.SPINEBERRY_CROP.get(), JBlocks.GOLDITE_FARMLAND.get());
+////
+////            addPlant(plants, JItems.CRAKEBULB_SEEDS.get(), JItems.CRAKEBULB.get(), JBlocks.CRAKEBULB_CROP.get(), JBlocks.DEPTHS_FARMLAND.get());
+////            addPlant(plants, JItems.CRACKENCANE_SEEDS.get(), JItems.CRACKENCANE.get(), JBlocks.CRACKENCANE_CROP.get(), JBlocks.DEPTHS_FARMLAND.get());
+////
+////            addPlant(plants, JItems.CORVEGGIES.get(), JItems.CORVEGGIES.get(), JBlocks.CORVEGGIES_CROP.get(), JBlocks.CORBA_FARMLAND.get());
+////            addPlant(plants, JItems.GLOWA_SEEDS.get(), JItems.GLOWA.get(), JBlocks.GLOWA_CROP.get(), JBlocks.CORBA_FARMLAND.get());
 //        }
 //
 //        IDungeonRegistry chest = api.getDungeonRegistry();
@@ -135,21 +121,21 @@ public class JERCompat {
 //    public static void addBerryBush(IPlantRegistry reg, Item seeds, BushBlock plant, Block base) {
 //        reg.registerWithSoil(new ItemStack(seeds), plant, base.defaultBlockState(), new PlantDrop(new ItemStack(seeds), 2, 3));
 //    }
-
-    public static ResourceKey<LootTable> getMobLootTable(String name){
-        return ResourceKey.create(Registries.LOOT_TABLE, JITL.rl("entities/" + name));
-    }
-
-    public static ResourceKey<LootTable> getLootTable(String name){
-        return ResourceKey.create(Registries.LOOT_TABLE, JITL.rl("loot/" + name));
-    }
-
-    public static ResourceKey<LootTable> getChestLootTable(String name){
-        return ResourceKey.create(Registries.LOOT_TABLE, JITL.rl("chests/" + name));
-    }
-
-    public static ResourceKey<LootTable> getBossLootTable(String name){
-        return ResourceKey.create(Registries.LOOT_TABLE, JITL.rl("boss_crystal/" + name));
-    }
+//
+//    public static ResourceKey<LootTable> getMobLootTable(String name){
+//        return ResourceKey.create(Registries.LOOT_TABLE, JITL.rl("entities/" + name));
+//    }
+//
+//    public static ResourceKey<LootTable> getLootTable(String name){
+//        return ResourceKey.create(Registries.LOOT_TABLE, JITL.rl("loot/" + name));
+//    }
+//
+//    public static ResourceKey<LootTable> getChestLootTable(String name){
+//        return ResourceKey.create(Registries.LOOT_TABLE, JITL.rl("chests/" + name));
+//    }
+//
+//    public static ResourceKey<LootTable> getBossLootTable(String name){
+//        return ResourceKey.create(Registries.LOOT_TABLE, JITL.rl("boss_crystal/" + name));
+//    }
 
 }

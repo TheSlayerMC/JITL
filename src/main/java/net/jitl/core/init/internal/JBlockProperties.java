@@ -17,12 +17,21 @@ public class JBlockProperties {
 
     public static BlockBehaviour.Properties STONE = BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
+            .sound(SoundType.STONE)
+            .instrument(NoteBlockInstrument.BASEDRUM)
+            .requiresCorrectToolForDrops()
+            .strength(1.5F, 6.0F);
+
+    public static BlockBehaviour.Properties STONE_METAL = BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
+            .sound(SoundType.METAL)
             .instrument(NoteBlockInstrument.BASEDRUM)
             .requiresCorrectToolForDrops()
             .strength(1.5F, 6.0F);
 
     public static BlockBehaviour.Properties ALTAR = BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
+            .sound(SoundType.STONE)
             .instrument(NoteBlockInstrument.BASEDRUM)
             .requiresCorrectToolForDrops()
             .lightLevel((l) -> 2)

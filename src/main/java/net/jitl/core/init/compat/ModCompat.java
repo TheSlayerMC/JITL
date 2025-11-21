@@ -7,7 +7,7 @@ public class ModCompat {
 
     public static void init(FMLCommonSetupEvent event) {
         if(ModList.get().isLoaded("jeresources")) {
-            //todo JERCompat.init();
+            //JERCompat.init();
         }
     }
 }
