@@ -10,7 +10,7 @@
   "default_fluid": {
     "Name": "minecraft:lava",
     "Properties": {
-      "level": "3"
+      "level": "0"
     }
   },
   "noise": {
