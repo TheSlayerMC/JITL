@@ -10,16 +10,16 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Entity;
 import org.jetbrains.annotations.NotNull;
 
 public class RenderProjectile<T extends Entity> extends EntityRenderer<T, TwoDRenderState> {
 
-    private final ResourceLocation texture;
+    private final Identifier texture;
     private final JItemModel model;
 
-    public RenderProjectile(EntityRendererProvider.Context context, ResourceLocation texture) {
+    public RenderProjectile(EntityRendererProvider.Context context, Identifier texture) {
         super(context);
         this.texture = texture;
         this.model = new JItemModel<>(context.bakeLayer(JModelLayers.ITEM_MODEL));

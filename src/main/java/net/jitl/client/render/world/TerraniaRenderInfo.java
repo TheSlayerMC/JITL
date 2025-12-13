@@ -1,39 +1,35 @@
 package net.jitl.client.render.world;
 
+import com.mojang.blaze3d.buffers.GpuBuffer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.jitl.client.render.world.clouds.JCloudRenderer;
 import net.jitl.core.init.JITL;
+import net.minecraft.client.CloudStatus;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.state.LevelRenderState;
 import net.minecraft.client.renderer.state.SkyRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.NotNull;
+import net.neoforged.neoforge.client.CustomCloudsRenderer;
+import net.neoforged.neoforge.client.CustomSkyboxRenderer;
 import org.joml.Matrix4f;
 
-public class TerraniaRenderInfo extends JDimensionSpecialEffects {
+public class TerraniaRenderInfo extends JDimensionSpecialEffects implements CustomSkyboxRenderer, CustomCloudsRenderer {
 
-    private static final ResourceLocation MOON_LOCATION = JITL.rl("textures/environment/terrania_moon1.png");
-    private static final ResourceLocation CLOUDIA_SKY_LOCATION = JITL.rl("textures/environment/cloudia_sky.png");
+    private static final Identifier MOON_LOCATION = JITL.rl("textures/environment/terrania_moon1.png");
+    private static final Identifier CLOUDIA_SKY_LOCATION = JITL.rl("textures/environment/cloudia_sky.png");
+    private final GpuBuffer moonBuffer;
 
     public TerraniaRenderInfo() {
-        super(SkyType.OVERWORLD, false, false);
+        super(Minecraft.getInstance().getTextureManager(), Minecraft.getInstance().getAtlasManager());
+        this.moonBuffer = buildSunQuad(this.celestialsAtlas, 80, MOON_LOCATION);
     }
 
     @Override
-    public JCloudRenderer getCloudRenderer() {
-        return new JCloudRenderer(JITL.rl("textures/environment/cloudia_clouds.png"));
-    }
-
-    @Override
-    public @NotNull Vec3 getBrightnessDependentFogColor(Vec3 vector3d, float float_) {
-        float color = 0.95F + 0.05F;
-        return vector3d.multiply((float_ * color), (float_ * color), (float_ * color));
-    }
-
-    @Override
-    public boolean isFoggyAt(int i, int i2) {
-        return false;
+    public boolean renderClouds(LevelRenderState levelRenderState, Vec3 camPos, CloudStatus cloudStatus, int cloudColor, float cloudHeight, Matrix4f modelViewMatrix) {
+        new JCloudRenderer(JITL.rl("textures/environment/cloudia_clouds.png")).render(cloudColor, cloudStatus, cloudHeight, camPos, levelRenderState.gameTime, 10F);
+        return CustomCloudsRenderer.super.renderClouds(levelRenderState, camPos, cloudStatus, cloudColor, cloudHeight, modelViewMatrix);
     }
 
     @Override
@@ -45,9 +41,14 @@ public class TerraniaRenderInfo extends JDimensionSpecialEffects {
         //START CLOUDIA MOON
         poseStack.pushPose();
         poseStack.mulPose(Axis.XP.rotationDegrees(180F));
-        renderSun(80F, 1F,  poseStack, MOON_LOCATION);
+        renderSun(1F, poseStack, this.moonBuffer);
         poseStack.popPose();
 
         return true;
+    }
+
+    @Override
+    public void close() {
+        this.moonBuffer.close();
     }
 }

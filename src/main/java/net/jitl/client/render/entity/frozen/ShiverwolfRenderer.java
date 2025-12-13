@@ -8,10 +8,8 @@ import net.jitl.common.entity.frozen.Shiverwolf;
 import net.minecraft.client.renderer.entity.AgeableMobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.WolfRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 public class ShiverwolfRenderer extends AgeableMobRenderer<Shiverwolf, WolfRenderState, ShiverwolfModel> {
@@ -41,7 +39,7 @@ public class ShiverwolfRenderer extends AgeableMobRenderer<Shiverwolf, WolfRende
     }
 
     @Override
-    public @NotNull ResourceLocation getTextureLocation(WolfRenderState entity) {
+    public @NotNull Identifier getTextureLocation(WolfRenderState entity) {
         return entity.texture;
     }
 

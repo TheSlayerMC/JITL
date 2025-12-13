@@ -7,7 +7,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.*;
 import net.minecraft.world.entity.Entity;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
@@ -38,7 +37,7 @@ public class JDamageSources {
     }
 
     private static DamageType addDamageType(ResourceKey<DamageType> damage) {
-        return new DamageType(damage.location() + ".damage", DamageScaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER, 0.1F, DamageEffects.HURT, DeathMessageType.DEFAULT);
+        return new DamageType(damage.identifier() + ".damage", DamageScaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER, 0.1F, DamageEffects.HURT, DeathMessageType.DEFAULT);
     }
 
     private static ResourceKey<DamageType> register(String name) {

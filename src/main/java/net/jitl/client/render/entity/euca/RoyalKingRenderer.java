@@ -5,7 +5,7 @@ import net.jitl.client.render.entity.state.ActiveRenderState;
 import net.jitl.common.entity.euca.npc.RoyalKing;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.base.GeoRenderState;
@@ -23,12 +23,12 @@ public class RoyalKingRenderer<R extends ActiveRenderState & GeoRenderState> ext
     }
 
     @Override
-    public @NotNull ResourceLocation getTextureLocation(@NotNull R entity) {
+    public @NotNull Identifier getTextureLocation(@NotNull R entity) {
         boolean isActivated = entity.isActive;
         if (isActivated) {
-            return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/euca/royal_king_no_crown.png");
+            return Identifier.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/euca/royal_king_no_crown.png");
         } else {
-            return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/euca/royal_king.png");
+            return Identifier.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/euca/royal_king.png");
         }
     }
 

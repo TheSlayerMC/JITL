@@ -1,18 +1,16 @@
 package net.jitl.client.render;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.jitl.common.entity.base.JTamableEntity;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoAnimatable;
-import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.base.GeoRenderState;
+import software.bernie.geckolib.renderer.internal.RenderPassInfo;
 
 public class AnimatedTamableRenderer<T extends LivingEntityRenderState & GeoAnimatable & GeoRenderState> extends GeoEntityRenderer<JTamableEntity, T> {
 
@@ -35,13 +33,16 @@ public class AnimatedTamableRenderer<T extends LivingEntityRenderState & GeoAnim
     }
 
     @Override
-    public @NotNull ResourceLocation getTextureLocation(@NotNull T instance) {
+    public @NotNull Identifier getTextureLocation(@NotNull T instance) {
         return getGeoModel().getTextureResource(instance);
     }
 
     @Override
-    public void preRender(T renderState, PoseStack poseStack, BakedGeoModel model, SubmitNodeCollector renderTasks, CameraRenderState cameraState, int packedLight, int packedOverlay, int renderColor) {
-        poseStack.scale(this.size, this.size, this.size);
-        super.preRender(renderState, poseStack, model, renderTasks, cameraState, packedLight, packedOverlay, renderColor);
+    public void preRenderPass(RenderPassInfo<T> renderPassInfo, SubmitNodeCollector renderTasks) {
+        if(renderPassInfo.renderState().isBaby) {
+            this.size = 0.5F;
+        }
+        renderPassInfo.poseStack().scale(this.size, this.size, this.size);
+        super.preRenderPass(renderPassInfo, renderTasks);
     }
 }

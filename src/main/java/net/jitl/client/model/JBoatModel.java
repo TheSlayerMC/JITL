@@ -1,8 +1,5 @@
 package net.jitl.client.model;
 
-import com.google.common.collect.ImmutableList;
-import net.jitl.common.entity.base.JBoat;
-import net.minecraft.client.model.AbstractBoatModel;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -12,8 +9,6 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.client.renderer.entity.state.BoatRenderState;
 import net.minecraft.util.Mth;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 
 public class JBoatModel extends EntityModel<BoatRenderState> {
 

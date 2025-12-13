@@ -4,7 +4,7 @@ import net.jitl.client.model.misc.BossCrystalModel;
 import net.jitl.client.render.entity.state.BossCrystalRenderState;
 import net.jitl.common.entity.boss.BossCrystal;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.base.GeoRenderState;
@@ -22,7 +22,7 @@ public class BossCrystalRenderer<T extends BossCrystalRenderState & GeoRenderSta
     }
 
     @Override
-    public @NotNull ResourceLocation getTextureLocation(@NotNull T entity) {
+    public @NotNull Identifier getTextureLocation(@NotNull T entity) {
         return entity.texture;
     }
 

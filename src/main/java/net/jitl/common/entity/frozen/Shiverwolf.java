@@ -13,7 +13,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
@@ -30,13 +30,13 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.*;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.animal.Turtle;
-import net.minecraft.world.entity.animal.horse.AbstractHorse;
-import net.minecraft.world.entity.animal.horse.Llama;
+import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.world.entity.animal.equine.Llama;
+import net.minecraft.world.entity.animal.turtle.Turtle;
 import net.minecraft.world.entity.decoration.ArmorStand;
-import net.minecraft.world.entity.monster.AbstractSkeleton;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Ghast;
+import net.minecraft.world.entity.monster.skeleton.AbstractSkeleton;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
@@ -53,7 +53,6 @@ import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.manager.AnimatableManager;
 
 import javax.annotation.Nullable;
-import java.util.UUID;
 
 public class Shiverwolf extends JTamableEntity {
 
@@ -72,7 +71,7 @@ public class Shiverwolf extends JTamableEntity {
     private float shakeAnimO;
     private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
     @Nullable
-    private UUID persistentAngerTarget;
+    private EntityReference<@NotNull LivingEntity> persistentAngerTarget;
     private static final DyeColor DEFAULT_COLLAR_COLOR = DyeColor.RED;
 
     public Shiverwolf(EntityType<? extends JTamableEntity> pEntityType, Level pLevel) {
@@ -139,7 +138,7 @@ public class Shiverwolf extends JTamableEntity {
         this.readPersistentAngerSaveData(this.level(), compound);
     }
 
-    public ResourceLocation getTexture() {
+    public Identifier getTexture() {
         if (this.isTame()) {
             return JITL.rl("textures/entity/frozen/shiverwolf_tame.png");
         } else {
@@ -431,30 +430,29 @@ public class Shiverwolf extends JTamableEntity {
             return 0.62831855F;
         }
     }
-
+    
     @Override
-    public int getRemainingPersistentAngerTime() {
-        return this.entityData.get(DATA_REMAINING_ANGER_TIME);
+    public long getPersistentAngerEndTime() {
+        return (Long)this.entityData.get(DATA_ANGER_END_TIME);
     }
 
     @Override
-    public void setRemainingPersistentAngerTime(int time) {
-        this.entityData.set(DATA_REMAINING_ANGER_TIME, time);
+    public void setPersistentAngerEndTime(long p_455794_) {
+        this.entityData.set(DATA_ANGER_END_TIME, p_455794_);
     }
 
     @Override
     public void startPersistentAngerTimer() {
-        this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.sample(this.random));
+        this.setTimeToRemainAngry(PERSISTENT_ANGER_TIME.sample(this.random));
     }
 
     @Override
-    @Nullable
-    public UUID getPersistentAngerTarget() {
+    public @org.jetbrains.annotations.Nullable EntityReference<LivingEntity> getPersistentAngerTarget() {
         return this.persistentAngerTarget;
     }
 
     @Override
-    public void setPersistentAngerTarget(@Nullable UUID target) {
+    public void setPersistentAngerTarget(@org.jetbrains.annotations.Nullable EntityReference<LivingEntity> target) {
         this.persistentAngerTarget = target;
     }
 

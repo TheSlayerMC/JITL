@@ -18,9 +18,9 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.*;
 import net.minecraft.world.entity.decoration.ArmorStand;
-import net.minecraft.world.entity.monster.AbstractSkeleton;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Ghast;
+import net.minecraft.world.entity.monster.skeleton.AbstractSkeleton;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -42,14 +42,15 @@ import software.bernie.geckolib.animatable.manager.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Objects;
-import java.util.UUID;
 
 public abstract class JTamableEntity extends TamableAnimal implements NeutralMob, GeoEntity {
 
-    private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(JTamableEntity.class, EntityDataSerializers.INT);
+    public static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(JTamableEntity.class, EntityDataSerializers.INT);
+    public static final EntityDataAccessor<Long> DATA_ANGER_END_TIME = SynchedEntityData.defineId(JTamableEntity.class, EntityDataSerializers.LONG);
+
     private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
     @Nullable
-    private UUID persistentAngerTarget;
+    private EntityReference<@NotNull LivingEntity> persistentAngerTarget;
 
     protected EnumKnowledge knowledge;
     protected float knowledgeAmount = 0.0F;
@@ -232,29 +233,28 @@ public abstract class JTamableEntity extends TamableAnimal implements NeutralMob
     }
 
     @Override
-    public int getRemainingPersistentAngerTime() {
-        return this.entityData.get(DATA_REMAINING_ANGER_TIME);
+    public long getPersistentAngerEndTime() {
+        return (Long)this.entityData.get(DATA_ANGER_END_TIME);
     }
 
     @Override
-    public void setRemainingPersistentAngerTime(int pTime) {
-        this.entityData.set(DATA_REMAINING_ANGER_TIME, pTime);
+    public void setPersistentAngerEndTime(long p_455794_) {
+        this.entityData.set(DATA_ANGER_END_TIME, p_455794_);
     }
 
     @Override
     public void startPersistentAngerTimer() {
-        this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.sample(this.random));
+        this.setTimeToRemainAngry(PERSISTENT_ANGER_TIME.sample(this.random));
     }
 
-    @javax.annotation.Nullable
     @Override
-    public UUID getPersistentAngerTarget() {
+    public @Nullable EntityReference<LivingEntity> getPersistentAngerTarget() {
         return this.persistentAngerTarget;
     }
 
     @Override
-    public void setPersistentAngerTarget(@javax.annotation.Nullable UUID pTarget) {
-        this.persistentAngerTarget = pTarget;
+    public void setPersistentAngerTarget(@Nullable EntityReference<LivingEntity> target) {
+        this.persistentAngerTarget = target;
     }
 
     @Override

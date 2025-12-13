@@ -1,13 +1,9 @@
 package net.jitl.common.items.curios.amulet;
 
 import net.jitl.common.items.curios.JCurioItem;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 
 import java.util.UUID;
 
@@ -16,9 +12,9 @@ public class IceAmuletItem extends JCurioItem {
     protected static final UUID DAMAGE_MODIFIER = UUID.fromString("b0d292cf-74cd-4c6e-925f-eb81e78e3582");
     protected static final UUID ATTACK_MODIFIER = UUID.fromString("c0d86a67-553d-4c53-9f68-d8df3a891d38");
 
-    protected static final AttributeModifier SPEED_MOD = new AttributeModifier(ResourceLocation.withDefaultNamespace("speed_modifier"), 0.1F, AttributeModifier.Operation.ADD_VALUE);
-    protected static final AttributeModifier DAMAGE_MOD = new AttributeModifier(ResourceLocation.withDefaultNamespace("damage_modifier"), 1.0F, AttributeModifier.Operation.ADD_VALUE);
-    protected static final AttributeModifier ATTACK_MOD = new AttributeModifier(ResourceLocation.withDefaultNamespace("attack_speed_modifier"), 0.5F, AttributeModifier.Operation.ADD_VALUE);
+    protected static final AttributeModifier SPEED_MOD = new AttributeModifier(Identifier.withDefaultNamespace("speed_modifier"), 0.1F, AttributeModifier.Operation.ADD_VALUE);
+    protected static final AttributeModifier DAMAGE_MOD = new AttributeModifier(Identifier.withDefaultNamespace("damage_modifier"), 1.0F, AttributeModifier.Operation.ADD_VALUE);
+    protected static final AttributeModifier ATTACK_MOD = new AttributeModifier(Identifier.withDefaultNamespace("attack_speed_modifier"), 0.5F, AttributeModifier.Operation.ADD_VALUE);
 
     public IceAmuletItem(Item.Properties properties) {
         super(properties);

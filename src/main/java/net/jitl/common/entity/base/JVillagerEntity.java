@@ -1,7 +1,8 @@
 package net.jitl.common.entity.base;
 
-import com.google.common.collect.Sets;
+import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -9,7 +10,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.npc.Npc;
-import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.entity.npc.villager.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.trading.Merchant;
@@ -23,8 +24,7 @@ import software.bernie.geckolib.animatable.manager.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import javax.annotation.Nullable;
-import java.util.Objects;
-import java.util.Set;
+import java.util.ArrayList;
 
 public abstract class JVillagerEntity extends JVillagerMob implements Npc, Merchant, Enemy, GeoEntity {
 
@@ -47,15 +47,6 @@ public abstract class JVillagerEntity extends JVillagerMob implements Npc, Merch
         return playerEntity;
     }
 
-    @Override
-    public @NotNull MerchantOffers getOffers() {
-        if (offers == null) {
-            offers = new MerchantOffers();
-            provideTrades();
-        }
-        return offers;
-    }
-
     protected abstract void controller(AnimatableManager.ControllerRegistrar controllers);
 
     @Override
@@ -71,24 +62,34 @@ public abstract class JVillagerEntity extends JVillagerMob implements Npc, Merch
     @Nullable
     protected abstract Int2ObjectMap<VillagerTrades.ItemListing[]> getVillagerTrades();
 
-    protected void provideTrades() {
-        VillagerTrades.ItemListing[] trades = Objects.requireNonNull(getVillagerTrades()).get(1);
-        if (trades != null) {
-            MerchantOffers merchantOffers = getOffers();
-            addTrades(merchantOffers, trades);
-        }
-    }
+    @Override
+    protected void updateTrades(ServerLevel serverLevel) {
 
-    protected void addTrades(MerchantOffers offers, VillagerTrades.ItemListing[] trades) {
-        Set<Integer> set = Sets.newHashSet();
-        for (int i = 0; i < trades.length; ++i) {
-            set.add(i);
-        }
-        for (int int1 : set) {
-            VillagerTrades.ItemListing villagerTrades = trades[int1];
-            MerchantOffer merchantoffer = villagerTrades.getOffer(this, random);
+    }
+//
+//    protected void addTrades(ServerLevel level, MerchantOffers offers, VillagerTrades.ItemListing[] trades) {
+//        Set<Integer> set = Sets.newHashSet();
+//        for (int i = 0; i < trades.length; ++i) {
+//            set.add(i);
+//        }
+//        for (int int1 : set) {
+//            VillagerTrades.ItemListing villagerTrades = trades[int1];
+//            MerchantOffer merchantoffer = villagerTrades.getOffer(level, this, random);
+//            if (merchantoffer != null) {
+//                offers.add(merchantoffer);
+//            }
+//        }
+//    }
+
+    protected void addOffersFromItemListings(ServerLevel p_480295_, MerchantOffers p_479439_, VillagerTrades.ItemListing[] p_479360_, int p_481834_) {
+        ArrayList<VillagerTrades.ItemListing> arraylist = Lists.newArrayList(p_479360_);
+        int i = 0;
+
+        while (i < p_481834_ && !arraylist.isEmpty()) {
+            MerchantOffer merchantoffer = arraylist.remove(this.random.nextInt(arraylist.size())).getOffer(p_480295_, this, this.random);
             if (merchantoffer != null) {
-                offers.add(merchantoffer);
+                p_479439_.add(merchantoffer);
+                i++;
             }
         }
     }
@@ -106,24 +107,22 @@ public abstract class JVillagerEntity extends JVillagerMob implements Npc, Merch
         }
     }
 
-    public void trade(Player playerEntity) {
-        if (!getOffers().isEmpty()) {
-            if (!level().isClientSide()) {
-                setTradingPlayer(playerEntity);
-                openTradingScreen(playerEntity, getDisplayName(), 1);
-            }
-        }
-    }
 
     @Override
     public @NotNull InteractionResult mobInteract(@NotNull Player playerEntity, @NotNull InteractionHand playerHand) {
         if(isAlive() && this.playerEntity == null && canTrade()) {
-            trade(playerEntity);
+            startTrading(playerEntity);
         } else {
             return super.mobInteract(playerEntity, playerHand);
         }
         return super.mobInteract(playerEntity, playerHand);
     }
+
+    public void startTrading(Player player) {
+        this.setTradingPlayer(player);
+        this.openTradingScreen(player, this.getDisplayName(), 1);
+    }
+
 
     public boolean canTrade() {
         return true;

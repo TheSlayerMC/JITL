@@ -29,7 +29,6 @@ import org.slf4j.Logger;
 
 import javax.annotation.Nullable;
 import java.util.Optional;
-import java.util.function.Function;
 
 public abstract class DarkNotNeededSpawner extends BaseSpawner {
 
@@ -212,7 +211,7 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
                 return null;
             }
 
-            this.displayEntity = EntityType.loadEntityRecursive(compoundtag, level, EntitySpawnReason.SPAWNER, Function.identity());
+            this.displayEntity = EntityType.loadEntityRecursive(compoundtag, level, EntitySpawnReason.SPAWNER, EntityProcessor.NOP);
             if (compoundtag.size() == 1 && this.displayEntity instanceof Mob) {
             }
         }

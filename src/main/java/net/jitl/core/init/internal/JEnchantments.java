@@ -5,7 +5,7 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.item.Item;
@@ -68,11 +68,11 @@ public class JEnchantments {
     }
 
     private static void register(BootstrapContext<Enchantment> pContext, ResourceKey<Enchantment> pKey, Enchantment.Builder pBuilder) {
-        pContext.register(pKey, pBuilder.build(pKey.location()));
+        pContext.register(pKey, pBuilder.build(pKey.identifier()));
     }
 
     public static ResourceKey<Enchantment> registerKey(String name) {
-        return ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, name));
+        return ResourceKey.create(Registries.ENCHANTMENT, Identifier.fromNamespaceAndPath(JITL.MOD_ID, name));
     }
 
     //public static final RegistryObject<Enchantment> HOT_TOUCH =

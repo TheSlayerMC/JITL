@@ -6,12 +6,10 @@ import net.jitl.common.block.portal.logic.PortalCoordinatesContainer;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -19,7 +17,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.neoforged.neoforge.common.util.ValueIOSerializable;
-import org.jetbrains.annotations.UnknownNullability;
 
 import javax.annotation.Nullable;
 import java.util.Map;
@@ -145,9 +142,9 @@ public class Portal implements ValueIOSerializable {
             for (String s : portalMapTag.keySet()) {
                 CompoundTag portalReturnTag = portalMapTag.getCompound(s).orElse(null);
                 assert portalReturnTag != null;
-                ResourceLocation fromDim = ResourceLocation.read(portalReturnTag.getStringOr("FromDim", "FromDim")).getOrThrow();
+                Identifier fromDim = Identifier.read(portalReturnTag.getStringOr("FromDim", "FromDim")).getOrThrow();
                 BlockPos portalPos = portalReturnTag.read("PortalPos", BlockPos.CODEC).orElse(null);
-                ResourceKey<Level> toDimKey = ResourceKey.create(Registries.DIMENSION, ResourceLocation.read(s).getOrThrow());
+                ResourceKey<Level> toDimKey = ResourceKey.create(Registries.DIMENSION, Identifier.read(s).getOrThrow());
                 ResourceKey<Level> fromDimKey = ResourceKey.create(Registries.DIMENSION, fromDim);
                 portalCoordinatesMap.put(toDimKey, new PortalCoordinatesContainer(fromDimKey, portalPos));
             }
@@ -168,10 +165,10 @@ public class Portal implements ValueIOSerializable {
                 CompoundTag portalReturnTag = new CompoundTag();
                 PortalCoordinatesContainer container = entry.getValue();
 
-                portalReturnTag.putString("FromDim", container.fromDim().location().toString());
+                portalReturnTag.putString("FromDim", container.fromDim().identifier().toString());
                 portalReturnTag.put("PortalPos", writeBlockPos(container.portalPos()));
 
-                portalCoordinatesNBT.put(entry.getKey().location().toString(), portalReturnTag);
+                portalCoordinatesNBT.put(entry.getKey().identifier().toString(), portalReturnTag);
             }
             tag.put("PortalMap", portalCoordinatesNBT);
         }

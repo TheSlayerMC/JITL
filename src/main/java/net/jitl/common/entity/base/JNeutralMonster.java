@@ -1,8 +1,13 @@
 package net.jitl.common.entity.base;
 
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.entity.EntityReference;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.NeutralMob;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
@@ -13,16 +18,17 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
-import java.util.UUID;
 
 public abstract class JNeutralMonster extends JMonsterEntity implements NeutralMob {
 
     private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
-    private int remainingPersistentAngerTime;
+    public static final EntityDataAccessor<Long> DATA_ANGER_END_TIME = SynchedEntityData.defineId(JNeutralMonster.class, EntityDataSerializers.LONG);
+
     @Nullable
-    private UUID persistentAngerTarget;
+    private EntityReference<@NotNull LivingEntity> persistentAngerTarget;
 
     protected JNeutralMonster(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -43,27 +49,30 @@ public abstract class JNeutralMonster extends JMonsterEntity implements NeutralM
         this.readPersistentAngerSaveData(this.level(), compound);
     }
 
-    public void startPersistentAngerTimer() {
-        this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.sample(this.random));
+    @Override
+    public long getPersistentAngerEndTime() {
+        return (Long)this.entityData.get(DATA_ANGER_END_TIME);
     }
 
-    public void setRemainingPersistentAngerTime(int time) {
-        this.remainingPersistentAngerTime = time;
+    @Override
+    public void setPersistentAngerEndTime(long p_455794_) {
+        this.entityData.set(DATA_ANGER_END_TIME, p_455794_);
     }
 
-    public int getRemainingPersistentAngerTime() {
-        return this.remainingPersistentAngerTime;
-    }
-
-    public void setPersistentAngerTarget(@javax.annotation.Nullable UUID target) {
-        this.persistentAngerTarget = target;
-    }
-
-    @javax.annotation.Nullable
-    public UUID getPersistentAngerTarget() {
+    @Override
+    public @org.jetbrains.annotations.Nullable EntityReference<LivingEntity> getPersistentAngerTarget() {
         return this.persistentAngerTarget;
     }
 
+    @Override
+    public void startPersistentAngerTimer() {
+        this.setTimeToRemainAngry(PERSISTENT_ANGER_TIME.sample(this.random));
+    }
+
+    @Override
+    public void setPersistentAngerTarget(@org.jetbrains.annotations.Nullable EntityReference<LivingEntity> target) {
+        this.persistentAngerTarget = target;
+    }
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0, true));

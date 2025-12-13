@@ -3,7 +3,7 @@ package net.jitl.common.world.gen.senterian;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Rotation;
@@ -140,7 +140,7 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
     public static class Room {
         public final StructureTemplate room;
         public Room(StructureTemplateManager manager, String location) {
-            room = manager.getOrCreate(ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, location));
+            room = manager.getOrCreate(Identifier.fromNamespaceAndPath(JITL.MOD_ID, location));
         }
         public void gen(WorldGenLevel level, RandomSource random, BlockPos pos, Rotation rotation) {
             placeRoom(room, level, random, pos, rotation);
@@ -150,7 +150,7 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
     public static class VerticalRoom {
         public final StructureTemplate room;
         public VerticalRoom(StructureTemplateManager manager, String location) {
-            room = manager.getOrCreate(ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, location));
+            room = manager.getOrCreate(Identifier.fromNamespaceAndPath(JITL.MOD_ID, location));
         }
         public void gen(WorldGenLevel level, RandomSource random, BlockPos pos, Rotation rotation) {
 
@@ -161,7 +161,7 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
     public static class BigRoom {
         public final StructureTemplate room;
         public BigRoom(StructureTemplateManager manager, String room) {
-            this.room = manager.getOrCreate(ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, room));
+            this.room = manager.getOrCreate(Identifier.fromNamespaceAndPath(JITL.MOD_ID, room));
         }
         public void gen(WorldGenLevel level, RandomSource random, BlockPos pos, int xPart, int zPart) {
             if(xPart == 0) {

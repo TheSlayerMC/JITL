@@ -1,12 +1,10 @@
 package net.jitl.client.render.entity.state;
 
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.resources.ResourceLocation;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
+import net.minecraft.resources.Identifier;
 
 public class BossCrystalRenderState extends LivingEntityRenderState {
 
-    public ResourceLocation texture;
+    public Identifier texture;
 
 }

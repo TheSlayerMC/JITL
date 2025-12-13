@@ -1,7 +1,6 @@
 package net.jitl.client.gui;
 
 import com.mojang.blaze3d.platform.Window;
-import com.mojang.blaze3d.systems.RenderSystem;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.jitl.client.util.GuiHelper;
 import net.jitl.common.entity.IJourneyBoss;
@@ -10,11 +9,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.LerpingBossEvent;
-import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.entity.LivingEntity;
@@ -26,7 +22,7 @@ import java.util.Map;
 
 public class BossBarRenderer {
 
-    private static final Map<ResourceLocation, ResourceLocation> BAR_ID_CACHE = new Object2ObjectOpenHashMap<>();
+    private static final Map<Identifier, Identifier> BAR_ID_CACHE = new Object2ObjectOpenHashMap<>();
 
     public static void init() {
         NeoForge.EVENT_BUS.addListener(EventPriority.NORMAL, false, CustomizeGuiOverlayEvent.BossEventProgress.class, BossBarRenderer::render);
@@ -46,12 +42,12 @@ public class BossBarRenderer {
             if(ev.isCanceled() || Minecraft.getInstance().level == null || bossStatusInfo.getColor() != BossEvent.BossBarColor.PINK || bossStatusInfo.getOverlay() != BossEvent.BossBarOverlay.NOTCHED_20)
                 return;
 
-            ResourceLocation texture = BAR_ID_CACHE.computeIfAbsent(
-                    JITL.getRegistryName(entity.getType()), key -> ResourceLocation.fromNamespaceAndPath(key.getNamespace(), "textures/gui/bossbars/" + key.getPath() + ".png"));
+            Identifier texture = BAR_ID_CACHE.computeIfAbsent(
+                    JITL.getRegistryName(entity.getType()), key -> Identifier.fromNamespaceAndPath(key.getNamespace(), "textures/gui/bossbars/" + key.getPath() + ".png"));
 
             double healthWidth = entity.getHealth() / entity.getMaxHealth();
 
-            RenderSystem.setShaderTexture(0, mc.getTextureManager().getTexture(texture).getTextureView());
+            //RenderSystem.setShaderTexture(0, mc.getTextureManager().getTexture(texture).getTextureView());
 
             GuiHelper.drawTexture(graphics, texture, x, y, 0, 10, 182, 9, 182, 19);
             GuiHelper.drawTexture(graphics, texture, x, y, 0, 0, (int)(182 * healthWidth), 9, 182, 19);

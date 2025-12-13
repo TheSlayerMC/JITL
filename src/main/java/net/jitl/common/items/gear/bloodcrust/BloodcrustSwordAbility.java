@@ -6,7 +6,7 @@ import net.jitl.core.helper.TooltipFiller;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JDataComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,13 +16,12 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
 
 public class BloodcrustSwordAbility implements IAbility {
 
-    private static final ResourceLocation ID = ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "bloodcrust_ability");
+    private static final Identifier ID = Identifier.fromNamespaceAndPath(JITL.MOD_ID, "bloodcrust_ability");
 
     @Override
     public void damageTarget(LivingEntity holder, ItemStack stack, LivingDamageEvent event) {

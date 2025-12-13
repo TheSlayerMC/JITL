@@ -1,7 +1,7 @@
 package net.jitl.common.entity.frozen.npc;
 
-import net.jitl.client.util.ChatUtils;
 import net.jitl.client.knowledge.EnumKnowledge;
+import net.jitl.client.util.ChatUtils;
 import net.jitl.common.block.entity.PedestalTile;
 import net.jitl.common.capability.stats.PlayerStats;
 import net.jitl.common.entity.projectile.EssenciaBoltEntity;
@@ -36,7 +36,7 @@ import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.manager.AnimatableManager;
-import software.bernie.geckolib.animatable.processing.AnimationController;
+import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 

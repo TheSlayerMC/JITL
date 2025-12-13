@@ -26,9 +26,9 @@ public class RockiteSpawnerEntity extends BlockEntity implements GeoAnimatable {
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.cache;
     }
-
-    @Override
-    public double getTick(Object object) {
-        return 0;
-    }
+//
+//    @Override
+//    public double getTick(Object object) {
+//        return 0;
+//    }
 }

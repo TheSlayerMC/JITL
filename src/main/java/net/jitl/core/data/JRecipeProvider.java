@@ -7,7 +7,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -709,7 +709,7 @@ public class JRecipeProvider extends RecipeProvider {
     }
 
     public ItemLike getItemFromRegistryName(String registryName) {
-        ItemLike item = BuiltInRegistries.ITEM.getValue(ResourceLocation.parse(registryName));
+        ItemLike item = BuiltInRegistries.ITEM.getValue(Identifier.parse(registryName));
         return item;
     }
 

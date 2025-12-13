@@ -5,10 +5,10 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.jitl.client.render.projectile.state.EssentiaLightningBoltRenderState;
 import net.jitl.common.entity.projectile.EssenciaBoltEntity;
 import net.jitl.core.helper.internal.DrawHelper;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.util.RandomSource;
 import org.jetbrains.annotations.NotNull;
@@ -36,7 +36,7 @@ public class EssenciaBoltRenderer extends EntityRenderer<EssenciaBoltEntity, Ess
 
         float finalF = f;
         float finalF1 = f1;
-        p_433826_.submitCustomGeometry(p_435280_, RenderType.lightning(), (p_434636_, ivertexbuilder) -> {
+        p_433826_.submitCustomGeometry(p_435280_, RenderTypes.lightning(), (p_434636_, ivertexbuilder) -> {
             Matrix4f matrix4f = p_434636_.pose();
 
             for(int j = 0; j < 4; ++j) {

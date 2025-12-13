@@ -6,7 +6,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.FormattedCharSequence;
 
 public class GuiHelper {
@@ -23,7 +23,7 @@ public class GuiHelper {
         graphics.drawString(Minecraft.getInstance().font, text, x, y, colour, shadow);
     }
 
-    public static void drawTexture(GuiGraphics graphics, ResourceLocation texture, int x, int y, int u, int v, int width, int height, int texWidth, int texHeight) {
+    public static void drawTexture(GuiGraphics graphics, Identifier texture, int x, int y, int u, int v, int width, int height, int texWidth, int texHeight) {
         graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, u, v, width, height, texWidth, texHeight);
     }
 

@@ -2,12 +2,12 @@ package net.jitl.client.render.projectile.state;
 
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Entity;
 
 public class TwoDRenderState extends EntityRenderState {
 
-    public ResourceLocation texture;
+    public Identifier texture;
     public Entity entity;
     public ItemStackRenderState renderState;
 }

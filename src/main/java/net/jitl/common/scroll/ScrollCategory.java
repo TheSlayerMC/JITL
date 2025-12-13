@@ -1,6 +1,6 @@
 package net.jitl.common.scroll;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import java.util.LinkedHashMap;
 
@@ -8,17 +8,17 @@ public class ScrollCategory {
 
     private final int categorySize;
     private final String categoryKey;
-    private final ResourceLocation backgroundTexture;
+    private final Identifier backgroundTexture;
     private final String id;
 
     private final LinkedHashMap<String, ScrollEntry> entryList = new LinkedHashMap<>();
 
-    public ScrollCategory(String categoryKey, ResourceLocation backgroundTexture) {
+    public ScrollCategory(String categoryKey, Identifier backgroundTexture) {
         this(categoryKey, backgroundTexture, 2);
     }
 
 
-    public ScrollCategory(String categoryKey, ResourceLocation backgroundTexture, int categorySize) {
+    public ScrollCategory(String categoryKey, Identifier backgroundTexture, int categorySize) {
         this.categorySize = categorySize;
         this.categoryKey = categoryKey;
         this.backgroundTexture = backgroundTexture;
@@ -48,7 +48,7 @@ public class ScrollCategory {
         return entryList.get(entryID);
     }
 
-    public ResourceLocation getBackgroundTexture() {
+    public Identifier getBackgroundTexture() {
         return backgroundTexture;
     }
 

@@ -1,6 +1,5 @@
 package net.jitl.client.gui.overlay;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.client.essence.ClientEssence;
 import net.jitl.common.entity.projectile.EssenceArrowEntity;
 import net.jitl.common.items.base.JBowItem;
@@ -12,15 +11,12 @@ import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.client.gui.GuiLayer;
 import org.jetbrains.annotations.NotNull;
 
@@ -29,16 +25,16 @@ public class EssenceBar implements GuiLayer {
     private static float transparency;
     private static float burnoutTransparency;
 
-    private static final ResourceLocation UNDER_CROSSHAIR_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/gui/essence_under_crosshair.png");
-    private static final ResourceLocation OVER_EXP_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/gui/essence_over_exp.png");
-    private static final ResourceLocation ABOVE_HUNGER_TEXTURE = ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/gui/essence_over_hunger.png");
+    private static final Identifier UNDER_CROSSHAIR_TEXTURE = Identifier.fromNamespaceAndPath(JITL.MOD_ID, "textures/gui/essence_under_crosshair.png");
+    private static final Identifier OVER_EXP_TEXTURE = Identifier.fromNamespaceAndPath(JITL.MOD_ID, "textures/gui/essence_over_exp.png");
+    private static final Identifier ABOVE_HUNGER_TEXTURE = Identifier.fromNamespaceAndPath(JITL.MOD_ID, "textures/gui/essence_over_hunger.png");
 
     @Override
     public void render(@NotNull GuiGraphics gui, DeltaTracker tracker) {
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
         //RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(OVER_EXP_TEXTURE).getTextureView());
+        //RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(OVER_EXP_TEXTURE).getTextureView());
         if(player != null && !player.isCreative() && !player.isSpectator()) {
 
             float currentEssence = ClientEssence.getCurrentClientEssence();
@@ -137,7 +133,7 @@ public class EssenceBar implements GuiLayer {
                 float addedAlpha = belowCrosshair ? 0.5F : 0;
 
                 //RenderSystem.setShader(GameRenderer::getPositionTexShader);
-                RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(getTextureBasedOnPosition(essencePosition)).getTextureView());
+                //RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(getTextureBasedOnPosition(essencePosition)).getTextureView());
                 //RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, transparency - addedAlpha);todo
 
                 /*
@@ -195,7 +191,7 @@ public class EssenceBar implements GuiLayer {
     /**
      * Returns a texture based off of the configured position set by the player.
      */
-    private static ResourceLocation getTextureBasedOnPosition(EssencePosition essencePosition) {
+    private static Identifier getTextureBasedOnPosition(EssencePosition essencePosition) {
         if (essencePosition == EssencePosition.OVER_EXPERIENCE_BAR) {
             return OVER_EXP_TEXTURE;
         }

@@ -7,7 +7,7 @@ import net.jitl.common.entity.frozen.FrozenTrollEntity;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 public class FrozenTrollRenderer extends MobRenderer<FrozenTrollEntity, FrozenTrollState, FrozenTrollModel<FrozenTrollState>> {
@@ -22,12 +22,12 @@ public class FrozenTrollRenderer extends MobRenderer<FrozenTrollEntity, FrozenTr
     }
 
     @Override
-    public @NotNull ResourceLocation getTextureLocation(@NotNull FrozenTrollState entity) {
+    public @NotNull Identifier getTextureLocation(@NotNull FrozenTrollState entity) {
         boolean isAngry = entity.isAngry;
         if (isAngry) {
-            return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/frozen/frozen_troll_angry.png");
+            return Identifier.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/frozen/frozen_troll_angry.png");
         } else {
-            return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/frozen/frozen_troll_lookin_cute.png");
+            return Identifier.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/frozen/frozen_troll_lookin_cute.png");
         }
     }
 

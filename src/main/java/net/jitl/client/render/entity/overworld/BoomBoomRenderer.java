@@ -5,12 +5,11 @@ import net.jitl.client.render.entity.overworld.state.BoomRenderState;
 import net.jitl.common.entity.overworld.BoomBoom;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.util.Mth;
-import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.base.GeoRenderState;
+import software.bernie.geckolib.renderer.internal.RenderPassInfo;
 
 public class BoomBoomRenderer<T extends BoomRenderState & GeoRenderState> extends GeoEntityRenderer<BoomBoom, T> {
 
@@ -36,9 +35,9 @@ public class BoomBoomRenderer<T extends BoomRenderState & GeoRenderState> extend
     }
 
     @Override
-    public void preRender(T renderState, PoseStack poseStack, BakedGeoModel model, SubmitNodeCollector renderTasks, CameraRenderState cameraState, int packedLight, int packedOverlay, int renderColor) {
-        scale(renderState, poseStack);
-        super.preRender(renderState, poseStack, model, renderTasks, cameraState, packedLight, packedOverlay, renderColor);
+    public void preRenderPass(RenderPassInfo<T> renderPassInfo, SubmitNodeCollector renderTasks) {
+        scale(renderPassInfo.renderState(), renderPassInfo.poseStack());
+        super.preRenderPass(renderPassInfo, renderTasks);
     }
 
     @Override

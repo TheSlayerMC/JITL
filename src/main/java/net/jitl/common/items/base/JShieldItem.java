@@ -2,7 +2,7 @@ package net.jitl.common.items.base;
 
 import net.jitl.core.init.JITL;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -15,7 +15,7 @@ import java.util.Optional;
 
 public class JShieldItem extends ShieldItem {
 
-    public final ResourceLocation texture;
+    public final Identifier texture;
 
     public JShieldItem(Properties p, String name, int uses, Item repairItem) {
         super(p.durability(uses).equippableUnswappable(EquipmentSlot.OFFHAND)

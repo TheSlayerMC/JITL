@@ -3,11 +3,11 @@ package net.jitl.client.render.item;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.serialization.MapCodec;
 import net.jitl.core.init.JITL;
-import net.minecraft.client.model.ShieldModel;
 import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.model.object.equipment.ShieldModel;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.SubmitNodeCollector;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.special.SpecialModelRenderer;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.client.resources.model.MaterialSet;
@@ -15,10 +15,10 @@ import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
-import org.joml.Vector3f;
+import org.joml.Vector3fc;
 
 import javax.annotation.Nullable;
-import java.util.Set;
+import java.util.function.Consumer;
 
 public class MekyumShieldRenderer implements SpecialModelRenderer<DataComponentMap> {
 
@@ -41,12 +41,12 @@ public class MekyumShieldRenderer implements SpecialModelRenderer<DataComponentM
         pose.scale(1.0F, -1.0F, -1.0F);
         Material material = new Material(Sheets.SHIELD_SHEET, JITL.rl("entity/shield/mekyum_shield"));
         submitNodeCollector.submitModelPart(this.model.handle(), pose, this.model.renderType(material.atlasLocation()), i, i1, this.materials.get(material), false, false,-1, null, i2 );
-        submitNodeCollector.submitModelPart(this.model.plate(), pose, material.renderType(RenderType::entityCutout), i, i1, this.materials.get(material), false, b, -1, null, i2);
+        submitNodeCollector.submitModelPart(this.model.plate(), pose, material.renderType(RenderTypes::entityCutout), i, i1, this.materials.get(material), false, b, -1, null, i2);
         pose.popPose();
     }
 
     @Override
-    public void getExtents(Set<Vector3f> set) {
+    public void getExtents(Consumer<Vector3fc> set) {
         PoseStack posestack = new PoseStack();
         posestack.scale(1.0F, -1.0F, -1.0F);
         this.model.root().getExtentsForGui(posestack, set);

@@ -4,7 +4,7 @@ import net.jitl.common.entity.nether.MiniGhast;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.GhastRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
@@ -23,8 +23,8 @@ public class MiniGhastRenderer<T extends GhastRenderState & GeoRenderState> exte
     }
 
     @Override
-    public @NotNull ResourceLocation getTextureLocation(@NotNull T entity) {
+    public @NotNull Identifier getTextureLocation(@NotNull T entity) {
         String name = entity.isCharging ? "mini_ghast_shooting" : "mini_ghast";
-        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/nether/" + name + ".png");
+        return Identifier.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/nether/" + name + ".png");
     }
 }

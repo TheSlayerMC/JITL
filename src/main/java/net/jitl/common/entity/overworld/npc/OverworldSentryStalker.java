@@ -1,7 +1,7 @@
 package net.jitl.common.entity.overworld.npc;
 
-import net.jitl.client.util.ChatUtils;
 import net.jitl.client.knowledge.EnumKnowledge;
+import net.jitl.client.util.ChatUtils;
 import net.jitl.common.capability.stats.PlayerStats;
 import net.jitl.common.entity.base.JPathfinderMob;
 import net.jitl.common.entity.base.MobStats;
@@ -32,7 +32,7 @@ import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.manager.AnimatableManager;
-import software.bernie.geckolib.animatable.processing.AnimationController;
+import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 

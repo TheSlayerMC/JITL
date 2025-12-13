@@ -2,15 +2,15 @@ package net.jitl.core.helper;
 
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JTags;
-import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.Util;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.equipment.ArmorMaterial;
@@ -448,7 +448,7 @@ public enum JToolTiers {
                 float pToughness,
                 float pKnockbackResistance,
                 TagKey<Item> pRepairIngridient,
-                ResourceLocation pLayers
+                Identifier pLayers
         ) {
             EnumMap<ArmorType, Integer> enummap = new EnumMap<>(ArmorType.class);
 
@@ -459,9 +459,9 @@ public enum JToolTiers {
         }
     }
 
-    private static final ResourceKey<? extends Registry<EquipmentAsset>> ROOT_ID = ResourceKey.createRegistryKey(ResourceLocation.withDefaultNamespace("equipment_asset"));
+    private static final ResourceKey<? extends Registry<EquipmentAsset>> ROOT_ID = ResourceKey.createRegistryKey(Identifier.withDefaultNamespace("equipment_asset"));
 
-    private static ResourceKey<EquipmentAsset> createId(ResourceLocation loc) {
+    private static ResourceKey<EquipmentAsset> createId(Identifier loc) {
         return ResourceKey.create(ROOT_ID, loc);
     }
 }

@@ -1,22 +1,13 @@
 package net.jitl.core.init.compat.emi.recipe;
 
-import net.jitl.core.helper.EnumSummoningRecipes;
-import net.jitl.core.init.compat.emi.JITLEmiPlugin;
-import net.minecraft.resources.ResourceLocation;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class SummoningTableEmiRecipe {//implements EmiRecipe {
-//    private static final ResourceLocation RECIPE_BACKGROUND = ResourceLocation.fromNamespaceAndPath("jitl", "textures/gui/summoning_table_recipe.png");
-//    private final ResourceLocation id;
+//    private static final ResourceIdentifier RECIPE_BACKGROUND = ResourceIdentifier.fromNamespaceAndPath("jitl", "textures/gui/summoning_table_recipe.png");
+//    private final ResourceIdentifier id;
 //    private final List<EmiIngredient> inputs;
 //    private final List<EmiStack> outputs;
 //todo
 //    public SummoningTableEmiRecipe(EnumSummoningRecipes recipe) {
-//        this.id = ResourceLocation.fromNamespaceAndPath("jitl", "/summoning_table/" + recipe.name().toLowerCase());
+//        this.id = ResourceIdentifier.fromNamespaceAndPath("jitl", "/summoning_table/" + recipe.name().toLowerCase());
 //
 //        this.inputs = Arrays.stream(recipe.getInputs())
 //                .map(EmiStack::of)
@@ -31,7 +22,7 @@ public class SummoningTableEmiRecipe {//implements EmiRecipe {
 //    }
 //
 //    @Override
-//    public @Nullable ResourceLocation getId() {
+//    public @Nullable ResourceIdentifier getId() {
 //        return id;
 //    }
 //

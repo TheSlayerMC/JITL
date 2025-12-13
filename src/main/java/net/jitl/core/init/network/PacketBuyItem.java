@@ -9,7 +9,7 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -35,7 +35,7 @@ public record PacketBuyItem(String item, int amount, int cost) implements Custom
         ctx.enqueueWork(() -> {
             Player player = ctx.player();
             PlayerStats stats = player.getData(JDataAttachments.PLAYER_STATS);
-            Item item = BuiltInRegistries.ITEM.getValue(ResourceLocation.parse(payload.item));
+            Item item = BuiltInRegistries.ITEM.getValue(Identifier.parse(payload.item));
 
             if(stats.useSentacoins(payload.cost())) {
                 player.addItem(new ItemStack(item, payload.amount));

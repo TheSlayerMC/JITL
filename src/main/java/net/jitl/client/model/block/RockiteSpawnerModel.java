@@ -2,28 +2,28 @@ package net.jitl.client.model.block;
 
 import net.jitl.common.block.entity.RockiteSpawnerEntity;
 import net.jitl.core.init.JITL;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.base.GeoRenderState;
 
 public class RockiteSpawnerModel extends DefaultedEntityGeoModel<RockiteSpawnerEntity> {
 
     public RockiteSpawnerModel() {
-        super(ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "rockite_smasher"));
+        super(Identifier.fromNamespaceAndPath(JITL.MOD_ID, "rockite_smasher"));
     }
 
     @Override
-    public ResourceLocation getModelResource(GeoRenderState object) {
-        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "rockite_spawner");
+    public Identifier getModelResource(GeoRenderState object) {
+        return Identifier.fromNamespaceAndPath(JITL.MOD_ID, "rockite_spawner");
     }
 
     @Override
-    public ResourceLocation getTextureResource(GeoRenderState object) {
-        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/models/block/rockite.png");
+    public Identifier getTextureResource(GeoRenderState object) {
+        return Identifier.fromNamespaceAndPath(JITL.MOD_ID, "textures/models/block/rockite.png");
     }
 
     @Override
-    public ResourceLocation getAnimationResource(RockiteSpawnerEntity animatable) {
-        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "");
+    public Identifier getAnimationResource(RockiteSpawnerEntity animatable) {
+        return Identifier.fromNamespaceAndPath(JITL.MOD_ID, "");
     }
 }

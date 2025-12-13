@@ -2,7 +2,7 @@ package net.jitl.common.world.gen.cloudia;
 
 import net.jitl.core.init.JITL;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Rotation;
@@ -121,7 +121,7 @@ public class CloudiaTerrain extends Feature<NoneFeatureConfiguration> {
     static class BigRoom {
         public final StructureTemplate room;
         public BigRoom(StructureTemplateManager manager, String room) {
-            this.room = manager.getOrCreate(ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, room));
+            this.room = manager.getOrCreate(Identifier.fromNamespaceAndPath(JITL.MOD_ID, room));
         }
         public void gen(WorldGenLevel level, RandomSource random, BlockPos pos, int xPart, int zPart) {
             if(xPart == 0) {

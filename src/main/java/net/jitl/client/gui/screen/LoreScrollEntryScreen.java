@@ -1,6 +1,5 @@
 package net.jitl.client.gui.screen;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.Tesselator;
@@ -16,14 +15,14 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
 
 public class LoreScrollEntryScreen extends Screen {
 
-    private static final ResourceLocation BG = JITL.rl("textures/gui/scroll_base.png");
+    private static final Identifier BG = JITL.rl("textures/gui/scroll_base.png");
     private static final int SLIDER_LIGHT_COLOR = 0xFFe5bd85;
     private static final int SLIDER_PATH_COLOR = 0x333c2c14;
     private static final int SLIDER_DARK_COLOR = 0xFFc18a3c;
@@ -108,7 +107,7 @@ public class LoreScrollEntryScreen extends Screen {
     @Override
     public void render(@NotNull GuiGraphics poseStack, int mouseX, int mouseY, float partialTicks) {
         assert minecraft != null;
-        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(BG).getTextureView());
+        //RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(BG).getTextureView());
 
         int heightRectCount = (height - (height <= 480 ? 12 : 48)) / 32;
         int widthRectCount = height <= 480 ? 6 : 10;

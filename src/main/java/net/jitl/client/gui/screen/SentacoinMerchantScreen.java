@@ -12,7 +12,7 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class SentacoinMerchantScreen extends AbstractContainerScreen<SentacoinMerchantMenu> {
 
-    private static final ResourceLocation MERCHANT_LOCATION = JITL.rl("textures/gui/merchant.png");
+    private static final Identifier MERCHANT_LOCATION = JITL.rl("textures/gui/merchant.png");
     private static final Component TRADES_LABEL = Component.translatable("merchant.trades");
 
     public SentacoinMerchantScreen(SentacoinMerchantMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
@@ -83,6 +83,11 @@ public class SentacoinMerchantScreen extends AbstractContainerScreen<SentacoinMe
         public TradeOfferButton(String name, int pX, int pY, ItemStack i, int amount, int cost) {
             super(pX, pY, 96, 20, Component.translatable(name), (press) -> buy(i, amount, cost), DEFAULT_NARRATION);
             setTooltip(Tooltip.create(Component.literal(" x" + amount + " for x"  + cost + " Sentacoins")));
+        }
+
+        @Override
+        protected void renderContents(GuiGraphics guiGraphics, int i, int i1, float v) {
+
         }
     }
 }

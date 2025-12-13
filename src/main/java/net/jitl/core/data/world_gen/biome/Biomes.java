@@ -1,10 +1,12 @@
 package net.jitl.core.data.world_gen.biome;
 
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.sounds.Music;
 import net.minecraft.util.Mth;
-import net.minecraft.world.level.biome.*;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.world.level.biome.BiomeSpecialEffects;
+import net.minecraft.world.level.biome.MobSpawnSettings;
 
 import javax.annotation.Nullable;
 
@@ -19,12 +21,13 @@ public class Biomes {
     public static Biome biome(boolean hasPrecipitation, float temperature, float downfall, int skyColour, int fogColour, int waterColor, int waterFogColor, @Nullable Integer grassColorOverride, @Nullable Integer foliageColorOverride,
                               MobSpawnSettings.Builder mobSpawnSettings, BiomeGenerationSettings.Builder generationSettings, @Nullable Music backgroundMusic) {
         BiomeSpecialEffects.Builder biomespecialeffects$builder = new BiomeSpecialEffects.Builder()
-                .skyColor(skyColour)
+                //.skyColor(skyColour)
                 .waterColor(waterColor)
-                .waterFogColor(waterFogColor)
-                .fogColor(fogColour)
-                .skyColor(calculateSkyColor(temperature))
-                .backgroundMusic(backgroundMusic);
+                //.waterFogColor(waterFogColor)
+                //.fogColor(fogColour)
+                //.skyColor(calculateSkyColor(temperature))
+                //.backgroundMusic(backgroundMusic);
+        ;
         if(grassColorOverride != null)
             biomespecialeffects$builder.grassColorOverride(grassColorOverride);
 
@@ -43,11 +46,12 @@ public class Biomes {
     public static Biome biome(boolean hasPrecipitation, float temperature, float downfall, int skyColour, int fogColour, int waterColor, int waterFogColor, @Nullable Integer grassColorOverride, @Nullable Integer foliageColorOverride,
                               MobSpawnSettings.Builder mobSpawnSettings, BiomeGenerationSettings.Builder generationSettings) {
         BiomeSpecialEffects.Builder biomespecialeffects$builder = new BiomeSpecialEffects.Builder()
-                .skyColor(skyColour)
+                //.skyColor(skyColour)
                 .waterColor(waterColor)
-                .waterFogColor(waterFogColor)
-                .fogColor(fogColour)
-                .skyColor(calculateSkyColor(temperature));
+                //.waterFogColor(waterFogColor)
+                //.fogColor(fogColour)
+                //.skyColor(calculateSkyColor(temperature));
+        ;
         if(grassColorOverride != null)
             biomespecialeffects$builder.grassColorOverride(grassColorOverride);
 
@@ -67,13 +71,14 @@ public class Biomes {
                               MobSpawnSettings.Builder mobSpawnSettings, BiomeGenerationSettings.Builder generationSettings, SimpleParticleType particle, float prob, @Nullable Music backgroundMusic) {
 
         BiomeSpecialEffects.Builder biomespecialeffects$builder = new BiomeSpecialEffects.Builder()
-                .skyColor(skyColour)
+                //.skyColor(skyColour)
                 .waterColor(waterColor)
-                .waterFogColor(waterFogColor)
-                .fogColor(fogColour)
-                .skyColor(calculateSkyColor(temperature))
-                .ambientParticle(new AmbientParticleSettings(particle, prob))
-                .backgroundMusic(backgroundMusic);
+                //.waterFogColor(waterFogColor)
+               // .fogColor(fogColour)
+               // .skyColor(calculateSkyColor(temperature))
+                //.ambientParticle(new AmbientParticleSettings(particle, prob))
+                //.backgroundMusic(backgroundMusic);
+        ;
         if(grassColorOverride != null)
             biomespecialeffects$builder.grassColorOverride(grassColorOverride);
 

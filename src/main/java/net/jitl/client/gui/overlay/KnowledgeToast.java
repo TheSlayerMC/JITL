@@ -1,31 +1,20 @@
 package net.jitl.client.gui.overlay;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.client.gui.overlay.helper.JDisplayInfo;
 import net.jitl.client.gui.overlay.helper.JFrameType;
 import net.jitl.client.gui.overlay.helper.JToast;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.core.helper.internal.ArgbColor;
 import net.jitl.core.init.JITL;
-import net.jitl.core.init.internal.JSounds;
 import net.minecraft.ChatFormatting;
-import net.minecraft.advancements.AdvancementType;
-import net.minecraft.advancements.DisplayInfo;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.toasts.Toast;
 import net.minecraft.client.gui.components.toasts.ToastManager;
 import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -35,7 +24,7 @@ public class KnowledgeToast implements JToast {
     private final EnumKnowledge knowledge;
     private boolean playedSound;
     private final boolean isLevel;
-    private final ResourceLocation KNOWLEDGE_SPRITE = JITL.rl("textures/gui/knowledge/knowledge_sprites.png");
+    private final Identifier KNOWLEDGE_SPRITE = JITL.rl("textures/gui/knowledge/knowledge_sprites.png");
     private JToast.Visibility wantedVisibility = JToast.Visibility.HIDE;
 
     public KnowledgeToast(EnumKnowledge knowledge, boolean isLevel) {
@@ -55,7 +44,7 @@ public class KnowledgeToast implements JToast {
 
     @Override
     public void render(GuiGraphics poseStack, Font font, long timeSinceLastVisible) {
-        RenderSystem.setShaderTexture(0, Minecraft.getInstance().getTextureManager().getTexture(TEXTURE).getTextureView());
+        //RenderSystem.setShaderTexture(0, Minecraft.getInstance().getTextureManager().getTexture(TEXTURE).getTextureView());
         JDisplayInfo displayinfo = isLevel ? this.knowledge.getLevelDisplay() : this.knowledge.getXPDisplay();
         poseStack.blitSprite(RenderPipelines.GUI_TEXTURED, TEXTURE, 0, 0, this.width(), this.height());
         if(displayinfo != null) {
@@ -92,7 +81,7 @@ public class KnowledgeToast implements JToast {
             poseStack.pose().pushMatrix();
             poseStack.pose().scale(scale, scale);
             poseStack.pose().translate(translate, translate);
-            RenderSystem.setShaderTexture(0, Minecraft.getInstance().getTextureManager().getTexture(KNOWLEDGE_SPRITE).getTextureView());
+            //RenderSystem.setShaderTexture(0, Minecraft.getInstance().getTextureManager().getTexture(KNOWLEDGE_SPRITE).getTextureView());
             poseStack.blitSprite(RenderPipelines.GUI_TEXTURED, KNOWLEDGE_SPRITE, knowledge.getSpriteX(), knowledge.getSpriteY(), 32, 32);
 
             poseStack.pose().popMatrix();

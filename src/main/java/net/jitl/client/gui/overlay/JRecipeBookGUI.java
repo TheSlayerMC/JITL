@@ -1,6 +1,5 @@
 package net.jitl.client.gui.overlay;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.client.util.GuiHelper;
 import net.jitl.core.helper.EnumSummoningRecipes;
 import net.jitl.core.helper.internal.EmptyContainer;
@@ -12,7 +11,7 @@ import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent
 import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
@@ -23,8 +22,8 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
 
     private PageButton nextButton;
     private PageButton previousButton;
-    private final ResourceLocation RECIPE = JITL.rl("textures/gui/summoning_table_recipe.png");
-    private final ResourceLocation BACKGROUND = JITL.rl("textures/gui/recipe_book.png");
+    private final Identifier RECIPE = JITL.rl("textures/gui/summoning_table_recipe.png");
+    private final Identifier BACKGROUND = JITL.rl("textures/gui/recipe_book.png");
     public int pageNumber = 0;
 
     public JRecipeBookGUI(Inventory playerInventory) {
@@ -64,7 +63,7 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
         assert minecraft != null;
-        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.BACKGROUND).getTextureView());
+        //RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.BACKGROUND).getTextureView());
         GuiHelper.drawTexture(poseStack, BACKGROUND, x, y, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
 
         switch(pageNumber) {
@@ -128,7 +127,7 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
         x = x + k + 10;
         y = y + l + 10;
         assert minecraft != null;
-        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.RECIPE).getTextureView());
+        //RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.RECIPE).getTextureView());
         GuiHelper.drawTexture(matrixStack, RECIPE, x - 5, y - 5, 0, 0, 112, 62, 256, 256);
         matrixStack.pose().pushMatrix();
         renderItem(matrixStack, mouseX, mouseY, x, y, recipe, 0);

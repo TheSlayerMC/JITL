@@ -2,7 +2,7 @@ package net.jitl.client.model;
 
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JDimension;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.base.GeoRenderState;
@@ -13,23 +13,23 @@ public class AnimatedMonsterModel<T extends GeoEntity> extends DefaultedEntityGe
     private final JDimension dim;
 
     public AnimatedMonsterModel(String name, JDimension dim) {
-        super(ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, name));
+        super(Identifier.fromNamespaceAndPath(JITL.MOD_ID, name));
         this.dim = dim;
         this.name = name;
     }
 
     @Override
-    public ResourceLocation getModelResource(GeoRenderState object) {
+    public Identifier getModelResource(GeoRenderState object) {
         return JITL.rl(this.name);
     }
 
     @Override
-    public ResourceLocation getTextureResource(GeoRenderState object) {
+    public Identifier getTextureResource(GeoRenderState object) {
         return JITL.rl("textures/entity/" + dim.getDim() + "/" + this.name +".png");
     }
 
     @Override
-    public ResourceLocation getAnimationResource(T animatable) {
+    public Identifier getAnimationResource(T animatable) {
         return JITL.rl(this.name);
     }
 }

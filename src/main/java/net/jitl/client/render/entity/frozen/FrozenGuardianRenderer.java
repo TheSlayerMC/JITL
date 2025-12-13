@@ -5,7 +5,7 @@ import net.jitl.client.render.entity.state.ActiveRenderState;
 import net.jitl.common.entity.frozen.npc.FrozenGuardian;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.base.GeoRenderState;
@@ -24,12 +24,12 @@ public class FrozenGuardianRenderer<R extends ActiveRenderState & GeoRenderState
     }
 
     @Override
-    public @NotNull ResourceLocation getTextureLocation(@NotNull R entity) {
+    public @NotNull Identifier getTextureLocation(@NotNull R entity) {
         boolean isActivated = entity.isActive;
         if (isActivated) {
-            return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/frozen/frozen_guardian_awake.png");
+            return Identifier.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/frozen/frozen_guardian_awake.png");
         } else {
-            return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/frozen/frozen_guardian_asleep.png");
+            return Identifier.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/frozen/frozen_guardian_asleep.png");
         }
     }
 

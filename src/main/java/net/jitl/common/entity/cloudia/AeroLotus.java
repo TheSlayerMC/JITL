@@ -1,7 +1,6 @@
 package net.jitl.common.entity.cloudia;
 
 import net.jitl.client.knowledge.EnumKnowledge;
-import net.jitl.common.entity.base.JMonsterEntity;
 import net.jitl.common.entity.base.JPathfinderMob;
 import net.jitl.common.entity.base.MobStats;
 import net.minecraft.core.BlockPos;
@@ -16,7 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.manager.AnimatableManager;
-import software.bernie.geckolib.animatable.processing.AnimationController;
+import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 
 public class AeroLotus extends JPathfinderMob {

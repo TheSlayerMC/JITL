@@ -5,7 +5,7 @@ import net.jitl.core.init.JITL;
 import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.ArrowRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class EssenceArrowRenderer extends ArrowRenderer<EssenceArrowEntity, ArrowRenderState> {
 
@@ -19,7 +19,7 @@ public class EssenceArrowRenderer extends ArrowRenderer<EssenceArrowEntity, Arro
     }
 
     @Override
-    protected ResourceLocation getTextureLocation(ArrowRenderState arrowRenderState) {
+    protected Identifier getTextureLocation(ArrowRenderState arrowRenderState) {
         return JITL.rl("textures/entity/projectile/essence_arrow.png");
     }
 }

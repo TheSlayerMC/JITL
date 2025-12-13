@@ -2,7 +2,7 @@ package net.jitl.common.world.gen.ruins;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
@@ -17,7 +17,7 @@ public class RuinsFeatureConfig implements FeatureConfiguration {
                     Codec.INT.fieldOf("max_spreading").forGetter((ruinsFeatureConfig) -> ruinsFeatureConfig.maxSpreading),
                     Codec.INT.fieldOf("max_height").forGetter((ruinsFeatureConfig) -> ruinsFeatureConfig.maxHeight),
                     Codec.INT.fieldOf("max_columns").forGetter((ruinsFeatureConfig) -> ruinsFeatureConfig.maxColumns),
-                    ResourceLocation.CODEC.fieldOf("loot_list").forGetter((ruinsFeatureConfig -> ruinsFeatureConfig.resourceLocation))
+                    net.minecraft.resources.Identifier.CODEC.fieldOf("loot_list").forGetter((ruinsFeatureConfig -> ruinsFeatureConfig.identifier))
             ).apply(instance, RuinsFeatureConfig::new));
 
     public final RuleTest spawnBlock;
@@ -26,15 +26,15 @@ public class RuinsFeatureConfig implements FeatureConfiguration {
     public int maxSpreading;
     public int maxHeight;
     public int maxColumns;
-    public final ResourceLocation resourceLocation;
+    public final Identifier identifier;
 
-    public RuinsFeatureConfig(RuleTest spawnBlock, BlockStateProvider chest, WeightedStateProvider ruinedBlocksProvider, int maxSpreading, int maxHeight, int maxColumns, ResourceLocation resourceLocation) {
+    public RuinsFeatureConfig(RuleTest spawnBlock, BlockStateProvider chest, WeightedStateProvider ruinedBlocksProvider, int maxSpreading, int maxHeight, int maxColumns, Identifier identifier) {
         this.spawnBlock = spawnBlock;
         this.chest = chest;
         this.ruinedBlocksProvider = ruinedBlocksProvider;
         this.maxSpreading = maxSpreading;
         this.maxHeight = maxHeight;
         this.maxColumns = maxHeight;
-        this.resourceLocation = resourceLocation;
+        this.identifier = identifier;
     }
 }

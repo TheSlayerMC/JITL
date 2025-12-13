@@ -1,33 +1,34 @@
 package net.jitl.client.render.world;
 
+import com.mojang.blaze3d.buffers.GpuBuffer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.jitl.client.render.world.clouds.JCloudRenderer;
 import net.jitl.core.init.JITL;
+import net.minecraft.client.CloudStatus;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.state.LevelRenderState;
 import net.minecraft.client.renderer.state.SkyRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.NotNull;
+import net.neoforged.neoforge.client.CustomCloudsRenderer;
+import net.neoforged.neoforge.client.CustomSkyboxRenderer;
 import org.joml.Matrix4f;
 
-public class EucaRenderInfo extends JDimensionSpecialEffects {
+public class EucaRenderInfo extends JDimensionSpecialEffects implements CustomSkyboxRenderer, CustomCloudsRenderer {
 
-    private static final ResourceLocation CORBA_MOON_LOCATION = JITL.rl("textures/environment/corba_moon.png");
+    private static final Identifier CORBA_MOON_LOCATION = JITL.rl("textures/environment/corba_moon.png");
+    private final GpuBuffer sunBuffer;
 
     public EucaRenderInfo() {
-        super(SkyType.OVERWORLD, false, false);
+        super(Minecraft.getInstance().getTextureManager(), Minecraft.getInstance().getAtlasManager());
+        this.sunBuffer = buildSunQuad(this.celestialsAtlas, 40F, CORBA_MOON_LOCATION);
     }
 
     @Override
-    public @NotNull Vec3 getBrightnessDependentFogColor(Vec3 vector3d, float float_) {
-        float color = 0.95F + 0.05F;
-        return vector3d.multiply((float_ * color), (float_ * color), (float_ * color));
-    }
-
-    @Override
-    public JCloudRenderer getCloudRenderer() {
-        return new JCloudRenderer(JITL.rl("textures/environment/euca_clouds.png"));
+    public boolean renderClouds(LevelRenderState levelRenderState, Vec3 camPos, CloudStatus cloudStatus, int cloudColor, float cloudHeight, Matrix4f modelViewMatrix) {
+        new JCloudRenderer(JITL.rl("textures/environment/euca_clouds.png")).render(cloudColor, cloudStatus, cloudHeight, camPos, levelRenderState.gameTime, 10F);
+        return CustomCloudsRenderer.super.renderClouds(levelRenderState, camPos, cloudStatus, cloudColor, cloudHeight, modelViewMatrix);
     }
 
     @Override
@@ -38,14 +39,20 @@ public class EucaRenderInfo extends JDimensionSpecialEffects {
 
             //START CORBA MOON
             poseStack.mulPose(Axis.XP.rotationDegrees(90F));
-            renderSun(40F, 1F, poseStack, CORBA_MOON_LOCATION);
+            renderSun(1F, poseStack, this.sunBuffer);
             poseStack.popPose();
 
         return true;
     }
 
     @Override
+    public void close() {
+        this.sunBuffer.close();
+    }
+
+    /*
+    @Override
     public boolean isFoggyAt(int int_, int int1_) {
         return false;
-    }
+    }*/
 }

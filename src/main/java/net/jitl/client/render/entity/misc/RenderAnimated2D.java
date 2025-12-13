@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import org.jetbrains.annotations.NotNull;
@@ -58,7 +58,7 @@ public class RenderAnimated2D<T extends Entity> extends EntityRenderer<T, TwoDRe
         state.entity = entity;
     }
 
-    public @NotNull ResourceLocation getTextureLocation(T t) {
+    public @NotNull Identifier getTextureLocation(T t) {
         RandomSource r = RandomSource.create();
         if(t.tickCount % animationSpeed == 0) {
             String name = RandHelper.chooseEqual(r, textures);

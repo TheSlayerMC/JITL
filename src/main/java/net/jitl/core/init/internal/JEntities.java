@@ -27,7 +27,6 @@ import net.jitl.common.entity.frozen.npc.FrozenGuardian;
 import net.jitl.common.entity.misc.Sentacoin;
 import net.jitl.common.entity.nether.*;
 import net.jitl.common.entity.overworld.*;
-import net.jitl.common.entity.overworld.Robot;
 import net.jitl.common.entity.overworld.npc.*;
 import net.jitl.common.entity.projectile.*;
 import net.jitl.common.entity.senterian.*;
@@ -36,8 +35,8 @@ import net.jitl.common.entity.terrania.npc.TerranianEnchanter;
 import net.jitl.common.entity.terrania.npc.TerranianTrader;
 import net.jitl.core.init.JITL;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -260,7 +259,7 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<MiniSentryWalker>> MINI_SENTRY_WALKER_TYPE = registerEntity(MiniSentryWalker::new, "mini_sentry_walker", "Mini Sentry Walker", 0.8F, 3.9F);
 
     private static <T extends Mob> DeferredHolder<EntityType<?>, EntityType<T>> registerEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height, float passengerAttachment, MobCategory category) {
-        ResourceKey<EntityType<?>> resource = ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, name));
+        ResourceKey<EntityType<?>> resource = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(JITL.MOD_ID, name));
         DeferredHolder<EntityType<?>, EntityType<T>> entity = REGISTRY.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).passengerAttachments(passengerAttachment).clientTrackingRange(10).build(resource));
         JItems.register(name + "_spawn_egg" , lang + " Spawn Egg", (properties) -> new SpawnEggItem(properties.spawnEgg(entity.get())), JItems.ItemType.SPAWN_EGG);
         entityName.add(name);
@@ -269,7 +268,7 @@ public class JEntities {
     }
 
     private static <T extends Mob> DeferredHolder<EntityType<?>, EntityType<T>> registerEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height, MobCategory category) {
-        ResourceKey<EntityType<?>> resource = ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, name));
+        ResourceKey<EntityType<?>> resource = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(JITL.MOD_ID, name));
         DeferredHolder<EntityType<?>, EntityType<T>> entity = REGISTRY.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).build(resource));
         JItems.register(name + "_spawn_egg" , lang + " Spawn Egg", (properties) -> new SpawnEggItem(properties.spawnEgg(entity.get())), JItems.ItemType.SPAWN_EGG);
         entityName.add(name);
@@ -282,12 +281,12 @@ public class JEntities {
     }
 
     private static <T extends Entity> DeferredHolder<EntityType<?>, EntityType<T>> registerRawEntity(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height) {
-        ResourceKey<EntityType<?>> resource = ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, name));
+        ResourceKey<EntityType<?>> resource = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(JITL.MOD_ID, name));
         return REGISTRY.register(name, () -> EntityType.Builder.of(factory, MobCategory.MISC).sized(width, height).setShouldReceiveVelocityUpdates(true).setTrackingRange(80).build(resource));
     }
 
     private static <T extends Projectile> DeferredHolder<EntityType<?>, EntityType<T>> registerProjectile(EntityType.EntityFactory<T> factory, String name, String lang, float width, float height) {
-        ResourceKey<EntityType<?>> resource = ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, name));
+        ResourceKey<EntityType<?>> resource = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(JITL.MOD_ID, name));
         return REGISTRY.register(name, () -> EntityType.Builder.of(factory, MobCategory.MISC).sized(width, height).setShouldReceiveVelocityUpdates(true).setTrackingRange(120).setUpdateInterval(20).build(resource));
     }
 

@@ -5,11 +5,11 @@ import net.jitl.common.scroll.ScrollCategory;
 import net.jitl.common.scroll.ScrollEntry;
 import net.jitl.common.scroll.ScrollEntryBuilder;
 import net.jitl.core.init.JITL;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 
 public class ScrollEntries {
-    private static final ResourceLocation BG = JITL.rl("textures/gui/scroll_background.png");
+    private static final Identifier BG = JITL.rl("textures/gui/scroll_background.png");
 
     public static final ScrollEntry MY_LAST_WORDS = new ScrollEntryBuilder("my_last_words", "My Last Words", "They're Coming...", new ItemStack(JBlocks.GOLDITE_STONE), 10, 10)
             .addTextComponent("scroll.jitl.chap1.my_last_words")

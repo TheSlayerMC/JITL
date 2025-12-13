@@ -22,7 +22,7 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.entity.npc.villager.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
@@ -32,7 +32,7 @@ import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.manager.AnimatableManager;
-import software.bernie.geckolib.animatable.processing.AnimationController;
+import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 
 public class Crypian extends JVillagerEntity {
@@ -44,7 +44,7 @@ public class Crypian extends JVillagerEntity {
             new CurrencyForItemsTrade(JItems.PERIDOT_GEMSTONE.get(), 1, Items.COMPASS, 1, 12, 5)
     }));
 
-    public Crypian(EntityType<? extends JVillagerEntity> type, Level worldIn) {
+    public Crypian(EntityType<? extends @NotNull JVillagerEntity> type, Level worldIn) {
         super(type, worldIn);
     }
 
@@ -88,11 +88,6 @@ public class Crypian extends JVillagerEntity {
         setAlloyHouse(compound.getBooleanOr("alloyHouse", true));
     }
 
-    @Override
-    protected void updateTrades() {
-
-    }
-
     public void setAlloyHouse(boolean canTrade) {
         this.entityData.set(DATA_ALLOY_HOUSE, canTrade);
     }
@@ -131,7 +126,7 @@ public class Crypian extends JVillagerEntity {
                 case 1 -> ChatUtils.addDialogStyleChat(player, "jitl.trader.crypian2");
                 case 2 -> ChatUtils.addDialogStyleChat(player, "jitl.trader.crypian3");
             }
-            trade(player);
+            startTrading(player);
         } else {
             if(isAlloyHouse()) {
                 switch (random.nextInt(3)) {

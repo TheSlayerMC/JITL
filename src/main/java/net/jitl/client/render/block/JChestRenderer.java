@@ -9,9 +9,8 @@ import net.jitl.common.block.JChestBlock;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
-import net.minecraft.client.model.ChestModel;
+import net.minecraft.client.model.object.chest.ChestModel;
 import net.minecraft.client.renderer.MaterialMapper;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -20,6 +19,8 @@ import net.minecraft.client.renderer.blockentity.BrightnessCombiner;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
 import net.minecraft.client.renderer.item.ItemModelResolver;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
+import net.minecraft.client.renderer.rendertype.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -204,7 +205,7 @@ public class JChestRenderer<T extends BlockEntity & LidBlockEntity> implements B
         f = 1.0F - f;
         f = 1.0F - f * f * f;
         Material material = chooseMaterial(render.material, render.type);
-        RenderType rendertype = material.renderType(RenderType::entityCutout);
+        RenderType rendertype = material.renderType(RenderTypes::entityCutout);
         TextureAtlasSprite textureatlassprite = this.materials.get(material);
         if (render.type != ChestType.SINGLE) {
             if (render.type == ChestType.LEFT) {

@@ -1,10 +1,9 @@
 package net.jitl.core.init.compat.emi.category;
 
-import net.jitl.core.init.internal.JBlocks;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class SummoningTableEmiCategory {// extends EmiRecipeCategory {
-    public static ResourceLocation ID = ResourceLocation.fromNamespaceAndPath("jitl", "summoning_table");
+    public static Identifier ID = Identifier.fromNamespaceAndPath("jitl", "summoning_table");
 
 //    public SummoningTableEmiCategory() {
 //        // First argument is the ID of the category across the EMI

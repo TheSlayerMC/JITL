@@ -4,10 +4,10 @@ import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.jitl.client.util.ChatUtils;
-import net.jitl.client.knowledge.EnumKnowledge;
-import net.jitl.common.entity.base.*;
+import net.jitl.common.entity.base.CurrencyForItemsTrade;
+import net.jitl.common.entity.base.JVillagerEntity;
+import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.init.internal.JItems;
-import net.jitl.core.init.internal.ScrollEntries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -19,14 +19,14 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.entity.npc.villager.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.manager.AnimatableManager;
-import software.bernie.geckolib.animatable.processing.AnimationController;
+import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 
 public class StarlightBlacksmith extends JVillagerEntity {
@@ -97,11 +97,6 @@ public class StarlightBlacksmith extends JVillagerEntity {
 
     @Override
     protected void rewardTradeXp(MerchantOffer merchantOffer) {
-
-    }
-
-    @Override
-    protected void updateTrades() {
 
     }
 

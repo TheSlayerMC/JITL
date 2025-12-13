@@ -4,14 +4,12 @@ import net.jitl.core.init.JITL;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.toasts.Toast;
-import net.minecraft.resources.ResourceLocation;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 public interface JToast extends Toast {
 
-    ResourceLocation TEXTURE = JITL.rl("textures/gui/toasts.png");
+    Identifier TEXTURE = JITL.rl("textures/gui/toasts.png");
     Object NO_TOKEN = new Object();
 
     @Override

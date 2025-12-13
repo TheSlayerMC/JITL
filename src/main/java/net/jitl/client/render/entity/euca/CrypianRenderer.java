@@ -1,18 +1,16 @@
 package net.jitl.client.render.entity.euca;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.jitl.client.render.entity.euca.state.CrypianRenderState;
 import net.jitl.common.entity.euca.npc.Crypian;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.base.GeoRenderState;
+import software.bernie.geckolib.renderer.internal.RenderPassInfo;
 
 public class CrypianRenderer<R extends CrypianRenderState & GeoRenderState> extends GeoEntityRenderer<Crypian, R> {
 
@@ -27,22 +25,23 @@ public class CrypianRenderer<R extends CrypianRenderState & GeoRenderState> exte
     }
 
     @Override
-    public @NotNull ResourceLocation getTextureLocation(@NotNull R entity) {
+    public @NotNull Identifier getTextureLocation(@NotNull R entity) {
         if(entity.isAlloyHouse) {
-            return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/euca/crypian_alloy.png");
+            return Identifier.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/euca/crypian_alloy.png");
         }
         else if(entity.canTrade) {
-            return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/euca/crypian_trade.png");
+            return Identifier.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/euca/crypian_trade.png");
         } else {
-            return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/euca/crypian.png");
+            return Identifier.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/euca/crypian.png");
         }
 
     }
 
     @Override
-    public void preRender(R renderState, PoseStack poseStack, BakedGeoModel model, SubmitNodeCollector renderTasks, CameraRenderState cameraState, int packedLight, int packedOverlay, int renderColor) {
-        poseStack.scale(1.25F, 1.25F, 1.25F);
-        super.preRender(renderState, poseStack, model, renderTasks, cameraState, packedLight, packedOverlay, renderColor);
+    public void preRenderPass(RenderPassInfo<R> renderPassInfo, SubmitNodeCollector renderTasks) {
+        float size = 1.25F;
+        renderPassInfo.poseStack().scale(size, size, size);
+        super.preRenderPass(renderPassInfo, renderTasks);
     }
 
     @Override

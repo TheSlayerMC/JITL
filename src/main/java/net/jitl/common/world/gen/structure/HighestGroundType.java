@@ -6,7 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.jitl.core.init.internal.StructureRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.structure.Structure;
@@ -24,7 +24,7 @@ public final class HighestGroundType extends Structure {
     public static final MapCodec<HighestGroundType> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(HighestGroundType.settingsCodec(instance),
                     StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(structure -> structure.startPool),
-                    ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name").forGetter(structure -> structure.startJigsawName),
+                    Identifier.CODEC.optionalFieldOf("start_jigsaw_name").forGetter(structure -> structure.startJigsawName),
                     Codec.intRange(0, 30).fieldOf("size").forGetter(structure -> structure.size),
                     Codec.INT.fieldOf("min_height").forGetter(structure -> structure.minHeight),
                     Codec.INT.fieldOf("max_height").forGetter(structure -> structure.maxHeight),
@@ -34,13 +34,13 @@ public final class HighestGroundType extends Structure {
             ).apply(instance, HighestGroundType::new));
 
     private final Holder<StructureTemplatePool> startPool;
-    private final Optional<ResourceLocation> startJigsawName;
+    private final Optional<Identifier> startJigsawName;
     private final String mode;
     private final int size, minHeight, maxHeight, bury, maxDistanceFromCenter;
 
     public HighestGroundType(StructureSettings config,
                              Holder<StructureTemplatePool> startPool,
-                             Optional<ResourceLocation> startJigsawName,
+                             Optional<Identifier> startJigsawName,
                              int size, int minHeight, int maxHeight, int bury,
                              String mode,
                              int maxDistanceFromCenter)

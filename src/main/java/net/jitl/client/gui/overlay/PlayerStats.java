@@ -1,6 +1,5 @@
 package net.jitl.client.gui.overlay;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.client.stats.ClientPlayerStats;
 import net.jitl.client.util.GuiHelper;
@@ -11,24 +10,19 @@ import net.jitl.core.init.internal.JDataAttachments;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.gui.screens.inventory.BookViewScreen;
 import net.minecraft.client.gui.screens.inventory.PageButton;
-import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
 
     private PageButton nextButton;
     private PageButton previousButton;
-    private final ResourceLocation KNOWLEDGE_SPRITE = JITL.rl("textures/gui/knowledge/knowledge_sprites.png");
-    private final ResourceLocation BACKGROUND = JITL.rl("textures/gui/stats.png");
+    private final Identifier KNOWLEDGE_SPRITE = JITL.rl("textures/gui/knowledge/knowledge_sprites.png");
+    private final Identifier BACKGROUND = JITL.rl("textures/gui/stats.png");
     public int pageNumber = 0;
     public Player player;
 
@@ -80,7 +74,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
 
-        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.BACKGROUND).getTextureView());
+        //RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.BACKGROUND).getTextureView());
         poseStack.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, x, y, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
 
         switch(pageNumber) {
@@ -133,11 +127,11 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
     public void drawSprite(GuiGraphics matrixStack, int x, int y, int spriteX, int spriteY, String s) {
         int k = (width - imageWidth) / 2;
         int l = (height - imageHeight) / 2;
-        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.BACKGROUND).getTextureView());
+        //RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.BACKGROUND).getTextureView());
 
         GuiHelper.drawTexture(matrixStack, BACKGROUND, k + x - 4, l + y - 4, 0, 216, 115, 40, 256, 256);
 
-        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.KNOWLEDGE_SPRITE).getTextureView());
+        //RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.KNOWLEDGE_SPRITE).getTextureView());
 
         GuiHelper.drawTexture(matrixStack, KNOWLEDGE_SPRITE, k + x, l + y, spriteX, spriteY, 32, 32, 256, 256);
         GuiHelper.drawString(matrixStack, s, k + x + 35, l + y + 5, -12566464, false);
@@ -153,7 +147,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         int progressBarSize = 65;
         int k = (width - imageWidth) / 2;
         int l = (height - imageHeight) / 2;
-        RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.KNOWLEDGE_SPRITE).getTextureView());
+        //RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.KNOWLEDGE_SPRITE).getTextureView());
         if(player != null) {
             net.jitl.common.capability.stats.PlayerStats knowledge = player.getData(JDataAttachments.PLAYER_STATS);
             boolean completed = knowledge.isCompleted(type);

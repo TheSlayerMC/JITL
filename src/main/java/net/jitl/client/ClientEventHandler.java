@@ -11,7 +11,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.AddClientReloadListenersEvent;
-import net.neoforged.neoforge.client.event.RegisterDimensionSpecialEffectsEvent;
+import net.neoforged.neoforge.client.event.RegisterCustomEnvironmentEffectRendererEvent;
 import net.neoforged.neoforge.client.event.ViewportEvent;
 
 @EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT)
@@ -61,13 +61,24 @@ public class ClientEventHandler {
     }
 
     @SubscribeEvent
-    public static void registerDimensionSpecialEffects(RegisterDimensionSpecialEffectsEvent event) {
-        event.register(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
-        event.register(Dimensions.DEPTHS_EFFECTS, new DepthsRenderInfo());
-        event.register(Dimensions.BOIL_EFFECTS, new BoilRenderInfo());
-        event.register(Dimensions.FROZEN_EFFECTS, new FrozenRenderInfo());
-        event.register(Dimensions.CORBA_EFFECTS, new CorbaRenderInfo());
-        event.register(Dimensions.TERRANIA_EFFECTS, new TerraniaRenderInfo());
-        event.register(Dimensions.CLOUDIA_EFFECTS, new CloudiaRenderInfo());
+    public static void registerDimensionSpecialEffects(RegisterCustomEnvironmentEffectRendererEvent event) {
+       // event.registerSkyboxRenderer(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
+       // event.registerCloudRenderer(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
+
+//        event.registerSkyboxRenderer(Dimensions.DEPTHS_EFFECTS, new DepthsRenderInfo());
+
+//        event.registerSkyboxRenderer(Dimensions.BOIL_EFFECTS, new BoilRenderInfo());
+//        event.registerCloudRenderer(Dimensions.BOIL_EFFECTS, new BoilRenderInfo());
+//
+//        event.registerCloudRenderer(Dimensions.FROZEN_EFFECTS, new FrozenRenderInfo());
+//
+//        event.registerSkyboxRenderer(Dimensions.CORBA_EFFECTS, new CorbaRenderInfo());
+//        event.registerCloudRenderer(Dimensions.CORBA_EFFECTS, new CorbaRenderInfo());
+//
+//        event.registerSkyboxRenderer(Dimensions.TERRANIA_EFFECTS, new TerraniaRenderInfo());
+//        event.registerCloudRenderer(Dimensions.TERRANIA_EFFECTS, new TerraniaRenderInfo());
+//
+//        event.registerCloudRenderer(Dimensions.CLOUDIA_EFFECTS, new CloudiaRenderInfo());
+//        event.registerSkyboxRenderer(Dimensions.CLOUDIA_EFFECTS, new CloudiaRenderInfo());
     }
 }

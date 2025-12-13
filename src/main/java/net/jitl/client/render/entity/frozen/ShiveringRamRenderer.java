@@ -1,18 +1,16 @@
 package net.jitl.client.render.entity.frozen;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.jitl.client.render.entity.frozen.state.ShiveringRamState;
 import net.jitl.common.entity.frozen.ShiveringRam;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.base.GeoRenderState;
+import software.bernie.geckolib.renderer.internal.RenderPassInfo;
 
 public class ShiveringRamRenderer<T extends ShiveringRamState & GeoRenderState> extends GeoEntityRenderer<ShiveringRam, T> {
 
@@ -22,13 +20,14 @@ public class ShiveringRamRenderer<T extends ShiveringRamState & GeoRenderState> 
     }
 
     @Override
-    public void preRender(T renderState, PoseStack poseStack, BakedGeoModel model, SubmitNodeCollector renderTasks, CameraRenderState cameraState, int packedLight, int packedOverlay, int renderColor) {
+    public void preRenderPass(RenderPassInfo<T> renderPassInfo, SubmitNodeCollector renderTasks) {
         float size = 1.1F;
-        if(renderState.isBaby) {
+
+        if(renderPassInfo.renderState().isBaby) {
             size = 0.5F;
         }
-        poseStack.scale(size, size, size);
-        super.preRender(renderState, poseStack, model, renderTasks, cameraState, packedLight, packedOverlay, renderColor);
+        renderPassInfo.poseStack().scale(size, size, size);
+        super.preRenderPass(renderPassInfo, renderTasks);
     }
 
     @Override
@@ -43,8 +42,8 @@ public class ShiveringRamRenderer<T extends ShiveringRamState & GeoRenderState> 
     }
 
     @Override
-    public @NotNull ResourceLocation getTextureLocation(@NotNull T entity) {
+    public @NotNull Identifier getTextureLocation(@NotNull T entity) {
         String name = entity.isSheared ? "shivering_ram" : "shivering_ram_wool";
-        return ResourceLocation.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/frozen/" + name + ".png");
+        return Identifier.fromNamespaceAndPath(JITL.MOD_ID, "textures/entity/frozen/" + name + ".png");
     }
 }

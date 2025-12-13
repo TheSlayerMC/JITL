@@ -1,10 +1,10 @@
 package net.jitl.core.init.internal;
 
 import net.jitl.core.init.JITL;
-import net.minecraft.Util;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.Util;
 import net.minecraft.world.item.JukeboxSong;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -233,6 +233,6 @@ public class JSounds {
 
     private static DeferredHolder<JukeboxSong, JukeboxSong> registerJukeboxSound(String name, DeferredHolder<SoundEvent, SoundEvent> song, int seconds) {
         int output = 13;
-        return JUKEBOX_SONG.register(name, () -> new JukeboxSong(song, Component.translatable(Util.makeDescriptionId("jukebox_song", song.getKey().location())), seconds, output));
+        return JUKEBOX_SONG.register(name, () -> new JukeboxSong(song, Component.translatable(Util.makeDescriptionId("jukebox_song", song.getKey().identifier())), seconds, output));
     }
 }
