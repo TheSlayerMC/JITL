@@ -114,6 +114,7 @@ public abstract class JTamableEntity extends TamableAnimal implements NeutralMob
     protected void defineSynchedData(SynchedEntityData.@NotNull Builder pBuilder) {
         super.defineSynchedData(pBuilder);
         pBuilder.define(DATA_REMAINING_ANGER_TIME, 0);
+        pBuilder.define(DATA_ANGER_END_TIME, -1L);
     }
 
     @Override

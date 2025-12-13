@@ -50,6 +50,12 @@ public abstract class JNeutralMonster extends JMonsterEntity implements NeutralM
     }
 
     @Override
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+        super.defineSynchedData(pBuilder);
+        pBuilder.define(DATA_ANGER_END_TIME, -1L);
+    }
+
+    @Override
     public long getPersistentAngerEndTime() {
         return (Long)this.entityData.get(DATA_ANGER_END_TIME);
     }
