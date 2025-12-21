@@ -109,6 +109,7 @@ public class JITL {
             new JBlockMushroomGenerator().generate();
             new BlockTotemGenerator().generate();
             new JBlockDripstoneGenerator().generate();
+            new JSpearItemGenerator().generate();
             new ArmorGenerator().generate();
             new LangRegistry().generate();
         }

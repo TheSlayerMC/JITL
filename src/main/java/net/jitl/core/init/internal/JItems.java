@@ -72,6 +72,8 @@ public class JItems {
     public static final ArrayList<String> bowLangName = new ArrayList<>();
     public static final ArrayList<String> shieldName = new ArrayList<>();
     public static final ArrayList<String> shieldLangName = new ArrayList<>();
+    public static final ArrayList<String> spearName = new ArrayList<>();
+    public static final ArrayList<String> spearLangName = new ArrayList<>();
     public static final ArrayList<String> gunName = new ArrayList<>();
     public static final ArrayList<String> gunLangName = new ArrayList<>();
     public static final ArrayList<String> hammerName = new ArrayList<>();
@@ -277,6 +279,7 @@ public class JItems {
 
     public static final DeferredItem<Item> SAPPHIRE = registerNormalItem("sapphire", "Sapphire");
     public static final DeferredItem<Item> SAPPHIRE_SHIELD = registerShieldItem("sapphire_shield", "Sapphire Shield", (p) -> new JShieldItem(p, "sapphire", 1200, SAPPHIRE.get()));
+    public static final DeferredItem<Item> SAPPHIRE_SPEAR = registerSpearItem("sapphire_spear", "Sapphire Spear", JToolTiers.JToolTier.SAPPHIRE, 0.85F, 0.82F, 0.65F, 4.0F, 9.0F, 8.25F, 5.1F, 12.5F, 4.6F);
     public static final DeferredItem<Item> SAPPHIRE_SHOVEL = registerToolItem("sapphire_shovel", "Sapphire Shovel", (p) -> new JShovelItem(p, JToolTiers.SAPPHIRE_SHOVEL, BASIC), ItemType.SHOVEL);
     public static final DeferredItem<Item> SAPPHIRE_PICKAXE = registerToolItem("sapphire_pickaxe", "Sapphire Pickaxe", (p) -> new JPickaxeItem(p, JToolTiers.SAPPHIRE_PICKAXE, BASIC), ItemType.PICKAXE);
     public static final DeferredItem<Item> SAPPHIRE_AXE = registerToolItem("sapphire_axe", "Sapphire Axe", (p) -> new JAxeItem(p, JToolTiers.SAPPHIRE_AXE, BASIC), ItemType.AXE);
@@ -290,6 +293,7 @@ public class JItems {
 
     public static final DeferredItem<Item> LUNIUM_POWDER = registerNormalItem("lunium_powder", "Lunium Powder");
     public static final DeferredItem<Item> LUNIUM_SHIELD = registerShieldItem("lunium_shield", "Lunium Shield", (p) -> new JShieldItem(p, "lunium", 1200, LUNIUM_POWDER.get()));
+    public static final DeferredItem<Item> LUNIUM_SPEAR = registerSpearItem("lunium_spear", "Lunium Spear", JToolTiers.JToolTier.LUNIUM, 0.95F, 0.95F, 0.6F, 2.5F, 8.0F, 6.75F, 5.1F, 11.25F, 4.6F);
     public static final DeferredItem<Item> LUNIUM_INGOT = registerNormalItem("lunium_ingot", "Lunium Ingot");
     public static final DeferredItem<Item> LUNIUM_CLUMP = registerNormalItem("lunium_clump", "Lunium Clump");
     public static final DeferredItem<Item> LUNIUM_SHOVEL = registerToolItem("lunium_shovel", "Lunium Shovel", (p) -> new JShovelItem(p, JToolTiers.LUNIUM_SHOVEL, BASIC), ItemType.SHOVEL);
@@ -307,6 +311,7 @@ public class JItems {
     public static final DeferredItem<Item> SHADIUM_INGOT = registerNormalItem("shadium_ingot", "Shadium Ingot");
     public static final DeferredItem<Item> SHADIUM_CLUMP = registerNormalItem("shadium_clump", "Shadium Clump");
     public static final DeferredItem<Item> SHADIUM_SHIELD = registerShieldItem("shadium_shield", "Shadium Shield", (p) -> new JShieldItem(p, "shadium", 1200, SHADIUM_INGOT.get()));
+    public static final DeferredItem<Item> SHADIUM_SPEAR = registerSpearItem("shadium_spear", "Shadium Spear", JToolTiers.JToolTier.SHADIUM, 0.95F, 0.95F, 0.6F, 2.5F, 8.0F, 6.75F, 5.1F, 11.25F, 4.6F);
     public static final DeferredItem<Item> SHADIUM_SHOVEL = registerToolItem("shadium_shovel", "Shadium Shovel", (p) -> new JShovelItem(p, JToolTiers.SHADIUM_SHOVEL, BASIC), ItemType.SHOVEL);
     public static final DeferredItem<Item> SHADIUM_PICKAXE = registerToolItem("shadium_pickaxe", "Shadium Pickaxe", (p) -> new JPickaxeItem(p, JToolTiers.SHADIUM_PICKAXE, BASIC), ItemType.PICKAXE);
     public static final DeferredItem<Item> SHADIUM_AXE = registerToolItem("shadium_axe", "Shadium Axe", (p) -> new JAxeItem(p, JToolTiers.SHADIUM_AXE, BASIC), ItemType.AXE);
@@ -322,6 +327,7 @@ public class JItems {
     public static final DeferredItem<Item> BLOODCRUST_INGOT = registerNormalItem("bloodcrust_ingot", "Bloodcrust Ingot");
     public static final DeferredItem<Item> BLOODCRUST_CLUMP = registerNormalItem("bloodcrust_clump", "Bloodcrust Clump");
     public static final DeferredItem<Item> BLOODCRUST_SHIELD = registerShieldItem("bloodcrust_shield", "Bloodcrust Shield", (p) -> new JShieldItem(p, "bloodcrust", 1200, BLOODCRUST_INGOT.get()));
+    public static final DeferredItem<Item> BLOODCRUST_SPEAR = registerSpearItem("bloodcrust_spear", "Bloodcrust Spear", JToolTiers.JToolTier.BLOODCRUST, 0.95F, 0.95F, 0.6F, 2.5F, 8.0F, 6.75F, 5.1F, 11.25F, 4.6F);
     public static final DeferredItem<Item> BLOODCRUST_SHOVEL = registerToolItem("bloodcrust_shovel", "Bloodcrust Shovel", (p) -> new JShovelItem(p, JToolTiers.BLOODCRUST_SHOVEL, BLOODCRUST_TOOL_ABILITY), ItemType.SHOVEL);
     public static final DeferredItem<Item> BLOODCRUST_PICKAXE = registerToolItem("bloodcrust_pickaxe", "Bloodcrust Pickaxe", (p) -> new JPickaxeItem(p, JToolTiers.BLOODCRUST_PICKAXE, BLOODCRUST_TOOL_ABILITY), ItemType.PICKAXE);
     public static final DeferredItem<Item> BLOODCRUST_AXE = registerToolItem("bloodcrust_axe", "Bloodcrust Axe", (p) -> new JAxeItem(p, JToolTiers.BLOODCRUST_AXE, BLOODCRUST_TOOL_ABILITY), ItemType.AXE);
@@ -844,6 +850,10 @@ public class JItems {
         return register(name, translatedName, item, ItemType.SHIELD);
     }
 
+    private static DeferredItem<Item> registerSpearItem(String name, String translatedName, ToolMaterial material, float swingDuration, float damageMultiplier, float delay, float dismountMaxDuration, float dismountMinSpeed, float knockbackMaxDuration, float knockbackMinSpeed, float damageMaxDuration, float damageMinSpeed) {
+        return register(name, translatedName, (p) -> new Item(p.spear(material, swingDuration, damageMultiplier, delay, dismountMaxDuration, dismountMinSpeed, knockbackMaxDuration, knockbackMinSpeed, damageMaxDuration, damageMinSpeed)), ItemType.SPEAR);
+    }
+
     private static DeferredItem<Item> register(String name, String translatedName) {
         return register(name, translatedName, JItem::new, ItemType.ITEM);
     }
@@ -895,6 +905,10 @@ public class JItems {
             shieldName.add(name);
             shieldLangName.add(translatedName);
         }
+        if(type == ItemType.SPEAR) {
+            spearName.add(name);
+            spearLangName.add(translatedName);
+        }
         return register(name, item);
     }
 
@@ -926,6 +940,7 @@ public class JItems {
         TOOL,
         BOW,
         SHIELD,
+        SPEAR,
         PIERCER,
         GUN,
         HAMMER,

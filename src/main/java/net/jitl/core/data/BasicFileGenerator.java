@@ -1,7 +1,6 @@
 package net.jitl.core.data;
 
 import net.jitl.core.init.JITL;
-import net.jitl.core.init.internal.JItems;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -57,6 +56,22 @@ public class BasicFileGenerator {
         }
 
         getBowItem(name);
+        itemModelInit();
+    }
+
+    public void generateSpearFile(String name) {
+        String itemFileDir = "../src/main/resources/assets/jitl/items/" + name + ".json";
+        File itemFile = new File(itemFileDir);
+        itemFile.mkdirs();
+        try {
+            if(itemFile.exists()) itemFile.delete();
+            itemFile.createNewFile();
+            itemFileWriter = new BufferedWriter(new FileWriter(itemFile));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        getSpearItem(name);
         itemModelInit();
     }
 
@@ -138,6 +153,34 @@ public class BasicFileGenerator {
         writeToItemFile("    },");
         writeToItemFile("    \"property\": \"minecraft:using_item\"");
         writeToItemFile("  }");
+        writeToItemFile("}");
+    }
+
+    public void getSpearItem(String name) {
+        writeToItemFile("{");
+        writeToItemFile("  \"model\": {");
+        writeToItemFile("    \"type\": \"minecraft:select\",");
+        writeToItemFile("    \"cases\": [");
+        writeToItemFile("      {");
+        writeToItemFile("        \"model\": {");
+        writeToItemFile("          \"type\": \"minecraft:model\",");
+        writeToItemFile("          \"model\": \"jitl:item/" + name + "\"");
+        writeToItemFile("        },");
+        writeToItemFile("        \"when\": [");
+        writeToItemFile("          \"gui\",");
+        writeToItemFile("          \"ground\",");
+        writeToItemFile("          \"fixed\",");
+        writeToItemFile("         \"on_shelf\"");
+        writeToItemFile("        ]");
+        writeToItemFile("      }");
+        writeToItemFile("    ],");
+        writeToItemFile("    \"fallback\": {");
+        writeToItemFile("      \"type\": \"minecraft:model\",");
+        writeToItemFile("      \"model\": \"jitl:item/" + name + "_in_hand\"");
+        writeToItemFile("    },");
+        writeToItemFile("    \"property\": \"minecraft:display_context\"");
+        writeToItemFile("  },");
+        writeToItemFile("  \"swap_animation_scale\": 1.95");
         writeToItemFile("}");
     }
 
