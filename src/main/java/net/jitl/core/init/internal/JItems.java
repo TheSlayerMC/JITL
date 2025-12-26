@@ -342,6 +342,7 @@ public class JItems {
     public static final DeferredItem<Item> CELESTIUM_INGOT = registerNormalItem("celestium_ingot", "Celestium Ingot");
     public static final DeferredItem<Item> CELESTIUM_GEMSTONE = registerNormalItem("celestium_gemstone", "Celestium Gemstone");
     public static final DeferredItem<Item> CELESTIUM_SHIELD = registerShieldItem("celestium_shield", "Celestium Shield", (p) -> new JShieldItem(p, "celestium", 1200, CELESTIUM_INGOT.get()));
+    public static final DeferredItem<Item> CELESTIUM_SPEAR = registerSpearItem("celestium_spear", "Celestium Spear", JToolTiers.JToolTier.CELESTIUM, 0.95F, 0.95F, 0.6F, 2.5F, 8.0F, 6.75F, 5.1F, 11.25F, 4.6F);
     public static final DeferredItem<Item> CELESTIUM_SHOVEL = registerToolItem("celestium_shovel", "Celestium Shovel", (p) -> new JShovelItem(p, JToolTiers.CELESTIUM_SHOVEL, BASIC), ItemType.SHOVEL);
     public static final DeferredItem<Item> CELESTIUM_PICKAXE = registerToolItem("celestium_pickaxe", "Celestium Pickaxe", (p) -> new JPickaxeItem(p, JToolTiers.CELESTIUM_PICKAXE, BASIC), ItemType.PICKAXE);
     public static final DeferredItem<Item> CELESTIUM_AXE = registerToolItem("celestium_axe", "Celestium Axe", (p) -> new JAxeItem(p, JToolTiers.CELESTIUM_AXE, BASIC), ItemType.AXE);
@@ -356,6 +357,7 @@ public class JItems {
     public static final DeferredItem<Item> MEKYUM_INGOT = registerNormalItem("mekyum_ingot", "Mekyum Ingot");
     public static final DeferredItem<Item> MEKYUM_GEMSTONE = registerNormalItem("mekyum_gemstone", "Mekyum Gemstone");
     public static final DeferredItem<Item> MEKYUM_SHIELD = registerShieldItem("mekyum_shield", "Mekyum Shield", (p) -> new JShieldItem(p, "mekyum", 1200, MEKYUM_INGOT.get()));
+    public static final DeferredItem<Item> MEKYUM_SPEAR = registerSpearItem("mekyum_spear", "Mekyum Spear", JToolTiers.JToolTier.MEKYUM, 0.95F, 0.95F, 0.6F, 2.5F, 8.0F, 6.75F, 5.1F, 11.25F, 4.6F);
     public static final DeferredItem<Item> MEKYUM_SHOVEL = registerToolItem("mekyum_shovel", "Mekyum Shovel", (p) -> new JShovelItem(p, JToolTiers.MEKYUM_SHOVEL, BASIC), ItemType.SHOVEL);
     public static final DeferredItem<Item> MEKYUM_PICKAXE = registerToolItem("mekyum_pickaxe", "Mekyum Pickaxe", (p) -> new JPickaxeItem(p, JToolTiers.MEKYUM_PICKAXE, BASIC), ItemType.PICKAXE);
     public static final DeferredItem<Item> MEKYUM_AXE = registerToolItem("mekyum_axe", "Mekyum Axe", (p) -> new JAxeItem(p, JToolTiers.MEKYUM_AXE, BASIC), ItemType.AXE);
@@ -366,6 +368,7 @@ public class JItems {
     public static final DeferredItem<Item> STORON_INGOT = registerNormalItem("storon_ingot", "Storon Ingot");
     public static final DeferredItem<Item> STORON_GEMSTONE = registerNormalItem("storon_gemstone", "Storon Gemstone");
     public static final DeferredItem<Item> STORON_SHIELD = registerShieldItem("storon_shield", "Storon Shield", (p) -> new JShieldItem(p, "storon", 1200, STORON_INGOT.get()));
+    public static final DeferredItem<Item> STORON_SPEAR = registerSpearItem("storon_spear", "Storon Spear", JToolTiers.JToolTier.STORON, 0.95F, 0.95F, 0.6F, 2.5F, 8.0F, 6.75F, 5.1F, 11.25F, 4.6F);
     public static final DeferredItem<Item> STORON_SHOVEL = registerToolItem("storon_shovel", "Storon Shovel", (p) -> new JShovelItem(p, JToolTiers.STORON_SHOVEL, BASIC), ItemType.SHOVEL);
     public static final DeferredItem<Item> STORON_PICKAXE = registerToolItem("storon_pickaxe", "Storon Pickaxe", (p) -> new JPickaxeItem(p, JToolTiers.STORON_PICKAXE, BASIC), ItemType.PICKAXE);
     public static final DeferredItem<Item> STORON_AXE = registerToolItem("storon_axe", "Storon Axe", (p) -> new JAxeItem(p, JToolTiers.STORON_AXE, BASIC), ItemType.AXE);
@@ -376,6 +379,7 @@ public class JItems {
     public static final DeferredItem<Item> KORITE_INGOT = registerNormalItem("korite_ingot", "Korite Ingot");
     public static final DeferredItem<Item> KORITE_GEMSTONE = registerNormalItem("korite_gemstone", "Korite Gemstone");
     public static final DeferredItem<Item> KORITE_SHIELD = registerShieldItem("korite_shield", "Korite Shield", (p) -> new JShieldItem(p, "korite", 1200, KORITE_INGOT.get()));
+    public static final DeferredItem<Item> KORITE_SPEAR = registerSpearItem("korite_spear", "Korite Spear", JToolTiers.JToolTier.KORITE, 0.95F, 0.95F, 0.6F, 2.5F, 8.0F, 6.75F, 5.1F, 11.25F, 4.6F);
     public static final DeferredItem<Item> KORITE_SHOVEL = registerToolItem("korite_shovel", "Korite Shovel", (p) -> new JShovelItem(p, JToolTiers.KORITE_SHOVEL, BASIC), ItemType.SHOVEL);
     public static final DeferredItem<Item> KORITE_PICKAXE = registerToolItem("korite_pickaxe", "Korite Pickaxe", (p) -> new JPickaxeItem(p, JToolTiers.KORITE_PICKAXE, BASIC), ItemType.PICKAXE);
     public static final DeferredItem<Item> KORITE_AXE = registerToolItem("korite_axe", "korite Axe", (p) -> new JAxeItem(p, JToolTiers.KORITE_AXE, BASIC), ItemType.AXE);
@@ -386,6 +390,7 @@ public class JItems {
     public static final DeferredItem<Item> FLAIRIUM_INGOT = registerNormalItem("flairium_ingot", "Flairium Ingot");
     public static final DeferredItem<Item> FLAIRIUM_SHIELD = registerShieldItem("flairium_shield", "Flairium Shield", (p) -> new JShieldItem(p, "flairium", 1200, FLAIRIUM_INGOT.get()));
     public static final DeferredItem<Item> FLAIRIUM_SHOVEL = registerToolItem("flairium_shovel", "Flairium Shovel", (p) -> new JShovelItem(p, JToolTiers.FLAIRIUM_SHOVEL, BASIC), ItemType.SHOVEL);
+    public static final DeferredItem<Item> FLAIRIUM_SPEAR = registerSpearItem("flairium_spear", "Flairium Spear", JToolTiers.JToolTier.FLAIRIUM, 0.95F, 0.95F, 0.6F, 2.5F, 8.0F, 6.75F, 5.1F, 11.25F, 4.6F);
     public static final DeferredItem<Item> FLAIRIUM_PICKAXE = registerToolItem("flairium_pickaxe", "Flairium Pickaxe", (p) -> new JPickaxeItem(p, JToolTiers.FLAIRIUM_PICKAXE, BASIC), ItemType.PICKAXE);
     public static final DeferredItem<Item> FLAIRIUM_AXE = registerToolItem("flairium_axe", "Flairium Axe", (p) -> new JAxeItem(p, JToolTiers.FLAIRIUM_AXE, BASIC), ItemType.AXE);
     public static final DeferredItem<Item> FLAIRIUM_HOE = registerToolItem("flairium_hoe", "Flairium Hoe", (p) -> new JHoeItem(p, JToolTiers.FLAIRIUM_HOE, -7, BASIC), ItemType.HOE);
@@ -398,6 +403,7 @@ public class JItems {
 
     public static final DeferredItem<Item> DES_INGOT = registerNormalItem("des_ingot", "Des Ingot");
     public static final DeferredItem<Item> DES_SHIELD = registerShieldItem("des_shield", "Des Shield", (p) -> new JShieldItem(p, "des", 1200, DES_INGOT.get()));
+    public static final DeferredItem<Item> DES_SPEAR = registerSpearItem("des_spear", "Des Spear", JToolTiers.JToolTier.DES, 0.95F, 0.95F, 0.6F, 2.5F, 8.0F, 6.75F, 5.1F, 11.25F, 4.6F);
     public static final DeferredItem<Item> DES_SHOVEL = registerToolItem("des_shovel", "Des Shovel", (p) -> new JShovelItem(p, JToolTiers.DES_SHOVEL, BASIC), ItemType.SHOVEL);
     public static final DeferredItem<Item> DES_PICKAXE = registerToolItem("des_pickaxe", "Des Pickaxe", (p) -> new JPickaxeItem(p, JToolTiers.DES_PICKAXE, BASIC), ItemType.PICKAXE);
     public static final DeferredItem<Item> DES_AXE = registerToolItem("des_axe", "Des Axe", (p) -> new JAxeItem(p, JToolTiers.DES_AXE, BASIC), ItemType.AXE);
@@ -407,6 +413,7 @@ public class JItems {
 
     public static final DeferredItem<Item> GORBITE_GEM = registerNormalItem("gorbite_gem", "Gorbite Gem");
     public static final DeferredItem<Item> GORBITE_SHIELD = registerShieldItem("gorbite_shield", "Gorbite Shield", (p) -> new JShieldItem(p, "gorbite", 1200, GORBITE_GEM.get()));
+    public static final DeferredItem<Item> GORBITE_SPEAR = registerSpearItem("gorbite_spear", "Gorbite Spear", JToolTiers.JToolTier.GORBITE, 0.95F, 0.95F, 0.6F, 2.5F, 8.0F, 6.75F, 5.1F, 11.25F, 4.6F);
     public static final DeferredItem<Item> GORBITE_SHOVEL = registerToolItem("gorbite_shovel", "Gorbite Shovel", (p) -> new JShovelItem(p, JToolTiers.GORBITE_SHOVEL, BASIC), ItemType.SHOVEL);
     public static final DeferredItem<Item> GORBITE_PICKAXE = registerToolItem("gorbite_pickaxe", "Gorbite Pickaxe", (p) -> new JPickaxeItem(p, JToolTiers.GORBITE_PICKAXE, BASIC), ItemType.PICKAXE);
     public static final DeferredItem<Item> GORBITE_AXE = registerToolItem("gorbite_axe", "Gorbite Axe", (p) -> new JAxeItem(p, JToolTiers.GORBITE_AXE, BASIC), ItemType.AXE);
@@ -421,6 +428,7 @@ public class JItems {
     public static final DeferredItem<Item> RAW_ORBADITE = registerNormalItem("raw_orbadite", "Raw Orbadite");
     public static final DeferredItem<Item> ORBADITE_INGOT = registerNormalItem("orbadite_ingot", "Orbadite Ingot");
     public static final DeferredItem<Item> ORBADITE_SHIELD = registerShieldItem("orbadite_shield", "Orbadite Shield", (p) -> new JShieldItem(p, "orbadite", 1200, ORBADITE_INGOT.get()));
+    public static final DeferredItem<Item> ORBADITE_SPEAR = registerSpearItem("orbadite_spear", "Orbadite Spear", JToolTiers.JToolTier.ORBADITE, 0.95F, 0.95F, 0.6F, 2.5F, 8.0F, 6.75F, 5.1F, 11.25F, 4.6F);
     public static final DeferredItem<Item> ORBADITE_SHOVEL = registerToolItem("orbadite_shovel", "Orbadite Shovel", (p) -> new JShovelItem(p, JToolTiers.ORBADITE_SHOVEL, BASIC), ItemType.SHOVEL);
     public static final DeferredItem<Item> ORBADITE_PICKAXE = registerToolItem("orbadite_pickaxe", "Orbadite Pickaxe", (p) -> new JPickaxeItem(p, JToolTiers.ORBADITE_PICKAXE, BASIC), ItemType.PICKAXE);
     public static final DeferredItem<Item> ORBADITE_AXE = registerToolItem("orbadite_axe", "Orbadite Axe", (p) -> new JAxeItem(p, JToolTiers.ORBADITE_AXE, BASIC), ItemType.AXE);
@@ -435,6 +443,7 @@ public class JItems {
     public static final DeferredItem<Item> SOULSTONE = registerNormalItem("soulstone", "Soulstone");
     public static final DeferredItem<Item> SOULSTONE_SHIELD = registerShieldItem("soulstone_shield", "Soulstone Shield", (p) -> new JShieldItem(p, "soulstone", 1200, SOULSTONE.get()));
     public static final DeferredItem<Item> SOULSTONE_SHOVEL = registerToolItem("soulstone_shovel", "Soulstone Shovel", (p) -> new JShovelItem(p, JToolTiers.SOULSTONE_SHOVEL, BASIC), ItemType.SHOVEL);
+    public static final DeferredItem<Item> SOULSTONE_SPEAR = registerSpearItem("soulstone_spear", "Soulstone Spear", JToolTiers.JToolTier.SOULSTONE, 0.95F, 0.95F, 0.6F, 2.5F, 8.0F, 6.75F, 5.1F, 11.25F, 4.6F);
     public static final DeferredItem<Item> SOULSTONE_PICKAXE = registerToolItem("soulstone_pickaxe", "Soulstone Pickaxe", (p) -> new JPickaxeItem(p, JToolTiers.SOULSTONE_PICKAXE, BASIC), ItemType.PICKAXE);
     public static final DeferredItem<Item> SOULSTONE_AXE = registerToolItem("soulstone_axe", "Soulstone Axe", (p) -> new JAxeItem(p, JToolTiers.SOULSTONE_AXE, BASIC), ItemType.AXE);
     public static final DeferredItem<Item> SOULSTONE_HOE = registerToolItem("soulstone_hoe", "Soulstone Hoe", (p) -> new JHoeItem(p, JToolTiers.SOULSTONE_HOE, -5, BASIC), ItemType.HOE);
