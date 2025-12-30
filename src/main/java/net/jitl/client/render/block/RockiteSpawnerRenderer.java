@@ -11,7 +11,7 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.renderer.GeoBlockRenderer;
 import software.bernie.geckolib.renderer.base.GeoRenderState;
-import software.bernie.geckolib.renderer.internal.RenderPassInfo;
+import software.bernie.geckolib.renderer.base.RenderPassInfo;
 
 public class RockiteSpawnerRenderer<R extends BlockEntityRenderState & GeoRenderState> extends GeoBlockRenderer<RockiteSpawnerEntity, R> {
 

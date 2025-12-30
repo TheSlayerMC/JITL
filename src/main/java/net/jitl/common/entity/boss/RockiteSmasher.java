@@ -6,11 +6,11 @@ import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.goal.AttackWhenDifficultGoal;
 import net.jitl.common.entity.goal.IdleHealGoal;
 import net.jitl.core.init.internal.JLootTables;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -69,7 +69,7 @@ public class RockiteSmasher extends JBossEntity {
     @Override
     public boolean hurtServer(ServerLevel level, @NotNull DamageSource source, float amount) {
         if(source.getEntity() instanceof Player player) {
-            if(player.getMainHandItem().getItem().getName().contains(Component.literal("pickaxe"))) {
+            if(player.getMainHandItem().is(ItemTags.PICKAXES)) {
                 return super.hurtServer(level, source, amount);
             }
         }

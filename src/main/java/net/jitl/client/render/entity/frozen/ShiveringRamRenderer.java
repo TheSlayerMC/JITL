@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.base.GeoRenderState;
-import software.bernie.geckolib.renderer.internal.RenderPassInfo;
+import software.bernie.geckolib.renderer.base.RenderPassInfo;
 
 public class ShiveringRamRenderer<T extends ShiveringRamState & GeoRenderState> extends GeoEntityRenderer<ShiveringRam, T> {
 
