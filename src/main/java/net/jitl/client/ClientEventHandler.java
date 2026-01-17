@@ -1,10 +1,11 @@
 package net.jitl.client;
 
-import net.jitl.client.render.world.*;
+import net.jitl.client.render.world.EucaSkyRender;
 import net.jitl.client.render.world.clouds.JCloudRenderer;
 import net.jitl.client.util.ClientGetter;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.core.init.JITL;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -62,7 +63,9 @@ public class ClientEventHandler {
 
     @SubscribeEvent
     public static void registerDimensionSpecialEffects(RegisterCustomEnvironmentEffectRendererEvent event) {
-       // event.registerSkyboxRenderer(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
+        event.registerSkyboxRenderer(Identifier.parse("euca"), new EucaSkyRender());
+
+        //event.registerSkyboxRenderer(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
        // event.registerCloudRenderer(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
 
 //        event.registerSkyboxRenderer(Dimensions.DEPTHS_EFFECTS, new DepthsRenderInfo());

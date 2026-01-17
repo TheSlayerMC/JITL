@@ -387,6 +387,7 @@ public class JItems {
     public static final DeferredItem<Item> KORITE_MULTITOOL = registerToolItem("korite_multitool", "Korite Multitool", (p) -> new MultitoolItem(p, JToolTiers.KORITE_SWORD, BASIC), ItemType.MULTITOOL);
     public static final DeferredItem<Item> KORITE_SWORD = registerToolItem("korite_sword", "korite Sword", (p) -> new JSwordItem(p, JToolTiers.KORITE_SWORD, KORITE_SWORD_ABILITY), ItemType.SWORD);
 
+    public static final DeferredItem<Item> RAW_FLAIRIUM = registerNormalItem("raw_flairium", "Raw Flairium");
     public static final DeferredItem<Item> FLAIRIUM_INGOT = registerNormalItem("flairium_ingot", "Flairium Ingot");
     public static final DeferredItem<Item> FLAIRIUM_SHIELD = registerShieldItem("flairium_shield", "Flairium Shield", (p) -> new JShieldItem(p, "flairium", 1200, FLAIRIUM_INGOT.get()));
     public static final DeferredItem<Item> FLAIRIUM_SHOVEL = registerToolItem("flairium_shovel", "Flairium Shovel", (p) -> new JShovelItem(p, JToolTiers.FLAIRIUM_SHOVEL, BASIC), ItemType.SHOVEL);

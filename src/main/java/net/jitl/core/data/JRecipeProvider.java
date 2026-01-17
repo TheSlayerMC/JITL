@@ -85,7 +85,7 @@ public class JRecipeProvider extends RecipeProvider {
         addOreNoArmorItems(recipeConsumer, RecipePrefix.KORITE, JBlocks.KORITE_BLOCK.get(), JBlocks.KORITE_ORE.get(), null, JItems.KORITE_GEMSTONE.get(), JItems.KORITE_INGOT.get(), Items.STICK);
         addOreNoArmorItems(recipeConsumer, RecipePrefix.STORON, JBlocks.STORON_BLOCK.get(), JBlocks.STORON_ORE.get(), null, JItems.STORON_GEMSTONE.get(), JItems.STORON_INGOT.get(), Items.STICK);
         addOreNoArmorItems(recipeConsumer, RecipePrefix.MEKYUM, JBlocks.MEKYUM_BLOCK.get(), JBlocks.MEKYUM_ORE.get(), null, JItems.MEKYUM_GEMSTONE.get(), JItems.MEKYUM_INGOT.get(), Items.STICK);
-        addOreDefaultItems(recipeConsumer, RecipePrefix.FLAIRIUM, JBlocks.FLAIRIUM_BLOCK.get(), JBlocks.FLAIRIUM_ORE.get(), null, null, JItems.FLAIRIUM_INGOT.get(), Items.STICK);
+        addOreDefaultItems(recipeConsumer, RecipePrefix.FLAIRIUM, JBlocks.FLAIRIUM_BLOCK.get(), JBlocks.FLAIRIUM_ORE.get(), null, JItems.RAW_FLAIRIUM.get(), JItems.FLAIRIUM_INGOT.get(), Items.STICK);
         addOreNoArmorItems(recipeConsumer, RecipePrefix.DES, JBlocks.DES_BLOCK.get(), JBlocks.DES_ORE.get(), null, null, JItems.DES_INGOT.get(), Items.STICK);
         addOreNoArmorItems(recipeConsumer, RecipePrefix.GORBITE, JBlocks.GORBITE_BLOCK.get(), JBlocks.GORBITE_ORE.get(), null, null, JItems.GORBITE_GEM.get(), Items.STICK);
         addOreDefaultItems(recipeConsumer, RecipePrefix.ORBADITE, JBlocks.ORBADITE_BLOCK.get(), JBlocks.ORBADITE_ORE.get(), null, JItems.RAW_ORBADITE.get(), JItems.ORBADITE_INGOT.get(), Items.STICK);

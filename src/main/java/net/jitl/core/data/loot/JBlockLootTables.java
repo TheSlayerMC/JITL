@@ -120,7 +120,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
 
         this.dropSelf(JBlocks.DES_ORE);
         this.dropSelf(JBlocks.DES_BLOCK);
-        this.dropSelf(JBlocks.FLAIRIUM_ORE);
+        this.add(JBlocks.FLAIRIUM_ORE, (block) -> createOreDrop(block, JItems.RAW_FLAIRIUM.get()));
         this.dropSelf(JBlocks.FLAIRIUM_BLOCK);
 
         this.add(JBlocks.ORBADITE_ORE, (block) -> createOreDrop(block, JItems.RAW_ORBADITE.get()));
@@ -562,7 +562,7 @@ public class JBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(JBlocks.DEPTHS_FENCE_GATE);
         this.dropSelf(JBlocks.DEPTHS_FENCE);
         this.dropSelf(JBlocks.DEPTHS_DIRT);
-        this.dropSelf(JBlocks.DEPTHS_STONE);
+        this.add(JBlocks.DEPTHS_STONE, (block) -> createSingleItemTableWithSilkTouch(block, JBlocks.DEPTHS_COBBLESTONE.get()));
         this.dropSelf(JBlocks.DEPTHS_LAMP);
         this.dropSelf(JBlocks.DEPTHS_LIGHT);
         this.dropSelf(JBlocks.DEPTHS_CRYSTAL);
