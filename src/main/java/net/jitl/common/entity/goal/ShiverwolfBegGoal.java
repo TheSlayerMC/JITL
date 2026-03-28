@@ -1,16 +1,15 @@
 package net.jitl.common.entity.goal;
 
-import java.util.EnumSet;
-import javax.annotation.Nullable;
-
 import net.jitl.common.entity.frozen.Shiverwolf;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+
+import javax.annotation.Nullable;
+import java.util.EnumSet;
 
 public class ShiverwolfBegGoal extends Goal {
     private final Shiverwolf wolf;

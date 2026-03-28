@@ -2,7 +2,6 @@ package net.jitl.common.block;
 
 import net.jitl.common.block.base.JBlock;
 import net.jitl.common.entity.corba.SwampFly;
-import net.jitl.core.init.internal.JBlockProperties;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JParticleManager;
 import net.minecraft.core.BlockPos;

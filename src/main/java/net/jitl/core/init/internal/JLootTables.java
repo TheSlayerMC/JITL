@@ -2,8 +2,8 @@ package net.jitl.core.init.internal;
 
 import net.jitl.core.init.JITL;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.storage.loot.LootTable;
 
 public class JLootTables {

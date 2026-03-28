@@ -1,6 +1,5 @@
 package net.jitl.common.scroll;
 
-import net.jitl.client.util.EnumHexColor;
 import net.jitl.client.util.GuiHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;

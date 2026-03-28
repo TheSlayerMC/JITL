@@ -2,7 +2,7 @@ package net.jitl.client.gui.screen;
 
 import net.jitl.common.block.entity.container.SummoningTableContainer;
 import net.jitl.core.init.JITL;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
@@ -19,13 +19,13 @@ public class SummoningTableScreen extends AbstractContainerScreen<SummoningTable
     }
 
     @Override
-    public void render(@NotNull GuiGraphics matrixStack, int x, int y, float partialTicks) {
-        super.render(matrixStack, x, y, partialTicks);
-        renderTooltip(matrixStack, x, y);
+    public void extractRenderState(@NotNull GuiGraphicsExtractor pGuiGraphicsExtractor, int pMouseX, int pMouseY, float pPartialTick) {
+        super.extractRenderState(pGuiGraphicsExtractor, pMouseX, pMouseY, pPartialTick);
+        extractTooltip(pGuiGraphicsExtractor, pMouseX, pMouseY);
     }
 
     @Override
-    protected void renderBg(@NotNull GuiGraphics graphics, float tick, int mouseX, int mouseY) {
+    public void extractBackground(GuiGraphicsExtractor graphics, int pMouseX, int pMouseY, float pPartialTick) {
         //RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(GUI_TEXTURE).getTextureView());
         int i = this.leftPos;
         int j = this.topPos;

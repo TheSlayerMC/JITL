@@ -1,8 +1,6 @@
 package net.jitl.client.render.entity.overworld.state;
 
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 
 public class BoomRenderState extends LivingEntityRenderState {
 

@@ -1,7 +1,6 @@
 package net.jitl.core.init.network;
 
 import net.jitl.client.ability.ClientCelestiumArmor;
-import net.jitl.client.essence.ClientEssence;
 import net.jitl.core.init.JITL;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;

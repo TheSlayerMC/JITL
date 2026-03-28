@@ -1,21 +1,15 @@
 package net.jitl.core.data.world_gen.placed_features;
 
-import com.google.common.collect.ImmutableList;
 import net.jitl.core.data.world_gen.JConfiguredFeatures;
-import net.jitl.core.init.JITL;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.*;
-
-import java.util.List;
+import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 public class FrozenPlacedFeatures extends JPlacedFeature {
 

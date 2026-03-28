@@ -15,8 +15,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Random;
-
 public class VolcanicRockBlock extends Block {
 
     public VolcanicRockBlock(Properties properties) {

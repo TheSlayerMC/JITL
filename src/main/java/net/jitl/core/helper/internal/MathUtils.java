@@ -1,9 +1,5 @@
 package net.jitl.core.helper.internal;
 
-import net.minecraft.core.Vec3i;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-
 public class MathUtils {
     /**
      * Coerces number in provided range.

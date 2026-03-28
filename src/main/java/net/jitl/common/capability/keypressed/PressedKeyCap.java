@@ -1,11 +1,8 @@
 package net.jitl.common.capability.keypressed;
 
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.neoforged.neoforge.common.util.ValueIOSerializable;
-import org.jetbrains.annotations.UnknownNullability;
 
 public class PressedKeyCap implements ValueIOSerializable {
     private boolean armor;

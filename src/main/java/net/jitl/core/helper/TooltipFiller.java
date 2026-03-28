@@ -1,9 +1,8 @@
 package net.jitl.core.helper;
 
-import net.minecraft.network.chat.Component;
 import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 public class TooltipFiller {

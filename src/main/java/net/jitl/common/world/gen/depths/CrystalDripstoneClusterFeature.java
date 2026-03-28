@@ -1,9 +1,6 @@
 package net.jitl.common.world.gen.depths;
 
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
-
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -21,6 +18,9 @@ import net.minecraft.world.level.levelgen.Column;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.DripstoneClusterConfiguration;
+
+import java.util.Optional;
+import java.util.OptionalInt;
 
 public class CrystalDripstoneClusterFeature extends Feature<DripstoneClusterConfiguration> {
 

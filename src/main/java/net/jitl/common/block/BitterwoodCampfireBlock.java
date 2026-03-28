@@ -2,13 +2,11 @@ package net.jitl.common.block;
 
 import net.jitl.common.block.entity.BitterwoodCampfireBlockEntity;
 import net.jitl.core.init.internal.JBlockEntities;
-import net.jitl.core.init.internal.JBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -30,7 +28,6 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 
 import javax.annotation.Nullable;
-import java.util.Optional;
 
 public class BitterwoodCampfireBlock extends CampfireBlock {
 

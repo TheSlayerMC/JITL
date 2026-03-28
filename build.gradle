@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.124'
+    id 'net.neoforged.moddev' version '2.0.141'
     id 'idea'
 }
 
@@ -12,7 +12,25 @@ tasks.named('wrapper', Wrapper).configure {
 version = mod_version
 group = mod_group_id
 
+sourceSets.main.resources {
+    srcDir('src/generated/resources')
+
+    exclude("**/*.bbmodel")
+    exclude("src/generated/**/.cache")
+}
+
 repositories {
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'GeckoLib'
+                url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+            }
+        }
+        filter {
+            includeGroup('software.bernie.geckolib')
+        }
+    }
     mavenLocal()
     maven {
         name = "TerraformersMC"
@@ -24,16 +42,11 @@ base {
     archivesName = mod_id
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 
 neoForge {
     version = project.neo_version
-
-    parchment {
-        mappingsVersion = project.parchment_mappings_version
-        minecraftVersion = project.parchment_minecraft_version
-    }
 
     accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -86,14 +99,14 @@ configurations {
 }
 
 dependencies {
-    implementation "mezz.jei:jei-" + minecraft_version + "-neoforge:" + jei_version
+    //implementation "mezz.jei:jei-" + minecraft_version + "-neoforge:" + jei_version
     //implementation "maven.modrinth:just-enough-resources-jer:" + jer_version
 
    // implementation("curse.maven:just-enough-resources-jer-240630:" + jer_version)
 
-    //implementation "top.theillusivec4.curios:curios-neoforge:" + curios_version
+    implementation "top.theillusivec4.curios:curios-neoforge:" + curios_version
 
-    implementation "software.bernie.geckolib:geckolib-neoforge-" + geckolib_version
+    implementation "com.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"
 
 //    compileOnly "vazkii.patchouli:Patchouli:" + sub_minecraft_version + "-" + patchouli_version + "-NEOFORGE:api"
 //    runtimeOnly "vazkii.patchouli:Patchouli:" + sub_minecraft_version + "-" + patchouli_version + "-NEOFORGE"
@@ -109,13 +122,13 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             minecraft_version      : minecraft_version,
             minecraft_version_range: minecraft_version_range,
             neo_version            : neo_version,
-            neo_version_range      : neo_version_range,
+            neo_version_range      : minecraft_version_range,
             loader_version_range   : loader_version_range,
+            mod_authors            : mod_authors,
             mod_id                 : mod_id,
             mod_name               : mod_name,
             mod_license            : mod_license,
             mod_version            : mod_version,
-            mod_authors            : mod_authors,
             mod_description        : mod_description
     ]
     inputs.properties replaceProperties

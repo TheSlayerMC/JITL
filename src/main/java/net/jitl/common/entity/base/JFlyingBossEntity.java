@@ -6,7 +6,6 @@ import net.jitl.common.entity.boss.BossCrystal;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JSounds;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerBossEvent;

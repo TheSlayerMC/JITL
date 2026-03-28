@@ -5,10 +5,6 @@
 
 package net.jitl.common.block.entity;
 
-import java.util.Arrays;
-import java.util.Optional;
-import javax.annotation.Nullable;
-
 import com.mojang.logging.LogUtils;
 import net.jitl.core.init.internal.JBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -31,15 +27,10 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemContainerContents;
-import net.minecraft.world.item.crafting.CampfireCookingRecipe;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.SingleRecipeInput;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.GameEvent.Context;
@@ -47,6 +38,10 @@ import net.minecraft.world.level.storage.TagValueOutput;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.slf4j.Logger;
+
+import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Optional;
 
 public class BitterwoodCampfireBlockEntity extends BlockEntity implements Clearable {
 

@@ -1,7 +1,6 @@
 package net.jitl.common.block;
 
 import net.jitl.common.block.base.JBlock;
-import net.jitl.core.init.internal.JBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;

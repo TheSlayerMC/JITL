@@ -1,10 +1,10 @@
 package net.jitl.client.model.block;
 
+import com.geckolib.model.DefaultedBlockGeoModel;
+import com.geckolib.renderer.base.GeoRenderState;
 import net.jitl.common.block.entity.ObeliskTile;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.Identifier;
-import software.bernie.geckolib.model.DefaultedBlockGeoModel;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
 
 public class ObeliskModel extends DefaultedBlockGeoModel<ObeliskTile> {
 

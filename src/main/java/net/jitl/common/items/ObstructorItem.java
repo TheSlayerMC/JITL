@@ -3,7 +3,6 @@ package net.jitl.common.items;
 import net.jitl.common.items.base.JItem;
 import net.jitl.core.helper.IEssenceItem;
 import net.jitl.core.init.internal.JDataAttachments;
-import net.jitl.core.init.internal.JItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;

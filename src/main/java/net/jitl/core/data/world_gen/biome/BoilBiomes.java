@@ -1,23 +1,15 @@
 package net.jitl.core.data.world_gen.biome;
 
-import net.jitl.common.world.dimension.JCarver;
-import net.jitl.core.data.world_gen.carver.CarverFeatureKeys;
 import net.jitl.core.data.world_gen.placed_features.BoilPlacedFeatures;
-import net.jitl.core.data.world_gen.placed_features.EucaPlacedFeatures;
-import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JParticleManager;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.Carvers;
 import net.minecraft.sounds.Musics;
-import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 public class BoilBiomes extends Biomes {

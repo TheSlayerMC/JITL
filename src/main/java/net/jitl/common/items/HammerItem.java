@@ -20,6 +20,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
+
 import java.util.function.Consumer;
 
 public class  HammerItem extends JSwordItem implements IEssenceItem {

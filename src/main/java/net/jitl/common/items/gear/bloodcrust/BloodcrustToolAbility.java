@@ -3,22 +3,16 @@ package net.jitl.common.items.gear.bloodcrust;
 import net.jitl.common.capability.player.BloodcrustAbility;
 import net.jitl.common.items.gear.IAbility;
 import net.jitl.core.helper.TooltipFiller;
-import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JDataComponents;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseFireBlock;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 public class BloodcrustToolAbility implements IAbility {

@@ -1,7 +1,5 @@
 package net.jitl.common.entity.goal;
 
-import java.util.EnumSet;
-import java.util.function.Predicate;
 import net.jitl.common.entity.frozen.ShiveringRam;
 import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.BlockPos;
@@ -10,6 +8,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.event.EventHooks;
+
+import java.util.EnumSet;
+import java.util.function.Predicate;
 
 public class ShiveringRamEatBlockGoal extends Goal {
     

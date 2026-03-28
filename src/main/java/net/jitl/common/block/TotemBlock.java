@@ -1,10 +1,6 @@
 package net.jitl.common.block;
 
-import net.jitl.core.init.JITL;
-import net.jitl.core.init.internal.JBlockProperties;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;

@@ -1,11 +1,11 @@
 package net.jitl.common.scroll;
 
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 public interface IDescComponent {
     int getContentPartHeight();
 
-    void drawContentPart(GuiGraphics matrixStack, int x0, int y0, int width);
+    void drawContentPart(GuiGraphicsExtractor matrixStack, int x0, int y0, int width);
 
     void determineContentPartHeight(int width);
 }

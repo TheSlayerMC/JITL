@@ -9,8 +9,6 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
 
-import java.util.Random;
-
 public class BoulderFeature extends Feature<BlockStateConfiguration> {
 
     public BoulderFeature(Codec<BlockStateConfiguration> codec) {

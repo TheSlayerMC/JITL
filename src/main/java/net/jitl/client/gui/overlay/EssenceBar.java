@@ -9,7 +9,7 @@ import net.jitl.core.helper.IEssenceItem;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.FluidTags;
@@ -30,7 +30,7 @@ public class EssenceBar implements GuiLayer {
     private static final Identifier ABOVE_HUNGER_TEXTURE = Identifier.fromNamespaceAndPath(JITL.MOD_ID, "textures/gui/essence_over_hunger.png");
 
     @Override
-    public void render(@NotNull GuiGraphics gui, DeltaTracker tracker) {
+    public void render(@NotNull GuiGraphicsExtractor gui, DeltaTracker tracker) {
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
         //RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);

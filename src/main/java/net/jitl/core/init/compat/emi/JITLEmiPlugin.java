@@ -1,10 +1,5 @@
 package net.jitl.core.init.compat.emi;
 
-import net.jitl.core.helper.EnumSummoningRecipes;
-import net.jitl.core.init.compat.emi.category.SummoningTableEmiCategory;
-import net.jitl.core.init.compat.emi.recipe.SummoningTableEmiRecipe;
-import net.jitl.core.init.internal.JBlocks;
-
 //@EmiEntrypoint
 public class JITLEmiPlugin {//implements EmiPlugin {
 //    public static final SummoningTableEmiCategory SUMMONING_TABLE = new SummoningTableEmiCategory();

@@ -4,7 +4,7 @@ import net.jitl.client.util.GuiHelper;
 import net.jitl.core.helper.EnumSummoningRecipes;
 import net.jitl.core.helper.internal.EmptyContainer;
 import net.jitl.core.init.JITL;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.PageButton;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
@@ -59,7 +59,7 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
     }
 
     @Override
-    protected void renderBg(@NotNull GuiGraphics poseStack, float partialTick, int mouseX, int mouseY) {
+    public void extractBackground(@NotNull GuiGraphicsExtractor poseStack, int mouseX, int mouseY, float a) {
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
         assert minecraft != null;
@@ -74,7 +74,7 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
         }
     }
 
-    public void page1(GuiGraphics stack, int mouseX, int mouseY) {
+    public void page1(GuiGraphicsExtractor stack, int mouseX, int mouseY) {
         int w = 120;
         int x = -3;
         int y = -3;
@@ -97,7 +97,7 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
 
     }
 
-    public void page2(GuiGraphics stack, int mouseX, int mouseY) {
+    public void page2(GuiGraphicsExtractor stack, int mouseX, int mouseY) {
         int w = 120;
         int x = -3;
         int y = -3;
@@ -120,7 +120,7 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
 
     }
 
-    public void drawSprite(GuiGraphics matrixStack, int mouseX, int mouseY, int x, int y, EnumSummoningRecipes recipe) {
+    public void drawSprite(GuiGraphicsExtractor matrixStack, int mouseX, int mouseY, int x, int y, EnumSummoningRecipes recipe) {
         int k = (width - imageWidth) / 2 + 3;
         int l = (height - imageHeight) / 2 + 3;
 
@@ -153,19 +153,19 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
         matrixStack.pose().popMatrix();
     }
 
-    public void renderItem(GuiGraphics matrixStack, int mouseX, int mouseY, int x, int y, EnumSummoningRecipes recipe, int index) {
+    public void renderItem(GuiGraphicsExtractor matrixStack, int mouseX, int mouseY, int x, int y, EnumSummoningRecipes recipe, int index) {
         ItemStack item = new ItemStack(recipe.getItem(index));
-        matrixStack.renderItem(item, x, y);
+        matrixStack.item(item, x, y);
 
         if(isMouseOver(mouseX, mouseY, x, y)) {
             renderTooltip(matrixStack, mouseX, mouseY, item);
         }
     }
 
-    protected void renderTooltip(GuiGraphics pGuiGraphics, int pX, int pY, ItemStack item) {
+    protected void renderTooltip(GuiGraphicsExtractor pGuiGraphicsExtractor, int pX, int pY, ItemStack item) {
         Component component = item.getStyledHoverName();
         ClientTooltipComponent clienttooltipcomponent = ClientTooltipComponent.create(component.getVisualOrderText());
-        pGuiGraphics.renderTooltip(this.font, List.of(clienttooltipcomponent), pX, pY, DefaultTooltipPositioner.INSTANCE, item.get(DataComponents.TOOLTIP_STYLE));
+        pGuiGraphicsExtractor.tooltip(this.font, List.of(clienttooltipcomponent), pX, pY, DefaultTooltipPositioner.INSTANCE, item.get(DataComponents.TOOLTIP_STYLE));
     }
 
     protected boolean isMouseOver(int mouseX, int mouseY, int spriteX, int spriteY) {
@@ -182,8 +182,8 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
         this.previousButton.active = pageNumber > 0;
     }
 
-    @Override
-    protected void renderLabels(@NotNull GuiGraphics matrixStack, int x, int y) {
-
-    }
+//    @Override
+//    protected void renderLabels(@NotNull GuiGraphicsExtractor matrixStack, int x, int y) {
+//
+//    }
 }

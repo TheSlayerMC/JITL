@@ -10,7 +10,6 @@ import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.client.model.object.chest.ChestModel;
-import net.minecraft.client.renderer.MaterialMapper;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -21,11 +20,9 @@ import net.minecraft.client.renderer.item.ItemModelResolver;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.CameraRenderState;
+import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.Material;
-import net.minecraft.client.resources.model.MaterialSet;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -145,7 +142,7 @@ public class JChestRenderer<T extends BlockEntity & LidBlockEntity> implements B
             type = JChestRenderState.JChestMaterialType.CLOUDIA;
         }
         if(chest == JBlocks.SENTERIAN_CHEST.get()) {
-            type = JChestRenderState.JChestMaterialType.CLOUDIA;
+            type = JChestRenderState.JChestMaterialType.SENTERIAN;
         }
         return type;
     }

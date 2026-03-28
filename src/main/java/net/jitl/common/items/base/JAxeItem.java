@@ -3,7 +3,6 @@ package net.jitl.common.items.base;
 import net.jitl.common.items.gear.IAbility;
 import net.jitl.common.items.gear.JGear;
 import net.jitl.core.helper.JToolTiers;
-import net.jitl.core.init.internal.JItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;

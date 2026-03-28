@@ -3,11 +3,9 @@ package net.jitl.common.items.gear.celestium;
 import net.jitl.common.capability.player.CelestiumArmorAbility;
 import net.jitl.common.items.gear.FullArmorAbility;
 import net.jitl.core.init.internal.JDataAttachments;
-import net.jitl.core.init.internal.JDataComponents;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 

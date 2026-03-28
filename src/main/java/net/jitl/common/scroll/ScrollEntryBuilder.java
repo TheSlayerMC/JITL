@@ -1,6 +1,7 @@
 package net.jitl.common.scroll;
 
 import net.minecraft.world.item.ItemStack;
+
 import java.util.ArrayList;
 import java.util.List;
 

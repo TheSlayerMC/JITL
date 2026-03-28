@@ -3,7 +3,6 @@ package net.jitl.common.items;
 import net.jitl.common.block.AncientSocketBlock;
 import net.jitl.common.items.base.JItem;
 import net.jitl.core.init.internal.JBlocks;
-import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;

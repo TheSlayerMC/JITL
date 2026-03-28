@@ -5,8 +5,6 @@ import net.jitl.core.helper.IEssenceItem;
 import net.jitl.core.helper.MathHelper;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.jitl.core.init.internal.JItems;
-import net.jitl.core.init.internal.JSounds;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -25,6 +23,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import org.jetbrains.annotations.NotNull;
+
 import java.util.function.Consumer;
 
 public class TeleportItem extends JItem implements IEssenceItem {

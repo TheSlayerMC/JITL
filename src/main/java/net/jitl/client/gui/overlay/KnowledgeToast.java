@@ -8,7 +8,7 @@ import net.jitl.core.helper.internal.ArgbColor;
 import net.jitl.core.init.JITL;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.toasts.ToastManager;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
@@ -43,7 +43,7 @@ public class KnowledgeToast implements JToast {
     }
 
     @Override
-    public void render(GuiGraphics poseStack, Font font, long timeSinceLastVisible) {
+    public void extractRenderState(GuiGraphicsExtractor poseStack, Font font, long timeSinceLastVisible) {
         //RenderSystem.setShaderTexture(0, Minecraft.getInstance().getTextureManager().getTexture(TEXTURE).getTextureView());
         JDisplayInfo displayinfo = isLevel ? this.knowledge.getLevelDisplay() : this.knowledge.getXPDisplay();
         poseStack.blitSprite(RenderPipelines.GUI_TEXTURED, TEXTURE, 0, 0, this.width(), this.height());
@@ -51,18 +51,18 @@ public class KnowledgeToast implements JToast {
             List<FormattedCharSequence> list = font.split(displayinfo.getDescription(), 125);
             int i = displayinfo.getFrame() == JFrameType.LEVEL ? ArgbColor.from(ChatFormatting.DARK_PURPLE) : ARGB.colorFromFloat(1, 0, 0, 0);
             if(list.size() == 1) {
-                poseStack.drawString(font, displayinfo.getFrame().getDisplayName(), 30, 18, i, false);//Level or XP
-                poseStack.drawString(font, list.get(0), 30, 7, ArgbColor.from(ChatFormatting.BLACK), false);// Knowledge name
+                poseStack.text(font, displayinfo.getFrame().getDisplayName(), 30, 18, i, false);//Level or XP
+                poseStack.text(font, list.get(0), 30, 7, ArgbColor.from(ChatFormatting.BLACK), false);// Knowledge name
             } else {
                 if(timeSinceLastVisible < 1500L) {
                     int k = Mth.floor(Mth.clamp((float)(1500L - timeSinceLastVisible) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
-                    poseStack.drawString(font, displayinfo.getFrame().getDisplayName(), 30, 11, i | k, false);
+                    poseStack.text(font, displayinfo.getFrame().getDisplayName(), 30, 11, i | k, false);
                 } else {
                     int i1 = Mth.floor(Mth.clamp((float)(timeSinceLastVisible - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
                     int l = this.height() / 2 - list.size() * 9 / 2;
 
                     for(FormattedCharSequence formattedcharsequence : list) {
-                        poseStack.drawString(font, formattedcharsequence, 30, l, 16777215 | i1, false);
+                        poseStack.text(font, formattedcharsequence, 30, l, 16777215 | i1, false);
                         l += 9;
                     }
                 }

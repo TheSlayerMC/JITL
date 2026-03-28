@@ -3,14 +3,13 @@ package net.jitl.client;
 import com.mojang.serialization.MapCodec;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
-import net.minecraft.client.color.block.BlockColor;
+import net.minecraft.client.color.block.BlockTintSource;
 import net.minecraft.client.color.item.ItemTintSource;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -19,22 +18,35 @@ import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT)
-public class JBlockColours implements BlockColor, ItemTintSource {
+import java.util.List;
 
-    public static final JBlockColours BLOCK_COLOUR_INSTANCE = new JBlockColours();
-    public static final JBlockColours ITEM_COLOUR_INSTANCE = new JBlockColours();
-    public int CORBA_SWAMP = 0x6daa2c;
+@EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT)
+public class JBlockColours implements BlockTintSource, ItemTintSource {
+
+    public static int CORBA_SWAMP = 0x6daa2c;
 
     @Override
-    public int getColor(@NotNull BlockState pState, @Nullable BlockAndTintGetter pLevel, @Nullable BlockPos pPos, int pTintIndex) {
-        assert pLevel != null;
-        assert pPos != null;
-        return BiomeColors.getAverageGrassColor(pLevel, pPos);
+    public int color(BlockState blockState) {
+        return CORBA_SWAMP;
     }
+
     @SubscribeEvent
-    public static void registerBlockColours(RegisterColorHandlersEvent.Block event) {
-        event.register(BLOCK_COLOUR_INSTANCE,
+    public static void registerBlockColours(RegisterColorHandlersEvent.BlockTintSources event) {
+        event.register(List.of((state) ->
+                                CORBA_SWAMP,
+                        new BlockTintSource() {
+
+                            @Override
+                            public int color(BlockState state) {
+                                return CORBA_SWAMP;
+                            }
+
+                            @Override
+                            public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
+                                return CORBA_SWAMP;
+                            }
+                        }
+                ),
                 JBlocks.CORBA_GRASS.get(),
                 JBlocks.CORBA_TALL_GRASS.get(),
                 JBlocks.BOGWOOD_LEAVES.get(),
@@ -59,4 +71,6 @@ public class JBlockColours implements BlockColor, ItemTintSource {
     public @NotNull MapCodec<? extends ItemTintSource> type() {
         return MapCodec.unit(new JBlockColours());
     }
+
+
 }

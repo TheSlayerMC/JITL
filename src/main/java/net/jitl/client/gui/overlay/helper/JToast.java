@@ -2,7 +2,7 @@ package net.jitl.client.gui.overlay.helper;
 
 import net.jitl.core.init.JITL;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.toasts.Toast;
 import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
@@ -28,5 +28,5 @@ public interface JToast extends Toast {
     }
 
     @Override
-    void render(@NotNull GuiGraphics poseStack, @NotNull Font var2, long timeSinceLastVisible);
+    void extractRenderState(GuiGraphicsExtractor guiGraphicsExtractor, Font font, long l);
 }

@@ -1,7 +1,6 @@
 package net.jitl.common.entity.projectile;
 
 import net.jitl.core.init.internal.JEntities;
-import net.jitl.core.init.internal.JParticleManager;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;

@@ -1,17 +1,7 @@
 package net.jitl.common.items.curios.amulet;
 
-import net.jitl.common.capability.essence.PlayerEssence;
-import net.jitl.common.capability.keypressed.PressedKeyCap;
 import net.jitl.common.items.curios.JCurioItem;
-import net.jitl.core.data.JNetworkRegistry;
-import net.jitl.core.init.internal.JDataAttachments;
-import net.jitl.core.init.network.PacketUpdateClientPlayerMovement;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 
 public class CloudWalkerAmuletItem extends JCurioItem {
 

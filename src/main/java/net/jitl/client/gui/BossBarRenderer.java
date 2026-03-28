@@ -7,7 +7,7 @@ import net.jitl.common.entity.IJourneyBoss;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.LerpingBossEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -31,7 +31,7 @@ public class BossBarRenderer {
     public static void render(final CustomizeGuiOverlayEvent.BossEventProgress ev) {
         Minecraft mc = Minecraft.getInstance();
         Window window = mc.getWindow();
-        GuiGraphics graphics = ev.getGuiGraphics();
+        GuiGraphicsExtractor graphics = ev.getGuiGraphics();
         int x = window.getGuiScaledWidth() / 2 - 91;
         int y = ev.getY();
         LerpingBossEvent bossStatusInfo = ev.getBossEvent();
@@ -60,7 +60,7 @@ public class BossBarRenderer {
         }
     }
 
-    public static void drawCenteredString(GuiGraphics matrixStack, Font fontRenderer, Component fontIn, float x, float y, int red, int green, int blue, int alpha) {
+    public static void drawCenteredString(GuiGraphicsExtractor matrixStack, Font fontRenderer, Component fontIn, float x, float y, int red, int green, int blue, int alpha) {
         FormattedCharSequence ireorderingprocessor = fontIn.getVisualOrderText();
         int color = Math.max(4, alpha) << 24 | red << 16 | green << 8 | blue;
         GuiHelper.drawString(matrixStack, ireorderingprocessor, (int) (x - fontRenderer.width(ireorderingprocessor) / 2F + 91), (int) y, color, true);

@@ -1,12 +1,9 @@
 package net.jitl.core.data.world_gen.biome;
 
 import net.jitl.core.data.world_gen.placed_features.DepthsPlacedFeatures;
-import net.jitl.core.data.world_gen.placed_features.EucaPlacedFeatures;
-import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.sounds.Musics;
-import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.MobSpawnSettings;

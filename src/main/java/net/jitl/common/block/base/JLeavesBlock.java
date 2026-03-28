@@ -1,6 +1,5 @@
 package net.jitl.common.block.base;
 
-import net.jitl.core.init.internal.JBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ColorParticleOption;

@@ -1,5 +1,9 @@
 package net.jitl.common.entity.base;
 
+import com.geckolib.animatable.GeoEntity;
+import com.geckolib.animatable.instance.AnimatableInstanceCache;
+import com.geckolib.animatable.manager.AnimatableManager;
+import com.geckolib.util.GeckoLibUtil;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.minecraft.world.damagesource.DamageSource;
@@ -12,10 +16,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.Biomes;
 import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.animatable.manager.AnimatableManager;
-import software.bernie.geckolib.util.GeckoLibUtil;
 
 public abstract class JAnimalEntity extends Animal implements GeoEntity {
 

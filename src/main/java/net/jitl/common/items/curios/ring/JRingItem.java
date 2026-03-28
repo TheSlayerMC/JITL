@@ -1,13 +1,9 @@
 package net.jitl.common.items.curios.ring;
 
-import net.jitl.common.capability.player.ItemCooldown;
 import net.jitl.common.items.curios.JCurioItem;
-import net.jitl.core.init.internal.JDataAttachments;
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 
 public class JRingItem extends JCurioItem {
     private Holder<MobEffect> potion;

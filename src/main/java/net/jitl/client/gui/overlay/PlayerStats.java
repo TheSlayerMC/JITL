@@ -8,7 +8,7 @@ import net.jitl.core.helper.internal.EmptyContainer;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.PageButton;
 import net.minecraft.client.renderer.RenderPipelines;
@@ -34,10 +34,10 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
     }
 
     @Override
-    public void render(GuiGraphics graphics, int pMouseX, int pMouseY, float pPartialTick) {
-        super.render(graphics, pMouseX, pMouseY, pPartialTick);
+    public void extractRenderState(GuiGraphicsExtractor graphics, int pMouseX, int pMouseY, float pPartialTick) {
+        super.extractRenderState(graphics, pMouseX, pMouseY, pPartialTick);
         this.updateButtonVisibility();
-        graphics.drawString(this.font, "COINS" + ClientPlayerStats.getSentacoins(), leftPos, height, ArgbColor.from(ChatFormatting.WHITE));
+        graphics.text(this.font, "COINS" + ClientPlayerStats.getSentacoins(), leftPos, height, ArgbColor.from(ChatFormatting.WHITE));
     }
 
     @Override
@@ -70,7 +70,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
     }
 
     @Override
-    protected void renderBg(@NotNull GuiGraphics poseStack, float partialTick, int mouseX, int mouseY) {
+    public void extractBackground(@NotNull GuiGraphicsExtractor poseStack, int mouseX, int mouseY, float partialTick) {
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
 
@@ -85,7 +85,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         }
     }
 
-    public void page1(GuiGraphics stack) {
+    public void page1(GuiGraphicsExtractor stack) {
         int height = 43;
         int x = 9;
         int h = 9;
@@ -107,7 +107,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         drawKnowledgeSprite(stack, x, h,  EnumKnowledge.CORBA, "Corba");
     }
 
-    public void page2(GuiGraphics stack) {
+    public void page2(GuiGraphicsExtractor stack) {
         int height = 43;
         int x = 9;
         int h = 9;
@@ -124,7 +124,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
 
 
 
-    public void drawSprite(GuiGraphics matrixStack, int x, int y, int spriteX, int spriteY, String s) {
+    public void drawSprite(GuiGraphicsExtractor matrixStack, int x, int y, int spriteX, int spriteY, String s) {
         int k = (width - imageWidth) / 2;
         int l = (height - imageHeight) / 2;
         //RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.BACKGROUND).getTextureView());
@@ -140,7 +140,7 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
             GuiHelper.drawString(matrixStack, "x" + ClientPlayerStats.getSentacoins(), k + x + 35, l + y + 15, -333333, true);
     }
 
-    public void drawKnowledgeSprite(GuiGraphics matrixStack, int x, int y, EnumKnowledge type, String s) {
+    public void drawKnowledgeSprite(GuiGraphicsExtractor matrixStack, int x, int y, EnumKnowledge type, String s) {
         matrixStack.pose().pushMatrix();
 
         drawSprite(matrixStack, x, y, type.getSpriteX(), type.getSpriteY(), s);
@@ -183,8 +183,8 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         this.previousButton.active = pageNumber > 0;
     }
 
-    @Override
-    protected void renderLabels(@NotNull GuiGraphics matrixStack, int x, int y) {
-
-    }
+//    @Override
+//    protected void renderLabels(@NotNull GuiGraphicsExtractor matrixStack, int x, int y) {
+//
+//    }
 }

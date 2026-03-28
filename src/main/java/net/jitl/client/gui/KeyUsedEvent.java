@@ -5,8 +5,6 @@ import net.jitl.core.data.JNetworkRegistry;
 import net.jitl.core.init.network.PacketKeyPressed;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 

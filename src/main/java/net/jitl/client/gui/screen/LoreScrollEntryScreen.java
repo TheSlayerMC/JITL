@@ -10,7 +10,7 @@ import net.jitl.common.scroll.ScrollEntry;
 import net.jitl.core.helper.internal.DrawHelper;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.MouseHandler;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.renderer.RenderPipelines;
@@ -77,7 +77,7 @@ public class LoreScrollEntryScreen extends Screen {
         }
     }
 
-    private void drawHeader(GuiGraphics poseStack, int maxX, int y0, Tesselator tess) {
+    private void drawHeader(GuiGraphicsExtractor poseStack, int maxX, int y0, Tesselator tess) {
         if(scrollEntry.hasComment()) {
             GuiHelper.drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getTitleKey()), left + (maxX - left) / 2 + 1, y0, ARGB.colorFromFloat(1, 0, 0, 0), 1.5F, headerHeight - 5);
             if(scrollEntry.getCommentKey() != null)
@@ -87,7 +87,7 @@ public class LoreScrollEntryScreen extends Screen {
         }
     }
 
-    private void drawContentPart(GuiGraphics poseStack, int partIdx, int contentRight, int partTop, int partBuffer, Tesselator tess) {
+    private void drawContentPart(GuiGraphicsExtractor poseStack, int partIdx, int contentRight, int partTop, int partBuffer, Tesselator tess) {
         scrollEntry.getDesc().get(partIdx).drawContentPart(poseStack, this.left + 2, partTop, contentRight);
     }
 
@@ -105,7 +105,7 @@ public class LoreScrollEntryScreen extends Screen {
     }
 
     @Override
-    public void render(@NotNull GuiGraphics poseStack, int mouseX, int mouseY, float partialTicks) {
+    public void extractRenderState(@NotNull GuiGraphicsExtractor poseStack, int mouseX, int mouseY, float partialTicks) {
         assert minecraft != null;
         //RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(BG).getTextureView());
 
@@ -128,7 +128,7 @@ public class LoreScrollEntryScreen extends Screen {
         drawScrollingContent(poseStack, mouseX, mouseY);
     }
 
-    private void drawScrollingContent(GuiGraphics poseStack, int mouseX, int mouseY) {
+    private void drawScrollingContent(GuiGraphicsExtractor poseStack, int mouseX, int mouseY) {
         int indent = 17;
         this.left = guix0 + indent + 4;
         this.top = guiy0 + indent;

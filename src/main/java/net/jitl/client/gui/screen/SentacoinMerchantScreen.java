@@ -7,7 +7,7 @@ import net.jitl.core.data.JNetworkRegistry;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.network.PacketBuyItem;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -45,27 +45,27 @@ public class SentacoinMerchantScreen extends AbstractContainerScreen<SentacoinMe
     }
 
     @Override
-    protected void renderLabels(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY) {
+    protected void extractLabels(GuiGraphicsExtractor pGuiGraphicsExtractor, int pMouseX, int pMouseY) {
         Component component = Component.literal("Sentacoins: " + ClientPlayerStats.getSentacoins());
         int j = this.font.width(component);
         int k = 49 + this.imageWidth / 2 - j / 2;
-        GuiHelper.drawString(pGuiGraphics, component, k, 6, -12566464, false);
+        GuiHelper.drawString(pGuiGraphicsExtractor, component, k, 6, -12566464, false);
         int l = this.font.width(TRADES_LABEL);
-        GuiHelper.drawString(pGuiGraphics, TRADES_LABEL, 5 - l / 2 + 53, 6, -12566464, false);
+        GuiHelper.drawString(pGuiGraphicsExtractor, TRADES_LABEL, 5 - l / 2 + 53, 6, -12566464, false);
     }
 
     @Override
-    protected void renderBg(GuiGraphics pGuiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
+    public void extractBackground(GuiGraphicsExtractor pGuiGraphicsExtractor, int pMouseX, int pMouseY, float pPartialTick) {
         int i = (this.width - this.imageWidth) / 2;
         int j = (this.height - this.imageHeight) / 2;
-        pGuiGraphics.pose().pushMatrix();
-        GuiHelper.drawTexture(pGuiGraphics, MERCHANT_LOCATION, i, j, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
-        pGuiGraphics.pose().pushMatrix();
+        pGuiGraphicsExtractor.pose().pushMatrix();
+        GuiHelper.drawTexture(pGuiGraphicsExtractor, MERCHANT_LOCATION, i, j, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
+        pGuiGraphicsExtractor.pose().pushMatrix();
     }
 
     @Override
-    public void render(@NotNull GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
-        super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
+    public void extractRenderState(@NotNull GuiGraphicsExtractor pGuiGraphicsExtractor, int pMouseX, int pMouseY, float pPartialTick) {
+        super.extractRenderState(pGuiGraphicsExtractor, pMouseX, pMouseY, pPartialTick);
     }
 
     public void addButton(int x, int y, ItemStack item, int amount, int cost) {
@@ -86,7 +86,7 @@ public class SentacoinMerchantScreen extends AbstractContainerScreen<SentacoinMe
         }
 
         @Override
-        protected void renderContents(GuiGraphics guiGraphics, int i, int i1, float v) {
+        protected void extractContents(GuiGraphicsExtractor guiGraphicsExtractor, int i, int i1, float v) {
 
         }
     }

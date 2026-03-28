@@ -1,10 +1,10 @@
 package net.jitl.client.model.block;
 
+import com.geckolib.model.DefaultedEntityGeoModel;
+import com.geckolib.renderer.base.GeoRenderState;
 import net.jitl.common.block.entity.RockiteSpawnerEntity;
 import net.jitl.core.init.JITL;
 import net.minecraft.resources.Identifier;
-import software.bernie.geckolib.model.DefaultedEntityGeoModel;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
 
 public class RockiteSpawnerModel extends DefaultedEntityGeoModel<RockiteSpawnerEntity> {
 

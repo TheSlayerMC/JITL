@@ -234,7 +234,7 @@ public class JEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<Purplian>> PURPLIAN_TYPE = registerEntity(Purplian::new, "purplian", "Purplian", 0.8F, 1.75F);
     public static final DeferredHolder<EntityType<?>, EntityType<Terragrow>> TERRAGROW_TYPE = registerEntity(Terragrow::new, "terragrow", "Terragrow", 0.9F, 1.1F);
     public static final DeferredHolder<EntityType<?>, EntityType<Terrascatterer>> TERRASCATTERER_TYPE = registerEntity(Terrascatterer::new, "terrascatterer", "Terrascatterer", 0.9F, 1.5F);
-    public static final DeferredHolder<EntityType<?>, EntityType<Terrashroom>> TERRASHROOM_TYPE = registerEntity(Terrashroom::new, "terrashroom", "terrashroom", 1F, 2F);
+    public static final DeferredHolder<EntityType<?>, EntityType<Terrashroom>> TERRASHROOM_TYPE = registerEntity(Terrashroom::new, "terrashroom", "Terrashroom", 1F, 2F);
     public static final DeferredHolder<EntityType<?>, EntityType<Terraslug>> TERRASLUG_TYPE = registerEntity(Terraslug::new, "terraslug", "Terraslug", 0.5F, 0.5F);
     public static final DeferredHolder<EntityType<?>, EntityType<Flungas>> FLUNGAS_TYPE = registerEntity(Flungas::new, "flungas", "Flungas", 0.75F, 0.4F);
     public static final DeferredHolder<EntityType<?>, EntityType<TerranianEnchanter>> TERRANIAN_ENCHANTER_TYPE = registerEntity(TerranianEnchanter::new, "terranian_enchanter", "Terranian Enchanter", 1.25F, 3.5F);

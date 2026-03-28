@@ -12,7 +12,6 @@ import net.jitl.common.world.gen.corba.SwampLilyFeature;
 import net.jitl.common.world.gen.depths.*;
 import net.jitl.common.world.gen.euca.BoulderFeature;
 import net.jitl.common.world.gen.euca.EucaBotSpawner;
-import net.jitl.common.world.gen.depths.JSpikeFeature;
 import net.jitl.common.world.gen.frozen.FrozenIceSpikeFeature;
 import net.jitl.common.world.gen.nether.BleedstoneFeature;
 import net.jitl.common.world.gen.nether.SmithstoneFeature;

@@ -6,7 +6,10 @@ import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JItems;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class LangRegistry {
