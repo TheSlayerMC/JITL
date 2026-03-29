@@ -1,13 +1,11 @@
 package net.jitl.common.entity.boil.npc;
 
-import com.google.common.collect.ImmutableMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import com.geckolib.animatable.manager.AnimatableManager;
+import com.geckolib.animation.AnimationController;
+import com.geckolib.animation.RawAnimation;
 import net.jitl.client.util.ChatUtils;
-import net.jitl.common.entity.base.CurrencyForItemsTrade;
 import net.jitl.common.entity.base.JVillagerEntity;
 import net.jitl.common.entity.base.MobStats;
-import net.jitl.core.init.internal.JItems;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -19,23 +17,13 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.npc.villager.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animatable.manager.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
-import software.bernie.geckolib.animation.RawAnimation;
 
 public class BoilTrader extends JVillagerEntity {
-
-    public static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
-            new CurrencyForItemsTrade(JItems.ASH.get(), 10, JItems.BOIL_POWDER.get(), 16, JItems.MOLTEN_KNIFE.get(), 16, 12, 5),
-            new CurrencyForItemsTrade(JItems.ASH.get(), 15, JItems.BOIL_POWDER.get(), 64, JItems.BOILING_BLADE.get(), 1, 12, 5),
-            new CurrencyForItemsTrade(JItems.ASH.get(), 15, JItems.BOIL_POWDER.get(), 64, JItems.FLAMING_BOW.get(), 1, 12, 5)
-    }));
 
     @Override
     public boolean fireImmune() {
@@ -61,11 +49,6 @@ public class BoilTrader extends JVillagerEntity {
             case 2 -> ChatUtils.addDialogStyleChat(player, "jitl.trader.boil_trader3");
         }
         return super.mobInteract(player, playerHand);
-    }
-
-    @Override
-    protected Int2ObjectMap<VillagerTrades.ItemListing[]> getVillagerTrades() {
-        return TRADES;
     }
 
     public static AttributeSupplier createAttributes() {

@@ -1,6 +1,7 @@
 package net.jitl.core.data.world_gen.placed_features;
 
 import net.jitl.core.data.world_gen.JConfiguredFeatures;
+import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -86,21 +87,21 @@ public class BoilPlacedFeatures extends JPlacedFeature {
                 context,
                 CHARRED_FIELDS_VEG,
                 holdergetter.getOrThrow(JConfiguredFeatures.CHARRED_FIELDS_VEG),
-                patch(7, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
+                flowerPatch(7)
         );
 
         PlacementUtils.register(
                 context,
                 BOIL_PLAINS_VEG,
                 holdergetter.getOrThrow(JConfiguredFeatures.BOIL_PLAINS_VEG),
-                patch(2, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
+                flowerPatch(2)
         );
 
         PlacementUtils.register(
                 context,
                 BOIL_SANDS_VEG,
                 holdergetter.getOrThrow(JConfiguredFeatures.BOIL_SANDS_VEG),
-                patch(6, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
+                flowerPatch(6)
         );
 
         PlacementUtils.register(
@@ -114,7 +115,7 @@ public class BoilPlacedFeatures extends JPlacedFeature {
                 context,
                 SCORCHED_CACTUS,
                 holdergetter.getOrThrow(JConfiguredFeatures.SCORCHED_CACTUS),
-                patch(5, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
+                cactus(5, JBlocks.SCORCHED_CACTUS.get())
         );
 
         PlacementUtils.register(

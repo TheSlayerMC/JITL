@@ -1,5 +1,6 @@
 package net.jitl.common.entity.frozen;
 
+import com.geckolib.animatable.manager.AnimatableManager;
 import net.jitl.common.entity.base.JTamableEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.goal.ShiverwolfBegGoal;
@@ -50,7 +51,6 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.animatable.manager.AnimatableManager;
 
 import javax.annotation.Nullable;
 
@@ -78,7 +78,6 @@ public class Shiverwolf extends JTamableEntity {
         super(pEntityType, pLevel);
         this.setTame(false, false);
         this.setPathfindingMalus(PathType.POWDER_SNOW, -1.0F);
-        this.setPathfindingMalus(PathType.DANGER_POWDER_SNOW, -1.0F);
     }
 
     protected void registerGoals() {
@@ -121,7 +120,7 @@ public class Shiverwolf extends JTamableEntity {
 
     @Override
     protected void playStepSound(@NotNull BlockPos pos, @NotNull BlockState block) {
-        this.playSound(SoundEvents.WOLF_STEP, 0.15F, 1.0F);
+        this.playSound(SoundEvents.WOLF_STEP.value(), 0.15F, 1.0F);
     }
 
     @Override
@@ -289,7 +288,7 @@ public class Shiverwolf extends JTamableEntity {
                 this.playSound(SoundEvents.WOLF_ARMOR_CRACK);
                 Level var7 = this.level();
                 if(var7 instanceof ServerLevel serverlevel)
-                    serverlevel.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, Items.ARMADILLO_SCUTE.getDefaultInstance()), this.getX(), this.getY() + 1.0, this.getZ(), 20, 0.2, 0.1, 0.2, 0.1);
+                    serverlevel.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, Items.ARMADILLO_SCUTE.getDefaultInstance().getItem()), this.getX(), this.getY() + 1.0, this.getZ(), 20, 0.2, 0.1, 0.2, 0.1);
 
             }
         }
@@ -346,7 +345,7 @@ public class Shiverwolf extends JTamableEntity {
                 return InteractionResult.SUCCESS;
             } else {
                 if (item instanceof DyeItem dyeitem && this.isOwnedBy(player)) {
-                    DyeColor dyecolor = dyeitem.getDyeColor();
+                    DyeColor dyecolor = (DyeColor)itemstack.get(DataComponents.DYE);
                     if (dyecolor != this.getCollarColor()) {
                         this.setCollarColor(dyecolor);
                         itemstack.consume(1, player);

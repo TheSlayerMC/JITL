@@ -10,7 +10,6 @@ import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.AbstractBoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.BoatRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.Identifier;
@@ -23,7 +22,7 @@ public class JBoatRenderer extends AbstractBoatRenderer {
     private final EntityModel<BoatRenderState> model;
 
     public JBoatRenderer(EntityRendererProvider.Context context, ModelLayerLocation layer, String name) {
-        super(context);
+        super(context, layer.model().withPath((type) -> "textures/entity/boat/" + name + ".png"));
         this.shadowRadius = 0.8F;
         this.texture = layer.model().withPath((type) -> "textures/entity/boat/" + name + ".png");
         this.waterPatchModel = new Model.Simple(context.bakeLayer(ModelLayers.BOAT_WATER_PATCH), (e) -> RenderTypes.waterMask());
@@ -35,10 +34,10 @@ public class JBoatRenderer extends AbstractBoatRenderer {
         return this.model;
     }
 
-    @Override
-    protected RenderType renderType() {
-        return this.model.renderType(this.texture);
-    }
+//    @Override
+//    protected RenderType renderType() {
+//        return this.model.renderType(this.texture);
+//    }
 
     @Override
     protected void submitTypeAdditions(BoatRenderState s, PoseStack p, SubmitNodeCollector node, int i) {

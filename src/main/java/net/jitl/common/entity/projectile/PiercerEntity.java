@@ -241,8 +241,8 @@ public class PiercerEntity extends AbstractArrow implements ItemSupplier {
 
     @Override
     public void onSyncedDataUpdated(@NotNull EntityDataAccessor<?> key) {
-        if(key == STACK)
-            getStack().setEntityRepresentation(this);
+        //if(key == STACK)
+            //getStack().setEntityRepresentation(this);
         super.onSyncedDataUpdated(key);
     }
 }

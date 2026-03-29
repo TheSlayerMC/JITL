@@ -1,5 +1,6 @@
 package net.jitl.common.entity.corba;
 
+import com.geckolib.animatable.manager.AnimatableManager;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JFlyingEntity;
 import net.jitl.common.entity.base.MobStats;
@@ -26,7 +27,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.animatable.manager.AnimatableManager;
 
 import java.util.EnumSet;
 

@@ -5,6 +5,7 @@
   "respawn_anchor_works": false,
   "bed_works": true,
   "has_raids": false,
+  "has_ender_dragon_fight": false,
   "has_skylight": true,
   "has_ceiling": false,
   "coordinate_scale": 1,

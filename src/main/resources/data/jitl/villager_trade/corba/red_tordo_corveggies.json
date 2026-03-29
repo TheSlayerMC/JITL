@@ -1,0 +1,17 @@
+{
+  "additional_wants": {
+    "count": 16.0,
+    "id": "jitl:collector_rock"
+  },
+  "gives": {
+    "count": 16,
+    "id": "jitl:corveggies"
+  },
+  "max_uses": 12.0,
+  "reputation_discount": 0.05,
+  "wants": {
+    "count": 16.0,
+    "id": "jitl:nature_tablet"
+  },
+  "xp": 5.0
+}

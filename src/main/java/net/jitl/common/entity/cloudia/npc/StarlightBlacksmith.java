@@ -1,13 +1,11 @@
 package net.jitl.common.entity.cloudia.npc;
 
-import com.google.common.collect.ImmutableMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import com.geckolib.animatable.manager.AnimatableManager;
+import com.geckolib.animation.AnimationController;
+import com.geckolib.animation.RawAnimation;
 import net.jitl.client.util.ChatUtils;
-import net.jitl.common.entity.base.CurrencyForItemsTrade;
 import net.jitl.common.entity.base.JVillagerEntity;
 import net.jitl.common.entity.base.MobStats;
-import net.jitl.core.init.internal.JItems;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -19,15 +17,11 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.npc.villager.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animatable.manager.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
-import software.bernie.geckolib.animation.RawAnimation;
 
 public class StarlightBlacksmith extends JVillagerEntity {
 
@@ -52,14 +46,6 @@ public class StarlightBlacksmith extends JVillagerEntity {
         return super.mobInteract(player, playerHand);
     }
 
-    @Override
-    protected Int2ObjectMap<VillagerTrades.ItemListing[]> getVillagerTrades() {
-        return new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
-                new CurrencyForItemsTrade(JItems.FLUFFY_FEATHER.get(), 16, JItems.GOLEM_CHUNK.get(), 8, JItems.GOLEM_SWORD.get(), 1, 12, 5),
-                new CurrencyForItemsTrade(JItems.FLUFFY_FEATHER.get(), 16, JItems.GOLEM_CHUNK.get(), 8, JItems.GOLEM_BOW.get(), 1, 12, 5),
-                new CurrencyForItemsTrade(JItems.LUNITE_CHUNK.get(), 16, JItems.GOLEM_CHUNK.get(), 8, JItems.STARLIGHT_BLADE.get(), 1, 12, 5),
-                new CurrencyForItemsTrade(JItems.LUNITE_CHUNK.get(), 16, JItems.GOLEM_CHUNK.get(), 8, JItems.STARLIGHT_BOW.get(), 1, 12, 5),
-
 //                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.MY_LAST_WORDS, EnumKnowledge.OVERWORLD, 10),
 //                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.NETHERIC_STATUS, EnumKnowledge.NETHER, 10),
 //                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.THE_END, EnumKnowledge.END, 10),
@@ -70,8 +56,6 @@ public class StarlightBlacksmith extends JVillagerEntity {
 //                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.FUNGI, EnumKnowledge.TERRANIA, 10),
 //                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.MIST, EnumKnowledge.CLOUDIA, 10),
 //                new ScrollTrade(JItems.ASH.get(), 16, ScrollEntries.THIS_IS_IT, EnumKnowledge.SENTERIAN, 10),
-        }));
-    }
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()

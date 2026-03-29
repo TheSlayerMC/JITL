@@ -12,6 +12,7 @@ import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
@@ -28,7 +29,7 @@ import java.util.Objects;
 
 public abstract class JFlyingBossEntity extends JFlyingEntity implements IDontAttackWhenPeaceful, IJourneyBoss {
 
-    private final ServerBossEvent BOSS_INFO = (ServerBossEvent)new ServerBossEvent(Objects.requireNonNull(getDisplayName()), BossEvent.BossBarColor.PINK, BossEvent.BossBarOverlay.NOTCHED_20).setDarkenScreen(false).setCreateWorldFog(false);
+    private final ServerBossEvent BOSS_INFO = (ServerBossEvent)new ServerBossEvent(Mth.createInsecureUUID(this.random), Objects.requireNonNull(getDisplayName()), BossEvent.BossBarColor.PINK, BossEvent.BossBarOverlay.NOTCHED_20).setDarkenScreen(false).setCreateWorldFog(false);
 
     public JFlyingBossEntity(EntityType<? extends JFlyingEntity> type, Level worldIn) {
         super(type, worldIn);

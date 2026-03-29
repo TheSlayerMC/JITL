@@ -67,7 +67,7 @@ public class JSaplingBlock extends VegetationBlock implements BonemealableBlock 
 
     @Override
     public boolean isBonemealSuccess(Level level, @NotNull RandomSource pRandom, @NotNull BlockPos pPos, @NotNull BlockState pState) {
-        return (double)level.random.nextFloat() < 0.45D;
+        return (double) level.getRandom().nextFloat() < 0.45D;
     }
 
     @Override

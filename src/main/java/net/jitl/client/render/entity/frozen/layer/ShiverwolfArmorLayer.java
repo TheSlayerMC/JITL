@@ -27,14 +27,14 @@ import java.util.Map;
 public class ShiverwolfArmorLayer extends RenderLayer<WolfRenderState, ShiverwolfModel> {
 
     private final ShiverwolfModel adultModel;
-    private final ShiverwolfModel babyModel;
+    //private final ShiverwolfModel babyModel;
     private final EquipmentLayerRenderer equipmentRenderer;
     private static final Map<Crackiness.Level, Identifier> ARMOR_CRACK_LOCATIONS;
 
     public ShiverwolfArmorLayer(RenderLayerParent<WolfRenderState, ShiverwolfModel> renderer, EntityModelSet models, EquipmentLayerRenderer layer) {
         super(renderer);
         this.adultModel = new ShiverwolfModel(models.bakeLayer(ModelLayers.WOLF_ARMOR));
-        this.babyModel = new ShiverwolfModel(models.bakeLayer(ModelLayers.WOLF_BABY_ARMOR));
+       // this.babyModel = new ShiverwolfModel(models.bakeLayer(ModelLayers.WOLF_BABY));
         this.equipmentRenderer = layer;
     }
 
@@ -43,7 +43,8 @@ public class ShiverwolfArmorLayer extends RenderLayer<WolfRenderState, Shiverwol
         ItemStack itemstack = p_435660_.bodyArmorItem;
         Equippable equippable = (Equippable)itemstack.get(DataComponents.EQUIPPABLE);
         if (equippable != null && !equippable.assetId().isEmpty()) {
-            ShiverwolfModel wolfmodel = p_435660_.isBaby ? this.babyModel : this.adultModel;
+            //todo ShiverwolfModel wolfmodel = p_435660_.isBaby ? this.babyModel : this.adultModel;
+            ShiverwolfModel wolfmodel = this.adultModel;
             this.equipmentRenderer.renderLayers(EquipmentClientInfo.LayerType.WOLF_BODY, (ResourceKey)equippable.assetId().get(), wolfmodel, p_435660_, itemstack, p_436050_, p_434212_, p_433618_, p_435660_.outlineColor);
             this.maybeRenderCracks(p_436050_, p_434212_, p_433618_, itemstack, wolfmodel, p_435660_);
         }

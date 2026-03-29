@@ -18,15 +18,15 @@ public class JShieldItem extends ShieldItem {
     public final Identifier texture;
 
     public JShieldItem(Properties p, String name, int uses, Item repairItem) {
-        super(p.durability(uses).equippableUnswappable(EquipmentSlot.OFFHAND)
-                .component(
+        super(p.durability(uses).equippableUnswappable(EquipmentSlot.OFFHAND).equippableUnswappable(EquipmentSlot.OFFHAND)
+                .delayedComponent(
                         DataComponents.BLOCKS_ATTACKS,
-                        new BlocksAttacks(
+                        context -> new BlocksAttacks(
                                 0.25F,
                                 1.0F,
                                 List.of(new BlocksAttacks.DamageReduction(90.0F, Optional.empty(), 0.0F, 1.0F)),
                                 new BlocksAttacks.ItemDamageFunction(3.0F, 1.0F, 1.0F),
-                                Optional.of(DamageTypeTags.BYPASSES_SHIELD),
+                                Optional.of(context.getOrThrow(DamageTypeTags.BYPASSES_SHIELD)),
                                 Optional.of(SoundEvents.SHIELD_BLOCK),
                                 Optional.of(SoundEvents.SHIELD_BREAK)
                         )

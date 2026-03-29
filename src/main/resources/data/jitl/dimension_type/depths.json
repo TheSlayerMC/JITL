@@ -6,6 +6,7 @@
   "bed_works": false,
   "has_raids": false,
   "has_skylight": false,
+  "has_ender_dragon_fight": false,
   "has_ceiling": true,
   "coordinate_scale": 8,
   "ambient_light": 0.1,

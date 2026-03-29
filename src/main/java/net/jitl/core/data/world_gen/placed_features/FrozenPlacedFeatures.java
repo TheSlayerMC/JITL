@@ -89,14 +89,14 @@ public class FrozenPlacedFeatures extends JPlacedFeature {
                 context,
                 FROZEN_VEG,
                 holdergetter.getOrThrow(JConfiguredFeatures.FROZEN_VEG),
-                patch(8, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
+                flowerPatch(8)
         );
 
         PlacementUtils.register(
                 context,
                 FROZEN_FLOWERS,
                 holdergetter.getOrThrow(JConfiguredFeatures.FROZEN_FLOWERS),
-                patch(8, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
+                flowerPatch(8)
         );
 
         PlacementUtils.register(

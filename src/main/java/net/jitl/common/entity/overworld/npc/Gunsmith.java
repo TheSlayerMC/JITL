@@ -1,12 +1,10 @@
 package net.jitl.common.entity.overworld.npc;
 
-import com.google.common.collect.ImmutableMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import net.jitl.common.entity.base.CurrencyForItemsTrade;
+import com.geckolib.animatable.manager.AnimatableManager;
+import com.geckolib.animation.AnimationController;
+import com.geckolib.animation.RawAnimation;
 import net.jitl.common.entity.base.JVillagerEntity;
 import net.jitl.common.entity.base.MobStats;
-import net.jitl.core.init.internal.JItems;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
@@ -16,29 +14,12 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.npc.villager.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animatable.manager.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
-import software.bernie.geckolib.animation.RawAnimation;
 
 public class Gunsmith extends JVillagerEntity {
-
-    public static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
-            new CurrencyForItemsTrade(JItems.GUN_BASE, 1, Items.BLAZE_ROD, 16, JItems.NETHER_PLASMA, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.GUN_BASE, 1, JItems.BLUE_GEM, 16, JItems.OCEAN_PLASMA, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.GUN_BASE, 1, JItems.GREEN_GEM, 16, JItems.FOREST_PLASMA, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.GUN_BASE, 1, JItems.STONE_CLUMP, 16, JItems.ROCK_LAUNCHER, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.GUN_BASE, 1, JItems.YELLOW_GEM, 16, JItems.CHAOS_CANNON, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.GUN_BASE, 1, Items.ENDER_EYE, 8, JItems.EYE_BLASTER, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.ROCKY_HAMMER, 1, JItems.BLOODCRUST_INGOT, 8, JItems.FLAMING_HAMMER, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.ROCKY_HAMMER, 1, Items.BLAZE_ROD, 8, JItems.NETHIC_HAMMER, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.NETHIC_HAMMER, 1, Items.WITHER_SKELETON_SKULL, 1, JItems.WITHIC_HAMMER, 1, 99, 5)
-    }));
 
     public Gunsmith(EntityType<? extends JVillagerEntity> type, Level worldIn) {
         super(type, worldIn);
@@ -49,11 +30,6 @@ public class Gunsmith extends JVillagerEntity {
         this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-    }
-
-    @Override
-    protected Int2ObjectMap<VillagerTrades.ItemListing[]> getVillagerTrades() {
-        return TRADES;
     }
 
     public static AttributeSupplier createAttributes() {

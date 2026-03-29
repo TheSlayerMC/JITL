@@ -1,5 +1,7 @@
 package net.jitl.client.render.entity.frozen;
 
+import com.geckolib.renderer.GeoEntityRenderer;
+import com.geckolib.renderer.base.GeoRenderState;
 import net.jitl.client.model.AnimatedMonsterModel;
 import net.jitl.client.render.entity.state.ActiveRenderState;
 import net.jitl.common.entity.frozen.npc.FrozenGuardian;
@@ -7,8 +9,6 @@ import net.jitl.core.init.JITL;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.renderer.GeoEntityRenderer;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
 
 public class FrozenGuardianRenderer<R extends ActiveRenderState & GeoRenderState> extends GeoEntityRenderer<FrozenGuardian, R> {
 

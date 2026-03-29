@@ -1,13 +1,11 @@
 package net.jitl.common.entity.cloudia.npc;
 
-import com.google.common.collect.ImmutableMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import com.geckolib.animatable.manager.AnimatableManager;
+import com.geckolib.animation.AnimationController;
+import com.geckolib.animation.RawAnimation;
 import net.jitl.client.util.ChatUtils;
-import net.jitl.common.entity.base.CurrencyForItemsTrade;
 import net.jitl.common.entity.base.JVillagerEntity;
 import net.jitl.common.entity.base.MobStats;
-import net.jitl.core.init.internal.JItems;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -19,23 +17,13 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.npc.villager.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animatable.manager.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
-import software.bernie.geckolib.animation.RawAnimation;
 
 public class StarlightVillager extends JVillagerEntity {
-
-    public static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
-            new CurrencyForItemsTrade(JItems.FLUFFY_FEATHER.get(), 32, JItems.GOLEM_CHUNK.get(), 16, JItems.CLOUDIA_ORB.get(), 1, 12, 5),
-            new CurrencyForItemsTrade(JItems.FLUFFY_FEATHER.get(), 64, JItems.GOLEM_CHUNK.get(), 32, JItems.LUNITE_CHUNK.get(), 8, 12, 5),
-            new CurrencyForItemsTrade(JItems.CLOUDIA_ORB.get(), 8, JItems.LUNITE_CHUNK.get(), 16, JItems.MYSTERIOUS_DISK.get(), 1, 12, 5)
-    }));
 
     public StarlightVillager(EntityType<? extends JVillagerEntity> type, Level worldIn) {
         super(type, worldIn);
@@ -56,11 +44,6 @@ public class StarlightVillager extends JVillagerEntity {
             case 2 -> ChatUtils.addDialogStyleChat(player, "jitl.trader.starlight_villager3");
         }
         return super.mobInteract(player, playerHand);
-    }
-
-    @Override
-    protected Int2ObjectMap<VillagerTrades.ItemListing[]> getVillagerTrades() {
-        return TRADES;
     }
 
     public static AttributeSupplier createAttributes() {

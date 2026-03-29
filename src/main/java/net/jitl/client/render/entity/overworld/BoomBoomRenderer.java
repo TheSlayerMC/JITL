@@ -1,15 +1,15 @@
 package net.jitl.client.render.entity.overworld;
 
+import com.geckolib.model.DefaultedEntityGeoModel;
+import com.geckolib.renderer.GeoEntityRenderer;
+import com.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.renderer.base.RenderPassInfo;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.jitl.client.render.entity.overworld.state.BoomRenderState;
 import net.jitl.common.entity.overworld.BoomBoom;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.util.Mth;
-import software.bernie.geckolib.model.DefaultedEntityGeoModel;
-import software.bernie.geckolib.renderer.GeoEntityRenderer;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
-import software.bernie.geckolib.renderer.base.RenderPassInfo;
 
 public class BoomBoomRenderer<T extends BoomRenderState & GeoRenderState> extends GeoEntityRenderer<BoomBoom, T> {
 

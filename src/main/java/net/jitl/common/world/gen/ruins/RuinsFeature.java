@@ -40,7 +40,7 @@ public class RuinsFeature extends Feature<RuinsFeatureConfig> {
 				placePos.set(xPos, yPos, zPos);
 				if (config.spawnBlock.test(reader.getBlockState(placePos.below()), rand)) {
 					for (int i = 0; i < height; ++i) {
-						reader.setBlock(placePos, config.ruinedBlocksProvider.getState(rand, placePos), 2);
+						reader.setBlock(placePos, config.ruinedBlocksProvider.getState(reader, rand, placePos), 2);
 						placePos.move(Direction.UP);
 					}
 				}
@@ -49,7 +49,7 @@ public class RuinsFeature extends Feature<RuinsFeatureConfig> {
                     BlockPos spawnPos = new BlockPos(pos.getX(), yPos, pos.getZ());
 
                     if (config.spawnBlock.test(reader.getBlockState(spawnPos.below()), rand)) {
-						BlockState chestState = config.chest.getState(rand, chestPos).setValue(JChestBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(rand));
+						BlockState chestState = config.chest.getState(reader, rand, chestPos).setValue(JChestBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(rand));
 						reader.setBlock(chestPos, chestState, 2);
 						if(reader.getBlockEntity(chestPos) instanceof ChestBlockEntity) {
 							((ChestBlockEntity)Objects.requireNonNull(reader.getBlockEntity(chestPos))).setLootTable(JLootTables.addRuinTable(config.identifier.toString()));

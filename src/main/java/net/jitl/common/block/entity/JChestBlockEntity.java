@@ -121,7 +121,7 @@ public class JChestBlockEntity extends ChestBlockEntity {
                 d0 += (double)direction.getStepX() * 0.5D;
                 d2 += (double)direction.getStepZ() * 0.5D;
             }
-            level.playSound(null, d0, d1, d2, sound, SoundSource.BLOCKS, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
+            level.playSound(null, d0, d1, d2, sound, SoundSource.BLOCKS, 0.5F, level.getRandom().nextFloat() * 0.1F + 0.9F);
         }
     }
 }

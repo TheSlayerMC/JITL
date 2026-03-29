@@ -1,7 +1,7 @@
 package net.jitl.common.scroll;
 
 import net.jitl.core.init.JITL;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
 
@@ -20,7 +20,7 @@ public class UnderHeaderDescComponent implements IDescComponent {
     }
 
     @Override
-    public void drawContentPart(GuiGraphics matrixStack, int x0, int y0, int width) {
+    public void drawContentPart(GuiGraphicsExtractor matrixStack, int x0, int y0, int width) {
         matrixStack.pose().pushMatrix();
         //GlStateManager._enableBlend();
         drawImage(x0, y0 - 5, 0, 151, 196,30, matrixStack);
@@ -28,7 +28,7 @@ public class UnderHeaderDescComponent implements IDescComponent {
         matrixStack.pose().popMatrix();
     }
 
-    protected void drawImage(int x, int y, int textureX, int textureY, int realWidth, int realHeight, GuiGraphics matrix) {
+    protected void drawImage(int x, int y, int textureX, int textureY, int realWidth, int realHeight, GuiGraphicsExtractor matrix) {
         //RenderSystem.setShaderTexture(0, Minecraft.getInstance().getTextureManager().getTexture(this.content).getTextureView());
         //RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         matrix.pose().pushMatrix();

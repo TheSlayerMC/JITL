@@ -1,0 +1,8 @@
+{
+  "comparator_output": 5,
+  "description": {
+    "translate": "record.euca_3"
+  },
+  "length_in_seconds": 60.0,
+  "sound_event": "jitl:music.record.euca_3"
+}

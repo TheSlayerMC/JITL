@@ -7,7 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
@@ -29,7 +29,7 @@ public class SwampFoliagePlacer extends BlobFoliagePlacer {
 
 
     @Override
-    protected void createFoliage(@NotNull LevelSimulatedReader reader, @NotNull FoliagePlacer.FoliageSetter blockSetter, @NotNull RandomSource rand, @NotNull TreeConfiguration baseTreeFeatureConfig, int maxFreeTreeHeight, FoliageAttachment foliage, int foliageHeight, int foliageRadius, int offset) {
+    protected void createFoliage(@NotNull WorldGenLevel reader, @NotNull FoliagePlacer.FoliageSetter blockSetter, @NotNull RandomSource rand, @NotNull TreeConfiguration baseTreeFeatureConfig, int maxFreeTreeHeight, FoliageAttachment foliage, int foliageHeight, int foliageRadius, int offset) {
         int size = foliageRadius + foliage.radiusOffset();
         BlockPos pos = foliage.pos().above(offset);
         pos = pos.offset(Direction.UP.getUnitVec3i());

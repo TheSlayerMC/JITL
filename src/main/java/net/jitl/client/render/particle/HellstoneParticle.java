@@ -28,8 +28,8 @@ public class HellstoneParticle extends SingleQuadParticle {
 		this.zStart = this.z;
 		this.quadSize = 0.1F * (this.random.nextFloat() * 0.2F + 0.5F);
 		this.rCol = 1.0F;
-		this.gCol = 0.6F * pLevel.random.nextFloat();
-		this.bCol = 06.F * pLevel.random.nextFloat();
+		this.gCol = 0.6F * pLevel.getRandom().nextFloat();
+		this.bCol = 06.F * pLevel.getRandom().nextFloat();
 		this.scale(1.75F);
 		this.lifetime = (int)(Math.random() * 10.0D) + 40;
 	}
@@ -52,20 +52,20 @@ public class HellstoneParticle extends SingleQuadParticle {
 		return this.quadSize * f;
 	}
 
-	public int getLightColor(float pPartialTick) {
-		int i = super.getLightColor(pPartialTick);
-		float f = (float)this.age / (float)this.lifetime;
-		f *= f;
-		f *= f;
-		int j = i & 255;
-		int k = i >> 16 & 255;
-		k += (int)(f * 15.0F * 16.0F);
-		if (k > 240) {
-			k = 240;
-		}
-
-		return j | k << 16;
-	}
+//	public int getLightColor(float pPartialTick) {
+//		int i = super.getLightColor(pPartialTick);
+//		float f = (float)this.age / (float)this.lifetime;
+//		f *= f;
+//		f *= f;
+//		int j = i & 255;
+//		int k = i >> 16 & 255;
+//		k += (int)(f * 15.0F * 16.0F);
+//		if (k > 240) {
+//			k = 240;
+//		}
+//todo
+//		return j | k << 16;
+//	}
 
 	public void tick() {
 		this.xo = this.x;

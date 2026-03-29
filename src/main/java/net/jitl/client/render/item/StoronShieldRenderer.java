@@ -9,12 +9,10 @@ import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.special.SpecialModelRenderer;
-import net.minecraft.client.resources.model.Material;
-import net.minecraft.client.resources.model.MaterialSet;
+import net.minecraft.client.resources.model.sprite.SpriteGetter;
+import net.minecraft.client.resources.model.sprite.SpriteId;
 import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3fc;
 
 import javax.annotation.Nullable;
@@ -23,9 +21,9 @@ import java.util.function.Consumer;
 public class StoronShieldRenderer implements SpecialModelRenderer<DataComponentMap> {
 
     private final ShieldModel model;
-    private final MaterialSet materials;
+    private final SpriteGetter materials;
 
-    public StoronShieldRenderer(MaterialSet materials, ShieldModel model) {
+    public StoronShieldRenderer(SpriteGetter materials, ShieldModel model) {
         this.model = model;
         this.materials = materials;
     }
@@ -37,10 +35,10 @@ public class StoronShieldRenderer implements SpecialModelRenderer<DataComponentM
     }
 
     @Override
-    public void submit(@Nullable DataComponentMap typedDataComponents, @NotNull ItemDisplayContext itemDisplayContext, PoseStack pose, SubmitNodeCollector submitNodeCollector, int i, int i1, boolean b, int i2) {
+    public void submit(@Nullable DataComponentMap typedDataComponents, PoseStack pose, SubmitNodeCollector submitNodeCollector, int i, int i1, boolean b, int i2) {
         pose.pushPose();
         pose.scale(1.0F, -1.0F, -1.0F);
-        Material material = new Material(Sheets.SHIELD_SHEET, JITL.rl("entity/shield/storon_shield"));
+        SpriteId material = new SpriteId(Sheets.SHIELD_SHEET, JITL.rl("entity/shield/storon_shield"));
         submitNodeCollector.submitModelPart(this.model.handle(), pose, this.model.renderType(material.atlasLocation()), i, i1, this.materials.get(material), false, false,-1, null, i2 );
         submitNodeCollector.submitModelPart(this.model.plate(), pose, material.renderType(RenderTypes::entityCutout), i, i1, this.materials.get(material), false, b, -1, null, i2);
         pose.popPose();
@@ -52,7 +50,7 @@ public class StoronShieldRenderer implements SpecialModelRenderer<DataComponentM
         this.model.root().getExtentsForGui(posestack, set);
     }
 
-    public record Unbaked() implements SpecialModelRenderer.Unbaked {
+    public record Unbaked() implements SpecialModelRenderer.Unbaked<DataComponentMap> {
         public static final Unbaked INSTANCE = new Unbaked();
         public static final MapCodec<Unbaked> MAP_CODEC;
 
@@ -60,8 +58,8 @@ public class StoronShieldRenderer implements SpecialModelRenderer<DataComponentM
             return MAP_CODEC;
         }
 
-        public SpecialModelRenderer<?> bake(SpecialModelRenderer.BakingContext c) {
-            return new StoronShieldRenderer(c.materials(), new ShieldModel(c.entityModelSet().bakeLayer(ModelLayers.SHIELD)));
+        public SpecialModelRenderer bake(SpecialModelRenderer.BakingContext c) {
+            return new StoronShieldRenderer(c.sprites(), new ShieldModel(c.entityModelSet().bakeLayer(ModelLayers.SHIELD)));
         }
 
         static {

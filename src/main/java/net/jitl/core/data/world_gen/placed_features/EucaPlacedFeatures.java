@@ -87,28 +87,28 @@ public class EucaPlacedFeatures extends JPlacedFeature {
                 context,
                 GOLDITE_VEG,
                 holdergetter.getOrThrow(JConfiguredFeatures.GOLDITE_VEG),
-                patch(6, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
+                flowerPatch(6)
         );
 
         PlacementUtils.register(
                 context,
                 GOLD_VEG,
                 holdergetter.getOrThrow(JConfiguredFeatures.GOLD_VEG),
-                patch(6, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
+                flowerPatch(6)
         );
 
         PlacementUtils.register(
                 context,
                 SINGLE_EUCA_GRASS,
                 holdergetter.getOrThrow(JConfiguredFeatures.SINGLE_EUCA_GRASS),
-                patch(2, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
+                flowerPatch(2)
         );
 
         PlacementUtils.register(
                 context,
                 SINGLE_GOLDITE_STALKS,
                 holdergetter.getOrThrow(JConfiguredFeatures.SINGLE_GOLDITE_STALKS),
-                patch(2, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
+                flowerPatch(2)
         );
 
         PlacementUtils.register(
@@ -122,7 +122,7 @@ public class EucaPlacedFeatures extends JPlacedFeature {
                 context,
                 EUCA_PUMPKIN,
                 holdergetter.getOrThrow(JConfiguredFeatures.EUCA_PUMPKIN),
-                patch(1, 30, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
+                pumpkinPatch()
         );
 
 

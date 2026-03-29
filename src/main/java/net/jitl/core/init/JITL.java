@@ -124,7 +124,7 @@ public class JITL {
 
     private void commonInit(final FMLCommonSetupEvent event) {
         ModCompat.init(event);
-        ScrollEntries.register();
+        //ScrollEntries.register();
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {

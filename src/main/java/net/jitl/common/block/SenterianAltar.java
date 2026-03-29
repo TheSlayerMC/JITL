@@ -1,5 +1,6 @@
 package net.jitl.common.block;
 
+import com.geckolib.constant.dataticket.DataTicket;
 import com.mojang.serialization.MapCodec;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.block.entity.SenterianAltarTile;
@@ -28,7 +29,6 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.constant.dataticket.DataTicket;
 
 public class SenterianAltar extends BaseEntityBlock {
 

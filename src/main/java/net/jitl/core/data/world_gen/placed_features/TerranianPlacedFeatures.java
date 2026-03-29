@@ -37,42 +37,42 @@ public class TerranianPlacedFeatures extends JPlacedFeature {
                 context,
                 TERRANIA_VEG,
                 holdergetter.getOrThrow(JConfiguredFeatures.TERRANIA_VEG),
-                patch(10, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
+                flowerPatch(10)
         );
 
         PlacementUtils.register(
                 context,
                 ENCHANTED_SHROOMS,
                 holdergetter.getOrThrow(JConfiguredFeatures.ENCHANTED_SHROOMS),
-                patch(3, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
+                flowerPatch(3)
         );
 
         PlacementUtils.register(
                 context,
                 ENCHANTED_SHROOMS_TALL,
                 holdergetter.getOrThrow(JConfiguredFeatures.ENCHANTED_SHROOMS_TALL),
-                patch(1, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
+                flowerPatch(1)
         );
 
         PlacementUtils.register(
                 context,
                 TALL_TERRAMUSHROOM,
                 holdergetter.getOrThrow(JConfiguredFeatures.TALL_TERRAMUSHROOM),
-                patch(3, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
+                flowerPatch(3)
         );
 
         PlacementUtils.register(
                 context,
                 SMALL_TERRAMUSHROOM,
                 holdergetter.getOrThrow(JConfiguredFeatures.SMALL_TERRAMUSHROOM),
-                patch(5, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
+                flowerPatch(5)
         );
 
         PlacementUtils.register(
                 context,
                 TERRANIA_TALL_GRASS,
                 holdergetter.getOrThrow(JConfiguredFeatures.TERRANIA_TALL_GRASS),
-                patch(10, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
+                flowerPatch(10)
         );
 
         PlacementUtils.register(

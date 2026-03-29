@@ -111,7 +111,7 @@ public class CorbaPlacedFeatures extends JPlacedFeature {
                 context,
                 CORBA_LILY_PAD,
                 holdergetter.getOrThrow(JConfiguredFeatures.CORBA_LILY_PAD),
-                patch(4, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
+                patch(10, 4)
         );
     }
 }

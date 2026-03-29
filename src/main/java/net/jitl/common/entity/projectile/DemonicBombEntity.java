@@ -92,12 +92,12 @@ public class DemonicBombEntity extends AbstractArrow implements ItemSupplier {
 
         if(id == 1) {
             for(int i = 0; i < 15; ++i)
-                this.level().addParticle(particleoptions, getX() + level().random.nextDouble(), getY(), getZ() + level().random.nextDouble(), 1, 0.0D, 0.0D);
+                this.level().addParticle(particleoptions, getX() + level().getRandom().nextDouble(), getY(), getZ() + level().getRandom().nextDouble(), 1, 0.0D, 0.0D);
         }
 
         if(id == 2) {
             for(int i = 0; i < 15; ++i)
-                this.level().addParticle(particleoptions, getX() + level().random.nextDouble(), getY() + 1, getZ() + level().random.nextDouble(), 1, 0.0D, 0.0D);
+                this.level().addParticle(particleoptions, getX() + level().getRandom().nextDouble(), getY() + 1, getZ() + level().getRandom().nextDouble(), 1, 0.0D, 0.0D);
         }
     }
 

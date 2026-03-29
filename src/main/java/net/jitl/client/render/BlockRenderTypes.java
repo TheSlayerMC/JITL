@@ -2,8 +2,6 @@ package net.jitl.client.render;
 
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JBlocks;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -182,11 +180,11 @@ public class BlockRenderTypes {
         translucent.add(JBlocks.SMALL_LIGSHROOM.get());
 
         for(Block b : cutout) {
-            ItemBlockRenderTypes.setRenderLayer(b, ChunkSectionLayer.CUTOUT);
+            //ItemBlockRenderTypes.setRenderLayer(b, ChunkSectionLayer.CUTOUT);
         }
 
         for(Block b : translucent) {
-            ItemBlockRenderTypes.setRenderLayer(b, ChunkSectionLayer.TRANSLUCENT);
+            //ItemBlockRenderTypes.setRenderLayer(b, ChunkSectionLayer.TRANSLUCENT);
         }
     }
 }

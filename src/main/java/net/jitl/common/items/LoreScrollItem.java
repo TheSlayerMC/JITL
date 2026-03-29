@@ -1,6 +1,7 @@
 package net.jitl.common.items;
 
 import net.jitl.client.knowledge.EnumKnowledge;
+import net.jitl.client.util.ChatUtils;
 import net.jitl.client.util.ClientTools;
 import net.jitl.client.util.ClientUtils;
 import net.jitl.client.util.EnumHexColor;
@@ -59,7 +60,7 @@ public class LoreScrollItem extends JItem {
             if(!worldIn.isClientSide()) {
                 MutableComponent msg = Component.translatable("scroll.jitl.fail");
                 msg.withStyle(ChatFormatting.RED);
-                playerIn.displayClientMessage(msg, false);
+                ChatUtils.addChatBarChat(playerIn, msg);
             }
         }
         return InteractionResult.SUCCESS;

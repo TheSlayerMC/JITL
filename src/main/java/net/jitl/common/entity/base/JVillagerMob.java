@@ -3,6 +3,7 @@ package net.jitl.common.entity.base;
 import com.geckolib.animatable.GeoEntity;
 import com.geckolib.animatable.instance.AnimatableInstanceCache;
 import com.geckolib.animatable.manager.AnimatableManager;
+import com.geckolib.util.GeckoLibUtil;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.core.init.internal.JDataAttachments;
 import net.minecraft.world.damagesource.DamageSource;

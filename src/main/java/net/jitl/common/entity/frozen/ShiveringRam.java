@@ -1,5 +1,8 @@
 package net.jitl.common.entity.frozen;
 
+import com.geckolib.animatable.manager.AnimatableManager;
+import com.geckolib.animation.AnimationController;
+import com.geckolib.animation.RawAnimation;
 import net.jitl.common.entity.base.JAnimalEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.common.entity.goal.ShiveringRamEatBlockGoal;
@@ -30,9 +33,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.animatable.manager.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
-import software.bernie.geckolib.animation.RawAnimation;
 
 public class ShiveringRam extends JAnimalEntity implements Shearable {
 

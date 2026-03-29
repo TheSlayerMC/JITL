@@ -1,0 +1,15 @@
+{
+  "additional_wants": {
+    "count": 16.0,
+    "id": "jitl:purple_gem"
+  },
+  "gives": {
+    "id": "jitl:spellbinding_hammer"
+  },
+  "max_uses": 12.0,
+  "reputation_discount": 0.05,
+  "wants": {
+    "id": "jitl:earthen_hammer"
+  },
+  "xp": 5.0
+}

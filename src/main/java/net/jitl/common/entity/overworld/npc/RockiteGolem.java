@@ -1,13 +1,11 @@
 package net.jitl.common.entity.overworld.npc;
 
-import com.google.common.collect.ImmutableMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import com.geckolib.animatable.manager.AnimatableManager;
+import com.geckolib.animation.AnimationController;
+import com.geckolib.animation.RawAnimation;
 import net.jitl.client.util.ChatUtils;
-import net.jitl.common.entity.base.CurrencyForItemsTrade;
 import net.jitl.common.entity.base.JVillagerEntity;
 import net.jitl.common.entity.base.MobStats;
-import net.jitl.core.init.internal.JItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -22,30 +20,14 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.npc.villager.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animatable.manager.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
-import software.bernie.geckolib.animation.RawAnimation;
 
 public class RockiteGolem extends JVillagerEntity {
-
-    public static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1, new VillagerTrades.ItemListing[]{
-            new CurrencyForItemsTrade(JItems.REINFORCED_CRYSTAL_INGOT, 4, Items.BLAZE_POWDER, 8, 99, 5),
-            new CurrencyForItemsTrade(JItems.REINFORCED_STONE_INGOT, 4, JItems.BACK_BITER, 1, JItems.CRYSTALLIZED_BATTLE_AXE, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.REINFORCED_CRYSTAL_INGOT, 4, JItems.EARTHEN_HAMMER, 1, JItems.CRYSTALLIZED_HAMMER, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.REINFORCED_STONE_INGOT, 4, JItems.EARTHEN_HAMMER, 1, JItems.ROCKY_HAMMER, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.REINFORCED_STONE_INGOT, 4, JItems.STONE_CLUMP, 4, JItems.ROCK_LAUNCHER, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.REINFORCED_CRYSTAL_INGOT, 4, JItems.STAFF_OF_ENLIGHTENMENT, 1, JItems.STAFF_OF_DIVINITY, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.REINFORCED_CRYSTAL_INGOT, 4, JItems.STAFF_OF_DIVINITY, 1, JItems.CRYSTAL_STAFF, 1, 99, 5),
-            new CurrencyForItemsTrade(JItems.REINFORCED_STONE_INGOT, 4, JItems.BRONZED_BATTLE_AXE, 1, JItems.ROCKY_BATTLE_AXE, 1, 99, 5)
-    }));
 
     public RockiteGolem(EntityType<? extends JVillagerEntity> type, Level worldIn) {
             super(type, worldIn);
@@ -74,11 +56,6 @@ public class RockiteGolem extends JVillagerEntity {
     public @NotNull InteractionResult mobInteract(@NotNull Player player, @NotNull InteractionHand playerHand) {
         ChatUtils.addDialogStyleChat(player, "jitl.trader.rockite_golem");
         return super.mobInteract(player, playerHand);
-    }
-
-    @Override
-    protected Int2ObjectMap<VillagerTrades.ItemListing[]> getVillagerTrades() {
-        return TRADES;
     }
 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.rockite_golem.walk");

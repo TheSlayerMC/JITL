@@ -1,5 +1,6 @@
 package net.jitl.common.entity.frozen;
 
+import com.geckolib.animatable.manager.AnimatableManager;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JNeutralMonster;
 import net.jitl.common.entity.base.MobStats;
@@ -24,7 +25,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.animatable.manager.AnimatableManager;
 
 public class FrozenTrollEntity extends JNeutralMonster {
 
@@ -126,7 +126,7 @@ public class FrozenTrollEntity extends JNeutralMonster {
 
     @Override
     protected void playStepSound(@NotNull BlockPos pos, @NotNull BlockState blockIn) {
-        this.playSound(SoundEvents.WOLF_STEP, 0.15F, 1.0F);
+        this.playSound(SoundEvents.WOLF_STEP.value(), 0.15F, 1.0F);
     }
 
     @Override

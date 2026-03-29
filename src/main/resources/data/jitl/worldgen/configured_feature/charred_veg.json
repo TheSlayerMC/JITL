@@ -1,59 +1,44 @@
 {
-  "type": "minecraft:flower",
+  "type": "minecraft:simple_block",
   "config": {
-    "feature": {
-      "feature": {
-        "type": "minecraft:simple_block",
-        "config": {
-          "to_place": {
-            "type": "minecraft:noise_provider",
-            "noise": {
-              "amplitudes": [
-                1.0
-              ],
-              "firstOctave": 0
-            },
-            "scale": 0.020833334,
-            "seed": 2345,
-            "states": [
-              {
-                "Name": "jitl:charred_brush",
-                "Properties": {
-                  "east": "false",
-                  "north": "false",
-                  "south": "false",
-                  "up": "false",
-                  "west": "false"
-                }
-              },
-              {
-                "Name": "jitl:charred_short_grass"
-              },
-              {
-                "Name": "jitl:charred_weeds"
-              },
-              {
-                "Name": "jitl:tall_charred_grass",
-                "Properties": {
-                  "half": "lower"
-                }
-              }
-            ]
-          }
-        }
-      },
-      "placement": [
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
         {
-          "type": "minecraft:block_predicate_filter",
-          "predicate": {
-            "type": "minecraft:matching_blocks",
-            "blocks": "minecraft:air"
-          }
+          "data": {
+            "Name": "jitl:charred_brush",
+            "Properties": {
+              "east": "false",
+              "north": "false",
+              "south": "false",
+              "up": "false",
+              "west": "false"
+            }
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "jitl:charred_short_grass"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "jitl:charred_weeds"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "jitl:tall_charred_grass",
+            "Properties": {
+              "half": "lower"
+            }
+          },
+          "weight": 1
         }
       ]
-    },
-    "tries": 96,
-    "xz_spread": 6,
-    "y_spread": 2
+    }
   }
 }

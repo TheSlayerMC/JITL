@@ -1,5 +1,6 @@
 package net.jitl.common.entity.terrania;
 
+import com.geckolib.animatable.manager.AnimatableManager;
 import net.jitl.client.knowledge.EnumKnowledge;
 import net.jitl.common.entity.base.JPathfinderMob;
 import net.jitl.common.entity.base.MobStats;
@@ -21,7 +22,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.animatable.manager.AnimatableManager;
 
 public class Flungas extends JPathfinderMob {
 

@@ -1,5 +1,6 @@
 package net.jitl.core.init.network;
 
+import net.jitl.client.util.ChatUtils;
 import net.jitl.common.capability.stats.PlayerStats;
 import net.jitl.core.init.JITL;
 import net.jitl.core.init.internal.JDataAttachments;
@@ -40,7 +41,7 @@ public record PacketBuyItem(String item, int amount, int cost) implements Custom
             if(stats.useSentacoins(payload.cost())) {
                 player.addItem(new ItemStack(item, payload.amount));
             } else {
-                player.displayClientMessage(Component.translatable("jitl.trade.no"), false);
+                ChatUtils.addChatBarChat(player, Component.translatable("jitl.trade.no"));
             }
         });
     }

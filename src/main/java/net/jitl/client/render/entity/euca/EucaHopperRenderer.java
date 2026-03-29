@@ -1,5 +1,9 @@
 package net.jitl.client.render.entity.euca;
 
+import com.geckolib.model.DefaultedEntityGeoModel;
+import com.geckolib.renderer.GeoEntityRenderer;
+import com.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.renderer.base.RenderPassInfo;
 import net.jitl.client.render.entity.state.TamableRenderState;
 import net.jitl.common.entity.euca.EucaHopper;
 import net.jitl.core.init.JITL;
@@ -7,10 +11,6 @@ import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.model.DefaultedEntityGeoModel;
-import software.bernie.geckolib.renderer.GeoEntityRenderer;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
-import software.bernie.geckolib.renderer.base.RenderPassInfo;
 
 public class EucaHopperRenderer<T extends TamableRenderState & GeoRenderState> extends GeoEntityRenderer<EucaHopper, T> {
 

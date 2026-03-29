@@ -1,4 +1,4 @@
-package net.jitl.core.data;
+package net.jitl.core.data.recipe;
 
 import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
@@ -12,6 +12,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -679,11 +680,11 @@ public class JRecipeProvider extends RecipeProvider {
     }
 
     protected void addSmeltingRecipe(RecipeOutput consumer, ItemLike input, ItemLike output, float xpGiven, int time, String name) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(input), RecipeCategory.MISC, output, xpGiven, time).unlockedBy(inputToKey(input), has(input)).save(consumer, output.asItem().getDescriptionId() + name);
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(input), RecipeCategory.MISC, CookingBookCategory.MISC, output, xpGiven, time).unlockedBy(inputToKey(input), has(input)).save(consumer, output.asItem().getDescriptionId() + name);
     }
 
     protected void addBlastingRecipe(RecipeOutput consumer, ItemLike input, ItemLike output, float xpGiven, int time, String name) {
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(input), RecipeCategory.MISC, output, xpGiven, time).unlockedBy(inputToKey(input), has(input)).save(consumer, output.asItem().getDescriptionId() + name);
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(input), RecipeCategory.MISC, CookingBookCategory.MISC, output, xpGiven, time).unlockedBy(inputToKey(input), has(input)).save(consumer, output.asItem().getDescriptionId() + name);
     }
 
     protected void addSmeltingRecipe(RecipeOutput consumer, ItemLike input, ItemLike output, float xpGiven, int time) {

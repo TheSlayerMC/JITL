@@ -8,14 +8,13 @@ import net.jitl.core.init.internal.JItems;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.npc.villager.VillagerTrades;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.Nullable;
 
-public class ScrollTrade implements VillagerTrades.ItemListing {
+public class ScrollTrade {
 
     public final ScrollEntry entry;
     public final EnumKnowledge knowledge;
@@ -32,7 +31,6 @@ public class ScrollTrade implements VillagerTrades.ItemListing {
     }
 
     @Nullable
-    @Override
     public MerchantOffer getOffer(ServerLevel level, Entity pTrader, RandomSource pRandom) {
         ItemStack scroll = new ItemStack(JItems.LORE_SCROLL.asItem());
         scroll.set(JDataComponents.SCROLL, new LoreScroll(this.entry.getId(), this.knowledge.getName(), this.levels, false));

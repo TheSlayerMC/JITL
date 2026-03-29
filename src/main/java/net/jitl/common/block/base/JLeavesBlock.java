@@ -69,7 +69,7 @@ public class JLeavesBlock extends Block implements SimpleWaterloggedBlock, IShea
     }
 
     @Override
-    protected int getLightBlock(BlockState state) {
+    protected int getLightDampening(BlockState state) {
         return 1;
     }
 

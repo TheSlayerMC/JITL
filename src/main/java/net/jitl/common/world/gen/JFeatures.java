@@ -8,7 +8,6 @@ import net.jitl.common.world.gen.cloudia.CloudFeature;
 import net.jitl.common.world.gen.cloudia.CloudiaLand;
 import net.jitl.common.world.gen.cloudia.CloudiaTerrain;
 import net.jitl.common.world.gen.corba.CorbaSwampTreeFeature;
-import net.jitl.common.world.gen.corba.SwampLilyFeature;
 import net.jitl.common.world.gen.depths.*;
 import net.jitl.common.world.gen.euca.BoulderFeature;
 import net.jitl.common.world.gen.euca.EucaBotSpawner;
@@ -68,7 +67,6 @@ public class JFeatures {
 
     //CORBA
     public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> CORBA_SWAMP_TREE = REGISTRY.register("corba_swamp_tree", () -> new CorbaSwampTreeFeature(NoneFeatureConfiguration.CODEC));
-    public static final DeferredHolder<Feature<?>, Feature<RandomPatchConfiguration>> SWAMP_LILY = REGISTRY.register("swamp_lily", () -> new SwampLilyFeature(RandomPatchConfiguration.CODEC));
 
     //CLOUDIA
     public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> CLOUDIA_TERRAIN = REGISTRY.register("cloudia_terrain", CloudiaTerrain::new);

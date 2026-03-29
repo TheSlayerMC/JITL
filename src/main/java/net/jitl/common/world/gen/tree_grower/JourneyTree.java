@@ -103,23 +103,23 @@ public class JourneyTree extends Feature<TreeConfig> {
 		return false;
 	}
 
-	private int getMaxFreeTreeHeight(LevelSimulatedReader p_67216_, int p_67217_, BlockPos p_67218_, TreeConfiguration p_67219_) {
-		BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
+	private int getMaxFreeTreeHeight(WorldGenLevel level, int maxTreeHeight, BlockPos treePos, TreeConfiguration config) {
+		BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
 
-		for(int i = 0; i <= p_67217_ + 1; ++i) {
-			int j = p_67219_.minimumSize.getSizeAtHeight(p_67217_, i);
+		for (int y = 0; y <= maxTreeHeight + 1; y++) {
+			int r = config.minimumSize.getSizeAtHeight(maxTreeHeight, y);
 
-			for(int k = -j; k <= j; ++k) {
-				for(int l = -j; l <= j; ++l) {
-					blockpos$mutableblockpos.setWithOffset(p_67218_, k, i, l);
-					if (!p_67219_.trunkPlacer.isFree(p_67216_, blockpos$mutableblockpos) || !p_67219_.ignoreVines && isVine(p_67216_, blockpos$mutableblockpos)) {
-						return i - 2;
+			for (int x = -r; x <= r; x++) {
+				for (int z = -r; z <= r; z++) {
+					blockPos.setWithOffset(treePos, x, y, z);
+					if (!config.trunkPlacer.isFree(level, blockPos) || !config.ignoreVines && isVine(level, blockPos)) {
+						return y - 2;
 					}
 				}
 			}
 		}
 
-		return p_67217_;
+		return maxTreeHeight;
 	}
 
 	protected void setBlock(@NotNull LevelWriter l, @NotNull BlockPos p, @NotNull BlockState s) {

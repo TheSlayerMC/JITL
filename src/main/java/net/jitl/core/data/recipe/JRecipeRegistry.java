@@ -1,6 +1,5 @@
 package net.jitl.core.data.recipe;
 
-import net.jitl.core.data.JRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeOutput;

@@ -107,8 +107,8 @@ public class RenderEntitys {
                 "corba/swamp_fly_3"));
 
         event.registerBlockEntityRenderer(JBlockEntities.ROCKITE.get(), RockiteSpawnerRenderer::new);
-        event.registerBlockEntityRenderer(JBlockEntities.OBELISK.get(), con -> new ObeliskRenderer<>());
-        event.registerBlockEntityRenderer(JBlockEntities.SENTERIAN_ALTAR.get(), con -> new SenterianAltarRenderer<>());
+        event.registerBlockEntityRenderer(JBlockEntities.OBELISK.get(), ObeliskRenderer::new);
+        event.registerBlockEntityRenderer(JBlockEntities.SENTERIAN_ALTAR.get(), SenterianAltarRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.JCHEST.get(), JChestRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.PEDESTAL.get(), PedestalRenderer::new);
         event.registerBlockEntityRenderer(JBlockEntities.GOLD_BOT_SPAWNER.get(), JSpawnerRenderer::new);

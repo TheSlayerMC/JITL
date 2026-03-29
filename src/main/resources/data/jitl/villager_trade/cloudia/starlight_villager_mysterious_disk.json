@@ -1,0 +1,16 @@
+{
+  "additional_wants": {
+    "count": 16.0,
+    "id": "jitl:lunite_chunk"
+  },
+  "gives": {
+    "id": "jitl:mysterious_disk"
+  },
+  "max_uses": 12.0,
+  "reputation_discount": 0.05,
+  "wants": {
+    "count": 8.0,
+    "id": "jitl:cloudia_orb"
+  },
+  "xp": 5.0
+}

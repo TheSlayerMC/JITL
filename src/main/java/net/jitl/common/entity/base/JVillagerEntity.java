@@ -1,7 +1,9 @@
 package net.jitl.common.entity.base;
 
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import com.geckolib.animatable.GeoEntity;
+import com.geckolib.animatable.instance.AnimatableInstanceCache;
+import com.geckolib.animatable.manager.AnimatableManager;
+import com.geckolib.util.GeckoLibUtil;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
@@ -10,7 +12,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.npc.Npc;
-import net.minecraft.world.entity.npc.villager.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.trading.Merchant;
@@ -18,13 +19,8 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.animatable.manager.AnimatableManager;
-import software.bernie.geckolib.util.GeckoLibUtil;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 
 public abstract class JVillagerEntity extends JVillagerMob implements Npc, Merchant, Enemy, GeoEntity {
 
@@ -59,9 +55,6 @@ public abstract class JVillagerEntity extends JVillagerMob implements Npc, Merch
         return this.cache;
     }
 
-    @Nullable
-    protected abstract Int2ObjectMap<VillagerTrades.ItemListing[]> getVillagerTrades();
-
     @Override
     protected void updateTrades(ServerLevel serverLevel) {
 
@@ -81,18 +74,18 @@ public abstract class JVillagerEntity extends JVillagerMob implements Npc, Merch
 //        }
 //    }
 
-    protected void addOffersFromItemListings(ServerLevel p_480295_, MerchantOffers p_479439_, VillagerTrades.ItemListing[] p_479360_, int p_481834_) {
-        ArrayList<VillagerTrades.ItemListing> arraylist = Lists.newArrayList(p_479360_);
-        int i = 0;
-
-        while (i < p_481834_ && !arraylist.isEmpty()) {
-            MerchantOffer merchantoffer = arraylist.remove(this.random.nextInt(arraylist.size())).getOffer(p_480295_, this, this.random);
-            if (merchantoffer != null) {
-                p_479439_.add(merchantoffer);
-                i++;
-            }
-        }
-    }
+// todo   protected void addOffersFromItemListings(ServerLevel p_480295_, MerchantOffers p_479439_, VillagerTrades.ItemListing[] p_479360_, int p_481834_) {
+//        ArrayList<VillagerTrades.ItemListing> arraylist = Lists.newArrayList(p_479360_);
+//        int i = 0;
+//
+//        while (i < p_481834_ && !arraylist.isEmpty()) {
+//            MerchantOffer merchantoffer = arraylist.remove(this.random.nextInt(arraylist.size())).getOffer(p_480295_, this, this.random);
+//            if (merchantoffer != null) {
+//                p_479439_.add(merchantoffer);
+//                i++;
+//            }
+//        }
+//    }
 
     @Override
     public void overrideOffers(@Nullable MerchantOffers offers) { }

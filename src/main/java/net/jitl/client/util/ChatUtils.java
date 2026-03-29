@@ -9,19 +9,24 @@ public class ChatUtils {
 
     public static void addDialogStyleChat(Player player, String chat) {
         if(!player.level().isClientSide())
-            player.displayClientMessage(Component.translatable(chat), true);
+            player.sendOverlayMessage(Component.translatable(chat));
     }
 
     public static void addChatBarChat(Player player, String chat) {
         if(!player.level().isClientSide())
-            player.displayClientMessage(Component.translatable(chat), false);
+            player.sendSystemMessage(Component.translatable(chat));
+    }
+
+    public static void addChatBarChat(Player player, Component chat) {
+        if(!player.level().isClientSide())
+            player.sendSystemMessage(chat);
     }
 
     public static void addColouredDialogStyleChat(Player player, ChatFormatting c, String chat) {
         Component comp = Component.translatable(chat);
         comp.getStyle().withColor(c);
         if(!player.level().isClientSide()) {
-            player.displayClientMessage(comp, true);
+            player.sendOverlayMessage(comp);
         }
     }
 
@@ -29,19 +34,19 @@ public class ChatUtils {
         Component comp = Component.translatable(chat);
         comp.getStyle().withColor(c);
         if(!player.level().isClientSide()) {
-            player.displayClientMessage(comp, false);
+            player.sendSystemMessage(comp);
         }
     }
 
     public static void sendColouredTranslatedMessage(Player player, ChatFormatting colour, String translationKey, Object... args) {
         MutableComponent msg = Component.translatable(translationKey, args);
         msg.withStyle(colour);
-        player.displayClientMessage(msg, false);
+        player.sendSystemMessage(msg);
     }
 
     public static void sendColouredMessage(Player player, ChatFormatting colour, String key) {
         MutableComponent msg = Component.literal(key);
         msg.withStyle(colour);
-        player.displayClientMessage(msg, false);
+        player.sendSystemMessage(msg);
     }
 }

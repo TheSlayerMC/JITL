@@ -149,7 +149,7 @@ public class JGrassBlock extends Block {//implements BonemealableBlock {
     private static boolean canBeGrass(BlockState pState, LevelReader pLevelReader, BlockPos pPos) {
         BlockPos blockpos = pPos.above();
         BlockState blockstate = pLevelReader.getBlockState(blockpos);
-        int i = LightEngine.getLightBlockInto(pState, blockstate, Direction.UP, blockstate.getLightBlock());
+        int i = LightEngine.getLightBlockInto(pState, blockstate, Direction.UP, blockstate.getLightDampening());
         return i < 15;
     }
 

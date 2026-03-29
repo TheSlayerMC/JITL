@@ -165,7 +165,7 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
     }
 
     private void delay(Level level, BlockPos pos) {
-        RandomSource randomsource = level.random;
+        RandomSource randomsource = level.getRandom();
         if (this.maxSpawnDelay <= this.minSpawnDelay) {
             this.spawnDelay = this.minSpawnDelay;
         } else {

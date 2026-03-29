@@ -14,8 +14,8 @@ public class JCloudRenderer extends CloudRenderer {
     public JCloudRenderer() { }
 
     @Override
-    public void render(int cloudColor, CloudStatus cloudStatus, float height, Vec3 cameraPosition, long seed, float ticks) {
-        super.render(cloudColor, cloudStatus, height, cameraPosition, seed, ticks);
+    public void render(int color, CloudStatus cloudStatus, float bottomY, int range, Vec3 cameraPosition, long gameTime, float partialTicks) {
+        super.render(color, cloudStatus, bottomY, range, cameraPosition, gameTime, partialTicks);
         if(texture != null) {
             System.out.println("RENDERING CLOUDS");
         }

@@ -4,10 +4,9 @@ import net.jitl.client.render.world.clouds.JCloudRenderer;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.CloudStatus;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.state.LevelRenderState;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.client.CustomCloudsRenderer;
-import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
 
 public class FrozenRenderInfo extends JDimensionSpecialEffects implements CustomCloudsRenderer{
 
@@ -16,8 +15,8 @@ public class FrozenRenderInfo extends JDimensionSpecialEffects implements Custom
     }
 
     @Override
-    public boolean renderClouds(LevelRenderState levelRenderState, Vec3 camPos, CloudStatus cloudStatus, int cloudColor, float cloudHeight, Matrix4f modelViewMatrix) {
-        new JCloudRenderer(JITL.rl("textures/environment/frozen_clouds.png")).render(cloudColor, cloudStatus, cloudHeight, camPos, levelRenderState.gameTime, 10F);
-        return CustomCloudsRenderer.super.renderClouds(levelRenderState, camPos, cloudStatus, cloudColor, cloudHeight, modelViewMatrix);
+    public boolean renderClouds(net.minecraft.client.renderer.state.level.LevelRenderState levelRenderState, Vec3 camPos, CloudStatus cloudStatus, int cloudColor, float cloudHeight, int cloudRange, Matrix4fc modelViewMatrix) {
+        new JCloudRenderer(JITL.rl("textures/environment/frozen_clouds.png")).render(cloudColor, cloudStatus, cloudHeight, cloudRange, camPos, levelRenderState.gameTime, 10F);
+        return CustomCloudsRenderer.super.renderClouds(levelRenderState, camPos, cloudStatus, cloudColor, cloudHeight, cloudRange, modelViewMatrix);
     }
 }

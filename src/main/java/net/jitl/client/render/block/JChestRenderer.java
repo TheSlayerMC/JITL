@@ -11,6 +11,7 @@ import net.jitl.core.init.internal.JBlocks;
 import net.jitl.core.init.internal.JItems;
 import net.minecraft.client.model.object.chest.ChestModel;
 import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.SpriteMapper;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -23,6 +24,8 @@ import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.resources.model.sprite.SpriteGetter;
+import net.minecraft.client.resources.model.sprite.SpriteId;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -44,59 +47,59 @@ public class JChestRenderer<T extends BlockEntity & LidBlockEntity> implements B
     private final ChestModel doubleLeftModel;
     private final ChestModel doubleRightModel;
     private final ItemModelResolver renderEntity;
-    private final MaterialSet materials;
+    private final SpriteGetter materials;
 
-    public static final MaterialMapper CHEST_MAPPER = new MaterialMapper(Sheets.CHEST_SHEET, "entity/chest");
+    public static final SpriteMapper CHEST_MAPPER = new SpriteMapper(Sheets.CHEST_SHEET, "entity/chest");
 
-    public static final Material BOILING_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("boiling_chest"));
-    public static final Material BOILING_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("boiling_chest_left"));
-    public static final Material BOILING_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("boiling_chest_right"));
+    public static final SpriteId BOILING_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("boiling_chest"));
+    public static final SpriteId BOILING_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("boiling_chest_left"));
+    public static final SpriteId BOILING_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("boiling_chest_right"));
 
-    public static final Material CLOUDIA_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("cloudia_chest"));
-    public static final Material CLOUDIA_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("cloudia_chest_left"));
-    public static final Material CLOUDIA_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("cloudia_chest_right"));
+    public static final SpriteId CLOUDIA_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("cloudia_chest"));
+    public static final SpriteId CLOUDIA_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("cloudia_chest_left"));
+    public static final SpriteId CLOUDIA_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("cloudia_chest_right"));
 
-    public static final Material CORBA_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("corba_chest"));
-    public static final Material CORBA_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("corba_chest_left"));
-    public static final Material CORBA_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("corba_chest_right"));
+    public static final SpriteId CORBA_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("corba_chest"));
+    public static final SpriteId CORBA_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("corba_chest_left"));
+    public static final SpriteId CORBA_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("corba_chest_right"));
 
-    public static final Material DEPTHS_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("depths_chest"));
-    public static final Material DEPTHS_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("depths_chest_left"));
-    public static final Material DEPTHS_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("depths_chest_right"));
+    public static final SpriteId DEPTHS_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("depths_chest"));
+    public static final SpriteId DEPTHS_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("depths_chest_left"));
+    public static final SpriteId DEPTHS_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("depths_chest_right"));
 
-    public static final Material EUCA_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("euca_chest"));
-    public static final Material EUCA_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("euca_chest_left"));
-    public static final Material EUCA_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("euca_chest_right"));
+    public static final SpriteId EUCA_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("euca_chest"));
+    public static final SpriteId EUCA_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("euca_chest_left"));
+    public static final SpriteId EUCA_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("euca_chest_right"));
 
-    public static final Material FROZEN_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("frozen_chest"));
-    public static final Material FROZEN_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("frozen_chest_left"));
-    public static final Material FROZEN_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("frozen_chest_right"));
+    public static final SpriteId FROZEN_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("frozen_chest"));
+    public static final SpriteId FROZEN_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("frozen_chest_left"));
+    public static final SpriteId FROZEN_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("frozen_chest_right"));
 
-    public static final Material JOURNEY_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("journey_chest"));
-    public static final Material JOURNEY_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("journey_chest_left"));
-    public static final Material JOURNEY_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("journey_chest_right"));
+    public static final SpriteId JOURNEY_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("journey_chest"));
+    public static final SpriteId JOURNEY_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("journey_chest_left"));
+    public static final SpriteId JOURNEY_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("journey_chest_right"));
 
-    public static final Material NETHER_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("nether_chest"));
-    public static final Material NETHER_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("nether_chest_left"));
-    public static final Material NETHER_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("nether_chest_right"));
+    public static final SpriteId NETHER_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("nether_chest"));
+    public static final SpriteId NETHER_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("nether_chest_left"));
+    public static final SpriteId NETHER_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("nether_chest_right"));
 
-    public static final Material SENTERIAN_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("senterian_chest"));
-    public static final Material SENTERIAN_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("senterian_chest_left"));
-    public static final Material SENTERIAN_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("senterian_chest_right"));
+    public static final SpriteId SENTERIAN_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("senterian_chest"));
+    public static final SpriteId SENTERIAN_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("senterian_chest_left"));
+    public static final SpriteId SENTERIAN_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("senterian_chest_right"));
 
-    public static final Material TERRANIAN_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("terranian_chest"));
-    public static final Material TERRANIAN_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("terranian_chest_left"));
-    public static final Material TERRANIAN_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("terranian_chest_right"));
+    public static final SpriteId TERRANIAN_CHEST_LOCATION = CHEST_MAPPER.apply(JITL.rl("terranian_chest"));
+    public static final SpriteId TERRANIAN_CHEST_LOCATION_LEFT = CHEST_MAPPER.apply(JITL.rl("terranian_chest_left"));
+    public static final SpriteId TERRANIAN_CHEST_LOCATION_RIGHT = CHEST_MAPPER.apply(JITL.rl("terranian_chest_right"));
 
     public JChestRenderer(BlockEntityRendererProvider.Context context) {
-        this.materials = context.materials();
+        this.materials = context.sprites();
         this.singleModel = new ChestModel(context.bakeLayer(JModelLayers.JCHEST));
         this.doubleLeftModel = new ChestModel(context.bakeLayer(JModelLayers.JDOUBLE_CHEST_LEFT));
         this.doubleRightModel = new ChestModel(context.bakeLayer(JModelLayers.JDOUBLE_CHEST_RIGHT));
         this.renderEntity = context.itemModelResolver();
     }
 
-    public static Material chooseMaterial(JChestRenderState.JChestMaterialType materialType, ChestType chestType) {
+    public static SpriteId chooseMaterial(JChestRenderState.JChestMaterialType materialType, ChestType chestType) {
         return switch(materialType) {
             case BOILING -> chooseMaterial(chestType, BOILING_CHEST_LOCATION, BOILING_CHEST_LOCATION_LEFT, BOILING_CHEST_LOCATION_RIGHT);
             case CLOUDIA -> chooseMaterial(chestType, CLOUDIA_CHEST_LOCATION, CLOUDIA_CHEST_LOCATION_LEFT, CLOUDIA_CHEST_LOCATION_RIGHT);
@@ -147,7 +150,7 @@ public class JChestRenderer<T extends BlockEntity & LidBlockEntity> implements B
         return type;
     }
 
-    private static Material chooseMaterial(ChestType chestType, Material doubleMaterial, Material leftMaterial, Material rightMaterial) {
+    private static SpriteId chooseMaterial(ChestType chestType, SpriteId doubleMaterial, SpriteId leftMaterial, SpriteId rightMaterial) {
         return switch(chestType) {
             case LEFT -> leftMaterial;
             case RIGHT -> rightMaterial;
@@ -201,7 +204,7 @@ public class JChestRenderer<T extends BlockEntity & LidBlockEntity> implements B
         float f = render.open;
         f = 1.0F - f;
         f = 1.0F - f * f * f;
-        Material material = chooseMaterial(render.material, render.type);
+        SpriteId material = chooseMaterial(render.material, render.type);
         RenderType rendertype = material.renderType(RenderTypes::entityCutout);
         TextureAtlasSprite textureatlassprite = this.materials.get(material);
         if (render.type != ChestType.SINGLE) {

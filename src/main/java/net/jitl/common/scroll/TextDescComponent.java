@@ -2,7 +2,7 @@ package net.jitl.common.scroll;
 
 import net.jitl.client.util.GuiHelper;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.FormattedCharSequence;
 
@@ -23,7 +23,7 @@ public class TextDescComponent implements IDescComponent {
     }
 
     @Override
-    public void drawContentPart(GuiGraphics matrixStack, int x0, int y0, int width) {
+    public void drawContentPart(GuiGraphicsExtractor matrixStack, int x0, int y0, int width) {
         int i = y0;
         for(FormattedCharSequence s : wrappedText) {
             GuiHelper.drawString(matrixStack, s, x0, i, -12566464, false);

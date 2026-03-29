@@ -1,0 +1,8 @@
+{
+  "comparator_output": 5,
+  "description": {
+    "translate": "record.gold_plains"
+  },
+  "length_in_seconds": 132.0,
+  "sound_event": "jitl:music.biome.gold_plains"
+}

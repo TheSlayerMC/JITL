@@ -1,5 +1,6 @@
 package net.jitl.common.event;
 
+import net.jitl.client.util.ChatUtils;
 import net.jitl.common.capability.essence.PlayerEssence;
 import net.jitl.common.capability.player.Portal;
 import net.jitl.common.capability.stats.PlayerStats;
@@ -79,7 +80,7 @@ public class ModEvents {
                 entity.setPortalCooldown();
                 TeleportTransition transition = new TeleportTransition(destination, new Vec3(entity.getX(), destination.getMaxY() - entity.getBbHeight(), entity.getZ()), entity.getDeltaMovement(), entity.getYRot(), entity.getXRot(), TeleportTransition.DO_NOTHING);
                 entity.teleport(transition);
-                entity.displayClientMessage(Component.translatable("jitl.death_pos", (int)entity.getX(), (int)entity.getZ()), false);
+                ChatUtils.addChatBarChat(entity, Component.translatable("jitl.death_pos", (int)entity.getX(), (int)entity.getZ()));
             }
         }
     }

@@ -69,7 +69,7 @@ public class IridiumCampfireBlockEntity extends BlockEntity implements Clearable
             int var10002 = campfire.cookingProgress[i]++;
             if (campfire.cookingProgress[i] >= campfire.cookingTime[i]) {
                SingleRecipeInput singlerecipeinput = new SingleRecipeInput(itemstack);
-               ItemStack itemstack1 = (ItemStack)check.getRecipeFor(singlerecipeinput, level).map((p_409479_) -> ((CampfireCookingRecipe)p_409479_.value()).assemble(singlerecipeinput, level.registryAccess())).orElse(itemstack);
+               ItemStack itemstack1 = (ItemStack)check.getRecipeFor(singlerecipeinput, level).map((p_409479_) -> ((CampfireCookingRecipe)p_409479_.value()).assemble(singlerecipeinput)).orElse(itemstack);
                if (itemstack1.isItemEnabled(level.enabledFeatures())) {
                   Containers.dropItemStack(level, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), itemstack1);
                   campfire.items.set(i, ItemStack.EMPTY);
@@ -103,7 +103,7 @@ public class IridiumCampfireBlockEntity extends BlockEntity implements Clearable
    }
 
    public static void particleTick(Level level, BlockPos pos, BlockState state, IridiumCampfireBlockEntity blockEntity) {
-      RandomSource randomsource = level.random;
+      RandomSource randomsource = level.getRandom();
       if (randomsource.nextFloat() < 0.11F) {
          for(int i = 0; i < randomsource.nextInt(2) + 2; ++i) {
             CampfireBlock.makeParticles(level, pos, (Boolean)state.getValue(CampfireBlock.SIGNAL_FIRE), false);

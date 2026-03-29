@@ -25,7 +25,7 @@ public class ShiverwolfCollarLayer extends RenderLayer<WolfRenderState, Shiverwo
         DyeColor dyecolor = p_433463_.collarColor;
         if (dyecolor != null && !p_433463_.isInvisible) {
             int i = dyecolor.getTextureDiffuseColor();
-            p_435581_.order(1).submitModel(this.getParentModel(), p_433463_, p_434880_, RenderTypes.entityCutoutNoCull(WOLF_COLLAR_LOCATION), p_433407_, OverlayTexture.NO_OVERLAY, i, (TextureAtlasSprite)null, p_433463_.outlineColor, (ModelFeatureRenderer.CrumblingOverlay)null);
+            p_435581_.order(1).submitModel(this.getParentModel(), p_433463_, p_434880_, RenderTypes.armorCutoutNoCull(WOLF_COLLAR_LOCATION), p_433407_, OverlayTexture.NO_OVERLAY, i, (TextureAtlasSprite)null, p_433463_.outlineColor, (ModelFeatureRenderer.CrumblingOverlay)null);
         }
     }
 }

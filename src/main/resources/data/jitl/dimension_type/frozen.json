@@ -4,6 +4,7 @@
   "natural": false,
   "piglin_safe": false,
   "respawn_anchor_works": false,
+  "has_ender_dragon_fight": false,
   "bed_works": false,
   "has_raids": false,
   "has_skylight": true,

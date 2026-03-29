@@ -770,7 +770,7 @@ public class JBlocks {
     public static final DeferredBlock<Block> SMALL_BOGSHROOM = registerModeledBlock("small_bogshroom", "Small Bogshroom", TallGrassBlock::new, JBlockProperties.GLOW_FLOWER);
     public static final DeferredBlock<Block> TALL_BOGSHROOM = registerModeledBlock("tall_bogshroom", "Tall Bogshroom", TallGrassBlock::new, JBlockProperties.GLOW_FLOWER);
     public static final DeferredBlock<Block> BOGWEED = registerDoublePlant("bogweed", "Bogweed", JDoublePlantBlock::new, JBlockProperties.PLANT);
-    public static final DeferredBlock<Block> SWAMP_LILY = registerLilyPad("swamp_lily", "Swamp Lilly", WaterlilyBlock::new, JBlockProperties.LILY_PLANT);
+    public static final DeferredBlock<Block> SWAMP_LILY = registerLilyPad("swamp_lily", "Swamp Lilly", LilyPadBlock::new, JBlockProperties.LILY_PLANT);
     public static final DeferredBlock<Block> FUNGAL_SHELF = registerModeledBlock("fungal_shelf", "Fungal Shelf", JBlockFungalShelf::new, JBlockProperties.MUSHROOM_SHELF);
     public static final DeferredBlock<Block> SLIME = registerSlimeStyleBlock("slime", "Slime", JSlimeBlock::new, JBlockProperties.SLIME);
     public static final DeferredBlock<Block> SWAMP_LAMP = registerModeledBlock("swamp_lamp", "Swamp Lamp", JBlockSwampLamp::new, JBlockProperties.BOTTLE);

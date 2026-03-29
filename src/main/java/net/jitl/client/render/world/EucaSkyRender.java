@@ -4,11 +4,11 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.jitl.core.init.JITL;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.state.LevelRenderState;
-import net.minecraft.client.renderer.state.SkyRenderState;
+import net.minecraft.client.renderer.state.level.LevelRenderState;
+import net.minecraft.client.renderer.state.level.SkyRenderState;
 import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.client.CustomSkyboxRenderer;
-import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
 
 public class EucaSkyRender implements CustomSkyboxRenderer {
 
@@ -17,7 +17,7 @@ public class EucaSkyRender implements CustomSkyboxRenderer {
     public EucaSkyRender() { }
 
     @Override
-    public boolean renderSky(LevelRenderState levelRenderState, SkyRenderState skyRenderState, Matrix4f modelViewMatrix, Runnable setupFog) {
+    public boolean renderSky(LevelRenderState levelRenderState, SkyRenderState skyRenderState, Matrix4fc modelViewMatrix, Runnable setupFog) {
         JDimensionSpecialEffects sky = new JDimensionSpecialEffects(Minecraft.getInstance().getTextureManager(), Minecraft.getInstance().getAtlasManager());
         setupFog.run();
             PoseStack poseStack = new PoseStack();

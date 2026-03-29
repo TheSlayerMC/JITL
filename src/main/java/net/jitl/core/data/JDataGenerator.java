@@ -1,6 +1,5 @@
 package net.jitl.core.data;
 
-import net.jitl.core.data.recipe.JRecipeRegistry;
 import net.jitl.core.init.JITL;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
@@ -20,11 +19,14 @@ public class JDataGenerator {
 
         //JDamageSources.register(event);
 
-        generator.addProvider(true, new JRecipeRegistry(generator.getPackOutput(), lookupProvider));
+       // generator.addProvider(true, new JRecipeRegistry(generator.getPackOutput(), lookupProvider));
+        //generator.addProvider(true, new JVillagerTradeGenerator(generator.getPackOutput(), lookupProvider));
+        //generator.addProvider(true, new JVillagerTradeTagsProvider(generator.getPackOutput(), lookupProvider));
+//        generator.addProvider(true, new JVillagerSetGenerator(generator.getPackOutput(), lookupProvider));
         //generator.addProvider(true, new JLootTableSubProvider(generator.getPackOutput(), lookupProvider));
         //generator.addProvider(event.includeServer(), new CarverGenerator(generator.getPackOutput(), lookupProvider));
-        //generator.addProvider(event.includeServer(), new ConfiguredFeaturesGenerator(generator.getPackOutput(), event.getLookupProvider()));
-        //generator.addProvider(event.includeServer(), new PlacedFeaturesGenerator(generator.getPackOutput(), event.getLookupProvider()));
+        //generator.addProvider(true, new ConfiguredFeaturesGenerator(generator.getPackOutput(), event.getLookupProvider()));
+        //generator.addProvider(true, new PlacedFeaturesGenerator(generator.getPackOutput(), event.getLookupProvider()));
         //generator.addProvider(event.includeServer(), new BiomeGenerator(generator.getPackOutput(), event.getLookupProvider()));
         //generator.addProvider(event.includeServer(), new PlacedBonmealFeaturesGenerator(generator.getPackOutput()));
         //generator.addProvider(event.includeServer(), new JEnchantmentGenerator(generator.getPackOutput(), lookupProvider));

@@ -34,7 +34,7 @@ public class LootItem extends JItem {
     @Override
     public @NotNull InteractionResult use(Level world, @NotNull Player player, InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
-        RandomSource rand = world.random;
+        RandomSource rand = world.getRandom();
         ResourceKey<LootTable> loot = JLootTables.LOOT_BASIC;
         switch(this.tier) {
             case GOLD -> loot = JLootTables.LOOT_GOLD;
