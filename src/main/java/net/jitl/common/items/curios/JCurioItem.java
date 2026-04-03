@@ -7,11 +7,13 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
+import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import java.util.Objects;
 import java.util.function.Consumer;
 
-public class JCurioItem extends JItem {//todo implements ICurioItem {
+public class JCurioItem extends JItem implements ICurioItem {
     private boolean hasOverview;
     private boolean hasAbility;
     private boolean hasNegativeEffects;
@@ -35,10 +37,10 @@ public class JCurioItem extends JItem {//todo implements ICurioItem {
         return this;
     }
 
-//    @Override
-//    public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
-//        return true;
-//    }
+    @Override
+    public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
+        return true;
+    }
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext pContext, TooltipDisplay display, Consumer<Component> tip, TooltipFlag pTooltipFlag) {

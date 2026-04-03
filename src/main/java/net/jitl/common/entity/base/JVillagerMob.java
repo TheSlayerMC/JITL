@@ -25,6 +25,7 @@ public abstract class JVillagerMob extends AbstractVillager implements GeoEntity
 
     protected JVillagerMob(EntityType<? extends AbstractVillager> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+
     }
 
     @Override

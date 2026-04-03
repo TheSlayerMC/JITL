@@ -5,7 +5,8 @@ import net.jitl.client.render.world.clouds.JCloudRenderer;
 import net.jitl.client.util.ClientGetter;
 import net.jitl.common.world.dimension.Dimensions;
 import net.jitl.core.init.JITL;
-import net.minecraft.resources.Identifier;
+import net.jitl.core.init.internal.JDataAttachments;
+import net.jitl.core.init.internal.JItems;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -14,6 +15,8 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.AddClientReloadListenersEvent;
 import net.neoforged.neoforge.client.event.RegisterCustomEnvironmentEffectRendererEvent;
 import net.neoforged.neoforge.client.event.ViewportEvent;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
 @EventBusSubscriber(modid = JITL.MOD_ID, value = Dist.CLIENT)
 public class ClientEventHandler {
@@ -30,17 +33,17 @@ public class ClientEventHandler {
     public static void onFogDensityEvent(ViewportEvent.RenderFog event) {
         float farPlaneDistance = event.getFarPlaneDistance();
         Player player = ClientGetter.player();
-//        if (ClientGetter.level().dimension() == Dimensions.FROZEN_LANDS) {
-//            float density;
-//            ICuriosItemHandler curios = CuriosApi.getCuriosInventory(player).get();
-//            if(player.getData(JDataAttachments.PLAYER_STATS).hasBlizzard() || curios.findFirstCurio(JItems.EYE_OF_THE_BLIZZARD.get()).isPresent()) {
-//                density = 0.55F;
-//            } else {
-//                density = 0.1F;
-//            }
-//            event.setNearPlaneDistance(density);
-//            event.setFarPlaneDistance(density * farPlaneDistance);
-//        }todo
+        if (ClientGetter.level().dimension() == Dimensions.FROZEN_LANDS) {
+            float density;
+            ICuriosItemHandler curios = CuriosApi.getCuriosInventory(player).get();
+            if(player.getData(JDataAttachments.PLAYER_STATS).hasBlizzard() || curios.findFirstCurio(JItems.EYE_OF_THE_BLIZZARD.get()).isPresent()) {
+                density = 0.55F;
+            } else {
+                density = 0.1F;
+            }
+            event.setNearPlaneDistance(density);
+            event.setFarPlaneDistance(density * farPlaneDistance);
+        }
 
         if(ClientGetter.level().dimension() == Dimensions.CLOUDIA) {
             float density = 0.35F;
@@ -63,10 +66,10 @@ public class ClientEventHandler {
 
     @SubscribeEvent
     public static void registerDimensionSpecialEffects(RegisterCustomEnvironmentEffectRendererEvent event) {
-        event.registerSkyboxRenderer(Identifier.parse("euca"), new EucaSkyRender());
+        event.registerSkyboxRenderer(Dimensions.EUCA_EFFECTS, new EucaSkyRender());
 
-        //event.registerSkyboxRenderer(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
-       // event.registerCloudRenderer(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
+//        event.registerSkyboxRenderer(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
+//        event.registerCloudRenderer(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
 
 //        event.registerSkyboxRenderer(Dimensions.DEPTHS_EFFECTS, new DepthsRenderInfo());
 

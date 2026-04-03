@@ -1,5 +1,12 @@
 package net.jitl.common.items.curios;
 
+import net.jitl.core.init.JITL;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.ItemStack;
+import top.theillusivec4.curios.api.CurioAttributeModifiers;
+
 public class HeartContainerItem extends JCurioItem {
     public int hearts;
 
@@ -12,10 +19,8 @@ public class HeartContainerItem extends JCurioItem {
         return this;
     }
 
-//    @Override
-//    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, Identifier uuid, ItemStack stack) {
-//        Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = LinkedHashMultimap.create();
-//        modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(Identifier.fromNamespaceAndPath(JITL.MOD_ID, "health_modifier"), hearts, AttributeModifier.Operation.ADD_VALUE));
-//        return modifierMultimap;
-//    }todo
+    @Override
+    public CurioAttributeModifiers getDefaultCurioAttributeModifiers(ItemStack stack) {
+        return CurioAttributeModifiers.builder().addModifier(Attributes.MAX_HEALTH, new AttributeModifier(Identifier.fromNamespaceAndPath(JITL.MOD_ID, "health_modifier"), hearts, AttributeModifier.Operation.ADD_VALUE)).build();
+    }
 }

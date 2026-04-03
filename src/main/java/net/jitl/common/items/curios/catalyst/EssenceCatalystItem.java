@@ -1,7 +1,13 @@
 package net.jitl.common.items.curios.catalyst;
 
 import net.jitl.common.items.curios.JCurioItem;
+import net.jitl.core.init.JITL;
+import net.jitl.core.init.internal.JAttributes;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import top.theillusivec4.curios.api.CurioAttributeModifiers;
 
 public class EssenceCatalystItem extends JCurioItem {
     public float maxEssence;
@@ -15,10 +21,8 @@ public class EssenceCatalystItem extends JCurioItem {
         return this;
     }
 
-//    @Override
-//    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, Identifier uuid, ItemStack stack) {
-//        Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = LinkedHashMultimap.create();
-//        modifierMultimap.put(JAttributes.MAX_ESSENCE, new AttributeModifier(Identifier.fromNamespaceAndPath( JITL.MOD_ID, "max_essence_modifier"), maxEssence, AttributeModifier.Operation.ADD_VALUE));
-//        return modifierMultimap;
-//    }todo
+    @Override
+    public CurioAttributeModifiers getDefaultCurioAttributeModifiers(ItemStack stack) {
+        return CurioAttributeModifiers.builder().addModifier(JAttributes.MAX_ESSENCE, new AttributeModifier(Identifier.fromNamespaceAndPath( JITL.MOD_ID, "max_essence_modifier"), maxEssence, AttributeModifier.Operation.ADD_VALUE)).build();
+    }
 }

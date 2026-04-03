@@ -1,5 +1,8 @@
 package net.jitl.core.data;
 
+import net.jitl.core.data.villager.JVillagerSetGenerator;
+import net.jitl.core.data.villager.JVillagerTradeGenerator;
+import net.jitl.core.data.villager.JVillagerTradeTagsProvider;
 import net.jitl.core.init.JITL;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
@@ -19,10 +22,10 @@ public class JDataGenerator {
 
         //JDamageSources.register(event);
 
-       // generator.addProvider(true, new JRecipeRegistry(generator.getPackOutput(), lookupProvider));
-        //generator.addProvider(true, new JVillagerTradeGenerator(generator.getPackOutput(), lookupProvider));
-        //generator.addProvider(true, new JVillagerTradeTagsProvider(generator.getPackOutput(), lookupProvider));
-//        generator.addProvider(true, new JVillagerSetGenerator(generator.getPackOutput(), lookupProvider));
+        //generator.addProvider(true, new JRecipeRegistry(generator.getPackOutput(), lookupProvider));
+        generator.addProvider(true, new JVillagerTradeGenerator(generator.getPackOutput(), lookupProvider));
+        generator.addProvider(true, new JVillagerTradeTagsProvider(generator.getPackOutput(), lookupProvider));
+        generator.addProvider(true, new JVillagerSetGenerator(generator.getPackOutput(), lookupProvider));
         //generator.addProvider(true, new JLootTableSubProvider(generator.getPackOutput(), lookupProvider));
         //generator.addProvider(event.includeServer(), new CarverGenerator(generator.getPackOutput(), lookupProvider));
         //generator.addProvider(true, new ConfiguredFeaturesGenerator(generator.getPackOutput(), event.getLookupProvider()));

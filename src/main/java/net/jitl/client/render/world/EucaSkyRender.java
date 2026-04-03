@@ -28,7 +28,7 @@ public class EucaSkyRender implements CustomSkyboxRenderer {
             sky.renderSun(1F, poseStack, sky.buildSunQuad(sky.celestialsAtlas, 40F, CORBA_MOON_LOCATION));
             poseStack.popPose();
 
-        return true;
+        return false;
     }
 
     /*
