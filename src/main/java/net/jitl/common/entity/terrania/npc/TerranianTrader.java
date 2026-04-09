@@ -5,6 +5,8 @@ import com.geckolib.animation.AnimationController;
 import com.geckolib.animation.RawAnimation;
 import net.jitl.common.entity.base.JVillagerEntity;
 import net.jitl.common.entity.base.MobStats;
+import net.jitl.core.data.villager.JVillagerProfession;
+import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
@@ -14,6 +16,7 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
@@ -23,6 +26,11 @@ public class TerranianTrader extends JVillagerEntity {
 
     public TerranianTrader(EntityType<? extends JVillagerEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+    }
+
+    @Override
+    public Holder<VillagerProfession> getVillagerProfession() {
+        return JVillagerProfession.TERRANIAN_TRADER;
     }
 
     @Override

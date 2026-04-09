@@ -12,6 +12,7 @@ import net.jitl.core.config.JClientConfig;
 import net.jitl.core.config.JCommonConfig;
 import net.jitl.core.data.*;
 import net.jitl.core.data.block_generation.*;
+import net.jitl.core.data.villager.JVillagerProfession;
 import net.jitl.core.init.compat.ModCompat;
 import net.jitl.core.init.internal.*;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -58,6 +59,7 @@ public class JITL {
         JDataAttachments.REGISTRY.register(modEventBus);
         JDataComponents.REGISTRY.register(modEventBus);
         JNetworkRegistry.init(modEventBus);
+        JVillagerProfession.register(modEventBus);
 
         if(DEV_MODE) {
             new BlockBreakingGenerator().generate();

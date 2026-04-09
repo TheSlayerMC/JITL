@@ -6,6 +6,8 @@ import com.geckolib.animation.RawAnimation;
 import net.jitl.client.util.ChatUtils;
 import net.jitl.common.entity.base.JVillagerEntity;
 import net.jitl.common.entity.base.MobStats;
+import net.jitl.core.data.villager.JVillagerProfession;
+import net.minecraft.core.Holder;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -20,6 +22,7 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
@@ -37,6 +40,7 @@ public class Crypian extends JVillagerEntity {
         super(type, worldIn);
     }
 
+
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
@@ -48,6 +52,11 @@ public class Crypian extends JVillagerEntity {
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
         return null;
+    }
+
+    @Override
+    public Holder<VillagerProfession> getVillagerProfession() {
+        return JVillagerProfession.CRYPIAN;
     }
 
     @Override
