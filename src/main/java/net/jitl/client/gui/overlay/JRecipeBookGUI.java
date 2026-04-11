@@ -33,6 +33,9 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
     }
 
     @Override
+    protected void extractLabels(GuiGraphicsExtractor graphics, int xm, int ym) { }
+
+    @Override
     protected void init() {
         super.init();
         int w1 = (this.width - this.imageWidth) / 2;
@@ -63,7 +66,7 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
         assert minecraft != null;
-        //RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.BACKGROUND).getTextureView());
+
         GuiHelper.drawTexture(poseStack, BACKGROUND, x, y, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
 
         switch(pageNumber) {
@@ -126,8 +129,7 @@ public class JRecipeBookGUI extends AbstractContainerScreen<EmptyContainer> {
 
         x = x + k + 10;
         y = y + l + 10;
-        assert minecraft != null;
-        //RenderSystem.setShaderTexture(0, minecraft.getTextureManager().getTexture(this.RECIPE).getTextureView());
+
         GuiHelper.drawTexture(matrixStack, RECIPE, x - 5, y - 5, 0, 0, 112, 62, 256, 256);
         matrixStack.pose().pushMatrix();
         renderItem(matrixStack, mouseX, mouseY, x, y, recipe, 0);

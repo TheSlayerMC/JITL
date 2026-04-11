@@ -35,7 +35,7 @@ public class JVillagerProfession {
     public static final Holder<VillagerProfession> ROCKITE_GOLEM = register("rockite", JTradeSets.ROCKITE_GOLEM);
     public static final Holder<VillagerProfession> ESKIMO = register("eskimo", JTradeSets.ESKIMO);
     public static final Holder<VillagerProfession> GUNSMITH = register("gunsmith", JTradeSets.GUNSMITH);
-    public static final Holder<VillagerProfession> BLACKSMITH = register("blacksmithr", JTradeSets.BLACKSMITH);
+    public static final Holder<VillagerProfession> BLACKSMITH = register("blacksmith", JTradeSets.BLACKSMITH);
     public static final Holder<VillagerProfession> MAGE = register("mage", JTradeSets.MAGE);
 
     public static void register(IEventBus bus) {

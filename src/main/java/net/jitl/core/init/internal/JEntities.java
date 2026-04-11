@@ -292,9 +292,9 @@ public class JEntities {
 
     @SubscribeEvent
     public static void registerAttributes(final EntityAttributeCreationEvent event) {
-        event.put(MAGE_TYPE.get(), Mage.createAttributes());
-        event.put(BLACKSMITH_TYPE.get(), Blacksmith.createAttributes());
-        event.put(GUNSMITH_TYPE.get(), Gunsmith.createAttributes());
+        event.put(MAGE_TYPE.get(), Mage.createAttributes().build());
+        event.put(BLACKSMITH_TYPE.get(), Blacksmith.createAttributes().build());
+        event.put(GUNSMITH_TYPE.get(), Gunsmith.createAttributes().build());
         event.put(FLORO_TYPE.get(), Floro.createAttributes());
         event.put(BOOM_TYPE.get(), BoomBoom.createAttributes());
         event.put(TOWER_GUARDIAN_TYPE.get(), TowerGuardian.createAttributes());
@@ -309,7 +309,7 @@ public class JEntities {
         event.put(JUNGLE_TURTLE_TYPE.get(), JungleTurtle.createAttributes());
         event.put(JUNGLE_GOLEM_TYPE.get(), JungleGolem.createAttributes());
         event.put(SAND_CRAWLER_TYPE.get(), SandCrawler.createAttributes());
-        event.put(ROCKITE_GOLEM_TYPE.get(), RockiteGolem.createAttributes());
+        event.put(ROCKITE_GOLEM_TYPE.get(), RockiteGolem.createAttributes().build());
         event.put(FROST_GOLEM_TYPE.get(), FrostGolem.createAttributes());
         event.put(CAVURN_TYPE.get(), Cavurn.createAttributes());
         event.put(CAVELING_TYPE.get(), Caveling.createAttributes());
@@ -348,8 +348,8 @@ public class JEntities {
         event.put(MAGMA_BLAZE_TYPE.get(), MagmaBlaze.createAttributes());
         event.put(OBSERVER_TYPE.get(), Observer.createAttributes());
         event.put(SCREAMER_TYPE.get(), Screamer.createAttributes());
-        event.put(BOIL_TRADER_TYPE.get(), BoilTrader.createAttributes());
-        event.put(ESCAPED_CONVICT_TYPE.get(), EscapedConvict.createAttributes());
+        event.put(BOIL_TRADER_TYPE.get(), BoilTrader.createAttributes().build());
+        event.put(ESCAPED_CONVICT_TYPE.get(), EscapedConvict.createAttributes().build());
 
         event.put(EUCA_CHARGER_TYPE.get(), EucaCharger.createAttributes());
         event.put(DYNASTER_TYPE.get(), Dynaster.createAttributes());
@@ -357,21 +357,21 @@ public class JEntities {
         event.put(SHIMMERER_TYPE.get(), Shimmerer.createAttributes());
         event.put(GOLDER_TYPE.get(), Golder.createAttributes());
         event.put(ROYAL_KING_TYPE.get(), RoyalKing.createAttributes());
-        event.put(CRYPIAN_TYPE.get(), Crypian.createAttributes());
-        event.put(ALLOY_MENDER_TYPE.get(), AlloyMender.createAttributes());
+        event.put(CRYPIAN_TYPE.get(), Crypian.createAttributes().build());
+        event.put(ALLOY_MENDER_TYPE.get(), AlloyMender.createAttributes().build());
         event.put(EUCA_HOPPER.get(), EucaHopper.createAttributes());
 
         event.put(DARKENER_TYPE.get(), Darkener.createAttributes());
         event.put(DARKNESS_CRAWLER_TYPE.get(), DarknessCrawler.createAttributes());
         event.put(DARK_SORCERER_TYPE.get(), DarknessCrawler.createAttributes());
         event.put(DEPTHS_BEAST_TYPE.get(), DepthsBeast.createAttributes());
-        event.put(STARING_GUARDIAN_TYPE.get(), StaringGuardian.createAttributes());
+        event.put(STARING_GUARDIAN_TYPE.get(), StaringGuardian.createAttributes().build());
         event.put(SPIKED_BEAST_TYPE.get(), SpikedBeast.createAttributes());
         event.put(ROC_TYPE.get(), Roc.createAttributes());
         event.put(DEPTHS_HUNTER_TYPE.get(), DepthsHunter.createAttributes());
-        event.put(AURON_TYPE.get(), Auron.createAttributes());
+        event.put(AURON_TYPE.get(), Auron.createAttributes().build());
 
-        event.put(ESKIMO_TYPE.get(), Eskimo.createAttributes());
+        event.put(ESKIMO_TYPE.get(), Eskimo.createAttributes().build());
         event.put(FROZEN_GUARDIAN_TYPE.get(), FrozenGuardian.createAttributes());
         event.put(CRYSTAL_CLUSTER_TYPE.get(), CrystalCluster.createAttributes());
         event.put(FROZEN_FROSTBITER_TYPE.get(), FrozenFrostbiter.createAttributes());
@@ -388,22 +388,22 @@ public class JEntities {
         event.put(CORBANIAN_MOLLUSK_TYPE.get(), CorbanianMollusk.createAttributes());
         event.put(SMELLY_TYPE.get(), Smelly.createAttributes());
         event.put(STINKY_TYPE.get(), Stinky.createAttributes());
-        event.put(RED_TORDO_TYPE.get(), RedTordo.createAttributes());
-        event.put(GREEN_TORDO_TYPE.get(), GreenTordo.createAttributes());
+        event.put(RED_TORDO_TYPE.get(), RedTordo.createAttributes().build());
+        event.put(GREEN_TORDO_TYPE.get(), GreenTordo.createAttributes().build());
         event.put(WOOD_CREATURE_TYPE.get(), WoodCreature.createAttributes());
         event.put(TREE_GOLEM_TYPE.get(), TreeGolem.createAttributes());
         event.put(OVERSEER_TYPE.get(), Overseer.createAttributes());
         event.put(OVERSEER_ELDER_TYPE.get(), OverseerElder.createAttributes());
         event.put(SURFACE_SEER_TYPE.get(), SurfaceSeer.createAttributes());
-        event.put(HOODED_TYPE.get(), Hooded.createAttributes());
-        event.put(OVERGROWN_MERCHANT_TYPE.get(), OvergrownMerchant.createAttributes());
+        event.put(HOODED_TYPE.get(), Hooded.createAttributes().build());
+        event.put(OVERGROWN_MERCHANT_TYPE.get(), OvergrownMerchant.createAttributes().build());
         event.put(LEAF_BLOWER_TYPE.get(), LeafBlower.createAttributes());
         event.put(NATURE_MAGE_TYPE.get(), NatureMage.createAttributes());
 
         event.put(CLOUD_GHOST_TYPE.get(), CloudGhost.createAttributes());
         event.put(SKY_EEL_TYPE.get(), SkyEel.createAttributes());
-        event.put(STARLIGHT_BLACKSMITH_TYPE.get(), StarlightBlacksmith.createAttributes());
-        event.put(STARLIGHT_VILLAGER_TYPE.get(), StarlightVillager.createAttributes());
+        event.put(STARLIGHT_BLACKSMITH_TYPE.get(), StarlightBlacksmith.createAttributes().build());
+        event.put(STARLIGHT_VILLAGER_TYPE.get(), StarlightVillager.createAttributes().build());
         event.put(STARLIGHT_GOLEM_TYPE.get(), StarlightGolem.createAttributes());
         event.put(STARLIGHT_TRANSPORTER_TYPE.get(), StarlightTransporter.createAttributes());
         event.put(STARLIGHT_WALKER_TYPE.get(), StarlightWalker.createAttributes());
@@ -416,8 +416,8 @@ public class JEntities {
         event.put(TERRASHROOM_TYPE.get(), Terrashroom.createAttributes());
         event.put(TERRASLUG_TYPE.get(), Terraslug.createAttributes());
         event.put(FLUNGAS_TYPE.get(), Flungas.createAttributes());
-        event.put(TERRANIAN_ENCHANTER_TYPE.get(), TerranianEnchanter.createAttributes());
-        event.put(TERRANIAN_TRADER_TYPE.get(), TerranianTrader.createAttributes());
+        event.put(TERRANIAN_ENCHANTER_TYPE.get(), TerranianEnchanter.createAttributes().build());
+        event.put(TERRANIAN_TRADER_TYPE.get(), TerranianTrader.createAttributes().build());
 
         event.put(SENTRY_STALKER_TYPE.get(), SentryStalker.createAttributes());
         event.put(SENTRY_LORD_TYPE.get(), SentryLord.createAttributes());

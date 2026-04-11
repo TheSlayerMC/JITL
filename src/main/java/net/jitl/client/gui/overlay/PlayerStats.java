@@ -41,6 +41,9 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
     }
 
     @Override
+    protected void extractLabels(GuiGraphicsExtractor graphics, int xm, int ym) { }
+
+    @Override
     protected void init() {
         super.init();
         int w = (this.width - this.imageWidth) / 2;
@@ -182,9 +185,4 @@ public class PlayerStats extends AbstractContainerScreen<EmptyContainer> {
         this.nextButton.active = pageNumber < 1;
         this.previousButton.active = pageNumber > 0;
     }
-
-//    @Override
-//    protected void renderLabels(@NotNull GuiGraphicsExtractor matrixStack, int x, int y) {
-//
-//    }
 }

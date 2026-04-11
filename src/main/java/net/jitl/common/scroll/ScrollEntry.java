@@ -1,14 +1,13 @@
 package net.jitl.common.scroll;
 
-import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ScrollEntry {
 
-    private final ItemStack displayedItem;
     private final String id;
     private final String titleKey;
 
@@ -19,8 +18,7 @@ public class ScrollEntry {
     private final int x;
     private final int y;
 
-    public ScrollEntry(String id, String titleKey, @Nullable String commentKey, ItemStack displayedItem, List<IDescComponent> desc, int x, int y) {
-        this.displayedItem = displayedItem;
+    public ScrollEntry(String id, String titleKey, @Nullable String commentKey, List<IDescComponent> desc, int x, int y) {
         this.x = x;
         this.y = y;
         this.titleKey = titleKey;
@@ -29,15 +27,7 @@ public class ScrollEntry {
         this.desc.add(new UnderHeaderDescComponent());
         this.desc.addAll(desc);
 
-        if (id == null) {
-            this.id = this.titleKey.toLowerCase().replace(' ', '_');
-        } else {
-            this.id = id;
-        }
-    }
-
-    public ItemStack getDisplayedItem() {
-        return displayedItem;
+        this.id = Objects.requireNonNullElseGet(id, () -> this.titleKey.toLowerCase().replace(' ', '_'));
     }
 
     public String getId() {

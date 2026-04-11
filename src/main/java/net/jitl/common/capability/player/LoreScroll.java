@@ -37,11 +37,11 @@ public record LoreScroll(String entry, String knowledge, int level, boolean open
         if(obj == this) {
             return true;
         } else {
-            return obj instanceof LoreScroll s &&
-                    this.entry == s.entry &&
-                    this.knowledge == s.knowledge &&
-                    this.level == s.level &&
-                    this.openedBefore == s.openedBefore;
+            return obj instanceof LoreScroll(String entry1, String knowledge1, int level1, boolean before) &&
+                    Objects.equals(this.entry, entry1) &&
+                    Objects.equals(this.knowledge, knowledge1) &&
+                    this.level == level1 &&
+                    this.openedBefore == before;
         }
     }
 }

@@ -1,7 +1,5 @@
 package net.jitl.common.scroll;
 
-import net.minecraft.world.item.ItemStack;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,16 +7,16 @@ public class ScrollEntryBuilder {
     private final String id;
     private final String titleKey;
     private final String commentKey;
-    private final ItemStack displayedItem;
+    //private final ItemStack displayedItem;
     private final List<IDescComponent> pageContent = new ArrayList<>();
     private final int x;
     private final int y;
 
-    public ScrollEntryBuilder(String id, String titleKey, String commentKey, ItemStack displayedItem, int x, int y) {
+    public ScrollEntryBuilder(String id, String titleKey, String commentKey, int x, int y) {
         this.id = id;
         this.titleKey = titleKey;
         this.commentKey = commentKey;
-        this.displayedItem = displayedItem;
+        //this.displayedItem = displayedItem;
         this.x = x;
         this.y = y;
     }
@@ -34,6 +32,6 @@ public class ScrollEntryBuilder {
     }
 
     public ScrollEntry build() {
-        return new ScrollEntry(id, titleKey, commentKey, displayedItem, pageContent, x, y);
+        return new ScrollEntry(id, titleKey, commentKey, pageContent, x, y);
     }
 }

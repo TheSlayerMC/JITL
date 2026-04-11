@@ -7,20 +7,17 @@ import net.jitl.common.entity.base.JVillagerEntity;
 import net.jitl.common.entity.base.MobStats;
 import net.jitl.core.data.villager.JVillagerProfession;
 import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 public class TerranianTrader extends JVillagerEntity {
 
@@ -40,12 +37,12 @@ public class TerranianTrader extends JVillagerEntity {
         this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
     }
 
-    public static AttributeSupplier createAttributes() {
-        return Monster.createMonsterAttributes()
+    public static AttributeSupplier.Builder createAttributes() {
+        return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, MobStats.NPC_HEALTH)
                 .add(Attributes.KNOCKBACK_RESISTANCE, MobStats.STANDARD_KNOCKBACK_RESISTANCE)
                 .add(Attributes.FOLLOW_RANGE, MobStats.STANDARD_FOLLOW_RANGE)
-                .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED).build();
+                .add(Attributes.MOVEMENT_SPEED, MobStats.STANDARD_MOVEMENT_SPEED);
     }
 
     private final RawAnimation MOVING = RawAnimation.begin().thenLoop("animation.terranian_trader.walk");
@@ -65,11 +62,5 @@ public class TerranianTrader extends JVillagerEntity {
     @Override
     protected void rewardTradeXp(MerchantOffer merchantOffer) {
 
-    }
-
-    @Nullable
-    @Override
-    public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        return null;
     }
 }

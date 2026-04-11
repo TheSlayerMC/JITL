@@ -34,7 +34,7 @@ public class JTradeSets {
     public static final ResourceKey<TradeSet> ROCKITE_GOLEM = resourceKey("overworld/rockite");
     public static final ResourceKey<TradeSet> ESKIMO = resourceKey("frozen/eskimo");
     public static final ResourceKey<TradeSet> GUNSMITH = resourceKey("overworld/gunsmith");
-    public static final ResourceKey<TradeSet> BLACKSMITH = resourceKey("overworld/blacksmithr");
+    public static final ResourceKey<TradeSet> BLACKSMITH = resourceKey("overworld/blacksmith");
     public static final ResourceKey<TradeSet> MAGE = resourceKey("overworld/mage");
     
     public static Holder<TradeSet> bootstrap(BootstrapContext<TradeSet> context) {

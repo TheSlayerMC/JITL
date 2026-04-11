@@ -31,7 +31,7 @@ public class JVillagerTradeTagsProvider extends VillagerTradesTagsProvider {
     public static final TagKey<VillagerTrade> ROCKITE_GOLEM = create("overworld/rockite");
     public static final TagKey<VillagerTrade> ESKIMO = create("frozen/eskimo");
     public static final TagKey<VillagerTrade> GUNSMITH = create("overworld/gunsmith");
-    public static final TagKey<VillagerTrade> BLACKSMITH = create("overworld/blacksmithr");
+    public static final TagKey<VillagerTrade> BLACKSMITH = create("overworld/blacksmith");
     public static final TagKey<VillagerTrade> MAGE = create("overworld/mage");
 
     public JVillagerTradeTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
