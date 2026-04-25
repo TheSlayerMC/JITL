@@ -21,7 +21,7 @@ import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import java.util.ArrayList;
@@ -103,7 +103,7 @@ public class GearAbilityHandler {
     }
 
     @SubscribeEvent
-    public static void breakBlock(BlockEvent.BreakEvent event) {
+    public static void breakBlock(BreakBlockEvent event) {
         if(event.getPlayer().getMainHandItem().getItem() instanceof JGear item) {
             item.getAbility().breakBlock(event.getPlayer().getMainHandItem(), event.getPlayer().level(), event.getState(), event.getPos(), event.getPlayer());
         }

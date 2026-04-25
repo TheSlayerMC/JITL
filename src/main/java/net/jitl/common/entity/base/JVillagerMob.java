@@ -64,6 +64,7 @@ public abstract class JVillagerMob extends AbstractVillager implements GeoEntity
         VillagerProfession profession = data.profession().value();
         ResourceKey<TradeSet> trades = profession.getTrades(data.level());
         this.addOffersFromTradeSet(level.getLevel(), this.getOffers(), trades);
+        
 
         return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
     }
@@ -108,6 +109,11 @@ public abstract class JVillagerMob extends AbstractVillager implements GeoEntity
 
     public void startTrading(Player player) {
         this.setTradingPlayer(player);
+        VillagerData data = this.getVillagerData();
+        VillagerProfession profession = data.profession().value();
+        ResourceKey<TradeSet> trades = profession.getTrades(data.level());
+        if(level() instanceof ServerLevel sLevel)
+            this.addOffersFromTradeSet(sLevel, this.getOffers(), trades);
         this.openTradingScreen(player, this.getDisplayName(), 1);
     }
 
