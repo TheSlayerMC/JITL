@@ -164,7 +164,7 @@ public class JRecipeProvider extends RecipeProvider {
 
         addShapedRecipe(recipeConsumer, RecipeCategory.COMBAT, "  e", " s ", "s  ", 's', JItems.STONE_STICK.get(), 'e', Items.ENDER_PEARL, JItems.STAFF_BASE.get(), 1);
         addShapedRecipe(recipeConsumer, RecipeCategory.COMBAT, "s", "s", 's', Blocks.STONE, JItems.STONE_STICK.get(), 2);
-        addShapedRecipe(recipeConsumer, RecipeCategory.COMBAT, " ii", "igi", "ib ", 'i', Items.IRON_INGOT, 'g', Items.GUNPOWDER, 'b', ItemTags.BUTTONS, JItems.GUN_BASE.get(), 1);
+        addShapedRecipe(recipeConsumer, RecipeCategory.COMBAT, " ii", "igi", "ib ", 'i', Items.IRON_INGOT, 'g', Items.GUNPOWDER, 'b', ItemTags.WOODEN_BUTTONS, JItems.GUN_BASE.get(), 1);
     }
 
     public void buildWoodTypes(RecipeOutput consumer) {

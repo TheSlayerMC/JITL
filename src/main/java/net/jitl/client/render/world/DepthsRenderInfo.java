@@ -5,7 +5,7 @@ import net.minecraft.client.Minecraft;
 public class DepthsRenderInfo extends JDimensionSpecialEffects {
 
     public DepthsRenderInfo() {
-        super(Minecraft.getInstance().getTextureManager(), Minecraft.getInstance().getAtlasManager());
+        super(Minecraft.getInstance().getTextureManager(), Minecraft.getInstance().getAtlasManager(), Minecraft.getInstance().gameRenderer.mainRenderTarget());
     }
 
 //    @Override

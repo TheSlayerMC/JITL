@@ -61,7 +61,7 @@ public class Shiverwolf extends JTamableEntity {
     private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(Shiverwolf.class, EntityDataSerializers.INT);
     public static final TargetingConditions.Selector PREY_SELECTOR = (p_375833_, p_375834_) -> {
         EntityType<?> entitytype = p_375833_.getType();
-        return entitytype == EntityType.SHEEP || entitytype == EntityType.RABBIT || entitytype == EntityType.FOX;
+        return entitytype == EntityTypes.SHEEP || entitytype == EntityTypes.RABBIT || entitytype == EntityTypes.FOX;
     };
     private float interestedAngle;
     private float interestedAngleO;
@@ -356,7 +356,7 @@ public class Shiverwolf extends JTamableEntity {
                 }
 
                 if (this.isEquippableInSlot(itemstack, EquipmentSlot.BODY) && !this.isWearingBodyArmor() && this.isOwnedBy(player) && !this.isBaby()) {
-                    this.setBodyArmorItem(itemstack.copyWithCount(1));
+                    this.setItemSlotAndDropWhenKilled(EquipmentSlot.BODY, itemstack.copyWithCount(1));
                     itemstack.consume(1, player);
                     return InteractionResult.SUCCESS;
                 } else if (itemstack.canPerformAction(net.neoforged.neoforge.common.ItemAbilities.SHEARS_REMOVE_ARMOR)
@@ -366,7 +366,7 @@ public class Shiverwolf extends JTamableEntity {
                     itemstack.shrink(1);
                     this.playSound(SoundEvents.ARMOR_UNEQUIP_WOLF);
                     ItemStack itemstack1 = this.getBodyArmorItem();
-                    this.setBodyArmorItem(ItemStack.EMPTY);
+                    this.setItemSlotAndDropWhenKilled(EquipmentSlot.BODY, ItemStack.EMPTY);
                     if (this.level() instanceof ServerLevel serverlevel) {
                         this.spawnAtLocation(serverlevel, itemstack1);
                     }

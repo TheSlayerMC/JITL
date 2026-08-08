@@ -25,7 +25,7 @@ public class CorbaRenderInfo extends JDimensionSpecialEffects implements CustomS
     private final GpuBuffer sunBuffer;
 
     public CorbaRenderInfo() {
-        super(Minecraft.getInstance().getTextureManager(), Minecraft.getInstance().getAtlasManager());
+        super(Minecraft.getInstance().getTextureManager(), Minecraft.getInstance().getAtlasManager(), Minecraft.getInstance().gameRenderer.mainRenderTarget());
         this.boilMoonBuffer = buildSunQuad(this.celestialsAtlas, 15F, BOIL_MOON_LOCATION);
         this.sunBuffer = buildSunQuad(this.celestialsAtlas, 50F, EUCA_MOON_LOCATION);
     }

@@ -71,7 +71,7 @@ public class EssenceBar implements GuiLayer {
             int yPos = config.getEssenceYPos();
             int xPos = config.getEssenceXPos();
 
-            if (!minecraft.options.hideGui && transparency > 0 && !player.isSpectator()) {
+            if (!minecraft.gameRenderer.gameRenderState().guiRenderState.isHudHidden && transparency > 0 && !player.isSpectator()) {
                 boolean belowCrosshair = essencePosition == EssencePosition.BELOW_CROSSHAIR;
 
                 int screenHeight = gui.guiHeight();

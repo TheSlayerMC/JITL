@@ -162,9 +162,9 @@ public class Floro extends JMonsterEntity implements RangedAttackMob {
     }
 
     @Override
-    public void knockback(double strength, double ratioX, double ratioZ) {
+    public void knockback(double power, double xd, double zd, DamageSource source, float damage) {
         if (canMove()) {
-            super.knockback(strength, ratioX, ratioZ);
+            super.knockback(power, xd, zd, source, damage);
         }
     }
 

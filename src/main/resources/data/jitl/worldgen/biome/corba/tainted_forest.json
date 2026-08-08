@@ -1,54 +1,38 @@
 {
+  "attributes": {
+    "minecraft:audio/background_music": {
+      "default": {
+        "max_delay": 24000,
+        "min_delay": 12000,
+        "sound": "jitl:music.dim.corba"
+      }
+    },
+    "minecraft:visual/fog_color": "#174200",
+    "minecraft:visual/sky_color": "#1d6818",
+    "minecraft:visual/water_fog_color": "#355c0e"
+  },
   "carvers": [],
   "downfall": 0.4,
   "effects": {
-    "fog_color": 1524224,
-    "foliage_color": 800769,
-    "grass_color": 800769,
-    "music": [
-      {
-        "weight": 1,
-        "data": {
-          "sound": "jitl:music.dim.corba",
-          "min_delay": 12000,
-          "max_delay": 24000,
-          "replace_current_music": false
-        }
-      }
-    ],
-    "sky_color": 7907327,
-    "water_color": 3496974,
-    "water_fog_color": 3496974
+    "foliage_color": "#0c3801",
+    "grass_color": "#0c3801",
+    "water_color": "#355c0e"
   },
   "features": [
-    [
-      "minecraft:seagrass_normal"
-    ],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [
+      "minecraft:seagrass_normal",
       "jitl:orbadite_ore",
       "jitl:gorbite_ore",
-      "jitl:glowshrooms"
-    ],
-    [],
-    [],
-    [
+      "jitl:glowshrooms",
       "jitl:corba_tall_grass",
       "jitl:corba_tree_small",
       "jitl:corba_tree_medium",
       "jitl:corba_tree_large"
-    ]
+
   ],
   "has_precipitation": false,
   "spawn_costs": {},
   "spawners": {
-    "ambient": [
-
-    ],
+    "ambient": [],
     "axolotls": [],
     "creature": [
       {
@@ -60,12 +44,6 @@
     ],
     "misc": [],
     "monster": [
-      {
-        "type": "minecraft:drowned",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 2
-      },
       {
         "type": "jitl:tree_golem",
         "maxCount": 1,
@@ -95,6 +73,12 @@
         "maxCount": 1,
         "minCount": 1,
         "weight": 2
+      },
+      {
+        "type": "minecraft:drowned",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 2
       }
     ],
     "underground_water_creature": [],
@@ -110,16 +94,15 @@
         "maxCount": 5,
         "minCount": 1,
         "weight": 5
-      }
-    ],
-    "water_creature": [
+      },
       {
         "type": "minecraft:squid",
         "maxCount": 4,
         "minCount": 1,
         "weight": 1
       }
-    ]
+    ],
+    "water_creature": []
   },
   "temperature": 0.8
 }

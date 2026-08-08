@@ -1,9 +1,11 @@
 package net.jitl.core.data.world_gen.biome;
 
 import net.jitl.core.data.world_gen.placed_features.DepthsPlacedFeatures;
+import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.sounds.Musics;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.MobSpawnSettings;
@@ -36,14 +38,63 @@ public class DepthsBiomes extends Biomes {
         biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DepthsPlacedFeatures.CRYSTAL_DRIPSTONE);
         biomeSetting.addFeature(GenerationStep.Decoration.LAKES, DepthsPlacedFeatures.DEPTHS_WATER);
 
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.DARKENER_TYPE.get(), 5, 1, 2));
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.DEPTHS_HUNTER_TYPE.get(), 2, 1, 1));
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SPIKED_BEAST_TYPE.get(), 5, 1, 1));
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.DEPTHS_BEAST_TYPE.get(), 5, 1, 1));
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.ROC_TYPE.get(), 5, 1, 2));
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.DARKNESS_CRAWLER_TYPE.get(), 5, 1, 2));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.DARKENER_TYPE.get(), 1, 2));
+        mobSettings.addSpawn(MobCategory.MONSTER, 2, new MobSpawnSettings.SpawnerData(JEntities.DEPTHS_HUNTER_TYPE.get(), 1, 1));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.SPIKED_BEAST_TYPE.get(), 1, 1));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.DEPTHS_BEAST_TYPE.get(), 1, 1));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.ROC_TYPE.get(), 1, 2));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.DARKNESS_CRAWLER_TYPE.get(), 1, 2));
 
-        return biome(false, 1F, 0, SKY_COLOUR, FOG_COLOUR, WATER_COLOUR, WATER_FOG_COLOUR, GRASS_COLOUR, FOLIAGE_COLOUR,
-                mobSettings, biomeSetting, Musics.createGameMusic(JSounds.DEPTHS_MUSIC));
+        return biome(false, 1F, 0, SKY_COLOUR, FOG_COLOUR, WATER_COLOUR, WATER_FOG_COLOUR, GRASS_COLOUR, FOLIAGE_COLOUR, mobSettings, biomeSetting, Musics.createGameMusic(JSounds.DEPTHS_MUSIC));
+    }
+
+
+    public static Biome darkLands(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
+        BiomeGenerationSettings.Builder biomeSetting = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
+        MobSpawnSettings.Builder mobSettings = new MobSpawnSettings.Builder();
+
+        biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, DepthsPlacedFeatures.FLAIRIUM_ORE);
+        biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, DepthsPlacedFeatures.DES_ORE);
+        biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, DepthsPlacedFeatures.DEPTHS_LAMP_FLOOR);
+        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DepthsPlacedFeatures.DEPTHS_CRYSTAL);
+        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DepthsPlacedFeatures.FLOOR_DEPTHS_CRYSTAL);
+        biomeSetting.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DepthsPlacedFeatures.DEPTHS_SPIKE);
+        biomeSetting.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DepthsPlacedFeatures.DEPTHS_PILLAR);
+        biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DepthsPlacedFeatures.DEPTHS_DRIPSTONE);
+        biomeSetting.addFeature(GenerationStep.Decoration.LAKES, DepthsPlacedFeatures.DEPTHS_WATER);
+
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.DARKENER_TYPE.get(), 1, 2));
+        mobSettings.addSpawn(MobCategory.MONSTER, 2, new MobSpawnSettings.SpawnerData(JEntities.DEPTHS_HUNTER_TYPE.get(), 1, 1));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.SPIKED_BEAST_TYPE.get(), 1, 1));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.DEPTHS_BEAST_TYPE.get(), 1, 1));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.ROC_TYPE.get(), 1, 2));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.DARKNESS_CRAWLER_TYPE.get(), 1, 2));
+
+        return biome(false, 1F, 0, SKY_COLOUR, FOG_COLOUR, WATER_COLOUR, WATER_FOG_COLOUR, GRASS_COLOUR, FOLIAGE_COLOUR, mobSettings, biomeSetting, Musics.createGameMusic(JSounds.DEPTHS_MUSIC));
+    }
+
+    public static Biome shroomland(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
+        BiomeGenerationSettings.Builder biomeSetting = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
+        MobSpawnSettings.Builder mobSettings = new MobSpawnSettings.Builder();
+
+        biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, DepthsPlacedFeatures.FLAIRIUM_ORE);
+        biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, DepthsPlacedFeatures.DES_ORE);
+        biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, DepthsPlacedFeatures.DEPTHS_LAMP_FLOOR);
+        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DepthsPlacedFeatures.DEPTHS_CRYSTAL);
+        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DepthsPlacedFeatures.FLOOR_DEPTHS_CRYSTAL);
+        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DepthsPlacedFeatures.LIGSHROOM);
+        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DepthsPlacedFeatures.RED_CRYSTAL_SHROOM);
+        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DepthsPlacedFeatures.GREEN_CRYSTAL_SHROOM);
+        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DepthsPlacedFeatures.BLUE_CRYSTAL_SHROOM);
+        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DepthsPlacedFeatures.PURPLE_CRYSTAL_SHROOM);
+
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.DARKENER_TYPE.get(), 1, 2));
+        mobSettings.addSpawn(MobCategory.MONSTER, 2, new MobSpawnSettings.SpawnerData(JEntities.DEPTHS_HUNTER_TYPE.get(), 1, 1));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.SPIKED_BEAST_TYPE.get(), 1, 1));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.DEPTHS_BEAST_TYPE.get(), 1, 1));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.ROC_TYPE.get(), 1, 2));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.DARKNESS_CRAWLER_TYPE.get(), 1, 2));
+
+        return biome(false, 1F, 0, SKY_COLOUR, FOG_COLOUR, WATER_COLOUR, WATER_FOG_COLOUR, GRASS_COLOUR, FOLIAGE_COLOUR, mobSettings, biomeSetting, Musics.createGameMusic(JSounds.DEPTHS_MUSIC));
     }
 }

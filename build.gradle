@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.141'
+    id 'net.neoforged.moddev' version '2.0.143'
     id 'idea'
 }
 
@@ -102,7 +102,7 @@ dependencies {
     implementation "mezz.jei:jei-" + minecraft_version + "-neoforge:" + jei_version
     //implementation "maven.modrinth:just-enough-resources-jer:" + jer_version
 
-   // implementation("curse.maven:just-enough-resources-jer-240630:" + jer_version)
+    //implementation("curse.maven:just-enough-resources-jer-240630:" + jer_version)
 
     implementation "top.theillusivec4.curios:curios-neoforge:" + curios_version
 
@@ -172,8 +172,14 @@ repositories {
         url = "https://maven.octo-studios.com/releases"
     }
 
-    maven {
-        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'GeckoLib'
+                url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+            }
+        }
+        filter { includeGroupAndSubgroups('com.geckolib') }
     }
 
     maven {

@@ -22,6 +22,7 @@ public class CorbaPlacedFeatures extends JPlacedFeature {
             CORBA_RUINS = registerKey("corba_ruins"),
             CORBA_LILY_PAD = registerKey("corba_lily_pad"),
             BOGSHROOMS = registerKey("bogshrooms"),
+            GLOWSHROOMS = registerKey("glowshrooms"),
             CORBA_TREE_SMALL = registerKey("corba_tree_small"),
             CORBA_TREE_MEDIUM = registerKey("corba_tree_medium"),
             CORBA_TREE_LARGE = registerKey("corba_tree_large"),
@@ -91,6 +92,13 @@ public class CorbaPlacedFeatures extends JPlacedFeature {
                 BOGSHROOMS,
                 holdergetter.getOrThrow(JConfiguredFeatures.BOGSHROOMS),
                 patch(5, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
+        );
+
+        PlacementUtils.register(
+                context,
+                GLOWSHROOMS,
+                holdergetter.getOrThrow(JConfiguredFeatures.GLOWSHROOMS),
+                patch(1, PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
         );
 
         PlacementUtils.register(

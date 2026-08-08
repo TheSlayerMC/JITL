@@ -161,7 +161,7 @@ public class AranaKing extends JMonsterEntity {
         pSpawnGroupData = super.finalizeSpawn(pLevel, pDifficulty, pSpawnType, pSpawnGroupData);
         RandomSource randomsource = pLevel.getRandom();
         if (randomsource.nextInt(100) == 0) {
-            Skeleton skeleton = EntityType.SKELETON.create(this.level(), pSpawnType);
+            Skeleton skeleton = EntityTypes.SKELETON.create(this.level(), pSpawnType);
             if (skeleton != null) {
                 skeleton.teleportTo(this.getX(), this.getY(), this.getZ());
                 skeleton.finalizeSpawn(pLevel, pDifficulty, pSpawnType, null);

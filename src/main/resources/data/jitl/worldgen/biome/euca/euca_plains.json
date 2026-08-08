@@ -1,69 +1,31 @@
 {
-  "temperature": 0.8,
-  "downfall": 0,
-  "has_precipitation": false,
-  "effects": {
-    "sky_color": 7907327,
-    "fog_color": 15597506,
-    "water_color": 14995007,
-    "water_fog_color": 3355141,
-    "grass_color": 13159169,
-    "foliage_color": 5660928,
-    "music": [
+  "attributes": {
+    "minecraft:audio/background_music": {
+      "default": {
+        "max_delay": 24000,
+        "min_delay": 12000,
+        "sound": "jitl:music.dim.euca"
+      }
+    },
+    "minecraft:visual/ambient_particles": [
       {
-        "weight": 1,
-        "data": {
-          "sound": "jitl:music.dim.euca",
-          "min_delay": 12000,
-          "max_delay": 24000,
-          "replace_current_music": false
-        }
+        "particle": {
+          "type": "jitl:goldite_flower"
+        },
+        "probability": 0.001428
       }
     ],
-    "particle": {
-      "options": {
-        "type": "jitl:goldite_flower"
-      },
-      "probability": 0.001428
-    }
+    "minecraft:visual/fog_color": "#edffc2",
+    "minecraft:visual/sky_color": "#e2ff7a",
+    "minecraft:visual/water_fog_color": "#333205"
   },
-  "spawners": {
-    "ambient": [],
-    "axolotls": [],
-    "creature": [],
-    "misc": [],
-    "monster": [
-      {
-        "type": "jitl:euca_charger",
-        "weight": 15,
-        "minCount": 1,
-        "maxCount": 2
-      },
-      {
-        "type": "jitl:dynaster",
-        "weight": 15,
-        "minCount": 1,
-        "maxCount": 1
-      },
-      {
-        "type": "jitl:golder",
-        "weight": 15,
-        "minCount": 1,
-        "maxCount": 2
-      },
-      {
-        "type": "jitl:shimmerer",
-        "weight": 5,
-        "minCount": 1,
-        "maxCount": 1
-      }
-    ],
-    "underground_water_creature": [],
-    "water_ambient": [],
-    "water_creature": []
-  },
-  "spawn_costs": {},
   "carvers": [],
+  "downfall": 0.0,
+  "effects": {
+    "foliage_color": "#566100",
+    "grass_color": "#c8cb01",
+    "water_color": "#e4ce3f"
+  },
   "features": [
     [],
     [
@@ -89,5 +51,43 @@
       "jitl:goldite_veg",
       "jitl:euca_pumpkin"
     ]
-  ]
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "jitl:euca_charger",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 15
+      },
+      {
+        "type": "jitl:dynaster",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 15
+      },
+      {
+        "type": "jitl:golder",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 15
+      },
+      {
+        "type": "jitl:shimmerer",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 5
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.8
 }

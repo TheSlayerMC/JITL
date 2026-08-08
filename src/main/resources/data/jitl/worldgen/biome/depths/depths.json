@@ -1,34 +1,45 @@
 {
-  "carvers": [],
-  "downfall": 0,
-  "effects": {
-    "fog_color": 12638463,
-    "foliage_color": 4159204,
-    "grass_color": 4159204,
-    "music": [
-      {
-        "weight": 1,
-        "data": {
-          "sound": "jitl:music.dim.depths",
-          "min_delay": 12000,
-          "max_delay": 24000,
-          "replace_current_music": false
-        }
+  "attributes": {
+    "minecraft:audio/background_music": {
+      "default": {
+        "max_delay": 24000,
+        "min_delay": 12000,
+        "sound": "jitl:music.dim.depths"
       }
-    ],
-    "sky_color": 7776511,
-    "water_color": 4159204,
-    "water_fog_color": 329011
+    },
+    "minecraft:visual/fog_color": "#c0d8ff",
+    "minecraft:visual/sky_color": "#78a7ff",
+    "minecraft:visual/water_fog_color": "#050533"
+  },
+  "carvers": [],
+  "downfall": 0.0,
+  "effects": {
+    "foliage_color": "#3f76e4",
+    "grass_color": "#3f76e4",
+    "water_color": "#3f76e4"
   },
   "features": [
+    [],
     [
-      "jitl:depths_water",
+      "jitl:depths_water"
+    ],
+    [
       "jitl:depths_geode",
-      "jitl:depths_lamp_roof",
+      "jitl:depths_lamp_roof"
+    ],
+    [],
+    [],
+    [],
+    [
       "jitl:flairium_ore",
       "jitl:des_ore",
-      "jitl:depths_lamp_floor",
-      "jitl:crystal_dripstone",
+      "jitl:depths_lamp_floor"
+    ],
+    [
+      "jitl:crystal_dripstone"
+    ],
+    [],
+    [
       "jitl:depths_tree",
       "jitl:depths_veg",
       "jitl:depths_crystal",
@@ -84,5 +95,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 1
+  "temperature": 1.0
 }

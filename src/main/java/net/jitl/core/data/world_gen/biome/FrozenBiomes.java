@@ -1,10 +1,12 @@
 package net.jitl.core.data.world_gen.biome;
 
 import net.jitl.core.data.world_gen.placed_features.FrozenPlacedFeatures;
+import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JParticleManager;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.sounds.Musics;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.MobSpawnSettings;
@@ -24,7 +26,7 @@ public class FrozenBiomes extends Biomes {
     public static Biome bitterwoodForest(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
         BiomeGenerationSettings.Builder biomeSetting = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
         MobSpawnSettings.Builder mobSettings = new MobSpawnSettings.Builder();
-       // biomeSetting.addCarver(GenerationStep.Carving.AIR, worldCarvers.getOrThrow(CarverFeatureKeys.FROZEN_CARVER));
+        //biomeSetting.addCarver(worldCarvers.getOrThrow(CarverFeatureKeys.FROZEN_CARVER));
 
         biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, FrozenPlacedFeatures.RIMESTONE_ORE);
         biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, FrozenPlacedFeatures.PERIDOT_ORE);
@@ -35,15 +37,16 @@ public class FrozenBiomes extends Biomes {
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FrozenPlacedFeatures.FROZEN_FLOWERS);
         biomeSetting.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, FrozenPlacedFeatures.GLACIAL_ROCK);
 
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SHIVERING_BUSHWALKER_TYPE.get(), 5, 1, 2));
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SHIVERING_SHRIEKER_TYPE.get(), 5, 1, 2));
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.PERMAFRAUST_TYPE.get(), 5, 1, 2));
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.CRYSTAL_CLUSTER_TYPE.get(), 5, 1, 2));
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SHATTERER_TYPE.get(), 5, 1, 2));
-//
-//        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.FROZEN_TROLL_TYPE.get(), 20, 1, 3));
-//        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.SHIVERWOLF_TYPE.get(), 20, 1, 3));
-//        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.CAPYBARA_TYPE.get(), 20, 1, 3));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.SHIVERING_BUSHWALKER_TYPE.get(), 1, 2));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.SHIVERING_SHRIEKER_TYPE.get(), 1, 2));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.PERMAFRAUST_TYPE.get(), 1, 2));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.CRYSTAL_CLUSTER_TYPE.get(), 1, 2));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.SHATTERER_TYPE.get(), 1, 2));
+
+        mobSettings.addSpawn(MobCategory.CREATURE, 20, new MobSpawnSettings.SpawnerData(JEntities.FROZEN_TROLL_TYPE.get(), 1, 3));
+        mobSettings.addSpawn(MobCategory.CREATURE, 15, new MobSpawnSettings.SpawnerData(JEntities.SHIVERWOLF_TYPE.get(), 1, 3));
+        mobSettings.addSpawn(MobCategory.CREATURE, 20, new MobSpawnSettings.SpawnerData(JEntities.CAPYBARA_TYPE.get(), 1, 3));
+        mobSettings.addSpawn(MobCategory.CREATURE, 15, new MobSpawnSettings.SpawnerData(JEntities.SHIVERING_RAM_TYPE.get(), 1, 3));
 
         return biome(true, -0.5F, 0.4F, SKY_COLOUR, FOG_COLOUR, WATER_COLOUR, WATER_FOG_COLOUR, GRASS_COLOUR, FOLIAGE_COLOUR,
                 mobSettings, biomeSetting, JParticleManager.SNOWFLAKE.get(), 0.03428F, Musics.createGameMusic(JSounds.FROZEN_MUSIC));
@@ -63,14 +66,15 @@ public class FrozenBiomes extends Biomes {
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FrozenPlacedFeatures.FROZEN_FLOWERS);
         biomeSetting.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, FrozenPlacedFeatures.GLACIAL_ROCK);
 
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SHIVERING_BUSHWALKER_TYPE.get(), 5, 1, 2));
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SHIVERING_SHRIEKER_TYPE.get(), 5, 1, 2));
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.PERMAFRAUST_TYPE.get(), 5, 1, 2));
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.CRYSTAL_CLUSTER_TYPE.get(), 5, 1, 2));
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SHATTERER_TYPE.get(), 5, 1, 2));
-//
-//        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.FROZEN_TROLL_TYPE.get(), 20, 1, 3));
-//        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.SHIVERWOLF_TYPE.get(), 20, 1, 3));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.SHIVERING_BUSHWALKER_TYPE.get(), 1, 2));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.SHIVERING_SHRIEKER_TYPE.get(), 1, 2));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.PERMAFRAUST_TYPE.get(), 1, 2));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.CRYSTAL_CLUSTER_TYPE.get(), 1, 2));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.SHATTERER_TYPE.get(), 1, 2));
+
+        mobSettings.addSpawn(MobCategory.CREATURE, 20, new MobSpawnSettings.SpawnerData(JEntities.FROZEN_TROLL_TYPE.get(), 1, 3));
+        mobSettings.addSpawn(MobCategory.CREATURE, 15, new MobSpawnSettings.SpawnerData(JEntities.SHIVERWOLF_TYPE.get(), 1, 3));
+        mobSettings.addSpawn(MobCategory.CREATURE, 15, new MobSpawnSettings.SpawnerData(JEntities.SHIVERING_RAM_TYPE.get(), 1, 3));
 
         return biome(true, -0.5F, 0.4F, SKY_COLOUR, FOG_COLOUR, WATER_COLOUR, WATER_FOG_COLOUR, GRASS_COLOUR, FOLIAGE_COLOUR,
                 mobSettings, biomeSetting, JParticleManager.SNOWFLAKE.get(), 0.001428F, Musics.createGameMusic(JSounds.FROZEN_MUSIC));
@@ -79,7 +83,7 @@ public class FrozenBiomes extends Biomes {
     public static Biome frozenWastes(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
         BiomeGenerationSettings.Builder biomeSetting = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
         MobSpawnSettings.Builder mobSettings = new MobSpawnSettings.Builder();
-        // biomeSetting.addCarver(GenerationStep.Carving.AIR, worldCarvers.getOrThrow(CarverFeatureKeys.FROZEN_CARVER));
+        //biomeSetting.addCarver(worldCarvers.getOrThrow(CarverFeatureKeys.FROZEN_CARVER));
 
         biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, FrozenPlacedFeatures.RIMESTONE_ORE);
         biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, FrozenPlacedFeatures.PERIDOT_ORE);
@@ -87,14 +91,14 @@ public class FrozenBiomes extends Biomes {
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FrozenPlacedFeatures.FROZEN_FLOWERS);
         biomeSetting.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, FrozenPlacedFeatures.ICE_SPIKE);
 
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SHIVERING_BUSHWALKER_TYPE.get(), 5, 1, 2));
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SHIVERING_SHRIEKER_TYPE.get(), 5, 1, 2));
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.PERMAFRAUST_TYPE.get(), 5, 1, 2));
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.CRYSTAL_CLUSTER_TYPE.get(), 5, 1, 2));
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SHATTERER_TYPE.get(), 5, 1, 2));
-//
-//        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.FROZEN_TROLL_TYPE.get(), 20, 1, 3));
-//        mobSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(JEntities.CAPYBARA_TYPE.get(), 20, 1, 3));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.SHIVERING_BUSHWALKER_TYPE.get(), 1, 2));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.SHIVERING_SHRIEKER_TYPE.get(), 1, 2));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.PERMAFRAUST_TYPE.get(), 1, 2));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.CRYSTAL_CLUSTER_TYPE.get(), 1, 2));
+        mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.SHATTERER_TYPE.get(), 1, 2));
+
+        mobSettings.addSpawn(MobCategory.CREATURE, 20, new MobSpawnSettings.SpawnerData(JEntities.FROZEN_TROLL_TYPE.get(), 1, 3));
+        mobSettings.addSpawn(MobCategory.CREATURE, 15, new MobSpawnSettings.SpawnerData(JEntities.CAPYBARA_TYPE.get(), 1, 3));
 
         return biome(true, -0.8F, 0.85F, SKY_COLOUR, FOG_COLOUR, WATER_COLOUR, WATER_FOG_COLOUR, GRASS_COLOUR, FOLIAGE_COLOUR,
                 mobSettings, biomeSetting, JParticleManager.SNOWFLAKE.get(), 0.06428F, Musics.createGameMusic(JSounds.FROZEN_MUSIC));

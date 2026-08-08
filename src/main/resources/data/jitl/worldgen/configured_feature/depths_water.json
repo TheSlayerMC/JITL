@@ -1,9 +1,7 @@
 {
   "type": "jitl:depths_water_gen",
   "config": {
-    "hole_count": 1,
     "requires_block_below": false,
-    "rock_count": 4,
     "state": {
       "Name": "minecraft:water",
       "Properties": {

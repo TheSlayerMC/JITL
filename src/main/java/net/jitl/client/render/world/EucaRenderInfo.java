@@ -21,7 +21,7 @@ public class EucaRenderInfo extends JDimensionSpecialEffects implements CustomSk
     private final GpuBuffer sunBuffer;
 
     public EucaRenderInfo() {
-        super(Minecraft.getInstance().getTextureManager(), Minecraft.getInstance().getAtlasManager());
+        super(Minecraft.getInstance().getTextureManager(), Minecraft.getInstance().getAtlasManager(), Minecraft.getInstance().gameRenderer.mainRenderTarget());
         this.sunBuffer = buildSunQuad(this.celestialsAtlas, 40F, CORBA_MOON_LOCATION);
     }
 

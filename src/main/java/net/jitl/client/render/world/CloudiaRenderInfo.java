@@ -22,7 +22,7 @@ public class CloudiaRenderInfo extends JDimensionSpecialEffects implements Custo
     private final GpuBuffer sunBuffer;
 
     public CloudiaRenderInfo() {
-        super(Minecraft.getInstance().getTextureManager(), Minecraft.getInstance().getAtlasManager());
+        super(Minecraft.getInstance().getTextureManager(), Minecraft.getInstance().getAtlasManager(), Minecraft.getInstance().gameRenderer.mainRenderTarget());
         this.sunBuffer = buildSunQuad(this.celestialsAtlas, 60, SUN_LOCATION);
     }
 

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "jitl:crystallized_dripstone",
+    "jitl:depths_dripstone",
+    "jitl:depths_grass",
+    "jitl:depths_stone",
+    "jitl:depths_dirt"
+  ]
+}

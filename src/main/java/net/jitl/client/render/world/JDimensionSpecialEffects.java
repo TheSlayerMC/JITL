@@ -1,7 +1,9 @@
 package net.jitl.client.render.world;
 
+import com.mojang.blaze3d.PrimitiveTopology;
 import com.mojang.blaze3d.buffers.GpuBuffer;
 import com.mojang.blaze3d.buffers.GpuBufferSlice;
+import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.systems.RenderPass;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.textures.GpuTextureView;
@@ -26,8 +28,8 @@ import org.joml.Matrix4fStack;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
+import java.util.Optional;
 import java.util.OptionalDouble;
-import java.util.OptionalInt;
 
 public class JDimensionSpecialEffects extends SkyRenderer {
 
@@ -35,27 +37,30 @@ public class JDimensionSpecialEffects extends SkyRenderer {
     private final GpuBuffer bottomSkyBuffer;
     private final RenderSystem.AutoStorageIndexBuffer quadIndices;
     public final TextureAtlas celestialsAtlas;
+    private final RenderTarget renderTarget;
 
-    public JDimensionSpecialEffects(TextureManager textureManager, AtlasManager atlasManager) {
-        super(textureManager, atlasManager);
+    public JDimensionSpecialEffects(TextureManager textureManager, AtlasManager atlasManager, RenderTarget renderTarget) {
+        super(textureManager, atlasManager, renderTarget);
         this.celestialsAtlas = atlasManager.getAtlasOrThrow(AtlasIds.CELESTIALS);
 
+        this.renderTarget = renderTarget;
+
         try (ByteBufferBuilder bytebufferbuilder = ByteBufferBuilder.exactlySized(10 * DefaultVertexFormat.POSITION.getVertexSize())) {
-            BufferBuilder bufferbuilder = new BufferBuilder(bytebufferbuilder, VertexFormat.Mode.TRIANGLE_FAN, DefaultVertexFormat.POSITION);
+            BufferBuilder bufferbuilder = new BufferBuilder(bytebufferbuilder, PrimitiveTopology.TRIANGLE_FAN, DefaultVertexFormat.POSITION);
             this.buildSkyDisc(bufferbuilder, 16.0F);
 
             try (MeshData meshdata = bufferbuilder.buildOrThrow()) {
                 this.topSkyBuffer = RenderSystem.getDevice().createBuffer(() -> "Top sky vertex buffer", 32, meshdata.vertexBuffer());
             }
 
-            bufferbuilder = new BufferBuilder(bytebufferbuilder, VertexFormat.Mode.TRIANGLE_FAN, DefaultVertexFormat.POSITION);
+            bufferbuilder = new BufferBuilder(bytebufferbuilder, PrimitiveTopology.TRIANGLE_FAN, DefaultVertexFormat.POSITION);
             this.buildSkyDisc(bufferbuilder, -16.0F);
 
             try (MeshData meshdata1 = bufferbuilder.buildOrThrow()) {
                 this.bottomSkyBuffer = RenderSystem.getDevice().createBuffer(() -> "Bottom sky vertex buffer", 32, meshdata1.vertexBuffer());
             }
         }
-        this.quadIndices = RenderSystem.getSequentialBuffer(VertexFormat.Mode.QUADS);
+        this.quadIndices = RenderSystem.getSequentialBuffer(PrimitiveTopology.QUADS);
 
     }
 
@@ -81,20 +86,20 @@ public class JDimensionSpecialEffects extends SkyRenderer {
         matrix4fstack.scale(30.0F, 1.0F, 30.0F);
         GpuBufferSlice gpubufferslice = RenderSystem.getDynamicUniforms()
                 .writeTransform(matrix4fstack, new Vector4f(1.0F, 1.0F, 1.0F, alpha), new Vector3f(), new Matrix4f());
-        GpuTextureView gputextureview = Minecraft.getInstance().getMainRenderTarget().getColorTextureView();
-        GpuTextureView gputextureview1 = Minecraft.getInstance().getMainRenderTarget().getDepthTextureView();
+        GpuTextureView color = this.renderTarget.getColorTextureView();
+        GpuTextureView depth = this.renderTarget.getDepthTextureView();
         GpuBuffer gpubuffer = this.quadIndices.getBuffer(6);
 
         try (RenderPass renderpass = RenderSystem.getDevice()
                 .createCommandEncoder()
-                .createRenderPass(() -> "Sky sun", gputextureview, OptionalInt.empty(), gputextureview1, OptionalDouble.empty())) {
+                .createRenderPass(() -> "Sky sun", color, Optional.empty(), depth, OptionalDouble.empty())) {
             renderpass.setPipeline(RenderPipelines.CELESTIAL);
             RenderSystem.bindDefaultUniforms(renderpass);
             renderpass.setUniform("DynamicTransforms", gpubufferslice);
             renderpass.bindTexture("Sampler0", this.celestialsAtlas.getTextureView(), this.celestialsAtlas.getSampler());
-            renderpass.setVertexBuffer(0, sunBuffer);
+            renderpass.setVertexBuffer(0, sunBuffer.slice());
             renderpass.setIndexBuffer(gpubuffer, this.quadIndices.type());
-            renderpass.drawIndexed(0, 0, 6, 1);
+            renderpass.drawIndexed(0, 0, 6, 1, 0);
         }
 
         matrix4fstack.popMatrix();
@@ -109,7 +114,7 @@ public class JDimensionSpecialEffects extends SkyRenderer {
 
         GpuBuffer gpubuffer;
         try (ByteBufferBuilder bytebufferbuilder = ByteBufferBuilder.exactlySized(4 * vertexformat.getVertexSize())) {
-            BufferBuilder bufferbuilder = new BufferBuilder(bytebufferbuilder, VertexFormat.Mode.QUADS, vertexformat);
+            BufferBuilder bufferbuilder = new BufferBuilder(bytebufferbuilder, PrimitiveTopology.QUADS, vertexformat);
             bufferbuilder.addVertex(-size, 0.0F, -size).setUv(atlas.getU0(), atlas.getV0());
             bufferbuilder.addVertex(size, 0.0F, -size).setUv(atlas.getU1(), atlas.getV0());
             bufferbuilder.addVertex(size, 0.0F, size).setUv(atlas.getU1(), atlas.getV1());
@@ -130,37 +135,38 @@ public class JDimensionSpecialEffects extends SkyRenderer {
     protected void renderSky(Identifier texture, float brightness) {
         AbstractTexture abstracttexture = getTexture(texture);
 
-        RenderSystem.AutoStorageIndexBuffer rendersystem$autostorageindexbuffer = RenderSystem.getSequentialBuffer(VertexFormat.Mode.QUADS);
+        RenderSystem.AutoStorageIndexBuffer rendersystem$autostorageindexbuffer = RenderSystem.getSequentialBuffer(PrimitiveTopology.QUADS);
         GpuBuffer gpubuffer = rendersystem$autostorageindexbuffer.getBuffer(36);
-        GpuTextureView gputextureview = Minecraft.getInstance().getMainRenderTarget().getColorTextureView();
-        GpuTextureView gputextureview1 = Minecraft.getInstance().getMainRenderTarget().getDepthTextureView();
-        GpuBufferSlice gpubufferslice = RenderSystem.getDynamicUniforms().writeTransform(RenderSystem.getModelViewMatrix(), new Vector4f(brightness, brightness, brightness, brightness), new Vector3f(), new Matrix4f());
+        GpuTextureView gputextureview = this.renderTarget.getColorTextureView();
+        GpuTextureView gputextureview1 = this.renderTarget.getDepthTextureView();
+        GpuBufferSlice gpubufferslice = RenderSystem.getDynamicUniforms().writeTransform(RenderSystem.getModelViewMatrixCopy(), new Vector4f(brightness, brightness, brightness, brightness), new Vector3f(), new Matrix4f());
 
-        try (RenderPass renderpass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(() -> "Journey Sky", gputextureview, OptionalInt.empty(), gputextureview1, OptionalDouble.empty())) {
+        try (RenderPass renderpass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(() -> "Journey Sky", gputextureview, Optional.empty(), gputextureview1, OptionalDouble.empty())) {
             renderpass.setPipeline(RenderPipelines.END_SKY);
             RenderSystem.bindDefaultUniforms(renderpass);
             renderpass.setUniform("DynamicTransforms", gpubufferslice);
             renderpass.bindTexture("Sampler0", abstracttexture.getTextureView(), abstracttexture.getSampler());
-            renderpass.setVertexBuffer(0, buildSky());
+            renderpass.setVertexBuffer(0, buildSky().slice());
             renderpass.setIndexBuffer(gpubuffer, rendersystem$autostorageindexbuffer.type());
-            renderpass.drawIndexed(0, 0, 36, 1);
+//            renderpass.drawIndexed(0, 0, 36, 1);
+            renderpass.drawIndexed(36, 1, 0, 0, 0);
         }
     }
 
     public void renderSkyDisc(float red, float green, float blue) {
         GpuBufferSlice gpubufferslice = RenderSystem.getDynamicUniforms()
-                .writeTransform(RenderSystem.getModelViewMatrix(), new Vector4f(red, green, blue, 1.0F), new Vector3f(), new Matrix4f());
-        GpuTextureView gputextureview = Minecraft.getInstance().getMainRenderTarget().getColorTextureView();
-        GpuTextureView gputextureview1 = Minecraft.getInstance().getMainRenderTarget().getDepthTextureView();
+                .writeTransform(RenderSystem.getModelViewMatrixCopy(), new Vector4f(red, green, blue, 1.0F), new Vector3f(), new Matrix4f());
+        GpuTextureView gputextureview = this.renderTarget.getColorTextureView();
+        GpuTextureView gputextureview1 = this.renderTarget.getDepthTextureView();
 
         try (RenderPass renderpass = RenderSystem.getDevice()
                 .createCommandEncoder()
-                .createRenderPass(() -> "Sky disc", gputextureview, OptionalInt.empty(), gputextureview1, OptionalDouble.empty())) {
+                .createRenderPass(() -> "Sky disc", gputextureview, Optional.empty(), gputextureview1, OptionalDouble.empty())) {
             renderpass.setPipeline(RenderPipelines.SKY);
             RenderSystem.bindDefaultUniforms(renderpass);
             renderpass.setUniform("DynamicTransforms", gpubufferslice);
-            renderpass.setVertexBuffer(0, this.topSkyBuffer);
-            renderpass.draw(0, 10);
+            renderpass.setVertexBuffer(0, this.topSkyBuffer.slice());
+            renderpass.draw(10, 1, 0, 0);
         }
     }
 
@@ -170,17 +176,17 @@ public class JDimensionSpecialEffects extends SkyRenderer {
         matrix4fstack.translate(0.0F, 12.0F, 0.0F);
         GpuBufferSlice gpubufferslice = RenderSystem.getDynamicUniforms()
                 .writeTransform(matrix4fstack, new Vector4f(0.0F, 0.0F, 0.0F, 1.0F), new Vector3f(), new Matrix4f());
-        GpuTextureView gputextureview = Minecraft.getInstance().getMainRenderTarget().getColorTextureView();
-        GpuTextureView gputextureview1 = Minecraft.getInstance().getMainRenderTarget().getDepthTextureView();
+        GpuTextureView gputextureview = this.renderTarget.getColorTextureView();
+        GpuTextureView gputextureview1 = this.renderTarget.getDepthTextureView();
 
         try (RenderPass renderpass = RenderSystem.getDevice()
                 .createCommandEncoder()
-                .createRenderPass(() -> "Sky dark", gputextureview, OptionalInt.empty(), gputextureview1, OptionalDouble.empty())) {
+                .createRenderPass(() -> "Sky dark", gputextureview, Optional.empty(), gputextureview1, OptionalDouble.empty())) {
             renderpass.setPipeline(RenderPipelines.SKY);
             RenderSystem.bindDefaultUniforms(renderpass);
             renderpass.setUniform("DynamicTransforms", gpubufferslice);
-            renderpass.setVertexBuffer(0, this.bottomSkyBuffer);
-            renderpass.draw(0, 10);
+            renderpass.setVertexBuffer(0, this.bottomSkyBuffer.slice());
+            renderpass.draw(10, 1, 0, 0);
         }
 
         matrix4fstack.popMatrix();
@@ -189,7 +195,7 @@ public class JDimensionSpecialEffects extends SkyRenderer {
     protected static GpuBuffer buildSky() {
         GpuBuffer gpubuffer;
         try (ByteBufferBuilder bytebufferbuilder = ByteBufferBuilder.exactlySized(24 * DefaultVertexFormat.POSITION_TEX_COLOR.getVertexSize())) {
-            BufferBuilder bufferbuilder = new BufferBuilder(bytebufferbuilder, VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
+            BufferBuilder bufferbuilder = new BufferBuilder(bytebufferbuilder, PrimitiveTopology.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
 
             for(int i = 0; i < 6; ++i) {
                 Matrix4f matrix4f = new Matrix4f();

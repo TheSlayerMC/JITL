@@ -70,8 +70,9 @@ public class TreeConfig extends TreeConfiguration {
 		}
 
 		public JTreeConfigurationBuilder(BlockStateProvider trunkProvider, TrunkPlacer trunkPlacer, BlockStateProvider foliageProvider, FoliagePlacer foliagePlacer, FeatureSize minimumSize) {
-			this(trunkProvider, trunkPlacer, foliageProvider, foliagePlacer, Optional.empty(), minimumSize, TreeConfiguration.PLACE_BELOW_OVERWORLD_TRUNKS);
+			this(trunkProvider, trunkPlacer, foliageProvider, foliagePlacer, Optional.empty(), minimumSize, RuleBasedStateProvider.simple(Blocks.DIRT));
 		}
+
 		public JTreeConfigurationBuilder belowTrunkProvider(BlockStateProvider belowTrunkProvider) {
 			this.belowTrunkProvider = belowTrunkProvider;
 			return this;

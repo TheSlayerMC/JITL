@@ -14,7 +14,7 @@ public class KeyUsedEvent {
 
     @SubscribeEvent
     public static void onKeyInput(ClientTickEvent.Post event) {
-        if (MINECRAFT.screen == null) {
+        if (MINECRAFT.gui.screen() == null) {
 
             assert MINECRAFT.player != null;
             while(KeyBindEvents.keyStats.consumeClick()) {
@@ -34,6 +34,6 @@ public class KeyUsedEvent {
     }
 
     public static void displayPlayerStats(Player player) {
-        Minecraft.getInstance().setScreen(new PlayerStats(player));
+        Minecraft.getInstance().gui.setScreen(new PlayerStats(player));
     }
 }

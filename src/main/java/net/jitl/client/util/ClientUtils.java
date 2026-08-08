@@ -12,14 +12,14 @@ import net.minecraft.world.entity.player.Player;
 public class ClientUtils {
 
     public static void displayToast(LoreScroll scroll) {
-        Minecraft.getInstance().getToastManager().addToast(new KnowledgeToast(EnumKnowledge.byName(scroll.knowledge()), true));
+        Minecraft.getInstance().gui.toastManager().addToast(new KnowledgeToast(EnumKnowledge.byName(scroll.knowledge()), true));
     }
 
     public static void displayScrollGui(ScrollEntry entry) {
-        Minecraft.getInstance().setScreen(new LoreScrollEntryScreen(entry));
+        Minecraft.getInstance().gui.setScreen(new LoreScrollEntryScreen(entry));
     }
 
     public static void displayBookGUI(Player player) {
-        Minecraft.getInstance().setScreen(new JRecipeBookGUI(player.getInventory()));
+        Minecraft.getInstance().gui.setScreen(new JRecipeBookGUI(player.getInventory()));
     }
 }

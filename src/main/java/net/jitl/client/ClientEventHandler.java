@@ -1,6 +1,5 @@
 package net.jitl.client;
 
-import net.jitl.client.render.world.EucaSkyRender;
 import net.jitl.client.render.world.clouds.JCloudRenderer;
 import net.jitl.client.util.ClientGetter;
 import net.jitl.common.world.dimension.Dimensions;
@@ -66,7 +65,7 @@ public class ClientEventHandler {
 
     @SubscribeEvent
     public static void registerDimensionSpecialEffects(RegisterCustomEnvironmentEffectRendererEvent event) {
-        event.registerSkyboxRenderer(Dimensions.EUCA_EFFECTS, new EucaSkyRender());
+        //event.registerSkyboxRenderer(Dimensions.EUCA_EFFECTS, new EucaSkyRender());
 
 //        event.registerSkyboxRenderer(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());
 //        event.registerCloudRenderer(Dimensions.EUCA_EFFECTS, new EucaRenderInfo());

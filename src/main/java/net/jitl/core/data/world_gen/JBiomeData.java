@@ -28,6 +28,8 @@ public class JBiomeData {
         context.register(Dimensions.JBiomes.FROZEN_WASTES, FrozenBiomes.frozenWastes(placed, carver));
 
         context.register(Dimensions.JBiomes.DEPTHS, DepthsBiomes.depths(placed, carver));
+        context.register(Dimensions.JBiomes.DARK_LANDS, DepthsBiomes.darkLands(placed, carver));
+        context.register(Dimensions.JBiomes.SHROOMLAND, DepthsBiomes.shroomland(placed, carver));
 
         context.register(Dimensions.JBiomes.BOGWEED_FIELDS, CorbaBiomes.bogweedFields(placed, carver));
         context.register(Dimensions.JBiomes.CORBA_PLAINS, CorbaBiomes.corbaPlains(placed, carver));

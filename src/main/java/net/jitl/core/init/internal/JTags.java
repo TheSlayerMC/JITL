@@ -28,6 +28,8 @@ public class JTags {
     public static final TagKey<Block> BASALT_ORE_REPLACEABLES = tagBlock("basalt_replaceables");
     public static final TagKey<Block> HUGE_MUSHROOM_PLACEMENT = tagBlock("huge_mushroom_placement");
     public static final TagKey<Block> END_STONE = tagBlock("end_stone");
+    public static final TagKey<Block> DRIPSTONE_REPLACEABLES = tagBlock("dripstone_replaceables");
+
     public static final TagKey<Block> JLOGS = tagBlock("jlogs");
     public static final TagKey<Block> JPLANKS = tagBlock("planks");
     public static final TagKey<Block> EUCA_GRASS = tagBlock("euca_grass");

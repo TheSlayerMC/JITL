@@ -18,7 +18,7 @@ public class EucaSkyRender implements CustomSkyboxRenderer {
 
     @Override
     public boolean renderSky(LevelRenderState levelRenderState, SkyRenderState skyRenderState, Matrix4fc modelViewMatrix, Runnable setupFog) {
-        JDimensionSpecialEffects sky = new JDimensionSpecialEffects(Minecraft.getInstance().getTextureManager(), Minecraft.getInstance().getAtlasManager());
+        JDimensionSpecialEffects sky = new JDimensionSpecialEffects(Minecraft.getInstance().getTextureManager(), Minecraft.getInstance().getAtlasManager(), Minecraft.getInstance().gameRenderer.mainRenderTarget());
         setupFog.run();
             PoseStack poseStack = new PoseStack();
             poseStack.pushPose();

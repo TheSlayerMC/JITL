@@ -1,9 +1,11 @@
 package net.jitl.core.data.world_gen.biome;
 
 import net.jitl.core.data.world_gen.placed_features.SenterianPlacedFeatures;
+import net.jitl.core.init.internal.JEntities;
 import net.jitl.core.init.internal.JSounds;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.sounds.Musics;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.MobSpawnSettings;
@@ -26,9 +28,9 @@ public class SenterianBiomes extends Biomes {
 
         biomeSetting.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, SenterianPlacedFeatures.SENTERIAN_TERRAIN);
 
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SENTRY_LORD_TYPE.get(), 2, 1, 1));
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SENTRY_WALKER_TYPE.get(), 2, 1, 1));
-//        mobSettings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JEntities.SENTRY_STALKER_TYPE.get(), 2, 1, 1));
+        mobSettings.addSpawn(MobCategory.MONSTER, 2, new MobSpawnSettings.SpawnerData(JEntities.SENTRY_LORD_TYPE.get(), 1, 1));
+        mobSettings.addSpawn(MobCategory.MONSTER, 2, new MobSpawnSettings.SpawnerData(JEntities.SENTRY_WALKER_TYPE.get(), 1, 1));
+        mobSettings.addSpawn(MobCategory.MONSTER, 2, new MobSpawnSettings.SpawnerData(JEntities.SENTRY_STALKER_TYPE.get(), 1, 1));
 
         return biome(false, 1F, 0.0F, SKY_COLOUR, FOG_COLOUR, WATER_COLOUR, WATER_FOG_COLOUR, GRASS_COLOUR, FOLIAGE_COLOUR,
                 mobSettings, biomeSetting, Musics.createGameMusic(JSounds.SENTERIAN_PORTAL));

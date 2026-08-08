@@ -1,9 +1,7 @@
 package net.jitl.client.gui.screen;
 
-import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.Tesselator;
-import com.mojang.blaze3d.vertex.VertexFormat;
+import com.mojang.blaze3d.PrimitiveTopology;
+import com.mojang.blaze3d.vertex.*;
 import net.jitl.client.util.GuiHelper;
 import net.jitl.common.scroll.IDescComponent;
 import net.jitl.common.scroll.ScrollEntry;
@@ -77,7 +75,7 @@ public class LoreScrollEntryScreen extends Screen {
         }
     }
 
-    private void drawHeader(GuiGraphicsExtractor poseStack, int maxX, int y0, Tesselator tess) {
+    private void drawHeader(GuiGraphicsExtractor poseStack, int maxX, int y0) {
         if(scrollEntry.hasComment()) {
             GuiHelper.drawCenteredStringWithCustomScale(poseStack, font, Component.translatable(scrollEntry.getTitleKey()), left + (maxX - left) / 2 + 1, y0, ARGB.colorFromFloat(1, 0, 0, 0), 1.5F, headerHeight - 5);
             if(scrollEntry.getCommentKey() != null)
@@ -87,7 +85,7 @@ public class LoreScrollEntryScreen extends Screen {
         }
     }
 
-    private void drawContentPart(GuiGraphicsExtractor poseStack, int partIdx, int contentRight, int partTop, int partBuffer, Tesselator tess) {
+    private void drawContentPart(GuiGraphicsExtractor poseStack, int partIdx, int contentRight, int partTop, int partBuffer) {
         scrollEntry.getDesc().get(partIdx).drawContentPart(poseStack, this.left + 2, partTop, contentRight);
     }
 
@@ -187,8 +185,6 @@ public class LoreScrollEntryScreen extends Screen {
 
         this.applyScrollLimits();
 
-        Tesselator tess = Tesselator.getInstance();
-
         double scaleW = minecraft.getWindow().getScreenWidth() / (double) minecraft.getWindow().getGuiScaledWidth();
         double scaleH = minecraft.getWindow().getScreenHeight() / (double) minecraft.getWindow().getGuiScaledHeight();
         GL11.glEnable(GL11.GL_SCISSOR_TEST);
@@ -204,12 +200,12 @@ public class LoreScrollEntryScreen extends Screen {
             int partBuffer = getContentPartHeight(partIdx) - border;
 
             if(baseY + headerHeight >= top) {
-                drawHeader(poseStack, contentRightTop, baseY, tess);
+                drawHeader(poseStack, contentRightTop, baseY);
             }
 
             if(partTop <= this.bottom && partTop + partBuffer >= this.top) {
                 int min = this.left;
-                this.drawContentPart(poseStack, partIdx, contentRightTop - min - 4, partTop, partBuffer, tess);
+                this.drawContentPart(poseStack, partIdx, contentRightTop - min - 4, partTop, partBuffer);
             }
             indentY += scrollEntry.getDesc().get(partIdx).getContentPartHeight();
         }
@@ -228,44 +224,48 @@ public class LoreScrollEntryScreen extends Screen {
                 barTop = this.top;
             }
 
-            int alpha, red, green, blue;
-            alpha = DrawHelper.getAlpha(SLIDER_PATH_COLOR);
-            red = DrawHelper.getRed(SLIDER_PATH_COLOR);
-            green = DrawHelper.getGreen(SLIDER_PATH_COLOR);
-            blue = DrawHelper.getBlue(SLIDER_PATH_COLOR);
-            BufferBuilder worldr = tess.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
-            worldr.addVertex(scrollButtonLeftTop, this.bottom, 0.0F).setUv(0.0F, 1.0F).setColor(red, green, blue, alpha);
-            worldr.addVertex(scrollButtonRightTop, this.bottom, 0.0F).setUv(1.0F, 1.0F).setColor(red, green, blue, alpha);
-            worldr.addVertex(scrollButtonRightTop, this.top, 0.0F).setUv(1.0F, 0.0F).setColor(red, green, blue, alpha);
-            worldr.addVertex(scrollButtonLeftTop, this.top, 0.0F).setUv(0.0F, 0.0F).setColor(red, green, blue, alpha);
-            //worldr.build();
+            int vtxSize = DefaultVertexFormat.POSITION_COLOR.getVertexSize();
 
-            // Dark slider part
-            alpha = DrawHelper.getAlpha(SLIDER_DARK_COLOR);
-            red = DrawHelper.getRed(SLIDER_DARK_COLOR);
-            green = DrawHelper.getGreen(SLIDER_DARK_COLOR);
-            blue = DrawHelper.getBlue(SLIDER_DARK_COLOR);
-            worldr = tess.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+            try (ByteBufferBuilder byteBufferBuilder = ByteBufferBuilder.exactlySized(18 * vtxSize)) {
 
-            worldr.addVertex(scrollButtonLeftTop, barTop + height, 0.0F).setUv(0.0F, 1.0F).setColor(red, green, blue, alpha);
-            worldr.addVertex(scrollButtonRightTop, barTop + height, 0.0F).setUv(1.0F, 1.0F).setColor(red, green, blue, alpha);
-            worldr.addVertex(scrollButtonRightTop, barTop, 0.0F).setUv(1.0F, 0.0F).setColor(red, green, blue, alpha);
-            worldr.addVertex(scrollButtonLeftTop, barTop, 0.0F).setUv(0.0F, 0.0F).setColor(red, green, blue, alpha);
-            //BufferUploader.drawWithShader(worldr.buildOrThrow());
+                int alpha, red, green, blue;
+                alpha = DrawHelper.getAlpha(SLIDER_PATH_COLOR);
+                red = DrawHelper.getRed(SLIDER_PATH_COLOR);
+                green = DrawHelper.getGreen(SLIDER_PATH_COLOR);
+                blue = DrawHelper.getBlue(SLIDER_PATH_COLOR);
+                BufferBuilder worldr = new BufferBuilder(byteBufferBuilder, PrimitiveTopology.QUADS, DefaultVertexFormat.POSITION_COLOR);
+                worldr.addVertex(scrollButtonLeftTop, this.bottom, 0.0F).setUv(0.0F, 1.0F).setColor(red, green, blue, alpha);
+                worldr.addVertex(scrollButtonRightTop, this.bottom, 0.0F).setUv(1.0F, 1.0F).setColor(red, green, blue, alpha);
+                worldr.addVertex(scrollButtonRightTop, this.top, 0.0F).setUv(1.0F, 0.0F).setColor(red, green, blue, alpha);
+                worldr.addVertex(scrollButtonLeftTop, this.top, 0.0F).setUv(0.0F, 0.0F).setColor(red, green, blue, alpha);
+                //worldr.build();
 
-            // Light slider part
-            alpha = DrawHelper.getAlpha(SLIDER_LIGHT_COLOR);
-            red = DrawHelper.getRed(SLIDER_LIGHT_COLOR);
-            green = DrawHelper.getGreen(SLIDER_LIGHT_COLOR);
-            blue = DrawHelper.getBlue(SLIDER_LIGHT_COLOR);
-            worldr = tess.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+                // Dark slider part
+                alpha = DrawHelper.getAlpha(SLIDER_DARK_COLOR);
+                red = DrawHelper.getRed(SLIDER_DARK_COLOR);
+                green = DrawHelper.getGreen(SLIDER_DARK_COLOR);
+                blue = DrawHelper.getBlue(SLIDER_DARK_COLOR);
+                worldr = new BufferBuilder(byteBufferBuilder, PrimitiveTopology.QUADS, DefaultVertexFormat.POSITION_COLOR);
 
-            worldr.addVertex(scrollButtonLeftTop, barTop + height - 1, 0.0F).setUv(0.0F, 1.0F).setColor(red, green, blue, alpha);
-            worldr.addVertex(scrollButtonRightTop - 1, barTop + height - 1, 0.0F).setUv(1.0F, 1.0F).setColor(red, green, blue, alpha);
-            worldr.addVertex(scrollButtonRightTop - 1, barTop, 0.0F).setUv(1.0F, 0.0F).setColor(red, green, blue, alpha);
-            worldr.addVertex(scrollButtonLeftTop, barTop, 0.0F).setUv(0.0F, 0.0F).setColor(red, green, blue, alpha);
+                worldr.addVertex(scrollButtonLeftTop, barTop + height, 0.0F).setUv(0.0F, 1.0F).setColor(red, green, blue, alpha);
+                worldr.addVertex(scrollButtonRightTop, barTop + height, 0.0F).setUv(1.0F, 1.0F).setColor(red, green, blue, alpha);
+                worldr.addVertex(scrollButtonRightTop, barTop, 0.0F).setUv(1.0F, 0.0F).setColor(red, green, blue, alpha);
+                worldr.addVertex(scrollButtonLeftTop, barTop, 0.0F).setUv(0.0F, 0.0F).setColor(red, green, blue, alpha);
+                //BufferUploader.drawWithShader(worldr.buildOrThrow());
+
+                // Light slider part
+                alpha = DrawHelper.getAlpha(SLIDER_LIGHT_COLOR);
+                red = DrawHelper.getRed(SLIDER_LIGHT_COLOR);
+                green = DrawHelper.getGreen(SLIDER_LIGHT_COLOR);
+                blue = DrawHelper.getBlue(SLIDER_LIGHT_COLOR);
+                worldr = new BufferBuilder(byteBufferBuilder, PrimitiveTopology.QUADS, DefaultVertexFormat.POSITION_COLOR);
+
+                worldr.addVertex(scrollButtonLeftTop, barTop + height - 1, 0.0F).setUv(0.0F, 1.0F).setColor(red, green, blue, alpha);
+                worldr.addVertex(scrollButtonRightTop - 1, barTop + height - 1, 0.0F).setUv(1.0F, 1.0F).setColor(red, green, blue, alpha);
+                worldr.addVertex(scrollButtonRightTop - 1, barTop, 0.0F).setUv(1.0F, 0.0F).setColor(red, green, blue, alpha);
+                worldr.addVertex(scrollButtonLeftTop, barTop, 0.0F).setUv(0.0F, 0.0F).setColor(red, green, blue, alpha);
 //            BufferUploader.drawWithShader(worldr.buildOrThrow());
-//
+            }
         }
 
         this.drawScreen(mouseX, mouseY);
@@ -286,8 +286,7 @@ public class LoreScrollEntryScreen extends Screen {
     @Override
     public boolean keyPressed(KeyEvent event) {
         if(event.isEscape()) {
-            assert minecraft != null;
-            minecraft.setScreen(null);
+            minecraft.gui.setScreen(null);
         }
         return true;
     }

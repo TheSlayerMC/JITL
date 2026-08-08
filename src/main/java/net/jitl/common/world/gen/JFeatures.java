@@ -50,9 +50,9 @@ public class JFeatures {
     public static final DeferredHolder<Feature<?>, Feature<OreConfiguration>> FLOOR_DEPTHS_LAMP = REGISTRY.register("depths_lamp_floor", () -> new DepthsLampFloorFeature(OreConfiguration.CODEC));
     public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> DEPTHS_CRYSTAL = REGISTRY.register("depths_crystal", () -> new DepthsCrystalFeature(NoneFeatureConfiguration.CODEC));
     public static final DeferredHolder<Feature<?>, Feature<SpringConfiguration>> DEPTHS_WATER_GEN = REGISTRY.register("depths_water_gen", () -> new SpringFeature(SpringConfiguration.CODEC));
-    public static final DeferredHolder<Feature<?>, Feature<DripstoneClusterConfiguration>> CRYSTAL_DRIPSTONE = REGISTRY.register("crystal_dripstone", () -> new CrystalDripstoneClusterFeature(JBlocks.POINTED_CRYSTALLIZED_DRIPSTONE.get(), JBlocks.CRYSTALLIZED_DRIPSTONE.get(), DripstoneClusterConfiguration.CODEC));
+    public static final DeferredHolder<Feature<?>, Feature<SpeleothemClusterConfiguration>> CRYSTAL_DRIPSTONE = REGISTRY.register("crystal_dripstone", () -> new CrystalDripstoneClusterFeature(JBlocks.POINTED_CRYSTALLIZED_DRIPSTONE.get(), JBlocks.CRYSTALLIZED_DRIPSTONE.get(), SpeleothemClusterConfiguration.CODEC));
     public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> DEPTHS_PILLAR = REGISTRY.register("depths_pillar", () -> new DepthsPillarFeature(NoneFeatureConfiguration.CODEC));
-    public static final DeferredHolder<Feature<?>, Feature<DripstoneClusterConfiguration>> DEPTHS_DRIPSTONE = REGISTRY.register("depths_dripstone", () -> new CrystalDripstoneClusterFeature(JBlocks.POINTED_DEPTHS_DRIPSTONE.get(), JBlocks.DEPTHS_DRIPSTONE.get(), DripstoneClusterConfiguration.CODEC));
+    public static final DeferredHolder<Feature<?>, Feature<SpeleothemClusterConfiguration>> DEPTHS_DRIPSTONE = REGISTRY.register("depths_dripstone", () -> new CrystalDripstoneClusterFeature(JBlocks.POINTED_DEPTHS_DRIPSTONE.get(), JBlocks.DEPTHS_DRIPSTONE.get(), SpeleothemClusterConfiguration.CODEC));
     public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> DEPTHS_SPIKE = REGISTRY.register("depths_spike", () -> new JSpikeFeature(JBlocks.DEPTHS_DRIPSTONE.get(), NoneFeatureConfiguration.CODEC));
 
     //BOIL

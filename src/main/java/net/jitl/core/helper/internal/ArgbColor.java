@@ -1,6 +1,7 @@
 package net.jitl.core.helper.internal;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.TextColor;
 
 public class ArgbColor {
     public static final int BLUE = 0x006cff;
@@ -14,6 +15,7 @@ public class ArgbColor {
     public static final int DARK_BROWN = 0x55402e;
 
     public static final int LIGHT_GRAY = 0xc8c8c8;
+    public static final int DARK_PURPLE = 0x3D0052;
 
     /**
      * Returns color from provided {@link ChatFormatting}
@@ -21,10 +23,6 @@ public class ArgbColor {
      */
     @SuppressWarnings("ConstantConditions")
     public static int from(ChatFormatting format) {
-        if (format.isColor()) {
-            return format.getColor();
-        } else {
-            throw new IllegalArgumentException(String.format("Provided format which is not a color: %s", format.toString()));
-        }
+        return TextColor.fromLegacyFormat(format).getValue();
     }
 }

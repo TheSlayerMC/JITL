@@ -38,8 +38,8 @@ public class SoulstoneShieldRenderer implements SpecialModelRenderer<DataCompone
         pose.pushPose();
         pose.scale(1.0F, -1.0F, -1.0F);
         SpriteId material = new SpriteId(Sheets.SHIELD_SHEET, JITL.rl("entity/shield/soulstone_shield"));
-        submitNodeCollector.submitModelPart(this.model.handle(), pose, this.model.renderType(material.atlasLocation()), i, i1, this.materials.get(material), false, false,-1, null, i2 );
-        submitNodeCollector.submitModelPart(this.model.plate(), pose, material.renderType(RenderTypes::entityCutout), i, i1, this.materials.get(material), false, b, -1, null, i2);
+        submitNodeCollector.submitModelPart(this.model.handle(), pose, this.model.renderType(material.atlasLocation()), i, i1, this.materials.get(material));
+        submitNodeCollector.submitModelPart(this.model.plate(), pose, material.renderType(RenderTypes::entityCutout), i, i1, this.materials.get(material));
         pose.popPose();
     }
 

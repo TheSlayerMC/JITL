@@ -11,7 +11,7 @@ import org.joml.Matrix4fc;
 public class FrozenRenderInfo extends JDimensionSpecialEffects implements CustomCloudsRenderer{
 
     public FrozenRenderInfo() {
-        super(Minecraft.getInstance().getTextureManager(), Minecraft.getInstance().getAtlasManager());
+        super(Minecraft.getInstance().getTextureManager(), Minecraft.getInstance().getAtlasManager(), Minecraft.getInstance().gameRenderer.mainRenderTarget());
     }
 
     @Override

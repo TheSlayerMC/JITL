@@ -87,7 +87,7 @@ public class JBoatItem extends Item {
             abstractboat.setInitialPos(vec3.x, vec3.y, vec3.z);
             if (level instanceof ServerLevel) {
                 ServerLevel serverlevel = (ServerLevel)level;
-                EntityType.createDefaultStackConfig(serverlevel, stack, player).accept(abstractboat);
+                EntityType.createDefaultStackConfig(serverlevel, stack, player).apply(abstractboat);
             }
         }
         return abstractboat;

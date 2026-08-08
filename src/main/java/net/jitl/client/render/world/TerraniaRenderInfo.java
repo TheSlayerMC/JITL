@@ -22,7 +22,7 @@ public class TerraniaRenderInfo extends JDimensionSpecialEffects implements Cust
     private final GpuBuffer moonBuffer;
 
     public TerraniaRenderInfo() {
-        super(Minecraft.getInstance().getTextureManager(), Minecraft.getInstance().getAtlasManager());
+        super(Minecraft.getInstance().getTextureManager(), Minecraft.getInstance().getAtlasManager(), Minecraft.getInstance().gameRenderer.mainRenderTarget());
         this.moonBuffer = buildSunQuad(this.celestialsAtlas, 80, MOON_LOCATION);
     }
 

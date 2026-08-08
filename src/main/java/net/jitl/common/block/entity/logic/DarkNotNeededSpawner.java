@@ -211,7 +211,7 @@ public abstract class DarkNotNeededSpawner extends BaseSpawner {
                 return null;
             }
 
-            this.displayEntity = EntityType.loadEntityRecursive(compoundtag, level, EntitySpawnReason.SPAWNER, EntityProcessor.NOP);
+            this.displayEntity = EntityType.loadEntityRecursive(compoundtag, level, new EntitySpawnRequest(EntitySpawnReason.SPAWNER, true), SET_DISPLAY_ENTITY_ID);
             if (compoundtag.size() == 1 && this.displayEntity instanceof Mob) {
             }
         }

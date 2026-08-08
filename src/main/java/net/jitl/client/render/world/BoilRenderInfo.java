@@ -27,7 +27,7 @@ public class BoilRenderInfo extends JDimensionSpecialEffects implements CustomSk
     private final GpuBuffer sunBuffer;
 
     public BoilRenderInfo() {
-        super(Minecraft.getInstance().getTextureManager(), Minecraft.getInstance().getAtlasManager());
+        super(Minecraft.getInstance().getTextureManager(), Minecraft.getInstance().getAtlasManager(), Minecraft.getInstance().gameRenderer.mainRenderTarget());
         this.corbaMoonBuffer = buildSunQuad(this.celestialsAtlas, 3F, CORBA_MOON_LOCATION);
         this.eucaMoonBuffer = buildSunQuad(this.celestialsAtlas, 6F, EUCA_MOON_LOCATION);
         this.sunBuffer = buildSunQuad(this.celestialsAtlas, 120F, SUN_LOCATION);
