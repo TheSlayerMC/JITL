@@ -21,14 +21,13 @@ public class CorbaBiomes extends Biomes {
         BiomeGenerationSettings.Builder biomeSetting = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
         MobSpawnSettings.Builder mobSettings = new MobSpawnSettings.Builder();
 
-        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_NORMAL);
         biomeSetting.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, CorbaPlacedFeatures.CORBA_RUINS);
         biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CorbaPlacedFeatures.ORBADITE_ORE);
         biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CorbaPlacedFeatures.GORBITE_ORE);
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_TALL_GRASS);
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_TALL_PLANTS);
-        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.GLOWSHROOMS);
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_LILY_PAD);
+        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_NORMAL);
 
         mobSettings.addSpawn(MobCategory.MONSTER, 3, new MobSpawnSettings.SpawnerData(JEntities.LEAF_BLOWER_TYPE.get(), 1, 1));
         mobSettings.addSpawn(MobCategory.MONSTER, 4, new MobSpawnSettings.SpawnerData(JEntities.SURFACE_SEER_TYPE.get(), 1, 1));
@@ -50,14 +49,13 @@ public class CorbaBiomes extends Biomes {
         BiomeGenerationSettings.Builder biomeSetting = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
         MobSpawnSettings.Builder mobSettings = new MobSpawnSettings.Builder();
 
-        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_NORMAL);
         biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CorbaPlacedFeatures.ORBADITE_ORE);
         biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CorbaPlacedFeatures.GORBITE_ORE);
-        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.GLOWSHROOMS);
-        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_TALL_GRASS);
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_VEG);
+        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_TALL_GRASS);
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_TREE_MEDIUM);
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_TREE_LARGE);
+        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_NORMAL);
 
         mobSettings.addSpawn(MobCategory.MONSTER, 3, new MobSpawnSettings.SpawnerData(JEntities.LEAF_BLOWER_TYPE.get(), 1, 1));
         mobSettings.addSpawn(MobCategory.MONSTER, 4, new MobSpawnSettings.SpawnerData(JEntities.SURFACE_SEER_TYPE.get(), 1, 1));
@@ -78,15 +76,14 @@ public class CorbaBiomes extends Biomes {
         BiomeGenerationSettings.Builder biomeSetting = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
         MobSpawnSettings.Builder mobSettings = new MobSpawnSettings.Builder();
 
-        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_NORMAL);
         biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CorbaPlacedFeatures.ORBADITE_ORE);
         biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CorbaPlacedFeatures.GORBITE_ORE);
-        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.GLOWSHROOMS);
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_TALL_GRASS);
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_TALL_PLANTS);
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_SWAMP_TREE);
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.BOGSHROOMS);
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_LILY_PAD);
+        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_NORMAL);
 
         mobSettings.addSpawn(MobCategory.MONSTER, 3, new MobSpawnSettings.SpawnerData(JEntities.NATURE_MAGE_TYPE.get(), 1, 1));
         mobSettings.addSpawn(MobCategory.MONSTER, 3, new MobSpawnSettings.SpawnerData(JEntities.LEAF_BLOWER_TYPE.get(), 1, 1));
@@ -110,14 +107,13 @@ public class CorbaBiomes extends Biomes {
         BiomeGenerationSettings.Builder biomeSetting = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
         MobSpawnSettings.Builder mobSettings = new MobSpawnSettings.Builder();
 
-        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_NORMAL);
         biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CorbaPlacedFeatures.ORBADITE_ORE);
         biomeSetting.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, CorbaPlacedFeatures.GORBITE_ORE);
-        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.GLOWSHROOMS);
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_TALL_GRASS);
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_TREE_SMALL);
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_TREE_MEDIUM);
         biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CorbaPlacedFeatures.CORBA_TREE_LARGE);
+        biomeSetting.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_NORMAL);
 
         mobSettings.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(JEntities.TREE_GOLEM_TYPE.get(), 1, 1));
         mobSettings.addSpawn(MobCategory.MONSTER, 3, new MobSpawnSettings.SpawnerData(JEntities.LEAF_BLOWER_TYPE.get(), 1, 1));

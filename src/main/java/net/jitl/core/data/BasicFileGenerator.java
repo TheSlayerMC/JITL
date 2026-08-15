@@ -112,11 +112,23 @@ public class BasicFileGenerator {
     }
 
     private void getItemFile(boolean item, String modID, String name) {
+        boolean isTinted = name.contains( "corba_tall_grass") || name.contains("bogwood_leaves") || name.contains("corba_leaves") || name.contains("corba_grass");
         writeToItemFile("{");
         writeToItemFile("  \"model\": {");
         writeToItemFile("    \"type\": \"minecraft:model\",");
         if(!item) {
-            writeToItemFile("    \"model\": \"" + modID + ":" + "block/" + name + "\"");
+            if(isTinted) {
+                writeToItemFile("    \"model\": \"" + modID + ":" + "block/" + name + "\",");
+                writeToItemFile("     \"tints\": [");
+                writeToItemFile("       {");
+                writeToItemFile("         \"type\": \"minecraft:grass\",");
+                writeToItemFile("         \"downfall\": 0.8,");
+                writeToItemFile("         \"temperature\": 0.8");
+                writeToItemFile("       }");
+                writeToItemFile("     ]");
+            } else {
+                writeToItemFile("    \"model\": \"" + modID + ":" + "block/" + name + "\"");
+            }
         } else {
             writeToItemFile("    \"model\": \"" + modID + ":" + "item/" + name + "\"");
         }

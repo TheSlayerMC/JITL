@@ -1,6 +1,6 @@
 package net.jitl.core.data;
 
-import net.jitl.core.data.world_gen.DimensionTypeGenerator;
+import net.jitl.core.data.world_gen.BiomeGenerator;
 import net.jitl.core.init.JITL;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
@@ -26,10 +26,10 @@ public class JDataGenerator {
 //        generator.addProvider(true, new JVillagerSetGenerator(generator.getPackOutput(), lookupProvider));
         //generator.addProvider(true, new JLootTableSubProvider(generator.getPackOutput(), lookupProvider));
         //generator.addProvider(true, new CarverGenerator(generator.getPackOutput(), lookupProvider));
-        generator.addProvider(true, new DimensionTypeGenerator(generator.getPackOutput(), lookupProvider));
+        //generator.addProvider(true, new DimensionTypeGenerator(generator.getPackOutput(), lookupProvider));
         //generator.addProvider(true, new ConfiguredFeaturesGenerator(generator.getPackOutput(), event.getLookupProvider()));
         //generator.addProvider(true, new PlacedFeaturesGenerator(generator.getPackOutput(), event.getLookupProvider()));
-        //generator.addProvider(true, new BiomeGenerator(generator.getPackOutput(), event.getLookupProvider()));
+        generator.addProvider(true, new BiomeGenerator(generator.getPackOutput(), event.getLookupProvider()));
         //generator.addProvider(event.includeServer(), new PlacedBonmealFeaturesGenerator(generator.getPackOutput()));
         //generator.addProvider(event.includeServer(), new JEnchantmentGenerator(generator.getPackOutput(), lookupProvider));
 

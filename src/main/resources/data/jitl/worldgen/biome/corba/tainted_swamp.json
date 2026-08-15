@@ -19,15 +19,26 @@
     "water_color": "#0c3801"
   },
   "features": [
-      "minecraft:seagrass_normal",
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
       "jitl:orbadite_ore",
-      "jitl:gorbite_ore",
-      "jitl:glowshrooms",
+      "jitl:gorbite_ore"
+    ],
+    [],
+    [],
+    [
       "jitl:corba_tall_grass",
       "jitl:corba_tall_plants",
       "jitl:corba_swamp_tree",
       "jitl:bogshrooms",
-      "jitl:corba_lily_pad"
+      "jitl:corba_lily_pad",
+      "minecraft:seagrass_normal"
+    ]
   ],
   "has_precipitation": false,
   "spawn_costs": {},
@@ -106,15 +117,16 @@
         "maxCount": 5,
         "minCount": 1,
         "weight": 5
-      },
+      }
+    ],
+    "water_creature": [
       {
         "type": "minecraft:squid",
         "maxCount": 4,
         "minCount": 1,
         "weight": 1
       }
-    ],
-    "water_creature": []
+    ]
   },
   "temperature": 0.8
 }

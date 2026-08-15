@@ -6,10 +6,12 @@ import net.jitl.core.init.internal.JBlocks;
 import net.minecraft.client.color.block.BlockTintSource;
 import net.minecraft.client.color.item.ItemTintSource;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.GrassColor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -32,35 +34,24 @@ public class JBlockColours implements BlockTintSource, ItemTintSource {
 
     @SubscribeEvent
     public static void registerBlockColours(RegisterColorHandlersEvent.BlockTintSources event) {
-        event.register(List.of((state) ->
-                                CORBA_SWAMP,
-                        new BlockTintSource() {
-
-                            @Override
-                            public int color(BlockState state) {
-                                return CORBA_SWAMP;
-                            }
-
-                            @Override
-                            public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
-                                return CORBA_SWAMP;
-                            }
-                        }
-                ),
+        event.register(List.of(corba()),
                 JBlocks.CORBA_GRASS.get(),
                 JBlocks.CORBA_TALL_GRASS.get(),
                 JBlocks.BOGWOOD_LEAVES.get(),
                 JBlocks.CORBA_LEAVES.get());
     }
 
-//    @SubscribeEvent
-//    public static void registerItemColours(RegisterColorHandlersEvent.ItemTintSources event) {
-//        event.register(ITEM_COLOUR_INSTANCE,
-//                JBlocks.CORBA_GRASS.get(),
-//                JBlocks.CORBA_TALL_GRASS.get(),
-//                JBlocks.BOGWOOD_LEAVES.get(),
-//                JBlocks.CORBA_LEAVES.get());
-//    }
+    public static BlockTintSource corba() {
+        return new BlockTintSource() {
+            public int color(BlockState state) {
+                return GrassColor.getDefaultColor();
+            }
+
+            public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
+                return BiomeColors.getAverageGrassColor(level, pos);
+            }
+        };
+    }
 
     @Override
     public int calculate(@NotNull ItemStack itemStack, @Nullable ClientLevel clientLevel, @Nullable LivingEntity livingEntity) {
