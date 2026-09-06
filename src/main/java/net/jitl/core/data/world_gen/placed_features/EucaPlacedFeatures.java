@@ -137,7 +137,7 @@ public class EucaPlacedFeatures extends JPlacedFeature {
                 context,
                 GOLD_BOT_SPAWNER,
                 holdergetter.getOrThrow(JConfiguredFeatures.GOLD_BOT_SPAWNER),
-                patch(1, 20, PlacementUtils.FULL_RANGE)
+                patch(1, 60, PlacementUtils.FULL_RANGE)
         );
 
         PlacementUtils.register(

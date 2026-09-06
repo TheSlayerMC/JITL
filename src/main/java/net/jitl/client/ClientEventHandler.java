@@ -36,9 +36,9 @@ public class ClientEventHandler {
             float density;
             ICuriosItemHandler curios = CuriosApi.getCuriosInventory(player).get();
             if(player.getData(JDataAttachments.PLAYER_STATS).hasBlizzard() || curios.findFirstCurio(JItems.EYE_OF_THE_BLIZZARD.get()).isPresent()) {
-                density = 0.55F;
+                density = 0.30F;
             } else {
-                density = 0.1F;
+                density = 0.05F;
             }
             event.setNearPlaneDistance(density);
             event.setFarPlaneDistance(density * farPlaneDistance);

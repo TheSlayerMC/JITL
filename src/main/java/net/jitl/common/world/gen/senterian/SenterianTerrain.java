@@ -112,7 +112,7 @@ public class SenterianTerrain extends Feature<NoneFeatureConfiguration> {
     public static boolean wantsBigRoom(int chunkX, int y, int chunkZ) {
         int xPart = chunkX % 2, zPart = chunkZ % 2;
         Random rand = new Random();
-        return rand.nextInt(15) == 0 && getDoorAmount(chunkX, y, chunkZ) == 0
+        return rand.nextInt(40) == 0 && getDoorAmount(chunkX, y, chunkZ) == 0
                 || getDoorAmount(chunkX + 1 + ((chunkX > -1 ? -2 : 2) * xPart), y, chunkZ) == 0
                 || getDoorAmount(chunkX, y, chunkZ + 1 + ((chunkZ > -1 ? -2 : 2) * zPart)) == 0
                 || getDoorAmount(chunkX + 1 + ((chunkX > -1 ? -2 : 2) * xPart), y, chunkZ + 1 + ((chunkZ > -1 ? -2 : 2) * zPart)) == 0;

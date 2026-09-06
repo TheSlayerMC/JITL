@@ -15,9 +15,9 @@
       "spawns": [
         {
           "type": "jitl:alloy_mender",
-          "weight": 10,
+          "weight": 1,
           "minCount": 1,
-          "maxCount": 3
+          "maxCount": 1
         }
       ]
     }
